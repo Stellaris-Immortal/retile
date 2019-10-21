@@ -953,74 +953,64 @@ roboticist = {
 		specialist_job_check_trigger = yes
 	}
 	
-	triggered_planet_modifier = {
-		potential = {
-			planet = { free_housing >= 0 }
-		}
-		modifier = {
-			planet_pop_assembly_add = 2
-		}
-	}
-	
 	resources = {
 		category = planet_pop_assemblers
 		upkeep = {
-			trigger = { planet = { free_housing >= 0 } }
+			trigger = { free_housing >= 0 }
 			minerals = 10
 		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = { planet = { free_housing >= 0 } }
-		modifier = { planet_amenities_add = 30 }
+		produces = {
+			trigger = {
+				free_housing < 0
+				has_building = building_solar_panels
+			}
+			energy = 10
+		}
+		produces = {
+			trigger = {
+				free_housing < 0
+				has_building = building_recycling_center
+			}
+			minerals = 10
+		}
+		produces = {
+			trigger = {
+				free_housing < 0
+				has_building = building_hydroponics_farm
+			}
+			food = 4
+		}
+		produces = {
+			trigger = {
+				free_housing < 0
+				has_building = building_solar_panels
+				has_deposit = retile_deposit_waste_reprocessing
+			}
+			energy = 10
+		}
+		produces = {
+			trigger = {
+				free_housing < 0
+				has_building = building_recycling_center
+				has_deposit = retile_deposit_waste_reprocessing
+			}
+			minerals = 10
+		}
+		produces = {
+			trigger = {
+				free_housing < 0
+				has_building = building_hydroponics_farm
+				has_deposit = retile_deposit_waste_reprocessing
+			}
+			food = 4
+		}
 	}
 
-	resources = {
-		category = planet_custodians
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_solar_panels
-			} }
-			energy = 10
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_recycling_center
-			} }
-			minerals = 10
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_hydroponics_farm
-			} }
-			food = 4
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_solar_panels
-				has_deposit = retile_deposit_waste_reprocessing
-			} }
-			energy = 10
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_recycling_center
-				has_deposit = retile_deposit_waste_reprocessing
-			} }
-			minerals = 10
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_hydroponics_farm
-				has_deposit = retile_deposit_waste_reprocessing
-			} }
-			food = 4
+	triggered_planet_modifier = {
+		potential = { planet = { free_housing >= 0 } }
+		modifier = {
+			planet_amenities_add = 30
+			planet_pop_assembly_add = 2
 		}
 	}
 	
