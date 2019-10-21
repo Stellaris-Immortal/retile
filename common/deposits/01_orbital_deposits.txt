@@ -1,0 +1,1197 @@
+## Possible Deposit Variables ##
+# resources, resource and amount
+# potential trigger (planet scope)
+# blocked_modifier - applied to planet
+# constant_modifier - applied to planet always
+# station = station class in orbit to gather
+
+##################################
+############ MINERALS ############
+##################################
+
+d_minerals_asteroid_small = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			minerals = 4
+		}
+	}
+	
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	potential = { always = no }
+	drop_weight = { weight = 0 }
+}
+
+d_minerals_asteroid = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			minerals = 6
+		}
+	}
+	
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	potential = { always = no }
+	drop_weight = { weight = 0 }
+}
+
+d_minerals_random = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			minerals = 6
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_barren
+			is_planet_class = pc_barren_cold	
+		}	
+	}
+	
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	potential = { always = no }
+	drop_weight = { weight = 0 }
+}
+
+d_minerals_moon = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			minerals = 4
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_barren
+			is_planet_class = pc_barren_cold	
+		}	
+	}
+	drop_weight = {
+		weight = 40
+		modifier = {
+			factor = 0
+			is_moon = no
+		}
+		modifier = {
+			factor = 0
+			planet_size > 11
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_modifier = asteroid_belt
+				has_modifier = carbon_world
+				has_modifier = mineral_poor
+			}
+		}
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+		modifier = {
+			factor = 3
+			is_star_class = sc_black_hole
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+		}
+		modifier = {
+			factor = 2	
+			is_star_class = sc_m
+			is_star_class = sc_m_giant
+		}
+		modifier = {
+			factor = 0.5
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0.125
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+d_minerals_world = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			minerals = 8
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_barren
+			is_planet_class = pc_barren_cold
+		}	
+	}
+	drop_weight = {
+		weight = 40
+		modifier = {
+			factor = 0
+			is_moon = yes
+		}
+		modifier = {
+			factor = 0
+			planet_size < 25
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_modifier = asteroid_belt
+				has_modifier = carbon_world
+				has_modifier = mineral_poor
+			}
+		}
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+		modifier = {
+			factor = 2.5
+			is_star_class = sc_black_hole
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+		}
+		modifier = {
+			factor = 1.5
+			is_star_class = sc_m
+			is_star_class = sc_m_giant
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.125
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+##################################
+######### ENERGY CREDITS #########
+##################################
+
+d_energy_small = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			energy = 4
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_k_star
+			is_planet_class = pc_m_star
+			is_planet_class = pc_m_giant_star
+			is_planet_class = pc_t_star
+		}	
+	}
+	
+	drop_weight = {
+		weight = 1000
+	}
+}
+
+d_energy_medium = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			energy = 6
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_f_star
+			is_planet_class = pc_g_star
+		}	
+	}
+	
+	drop_weight = {
+		weight = 1000
+	}
+}
+
+d_energy_large = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			energy = 8
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_a_star
+			is_planet_class = pc_b_star
+		}	
+	}
+	
+	drop_weight = {
+		weight = 1000
+	}
+}
+
+##################################
+######### 	SOCIETY 	 #########
+##################################
+
+d_society_small = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			society_research = 4
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		is_planet_class = pc_toxic
+		planet_size < 15
+	}
+	
+	drop_weight = {
+		weight = 60
+		modifier = {
+			factor = 1.5
+			is_inside_nebula = yes
+		}
+		modifier = {
+			weight = 0
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_society_small
+						has_deposit = d_society_medium
+						has_deposit = d_society_large
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole	
+			is_star_class = sc_f
+			is_star_class = sc_g
+		}
+		modifier = {
+			factor = 0.55
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.5
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+d_society_medium = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			society_research = 6
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		is_planet_class = pc_toxic
+		planet_size > 14
+		planet_size < 21
+	}
+	
+	drop_weight = {
+		weight = 50
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+		modifier = {
+			weight = 0
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_society_small
+						has_deposit = d_society_medium
+						has_deposit = d_society_large
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole	
+			is_star_class = sc_f
+			is_star_class = sc_g
+		}
+		modifier = {
+			factor = 0.5
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0.125
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+d_society_large = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			society_research = 8
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		is_planet_class = pc_toxic
+		planet_size > 21
+	}
+	
+	drop_weight = {
+		weight = 40
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+		modifier = {
+			weight = 0
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_society_small
+						has_deposit = d_society_medium
+						has_deposit = d_society_large
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2.5
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole	
+			is_star_class = sc_f
+			is_star_class = sc_g
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.125
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+##################################
+######### 	 PHYSICS 	 #########
+##################################
+
+d_physics_small = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			physics_research = 4
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		is_planet_class = pc_molten	
+	}
+	
+	drop_weight = {
+		weight = 40
+		modifier = {
+			factor = 1.5
+			is_inside_nebula = yes
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_physics_large
+						has_deposit = d_physics_medium
+						has_deposit = d_physics_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole
+			is_star_class = sc_a
+			is_star_class = sc_b
+		}
+		modifier = {
+			factor = 0.75
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.5
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+d_physics_medium = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			physics_research = 6
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		is_planet_class = pc_molten	
+	}
+	
+	drop_weight = {
+		weight = 30
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_physics_large
+						has_deposit = d_physics_medium
+						has_deposit = d_physics_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole	
+			is_star_class = sc_a
+			is_star_class = sc_b
+		}
+		modifier = {
+			factor = 0.5
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0.125
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+d_physics_large = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			physics_research = 8
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		is_planet_class = pc_molten	
+	}
+	
+	drop_weight = {
+		weight = 25
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_physics_large
+						has_deposit = d_physics_medium
+						has_deposit = d_physics_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2.5
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole
+			is_star_class = sc_a
+			is_star_class = sc_b		
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.125
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+##################################
+#########  ENGINEERING   #########
+##################################
+
+d_engineering_small = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			engineering_research = 4
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		is_planet_class = pc_frozen				
+	}
+	
+	drop_weight = {
+		weight = 40
+		modifier = {
+			factor = 1.5
+			is_inside_nebula = yes
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_engineering_large
+						has_deposit = d_engineering_medium
+						has_deposit = d_engineering_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole
+			is_star_class = sc_t
+			is_star_class = sc_k			
+		}
+		modifier = {
+			factor = 0.75
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.5
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+d_engineering_medium = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			engineering_research = 6
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		is_planet_class = pc_frozen		
+	}
+	
+	drop_weight = {
+		weight = 30
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_engineering_large
+						has_deposit = d_engineering_medium
+						has_deposit = d_engineering_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole
+			is_star_class = sc_t
+			is_star_class = sc_k	
+		}
+		modifier = {
+			factor = 0.5
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0.125
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+d_engineering_large = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			engineering_research = 8
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		is_planet_class = pc_frozen		
+	}
+	
+	drop_weight = {
+		weight = 25
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_engineering_large
+						has_deposit = d_engineering_medium
+						has_deposit = d_engineering_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 2.5
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole	
+			is_star_class = sc_t
+			is_star_class = sc_k
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.125
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+##################################
+#########  TRADE VALUE   #########
+##################################
+
+d_trade_value_small = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+		
+	planet_modifier = {
+		trade_value_add = 4
+	}
+	
+	potential = {
+		is_planet_class = pc_ice_asteroid
+	}
+	
+	drop_weight = {
+		weight = 80
+		modifier = {
+			factor = 1.25
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole	
+		}
+		modifier = {
+			factor = 0.75
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.5
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+d_trade_value_medium = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+		
+	planet_modifier = {
+		trade_value_add = 6
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_gas_giant
+			is_planet_class = pc_ice_asteroid
+		}
+	}
+	
+	drop_weight = {
+		weight = 30
+		modifier = {
+			factor = 0.5
+			is_planet_class = pc_gas_giant
+		}
+		modifier = {
+			factor = 1.5
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole		
+		}
+		modifier = {
+			factor = 0.75
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.5
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+	}
+}
+
+d_trade_value_large = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+		
+	planet_modifier = {
+		trade_value_add = 8
+	}
+	
+	potential = {
+		is_planet_class = pc_gas_giant
+	}
+	
+	drop_weight = {
+		weight = 10
+		modifier = {
+			factor = 2.5
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole		
+		}
+		modifier = {
+			factor = 0.5
+			is_star_class = sc_binary_1
+			is_star_class = sc_binary_2
+			is_star_class = sc_binary_4
+			is_star_class = sc_binary_6
+			is_star_class = sc_binary_7
+			is_star_class = sc_binary_10
+		}
+		modifier = {
+			factor = 0.25
+			is_star_class = sc_f
+			is_star_class = sc_g
+			is_star_class = sc_binary_3
+			is_star_class = sc_binary_8
+			is_star_class = sc_trinary_1
+			is_star_class = sc_trinary_3
+		}
+		modifier = {
+			factor = 0.125
+			is_star_class = sc_a
+			is_star_class = sc_b
+			is_star_class = sc_binary_5
+			is_star_class = sc_binary_9
+			is_star_class = sc_trinary_2
+			is_star_class = sc_trinary_4
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_system_planet = {
+						has_deposit = d_trade_value_large
+				}
+			}
+		}
+	}
+}
+
+##################################
+#########     ALLOYS     #########
+##################################
+
+d_alloys_asteroid = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = { alloys = 2 }
+	}
+	
+	potential = { always = no }
+	drop_weight = { weight = 0 }
+}
+
+##################################
+#########     SPECIAL    #########
+##################################
+
+d_special_1 = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			physics_research = 4
+			engineering_research = 4
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_neutron_star
+			is_planet_class = pc_pulsar
+			is_planet_class = pc_black_hole			
+		}	
+	}
+	
+	drop_weight = {
+		weight = 1000		
+	}
+	
+}
+
+d_special_2 = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			physics_research = 6
+			engineering_research = 4
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_neutron_star
+			is_planet_class = pc_pulsar
+			is_planet_class = pc_black_hole		
+		}	
+	}
+	
+	drop_weight = {
+		weight = 1000	
+	}
+}
+
+d_special_3 = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			physics_research = 4
+			engineering_research = 6
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_neutron_star
+			is_planet_class = pc_pulsar
+			is_planet_class = pc_black_hole			
+		}	
+	}
+	
+	drop_weight = {
+		weight = 1000	
+	}
+}
+
+d_special_4 = {
+	resources = {
+		category = orbital_research_deposits
+		produces = {
+			physics_research = 6
+			engineering_research = 6
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_neutron_star
+			is_planet_class = pc_pulsar
+			is_planet_class = pc_black_hole			
+		}	
+	}
+	
+	drop_weight = {
+		weight = 1000
+	}
+}

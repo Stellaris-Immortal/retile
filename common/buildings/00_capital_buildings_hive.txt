@@ -1,0 +1,286 @@
+#############
+# Hive buildings
+#############
+
+# Hive Colony - Tier 1
+building_hive_colony = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_hive_empire = yes
+				is_country_type = swarm
+			}
+		}
+	}
+
+	destroy_trigger = { # destroys and/or triggers conversion if true
+		exists = owner
+		owner = { is_hive_empire = no }
+	}
+	
+	convert_to = {
+		building_colony_shelter
+		building_deployment_post
+	}
+	
+	upgrades = { 
+		"building_hive_capital_2"
+	}
+	
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	
+	show_tech_unlock_if = { 
+		is_hive_empire = yes
+	}
+	
+	
+	resources = {
+		category = planet_buildings
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	triggered_desc = {
+		text = job_synapse_drone_effect_desc
+	}	
+	
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+# Hive Collective - tier 2
+building_hive_capital = {
+	base_buildtime = 480
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_hive_empire = yes
+				is_country_type = swarm
+			}
+		}
+	}
+
+	destroy_trigger = { # destroys and/or triggers conversion if true
+		exists = owner
+		owner = { is_hive_empire = no }
+	}
+	
+	convert_to = {
+		building_machine_capital
+		building_capital
+	}
+	
+	allow = {
+		num_pops >= 10
+	}
+	
+	upgrades = { 
+		"building_hive_major_capital"
+	}
+	
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	
+	show_tech_unlock_if = { 
+		is_hive_empire = yes
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+		}			
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	triggered_desc = {
+		text = job_synapse_drone_effect_desc
+	}	
+	
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+# Hive Core - tier 3
+building_hive_major_capital = {
+	base_buildtime = 600
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_hive_empire = yes
+				is_country_type = swarm
+			}
+		}
+	}
+	
+	convert_to = {
+		building_machine_major_capital
+		building_major_capital
+	}
+
+	allow = {
+		num_pops >= 40
+	}
+	
+	upgrades = { 
+		"building_hive_system_capital"
+	}
+	
+	prerequisites = {
+		"tech_colonial_centralization"
+	}
+	
+	show_tech_unlock_if = { 
+		is_hive_empire = yes
+	}
+	
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 1000
+		}			
+		upkeep = {
+			energy = 5
+		}
+	}
+	
+	triggered_desc = {
+		text = job_synapse_drone_effect_desc
+	}	
+
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}	
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}		
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 0
+			owner = { has_resource = { type = minerals amount < 1000 } }
+		}#This is here to prevent the AI from queuing up to buy this building when it could really do with another mineral district
+	}
+}
+
+# Hive Nexus - Tier 4
+building_hive_system_capital = {
+	base_buildtime = 900
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_hive_empire = yes
+				is_country_type = swarm
+			}
+		}
+	}
+	
+	convert_to = {
+		building_system_capital
+		building_machine_system_capital
+	}	
+	allow = {
+		num_pops >= 80
+	}
+	
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+	
+	show_tech_unlock_if = { 
+		is_hive_empire = yes
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 2000
+		}			
+		upkeep = {
+			energy = 10
+		}
+	}
+	
+	triggered_desc = {
+		text = job_synapse_drone_effect_desc
+	}	
+
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}	
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}		
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 0
+			owner = { has_resource = { type = minerals amount < 2000 } }
+		}#This is here to prevent the AI from queuing up to buy this building when it could really do with another mineral district
+	}
+}

@@ -1,0 +1,100 @@
+#Material Recycling
+tech_material_recycling = {
+	cost = @tier1cost1
+	area = engineering
+	tier = 1
+	category = { industry  }	
+	prerequisites = { "tech_mechanized_mining" }
+	weight = @tier1weight1
+		
+	# unlock recycling buildings
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_industry"
+			}			
+		}
+	}
+	
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_industry"
+			}
+		}
+	}
+}
+
+#Photovoltaic Modules
+tech_photovoltaic_modules = {
+	cost = @tier1cost1
+	area = physics
+	tier = 1
+	category = { particles   }	
+	prerequisites = { "tech_fission_power" }
+	weight = @tier1weight1
+		
+	# unlock photovoltaic buildings
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_particles"
+			}			
+		}
+	}
+	
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_particles"
+			}
+		}
+	}
+}
+
+# Arcology Project
+tech_housing_3 = {
+	cost = @tier4cost1
+	area = engineering
+	tier = 3
+	category = { industry }
+	prerequisites = { "tech_housing_2" }
+	is_rare = yes
+	weight = @tier4weight1
+	
+	# Unlocks Arcology Project
+	
+	weight_modifier = {
+		factor = 1.5
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_industry"
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_industry"
+			}
+		}
+	}
+}

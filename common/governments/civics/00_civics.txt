@@ -1,0 +1,933 @@
+#civic_example = {
+#	playable = {}								# AND trigger, no scope; use this to prevent the civic from being selectable by the player (UI)
+#	potential = {}								# requirements list, see ../readme_requirements.txt
+#	possible = {}								# requirements list, see ../readme_requirements.txt
+#	pickable_at_start = yes / no				# default: yes
+#	modification = yes / no						# default: yes, set to no to prevent adding or removing this after creation of the empire
+#
+#	random_weight = { base = 5 }				# scriptable weight for randomizing a civic; required, else the civic will not get assigned randomly
+#
+#	modifier = {}								# modifier added to the country if the civic is selected and valid
+#	can_build_ruler_ship = yes / no				# default: no
+#	traits = { trait = ... }					# default: empty; trait set to enforce on the primary species. They cannot be removed, but more can be added if points/picks permit
+#	has_secondary_species = {					# default: none; if present, will enable secondary species customization in empire designer and will create secondary species & pops at galaxy generation time (see empire_init_create_capital_secondary_pops)
+#		traits = { trait = ... }					# default: empty; trait set to enforce on the secondary species. They cannot be removed, but more can be added if points/picks permit
+#	}
+#}
+
+civic_corvee_system = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_free_haven
+			}
+		}		
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		pop_growth_from_immigration = 0.15
+		pop_resettlement_cost_mult = -0.25
+	}
+}
+
+civic_imperial_cult = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = {
+			value = auth_imperial
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		edict_length_mult = 0.25
+		pop_government_ethic_attraction = 0.10
+	}
+}
+
+civic_beacon_of_liberty = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = {
+			value = auth_democratic
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+			NOR = {
+				text = civic_tooltip_not_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		country_unity_produces_mult = 0.15
+	}
+}
+
+civic_exalted_priesthood = {
+	description = "civic_tooltip_exalted_priesthood_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = {
+			OR = {
+				value = auth_oligarchic
+				value = auth_dictatorial
+			}			
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_merchant_guilds
+				value = civic_aristocratic_elite
+				value = civic_technocracy
+				value = civic_byzantine_bureaucracy
+				value = civic_shared_burden
+			}
+		}	
+	}
+	random_weight = { base = 5 }
+}
+
+civic_philosopher_king = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = {
+			OR = {
+				text = civic_tooltip_dic_imp
+				value = auth_dictatorial
+				value = auth_imperial
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		ruler_skill_levels = 2
+	}
+}
+
+civic_meritocracy = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		authority = {
+			OR = {
+				text = civic_tooltip_dem_oli
+				value = auth_democratic
+				value = auth_oligarchic
+				value = auth_corporate
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		leader_skill_levels = 1
+		planet_jobs_specialist_produces_mult = 0.10
+	}
+}
+
+civic_citizen_service = {
+	description = "civic_tooltip_citizen_service_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+			NOT = {
+				value = ethic_fanatic_xenophile
+			}
+		}
+		authority = {
+			OR = {
+				text = civic_tooltip_dem_oli
+				value = auth_democratic
+				value = auth_oligarchic
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		country_naval_cap_mult = 0.10
+	}
+}
+
+civic_technocracy = {
+	description = civic_tooltip_technocracy_effects
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_materialist
+		}
+		civics = {
+			NOR = {
+				value = civic_merchant_guilds
+				value = civic_exalted_priesthood
+				value = civic_aristocratic_elite
+				value = civic_byzantine_bureaucracy
+				value = civic_shared_burden
+			}
+		}		
+	}
+	random_weight = { base = 5 }
+	
+}
+
+civic_feudal_realm = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = {
+			value = auth_imperial
+		}
+	}
+	random_weight = { base = 5 }
+	
+	description = "civic_tooltip_feudal_realm_effects"
+	modifier = {
+		country_subject_power_penalty_mult = -0.5
+	}
+}
+
+civic_police_state = {
+	description = "civic_tooltip_police_state_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	modifier = {
+		planet_crime_mult = -0.10
+	}
+	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	random_weight = { base = 5 }
+}
+
+civic_idealistic_foundation = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		pop_citizen_happiness = 0.05
+	}
+}
+
+civic_environmentalist = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		planet_amenities_mult = -0.10
+	}
+}
+
+civic_slaver_guilds = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+		civics = {
+			NOT = { value = civic_syncretic_evolution }
+		}	
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		planet_jobs_slave_produces_mult = 0.10
+		country_pop_enslaved_mult = 0.40
+	}
+}
+
+civic_inwards_perfection = {
+	modification = no
+	description = "civic_tooltip_inward_perfection_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+			OR = {
+				text = civic_tooltip_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+	}
+	random_weight = { base = 1000 }
+	modifier = {
+		country_unity_produces_mult = 0.20
+		pop_growth_speed = 0.20
+		pop_citizen_happiness = 0.05
+	}
+}
+
+civic_warrior_culture = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	description = "civic_tooltip_warrior_culture_effects"
+	modifier = {
+		army_damage_mult = 0.20
+	}
+}
+
+civic_distinguished_admiralty = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		ship_fire_rate_mult = 0.10
+		admiral_skill_levels = 1
+		country_command_limit_add = 10
+	}
+}
+
+civic_free_haven = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
+		civics = {
+			NOT = {
+				value = civic_corvee_system
+			}
+		}		
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		pop_growth_from_immigration = 0.15
+		planet_immigration_pull_mult = 0.50
+	}
+}
+
+civic_cutthroat_politics = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		edicts_cost_mult = -0.20
+	}
+}
+
+# Disable this civic if host has MegaCorp as it's replaced by the Corporate authority
+civic_corporate_dominion = {
+	playable = { NOT = { host_has_dlc = "Megacorp" } }
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = {
+			value = auth_oligarchic
+		}
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+	}
+	random_weight = {
+		base = 3
+		modifier = {
+			factor = 0
+			host_has_dlc = "Megacorp"
+		}
+	}
+	
+	# unlocks sponsored_colonizer ship size
+	
+	description = "civic_tooltip_corporate_dominion_effects"
+}
+
+civic_agrarian_idyll = {
+	description = "civic_tooltip_agrarian_idyll_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}	
+	}
+	random_weight = { base = 5 }
+}
+
+civic_shadow_council = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = {
+			OR = {
+				text = civic_tooltip_dem_oli_dic
+				value = auth_democratic
+				value = auth_oligarchic
+				value = auth_dictatorial
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		country_election_influence_cost_mult = -0.75
+	}
+}
+
+civic_mining_guilds = {
+	description = "civic_mining_guilds_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	random_weight = { base = 5 }
+}
+
+civic_parliamentary_system = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = {
+			value = auth_democratic
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		pop_factions_produces_mult = 0.25
+	}
+}
+
+civic_efficient_bureaucracy = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		country_admin_cap_add = 20
+	}
+}
+
+civic_nationalistic_zeal = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		country_war_exhaustion_mult = -0.1
+		country_claim_influence_cost_mult = -0.1
+	}
+}
+
+civic_functional_architecture = {
+	description = "civic_tooltip_functional_architecture_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		planet_structures_cost_mult = -0.10
+		planet_structures_upkeep_mult = -0.10
+	}
+}
+
+civic_aristocratic_elite = {
+	description = "civic_tooltip_aristocratic_elite_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	modifier = {
+		governor_skill_levels = 1
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}			
+		}
+		authority = {
+			OR = {
+				text = civic_tooltip_oli_imp
+				value = auth_oligarchic
+				value = auth_imperial
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_merchant_guilds
+				value = civic_exalted_priesthood
+				value = civic_technocracy
+				value = civic_byzantine_bureaucracy
+				value = civic_shared_burden
+			}
+		}		
+	}
+	random_weight = { base = 5 }
+}
+
+civic_mechanists = {
+	modification = no
+	playable = { host_has_dlc = "Utopia" }
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_syncretic_evolution
+				value = civic_post_apocalyptic
+				value = civic_life_seeded
+			}
+		}
+	}
+	random_weight = {
+		base = 5
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Utopia" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+	modifier = { planet_pops_robotics_upkeep_mult = -0.05 }
+
+	description = "civic_tooltip_mechanists_effects"
+	#used when starting a new game to give robots (see game_start.11) and techs (see game_start.8)
+}
+
+civic_shared_burden = { 
+	playable = { host_has_dlc = "Megacorp" }
+	potential = {
+		authority = { 
+			NOR = { 
+				value = auth_corporate 
+				value = auth_hive_mind
+				value = auth_machine_intelligence
+			}
+		}
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_egalitarian
+			NOR = {
+				text = civic_tooltip_not_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_merchant_guilds
+				value = civic_exalted_priesthood
+				value = civic_aristocratic_elite
+				value = civic_byzantine_bureaucracy
+				value = civic_technocracy
+			}
+		}		
+	}
+	modifier = {
+		planet_stability_add = 10
+		planet_jobs_produces_mult = 0.10
+	}		
+	random_weight = {
+		base = 1 # Should be fairly rare
+	}
+
+	description = civic_tooltip_shared_burden_effects
+}
+
+civic_syncretic_evolution = {
+	modification = no
+	playable = { host_has_dlc = "Utopia" }
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_mechanists
+				value = civic_fanatic_purifiers
+				value = civic_agrarian_idyll
+				value = civic_post_apocalyptic
+				value = civic_life_seeded
+				value = civic_shared_burden
+				value = civic_slaver_guilds
+			}
+		}
+	}
+	random_weight = {
+		base = 1 # Should be fairly rare
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Utopia" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+
+	description = civic_tooltip_syncretic_evolution_effects
+	has_secondary_species = {	# see game_start.11
+		title = civic_syncretic_evolution_secondary_species
+		traits = {
+			trait = trait_syncretic_proles
+		}
+	}
+}
+
+civic_fanatic_purifiers = {
+	modification = no
+	playable = { host_has_dlc = "Utopia" }
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			value = ethic_fanatic_xenophobe
+			OR = {
+				value = ethic_militarist
+				value = ethic_spiritualist
+			}		
+		}
+		civics = {
+			NOR = {
+				value = civic_syncretic_evolution
+				value = civic_barbaric_despoilers
+			}
+		}
+	}
+	random_weight = {
+		base = 1000
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Utopia" }
+		}
+	}
+
+	description = "civic_tooltip_fanatic_purifiers_effects"
+	modifier = {
+		ship_fire_rate_mult = 0.33
+		army_damage_mult = 0.33
+		starbase_shipyard_build_cost_mult = -0.15
+		country_naval_cap_mult = 0.33
+	}
+}
+
+civic_post_apocalyptic = {
+	playable = { host_has_dlc = "Apocalypse" }
+	starting_colony = pc_nuked # Changes homeworld class regardless of what is picked for empire
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_mechanists
+				value = civic_agrarian_idyll
+				value = civic_syncretic_evolution
+				value = civic_life_seeded
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = 1 # Should be fairly rare
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Apocalypse" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+	description = "civic_tooltip_post_apocalyptic_effects"
+
+	traits = {
+		trait = trait_survivor
+	}
+}
+
+civic_life_seeded = {
+	playable = { host_has_dlc = "Apocalypse" }
+	starting_colony = pc_gaia
+	habitability_preference = pc_gaia
+	#preferred_planet_class_neighbor = no
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_mechanists
+				value = civic_syncretic_evolution
+				value = civic_post_apocalyptic
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = 1 # Should be fairly rare
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Apocalypse" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}	
+	description = "civic_tooltip_life_seeded_effects"
+}
+
+civic_barbaric_despoilers = {
+	playable = { host_has_dlc = "Apocalypse" }
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_fanatic_militarist
+				value = ethic_militarist
+			}
+			OR = {
+				value = ethic_fanatic_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_xenophobe
+				value = ethic_xenophobe
+			}	
+			NOR = {
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_fanatic_purifiers
+			}
+		}		
+	}
+	modification = no
+	random_weight = {
+		base = 2
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Apocalypse" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+	description = "civic_tooltip_barbaric_despoilers_effects"
+}
+
+# New for MegaCorp
+civic_byzantine_bureaucracy = {
+	description = "civic_tooltip_byzantine_bureaucracy_effects"
+	playable = { host_has_dlc = "Megacorp" }
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		always = yes
+	}
+	modifier = {
+		pop_amenities_usage_mult = -0.10
+		pop_housing_usage_mult = -0.10
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_exalted_priesthood
+				value = civic_aristocratic_elite
+				value = civic_technocracy
+				value = civic_merchant_guilds
+				value = civic_shared_burden
+			}
+		}		
+	}	
+	random_weight = {
+		base = 2
+	}
+}
+
+civic_merchant_guilds = {
+	description = "civic_tooltip_merchant_guilds_effects"
+	playable = { host_has_dlc = "Megacorp" }
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_exalted_priesthood
+				value = civic_aristocratic_elite
+				value = civic_technocracy
+				value = civic_byzantine_bureaucracy
+				value = civic_shared_burden
+			}
+		}		
+	}
+	random_weight = {
+		base = 2
+	}	
+}

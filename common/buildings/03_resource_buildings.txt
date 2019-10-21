@@ -1,0 +1,787 @@
+@cost_low = 250
+@cost_med = 500
+@cost_high = 750
+@cost_ultra = 1000
+
+#############
+# Resource buildings
+#############
+
+building_hydroponics_farm = {
+	base_buildtime = 480
+	base_cap_amount = 1
+	category = resource
+	
+	potential = {
+		exists = owner
+		owner = { country_uses_food = yes }
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	allow = {
+		always = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			owner = { country_uses_food = no }
+			has_modifier = slave_colony
+		}
+	}
+
+	prerequisites = {
+		"tech_hydroponics"
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+		}
+		upkeep = {
+			energy = 25
+		}
+	}	
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_food_buff_city_effect
+	}
+	
+	ai_weight = {
+		weight = 100
+		
+		modifier = {	# REALLY don't let food go negative
+			weight = 10000
+			owner = { has_monthly_income = { resource = food value < 5 } }
+		}
+		modifier = {	# TRY to save the last building slot for housing...
+			factor = 0.25
+			retile_housing_safe = no
+		}
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_recycling_center = {
+	base_buildtime = 480
+	base_cap_amount = 1
+	category = resource
+	
+	potential = {
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		always = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			has_modifier = slave_colony
+		}
+	}
+
+	prerequisites = {
+		"tech_material_recycling"
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+		}
+		upkeep = {
+			energy = 25
+		}
+	}	
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_minerals_buff_city_effect
+	}
+	
+	ai_weight = {
+		weight = 100
+		
+		modifier = {	# impending minerals crisis...
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 5 } }
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
+		}
+	}
+	
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_solar_panels = {
+	base_buildtime = 480
+	base_cap_amount = 1
+	category = resource
+	
+	potential = {
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		#retile_ready = yes
+		always = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			has_modifier = slave_colony
+		}
+	}
+
+	prerequisites = {
+		"tech_photovoltaic_modules"
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+		}
+		#upkeep = {
+		#	energy = 0	# upkeep removed because it costs MORE than it produces without other buildings on the planet...
+		#}
+	}	
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_energy_buff_city_effect
+	}
+	
+	ai_weight = {
+		weight = 100
+		
+		modifier = {	# impending energy crisis...
+			weight = 1000
+			owner = { has_monthly_income = { resource = energy value < 25 } }
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
+		}
+	}
+	
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_food_processing_facility = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = resource
+	
+	potential = {
+		owner = { country_uses_food = yes }
+		NOR = {
+			is_planet_class = pc_machine
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+		}
+	}
+	
+	allow = {
+		#retile_ready = yes
+		retile_food = yes
+	}
+	
+	destroy_trigger = {
+		owner = { country_uses_food = no }
+		OR = {
+			is_planet_class = pc_machine
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+		}
+		retile_food = no
+	}
+		
+	upgrades = {
+		building_food_processing_center
+	}
+	
+	prerequisites = {
+		"tech_food_processing_1"
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 10
+		}
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_food_buff_1_effect
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# just a bit of food security.
+			weight = 100
+			owner = { has_monthly_income = { resource = food value < 25 } }
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 100000
+			owner = { has_monthly_income = { resource = food value < 5 } }
+		}
+		modifier = {	# try to build at least one...
+			weight = 100
+			NOR = {
+				is_capital = yes
+				owner = { any_owned_planet = { OR = {
+					has_building = building_food_processing_facility
+					has_building = building_food_processing_center
+				}
+			} } }
+		}
+		modifier = {	# avoid bad food worlds...
+			factor = 0.5
+			retile_template_good_food = no
+		}
+		modifier = {	# TRY to save the last building slot for housing...
+			factor = 0.25
+			retile_housing_safe = no
+		}
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_food_processing_center = {
+	base_buildtime = 480
+	can_build = no
+	category = resource
+		
+	destroy_trigger = {
+		owner = { country_uses_food = no }
+		OR = {
+			is_planet_class = pc_machine
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+		}
+		retile_food = no
+	}
+	
+	allow = {
+		#retile_ready = yes
+		always = yes
+	}
+	
+	prerequisites = {
+		"tech_food_processing_2"
+	}	
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			volatile_motes = @cost_med
+		}
+		upkeep = {
+			energy = 25
+		}
+	}	
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_food_buff_2_effect
+	}
+	
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_mineral_purification_plant = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = resource
+	
+	potential = {
+		NOR = {
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+		}
+	}
+	
+	allow = {
+		#retile_ready = yes
+		retile_minerals = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+		}
+		retile_minerals = no
+	}
+		
+	prerequisites = {
+		tech_mineral_purification_1
+	}
+	
+	upgrades = {
+		building_mineral_purification_hub
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 10
+		}
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_minerals_buff_1_effect
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# only build if needed
+			weight = 100
+			owner = { has_monthly_income = { resource = minerals value < 5 } }
+		}
+		modifier = {	# avoid bad worlds...
+			factor = 0.5
+			retile_template_good_minerals = no
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
+		}
+	}
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_mineral_purification_hub = {
+	base_buildtime = 480
+	can_build = no
+	category = resource
+	
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+		}
+		retile_minerals = no
+	}
+	
+	allow = {
+		#retile_ready = yes
+		always = yes
+	}
+		
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			exotic_gases = @cost_med
+		}
+		upkeep = {
+			energy = 25
+		}
+	}
+	
+	prerequisites = {
+		tech_mineral_purification_2
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_energy_grid = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = resource
+	
+	potential = {
+		NOR = {
+			has_modifier = resort_colony
+			is_planet_class = pc_city
+		}
+	}
+	
+	allow = {
+		#retile_ready = yes
+		retile_energy = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+		}
+		retile_energy = no
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 0
+		}
+	}	
+	
+	prerequisites = {
+		tech_power_hub_1
+	}
+	
+	upgrades = {
+		building_energy_nexus
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# energy security
+			weight = 100
+			owner = { has_monthly_income = { resource = energy value < 25 } }
+		}
+		modifier = {	# try to build at least one...
+			weight = 100
+			NOR = {
+				is_capital = yes
+				owner = { any_owned_planet = { OR = {
+					has_building = building_energy_grid
+					has_building = building_energy_nexus
+				}
+			} } }
+		}
+		modifier = {	# avoid bad worlds...
+			factor = 0.5
+			retile_template_good_energy = no
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
+		}
+	}
+	
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_energy_nexus = {
+	base_buildtime = 480
+	can_build = no
+	category = resource
+	
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+		}
+		retile_energy = no
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			rare_crystals = @cost_med
+		}
+		upkeep = {
+			energy = 0
+		}
+	}	
+	
+	prerequisites = {
+		tech_power_hub_2
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		energy = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

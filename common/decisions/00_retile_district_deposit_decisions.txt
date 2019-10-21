@@ -1,0 +1,554 @@
+##########################################################################
+# Decisions
+##########################################################################
+@base_cost = 150
+@base_cost_expensive = 250
+@base_upkeep = 5
+@base_buildtime = 240
+
+##################################################### Precinct House
+decision_retile_deposit_precinct = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost
+		}
+	}
+	
+	potential = {
+		owner = {
+			is_regular_empire = yes
+			has_technology = tech_planetary_government
+		}
+	}
+
+	allow = {
+		free_district_slots > 0
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_precinct_effects
+		add_deposit = retile_deposit_precinct
+		hidden_effect = {
+			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 500
+			planet_crime > 15
+		}
+	}
+}
+
+decision_retile_deposit_precinct_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_precinct
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_precinct_remove_effects
+		remove_deposit = retile_deposit_precinct
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+##################################################### Military Stronghold
+decision_retile_deposit_stronghold = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost
+		}
+	}
+	
+	potential = {
+		owner = {
+			is_regular_empire = yes
+			has_technology = tech_planetary_defenses
+		}
+	}
+	
+	allow = {
+		free_district_slots > 0
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_retile_deposit_stronghold_effects
+		add_deposit = retile_deposit_stronghold
+		hidden_effect = {
+			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 500
+			owner = { used_naval_capacity_percent > 1.0 }
+		}
+	}
+}
+
+decision_retile_deposit_stronghold_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_stronghold
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_stronghold_remove_effects
+		remove_deposit = retile_deposit_stronghold
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+##################################################### Nature Preserve
+decision_retile_deposit_preserve = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost
+		}
+	}
+	
+	potential = {
+		owner = {
+			is_regular_empire = yes
+			#has_technology = tech_planetary_defenses		# needs prereq tech?
+		}
+	}
+	
+	allow = {
+		free_district_slots > 0
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_retile_deposit_preserve_effects
+		add_deposit = retile_deposit_preserve
+		hidden_effect = {
+			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1000
+			free_amenities > 200
+		}
+		modifier = {
+			weight = 2000
+			free_amenities > 300
+		}
+		modifier = {
+			weight = 3000
+			free_amenities > 400
+		}
+		modifier = {
+			weight = 4000
+			free_amenities > 500
+		}
+	}	
+}
+
+decision_retile_deposit_preserve_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_preserve
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_preserve_remove_effects
+		remove_deposit = retile_deposit_preserve
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+##################################################### Robot Assembly Plants
+decision_retile_deposit_assembly = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost
+		}
+	}
+	
+	potential = {
+		NOT = { has_deposit = retile_deposit_assembly }
+		owner = {
+			is_regular_empire = yes
+			has_technology = tech_robotic_workers
+		}
+	}
+	
+	allow = {
+		free_district_slots > 0
+		#retile_ready = yes
+	}
+
+	effect = {
+		custom_tooltip = decision_retile_deposit_assembly_effects
+		add_deposit = retile_deposit_assembly
+	}
+	
+	ai_weight = {
+		weight = 1000000
+		modifier = {
+			factor = 0
+			NOT = { owner = { any_owned_planet = { OR = {
+				free_district_slots > 0
+				retile_ready = yes
+			} } } }
+		}
+	}
+}
+
+decision_retile_deposit_assembly_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_assembly
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_assembly_remove_effects
+		remove_deposit = retile_deposit_assembly
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			NOT = { owner = { any_owned_planet = { OR = {
+				free_district_slots > 0
+				retile_ready = yes
+			} } } }
+		}
+	}	
+}
+
+##################################################### Nuumismatic/Numistic Shrine
+decision_retile_deposit_numistic = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost_expensive
+		}
+	}
+	
+	potential = {
+		NOT = { has_deposit = retile_deposit_numistic }
+		owner = {
+			is_regular_empire = yes
+			has_country_flag = nuumismatic_shrine
+		}
+	}
+	
+	allow = {
+		free_district_slots > 0
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_retile_deposit_numistic_effects
+		add_deposit = retile_deposit_numistic
+		hidden_effect = {
+			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 10000
+	}	
+}
+
+decision_retile_deposit_numistic_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_numistic
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_numistic_remove_effects
+		remove_deposit = retile_deposit_numistic
+	}
+	
+	ai_weight = {
+		weight = -1
+	}	
+}
+
+##################################################### Ministry of Culture
+decision_retile_deposit_ministry = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost_expensive
+		}
+	}
+	
+	potential = {
+		NOT = { owner = { any_owned_planet = {
+			has_deposit = retile_deposit_ministry
+		} } }
+		owner = {
+			is_regular_empire = yes
+			has_country_flag = artist_building_patron
+		}
+	}
+	
+	allow = {
+		free_district_slots > 0
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_retile_deposit_ministry_effects
+		add_deposit = retile_deposit_ministry
+		hidden_effect = {
+			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 10000
+	}	
+}
+
+decision_retile_deposit_ministry_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_ministry
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_ministry_remove_effects
+		remove_deposit = retile_deposit_ministry
+	}
+	
+	ai_weight = {
+		weight = -1
+	}	
+}
+
+##################################################### Waste Reprocessing Center
+decision_retile_deposit_waste_reprocessing = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost_expensive
+		}
+	}
+
+	potential = {
+		exists = owner
+		owner = { has_country_flag = bought_waste_reprocessing_center }
+		NOR = {
+			has_deposit = retile_deposit_waste_reprocessing
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		free_district_slots > 0
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_retile_deposit_waste_reprocessing_effects
+		add_deposit = retile_deposit_waste_reprocessing
+		hidden_effect = {
+			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 10000
+	}	
+}
+
+decision_retile_deposit_waste_reprocessing_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_waste_reprocessing
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_waste_reprocessing_remove_effects
+		remove_deposit = retile_deposit_waste_reprocessing
+	}
+	
+	ai_weight = {
+		weight = -1
+	}	
+}
+
+##################################################### Slave Processing Facility
+decision_retile_deposit_slave = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost_expensive
+		}
+	}
+	
+	potential = {
+		owner = {
+			is_regular_empire = yes
+			has_technology = tech_neural_implants
+		}
+	}
+	
+	allow = {
+		free_district_slots > 0
+		NOT = { has_deposit = retile_deposit_slave }
+		NOT = { has_modifier = resort_colony }
+		owner = { has_policy_flag = slavery_allowed }
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_retile_deposit_slave_effects
+		add_deposit = retile_deposit_slave
+		hidden_effect = {
+			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}	
+}
+
+decision_retile_deposit_slave_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_slave
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_slave_remove_effects
+		remove_deposit = retile_deposit_slave
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+##################################################### Omega Alignment (building_akx_worm_3)
+decision_retile_deposit_alignment = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost_expensive
+		}
+	}
+	
+	potential = {
+		NOT = { has_deposit = retile_deposit_alignment }
+		owner = {
+			has_technology = tech_akx_worm_3
+		}
+	}
+	
+	allow = {
+		free_district_slots > 0
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_retile_deposit_alignment_effects
+		add_deposit = retile_deposit_alignment
+		hidden_effect = {
+			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 10000
+	}	
+}
+
+decision_retile_deposit_alignment_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_alignment
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_alignment_remove_effects
+		remove_deposit = retile_deposit_alignment
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}

@@ -1,0 +1,253 @@
+@cost_low = 250
+@cost_med = 500
+@cost_high = 750
+@cost_ultra = 1000
+
+#############
+# Trade buildings
+#############
+building_commercial_zone = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = trade
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+
+	destroy_trigger = {
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			retile_urban = no
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}	
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}		
+	}
+	
+	prerequisites = {
+		"tech_interplanetary_commerce"
+	}
+	
+	show_tech_unlock_if = { 
+		is_regular_empire = yes
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_commercial_zone_effect
+	}
+	
+	upgrades = {
+		"building_commercial_megaplex"
+	}
+	
+	ai_weight = {
+		weight = 1000 # Just build it everywhere...
+	}
+}
+
+building_commercial_megaplex = {
+	base_buildtime = 480
+	can_build = no
+
+	category = trade
+	
+	destroy_trigger = {
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+			retile_urban = no
+		}
+	}
+	
+	allow = {
+		#retile_ready = yes
+		always = yes
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			rare_crystals = @cost_med
+		}	
+		upkeep = {
+			energy = 25
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_interstellar_economics"
+	}
+	
+	show_tech_unlock_if = { 
+		is_regular_empire = yes
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_commercial_megaplex_effect
+	}
+	
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+	
+	ai_resource_production = {
+		energy = 1
+		consumer_goods = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_galactic_stock_exchange = {
+	base_buildtime = 480	
+	base_cap_amount = 1
+
+	category = trade
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = slave_colony
+		}
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.25
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 25
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_galactic_markets"
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 1
+			job_merchant_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_stock_exchange_effect
+	}
+	
+	ai_weight = {
+		weight = 100	# really good, but let's not overdo it with these...
+		
+		modifier = {
+			factor = 10
+			OR = {
+				owner = { has_authority = auth_corporate }
+				retile_advanced_economy = no
+			}
+		}
+	}
+	
+	ai_resource_production = {
+		energy = 1
+		consumer_goods = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

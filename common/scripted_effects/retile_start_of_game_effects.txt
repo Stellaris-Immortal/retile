@@ -1,0 +1,210 @@
+generate_start_buildings_and_districts = {		
+	if = {
+		limit = { owner = { is_regular_empire = yes } }
+		
+		# total - 10 jobs
+		
+		# 3 jobs
+		add_district = district_city
+		
+		# 1 job
+		add_district = district_farming
+		
+		# 1 jobs
+		add_district = district_mining
+		
+		# 1 jobs
+		add_district = district_generator
+		
+		# 4 jobs
+		add_building = building_system_capital
+
+		# 0 jobs
+		#add_building = building_research_lab_1
+		add_building = building_foundry_1
+		#add_building = building_factory_1
+
+		if = { limit = { owner = { is_megacorp = yes } }
+			add_building = building_commercial_zone
+			remove_district = district_generator
+		}
+	}
+	
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		
+		# total - 10 jobs
+
+		# 3 jobs
+		add_district = district_city
+		
+		# 1 job
+		add_district = district_farming
+		
+		# 1 jobs
+		add_district = district_mining
+		
+		# 1 jobs
+		add_district = district_generator
+		
+		# 4 jobs
+		add_building = building_hive_system_capital
+
+		# 0 jobs
+		#add_building = building_research_lab_1
+		add_building = building_foundry_1
+		#add_building = building_factory_1
+	}
+	
+	if = {
+		limit = { owner = { is_machine_empire = yes } }
+		
+		# total - 10 jobs (11 for Servitor)
+
+		# 3 jobs
+		add_district = district_city
+		
+		# 1 job
+		add_district = district_farming
+		
+		# 1 jobs
+		#add_district = district_mining
+		
+		# 2 jobs
+		add_district = district_generator
+		add_district = district_generator
+		
+		# 4 jobs
+		add_building = building_machine_system_capital
+
+		# 0 jobs
+		#add_building = building_research_lab_1
+		add_building = building_foundry_1
+		#add_building = building_factory_1
+		
+		#Assimilators/Servitors
+		if = {
+			limit = { owner = {	OR = {
+				has_civic = civic_machine_assimilator
+				has_civic = civic_machine_servitor
+			} } }
+			remove_district = district_generator
+			add_district = district_farming
+		}
+	}
+}
+
+generate_start_pops = {	
+	if = { 
+		limit = { 
+			owner = {
+				OR = {
+					has_valid_civic = civic_syncretic_evolution
+					has_valid_civic = civic_machine_servitor
+					has_valid_civic = civic_machine_assimilator
+				}
+			}
+		}
+
+		if = { limit = { last_created_species = { is_species_class = MACHINE } }
+			modify_species = {
+				species = last_created_species
+				add_trait = trait_machine_unit
+				add_traits_at_start_of_list = yes
+			}
+			last_created_species = { save_event_target_as = last_created_species }
+		}
+
+		if = { limit = { owner = { has_valid_civic = civic_syncretic_evolution } }
+			last_created_species = {
+				set_citizenship_type = {
+					country = root.owner
+					type = citizenship_slavery
+				}
+			}
+			while = {
+				count = 4
+				create_pop = {
+					species = last_created_species
+					ethos = random
+				}
+			}		
+		}
+		
+		if = { 
+			limit = { owner = { has_valid_civic = civic_machine_servitor } }
+			last_created_species = {
+				set_citizenship_type = {
+					country = root.owner
+					type = citizenship_limited
+				}
+				set_living_standard = {
+					country = root.owner
+					type = living_standard_organic_trophy
+				}
+			}
+			while = {
+				count = 1
+				create_pop = {
+					species = last_created_species
+					ethos = random
+				}
+				last_created_pop = {
+					clear_ethos = yes
+				}
+			}
+		}
+		
+		if = { 
+			limit = { owner = { has_valid_civic = civic_machine_assimilator } }
+			last_created_species = {
+				set_citizenship_type = {
+					country = root.owner
+					type = citizenship_full_machine
+				}
+				set_living_standard = {
+					country = root.owner
+					type = living_standard_hive_mind
+				}
+			}
+			while = {
+				count = 3
+				create_pop = {
+					species = last_created_species
+					ethos = random
+				}
+				last_created_pop = {
+					clear_ethos = yes
+				}
+			}
+		} 
+	}
+	
+	if = { 
+		limit = { owner = { has_valid_civic = civic_mechanists } }
+		owner = { create_built_robot_species = yes }
+		while = {
+			count = 3
+			create_pop = {
+				species = last_created_species
+			}
+		}
+	}
+	
+	while = {
+		limit = { num_pops < 10 }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+	}
+	
+	# One extra pop for Servitors
+	if = {
+		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+	}
+}

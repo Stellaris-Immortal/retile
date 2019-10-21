@@ -1,0 +1,362 @@
+##########################################################################
+# Ancient Relics Decisions
+##########################################################################
+@minor_artifact_decision_cost = 2
+@minor_artifact_decision_duration = 3600
+
+decision_tissue_growth_stimulants = {
+	owned_planets_only = yes
+	sound = event_laboratory_sound
+	icon = decision_resources
+	
+	resources = {
+		category = decisions
+		cost = {
+			energy = 200
+		}
+	}
+	
+	potential = {
+		owner = {
+			is_machine_empire = no
+			has_country_flag = city_of_bones_completed
+		}
+	}
+	
+	allow = {
+		NOT = { has_modifier = tissue_growth_stimulants }
+	}	
+	
+	effect = {
+		add_modifier = { modifier = tissue_growth_stimulants days = 3650 }
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+decision_explosive_fungifoam_housing = {
+	owned_planets_only = yes
+	sound = event_laboratory_sound
+	icon = decision_resources
+	
+	resources = {
+		category = decisions
+		cost = {
+			energy = 500
+		}
+	}
+	
+	potential = {
+		owner = {
+			is_machine_empire = yes
+			has_country_flag = city_of_bones_completed
+		}
+	}
+	
+	allow = {
+		NOT = { has_modifier = explosive_fungifoam_housing }
+	}	
+	
+	effect = {
+		add_modifier = { modifier = explosive_fungifoam_housing }
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+# Baol Organism Lifeseed
+decision_baol_life_seed = {
+	owned_planets_only = yes
+	sound = event_laboratory_sound
+	icon = decision_resort_colony
+
+	#enactment_time = 20
+	
+	potential = {
+		NOT = {
+			is_planet_class = pc_city
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+			is_planet_class = pc_hive
+		}
+		habitable_structure = no
+		exists = owner
+		owner = { has_country_flag = relic_last_baol_activated }
+	}
+	
+	allow = { }
+	
+	effect = {
+		# Convert to Gaia world, spawn Nu-Baol pops
+		custom_tooltip = decision_baol_life_seed_effects
+		hidden_effect = {
+			owner = { remove_country_flag = relic_last_baol_activated }
+			if = { #Special case since Grunur Prime has mostly non-convertable deposits
+				limit = { has_planet_flag = grunur_prime }
+				reroll_deposits = yes
+			}
+			change_pc = pc_gaia
+			if = {
+				limit = { NOT = { exists = event_target:nu_baol_species } }
+				create_species = {
+					name = "NAME_Nu_Baol"
+					plural = "NAME_Nu_Baol"
+					class = "PLANT"
+					portrait = pla16_baol
+					name_list = "PLANT2"
+					extra_trait_points = 3
+					traits = {
+						trait = "trait_agrarian"
+						trait = "trait_communal"
+						trait = "trait_venerable"
+						trait = "trait_delicious"
+						trait = "trait_slow_breeders"
+						trait = "trait_pc_gaia_preference"
+					}
+					effect = {
+						save_global_event_target_as = nu_baol_species
+					}
+				}
+			}
+			while = {
+				count = 1
+				create_pop = {
+					species = event_target:nu_baol_species
+					ethos = {
+						ethic = "ethic_fanatic_pacifist"
+					}
+				}
+			}
+			planet_event = { id = ancrel.2025 } #Notification event
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+decision_museum_exhibits = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_museum
+	
+	potential = {
+		always = no
+	}
+
+	allow = {
+		NOT = { 
+			has_modifier = "planet_museum_exhibits" 
+		}
+		any_owned_pop = { has_job = culture_worker }
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			minor_artifacts = @minor_artifact_decision_cost
+		}
+	}
+	
+	effect = {
+		#custom_tooltip = decision_museum_exhibits_effect
+		add_modifier = { modifier = "planet_museum_exhibits" days = @minor_artifact_decision_duration }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_manager_awards = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_deal
+	
+	potential = {
+		always = no
+	}
+
+	allow = {
+		NOT = { has_modifier = "planet_manager_awards" }
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			minor_artifacts = @minor_artifact_decision_cost
+		}
+	}
+	
+	effect = {
+		add_modifier = { modifier = "planet_manager_awards" days = @minor_artifact_decision_duration }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_sanctuary_exhibits = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_museum
+	
+	potential = {
+		always = no
+	}
+
+	allow = {
+		NOT = { has_modifier = "planet_sanctuary_exhibits" }
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			minor_artifacts = @minor_artifact_decision_cost
+		}
+	}
+	
+	effect = {
+		add_modifier = { modifier = "planet_sanctuary_exhibits" days = @minor_artifact_decision_duration }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_artifact_relays_hivemind = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_satellite_in_orbit
+	
+	potential = {
+		always = no
+	}
+
+	allow = {
+		NOT = { has_modifier = "planet_artifact_relays_hivemind" }
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			minor_artifacts = @minor_artifact_decision_cost
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_artifact_relays_hivemind_effect
+		hidden_effect = {
+			add_modifier = { modifier = "planet_artifact_relays_hivemind" days = @minor_artifact_decision_duration }
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_artifact_relays_machine = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_satellite_in_orbit
+	
+	potential = {
+		always = no
+	}
+
+	allow = {
+		NOT = { has_modifier = "planet_artifact_relays_machine" }
+	}
+
+	resources = {
+		category = decisions
+		cost = {
+			minor_artifacts = @minor_artifact_decision_cost
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_artifact_relays_machine_effect
+		hidden_effect = {
+			add_modifier = { modifier = "planet_artifact_relays_machine" days = @minor_artifact_decision_duration }
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_machine_oracle = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_crime
+	
+	resources = {
+		category = decisions
+		cost = {
+			energy = 200
+			influence = 50
+		}
+	}
+	
+	potential = {
+		owner = {
+			is_machine_empire = yes
+			has_country_flag = oracle_completed
+		}
+	}
+	
+	allow = {
+		NOT = { has_modifier = oracle_software_integration }
+	}	
+	
+	effect = {
+		add_modifier = { modifier = oracle_software_integration days = 3600 }
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+decision_yuht_cleanseplanet = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+	icon = decision_animal_wildlife
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 500
+		}
+	}
+
+	potential = {
+		can_have_habitable_deposits = yes
+		owner = {
+			has_country_flag = artifact_yuht_research_completed
+		}
+		NOT = { has_modifier = pm_yuht_cleansing }
+	}
+
+	effect = {
+		add_planet_devastation = 50
+		add_modifier = { modifier = pm_yuht_cleansing days = -1 }
+		every_deposit = {
+			limit = { is_deposit_type = d_dangerous_wildlife_blocker }
+			clear_blocker = yes
+		}
+		if = {
+			limit = { has_modifier = dangerous_wildlife }
+			remove_modifier = dangerous_wildlife
+		}
+	}
+}

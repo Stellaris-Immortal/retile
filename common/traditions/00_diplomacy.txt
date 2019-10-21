@@ -1,0 +1,392 @@
+tr_diplomacy_adopt = {
+	modifier = {		
+		# opinion_new_contact -100%
+		country_border_friction_mult = -0.5
+	}
+	
+	tradition_swap = {
+		name = tr_adaptability_adopt
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_inwards_perfection
+				is_hive_empire = yes
+				has_valid_civic = civic_barbaric_despoilers
+				is_criminal_syndicate = yes
+			}
+		}
+		modifier = {
+			pop_housing_usage_mult = -0.10
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_versatility_adopt
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_machine_empire = yes
+		}
+		modifier = {
+			planet_pop_assemblers_upkeep_mult = -0.10
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 5
+			has_federation = yes
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_xenophile
+		}
+
+		modifier = {
+			factor = 0
+			OR = {
+				AND = {
+					has_tradition = tr_discovery_adopt
+					NOT = { has_tradition = tr_discovery_finish }
+				}
+				AND = {
+					has_tradition = tr_domination_adopt
+					NOT = { has_tradition = tr_domination_finish }
+				}
+				AND = {
+					has_tradition = tr_expansion_adopt
+					NOT = { has_tradition = tr_expansion_finish }
+				}
+				AND = {
+					has_tradition = tr_harmony_adopt
+					NOT = { has_tradition = tr_harmony_finish }
+				}
+				AND = {
+					has_tradition = tr_prosperity_adopt
+					NOT = { has_tradition = tr_prosperity_finish }
+				}
+				AND = {
+					has_tradition = tr_supremacy_adopt
+					NOT = { has_tradition = tr_supremacy_finish }
+				}
+			}
+		}
+	}
+}
+
+tr_diplomacy_finish = {
+	modifier = {
+		ascension_perks_add = 1
+		country_government_civic_points_add = 1
+	}
+	
+	tradition_swap = {
+		name = tr_adaptability_finish
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_inwards_perfection
+				is_hive_empire = yes
+				has_valid_civic = civic_barbaric_despoilers
+				is_criminal_syndicate = yes
+			}
+		}
+		modifier = {		
+			ascension_perks_add = 1
+			country_government_civic_points_add = 1
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_versatility_finish
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			is_machine_empire = yes
+		}
+		modifier = {
+			country_government_civic_points_add = 1
+			ascension_perks_add = 1
+		}
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tr_diplomacy_the_federation = {
+	
+	# unlocks federation mechanic
+	# improves diplomats
+	
+	tradition_swap = {
+		name = tr_adaptability_dietary_enrichment
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_inwards_perfection
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_barbaric_despoilers
+				is_criminal_syndicate = yes
+			}
+		}
+		modifier = {
+			country_food_produces_mult = 0.10
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_versatility_universal_compatibility
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			is_machine_empire = yes
+		}
+		modifier = {
+			country_synthetic_trust_cap_add = 50
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_diplomacy_entente_coordination = {
+	possible = {
+		has_tradition = tr_diplomacy_the_federation
+	}
+
+	modifier = {
+		federation_naval_cap_contribution_mult = 1.00
+	}
+	
+	tradition_swap = {
+		name = tr_adaptability_survival_fittest
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_inwards_perfection
+				is_hive_empire = yes
+				has_valid_civic = civic_barbaric_despoilers
+				is_criminal_syndicate = yes
+			}
+		}
+		modifier = {
+			planet_orbital_bombardment_damage = -0.25
+			army_defense_damage_mult = 0.25
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_versatility_adaptive_programming
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			is_machine_empire = yes
+		}
+		modifier = {
+			country_trade_fee = -0.10
+		}
+		weight = {
+			factor = 1
+		}
+	}
+
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_diplomacy_open_markets = {
+
+	modifier = {
+		diplomacy_upkeep_mult = -0.5
+	}	
+	
+	tradition_swap = {
+		name = tr_adaptability_environmental_diversification
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_inwards_perfection
+				is_hive_empire = yes
+				has_valid_civic = civic_barbaric_despoilers
+			}
+		}
+		modifier = {
+			pop_environment_tolerance = 0.10
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_versatility_spatial_optimization
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			is_machine_empire = yes
+		}
+		modifier = {
+			planet_pops_robotics_upkeep_mult = -0.05
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_diplomacy_insider_trading = {
+	possible = {
+		has_tradition = tr_diplomacy_open_markets
+	}
+
+	modifier = {
+		country_trade_attractiveness = 0.10
+		country_subject_power_penalty_mult = -0.10
+	}
+	
+	tradition_swap = {
+		name = tr_adaptability_adaptive_ecology
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_inwards_perfection
+				is_hive_empire = yes
+				has_valid_civic = civic_barbaric_despoilers
+			}
+		}
+		modifier = {
+			
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_versatility_material_analysis
+		
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			is_machine_empire = yes
+		}	
+		weight = {
+			factor = 1
+		}
+		
+		modifier = {
+			planet_jobs_upkeep_mult = -0.05
+		}	
+	}
+	
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_diplomacy_secure_shipping = {
+	possible = {
+		has_tradition = tr_diplomacy_open_markets
+	}
+	
+	modifier = {
+		country_trade_fee = -0.10
+		subject_integration_influence_cost_mult = -0.10
+	}
+	
+	tradition_swap = {
+		name = tr_adaptability_appropriation
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_inwards_perfection
+				is_hive_empire = yes
+				has_valid_civic = civic_barbaric_despoilers
+			}
+		}
+		modifier = {
+			pop_resettlement_cost_mult = -0.33
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_versatility_operational_proxies
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			is_machine_empire = yes
+		}
+		modifier = {
+			pop_resettlement_cost_mult = -0.33
+		}		
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}

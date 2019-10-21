@@ -1,0 +1,221 @@
+# Urban Frontier
+col_urban_frontier = {
+	icon = 12
+
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes}
+		is_capital = no
+		has_building = building_colony_shelter
+		is_planet_class = pc_habitat
+	}
+
+	planet_modifier = {
+		planet_immigration_pull_mult = 0.25
+	}
+
+	weight_modifier = {
+		base = 5
+	}
+}
+
+# City World
+col_city_world = {
+	icon = 20
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes}
+		is_capital = no
+		has_building = building_capital
+		is_planet_class = pc_city
+	}
+	
+	planet_modifier = {
+		planet_immigration_pull_mult = 0.10
+		planet_jobs_specialist_produces_mult = 0.05
+	}
+
+	weight_modifier = {
+		base = 5
+	}
+}
+
+# Commercial Arcology
+col_commercial_arcology = {
+	icon = 25
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes}
+		is_capital = no
+		OR = {
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
+		is_planet_class = pc_city
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.10
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 2
+			has_designation = col_manufacturing_world
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_trade_arcology value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_trade_arcology value > 1 }
+		}
+		modifier = {
+			add = 1
+			has_building = building_commercial_zone
+		}
+		modifier = {
+			add = 2
+			has_building = building_commercial_megaplex
+		}
+		modifier = {
+			add = 1
+			has_building = building_galactic_stock_exchange
+		}
+	}
+}
+
+# Manufacturing Arcology
+col_manufacturing_arcology = {
+	icon = 25
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes}
+		is_capital = no
+		OR = {
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
+		is_planet_class = pc_city
+	}
+	
+	planet_modifier = {
+		planet_metallurgists_produces_mult = 0.10
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 2
+			has_designation = col_manufacturing_world
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_engineering_arcology value > 0 }
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_engineering_arcology value > 1 }
+		}
+		modifier = {
+			add = 1
+			OR = {
+				has_building = building_foundry_1
+				has_building = building_factory_1
+			}
+		}
+		modifier = {
+			add = 2
+			OR = {
+				has_building = building_foundry_2
+				has_building = building_factory_2
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_foundry_3
+				has_building = building_factory_3
+			}
+		}
+		modifier = {
+			add = 1
+			has_building = building_production_center
+		}
+	}
+}
+
+# Academic Arcology
+col_academic_arcology = {
+	icon = 22
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes}
+		is_capital = no
+		OR = {
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
+		is_planet_class = pc_city
+	}
+	
+	planet_modifier = {
+		planet_researchers_produces_mult = 0.10
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 2
+			has_designation = col_scholastic_world
+		}
+		modifier = {
+			add = 1
+			OR = {
+				num_districts = { type = district_research_arcology value > 0 }
+				num_districts = { type = district_digsite_arcology value > 0 }
+			}
+		}
+		modifier = {
+			add = 1
+			OR = {
+				num_districts = { type = district_research_arcology value > 1 }
+				num_districts = { type = district_digsite_arcology value > 1 }
+			}
+		}
+		modifier = {
+			add = 1
+			OR = {
+				has_building = building_research_lab_1
+				has_building = building_autochthon_monument
+				has_building = building_temple
+				has_building = building_corporate_monument
+			}
+		}
+		modifier = {
+			add = 2
+			OR = {
+				has_building = building_research_lab_2
+				has_building = building_heritage_site
+				has_building = building_holotemple
+				has_building = building_corporate_site
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_research_lab_3
+				has_building = building_hypercomms_forum
+				has_building = building_sacred_nexus
+				has_building = building_corporate_forum
+			}
+		}
+		modifier = {
+			add = 1
+			has_building = building_institute
+		}
+	}
+}

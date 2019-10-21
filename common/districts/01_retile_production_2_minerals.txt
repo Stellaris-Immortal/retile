@@ -1,0 +1,469 @@
+@base_cost = 150
+@base_upkeep = 5
+@base_buildtime = 240
+
+district_mining = {
+	base_buildtime = @base_buildtime
+	
+	min_for_deposits_on_planet = 1
+	max_for_deposits_on_planet = 15
+	
+	show_on_uncolonized = {
+		habitable_structure = no
+		NOT = { is_planet_class = pc_machine }
+		NOT = { is_planet_class = pc_hive }
+		NOT = { is_planet_class = pc_city }
+		NOT = { is_planet_class = pc_ringworld_habitable }
+	}
+	
+	potential = {
+		habitable_structure = no
+		NOT = { is_planet_class = pc_machine }
+		NOT = { is_planet_class = pc_hive }
+		NOT = { is_planet_class = pc_city }
+		NOT = { is_planet_class = pc_ringworld_habitable }
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+
+	prerequisites = {
+		tech_mechanized_mining
+	}
+
+	conversion_ratio = 1
+	convert_to = {
+		district_mining_uncapped
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			energy = @base_upkeep
+			#alloys = 1
+		}		
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_mining_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_miner_add = 1
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_mining_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_miner_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# only if necessary
+			weight = 100
+			OR = {
+				AND = {
+					owner = { has_monthly_income = { resource = minerals value < 25 } }
+					num_districts = { type = district_mining value < 2 }
+				}
+				owner = { has_monthly_income = { resource = minerals value < 0 } }
+			}
+		}
+		modifier = {	# avoid bad worlds...
+			factor = 0.5
+			retile_template_good_minerals = no
+		}
+		modifier = {	# avoid urban worlds...
+			factor = 0.5
+			retile_urban_development = yes
+		}
+		modifier = {	# greatly prefer worlds with food buildings
+			factor = 10
+			has_building = building_mineral_purification_plant
+			has_building = building_mineral_purification_hub
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = minerals value > 100 } }
+		}
+	}
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_mining_uncapped = {
+	base_buildtime = @base_buildtime
+	icon = district_mining
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		OR = {
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+		}
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}	
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_mining
+	}
+	
+	resources = {
+		category = planet_districts
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			energy = @base_upkeep
+			#alloys = 1
+		}		
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_mining_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_miner_add = 1
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_mining_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_miner_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# only if necessary
+			weight = 100
+			OR = {
+				AND = {
+					owner = { has_monthly_income = { resource = minerals value < 25 } }
+					num_districts = { type = district_mining_uncapped value < 2 }
+				}
+				owner = { has_monthly_income = { resource = minerals value < 0 } }
+			}
+		}
+		modifier = {	# avoid bad worlds...
+			factor = 0.5
+			retile_template_good_minerals = no
+		}
+		modifier = {	# avoid urban worlds...
+			factor = 0.5
+			retile_urban_development = yes
+		}
+		modifier = {	# greatly prefer worlds with food buildings
+			factor = 10
+			has_building = building_mineral_purification_plant
+			has_building = building_mineral_purification_hub
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = minerals value > 100 } }
+		}
+	}
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_hab_mining = {
+	base_buildtime = @base_buildtime
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		is_planet_class = pc_habitat
+	}
+	
+	potential = {
+		is_planet_class = pc_habitat
+	}
+	
+	allow = {
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			energy = @base_upkeep
+			#alloys = 1
+		}		
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_mining_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_miner_add = 1
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_mining_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_miner_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# only if necessary
+			weight = 100
+			OR = {
+				AND = {
+					owner = { has_monthly_income = { resource = minerals value < 25 } }
+					num_districts = { type = district_hab_mining value < 2 }
+				}
+				owner = { has_monthly_income = { resource = minerals value < 0 } }
+			}
+		}
+		modifier = {	# avoid bad worlds...
+			factor = 0.5
+			retile_template_good_minerals = no
+		}
+		modifier = {	# avoid urban worlds...
+			factor = 0.5
+			retile_urban_development = yes
+		}
+		modifier = {	# greatly prefer worlds with food buildings
+			factor = 10
+			has_building = building_mineral_purification_plant
+			has_building = building_mineral_purification_hub
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = minerals value > 100 } }
+		}
+	}
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_rw_mining = {
+	base_buildtime = @base_buildtime
+	is_capped_by_modifier = no
+
+	show_on_uncolonized = {
+		is_planet_class = pc_ringworld_habitable
+	}
+	
+	potential = {
+		is_planet_class = pc_ringworld_habitable
+	}
+	
+	allow = {
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			energy = @base_upkeep
+			#alloys = 1
+		}		
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_mining_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_miner_add = 1
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_mining_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_fallen_empire_spiritualist = no
+			}
+		}
+		text = job_miner_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# only if necessary
+			weight = 100
+			OR = {
+				AND = {
+					owner = { has_monthly_income = { resource = minerals value < 25 } }
+					num_districts = { type = district_rw_mining value < 2 }
+				}
+				owner = { has_monthly_income = { resource = minerals value < 0 } }
+			}
+		}
+		modifier = {	# avoid bad worlds...
+			factor = 0.5
+			retile_template_good_minerals = no
+		}
+		modifier = {	# avoid urban worlds...
+			factor = 0.5
+			retile_urban_development = yes
+		}
+		modifier = {	# greatly prefer worlds with food buildings
+			factor = 10
+			has_building = building_mineral_purification_plant
+			has_building = building_mineral_purification_hub
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = minerals value > 100 } }
+		}
+	}
+
+
+	ai_resource_production = {
+		minerals = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

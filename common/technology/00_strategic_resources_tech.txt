@@ -1,0 +1,419 @@
+#######################################
+######### STRATEGIC RESOURCES #########
+#######################################
+
+#################
+# Non-clustered #
+#################
+
+#Living Metal
+tech_mine_living_metal = {
+	cost = @tier5cost1
+	area = engineering
+	tier = 5
+	category = { materials }
+	prerequisites = { "tech_space_construction" }
+	weight = @tier5weight1
+	
+	weight_modifier = {
+		factor = 0
+	}
+}
+
+#Betharian Refining
+tech_mine_betharian = {
+	cost = @tier1cost2
+	area = engineering
+	tier = 2
+	category = { materials }
+	prerequisites = { "tech_space_construction" }
+	weight = @tier1weight2
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 2
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					has_deposit = d_betharian_deposit
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 4 #strategic resource
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+	}	
+}
+
+# ##################
+# Rare Resources
+# ##################
+
+#Volatile Mote Mining
+tech_mine_volatile_motes = {
+	icon = tech_volatile_motes
+	cost = @tier2cost1
+	area = physics
+	tier = 2
+	category = { particles }	
+	prerequisites = { "tech_space_construction" }
+	weight = @tier2weight1
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_particles"
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					OR = {
+						has_deposit = d_dust_caverns
+						has_deposit = d_dust_desert
+						has_deposit = d_industrial_sector
+					}
+				}				
+				any_planet_within_border = {
+					OR = {
+						has_deposit = d_volatile_motes_1
+						has_deposit = d_volatile_motes_2
+						has_deposit = d_volatile_motes_3
+						has_deposit = d_volatile_motes_4
+						has_deposit = d_volatile_motes_5
+					}
+				}	
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 5 #important resource
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_particles"
+			}
+		}
+	}
+}
+
+#Volatile Material Plants
+tech_volatile_motes = {
+	cost = @tier2cost1
+	area = physics
+	tier = 2
+	category = { particles }	
+	prerequisites = { "tech_basic_industry" }
+	weight = @tier2weight1
+	
+	potential = {
+		OR = {
+			always = no
+		}
+	}
+}
+
+#Exotic Gas Extraction
+tech_mine_exotic_gases = {
+	icon = tech_exotic_gases
+	cost = @tier2cost1
+	area = engineering
+	tier = 2
+	category = { materials }	
+	prerequisites = { "tech_space_construction" }
+	weight = @tier2weight1
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					OR = {
+						has_deposit = d_bubbling_swamp
+						has_deposit = d_fuming_bog
+						has_deposit = d_industrial_sector
+					}
+				}				
+				any_planet_within_border = {
+					OR = {
+						has_deposit = d_exotic_gases_1
+						has_deposit = d_exotic_gases_2
+						has_deposit = d_exotic_gases_3
+						has_deposit = d_exotic_gases_4
+						has_deposit = d_exotic_gases_5
+					}
+				}	
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 5 #important resource
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+	}
+}
+
+#Exotic Gas Refining
+tech_exotic_gases = {
+	cost = @tier2cost1
+	area = engineering
+	tier = 2
+	category = { materials }	
+	prerequisites = { "tech_basic_industry" }
+	weight = @tier2weight1
+	
+	potential = {
+		OR = {
+			always = no
+		}
+	}
+}
+
+#Rare Crystal Mining
+tech_mine_rare_crystals = {
+	cost = @tier2cost1
+	area = engineering
+	tier = 2
+	category = { materials }
+	prerequisites = { "tech_space_construction" }
+	weight = @tier2weight1
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 2
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = {
+				any_owned_planet = {
+					OR = {
+						has_deposit = d_crystalline_caverns
+						has_deposit = d_crystal_forest
+						has_deposit = d_crystal_reef
+						has_deposit = d_industrial_sector
+					}
+				}				
+				any_planet_within_border = {
+					OR = {
+						has_deposit = d_rare_crystals_1
+						has_deposit = d_rare_crystals_2
+						has_deposit = d_rare_crystals_3
+						has_deposit = d_rare_crystals_4
+						has_deposit = d_rare_crystals_5
+					}
+				}	
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 4 #strategic resource
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+	}	
+}
+
+#Rare Crystal Manufacturing
+tech_rare_crystals = {
+	cost = @tier2cost1
+	area = engineering
+	tier = 2
+	category = { materials }	
+	prerequisites = { "tech_basic_industry" }
+	weight = @tier2weight1
+	
+	potential = {
+		OR = {
+			always = no
+		}
+	}
+}
+
+#Zro Distillation
+tech_mine_zro = {
+	cost = @tier3cost2
+	area = society
+	tier = 3
+	category = { psionics }
+	is_rare = yes	
+	prerequisites = { "tech_sensors_3" "tech_psionic_theory" }
+	is_reverse_engineerable = no
+	weight = @tier3weight2
+		
+	## unlock see zro ore
+	
+	weight_modifier = {
+		modifier = {
+			factor = 0.10
+			NOR = {
+				research_leader = {
+					area = society
+					has_trait = "leader_trait_expertise_psionics"
+				}
+				research_leader = {
+					area = society
+					has_trait = "leader_trait_curator"
+				}
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 10
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_psionics"
+			}
+		}
+	}
+
+	ai_weight = {
+		factor = 3 #very rare tech
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_psionics"
+			}
+		}
+	}
+}
+
+#Dark Matter Drawing
+tech_mine_dark_matter = {
+	cost = @tier3cost3
+	area = physics
+	tier = 3
+	category = { field_manipulation }
+	prerequisites = { "tech_sensors_4" }
+	weight = @tier3weight3
+		
+	## unlock see dark matter
+	
+	weight_modifier = {
+		modifier = {
+			factor = 1.5
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_field_manipulation"
+			}
+		}
+
+		modifier = {
+			factor = 0
+			NOR = {
+				has_country_flag = dark_matter_found
+				any_system_within_border = { any_system_planet = { has_resource = { type = sr_dark_matter amount > 0 } } }
+				any_relation = {
+					AND = {
+						is_country_type = default
+						has_communications = ROOT
+						has_technology = tech_mine_dark_matter
+					}
+				}
+			}
+		}
+	}	
+	
+	ai_weight = {
+		factor = 5 #strategic resource
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_field_manipulation"
+			}
+		}
+	}
+}
+
+# Nanite Transmutation
+tech_nanite_transmutation = {
+	cost = @tier2cost3
+	area = engineering
+	tier = 2
+	category = { materials }
+	weight = @tier2weight3
+	is_rare = yes
+	
+	potential = {
+		host_has_dlc = "Distant Stars Story Pack"
+	}
+	
+	weight_modifier = {
+		factor = 0.50
+		modifier = {
+			factor = 0
+			NOT = { any_system_within_border = { any_system_planet = { has_resource = { type = nanites amount > 0 } } } }
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 5 #important resource
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+	}
+}

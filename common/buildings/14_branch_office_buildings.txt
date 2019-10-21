@@ -1,0 +1,765 @@
+###########################
+# Branch Office Buildings #
+###########################
+
+## REGULAR MEGACORP ##
+building_private_mining_consortium = {
+	base_buildtime = 360
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { 
+			is_criminal_syndicate = no
+			NOT = { is_ai = yes }
+		}
+		habitable_structure = no
+		NOR = { 
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_city 
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_miner_add = 1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}	
+		produces = {
+			minerals = 10
+		}	
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+building_food_conglomerate = {
+	base_buildtime = 360
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { 
+			is_criminal_syndicate = no
+			NOT = { is_ai = yes }
+		}
+		NOR = { 
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+		}	
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_farmer_add = 1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}	
+		produces = {
+			food = 10
+		}	
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	ai_weight = {
+		factor = 0
+	}#AI has many other sources for this resource
+}
+
+building_virtual_entertainment_studios = {
+	base_buildtime = 360
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { is_criminal_syndicate = no }
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_clerk_add = 1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}	
+		produces = {
+			consumer_goods = 6
+		}	
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+
+		modifier = 
+		{
+			factor = 5
+			branch_office_owner = { 
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 10
+				}
+			}
+		}
+	}
+}
+
+building_private_shipyards = {
+	base_buildtime = 360
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { 
+			is_criminal_syndicate = no
+			NOT = { is_ai = yes }
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_clerk_add = 1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}	
+		produces = {
+			alloys = 3
+		}		
+		upkeep = {
+			energy = 2
+		}		
+	}
+	
+	ai_weight = {
+		weight = 0
+	}#Check resource income for a need
+}
+
+building_military_contractors = {
+	base_buildtime = 360
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { 
+			is_criminal_syndicate = no
+			NOT = { is_ai = yes }
+		}
+	}
+	
+	country_modifier = {
+		country_naval_cap_add = 10
+	}
+	
+	army_modifier = {
+		army_starting_experience_add = 100
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_soldier_add = 1
+	}
+	
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}	
+		upkeep = {
+			energy = 2
+		}		
+	}
+	
+	ai_weight = {
+		factor = 0
+	}#Not really useful given the changes to strongholds
+}
+
+building_public_relations_office = {
+	base_buildtime = 480
+	base_cap_amount = 1
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { is_criminal_syndicate = no }
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_clerk_add = 1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 400
+		}	
+		produces = {
+			unity = 6
+		}	
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_private_research_initiative = {
+	base_buildtime = 480
+	base_cap_amount = 1
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { is_criminal_syndicate = no }
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_clerk_add = 1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 400
+		}	
+		produces = {
+			physics_research = 6
+			engineering_research = 6
+			society_research = 6
+		}	
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	ai_weight = {
+		weight = 300
+	}
+}
+
+building_commercial_forum = {
+	base_buildtime = 480
+	base_cap_amount = 1
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { is_criminal_syndicate = no }		
+	}
+	
+	planet_modifier = {
+		branch_office_value_mult = 0.25
+		job_merchant_add = 1
+		planet_housing_add = 1
+	}	
+	
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 400
+		}	
+		upkeep = {
+			energy = 3
+		}		
+	}
+	
+	ai_weight = {
+		weight = 3
+	}
+}
+
+## CRIME MEGACORP ##
+building_wildcat_miners = {
+	base_buildtime = 360
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { 
+			is_criminal_syndicate = yes
+			NOT = { is_ai = yes }
+		}
+		habitable_structure = no
+		NOR = { 
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_city 
+		}		
+	}
+	
+	planet_modifier = {
+		planet_crime_add = 25
+		job_clerk_add = 1
+		planet_housing_add = 1
+		planet_miners_produces_mult = 0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}	
+		produces = {
+			minerals = 10
+		}	
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+building_bio_reprocessing_facilities = {
+	base_buildtime = 360
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { 
+			is_criminal_syndicate = yes
+			NOT = { is_ai = yes }
+		}
+		NOR = { 
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+			is_planet_class = pc_relic
+		}				
+	}
+	
+	planet_modifier = {
+		planet_crime_add = 25
+		job_clerk_add = 1
+		planet_housing_add = 1
+		planet_farmers_produces_mult = 0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}	
+		produces = {
+			food = 10
+		}	
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+building_underground_chemists = {
+	base_buildtime = 360
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { is_criminal_syndicate = yes }
+	}
+	
+	planet_modifier = {
+		planet_crime_add = 25
+		job_clerk_add = 1
+		planet_housing_add = 1
+		planet_jobs_consumer_goods_produces_mult = 0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}
+		produces = {
+			consumer_goods = 6
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			weight = 5
+			branch_office_owner = { 
+				has_monthly_income = {
+					resource = consumer_goods
+					value < 0
+				}
+			}
+		}
+		modifier = {
+			factor = 0
+			branch_office_owner = { 
+				has_monthly_income = {
+					resource = consumer_goods
+					value >= 10
+				}
+			}
+		}
+	}
+}
+
+building_wrecking_yards = {
+	base_buildtime = 360
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { 
+			is_criminal_syndicate = yes
+			NOT = { is_ai = yes }
+		}	
+	}
+	
+	planet_modifier = {
+		planet_crime_add = 25
+		job_clerk_add = 1
+		planet_housing_add = 1
+		planet_jobs_alloys_produces_mult = 0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}	
+		produces = {
+			alloys = 3
+		}		
+		upkeep = {
+			energy = 2
+		}		
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+building_pirate_haven = {
+	base_buildtime = 360
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { 
+			is_criminal_syndicate = yes
+			NOT = { is_ai = yes }
+		}
+	}
+	
+	country_modifier = {
+		country_naval_cap_add = 10
+	}
+	
+	planet_modifier = {
+		planet_crime_add = 40
+		job_soldier_add = 1
+		planet_housing_add = 1
+	}
+	
+	army_modifier = {
+		army_starting_experience_add = 100
+	}
+	
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}	
+		upkeep = {
+			energy = 2
+		}		
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+building_syndicate_outreach_office = {
+	base_buildtime = 480
+	base_cap_amount = 1
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { is_criminal_syndicate = yes }
+	}
+	
+	planet_modifier = {
+		planet_crime_add = 40
+		job_clerk_add = 1
+		planet_housing_add = 1
+		planet_jobs_unity_produces_mult = 0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 400
+		}	
+		produces = {
+			unity = 6
+		}	
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_illicit_research_labs = {
+	base_buildtime = 480
+	base_cap_amount = 1
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { is_criminal_syndicate = yes }
+	}
+	
+	planet_modifier = {
+		planet_crime_add = 40
+		job_clerk_add = 1
+		planet_housing_add = 1
+		planet_jobs_physics_research_produces_mult = 0.1
+		planet_jobs_engineering_research_produces_mult = 0.1
+		planet_jobs_society_research_produces_mult = 0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 400
+		}	
+		produces = {
+			physics_research = 6
+			engineering_research = 6
+			society_research = 6
+		}	
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	ai_weight = {
+		weight = 3
+	}
+}
+
+building_smuggling_rings = {
+	base_buildtime = 480
+	base_cap_amount = 1
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { is_criminal_syndicate = yes }		
+	}
+	
+	planet_modifier = {
+		planet_crime_add = 50
+		branch_office_value_mult = 0.25
+		job_merchant_add = 1
+		planet_housing_add = 1
+	}	
+	
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 400
+		}	
+		upkeep = {
+			energy = 3
+		}		
+	}
+	
+	ai_weight = {
+		weight = 2
+	}
+}
+
+## GOSPEL MEGACORP ##
+
+building_temple_of_prosperity = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	
+	branch_office_building = yes
+	
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { has_valid_civic = civic_gospel_of_the_masses }		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_preacher_add = 1
+		pop_ethic_spiritualist_attraction_mult = 0.5
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			alloys = 250
+		}	
+		upkeep = {
+			energy = 2
+		}		
+	}
+	
+	ai_weight = {
+		weight = 50
+	}
+}
+
+## SPECIAL ##
+
+building_executive_retreat = {
+	base_buildtime = 600
+	base_cap_amount = 1
+	
+	branch_office_building = yes
+	
+	prerequisites = { "tech_executive_retreat" }
+	
+	potential = {
+		has_branch_office = yes	
+		branch_office_owner = { 
+			NOT = { is_ai = yes }
+		}
+	}
+	
+	allow = {
+		num_pops >= 50
+	}	
+	
+	country_modifier = {
+		planet_amenities_mult = 0.1
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.05
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 1000
+			exotic_gases = 50
+		}	
+		upkeep = {
+			energy = 5
+			exotic_gases = 1
+		}		
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}
+
+building_xeno_tourism_agency = {
+	base_buildtime = 600
+	base_cap_amount = 1
+	
+	branch_office_building = yes
+	
+	prerequisites = { "tech_xeno_tourism_agency" }
+	
+	potential = {
+		has_branch_office = yes	
+		branch_office_owner = { 
+			NOT = { is_ai = yes }
+		}
+	}
+	
+	allow = {
+		num_pops >= 50
+	}	
+	
+	country_modifier = {
+		planet_immigration_pull_mult = 0.25
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.05
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 1000
+			rare_crystals = 50
+		}	
+		upkeep = {
+			energy = 5
+			rare_crystals = 1
+		}		
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+

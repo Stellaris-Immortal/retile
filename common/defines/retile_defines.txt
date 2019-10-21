@@ -1,0 +1,46 @@
+NGameplay = {
+	POPS_BRANCH_OFFICE_BUILDING_SLOTS			= 5			# 5		# The amount of pops needed to unlock a new branch office building slot
+	BASE_PLANET_BRANCH_OFFICE_BUILDING_SLOTS	= 0			# 0
+	MAX_PLANET_BRANCH_OFFICE_BUILDING_SLOTS		= 4			# 4
+	BRANCH_OFFICE_INCOME_SCALE					= 0.5		# 0.5	# Per planet trade value	
+	BRANCH_OFFICE_COST_INCREASE_MIN_RANGE		= 3			# 3		# Above this number of hyperlane jumps away, increase cost for branch offices
+	BRANCH_OFFICE_COST_INCREASE_SCALE			= 0.1		# 0.1	# Additional cost per jump	
+
+	POPS_BUILDING_SLOTS							= 333
+	BASE_PLANET_BUILDING_SLOTS					= 1
+	MAX_PLANET_BUILDING_SLOTS					= 4
+	BASE_AMENITIES_USAGE						= 100
+	MIN_PLANET_AMENITIES						= 0			# 0.25 	# Mult of amenities to amenities needs
+	MAX_PLANET_AMENITIES						= 20		# 2.0 	# Mult of amenities to amenities needs
+	NUM_DISTRICTS_FROM_PLANET_SIZE				= 0.5		# 1		# Each planet size adds this many districts				
+	POP_ETHOS_LOWER_ETHIC_THRESHOLD				= 1.0		# 0.5	# If the % of pops following an ethic is <= this relative to its attraction do not diverge away from it
+	POP_ETHOS_UPPER_ETHIC_THRESHOLD				= 1.0		# 2.0	# If the % of pops following an ethic is >= this relative to its attraction do not diverge to it
+	POP_ETHOS_DIVERGENCE_INTERVAL				= 120		# 360	# Number of days until a Pop has a change to diverge from empire ethos
+	POP_ETHOS_DIVERGENCE_RATE_MULT				= 100		# 0.02	# Chance of a pop evaluating its ethics every year
+	POP_CHANGE_FACTION_CHANCE					= 10		# 0.02	# Once every month a pop has X chance to change faction but only if the pop wants to
+	POP_FACTION_MIN_POTENTIAL_MEMBERS			= 5 		# 5		# If a faction has less potential members than this, do not form
+	POP_FACTION_CREATION_COOLDOWN				= 360		# 180	# Wait this many days after creating a faction to create another one (not applied to hidden factions)
+	
+	EMPIRE_SIZE_BASE							= 30		# 30	# No penalties at this empire size or below
+	EMPIRE_SIZE_FROM_DISTRICTS					= 0			# 1		# Per district
+	EMPIRE_SIZE_FROM_SYSTEMS					= 4			# 2		# Per system
+	EMPIRE_SIZE_FROM_COLONIES					= 0			# 2		# Per planet
+	EMPIRE_SIZE_FROM_BRANCH_OFFICES				= 0			# 2		# Per branch office
+	EMPIRE_SIZE_FROM_POPS						= 0			# 0		# Per pop
+	EMPIRE_COHESION_EMPIRE_SIZE_MULT			= 2			# 2		# Empire size is multiplied by 1 + this at 0% cohesion
+	EMPIRE_SIZE_TECH_COST_PENALTY				= 0.003		# 0.003	# Per empire size above base
+	EMPIRE_SIZE_TRADITION_COST_PENALTY			= 0.005		# 0.005	# Per empire size above base
+}
+
+NPop = {
+#	BASE_POP_GROWTH								= 3			# 3		# Base growth rate of pops
+	NEW_COLONY_GROWTH							= 0			# 0.5	# New colonies have a penalty to their growth
+#	MAX_NEW_COLONIES_SCALE						= 2 		# 2		# At this ratio of new to old colonies, no further scaling of migration
+	REQUIRED_POP_GROWTH							= 300		# 100	# Required growth to make a new pop
+#	BASE_POP_ASSEMBLY							= 0			# 0		# Base assembly rate of pops
+	REQUIRED_POP_ASSEMBLY						= 300		# 100	# Required assembly to add a pop
+	OVERCROWDING_NO_GROWTH_THRESHOLD			= 1.0		# 1.5	# At this amount of overcrowding, growth stops entirely
+	OVERCROWDING_DECLINE_THRESHOLD				= 2.0		# 2.0	# At this amount of overcrowding, pops start declining
+	BASE_POP_DECLINE							= 3			# 5		# Base decline rate of pops
+	REQUIRED_POP_DECLINE						= 300		# 100	# Required decline to remove a pop
+}

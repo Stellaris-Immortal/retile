@@ -1,0 +1,238 @@
+# Migrate one pop between planets within an empire...
+# ALWAYS test with "retile_migrate_ready = yes" before triggering...
+retile_pop_migrate = {	# country scope
+	random_owned_planet = {
+		limit = { AND = {
+			free_jobs > 0
+			colony_age > 1
+		} }
+		owner = { random_owned_pop = {
+			limit = { OR = {
+				AND = {
+					is_unemployed = yes
+					NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+				}
+				has_job = servant
+			} }
+			resettle_pop = { pop = this planet = prevprev }
+		} }
+	}
+}
+
+# Remove pop growth malus modifiers
+retile_clear_growth_malus = {	# country scope
+	remove_modifier = retile_growth_malus_5
+	remove_modifier = retile_growth_malus_9
+	remove_modifier = retile_growth_malus_13
+	remove_modifier = retile_growth_malus_17
+	remove_modifier = retile_growth_malus_20
+	remove_modifier = retile_growth_malus_23
+	remove_modifier = retile_growth_malus_26
+	remove_modifier = retile_growth_malus_29
+	remove_modifier = retile_growth_malus_32
+	remove_modifier = retile_growth_malus_35
+	remove_modifier = retile_growth_malus_38
+	remove_modifier = retile_growth_malus_41
+	remove_modifier = retile_growth_malus_44
+	remove_modifier = retile_growth_malus_46
+	remove_modifier = retile_growth_malus_48
+	remove_modifier = retile_growth_malus_50
+	remove_modifier = retile_growth_malus_52
+	remove_modifier = retile_growth_malus_54
+	remove_modifier = retile_growth_malus_56
+	remove_modifier = retile_growth_malus_58
+	remove_modifier = retile_growth_malus_60
+	remove_modifier = retile_growth_malus_62
+	remove_modifier = retile_growth_malus_64
+	remove_modifier = retile_growth_malus_66
+	remove_modifier = retile_growth_malus_68
+	remove_modifier = retile_growth_malus_70
+	remove_modifier = retile_growth_malus_72
+	remove_modifier = retile_growth_malus_74
+	remove_modifier = retile_growth_malus_76
+	remove_modifier = retile_growth_malus_78
+	remove_modifier = retile_growth_malus_80
+	remove_modifier = retile_growth_malus_82
+	remove_modifier = retile_growth_malus_84
+	remove_modifier = retile_growth_malus_86
+	remove_modifier = retile_growth_malus_88
+	remove_modifier = retile_growth_malus_90
+	remove_modifier = retile_growth_malus_92
+	remove_modifier = retile_growth_malus_94
+	remove_modifier = retile_growth_malus_96
+	remove_modifier = retile_growth_malus_98
+	remove_modifier = retile_growth_malus_100
+}
+
+# Add pop growth malus modifiers based on number of owned inhabited planets
+retile_apply_growth_malus = {	# country scope
+	set_variable = { which = col_count value = 0 }
+	every_owned_planet = {
+		limit = { num_pops > 0 }
+		prev = { change_variable = { which = col_count value = 1 } }
+	}
+	
+	if = { limit = { check_variable = { which = col_count value < 32 } }								#       value < 32
+		if = { limit = { check_variable = { which = col_count value < 16 } }							# 		value < 16
+			if = { limit = { check_variable = { which = col_count value < 8 } }							# 		value < 8
+				if = { limit = { check_variable = { which = col_count value < 4 } }						# 		value < 4
+					if = { limit = { check_variable = { which = col_count value < 2 } }					#		value < 2
+						# do nothing...
+					} else = { 																			#  2 <= value < 4
+						if = { limit = { check_variable = { which = col_count value = 2 } }				# 		value = 2
+							add_modifier = { modifier = retile_growth_malus_5 days = -1 }
+						} else = {																		#		value = 3
+							add_modifier = { modifier = retile_growth_malus_9 days = -1 }
+						}
+					}
+				} else = { 																				#  4 <= value < 8
+					if = { limit = { check_variable = { which = col_count value < 6 } }					#  4 <=	value < 6
+						if = { limit = { check_variable = { which = col_count value = 4 } }				# 		value = 4
+							add_modifier = { modifier = retile_growth_malus_13 days = -1 }
+						} else = {																		#		value = 5
+							add_modifier = { modifier = retile_growth_malus_17 days = -1 }
+						}
+					} else = { 																			#  6 <= value < 8
+						if = { limit = { check_variable = { which = col_count value = 6 } }				# 		value = 6
+							add_modifier = { modifier = retile_growth_malus_20 days = -1 }
+						} else = {																		#		value = 7
+							add_modifier = { modifier = retile_growth_malus_23 days = -1 }
+						}
+					}
+				}
+			} else = { 																					#  8 <= value < 16
+				if = { limit = { check_variable = { which = col_count value < 12 } }					#  8 <=	value < 12
+					if = { limit = { check_variable = { which = col_count value < 10 } }				#  8 <= value < 10
+						if = { limit = { check_variable = { which = col_count value = 8 } }				# 		value = 8
+							add_modifier = { modifier = retile_growth_malus_26 days = -1 }
+						} else = {																		#		value = 9
+							add_modifier = { modifier = retile_growth_malus_29 days = -1 }
+						}
+					} else = { 																			# 10 <= value < 12
+						if = { limit = { check_variable = { which = col_count value = 10 } }			# 		value = 10
+							add_modifier = { modifier = retile_growth_malus_32 days = -1 }
+						} else = {																		#		value = 11
+							add_modifier = { modifier = retile_growth_malus_35 days = -1 }
+						}
+					}
+				} else = { 																				# 12 <= value < 16
+					if = { limit = { check_variable = { which = col_count value < 14 } }				# 12 <=	value < 14
+						if = { limit = { check_variable = { which = col_count value = 12 } }			# 		value = 12
+							add_modifier = { modifier = retile_growth_malus_38 days = -1 }
+						} else = {																		#		value = 13
+							add_modifier = { modifier = retile_growth_malus_41 days = -1 }
+						}
+					} else = { 																			# 14 <= value < 16
+						if = { limit = { check_variable = { which = col_count value = 14 } }			# 		value = 14
+							add_modifier = { modifier = retile_growth_malus_44 days = -1 }
+						} else = {																		#		value = 15
+							add_modifier = { modifier = retile_growth_malus_46 days = -1 }
+						}
+					}
+				}
+			}
+		} else = { 																						# 16 <= value < 32
+			if = { limit = { check_variable = { which = col_count value < 24 } }						# 16 <= value < 24
+				if = { limit = { check_variable = { which = col_count value < 20 } }					# 16 <= value < 20
+					if = { limit = { check_variable = { which = col_count value < 18 } }				# 16 <= value < 18
+						if = { limit = { check_variable = { which = col_count value = 16 } }			# 		value = 16
+							add_modifier = { modifier = retile_growth_malus_48 days = -1 }
+						} else = {																		#		value = 17
+							add_modifier = { modifier = retile_growth_malus_50 days = -1 }
+						}
+					} else = { 																			# 18 <= value < 20
+						if = { limit = { check_variable = { which = col_count value = 18 } }			# 		value = 18
+							add_modifier = { modifier = retile_growth_malus_52 days = -1 }
+						} else = {																		#		value = 19
+							add_modifier = { modifier = retile_growth_malus_54 days = -1 }
+						}
+					}
+				} else = { 																				# 20 <= value < 24
+					if = { limit = { check_variable = { which = col_count value < 22 } }				# 20 <=	value < 22
+						if = { limit = { check_variable = { which = col_count value = 20 } }			# 		value = 20
+							add_modifier = { modifier = retile_growth_malus_56 days = -1 }
+						} else = {																		#		value = 21
+							add_modifier = { modifier = retile_growth_malus_58 days = -1 }
+						}
+					} else = { 																			# 22 <= value < 24
+						if = { limit = { check_variable = { which = col_count value = 22 } }			# 		value = 22
+							add_modifier = { modifier = retile_growth_malus_60 days = -1 }
+						} else = {																		#		value = 23
+							add_modifier = { modifier = retile_growth_malus_62 days = -1 }
+						}
+					}
+				}
+			} else = { 																					# 24 <= value < 32
+				if = { limit = { check_variable = { which = col_count value < 28 } }					# 24 <= value < 28
+					if = { limit = { check_variable = { which = col_count value < 26 } }				# 24 <= value < 26
+						if = { limit = { check_variable = { which = col_count value = 24 } }			# 		value = 24
+							add_modifier = { modifier = retile_growth_malus_64 days = -1 }
+						} else = {																		#		value = 25
+							add_modifier = { modifier = retile_growth_malus_66 days = -1 }
+						}
+					} else = { 																			# 26 <= value < 28
+						if = { limit = { check_variable = { which = col_count value = 26 } }			# 		value = 26
+							add_modifier = { modifier = retile_growth_malus_68 days = -1 }
+						} else = {																		#		value = 27
+							add_modifier = { modifier = retile_growth_malus_70 days = -1 }
+						}
+					}
+				} else = { 																				# 28 <= value < 32
+					if = { limit = { check_variable = { which = col_count value < 30 } }				# 28 <=	value < 30
+						if = { limit = { check_variable = { which = col_count value = 28 } }			# 		value = 28
+							add_modifier = { modifier = retile_growth_malus_72 days = -1 }
+						} else = {																		#		value = 29
+							add_modifier = { modifier = retile_growth_malus_74 days = -1 }
+						}
+					} else = { 																			# 30 <= value < 32
+						if = { limit = { check_variable = { which = col_count value = 30 } }			# 		value = 30
+							add_modifier = { modifier = retile_growth_malus_76 days = -1 }
+						} else = {																		#		value = 31
+							add_modifier = { modifier = retile_growth_malus_78 days = -1 }
+						}
+					}
+				}
+			}
+		}
+	} else = { 																							# 32 <= value < 42
+		if = { limit = { check_variable = { which = col_count value < 40 } }							# 32 <=	value < 40
+			if = { limit = { check_variable = { which = col_count value < 36 } }						# 32 <= value < 36
+					if = { limit = { check_variable = { which = col_count value < 34 } }				# 32 <=	value < 34
+						if = { limit = { check_variable = { which = col_count value = 32 } }			# 		value = 32
+							add_modifier = { modifier = retile_growth_malus_80 days = -1 }
+						} else = {																		#		value = 33
+							add_modifier = { modifier = retile_growth_malus_82 days = -1 }
+						}
+					} else = { 																			# 34 <= value < 36
+						if = { limit = { check_variable = { which = col_count value = 34 } }			# 		value = 34
+							add_modifier = { modifier = retile_growth_malus_84 days = -1 }
+						} else = {																		#		value = 35
+							add_modifier = { modifier = retile_growth_malus_86 days = -1 }
+						}
+					}
+			} else = {																					# 36 <= value < 40
+					if = { limit = { check_variable = { which = col_count value < 38 } }				# 36 <=	value < 38
+						if = { limit = { check_variable = { which = col_count value = 36 } }			# 		value = 36
+							add_modifier = { modifier = retile_growth_malus_88 days = -1 }
+						} else = {																		#		value = 37
+							add_modifier = { modifier = retile_growth_malus_90 days = -1 }
+						}
+					} else = { 																			# 38 <= value < 40
+						if = { limit = { check_variable = { which = col_count value = 38 } }			# 		value = 38
+							add_modifier = { modifier = retile_growth_malus_92 days = -1 }
+						} else = {																		#		value = 39
+							add_modifier = { modifier = retile_growth_malus_94 days = -1 }
+						}
+					}
+			}
+		} else = { 																						# 40 <= value
+			if = { limit = { check_variable = { which = col_count value = 40 } }						# 		value = 40
+				add_modifier = { modifier = retile_growth_malus_96 days = -1 }
+			} else_if = { limit = { check_variable = { which = col_count value = 41 } }					# 		value = 41
+				add_modifier = { modifier = retile_growth_malus_98 days = -1 }
+			} else = {																					#  41 < value
+				add_modifier = { modifier = retile_growth_malus_100 days = -1 }
+			}
+		}
+	}
+}

@@ -1,0 +1,271 @@
+#########################################
+#
+# Retile AI Events
+#
+#########################################
+
+@template_decay = 1795				# How frequently can ai planet templates change? (5 years)
+@player_migrate_delay = 355			# How often do players get auto-migration? (1 year)
+
+#########################################
+
+namespace = retile_ai
+
+# Evaluate the resource districts of habitable planets...
+event = {
+	id = retile_ai.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		every_planet = {
+			limit = {
+				habitable_planet = yes
+				NOT = { is_planet_class = pc_city }
+			}
+			planet_event = { id = retile_ai.2 }
+		}
+	}
+}
+
+# Checks to see if planets are good for developing into energy/mineral/food worlds
+# Applies planet flags retile_energy_world, retile_food_world, retile_minerals_world
+planet_event = {
+	id = retile_ai.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		#set_planet_flag = retile_evaluated_resources		# Does nothing right now
+
+		################################################ Energy
+		remove_planet_flag = retile_energy_world
+		set_variable = { which = rtd_energy value = 0 }
+		IF = {
+			limit = { districts_good_energy = yes }
+			set_planet_flag = retile_energy_world
+		} ELSE = {
+			every_deposit = {
+				if = {
+					limit = { is_deposit_type = d_arid_highlands }
+					ROOT = { change_variable = { which = rtd_energy value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_hot_springs }
+					ROOT = { change_variable = { which = rtd_energy value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_rushing_waterfalls }
+					ROOT = { change_variable = { which = rtd_energy value = 2 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_searing_desert }
+					ROOT = { change_variable = { which = rtd_energy value = 2 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_frozen_gas_lake }
+					ROOT = { change_variable = { which = rtd_energy value = 2 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_geothermal_vent }
+					ROOT = { change_variable = { which = rtd_energy value = 3 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_underwater_vent }
+					ROOT = { change_variable = { which = rtd_energy value = 3 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_tempestous_mountain }
+					ROOT = { change_variable = { which = rtd_energy value = 3 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_buzzing_plains }
+					ROOT = { change_variable = { which = rtd_energy value = 1 } }
+				}
+			}
+		}
+		if = {
+			limit = { check_variable = { which = rtd_energy value > 5 } }
+			set_planet_flag = retile_energy_world
+		}
+		
+		################################################ Minerals
+		remove_planet_flag = retile_minerals_world
+		set_variable = { which = rtd_minerals value = 0 }
+		IF = {
+			limit = { districts_good_minerals = yes }
+			set_planet_flag = retile_minerals_world
+		} ELSE = {
+			every_deposit = {
+				if = {
+					limit = { is_deposit_type = d_veiny_cliffs }
+					ROOT = { change_variable = { which = rtd_minerals value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_mineral_fields }
+					ROOT = { change_variable = { which = rtd_minerals value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_prosperous_mesa }
+					ROOT = { change_variable = { which = rtd_minerals value = 2 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_ore_rich_caverns }
+					ROOT = { change_variable = { which = rtd_minerals value = 2 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_rich_mountain }
+					ROOT = { change_variable = { which = rtd_minerals value = 3 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_submerged_ore_veins }
+					ROOT = { change_variable = { which = rtd_minerals value = 3 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_mineral_striations }
+					ROOT = { change_variable = { which = rtd_minerals value = 1 } }
+				}
+			}
+		}
+		if = {
+			limit = { check_variable = { which = rtd_minerals value > 5 } }
+			set_planet_flag = retile_minerals_world
+		}
+
+		################################################ Food
+		remove_planet_flag = retile_food_world
+		set_variable = { which = rtd_food value = 0 }
+		IF = {
+			limit = { districts_good_food = yes }
+			set_planet_flag = retile_food_world
+		} ELSE = {
+			every_deposit = {
+				if = {
+					limit = { is_deposit_type = d_lichen_fields }
+					ROOT = { change_variable = { which = rtd_food value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_bountiful_plains }
+					ROOT = { change_variable = { which = rtd_food value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_rugged_woods }
+					ROOT = { change_variable = { which = rtd_food value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_green_hills }
+					ROOT = { change_variable = { which = rtd_food value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_forgiving_tundra }
+					ROOT = { change_variable = { which = rtd_food value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_boggy_fens }
+					ROOT = { change_variable = { which = rtd_food value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_nutritious_mudland }
+					ROOT = { change_variable = { which = rtd_food value = 1 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_fungal_caves }
+					ROOT = { change_variable = { which = rtd_food value = 2 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_lush_jungle }
+					ROOT = { change_variable = { which = rtd_food value = 2 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_fertile_lands }
+					ROOT = { change_variable = { which = rtd_food value = 2 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_great_river }
+					ROOT = { change_variable = { which = rtd_food value = 2 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_black_soil }
+					ROOT = { change_variable = { which = rtd_food value = 3 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_teeming_reef }
+					ROOT = { change_variable = { which = rtd_food value = 3 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_marvelous_oasis }
+					ROOT = { change_variable = { which = rtd_food value = 3 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_tropical_island }
+					ROOT = { change_variable = { which = rtd_food value = 3 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_fungal_forest }
+					ROOT = { change_variable = { which = rtd_food value = 3 } }
+				}
+				else_if = {
+					limit = { is_deposit_type = d_natural_farmland }
+					ROOT = { change_variable = { which = rtd_food value = 1 } }
+				}
+			}
+		}
+		if = {
+			limit = { check_variable = { which = rtd_food value > 5 } }
+			set_planet_flag = retile_food_world
+		}
+	}
+}
+
+# iterate through AI empires and clear superfluous or problematic districts
+# NOTE: unused
+event = {
+	id = retile_ai.50
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		every_country = {	# For each country
+			limit = {
+				is_country_type = default
+				is_ai = yes
+			}
+			
+			# nothing here yet.
+		}
+	}
+}
+
+# migrate all unemployed pops each month, provided there's jobs for them...
+event = {
+	id = retile_ai.100
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		every_country = {
+			limit = { is_country_type = default }
+			
+			while = {
+				limit = { retile_migrate_ready = yes }
+				retile_pop_migrate = yes
+			}
+		}
+	}
+}

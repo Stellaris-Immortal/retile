@@ -1,0 +1,1519 @@
+@cost_low = 250
+@cost_med = 500
+@cost_high = 750
+@cost_ultra = 1000
+
+#############
+# Unity buildings
+#############
+
+##### Regular empire
+building_autochthon_monument = {
+	base_buildtime = 240
+	base_cap_amount = 1
+
+	category = unity
+	
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = penal_colony }
+		owner = { 
+			is_gestalt = no
+			is_spiritualist = no
+			is_megacorp = no
+		}					
+	}
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			owner = { 
+				OR = {
+					is_gestalt = yes
+					is_spiritualist = yes
+					is_megacorp = yes
+				}
+			}
+		}
+	}
+	
+	convert_to = {
+		building_temple
+		building_hive_node
+		building_uplink_node
+		building_corporate_monument
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_cultural_heritage"
+	}	
+	
+	upgrades = {
+		building_heritage_site
+	}
+	
+	show_tech_unlock_if = {
+		is_gestalt = no
+		is_spiritualist = no
+		is_megacorp = no
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_1_effect
+	}
+
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# Safe to advance our empire?
+			weight = 300
+			retile_advanced_economy = yes
+		}
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+		}
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_heritage_site = {
+	base_buildtime = 360
+	can_build = no
+
+	category = unity
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			owner = { 
+				OR = {
+					is_gestalt = yes
+					is_spiritualist = yes
+					is_megacorp = yes
+				}
+			}
+		}
+	}
+	
+	convert_to = {
+		building_holotemple
+		building_network_junction
+		building_hive_cluster
+		building_corporate_site
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			rare_crystals = @cost_med
+		}
+		upkeep = {
+			energy = 25
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_heritage_site"
+	}
+	
+	show_tech_unlock_if = {
+		is_gestalt = no
+		is_spiritualist = no
+		is_megacorp = no
+	}
+	
+	upgrades = {
+		building_hypercomms_forum
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_2_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_hypercomms_forum = {
+	base_buildtime = 480
+	can_build = no
+
+	category = unity
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			owner = { 
+				OR = {
+					is_gestalt = yes
+					is_spiritualist = yes
+					is_megacorp = yes
+				}
+			}
+		}
+	}
+	
+	convert_to = {
+		building_sacred_nexus
+		building_hive_confluence
+		building_system_conflux
+		building_corporate_forum
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_high
+			rare_crystals = @cost_high
+		}
+		upkeep = {
+			energy = 50
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}
+	
+	show_tech_unlock_if = {
+		is_gestalt = no
+		is_spiritualist = no
+		is_megacorp = no
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_custodian_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_maintenance_drone_add = 3
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_3_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+##### Spiritualists
+building_temple = {
+	base_buildtime = 240
+	base_cap_amount = 1
+
+	category = unity
+	
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = penal_colony }
+		owner = { is_spiritualist = yes }
+	}
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			owner = { is_spiritualist = no }
+		}
+	}
+	
+	convert_to = {
+		building_autochthon_monument
+		building_hive_node
+		building_uplink_node
+		building_corporate_monument
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_cultural_heritage"
+	}	
+	
+	upgrades = {
+		building_holotemple
+	}
+	
+	show_tech_unlock_if = {
+		is_spiritualist = yes
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_1_effect
+	}
+
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# Safe to advance our empire?
+			weight = 600
+			retile_advanced_economy = yes
+		}
+		modifier = {
+			factor = 0.5
+			retile_tech_weak = yes
+		}
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+		}
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_holotemple = {
+	base_buildtime = 360
+	can_build = no
+
+	category = unity
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			owner = { is_spiritualist = no }
+		}
+	}
+	
+	convert_to = {
+		building_heritage_site
+		building_network_junction
+		building_hive_cluster
+		building_corporate_site
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			rare_crystals = @cost_med
+		}
+		upkeep = {
+			energy = 25
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_heritage_site"
+	}
+	
+	show_tech_unlock_if = {
+		is_spiritualist = yes
+	}
+	
+	upgrades = {
+		building_sacred_nexus
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_2_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_sacred_nexus = {
+	base_buildtime = 480
+	can_build = no
+
+	category = unity
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			owner = { is_spiritualist = no }
+		}
+	}
+	
+	convert_to = {
+		building_hypercomms_forum
+		building_hive_confluence
+		building_system_conflux
+		building_corporate_forum
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_high
+			rare_crystals = @cost_high
+		}
+		upkeep = {
+			energy = 50
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}
+	
+	show_tech_unlock_if = {
+		is_spiritualist = yes
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_custodian_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_maintenance_drone_add = 3
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_3_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+##### Hive Minds
+building_hive_node = {
+	base_buildtime = 240
+	base_cap_amount = 1
+
+	category = unity
+	
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes }
+	}
+
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			owner = { is_hive_empire = no }
+			retile_urban = no
+		}
+	}
+	
+	convert_to = {
+		building_temple
+		building_uplink_node
+		building_autochthon_monument
+		building_corporate_monument
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_hive_node"
+	}	
+	
+	upgrades = {
+		building_hive_cluster
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_1_effect
+	}
+
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# Safe to advance our empire?
+			weight = 300
+			retile_advanced_economy = yes
+		}
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+		}
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_hive_cluster = {
+	base_buildtime = 360
+	can_build = no
+
+	category = unity
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			owner = { is_hive_empire = no }
+			retile_urban = no
+		}
+	}
+	
+	convert_to = {
+		building_holotemple
+		building_network_junction
+		building_heritage_site
+		building_corporate_site
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			rare_crystals = @cost_med
+		}
+		upkeep = {
+			energy = 25
+			#alloys = 1
+		}		
+	}
+	
+	prerequisites = {
+		"tech_hive_cluster"
+	}	
+	
+	upgrades = {
+		building_hive_confluence
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_2_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_hive_confluence = {
+	base_buildtime = 480
+	can_build = no
+
+	category = unity
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			owner = { is_hive_empire = no }
+			retile_urban = no
+		}
+	}
+	
+	convert_to = {
+		building_sacred_nexus
+		building_system_conflux
+		building_hypercomms_forum
+		building_corporate_forum
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_high
+			rare_crystals = @cost_high
+		}
+		upkeep = {
+			energy = 50
+			#alloys = 1
+		}		
+	}
+	
+	prerequisites = {
+		"tech_hive_confluence"
+	}	
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_custodian_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_maintenance_drone_add = 3
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_3_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+##### Machine Empires
+building_uplink_node = {
+	base_buildtime = 240
+	base_cap_amount = 1
+	icon = building_autochthon_monument
+
+	category = unity
+
+	potential = {
+		exists = owner
+		owner = {
+			is_machine_empire = yes
+			NOT = { has_valid_civic = civic_machine_servitor }
+		}
+	}
+
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			owner = { OR = {
+				is_machine_empire = no
+				has_valid_civic = civic_machine_servitor
+			} }
+			retile_urban = no
+		}
+	}
+	
+	convert_to = {
+		building_temple
+		building_hive_node
+		building_autochthon_monument
+		building_corporate_monument
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_cultural_heritage"
+	}	
+	
+	show_tech_unlock_if = {
+		owner = { is_machine_empire = yes }
+		NOT = { has_valid_civic = civic_machine_servitor }
+	}
+	
+	upgrades = {
+		building_network_junction
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_1_effect
+	}
+
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# Safe to advance our empire?
+			weight = 300
+			retile_advanced_economy = yes
+		}
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+		}
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_network_junction = {
+	base_buildtime = 360
+	can_build = no
+	icon = building_heritage_site
+
+	category = unity
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			owner = { OR = {
+				is_machine_empire = no
+				has_valid_civic = civic_machine_servitor
+			} }
+			retile_urban = no
+		}
+	}
+	
+	convert_to = {
+		building_holotemple
+		building_hive_cluster
+		building_heritage_site
+		building_corporate_site
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			rare_crystals = @cost_med
+		}
+		upkeep = {
+			energy = 25
+			#alloys = 1
+		}		
+	}
+	
+	prerequisites = {
+		"tech_heritage_site"
+	}
+
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+	}	
+	
+	upgrades = {
+		building_system_conflux
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_2_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_system_conflux = {
+	base_buildtime = 480
+	can_build = no
+	icon = building_hypercomms_forum
+
+	category = unity
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			owner = { OR = {
+				is_machine_empire = no
+				has_valid_civic = civic_machine_servitor
+			} }
+			retile_urban = no
+		}
+	}
+	
+	convert_to = {
+		building_sacred_nexus
+		building_hive_confluence
+		building_hypercomms_forum
+		building_corporate_forum
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_high
+			rare_crystals = @cost_high
+		}
+		upkeep = {
+			energy = 50
+			#alloys = 1
+		}		
+	}
+	
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}	
+	
+	show_tech_unlock_if = {
+		is_machine_empire = yes
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_custodian_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_maintenance_drone_add = 3
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_3_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+##### Megacorps
+building_corporate_monument = {
+	base_buildtime = 240
+	base_cap_amount = 1
+
+	category = unity
+
+	potential = {
+		exists = owner
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = penal_colony }
+		owner = {
+			is_spiritualist = no
+			is_megacorp = yes
+		}					
+	}
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			owner = { 
+				OR = {
+					is_spiritualist = yes
+					is_megacorp = no
+				}
+			}
+		}
+	}
+	
+	convert_to = {
+		building_temple
+		building_hive_node
+		building_uplink_node
+		building_autochthon_monument
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_cultural_heritage"
+	}	
+	
+	upgrades = {
+		building_corporate_site
+	}
+	
+	show_tech_unlock_if = {
+		is_spiritualist = no
+		is_megacorp = yes
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_1_effect
+	}
+
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# Safe to advance our empire?
+			weight = 300
+			retile_advanced_economy = yes
+		}
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+		}
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_corporate_site = {
+	base_buildtime = 360
+	can_build = no
+
+	category = unity
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			owner = { 
+				OR = {
+					is_spiritualist = yes
+					is_megacorp = no
+				}
+			}
+		}
+	}
+	
+	convert_to = {
+		building_holotemple
+		building_network_junction
+		building_hive_cluster
+		building_heritage_site
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			rare_crystals = @cost_med
+		}
+		upkeep = {
+			energy = 25
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_heritage_site"
+	}
+	
+	show_tech_unlock_if = {
+		is_spiritualist = no
+		is_megacorp = yes
+	}
+	
+	upgrades = {
+		building_corporate_forum
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_2_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_corporate_forum = {
+	base_buildtime = 480
+	can_build = no
+
+	category = unity
+	
+	allow = {
+		retile_urban = yes
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			owner = { 
+				OR = {
+					is_spiritualist = yes
+					is_megacorp = no
+				}
+			}
+		}
+	}
+	
+	convert_to = {
+		building_sacred_nexus
+		building_hive_confluence
+		building_system_conflux
+		building_hypercomms_forum
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_high
+			rare_crystals = @cost_high
+		}
+		upkeep = {
+			energy = 50
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_hypercomms_forum"
+	}
+	
+	show_tech_unlock_if = {
+		is_spiritualist = no
+		is_megacorp = yes
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_custodian_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_maintenance_drone_add = 3
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_unity_3_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		unity = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

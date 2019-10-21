@@ -1,0 +1,67 @@
+## Categories used in this file must have use_for_ai_budget = yes defined in economic_categories ##
+## It is possible to have multiple entries with the same category and resource ##
+
+#################
+## Expenditure ##
+#################
+minerals_expenditure_buffer = { # Buffer, will not be spent
+	resource = minerals 
+	type = expenditure
+	category = buffer
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.05
+	}	
+}
+
+minerals_expenditure_trade = {
+	resource = minerals 
+	type = expenditure
+	category = trade
+	
+	potential = {
+		has_resource = { 
+			type = minerals
+			amount > 1000
+		}
+	}
+	
+	fraction = {
+		weight = 1
+	}
+}
+
+############
+## Upkeep ##
+############
+minerals_upkeep_buffer = {	# Buffer, will not be spent
+	resource = minerals 
+	type = upkeep
+	category = buffer
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+minerals_upkeep_planets = {
+	resource = minerals 
+	type = upkeep
+	category = planets
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.9
+	}	
+}

@@ -1,0 +1,59 @@
+## Categories used in this file must have use_for_ai_budget = yes defined in economic_categories ##
+## It is possible to have multiple entries with the same category and resource ##
+
+#################
+## Expenditure ##
+#################
+consumer_goods_expenditure_buffer = { # Buffer, will not be spent
+	resource = consumer_goods
+	type = expenditure
+	category = buffer
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+consumer_goods_expenditure_colonies_expand = {
+	resource = consumer_goods 
+	type = expenditure
+	category = colonies
+	
+	potential = {
+		is_regular_empire = yes
+		ai_colonize_plans > 0
+		has_resource = { type = food amount > 400 }
+	}
+	
+	fraction = {
+		weight = 0.5
+	}
+
+	static_min = {
+		base = 200
+	}
+
+	static_max = {
+		base = 250
+	}
+}
+
+consumer_goods_expenditure_trade = {
+	resource = consumer_goods 
+	type = expenditure
+	category = trade
+	
+	potential = {
+		is_hive_empire = no
+		ai_colonize_plans <= 0
+		has_resource = { type = consumer_goods amount > 500 }
+	}
+	
+	fraction = {
+		weight = 1
+	}
+}

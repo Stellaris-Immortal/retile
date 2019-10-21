@@ -1,0 +1,700 @@
+## Possible Deposit Variables ##
+# resources, resource and amount
+# potential trigger (planet scope)
+# blocked_modifier - applied to planet only when deposit blocker has been cleared
+# constant_modifier - applied to planet always
+# blocker = <key/any/none> - default any
+# station = station class in orbit to gather
+
+#######################################
+######### STRATEGIC RESOURCES #########
+#######################################
+
+#########################
+### ADVANCED RESOURCES ##
+#########################
+
+d_exotic_gases_1 = {
+	station = shipclass_mining_station 
+	is_for_colonizeable = no
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			exotic_gases = 1
+		}
+	}
+	
+	potential = {
+		OR = {	
+			is_planet_class = pc_toxic
+			is_planet_class = pc_gas_giant
+		}
+	}
+	
+	drop_weight = {
+		weight = 60
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+		modifier = {
+			factor = 2
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole
+		}
+		modifier = {
+			factor = 0.1
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_minerals_world
+						has_deposit = d_minerals_moon
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_society_large
+						has_deposit = d_society_medium
+						has_deposit = d_society_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_physics_small
+						has_deposit = d_physics_medium
+						has_deposit = d_physics_large
+						
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_engineering_large
+						has_deposit = d_engineering_medium
+						has_deposit = d_engineering_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.1
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_trade_value_large
+						has_deposit = d_trade_value_medium
+						has_deposit = d_trade_value_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.05
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_exotic_gases_1
+						has_deposit = d_rare_crystals_1
+						has_deposit = d_volatile_motes_1
+					}
+				}
+			}
+		}
+	}
+}
+
+d_rare_crystals_1 = {
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			rare_crystals = 1
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_frozen
+			is_planet_class = pc_barren_cold
+		}
+	}
+	
+	drop_weight = {
+		weight = 60
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+		modifier = {
+			factor = 2
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole
+		}
+		modifier = {
+			factor = 0.1
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_minerals_world
+						has_deposit = d_minerals_moon
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_society_large
+						has_deposit = d_society_medium
+						has_deposit = d_society_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_physics_small
+						has_deposit = d_physics_medium
+						has_deposit = d_physics_large
+						
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_engineering_large
+						has_deposit = d_engineering_medium
+						has_deposit = d_engineering_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.1
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_trade_value_large
+						has_deposit = d_trade_value_medium
+						has_deposit = d_trade_value_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.05
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_rare_crystals_1
+						has_deposit = d_volatile_motes_1
+						has_deposit = d_exotic_gases_1
+					}
+				}
+			}
+		}
+	}
+}
+
+d_volatile_motes_1 = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			volatile_motes = 1
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_molten
+			is_planet_class = pc_barren
+		}
+	}
+	
+	drop_weight = {
+		weight = 60
+		modifier = {
+			factor = 2
+			is_inside_nebula = yes
+		}
+		modifier = {
+			factor = 2
+			is_star_class = sc_neutron_star
+			is_star_class = sc_pulsar
+			is_star_class = sc_black_hole
+		}
+		modifier = {
+			factor = 0.1
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_minerals_world
+						has_deposit = d_minerals_moon
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_society_large
+						has_deposit = d_society_medium
+						has_deposit = d_society_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_physics_small
+						has_deposit = d_physics_medium
+						has_deposit = d_physics_large
+						
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.25
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_engineering_large
+						has_deposit = d_engineering_medium
+						has_deposit = d_engineering_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.1
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_trade_value_large
+						has_deposit = d_trade_value_medium
+						has_deposit = d_trade_value_small
+					}
+				}
+			}
+		}
+		modifier = {
+			factor = 0.05
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_rare_crystals_1
+						has_deposit = d_volatile_motes_1
+						has_deposit = d_exotic_gases_1
+					}
+				}
+			}
+		}
+	}
+}
+
+d_zro_deposit_5 = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	icon = d_dust_desert
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			sr_zro = 5
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_dark_matter_deposit_1 = {
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			sr_dark_matter = 1
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	drop_weight = {
+		weight = 0
+		modifier = {
+			weight = 10
+			is_planet_class = pc_black_hole
+		}
+		modifier = {
+			factor = 0.5
+			is_inside_nebula = no
+		}		
+	}
+}
+
+d_exotic_gases_2 = {
+	station = shipclass_mining_station 
+	is_for_colonizeable = no
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			exotic_gases = 1
+		}
+	}	
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_gas_giant
+			is_planet_class = pc_toxic
+		}	
+	}
+	
+	drop_weight = {
+		weight = 0
+		modifier = {
+			factor = 1.5
+			is_inside_nebula = yes
+		}
+	}
+}
+
+d_exotic_gases_3 = {
+	station = shipclass_mining_station 
+	is_for_colonizeable = no
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			exotic_gases = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_exotic_gases_4 = {
+	station = shipclass_mining_station 
+	is_for_colonizeable = no
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			exotic_gases = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_exotic_gases_5 = {
+	station = shipclass_mining_station 
+	is_for_colonizeable = no
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			exotic_gases = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+
+
+d_rare_crystals_2 = {
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			rare_crystals = 1
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_rare_crystals_3 = {
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			rare_crystals = 1
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_rare_crystals_4 = {
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			rare_crystals = 1
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_rare_crystals_5 = {
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			rare_crystals = 1
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+
+
+d_volatile_motes_2 = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			volatile_motes = 1
+		}
+	}	
+	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+d_volatile_motes_3 = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			volatile_motes = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+d_volatile_motes_4 = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			volatile_motes = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+d_volatile_motes_5 = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			volatile_motes = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+##########################
+##### RARE RESOURCES #####
+##########################
+
+d_zro_deposit_1 = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	icon = d_dust_desert
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			sr_zro = 1
+		}
+	}
+	
+	potential = {
+		is_planet_class = pc_toxic
+	}
+	
+	drop_weight = {
+		weight = 5
+		modifier = {
+			factor = 0.25
+			is_inside_nebula = no
+		}	
+	}
+}
+
+d_zro_deposit_2 = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	icon = d_dust_desert
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			sr_zro = 2
+		}
+	}
+	
+	potential = { always = no }	
+	drop_weight = { weight = 0 }
+}
+
+d_zro_deposit_3 = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	icon = d_dust_desert
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			sr_zro = 3
+		}
+	}
+	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+d_zro_deposit_4 = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	icon = d_dust_desert
+	
+	resources = { 
+		category = orbital_mining_deposits
+		produces = {
+			sr_zro = 4
+		}
+	}
+	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+d_dark_matter_deposit_2 = {
+	resources = { 
+		category = orbital_research_deposits
+		produces = {
+			sr_dark_matter = 2
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	drop_weight = {
+		weight = 0
+		modifier = {
+			weight = 1
+			is_planet_class = pc_black_hole
+		}
+	}
+}
+
+d_dark_matter_deposit_3 = {
+	resources = { 
+		category = orbital_research_deposits
+		produces = {
+			sr_dark_matter = 3
+		}
+	}
+	station = shipclass_research_station 
+	is_for_colonizeable = no
+	
+	drop_weight = {
+		weight = 0	
+	}
+}
+
+d_living_metal_deposit = {
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			sr_living_metal = 1
+		}
+	}
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	drop_weight = {
+		weight = 0
+	}
+}

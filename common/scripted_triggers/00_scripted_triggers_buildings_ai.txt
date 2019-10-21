@@ -1,0 +1,362 @@
+### Seems to be here to allow AI to only build certain buildings
+### if the world doesn't have any REMAINING rural district deposits.
+buildings_simple_allow = {
+	planet = {
+		OR = {
+			AND = {
+				num_free_districts = { type = district_mining value = 0 }
+				num_free_districts = { type = district_generator value = 0 }
+				num_free_districts = { type = district_farming value = 0 }
+			}
+			AND = {
+				exists = owner
+				owner = { is_ai = no }
+			}
+		}
+	}
+}
+
+### Don't build things if the planet is in turmoil...???
+buildings_build_building = {
+	planet_devastation < 10
+	NOT = {
+		planet = {
+			any_owned_pop = {
+				has_citizenship_type = { type = citizenship_purge }
+			}
+		}
+	}
+	OR = {
+		has_modifier = planet_population_control
+		has_modifier = planet_population_control_gestalt
+		has_modifier = planet_robot_assembly_control
+		has_modifier = planet_growth_discouraged
+		free_district_slots = 0
+	}
+}
+
+country_uses_food = {
+	OR = {
+		NOT = { has_authority = auth_machine_intelligence }
+		has_valid_civic = civic_machine_servitor
+		has_valid_civic = civic_machine_assimilator
+		AND = {
+			has_authority = auth_machine_intelligence
+			NOT = { has_valid_civic = civic_machine_terminator }
+		}
+	}
+}
+
+buildings_unemployed = {
+	planet = {
+		any_owned_pop = {
+			NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+			NOR = {
+				is_pop_category = specialist
+				is_pop_category = ruler
+			}
+			OR = { 
+				is_unemployed = yes 
+				has_job = servant 
+			}
+		}
+	}
+}
+
+buildings_has_motes = {
+	exists = owner
+	owner = {
+		has_monthly_income = {
+			resource = volatile_motes
+			value > 0
+		}
+	}
+}
+
+buildings_has_crystals = {
+	exists = owner
+	owner = {
+		has_monthly_income = {
+			resource = rare_crystals
+			value > 0
+		}
+	}
+}
+
+buildings_has_exotic_gases = {
+	exists = owner
+	OR = {
+		owner = {
+			is_ai = yes
+			has_monthly_income = {
+				resource = exotic_gases
+				value > -1
+			}
+		}
+		owner = { is_ai = no }
+	}
+}
+
+buildings_difficulty = {
+	is_difficulty > 2
+	years_passed > 20
+	has_resource = { type = energy amount > 1000 }
+	has_resource = { type = minerals amount > 2000 }
+}
+
+buildings_stop_pop = {
+	exists = planet
+	planet = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				count_pops = { limit = { is_sapient = yes } count >= 27 }
+				is_planet_class = pc_habitat
+				NOT = { owner = { is_gestalt = yes } }
+			}
+			AND = {
+				is_planet_class = pc_habitat
+				owner = { is_gestalt = yes }
+				count_pops = { limit = { is_sapient = yes } count >= 75 }
+				OR = {
+					free_housing = 0
+					free_jobs = 0
+				}
+				free_building_slots = 0
+			}
+			AND = {
+				has_building_construction = no
+				planet_devastation < 1
+				free_jobs = 0
+				OR = {
+					count_pops = { limit = { is_sapient = yes } count >= 82 }
+					AND = {
+						num_pops > 77
+						owner = { is_hive_empire = yes }
+					}
+				}
+				NOT = { is_planet_class = pc_habitat }
+			}
+		}
+	}
+}
+
+districts_build_district ={
+	OR = {
+		has_modifier = planet_population_control
+		has_modifier = planet_population_control_gestalt
+		has_modifier = planet_robot_assembly_control
+		has_modifier = planet_growth_discouraged
+		any_owned_pop = {
+			is_unemployed = yes
+			OR = {
+				specialist_job_check_trigger = no
+				has_citizenship_type = { type = citizenship_slavery }
+			}
+			NOR = { has_citizenship_type = { type = citizenship_assimilation } }
+		}
+		owner = { is_ai = yes }
+		AND = {
+			planet_devastation < 10
+			has_building_construction = no
+			free_jobs < 2
+			NOT = {
+				planet = {
+					any_owned_pop = {
+						has_citizenship_type = { type = citizenship_purge }
+					}
+				}
+			}
+		}
+	}
+}
+
+districts_good_energy = {
+	planet = { 
+		OR = {
+			has_modifier = hazardous_weather
+			has_modifier = divine_algorithm
+			has_modifier = energy_relic
+			has_modifier = gas_rich_planet_fo_realz
+		}
+	}
+}
+
+districts_good_minerals = {
+	planet = {
+		OR = {
+			has_modifier = extensive_moon_system
+			has_modifier = carbon_world
+			has_modifier = mineral_rich
+			has_modifier = ultra_rich
+			has_modifier = asteroid_belt
+			has_modifier = minerals_relic
+		}
+	}
+}
+
+districts_good_food = {
+	planet = { 
+		has_modifier = lush_planet
+	}
+}
+
+## Currently does nothing - as I'm removing it from all associated jobs...
+jobs_save_goods = {
+	exists = planet
+	planet = {
+		exists = owner
+		owner = {
+			has_resource = { type = consumer_goods amount < 45 }
+			is_ai = yes
+		}
+	}
+}#If true makes the AI stop working consumer goods jobs
+
+## currently should do nothing - I'm removing it from all associated jobs...
+jobs_work_minerals = {
+	always = no ### Tempfix
+	exists = planet
+	planet = {
+		exists = owner
+		IF = {
+			limit = { 
+				years_passed < 80 
+				owner = { ai_colonize_plans > 0 }
+			}
+			owner = {
+				has_resource = { type = minerals amount < 525 }
+				has_resource = { type = alloys amount > 400 }
+				NOT = {
+					has_monthly_income = {
+						resource = minerals
+						value > 100
+					}
+				}
+				is_ai = yes
+				is_at_war = no
+			}
+		}
+		ELSE_IF = {
+			limit = { 
+				years_passed < 80 
+				owner = { ai_colonize_plans = 0 }
+			}
+			owner = {
+				has_resource = { type = minerals amount < 525 }
+				has_resource = { type = alloys amount > 150 }
+				is_ai = yes
+				is_at_war = no
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				years_passed > 79
+			}
+			owner = {
+				has_resource = { type = minerals amount < 2525 }
+				has_resource = { type = alloys amount > 400 }
+				NOT = {
+					has_monthly_income = {
+						resource = minerals
+						value > 100
+					}
+				}
+				is_ai = yes
+				is_at_war = no
+			}
+		}
+		else = {
+			always = no
+		}
+	}
+}
+
+jobs_work_minerals_goods = {
+	always = no ### tempfix
+	exists = planet
+	planet = {
+		IF = {
+			limit = {
+				years_passed > 20
+			}
+			exists = owner
+			IF = {
+				limit = { years_passed < 80 }
+				owner = {
+					has_resource = { type = minerals amount < 525 }
+					has_resource = { type = consumer_goods amount > 250 }
+					NOT = {
+						has_monthly_income = {
+							resource = minerals
+							value > 100
+						}
+					}
+					is_ai = yes
+					is_at_war = no
+				}
+			}
+			ELSE_IF = {
+				limit = { years_passed > 79 }
+				owner = {
+					has_resource = { type = minerals amount < 2500 }
+					has_resource = { type = consumer_goods amount > 250 }
+					NOT = {
+						has_monthly_income = {
+							resource = minerals
+							value > 100
+						}
+					}
+					is_ai = yes
+					is_at_war = no
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+		ELSE_IF = {
+			limit = {
+				years_passed < 21
+			}
+			exists = owner
+			IF = {
+				limit = { years_passed < 80 }
+				owner = {
+					has_resource = { type = minerals amount < 525 }
+					has_resource = { type = consumer_goods amount > 250 }
+					NOT = {
+						has_monthly_income = {
+							resource = minerals
+							value > 100
+						}
+					}
+					is_ai = yes
+					is_at_war = no
+				}
+			}
+			ELSE_IF = {
+				limit = { years_passed > 79 }
+				owner = {
+					has_resource = { type = minerals amount < 2500 }
+					has_resource = { type = consumer_goods amount > 250 }
+					NOT = {
+						has_monthly_income = {
+							resource = minerals
+							value > 100
+						}
+					}
+					is_ai = yes
+					is_at_war = no
+				}
+			}
+			else = {
+				always = no
+			}
+		}
+		else = {
+			always = no
+		}
+	}
+}

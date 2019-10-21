@@ -1,0 +1,499 @@
+@base_cost = 150
+@base_upkeep = 5
+@base_buildtime = 240
+
+district_farming = {
+	base_buildtime = @base_buildtime
+
+	min_for_deposits_on_planet = 3	
+	max_for_deposits_on_planet = 15
+	
+	show_on_uncolonized = {
+		habitable_structure = no
+		NOT = { is_planet_class = pc_machine }
+		NOT = { is_planet_class = pc_hive }
+		NOT = { is_planet_class = pc_city }
+		NOT = { is_planet_class = pc_relic }
+		NOT = { is_planet_class = pc_ringworld_habitable }
+	}
+	
+	potential = {
+		habitable_structure = no
+		NOT = { is_planet_class = pc_machine }
+		NOT = { is_planet_class = pc_hive }
+		NOT = { is_planet_class = pc_city }
+		NOT = { is_planet_class = pc_relic }
+		NOT = { is_planet_class = pc_ringworld_habitable }
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		hidden_trigger = {
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				owner = { country_uses_food = yes }
+			}
+			retile_ready = yes
+		}
+	}
+
+	prerequisites = {
+		tech_industrial_farming
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_farming_uncapped
+	}	
+		
+	resources = {
+		category = planet_districts
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			energy = @base_upkeep
+			#alloys = 1
+		}		
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_agri_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_farmer_add = 1
+		}
+	}	
+		
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_agri_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = job_farmer_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# just a bit of food security.
+			weight = 15
+			OR = {
+				retile_template_good_food = yes
+				AND = {
+					owner = { has_monthly_income = { resource = food value < 25 } }
+					num_districts = { type = district_farming value < 2 }
+				}
+			}
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 100000
+			OR = {
+				num_districts = { type = district_farming value < 1 }
+				owner = { has_monthly_income = { resource = food value < 10 } }
+			}
+		}
+		modifier = {	# avoid bad food worlds...
+			factor = 0.5
+			retile_template_good_food = no
+		}
+		modifier = {	# avoid urban worlds...
+			factor = 0.5
+			retile_urban_development = yes
+		}
+		modifier = {	# greatly prefer worlds with food buildings
+			factor = 10
+			has_building = building_food_processing_facility
+			has_building = building_food_processing_center
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = food value > 100 } }
+		}
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_farming_uncapped = {
+	base_buildtime = @base_buildtime
+	icon = district_farming
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {	is_planet_class = pc_hive }
+	
+	potential = {
+		is_planet_class = pc_hive
+	}
+	
+	allow = {
+		NOT = { has_modifier = resort_colony }
+		hidden_trigger = {
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				owner = { country_uses_food = yes }
+			}
+			retile_ready = yes
+		}
+	}
+	
+	conversion_ratio = 1
+	convert_to = {
+		district_farming
+	}
+		
+	resources = {
+		category = planet_districts
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			energy = @base_upkeep
+			#alloys = 1
+		}		
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_agri_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_farmer_add = 1
+		}
+	}	
+		
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_agri_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = job_farmer_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# just a bit of food security.
+			weight = 10
+			OR = {
+				retile_template_good_food = yes
+				AND = {
+					owner = { has_monthly_income = { resource = food value < 25 } }
+					num_districts = { type = district_farming_uncapped value < 2 }
+				}
+			}
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 100000
+			OR = {
+				num_districts = { type = district_farming_uncapped value < 1 }
+				owner = { has_monthly_income = { resource = food value < 5 } }
+			}
+		}
+		modifier = {	# avoid bad food worlds...
+			factor = 0.5
+			retile_template_good_food = no
+		}
+		modifier = {	# avoid urban worlds...
+			factor = 0.5
+			retile_urban_development = yes
+		}
+		modifier = {	# greatly prefer worlds with food buildings
+			factor = 10
+			has_building = building_food_processing_facility
+			has_building = building_food_processing_center
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = food value > 100 } }
+		}
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_hab_hydroponics = {
+	base_buildtime = @base_buildtime
+	icon = district_farming
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		is_planet_class = pc_habitat
+	}
+	
+	potential = {
+		is_planet_class = pc_habitat
+	}
+	
+	allow = {
+		hidden_trigger = {
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				owner = { country_uses_food = yes }
+			}
+			retile_ready = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			energy = @base_upkeep
+			#alloys = 1
+		}		
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_agri_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_farmer_add = 1
+		}
+	}	
+		
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_agri_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = job_farmer_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# just a bit of food security.
+			weight = 10
+			OR = {
+				retile_template_good_food = yes
+				AND = {
+					owner = { has_monthly_income = { resource = food value < 25 } }
+					num_districts = { type = district_hab_hydroponics value < 2 }
+				}
+			}
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 100000
+			OR = {
+				num_districts = { type = district_hab_hydroponics value < 1 }
+				owner = { has_monthly_income = { resource = food value < 5 } }
+			}
+		}
+		modifier = {	# avoid bad food worlds...
+			factor = 0.5
+			retile_template_good_food = no
+		}
+		modifier = {	# avoid urban worlds...
+			factor = 0.5
+			retile_urban_development = yes
+		}
+		modifier = {	# greatly prefer worlds with food buildings
+			factor = 10
+			has_building = building_food_processing_facility
+			has_building = building_food_processing_center
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = food value > 100 } }
+		}
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+district_rw_farming = {
+	base_buildtime = @base_buildtime
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {	
+		is_planet_class = pc_ringworld_habitable 
+	}
+	
+	potential = { 
+		is_planet_class = pc_ringworld_habitable 
+	}
+	
+	allow = {
+		hidden_trigger = {
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				owner = { country_uses_food = yes }
+			}
+			retile_ready = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			energy = @base_upkeep
+			#alloys = 1
+		}		
+	}	
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_agri_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_farmer_add = 1
+		}
+	}	
+		
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = job_agri_drone_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = job_farmer_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# just a bit of food security.
+			weight = 10
+			OR = {
+				retile_template_good_food = yes
+				AND = {
+					owner = { has_monthly_income = { resource = food value < 25 } }
+					num_districts = { type = district_rw_farming value < 2 }
+				}
+			}
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 100000
+			OR = {
+				num_districts = { type = district_rw_farming value < 1 }
+				owner = { has_monthly_income = { resource = food value < 5 } }
+			}
+		}
+		modifier = {	# avoid bad food worlds...
+			factor = 0.5
+			retile_template_good_food = no
+		}
+		modifier = {	# avoid urban worlds...
+			factor = 0.5
+			retile_urban_development = yes
+		}
+		modifier = {	# greatly prefer worlds with food buildings
+			factor = 10
+			has_building = building_food_processing_facility
+			has_building = building_food_processing_center
+		}
+		modifier = {
+			factor = 0
+			owner = { has_monthly_income = { resource = food value > 100 } }
+		}
+	}
+
+	ai_resource_production = {
+		food = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

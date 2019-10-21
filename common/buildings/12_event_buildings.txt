@@ -1,0 +1,55 @@
+#####################
+# Event buildings
+#####################
+
+building_junkheap = {
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	can_be_disabled = no
+	
+	potential = {
+		exists = owner
+		owner = { is_country_type = ratlings }
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	convert_to = {
+		building_machine_capital
+		building_capital
+		building_hive_capital
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 15
+		planet_amenities_add = 20
+		job_ratling_scavenger_add = 10
+	}
+		
+	upgrades = {
+	}
+}
+
+building_great_pyramid = {
+	base_buildtime = 480
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	can_be_disabled = no
+	
+	potential = {
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	planet_modifier = {
+	}
+
+	resources = {
+		category = planet_buildings
+		produces = {
+			food = 2
+			society_research = 2
+		}	
+	}
+}

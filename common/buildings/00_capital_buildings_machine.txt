@@ -1,0 +1,313 @@
+#############
+# Machine buildings
+#############
+
+# Colony
+building_deployment_post = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+		}
+	}
+	
+	convert_to = {
+		building_hive_colony
+		building_colony_shelter
+	}
+	
+
+
+	resources = {
+		category = planet_buildings
+		upkeep = {
+			energy = 1
+		}		
+	}
+		
+	upgrades = {
+		building_machine_capital
+	}
+	
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}		
+	
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}
+
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 1
+	}	
+}
+
+# Administrative Array
+building_machine_capital = {
+	base_buildtime = 480
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+				AND = {
+					exists = event_target:mechanocalibrator_country
+					is_same_value = event_target:mechanocalibrator_country
+				}
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { is_machine_empire = no }
+	}
+	
+	convert_to = {
+		building_hive_capital
+		building_capital
+	}
+	
+	allow = {
+		num_pops >= 10
+	}
+	
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	
+	show_tech_unlock_if = { 
+		is_machine_empire = yes
+	}
+	
+
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 500
+		}	
+		upkeep = {
+			energy = 3
+		}		
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_cultural_heritage
+				NOT = { has_valid_civic = civic_machine_servitor }
+			}
+		}
+		modifier = {
+			job_coordinator_add = 1
+			planet_housing_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_technology = tech_cultural_heritage
+				NOT = { has_valid_civic = civic_machine_servitor }
+			}
+		}
+		modifier = {
+			job_coordinator_add = 1
+			planet_housing_add = 1
+		}
+	}
+	
+	upgrades = {
+		building_machine_major_capital
+	}
+	
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}		
+	
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}	
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+# Planetary Processor
+building_machine_major_capital = {
+	base_buildtime = 600
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+		}
+	}
+	
+	convert_to = {
+		building_hive_major_capital
+		building_major_capital
+	}
+	
+	allow = {
+		num_pops >= 40
+	}
+	
+	prerequisites = {
+		"tech_colonial_centralization"
+	}
+	
+	show_tech_unlock_if = { 
+		is_machine_empire = yes
+	}
+	
+
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 1000
+		}		
+		upkeep = {
+			energy = 5
+		}		
+	}
+	
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}		
+	
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}	
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	
+	upgrades = {
+		"building_machine_system_capital"
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 0
+			owner = { has_resource = { type = minerals amount < 1000 } }
+		}#This is here to prevent the AI from queuing up to buy this building when it could really do with another mineral district
+	}
+}
+
+# Primary Nexus
+building_machine_system_capital = {
+	base_buildtime = 900
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+		}
+	}
+	
+	convert_to = {
+		building_system_capital
+		building_hive_system_capital		
+	}	
+	allow = {
+		num_pops >= 80
+	}
+	
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+	
+	show_tech_unlock_if = { 
+		is_machine_empire = yes
+	}
+	
+
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 2000
+		}
+		upkeep = {
+			energy = 10
+		}
+	}
+	
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}		
+	
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}	
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 0
+			owner = { has_resource = { type = minerals amount < 2000 } }
+		}#This is here to prevent the AI from queuing up to buy this building when it could really do with another mineral district
+	}
+}

@@ -1,0 +1,338 @@
+#####################
+# Primitive buildings
+#####################
+
+building_crude_huts = {
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_primitive = yes
+			has_country_flag = stone_age 
+		}
+	}
+	
+	destroy_trigger = {
+		owner = { 
+			is_primitive = no
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = 5
+		planet_housing_add = 4
+		planet_crime_add = -10
+	}
+		
+	upgrades = {
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 2
+			free_housing < 0
+		}
+	}
+}
+
+building_primitive_dwellings = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_primitive = yes
+			OR = {
+				has_country_flag = bronze_age
+				has_country_flag = iron_age
+				has_country_flag = late_medieval_age
+				has_country_flag = renaissance_age
+				has_country_flag = steam_age
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		owner = { 
+			is_primitive = no
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 6
+	}
+		
+	upgrades = {
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 3
+			free_housing < 0
+		}
+	}
+}
+
+building_stone_palace = {
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_primitive = yes
+			OR = {
+				has_country_flag = bronze_age
+				has_country_flag = iron_age
+				has_country_flag = late_medieval_age
+				has_country_flag = renaissance_age
+				has_country_flag = steam_age
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = {
+			is_primitive = no
+		}
+	}
+
+	convert_to = {
+		building_hive_capital
+		building_machine_capital
+		building_colony_shelter
+	}
+	
+	planet_modifier = {
+		job_primitive_noble_add = 1
+		job_primitive_warrior_add = 1
+		job_primitive_researcher_add = 1
+		job_primitive_priest_add = 1
+		planet_housing_add = 3
+		planet_amenities_add = 25
+		planet_crime_add = -10
+	}
+		
+	upgrades = {
+	}	
+}
+
+building_primitive_factory = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_primitive = yes
+			OR = {
+				has_country_flag = steam_age
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		owner = { 
+			is_primitive = no
+		}
+	}
+	
+	planet_modifier = {
+		job_primitive_laborer_add = 2
+	}
+		
+	upgrades = {
+	}
+}
+
+building_primitive_mine = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_primitive = yes
+			OR = {
+				has_country_flag = steam_age
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		owner = { 
+			is_primitive = no
+		}
+	}
+	
+	planet_modifier = {
+		job_primitive_miner_add = 2
+	}
+		
+	upgrades = {
+	}
+}
+
+building_primitive_power_plant = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_primitive = yes
+			OR = {
+				has_country_flag = steam_age
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		owner = { 
+			is_primitive = no
+		}
+	}
+	
+	planet_modifier = {
+		job_primitive_technician_add = 2
+	}
+		
+	upgrades = {
+	}
+}
+
+building_primitive_farm = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_primitive = yes
+			OR = {
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		owner = { 
+			is_primitive = no
+		}
+	}
+	
+	planet_modifier = {
+		job_primitive_farmer_add = 10
+	}
+		
+	upgrades = {
+	}
+}
+
+building_primitive_capital = {
+	capital = yes
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_primitive = yes
+			OR = {
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		owner = { 
+			is_primitive = no
+		}
+	}
+	
+	convert_to = {
+		building_machine_capital
+		building_capital
+		building_hive_capital
+	}
+	
+	planet_modifier = {
+		job_primitive_bureaucrat_add = 2
+		job_primitive_warrior_2_add = 2
+		job_primitive_researcher_2_add = 2
+		job_primitive_priest_2_add = 2
+		planet_housing_add = 5
+		planet_amenities_add = 25
+		planet_crime_add = -20
+	}
+		
+	upgrades = {
+	}
+}
+
+building_urban_dwellings = {
+	can_build = no
+	can_demolish = yes
+	can_be_ruined = no
+	icon = building_residence
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_primitive = yes
+			OR = {
+				has_country_flag = machine_age
+				has_country_flag = industrial_age
+				has_country_flag = atomic_age
+				has_country_flag = early_space_age
+			}
+		}
+	}
+	
+	destroy_trigger = {
+		owner = { 
+			is_primitive = no
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 24
+	}
+		
+	upgrades = {
+	}
+}

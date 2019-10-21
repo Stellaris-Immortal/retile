@@ -1,0 +1,348 @@
+# Does this planet have any unemployed pops?
+retile_ready = {	# Planet scope
+	OR = {
+		NOT = { exists = owner }
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			PREV = {
+				AND = {
+					has_building_construction = no
+					any_pop = {
+						OR = {
+							AND = {
+								is_unemployed = yes
+								NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+							}
+							has_job = servant
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Does this country have excess pops and places for them to migrate to?
+retile_migrate_ready = { # country scope
+	AND = {
+		# is there a planet with free jobs in this empire?
+		any_owned_planet = { AND = {
+				free_jobs > 0
+				is_colony = yes
+		} }
+		# is there an unemployed pop in this empire?
+		any_owned_pop = { OR = {
+				AND = {
+					is_unemployed = yes
+					NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+				}
+				has_job = servant
+		} }
+	}
+}
+
+# Is our empire falling behind in technology?
+retile_tech_weak = {	# country scope
+	any_neighbor_country = {
+		count > 0
+		is_country_type = default
+		prev = {
+			relative_power = { # Does our neighbor have better tech than us?
+				who = prev
+				category = technology 
+				value > equivalent
+			}
+			relative_power = { # If this is false, everything is overwhelming... Don't try to compete...
+				who = prev 
+				category = all
+				value <= superior
+			}
+		}
+	}
+
+}
+
+# try to save the last building slot for housing most of the time
+retile_housing_safe = { # planet scope
+	OR = {
+		always = yes
+	#	num_buildings = { type = any value < 3 }
+	#	has_building = building_communal_housing
+	#	has_building = building_slave_huts
+	#	has_building = building_prison_cells
+	#	has_building = building_paradise_dome
+	#	has_building = building_drone_storage
+	#	has_building = building_hive_warren
+	}
+}
+
+# Does the owning country have positive incomes in all basic resources?
+retile_basic_economy = {	# planet scope
+	AND = {
+		owner = { has_monthly_income = { resource = energy value > 0 } }
+		OR = {
+			AND = {
+				owner = { country_uses_goods = yes }
+				owner = { has_monthly_income = { resource = minerals value > 0 } }
+			}
+			AND = {
+				owner = { country_uses_goods = no }
+				owner = { has_monthly_income = { resource = minerals value > 10 } }
+			}
+		}
+		OR = {
+			owner = { has_monthly_income = { resource = food value > 0 } }
+			owner = { country_uses_food = no }
+		}
+	}
+}
+
+# Does the owning country have sufficient resources to focus on advancement?
+# used for research/unity
+retile_advanced_economy = {
+	AND = {
+		retile_basic_economy = yes
+		OR = {
+			AND = {
+				owner = { country_uses_goods = yes }
+				owner = { has_monthly_income = { resource = consumer_goods value > 10 } }
+			}
+			AND = {
+				owner = { country_uses_goods = no }
+				owner = { has_monthly_income = { resource = minerals value > 30 } }
+			}
+		}
+		owner = { has_monthly_income = { resource = alloys value > 25 } }
+	}
+}
+
+# Is this planet already developed for urban things?
+retile_urban_development = {	# planet scope
+	OR = {
+		has_building = building_foundry_1
+		has_building = building_foundry_2
+		has_building = building_foundry_3
+		has_building = building_factory_1
+		has_building = building_factory_2
+		has_building = building_factory_3
+		has_building = building_research_lab_1
+		has_building = building_research_lab_2
+		has_building = building_research_lab_3
+		has_building = building_commercial_zone
+		has_building = building_commercial_megaplex
+	}
+}
+
+# Is this planet highly focused on urban development?
+retile_urban_advanced = {	# planet scope
+	OR = {
+		has_building = building_ministry_production
+		has_building = building_production_center
+		has_building = building_institute
+		has_building = building_supercomputer
+		has_building = building_galactic_stock_exchange
+	}
+}
+
+# Is this planet already developed for rural things?
+retile_rural_development = {	# planet scope
+	OR = {
+		has_building = building_food_processing_facility
+		has_building = building_food_processing_center
+		has_building = building_mineral_purification_plant
+		has_building = building_mineral_purification_hub
+		has_building = building_energy_grid
+		has_building = building_energy_nexus
+	}
+}
+
+# Has this planet been designated a template?
+# Note: These are the flags to use for AI weights!!!
+retile_has_active_template = {
+	OR = {
+		has_planet_flag = active_retile_template_generic
+		has_planet_flag = active_retile_template_minerals
+		has_planet_flag = active_retile_template_energy
+		has_planet_flag = active_retile_template_food
+		has_planet_flag = active_retile_template_alloys
+		has_planet_flag = active_retile_template_goods
+		has_planet_flag = active_retile_template_research
+		has_planet_flag = active_retile_template_unity
+		has_planet_flag = active_retile_template_trade
+	}
+}
+
+# Does this planet have a curren template?
+# Don't use these for AI weights - use the ones above!!!
+retile_has_current_template = {
+	OR = {
+		has_planet_flag = retile_template_generic
+		has_planet_flag = retile_template_minerals
+		has_planet_flag = retile_template_energy
+		has_planet_flag = retile_template_food
+		has_planet_flag = retile_template_alloys
+		has_planet_flag = retile_template_goods
+		has_planet_flag = retile_template_research
+		has_planet_flag = retile_template_unity
+		has_planet_flag = retile_template_trade
+	}
+}
+
+# Is this a good world to give the food template?
+retile_template_good_food = {
+	OR = {
+		districts_good_food = yes
+		has_planet_flag = retile_food_world
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_habitat
+		AND = {
+			is_planet_class = pc_hive
+			owner = { is_hive_empire = yes }
+		}
+	}
+}
+
+# Is this a good world to give the energy template?
+retile_template_good_energy = {
+	OR = {
+		districts_good_energy = yes
+		has_planet_flag = retile_energy_world
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_habitat
+		AND = {
+			is_planet_class = pc_hive
+			owner = { is_hive_empire = yes }
+		}
+		AND = {
+			is_planet_class = pc_machine
+			owner = { is_machine_empire = yes }
+		}
+	}
+}
+
+# Is this a good world to give the minerals template?
+retile_template_good_minerals = {
+	OR = {
+		districts_good_minerals = yes
+		has_planet_flag = retile_minerals_world
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_habitat
+		AND = {
+			is_planet_class = pc_hive
+			owner = { is_hive_empire = yes }
+		}
+		AND = {
+			is_planet_class = pc_machine
+			owner = { is_machine_empire = yes }
+		}
+	}
+}
+
+# Is this a good world to give the trade template?
+retile_template_good_trade = {
+	OR = {
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_habitat
+		is_planet_class = pc_relic
+		is_planet_class = pc_city
+		AND = {
+			is_planet_class = pc_hive
+			owner = { is_hive_empire = yes }
+		}
+		AND = {
+			is_planet_class = pc_machine
+			owner = { is_machine_empire = yes }
+		}
+	}
+}
+
+# Is this a good world to give the trade template?
+retile_template_good_alloys = {
+	OR = {
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_habitat
+		is_planet_class = pc_relic
+		is_planet_class = pc_city
+		AND = {
+			is_planet_class = pc_hive
+			owner = { is_hive_empire = yes }
+		}
+		AND = {
+			is_planet_class = pc_machine
+			owner = { is_machine_empire = yes }
+		}
+	}
+}
+
+# Is this a good world to give the goods template?
+retile_template_good_goods = {
+	OR = {
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_habitat
+		is_planet_class = pc_city
+		AND = {
+			is_planet_class = pc_hive
+			owner = { is_hive_empire = yes }
+		}
+		AND = {
+			is_planet_class = pc_machine
+			owner = { is_machine_empire = yes }
+		}
+	}
+}
+
+# Is this a good world to give the research template?
+retile_template_good_research = {
+	OR = {
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_habitat
+		is_planet_class = pc_relic
+		is_planet_class = pc_city
+		AND = {
+			is_planet_class = pc_hive
+			owner = { is_hive_empire = yes }
+		}
+		AND = {
+			is_planet_class = pc_machine
+			owner = { is_machine_empire = yes }
+		}
+	}
+}
+
+# Is this a good world to give the unity template?
+retile_template_good_unity = {
+	OR = {
+		is_planet_class = pc_ringworld_habitable
+		is_planet_class = pc_habitat
+		is_planet_class = pc_city
+		AND = {
+			is_planet_class = pc_hive
+			owner = { is_hive_empire = yes }
+		}
+		AND = {
+			is_planet_class = pc_machine
+			owner = { is_machine_empire = yes }
+		}
+	}
+}
+
+# Is this planet acceptable for urban development?
+retile_template_acceptable_urban = {
+	OR = {
+		AND	= {
+			owner = { is_gestalt = no }
+			NOR = {
+				is_planet_class = pc_hive
+				is_planet_class = pc_machine
+			}
+		}
+		AND = {
+			is_planet_class = pc_hive
+			owner = { is_hive_empire = yes }
+		}
+		AND = {
+			is_planet_class = pc_machine
+			owner = { is_machine_empire = yes }
+		}
+	}
+}

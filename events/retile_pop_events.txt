@@ -1,0 +1,51 @@
+#########################################
+#
+# Retile Pop Events
+#
+#########################################
+
+#########################################
+
+namespace = retile_pop
+
+# migrate all unemployed pops each month, provided there's jobs for them...
+event = {
+	id = retile_pop.100
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		every_country = {
+			limit = { is_country_type = default }
+			
+			while = {
+				limit = { retile_migrate_ready = yes }
+				retile_pop_migrate = yes
+			}
+		}
+	}
+}
+
+# apply an appropriate pop growth malus to each empire based on the number of planets it has.
+event = {
+	id = retile_pop.200
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		every_country = {
+			limit = { is_country_type = default }
+			
+			retile_clear_growth_malus = yes
+			retile_apply_growth_malus = yes
+		}
+	}
+}

@@ -1,0 +1,241 @@
+namespace = retile_generate
+
+# Mod Flag
+event = {
+	id = retile_generate.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { NOT = { has_global_flag = retile_active } }
+
+	immediate = { set_global_flag = retile_active }
+}
+
+# Generation Step 1
+event = {
+	id = retile_generate.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+
+	immediate = {
+		every_planet = {
+			if = {
+				limit = {
+					OR = {
+						habitable_planet = yes
+						is_planet_class = pc_nuked
+						is_planet_class = pc_barren
+						is_planet_class = pc_barren_cold
+					}
+					NOT = { is_planet_class = pc_asteroid }
+					habitable_structure = no
+				}
+				if = {
+					limit = { planet_size < 10 }
+					set_planet_size = 10
+				} else_if = {
+					limit = { planet_size = 11 }
+					set_planet_size = 10
+				} else_if = {
+					limit = { planet_size = 13 }
+					set_planet_size = 12
+				} else_if = {
+					limit = { planet_size = 15 }
+					set_planet_size = 14
+				} else_if = {
+					limit = { planet_size = 17 }
+					set_planet_size = 16
+				} else_if = {
+					limit = { planet_size = 19 }
+					set_planet_size = 18
+				} else_if = {
+					limit = { planet_size = 21 }
+					set_planet_size = 20
+				} else_if = {
+					limit = { planet_size = 23 }
+					set_planet_size = 22
+				} else_if = {
+					limit = { planet_size = 25 }
+					set_planet_size = 24
+				} else_if = {
+					limit = { planet_size > 25 }
+					set_planet_size = 26
+				}
+			} else_if = {
+				limit = { 
+					is_planet_class = pc_asteroid
+					solar_system = { NOT = { has_star_flag = empire_home_system } }
+				}
+				random_list = {
+					40 = { set_planet_size = 2 }
+					30 = { 
+						set_planet_size = 3
+						add_deposit = d_minerals_asteroid_small
+						if = {
+							limit = { NOT = { solar_system = { has_star_flag = has_asteroid_belt } } }
+							solar_system = { set_star_flag = has_asteroid_belt }
+						}
+					}
+					10 = { 
+						set_planet_size = 4
+						add_deposit = d_minerals_asteroid
+						if = {
+							limit = { NOT = { solar_system = { has_star_flag = has_asteroid_belt } } }
+							solar_system = { set_star_flag = has_asteroid_belt }
+						}
+					}
+					20 = { 
+						set_planet_size = 5
+						add_deposit = d_alloys_asteroid
+						if = {
+							limit = { NOT = { solar_system = { has_star_flag = has_asteroid_belt } } }
+							solar_system = { set_star_flag = has_asteroid_belt }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Generation Step 2
+event = {
+	id = retile_generate.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		every_planet = {
+			if = {
+				limit = { 
+					OR = {
+						is_planet_class = pc_barren
+						is_planet_class = pc_barren_cold
+					}
+					AND = {
+						NOT = { has_deposit_for = shipclass_mining_station }
+						planet_size < 25
+					}
+				}
+					random_list = {
+					90 = { }
+					5 = { 
+						if = {
+							limit = { solar_system = { NOT = { has_star_flag = has_asteroid_belt } } }
+							add_deposit = d_minerals_random
+						}
+					}
+					5 = { add_modifier = { modifier = "terraforming_candidate" days = -1 } }
+					}
+				}
+			if = {
+				limit = {
+					has_deposit = d_minerals_moon
+					solar_system = { has_star_flag = has_asteroid_belt }
+				}
+				remove_deposit = d_minerals_moon
+			}
+			if = {
+				limit = {
+					has_deposit = d_minerals_world
+					solar_system = { has_star_flag = has_asteroid_belt }
+				}
+				remove_deposit = d_minerals_world
+			}
+			if = {
+				limit = {
+					has_deposit = d_minerals_random
+					solar_system = { has_star_flag = has_asteroid_belt }
+				}
+				remove_deposit = d_minerals_random
+			}
+			if = {
+				limit = { 
+					AND = {
+						has_deposit = d_minerals_world
+						NOT = { solar_system = { has_star_flag = has_minerals_world } }
+					}
+				}
+				solar_system = { set_star_flag = has_minerals_world }
+			} else_if = {
+				limit = { 
+					AND = {
+						has_deposit = d_minerals_world
+						solar_system = { has_star_flag = has_minerals_world }
+					}
+				}
+				remove_deposit = d_minerals_world
+			}
+			if = {
+				limit = { 
+					AND = {
+						has_deposit = d_minerals_moon
+						NOT = { solar_system = { has_star_flag = has_minerals_moon } }
+					}
+				}
+				solar_system = { set_star_flag = has_minerals_moon }
+			} else_if = {
+				limit = { 
+					AND = {
+						has_deposit = d_minerals_moon
+						solar_system = { has_star_flag = has_minerals_moon }
+					}
+				}
+				remove_deposit = d_minerals_moon
+			}
+			if = {
+				limit = { solar_system = { has_star_flag = has_asteroid_belt } }
+				if = {
+					limit = { has_deposit = d_society_medium }
+					remove_deposit = d_society_medium
+				}
+				if = {
+					limit = { has_deposit = d_society_large }
+					remove_deposit = d_society_large
+				}
+				if = {
+					limit = { has_deposit = d_physics_medium }
+					remove_deposit = d_physics_medium
+				}
+				if = {
+					limit = { has_deposit = d_physics_large }
+					remove_deposit = d_physics_large
+				}
+				if = {
+					limit = { has_deposit = d_engineering_medium }
+					remove_deposit = d_engineering_medium
+				}
+				if = {
+					limit = { has_deposit = d_engineering_large }
+					remove_deposit = d_engineering_large
+				}
+				if = {
+					limit = { has_deposit = d_trade_value_large }
+					remove_deposit = d_trade_value_large
+				}
+				if = {
+					limit = { has_deposit = d_exotic_gases_1 }
+					random_list = {
+						50 = { }
+						50 = { remove_deposit = d_exotic_gases_1 }
+					}
+				}
+				if = {
+					limit = { has_deposit = d_rare_crystals_1 }
+					random_list = {
+						50 = { }
+						50 = { remove_deposit = d_rare_crystals_1 }
+					}
+				}
+				if = {
+					limit = { has_deposit = d_volatile_motes_1 }
+					random_list = {
+						50 = { }
+						50 = { remove_deposit = d_volatile_motes_1 }
+					}
+				}
+			}
+		}
+	}
+}

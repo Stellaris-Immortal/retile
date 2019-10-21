@@ -1,0 +1,146 @@
+#Default Triggers:
+#	buildings_simple_allow			#yes if no free rural district slots
+#	country_uses_food				#yes if country needs food
+#	buildings_unemployed			#yes if there are any unemployed WORKERS or SERVANTS
+#	buildings_has_motes				#yes if motes income is positive
+#	buildings_has_crystals			#yes if crystals income is positive
+#	buildings_has_exotic_gases		#yes if gas income is positive
+#	buildings_difficulty			#???
+#	buildings_stop_pop				#yes if pops exceed certain counts depending on conditions
+#	districts_build_district		#yes if conditions are ideal for building new districts ???
+#	districts_good_energy			#yes if planet has positive energy modifier
+#	districts_good_minerals			#yes if planet has positive minerals modifier
+#	districts_good_food				#yes if planet has positive food modifier
+#	jobs_save_goods					#??? used to prevent AI from using up all it's consumer goods
+#	jobs_work_minerals				#??? used to decide if AI should work jobs that produce minerals
+#	jobs_work_minerals_goods		#??? used to decide if AI should work jobs that produce consumer goods
+
+#Other Useful Tools:
+#	has_building_construction		#check what's being currently built - yes, no, or specific building
+#	on_built = {
+#		planet = { 
+#			owner = { set_timed_country_flag = { flag = buildings_new_mote_building days = 480 } }
+#		}
+#	}
+
+#Retile planet flags:
+#	retile_food_world
+#	retile_energy_world
+#	retile_minerals_world
+
+#Retile planet triggers:
+# 	retile_template_good_food
+# 	retile_template_good_energy
+# 	retile_template_good_minerals
+
+# Does this country use consumer goods?
+country_uses_goods = {	# country scope
+	OR = {
+		is_gestalt = no
+		has_valid_civic = civic_machine_servitor
+		has_valid_civic = civic_machine_assimilator
+	}
+}
+
+# Does the planet have any urban districts?
+retile_urban = {	# planet scope
+	custom_tooltip = {
+		fail_text = "retile_requires_urban_district"
+		OR = {
+			num_districts = { type = district_city value > 0 }
+			num_districts = { type = district_hive value > 0 }
+			num_districts = { type = district_nexus value > 0 }
+			num_districts = { type = district_hab_housing value > 0 }
+			has_deposit = d_central_spire
+			AND = {
+				is_planet_class = pc_city
+				num_districts = { type = any value > 0 }
+			}
+		}
+	}
+}
+
+# Does the planet have any energy districts?
+retile_energy = {	# planet scope
+	custom_tooltip = {
+		fail_text = "retile_requires_energy_district"
+		OR = {
+			num_districts = { type = district_generator value > 0 }
+			num_districts = { type = district_generator_uncapped value > 0 }
+			num_districts = { type = district_hab_energy value > 0 }
+			num_districts = { type = district_rw_generator value > 0 }
+		}
+	}
+}
+
+# Does the planet have any minerals districts?
+retile_minerals = {	# planet scope
+	custom_tooltip = {
+		fail_text = "retile_requires_minerals_district"
+		OR = {
+			num_districts = { type = district_mining value > 0 }
+			num_districts = { type = district_mining_uncapped value > 0 }
+			num_districts = { type = district_hab_mining value > 0 }
+			num_districts = { type = district_rw_mining value > 0 }
+		}
+	}
+}
+
+# Does the planet have any food districts?
+retile_food = {	# planet scope
+	custom_tooltip = {
+		fail_text = "retile_requires_food_district"
+		OR = {
+			num_districts = { type = district_farming value > 0 }
+			num_districts = { type = district_farming_uncapped value > 0 }
+			num_districts = { type = district_hab_hydroponics value > 0 }
+			num_districts = { type = district_rw_farming value > 0 }
+		}
+	}
+}
+
+# Can this country do diplomacy?
+retile_diplomacy = {	# counry scope
+	custom_tooltip = {
+		fail_text = "retile_no_diplomacy"
+		exists = owner
+		owner = {
+			NOR = {
+				has_valid_civic = civic_inwards_perfection
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_fanatic_purifiers
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+}

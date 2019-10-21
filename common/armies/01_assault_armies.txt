@@ -1,0 +1,397 @@
+#Defensive armies can't transport of the planet
+#maintenance is directly scripted here. 0.25 translates to 0.25 monthly cost (excluding other upkeep modifiers)
+#morale_damage = 1		# average morale damage of the army, default: auto (calculated from morale * MORALE_DAMAGE_MULT)
+
+# Assault Armies
+assault_army = {
+	damage = 1.00
+	health = 1.00
+	morale = 1.00
+	morale_damage = 1.00
+	collateral_damage = 1.00
+	war_exhaustion = 1.00
+	time = 90
+	icon_frame = 2
+	prerequisites = { "tech_assault_armies" }
+	resources = {
+		category = armies
+		cost = {
+			alloys = 50
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	show_tech_unlock_if = { 
+		OR = {
+			NOT = { has_authority = auth_machine_intelligence }
+			has_valid_civic = civic_machine_assimilator
+		}
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+		owner = {
+			OR = {
+				NOT = { has_authority = auth_machine_intelligence }
+				has_valid_civic = civic_machine_assimilator
+			}
+		}
+	}
+}
+
+# Slave Armies
+slave_army = {
+	damage = 1.00
+	health = 1.00
+	morale = 0.75
+	morale_damage = 0.75
+	collateral_damage = 1.50
+	war_exhaustion = 0.50
+	time = 60
+	icon_frame = 10
+
+	resources = {
+		category = armies
+		cost = {
+			alloys = 25
+		}
+
+		upkeep = {
+			energy = 0.5
+		}
+	}
+
+	prerequisites = { "tech_neural_implants" }
+	
+	allow = {
+		any_owned_pop = { is_pop_category = slave }
+	}
+	potential = {
+		owner = {
+			any_owned_pop = {
+				is_pop_category = slave
+				is_same_species = from
+			} 	
+		}
+		from = {
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+		owner = {
+			has_policy_flag = slavery_allowed
+			NOT = { has_authority = auth_machine_intelligence }
+		}
+	}
+}
+
+# Clone Armies
+clone_army = {
+	damage = 1.00
+	health = 1.00
+	morale = 1.00
+	collateral_damage = 1.25
+	war_exhaustion = 0.50
+	time = 30
+	icon_frame = 7
+	pop_limited = no
+
+	resources = {
+		category = armies
+		cost = {
+			alloys = 37.5
+		}
+
+		upkeep = {
+			energy = 0.75
+		}
+	}
+
+	prerequisites = { "tech_gene_banks" }
+	
+	show_tech_unlock_if = {
+		OR = {
+			NOT = { has_authority = auth_machine_intelligence }
+			has_civic = civic_machine_assimilator
+		}
+	}
+	
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+		owner = {
+			OR = {
+				NOT = { has_authority = auth_machine_intelligence }
+				has_civic = civic_machine_assimilator
+			}
+		}
+	}
+}
+
+# Robotic Armies
+robotic_army = {
+	damage = 1.00
+	health = 2.00
+	morale_damage = 1.00
+	collateral_damage = 1.5
+	war_exhaustion = 0.50
+	has_morale = no
+	time = 90
+	icon_frame = 4
+	has_species = yes
+
+	resources = {
+		category = armies
+		cost = {
+			alloys = 75
+		}
+
+		upkeep = {
+			energy = 1.5
+		}
+	}
+
+	potential = {
+		from = { has_trait = "trait_mechanical" }
+		owner = {
+			NOT = { has_authority = auth_machine_intelligence }
+		}
+	}
+	
+	prerequisites = { "tech_droid_workers" }
+
+	allow = {
+		owner = { NOT = { has_policy_flag = robots_outlawed } }
+	}
+}
+
+# Psionic Armies
+psionic_army = {
+	damage = 2.0
+	morale_damage = 1.5
+	health = 1.75
+	morale = 2.5
+	collateral_damage = 0.5
+	war_exhaustion = 3.0
+	time = 120
+	icon_frame = 9
+
+	resources = {
+		category = armies
+		cost = {
+			alloys = 125
+		}
+
+		upkeep = {
+			energy = 2.5
+		}
+	}
+
+	prerequisites = { "tech_telepathy" }
+	potential = {
+		from = {
+			OR = {
+				NOT = { host_has_dlc = "Utopia" }
+				OR = {
+					has_trait = trait_latent_psionic
+					has_trait = trait_psionic
+				}
+			}
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+		owner = {
+			NOT = { has_authority = auth_machine_intelligence }
+		}
+	}
+}
+
+# Xenomorph Armies
+xenomorph_army = {
+	damage = 2.0
+	morale_damage = 2.0
+	collateral_damage = 5.0
+	war_exhaustion = 0.25
+	health = 2.0
+	has_morale = no
+	time = 100
+	icon_frame = 8
+	has_species = no
+
+	resources = {
+		category = armies
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	potential = {
+		owner = {
+			NOT = { has_authority = auth_machine_intelligence }
+		}
+	}
+	
+	prerequisites = { "tech_morphogenetic_field_mastery" }
+}
+
+# Gene Warrior Armies
+gene_warrior_army = {
+	damage = 2.0
+	health = 2.5
+	morale = 2.5
+	morale_damage = 1.0
+	collateral_damage = 0.75
+	war_exhaustion = 3.0
+	time = 150
+	icon_frame = 6
+
+	resources = {
+		category = armies
+		cost = {
+			alloys = 150
+		}
+
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	prerequisites = { "tech_gene_seed_purification" }
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_mechanical"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+		owner = {
+			NOT = { has_authority = auth_machine_intelligence }
+		}
+	}
+}
+
+### Machine Empire Armies
+
+# Hunter-Killer Armies
+machine_assault_1 = {
+	damage = 1.00
+	health = 1.00
+	has_morale = no
+	morale_damage = 1.00
+	collateral_damage = 2.0
+	war_exhaustion = 0.5
+	time = 90
+	has_species = yes
+
+	icon_frame = 11
+
+	resources = {
+		category = armies
+		cost = {
+			alloys = 50
+		}
+
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	potential = {
+		owner = { has_authority = auth_machine_intelligence }
+		from = {
+			has_trait = "trait_machine_unit"
+		}
+	}
+	
+	show_tech_unlock_if = { has_authority = auth_machine_intelligence }
+	
+	prerequisites = { "tech_assault_armies" }
+}
+
+# Battle Frames
+machine_assault_2 = {
+	damage = 1.5
+	health = 2.5
+	has_morale = no
+	morale_damage = 1.5
+	collateral_damage = 2.0
+	war_exhaustion = 1.0
+	time = 120
+	has_species = yes
+
+	icon_frame = 11
+
+	resources = {
+		category = armies
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	potential = {
+		owner = { has_authority = auth_machine_intelligence }
+		from = {
+			has_trait = "trait_machine_unit"
+		}
+	}
+	
+	prerequisites = { "tech_adaptive_combat_algorithms" }
+}
+
+# Mega-Warform
+machine_assault_3 = {
+	damage = 4.0
+	health = 6.0
+	has_morale = no
+	morale_damage = 1.5
+	collateral_damage = 4.0
+	war_exhaustion = 4.0
+	time = 500
+	has_species = no
+
+	icon_frame = 11
+
+	resources = {
+		category = armies
+		cost = {
+			alloys = 400
+		}
+
+		upkeep = {
+			energy = 8
+		}
+	}
+
+	potential = {
+		owner = { has_authority = auth_machine_intelligence }
+	}
+	
+	prerequisites = { "tech_biomechanics" }
+}

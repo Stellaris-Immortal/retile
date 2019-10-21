@@ -1,0 +1,569 @@
+#############
+# Capital buildings
+#############
+
+# Colony
+building_colony_shelter = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+	}
+	
+	convert_to = {
+		building_hive_colony
+		building_deployment_post
+	}
+
+	upgrades = {
+		building_capital
+	}
+	
+	resources = {
+		category = planet_buildings
+		upkeep = {
+			energy = 5
+			#alloys = 1
+		}		
+	}
+
+	planet_modifier = {
+		planet_housing_add = 1
+		job_colonist_add = 1
+		#pop_growth_speed_reduction = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_tradition = tr_expansion_colonization_fever }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_colonist_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_swapped_tradition = tr_adaptability_adaptive_ecology }
+		}
+		modifier = {
+			planet_max_buildings_add = 1
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+	}	
+}
+
+# Planetary Administration
+building_capital = {
+	base_buildtime = 480
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+	}
+	
+	allow = {
+		num_pops >= 5
+	}
+	
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	show_tech_unlock_if = { 
+		is_regular_empire = yes
+	}
+	
+	upgrades = {
+		"building_major_capital"
+	}
+	
+	convert_to = {
+		building_hive_capital
+		building_machine_capital
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = 250
+		}	
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}		
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+		job_clerk_add = 1
+		planet_max_buildings_add = 1
+		#pop_growth_speed_reduction = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { OR = {
+				has_civic = civic_mechanists
+				is_mechanical_empire = yes
+			} }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_roboticist_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOR = {
+					has_authority = auth_corporate
+					has_civic = civic_exalted_priesthood 
+					has_civic = civic_aristocratic_elite
+					has_civic = civic_merchant_guilds
+					has_civic = civic_technocracy
+					has_civic = civic_shared_burden
+					has_civic = civic_byzantine_bureaucracy
+				}
+			}					
+		}
+		modifier = {
+			job_administrator_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_byzantine_bureaucracy }					
+		}
+		modifier = {
+			job_bureaucrat_add = 1
+		}
+	}	
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_authority = auth_corporate }
+		}
+		modifier = {
+			job_executive_add = 1
+		}
+	}	
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_exalted_priesthood }					
+		}
+		modifier = {
+			job_high_priest_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_aristocratic_elite }					
+		}
+		modifier = {
+			job_noble_add = 1
+		} 
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_technocracy }					
+		}
+		modifier = {
+			job_head_researcher_add = 1
+		} 
+	}		
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_merchant_guilds }					
+		}
+		modifier = {
+			job_merchant_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_shared_burden }
+		}
+		modifier = {
+			job_clerk_add = 1
+		}
+	}	
+
+	ai_weight = {
+		weight = 1000000
+		
+		#modifier = {
+		#	weight = 0
+		#	retile_ready = no
+		#}
+	}
+}
+
+# Major Capital
+building_major_capital = {
+	base_buildtime = 600
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+	}
+	
+	allow = {
+		num_pops >= 10
+	}
+	
+	prerequisites = {
+		"tech_colonial_centralization"
+	}
+	show_tech_unlock_if = { 
+		is_regular_empire = yes
+	}
+	
+	upgrades = {
+		"building_system_capital"
+	}
+	
+	convert_to = {
+		building_hive_major_capital
+		building_machine_major_capital	
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = 500
+		}	
+		upkeep = {
+			energy = 25
+			#alloys = 1
+		}		
+	}
+
+	planet_modifier = {
+		planet_housing_add = 3
+		job_clerk_add = 2
+		planet_max_buildings_add = 2
+		#pop_growth_speed_reduction = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { OR = {
+				has_civic = civic_mechanists
+				is_mechanical_empire = yes
+			} }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_roboticist_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOR = {
+					has_authority = auth_corporate
+					has_civic = civic_exalted_priesthood 
+					has_civic = civic_aristocratic_elite
+					has_civic = civic_merchant_guilds
+					has_civic = civic_technocracy
+					has_civic = civic_shared_burden
+					has_civic = civic_byzantine_bureaucracy
+				}
+			}					
+		}
+		modifier = {
+			job_administrator_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_byzantine_bureaucracy }					
+		}
+		modifier = {
+			job_bureaucrat_add = 1
+		}
+	}	
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_authority = auth_corporate }
+		}
+		modifier = {
+			job_executive_add = 1
+		}
+	}	
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_exalted_priesthood }					
+		}
+		modifier = {
+			job_high_priest_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_aristocratic_elite }					
+		}
+		modifier = {
+			job_noble_add = 1
+		} 
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_technocracy }					
+		}
+		modifier = {
+			job_head_researcher_add = 1
+		} 
+	}		
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_merchant_guilds }					
+		}
+		modifier = {
+			job_merchant_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_shared_burden }
+		}
+		modifier = {
+			job_clerk_add = 1
+		}
+	}	
+
+
+	ai_weight = {
+		weight = 1000000
+		
+		#modifier = {
+		#	weight = 0
+		#	retile_ready = no
+		#}
+	}
+}
+
+building_system_capital = {
+	base_buildtime = 900
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+	}
+
+	allow = {
+		num_pops >= 15
+	}
+
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+	show_tech_unlock_if = { 
+		is_regular_empire = yes
+	}
+	
+	convert_to = {
+		building_machine_system_capital
+		building_hive_system_capital		
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = 1000
+		}		
+		upkeep = {
+			energy = 50
+			#alloys = 1
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 4
+		job_clerk_add = 2
+		job_diplomat_add = 1
+		planet_max_buildings_add = 3
+		#pop_growth_speed_reduction = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { OR = {
+				has_civic = civic_mechanists
+				is_mechanical_empire = yes
+			} }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_roboticist_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				NOR = {
+					has_authority = auth_corporate
+					has_civic = civic_exalted_priesthood 
+					has_civic = civic_aristocratic_elite
+					has_civic = civic_merchant_guilds
+					has_civic = civic_technocracy
+					has_civic = civic_shared_burden
+					has_civic = civic_byzantine_bureaucracy
+				}
+			}					
+		}
+		modifier = {
+			job_administrator_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_byzantine_bureaucracy }					
+		}
+		modifier = {
+			job_bureaucrat_add = 1
+		}
+	}	
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_authority = auth_corporate }
+		}
+		modifier = {
+			job_executive_add = 1
+		}
+	}	
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_exalted_priesthood }					
+		}
+		modifier = {
+			job_high_priest_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_aristocratic_elite }					
+		}
+		modifier = {
+			job_noble_add = 1
+		} 
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_technocracy }					
+		}
+		modifier = {
+			job_head_researcher_add = 1
+		} 
+	}		
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_merchant_guilds }					
+		}
+		modifier = {
+			job_merchant_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_shared_burden }
+		}
+		modifier = {
+			job_clerk_add = 1
+		}
+	}	
+
+
+	ai_weight = {
+		weight = 1000000
+		
+		#modifier = {
+		#	weight = 0
+		#	retile_ready = no
+		#}
+	}
+}

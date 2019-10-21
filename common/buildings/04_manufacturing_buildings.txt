@@ -1,0 +1,740 @@
+@cost_low = 250
+@cost_med = 500
+@cost_high = 750
+@cost_ultra = 1000
+
+#############
+# Resource buildings
+#############
+building_foundry_1 = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = manufacturing
+	
+	potential = {
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	allow = {
+		retile_urban = yes
+		custom_tooltip = {
+			fail_text = "retile_requires_engineering_arcology"
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				num_districts = { type = district_engineering_arcology value > 0 }
+			}
+		}
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		retile_urban = no
+		
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}
+	}
+	
+	upgrades = {
+		building_foundry_2
+	}
+
+	prerequisites = {
+		tech_basic_industry
+	}	
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_foundry_1_effect
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# Safe to develop our empire?
+			weight = 200
+			retile_basic_economy = yes
+		}
+		modifier = {	# alloys security
+			factor = 10
+			OR = {
+				owner = { has_monthly_income = { resource = alloys value < 25 } }
+				AND = {
+					years_passed > 100
+					owner = { has_monthly_income = { resource = alloys value < 50 } }
+				}
+				AND = {
+					years_passed > 200
+					owner = { has_monthly_income = { resource = alloys value < 100 } }
+				}
+			}
+		}
+		modifier = {	# Ministry!!!
+			factor = 5
+			OR = {
+				has_building = building_ministry_production
+				has_building = building_production_center
+			}
+		}
+	}
+
+	ai_resource_production = {
+		alloys = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_foundry_2 = {
+	base_buildtime = 480
+	can_build = no
+	category = manufacturing
+
+	destroy_trigger = {
+		retile_urban = no
+	}
+	
+	allow = {
+		#retile_ready = yes
+		always = yes
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			volatile_motes = @cost_med
+		}
+		upkeep = {
+			energy = 25
+			#alloys = 1
+		}
+	}
+	
+	upgrades = {
+		building_foundry_3
+	}
+
+	prerequisites = {
+		tech_alloys_1
+	}	
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_foundry_2_effect
+	}
+
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+
+	ai_resource_production = {
+		alloys = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_foundry_3 = {
+	base_buildtime = 600
+	can_build = no
+	category = manufacturing
+
+	destroy_trigger = {
+		retile_urban = no
+	}
+	
+	allow = {
+		#retile_ready = yes
+		always = yes
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_high
+			volatile_motes = @cost_high
+		}
+		upkeep = {
+			energy = 50
+			#alloys = 1
+		}
+	}
+
+	prerequisites = {
+		tech_alloys_2
+	}	
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_custodian_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_maintenance_drone_add = 3
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_foundry_3_effect
+	}
+	
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		alloys = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_factory_1 = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = manufacturing
+	
+	potential = {
+		exists = owner
+		owner = { country_uses_goods = yes }
+	}
+
+	allow = {
+		retile_urban = yes
+		custom_tooltip = {
+			fail_text = "retile_requires_engineering_arcology"
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				num_districts = { type = district_engineering_arcology value > 0 }
+			}
+		}
+		#retile_ready = yes
+	}
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			owner = { country_uses_goods = no }
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}	
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}
+	}	
+	
+	prerequisites = {
+		tech_basic_industry
+	}
+	
+	upgrades = {
+		building_factory_2
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_maintenance_drone_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_factory_1_effect
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# Safe to develop our empire?
+			weight = 200
+			AND = {
+				retile_basic_economy = yes
+				owner = { country_uses_goods = yes }
+				owner = { has_monthly_income = { resource = consumer_goods value < 25 } }
+			}
+		}
+		modifier = {	# Goods emergency...
+			factor = 20
+			owner = { has_monthly_income = { resource = consumer_goods value < 5 } }
+		}
+		modifier = {	# Ministry!!!
+			factor = 5
+			OR = {
+				has_building = building_ministry_production
+				has_building = building_production_center
+			}
+		}
+	}
+
+	ai_resource_production = {
+		consumer_goods = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_factory_2 = {
+	base_buildtime = 480
+	can_build = no
+	category = manufacturing
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			owner = { country_uses_goods = no }
+		}
+	}
+	
+	allow = {
+		#retile_ready = yes
+		always = yes
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+			exotic_gases = @cost_med
+		}	
+		upkeep = {
+			energy = 25
+			#alloys = 1
+		}
+	}	
+	
+	prerequisites = {
+		tech_luxuries_1
+	}
+	
+	upgrades = {
+		building_factory_3
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_factory_1_effect
+	}
+	
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		consumer_goods = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_factory_3 = {
+	base_buildtime = 600
+	can_build = no
+	category = manufacturing
+	
+	destroy_trigger = {
+		OR = {
+			retile_urban = no
+			owner = { country_uses_goods = no }
+		}
+	}
+	
+	allow = {
+		#retile_ready = yes
+		always = yes
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_high
+			exotic_gases = @cost_high	
+		}	
+		upkeep = {
+			energy = 50
+			#alloys = 1
+		}
+	}	
+	
+	prerequisites = {
+		tech_luxuries_2
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_custodian_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_maintenance_drone_add = 3
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_factory_1_effect
+	}
+	
+	ai_weight = {	# always upgrade
+		weight = 100000
+	}
+
+	ai_resource_production = {
+		consumer_goods = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_ministry_production = {
+	base_buildtime = 480	
+	base_cap_amount = 1
+	icon = building_production_center
+
+	category = manufacturing
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+		custom_tooltip = {
+			fail_text = "retile_requires_engineering_arcology"
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				num_districts = { type = district_engineering_arcology value > 0 }
+			}
+		}
+	}
+
+	allow = {
+		#retile_ready = yes
+		retile_urban = yes
+	}
+
+	destroy_trigger = {
+		OR = {
+			owner = { is_regular_empire = no }
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	convert_to = {
+		building_production_center
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}
+	}
+	
+	prerequisites = {
+		"tech_global_production_strategy"
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 1
+			job_executive_add = 1
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_ministry_production_effect
+	}
+	
+	show_tech_unlock_if = { 
+		is_regular_empire = yes
+	}
+	
+	ai_weight = {	# only built on goods or alloys worlds
+		weight = 0
+		
+		modifier = {	# really good, but only build if we are already doing this...
+			weight = 10000
+			OR = {
+				has_building = building_foundry_1
+				has_building = building_foundry_2
+				has_building = building_foundry_3
+				has_building = building_factory_1
+				has_building = building_factory_2
+				has_building = building_factory_3
+			}
+		}
+	}
+	
+	ai_resource_production = {
+		alloys = 1
+		consumer_goods = 1
+		trigger = {
+			always = yes
+		}
+	}
+}
+
+building_production_center = {
+	base_buildtime = 480	
+	base_cap_amount = 1
+
+	category = manufacturing
+	
+	potential = {
+		exists = owner
+		owner = { is_gestalt = yes }
+	}
+
+	allow = {
+		#retile_ready = yes
+		retile_urban = yes
+	}
+
+	destroy_trigger = {
+		owner = { is_gestalt = no }
+	}
+	
+	convert_to = {
+		building_ministry_production
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 10
+			#alloys = 1
+		}
+	}
+
+	prerequisites = {
+		"tech_global_production_strategy"
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_production_center_effect
+	}
+	
+	show_tech_unlock_if = { 
+		is_gestalt = yes
+	}
+	
+	ai_weight = {	# only built on goods or alloys worlds
+		weight = 0
+		
+		modifier = {	# really good, but only build if we are already doing this...
+			weight = 10000
+			OR = {
+				has_building = building_foundry_1
+				has_building = building_foundry_2
+				has_building = building_foundry_3
+				has_building = building_factory_1
+				has_building = building_factory_2
+				has_building = building_factory_3
+			}
+		}
+	}
+	
+	ai_resource_production = {
+		alloys = 1
+		consumer_goods = 1
+		trigger = {
+			always = yes
+		}
+	}
+}

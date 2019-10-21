@@ -1,0 +1,254 @@
+tr_harmony_adopt = {
+	modifier = {
+		planet_pops_organics_food_upkeep_mult = -0.10
+	}
+	
+	tradition_swap = {
+		name = tr_synchronicity_machine_adopt
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_machine_empire = yes
+		}
+		modifier = {
+			planet_pops_robotics_upkeep_mult = -0.10
+		}
+		weight = {
+			factor = 1
+		}
+	}
+
+	tradition_swap = {
+		name = tr_synchronicity_hive_adopt
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_hive_empire = yes
+		}
+		modifier = {
+			planet_pops_organics_food_upkeep_mult = -0.10
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_egalitarian
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_egalitarian
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_authoritarian
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_authoritarian
+		}	
+		modifier = {
+			factor = 2
+			has_ethic = ethic_spiritualist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				AND = {
+					has_tradition = tr_diplomacy_adopt
+					NOT = { has_tradition = tr_diplomacy_finish }
+				}
+				AND = {
+					has_tradition = tr_discovery_adopt
+					NOT = { has_tradition = tr_discovery_finish }
+				}
+				AND = {
+					has_tradition = tr_domination_adopt
+					NOT = { has_tradition = tr_domination_finish }
+				}
+				AND = {
+					has_tradition = tr_expansion_adopt
+					NOT = { has_tradition = tr_expansion_finish }
+				}
+				AND = {
+					has_tradition = tr_prosperity_adopt
+					NOT = { has_tradition = tr_prosperity_finish }
+				}
+				AND = {
+					has_tradition = tr_supremacy_adopt
+					NOT = { has_tradition = tr_supremacy_finish }
+				}
+			}
+		}
+	}
+}
+
+tr_harmony_finish = {
+	modifier = {
+		planet_stability_add = 5
+		ascension_perks_add = 1
+	}
+	
+	tradition_swap = {
+		name = tr_synchronicity_finish
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_gestalt = yes
+		}
+		modifier = {
+			planet_stability_add = 5
+			ascension_perks_add = 1		
+		}		
+		weight = {
+			factor = 1
+		}
+	}
+}
+
+tr_harmony_the_greater_good = {	
+	modifier = {
+		planet_amenities_mult = -0.20
+	}
+	
+	tradition_swap = {
+		name = tr_synchronicity_integrated_preservation
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_gestalt = yes
+		}
+		modifier = {
+			planet_amenities_no_happiness_mult = -0.20
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_harmony_kinship = {
+	
+	modifier = {
+		pop_growth_speed = 0.10
+	}
+	
+	tradition_swap = {
+		name = tr_synchronicity_kinship_gestalt
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_gestalt = yes
+		}
+		modifier = {
+			planet_pops_upkeep_mult = -0.10
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_harmony_utopian_dream = {
+	possible = {
+		has_tradition = tr_harmony_the_greater_good
+	}
+	
+	modifier = {
+		pop_happiness = 0.05
+	}
+	
+	tradition_swap = {
+		name = tr_synchronicity_collective_reasoning
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_gestalt = yes
+		}
+		modifier = {
+			pop_resettlement_cost_mult = -0.25
+		}
+		weight = {
+			factor = 1
+		}
+	}	
+	
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_harmony_bulwark_of_harmony = {
+	possible = {
+		has_tradition = tr_harmony_kinship
+		has_tradition = tr_harmony_mind_and_body
+	}
+	
+	modifier = {
+		starbase_defensive_war_ship_build_speed_mult = 0.33
+		ship_home_territory_fire_rate_mult = 0.15
+	}
+
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_harmony_mind_and_body = {
+	
+	modifier = {
+		leader_age = 20
+	}
+
+	tradition_swap = {
+		name = tr_synchronicity_cloned_organs
+		inherit_effects = yes
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_hive_empire = yes
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_synchronicity_self_preservation
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			is_machine_empire = yes
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}
