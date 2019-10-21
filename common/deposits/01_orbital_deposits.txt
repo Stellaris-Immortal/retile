@@ -13,7 +13,7 @@ d_minerals_asteroid_small = {
 	resources = {
 		category = orbital_mining_deposits
 		produces = {
-			minerals = 4
+			minerals = 2
 		}
 	}
 	
@@ -28,7 +28,7 @@ d_minerals_asteroid = {
 	resources = {
 		category = orbital_mining_deposits
 		produces = {
-			minerals = 6
+			minerals = 4
 		}
 	}
 	
@@ -43,7 +43,7 @@ d_minerals_random = {
 	resources = {
 		category = orbital_mining_deposits
 		produces = {
-			minerals = 6
+			minerals = 4
 		}
 	}
 	
@@ -65,7 +65,7 @@ d_minerals_moon = {
 	resources = {
 		category = orbital_mining_deposits
 		produces = {
-			minerals = 4
+			minerals = 2
 		}
 	}
 	station = shipclass_mining_station
@@ -78,7 +78,7 @@ d_minerals_moon = {
 		}	
 	}
 	drop_weight = {
-		weight = 40
+		weight = 20
 		modifier = {
 			factor = 0
 			is_moon = no
@@ -100,18 +100,18 @@ d_minerals_moon = {
 			is_inside_nebula = yes
 		}
 		modifier = {
-			factor = 3
+			factor = 5
 			is_star_class = sc_black_hole
 			is_star_class = sc_neutron_star
 			is_star_class = sc_pulsar
 		}
 		modifier = {
-			factor = 2	
+			factor = 2
 			is_star_class = sc_m
 			is_star_class = sc_m_giant
 		}
 		modifier = {
-			factor = 0.5
+			factor = 0.4
 			is_star_class = sc_binary_1
 			is_star_class = sc_binary_2
 			is_star_class = sc_binary_4
@@ -120,7 +120,7 @@ d_minerals_moon = {
 			is_star_class = sc_binary_10
 		}
 		modifier = {
-			factor = 0.25
+			factor = 0.2
 			is_star_class = sc_f
 			is_star_class = sc_g
 			is_star_class = sc_binary_3
@@ -129,7 +129,7 @@ d_minerals_moon = {
 			is_star_class = sc_trinary_3
 		}
 		modifier = {
-			factor = 0.125
+			factor = 0.1
 			is_star_class = sc_a
 			is_star_class = sc_b
 			is_star_class = sc_binary_5
@@ -144,7 +144,7 @@ d_minerals_world = {
 	resources = {
 		category = orbital_mining_deposits
 		produces = {
-			minerals = 8
+			minerals = 6
 		}
 	}
 	station = shipclass_mining_station
@@ -157,7 +157,7 @@ d_minerals_world = {
 		}	
 	}
 	drop_weight = {
-		weight = 40
+		weight = 20
 		modifier = {
 			factor = 0
 			is_moon = yes
@@ -179,7 +179,7 @@ d_minerals_world = {
 			is_inside_nebula = yes
 		}
 		modifier = {
-			factor = 2.5
+			factor = 5
 			is_star_class = sc_black_hole
 			is_star_class = sc_neutron_star
 			is_star_class = sc_pulsar
@@ -190,7 +190,7 @@ d_minerals_world = {
 			is_star_class = sc_m_giant
 		}
 		modifier = {
-			factor = 0.25
+			factor = 0.2
 			is_star_class = sc_binary_1
 			is_star_class = sc_binary_2
 			is_star_class = sc_binary_4
@@ -199,7 +199,7 @@ d_minerals_world = {
 			is_star_class = sc_binary_10
 		}
 		modifier = {
-			factor = 0.125
+			factor = 0.1
 			is_star_class = sc_f
 			is_star_class = sc_g
 			is_star_class = sc_binary_3
@@ -979,9 +979,9 @@ d_trade_value_medium = {
 	}
 	
 	drop_weight = {
-		weight = 30
+		weight = 40
 		modifier = {
-			factor = 0.5
+			factor = 0.2
 			is_planet_class = pc_gas_giant
 		}
 		modifier = {
@@ -1029,11 +1029,18 @@ d_trade_value_large = {
 	}
 	
 	potential = {
-		is_planet_class = pc_gas_giant
+		OR = {
+			is_planet_class = pc_gas_giant
+			is_planet_class = pc_ice_asteroid
+		}
 	}
 	
 	drop_weight = {
-		weight = 10
+		weight = 20
+		modifier = {
+			factor = 0.2
+			is_planet_class = pc_gas_giant
+		}
 		modifier = {
 			factor = 2.5
 			is_star_class = sc_neutron_star

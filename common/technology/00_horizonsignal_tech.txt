@@ -1,0 +1,76 @@
+tech_akx_worm_1 = {
+	area = physics
+	start_tech = no
+	cost = @horizontechcost1
+	is_rare = yes
+	tier = @horizontechtier
+	category = { field_manipulation }
+	prerequisites = { }
+	weight = 60 # allows tech to show after research_all_technologies
+	
+	ai_weight = {
+		factor = 0
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			always = yes
+		}
+	}
+	
+	prereqfor_desc = {
+		custom = {
+			title = "tech_akx_worm_partial_custom"
+			desc = "tech_akx_worm_partial_custom_desc"
+		}
+	}
+}
+
+tech_akx_worm_2 = {
+	area = society
+	start_tech = no
+	cost = @horizontechcost1
+	is_rare = yes
+	tier = @horizontechtier
+	category = { statecraft }	
+	prerequisites = { }
+	weight = 60
+	
+	ai_weight = {
+		factor = 0
+	}
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			always = yes
+		}
+	}
+	
+	prereqfor_desc = {
+		custom = {
+			title = "tech_akx_worm_partial_custom"
+			desc = "tech_akx_worm_partial_custom_desc"
+		}
+	}
+}
+
+tech_akx_worm_3 = {
+	area = physics
+	start_tech = no
+	cost = @horizontechcost2
+	is_rare = yes
+	tier = @horizontechtier
+	category = { particles }	
+	prerequisites = { "tech_akx_worm_1" "tech_akx_worm_2" }
+	weight = 60
+	
+	modifier = {
+		description = tech_akx_worm_3_effect
+	}
+	
+	ai_weight = {
+		factor = 0
+	}
+}

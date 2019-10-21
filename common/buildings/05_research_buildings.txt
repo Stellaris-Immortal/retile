@@ -86,12 +86,29 @@ building_research_lab_1 = {
 		weight = 0
 		
 		modifier = {	# Safe to advance our empire?
-			weight = 500
+			weight = 150
 			retile_advanced_economy = yes
 		}
 		modifier = {	# behind in tech!!!
-			weight = 1000
-			owner = { retile_tech_weak = yes }
+			weight = 10
+			owner = {
+				any_neighbor_country = { 
+					count >= 1
+					is_country_type = default
+					prev = {
+						relative_power = { 
+							who = prev
+							category = technology 
+							value > equivalent
+						}
+						relative_power = { 
+							who = prev 
+							category = all 
+							value < superior
+						}
+					}
+				}
+			}
 		}
 		modifier = {	# Ministry!!!
 			factor = 5
@@ -100,9 +117,13 @@ building_research_lab_1 = {
 				has_building = building_supercomputer
 			}
 		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
+		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
 		}
 	}
 	
@@ -357,7 +378,7 @@ building_institute = {
 		is_regular_empire = yes
 	}
 	
-	ai_weight = {	# only built on research worlds
+	ai_weight = {	# only built on goods or alloys worlds
 		weight = 0
 		
 		modifier = {	# really good, but only build if we are already doing this...
@@ -459,7 +480,7 @@ building_supercomputer = {
 		is_gestalt = yes
 	}
 	
-	ai_weight = {	# only built on research worlds
+	ai_weight = {	# only built on goods or alloys worlds
 		weight = 0
 		
 		modifier = {	# really good, but only build if we are already doing this...

@@ -88,7 +88,7 @@ building_foundry_1 = {
 		weight = 0
 		
 		modifier = {	# Safe to develop our empire?
-			weight = 200
+			weight = 150
 			retile_basic_economy = yes
 		}
 		modifier = {	# alloys security
@@ -111,6 +111,10 @@ building_foundry_1 = {
 				has_building = building_ministry_production
 				has_building = building_production_center
 			}
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
 		}
 	}
 
@@ -359,16 +363,12 @@ building_factory_1 = {
 		weight = 0
 		
 		modifier = {	# Safe to develop our empire?
-			weight = 200
+			weight = 1000
 			AND = {
 				retile_basic_economy = yes
 				owner = { country_uses_goods = yes }
-				owner = { has_monthly_income = { resource = consumer_goods value < 25 } }
+				owner = { has_monthly_income = { resource = consumer_goods value < 10 } }
 			}
-		}
-		modifier = {	# Goods emergency...
-			factor = 20
-			owner = { has_monthly_income = { resource = consumer_goods value < 5 } }
 		}
 		modifier = {	# Ministry!!!
 			factor = 5
@@ -376,6 +376,10 @@ building_factory_1 = {
 				has_building = building_ministry_production
 				has_building = building_production_center
 			}
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
 		}
 	}
 

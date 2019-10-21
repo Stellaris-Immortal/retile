@@ -767,6 +767,127 @@ healthcare = {
 	}
 }
 
+trade_policy = {
+	potential = {	
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+
+	option = {
+		name = "trade_policy_default"
+		
+		policy_flags = {
+			trade_conversion_default
+		}
+		
+		AI_weight = {
+			factor = 1
+			modifier = {
+				factor = 0
+				has_policy_flag = trade_conversion_consumer_goods
+				OR = {
+					has_monthly_income = { resource = consumer_goods value < 100 }
+					has_resource = { type = consumer_goods amount < 15000 }
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "trade_policy_consumer_goods"
+		
+		policy_flags = {
+			trade_conversion_consumer_goods
+		}
+		
+		modifier = {}
+		
+		AI_weight = {
+            weight = -100
+            modifier = {
+                weight = 100000
+                has_monthly_income = { resource = consumer_goods value < 1 }
+            }
+            modifier = {
+                factor = 0
+				AND = {
+					has_monthly_income = { resource = consumer_goods value > 100 }
+					has_resource = { type = consumer_goods amount > 15000 }
+				}
+            }
+        }
+	}	
+	
+	option = {
+		name = "trade_policy_protectionism"
+		
+		policy_flags = {
+			trade_conversion_protectionism
+		}
+		
+		modifier = {
+			country_trade_fee = 0.50
+		}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+	
+	option = {
+		name = "trade_policy_unity"
+		
+		policy_flags = {
+			trade_conversion_unity
+		}
+		
+		potential = {
+			has_technology = tech_planetary_unification
+		}		
+		
+		modifier = {}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}	
+	
+	option = {
+		name = "trade_policy_research"
+		
+		potential = {
+			has_technology = tech_planetary_unification
+		}
+		
+		policy_flags = {
+			trade_conversion_research
+		}		
+		
+		modifier = {}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "trade_policy_influence"
+		
+		potential = {
+			has_technology = tech_colonial_centralization
+		}
+		
+		policy_flags = {
+			trade_conversion_influence
+		}		
+		
+		modifier = {}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}	
+}
+
 population_controls = {
 	potential = {
 		NOT = { has_ethic = "ethic_gestalt_consciousness" }
@@ -1009,6 +1130,43 @@ first_contact_protocol = {
 	}
 }
 
+xenodiplomacy = {
+	potential = {
+		has_country_flag = first_contact_event
+	}
+	
+	option = {
+		name = "xenodiplomacy_none"
+		
+		modifier = { }
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+	
+	option = {
+		name = "xenodiplomacy_embassy"
+		
+		policy_flags = { xenodiplomacy_embassy }
+		modifier = { }
+		
+		valid = { 
+			has_country_flag = first_contact_event
+			NOR = {
+				has_valid_civic = "civic_fanatic_purifiers"
+				has_valid_civic = "civic_hive_devouring_swarm"
+				has_valid_civic = "civic_machine_terminator"
+				has_valid_civic = "civic_inwards_perfection"
+			}
+		}
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+}
+
 border_policy = {
 
 	potential = {
@@ -1062,120 +1220,6 @@ border_policy = {
 					has_ethic = ethic_fanatic_xenophobe
 				}
 			}			
-		}
-	}
-}
-
-trade_policy = {
-	potential = {	
-		NOT = { has_ethic = ethic_gestalt_consciousness }
-	}
-
-	option = {
-		name = "trade_policy_default"
-		
-		policy_flags = {
-			trade_conversion_default
-		}
-		
-		AI_weight = {
-			factor = 1
-		}
-	}
-
-	option = {
-		name = "trade_policy_consumer_goods"
-		
-		policy_flags = {
-			trade_conversion_consumer_goods
-		}
-		
-		modifier = {}
-		
-		AI_weight = {
-			factor = 0
-        }
-	}	
-	
-	option = {
-		name = "trade_policy_protectionism"
-		
-		policy_flags = {
-			trade_conversion_protectionism
-		}
-		
-		modifier = {
-			country_trade_fee = 0.50
-		}
-		
-		AI_weight = {
-			factor = 0
-		}
-	}
-	
-	option = {
-		name = "trade_policy_unity"
-		
-		potential = {
-			has_technology = tech_planetary_unification
-		}		
-		
-		modifier = {}
-		
-		AI_weight = {
-			factor = 0
-		}
-	}	
-	
-	option = {
-		name = "trade_policy_research"
-		
-		potential = {
-			has_technology = tech_planetary_unification
-		}
-		
-		policy_flags = {
-			trade_conversion_research
-		}		
-		
-		modifier = {}
-		
-		AI_weight = {
-			factor = 0
-		}
-	}
-
-	option = {
-		name = "trade_policy_influence"
-		
-		potential = {
-			has_technology = tech_colonial_centralization
-		}
-		
-		policy_flags = {
-			trade_conversion_influence
-		}		
-		
-		modifier = {}
-		
-		AI_weight = {
-			factor = 0
-		}
-	}
-	
-	option = {
-		name = "trade_policy_ai"
-		
-		policy_flags = {
-			trade_conversion_ai
-		}
-		
-		potential = {
-			is_ai = yes
-		}
-		
-		AI_weight = {
-			factor = 100
 		}
 	}
 }

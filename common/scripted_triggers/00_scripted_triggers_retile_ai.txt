@@ -25,11 +25,6 @@ retile_ready = {	# Planet scope
 # Does this country have excess pops and places for them to migrate to?
 retile_migrate_ready = { # country scope
 	AND = {
-		# is there a planet with free jobs in this empire?
-		any_owned_planet = { AND = {
-				free_jobs > 0
-				is_colony = yes
-		} }
 		# is there an unemployed pop in this empire?
 		any_owned_pop = { OR = {
 				AND = {
@@ -38,28 +33,13 @@ retile_migrate_ready = { # country scope
 				}
 				has_job = servant
 		} }
+		# is there a planet with free jobs in this empire?
+		any_owned_planet = { AND = {
+				free_jobs > 0
+				is_colony = yes
+				#free_housing > 0	# disabled because... potential problems?
+		} }
 	}
-}
-
-# Is our empire falling behind in technology?
-retile_tech_weak = {	# country scope
-	any_neighbor_country = {
-		count > 0
-		is_country_type = default
-		prev = {
-			relative_power = { # Does our neighbor have better tech than us?
-				who = prev
-				category = technology 
-				value > equivalent
-			}
-			relative_power = { # If this is false, everything is overwhelming... Don't try to compete...
-				who = prev 
-				category = all
-				value <= superior
-			}
-		}
-	}
-
 }
 
 # try to save the last building slot for housing most of the time
