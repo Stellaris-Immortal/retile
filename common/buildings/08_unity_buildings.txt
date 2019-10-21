@@ -112,12 +112,16 @@ building_autochthon_monument = {
 		weight = 0
 		
 		modifier = {	# Safe to advance our empire?
-			weight = 300
+			weight = 150
 			retile_advanced_economy = yes
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
 		}
 	}
 
@@ -422,16 +426,16 @@ building_temple = {
 		weight = 0
 		
 		modifier = {	# Safe to advance our empire?
-			weight = 600
+			weight = 300	# spiritualists like unity more...
 			retile_advanced_economy = yes
 		}
-		modifier = {
-			factor = 0.5
-			retile_tech_weak = yes
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
 		}
 	}
 
@@ -712,12 +716,16 @@ building_hive_node = {
 		weight = 0
 		
 		modifier = {	# Safe to advance our empire?
-			weight = 300
+			weight = 150
 			retile_advanced_economy = yes
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
 		}
 	}
 
@@ -998,12 +1006,16 @@ building_uplink_node = {
 		weight = 0
 		
 		modifier = {	# Safe to advance our empire?
-			weight = 300
+			weight = 150
 			retile_advanced_economy = yes
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
 		}
 	}
 
@@ -1305,12 +1317,16 @@ building_corporate_monument = {
 		weight = 0
 		
 		modifier = {	# Safe to advance our empire?
-			weight = 300
+			weight = 150
 			retile_advanced_economy = yes
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
 		}
 	}
 

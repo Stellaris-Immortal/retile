@@ -83,7 +83,27 @@ building_commercial_zone = {
 	}
 	
 	ai_weight = {
-		weight = 1000 # Just build it everywhere...
+		weight = 0
+		
+		modifier = {	# Help solve energy problems!!!
+			weight = 200000
+			OR = {
+				is_capital = yes
+				owner = { has_monthly_income = { resource = energy value < 25 } }
+			}
+		}
+		modifier = {	# goods security
+			weight = 20000
+			owner = { has_monthly_income = { resource = consumer_goods value < 25 } }
+		}
+		modifier = {	# Stock Exchange!!! (rarely relevant - ai should only build this one first...
+			factor = 5
+			has_building = building_galactic_stock_exchange
+		}
+		modifier = {	# save the last building slot for housing...
+			factor = 0
+			retile_housing_safe = no
+		}
 	}
 }
 
@@ -232,13 +252,13 @@ building_galactic_stock_exchange = {
 	}
 	
 	ai_weight = {
-		weight = 100	# really good, but let's not overdo it with these...
+		weight = 0
 		
-		modifier = {
-			factor = 10
+		modifier = {	# really good, but only build if we are already doing this...
+			weight = 10000
 			OR = {
-				owner = { has_authority = auth_corporate }
-				retile_advanced_economy = no
+				has_building = building_commercial_zone
+				has_building = building_commercial_megaplex
 			}
 		}
 	}

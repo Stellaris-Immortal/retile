@@ -220,24 +220,26 @@ decision_retile_deposit_assembly = {
 	
 	allow = {
 		free_district_slots > 0
-		#retile_ready = yes
+		hidden_trigger = {
+			retile_ready = yes
+		}
 	}
 
 	effect = {
 		custom_tooltip = decision_retile_deposit_assembly_effects
 		add_deposit = retile_deposit_assembly
+		hidden_effect = {
+			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		}
 	}
 	
 	ai_weight = {
-		weight = 1000000
+		weight = 0
 		modifier = {
-			factor = 0
-			NOT = { owner = { any_owned_planet = { OR = {
-				free_district_slots > 0
-				retile_ready = yes
-			} } } }
+			weight = 10000
+			free_district_slots > 4
 		}
-	}
+	}	
 }
 
 decision_retile_deposit_assembly_remove = {
@@ -255,11 +257,8 @@ decision_retile_deposit_assembly_remove = {
 	ai_weight = {
 		weight = 0
 		modifier = {
-			weight = 1
-			NOT = { owner = { any_owned_planet = { OR = {
-				free_district_slots > 0
-				retile_ready = yes
-			} } } }
+			weight = 10000
+			free_district_slots < 3
 		}
 	}	
 }

@@ -1080,6 +1080,14 @@ trade_policy = {
 		
 		AI_weight = {
 			factor = 1
+			modifier = {
+				factor = 0
+				has_policy_flag = trade_conversion_consumer_goods
+				OR = {
+					has_monthly_income = { resource = consumer_goods value < 100 }
+					has_resource = { type = consumer_goods amount < 15000 }
+				}
+			}
 		}
 	}
 
@@ -1093,7 +1101,18 @@ trade_policy = {
 		modifier = {}
 		
 		AI_weight = {
-			factor = 0
+            weight = -100
+            modifier = {
+                weight = 100000
+                has_monthly_income = { resource = consumer_goods value < 1 }
+            }
+            modifier = {
+                factor = 0
+				AND = {
+					has_monthly_income = { resource = consumer_goods value > 100 }
+					has_resource = { type = consumer_goods amount > 15000 }
+				}
+            }
         }
 	}	
 	
@@ -1115,6 +1134,10 @@ trade_policy = {
 	
 	option = {
 		name = "trade_policy_unity"
+		
+		policy_flags = {
+			trade_conversion_unity
+		}
 		
 		potential = {
 			has_technology = tech_planetary_unification
@@ -1161,23 +1184,7 @@ trade_policy = {
 		AI_weight = {
 			factor = 0
 		}
-	}
-	
-	option = {
-		name = "trade_policy_ai"
-		
-		policy_flags = {
-			trade_conversion_ai
-		}
-		
-		potential = {
-			is_ai = yes
-		}
-		
-		AI_weight = {
-			factor = 100
-		}
-	}
+	}	
 }
 
 artificial_intelligence_policy = {
