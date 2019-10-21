@@ -57,6 +57,26 @@ retile_housing_safe = { # planet scope
 	}
 }
 
+# Are we behind in tech?
+retile_tech_weak = {	# Country scope
+	any_neighbor_country = { 
+		count >= 1
+		is_country_type = default
+		prev = {
+			relative_power = { 
+				who = prev
+				category = technology 
+				value > equivalent
+			}
+			relative_power = { 
+				who = prev 
+				category = all
+				value < overwhelming
+			}
+		}
+	}
+}
+
 # Does the owning country have positive incomes in all basic resources?
 retile_basic_economy = {	# planet scope
 	AND = {
