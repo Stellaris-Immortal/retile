@@ -448,9 +448,24 @@ building_system_capital = {
 	planet_modifier = {
 		planet_housing_add = 4
 		job_clerk_add = 2
-		job_diplomat_add = 1
 		planet_max_buildings_add = 3
 		#pop_growth_speed_reduction = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { NOT = { has_policy_flag = xenodiplomacy_embassy } }
+		}
+		job_clerk_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_embassy }
+		}
+		job_diplomat_add = 1
 	}
 	
 	triggered_planet_modifier = {
