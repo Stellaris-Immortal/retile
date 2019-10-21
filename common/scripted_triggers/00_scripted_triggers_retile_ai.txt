@@ -7,15 +7,16 @@ retile_ready = {	# Planet scope
 			PREV = {
 				AND = {
 					has_building_construction = no
-					any_pop = {
-						OR = {
-							AND = {
-								is_unemployed = yes
-								NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
-							}
-							has_job = servant
-						}
-					}
+					free_jobs < 1
+			#		any_pop = {
+			#			OR = {
+			#				AND = {
+			#					is_unemployed = yes
+			#					NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+			#				}
+			#				has_job = servant
+			#			}
+			#		}
 				}
 			}
 		}

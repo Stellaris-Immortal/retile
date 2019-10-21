@@ -781,14 +781,6 @@ trade_policy = {
 		
 		AI_weight = {
 			factor = 1
-			modifier = {
-				factor = 0
-				has_policy_flag = trade_conversion_consumer_goods
-				OR = {
-					has_monthly_income = { resource = consumer_goods value < 100 }
-					has_resource = { type = consumer_goods amount < 15000 }
-				}
-			}
 		}
 	}
 
@@ -802,18 +794,7 @@ trade_policy = {
 		modifier = {}
 		
 		AI_weight = {
-            weight = -100
-            modifier = {
-                weight = 100000
-                has_monthly_income = { resource = consumer_goods value < 1 }
-            }
-            modifier = {
-                factor = 0
-				AND = {
-					has_monthly_income = { resource = consumer_goods value > 100 }
-					has_resource = { type = consumer_goods amount > 15000 }
-				}
-            }
+            factor = 0
         }
 	}	
 	
@@ -886,6 +867,18 @@ trade_policy = {
 			factor = 0
 		}
 	}	
+
+	option = {
+		name = "trade_policy_ai"
+		
+		policy_flags = {
+			trade_conversion_ai
+		}
+		
+		AI_weight = {
+			factor = 100
+		}
+	}
 }
 
 population_controls = {
