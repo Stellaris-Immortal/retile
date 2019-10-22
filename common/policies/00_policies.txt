@@ -11,6 +11,64 @@
 #
 ##########################################################################
 
+piracy = {
+	potential = {
+		has_technology = tech_adaptive_bureaucracy
+	}
+	
+	option = {
+		name = "piracy_hostile"
+		
+		modifier = { }
+		
+		on_enabled = { 
+			hidden_effect = {
+				every_country = {
+					limit = { is_country_type = pirate }
+					set_faction_hostility = {
+						set_hostile = yes
+						set_neutral = no
+						target = root
+					}
+				}
+			}
+		}
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = "piracy_peaceful"
+		
+		potential = {
+			has_technology = tech_adaptive_bureaucracy
+		}
+		
+		policy_flags = { piracy_peaceful }
+		
+		modifier = { trade_value_mult = -0.25 }
+		
+		on_enabled = {
+			hidden_effect = {
+				every_country = {
+					limit = { is_country_type = pirate }
+					set_faction_hostility = {
+						set_hostile = no
+						set_neutral = yes
+						target = root
+					}
+				}
+			}
+		}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+}
+
 war_philosophy = {
 
 	potential = {
@@ -516,6 +574,102 @@ resettlement = {
 	}
 }
 
+criminal = {
+	potential = {
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+	}
+	
+	option = {
+		name = "criminal_common_law"
+		
+		modifier = {
+			planet_crime_add = -50
+		}
+		
+		valid = {
+			NOR = {
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_fanatic_authoritarian
+				has_civic = civic_police_state
+			}
+		}
+		
+		policy_flags = { criminal_common_law }
+		
+		AI_weight = {
+			factor = 0
+			modifier = {
+				factor = 10
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "criminal_state_police"
+		
+		modifier = { }
+		
+		policy_flags = { criminal_state_police }
+		
+		AI_weight = {
+			factor = 1		
+		}
+	}
+	
+	option = {
+		name = "criminal_private_police"
+		
+		modifier = { }
+		
+		valid = {
+			has_civic = civic_police_state
+		}
+		
+		policy_flags = { criminal_private_police }
+		
+		AI_weight = {
+			factor = 0
+			modifier = {
+				factor = 10
+				OR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = "criminal_military_police"
+		
+		modifier = { }
+		
+		valid = {
+			NOR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist
+			}
+		}
+		
+		policy_flags = { criminal_military_police }
+		
+		AI_weight = {
+			factor = 0
+			modifier = {
+				factor = 10
+				OR = {
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
+				}
+			}
+		}
+	}
+}
+
 environmental = {
 	potential = {
 		NOT = { has_ethic = "ethic_gestalt_consciousness" }
@@ -815,22 +969,6 @@ trade_policy = {
 				}
             }
         }
-	}	
-	
-	option = {
-		name = "trade_policy_protectionism"
-		
-		policy_flags = {
-			trade_conversion_protectionism
-		}
-		
-		modifier = {
-			country_trade_fee = 0.50
-		}
-		
-		AI_weight = {
-			factor = 0
-		}
 	}
 	
 	option = {
@@ -1138,6 +1276,7 @@ xenodiplomacy = {
 	option = {
 		name = "xenodiplomacy_none"
 		
+		policy_flags = { xenodiplomacy_isolation }
 		modifier = { }
 		
 		AI_weight = {
