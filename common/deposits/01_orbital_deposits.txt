@@ -306,12 +306,15 @@ d_society_small = {
 	is_for_colonizeable = no
 	
 	potential = {
-		is_planet_class = pc_toxic
+		OR = {
+			is_planet_class = pc_toxic
+			is_planet_class = pc_gas_giant
+		}
 		planet_size < 15
 	}
 	
 	drop_weight = {
-		weight = 60
+		weight = 40
 		modifier = {
 			factor = 1.5
 			is_inside_nebula = yes
@@ -375,13 +378,16 @@ d_society_medium = {
 	is_for_colonizeable = no
 	
 	potential = {
-		is_planet_class = pc_toxic
+		OR = {
+			is_planet_class = pc_toxic
+			is_planet_class = pc_gas_giant
+		}
 		planet_size > 14
 		planet_size < 21
 	}
 	
 	drop_weight = {
-		weight = 50
+		weight = 30
 		modifier = {
 			factor = 2
 			is_inside_nebula = yes
@@ -445,12 +451,15 @@ d_society_large = {
 	is_for_colonizeable = no
 	
 	potential = {
-		is_planet_class = pc_toxic
+		OR = {
+			is_planet_class = pc_toxic
+			is_planet_class = pc_gas_giant
+		}
 		planet_size > 21
 	}
 	
 	drop_weight = {
-		weight = 40
+		weight = 25
 		modifier = {
 			factor = 2
 			is_inside_nebula = yes
@@ -918,7 +927,7 @@ d_trade_value_small = {
 	is_for_colonizeable = no
 		
 	planet_modifier = {
-		trade_value_add = 4
+		trade_value_add = 5
 	}
 	
 	potential = {
@@ -926,40 +935,7 @@ d_trade_value_small = {
 	}
 	
 	drop_weight = {
-		weight = 80
-		modifier = {
-			factor = 1.25
-			is_star_class = sc_neutron_star
-			is_star_class = sc_pulsar
-			is_star_class = sc_black_hole	
-		}
-		modifier = {
-			factor = 0.75
-			is_star_class = sc_binary_1
-			is_star_class = sc_binary_2
-			is_star_class = sc_binary_4
-			is_star_class = sc_binary_6
-			is_star_class = sc_binary_7
-			is_star_class = sc_binary_10
-		}
-		modifier = {
-			factor = 0.5
-			is_star_class = sc_f
-			is_star_class = sc_g
-			is_star_class = sc_binary_3
-			is_star_class = sc_binary_8
-			is_star_class = sc_trinary_1
-			is_star_class = sc_trinary_3
-		}
-		modifier = {
-			factor = 0.25
-			is_star_class = sc_a
-			is_star_class = sc_b
-			is_star_class = sc_binary_5
-			is_star_class = sc_binary_9
-			is_star_class = sc_trinary_2
-			is_star_class = sc_trinary_4
-		}
+		weight = 500
 	}
 }
 
@@ -968,55 +944,15 @@ d_trade_value_medium = {
 	is_for_colonizeable = no
 		
 	planet_modifier = {
-		trade_value_add = 6
+		trade_value_add = 10
 	}
 	
 	potential = {
-		OR = {
-			is_planet_class = pc_gas_giant
-			is_planet_class = pc_ice_asteroid
-		}
+		is_planet_class = pc_ice_asteroid
 	}
 	
 	drop_weight = {
-		weight = 40
-		modifier = {
-			factor = 0.2
-			is_planet_class = pc_gas_giant
-		}
-		modifier = {
-			factor = 1.5
-			is_star_class = sc_neutron_star
-			is_star_class = sc_pulsar
-			is_star_class = sc_black_hole		
-		}
-		modifier = {
-			factor = 0.75
-			is_star_class = sc_binary_1
-			is_star_class = sc_binary_2
-			is_star_class = sc_binary_4
-			is_star_class = sc_binary_6
-			is_star_class = sc_binary_7
-			is_star_class = sc_binary_10
-		}
-		modifier = {
-			factor = 0.5
-			is_star_class = sc_f
-			is_star_class = sc_g
-			is_star_class = sc_binary_3
-			is_star_class = sc_binary_8
-			is_star_class = sc_trinary_1
-			is_star_class = sc_trinary_3
-		}
-		modifier = {
-			factor = 0.25
-			is_star_class = sc_a
-			is_star_class = sc_b
-			is_star_class = sc_binary_5
-			is_star_class = sc_binary_9
-			is_star_class = sc_trinary_2
-			is_star_class = sc_trinary_4
-		}
+		weight = 50
 	}
 }
 
@@ -1025,63 +961,15 @@ d_trade_value_large = {
 	is_for_colonizeable = no
 		
 	planet_modifier = {
-		trade_value_add = 8
+		trade_value_add = 15
 	}
 	
 	potential = {
-		OR = {
-			is_planet_class = pc_gas_giant
-			is_planet_class = pc_ice_asteroid
-		}
+		is_planet_class = pc_ice_asteroid
 	}
 	
 	drop_weight = {
-		weight = 20
-		modifier = {
-			factor = 0.2
-			is_planet_class = pc_gas_giant
-		}
-		modifier = {
-			factor = 2.5
-			is_star_class = sc_neutron_star
-			is_star_class = sc_pulsar
-			is_star_class = sc_black_hole		
-		}
-		modifier = {
-			factor = 0.5
-			is_star_class = sc_binary_1
-			is_star_class = sc_binary_2
-			is_star_class = sc_binary_4
-			is_star_class = sc_binary_6
-			is_star_class = sc_binary_7
-			is_star_class = sc_binary_10
-		}
-		modifier = {
-			factor = 0.25
-			is_star_class = sc_f
-			is_star_class = sc_g
-			is_star_class = sc_binary_3
-			is_star_class = sc_binary_8
-			is_star_class = sc_trinary_1
-			is_star_class = sc_trinary_3
-		}
-		modifier = {
-			factor = 0.125
-			is_star_class = sc_a
-			is_star_class = sc_b
-			is_star_class = sc_binary_5
-			is_star_class = sc_binary_9
-			is_star_class = sc_trinary_2
-			is_star_class = sc_trinary_4
-		}
-		modifier = {
-			factor = 0
-			solar_system = {
-				any_system_planet = {
-						has_deposit = d_trade_value_large
-				}
-			}
-		}
+		weight = 25
 	}
 }
 
