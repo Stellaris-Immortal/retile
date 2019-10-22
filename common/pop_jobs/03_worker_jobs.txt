@@ -25,9 +25,56 @@ custodian = {
 		potential = { planet = { has_deposit = retile_deposit_waste_reprocessing } }
 		modifier = { planet_amenities_add = -50 }
 	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_maintenance_depot } }
+		modifier = { planet_amenities_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_maintenance_depot
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_maintenance_depot_2 } }
+		modifier = { planet_amenities_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_maintenance_depot_2
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = -50 }
+	}
 	
 	resources = {
 		category = planet_custodians
+		produces = {
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_maintenance_depot } }
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_maintenance_depot
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_maintenance_depot_2 } }
+			society_research = 5
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_maintenance_depot_2
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			society_research = 2.5
+		}
 		produces = {
 			trigger = { planet = { has_building = building_solar_panels } }
 			energy = 10

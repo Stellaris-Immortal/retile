@@ -6,22 +6,16 @@ retile_pop_migrate = {	# country scope
 			free_jobs > 0
 			colony_age > 1
 		} }
-		owner = { random_owned_planet = {
-			limit = { AND = {
-				free_jobs < 0
-				colony_age > 1
+		random_owned_pop = {
+			limit = { OR = {
+				AND = {
+					is_unemployed = yes
+					NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+				}
+				has_job = servant
 			} }
-			random_owned_pop = {
-				limit = { OR = {
-					AND = {
-						is_unemployed = yes
-						NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
-					}
-					has_job = servant
-				} }
-				resettle_pop = { pop = this planet = prevprevprev }
-			}
-		} }
+			resettle_pop = { pop = this planet = prevprev }
+		}
 	}
 }
 

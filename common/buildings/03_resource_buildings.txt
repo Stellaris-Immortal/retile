@@ -360,8 +360,8 @@ building_food_processing_facility = {
 				owner = { any_owned_planet = { OR = {
 					has_building = building_food_processing_facility
 					has_building = building_food_processing_center
-				}
-			} } }
+				} } }
+			}
 		}
 		modifier = {	# avoid bad food worlds...
 			factor = 0.5
@@ -708,8 +708,8 @@ building_energy_grid = {
 				owner = { any_owned_planet = { OR = {
 					has_building = building_energy_grid
 					has_building = building_energy_nexus
-				}
-			} } }
+				} } }
+			}
 		}
 		modifier = {	# avoid bad worlds...
 			factor = 0.5
@@ -791,6 +791,63 @@ building_energy_nexus = {
 		energy = 1
 		trigger = {
 			always = yes
+		}
+	}
+}
+
+building_maintenance_depot = {
+	base_buildtime = 360
+
+	category = resource
+	
+	potential = {
+		always = yes
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_low
+		}
+		upkeep = {
+			energy = 5
+		}
+	}	
+	
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	
+	upgrades = {
+		building_building_maintenance_depot_2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 500
+			free_amenities > 400
 		}
 	}
 }
