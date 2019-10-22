@@ -13,6 +13,7 @@
 @med_rare = 1
 @low_rare = 0.5
 
+# Precinct District
 retile_deposit_precinct = {
 	is_for_colonizeable = yes
 	category = deposit_cat_rare
@@ -27,8 +28,23 @@ retile_deposit_precinct = {
 
 	planet_modifier = {
 		planet_housing_add = 2
-		job_enforcer_add = 2
 		planet_max_districts_add = -1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { NOT = { has_policy_flag = criminal_military_police } }
+		}
+		job_enforcer_add = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		job_soldier_add = 2
 	}
 	
 	drop_weight = {
@@ -36,6 +52,7 @@ retile_deposit_precinct = {
 	}
 }
 
+# Military District
 retile_deposit_stronghold = {
 	is_for_colonizeable = yes
 	category = deposit_cat_rare
@@ -59,6 +76,7 @@ retile_deposit_stronghold = {
 	}
 }
 
+# Facility Management
 retile_deposit_preserve = {
 	is_for_colonizeable = yes
 	category = deposit_cat_rare

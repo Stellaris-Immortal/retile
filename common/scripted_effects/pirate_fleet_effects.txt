@@ -1,0 +1,747 @@
+#	Example:
+#
+#	example_effect = {
+#		add_resource = { energy = -100 }
+#	}
+#
+#
+#	In a script file:
+#
+#	effect = {
+#		example_effect = yes
+#	}
+#
+
+###############
+# New Pirates #
+###############
+
+create_normal_pirate_country = {
+	event_target:pirate_system = {
+		random_system_planet = {
+			save_event_target_as = pirate_home
+			create_country = {
+				name = "NAME_Pirates"
+				type = pirate
+				species = event_target:owner_species
+				name_list = "PRT1"
+				flag = {
+					background = {
+						category = "backgrounds"
+						file = "00_solid.dds"
+					}
+					colors ={
+						"black"
+						"black"
+						"null"
+						"null"
+					}
+				}
+				effect = {
+					save_event_target_as = pirate_band
+				}
+			}
+			event_target:pirate_band = {
+				set_name = random
+				randomize_flag_symbol = "pirate"
+				every_country = {
+					limit = { is_country_type = default }
+					
+					if = { 
+						limit = { has_policy_flag = piracy_peaceful }
+						set_faction_hostility = {
+							set_hostile = no
+							set_neutral = yes
+							target = prev
+						}
+					}
+				}
+				every_country = {
+					establish_communications_no_message = prev
+					
+				}
+			}
+		}
+	}
+}
+
+create_drone_pirate_country = {
+	event_target:pirate_system = {
+		random_system_planet = {
+			save_event_target_as = pirate_home
+			create_country = {
+				name = "NAME_Pirates"
+				type = pirate
+				species = event_target:owner_species
+				name_list = "PRT1"
+				flag = {
+					background = {
+						category = "backgrounds"
+						file = "00_solid.dds"
+					}
+					colors ={
+						"black"
+						"black"
+						"null"
+						"null"
+					}
+				}
+				effect = {
+					save_event_target_as = pirate_band
+					set_country_flag = drone_pirate
+				}
+			}
+			event_target:pirate_band = {
+				set_name = random
+				randomize_flag_symbol = "pirate"
+				every_country = {
+					establish_communications_no_message = prev
+				}
+			}
+		}
+	}
+}
+
+create_drone_pirate_country_2 = {
+	event_target:pirate_system = {
+		random_system_planet = {
+			save_event_target_as = pirate_home
+			create_country = {
+				name = "NAME_Pirates"
+				type = pirate
+				species = event_target:pirate_species
+				name_list = "PRT1"
+				flag = {
+					background = {
+						category = "backgrounds"
+						file = "00_solid.dds"
+					}
+					colors ={
+						"black"
+						"black"
+						"null"
+						"null"
+					}
+				}
+				effect = {
+					save_event_target_as = pirate_band
+					set_country_flag = drone_pirate
+				}
+			}
+			event_target:pirate_band = {
+				set_name = random
+				randomize_flag_symbol = "pirate"
+				every_country = {
+					establish_communications_no_message = prev
+				}
+			}
+		}
+	}
+}
+
+create_machine_pirate_country = {
+	event_target:pirate_system = {
+		random_system_planet = {
+			save_event_target_as = pirate_home
+			create_country = {
+				name = "NAME_Pirates"
+				type = pirate
+				species = event_target:owner_species
+				name_list = "PRT1"
+				flag = {
+					background = {
+						category = "backgrounds"
+						file = "00_solid.dds"
+					}
+					colors ={
+						"black"
+						"black"
+						"null"
+						"null"
+					}
+				}
+				effect = {
+					save_event_target_as = pirate_band
+					set_country_flag = machine_pirate
+				}
+			}
+			event_target:pirate_band = {
+				set_name = random
+				randomize_flag_symbol = "pirate"
+				every_country = {
+					establish_communications_no_message = prev
+				}
+			}
+		}
+	}
+}
+
+create_machine_pirate_country_2 = {
+	event_target:pirate_system = {
+		random_system_planet = {
+			save_event_target_as = pirate_home
+			create_country = {
+				name = "NAME_Pirates"
+				type = pirate
+				species = event_target:pirate_species
+				name_list = "PRT1"
+				flag = {
+					background = {
+						category = "backgrounds"
+						file = "00_solid.dds"
+					}
+					colors ={
+						"black"
+						"black"
+						"null"
+						"null"
+					}
+				}
+				effect = {
+					save_event_target_as = pirate_band
+					set_country_flag = machine_pirate
+				}
+			}
+			event_target:pirate_band = {
+				set_name = random
+				randomize_flag_symbol = "pirate"
+				every_country = {
+					establish_communications_no_message = prev
+				}
+			}
+		}
+	}
+}
+
+create_pirate_base_1 = {
+	create_fleet = {
+		name = "NAME_Pirate_Station"
+		effect = {
+			set_owner = event_target:pirate_band
+			create_ship = {
+				name = random
+				design = "NAME_Pirate_Nest"
+				graphical_culture = "pirate_01"
+			}
+			set_location = event_target:pirate_home
+		}
+	}
+}
+
+create_pirate_fleet = {
+	event_target:pirate_band = {
+		create_leader = {
+			class = admiral
+			species = owner_main_species
+			name = random
+			skill = 1
+			traits = {
+				trait = random_trait
+			}
+		}
+		create_fleet = {
+			name = "NAME_Pirate_Fleet"
+			effect = {
+				set_owner = event_target:pirate_band
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value < 10
+						}
+					}
+					create_pirate_ships_0 = yes
+				}
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value >= 10
+							trade_intercepted_value < 20
+						}
+					}
+					create_pirate_ships_1 = yes
+				}
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value >= 20
+							trade_intercepted_value < 30
+						}
+					}
+					create_pirate_ships_2 = yes
+				}
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value >= 30
+							trade_intercepted_value < 40
+						}
+					}
+					create_pirate_ships_3 = yes
+				}
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value >= 40
+							trade_intercepted_value < 50
+						}
+					}
+					create_pirate_ships_4 = yes
+				}
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value >= 50
+							trade_intercepted_value < 60
+						}
+					}
+					create_pirate_ships_5 = yes
+				}
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value >= 60
+							trade_intercepted_value < 70
+						}
+					}
+					create_pirate_ships_6 = yes
+				}
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value >= 70
+							trade_intercepted_value < 80
+						}
+					}
+					create_pirate_ships_7 = yes
+				}
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value >= 80
+							trade_intercepted_value < 90
+						}
+					}
+					create_pirate_ships_8 = yes
+				}
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value >= 90
+							trade_intercepted_value < 100
+						}
+					}
+					create_pirate_ships_9 = yes
+				}
+				if = {
+					limit = { 
+						event_target:pirate_system = { 
+							trade_intercepted_value > 100
+						}
+					}
+					create_pirate_ships_10 = yes
+				}
+				assign_leader = last_created_leader
+				set_location = event_target:pirate_home
+				set_fleet_stance = aggressive
+				set_aggro_range_measure_from = self
+				set_aggro_range = 800
+			}
+		}
+	}
+}
+
+create_pirate_ships_0 = {
+	create_ship_design = {
+		design = "NAME_Reaver"
+	}
+	while = {
+		count = 10
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_pirate_ships_1 = {
+	create_ship_design = {
+		design = "NAME_Reaver"
+	}
+	while = {
+		count = 10
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_pirate_ships_2 = {
+	create_ship_design = {
+		design = "NAME_Reaver"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_pirate_ships_3 = {
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_pirate_ships_4 = {
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 8
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Marauder"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_pirate_ships_5 = {
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Marauder"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 2
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_pirate_ships_6 = {
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Marauder"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 2
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_pirate_ships_7 = {
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Marauder"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 2
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_pirate_ships_8 = {
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 8
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Marauder"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Corsair"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 4
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_pirate_ships_9 = {
+	create_ship_design = {
+		design = "NAME_Pirate_Galleon"
+	}
+	while = {
+		count = 1
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Black_Earl"
+	}
+	while = {
+		count = 2
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
+
+create_pirate_ships_10 = {
+	create_ship_design = {
+		design = "NAME_Pirate_Galleon"
+	}
+	while = {
+		count = 1
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Skull"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+	create_ship_design = {
+		design = "NAME_Brigand"
+	}
+	while = {
+		count = 6
+		create_ship = {
+			name = random
+			design = last_created_design
+			graphical_culture = "pirate_01"
+		}
+	}
+}
