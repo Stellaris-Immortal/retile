@@ -7,15 +7,16 @@ retile_ready = {	# Planet scope
 			PREV = {
 				AND = {
 					has_building_construction = no
-					any_pop = {
-						OR = {
-							AND = {
-								is_unemployed = yes
-								NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
-							}
-							has_job = servant
-						}
-					}
+					free_jobs < 1
+			#		any_pop = {
+			#			OR = {
+			#				AND = {
+			#					is_unemployed = yes
+			#					NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+			#				}
+			#				has_job = servant
+			#			}
+			#		}
 				}
 			}
 		}
@@ -25,18 +26,26 @@ retile_ready = {	# Planet scope
 # Does this country have excess pops and places for them to migrate to?
 retile_migrate_ready = { # country scope
 	AND = {
-		# is there an unemployed pop in this empire?
-		any_owned_pop = { OR = {
-				AND = {
-					is_unemployed = yes
-					NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
-				}
-				has_job = servant
+		# is there a planet with negative jobs in this empire?
+		any_owned_planet = { AND = {
+				free_jobs < 0
+				colony_age > 1
+				#free_housing > 0	# disabled because... potential problems?
 		} }
+		# is there an unemployed pop in this empire?
+	#	any_owned_pop = {
+	#		any_owned_pop = {
+	#			NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+	#			OR = {
+	#				is_unemployed = yes
+	#				has_job = servant
+	#			}
+	#		}
+	#	}
 		# is there a planet with free jobs in this empire?
 		any_owned_planet = { AND = {
 				free_jobs > 0
-				is_colony = yes
+				colony_age > 1
 				#free_housing > 0	# disabled because... potential problems?
 		} }
 	}
@@ -53,6 +62,26 @@ retile_housing_safe = { # planet scope
 	#	has_building = building_paradise_dome
 	#	has_building = building_drone_storage
 	#	has_building = building_hive_warren
+	}
+}
+
+# Are we behind in tech?
+retile_tech_weak = {	# Country scope
+	any_neighbor_country = { 
+		count >= 1
+		is_country_type = default
+		prev = {
+			relative_power = { 
+				who = prev
+				category = technology 
+				value > equivalent
+			}
+			relative_power = { 
+				who = prev 
+				category = all
+				value < overwhelming
+			}
+		}
 	}
 }
 

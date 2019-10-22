@@ -115,12 +115,13 @@ alloys_expenditure_ships = {
 			used_naval_capacity_percent < .7
 		}
 		
-		# prioritize military if under threat
+		# prioritize military if under threat or later in the game
 		modifier = {
 			factor = 2.5
 			OR = {
 				is_at_war = yes
 				highest_threat > 50
+				years_passed > 100
 			}
 		}
 	}
