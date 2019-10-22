@@ -759,7 +759,7 @@ building_energy_nexus = {
 	}
 	
 	country_modifier = {
-		country_resource_max_add = 1000
+		country_resource_max_add = 2000
 	}
 	
 	triggered_planet_modifier = {
@@ -768,8 +768,8 @@ building_energy_nexus = {
 			owner = { is_gestalt = no }
 		}
 		modifier = {
-			planet_housing_add = 1
-			job_custodian_add = 1
+			planet_housing_add = 2
+			job_custodian_add = 2
 		}
 	}
 	triggered_planet_modifier = {
@@ -778,8 +778,8 @@ building_energy_nexus = {
 			owner = { is_gestalt = yes }
 		}
 		modifier = {
-			planet_housing_add = 1
-			job_maintenance_drone_add = 1
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
 		}
 	}
 	
@@ -797,7 +797,7 @@ building_energy_nexus = {
 
 building_maintenance_depot = {
 	base_buildtime = 360
-
+	can_be_disabled = no
 	category = resource
 	
 	potential = {
@@ -822,6 +822,9 @@ building_maintenance_depot = {
 		building_building_maintenance_depot_2
 	}
 
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -848,6 +851,66 @@ building_maintenance_depot = {
 		modifier = {
 			weight = 500
 			free_amenities > 400
+		}
+	}
+}
+
+building_maintenance_depot_2 = {
+	base_buildtime = 480
+	can_build = no
+	category = resource
+	can_be_disabled = no
+	
+	potential = {
+		always = yes
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			alloys = @cost_med
+		}
+		upkeep = {
+			energy = 10
+		}
+	}	
+	
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	
+	upgrades = {
+		building_building_maintenance_depot_2
+	}
+
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_custodian_add = 3
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_maintenance_drone_add = 3
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 100000
 		}
 	}
 }
