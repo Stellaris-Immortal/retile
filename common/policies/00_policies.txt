@@ -626,7 +626,7 @@ criminal = {
 		modifier = { }
 		
 		valid = {
-			has_civic = civic_police_state
+			NOT = { has_civic = civic_police_state }
 		}
 		
 		policy_flags = { criminal_private_police }
@@ -1008,6 +1008,10 @@ trade_policy = {
 
 	option = {
 		name = "trade_policy_ai"
+		
+		potential = {
+			is_ai = yes
+		}
 		
 		policy_flags = {
 			trade_conversion_ai
