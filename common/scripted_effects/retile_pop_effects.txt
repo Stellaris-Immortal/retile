@@ -6,7 +6,7 @@ retile_pop_migrate = {	# country scope
 			free_jobs > 0
 			colony_age > 1
 		} }
-		random_owned_pop = {
+		owner = { random_owned_pop = {
 			limit = { OR = {
 				AND = {
 					is_unemployed = yes
@@ -15,7 +15,7 @@ retile_pop_migrate = {	# country scope
 				has_job = servant
 			} }
 			resettle_pop = { pop = this planet = prevprev }
-		}
+		} }
 	}
 }
 
