@@ -7,10 +7,13 @@ retile_pop_migrate = {	# country scope
 			colony_age > 1
 		} }
 		owner = { random_owned_pop = {
-			limit = { OR = {
-				AND = {
-					is_unemployed = yes
-					NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+			limit = { AND = {
+				OR = {
+					AND = {
+						is_unemployed = yes
+						NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+					}
+					has_job = servant
 				}
 				planet = { NOR = {
 					#has_building_construction = building_colony_shelter
@@ -26,7 +29,6 @@ retile_pop_migrate = {	# country scope
 					has_building_construction = building_machine_major_capital
 					has_building_construction = building_machine_system_capital
 				} }
-				has_job = servant
 			} }
 			resettle_pop = { pop = this planet = prevprev }
 		} }
