@@ -447,7 +447,7 @@ criminal = {
 	possible = {
 		# check that this is not a robot in servitude
 		NOT = { 
-			has_citizenship_type = { 
+			has_citizenship_type = {
 				country = owner 
 				type = citizenship_robot_servitude
 			}
@@ -458,9 +458,12 @@ criminal = {
 	}
 
 	planet_modifier = {
-		trade_value_add = -1
+		pop_government_ethic_attraction = -0.25
+		pop_happiness = -0.05
 	}
-		
+	pop_modifier = {
+		pop_defense_armies_add = 2
+	}		
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
