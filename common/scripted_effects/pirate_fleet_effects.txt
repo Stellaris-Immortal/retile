@@ -38,24 +38,24 @@ create_normal_pirate_country = {
 					}
 				}
 				effect = {
+					every_country = {
+						limit = { is_country_type = default }
+					
+						if = { 
+							limit = { NOT = { has_policy_flag = piracy_peaceful } }
+							set_faction_hostility = {
+								set_hostile = yes
+								set_neutral = no
+								target = prev
+							}
+						}
+					}
 					save_event_target_as = pirate_band
 				}
 			}
 			event_target:pirate_band = {
 				set_name = random
 				randomize_flag_symbol = "pirate"
-				every_country = {
-					limit = { is_country_type = default }
-					
-					if = { 
-						limit = { has_policy_flag = piracy_peaceful }
-						set_faction_hostility = {
-							set_hostile = no
-							set_neutral = yes
-							target = prev
-						}
-					}
-				}
 				every_country = {
 					establish_communications_no_message = prev
 					
