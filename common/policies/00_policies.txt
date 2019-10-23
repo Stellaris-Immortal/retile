@@ -23,6 +23,10 @@ piracy = {
 		
 		on_enabled = { 
 			hidden_effect = {
+				if = {
+					limit = { has_country_flag = piracy_broken_event }
+					remove_country_flag = piracy_broken_event
+				}
 				every_country = {
 					limit = { is_country_type = pirate }
 					set_faction_hostility = {
@@ -52,6 +56,10 @@ piracy = {
 		
 		on_enabled = {
 			hidden_effect = {
+				if = {
+					limit = { has_country_flag = piracy_broken_event }
+					remove_country_flag = piracy_broken_event
+				}
 				every_country = {
 					limit = { is_country_type = pirate }
 					set_faction_hostility = {
@@ -65,6 +73,20 @@ piracy = {
 		
 		AI_weight = {
 			factor = 0
+		}
+	}
+	
+	option = {
+		name = "piracy_broken"
+		
+		potential = {
+			has_country_flag = piracy_broken_event
+		}
+		
+		modifier = { }
+		
+		AI_weight = {
+			factor = 1
 		}
 	}
 }
