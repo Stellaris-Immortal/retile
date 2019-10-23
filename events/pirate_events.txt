@@ -1260,3 +1260,36 @@ ship_event = {
 		}
 	}
 }
+
+# Parley Broken
+country_event = {
+	id = pirate.100
+	title = "pirate.100.name"
+	picture = GFX_evt_pirates_attacking_cargo
+	desc = pirate.100.desc
+	show_sound = event_ship_bridge
+
+	is_triggered_only = yes
+	
+	trigger = {
+		FROM = { is_country_type = pirate }
+		has_policy_flag = piracy_peaceful
+	}
+	
+	immediate = {
+		hidden_effect = {
+			every_country = {
+				limit = { is_country_type = pirate }
+				set_faction_hostility = {
+					set_hostile = yes
+					set_neutral = no
+					target = root
+				}
+			}
+		}
+	}
+
+	option = {
+		name = pirate.100.a
+	}
+}
