@@ -1,0 +1,1056 @@
+@activation_cost = 150
+@triumph_duration = 3600
+@triumph_duration_short = 1800
+
+r_dragon_trophy = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_dragon_trophy"
+	sound = "relic_activation_ether_drake_trophy"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		country_unity_produces_mult = 0.10
+	}
+
+	score = 1000
+
+	active_effect = {
+		add_modifier = {
+			modifier = "ether_drake_triumph" 
+			days = @triumph_duration
+		}
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}		
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_khans_throne = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_khans_throne"
+	sound = "relic_activation_khans_throne"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 3
+			is_at_war = yes
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		country_claim_influence_cost_mult = -0.20
+	}
+
+	score = 3000
+
+	active_effect = {
+		add_modifier = {
+			modifier = "drums_of_war" 
+			days = @triumph_duration
+		}
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}		
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_worm_scales = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_worm_scales"
+	sound = "relic_activation_scales_of_the_worm"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		country_physics_tech_research_speed = 0.10
+	}
+
+	score = 1000
+
+	active_effect = {
+		add_modifier = {
+			modifier = "worm_scales" 
+			days = @triumph_duration
+		}
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}		
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_rubricator = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_rubricator"
+	sound = "relic_activation_the_rubricator"
+
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+		produces = {
+			society_research = 20
+		}
+	}
+	
+	ai_weight = {
+		weight = 150
+		modifier = {
+			factor = 0.5
+			has_resource = { type = minor_artifacts amount > 30}
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+	}
+
+	score = 1000
+
+	active_effect = {
+		custom_tooltip = relic_rubricator_active
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+			add_resource = { minor_artifacts = 30 }
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_galaxy = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_galaxy"
+	sound = "relic_activation_miniature_galaxy"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			is_materialist = yes
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		all_technology_research_speed = 0.05
+	}
+
+	score = 2000
+
+	active_effect = {
+		custom_tooltip = relic_galaxy_active
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+			country_event = { id = ancrel.7007 }
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}	
+	}
+}
+
+
+r_omnicodex = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_omnicodex"
+	sound = "relic_activation_the_omnicodex"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 2
+			is_xenophile = yes
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		BIOLOGICAL_species_trait_points_add = 1
+	}
+
+	score = 500
+
+	active_effect = {
+		custom_tooltip = relic_omnicodex_active
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+			country_event = { id = ancrel.6000 }
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_surveyor = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_surveyor"
+	sound = "relic_activation_the_surveyor"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			energy = 500
+		}
+	}
+
+	ai_weight = {
+		weight = 120
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		ship_sensor_range_add = 1
+	}
+
+	score = 200
+
+	active_effect = {
+		custom_tooltip = relic_surveyor_active
+		custom_tooltip = relic_triumph_cooldown_short
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration_short
+			}
+			country_event = { id = story.335 }
+
+			# Chance for additional deposits
+			random_list = {
+				50 = { country_event = { id = story.335 days = 720 random = 360 } }
+				50 = {}
+			}
+
+			random_list = {
+				20 = { country_event = { id = story.335 days = 1440 random = 360 } }
+				80 = {}
+			}
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_galatron = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_galatron"
+	sound = "relic_activation_the_galatron"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+		produces = {
+			influence = 3
+		}
+	}
+
+	ai_weight = {
+		weight = 200
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+	}
+
+	score = 20000
+
+	active_effect = {
+		custom_tooltip = relic_galatron_active
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+			country_event = { id = cara.970 }
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_ancient_sword = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_ancient_sword"
+	sound = "relic_activation_blade_of_the_huntress"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		army_morale = 0.25
+		planet_sensor_range_add = 2
+	}
+
+	score = 200
+
+	active_effect = {
+		add_modifier = {
+			modifier = "ancient_sword" 
+			days = @triumph_duration
+		}
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_severed_head = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_severed_head"
+	sound = "relic_activation_head_of_zarqlan"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		pop_ethic_spiritualist_attraction_mult = 0.40
+	}
+
+	score = 200
+
+	active_effect = {
+		custom_tooltip = relic_summon_pilgrims
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+			country_event = { id = ancrel.6131 }
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+###################
+### Crisis relics
+###################
+
+r_prethoryn_queen = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_prethoryn_queen"
+	sound = "relic_activation_prethoryn_blood_queen"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			food = 10000
+		}
+		produces = {
+			society_research = 30
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+	}
+
+	score = 5000
+
+	active_effect = {
+		custom_tooltip = relic_queen_spawn
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+			country_event = { id = crisis.250 }	
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}	
+	}
+}
+
+r_unbidden_warlock = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_unbidden_warlock"
+	sound = "relic_activation_extradimensional_warlock"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+		modifier = {
+			factor = 30
+			is_at_war = yes
+		}
+		modifier = {
+			factor = 0
+			NOR = {
+				has_technology = tech_jump_drive_1
+				has_technology = tech_psi_jump_drive_1
+			}
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		ship_speed_mult = 0.15
+	}
+
+	score = 5000
+
+	active_effect = {
+		add_modifier = {
+			modifier = "unbidden_ritual" 
+			days = @triumph_duration
+		}
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}		
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_contingency_core = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_contingency_core"
+	sound = "relic_activation_isolated_contingency_core"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_pop_assembly_mult = 1.00
+	}
+
+	score = 5000
+
+	active_effect = {
+		add_modifier = {
+			modifier = "contingency_calculation" 
+			days = @triumph_duration
+		}
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}		
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+###################
+### Precursor relics
+###################
+
+r_zro_crystal = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_zro_crystal"
+	sound = "relic_activation_intact_zro_soulstone"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 200
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		custom_tooltip = relic_zro_crystal_passive
+	}
+
+	score = 1000
+
+	active_effect = {
+		custom_tooltip = relic_zro_crystal_active
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+			country_event = { id = ancrel.7006 }	
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_the_last_baol = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_baol"
+	sound = "relic_activation_the_last_baol"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			is_machine_empire = no
+		}
+		modifier = {
+			pop_growth_speed = 0.10
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			is_machine_empire = yes
+		}
+		modifier = {
+			pop_growth_speed = 0.10
+			country_society_research_produces_mult = 0.10
+		}
+	}
+
+	score = 1000
+
+	active_effect = {
+		custom_tooltip = relic_last_baol_active_tooltip
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+			if = {
+				limit = {
+					NOT = { has_country_flag = relic_last_baol_activated }
+				}
+				set_timed_country_flag = { flag = relic_last_baol_activated days = @triumph_duration }
+			}
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+
+r_the_defragmentor = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_mechano_calibrator"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 1.15
+			is_machine_empire = yes
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			is_machine_empire = no
+		}
+		modifier = {
+			planet_pops_robotics_upkeep_mult = -0.10
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			is_machine_empire = yes
+		}
+		modifier = {
+			planet_pops_robotics_upkeep_mult = -0.10
+		}
+	}
+
+	score = 1000
+
+	active_effect = {
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+		}
+		add_modifier = {
+			modifier = "relic_defragmentor"
+			days = @triumph_duration
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_reality_perforator = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_orb_insight"
+	sound = "relic_activation_vultaum_real_perforator"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_pops_consumer_goods_upkeep_mult = -0.10
+	}
+
+	score = 5000
+
+	active_effect = {
+		custom_tooltip = relic_reality_perforated
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+			country_event = { id = precursor.105 }
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_pox_sample = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_pox_sample"
+	sound = "relic_activation_javorian_pox_sample"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		leader_age = 20
+	}
+
+	score = 5000
+
+	active_effect = {
+		custom_tooltip = relic_javorian_pox
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}
+			add_modifier = {
+				modifier = "javorian_pox" 
+				days = @triumph_duration
+			}	
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_cryo_core = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_cryo_core"
+	sound = "relic_activation_yuht_cryo_core"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		colony_start_num_pops_add = 1
+		custom_tooltip = tr_expansion_colonization_fever_desc
+	}
+
+	score = 5000
+
+	active_effect = {
+		add_modifier = {
+			modifier = "yuht_cryo_core" 
+			days = @triumph_duration
+		}
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}		
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
+
+r_war_forge = {
+	activation_duration = @triumph_duration
+	portrait = "GFX_relic_war_forge"
+	sound = "relic_activation_cybrex_war_forge"
+
+	resources = {
+		category = relics
+		# Activation cost
+		cost = {
+			influence = @activation_cost
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			always = yes
+		}
+		planet_pops_robotics_upkeep_mult = -0.10
+	}
+
+	score = 5000
+
+	active_effect = {
+		add_modifier = {
+			modifier = "cybrex_war_forge" 
+			days = @triumph_duration
+		}
+		custom_tooltip = relic_triumph_cooldown
+		hidden_effect = {
+			add_modifier = {
+				modifier = "relic_activation_cooldown" 
+				days = @triumph_duration
+			}		
+		}
+	}
+
+	# Possible check for activation
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_relic_no_cooldown"
+			NOT = { has_modifier = relic_activation_cooldown }
+		}
+	}
+}
