@@ -1,0 +1,110 @@
+## Categories used in this file must have use_for_ai_budget = yes defined in economic_categories ##
+## It is possible to have multiple entries with the same category and resource ##
+
+#################
+## Expenditure ##
+#################
+
+exotic_gases_expenditure_edicts = {
+	resource = exotic_gases 
+	type = expenditure
+	category = edicts
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		base = 0.25
+	}
+}
+
+
+exotic_gases_expenditure_planets = {
+	resource = exotic_gases 
+	type = expenditure
+	category = planets
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.5
+	}
+	static_min = {
+		base = 1000
+	}
+}
+
+exotic_gases_expenditure_ships = {
+	resource = exotic_gases
+	type = expenditure
+	category = ships
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+exotic_gases_expenditure_upgrade = {
+	resource = exotic_gases 
+	type = expenditure
+	category = ship_upgrades
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		base = 0.1
+	}
+}
+
+exotic_gases_expenditure_trade = {
+	resource = exotic_gases 
+	type = expenditure
+	category = trade
+	
+	potential = {
+		has_resource = { type = exotic_gases amount > 1000 }
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+# Upkeep ----------------------------------------------------------
+
+exotic_gases_upkeep_planets = {
+	resource = exotic_gases 
+	type = upkeep
+	category = buffer
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+exotic_gases_upkeep_ships = {
+	resource = exotic_gases 
+	type = upkeep
+	category = ships
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 1
+	}	
+}
