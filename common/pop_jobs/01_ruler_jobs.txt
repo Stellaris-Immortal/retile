@@ -22,6 +22,7 @@ colonist = {
 		category = planet_researchers
 		upkeep = {
 			trigger = { AND = {
+				is_lithoid = no
 				planet = { free_housing >= 0 }
 				owner = { NOR = {
 					has_civic = civic_mechanists
@@ -29,6 +30,17 @@ colonist = {
 				} }
 			} }
 			food = 5
+		}
+		upkeep = {
+			trigger = { AND = {
+				is_lithoid = yes
+				planet = { free_housing >= 0 }
+				owner = { NOR = {
+					has_civic = civic_mechanists
+					is_mechanical_empire = yes
+				} }
+			} }
+			minerals = 10
 		}
 		upkeep = {
 			trigger = { AND = {
@@ -42,6 +54,7 @@ colonist = {
 		}
 		upkeep = {
 			trigger = { AND = {
+				is_lithoid = no
 				planet = { free_housing >= 0 }
 				owner = { has_technology = tech_frontier_health }
 			} }
@@ -49,10 +62,27 @@ colonist = {
 		}
 		upkeep = {
 			trigger = { AND = {
+				is_lithoid = no
 				planet = { free_housing >= 0 }
 				owner = { has_technology = tech_frontier_hospital }
 			} }
 			food = 5
+		}
+		upkeep = {
+			trigger = { AND = {
+				is_lithoid = yes
+				planet = { free_housing >= 0 }
+				owner = { has_technology = tech_frontier_health }
+			} }
+			minerals = 10
+		}
+		upkeep = {
+			trigger = { AND = {
+				is_lithoid = yes
+				planet = { free_housing >= 0 }
+				owner = { has_technology = tech_frontier_hospital }
+			} }
+			minerals = 10
 		}
 	}
 	
