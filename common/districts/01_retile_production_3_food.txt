@@ -53,6 +53,9 @@ district_farming = {
 			alloys = @base_cost
 		}
 		upkeep = {
+			potential = {
+				NOT = { has_deposit = retile_deposit_bioreactor }
+			}
 			energy = @base_upkeep
 			#alloys = 1
 		}		
@@ -72,10 +75,22 @@ district_farming = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = no }
+			NOT = { has_deposit = retile_deposit_bioreactor }
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_farmer_add = 1
+		}
+	}	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+			has_deposit = retile_deposit_bioreactor
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_technician_add = 1
 		}
 	}	
 		
