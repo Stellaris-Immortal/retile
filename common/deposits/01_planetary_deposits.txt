@@ -12,9 +12,9 @@
 # all_terraforming_swap_types = yes/no
 # use_weights_for_terraforming_swap_types = yes/no
 
-@high = 16
-@med = 8
-@low = 4
+@high = 12
+@med = 6
+@low = 3
 
 @high_rare = 0.5
 @mid_rare = 0.25
@@ -41,6 +41,22 @@ d_arid_highlands = {
 	
 	planet_modifier = { 
 		district_generator_max = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -5
 	}
 	
 	potential = {
@@ -72,6 +88,23 @@ d_hot_springs = {
 	planet_modifier = { 
 		district_generator_max = 1
 	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -5
+	}
+	
 	
 	potential = {
 		OR = {
@@ -107,6 +140,23 @@ d_rushing_waterfalls = {
 		district_generator_max = 2
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
+	
 	potential = {
 		is_wet = yes
 	}
@@ -136,6 +186,23 @@ d_searing_desert = {
 	planet_modifier = { 
 		district_generator_max = 2
 	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
 	
 	potential = {	
 		OR = {
@@ -180,6 +247,23 @@ d_frozen_gas_lake = {
 		}
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
+	
 	drop_weight = {
 		weight = @med
 		modifier = {
@@ -205,6 +289,23 @@ d_geothermal_vent = {
 	planet_modifier = { 
 		district_generator_max = 3
 	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -15
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -15
+	}
+	
 	
 	potential = {
 		OR = {
@@ -242,6 +343,23 @@ d_underwater_vent = {
 		district_generator_max = 3
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -15
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -15
+	}
+	
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_gaia
@@ -276,6 +394,23 @@ d_tempestous_mountain = {
 	planet_modifier = { 
 		district_generator_max = 3
 	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -15
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -15
+	}
+	
 	
 	potential = {
 		OR = {
@@ -317,6 +452,23 @@ d_veiny_cliffs = {
 		district_mining_max = 1
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -5
+	}
+	
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_alpine
@@ -353,6 +505,23 @@ d_mineral_fields = {
 		district_mining_max = 1
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -5
+	}
+	
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_tropical
@@ -387,6 +556,23 @@ d_prosperous_mesa = {
 	planet_modifier = { 
 		district_mining_max = 2
 	}	
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
 	
 	potential = {
 		OR = {
@@ -423,6 +609,23 @@ d_ore_rich_caverns = {
 	planet_modifier = { 
 		district_mining_max = 2
 	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
 	
 	potential = {
 		OR = {
@@ -462,6 +665,23 @@ d_rich_mountain = {
 		district_mining_max = 3
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -15
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -15
+	}
+	
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_continental
@@ -499,6 +719,23 @@ d_submerged_ore_veins = {
 	planet_modifier = { 
 		district_mining_max = 3
 	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -15
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -15
+	}
+	
 	
 	potential = {
 		OR = {
@@ -545,6 +782,22 @@ d_lichen_fields = {
 		district_farming_max = 1
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_nuked
@@ -587,6 +840,22 @@ d_bountiful_plains = {
 		district_farming_max = 1
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_arid
@@ -623,6 +892,22 @@ d_rugged_woods = {
 		district_farming_max = 1
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
 	potential = {
 		is_planet_class = pc_continental
 	}
@@ -656,6 +941,22 @@ d_green_hills = {
 	
 	planet_modifier = { 
 		district_farming_max = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
 	}
 	
 	potential = {
@@ -696,6 +997,22 @@ d_forgiving_tundra = {
 		district_farming_max = 1
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_alpine
@@ -734,6 +1051,22 @@ d_boggy_fens = {
 		district_farming_max = 1
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
 	potential = {
 		is_planet_class = pc_ocean	
 	}
@@ -769,6 +1102,22 @@ d_nutritious_mudland = {
 		district_farming_max = 1
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
 	potential = {
 		is_planet_class = pc_desert
 	}
@@ -798,6 +1147,22 @@ d_fungal_caves = {
 	
 	planet_modifier = { 
 		district_farming_max = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -20
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -20
 	}
 	
 	potential = {
@@ -838,6 +1203,22 @@ d_lush_jungle = {
 		district_farming_max = 2
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -20
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -20
+	}
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_gaia
@@ -871,6 +1252,22 @@ d_fertile_lands = {
 	
 	planet_modifier = { 
 		district_farming_max = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -20
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -20
 	}
 	
 	potential = {
@@ -909,6 +1306,22 @@ d_great_river = {
 		district_farming_max = 2
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -20
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -20
+	}
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_arid
@@ -942,6 +1355,22 @@ d_black_soil = {
 	
 	planet_modifier = { 
 		district_farming_max = 3
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -30
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -30
 	}
 	
 	potential = {
@@ -980,6 +1409,22 @@ d_teeming_reef = {
 		district_farming_max = 3
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -30
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -30
+	}
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_gaia
@@ -1013,6 +1458,22 @@ d_marvelous_oasis = {
 	
 	planet_modifier = { 
 		district_farming_max = 3
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -30
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -30
 	}
 	
 	potential = {
@@ -1050,6 +1511,22 @@ d_tropical_island = {
 		district_farming_max = 3
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -30
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -30
+	}
+	
 	potential = {
 		OR = {
 			is_planet_class = pc_arid
@@ -1079,6 +1556,22 @@ d_fungal_forest = {
 		d_marvelous_oasis
 		d_tropical_island
 	}	
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -30
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -30
+	}
 	
 	category = deposit_cat_food
 	
@@ -1562,6 +2055,22 @@ d_buzzing_plains = {
 		district_generator_max = 1
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
+	}
+	
 	potential = {
 		is_planet_class = pc_gaia
 	}
@@ -1587,6 +2096,22 @@ d_mineral_striations = {
 	
 	planet_modifier = { 
 		district_mining_max = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -10
 	}
 	
 	potential = {
@@ -1619,6 +2144,22 @@ d_natural_farmland = {
 	
 	planet_modifier = { 
 		district_farming_max = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -20
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -20
 	}
 	
 	potential = {
