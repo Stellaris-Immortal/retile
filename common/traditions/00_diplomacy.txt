@@ -164,6 +164,29 @@ tr_diplomacy_the_federation = {
 	}
 	
 	tradition_swap = {
+		name = tr_adaptability_recycling
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			OR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_inwards_perfection
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_barbaric_despoilers
+				is_criminal_syndicate = yes
+			}
+			is_lithoid_empire = yes
+		}
+		modifier = {
+			planet_building_refund_mult = 0.15
+		}
+		weight = {
+			factor = 1
+		}
+	}
+
+	tradition_swap = {
 		name = tr_versatility_universal_compatibility
 		inherit_effects = no
 		inherit_icon = no
