@@ -349,6 +349,7 @@ colonizer = {
 		cost = {
 			trigger = {
 				from = {
+					is_lithoid_empire = no
 					is_robot_empire = no
 					is_hive_empire = no
 				}
@@ -360,20 +361,43 @@ colonizer = {
 		cost = {
 			trigger = {
 				from = {
-					is_robot_empire = yes 
+					is_lithoid_empire = yes
+					is_robot_empire = no
+					is_hive_empire = no
+				}
+			}
+			alloys = 200
+			minerals = 200
+			consumer_goods = 200
+		}
+		cost = {
+			trigger = {
+				from = {
+					is_robot_empire = yes
 				}
 			}
 			alloys = 400
 		}
 		cost = {
 			trigger = {
-				from = { 
-					is_hive_empire = yes 
+				from = {
+					is_hive_empire = yes
+					is_lithoid_empire = no
 				}
 			}
 			alloys = 200
-			food = 500		
-		}		
+			food = 500
+		}
+		cost = {
+			trigger = {
+				from = {
+					is_hive_empire = yes
+					is_lithoid_empire = yes
+				}
+			}
+			alloys = 200
+			minerals = 500
+		}
 
 		upkeep = {
 			energy = @colony_upkeep_energy
@@ -551,6 +575,10 @@ military_station_small = {
 	required_component_set = "combat_computers"
 	
 	build_block_radius = @build_block_radius_military
+
+	resources = {
+		category = ships
+	}
 }
 
 military_station_medium = {
@@ -590,6 +618,10 @@ military_station_medium = {
 	required_component_set = "combat_computers"
 	
 	build_block_radius = @build_block_radius_military
+
+	resources = {
+		category = ships
+	}
 }
 
 military_station_large = {
@@ -628,6 +660,10 @@ military_station_large = {
 	required_component_set = "combat_computers"
 	
 	build_block_radius = @build_block_radius_military
+
+	resources = {
+		category = ships
+	}
 }
 
 ################
