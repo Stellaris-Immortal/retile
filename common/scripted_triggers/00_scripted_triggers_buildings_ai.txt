@@ -33,17 +33,48 @@ buildings_build_building = {
 		has_modifier = planet_growth_discouraged
 		free_district_slots = 0
 	}
+	NOT = {
+		exists = owner
+		owner = { is_lithoid_devouring_swarm = yes }
+		is_lithoid_devouring_swarm_consumption_world = yes
+	}
 }
 
 country_uses_food = {
 	OR = {
-		NOT = { has_authority = auth_machine_intelligence }
+		NOR = {
+			has_authority = auth_machine_intelligence
+			is_lithoid_empire = yes
+		}
+		AND = {
+			is_lithoid_empire = yes
+			NOR = {
+				has_country_flag = non_lithoid_subspecies
+				any_owned_pop = {
+					is_organic_species = yes
+					is_lithoid = no
+				}
+				any_owned_planet = {
+					OR = {
+						num_districts = { type = district_farming value > 0 }
+						num_districts = { type = district_rw_farming value > 0 }
+					}
+				}
+			}
+		}
 		has_valid_civic = civic_machine_servitor
 		has_valid_civic = civic_machine_assimilator
 		AND = {
 			has_authority = auth_machine_intelligence
 			NOT = { has_valid_civic = civic_machine_terminator }
 		}
+	}
+}
+
+country_uses_consumer_goods = {
+	OR = {
+		is_regular_empire = yes
+		has_valid_civic = civic_machine_servitor
 	}
 }
 
@@ -170,8 +201,12 @@ districts_build_district ={
 			}
 		}
 	}
+	NOT = {
+		exists = owner
+		owner = { is_lithoid_devouring_swarm = yes }
+		is_lithoid_devouring_swarm_consumption_world = yes
+	}
 }
-
 districts_good_energy = {
 	planet = { 
 		OR = {
@@ -179,6 +214,7 @@ districts_good_energy = {
 			has_modifier = divine_algorithm
 			has_modifier = energy_relic
 			has_modifier = gas_rich_planet_fo_realz
+			has_planet_flag = buildings_good_energy
 		}
 	}
 }
@@ -192,16 +228,19 @@ districts_good_minerals = {
 			has_modifier = ultra_rich
 			has_modifier = asteroid_belt
 			has_modifier = minerals_relic
+			has_planet_flag = buildings_good_minerals
 		}
 	}
 }
 
 districts_good_food = {
-	planet = { 
-		has_modifier = lush_planet
+	planet = {
+		OR = {
+			has_modifier = lush_planet
+			has_planet_flag = buildings_good_food
+		}
 	}
 }
-
 ## Currently does nothing - as I'm removing it from all associated jobs...
 jobs_save_goods = {
 	exists = planet
@@ -358,5 +397,13 @@ jobs_work_minerals_goods = {
 		else = {
 			always = no
 		}
+	}
+}
+
+buildings_upgrade_allow = {
+	exists = owner
+	OR = {
+		owner = { is_ai = no }
+		free_jobs < 3
 	}
 }

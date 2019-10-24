@@ -183,12 +183,20 @@ has_low_living_standard_type = {
 	has_living_standard = { type = living_standard_subsistence }
 }
 
-is_organic_species = {
+is_lithoid = {
 	species = {
-		is_archetype = BIOLOGICAL # original trigger did not include pre-sapient classes
+		is_archetype = LITHOID
 	}
 }
 
+is_organic_species = {
+	species = {
+		OR = {
+			is_archetype = BIOLOGICAL # original trigger did not include pre-sapient classes
+			is_archetype = LITHOID
+		}
+	}
+}
 is_robotic_species = {
 	species = {
 		OR = {

@@ -201,7 +201,17 @@ livestock = {
 	resources = {
 		category = planet_livestock
 		produces = {
+			trigger = { 
+				is_organic_species = yes
+				is_lithoid = no
+			}
 			food = 4
+		}
+		produces = {
+			trigger = { 
+				is_lithoid = yes
+			}
+			minerals = 2
 		}
 	}
 		
@@ -278,8 +288,16 @@ purge = {
 			trigger = {
 				has_purge_type = { type = purge_processing }
 				is_robotic_species = no
+				is_lithoid = no
 			}
 			food = 6
+		}
+		produces = { # regular processing
+			trigger = {
+				has_purge_type = { type = purge_processing }
+				is_lithoid = yes
+			}
+			minerals = 4
 		}
 		produces = { # processing robots (devouring swarm)
 			trigger = {
@@ -407,15 +425,22 @@ assimilation = {
 		upkeep = {
 			trigger = { 
 				is_organic_species = yes
+				is_lithoid = no
 			}
 			food = @living_standard_food_normal
-		}		
+		}
+		upkeep = {
+			trigger = { 
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
 		upkeep = {
 			trigger = { 
 				is_robotic_species = yes
 			}
 			energy = @living_standard_energy_normal
-		}		
+		}
 	}	
 		
 	triggered_planet_modifier = {	# Dirty Pop!
