@@ -1,0 +1,164 @@
+#civic_example = {
+#	playable = {}								# AND trigger, no scope; use this to prevent the civic from being selectable by the player (UI)
+#	potential = {}								# requirements list, see ../readme_requirements.txt
+#	possible = {}								# requirements list, see ../readme_requirements.txt
+#	pickable_at_start = yes / no				# default: yes
+#	modification = yes / no						# default: yes, set to no to prevent adding or removing this after creation of the empire
+#
+#	random_weight = { base = 5 }				# scriptable weight for randomizing a civic; required, else the civic will not get assigned randomly
+#
+#	modifier = {}								# modifier added to the country if the civic is selected and valid
+#	can_build_ruler_ship = yes / no				# default: no
+#	traits = { trait = ... }					# default: empty; trait set to enforce on the primary species. They cannot be removed, but more can be added if points/picks permit
+#	has_secondary_species = {					# default: none; if present, will enable secondary species customization in empire designer and will create secondary species & pops at galaxy generation time (see empire_init_create_capital_secondary_pops)
+#		traits = { trait = ... }					# default: empty; trait set to enforce on the secondary species. They cannot be removed, but more can be added if points/picks permit
+#	}
+#}
+
+# Corporate
+
+civic_franchising = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	description = "civic_tooltip_franchising_effects"
+	modifier = {
+		country_subject_power_penalty_mult = -0.33
+		empire_size_branch_office_mult = -0.25
+	}
+}
+
+civic_trading_posts = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	modifier = {
+		country_starbase_capacity_add = 4
+	}
+}
+
+civic_media_conglomerate = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	modifier = {
+		country_war_exhaustion_mult = -0.05
+		pop_citizen_happiness = 0.05
+	}
+}
+
+civic_naval_contractors = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	modifier = {
+		country_naval_cap_mult = 0.15
+	}
+}
+
+civic_free_traders = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	modifier = {
+		trade_value_mult = 0.10
+		branch_office_value_mult = 0.10
+	}
+}
+
+civic_private_prospectors = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	modifier = {
+		country_admin_cap_add = 12
+	}
+
+	# unlocks sponsored_colonizer ship size
+	description = "civic_tooltip_private_prospectors_effects"
+}
+
+civic_gospel_of_the_masses = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	modifier = {
+		pop_ethic_spiritualist_attraction_mult = 0.5
+    }
+	
+	description = "civic_tooltip_gospel_of_the_masses_effects"
+}
+
+civic_ruthless_competition = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	modifier = {
+        leader_skill_levels = 1
+		species_leader_exp_gain = 0.1
+    }
+}
+
+civic_criminal_heritage = {
+	modification = no
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }	
+	modifier = {
+	}
+	
+	description = "civic_tooltip_criminal_heritage_effects"
+}
+
+civic_private_military_companies = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+	}
+	modifier = {
+		army_damage_mult = 0.2
+		armies_upkeep_mult = -0.2
+	}
+}
+
+civic_indentured_assets = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	modifier = {
+		planet_jobs_slave_produces_mult = 0.10
+		country_pop_enslaved_mult = 0.40
+	}
+}
+
+civic_brand_loyalty = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	modifier = {
+		country_unity_produces_mult = 0.15
+	}
+}

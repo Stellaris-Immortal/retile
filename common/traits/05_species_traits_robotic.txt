@@ -116,10 +116,39 @@ trait_robot_double_jointed = {
 	cost = 1
 	opposites = { "trait_robot_bulky" }
 
-	allowed_archetypes = { ROBOT MACHINE }
+	allowed_archetypes = { ROBOT }
+	
+	species_potential_add = {
+		exists = from
+		from = {
+			has_technology = tech_droid_workers
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
 
 	modifier = {
-		pop_housing_usage_mult = -0.1
+		army_damage_mult = 0.20
+		army_collateral_damage_mult = 0.10
+	}
+}
+
+trait_robot_bulky = {
+	cost = 1
+	opposites = { "trait_robot_bulky" }
+
+	allowed_archetypes = { ROBOT }
+	
+	species_potential_add = {
+		exists = from
+		from = {
+			has_technology = tech_droid_workers
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
+
+	modifier = {
+		army_defense_health_mult = 0.20
+		army_morale_damage_mult = 0.10
 	}
 }
 
