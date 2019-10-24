@@ -54,7 +54,7 @@ district_farming = {
 		}
 		upkeep = {
 			trigger = {
-				NOT = { has_deposit = retile_deposit_bioreactor }
+				NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
 			}
 			energy = @base_upkeep
 			#alloys = 1
@@ -105,8 +105,17 @@ district_farming = {
 		trigger = {
 			exists = owner
 			owner = { is_gestalt = no }
+			NOT = { has_deposit = retile_deposit_bioreactor }
 		}
 		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+			has_deposit = retile_deposit_bioreactor
+		}
+		text = job_technician_effect_desc
 	}
 	
 	ai_weight = {
@@ -190,6 +199,9 @@ district_farming_uncapped = {
 			alloys = @base_cost
 		}
 		upkeep = {
+			trigger = {
+				NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
+			}
 			energy = @base_upkeep
 			#alloys = 1
 		}		
@@ -209,10 +221,22 @@ district_farming_uncapped = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = no }
+			NOT = { has_deposit = retile_deposit_bioreactor }
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_farmer_add = 1
+		}
+	}	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+			has_deposit = retile_deposit_bioreactor
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_technician_add = 1
 		}
 	}	
 		
@@ -227,8 +251,17 @@ district_farming_uncapped = {
 		trigger = {
 			exists = owner
 			owner = { is_gestalt = no }
+			NOT = { has_deposit = retile_deposit_bioreactor }
 		}
 		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+			has_deposit = retile_deposit_bioreactor
+		}
+		text = job_technician_effect_desc
 	}
 	
 	ai_weight = {
@@ -308,6 +341,9 @@ district_hab_hydroponics = {
 			alloys = @base_cost
 		}
 		upkeep = {
+			trigger = {
+				NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
+			}
 			energy = @base_upkeep
 			#alloys = 1
 		}		
@@ -327,10 +363,22 @@ district_hab_hydroponics = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = no }
+			NOT = { has_deposit = retile_deposit_bioreactor }
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_farmer_add = 1
+		}
+	}	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+			has_deposit = retile_deposit_bioreactor
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_technician_add = 1
 		}
 	}	
 		
@@ -345,8 +393,17 @@ district_hab_hydroponics = {
 		trigger = {
 			exists = owner
 			owner = { is_gestalt = no }
+			NOT = { has_deposit = retile_deposit_bioreactor }
 		}
 		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+			has_deposit = retile_deposit_bioreactor
+		}
+		text = job_technician_effect_desc
 	}
 	
 	ai_weight = {
@@ -425,6 +482,9 @@ district_rw_farming = {
 			alloys = @base_cost
 		}
 		upkeep = {
+			trigger = {
+				NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
+			}
 			energy = @base_upkeep
 			#alloys = 1
 		}		
@@ -444,10 +504,22 @@ district_rw_farming = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = no }
+			NOT = { has_deposit = retile_deposit_bioreactor }
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_farmer_add = 1
+		}
+	}	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+			has_deposit = retile_deposit_bioreactor
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_technician_add = 1
 		}
 	}	
 		
@@ -462,8 +534,17 @@ district_rw_farming = {
 		trigger = {
 			exists = owner
 			owner = { is_gestalt = no }
+			NOT = { has_deposit = retile_deposit_bioreactor }
 		}
 		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+			has_deposit = retile_deposit_bioreactor
+		}
+		text = job_technician_effect_desc
 	}
 	
 	ai_weight = {
