@@ -1,5 +1,4 @@
 # Migrate one pop between planets within an empire...
-# ALWAYS test with "retile_migrate_ready = yes" before triggering...
 retile_pop_migrate = {	# country scope
 	random_owned_planet = {
 		limit = { AND = {
@@ -15,20 +14,24 @@ retile_pop_migrate = {	# country scope
 					}
 					has_job = servant
 				}
-				planet = { NOR = {
-					#has_building_construction = building_colony_shelter
-					has_building_construction = building_capital
-					has_building_construction = building_major_capital
-					has_building_construction = building_system_capital
-					#has_building_construction = building_hive_colony
-					has_building_construction = building_hive_capital
-					has_building_construction = building_hive_major_capital
-					has_building_construction = building_hive_system_capital
-					#has_building_construction = building_deployment_post
-					has_building_construction = building_machine_capital
-					has_building_construction = building_machine_major_capital
-					has_building_construction = building_machine_system_capital
-				} }
+				planet = {
+					has_building_construction = no
+					free_jobs < 1
+					#NOR = {
+					#	#has_building_construction = building_colony_shelter
+					#	has_building_construction = building_capital
+					#	has_building_construction = building_major_capital
+					#	has_building_construction = building_system_capital
+					#	#has_building_construction = building_hive_colony
+					#	has_building_construction = building_hive_capital
+					#	has_building_construction = building_hive_major_capital
+					#	has_building_construction = building_hive_system_capital
+					#	#has_building_construction = building_deployment_post
+					#	has_building_construction = building_machine_capital
+					#	has_building_construction = building_machine_major_capital
+					#	has_building_construction = building_machine_system_capital
+					#}
+				}
 			} }
 			resettle_pop = { pop = this planet = prevprev }
 		} }
