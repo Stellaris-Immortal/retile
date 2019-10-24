@@ -6,6 +6,71 @@
 @base_upkeep = 5
 @base_buildtime = 240
 
+##################################################### Bio Reactor
+decision_retile_deposit_bioreactor = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost
+		}
+	}
+	
+	potential = {
+		owner = {
+			is_regular_empire = yes
+			has_technology = tech_planetary_government
+		}
+	}
+
+	allow = {
+		free_district_slots > 0
+		hidden_trigger = {
+			retile_ready = yes
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_bioreactor_effects
+		add_deposit = retile_deposit_bioreactor
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 10000
+			AND = {
+				owner = { country_uses_food = no }
+				OR = {
+					num_districts = { type = district_farming value > 0 }
+					num_districts = { type = district_farming_uncapped value > 0 }
+					num_districts = { type = district_hab_hydroponics value > 0 }
+					num_districts = { type = district_rw_farming value > 0 }
+				}
+			}
+		}
+	}
+}
+
+decision_retile_deposit_bioreactor_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_bioreactor
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_bioreactor_remove_effects
+		remove_deposit = retile_deposit_bioreactor
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
 ##################################################### Precinct House
 decision_retile_deposit_precinct = {
 	owned_planets_only = yes
