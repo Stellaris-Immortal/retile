@@ -458,7 +458,7 @@ building_system_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { NOT = { has_policy_flag = xenodiplomacy_embassy } }
+			owner = { has_policy_flag = xenodiplomacy_isolation }
 		}
 		job_clerk_add = 1
 	}
@@ -469,6 +469,14 @@ building_system_capital = {
 			owner = { has_policy_flag = xenodiplomacy_embassy }
 		}
 		job_diplomat_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_gunboat }
+		}
+		job_strategos_add = 1
 	}
 	
 	triggered_planet_modifier = {

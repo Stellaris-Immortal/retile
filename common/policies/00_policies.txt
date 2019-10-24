@@ -982,7 +982,7 @@ trade_policy = {
 		}
 		
 		potential = {
-			has_technology = tech_planetary_unification
+			has_technology = tech_space_trading
 		}		
 		
 		modifier = {}
@@ -996,7 +996,7 @@ trade_policy = {
 		name = "trade_policy_research"
 		
 		potential = {
-			has_technology = tech_planetary_unification
+			has_technology = tech_interstellar_economics
 		}
 		
 		policy_flags = {
@@ -1014,7 +1014,7 @@ trade_policy = {
 		name = "trade_policy_influence"
 		
 		potential = {
-			has_technology = tech_colonial_centralization
+			has_technology = tech_galactic_markets
 		}
 		
 		policy_flags = {
@@ -1308,7 +1308,7 @@ first_contact_protocol = {
 
 xenodiplomacy = {
 	potential = {
-		has_country_flag = first_contact_event
+		has_tradition = tr_diplomacy_open_markets
 	}
 	
 	option = {
@@ -1329,12 +1329,31 @@ xenodiplomacy = {
 		modifier = { }
 		
 		valid = { 
-			has_country_flag = first_contact_event
+			has_tradition = tr_diplomacy_open_markets
 			NOR = {
 				has_valid_civic = "civic_fanatic_purifiers"
 				has_valid_civic = "civic_hive_devouring_swarm"
 				has_valid_civic = "civic_machine_terminator"
 				has_valid_civic = "civic_inwards_perfection"
+			}
+		}
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = "xenodiplomacy_gunboat"
+		
+		policy_flags = { xenodiplomacy_gunboat }
+		modifier = { }
+		
+		valid = { 
+			has_tradition = tr_diplomacy_open_markets
+			NOR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist
 			}
 		}
 		
