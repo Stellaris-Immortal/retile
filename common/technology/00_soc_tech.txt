@@ -247,6 +247,23 @@ tech_eco_simulation = {
 				has_trait = "leader_trait_expertise_biology"
 			}
 		}
+		modifier = {
+			factor = 0
+			is_lithoid_empire = yes
+			NOR = {
+				has_country_flag = non_lithoid_subspecies
+				any_owned_pop = {
+					is_organic_species = yes
+					is_lithoid = no
+				}
+				any_owned_planet = {
+					OR = {
+						num_districts = { type = district_farming value > 0 }
+						num_districts = { type = district_rw_farming value > 0 }
+					}
+				}
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -497,7 +514,23 @@ tech_hydroponics = {
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
-			}			
+		}
+		modifier = {
+			factor = 0
+			is_lithoid_empire = yes
+			NOR = {
+				has_country_flag = non_lithoid_subspecies
+				any_owned_pop = {
+					is_organic_species = yes
+					is_lithoid = no
+				}
+				any_owned_planet = {
+					OR = {
+						num_districts = { type = district_farming value > 0 }
+						num_districts = { type = district_rw_farming value > 0 }
+					}
+				}
+			}
 		}
 	}
 	
