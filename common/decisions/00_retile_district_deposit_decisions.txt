@@ -68,6 +68,18 @@ decision_retile_deposit_bioreactor_remove = {
 	
 	ai_weight = {
 		weight = 0
+		modifier = {
+			weight = 10000
+			OR = {
+				owner = { country_uses_food = yes }
+				NAND = {
+					num_districts = { type = district_farming value > 0 }
+					num_districts = { type = district_farming_uncapped value > 0 }
+					num_districts = { type = district_hab_hydroponics value > 0 }
+					num_districts = { type = district_rw_farming value > 0 }
+				}
+			}
+		}
 	}	
 }
 
