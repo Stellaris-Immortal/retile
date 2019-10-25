@@ -1510,17 +1510,24 @@ artificial_intelligence_policy = {
 		modifier = {}
 		
 		AI_weight = {
+			#modifier = {
+			#	factor = 0
+			#	always = yes #TODO [MAW] we should make sure we can afford it here
+			#}
 			modifier = {
-				factor = 0
-				always = yes #TODO [MAW] we should make sure we can afford it here
-			}
+				factor = 5
+				OR = {
+					has_ethic = "ethic_egalitarian"
+					has_ethic = "ethic_fanatic_egalitarian"
+				}
+			}		
 			modifier = {
 				factor = 5
 				has_valid_ai_personality = yes
 				has_ai_personality_behaviour = robot_liberator
 			}		
 			modifier = {
-				factor = 0
+				factor = 0.1
 				OR = {
 					has_ethic = "ethic_spiritualist"
 					has_ethic = "ethic_fanatic_spiritualist"
