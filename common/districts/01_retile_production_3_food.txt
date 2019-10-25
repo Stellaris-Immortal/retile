@@ -134,7 +134,6 @@ district_farming = {
 		modifier = {	# REALLY don't let food go negative
 			weight = 100000
 			OR = {
-				num_districts = { type = district_farming value < 1 }
 				owner = { has_monthly_income = { resource = food value < 10 } }
 			}
 		}
@@ -153,7 +152,7 @@ district_farming = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 100 } }
+			owner = { has_monthly_income = { resource = food value > 50 } }
 		}
 	}
 
@@ -280,7 +279,6 @@ district_farming_uncapped = {
 		modifier = {	# REALLY don't let food go negative
 			weight = 100000
 			OR = {
-				num_districts = { type = district_farming_uncapped value < 1 }
 				owner = { has_monthly_income = { resource = food value < 5 } }
 			}
 		}
@@ -299,7 +297,7 @@ district_farming_uncapped = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 100 } }
+			owner = { has_monthly_income = { resource = food value > 50 } }
 		}
 	}
 
@@ -422,7 +420,6 @@ district_hab_hydroponics = {
 		modifier = {	# REALLY don't let food go negative
 			weight = 100000
 			OR = {
-				num_districts = { type = district_hab_hydroponics value < 1 }
 				owner = { has_monthly_income = { resource = food value < 5 } }
 			}
 		}
@@ -441,7 +438,7 @@ district_hab_hydroponics = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 100 } }
+			owner = { has_monthly_income = { resource = food value > 50 } }
 		}
 	}
 
@@ -563,7 +560,6 @@ district_rw_farming = {
 		modifier = {	# REALLY don't let food go negative
 			weight = 100000
 			OR = {
-				num_districts = { type = district_rw_farming value < 1 }
 				owner = { has_monthly_income = { resource = food value < 5 } }
 			}
 		}
@@ -582,7 +578,7 @@ district_rw_farming = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 100 } }
+			owner = { has_monthly_income = { resource = food value > 50 } }
 		}
 	}
 
