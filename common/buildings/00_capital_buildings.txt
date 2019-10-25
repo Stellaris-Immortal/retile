@@ -458,7 +458,12 @@ building_system_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_isolation }
+			owner = { 
+				NOR = {
+					has_policy_flag = xenodiplomacy_embassy
+					has_policy_flag = xenodiplomacy_gunboat
+				}
+			}
 		}
 		job_clerk_add = 1
 	}
