@@ -1,0 +1,531 @@
+##########################################################################
+# Empire edicts
+##########################################################################
+
+@Edict1Cost = 100
+@Edict2Cost = 200
+@Edict3Cost = 300
+
+@EdictDuration = 3600
+
+####################
+# Tradition Edicts #
+####################
+production_targets = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		country_alloys_produces_mult = 0.10
+		country_consumer_goods_produces_mult = 0.10
+	}
+	
+	potential = {
+		has_tradition = tr_prosperity_pursuit_of_profit
+	}
+	
+	ai_weight = {
+		weight = @EdictMedPrio
+	}
+}
+
+research_focus = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		all_technology_research_speed = 0.10
+	}
+		
+	potential = {
+		has_tradition = tr_discovery_faith_in_science
+	}
+	
+	ai_weight = {
+		weight = @EdictMedPrio
+	}
+}
+
+declare_saint = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.10
+	}
+	
+	potential = {
+		has_tradition = tr_harmony_utopian_dream
+	}
+	
+	ai_weight = {
+		weight = @EdictMedPrio
+	}
+}
+
+information_quarantine = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		pop_government_ethic_attraction = 0.25
+		pop_ethics_shift_speed_mult = 0.25
+	}	
+	
+	potential = {
+		has_tradition = tr_domination_workplace_motivators
+	}
+	
+	ai_weight = {
+		weight = @EdictLowPrio
+	}
+}
+
+diplomatic_grants = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict1Cost
+		}
+	}
+
+	modifier = {
+		country_trust_growth = 0.50
+		country_trade_attractiveness = 0.10
+	}
+	
+	potential = {
+		has_tradition = tr_diplomacy_insider_trading
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+land_of_opportunity = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict1Cost
+		}
+	}
+
+	modifier = {
+		planet_immigration_pull_mult = 0.50
+		pop_growth_from_immigration = 0.10
+	}
+	
+	potential = {
+		has_tradition = tr_diplomacy_secure_shipping
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+war_games = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		ship_sensor_range_add = 1
+		ship_hyperlane_range_add = 1
+		ship_speed_mult = 0.15
+		starbase_shipyard_build_speed_mult = 0.25
+	}
+	
+	potential = {
+		has_tradition = tr_supremacy_war_games
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+climate_engineering = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		terraform_speed_mult = 0.50
+		deposit_blockers_cost_mult = -0.25
+		planet_clear_blocker_time_mult = -0.50
+	}
+	
+	potential = {
+		has_tradition = tr_expansion_a_new_life
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+##########################################################################
+# Rare resource edicts
+##########################################################################
+
+living_metal_construction  = {
+	length = @EdictDuration
+	resources = {
+		category = rare_edicts
+		cost = {
+			sr_living_metal = 50
+		}
+	}
+
+	modifier = {
+		ship_hull_regen_add_perc = 0.10
+		ship_armor_regen_add_perc = 0.10
+		megastructure_build_speed_mult = 0.50
+	}	
+	
+	prerequisites = {
+		"tech_mine_living_metal"
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = @EdictHighPrio
+			any_megastructure = { 
+				count >= 1 
+				is_upgrading = yes
+			}
+		}
+	}	
+}
+
+nanite_actuators  = {
+	length = @EdictDuration
+	resources = {
+		category = rare_edicts
+		cost = {
+			nanites = 50
+		}
+	}	
+	
+	potential = {
+		has_resource = { type = nanites amount > 0 }
+	}
+
+	modifier = {
+		ship_fire_rate_mult = 0.05
+		ship_evasion_mult = 0.05
+		all_technology_research_speed = 0.05
+	}
+	
+	ai_weight = {
+		weight = @EdictHighPrio
+	}	
+}
+
+dark_matter_composites = {
+	length = @EdictDuration
+	resources = {
+		category = rare_edicts
+		cost = {
+			sr_dark_matter = 50
+		}
+	}
+
+	modifier = {
+		weapon_type_kinetic_weapon_damage_mult = 0.25
+		weapon_type_explosive_weapon_damage_mult = 0.25
+		ship_armor_mult = 0.25
+	}
+	
+	prerequisites = {
+		"tech_mine_dark_matter"
+	}
+	
+	ai_weight = {
+		weight = @EdictHighPrio
+	}
+}
+
+zro_harmonics = {
+	length = @EdictDuration
+	resources = {
+		category = rare_edicts
+		cost = {
+			sr_zro = 50
+		}
+	}	
+	
+	potential = {
+		has_resource = { type = sr_zro amount > 0 }
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.05
+		weapon_type_energy_weapon_damage_mult = 0.25
+		ship_shield_mult = 0.25
+	}
+	
+	ai_weight = {
+		weight = @EdictHighPrio
+	}
+}
+
+##########################################################################
+# Event edicts
+##########################################################################
+masters_writings_politics = {
+	modifier = {
+		planet_buildings_cost_mult = -0.1
+		planet_districts_cost_mult = -0.1
+		planet_building_build_speed_mult = 0.10
+	}
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict1Cost
+		}
+	}
+
+	length = @EdictDuration
+
+	potential = {
+		has_country_flag = edict_masters_writings_politics
+	}
+
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = 1
+	}	
+}
+
+masters_writings_diplomacy = {
+	modifier = {
+		country_trust_growth = 1
+	}
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict1Cost
+		}
+	}
+
+	length = @EdictDuration
+
+	potential = {
+		has_country_flag = edict_masters_writings_diplomacy
+	}
+
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+masters_writings_philosophy = {
+	modifier = {
+		country_society_tech_research_speed = 0.1
+		country_leader_pool_size = 1
+	}
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict1Cost
+		}
+	}
+
+	length = @EdictDuration
+
+	potential = {
+		has_country_flag = edict_masters_writings_philosophy
+	}
+
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+masters_writings_war = {
+	modifier = {
+		country_naval_cap_mult = 0.1
+		armies_upkeep_mult = -0.15
+	}
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict1Cost
+		}
+	}
+
+	length = @EdictDuration
+
+	potential = {
+		has_country_flag = edict_masters_writings_war
+	}
+
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = @EdictHighPrio
+			is_at_war = yes
+		}
+	}
+}
+
+improved_work_environment = {
+	modifier = {
+		pop_happiness = 0.05
+		category_biology_research_speed_mult = 0.1
+		category_statecraft_research_speed_mult = 0.1
+	}
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	length = @EdictDuration
+
+	potential = {
+		has_country_flag = edict_improved_work_environment
+	}
+
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = @EdictHighPrio
+	}
+}
+
+renewable_energy = {
+	modifier = {
+		planet_pops_consumer_goods_upkeep_mult = -0.05
+		category_industry_research_speed_mult = 0.1
+		category_materials_research_speed_mult = 0.1
+	}
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	length = @EdictDuration
+
+	potential = {
+		has_country_flag = edict_renewable_energy
+	}
+
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = @EdictHighPrio
+	}
+}
+
+super_sensors = {
+	modifier = {
+		ship_sensor_range_add = 1
+		ship_hyperlane_range_add = 2
+	}
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	length = @EdictDuration
+
+	potential = {
+		has_country_flag = edict_super_sensors
+	}
+
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+nuumismatic_visualization = {
+	modifier = {
+		planet_pops_consumer_goods_upkeep_mult = -0.05
+		category_statecraft_research_speed_mult = 0.1
+		country_energy_produces_mult = 0.10
+	}
+
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	length = @EdictDuration
+
+	potential = {
+		has_country_flag = nuumismatic_visualization
+	}
+
+	allow = {
+	}
+	
+	ai_weight = {
+		weight = @EdictHighPrio
+	}
+}

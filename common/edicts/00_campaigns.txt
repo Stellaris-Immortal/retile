@@ -1,0 +1,205 @@
+#################
+# Campaigns
+# shorter duration, cost energy
+#################
+
+# Sets the cost for all campaigns with this variable
+@Edict1Cost = 100
+@Edict2Cost = 200
+@Edict3Cost = 300
+
+@EdictDuration = 3600
+
+education_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict1Cost
+		}
+	}
+
+	modifier = {
+		species_leader_exp_gain = 0.25
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+anticrime_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict1Cost
+		}
+	}
+
+	modifier = {
+		planet_crime_mult = -0.10
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+healthcare_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		pop_growth_speed = 0.10
+	}
+
+	potential = {
+		NOT = { 
+			has_ethic = ethic_gestalt_consciousness
+			is_lithoid_empire = yes
+		}
+		has_technology = tech_planetary_unification
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+healthcare_campaign_2 = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		pop_growth_speed = 0.10
+	}
+
+	potential = {
+		NOT = { 
+			has_ethic = ethic_gestalt_consciousness
+			is_lithoid_empire = no
+		}
+		has_technology = tech_planetary_unification
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+labor_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		country_energy_produces_mult = 0.10
+		country_minerals_produces_mult = 0.10
+		country_food_produces_mult = 0.10
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		has_technology = tech_planetary_unification
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+recycling_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		planet_amenities_mult = -0.10
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		has_technology = tech_colonial_centralization
+	}
+
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 0
+	}
+}
+
+celebration_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		pop_happiness = 0.10
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		has_technology = tech_colonial_centralization
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+construction_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		planet_building_build_speed_mult = 0.25
+		starbase_upgrade_speed_mult = 0.25
+		megastructure_build_speed_mult = 0.10
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		has_technology = tech_galactic_administration
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
