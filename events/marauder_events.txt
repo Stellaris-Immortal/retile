@@ -5547,18 +5547,6 @@ planet_event = {
 				kill_pop = yes
 			}
 		}
-		if = {
-			limit = { num_pops > 1 }
-			random_pop = {
-				kill_pop = yes
-			}
-		}
-		if = {
-			limit = { num_pops > 1 }
-			random_pop = {
-				kill_pop = yes
-			}
-		}
 	}
 }
 
@@ -5642,20 +5630,6 @@ planet_event = {
 
 	option = {
 		name = marauder.107.a
-		random_pop = {
-			limit = {
-				is_robot_pop = no
-				is_sapient = yes
-			}
-			kill_pop = yes
-		}
-		random_pop = {
-			limit = {
-				is_robot_pop = no
-				is_sapient = yes
-			}
-			kill_pop = yes
-		}
 		random_pop = {
 			limit = {
 				is_robot_pop = no
@@ -7574,7 +7548,7 @@ country_event = {
 			}
 			# Create Marauder Pops
 			if = {
-				limit = { free_housing < 1 }
+				limit = { num_pops > 4 }
 				random_pop = { 
 					kill_pop = yes 
 				}
@@ -7584,7 +7558,7 @@ country_event = {
 				create_pop = { species = root.species }
 			}
 			if = {
-				limit = { free_housing = 1 }
+				limit = { num_pops > 8 }
 				random_pop = { 
 					kill_pop = yes
 				}
@@ -7594,31 +7568,20 @@ country_event = {
 				create_pop = { species = root.species }
 			}
 			if = {
-				limit = { 
-					free_housing > 5
-					free_housing < 6 
-				}
+				limit = { num_pops > 12 }
 				random_pop = { 
 					kill_pop = yes
 				}
 				random_pop = { 
 					kill_pop = yes
 				}
-				random_pop = { 
-					kill_pop = yes
-				}
-				create_pop = { species = root.species }
 				create_pop = { species = root.species }
 			}
-			if = {
-				limit = { free_housing > 5 }
-				create_pop = { species = root.species }
-				create_pop = { species = root.species }
-				create_pop = { species = root.species }
-				create_pop = { species = root.species }
-				create_pop = { species = root.species }
+			while = {
+				limit = { free_housing > 0 }
 				create_pop = { species = root.species }
 			}
+			
 			# Flip Starbase ownership or create a new one
 			if = {
 				limit = {
@@ -7634,8 +7597,7 @@ country_event = {
 				solar_system = {
 					starbase = { set_owner = root }
 				}
-			}
-			else = {
+			} else = {
 				solar_system = {
 					create_starbase = {
 						size = "starbase_marauder"
