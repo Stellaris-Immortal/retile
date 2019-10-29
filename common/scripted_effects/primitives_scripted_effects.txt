@@ -570,7 +570,7 @@ machine_age_planet_upgrade = {	# planet scope, primitive.10
 		add_district = district_mining
 	}
 	while = {
-		limit = { num_pops < 6 }
+		limit = { num_pops < 5 } # should be 6, bug random bug?
 		create_pop = { species = owner_main_species }
 	}
 	clear_blockers = yes
@@ -587,7 +587,7 @@ atomic_age_planet_upgrade = {	# planet scope, primitive.12
 		add_district = district_generator
 	}
 	while = {
-		limit = { num_pops < 7 }
+		limit = { num_pops < 6 } # Should be 7, but random bug?
 		create_pop = { species = owner_main_species }
 	}
 	clear_blockers = yes
@@ -606,7 +606,7 @@ space_age_planet_upgrade = {	# planet scope, primitive.14
 		add_district = district_city
 	}
 	while = {
-		limit = { num_pops < 8 }
+		limit = { num_pops < 7 } # should be 8 but random bug?
 		create_pop = { species = owner_main_species }
 	}
 	clear_blockers = yes
@@ -621,7 +621,7 @@ space_empire_planet_upgrade = {	# planet scope, primitive.16
 	add_building = building_system_capital
 	add_building = building_foundry_1
 	while = {
-		limit = { num_pops < 10 }
+		limit = { num_pops < 9 } # should be 10, but random bug?
 		create_pop = { species = owner_main_species }
 	}
 	clear_blockers = yes
