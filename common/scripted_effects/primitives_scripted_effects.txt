@@ -433,7 +433,7 @@ setup_primitive_planet = {
 			prev = {
 				while = {
 					count = 7
-					ccreate_pop = { species = owner_main_species }
+					create_pop = { species = owner_main_species }
 				}
 				add_building = building_primitive_capital
 				add_building = building_urban_dwellings # primitive_city
@@ -495,33 +495,54 @@ create_primitive_blockers = {
 	add_deposit = d_failing_infrastructure
 }
 
-bronze_age_planet_upgrade = {	# planet scope
+bronze_age_planet_upgrade = {	# planet scope, primitive.30
+	retile_unemploy_all = yes
 	remove_building = building_crude_huts
 	add_building = building_primitive_dwellings
 	add_building = building_stone_palace
-	create_pop = { species = owner_main_species }
+	while = {
+		limit = { num_pops < 2 }
+		create_pop = { species = owner_main_species }
+	}
 }
 
-iron_age_planet_upgrade = {	# planet scope
+iron_age_planet_upgrade = {	# planet scope, primitive.20
+	retile_unemploy_all = yes
 	add_building = building_primitive_farm
-	create_pop = { species = owner_main_species }
+	while = {
+		limit = { num_pops < 3 }
+		create_pop = { species = owner_main_species }
+	}
 }
 
-medieval_age_planet_upgrade = {	# planet scope
-	# nothing, for now...
+medieval_age_planet_upgrade = {	# planet scope, primitive.22
+	retile_unemploy_all = yes
+	while = {
+		limit = { num_pops < 3 }
+		create_pop = { species = owner_main_species }
+	}
 }
 
-renaissance_age_planet_upgrade = {	# planet scope
+renaissance_age_planet_upgrade = {	# planet scope, primitive.24
+	retile_unemploy_all = yes
 	remove_building = building_primitive_dwellings
 	add_building = building_urban_dwellings
-	create_pop = { species = owner_main_species }
+	while = {
+		limit = { num_pops < 4 }
+		create_pop = { species = owner_main_species }
+	}
 }
 
-steam_age_planet_upgrade = {	# planet scope
-	# nothing, for now...
+steam_age_planet_upgrade = {	# planet scope, primitive.26
+	retile_unemploy_all = yes
+	while = {
+		limit = { num_pops < 4 }
+		create_pop = { species = owner_main_species }
+	}
 }
 
-industrial_age_planet_upgrade = {	# planet scope
+industrial_age_planet_upgrade = {	# planet scope, primitive.28
+	retile_unemploy_all = yes
 	remove_building = building_stone_palace
 	remove_building = building_primitive_farm
 	add_building = building_primitive_capital
@@ -531,39 +552,51 @@ industrial_age_planet_upgrade = {	# planet scope
 	} ELSE = {
 		add_district = district_farming
 	}
-	create_pop = { species = owner_main_species }
+	while = {
+		limit = { num_pops < 5 }
+		create_pop = { species = owner_main_species }
+	}
 	clear_blockers = yes
 	add_deposit = d_decrepit_dwellings
 	add_deposit = d_failing_infrastructure
 }
 
-machine_age_planet_upgrade = {	# planet scope
+machine_age_planet_upgrade = {	# planet scope, primitive.10
+	retile_unemploy_all = yes
 	IF = {
 		limit = { is_planet_class = pc_ringworld_habitable }
 		add_district = district_rw_mining
 	} ELSE = {
 		add_district = district_mining
 	}
-	create_pop = { species = owner_main_species }
+	while = {
+		limit = { num_pops < 6 }
+		create_pop = { species = owner_main_species }
+	}
 	clear_blockers = yes
 	add_deposit = d_decrepit_dwellings
 	add_deposit = d_failing_infrastructure
 }
 
-atomic_age_planet_upgrade = {	# planet scope
+atomic_age_planet_upgrade = {	# planet scope, primitive.12
+	retile_unemploy_all = yes
 	IF = {
 		limit = { is_planet_class = pc_ringworld_habitable }
 		add_district = district_rw_generator
 	} ELSE = {
 		add_district = district_generator
 	}
-	create_pop = { species = owner_main_species }
+	while = {
+		limit = { num_pops < 7 }
+		create_pop = { species = owner_main_species }
+	}
 	clear_blockers = yes
 	add_deposit = d_decrepit_dwellings
 	add_deposit = d_failing_infrastructure
 }
 
-space_age_planet_upgrade = {	# planet scope
+space_age_planet_upgrade = {	# planet scope, primitive.14
+	retile_unemploy_all = yes
 	remove_building = building_urban_dwellings
 	add_building = building_primitive_factory
 	IF = {
@@ -572,13 +605,17 @@ space_age_planet_upgrade = {	# planet scope
 	} ELSE = {
 		add_district = district_city
 	}
-	create_pop = { species = owner_main_species }
+	while = {
+		limit = { num_pops < 8 }
+		create_pop = { species = owner_main_species }
+	}
 	clear_blockers = yes
 	add_deposit = d_decrepit_dwellings
 	add_deposit = d_failing_infrastructure
 }
 
-space_empire_planet_upgrade = {	# planet scope
+space_empire_planet_upgrade = {	# planet scope, primitive.16
+	retile_unemploy_all = yes
 	remove_building = building_primitive_capital
 	remove_building = building_primitive_factory
 	add_building = building_system_capital
