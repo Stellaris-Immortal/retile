@@ -3,7 +3,7 @@ retile_pop_migrate = {	# country scope
 	random_owned_planet = {
 		limit = { AND = {
 			free_jobs > 0
-			colony_age > 1
+			is_under_colonization = no
 		} }
 		owner = { random_owned_pop = {
 			limit = { AND = {
@@ -21,6 +21,7 @@ retile_pop_migrate = {	# country scope
 						prev = { is_shackled_robot = yes }
 					}
 				}
+				prevprev = { habitability = { who = prev value >= 0.5 } }
 			} }
 			resettle_pop = { pop = this planet = prevprev }
 		} }

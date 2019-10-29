@@ -1,0 +1,592 @@
+generate_primitives_on_planet = {
+	create_primitive_species = yes
+	create_primitive_empire = yes
+	setup_primitive_planet = yes
+}
+
+generate_early_primitives_on_planet = {
+	create_primitive_species = yes
+	create_early_primitive_empire = yes
+	setup_primitive_planet = yes
+}
+
+generate_late_primitives_on_planet = {
+	create_primitive_species = yes
+	create_late_primitive_empire = yes
+	setup_primitive_planet = yes
+}
+
+create_primitive_species = {
+	create_species = {
+		name = random
+		class = random_non_machine
+		portrait = random
+		homeworld = THIS
+		traits = {
+			trait = random_traits
+		}
+	}
+}
+
+create_early_primitive_empire = {
+	create_country = {
+		name = random
+		authority = random
+		civics = {
+			civic = civic_landed_nobility
+			civic = civic_flat_world_theory
+		}
+		species = last_created
+		ethos = random
+		flag = {
+			icon = {
+				category = "special"
+				file = "primitive.dds"
+			}
+			background= {
+				category = "backgrounds"
+				file = "new_dawn.dds"
+			}
+			colors={
+				"turquoise"
+				"green"
+				"null"
+				"null"
+			}
+		}
+		type = primitive
+	}
+	last_created_country = {
+		set_graphical_culture = preindustrial_01
+		random_list = {
+			20 = {
+				set_country_flag = stone_age 
+				set_primitive_age = stone_age
+				change_government = {
+					authority = random
+					civics = {
+						civic = civic_secret_of_fire
+						civic = civic_the_wheel
+					}
+				}
+			}
+			20 = {
+				set_country_flag = bronze_age 
+				set_primitive_age = bronze_age
+				change_government = {
+					authority = random
+					civics = {
+						civic = civic_secret_of_fire
+						civic = civic_the_wheel
+					}
+				}
+				change_country_flag = {
+					icon = {
+						category = "special"
+						file = "primitive.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "new_dawn.dds"
+					}
+					colors={
+						"green"
+						"dark_green"
+						"null"
+						"null"
+					}
+				}
+			}
+			20 = {
+				set_country_flag = iron_age 
+				set_primitive_age = iron_age
+				change_country_flag = {
+					icon = {
+						category = "special"
+						file = "primitive.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "new_dawn.dds"
+					}
+					colors={
+						"purple"
+						"dark_purple"
+						"null"
+						"null"
+					}
+				}
+			}
+			20 = {
+				set_country_flag = late_medieval_age 
+				set_primitive_age = late_medieval_age
+				change_country_flag = {
+					icon = {
+						category = "special"
+						file = "primitive.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "new_dawn.dds"
+					}
+					colors={
+						"light_blue"
+						"blue"
+						"null"
+						"null"
+					}
+				}
+			}
+			20 = {
+				set_country_flag = renaissance_age 
+				set_primitive_age = renaissance_age
+				change_country_flag = {
+					icon = {
+						category = "special"
+						file = "primitive.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "new_dawn.dds"
+					}
+					colors={
+						"pink"
+						"burgundy"
+						"null"
+						"null"
+					}
+				}
+			}
+			20 = {
+				set_country_flag = steam_age 
+				set_primitive_age = steam_age
+				change_country_flag = {
+					icon = {
+						category = "special"
+						file = "primitive.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "new_dawn.dds"
+					}
+					colors={
+						"orange"
+						"red"
+						"null"
+						"null"
+					}
+				}
+			}
+		}
+	}	
+}
+
+create_late_primitive_empire = {
+	create_country = {
+		name = random
+		authority = random
+		civics = {
+			civic = civic_increasing_urbanization
+			civic = civic_atmospheric_pollution
+		}
+		species = last_created
+		ethos = random
+		flag = {
+			icon = {
+				category = "spherical"
+				file = "flag_spherical_22.dds"
+			}
+			background= {
+				category = "backgrounds"
+				file = "new_dawn.dds"
+			}
+			colors={
+				"turquoise"
+				"green"
+				"null"
+				"null"
+			}
+		}
+		type = primitive
+	}
+	last_created_country = {
+		set_graphical_culture = industrial_01
+		random_list = {
+			25 = {
+				set_country_flag = industrial_age 
+				set_primitive_age = industrial_age
+				change_country_flag = {
+					icon = {
+						category = "special"
+						file = "primitive.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "new_dawn.dds"
+					}
+					colors={
+						"beige"
+						"yellow"
+						"null"
+						"null"
+					}
+				}
+			}
+			25 = { 
+				set_country_flag = machine_age
+				set_primitive_age = machine_age
+				change_country_flag = {
+					icon = {
+						category = "special"
+						file = "primitive.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "new_dawn.dds"
+					}
+					colors={
+						"yellow"
+						"orange"
+						"null"
+						"null"
+					}
+				}
+			}
+			25 = { 
+				set_country_flag = atomic_age 
+				set_primitive_age = atomic_age
+				change_country_flag = {
+					icon = {
+						category = "special"
+						file = "primitive.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "new_dawn.dds"
+					}
+					colors={
+						"beige"
+						"brown"
+						"null"
+						"null"
+					}
+				}
+			}
+			25 = { 
+				set_country_flag = early_space_age 
+				set_primitive_age = early_space_age
+				change_country_flag = {
+					icon = {
+						category = "special"
+						file = "primitive.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "new_dawn.dds"
+					}
+					colors={
+						"grey"
+						"dark_grey"
+						"null"
+						"null"
+					}
+				}
+			}
+		}
+	}	
+}
+
+
+create_primitive_empire = {
+	random_list = {
+		# Industrial Civilization
+		15 = {	# 35 default
+			create_late_primitive_empire = yes
+		}
+		# Medieval Civilization
+		85 = {	# 65 default
+			create_early_primitive_empire = yes
+		}
+	}
+}
+
+setup_primitive_planet = {
+	set_owner = last_created_country
+	set_capital = yes
+	
+	last_created_country = {
+		if = {
+			limit = { has_country_flag = stone_age }
+			prev = {
+				while = {
+					count = 1
+					create_pop = { species = owner_main_species }
+				}
+				add_building = building_crude_huts
+				remove_building = building_colony_shelter
+			}
+		}					
+		if = {
+			limit = { has_country_flag = bronze_age }
+			prev = {
+				while = {
+					count = 2
+					create_pop = { species = owner_main_species }
+				}
+				add_building = building_primitive_dwellings
+				add_building = building_stone_palace
+				remove_building = building_colony_shelter
+			}
+		}
+		if = {
+			limit = { has_country_flag = iron_age }
+			prev = {
+				while = {
+					count = 3
+					create_pop = { species = owner_main_species }
+				}
+				add_building = building_primitive_farm
+				add_building = building_primitive_dwellings
+				add_building = building_stone_palace
+				remove_building = building_colony_shelter
+			}
+		}
+		if = {
+			limit = { has_country_flag = late_medieval_age }
+			prev = {
+				while = {
+					count = 3
+					create_pop = { species = owner_main_species }
+				}
+				add_building = building_primitive_farm
+				add_building = building_primitive_dwellings
+				add_building = building_stone_palace
+				remove_building = building_colony_shelter
+			}
+		}
+		if = {
+			limit = { has_country_flag = renaissance_age }
+			prev = {
+				while = {
+					count = 4
+					create_pop = { species = owner_main_species }
+				}
+				add_building = building_primitive_farm
+				add_building = building_urban_dwellings # primitive_city
+				add_building = building_stone_palace
+				remove_building = building_colony_shelter
+			}
+		}
+		if = {
+			limit = { has_country_flag = steam_age }
+			prev = {
+				while = {
+					count = 4
+					create_pop = { species = owner_main_species }
+				}
+				add_building = building_primitive_farm
+				add_building = building_urban_dwellings # primitive_city
+				add_building = building_stone_palace
+				remove_building = building_colony_shelter
+			}
+		}
+		if = {
+			limit = { has_country_flag = industrial_age }
+			prev = {
+				while = {
+					count = 5
+					create_pop = { species = owner_main_species }
+				}
+				add_building = building_urban_dwellings # primitive_city
+				add_building = building_primitive_capital
+				IF = {
+					limit = { is_planet_class = pc_ringworld_habitable }
+					add_district = district_rw_farming
+				} ELSE = {
+					add_district = district_farming
+				}
+				remove_building = building_colony_shelter
+			}
+		}
+		if = {
+			limit = { has_country_flag = machine_age }
+			prev = {
+				while = {
+					count = 6
+					create_pop = { species = owner_main_species }
+				}
+				add_building = building_primitive_capital
+				add_building = building_urban_dwellings # primitive_city
+				IF = {
+					limit = { is_planet_class = pc_ringworld_habitable }
+					add_district = district_rw_mining
+					add_district = district_rw_farming
+				} ELSE = {
+					add_district = district_mining
+					add_district = district_farming
+				}
+				remove_building = building_colony_shelter
+			}
+		}
+		if = {
+			limit = { has_country_flag = atomic_age }
+			prev = {
+				while = {
+					count = 7
+					ccreate_pop = { species = owner_main_species }
+				}
+				add_building = building_primitive_capital
+				add_building = building_urban_dwellings # primitive_city
+				IF = {
+					limit = { is_planet_class = pc_ringworld_habitable }
+					add_district = district_rw_mining
+					add_district = district_rw_farming
+					add_district = district_rw_generator
+				} ELSE = {
+					add_district = district_mining
+					add_district = district_farming
+					add_district = district_generator
+				}
+				remove_building = building_colony_shelter
+			}
+		}
+		if = {
+			limit = { has_country_flag = early_space_age }
+			prev = {
+				while = {
+					count = 8
+					create_pop = { species = owner_main_species }
+				}
+				add_building = building_primitive_capital
+				add_building = building_primitive_factory
+				IF = {
+					limit = { is_planet_class = pc_ringworld_habitable }
+					add_district = district_rw_mining
+					add_district = district_rw_farming
+					add_district = district_rw_generator
+					add_district = district_rw_city
+				} ELSE = {
+					add_district = district_mining
+					add_district = district_farming
+					add_district = district_generator
+					add_district = district_city
+				}
+				remove_building = building_colony_shelter
+			}
+		}		
+	}
+	
+	if = {
+		limit = {
+			last_created_country = {
+				OR = {
+					has_country_flag = machine_age
+					has_country_flag = atomic_age
+					has_country_flag = early_space_age				
+				}
+			}
+		}
+		create_primitive_blockers = yes
+	}
+}
+
+create_primitive_blockers = {
+	add_deposit = d_decrepit_dwellings
+	add_deposit = d_failing_infrastructure
+}
+
+bronze_age_planet_upgrade = {	# planet scope
+	remove_building = building_crude_huts
+	add_building = building_primitive_dwellings
+	add_building = building_stone_palace
+	create_pop = { species = owner_main_species }
+}
+
+iron_age_planet_upgrade = {	# planet scope
+	add_building = building_primitive_farm
+	create_pop = { species = owner_main_species }
+}
+
+medieval_age_planet_upgrade = {	# planet scope
+	# nothing, for now...
+}
+
+renaissance_age_planet_upgrade = {	# planet scope
+	remove_building = building_primitive_dwellings
+	add_building = building_urban_dwellings
+	create_pop = { species = owner_main_species }
+}
+
+steam_age_planet_upgrade = {	# planet scope
+	# nothing, for now...
+}
+
+industrial_age_planet_upgrade = {	# planet scope
+	remove_building = building_stone_palace
+	remove_building = building_primitive_farm
+	add_building = building_primitive_capital
+	IF = {
+		limit = { is_planet_class = pc_ringworld_habitable }
+		add_district = district_rw_farming
+	} ELSE = {
+		add_district = district_farming
+	}
+	create_pop = { species = owner_main_species }
+	clear_blockers = yes
+	add_deposit = d_decrepit_dwellings
+	add_deposit = d_failing_infrastructure
+}
+
+machine_age_planet_upgrade = {	# planet scope
+	IF = {
+		limit = { is_planet_class = pc_ringworld_habitable }
+		add_district = district_rw_mining
+	} ELSE = {
+		add_district = district_mining
+	}
+	create_pop = { species = owner_main_species }
+	clear_blockers = yes
+	add_deposit = d_decrepit_dwellings
+	add_deposit = d_failing_infrastructure
+}
+
+atomic_age_planet_upgrade = {	# planet scope
+	IF = {
+		limit = { is_planet_class = pc_ringworld_habitable }
+		add_district = district_rw_generator
+	} ELSE = {
+		add_district = district_generator
+	}
+	create_pop = { species = owner_main_species }
+	clear_blockers = yes
+	add_deposit = d_decrepit_dwellings
+	add_deposit = d_failing_infrastructure
+}
+
+space_age_planet_upgrade = {	# planet scope
+	remove_building = building_urban_dwellings
+	add_building = building_primitive_factory
+	IF = {
+		limit = { is_planet_class = pc_ringworld_habitable }
+		add_district = district_rw_city
+	} ELSE = {
+		add_district = district_city
+	}
+	create_pop = { species = owner_main_species }
+	clear_blockers = yes
+	add_deposit = d_decrepit_dwellings
+	add_deposit = d_failing_infrastructure
+}
+
+space_empire_planet_upgrade = {	# planet scope
+	remove_building = building_primitive_capital
+	remove_building = building_primitive_factory
+	add_building = building_system_capital
+	add_building = building_foundry_1
+	while = {
+		limit = { num_pops < 10 }
+		create_pop = { species = owner_main_species }
+	}
+	clear_blockers = yes
+}
+

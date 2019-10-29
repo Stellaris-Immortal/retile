@@ -27,15 +27,13 @@ habitat_0 = {
 		}
 		OR = {	# Make the AI fill up habitats a bit before building more, so they don't spam quite as many...
 			is_ai = no
-			any_planet_within_border = {
-				AND = {
-					is_planet_class = pc_habitat
-					OR = {
-						is_colony = no
-						num_pops < 5
-					}
+			NOT = { any_planet_within_border = { AND = {
+				is_planet_class = pc_habitat
+				OR = {
+					is_colony = no
+					num_pops < 5
 				}
-			}
+			} } }
 		}
 	}
 

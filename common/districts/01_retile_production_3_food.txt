@@ -53,11 +53,11 @@ district_farming = {
 			alloys = @base_cost
 		}
 		upkeep = {
-			trigger = {
+			trigger = { AND = {
 				NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
-			}
+				owner = { is_primitive = no }
+			} }
 			energy = @base_upkeep
-			#alloys = 1
 		}		
 	}	
 
@@ -479,11 +479,11 @@ district_rw_farming = {
 			alloys = @base_cost
 		}
 		upkeep = {
-			trigger = {
+			trigger = { AND = {
 				NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
-			}
+				owner = { is_primitive = no }
+			} }
 			energy = @base_upkeep
-			#alloys = 1
 		}		
 	}	
 

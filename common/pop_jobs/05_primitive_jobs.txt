@@ -28,7 +28,7 @@ pre_sapient = {
 
 # Primitives
 
-hunter_gatherer = {
+hunter_gatherer = {	# building_crude_huts
 	category = worker
 	is_capped_by_modifier = no
 	clothes_texture_index = 2
@@ -38,16 +38,9 @@ hunter_gatherer = {
 	}
 
 	possible = {
-		owner = {
-			is_primitive = yes
-			has_country_flag = stone_age 
-		}
+		owner = { is_primitive = yes }
 	}
 
-	planet_modifier = {
-		planet_amenities_add = 1
-	}
-	
 	resources = {
 		category = planet_farmers
 		produces = {
@@ -60,7 +53,7 @@ hunter_gatherer = {
 	}
 }
 
-peasant = {
+peasant = { # building_primitive_farms, building_primitive_dwellings
 	category = worker
 	is_capped_by_modifier = no
 	building_icon = building_primitive_farm
@@ -71,16 +64,7 @@ peasant = {
 	}
 
 	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = bronze_age
-				has_country_flag = iron_age
-				has_country_flag = late_medieval_age
-				has_country_flag = renaissance_age
-				has_country_flag = steam_age
-			}
-		}
+		owner = { is_primitive = yes }
 	}
 	
 	resources = {
@@ -90,52 +74,16 @@ peasant = {
 		}
 	}	
 	
+	pop_modifier = {
+		pop_defense_armies_add = 1
+	}
+
 	weight = {
 		weight = @worker_job_weight
 	}
 }
 
-primitive_warrior = {
-	category = specialist
-	is_capped_by_modifier = yes
-	building_icon = building_primitive_dwellings
-	clothes_texture_index = 2
-		
-	possible_pre_triggers = {
-		has_owner = yes
-	}
-
-	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = bronze_age
-				has_country_flag = iron_age
-				has_country_flag = late_medieval_age
-				has_country_flag = renaissance_age
-				has_country_flag = steam_age
-			}
-		}
-	}
-
-	pop_modifier = {
-		pop_defense_armies_add = 3
-	}
-	
-	weight = {
-		weight = 2
-		modifier = {
-			factor = 6
-			is_militarist = yes
-		}
-		modifier = {
-			factor = 0
-			is_pacifist = yes
-		}
-	}
-}
-
-primitive_noble = {
+primitive_noble = { # building_stone_palace
 	category = ruler
 	is_capped_by_modifier = yes
 	building_icon = building_primitive_capital
@@ -146,16 +94,7 @@ primitive_noble = {
 	}
 
 	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = bronze_age
-				has_country_flag = iron_age
-				has_country_flag = late_medieval_age
-				has_country_flag = renaissance_age
-				has_country_flag = steam_age
-			}
-		}
+		owner = { is_primitive = yes }
 	}
 	
 	resources = {
@@ -165,8 +104,12 @@ primitive_noble = {
 		}
 	}
 	
+	pop_modifier = {
+		pop_defense_armies_add = 1
+	}
+
 	planet_modifier = {
-		planet_amenities_add = 3
+		planet_jobs_worker_produces_mult = 0.1
 	}
 	
 	weight = {
@@ -174,7 +117,7 @@ primitive_noble = {
 	}
 }
 
-primitive_researcher = {
+primitive_researcher = { # building_primitive_city
 	category = specialist
 	is_capped_by_modifier = yes
 	building_icon = building_primitive_labs
@@ -185,16 +128,7 @@ primitive_researcher = {
 	}
 
 	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = bronze_age
-				has_country_flag = iron_age
-				has_country_flag = late_medieval_age
-				has_country_flag = renaissance_age
-				has_country_flag = steam_age
-			}
-		}
+		owner = { is_primitive = yes }
 	}
 	
 	resources = {
@@ -203,70 +137,16 @@ primitive_researcher = {
 			physics_research = 1
 			engineering_research = 1
 			society_research = 1
-		}
-	}
-	
-	weight = {
-		weight = 2
-		modifier = {
-			factor = 6
-			is_materialist = yes
-		}
-		modifier = {
-			factor = 0
-			is_spiritualist = yes
-		}
-	}
-}
-
-primitive_priest = {
-	category = specialist
-	is_capped_by_modifier = yes
-	building_icon = building_temple
-	clothes_texture_index = 3
-		
-	possible_pre_triggers = {
-		has_owner = yes
-	}
-
-	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = bronze_age
-				has_country_flag = iron_age
-				has_country_flag = late_medieval_age
-				has_country_flag = renaissance_age
-				has_country_flag = steam_age
-			}
-		}
-	}
-	
-	resources = {
-		category = planet_jobs
-		produces = {
 			unity = 1
 		}
 	}
 	
-	planet_modifier = {
-		planet_amenities_add = 2
-	}
-	
 	weight = {
-		weight = 2
-		modifier = {
-			factor = 6
-			is_spiritualist = yes
-		}
-		modifier = {
-			factor = 0
-			is_materialist = yes
-		}
+		weight = @specialist_job_weight
 	}
 }
 
-primitive_laborer = {
+primitive_laborer = { # building_primitive_city
 	category = worker
 	is_capped_by_modifier = yes
 	building_icon = building_primitive_factory
@@ -277,16 +157,7 @@ primitive_laborer = {
 	}
 
 	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = steam_age
-				has_country_flag = machine_age
-				has_country_flag = industrial_age
-				has_country_flag = atomic_age
-				has_country_flag = early_space_age
-			}
-		}
+		owner = { is_primitive = yes }
 	}
 	
 	resources = {
@@ -294,256 +165,37 @@ primitive_laborer = {
 		produces = {
 			consumer_goods = 2
 		}
-		upkeep = {
-			minerals = 2
-		}
-	}
-
-
-	
-	weight = {
-		weight = 2
-	}
-}
-
-primitive_miner = {
-	category = worker
-	is_capped_by_modifier = yes
-	building_icon = building_primitive_mine
-	icon = miner
-	clothes_texture_index = 2
-		
-	possible_pre_triggers = {
-		has_owner = yes
-	}
-
-	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = steam_age
-				has_country_flag = machine_age
-				has_country_flag = industrial_age
-				has_country_flag = atomic_age
-				has_country_flag = early_space_age
-			}
-		}
-	}
-	
-	resources = {
-		category = planet_miners
-		produces = {
-			minerals = 3
-		}
 	}
 	
 	weight = {
-		weight = 2
+		weight = @specialist_job_weight
 	}
 }
 
-primitive_technician = {
-	category = worker
-	is_capped_by_modifier = yes
-	building_icon = building_primitive_power_plant
-	icon = technician
-	clothes_texture_index = 2
-		
-	possible_pre_triggers = {
-		has_owner = yes
-	}
-
-	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = steam_age
-				has_country_flag = machine_age
-				has_country_flag = industrial_age
-				has_country_flag = atomic_age
-				has_country_flag = early_space_age
-			}
-		}
-	}
-	
-	resources = {
-		category = planet_technician
-		produces = {
-			energy = 1
-		}
-	}
-	
-	weight = {
-		weight = 2
-	}
-}
-
-primitive_farmer = {
-	category = worker
-	is_capped_by_modifier = yes
-	building_icon = building_primitive_farm
-	clothes_texture_index = 2
-		
-	possible_pre_triggers = {
-		has_owner = yes
-	}
-
-	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = steam_age
-				has_country_flag = machine_age
-				has_country_flag = industrial_age
-				has_country_flag = atomic_age
-				has_country_flag = early_space_age
-			}
-		}
-	}
-	
-	resources = {
-		category = planet_farmers
-		produces = {
-			food = 3
-		}
-	}
-	
-	weight = {
-		weight = @worker_job_weight
-	}
-}
-
-primitive_researcher_2 = {
-	category = specialist
-	is_capped_by_modifier = yes
-	building_icon = building_primitive_labs
-	clothes_texture_index = 3
-		
-	possible_pre_triggers = {
-		has_owner = yes
-	}
-
-	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = machine_age
-				has_country_flag = industrial_age
-				has_country_flag = atomic_age
-				has_country_flag = early_space_age
-			}
-		}
-	}
-	
-	resources = {
-		category = planet_researchers
-		produces = {
-			physics_research = 1
-			engineering_research = 1
-			society_research = 1
-		}
-	}
-	
-	weight = {
-		weight = 2
-		modifier = {
-			factor = 6
-			is_materialist = yes
-		}
-		modifier = {
-			factor = 0
-			is_spiritualist = yes
-		}
-	}
-}
-
-primitive_priest_2 = {
-	category = specialist
-	is_capped_by_modifier = yes
-	building_icon = building_temple
-	clothes_texture_index = 3
-		
-	possible_pre_triggers = {
-		has_owner = yes
-	}
-
-	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = machine_age
-				has_country_flag = industrial_age
-				has_country_flag = atomic_age
-				has_country_flag = early_space_age
-			}
-		}
-	}
-	
-	resources = {
-		category = planet_jobs
-		produces = {
-			unity = 1
-		}
-	}
-	
-	planet_modifier = {
-		planet_amenities_add = 2
-	}
-	
-	weight = {
-		weight = 2
-		modifier = {
-			factor = 6
-			is_spiritualist = yes
-		}
-		modifier = {
-			factor = 0
-			is_materialist = yes
-		}
-	}
-}
-
-primitive_warrior_2 = {
+primitive_warrior = { # building_primitive_capital
 	category = specialist
 	is_capped_by_modifier = yes
 	building_icon = building_residence
 	clothes_texture_index = 2
-		
+
 	possible_pre_triggers = {
 		has_owner = yes
 	}
 
 	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = machine_age
-				has_country_flag = industrial_age
-				has_country_flag = atomic_age
-				has_country_flag = early_space_age
-			}
-		}
+		owner = { is_primitive = yes }
 	}
 
 	pop_modifier = {
 		pop_defense_armies_add = 3
 	}
-	
+
 	weight = {
-		weight = 2
-		modifier = {
-			factor = 6
-			is_militarist = yes
-		}
-		modifier = {
-			factor = 0
-			is_pacifist = yes
-		}
+		weight = @specialist_job_weight
 	}
 }
 
-
-primitive_bureaucrat = {
+primitive_bureaucrat = { # building_primitive_capital
 	category = ruler
 	is_capped_by_modifier = yes
 	building_icon = building_primitive_capital
@@ -554,26 +206,18 @@ primitive_bureaucrat = {
 	}
 
 	possible = {
-		owner = {
-			is_primitive = yes
-			OR = {
-				has_country_flag = machine_age
-				has_country_flag = industrial_age
-				has_country_flag = atomic_age
-				has_country_flag = early_space_age
-			}
-		}
+		owner = { is_primitive = yes }
 	}
 	
 	resources = {
 		category = planet_administrators
 		produces = {
-			unity = 1
+			unity = 3
 		}
 	}
 	
 	planet_modifier = {
-		planet_amenities_add = 3
+		planet_jobs_produces_mult = 0.10
 	}
 	
 	weight = {
