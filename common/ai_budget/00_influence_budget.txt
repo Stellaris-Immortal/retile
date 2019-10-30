@@ -1,0 +1,166 @@
+## Categories used in this file must have use_for_ai_budget = yes defined in economic_categories ##
+## It is possible to have multiple entries with the same category and resource ##
+
+#################
+## Expenditure ##
+#################
+influence_expenditure_buffer = { # Buffer, will not be spent
+	resource = influence 
+	type = expenditure
+	category = buffer
+	
+	potential = {
+		always = no
+	}
+	
+	fraction = {
+		weight = 0.0
+	}	
+}
+
+influence_expenditure_decisions = {
+	resource = influence 
+	type = expenditure
+	category = decisions
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.20
+	}
+
+	# this is the cost of the arcology project decision
+	static_max = {
+		base = 200
+	}	
+}
+
+influence_expenditure_edicts = {
+	resource = influence 
+	type = expenditure
+	category = edicts
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.50
+	}	
+
+	static_min = {
+		base = 100
+	}
+
+	static_max = {
+		base = 300
+	}
+}
+
+influence_expenditure_stations = {
+	resource = influence 
+	type = expenditure
+	category = stations
+	
+	potential = {
+		has_ai_expansion_plan = yes
+	}
+	
+	fraction = {
+		weight = 0.50
+	}	
+
+	# min is 1 jump away
+	static_min = {
+		base = 75
+	}
+
+	# max is 2 jumps away
+	static_max = {
+		base = 150
+	}
+}
+
+influence_expenditure_claims = {
+	resource = influence 
+	type = expenditure
+	category = claims
+	
+	potential = {
+		NOT = {
+			OR = {
+  	 			has_ethic = ethic_fanatic_pacifist
+   				has_ethic = ethic_pacifist
+    		}	
+		}
+		has_potential_claims = yes
+	}
+	
+	fraction = {
+		weight = 0.20
+	}
+	
+	static_min = {
+		base = 100
+	}
+}
+
+influence_expenditure_claims_militarist = {
+	resource = influence 
+	type = expenditure
+	category = claims
+	
+	potential = {
+		has_ethic = ethic_militarist
+		has_potential_claims = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}
+}
+
+influence_expenditure_claims_fanatic_militarist = {
+	resource = influence 
+	type = expenditure
+	category = claims
+	
+	potential = {
+   		has_ethic = ethic_fanatic_militarist
+   		has_potential_claims = yes
+	}
+	
+	fraction = {
+		weight = 0.20
+	}
+}
+
+influence_expenditure_megastructures = {
+	resource = influence
+	type = expenditure
+	category = megastructures
+	
+	potential = {
+		is_at_war = no
+		has_galactic_wonders = yes
+
+		has_resource = { 
+			type = influence 
+			amount > 500
+		}
+	}
+
+	fraction = {
+		weight = 0.1
+	}
+
+	# only used by construction sites, base cost is 300
+	static_min = {
+		base = 300
+	}
+	static_max = {
+		base = 350
+	}
+}
