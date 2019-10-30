@@ -480,6 +480,7 @@ atmospheric_aphrodisiac = {
 
 atmospheric_hallucinogen = {
 	biological_pop_happiness = 0.05
+	lithoid_pop_happiness = 0.05
 	planet_jobs_physics_research_produces_mult = 0.10
 	pop_government_ethic_attraction = -0.30
 	
@@ -516,6 +517,7 @@ bleak_planet = {
 irradiated_planet = {
 	pop_environment_tolerance = -0.10
 	biological_pop_happiness = -0.20
+	lithoid_pop_happiness = -0.20
 	planet_jobs_food_produces_mult = -0.50
 	district_farming_max = -6
 	district_mining_max = 2
@@ -736,6 +738,7 @@ wasteland_infrastructure = {
 
 wasteland_radiation = {
 	biological_pop_happiness = -0.1
+	lithoid_pop_happiness = -0.1
 	icon = "gfx/interface/icons/planet_modifiers/pm_irradiated.dds"
 	icon_frame = 3
 }
@@ -925,23 +928,27 @@ planet_crime_no_happiness = {
 
 # Amenities ( 0% - 2000% of required)
 planet_amenities_no_happiness_low = {
-	planet_stability_add = 20
-	pop_growth_speed = 0.25
+	planet_stability_add = 12.5
+	#pop_growth_speed = 0.25
+	pop_environment_tolerance = 0.25
 }
 
 planet_amenities_no_happiness_high = {
 	planet_stability_add = -50
-	pop_growth_speed = -1
+	#pop_growth_speed = -1
+	pop_environment_tolerance = -1
 }
 
 planet_amenities_low = {
-	planet_stability_add = 20
-	pop_growth_speed = 0.25
+	planet_stability_add = 12.5
+	#pop_growth_speed = 0.25
+	pop_environment_tolerance = 0.25
 }
 
 planet_amenities_high = {
 	planet_stability_add = -50
-	pop_growth_speed = -1
+	#pop_growth_speed = -1
+	pop_environment_tolerance = -1
 }
 
 # Housing ( 25% - 200% of required)
@@ -1445,10 +1452,12 @@ fe_gift_ship = {
 
 machine_empire_inoculations_xenophobe = {
 	biological_pop_happiness = -0.1
+	lithoid_pop_happiness = -0.1
 }
 
 machine_empire_inoculations = {
 	biological_pop_happiness = -0.05
+	lithoid_pop_happiness = -0.05
 }
 
 machine_empire_health_boost = {
