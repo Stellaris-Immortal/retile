@@ -1,0 +1,103 @@
+create_fe_home_citadel = {
+	create_starbase = {
+		size = "starbase_citadel"
+
+		building = "target_uplink_computer"
+		building = "defense_grid"
+		building = "colossus_yards"
+		building = "titan_yards"
+		
+		module = "shipyard"
+		module = "shipyard"
+		module = "shipyard"			
+		module = "hangar_bay"
+		module = "gun_battery"
+		module = "gun_battery"		
+
+		effect = {
+			while = {
+				count = 10
+				create_fallen_empire_platform = yes
+			}	
+		}
+	}
+}
+
+create_fe_citadel = {
+	create_starbase = {
+		size = "starbase_citadel"
+
+		building = "crew_quarters"
+		building = "command_center"
+		building = "target_uplink_computer"
+		building = "listening_post"
+		
+		module = "shipyard"
+		module = "anchorage"
+		module = "anchorage"
+		module = "hangar_bay"
+		module = "gun_battery"
+		#module = "gun_battery"
+
+		effect = {
+			while = {
+				count = 4
+				create_fallen_empire_platform = yes
+			}	
+		}			
+	}
+}
+
+create_fe_fringe_colony = {
+	set_planet_flag = fallen_empire_world
+	prevent_anomaly = yes
+	set_owner = ROOT
+	add_building = building_ancient_palace
+	add_building = building_fe_dome
+	while = {
+		count = 5
+		add_district = district_city
+	}
+	while = {
+		count = 8
+		create_pop = {
+			species = owner_main_species
+		}
+	}
+	while = {
+		count = 8
+		create_pop = {
+			species = event_target:fe_servants
+		}
+	}
+}
+
+create_fe_spiritualist_fringe_colony = {
+	set_planet_flag = fallen_empire_world
+	prevent_anomaly = yes
+	set_owner = ROOT
+	add_building = building_ancient_palace
+	add_building = building_fe_dome
+	while = {
+		count = 3
+		add_district = district_city
+	}
+	while = {
+		count = 2
+		add_district = district_generator
+	}
+	while = {
+		count = 2
+		add_district = district_mining
+	}
+	while = {
+		count = 2
+		add_district = district_farming
+	}
+	while = {
+		count = 20
+		create_pop = {
+			species = owner_main_species
+		}
+	}
+}
