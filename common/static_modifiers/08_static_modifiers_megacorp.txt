@@ -178,11 +178,11 @@ planet_culture_shock = {
 martial_law = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_martial_law.dds"
 	icon_frame = 2
-	planet_jobs_produces_mult = -0.33
+	planet_jobs_produces_mult = -0.25
 	pop_growth_speed = -0.5
 	pop_growth_from_immigration = -0.5
 	pop_assembly_speed = -0.5
-	job_soldier_add = 2
+	planet_crime_mult = -0.5
 }
 
 hunter_killer_drones = {
@@ -486,7 +486,7 @@ criminal_underworld = {
 gang_wars = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
 	icon_frame = 3
-	planet_stability_add = -5
+	planet_amenities_mult = 0.25
 	job_criminal_add = 2
 	planet_housing_add = 2
 }
@@ -510,7 +510,7 @@ mob_rule = {
 bribed_officials = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
 	icon_frame = 3
-	planet_stability_add = -10
+	planet_stability_add = -5
 	job_criminal_add = 1
 	planet_housing_add = 1
 }
@@ -518,7 +518,7 @@ bribed_officials = {
 substance_abuse = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
 	icon_frame = 3
-	pop_growth_speed = -0.3
+	pop_growth_speed = -0.25
 }
 
 smuggler_activity = {
@@ -530,7 +530,7 @@ smuggler_activity = {
 crime_wave = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
 	icon_frame = 3
-	planet_crime_add = 30
+	planet_crime_add = 20
 }
 
 travel_advisory = {
@@ -542,7 +542,7 @@ travel_advisory = {
 cartel_war = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
 	icon_frame = 3
-	planet_stability_add = -20
+	planet_stability_add = -10
 }
 
 protection_racket = {
@@ -554,7 +554,7 @@ protection_racket = {
 corrupt_administration = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
 	icon_frame = 3
-	planet_stability_add = -20
+	planet_stability_add = -10
 }
 
 trade_pilfering = {
@@ -566,20 +566,19 @@ trade_pilfering = {
 crime_boss_arrested = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
 	icon_frame = 1
-	planet_crime_add = -30
+	planet_crime_add = -20
 }
 
 ringleader_killed = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
 	icon_frame = 1
-	planet_crime_add = -30
+	planet_crime_add = -20
 }
 
 anticrime_campaign = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
 	icon_frame = 1
-	show_only_custom_tooltip = no
-	custom_tooltip = anticrime_campaign_tooltip
+	planet_crime_add = 10
 }
 
 crime_lord_deal = {
@@ -598,8 +597,7 @@ crime_lord_deal_broken = {
 unemployment_benefits = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_resources.dds"
 	icon_frame = 2
-	# planet_pops_consumer_goods_upkeep_add = 0.5
-	pop_happiness = 0.1
+	pop_happiness = 0.05
 }
 
 criminal_gambling = {
