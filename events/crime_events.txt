@@ -69,7 +69,7 @@ planet_event = {
 			has_modifier = mob_rule
 		}
 		NOT = { has_planet_flag = criminal_underworld_disappeared } # Cooldown
-		planet_crime > 50
+		planet_crime > 30
 	}
 
 	immediate = {
@@ -86,12 +86,24 @@ planet_event = {
 	
 	option = {
 		name = crime.1.a
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = energy
+					value >= 1000
+				}
+			}
+		}
+		owner = {
+			add_resource = {
+				energy = -1000
+			}
+		}
 		trigger = {
 			owner = {
 				NOT = { has_ethic = ethic_gestalt_consciousness }
 			}
 		}
-		add_modifier = { modifier = "unemployment_benefits" days = 3600 }
 	}
 	option = {
 		name = crime.1.a2
@@ -165,6 +177,23 @@ planet_event = {
 			add_modifier = { modifier = bribed_officials days = 3600 }
 		}
 	}
+	
+	option = {
+		name = crime.2.b	
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 100
+				}
+			}
+		}
+		owner = {
+			add_resource = {
+				energy = -100
+			}
+		}
+	}
 }
 
 # Drug Trade
@@ -216,7 +245,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		add_planet_devastation = 15
 		set_timed_planet_flag = {
 			flag = planet_crime_flag
 			days = 3600
@@ -225,9 +253,25 @@ planet_event = {
 	
 	option = {
 		name = crime.4.a
-		tooltip = {
-			add_planet_devastation = 15
+		add_planet_devastation = 15
+	}
+	
+	option = {
+		name = crime.4.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = minerals
+					value >= 1000
+				}
+			}
 		}
+		owner = {
+			add_resource = {
+				minerals = -1000
+			}
+		}
+		add_planet_devastation = 5
 	}
 }
 
@@ -248,7 +292,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		add_modifier = { modifier = smuggler_activity days = 3600 }
 		set_timed_planet_flag = {
 			flag = planet_crime_flag
 			days = 3600
@@ -257,9 +300,25 @@ planet_event = {
 	
 	option = {
 		name = UNFORTUNATE
-		tooltip = {
-			add_modifier = { modifier = smuggler_activity days = 3600 }
+		add_modifier = { modifier = smuggler_activity days = 3600 }
+	}
+	
+	option = {
+		name = crime.5.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
 		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
+		}
+		add_modifier = { modifier = smuggler_activity days = 900 }
 	}
 }
 
@@ -280,7 +339,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		add_modifier = { modifier = crime_wave days = 3600 }
 		set_timed_planet_flag = {
 			flag = planet_crime_flag
 			days = 3600
@@ -289,9 +347,25 @@ planet_event = {
 	
 	option = {
 		name = crime.6.a
-		tooltip = {
-			add_modifier = { modifier = crime_wave days = 3600 }
+		add_modifier = { modifier = crime_wave days = 3600 }
+	}
+	
+	option = {
+		name = crime.6.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
 		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
+		}
+		add_modifier = { modifier = anticrime_campaign days = 3600 }
 	}
 }
 
@@ -386,7 +460,7 @@ planet_event = {
 		}
 		if = {
 			limit = { has_planet_flag = contraband_consumer_goods }
-			owner = { add_resource = { consumer_goods = 30 } }
+			owner = { add_resource = { consumer_goods = 100 } }
 			break = yes
 		}
 		if = {
@@ -443,13 +517,19 @@ planet_event = {
 			flag = planet_crime_flag
 			days = 3600
 		}
-		add_modifier = { modifier = crime_boss_arrested days = 3600 }
 	}
 	
 	option = {
 		name = EXCELLENT
-		tooltip = {
-			add_modifier = { modifier = crime_boss_arrested days = 3600 }
+		add_modifier = { modifier = crime_boss_arrested days = 3600 }
+	}
+	
+	option = {
+		name = crime.8.b
+		owner = {
+			add_resource = {
+				influence = 100
+			}
 		}
 	}
 }
@@ -700,6 +780,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = criminal_underworld }
 					}
 					planet_event = { id = crime.2 days = 1 random = 300 }
@@ -707,6 +788,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = criminal_underworld }
 					}
 					planet_event = { id = crime.3 days = 1 random = 300 }
@@ -714,6 +796,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = criminal_underworld }
 					}
 					planet_event = { id = crime.4 days = 1 random = 300 }
@@ -721,6 +804,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = criminal_underworld }
 					}
 					planet_event = { id = crime.5 days = 1 random = 300 }
@@ -728,6 +812,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = criminal_underworld }
 					}
 					planet_event = { id = crime.6 days = 1 random = 300 }
@@ -735,6 +820,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = criminal_underworld }
 					}
 					planet_event = { id = crime.7 days = 1 random = 300 }
@@ -742,6 +828,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = criminal_underworld }
 					}
 					planet_event = { id = crime.8 days = 1 random = 300 }
@@ -749,30 +836,34 @@ country_event = {
 				10 = { # Gang Wars
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = criminal_underworld }
-						planet_crime < 50
+						planet_crime < 30
 					}
 					planet_event = { id = crime.100 days = 1 random = 300 }
 				}
 				10 = { # Center of Drug Trade
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = criminal_underworld }
-						planet_crime < 50
+						planet_crime < 30
 					}
 					planet_event = { id = crime.200 days = 1 random = 300 }
 				}
 				10 = { # Mob Rule
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = criminal_underworld }
-						planet_crime < 50
+						planet_crime < 30
 					}
 					planet_event = { id = crime.300 days = 1 random = 300 }
 				}
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = gang_wars }
 					}
 					planet_event = { id = crime.101 days = 1 random = 300 }
@@ -780,6 +871,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = gang_wars }
 					}
 					planet_event = { id = crime.102 days = 1 random = 300 }
@@ -787,6 +879,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = gang_wars }
 					}
 					planet_event = { id = crime.103 days = 1 random = 300 }
@@ -794,6 +887,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = gang_wars }
 					}
 					planet_event = { id = crime.104 days = 1 random = 300 }
@@ -801,6 +895,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = center_of_drug_trade }
 					}
 					planet_event = { id = crime.201 days = 1 random = 300 }
@@ -808,6 +903,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = center_of_drug_trade }
 					}
 					planet_event = { id = crime.202 days = 1 random = 300 }
@@ -815,6 +911,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = center_of_drug_trade }
 					}
 					planet_event = { id = crime.203 days = 1 random = 300 }
@@ -822,6 +919,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = center_of_drug_trade }
 					}
 					planet_event = { id = crime.204 days = 1 random = 300 }
@@ -829,6 +927,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = mob_rule }
 					}
 					planet_event = { id = crime.301 days = 1 random = 300 }
@@ -836,6 +935,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = mob_rule }
 					}
 					planet_event = { id = crime.302 days = 1 random = 300 }
@@ -844,6 +944,7 @@ country_event = {
 					modifier = {
 						factor = 0
 						NOT = { has_modifier = mob_rule }
+						NOT = { has_modifier = martial_law }
 						owner = { has_country_flag = gangsters_killed_governor }
 					}
 					planet_event = { id = crime.303 days = 1 random = 300 }
@@ -851,6 +952,7 @@ country_event = {
 				10 = {
 					modifier = {
 						factor = 0
+						NOT = { has_modifier = martial_law }
 						NOT = { has_modifier = mob_rule }
 					}
 					planet_event = { id = crime.304 days = 1 random = 300 }
@@ -924,15 +1026,29 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
+		
+	}
+	
+	option = {
+		name = crime.100.a
 		remove_modifier = criminal_underworld
 		add_modifier = { modifier = "gang_wars" days = -1 }
 	}
 	
 	option = {
-		name = crime.100.a
-		tooltip = {
-			remove_modifier = criminal_underworld
-			add_modifier = { modifier = "gang_wars" days = -1 }
+		name = crime.100.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
 		}
 	}
 }
@@ -964,6 +1080,23 @@ planet_event = {
 	option = {
 		name = crime.200.a
 		custom_tooltip = crime.101.tooltip
+	}
+	
+	option = {
+		name = crime.200.b
+		custom_tooltip = crime.101.b.tooltip
+		allow = {
+			any_pop = { has_job = criminal }
+		}
+		random_owned_pop = {
+			limit = { has_job = criminal }
+			kill_pop = yes
+		}
+		owner = {
+			add_resource = {
+				influence = 100
+			}
+		}
 	}
 }
 
@@ -1024,7 +1157,6 @@ planet_event = {
 	immediate = {
 		random_owned_pop = { kill_pop = yes }
 		random_owned_pop = { kill_pop = yes }
-		random_owned_pop = { kill_pop = yes }
 		add_planet_devastation = 15
 	}
 	
@@ -1032,6 +1164,16 @@ planet_event = {
 		name = DISCONCERTING
 		custom_tooltip = crime.103.tooltip
 		tooltip = { add_planet_devastation = 15 }
+	}
+	
+	option = {
+		name = crime.103.b
+		custom_tooltip = crime.103.tooltip
+		allow = {
+			any_pop = { has_job = soldier }
+		}
+		tooltip = { add_planet_devastation = 15 }
+		add_modifier = { modifier = "martial_law" days = 3600 }
 	}
 }
 
@@ -1091,8 +1233,23 @@ planet_event = {
 	
 	option = {
 		name = crime.200.a
-		tooltip = {
-			add_modifier = { modifier = "center_of_drug_trade" days = -1 }
+		add_modifier = { modifier = "center_of_drug_trade" days = -1 }
+	}
+	
+	option = {
+		name = crime.200.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
 		}
 	}
 }
@@ -1109,15 +1266,12 @@ planet_event = {
 	trigger = {
 		has_owner = yes
 		has_modifier = center_of_drug_trade
-		num_pops > 4
+		num_pops > 1
 	}
 
 	is_triggered_only = yes
 
 	immediate = {
-		random_owned_pop = { kill_pop = yes }
-		random_owned_pop = { kill_pop = yes }
-		random_owned_pop = { kill_pop = yes }
 		random_owned_pop = { kill_pop = yes }
 	}
 	
@@ -1125,6 +1279,7 @@ planet_event = {
 		name = WORRYING
 		custom_tooltip = crime.201.tooltip
 	}
+	
 }
 
 # Drug Cartels Clash
@@ -1157,6 +1312,17 @@ planet_event = {
 			add_modifier = { modifier = "cartel_war" days = 3600 }
 		}
 	}
+	
+	option = {
+		name = crime.103.b
+		allow = {
+			any_pop = { has_job = soldier }
+		}
+		tooltip = {
+			add_modifier = { modifier = "cartel_war" days = 3600 }
+		}
+		add_modifier = { modifier = "martial_law" days = 3600 }
+	}
 }
 
 # Drug Smuggler Crash
@@ -1178,14 +1344,13 @@ planet_event = {
 	immediate = {
 		random_owned_pop = { kill_pop = yes }
 		random_owned_pop = { kill_pop = yes }
-		random_owned_pop = { kill_pop = yes }
-		add_planet_devastation = 15
+		add_planet_devastation = 20
 	}
 	
 	option = {
 		name = crime.203.a
 		custom_tooltip = crime.103.tooltip
-		tooltip = { add_planet_devastation = 15 }
+		tooltip = { add_planet_devastation = 20 }
 	}
 }
 
@@ -1202,24 +1367,33 @@ planet_event = {
 		has_owner = yes
 		has_modifier = center_of_drug_trade
 		owner = {
-			has_country_resource = { type = exotic_gases amount > 10 }
+			has_country_resource = { type = exotic_gases amount > 50 }
 		}
 	}
 
 	is_triggered_only = yes
 
 	immediate = {
-		owner = {
-			add_resource = { exotic_gases = -10 }
-		}
+		
 	}
 	
 	option = {
 		name = crime.204.a
-		tooltip = { 
+		owner = {
+			add_resource = { exotic_gases = -50 }
+		}
+	}
+	
+	option = {
+		name = crime.204.b
+		allow = {
 			owner = {
-				add_resource = { exotic_gases = -10 }
+				resource_stockpile_compare = { resource = exotic_gases value >= 100 }
 			}
+		}
+		owner = {
+			add_resource = { exotic_gases = -100 }
+			add_resource = { energy = 1000 }
 		}
 	}
 }
@@ -1242,15 +1416,22 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
+	}
+	
+	option = {
+		name = crime.300.a
 		remove_modifier = criminal_underworld
 		add_modifier = { modifier = "mob_rule" days = -1 }
 	}
 	
 	option = {
-		name = crime.300.a
-		tooltip = {
-			remove_modifier = criminal_underworld
-			add_modifier = { modifier = "mob_rule" days = -1 }
+		name = crime.300.b
+		allow = {
+			any_pop = { has_job = criminal }
+		}
+		random_owned_pop = {
+			limit = { has_job = criminal }
+			kill_pop = yes
 		}
 	}
 }
@@ -1272,7 +1453,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		add_modifier = { modifier = "protection_racket" days = 3600 }
 		set_timed_planet_flag = {
 			flag = planet_crime_flag
 			days = 3600
@@ -1281,8 +1461,19 @@ planet_event = {
 	
 	option = {
 		name = crime.301.a
-		tooltip = {
-			add_modifier = { modifier = "protection_racket" days = 3600 }
+		add_modifier = { modifier = "protection_racket" days = 3600 }
+	}
+	
+	option = {
+		name = crime.301.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = { resource = influence value >= 50 }
+			}
+			any_pop = { has_job = enforcer }
+		}
+		owner = {
+			add_resource = { influence = -50 }
 		}
 	}
 }
@@ -1317,6 +1508,18 @@ planet_event = {
 			add_modifier = { modifier = "corrupt_administration" days = 3600 }
 		}
 	}
+	
+	option = {
+		name = crime.302.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = { resource = energy value >= 1000 }
+			}
+		}
+		owner = {
+			add_resource = { energy = -1000 }
+		}
+	}
 }
 
 # Gangsters Assassinate Governor
@@ -1348,6 +1551,17 @@ planet_event = {
 		sector = {
 			leader = { kill_leader = { show_notification = no } }
 		}
+	}
+	
+	option = {
+		name = crime.103.b
+		allow = {
+			any_pop = { has_job = soldier }
+		}
+		tooltip = {
+			add_modifier = { modifier = "cartel_war" days = 3600 }
+		}
+		add_modifier = { modifier = "martial_law" days = 3600 }
 	}
 }
 
