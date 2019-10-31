@@ -93,6 +93,13 @@ anchorage = {
 gun_battery = {
 	section = "BATTERY_STARBASE_SECTION"
 	construction_days = 180
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
 
 	resources = {
 		category = starbase_modules
@@ -135,6 +142,13 @@ missile_battery = {
 	section = "MISSILE_STARBASE_SECTION"
 	icon = "GFX_starbase_missile_battery"
 	construction_days = 180	
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
 
 	resources = {
 		category = starbase_modules
@@ -177,6 +191,14 @@ hangar_bay = {
 		exists = owner
 		owner = { has_technology = tech_strike_craft_1 }
 	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
 
 	resources = {
 		category = starbase_modules
@@ -209,53 +231,95 @@ hangar_bay = {
 	show_in_tech = "tech_strike_craft_1"
 }
 
-solar_panel_network = {
-	icon = "GFX_solar_panel_network"
+solar_panels = {
+	icon = "GFX_starbase_solar_panels"
 	section = "REFINERY_STARBASE_SECTION"
-	construction_days = 180
+	construction_days = 360
 	initial = yes
 	
-	potential = {
-		exists = owner
-		owner = { 
-			is_gestalt = yes
-			has_technology = "tech_solar_panel_network"
-		}
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
-	}
-
 	possible = {
 		solar_system = {
-			custom_tooltip = {
-				fail_text = "requires_no_black_hole_or_dyson_sphere"
-				NOR = {
-					is_star_class = sc_black_hole
-					has_megastructure = dyson_sphere_3
-					has_megastructure = dyson_sphere_4
-					has_megastructure = dyson_sphere_5
-				}
-			}				
+			any_system_planet = {
+				has_mining_station = yes
+				has_resource = { type = energy amount > 0 }
+			}
 		}
 	}
 	
-	show_in_tech = "tech_solar_panel_network"
-
 	resources = {
 		category = starbase_modules
 		cost = {
-			alloys = 100
-		}
-
-		produces = {
-			energy = 3
+			alloys = 150
 		}
 	}
+	
+	custom_tooltip = solar_panel_tooltip
+	
+	ai_build_at_chokepoint = no
+	ai_weight = {
+		weight = 15
+	}
+}
+
+mining_terminal = {
+	icon = "GFX_starbase_mining_terminal"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	initial = no
+	
+	possible = {
+		solar_system = {
+			any_system_planet = {
+				has_mining_station = yes
+				has_resource = { type = minerals amount > 0 }
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	custom_tooltip = mining_terminal_tooltip
+	
+	ai_build_at_chokepoint = no
+	ai_weight = {
+		weight = 15
+	}
+}
+
+foundry_terminal = {
+	icon = "GFX_starbase_foundry_terminal"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	initial = no
+	
+	possible = {
+		solar_system = {
+			any_system_planet = {
+				has_mining_station = yes
+				has_resource = { type = alloys amount > 0 }
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	custom_tooltip = foundry_terminal_tooltip
 	
 	ai_build_at_chokepoint = no
 	ai_weight = {
@@ -264,42 +328,96 @@ solar_panel_network = {
 }
 
 
-trading_hub = {
-	icon = "GFX_starbase_trading_hub"
+trade_terminal = {
+	icon = "GFX_starbase_trade_terminal"
 	section = "REFINERY_STARBASE_SECTION"
-	construction_days = 180
+	construction_days = 360
 	initial = yes
 	
-	potential = {
-		exists = owner
-		owner = { 
-			is_gestalt = no
-		}
-	}
-	
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		solar_system = {
+			any_system_planet = {
+				OR = {
+					has_deposit = d_trade_value_small
+					has_deposit = d_trade_value_medium
+					has_deposit = d_trade_value_large
+				}
+			}
 		}
 	}
 
 	resources = {
 		category = starbase_modules
 		cost = {
-			alloys = 50
+			alloys = 150
 		}
 		upkeep = {
-			energy = 1
+			energy = 2
 		}	
 	}
 	
-	station_modifier = {
-		trade_value_add = 4
-	}
+	custom_tooltip = trade_terminal_tooltip
 
 	ai_build_at_chokepoint = no
 	ai_weight = {
 		weight = 15
+	}
+}
+
+research_terminal = {
+	icon = "GFX_starbase_research_terminal"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	initial = no
+	
+	possible = {
+		solar_system = {
+			any_system_planet = {
+				has_research_station = yes
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	custom_tooltip = research_terminal_tooltip
+	
+	ai_build_at_chokepoint = no
+	ai_weight = {
+		weight = 15
+	}
+}
+
+
+# Placeholder
+trading_hub = {
+	icon = "GFX_starbase_trading_hub"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 0
+	initial = no
+	
+	potential = {
+		always = no
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 0
+		}
+	}
+	
+	custom_tooltip = remove_me_tooltip
+
+	ai_weight = {
+		weight = 0
 	}
 }
