@@ -21,6 +21,7 @@ education_campaign = {
 
 	modifier = {
 		species_leader_exp_gain = 0.25
+		country_leader_pool_size = 1
 	}
 
 	potential = {
@@ -42,7 +43,31 @@ anticrime_campaign = {
 	}
 
 	modifier = {
-		planet_crime_mult = -0.10
+		planet_crime_add = -0.15
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+space_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict1Cost
+		}
+	}
+
+	modifier = {
+		science_ship_survey_speed = 0.25
+		ship_science_cost_mult = -0.25
+		category_particles_research_speed_mult = 0.10
 	}
 
 	potential = {
@@ -65,39 +90,12 @@ healthcare_campaign = {
 
 	modifier = {
 		pop_growth_speed = 0.10
+		leader_age = 10
+		category_biology_research_speed_mult = 0.10
 	}
 
 	potential = {
-		NOT = { 
-			has_ethic = ethic_gestalt_consciousness
-			is_lithoid_empire = yes
-		}
-		has_technology = tech_planetary_unification
-	}
-
-	ai_weight = {
-		weight = 0
-	}
-}
-
-healthcare_campaign_2 = {
-	length = @EdictDuration
-	resources = {
-		category = edicts
-		cost = {
-			influence = @Edict2Cost
-		}
-	}
-
-	modifier = {
-		pop_growth_speed = 0.10
-	}
-
-	potential = {
-		NOT = { 
-			has_ethic = ethic_gestalt_consciousness
-			is_lithoid_empire = no
-		}
+		NOT = { has_ethic = ethic_gestalt_consciousness }
 		has_technology = tech_planetary_unification
 	}
 
@@ -116,9 +114,8 @@ labor_campaign = {
 	}
 
 	modifier = {
-		country_energy_produces_mult = 0.10
-		country_minerals_produces_mult = 0.10
-		country_food_produces_mult = 0.10
+		planet_jobs_worker_produces_mult = 0.10
+		category_industry_research_speed_mult = 0.1
 	}
 
 	potential = {
@@ -142,6 +139,7 @@ recycling_campaign = {
 
 	modifier = {
 		planet_amenities_mult = -0.10
+		planet_jobs_upkeep_mult = -0.10
 	}
 
 	potential = {
@@ -192,7 +190,32 @@ construction_campaign = {
 	modifier = {
 		planet_building_build_speed_mult = 0.25
 		starbase_upgrade_speed_mult = 0.25
-		megastructure_build_speed_mult = 0.10
+		category_voidcraft_research_speed_mult = 0.10
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		has_technology = tech_galactic_administration
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+bureaucratic_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+
+	modifier = {
+		country_admin_cap_add = 20
+		country_starbase_influence_cost_mult = -0.15
+		country_claim_influence_cost_mult = -0.2
 	}
 
 	potential = {
