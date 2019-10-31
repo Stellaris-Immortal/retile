@@ -23,7 +23,7 @@ ship_section_template = {
 ##################
 
 ship_section_template = {
-	key = "LIGHT_MILITARY_STATION_SECTION"
+	key = "TURRET_MILITARY_STATION_SECTION"
 	ship_size = military_station_small
 	ship_size = military_station_medium
 	
@@ -37,63 +37,40 @@ ship_section_template = {
 	icon = "GFX_ship_part_core_mid"
 	
 	component_slot = {
-		name = "SMALL_GUN_01"
-		slot_size = small
+		name = "Medium_GUN_01"
+		slot_size = medium
 		slot_type = weapon
 		locatorname = "small_gun_01"
 	}
-	
 	component_slot = {
-		name = "SMALL_GUN_02"
-		slot_size = small
+		name = "Medium_GUN_02"
+		slot_size = medium
 		slot_type = weapon
 		locatorname = "small_gun_02"
 	}
-	
 	component_slot = {
-		name = "SMALL_GUN_03"
-		slot_size = small
+		name = "PD_01"
+		slot_size = point_defence
 		slot_type = weapon
 		locatorname = "small_gun_03"
 	}
-	
 	component_slot = {
-		name = "SMALL_GUN_04"
-		slot_size = small
-		slot_type = weapon
-		locatorname = "small_gun_04"
-	}
-
-	component_slot = {
-		name = "SMALL_GUN_05"
-		slot_size = small
-		slot_type = weapon
-		locatorname = "small_gun_01"
-		is_side_slot = no
-	}
-	
-	component_slot = {
-		name = "SMALL_GUN_06"
-		slot_size = small
-		slot_type = weapon
-		locatorname = "small_gun_02"
-		is_side_slot = no
-	}
-	
-	component_slot = {
-		name = "SMALL_GUN_07"
-		slot_size = small
+		name = "PD_02"
+		slot_size = point_defence
 		slot_type = weapon
 		locatorname = "small_gun_03"
-		is_side_slot = no
 	}
-	
 	component_slot = {
-		name = "SMALL_GUN_08"
-		slot_size = small
+		name = "PD_03"
+		slot_size = point_defence
 		slot_type = weapon
 		locatorname = "small_gun_04"
-		is_side_slot = no
+	}
+	component_slot = {
+		name = "PD_04"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_04"
 	}
 	
 	medium_utility_slots = 6
@@ -105,107 +82,10 @@ ship_section_template = {
 			alloys = @section_cost
 		}
 	}
-	
-	ai_weight = {
-		factor = 1
-		modifier = {
-			factor = 10
-			is_preferred_weapons = weapon_type_kinetic
-		}
-	}
 }
 
 ship_section_template = {
-	key = "PD_MILITARY_STATION_SECTION"
-	ship_size = military_station_small
-	ship_size = military_station_medium
-	
-	fits_on_slot = "north"
-	fits_on_slot = "west"
-	fits_on_slot = "east"
-	fits_on_slot = "south"
-	should_draw_components = yes
-	
-	entity = "military_station_section_light_entity"
-	icon = "GFX_ship_part_core_mid"
-	
-	component_slot = {
-		name = "SMALL_GUN_01"
-		slot_size = point_defence
-		slot_type = weapon
-		locatorname = "small_gun_01"
-	}
-	
-	component_slot = {
-		name = "SMALL_GUN_02"
-		slot_size = point_defence
-		slot_type = weapon
-		locatorname = "small_gun_02"
-	}
-	
-	component_slot = {
-		name = "SMALL_GUN_03"
-		slot_size = point_defence
-		slot_type = weapon
-		locatorname = "small_gun_03"
-	}
-	
-	component_slot = {
-		name = "SMALL_GUN_04"
-		slot_size = point_defence
-		slot_type = weapon
-		locatorname = "small_gun_04"
-	}
-
-	component_slot = {
-		name = "SMALL_GUN_05"
-		slot_size = point_defence
-		slot_type = weapon
-		locatorname = "small_gun_01"
-		is_side_slot = no
-	}
-	
-	component_slot = {
-		name = "SMALL_GUN_06"
-		slot_size = point_defence
-		slot_type = weapon
-		locatorname = "small_gun_02"
-		is_side_slot = no
-	}	
-	
-	component_slot = {
-		name = "SMALL_GUN_07"
-		slot_size = point_defence
-		slot_type = weapon
-		locatorname = "small_gun_03"
-		is_side_slot = no
-	}
-	
-	component_slot = {
-		name = "SMALL_GUN_08"
-		slot_size = point_defence
-		slot_type = weapon
-		locatorname = "small_gun_04"
-		is_side_slot = no
-	}	
-				
-	medium_utility_slots = 6
-	aux_utility_slots = 2
-	
-	resources = {
-		category = ship_sections
-		cost = {
-			alloys = @section_cost
-		}
-	}
-	
-	ai_weight = {
-		factor = 1
-	}
-}
-
-ship_section_template = {
-	key = "MEDIUM_MILITARY_STATION_SECTION"
+	key = "ARTILLERY_MILITARY_STATION_SECTION"
 	ship_size = military_station_small
 	ship_size = military_station_medium
 	
@@ -216,34 +96,94 @@ ship_section_template = {
 	should_draw_components = yes
 	
 	entity = "military_station_section_medium_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	component_slot = {
+		name = "LARGE_GUN_01"
+		slot_size = large
+		slot_type = weapon
+		locatorname = "medium_gun_01"
+	}
+	component_slot = {
+		name = "PD_01"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+	}
+	component_slot = {
+		name = "PD_02"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+	}
+	component_slot = {
+		name = "PD_03"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+	}
+	component_slot = {
+		name = "PD_04"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+	}
+				
+	medium_utility_slots = 6
+	aux_utility_slots = 2
+	
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
+ship_section_template = {
+	key = "HANGAR_MILITARY_STATION_SECTION"
+	ship_size = military_station_small
+	ship_size = military_station_medium
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_light_entity"
 	icon = "GFX_ship_part_core_mid"	
 		
 	component_slot = {
-		name = "MEDIUM_GUN_01"
-		slot_size = medium
-		slot_type = weapon
-		locatorname = "medium_gun_01"
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "small_gun_01"
 	}
-
 	component_slot = {
-		name = "MEDIUM_GUN_02"
-		slot_size = medium
+		name = "PD_01"
+		slot_size = point_defence
 		slot_type = weapon
-		locatorname = "medium_gun_02"
+		locatorname = "small_gun_01"
 	}
-	
 	component_slot = {
-		name = "MEDIUM_GUN_03"
-		slot_size = medium
+		name = "PD_02"
+		slot_size = point_defence
 		slot_type = weapon
-		locatorname = "medium_gun_01"
+		locatorname = "small_gun_02"
 	}
-
 	component_slot = {
-		name = "MEDIUM_GUN_04"
-		slot_size = medium
+		name = "PD_03"
+		slot_size = point_defence
 		slot_type = weapon
-		locatorname = "medium_gun_02"
+		locatorname = "small_gun_03"
+	}
+	component_slot = {
+		name = "PD_04"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_04"
 	}
 			
 	medium_utility_slots = 6
@@ -279,7 +219,7 @@ ship_section_template = {
 	fits_on_slot = "south"
 	should_draw_components = yes
 	
-	entity = "military_station_section_medium_entity"
+	entity = "military_station_section_light_entity"
 	icon = "GFX_ship_part_core_mid"
 	
 		
@@ -287,30 +227,86 @@ ship_section_template = {
 		name = "TORPEDO_01"
 		slot_size = torpedo
 		slot_type = weapon
+		locatorname = "small_gun_01"
+	}
+	component_slot = {
+		name = "TORPEDO_02"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "small_gun_02"
+	}
+	component_slot = {
+		name = "PD_01"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_03"
+	}
+	component_slot = {
+		name = "PD_02"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_03"
+	}
+	component_slot = {
+		name = "PD_03"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_04"
+	}
+	component_slot = {
+		name = "PD_04"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_04"
+	}
+			
+	medium_utility_slots = 6
+	aux_utility_slots = 2
+	
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
+ship_section_template = {
+	key = "BARRAGE_MILITARY_STATION_SECTION"
+	ship_size = military_station_small
+	ship_size = military_station_medium
+	
+	prerequisites = { tech_defense_platform_hull_1 }
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_medium_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	
+	component_slot = {
+		name = "LARGE_GUN_01"
+		slot_size = large
+		slot_type = weapon
 		locatorname = "medium_gun_01"
 	}
-
+	component_slot = {
+		name = "TORPEDO_01"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+	}
 	component_slot = {
 		name = "TORPEDO_02"
 		slot_size = torpedo
 		slot_type = weapon
 		locatorname = "medium_gun_02"
 	}
-	
-	component_slot = {
-		name = "TORPEDO_03"
-		slot_size = torpedo
-		slot_type = weapon
-		locatorname = "medium_gun_01"
-	}
-
-	component_slot = {
-		name = "TORPEDO_04"
-		slot_size = torpedo
-		slot_type = weapon
-		locatorname = "medium_gun_02"
-	}
-			
+		
 	medium_utility_slots = 6
 	aux_utility_slots = 2
 	
@@ -323,17 +319,81 @@ ship_section_template = {
 	
 	ai_weight = {
 		factor = 1
-		modifier = {
-			factor = 10
-			is_preferred_weapons = weapon_type_explosive
-		}		
+	}
+}
+
+
+ship_section_template = {
+	key = "CURTAIN_MILITARY_STATION_SECTION"
+	ship_size = military_station_small
+	ship_size = military_station_medium
+	
+	prerequisites = { tech_defense_platform_hull_1 }
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_light_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	
+	component_slot = {
+		name = "Medium_GUN_01"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "small_gun_01"
+	}
+	component_slot = {
+		name = "Medium_GUN_02"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "small_gun_02"
+	}
+	component_slot = {
+		name = "SMALL_GUN_01"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_03"
+	}
+	component_slot = {
+		name = "SMALL_GUN_02"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_03"
+	}
+	component_slot = {
+		name = "SMALL_GUN_03"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_04"
+	}
+	component_slot = {
+		name = "SMALL_GUN_04"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_04"
+	}
+				
+	medium_utility_slots = 6
+	aux_utility_slots = 2
+	
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
 	}
 }
 
 ship_section_template = {
-	key = "HEAVY_MILITARY_STATION_SECTION"
+	key = "SUPPORT_MILITARY_STATION_SECTION"
 	ship_size = military_station_small
 	ship_size = military_station_medium
+	
+	prerequisites = { tech_defense_platform_hull_1 }
 	
 	fits_on_slot = "north"
 	fits_on_slot = "west"
@@ -351,14 +411,14 @@ ship_section_template = {
 		slot_type = weapon
 		locatorname = "large_gun_01"
 	}
-	
 	component_slot = {
-		name = "LARGE_GUN_02"
+		name = "STRIKE_CRAFT_01"
 		slot_size = large
-		slot_type = weapon
+		slot_type = strike_craft
+		rotation = 90
 		locatorname = "large_gun_01"
 	}
-		
+				
 	medium_utility_slots = 6
 	aux_utility_slots = 2
 	
@@ -368,19 +428,14 @@ ship_section_template = {
 			alloys = @section_cost
 		}
 	}
-	
-	ai_weight = {
-		factor = 1
-	}
 }
 
-
 ship_section_template = {
-	key = "HANGAR_MILITARY_STATION_SECTION"
+	key = "DEVASTATOR_MILITARY_STATION_SECTION"
 	ship_size = military_station_small
 	ship_size = military_station_medium
 	
-	prerequisites = { tech_strike_craft_1 tech_strike_craft_2 tech_strike_craft_3 }
+	prerequisites = { tech_defense_platform_hull_1 }
 	
 	fits_on_slot = "north"
 	fits_on_slot = "west"
@@ -393,32 +448,15 @@ ship_section_template = {
 	
 	
 	component_slot = {
-		name = "STRIKE_CRAFT_01"
-		slot_size = large
-		slot_type = strike_craft
-		rotation = 90
-		locatorname = "large_gun_01"
-	}
-	
-	component_slot = {
-		name = "STRIKE_CRAFT_02"
-		slot_size = large
-		slot_type = strike_craft
-		rotation = 90
+		name = "EXTRA_LARGE_01"
+		slot_size = extra_large
+		slot_type = weapon
 		locatorname = "large_gun_01"
 	}
 				
 	medium_utility_slots = 6
 	aux_utility_slots = 2
 	
-	ai_weight = {
-		factor = 1
-		modifier = {
-			factor = 10
-			is_preferred_weapons = weapon_type_strike_craft
-		}		
-	}	
-
 	resources = {
 		category = ship_sections
 		cost = {
