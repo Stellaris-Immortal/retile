@@ -507,16 +507,9 @@ criminal = {
 	}
 
 	possible = {
-		# check that this is not a robot in servitude
-		NOT = { 
-			has_citizenship_type = {
-				country = owner 
-				type = citizenship_robot_servitude
-			}
-		}
-		owner = {
-			is_gestalt = no
-		}
+		always = yes
+		NOT = { is_non_sapient_robot = yes }
+		owner = { is_gestalt = no }
 	}
 	
 	planet_modifier = {
@@ -924,7 +917,7 @@ criminal = {
 	
 	############################################################ Criminal Job Weight
 	weight = {
-		weight = @criminal_job_weight
+		weight = 1800 #just below @ruler_job_weight
 	}
 }
 
