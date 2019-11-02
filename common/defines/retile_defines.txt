@@ -36,9 +36,16 @@ NGameplay = {
 	EMPIRE_SIZE_FROM_COLONIES					= 0			# 2		# Per planet
 	EMPIRE_SIZE_FROM_BRANCH_OFFICES				= 0			# 2		# Per branch office
 	EMPIRE_SIZE_FROM_POPS						= 0			# 0		# Per pop
-	EMPIRE_COHESION_EMPIRE_SIZE_MULT			= 2			# 2		# Empire size is multiplied by 1 + this at 0% cohesion
 	EMPIRE_SIZE_TECH_COST_PENALTY				= 0.003		# 0.003	# Per empire size above base
 	EMPIRE_SIZE_TRADITION_COST_PENALTY			= 0.005		# 0.005	# Per empire size above base
+	
+	LOW_EMPIRE_COHESION							= 0.9		# 0.5	# Show alert below this
+	EMPIRE_COHESION_BASE						= 5			# 5		# Base empire cohesion
+	EMPIRE_COHESION_UPGRADED_STARBASE			= 5			# 3		# Per upgraded starbase
+	EMPIRE_COHESION_OWNED_SYSTEM				= 1			# 1		# Cohesion gain per owned system
+	EMPIRE_COHESION_LOSS_EXTERNAL_HYPERLANE		= 2			# 1		# Cohesion loss per hyperlane entrance into empire
+	EMPIRE_COHESION_LOSS_ENCLAVE				= 3			# 3		# Cohesion loss per enclave (cut off system) in empire
+	EMPIRE_COHESION_EMPIRE_SIZE_MULT			= 5			# 2		# Empire size is multiplied by 1 + this at 0% cohesion
 }
 
 NPop = {
@@ -56,6 +63,8 @@ NPop = {
 }
 
 NAI = {
+	MAX_EXPANSION_DISTANCE = 1								# 2		# Max number of jumps away AI will build starbases
+	MAX_EXPANSION_DISTANCE_SUBJECT = 1						# 2		# Max number of jumps away AI subjects will build starbases
 	AI_AGGRESSIVENESS_LOW_MULT = 0.2						# 0.5	#
 	AI_AGGRESSIVENESS_HIGH_MULT = 3.0						# 2.0	#
 	AI_AGGRESSIVENESS_BASE = 50								# 25	# Base chance AI will declare a war (multiplied by personality aggressiveness score)
@@ -67,3 +76,9 @@ NAI = {
 NSpecies = {
 	HOMEWORLD_HABITABILITY				= 0.2		# Habitability on homeworld is increased by this value
 }
+
+#NEconomy = {
+#	EXPANSION_COST_MAX					= 1000.0	# Maximum cost of single outpost
+#	EXPANSION_COST_BASE					= 75.0		# The influence base cost of outpost
+#	EXPANSION_COST_DISTANCE				= 75.0		# Added per hyperlane jump away
+#}
