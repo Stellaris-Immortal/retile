@@ -74,14 +74,203 @@ nebula_refinery = {
 		}
 	}
 	
-	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	
 	ai_build_at_chokepoint = yes
 	ai_build_outside_chokepoint = yes
 	ai_weight = {
-		weight = 150
+		weight = 1
+	}
+}
+
+supercapacitor_system = {
+	icon = "GFX_spaceport_supercapacitor_system"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_power_plant_2 }
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 1
+				}
+			}
+			energy = 2
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 2
+				}
+			}
+			energy = 4
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 3
+				}
+			}
+			energy = 6
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 4
+				}
+			}
+			energy = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 5
+				}
+			}
+			energy = 10
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 6
+				}
+			}
+			energy = 12
+		}
+	}
+	
+	show_in_tech = "tech_power_plant_2"
+	custom_tooltip = supercapacitor_system_tooltip
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 1
+	}
+}
+
+sensor_array = {
+	icon = "GFX_spaceport_sensor_array"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_space_science_1 }
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 1
+				}
+			}
+			physics_research = 2
+			society_research = 2
+			engineering_research = 2
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 2
+				}
+			}
+			physics_research = 4
+			society_research = 4
+			engineering_research = 4
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 3
+				}
+			}
+			physics_research = 6
+			society_research = 6
+			engineering_research = 6
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 4
+				}
+			}
+			physics_research = 8
+			society_research = 8
+			engineering_research = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 5
+				}
+			}
+			physics_research = 10
+			society_research = 10
+			engineering_research = 10
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 6
+				}
+			}
+			physics_research = 12
+			society_research = 12
+			engineering_research = 12
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	show_in_tech = "tech_space_science_1"
+	custom_tooltip = sensor_array_tooltip
+
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 50
 	}
 }
 
