@@ -86,6 +86,11 @@ planet_event = {
 	
 	option = {
 		name = crime.1.a
+		trigger = {
+			owner = {
+				NOT = { has_ethic = ethic_gestalt_consciousness }
+			}
+		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = {
@@ -97,11 +102,6 @@ planet_event = {
 		owner = {
 			add_resource = {
 				energy = -1000
-			}
-		}
-		trigger = {
-			owner = {
-				NOT = { has_ethic = ethic_gestalt_consciousness }
 			}
 		}
 	}
@@ -143,6 +143,31 @@ planet_event = {
 		}
 		add_modifier = { modifier = drone_corruption days = -1 }
 	}
+	option = {
+		name = crime.1.c
+		trigger = {
+			owner = {
+				NOT = { has_ethic = ethic_gestalt_consciousness }
+			}
+		}
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
+		}
+		add_modifier = { modifier = crime_boss_arrested days = 3600 }
+	}
 }
 
 # GENERIC
@@ -164,7 +189,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		add_modifier = { modifier = bribed_officials days = 3600 }
 		set_timed_planet_flag = {
 			flag = planet_crime_flag
 			days = 3600
@@ -173,9 +197,7 @@ planet_event = {
 	
 	option = {
 		name = crime.2.a
-		tooltip = {
-			add_modifier = { modifier = bribed_officials days = 3600 }
-		}
+		add_modifier = { modifier = bribed_officials days = 3600 }
 	}
 	
 	option = {
@@ -183,14 +205,14 @@ planet_event = {
 		allow = {
 			owner = {
 				resource_stockpile_compare = {
-					resource = influence
-					value >= 100
+					resource = energy
+					value >= 1000
 				}
 			}
 		}
 		owner = {
 			add_resource = {
-				energy = -100
+				energy = -1000
 			}
 		}
 	}
@@ -213,7 +235,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		add_modifier = { modifier = substance_abuse days = 3600 }
 		set_timed_planet_flag = {
 			flag = planet_crime_flag
 			days = 3600
@@ -222,8 +243,25 @@ planet_event = {
 	
 	option = {
 		name = crime.3.a
-		tooltip = {
-			add_modifier = { modifier = substance_abuse days = 3600 }
+		add_modifier = { modifier = substance_abuse days = 3600 }
+	}
+	option = {
+		name = crime.3.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
 		}
 	}
 }
@@ -253,7 +291,7 @@ planet_event = {
 	
 	option = {
 		name = crime.4.a
-		add_planet_devastation = 15
+		add_planet_devastation = 20
 	}
 	
 	option = {
@@ -271,7 +309,32 @@ planet_event = {
 				minerals = -1000
 			}
 		}
-		add_planet_devastation = 5
+		add_planet_devastation = 10
+	}
+	option = {
+		name = crime.4.c
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
+			any_pop = { has_job = criminal }
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		random_owned_pop = {
+			limit = { has_job = criminal }
+			kill_pop = yes
+		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
+		}
+		add_modifier = { modifier = ringleader_killed days = 3600 }
 	}
 }
 
@@ -308,9 +371,29 @@ planet_event = {
 		allow = {
 			owner = {
 				resource_stockpile_compare = {
+					resource = energy
+					value >= 1000
+				}
+			}
+		}
+		owner = {
+			add_resource = {
+				energy = -1000
+			}
+		}
+		add_modifier = { modifier = smuggler_activity days = 1800 }
+	}
+	option = {
+		name = crime.5.c
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
 					resource = influence
 					value >= 50
 				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
 			}
 		}
 		owner = {
@@ -531,6 +614,27 @@ planet_event = {
 				influence = 100
 			}
 		}
+	}
+	
+	option = {
+		name = crime.8.c
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 100
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -100
+			}
+		}
+		add_modifier = { modifier = ringleader_killed days = 3600 }
 	}
 }
 
@@ -1078,12 +1182,12 @@ planet_event = {
 	}
 	
 	option = {
-		name = crime.200.a
+		name = crime.101.a
 		custom_tooltip = crime.101.tooltip
 	}
 	
 	option = {
-		name = crime.200.b
+		name = crime.101.b
 		custom_tooltip = crime.101.b.tooltip
 		allow = {
 			any_pop = { has_job = criminal }
@@ -1098,6 +1202,34 @@ planet_event = {
 			}
 		}
 	}
+	
+	option = {
+		name = crime.101.c
+		allow = {
+			any_pop = { has_job = criminal }
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		random_owned_pop = {
+			limit = { has_job = criminal }
+			kill_pop = yes
+		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
+		}
+		add_modifier = { modifier = crime_boss_arrested days = 3600 }
+	}
+	
+	
 }
 
 # Gang Warfare Spreads into Space
@@ -1125,6 +1257,10 @@ planet_event = {
 			set_timed_country_flag = { flag = crime_pirates_spawned days = 3600 }
 			owner_species = { save_event_target_as = owner_species }
 		}
+	}
+	
+	option = {
+		name = crime.100.b
 		solar_system = {
 			save_event_target_as = pirate_system
 			create_normal_pirate_country = yes
@@ -1133,8 +1269,23 @@ planet_event = {
 	}
 	
 	option = {
-		name = crime.200.a
-		custom_tooltip = crime.102.tooltip
+		name = crime.102.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
+		}
 	}
 }
 
@@ -1207,6 +1358,26 @@ planet_event = {
 			add_modifier = { modifier = "travel_advisory" days = 3600 }
 		}
 	}
+	
+	option = {
+		name = crime.104.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
+		}
+	}
 }
 
 # Center of Drug Trade
@@ -1241,9 +1412,29 @@ planet_event = {
 		allow = {
 			owner = {
 				resource_stockpile_compare = {
+					resource = energy
+					value >= 1000
+				}
+			}
+		}
+		owner = {
+			add_resource = {
+				energy = -1000
+			}
+		}
+	}
+	
+	option = {
+		name = crime.200.c
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
 					resource = influence
 					value >= 50
 				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
 			}
 		}
 		owner = {
@@ -1251,6 +1442,7 @@ planet_event = {
 				influence = -50
 			}
 		}
+		add_modifier = { modifier = "crime_boss_arrested" days = 3600 }
 	}
 }
 
@@ -1278,6 +1470,29 @@ planet_event = {
 	option = {
 		name = WORRYING
 		custom_tooltip = crime.201.tooltip
+	}
+	
+	option = {
+		name = crime.201.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 100
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -100
+			}
+		}
+		remove_modifier = center_of_drug_trade
+		add_modifier = { modifier = "criminal_underworld" days = -1 }
+		add_modifier = { modifier = "crime_boss_arrested" days = 3600 }
 	}
 	
 }
@@ -1396,6 +1611,18 @@ planet_event = {
 			add_resource = { energy = 1000 }
 		}
 	}
+	
+	option = {
+		name = crime.204.c
+		allow = {
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		random_owned_pop = {
+			kill_pop = yes
+		}
+	}
 }
 
 # Mob Rule
@@ -1434,6 +1661,30 @@ planet_event = {
 			kill_pop = yes
 		}
 	}
+	
+	option = {
+		name = crime.300.c
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 50
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -50
+			}
+		}
+		remove_modifier = criminal_underworld
+		add_modifier = { modifier = "mob_rule" days = -1 }
+		add_modifier = { modifier = "crime_lord_deal" days = 3600 }
+	}
+	
 }
 
 # Protection Racket
@@ -1476,6 +1727,27 @@ planet_event = {
 			add_resource = { influence = -50 }
 		}
 	}
+	
+	option = {
+		name = crime.301.c
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = energy
+					value >= 1000
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				energy = -1000
+			}
+		}
+		add_modifier = { modifier = "crime_lord_deal" days = 3600 }
+	}
 }
 
 # Corrupt Administration
@@ -1495,7 +1767,6 @@ planet_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		add_modifier = { modifier = "corrupt_administration" days = 3600 }
 		set_timed_planet_flag = {
 			flag = planet_crime_flag
 			days = 3600
@@ -1504,9 +1775,7 @@ planet_event = {
 	
 	option = {
 		name = crime.302.a
-		tooltip = {
-			add_modifier = { modifier = "corrupt_administration" days = 3600 }
-		}
+		add_modifier = { modifier = "corrupt_administration" days = 3600 }
 	}
 	
 	option = {
@@ -1519,6 +1788,27 @@ planet_event = {
 		owner = {
 			add_resource = { energy = -1000 }
 		}
+	}
+	
+	option = {
+		name = crime.302.c
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 100
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -100
+			}
+		}
+		add_modifier = { modifier = "crime_lord_deal" days = 3600 }
 	}
 }
 
@@ -1543,14 +1833,12 @@ planet_event = {
 		sector = {
 			leader = { save_event_target_as = governor_target }
 		}
-		owner = { set_country_flag = gangsters_killed_governor }
 	}
 	
 	option = {
 		name = crime.303.a
-		sector = {
-			leader = { kill_leader = { show_notification = no } }
-		}
+		sector = { leader = { kill_leader = { show_notification = no } } }
+		owner = { set_country_flag = gangsters_killed_governor }
 	}
 	
 	option = {
@@ -1558,10 +1846,29 @@ planet_event = {
 		allow = {
 			any_pop = { has_job = soldier }
 		}
-		tooltip = {
-			add_modifier = { modifier = "cartel_war" days = 3600 }
-		}
+		sector = { leader = { kill_leader = { show_notification = no } } }
+		owner = { set_country_flag = gangsters_killed_governor }
 		add_modifier = { modifier = "martial_law" days = 3600 }
+	}
+	
+	option = {
+		name = crime.303.c
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = influence
+					value >= 100
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -100
+			}
+		}
 	}
 }
 
@@ -1594,6 +1901,30 @@ planet_event = {
 		tooltip = {
 			add_modifier = { modifier = "trade_pilfering" days = 3600 }
 		}
+	}
+	
+	option = {
+		name = crime.304.b
+		allow = {
+			owner = {
+				resource_stockpile_compare = {
+					resource = energy
+					value >= 1000
+				}
+			}
+			solar_system.starbase = {
+				has_starbase_building = deep_space_black_site
+			}
+		}
+		owner = {
+			add_resource = {
+				energy = -1000
+			}
+		}
+		tooltip = {
+			add_modifier = { modifier = "trade_pilfering" days = 3600 }
+		}
+		add_modifier = { modifier = "crime_lord_deal" days = 3600 }
 	}
 }
 

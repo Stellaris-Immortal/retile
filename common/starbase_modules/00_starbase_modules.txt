@@ -6,6 +6,186 @@
 # ASSEMBLYYARD_STARBASE_SECTION
 #
 
+solar_panels = {
+	icon = "GFX_starbase_solar_panels"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	initial = yes
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_energy_station"
+			solar_system = {
+				any_system_planet = {
+					has_mining_station = yes
+					has_resource = { type = energy amount > 0 }
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 150
+		}
+	}
+	
+	custom_tooltip = solar_panel_tooltip
+	
+	ai_build_at_chokepoint = no
+	ai_weight = {
+		weight = 15
+	}
+}
+
+mining_terminal = {
+	icon = "GFX_starbase_mining_terminal"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	initial = no
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_mineral_station"
+			solar_system = {
+				any_system_planet = {
+					has_mining_station = yes
+					has_resource = { type = minerals amount > 0 }
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	custom_tooltip = mining_terminal_tooltip
+	
+	ai_build_at_chokepoint = no
+	ai_weight = {
+		weight = 15
+	}
+}
+
+foundry_terminal = {
+	icon = "GFX_starbase_foundry_terminal"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	initial = no
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_alloy_station"
+			solar_system = {
+				any_system_planet = {
+					has_mining_station = yes
+					has_resource = { type = alloys amount > 0 }
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	custom_tooltip = foundry_terminal_tooltip
+	
+	ai_build_at_chokepoint = no
+	ai_weight = {
+		weight = 15
+	}
+}
+
+
+trade_terminal = {
+	icon = "GFX_starbase_trade_terminal"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	initial = yes
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_trade"
+			solar_system = {
+				any_system_planet = {
+					OR = {
+						has_deposit = d_trade_value_small
+						has_deposit = d_trade_value_medium
+						has_deposit = d_trade_value_large
+					}
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			energy = 2
+		}	
+	}
+	
+	custom_tooltip = trade_terminal_tooltip
+
+	ai_build_at_chokepoint = no
+	ai_weight = {
+		weight = 15
+	}
+}
+
+research_terminal = {
+	icon = "GFX_starbase_research_terminal"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	initial = no
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_research_station"
+			solar_system = {
+				any_system_planet = {
+					has_research_station = yes
+				}
+			}
+		}
+	}
+	
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	custom_tooltip = research_terminal_tooltip
+	
+	ai_build_at_chokepoint = no
+	ai_weight = {
+		weight = 15
+	}
+}
+
 shipyard = {
 	icon = "GFX_starbase_shipyard"
 	section = "ASSEMBLYYARD_STARBASE_SECTION"
@@ -231,176 +411,10 @@ hangar_bay = {
 	show_in_tech = "tech_strike_craft_1"
 }
 
-solar_panels = {
-	icon = "GFX_starbase_solar_panels"
-	section = "REFINERY_STARBASE_SECTION"
-	construction_days = 360
-	initial = yes
-	
-	possible = {
-		solar_system = {
-			any_system_planet = {
-				has_mining_station = yes
-				has_resource = { type = energy amount > 0 }
-			}
-		}
-	}
-	
-	resources = {
-		category = starbase_modules
-		cost = {
-			alloys = 150
-		}
-	}
-	
-	custom_tooltip = solar_panel_tooltip
-	
-	ai_build_at_chokepoint = no
-	ai_weight = {
-		weight = 15
-	}
-}
-
-mining_terminal = {
-	icon = "GFX_starbase_mining_terminal"
-	section = "REFINERY_STARBASE_SECTION"
-	construction_days = 360
-	initial = no
-	
-	possible = {
-		solar_system = {
-			any_system_planet = {
-				has_mining_station = yes
-				has_resource = { type = minerals amount > 0 }
-			}
-		}
-	}
-	
-	resources = {
-		category = starbase_modules
-		cost = {
-			alloys = 150
-		}
-		upkeep = {
-			energy = 2
-		}
-	}
-	
-	custom_tooltip = mining_terminal_tooltip
-	
-	ai_build_at_chokepoint = no
-	ai_weight = {
-		weight = 15
-	}
-}
-
-foundry_terminal = {
-	icon = "GFX_starbase_foundry_terminal"
-	section = "REFINERY_STARBASE_SECTION"
-	construction_days = 360
-	initial = no
-	
-	possible = {
-		solar_system = {
-			any_system_planet = {
-				has_mining_station = yes
-				has_resource = { type = alloys amount > 0 }
-			}
-		}
-	}
-	
-	resources = {
-		category = starbase_modules
-		cost = {
-			alloys = 150
-		}
-		upkeep = {
-			energy = 2
-		}
-	}
-	
-	custom_tooltip = foundry_terminal_tooltip
-	
-	ai_build_at_chokepoint = no
-	ai_weight = {
-		weight = 15
-	}
-}
-
-
-trade_terminal = {
-	icon = "GFX_starbase_trade_terminal"
-	section = "REFINERY_STARBASE_SECTION"
-	construction_days = 360
-	initial = yes
-	
-	possible = {
-		solar_system = {
-			any_system_planet = {
-				OR = {
-					has_deposit = d_trade_value_small
-					has_deposit = d_trade_value_medium
-					has_deposit = d_trade_value_large
-				}
-			}
-		}
-	}
-
-	resources = {
-		category = starbase_modules
-		cost = {
-			alloys = 150
-		}
-		upkeep = {
-			energy = 2
-		}	
-	}
-	
-	custom_tooltip = trade_terminal_tooltip
-
-	ai_build_at_chokepoint = no
-	ai_weight = {
-		weight = 15
-	}
-}
-
-research_terminal = {
-	icon = "GFX_starbase_research_terminal"
-	section = "REFINERY_STARBASE_SECTION"
-	construction_days = 360
-	initial = no
-	
-	possible = {
-		solar_system = {
-			any_system_planet = {
-				has_research_station = yes
-			}
-		}
-	}
-	
-	resources = {
-		category = starbase_modules
-		cost = {
-			alloys = 150
-		}
-		upkeep = {
-			energy = 2
-		}
-	}
-	
-	custom_tooltip = research_terminal_tooltip
-	
-	ai_build_at_chokepoint = no
-	ai_weight = {
-		weight = 15
-	}
-}
-
-
 # Placeholder
 trading_hub = {
-	icon = "GFX_starbase_trading_hub"
-	section = "REFINERY_STARBASE_SECTION"
+	icon = "GFX_starbase_hangar_bay"
+	section = "HANGAR_STARBASE_SECTION"
 	construction_days = 0
 	initial = no
 	
