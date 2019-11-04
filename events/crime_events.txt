@@ -2124,7 +2124,7 @@ planet_event = {
 	}
 }
 
-# Criminal Branch Office Closes
+# Criminal Branch Office Closes # Checks on monthly pulse
 event = {
 	id = crime.1000
 	hide_window = yes
@@ -2139,35 +2139,35 @@ event = {
 					is_criminal_syndicate = yes
 					NOT = { has_country_flag = criminal_branch_closed_cooldown }
 				}
-				planet_crime < 1
+				planet_crime < 25
 			}
 		}
 	}
 
 	immediate = {
-		random_list = {
-			19 = {}
-			1 = {
-				random_playable_country = {
-					limit = {
-						any_owned_planet = {
-							has_branch_office = yes
-							branch_office_owner = { 
-								is_criminal_syndicate = yes
-								NOT = { has_country_flag = criminal_branch_closed_cooldown }
-							}
-							planet_crime < 1
-						}
+		random_playable_country = {
+			limit = {
+				any_owned_planet = {
+					has_branch_office = yes
+					branch_office_owner = { 
+						is_criminal_syndicate = yes
+						NOT = { has_country_flag = criminal_branch_closed_cooldown }
 					}
-					random_owned_planet = {
-						limit = {
-							has_branch_office = yes
-							branch_office_owner = { 
-								is_criminal_syndicate = yes
-								NOT = { has_country_flag = criminal_branch_closed_cooldown }
-							}
-							planet_crime < 1
-						}
+					planet_crime < 25
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					has_branch_office = yes
+					branch_office_owner = { 
+						is_criminal_syndicate = yes
+						NOT = { has_country_flag = criminal_branch_closed_cooldown }
+					}
+					planet_crime < 25
+				}
+				random_list = {
+					59 = {}
+					1 = {
 						branch_office_owner = { save_event_target_as = office_owner }
 						planet_event = { id = crime.1001 days = 360 random = 40 }
 					}
@@ -2197,22 +2197,29 @@ planet_event = {
 		}
 	}
 
-	immediate = {
-		# 10 year cooldown
-		branch_office_owner = { 
-			set_timed_country_flag = { flag = criminal_branch_closed_cooldown days = 3600 }
-		}
-	}
+#	immediate = {
+#		# 10 year cooldown
+#		branch_office_owner = { 
+#			set_timed_country_flag = { flag = criminal_branch_closed_cooldown days = 3600 }
+#		}
+#	}
 
 	option = {
 		name = crime.1001.a
 		close_branch_office = yes
 		hidden_effect = {
+			branch_office_owner = { 
+				set_timed_country_flag = { flag = criminal_branch_closed_cooldown days = 3600 }
+			}
 			set_timed_planet_flag = { flag = criminal_branch_closed_cooldown_planet@event_target:office_owner days = 3600 }
-			 event_target:office_owner = {
+			event_target:office_owner = {
 			 	country_event = { id = crime.1002 }
 			}
 		}
+	}
+	option = {
+		name = crime.1001.b
+		custom_tooltip = crime.1001.b.tooltip
 	}
 }
 
