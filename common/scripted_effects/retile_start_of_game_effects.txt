@@ -21,6 +21,18 @@ generate_start_buildings_and_districts = {
 				set_country_flag = non_lithoid_subspecies
 			}
 		}
+		
+		if = {
+			limit = { owner = { last_created_species = { is_plantoid = yes } } }
+			owner = {
+				set_country_flag = plantoid_subspecies
+			}
+		}
+		else = {
+			owner = {
+				set_country_flag = non_plantoid_subspecies
+			}
+		}
 	}
 	
 	if = {

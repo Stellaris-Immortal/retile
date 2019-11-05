@@ -189,11 +189,18 @@ is_lithoid = {
 	}
 }
 
+is_plantoid = {
+	species = {
+		is_archetype = PLANTOID
+	}
+}
+
 is_organic_species = {
 	species = {
 		OR = {
 			is_archetype = BIOLOGICAL # original trigger did not include pre-sapient classes
 			is_archetype = LITHOID
+			is_archetype = PLANTOID
 		}
 	}
 }

@@ -70,8 +70,19 @@ building_hydroponics_farm = {
 	}
 	
 	triggered_desc = {
-		trigger = { exists = owner }
+		trigger = { 
+			exists = owner
+			is_plantoid_empire = no
+		}
 		text = retile_food_buff_city_effect
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+			is_plantoid_empire = yes
+		}
+		text = retile_food_buff_city_plantoid_effect
 	}
 	
 	ai_weight = {

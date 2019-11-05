@@ -27,6 +27,7 @@ tr_harmony_adopt = {
 		trigger = {
 			is_hive_empire = yes
 			is_lithoid_empire = no
+			is_plantoid_empire = no
 		}
 		modifier = {
 			planet_pops_organics_food_upkeep_mult = -0.10
@@ -44,9 +45,27 @@ tr_harmony_adopt = {
 		trigger = {
 			is_hive_empire = no
 			is_lithoid_empire = yes
+			is_plantoid_empire = no
 		}
 		modifier = {
 			planet_pops_organics_minerals_upkeep_mult = -0.10
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
+		name = tr_harmony_plantoid_adopt
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_hive_empire = no
+			is_plantoid_empire = yes
+		}
+		modifier = {
+			planet_pops_consumer_goods_upkeep_mult = -0.10
 		}
 		weight = {
 			factor = 1
@@ -69,6 +88,7 @@ tr_harmony_adopt = {
 			factor = 1
 		}
 	}
+	
 	ai_weight = {
 		factor = 10
 		modifier = {
