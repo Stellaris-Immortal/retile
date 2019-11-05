@@ -88,7 +88,10 @@ custodian = {
 			minerals = 10
 		}
 		produces = {
-			trigger = { planet = { has_building = building_hydroponics_farm } }
+			trigger = { 
+				planet = { has_building = building_hydroponics_farm }
+				NOT = { has_trait = trait_plantoid }
+			}
 			food = 4
 		}
 		produces = {
@@ -106,10 +109,13 @@ custodian = {
 			minerals = 10
 		}
 		produces = {
-			trigger = { planet = {
-				has_building = building_hydroponics_farm
-				has_deposit = retile_deposit_waste_reprocessing
-			} }
+			trigger = { 
+				planet = {
+					has_building = building_hydroponics_farm
+					has_deposit = retile_deposit_waste_reprocessing
+				} 
+				NOT = { has_trait = trait_plantoid }
+			}
 			food = 4
 		}
 		produces = {	### Natural *** Traits
@@ -162,6 +168,17 @@ custodian = {
 			has_deposit = retile_deposit_waste_reprocessing
 		} }
 		modifier = { planet_amenities_add = 30 }
+	}
+	
+	triggered_planet_modifier = {
+		potential = { 
+			planet = { has_building = building_hydroponics_farm } 
+			has_trait = trait_plantoid
+		}
+		modifier = { 
+			pop_environment_tolerance = 10
+			pop_growth_speed = 0.10
+		}
 	}
 
 	triggered_planet_modifier = {
@@ -579,14 +596,21 @@ farmer = {
 	resources = {
 		category = planet_farmers
 		produces = {
+			trigger = { not = { has_trait = trait_plantoid } }
 			food = 4
 		}
 		produces = {
-			trigger = { planet = { has_building = building_food_processing_facility } }
+			trigger = { 
+				planet = { has_building = building_food_processing_facility } 
+				not = { has_trait = trait_plantoid }
+			}
 			food = 4
 		}
 		produces = {
-			trigger = { planet = { has_building = building_food_processing_center } }
+			trigger = { 
+				planet = { has_building = building_food_processing_center }
+				not = { has_trait = trait_plantoid }
+			}
 			food = 8
 		}
 		produces = {
@@ -620,6 +644,14 @@ farmer = {
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_food_processing_center } }
 		modifier = { planet_amenities_add = 60 }
+	}
+	
+	triggered_planet_modifier = {
+		potential = { has_trait = trait_plantoid }
+		modifier = { 
+			pop_environment_tolerance = 0.20
+			pop_growth_speed = 0.05
+		}
 	}
 
 	triggered_planet_modifier = {

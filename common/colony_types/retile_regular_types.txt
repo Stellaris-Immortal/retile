@@ -4,12 +4,39 @@ col_capital = {
 
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
+		owner = { 
+			is_regular_empire = yes 
+			is_plantoid = no
+		}
 		is_capital = yes
 	}
 	
 	planet_modifier = {
 		planet_stability_add = 5
+		planet_crime_add = -30
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+# Capital World - Plantoid
+col_capital_plantoid = {
+	icon = 10
+
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes 
+			is_plantoid = yes
+		}
+		is_capital = yes
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 5
+		pop_environment_tolerance = 0.40
 		planet_crime_add = -30
 	}
 

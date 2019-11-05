@@ -130,6 +130,7 @@ slave = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_very_high_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -139,6 +140,7 @@ slave = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_high_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -148,6 +150,7 @@ slave = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				OR = {
 					has_normal_living_standard_type = yes
 					has_academic_living_standard_type = yes
@@ -160,6 +163,7 @@ slave = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				OR = {
 					has_low_living_standard_type = yes
 					has_stratified_living_standard_type = yes
@@ -209,6 +213,45 @@ slave = {
 				}
 			}
 			minerals = @living_standard_food_normal
+		}
+		
+		# Plantoid Upkeep
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_very_high_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_low
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_high_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_low
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				OR = {
+					has_normal_living_standard_type = yes
+					has_academic_living_standard_type = yes
+				}
+			}
+			consumer_goods = @living_standard_luxuries_very_low
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				OR = {
+					has_low_living_standard_type = yes
+					has_stratified_living_standard_type = yes
+				}
+			}
 		}
 
 		# Robotic Upkeep
@@ -298,10 +341,14 @@ bio_trophy = {
 		pop_housing_usage_base = 1
 		pop_amenities_usage_no_happiness_base = 0
 	}	
+	
 	resources = {
 		category = pop_category_bio_trophy
 		upkeep = {
-			trigger = { is_lithoid = no }
+			trigger = { 
+				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
+			}
 			food = @living_standard_food_normal
 			consumer_goods = @living_standard_luxuries_very_high
 		}
@@ -309,6 +356,11 @@ bio_trophy = {
 		upkeep = {
 			trigger = { is_lithoid = yes }
 			minerals = @living_standard_food_normal
+			consumer_goods = @living_standard_luxuries_very_high
+		}
+		
+		upkeep = {
+			trigger = { has_trait = trait_plantoid }
 			consumer_goods = @living_standard_luxuries_very_high
 		}
 
@@ -435,6 +487,7 @@ criminal = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_shared_burden_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -444,6 +497,7 @@ criminal = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_very_high_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -453,6 +507,7 @@ criminal = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_high_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -462,6 +517,7 @@ criminal = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				OR = {
 					has_normal_living_standard_type = yes
 					has_academic_living_standard_type = yes
@@ -474,6 +530,7 @@ criminal = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_stratified_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -483,6 +540,7 @@ criminal = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_low_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -545,6 +603,59 @@ criminal = {
 				has_low_living_standard_type = yes
 			}
 			minerals = @living_standard_food_normal
+			consumer_goods = @living_standard_luxuries_very_low
+		}
+		
+		# Plantoid Upkeep
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_shared_burden_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_shared_burden
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_very_high_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_very_high
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_high_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_high
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				OR = {
+					has_normal_living_standard_type = yes
+					has_academic_living_standard_type = yes
+				}
+			}
+			consumer_goods = @living_standard_luxuries_normal
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_stratified_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_low
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_low_living_standard_type = yes
+			}
 			consumer_goods = @living_standard_luxuries_very_low
 		}
 
@@ -713,6 +824,7 @@ deviant_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_shared_burden_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -722,6 +834,7 @@ deviant_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_very_high_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -731,6 +844,7 @@ deviant_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_high_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -740,6 +854,7 @@ deviant_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				OR = {
 					has_normal_living_standard_type = yes
 					has_academic_living_standard_type = yes
@@ -752,6 +867,7 @@ deviant_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_stratified_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -761,6 +877,7 @@ deviant_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_low_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -823,6 +940,59 @@ deviant_drone = {
 				has_low_living_standard_type = yes
 			}
 			minerals = @living_standard_food_normal
+			consumer_goods = @living_standard_luxuries_very_low
+		}
+		
+		# Plantoid Upkeep
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_shared_burden_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_shared_burden
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_very_high_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_very_high
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_high_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_high
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				OR = {
+					has_normal_living_standard_type = yes
+					has_academic_living_standard_type = yes
+				}
+			}
+			consumer_goods = @living_standard_luxuries_normal
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_stratified_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_low
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_low_living_standard_type = yes
+			}
 			consumer_goods = @living_standard_luxuries_very_low
 		}
 
@@ -963,6 +1133,7 @@ corrupt_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_shared_burden_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -972,6 +1143,7 @@ corrupt_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_very_high_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -981,6 +1153,7 @@ corrupt_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_high_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -990,6 +1163,7 @@ corrupt_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				OR = {
 					has_normal_living_standard_type = yes
 					has_academic_living_standard_type = yes
@@ -1002,6 +1176,7 @@ corrupt_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_stratified_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -1011,6 +1186,7 @@ corrupt_drone = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				has_low_living_standard_type = yes
 			}
 			food = @living_standard_food_normal
@@ -1073,6 +1249,59 @@ corrupt_drone = {
 				has_low_living_standard_type = yes
 			}
 			minerals = @living_standard_food_normal
+			consumer_goods = @living_standard_luxuries_very_low
+		}
+		
+		# Plantoid Upkeep
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_shared_burden_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_shared_burden
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_very_high_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_very_high
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_high_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_high
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				OR = {
+					has_normal_living_standard_type = yes
+					has_academic_living_standard_type = yes
+				}
+			}
+			consumer_goods = @living_standard_luxuries_normal
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_stratified_living_standard_type = yes
+			}
+			consumer_goods = @living_standard_luxuries_low
+		}
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				has_low_living_standard_type = yes
+			}
 			consumer_goods = @living_standard_luxuries_very_low
 		}
 
@@ -1180,6 +1409,7 @@ precursor = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				exists = owner
 				owner = {
 					is_spiritualist = no
@@ -1193,6 +1423,7 @@ precursor = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 				exists = owner
 				owner = {
 					is_spiritualist = yes
@@ -1226,6 +1457,31 @@ precursor = {
 				}
 			}
 			minerals = 1.0
+			consumer_goods = 1.0
+		}
+		
+		# Plantoid Upkeep
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				exists = owner
+				owner = {
+					is_spiritualist = no
+				}
+			}
+			consumer_goods = 2.0
+		}
+
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+				exists = owner
+				owner = {
+					is_spiritualist = yes
+				}
+			}
 			consumer_goods = 1.0
 		}
 
@@ -1262,6 +1518,7 @@ xeno_ward = {
 			trigger = {
 				is_organic_species = yes
 				is_lithoid = no
+				NOT = { has_trait = trait_plantoid }
 			}
 			food = @living_standard_food_normal
 			consumer_goods = @living_standard_luxuries_very_high
@@ -1274,6 +1531,15 @@ xeno_ward = {
 				is_lithoid = yes
 			}
 			minerals = @living_standard_food_normal
+			consumer_goods = @living_standard_luxuries_very_high
+		}
+		
+		# Plantoid Upkeep
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				has_trait = trait_plantoid
+			}
 			consumer_goods = @living_standard_luxuries_very_high
 		}
 

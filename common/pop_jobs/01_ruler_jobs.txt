@@ -24,70 +24,6 @@ colonist = {
 
 	resources = {
 		category = planet_colonists
-		upkeep = {
-			trigger = { AND = {
-				is_lithoid = no
-				planet = { free_housing >= 0 }
-				owner = { NOR = {
-					has_civic = civic_mechanists
-					is_mechanical_empire = yes
-				} }
-			} }
-			food = 3
-		}
-		upkeep = {
-			trigger = { AND = {
-				is_lithoid = yes
-				planet = { free_housing >= 0 }
-				owner = { NOR = {
-					has_civic = civic_mechanists
-					is_mechanical_empire = yes
-				} }
-			} }
-			minerals = 6
-		}
-		upkeep = {
-			trigger = { AND = {
-				planet = { free_housing >= 0 }
-				owner = { OR = {
-					has_civic = civic_mechanists
-					is_mechanical_empire = yes
-				} }
-			} }
-			minerals = 6
-		}
-		upkeep = {
-			trigger = { AND = {
-				is_lithoid = no
-				planet = { free_housing >= 0 }
-				owner = { has_technology = tech_frontier_health }
-			} }
-			food = 3
-		}
-		upkeep = {
-			trigger = { AND = {
-				is_lithoid = no
-				planet = { free_housing >= 0 }
-				owner = { has_technology = tech_frontier_hospital }
-			} }
-			food = 3
-		}
-		upkeep = {
-			trigger = { AND = {
-				is_lithoid = yes
-				planet = { free_housing >= 0 }
-				owner = { has_technology = tech_frontier_health }
-			} }
-			minerals = 6
-		}
-		upkeep = {
-			trigger = { AND = {
-				is_lithoid = yes
-				planet = { free_housing >= 0 }
-				owner = { has_technology = tech_frontier_hospital }
-			} }
-			minerals = 6
-		}
 	}
 	
 	triggered_planet_modifier = {
@@ -99,30 +35,35 @@ colonist = {
 			} }
 		}
 		modifier = {
-			pop_growth_speed = 0.33
-			planet_amenities_add = 30
+			pop_growth_speed = 0.16
+			planet_amenities_add = 15
+		}
+	}
+	
+
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			owner = {
+				has_technology = tech_frontier_health
+			}
+		}
+		modifier = {
+			pop_growth_speed = 0.17
+			planet_amenities_add = 15
 		}
 	}
 
 	triggered_planet_modifier = {
 		potential = {
 			planet = { free_housing >= 0 }
-			owner = { has_technology = tech_frontier_health}
+			owner = { 
+				has_technology = tech_frontier_hospital
+			}
 		}
 		modifier = {
-			pop_growth_speed = 0.34
-			planet_amenities_add = 30
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			planet = { free_housing >= 0 }
-			owner = { has_technology = tech_frontier_hospital}
-		}
-		modifier = {
-			pop_growth_speed = 0.33
-			planet_amenities_add = 30
+			pop_growth_speed = 0.17
+			planet_amenities_add = 15
 		}
 	}
 
@@ -135,8 +76,8 @@ colonist = {
 			} }
 		}
 		modifier = {
-			planet_pop_assembly_add = 2
-			planet_amenities_add = 30
+			planet_pop_assembly_add = 1
+			planet_amenities_add = 15
 		}
 	}
 
