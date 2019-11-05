@@ -1,6 +1,3 @@
-###################
-# Gestalt Jobs
-###################
 spawning_drone = {
 	category = complex_drone
 	condition_string = DRONE_JOB_TRIGGER
@@ -14,251 +11,37 @@ spawning_drone = {
 	}
 
 	possible = {
-		drone_job_check_trigger = yes
-	}
-	
-	planet_modifier = {
-		planet_amenities_no_happiness_add = 5
-		pop_growth_speed = 0.25
-	}
-	triggered_planet_modifier = {
-		potential = {
-			has_trait = trait_charismatic
-		}
-		modifier = {
-			planet_amenities_no_happiness_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			has_trait = trait_repugnant
-		}
-		modifier = {
-			planet_amenities_no_happiness_add = -1
-		}
-	}	
-	
-	resources = {
-		category = planet_jobs
-		upkeep = {
-			food = 5
-		}
-	}
-	
-	weight = {
-		weight = @spawner_drone_job_weight
-		modifier = {
-			factor = 5
+		or = {
 			has_job = spawning_drone
+			retile_job_seeking = yes
 		}
-		#modifier = {	# Don't do this job if we have unemployment but not pop control...Unfinished!
-		#	factor = 0
-		#	planet = {
-		#		NOT = { has_modifier = planet_population_control_gestalt }
-		#	}
-		#}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_charismatic
-		}
-		modifier = {
-			factor = 0.9
-			has_trait = trait_repugnant
-		}	
-		modifier = {
-			factor = 0.1 # job is less useful if pop control is active, but still gives amenities 
-			planet = {
-				has_modifier = planet_population_control_gestalt
-			}
-		}
-		modifier = {
-			factor = 0.01 # crisis purge
-			planet.controller = {
-				OR = {
-					is_country_type = swarm
-					is_country_type = ai_empire
-				}
-			}
-		}
-	}
-}
-
-replicator = {
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_robot_assembly_plant
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
 		drone_job_check_trigger = yes
 	}
 	
 	planet_modifier = {
-		planet_pop_assembly_add = 1
-		planet_amenities_no_happiness_add = 5
-	} 
-
-	resources = {
-		category = planet_pop_assemblers
-		produces = {
-			engineering_research = 1
-		}
-		upkeep = {
-			minerals = 3
-		}
-	}
-	
-	weight = {
-		weight = @spawner_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = replicator
-		}
-		modifier = {
-			factor = 40
-			exists = owner
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-		modifier = {
-			factor = 0.1 # job is less useful if pop control is active, but still gives amenities
-			planet = {
-				has_modifier = planet_population_control_gestalt
-			}
-		}
-		modifier = {
-			factor = 1.25
-			OR = {
-				has_trait = trait_charismatic
-				has_trait = trait_robot_emotion_emulators
-			}
-		}
-		modifier = {
-			factor = 0.9
-			OR = {
-				has_trait = trait_repugnant
-				has_trait = trait_robot_uncanny
-			}
-		}
-	}
-}
-
-coordinator = {
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_machine_capital
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		drone_job_check_trigger = yes
-	}	
-	
-	planet_modifier = {
-		planet_jobs_simple_drone_produces_mult = 0.01
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_modifier = planet_artifact_relays_machine }
-		}
-		modifier = {
-			planet_stability_add = 2
-			planet_jobs_simple_drone_produces_mult = 0.01
-		}
+		planet_amenities_no_happiness_add = 50
+		pop_growth_speed = 0.50
+		planet_stability_add = 5
 	}
 	
 	resources = {
 		category = planet_jobs
-		produces = {
-			unity = 3
-			society_research = 1
-			physics_research = 1
-			engineering_research = 1 
+		upkeep = {
+			trigger = {
+				is_lithoid = no
+			}
+			food = 4
 		}
 		upkeep = {
-			energy = 3
-		}
-	}	
-	
-	weight = {
-		weight = @synapse_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = coordinator
-		}
-		modifier = {		### I guess this keeps cyborgs out of the job at game start...
-			factor = 0.9
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}		
-	}
-}
-
-synapse_drone = {
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_hive_capital
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		drone_job_check_trigger = yes
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_modifier = planet_artifact_relays_hivemind }
-		}
-		modifier = {
-			planet_stability_add = 2
-			planet_jobs_simple_drone_produces_mult = 0.01
-		}
-	}
-
-	resources = {
-		category = planet_jobs
-		produces = {
-			unity = 3
-			society_research = 3
-		}
-		upkeep = {
-			food = 2
-			energy = 2
+			trigger = {
+				is_lithoid = yes
+			}
+			minerals = 10
 		}
 	}
 	
 	weight = {
-		weight = @synapse_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = synapse_drone
-		}
-		#modifier = {		### Actually pointless...
-		#	factor = 0.9
-		#	exists = owner
-		#	years_passed < 1
-		#	owner = { has_valid_civic = civic_machine_assimilator }
-		#	has_trait = trait_cybernetic
-		#}		
+		weight = 50
 	}
 }
 
@@ -275,123 +58,166 @@ brain_drone = {
 	}
 
 	possible = {
-		drone_job_check_trigger = yes
-	}
-
-	resources = {
-		category = planet_researchers
-		produces = {	
-			physics_research = 4
-			engineering_research = 4
-			society_research = 4
-		}
-		upkeep = {
-			minerals = 6
-		}		
-	}
-	
-	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
+		or = {
 			has_job = brain_drone
+			retile_job_seeking = yes
 		}
-		modifier = {
-			factor = 3
-			has_trait = trait_erudite
-		}
-		modifier = {
-			factor = 2
-			has_trait = trait_intelligent
-		}
-		modifier = {
-			factor = 1.5
-			OR = {
-				has_trait = trait_natural_engineers
-				has_trait = trait_natural_physicists
-				has_trait = trait_natural_sociologists
-			}
-		}	
-		modifier = {
-			factor = 0.65
-			OR = {
-				has_trait = trait_syncretic_proles
-				has_trait = trait_presapient_proles	
-			}
-		}
-		modifier = {
-			factor = 0.9
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}		
-		#modifier = {
-		#	factor = 0
-		#	planet = {
-		#		owner = {
-		#			is_ai = yes
-		#			has_resource = { type = minerals amount < 500 }
-		#		}
-		#	}
-		#}
-	}
-}
-
-calculator = {
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_research_lab_1
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
 		drone_job_check_trigger = yes
 	}
 
+	############################################################ Brain Drone Production/Upkeep
+	
 	resources = {
 		category = planet_researchers
 		produces = {
-			physics_research = 4
-			engineering_research = 4
-			society_research = 4
+			physics_research = 2.5
+			engineering_research = 2.5
+			society_research = 2.5
+			unity = 2.5
 		}
 		upkeep = {
-			minerals = 6
+			consumer_goods = 2.5
 		}		
+		produces = {
+			trigger = { planet = { has_building = building_research_lab_1 } }
+			physics_research = 2.5
+			engineering_research = 2.5
+			society_research = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_research_lab_1 } }
+			consumer_goods = 1.25
+		}		
+		produces = {
+			trigger = { planet = { has_building = building_research_lab_2 } }
+			physics_research = 5
+			engineering_research = 5
+			society_research = 5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_research_lab_2 } }
+			consumer_goods = 2.5
+		}		
+		produces = {
+			trigger = { planet = { has_building = building_research_lab_3 } }
+			physics_research = 7.5
+			engineering_research = 7.5
+			society_research = 7.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_research_lab_3 } }
+			consumer_goods = 3.75
+		}		
+		produces = {
+			trigger = { planet = { has_building = building_institute } }
+			physics_research = 2.5
+			engineering_research = 2.5
+			society_research = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_institute } }
+			consumer_goods = 1.25
+		}		
+		produces = {
+			trigger = { planet = { OR = {
+				has_building = building_hive_node
+				has_building = building_uplink_node
+			} } }
+			unity = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { OR = {
+				has_building = building_hive_node
+				has_building = building_uplink_node
+			} } }
+			consumer_goods = 1.25
+		}		
+		produces = {
+			trigger = { planet = { OR = {
+				has_building = building_hive_cluster
+				has_building = building_network_junction
+			} } }
+			unity = 5
+		}
+		upkeep = {
+			trigger = { planet = { OR = {
+				has_building = building_hive_cluster
+				has_building = building_network_junction
+			} } }
+			consumer_goods = 2.5
+		}		
+		produces = {
+			trigger = { planet = { OR = {
+				has_building = building_hive_confluence
+				has_building = building_system_conflux
+			} } }
+			unity = 7.5
+		}
+		upkeep = {
+			trigger = { planet = { OR = {
+				has_building = building_hive_confluence
+				has_building = building_system_conflux
+			} } }
+			consumer_goods = 3.75
+		}		
+	}
+
+	############################################################ Brain Drone Pollution
+	
+	planet_modifier = {
+		planet_amenities_add = 15
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_research_lab_1 } }
+		modifier = { planet_amenities_add = 7.5 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_research_lab_2 } }
+		modifier = { planet_amenities_add = 15 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_research_lab_3 } }
+		modifier = { planet_amenities_add = 22.5 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_institute } }
+		modifier = { planet_amenities_add = 7.5 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { OR = {
+			has_building = building_hive_node
+			has_building = building_uplink_node
+		} } }
+		modifier = { planet_amenities_add = 7.5 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { OR = {
+			has_building = building_hive_cluster
+			has_building = building_network_junction
+		} } }
+		modifier = { planet_amenities_add = 15 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { OR = {
+			has_building = building_hive_confluence
+			has_building = building_system_conflux
+		} } }
+		modifier = { planet_amenities_add = 22.5 }
+	}
+	
+	############################################################ Brain Drone Job Weight
+	
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
 	}
 	
 	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = calculator
-		}
-		modifier = {
-			factor = 2
-			has_trait = trait_robot_logic_engines
-		}
-		modifier = {
-			factor = 0.9
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}		
-		#modifier = {
-		#	factor = 0
-		#	planet = {
-		#		owner = {
-		#			is_ai = yes
-		#			has_resource = { type = minerals amount < 500 }
-		#		}
-		#	}
-		#}
+		weight = 20
 	}
 }
 
@@ -409,246 +235,129 @@ artisan_drone = {
 
 	possible = {
 		drone_job_check_trigger = yes
-	}
-	
-	resources = {
-		category = planet_artisans
-		produces = {
-			consumer_goods = 8
-		}		
-		upkeep = {
-			minerals = 8
-		}
-	}	
-	
-	weight = {
-		weight = 5000
-		modifier = {
-			factor = 5
+		or = {
 			has_job = artisan_drone
+			retile_job_seeking = yes
 		}
-		modifier = {
-			factor = 0.9
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-		#modifier = {
-		#	factor = 0
-		#	jobs_work_minerals_goods = yes
-		#}
 	}
-}
-
-fabricator = {
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_foundry_1
 	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		drone_job_check_trigger = yes
-	}
-
+	############################################################ Factory Drone Production/Upkeep
+	
 	resources = {
 		category = planet_metallurgists
 		produces = {
-			alloys = 4
+			consumer_goods = 2.5
+			alloys = 2.5
 		}
-		upkeep = {
-			minerals = 8
-		}
-	}
-	
-	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = fabricator
-		}
-		modifier = {
-			factor = 0.9
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-		#modifier = {
-		#	factor = 0
-		#	jobs_work_minerals = yes
-		#}
-	}
-}
-
-alloy_drone = {
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_foundry_1
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		drone_job_check_trigger = yes
-	}
-
-	resources = {
-		category = planet_metallurgists
-		produces = {
-			alloys = 3
-		}
-		upkeep = {
-			minerals = 6
-		}
-	}
-	
-	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = alloy_drone
-		}
-		#modifier = {
-		#	factor = 0
-		#	jobs_work_minerals = yes
-		#}
-	}
-}
-
-chemist_drone = {
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_chemical_plant
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		drone_job_check_trigger = yes
-	}
-	
-	resources = {
-		category = planet_chemists
-		produces = {
-			volatile_motes = 2
-		}		
-		upkeep = {
-			minerals = 10
-		}	
-	}
-	
-	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = chemist_drone
-		}
-		modifier = {
-			factor = 0.9
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-	}
-}
-
-translucer_drone = {
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_crystal_plant
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		drone_job_check_trigger = yes
-	}
-
-	resources = {
-		category = planet_translucers
-		produces = {
-			rare_crystals = 2
-		}		
-		upkeep = {
-			minerals = 10
-		}	
-	}
-	
-	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = translucer_drone
-		}
-		modifier = {
-			factor = 0.9
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-	}
-}
-
-gas_refiner_drone = {
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_refinery
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		drone_job_check_trigger = yes
-	}
-
-	resources = {
-		category = planet_refiners
-		produces = {
-			exotic_gases = 2
-		}		
 		upkeep = {
 			minerals = 10
 		}
+		produces = {
+			trigger = { planet = { has_building = building_factory_1 } }
+			consumer_goods = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_factory_1 } }
+			minerals = 5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_factory_2 } }
+			consumer_goods = 5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_factory_2 } }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_factory_3 } }
+			consumer_goods = 7.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_factory_3 } }
+			minerals = 15
+		}
+		produces = {
+			trigger = { planet = { has_building = building_foundry_1 } }
+			alloys = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_foundry_1 } }
+			minerals = 5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_foundry_2 } }
+			alloys = 5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_foundry_2 } }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_foundry_3 } }
+			alloys = 7.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_foundry_3 } }
+			minerals = 15
+		}
+		produces = {
+			trigger = { planet = { has_building = building_ministry_production } }
+			alloys = 2.5
+			consumer_goods = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_ministry_production } }
+			minerals = 10
+		}
+	}
+
+	############################################################ Engineer Pollution
+	
+	planet_modifier = {
+		planet_amenities_add = 30
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_factory_1 } }
+		modifier = { planet_amenities_add = 15 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_factory_2 } }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_factory_3 } }
+		modifier = { planet_amenities_add = 45 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_foundry_1 } }
+		modifier = { planet_amenities_add = 15 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_foundry_2 } }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_foundry_3 } }
+		modifier = { planet_amenities_add = 45 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_ministry_production } }
+		modifier = { planet_amenities_add = 30 }
+	}
+
+	############################################################ Engineer Job Weight
+
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
 	}
 	
 	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = gas_refiner_drone
-		}
-		modifier = {
-			factor = 0.9
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
+		weight = 20
 	}
 }
 
@@ -668,38 +377,63 @@ patrol_drone = {
 		drone_job_check_trigger = yes
 	}
 	
-	resources = {
-		category = planet_jobs
-		produces = {
-			unity = 1
-		}	
+	pop_modifier = {
+		pop_defense_armies_add = 6
 	}
 	
 	planet_modifier = {
-		planet_crime_no_happiness_add = -20
-	}	
+		planet_crime_add = -25
+		planet_amenities_add = 25
+	}
 
-	pop_modifier = {
-		pop_defense_armies_add = 2
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_police_state }
+		}
+		modifier = {
+			planet_stability_add = 1
+		}		
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_common_law }
+		}
+		pop_defense_armies_add = -4
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_mind_over_matter }
+		}
+		modifier = {
+			planet_crime_add = -10
+			planet_amenities_add = 10
+			planet_stability_add = 2
+		}		
+	}
+
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
 	}
 		
 	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = patrol_drone
-		}
-		modifier = {
-			factor = 50
-			planet = { planet_crime > 22 }
-		}
+		weight = 20
 	}
 }
 
-crystal_mining_drone = {	
+warrior_drone = {
 	category = complex_drone
 	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_crystal_mines
+	building_icon = building_stronghold
 	
 	possible_pre_triggers = {
 		has_owner = yes
@@ -711,114 +445,113 @@ crystal_mining_drone = {
 	possible = {
 		drone_job_check_trigger = yes
 	}
-
-	resources = {
-		category = planet_jobs
-		produces = {
-			rare_crystals = 2
-		}
-		upkeep = {
-			energy = 1
-		}
-	}	
 	
-	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = crystal_mining_drone
+	pop_modifier = {
+		pop_defense_armies_add = 6
+	}
+	
+	country_modifier = {
+		country_naval_cap_add = 10
+	}
+	planet_modifier = {
+		planet_amenities_add = 20
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		planet_crime_add = -15
+		planet_amenities_add = 25
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_citizen_service }
 		}
 		modifier = {
-			factor = 1.1
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
+			planet_stability_add = 1
 		}		
 	}
-}
 
-mote_harvesting_drone = {	
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_mote_harvesters
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		drone_job_check_trigger = yes
-	}
-
-	resources = {
-		category = planet_jobs
-		produces = {
-			volatile_motes = 2
+	triggered_country_modifier = {
+		potential = {
+			exists = owner 
+			owner = { has_technology = "tech_ground_defense_planning" }
 		}
-		upkeep = {
-			energy = 1
+		modifier = {
+			country_naval_cap_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = "tech_ground_defense_planning" }
+		}
+		modifier = {
+			planet_amenities_add = 10
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner 
+			owner = { has_technology = "tech_global_defense_grid" }
+		}
+		modifier = {
+			country_naval_cap_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = "tech_global_defense_grid" }
+		}
+		modifier = {
+			planet_amenities_add = 10
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_global_defense_grid }
+		}
+		pop_defense_armies_add = 2
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_mind_over_matter }
+		}
+		modifier = {
+			country_naval_cap_add = 5
 		}		
-	}	
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_mind_over_matter }
+		}
+		modifier = {
+			planet_amenities_add = 10
+			planet_stability_add = 2
+		}		
+	}
+
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
+	}
 	
 	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = mote_harvesting_drone
-		}
-		modifier = {
-			factor = 1.1
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}			
-	}
-}
-
-gas_extraction_drone = {	
-	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_gas_extractors
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		drone_job_check_trigger = yes
-	}
-
-	resources = {
-		category = planet_jobs
-		produces = {
-			exotic_gases = 2
-		}
-		upkeep = {
-			energy = 1
-		}		
-	}	
-	
-	weight = {
-		weight = @complex_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = gas_extraction_drone
-		}
-		modifier = {
-			factor = 1.1
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}			
+		weight = 20
 	}
 }
 
@@ -841,44 +574,71 @@ mining_drone = {
 	resources = {
 		category = planet_miners
 		produces = {
-			minerals = 4
-		}	
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_mineral_purification_plant } }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_mineral_purification_hub } }
+			minerals = 20
+		}
+		produces = {
+			trigger = { owner = { has_civic = civic_mining_guilds } }
+			unity = 3
+		}
+		produces = {	### Natural *** Traits
+			#trigger = { pop = { has_trait = trait_natural_physicists } }
+			trigger = { has_trait = trait_natural_physicists }
+			physics_research = 3
+		}
+		produces = {
+			#trigger = { pop = { has_trait = trait_natural_sociologists } }
+			trigger = { has_trait = trait_natural_sociologists }
+			society_research = 3
+		}
+		produces = {
+			#trigger = { pop = { has_trait = trait_natural_engineers } }
+			trigger = { has_trait = trait_natural_engineers }
+			engineering_research = 3
+		}				### End Natural *** Traits
+	}	
+	
+	planet_modifier = {
+		planet_amenities_add = 30
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_mineral_purification_plant } }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_mineral_purification_hub } }
+		modifier = { planet_amenities_add = 60 }
+	}
+
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		modifier = {
+			pop_defense_armies_add = 2
+		}		
+	}
+
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
 	}
 	
 	weight = {
-		weight = @simple_drone_job_weight
-		modifier = {
-			factor = 5
-			has_job = mining_drone
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				has_trait = trait_industrious
-				has_trait = trait_robot_power_drills
-			}		
-		}
-		modifier = {
-			factor = 1.1
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-		modifier = {
-			factor = 1.2
-			has_job = mining_drone
-		}
-		#modifier = {
-		#	factor = 0.9
-		#	NOT = { has_job = mining_drone }
-		#	owner = {
-		#		has_monthly_income = {
-		#			resource = minerals
-		#			value > 85
-		#		}
-		#	}
-		#}
+		weight = 10
 	}
 }
 
@@ -901,58 +661,70 @@ agri_drone = {
 	resources = {
 		category = planet_farmers
 		produces = {
-			food = 6
+			food = 4
 		}
 		produces = {
-			trigger = { 
-				owner = {
-					is_robot_empire = yes
-				}
-			}
-			food = -1
+			trigger = { planet = { has_building = building_food_processing_facility } }
+			food = 4
 		}
+		produces = {
+			trigger = { planet = { has_building = building_food_processing_center } }
+			food = 8
+		}
+		produces = {
+			trigger = { owner = { has_civic = civic_agrarian_idyll } }
+			unity = 3
+		}
+		produces = {	### Natural *** Traits
+			#trigger = { pop = { has_trait = trait_natural_physicists } }
+			trigger = { has_trait = trait_natural_physicists }
+			physics_research = 3
+		}
+		produces = {
+			#trigger = { pop = { has_trait = trait_natural_sociologists } }
+			trigger = { has_trait = trait_natural_sociologists }
+			society_research = 3
+		}
+		produces = {
+			#trigger = { pop = { has_trait = trait_natural_engineers } }
+			trigger = { has_trait = trait_natural_engineers }
+			engineering_research = 3
+		}				### End Natural *** Traits
+	}	
+	
+	planet_modifier = {
+		planet_amenities_add = 30
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_processing_facility } }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_processing_center } }
+		modifier = { planet_amenities_add = 60 }
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		modifier = {
+			pop_defense_armies_add = 2
+		}		
+	}
+
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
 	}
 	
 	weight = {
-		weight = @simple_drone_job_weight_important
-		modifier = {
-			factor = 5
-			has_job = agri_drone
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				has_trait = trait_agrarian
-				has_trait = trait_robot_harvesters
-			}		
-		}
-		modifier = {
-			factor = 0.9
-			NOT = { has_job = mining_drone }
-			owner = {
-				has_monthly_income = {
-					resource = food
-					value > 50
-				}
-			}
-		}
-		modifier = {
-			factor = 1.2
-			has_job = agri_drone
-		}
-		modifier = {
-			factor = 0.3
-			owner = {
-				is_robot_empire = yes
-			}
-		}	
-		modifier = {
-			factor = 1.1
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}		
+		weight = 10		
 	}
 }
 
@@ -975,48 +747,66 @@ technician_drone = {
 	resources = {
 		category = planet_technician
 		produces = {
-			energy = 4
+			energy = 10
 		}
 		produces = {
-			trigger = { 
-				owner = {
-					is_robot_empire = yes
-				}
-			}
-			energy = 2
+			trigger = { planet = { has_building = building_energy_grid } }
+			energy = 10
 		}
+		produces = {
+			trigger = { planet = { has_building = building_energy_nexus } }
+			energy = 20
+		}
+		produces = {	### Natural *** Traits
+			#trigger = { pop = { has_trait = trait_natural_physicists } }
+			trigger = { has_trait = trait_natural_physicists }
+			physics_research = 3
+		}
+		produces = {
+			#trigger = { pop = { has_trait = trait_natural_sociologists } }
+			trigger = { has_trait = trait_natural_sociologists }
+			society_research = 3
+		}
+		produces = {
+			#trigger = { pop = { has_trait = trait_natural_engineers } }
+			trigger = { has_trait = trait_natural_engineers }
+			engineering_research = 3
+		}				### End Natural *** Traits
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 30
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_grid } }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_nexus } }
+		modifier = { planet_amenities_add = 60 }
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		modifier = {
+			pop_defense_armies_add = 2
+		}		
+	}
+
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
 	}
 	
 	weight = {
-		weight = @simple_drone_job_weight_important
-		modifier = {
-			factor = 5
-			has_job = technician_drone
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				has_trait = trait_robot_superconductive
-				has_trait = trait_ingenious
-			}		
-		}
-		#modifier = {
-		#	factor = 0.9
-		#	NOT = { has_job = mining_drone }
-		#	owner = {
-		#		has_monthly_income = {
-		#			resource = energy
-		#			value > 50
-		#		}
-		#	}
-		#}
-		modifier = {
-			factor = 1.1
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}		
+		weight = 10	
 	}
 }
 
@@ -1037,173 +827,167 @@ maintenance_drone = {
 	}
 	
 	planet_modifier = {
-		planet_amenities_no_happiness_add = 4
+		planet_amenities_add = -50
 	}
 	triggered_planet_modifier = {
-		potential = {
-			OR = {
-				has_trait = trait_robot_emotion_emulators
-				has_trait = trait_charismatic
-			}
-		}
-		modifier = {
-			planet_amenities_no_happiness_add = 1
-		}
+		potential = { planet = { has_deposit = retile_deposit_waste_reprocessing } }
+		modifier = { planet_amenities_add = -50 }
 	}
 	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_maintenance_depot } }
+		modifier = { planet_amenities_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_maintenance_depot
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_maintenance_depot_2 } }
+		modifier = { planet_amenities_add = -100 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_maintenance_depot_2
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = -100 }
+	}
+	
+	resources = {
+		category = planet_custodians
+		produces = {
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_maintenance_depot } }
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_maintenance_depot
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_maintenance_depot_2 } }
+			society_research = 5
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_maintenance_depot_2
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_solar_panels } }
+			energy = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_recycling_center } }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_hydroponics_farm } }
+			food = 4
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_solar_panels
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			energy = 10
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_recycling_center
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_hydroponics_farm
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			food = 4
+		}
+		produces = {	### Natural *** Traits
+			#trigger = { pop = { has_trait = trait_natural_physicists } }
+			trigger = { has_trait = trait_natural_physicists }
+			physics_research = 3
+		}
+		produces = {
+			#trigger = { pop = { has_trait = trait_natural_sociologists } }
+			trigger = { has_trait = trait_natural_sociologists }
+			society_research = 3
+		}
+		produces = {
+			#trigger = { pop = { has_trait = trait_natural_engineers } }
+			trigger = { has_trait = trait_natural_engineers }
+			engineering_research = 3
+		}				### End Natural *** Traits
+	}
+	
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_solar_panels } }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_recycling_center } }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_hydroponics_farm } }
+		modifier = { planet_amenities_add = 30 }
+	}
+
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_solar_panels
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_recycling_center
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_hydroponics_farm
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = 30 }
+	}
+
+	triggered_planet_modifier = {
 		potential = {
-			OR = {
-				has_trait = trait_robot_uncanny
-				has_trait = trait_repugnant
-			}
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
 		}
 		modifier = {
-			planet_amenities_no_happiness_add = 1
+			pop_defense_armies_add = 2
 		}
-	}		
+	}
+
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
+	}
 	
 	weight = {
-		weight = 0.8 		## Slightly lower weight - like clerks...
-		modifier = {
-			factor = 5
-			has_job = maintenance_drone
-		}
-		modifier = {
-			weight = 200
-			OR = {
-				planet = { free_amenities < 7 }
-			has_job = maintenance_drone
-			}
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				has_trait = trait_robot_emotion_emulators
-				has_trait = trait_charismatic
-			}
-		}
-		modifier = {
-			factor = 0.5
-			OR = {
-				has_trait = trait_robot_uncanny
-				has_trait = trait_repugnant
-			}
-		}
-		modifier = {
-			factor = 1.1
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-		#modifier = {
-		#	factor = 0.1
-		#	NOT = { has_job = maintenance_drone }
-		#	planet = {
-		#		free_amenities > 5
-		#	}
-		#}		
-	}
-}
-
-warrior_drone = {
-	category = simple_drone
-	condition_string = DRONE_JOB_TRIGGER
-	building_icon = building_stronghold
-	
-	country_modifier = {
-		country_naval_cap_add = 4
-	}
-	
-	triggered_country_modifier = {
-		potential = {
-			planet = {
-				exists = owner 
-				owner = { has_technology = "tech_ground_defense_planning" }
-			}
-		}
-		modifier = {
-			country_naval_cap_add = 2
-		}
-	}
-	
-	pop_modifier = {
-		pop_defense_armies_add = 3
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			planet = {
-				OR = {
-					has_modifier = compliance_protocols
-					has_modifier = hunter_killer_drones
-				}			
-			}
-		}
-		modifier = {
-			planet_stability_add = 5
-		}
-	}
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		is_enslaved = no
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		drone_job_check_trigger = yes
-	}
-	
-	weight = {
-		weight = 5
-		modifier = {
-			factor = 5
-			has_job = warrior_drone
-		}
-		modifier = {
-			weight = 100
-			exists = owner
-			owner = { is_at_war = yes }
-		}
-		modifier = {
-			factor = 10
-			planet = {
-				OR = {
-					has_modifier = compliance_protocols
-					has_modifier = hunter_killer_drones
-				}
-			}
-		}
-		modifier = {
-			factor = 4
-			has_trait = trait_resilient
-		}	
-		modifier = {
-			factor = 4
-			has_trait = trait_very_strong
-		}	
-		modifier = {
-			factor = 3
-			has_trait = trait_strong
-		}	
-		modifier = {
-			factor = 0.5
-			has_trait = trait_weak
-		}	
-		modifier = {
-			factor = 0.9
-			exists = owner
-			years_passed < 1
-			owner = { has_valid_civic = civic_machine_assimilator }
-			has_trait = trait_cybernetic
-		}
-		#modifier = {
-		#	weight = 0
-		#	factor = 0
-		#	planet = { count_pops = { limit = { } count < 12 } }
-		#	owner = { is_ai = yes }
-		#}		
+		weight = 10	
 	}
 }

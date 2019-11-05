@@ -66,15 +66,25 @@ generate_start_buildings_and_districts = {
 		limit = { owner = { is_hive_empire = yes } }
 		
 		# total - 10 jobs
-
+		
 		# 2 jobs
-		add_district = district_city
+		add_district = district_hive
 		
 		# 1 job
-		add_district = district_farming
+		add_district = district_mining
 		
 		# 1 jobs
-		add_district = district_mining
+		if = {
+			limit = { owner = { OR = {
+				is_lithoid_empire = no
+				has_country_flag = non_lithoid_subspecies
+			} } }
+			add_district = district_farming
+			add_district = district_farming
+		} else = {
+			add_district = district_mining
+			add_district = district_mining
+		}
 		
 		# 1 jobs
 		add_district = district_generator
@@ -82,7 +92,7 @@ generate_start_buildings_and_districts = {
 		# 4 jobs
 		add_building = building_hive_system_capital
 
-		# 1 jobs
+		# 2 jobs
 		#add_building = building_research_lab_1
 		add_building = building_foundry_1
 		#add_building = building_factory_1
@@ -286,6 +296,18 @@ generate_start_pops = {
 		create_pop = {
 			species = owner_main_species
 			ethos = random
+		}
+	}
+	
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		while = {
+			#limit = { num_pops < 12 }
+			count = 1
+			create_pop = {
+				species = owner_main_species
+				ethos = random
+			}
 		}
 	}
 	

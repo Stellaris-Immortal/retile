@@ -692,6 +692,51 @@ criminal = {
 	}
 }
 
+deviant_hive = {
+	potential = {
+		has_authority = auth_hive_mind
+	}
+
+	option = {
+		name = "deviant_hunt"
+		
+		modifier = { }
+		
+		policy_flags = { deviant_hunt }
+		
+		AI_weight = {
+			factor = 10
+		}
+	}
+
+	option = {
+		name = "deviant_self_destruct"
+		
+		modifier = {
+			planet_crime_mult = -0.5
+			pop_growth_speed = -0.5
+		}
+		
+		policy_flags = { deviant_self_destruct }
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "deviant_reintegrate"
+		
+		modifier = { planet_crime_mult = -0.25 }
+		
+		policy_flags = { deviant_reintegrate }
+		
+		AI_weight = {
+			factor = 10
+		}
+	}
+}
+
 environmental = {
 	potential = {
 		NOT = { has_ethic = "ethic_gestalt_consciousness" }

@@ -41,6 +41,11 @@ building_research_lab_1 = {
 			energy = 10
 			#alloys = 1
 		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -5
+			consumer_goods = 1
+		}
 	}
 	
 	upgrades = {
@@ -167,6 +172,11 @@ building_research_lab_2 = {
 			energy = 25
 			#alloys = 1
 		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -15
+			consumer_goods = 2
+		}
 	}
 	
 	upgrades = {
@@ -252,6 +262,11 @@ building_research_lab_3 = {
 			energy = 50
 			#alloys = 1
 		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -25
+			consumer_goods = 3
+		}
 	}
 	
 	prerequisites = {
@@ -313,8 +328,6 @@ building_institute = {
 		NOT = { has_modifier = resort_colony }	
 		NOT = { has_modifier = slave_colony }
 		NOT = { has_modifier = penal_colony }
-		exists = owner
-		owner = { is_regular_empire = yes }
 	}
 
 	allow = {
@@ -324,7 +337,6 @@ building_institute = {
 
 	destroy_trigger = {
 		OR = {
-			owner = { is_regular_empire = no }
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 			has_modifier = penal_colony
@@ -343,6 +355,11 @@ building_institute = {
 		upkeep = {
 			energy = 10
 			#alloys = 1
+		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -5
+			consumer_goods = 1
 		}
 	}
 	
@@ -364,120 +381,25 @@ building_institute = {
 		}
 		modifier = {
 			planet_housing_add = 2
-			job_custodian_add = 1
-			job_head_researcher_add = 1
+			job_custodian_add = 2
+			#job_head_researcher_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_maintenance_drone_add = 2
+			#job_head_researcher_add = 1
 		}
 	}
 	
 	triggered_desc = {
 		trigger = { exists = owner }
 		text = retile_research_institute_effect
-	}
-	
-	show_tech_unlock_if = { 
-		is_regular_empire = yes
-	}
-	
-	ai_weight = {	# only built on goods or alloys worlds
-		weight = 0
-		
-		modifier = {	# really good, but only build if we are already doing this...
-			weight = 10000
-			OR = {
-				has_building = building_research_lab_1
-				has_building = building_research_lab_2
-				has_building = building_research_lab_3
-			}
-		}
-	}
-	
-	ai_resource_production = {
-		physics_research = 1
-		society_research = 1
-		engineering_research = 1
-		trigger = {
-			always = yes
-		}
-	}
-}
-
-building_supercomputer = {
-	base_buildtime = 480
-	base_cap_amount = 1
-	icon = building_institute
-	category = research
-	can_be_disabled = no
-	
-	potential = {
-		exists = owner
-		owner = { is_gestalt = yes }
-	}
-
-	allow = {
-		retile_urban = yes
-		#retile_ready = yes
-	}
-
-	destroy_trigger = {
-		OR = {
-			owner = { is_gestalt = no }
-		}
-	}
-
-	convert_to = {
-		building_institute
-	}
-
-	resources = {
-		category = planet_buildings
-		cost = {
-			alloys = @cost_low
-		}
-		upkeep = {
-			energy = 10
-			#alloys = 1
-		}
-	}
-	
-	#planet_modifier = {
-	#	planet_researchers_produces_mult = 0.25
-	#}
-	
-	prerequisites = {
-		"tech_global_research_initiative"
-	}
-
-	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
-	}
-	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_supercomputer_effect
-	}
-	
-	show_tech_unlock_if = { 
-		is_gestalt = yes
 	}
 	
 	ai_weight = {	# only built on goods or alloys worlds

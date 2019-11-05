@@ -37,10 +37,6 @@ district_city = {
 		district_nexus
 		district_hive
 	}
-	convert_to = {
-		district_digsite_arcology
-		district_research_arcology
-	}
 	
 	resources = {
 		category = planet_districts_cities
@@ -114,21 +110,20 @@ district_city = {
 	}
 }
 
-district_hive = {
+district_hab_housing = {
 	base_buildtime = 480
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = {
-		from = { is_hive_empire = yes }
-		NOT = { is_planet_class = pc_habitat }
-		NOT = { is_planet_class = pc_city }
+		exists = from
+		from = { is_regular_empire = yes }
+		is_planet_class = pc_habitat
 	}
 	
 	potential = {
 		exists = owner
-		owner = { is_hive_empire = yes }
-		NOT = { is_planet_class = pc_habitat }
-		NOT = { is_planet_class = pc_city }
+		owner = { is_regular_empire = yes }
+		is_planet_class = pc_habitat
 	}
 	
 	allow = {
@@ -136,15 +131,6 @@ district_hive = {
 			retile_ready = yes
 		}
 	}
-
-	conversion_ratio = 0.5
-	convert_to = {
-		district_engineering_arcology
-		district_digsite_arcology
-		district_research_arcology
-		district_nexus
-		district_city
-	}	
 
 	resources = {
 		category = planet_districts_cities
@@ -156,16 +142,16 @@ district_hive = {
 			#alloys = 1
 		}		
 	}
-	
-	triggered_planet_modifier = {
+
+	triggered_planet_modifier = {						# Basic Jobs
 		potential = { exists = owner }
 		modifier = {
-			planet_housing_add = 3
-			#job_synapse_drone_add = 1
-			#job_foundry_drone_add = 1
+			planet_housing_add = 2
+			job_researcher_add = 1
+			job_foundry_add = 1
 		}
 	}
-
+	
 	ai_weight = {
 		weight = 0
 		
@@ -177,7 +163,7 @@ district_hive = {
 			weight = 50
 			AND = {
 				retile_basic_economy = yes
-				num_districts = { type = district_hive value < 2 }
+				num_districts = { type = district_hab_housing value < 2 }
 			}
 		}
 		modifier = {	# Already has basic urban buildings?
@@ -218,21 +204,20 @@ district_hive = {
 	}
 }
 
-district_nexus = {
+district_rw_city = {
 	base_buildtime = 480
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = {
-		from = { is_machine_empire = yes }
-		NOT = { is_planet_class = pc_habitat }
-		NOT = { is_planet_class = pc_city }
+		exists = from
+		from = { is_regular_empire = yes }
+		is_planet_class = pc_ringworld_habitable
 	}
 	
 	potential = {
 		exists = owner
-		owner = { is_machine_empire = yes }
-		NOT = { is_planet_class = pc_habitat }
-		NOT = { is_planet_class = pc_city }
+		owner = { is_regular_empire = yes }
+		is_planet_class = pc_ringworld_habitable
 	}
 
 	allow = {
@@ -240,15 +225,12 @@ district_nexus = {
 			retile_ready = yes
 		}
 	}
-	
+
 	conversion_ratio = 0.5
 	convert_to = {
-		district_engineering_arcology
-		district_digsite_arcology
-		district_research_arcology
-		district_city
-		district_hive
-	}
+		district_rw_nexus
+		district_rw_hive
+	}	
 
 	resources = {
 		category = planet_districts_cities
@@ -260,16 +242,16 @@ district_nexus = {
 			#alloys = 1
 		}		
 	}
-	
-	triggered_planet_modifier = {
+
+	triggered_planet_modifier = {						# Basic Jobs
 		potential = { exists = owner }
 		modifier = {
-			planet_housing_add = 3
-			#job_calculator_add = 1
-			#job_foundry_drone_add = 1
+			planet_housing_add = 2
+			job_researcher_add = 1
+			job_foundry_add = 1
 		}
 	}
-	
+
 	ai_weight = {
 		weight = 0
 		
@@ -281,7 +263,7 @@ district_nexus = {
 			weight = 50
 			AND = {
 				retile_basic_economy = yes
-				num_districts = { type = district_nexus value < 2 }
+				num_districts = { type = district_rw_city value < 2 }
 			}
 		}
 		modifier = {	# Already has basic urban buildings?
