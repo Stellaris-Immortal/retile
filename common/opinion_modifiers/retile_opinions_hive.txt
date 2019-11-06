@@ -1,0 +1,51 @@
+####### Replacements from Vanilla
+
+triggered_opinion_both_hive_mind = {
+	trigger = {
+		always = no
+	#	has_authority = auth_hive_mind
+	#	FROM = {
+	#		NOT = { has_valid_civic = "civic_hive_devouring_swarm" }
+	#		has_authority = auth_hive_mind
+	#	}
+	}
+
+	#opinion = {
+	#	base = 30
+	#}
+}
+
+triggered_opinion_hive_mind = {
+	trigger = {
+		is_country_type = default
+		FROM = {
+			NOT = { has_valid_civic = "civic_hive_devouring_swarm" }
+			has_authority = auth_hive_mind
+		}
+	}
+
+	opinion = {
+		base = 0
+		
+		modifier = { # fellow hive-mind
+			has_authority = auth_hive_mind
+			add = 30
+		}
+		modifier = { # Put off by hive-mind
+			NOR = {
+				has_authority = auth_hive_mind
+				has_ethic = ethic_xenophile
+				has_ethic = ethic_fanatic_xenophile
+			}
+			add = -10
+		}
+		modifier = { # cordial attitude
+			FROM = { has_policy_flag = attitude_hive_cordial }
+			add = 40
+		}
+		modifier = { # hostile attitude
+			FROM = { has_policy_flag = attitude_hive_hostile }
+			add = -40
+		}
+	}
+}
