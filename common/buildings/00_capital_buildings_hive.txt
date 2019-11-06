@@ -48,21 +48,40 @@ building_hive_colony = {
 	resources = {
 		category = planet_buildings
 		upkeep = {
-			energy = 1
+			energy = 2.5
+			consumer_goods = 1
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_spawning_drone_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_tradition = tr_expansion_colonization_fever }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_spawning_drone_add = 1
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_swapped_tradition = tr_adaptability_adaptive_ecology }
+		}
+		modifier = {
+			planet_max_buildings_add = 1
 		}
 	}
 	
 	triggered_desc = {
-		text = job_synapse_drone_effect_desc
+		text = job_spawning_drone_effect_desc
 	}	
-	
-	triggered_desc = {
-		text = job_maintenance_drone_effect_desc
-	}
-	
-	triggered_desc = {
-		text = job_patrol_drone_effect_desc
-	}
 
 	ai_weight = {
 		weight = 1
@@ -119,25 +138,25 @@ building_hive_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 500
+			alloys = 125
+			consumer_goods = 125
 		}			
 		upkeep = {
-			energy = 3
+			energy = 5
+			consumer_goods = 2
 		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+		job_spawning_drone_add = 2
+		planet_max_buildings_add = 1
 	}
 	
 	triggered_desc = {
 		text = job_synapse_drone_effect_desc
-	}	
-	
-	triggered_desc = {
-		text = job_maintenance_drone_effect_desc
 	}
 	
-	triggered_desc = {
-		text = job_patrol_drone_effect_desc
-	}
-
 	ai_weight = {
 		weight = 1
 	}
@@ -189,24 +208,25 @@ building_hive_major_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 1000
+			alloys = 250
+			consumer_goods = 250
 		}			
 		upkeep = {
-			energy = 5
+			energy = 10
+			consumer_goods = 3
 		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 3
+		job_spawning_drone_add = 2
+		job_patrol_drone_add = 1
+		planet_max_buildings_add = 2
 	}
 	
 	triggered_desc = {
 		text = job_synapse_drone_effect_desc
 	}	
-
-	triggered_desc = {
-		text = job_maintenance_drone_effect_desc
-	}	
-	
-	triggered_desc = {
-		text = job_patrol_drone_effect_desc
-	}		
 
 	ai_weight = {
 		weight = 1
@@ -257,24 +277,26 @@ building_hive_system_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 2000
+			alloys = 500
+			consumer_goods = 500
 		}			
 		upkeep = {
-			energy = 10
+			energy = 25
+			consumer_goods = 4
 		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 4
+		job_spawning_drone_add = 2
+		job_patrol_drone_add = 1
+		job_warrior_drone_add = 1
+		planet_max_buildings_add = 3
 	}
 	
 	triggered_desc = {
 		text = job_synapse_drone_effect_desc
 	}	
-
-	triggered_desc = {
-		text = job_maintenance_drone_effect_desc
-	}	
-	
-	triggered_desc = {
-		text = job_patrol_drone_effect_desc
-	}		
 
 	ai_weight = {
 		weight = 1

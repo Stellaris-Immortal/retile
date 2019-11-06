@@ -42,6 +42,11 @@ building_foundry_1 = {
 			energy = 10
 			#alloys = 1
 		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -5
+			consumer_goods = 1
+		}
 	}
 	
 	upgrades = {
@@ -146,6 +151,11 @@ building_foundry_2 = {
 			energy = 25
 			#alloys = 1
 		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -15
+			consumer_goods = 2
+		}
 	}
 	
 	upgrades = {
@@ -224,6 +234,11 @@ building_foundry_3 = {
 		upkeep = {
 			energy = 50
 			#alloys = 1
+		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -25
+			consumer_goods = 3
 		}
 	}
 
@@ -312,6 +327,11 @@ building_factory_1 = {
 		upkeep = {
 			energy = 10
 			#alloys = 1
+		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -5
+			consumer_goods = 1
 		}
 	}	
 	
@@ -410,6 +430,11 @@ building_factory_2 = {
 			energy = 25
 			#alloys = 1
 		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -15
+			consumer_goods = 2
+		}
 	}	
 	
 	prerequisites = {
@@ -491,6 +516,11 @@ building_factory_3 = {
 			energy = 50
 			#alloys = 1
 		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -25
+			consumer_goods = 3
+		}
 	}	
 	
 	prerequisites = {
@@ -549,12 +579,13 @@ building_ministry_production = {
 	category = manufacturing
 	
 	potential = {
-		exists = owner
-		owner = { is_regular_empire = yes }
-		NOR = {
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-		}
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = slave_colony }
+	}
+
+	allow = {
+		#retile_ready = yes
+		retile_urban = yes
 		custom_tooltip = {
 			fail_text = "retile_requires_engineering_arcology"
 			OR = {
@@ -564,14 +595,8 @@ building_ministry_production = {
 		}
 	}
 
-	allow = {
-		#retile_ready = yes
-		retile_urban = yes
-	}
-
 	destroy_trigger = {
 		OR = {
-			owner = { is_regular_empire = no }
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 		}
@@ -590,95 +615,13 @@ building_ministry_production = {
 			energy = 10
 			#alloys = 1
 		}
-	}
-	
-	prerequisites = {
-		"tech_global_production_strategy"
-	}
-	
-	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 1
-			job_executive_add = 1
-		}
-	}
-	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_ministry_production_effect
-	}
-	
-	show_tech_unlock_if = { 
-		is_regular_empire = yes
-	}
-	
-	ai_weight = {	# only built on goods or alloys worlds
-		weight = 0
-		
-		modifier = {	# really good, but only build if we are already doing this...
-			weight = 10000
-			OR = {
-				has_building = building_foundry_1
-				has_building = building_foundry_2
-				has_building = building_foundry_3
-				has_building = building_factory_1
-				has_building = building_factory_2
-				has_building = building_factory_3
-			}
-		}
-	}
-	
-	ai_resource_production = {
-		alloys = 1
-		consumer_goods = 1
-		trigger = {
-			always = yes
-		}
-	}
-}
-
-building_production_center = {
-	base_buildtime = 480	
-	base_cap_amount = 1
-	category = manufacturing
-	can_be_disabled = no
-	
-	potential = {
-		exists = owner
-		owner = { is_gestalt = yes }
-	}
-
-	allow = {
-		#retile_ready = yes
-		retile_urban = yes
-	}
-
-	destroy_trigger = {
-		owner = { is_gestalt = no }
-	}
-	
-	convert_to = {
-		building_ministry_production
-	}
-	
-	resources = {
-		category = planet_buildings
-		cost = {
-			alloys = @cost_low
-		}
 		upkeep = {
-			energy = 10
-			#alloys = 1
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -5
+			consumer_goods = 1
 		}
 	}
-
+	
 	prerequisites = {
 		"tech_global_production_strategy"
 	}
@@ -694,6 +637,7 @@ building_production_center = {
 		modifier = {
 			planet_housing_add = 2
 			job_custodian_add = 2
+			#job_executive_add = 1
 		}
 	}
 	triggered_planet_modifier = {
@@ -704,16 +648,13 @@ building_production_center = {
 		modifier = {
 			planet_housing_add = 2
 			job_maintenance_drone_add = 2
+			#job_executive_add = 1
 		}
 	}
 	
 	triggered_desc = {
 		trigger = { exists = owner }
-		text = retile_production_center_effect
-	}
-	
-	show_tech_unlock_if = { 
-		is_gestalt = yes
+		text = retile_ministry_production_effect
 	}
 	
 	ai_weight = {	# only built on goods or alloys worlds

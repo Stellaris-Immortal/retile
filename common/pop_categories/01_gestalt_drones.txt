@@ -1,0 +1,256 @@
+breeding_drone = {
+	rank = 3
+	clothes_texture_index = 2
+
+	weight = {
+		weight = 2
+	}
+
+	pop_modifier = {
+		pop_housing_usage_base = 1
+		pop_amenities_usage_no_happiness_base = 0
+	}
+
+	# scope: pop to be resettled
+	allow_resettlement = {
+		always = yes
+	}
+
+	resettlement_cost = {
+		energy = 100
+	}
+
+	unemployment_resources = {
+		category = unemployment_resources
+	}
+
+	resources = {
+		category = pop_category_drones
+
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				is_lithoid = no
+			}
+			food = @living_standard_food_normal
+		}
+
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+
+		upkeep = {
+			trigger = {
+				is_robotic_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_scintillating
+			}
+			rare_crystals = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_gaseous_byproducts
+			}
+			exotic_gases = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_volatile_excretions
+			}
+			volatile_motes = @lithoid_trait_resource_production
+		}
+	}
+}
+
+complex_drone = {
+	rank = 1
+	clothes_texture_index = 2
+
+	weight = {
+		weight = 2
+	}
+
+	pop_modifier = {
+		pop_housing_usage_base = 1
+		pop_amenities_usage_no_happiness_base = 0
+	}
+
+	# scope: pop to be resettled
+	allow_resettlement = {
+		always = yes
+	}
+
+	resettlement_cost = {
+		energy = 100
+	}
+
+	unemployment_resources = {
+		category = unemployment_resources
+	}
+
+	resources = {
+		category = pop_category_drones
+
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				is_lithoid = no
+			}
+			food = @living_standard_food_normal
+		}
+
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+
+		upkeep = {
+			trigger = {
+				is_robotic_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_scintillating
+			}
+			rare_crystals = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_gaseous_byproducts
+			}
+			exotic_gases = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_volatile_excretions
+			}
+			volatile_motes = @lithoid_trait_resource_production
+		}
+	}
+}
+
+simple_drone = {
+	rank = 0
+	clothes_texture_index = 2
+
+	# This is called whenever a Pop is created, moved to a different planet, or gets a new owner
+	assign_to_pop = {
+		exists = owner
+		owner = { is_gestalt = yes }
+	}
+	weight = {
+		weight = 1
+	}
+
+	pop_modifier = {
+		pop_housing_usage_base = 1
+		pop_amenities_usage_no_happiness_base = 0
+	}
+
+	# scope: pop to be resettled
+	allow_resettlement = {
+		always = yes
+	}
+
+	resettlement_cost = {
+		energy = 100
+	}
+
+	unemployment_resources = {
+		category = unemployment_resources
+		produces = {
+			trigger = {
+				owner = {
+					is_hive_empire = yes
+				}
+			}
+			minerals = 1
+		}
+		upkeep = {
+		}
+	}
+
+	resources = {
+		category = pop_category_drones
+
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				is_lithoid = no
+			}
+			food = @living_standard_food_normal
+		}
+
+		upkeep = {
+			trigger = {
+				is_organic_species = yes
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+
+		upkeep = {
+			trigger = {
+				is_robotic_species = yes
+				is_unemployed = no
+			}
+			energy = @living_standard_energy_normal
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_species = yes
+				is_unemployed = yes
+			}
+			energy = @living_standard_energy_unemployed
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_scintillating
+			}
+			rare_crystals = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_gaseous_byproducts
+			}
+			exotic_gases = @lithoid_trait_resource_production
+		}
+
+		produces = {
+			trigger = {
+				is_lithoid = yes
+				has_trait = trait_lithoid_volatile_excretions
+			}
+			volatile_motes = @lithoid_trait_resource_production
+		}
+	}
+}

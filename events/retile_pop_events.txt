@@ -8,21 +8,99 @@
 
 namespace = retile_pop
 
-# migrate all unemployed pops each month, provided there's jobs for them...
-country_event = {
-	id = retile_pop.100
+# frequently 
+pop_event = {
+	id = retile_pop.101
 	hide_window = yes
 
 	trigger = {
-		is_country_type = default
+		always = yes
+		#OR = {
+		#	is_unemployed = yes
+		#	has_job = servant
+		#	NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+		#}
 	}
 
 	mean_time_to_happen = {
-		days = 10
+		days = 30
 	}
 
 	after = {
-		retile_pop_migrate = yes
+		set_timed_pop_flag = { flag = retile_pop_lfw days = 3 }
+	}
+}
+
+pop_event = {
+	id = retile_pop.90
+	hide_window = yes
+
+	trigger = {
+		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+		OR = {
+			has_job = no
+			has_job = servant
+			has_job = slave_toiler
+			#is_unemployed = yes
+		}
+	}
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		IF = {
+			limit = {
+				NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+				OR = {
+					has_job = no
+					has_job = servant
+					has_job = slave_toiler
+				}
+			}
+			owner = { random_owned_planet = {
+				limit = { AND = {
+					free_jobs > 0
+					is_under_colonization = no
+				} }
+				resettle_pop = { pop = root planet = this}
+			} }
+		}
+	}
+}
+
+
+# migrate newly grown pops if there's no room for them...
+# This = Planet scope
+# From = Country
+# FromFrom = Pop
+planet_event = {
+	id = retile_pop.100
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		this = { free_housing < 1 }
+	}
+
+	#mean_time_to_happen = {
+	#	days = 1
+	#}
+
+	after = {
+		if = {
+			limit = {
+				this = { free_housing < 0 }
+			}
+		}
+		from = { random_owned_planet = {
+			limit = { AND = {
+				free_jobs > 0
+				is_under_colonization = no
+			} }
+			resettle_pop = { pop = fromfrom planet = this}
+		} }
 	}
 }
 

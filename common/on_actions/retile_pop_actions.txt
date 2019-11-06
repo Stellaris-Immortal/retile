@@ -1,6 +1,17 @@
 #on_monthly_pulse = {
 #	events = {
-		#retile_pop.100	# Pop migration
-		#retile_pop.200	# Pop growth malus
+#		#retile_pop.100	# Pop migration
+#		#retile_pop.200	# Pop growth malus
 #	}
 #}
+
+
+# A pop has finished growing
+# This = Planet scope
+# From = Country
+# FromFrom = Pop
+on_pop_grown = {
+	events = {
+		retile_pop.100 # migrate immediately if planet is full...
+	}
+}

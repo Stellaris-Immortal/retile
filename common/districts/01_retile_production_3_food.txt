@@ -53,12 +53,20 @@ district_farming = {
 			alloys = @base_cost
 		}
 		upkeep = {
-			trigger = { AND = {
-				NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
-				owner = { is_primitive = no }
+			trigger = { OR = {
+				owner = { is_hive_empire = yes }
+				AND = {
+					NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
+					owner = { is_primitive = no }
+				}
 			} }
 			energy = @base_upkeep
 		}		
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -5
+			consumer_goods = 1
+		}
 	}	
 
 	triggered_planet_modifier = {
@@ -198,12 +206,20 @@ district_farming_uncapped = {
 			alloys = @base_cost
 		}
 		upkeep = {
-			trigger = {
-				NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
-			}
+			trigger = { OR = {
+				owner = { is_hive_empire = yes }
+				AND = {
+					NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
+					owner = { is_primitive = no }
+				}
+			} }
 			energy = @base_upkeep
-			#alloys = 1
 		}		
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -5
+			consumer_goods = 1
+		}
 	}	
 
 	triggered_planet_modifier = {
@@ -339,12 +355,20 @@ district_hab_hydroponics = {
 			alloys = @base_cost
 		}
 		upkeep = {
-			trigger = {
-				NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
-			}
+			trigger = { OR = {
+				owner = { is_hive_empire = yes }
+				AND = {
+					NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
+					owner = { is_primitive = no }
+				}
+			} }
 			energy = @base_upkeep
-			#alloys = 1
 		}		
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -5
+			consumer_goods = 1
+		}
 	}	
 
 	triggered_planet_modifier = {
@@ -455,11 +479,11 @@ district_rw_farming = {
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = {	
-		is_planet_class = pc_ringworld_habitable 
+		is_planet_class = pc_ringworld_habitable
 	}
 	
 	potential = { 
-		is_planet_class = pc_ringworld_habitable 
+		is_planet_class = pc_ringworld_habitable
 	}
 	
 	allow = {
@@ -479,12 +503,20 @@ district_rw_farming = {
 			alloys = @base_cost
 		}
 		upkeep = {
-			trigger = { AND = {
-				NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
-				owner = { is_primitive = no }
+			trigger = { OR = {
+				owner = { is_hive_empire = yes }
+				AND = {
+					NOT = { planet = { has_deposit = retile_deposit_bioreactor } }
+					owner = { is_primitive = no }
+				}
 			} }
 			energy = @base_upkeep
 		}		
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -5
+			consumer_goods = 1
+		}
 	}	
 
 	triggered_planet_modifier = {

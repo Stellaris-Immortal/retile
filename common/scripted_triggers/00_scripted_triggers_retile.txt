@@ -33,12 +33,24 @@
 # 	retile_template_good_energy
 # 	retile_template_good_minerals
 
+# is this pop currently seeking a job?
+retile_job_seeking = {
+	NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+	OR = {
+		has_job = no
+		has_job = servant
+		has_job = slave_toiler
+		has_pop_flag = retile_pop_lfw
+	}
+}
+
 # Does this country use consumer goods?
 country_uses_goods = {	# country scope
 	OR = {
-		is_gestalt = no
-		has_valid_civic = civic_machine_servitor
-		has_valid_civic = civic_machine_assimilator
+		always = yes
+		#is_gestalt = no
+		#has_valid_civic = civic_machine_servitor
+		#has_valid_civic = civic_machine_assimilator
 	}
 }
 
@@ -48,12 +60,14 @@ retile_urban = {	# planet scope
 		fail_text = "retile_requires_urban_district"
 		OR = {
 			num_districts = { type = district_city value > 0 }
-			num_districts = { type = district_hive value > 0 }
-			num_districts = { type = district_nexus value > 0 }
+			#num_districts = { type = district_hive value > 0 }
+			#num_districts = { type = district_nexus value > 0 }
 			num_districts = { type = district_hab_housing value > 0 }
+			#num_districts = { type = district_hab_hive value > 0 }
+			#num_districts = { type = district_hab_nexus value > 0 }
 			num_districts = { type = district_rw_city value > 0 }
-			num_districts = { type = district_rw_hive value > 0 }
-			num_districts = { type = district_rw_nexus value > 0 }
+			#num_districts = { type = district_rw_hive value > 0 }
+			#num_districts = { type = district_rw_nexus value > 0 }
 			has_deposit = d_central_spire
 			AND = {
 				is_planet_class = pc_city
