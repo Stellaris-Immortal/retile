@@ -24,6 +24,15 @@ spawning_drone = {
 		planet_stability_add = 5
 	}
 	
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_no_happiness_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_no_happiness_add = -10 }
+	}
+	
 	resources = {
 		category = planet_jobs
 		upkeep = {
@@ -165,55 +174,55 @@ brain_drone = {
 	############################################################ Brain Drone Pollution
 	
 	planet_modifier = {
-		planet_amenities_add = 15
+		planet_amenities_no_happiness_add = 15
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_research_lab_1 } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_no_happiness_add = 7.5 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_research_lab_2 } }
-		modifier = { planet_amenities_add = 15 }
+		modifier = { planet_amenities_no_happiness_add = 15 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_research_lab_3 } }
-		modifier = { planet_amenities_add = 22.5 }
+		modifier = { planet_amenities_no_happiness_add = 22.5 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_institute } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_no_happiness_add = 7.5 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
 			has_building = building_hive_node
 			has_building = building_uplink_node
 		} } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_no_happiness_add = 7.5 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
 			has_building = building_hive_cluster
 			has_building = building_network_junction
 		} } }
-		modifier = { planet_amenities_add = 15 }
+		modifier = { planet_amenities_no_happiness_add = 15 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
 			has_building = building_hive_confluence
 			has_building = building_system_conflux
 		} } }
-		modifier = { planet_amenities_add = 22.5 }
+		modifier = { planet_amenities_no_happiness_add = 22.5 }
 	}
 	
 	############################################################ Brain Drone Job Weight
 	
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
+		modifier = { planet_amenities_no_happiness_add = 10 }
 	}
 	triggered_planet_modifier = {	# Clean Pop!
 		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
+		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 	
 	weight = {
@@ -314,46 +323,46 @@ artisan_drone = {
 	############################################################ Engineer Pollution
 	
 	planet_modifier = {
-		planet_amenities_add = 30
+		planet_amenities_no_happiness_add = 30
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_1 } }
-		modifier = { planet_amenities_add = 15 }
+		modifier = { planet_amenities_no_happiness_add = 15 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_2 } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_3 } }
-		modifier = { planet_amenities_add = 45 }
+		modifier = { planet_amenities_no_happiness_add = 45 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_1 } }
-		modifier = { planet_amenities_add = 15 }
+		modifier = { planet_amenities_no_happiness_add = 15 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_2 } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_3 } }
-		modifier = { planet_amenities_add = 45 }
+		modifier = { planet_amenities_no_happiness_add = 45 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_ministry_production } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 
 	############################################################ Engineer Job Weight
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
+		modifier = { planet_amenities_no_happiness_add = 10 }
 	}
 	triggered_planet_modifier = {	# Clean Pop!
 		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
+		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 	
 	weight = {
@@ -383,7 +392,7 @@ patrol_drone = {
 	
 	planet_modifier = {
 		planet_crime_add = -25
-		planet_amenities_add = 25
+		planet_amenities_no_happiness_add = 25
 	}
 
 	triggered_planet_modifier = {
@@ -411,18 +420,18 @@ patrol_drone = {
 		}
 		modifier = {
 			planet_crime_add = -10
-			planet_amenities_add = 10
+			planet_amenities_no_happiness_add = 10
 			planet_stability_add = 2
 		}		
 	}
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
+		modifier = { planet_amenities_no_happiness_add = 10 }
 	}
 	triggered_planet_modifier = {	# Clean Pop!
 		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
+		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 		
 	weight = {
@@ -454,7 +463,7 @@ warrior_drone = {
 		country_naval_cap_add = 10
 	}
 	planet_modifier = {
-		planet_amenities_add = 20
+		planet_amenities_no_happiness_add = 20
 	}
 	
 	triggered_planet_modifier = {
@@ -463,7 +472,7 @@ warrior_drone = {
 			owner = { has_policy_flag = criminal_military_police }
 		}
 		planet_crime_add = -15
-		planet_amenities_add = 25
+		planet_amenities_no_happiness_add = 25
 	}
 	
 	triggered_planet_modifier = {
@@ -491,7 +500,7 @@ warrior_drone = {
 			owner = { has_technology = "tech_ground_defense_planning" }
 		}
 		modifier = {
-			planet_amenities_add = 10
+			planet_amenities_no_happiness_add = 10
 		}
 	}
 
@@ -510,7 +519,7 @@ warrior_drone = {
 			owner = { has_technology = "tech_global_defense_grid" }
 		}
 		modifier = {
-			planet_amenities_add = 10
+			planet_amenities_no_happiness_add = 10
 		}
 	}
 	triggered_pop_modifier = {
@@ -536,18 +545,18 @@ warrior_drone = {
 			owner = { has_ascension_perk = ap_mind_over_matter }
 		}
 		modifier = {
-			planet_amenities_add = 10
+			planet_amenities_no_happiness_add = 10
 			planet_stability_add = 2
 		}		
 	}
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
+		modifier = { planet_amenities_no_happiness_add = 10 }
 	}
 	triggered_planet_modifier = {	# Clean Pop!
 		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
+		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 	
 	weight = {
@@ -606,15 +615,15 @@ mining_drone = {
 	}	
 	
 	planet_modifier = {
-		planet_amenities_add = 30
+		planet_amenities_no_happiness_add = 30
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_purification_plant } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_purification_hub } }
-		modifier = { planet_amenities_add = 60 }
+		modifier = { planet_amenities_no_happiness_add = 60 }
 	}
 
 
@@ -630,11 +639,11 @@ mining_drone = {
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
+		modifier = { planet_amenities_no_happiness_add = 10 }
 	}
 	triggered_planet_modifier = {	# Clean Pop!
 		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
+		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 	
 	weight = {
@@ -693,15 +702,15 @@ agri_drone = {
 	}	
 	
 	planet_modifier = {
-		planet_amenities_add = 30
+		planet_amenities_no_happiness_add = 30
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_food_processing_facility } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_food_processing_center } }
-		modifier = { planet_amenities_add = 60 }
+		modifier = { planet_amenities_no_happiness_add = 60 }
 	}
 
 	triggered_planet_modifier = {
@@ -716,11 +725,11 @@ agri_drone = {
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
+		modifier = { planet_amenities_no_happiness_add = 10 }
 	}
 	triggered_planet_modifier = {	# Clean Pop!
 		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
+		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 	
 	weight = {
@@ -775,15 +784,15 @@ technician_drone = {
 	}
 
 	planet_modifier = {
-		planet_amenities_add = 30
+		planet_amenities_no_happiness_add = 30
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_grid } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_nexus } }
-		modifier = { planet_amenities_add = 60 }
+		modifier = { planet_amenities_no_happiness_add = 60 }
 	}
 
 	triggered_planet_modifier = {
@@ -798,11 +807,11 @@ technician_drone = {
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
+		modifier = { planet_amenities_no_happiness_add = 10 }
 	}
 	triggered_planet_modifier = {	# Clean Pop!
 		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
+		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 	
 	weight = {
@@ -827,33 +836,33 @@ maintenance_drone = {
 	}
 	
 	planet_modifier = {
-		planet_amenities_add = -50
+		planet_amenities_no_happiness_add = -50
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_deposit = retile_deposit_waste_reprocessing } }
-		modifier = { planet_amenities_add = -50 }
+		modifier = { planet_amenities_no_happiness_add = -50 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_maintenance_depot } }
-		modifier = { planet_amenities_add = -50 }
+		modifier = { planet_amenities_no_happiness_add = -50 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = {
 			has_building = building_maintenance_depot
 			has_deposit = retile_deposit_waste_reprocessing
 		} }
-		modifier = { planet_amenities_add = -50 }
+		modifier = { planet_amenities_no_happiness_add = -50 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_maintenance_depot_2 } }
-		modifier = { planet_amenities_add = -100 }
+		modifier = { planet_amenities_no_happiness_add = -100 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = {
 			has_building = building_maintenance_depot_2
 			has_deposit = retile_deposit_waste_reprocessing
 		} }
-		modifier = { planet_amenities_add = -100 }
+		modifier = { planet_amenities_no_happiness_add = -100 }
 	}
 	
 	resources = {
@@ -935,15 +944,15 @@ maintenance_drone = {
 	
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_solar_panels } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_recycling_center } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_hydroponics_farm } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 
 	triggered_planet_modifier = {
@@ -951,21 +960,21 @@ maintenance_drone = {
 			has_building = building_solar_panels
 			has_deposit = retile_deposit_waste_reprocessing
 		} }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = {
 			has_building = building_recycling_center
 			has_deposit = retile_deposit_waste_reprocessing
 		} }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = {
 			has_building = building_hydroponics_farm
 			has_deposit = retile_deposit_waste_reprocessing
 		} }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 
 	triggered_planet_modifier = {
@@ -980,11 +989,11 @@ maintenance_drone = {
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
+		modifier = { planet_amenities_no_happiness_add = 10 }
 	}
 	triggered_planet_modifier = {	# Clean Pop!
 		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
+		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 	
 	weight = {

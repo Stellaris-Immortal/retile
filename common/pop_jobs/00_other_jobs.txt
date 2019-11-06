@@ -949,10 +949,20 @@ deviant_drone = {
 	planet_modifier = {
 		planet_stability_add = -1
 		planet_jobs_produces_mult = -0.01
+		planet_amenities_no_happiness_add = 30
 	}
 	
 	country_modifier = {
 		planet_crime_no_happiness_mult = 0.01
+	}
+	
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_no_happiness_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 	
 	weight = {
