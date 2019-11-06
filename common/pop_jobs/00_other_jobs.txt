@@ -937,18 +937,26 @@ deviant_drone = {
 	}
 
 	possible = {
-		planet = { has_modifier = drone_deviancy }
+		always = yes
+		or = {
+			has_job = deviant_drone
+			retile_job_seeking = yes
+		}
+		NOT = { is_non_sapient_robot = yes }
+		owner = { is_gestalt = yes }
 	}
 	
-	resources = {
-		category = planet_jobs
-		upkeep = {
-			energy = 1
-		}
+	planet_modifier = {
+		planet_stability_add = -1
+		planet_jobs_produces_mult = -0.01
 	}
-		
+	
+	country_modifier = {
+		planet_crime_no_happiness_mult = 0.01
+	}
+	
 	weight = {
-		weight = @criminal_job_weight
+		weight = 1800
 	}
 }
 

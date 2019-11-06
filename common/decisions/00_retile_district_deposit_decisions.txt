@@ -6,6 +6,70 @@
 @base_upkeep = 5
 @base_buildtime = 240
 
+##################################################### Spawning Pool
+decision_retile_deposit_spawningpool = {
+	owned_planets_only = yes
+
+	enactment_time = @base_buildtime
+	resources = {
+		category = planets
+		cost = {
+			alloys = @base_cost
+		}
+	}
+	
+	potential = {
+		owner = {
+			is_hive_empire = yes
+		}
+	}
+
+	allow = {
+		free_district_slots > 0
+		#hidden_trigger = {
+		#	retile_ready = yes
+		#}
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_spawningpool_effects
+		add_deposit = retile_deposit_spawningpool
+	}
+	
+	ai_weight = {
+		weight = 10000
+	}
+}
+
+decision_retile_deposit_spawningpool_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		has_deposit = retile_deposit_spawningpool
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_deposit_spawningpool_remove_effects
+		remove_deposit = retile_deposit_spawningpool
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {
+			weight = 10000
+			OR = {
+				owner = { country_uses_food = yes }
+				NAND = {
+					num_districts = { type = district_farming value > 0 }
+					num_districts = { type = district_farming_uncapped value > 0 }
+					num_districts = { type = district_hab_hydroponics value > 0 }
+					num_districts = { type = district_rw_farming value > 0 }
+				}
+			}
+		}
+	}	
+}
+
 ##################################################### Bio Reactor
 decision_retile_deposit_bioreactor = {
 	owned_planets_only = yes

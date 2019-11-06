@@ -6,6 +6,7 @@ district_hive = {
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = {
+		always = no
 		exists = from
 		from = { is_hive_empire = yes }
 		NOT = { is_planet_class = pc_habitat }
@@ -14,6 +15,7 @@ district_hive = {
 	}
 
 	potential = {
+		always = no
 		exists = owner
 		owner = { is_hive_empire = yes }
 		NOT = { is_planet_class = pc_habitat }
@@ -44,8 +46,7 @@ district_hive = {
 			alloys = @city_cost
 		}
 		upkeep = {
-			trigger = { owner = { is_primitive = no } }
-			energy = @city_upkeep
+			consumer_goods = 1
 		}
 	}
 	
@@ -115,12 +116,14 @@ district_hab_hive = {
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = {
+		always = no
 		exists = from
 		from = { is_hive_empire = yes }
 		is_planet_class = pc_habitat
 	}
 	
 	potential = {
+		always = no
 		exists = owner
 		owner = { is_hive_empire = yes }
 		is_planet_class = pc_habitat
@@ -138,8 +141,7 @@ district_hab_hive = {
 			alloys = @city_cost
 		}
 		upkeep = {
-			energy = @city_upkeep
-			#alloys = 1
+			consumer_goods = 1
 		}		
 	}
 
@@ -209,12 +211,14 @@ district_rw_hive = {
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = {
+		always = no
 		exists = from
 		from = { is_hive_empire = yes }
 		is_planet_class = pc_ringworld_habitable
 	}
 	
 	potential = {
+		always = no
 		exists = owner
 		owner = { is_hive_empire = yes }
 		is_planet_class = pc_ringworld_habitable
@@ -238,8 +242,7 @@ district_rw_hive = {
 			alloys = @city_cost
 		}
 		upkeep = {
-			energy = @city_upkeep
-			#alloys = 1
+			consumer_goods = 1
 		}		
 	}
 

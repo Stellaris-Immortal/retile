@@ -10,60 +10,21 @@ namespace = crime
 planet_event = {
 	id = crime.1
 	title = crime.1.name
-	desc = {
-		trigger = {
-			owner = {
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-			}
-		}
-		text = crime.1.desc
-	}
-	desc = {
-		trigger = { 
-			owner = { has_authority = auth_hive_mind }
-		}
-		text = crime.1.b.desc
-	}
-	desc = {
-		trigger = { 
-			owner = { has_authority = auth_machine_intelligence }
-		}
-		text = crime.1.c.desc
-	}
-	picture = {
-		trigger = { 
-			owner = {
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-			}
-		}
-		picture = GFX_evt_dark_alley
-	}
-	picture = {
-		trigger = { 
-			owner = { has_authority = auth_hive_mind }
-		}
-		picture = GFX_evt_hive_mind
-	}
-	picture = {
-		trigger = { 
-			owner = { has_authority = auth_machine_intelligence }
-		}
-		picture = GFX_evt_glitchy_matrix
-	}
+	desc = crime.1.desc
+	picture = GFX_evt_dark_alley
 	show_sound = event_criminal_activity
 	location = root
 
 	trigger = {
 		has_owner = yes
-		owner = { is_country_type = default }
+		owner = {
+			is_country_type = default
+			is_regular_empire = yes
+		}
 		NOR = {
 			has_planet_flag = criminal_underworld_event_up
 			has_modifier = unemployment_benefits
-			has_modifier = activity_program
-			has_modifier = standby_mode
 			has_modifier = criminal_underworld
-			has_modifier = drone_deviancy
-			has_modifier = drone_corruption
 			has_modifier = gang_wars
 			has_modifier = center_of_drug_trade
 			has_modifier = mob_rule
@@ -86,11 +47,6 @@ planet_event = {
 	
 	option = {
 		name = crime.1.a
-		trigger = {
-			owner = {
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-			}
-		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = {
@@ -106,50 +62,11 @@ planet_event = {
 		}
 	}
 	option = {
-		name = crime.1.a2
-		trigger = { 
-			owner = { has_authority = auth_hive_mind }
-		}
-		add_modifier = { modifier = "activity_program" days = 3600 }
-	}
-	option = {
-		name = crime.1.a3
-		custom_tooltip = crime.1.a3.tooltip
-		trigger = { 
-			owner = { has_authority = auth_machine_intelligence }
-		}
-		hidden_effect = { add_modifier = { modifier = "standby_mode" days = 3600 } }
-	}
-	option = {
 		name = crime.1.b
-		trigger = {
-			owner = {
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-			}
-		}
 		add_modifier = { modifier = criminal_underworld days = -1 }
 	}
 	option = {
-		name = crime.1.b2
-		trigger = { 
-			owner = { has_authority = auth_hive_mind }
-		}
-		add_modifier = { modifier = drone_deviancy days = -1 }
-	}
-	option = {
-		name = crime.1.b3
-		trigger = { 
-			owner = { has_authority = auth_machine_intelligence }
-		}
-		add_modifier = { modifier = drone_corruption days = -1 }
-	}
-	option = {
 		name = crime.1.c
-		trigger = {
-			owner = {
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-			}
-		}
 		allow = {
 			owner = {
 				resource_stockpile_compare = {
@@ -642,56 +559,19 @@ planet_event = {
 planet_event = {
 	id = crime.41
 	title = crime.41.name
-	desc = {
-		trigger = {
-			owner = {
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-			}
-		}
-		text = crime.41.desc
-	}
-	desc = {
-		trigger = { 
-			owner = { has_authority = auth_hive_mind }
-		}
-		text = crime.41.b.desc
-	}
-	desc = {
-		trigger = { 
-			owner = { has_authority = auth_machine_intelligence }
-		}
-		text = crime.41.c.desc
-	}
-	picture = {
-		trigger = { 
-			owner = {
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-			}
-		}
-		picture = GFX_evt_dark_alley
-	}
-	picture = {
-		trigger = { 
-			owner = { has_authority = auth_hive_mind }
-		}
-		picture = GFX_evt_hive_mind
-	}
-	picture = {
-		trigger = { 
-			owner = { has_authority = auth_machine_intelligence }
-		}
-		picture = GFX_evt_circuitry_modification
-	}
+	desc = crime.41.desc
+	picture = GFX_evt_dark_alley
 	show_sound = event_cityscape
 	location = root
 
 	trigger = {
 		has_owner = yes
-		owner = { is_country_type = default }
+		owner = {
+			is_country_type = default
+			is_regular_empire = yes
+		}
 		OR = {
 			has_modifier = criminal_underworld
-			has_modifier = drone_deviancy
-			has_modifier = drone_corruption
 			has_modifier = gang_wars
 			has_modifier = center_of_drug_trade
 			has_modifier = mob_rule
@@ -718,11 +598,6 @@ planet_event = {
 	
 	option = {
 		name = GOOD
-		trigger = {
-			owner = {
-				NOT = { has_ethic = ethic_gestalt_consciousness }
-			}
-		}
 		if = {
 			limit = { has_modifier = criminal_underworld }
 			remove_modifier = criminal_underworld
@@ -775,40 +650,6 @@ planet_event = {
 			set_timed_planet_flag = { flag = criminal_underworld_disappeared days = 3600 }
 		}
 	}
-	option = {
-		name = GOOD
-		trigger = { 
-			owner = { has_authority = auth_hive_mind }
-		}
-		if = {
-			limit = { has_modifier = drone_deviancy }
-			remove_modifier = drone_deviancy
-		}
-		if = {
-			limit = { has_modifier = deviant_interference }
-			remove_modifier = deviant_interference
-		}
-		hidden_effect = {
-			set_timed_planet_flag = { flag = criminal_underworld_disappeared days = 3600 }
-		}
-	}
-	option = {
-		name = GOOD
-		trigger = { 
-			owner = { has_authority = auth_machine_intelligence }
-		}
-		if = {
-			limit = { has_modifier = drone_corruption }
-			remove_modifier = drone_corruption
-		}
-		if = {
-			limit = { has_modifier = drone_signal_interference }
-			remove_modifier = drone_signal_interference
-		}
-		hidden_effect = {
-			set_timed_planet_flag = { flag = criminal_underworld_disappeared days = 3600 }
-		}
-	}
 }
 
 # Crime Gatekeeper
@@ -836,24 +677,6 @@ event = {
 				}
 			}
 			country_event = { id = crime.51 }
-		}
-		every_playable_country = {
-			limit = { 
-				has_authority = auth_hive_mind
-				any_owned_planet = {
-					has_modifier = drone_deviancy
-				}
-			}
-			country_event = { id = crime.52 }
-		}
-		every_playable_country = {
-			limit = { 
-				has_authority = auth_machine_intelligence
-				any_owned_planet = {
-					has_modifier = drone_corruption
-				}
-			}
-			country_event = { id = crime.53 }
 		}
 	}
 }
@@ -1061,52 +884,6 @@ country_event = {
 					}
 					planet_event = { id = crime.304 days = 1 random = 300 }
 				}
-			}
-		}
-	}
-}
-
-# Crime Gatekeeper (Hive Minds)
-country_event = {
-	id = crime.52
-	hide_window = yes
-
-	is_triggered_only = yes
-
-	immediate = {
-		random_owned_planet = {
-			limit = {
-				has_modifier = drone_deviancy
-				NOT = { has_planet_flag = planet_crime_flag }
-			}
-			random_list = {
-				200 = {}
-				10 = { planet_event = { id = crime.500 days = 1 random = 300 } }
-				10 = { planet_event = { id = crime.501 days = 1 random = 300 } }
-				5 = { planet_event = { id = crime.502 days = 1 random = 300 } }
-			}
-		}
-	}
-}
-
-# Crime Gatekeeper (Machine Intelligences)
-country_event = {
-	id = crime.53
-	hide_window = yes
-
-	is_triggered_only = yes
-
-	immediate = {
-		random_owned_planet = {
-			limit = {
-				has_modifier = drone_corruption
-				NOT = { has_planet_flag = planet_crime_flag }
-			}
-			random_list = {
-				200 = {}
-				10 = { planet_event = { id = crime.550 days = 1 random = 300 } }
-				10 = { planet_event = { id = crime.551 days = 1 random = 300 } }
-				5 = { planet_event = { id = crime.552 days = 1 random = 300 } }
 			}
 		}
 	}
@@ -1928,201 +1705,7 @@ planet_event = {
 	}
 }
 
-### Hive Mind Crime events
-
-# Stampeding Deviant Drones
-planet_event = {
-	id = crime.500
-	title = crime.500.name
-	desc = crime.500.desc
-	picture = GFX_evt_burning_settlement
-	show_sound = event_planetary_riot
-	location = root
-
-	trigger = {
-		has_owner = yes
-		has_modifier = drone_deviancy
-	}
-
-	is_triggered_only = yes
-
-	immediate = {
-		add_planet_devastation = 15
-		set_timed_planet_flag = {
-			flag = planet_crime_flag
-			days = 3600
-		}
-	}
-	
-	option = {
-		name = crime.500.a
-		tooltip = {
-			add_planet_devastation = 15
-		}
-	}
-}
-
-# Deviant Drone Interference
-planet_event = {
-	id = crime.501
-	title = crime.501.name
-	desc = crime.501.desc
-	picture = GFX_evt_hive_mind
-	show_sound = event_administrative_work
-	location = root
-
-	trigger = {
-		has_owner = yes
-		has_modifier = drone_deviancy
-	}
-
-	is_triggered_only = yes
-
-	immediate = {
-		add_modifier = { modifier = "deviant_interference" days = 3600 }
-		set_timed_planet_flag = {
-			flag = planet_crime_flag
-			days = 3600
-		}
-	}
-	
-	option = {
-		name = crime.500.a
-		tooltip = {
-			add_modifier = { modifier = "deviant_interference" days = 3600 }
-		}
-	}
-}
-
-# Deviant Drone Ringleader Killed
-planet_event = {
-	id = crime.502
-	title = crime.502.name
-	desc = crime.502.desc
-	picture = GFX_evt_hive_mind
-	show_sound = event_criminal_activity
-	location = root
-
-	trigger = {
-		has_owner = yes
-		has_modifier = drone_deviancy
-	}
-
-	is_triggered_only = yes
-
-	immediate = {
-		add_modifier = { modifier = "ringleader_killed" days = 3600 }
-		set_timed_planet_flag = {
-			flag = planet_crime_flag
-			days = 3600
-		}
-	}
-	
-	option = {
-		name = crime.502.a
-		tooltip = {
-			add_modifier = { modifier = "ringleader_killed" days = 3600 }
-		}
-	}
-}
-
-### Machine Intelligence Crime events
-
-# Drone Unit Rampage
-planet_event = {
-	id = crime.550
-	title = crime.550.name
-	desc = crime.550.desc
-	picture = GFX_evt_glitchy_matrix
-	show_sound = event_ground_battle
-	location = root
-
-	trigger = {
-		has_owner = yes
-		has_modifier = drone_corruption
-	}
-
-	is_triggered_only = yes
-
-	immediate = {
-		add_planet_devastation = 15
-		set_timed_planet_flag = {
-			flag = planet_crime_flag
-			days = 3600
-		}
-	}
-	
-	option = {
-		name = crime.550.a
-		tooltip = {
-			add_planet_devastation = 15
-		}
-	}
-}
-
-# Drone Unit Signal Interference
-planet_event = {
-	id = crime.551
-	title = crime.551.name
-	desc = crime.551.desc
-	picture = GFX_evt_glitchy_matrix
-	show_sound = event_alien_signal
-	location = root
-
-	trigger = {
-		has_owner = yes
-		has_modifier = drone_corruption
-	}
-
-	is_triggered_only = yes
-
-	immediate = {
-		add_modifier = { modifier = "drone_signal_interference" days = 3600 }
-		set_timed_planet_flag = {
-			flag = planet_crime_flag
-			days = 3600
-		}
-	}
-	
-	option = {
-		name = crime.550.a
-		tooltip = {
-			add_modifier = { modifier = "drone_signal_interference" days = 3600 }
-		}
-	}
-}
-
-# Virus Terminates Deviant Network
-planet_event = {
-	id = crime.552
-	title = crime.552.name
-	desc = crime.552.desc
-	picture = GFX_evt_glitchy_matrix
-	show_sound = event_administrative_work
-	location = root
-
-	trigger = {
-		has_owner = yes
-		has_modifier = drone_corruption
-	}
-
-	is_triggered_only = yes
-
-	immediate = {
-		add_modifier = { modifier = "corrupt_network_terminated" days = 3600 }
-		set_timed_planet_flag = {
-			flag = planet_crime_flag
-			days = 3600
-		}
-	}
-	
-	option = {
-		name = crime.552.a
-		tooltip = {
-			add_modifier = { modifier = "corrupt_network_terminated" days = 3600 }
-		}
-	}
-}
+### Syndicate Branch Office Events
 
 # Criminal Branch Office Closes # Checks on monthly pulse
 event = {

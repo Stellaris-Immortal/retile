@@ -211,25 +211,26 @@ d_central_spire = {
 		planet_housing_add = 2
 	}
 
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {						# Basic Jobs
 		potential = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
 		modifier = {
+			planet_housing_add = 2
 			job_researcher_add = 1
 			job_foundry_add = 1
 		}
 	}
-	
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {						# Hive Jobs
 		potential = {
 			exists = owner
 			owner = { is_hive_empire = yes }
 		}
 		modifier = {
-			#job_brain_drone_add = 1
-			#job_foundry_drone_add = 1
+			planet_housing_add = 2
+			job_brain_drone_add = 1
+			job_artisan_drone_add = 1
 		}
 	}
 	

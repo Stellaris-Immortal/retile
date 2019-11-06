@@ -7,7 +7,7 @@ district_city = {
 	
 	show_on_uncolonized = {
 		exists = from
-		from = { is_regular_empire = yes }
+		#from = { is_regular_empire = yes }
 		NOT = { is_planet_class = pc_habitat }
 		NOT = { is_planet_class = pc_city }
 		NOT = { is_planet_class = pc_ringworld_habitable }
@@ -15,7 +15,7 @@ district_city = {
 
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
+		#owner = { is_regular_empire = yes }
 		NOT = { is_planet_class = pc_habitat }
 		NOT = { is_planet_class = pc_city }
 		NOT = { is_planet_class = pc_ringworld_habitable }
@@ -44,17 +44,35 @@ district_city = {
 			alloys = @city_cost
 		}
 		upkeep = {
-			trigger = { owner = { is_primitive = no } }
+			trigger = { owner = { is_regular_empire = yes } }
 			energy = @city_upkeep
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			consumer_goods = 1
 		}
 	}
 	
 	triggered_planet_modifier = {						# Basic Jobs
-		potential = { exists = owner }
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
 		modifier = {
 			planet_housing_add = 2
 			job_researcher_add = 1
 			job_foundry_add = 1
+		}
+	}
+	triggered_planet_modifier = {						# Hive Jobs
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_brain_drone_add = 1
+			job_artisan_drone_add = 1
 		}
 	}
 	
@@ -116,13 +134,13 @@ district_hab_housing = {
 	
 	show_on_uncolonized = {
 		exists = from
-		from = { is_regular_empire = yes }
+		#from = { is_regular_empire = yes }
 		is_planet_class = pc_habitat
 	}
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
+		#owner = { is_regular_empire = yes }
 		is_planet_class = pc_habitat
 	}
 	
@@ -138,17 +156,35 @@ district_hab_housing = {
 			alloys = @city_cost
 		}
 		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
 			energy = @city_upkeep
-			#alloys = 1
-		}		
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			consumer_goods = 1
+		}
 	}
-
+	
 	triggered_planet_modifier = {						# Basic Jobs
-		potential = { exists = owner }
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
 		modifier = {
 			planet_housing_add = 2
 			job_researcher_add = 1
 			job_foundry_add = 1
+		}
+	}
+	triggered_planet_modifier = {						# Hive Jobs
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_brain_drone_add = 1
+			job_artisan_drone_add = 1
 		}
 	}
 	
@@ -210,13 +246,13 @@ district_rw_city = {
 	
 	show_on_uncolonized = {
 		exists = from
-		from = { is_regular_empire = yes }
+		#from = { is_regular_empire = yes }
 		is_planet_class = pc_ringworld_habitable
 	}
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
+		#owner = { is_regular_empire = yes }
 		is_planet_class = pc_ringworld_habitable
 	}
 
@@ -238,20 +274,38 @@ district_rw_city = {
 			alloys = @city_cost
 		}
 		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
 			energy = @city_upkeep
-			#alloys = 1
-		}		
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			consumer_goods = 1
+		}
 	}
-
+	
 	triggered_planet_modifier = {						# Basic Jobs
-		potential = { exists = owner }
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
 		modifier = {
 			planet_housing_add = 2
 			job_researcher_add = 1
 			job_foundry_add = 1
 		}
 	}
-
+	triggered_planet_modifier = {						# Hive Jobs
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_brain_drone_add = 1
+			job_artisan_drone_add = 1
+		}
+	}
+	
 	ai_weight = {
 		weight = 0
 		
