@@ -91,6 +91,13 @@ custodian = {
 			food = 4
 		}
 		produces = {
+			trigger = { 
+				planet = { has_building = building_hydroponics_farm }
+				has_trait = trait_plantoid_fruiting
+			}
+			food = 2
+		}
+		produces = {
 			trigger = { planet = {
 				has_building = building_solar_panels
 				has_deposit = retile_deposit_waste_reprocessing
@@ -116,17 +123,32 @@ custodian = {
 		}
 		produces = {	### Natural *** Traits
 			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { has_trait = trait_natural_physicists }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
 			physics_research = 3
 		}
 		produces = {
 			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { has_trait = trait_natural_sociologists }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
 			society_research = 3
 		}
 		produces = {
 			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { has_trait = trait_natural_engineers }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
 			engineering_research = 3
 		}				### End Natural *** Traits
 	}
@@ -260,17 +282,32 @@ technician = {
 		}
 		produces = {	### Natural *** Traits
 			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { has_trait = trait_natural_physicists }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
 			physics_research = 3
 		}
 		produces = {
 			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { has_trait = trait_natural_sociologists }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
 			society_research = 3
 		}
 		produces = {
 			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { has_trait = trait_natural_engineers }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
 			engineering_research = 3
 		}				### End Natural *** Traits
 	}
@@ -430,17 +467,32 @@ miner = {
 		}
 		produces = {	### Natural *** Traits
 			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { has_trait = trait_natural_physicists }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
 			physics_research = 3
 		}
 		produces = {
 			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { has_trait = trait_natural_sociologists }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
 			society_research = 3
 		}
 		produces = {
 			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { has_trait = trait_natural_engineers }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
 			engineering_research = 3
 		}				### End Natural *** Traits
 	}	
@@ -598,22 +650,55 @@ farmer = {
 			food = 8
 		}
 		produces = {
+			trigger = { has_trait = trait_plantoid_fruiting }
+			food = 2
+		}
+		produces = {
+			trigger = { 
+				planet = { has_building = building_food_processing_facility } 
+				has_trait = trait_plantoid_fruiting
+			}
+			food = 2
+		}
+		produces = {
+			trigger = { 
+				planet = { has_building = building_food_processing_center }
+				has_trait = trait_plantoid_fruiting
+			}
+			food = 4
+		}
+		produces = {
 			trigger = { owner = { has_civic = civic_agrarian_idyll } }
 			unity = 3
 		}
 		produces = {	### Natural *** Traits
 			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { has_trait = trait_natural_physicists }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
 			physics_research = 3
 		}
 		produces = {
 			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { has_trait = trait_natural_sociologists }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
 			society_research = 3
 		}
 		produces = {
 			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { has_trait = trait_natural_engineers }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
 			engineering_research = 3
 		}				### End Natural *** Traits
 	}	

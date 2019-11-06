@@ -1,3 +1,15 @@
+trait_plantoid_fruiting = {
+	cost = 1
+	potential_crossbreeding_chance = 1.0
+	
+	allowed_archetypes = { PLANTOID }
+	custom_tooltip = TRAIT_PLANTOID_FRUITING_EFFECT
+	
+	slave_cost = {
+		energy = 50
+	}
+}
+
 trait_agrarian = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0	# 1.0 = 100% chance of being considered for new traits when forming half-species. does not guarantee the trait will be added if it costs points.
@@ -38,7 +50,7 @@ trait_intelligent = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_nerve_stapled" "trait_erudite" "trait_enigmatic_intelligence_poor" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		planet_jobs_engineering_research_produces_mult = 0.1
 		planet_jobs_physics_research_produces_mult = 0.1
@@ -48,7 +60,7 @@ trait_intelligent = {
 
 trait_thrifty = {
 	cost = 3
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	opposites = { "trait_hive_mind" }
 	custom_tooltip = TRAIT_THRIFTY_EFFECT
 }
@@ -57,8 +69,8 @@ trait_natural_engineers = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_nerve_stapled" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
-	custom_tooltip = trait_natrual_engineers_effect
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
+	custom_tooltip = trait_natural_engineers_effect
 	slave_cost = {
 		energy = 25
 	}
@@ -68,8 +80,8 @@ trait_natural_physicists = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_nerve_stapled" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
-	custom_tooltip = trait_natrual_physicists_effect
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
+	custom_tooltip = trait_natural_physicists_effect
 	slave_cost = {
 		energy = 25
 	}
@@ -79,8 +91,8 @@ trait_natural_sociologists = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_nerve_stapled" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
-	custom_tooltip = trait_natrual_biologists_effect
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
+	custom_tooltip = trait_natural_sociologists_effect
 	slave_cost = {
 		energy = 25
 	}
@@ -132,7 +144,7 @@ trait_rapid_breeders = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_slow_breeders" "trait_fertile" }
-	allowed_archetypes = { BIOLOGICAL }
+	allowed_archetypes = { BIOLOGICAL PLANTOID }
 	modifier = {
 		pop_growth_speed = 0.10
 	}
@@ -145,7 +157,7 @@ trait_slow_breeders = {
 	cost = -2
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_rapid_breeders" "trait_fertile" }
-	allowed_archetypes = { BIOLOGICAL }
+	allowed_archetypes = { BIOLOGICAL PLANTOID }
 	modifier = {
 		pop_growth_speed = -0.10
 	}
@@ -160,7 +172,7 @@ trait_slow_breeders = {
 trait_talented = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	opposites = { "trait_nerve_stapled" }
 	modifier = {
 		leader_skill_levels = 1
@@ -171,7 +183,7 @@ trait_quick_learners = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_slow_learners" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		species_leader_exp_gain = 0.25
 	}
@@ -181,7 +193,7 @@ trait_slow_learners = {
 	cost = -1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_quick_learners" "trait_enigmatic_intelligence" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		species_leader_exp_gain = -0.25
 	}
@@ -194,7 +206,7 @@ trait_traditional = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_quarrelsome" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		planet_jobs_unity_produces_mult = 0.1
 	}
@@ -204,7 +216,7 @@ trait_quarrelsome = {
 	cost = -1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_traditional" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		planet_jobs_unity_produces_mult = -0.1
 	}
@@ -214,6 +226,23 @@ trait_quarrelsome = {
 			factor = 0
 			years_passed > 5
 		}
+	}
+}
+
+trait_plantoid_woody = {
+	cost = 2
+	potential_crossbreeding_chance = 1.0
+
+	allowed_archetypes = { PLANTOID }
+	opposites = { "trait_weak" }
+	
+	modifier = {
+		pop_environment_tolerance = 0.05
+		planet_jobs_worker_produces_mult = 0.05
+	}
+
+	slave_cost = {
+		energy = 100
 	}
 }
 
@@ -248,8 +277,8 @@ trait_strong = {
 trait_weak = {
 	cost = -1
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_strong" "trait_very_strong" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	opposites = { "trait_plantoid_woody" "trait_strong" "trait_very_strong" }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		army_damage_mult = -0.20
 		planet_jobs_worker_produces_mult = -0.025
@@ -266,7 +295,7 @@ trait_nomadic = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_sedentary" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		pop_growth_from_immigration = 0.50
 		pop_resettlement_cost_mult = -0.25
@@ -277,13 +306,28 @@ trait_sedentary = {
 	cost = -1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_nomadic" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		pop_growth_from_immigration = -0.50
 		pop_resettlement_cost_mult = 0.25
 	}
 	ai_weight = {
 		weight = 0
+	}
+}
+
+trait_plantoid_flowering = {
+	cost = 1
+	potential_crossbreeding_chance = 1.0
+
+	allowed_archetypes = { PLANTOID }
+	
+	modifier = {
+		pop_happiness = 0.05
+	}
+	
+	slave_cost = {
+		energy = 50
 	}
 }
 
@@ -320,7 +364,7 @@ trait_charismatic = {
 	potential_crossbreeding_chance = 1.0
 
 	opposites = { "trait_repugnant" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	custom_tooltip = TRAIT_CHARISMATIC_EFFECT
 	#modifier = {
 	#	pop_amenities_usage_add = 10
@@ -332,7 +376,7 @@ trait_repugnant = {
 	potential_crossbreeding_chance = 1.0
 
 	opposites = { "trait_charismatic" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	custom_tooltip = TRAIT_REPUGNANT_EFFECT
 	#modifier = {
 	#	pop_amenities_usage_add = 10
@@ -350,7 +394,7 @@ trait_uplifted = {
 	modification = no
 	randomized = no
 
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	ai_weight = {
 		weight = 0
@@ -362,7 +406,7 @@ trait_conformists = {
 	potential_crossbreeding_chance = 1.0
 	modifier = { planet_crime_add = -0.2 }
 	custom_tooltip = trait_conformists_effect
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	opposites = { "trait_deviants" "trait_hive_mind" "trait_machine_unit" }
 	ai_weight = {
@@ -375,7 +419,7 @@ trait_deviants = {
 	potential_crossbreeding_chance = 1.0
 	modifier = { planet_crime_add = 0.2 }
 	custom_tooltip = trait_deviants_effect
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	opposites = { "trait_conformists" "trait_hive_mind" "trait_machine_unit" }
 	ai_weight = {
@@ -388,7 +432,7 @@ trait_venerable = {
 	potential_crossbreeding_chance = 1.0
 	modifier = { leader_age = 80 }
 	opposites = { "trait_enduring" "trait_fleeting" "trait_fleeting_lithoid" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 }
 
 trait_enduring = {
@@ -396,7 +440,7 @@ trait_enduring = {
 	potential_crossbreeding_chance = 1.0
 	modifier = { leader_age = 20 }
 	opposites = { "trait_venerable" "trait_fleeting" "trait_fleeting_lithoid" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 }
 
 trait_fleeting = {
@@ -404,7 +448,7 @@ trait_fleeting = {
 	potential_crossbreeding_chance = 1.0
 	modifier = { leader_age = -10 }
 	opposites = { "trait_venerable" "trait_enduring" "trait_fleeting_lithoid" }
-	allowed_archetypes = { BIOLOGICAL }
+	allowed_archetypes = { BIOLOGICAL PLANTOID }
 	ai_weight = {
 		weight = 0
 	}
@@ -429,7 +473,7 @@ trait_decadent = {
 	
 	opposites = { "trait_hive_mind" }
 
-	allowed_archetypes = { BIOLOGICAL LITHOID}
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	modifier = {
 		pop_cat_worker_happiness = -0.1
@@ -440,10 +484,26 @@ trait_decadent = {
 	}
 }
 
+trait_plantoid_thorned = {
+	cost = -1
+	potential_crossbreeding_chance = 1.0
+
+	allowed_archetypes = { PLANTOID }
+	
+	modifier = {
+		army_defense_damage_mult = 0.25
+		army_defense_health_mult = 0.25
+	}
+	
+	slave_cost = {
+		energy = 50
+	}
+}
+
 trait_resilient = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
-	allowed_archetypes = { BIOLOGICAL LITHOID}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {
 		army_defense_damage_mult = 0.5
 	}
@@ -453,7 +513,7 @@ trait_conservational = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_wasteful" "trait_hive_mind" }
-	allowed_archetypes = { BIOLOGICAL LITHOID}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {
 		planet_pops_consumer_goods_upkeep_mult = -0.10
 	}
@@ -463,7 +523,7 @@ trait_wasteful = {
 	cost = -1
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_conservational" "trait_hive_mind" }
-	allowed_archetypes = { BIOLOGICAL LITHOID}
+	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {
 		planet_pops_consumer_goods_upkeep_mult = 0.10
 	}
@@ -482,7 +542,7 @@ trait_cybernetic = {
 	initial = no
 	randomized = no
 	modification = no
-	allowed_archetypes = { BIOLOGICAL LITHOID}
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	modifier = {
 		pop_environment_tolerance = 0.20
@@ -503,7 +563,7 @@ trait_latent_psionic = {
 	randomized = no
 	modification = no
 
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	modifier = {
 		planet_jobs_engineering_research_produces_mult = 0.05
@@ -525,7 +585,7 @@ trait_psionic = {
 	randomized = no
 	modification = no
 
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	modifier = {
 		planet_jobs_engineering_research_produces_mult = 0.10
@@ -544,7 +604,7 @@ trait_self_modified = {
 	randomized = no
 	modification = no
 
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	modifier = {
 	}
@@ -558,7 +618,7 @@ trait_delicious = {
 	initial = no
 	randomized = no
 	advanced_trait = yes
-	allowed_archetypes = { BIOLOGICAL }
+	allowed_archetypes = { BIOLOGICAL PLANTOID }
 	modifier = {
 		planet_livestock_food_produces_add = 2
 	}
@@ -575,7 +635,7 @@ trait_nerve_stapled = {
 	randomized = no
 	advanced_trait = yes
 	forced_happiness = yes
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		planet_jobs_produces_mult = 0.05
 		leader_skill_levels = -2
@@ -593,7 +653,7 @@ trait_fertile = {
 	randomized = no
 	advanced_trait = yes
 	opposites = { "trait_slow_breeders" }
-	allowed_archetypes = { BIOLOGICAL }
+	allowed_archetypes = { BIOLOGICAL PLANTOID }
 	modifier = {
 		pop_growth_speed = 0.3
 		pop_happiness = 0.05
@@ -621,6 +681,26 @@ trait_robust = {
 	}
 }
 
+trait_telluric = {
+	cost = 4
+	potential_crossbreeding_chance = 0.5
+	initial = no
+	randomized = no
+	advanced_trait = yes
+	opposites = { "trait_plantoid_woody" "trait_weak"}
+	allowed_archetypes = { LITHOID PLANTOID }
+	modifier = {
+		pop_environment_tolerance = 0.10
+		pop_growth_speed = 0.10
+		planet_jobs_produces_mult = 0.05
+		pop_happiness = 0.05
+		leader_age = 10
+	}
+	slave_cost = {
+		energy = 200
+	}
+}
+
 trait_erudite = {
 	cost = 4
 	potential_crossbreeding_chance = 0.5
@@ -629,10 +709,30 @@ trait_erudite = {
 	improves_leaders = yes
 	advanced_trait = yes
 	opposites = { "trait_nerve_stapled" "trait_intelligent" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		planet_researchers_produces_mult = 0.2
 		leader_skill_levels = 1
+	}
+}
+
+trait_prodigy = {
+	cost = 4
+	potential_crossbreeding_chance = 0.5
+	initial = no
+	randomized = no
+	improves_leaders = yes
+	advanced_trait = yes
+	opposites = { "trait_natural_engineers" "trait_natural_physicists" "trait_natural_sociologists" "trait_quick_learners" "trait_slow_learners" }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
+	modifier = {
+		species_leader_exp_gain = 0.25
+	}
+	
+	custom_tooltip = TRAIT_PRODIGY_EFFECT
+	
+	slave_cost = {
+		energy = 100
 	}
 }
 
@@ -642,7 +742,7 @@ trait_survivor = {
 	initial = no
 	randomized = no
 	modification = no
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		pc_nuked_habitability = 0.7
 		leader_age = 10
@@ -660,7 +760,7 @@ trait_enigmatic_intelligence = {
 	improves_leaders = yes
 	advanced_trait = yes
 	opposites = { "trait_nerve_stapled" "trait_erudite" "trait_slow_learners" }
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		planet_researchers_produces_mult = 0.1
 		species_leader_exp_gain = 0.25
@@ -675,7 +775,7 @@ trait_enigmatic_intelligence_poor = {
 	improves_leaders = yes
 	advanced_trait = yes
 	opposites = { "trait_intelligent"}
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		planet_jobs_engineering_research_produces_mult = 0.1
 		planet_jobs_physics_research_produces_mult = 0.1
@@ -691,7 +791,7 @@ trait_enigmatic_intelligence_failed = {
 	improves_leaders = yes
 	advanced_trait = yes
 	opposites = { "trait_intelligent"}
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		planet_jobs_engineering_research_produces_mult = -0.6
 		planet_jobs_physics_research_produces_mult = -0.6
@@ -707,7 +807,7 @@ trait_bioadaptability = { #green
 	modification = no
 	randomized = no
 
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	modifier = {
 		pop_environment_tolerance = 0.05
@@ -729,7 +829,7 @@ trait_social_pheromones = { #red
 	modification = no
 	randomized = no
 
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	modifier = {
 		pop_happiness = 0.02
@@ -751,7 +851,7 @@ trait_limited_regeneration = { #blue
 	modification = no
 	randomized = no
 
-	allowed_archetypes = { BIOLOGICAL LITHOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	modifier = {
 		army_damage_mult = 0.1

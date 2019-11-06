@@ -53,14 +53,11 @@ d_mountain_range = {
 		}
 		modifier = {
 			factor = 0.5
-			planet_size < 15
+			planet_size < 16
 		}
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 4
 		}
 	}
 	
@@ -97,6 +94,7 @@ d_active_volcano = {
 			exists = owner
 			owner = { is_regular_empire = yes }
 		}
+		planet_amenities_add = 100
 	}
 	
 	triggered_planet_modifier = {
@@ -104,7 +102,7 @@ d_active_volcano = {
 			exists = owner
 			owner = { is_gestalt = yes }
 		}
-		planet_amenities_no_happiness_add = -200
+		planet_amenities_no_happiness_add = 100
 	}
 
 	drop_weight = {
@@ -115,14 +113,11 @@ d_active_volcano = {
 		}
 		modifier = {
 			factor = 0.5
-			planet_size < 15
+			planet_size < 16
 		}
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 4
 		}
 	}
 	
@@ -184,14 +179,11 @@ d_dangerous_wildlife_blocker = {
 		weight = @blocker_low
 		modifier = {
 			factor = 0.5
-			planet_size < 15
+			planet_size < 16
 		}
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 4
 		}
 	}
 	
@@ -248,10 +240,7 @@ d_dense_jungle = {
 		}
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 3
 		}
 	}
 	
@@ -305,10 +294,7 @@ d_toxic_kelp = {
 		}
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 3
 		}
 	}
 	
@@ -365,10 +351,7 @@ d_deep_sinkhole = {
 		}
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 3
 		}
 	}
 	
@@ -423,10 +406,7 @@ d_quicksand_basin = {
 		}
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 3
 		}
 	}
 	
@@ -480,10 +460,7 @@ d_noxious_swamp = {
 		}
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 3
 		}
 	}
 	
@@ -540,10 +517,7 @@ d_massive_glacier = {
 		}
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 3
 		}
 	}
 	
@@ -595,10 +569,7 @@ d_radioactive_wasteland = {
 		weight = @blocker_high
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 3
 		}
 	}
 }
@@ -645,10 +616,7 @@ d_city_ruins = {
 		weight = @blocker_high
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 3
 		}
 	}
 }
@@ -697,10 +665,7 @@ d_bomb_crater = {
 		weight = @blocker_low
 		modifier = {
 			factor = 0
-			num_free_districts = {
-				type = district_city
-				value < 2
-			}
+			free_district_slots < 3
 		}
 	}
 }
