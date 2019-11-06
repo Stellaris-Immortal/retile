@@ -80,7 +80,7 @@ generate_start_buildings_and_districts = {
 		# total - 10 jobs
 		
 		# 2 jobs
-		add_district = district_hive
+		add_district = district_city
 		
 		# 1 job
 		add_district = district_mining
@@ -110,97 +110,27 @@ generate_start_buildings_and_districts = {
 		#add_building = building_factory_1
 	}
 	
-	if = {
-		limit = { owner = { is_machine_empire = yes } }
-		
-		# total - 10 jobs (11 for Servitor)
-
-		# 3 jobs
-		add_district = district_city
-		
-		# 1 job
-		if = {
-			limit = { owner = { is_lithoid_empire = no } }
-			add_district = district_farming
-		}
-		else = {
-			add_district = district_mining
-		}
-		
-		# 1 jobs
-		#add_district = district_mining
-		
-		# 2 jobs
-		add_district = district_generator
-		add_district = district_generator
-		
-		# 4 jobs
-		add_building = building_machine_system_capital
-
-		# 0 jobs
-		#add_building = building_research_lab_1
-		add_building = building_foundry_1
-		#add_building = building_factory_1
-		
-		#Assimilators/Servitors
-		if = {
-			limit = { owner = {	OR = {
-				has_civic = civic_machine_assimilator
-				has_civic = civic_machine_servitor
-			} } }
-			remove_district = district_generator
-			add_district = district_farming
-		}
-	}
-
 	# Additional resources based on empire type and possible subspecies
 	owner = {
 		if = {
-			limit = {
-				has_authority = auth_machine_intelligence
-			}
+			limit = { is_lithoid_empire = no }
 			if = {
-				limit = {
-					OR = {
-						has_valid_civic = civic_machine_servitor
-						has_valid_civic = civic_machine_assimilator
-					}
-				}
-				if = {
-					limit = { has_country_flag = lithoid_subspecies }
-					add_resource = { minerals = 100	}
-					add_resource = { energy = 100 }
-				}
-				else = {
-					add_resource = { food = 100	}
-					add_resource = { energy = 100 }
-				}
+				limit = { has_country_flag = lithoid_subspecies }
+				add_resource = { food = 100	}
+				add_resource = { minerals = 100 }
 			}
 			else = {
-				add_resource = { energy = 200 }
+				add_resource = { food = 200 }
 			}
 		}
 		else = {
 			if = {
-				limit = { is_lithoid_empire = no }
-				if = {
-					limit = { has_country_flag = lithoid_subspecies }
-					add_resource = { food = 100	}
-					add_resource = { minerals = 100 }
-				}
-				else = {
-					add_resource = { food = 200 }
-				}
+				limit = { has_country_flag = non_lithoid_subspecies }
+				add_resource = { food = 100	}
+				add_resource = { minerals = 100 }
 			}
 			else = {
-				if = {
-					limit = { has_country_flag = non_lithoid_subspecies }
-					add_resource = { food = 100	}
-					add_resource = { minerals = 100 }
-				}
-				else = {
-					add_resource = { minerals = 200 }
-				}
+				add_resource = { minerals = 200 }
 			}
 		}
 	}
