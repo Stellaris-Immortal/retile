@@ -1,0 +1,540 @@
+############################
+#
+# Deviancy
+#
+############################
+
+namespace = deviancy
+
+# Deviancy based on planet_crime_no_happiness
+planet_event = {
+	id = deviancy.1
+	hide_window = yes
+
+	trigger = {
+		planet_crime > 0
+		owner = { has_ethic = ethic_gestalt_consciousness }
+	}
+
+	mean_time_to_happen = {
+		days = 360
+	}
+
+	
+	after = {
+		if = { limit = { planet_crime < 40 }
+			if = { limit = { planet_crime < 20 }
+				if = { limit = { planet_crime < 10 }
+					# remove deviancy modifiers
+					switch = {
+						trigger = has_modifier
+						retile_deviancy_1 = {
+							remove_modifier = retile_deviancy_1
+						}
+						retile_deviancy_2 = {
+							remove_modifier = retile_deviancy_2
+							add_modifier = { modifier = retile_deviancy_1 days = -1 }
+						}
+						retile_deviancy_3 = {
+							remove_modifier = retile_deviancy_3
+							add_modifier = { modifier = retile_deviancy_2 days = -1 }
+						}
+						retile_deviancy_4 = {
+							remove_modifier = retile_deviancy_4
+							add_modifier = { modifier = retile_deviancy_3 days = -1 }
+						}
+						retile_deviancy_5 = {
+							remove_modifier = retile_deviancy_5
+							add_modifier = { modifier = retile_deviancy_4 days = -1 }
+						}
+						retile_deviancy_6 = {
+							remove_modifier = retile_deviancy_6
+							add_modifier = { modifier = retile_deviancy_5 days = -1 }
+						}
+						retile_deviancy_7 = {
+							remove_modifier = retile_deviancy_7
+							add_modifier = { modifier = retile_deviancy_6 days = -1 }
+						}
+						retile_deviancy_8 = {
+							remove_modifier = retile_deviancy_8
+							add_modifier = { modifier = retile_deviancy_7 days = -1 }
+						}
+						retile_deviancy_9 = {
+							remove_modifier = retile_deviancy_9
+							add_modifier = { modifier = retile_deviancy_8 days = -1 }
+						}
+						retile_deviancy_10 = {
+							remove_modifier = retile_deviancy_10
+							add_modifier = { modifier = retile_deviancy_9 days = -1 }
+						}
+						default = {}
+					}
+				} else = { # planet_crime >= 10, < 20
+					# add deviancy 1
+					switch = {
+						trigger = has_modifier
+						retile_deviancy_1 = { }
+						retile_deviancy_2 = {
+							remove_modifier = retile_deviancy_2
+							add_modifier = { modifier = retile_deviancy_1 days = -1 }
+						}
+						retile_deviancy_3 = {
+							remove_modifier = retile_deviancy_3
+							add_modifier = { modifier = retile_deviancy_2 days = -1 }
+						}
+						retile_deviancy_4 = {
+							remove_modifier = retile_deviancy_4
+							add_modifier = { modifier = retile_deviancy_3 days = -1 }
+						}
+						retile_deviancy_5 = {
+							remove_modifier = retile_deviancy_5
+							add_modifier = { modifier = retile_deviancy_4 days = -1 }
+						}
+						retile_deviancy_6 = {
+							remove_modifier = retile_deviancy_6
+							add_modifier = { modifier = retile_deviancy_5 days = -1 }
+						}
+						retile_deviancy_7 = {
+							remove_modifier = retile_deviancy_7
+							add_modifier = { modifier = retile_deviancy_6 days = -1 }
+						}
+						retile_deviancy_8 = {
+							remove_modifier = retile_deviancy_8
+							add_modifier = { modifier = retile_deviancy_7 days = -1 }
+						}
+						retile_deviancy_9 = {
+							remove_modifier = retile_deviancy_9
+							add_modifier = { modifier = retile_deviancy_8 days = -1 }
+						}
+						retile_deviancy_10 = {
+							remove_modifier = retile_deviancy_10
+							add_modifier = { modifier = retile_deviancy_9 days = -1 }
+						}
+						default = {
+							add_modifier = { modifier = retile_deviancy_1 days = -1 }
+						}
+					}
+				}
+			} else = { # planet_crime >= 20, < 40
+				if = { limit = { planet_crime < 30 }
+					# add deviancy 2
+					switch = {
+						trigger = has_modifier
+						retile_deviancy_1 = {
+							remove_modifier = retile_deviancy_1
+							add_modifier = { modifier = retile_deviancy_2 days = -1 }
+						}
+						retile_deviancy_2 = { }
+						retile_deviancy_3 = {
+							remove_modifier = retile_deviancy_3
+							add_modifier = { modifier = retile_deviancy_2 days = -1 }
+						}
+						retile_deviancy_4 = {
+							remove_modifier = retile_deviancy_4
+							add_modifier = { modifier = retile_deviancy_3 days = -1 }
+						}
+						retile_deviancy_5 = {
+							remove_modifier = retile_deviancy_5
+							add_modifier = { modifier = retile_deviancy_4 days = -1 }
+						}
+						retile_deviancy_6 = {
+							remove_modifier = retile_deviancy_6
+							add_modifier = { modifier = retile_deviancy_5 days = -1 }
+						}
+						retile_deviancy_7 = {
+							remove_modifier = retile_deviancy_7
+							add_modifier = { modifier = retile_deviancy_6 days = -1 }
+						}
+						retile_deviancy_8 = {
+							remove_modifier = retile_deviancy_8
+							add_modifier = { modifier = retile_deviancy_7 days = -1 }
+						}
+						retile_deviancy_9 = {
+							remove_modifier = retile_deviancy_9
+							add_modifier = { modifier = retile_deviancy_8 days = -1 }
+						}
+						retile_deviancy_10 = {
+							remove_modifier = retile_deviancy_10
+							add_modifier = { modifier = retile_deviancy_9 days = -1 }
+						}
+						default = {
+							add_modifier = { modifier = retile_deviancy_1 days = -1 }
+						}
+					}
+				} else = { # planet_crime >= 30, < 40
+					# add deviancy 3
+					switch = {
+						trigger = has_modifier
+						retile_deviancy_1 = {
+							remove_modifier = retile_deviancy_1
+							add_modifier = { modifier = retile_deviancy_2 days = -1 }
+						}
+						retile_deviancy_2 = {
+							remove_modifier = retile_deviancy_2
+							add_modifier = { modifier = retile_deviancy_3 days = -1 }
+						}
+						retile_deviancy_3 = { }
+						retile_deviancy_4 = {
+							remove_modifier = retile_deviancy_4
+							add_modifier = { modifier = retile_deviancy_3 days = -1 }
+						}
+						retile_deviancy_5 = {
+							remove_modifier = retile_deviancy_5
+							add_modifier = { modifier = retile_deviancy_4 days = -1 }
+						}
+						retile_deviancy_6 = {
+							remove_modifier = retile_deviancy_6
+							add_modifier = { modifier = retile_deviancy_5 days = -1 }
+						}
+						retile_deviancy_7 = {
+							remove_modifier = retile_deviancy_7
+							add_modifier = { modifier = retile_deviancy_6 days = -1 }
+						}
+						retile_deviancy_8 = {
+							remove_modifier = retile_deviancy_8
+							add_modifier = { modifier = retile_deviancy_7 days = -1 }
+						}
+						retile_deviancy_9 = {
+							remove_modifier = retile_deviancy_9
+							add_modifier = { modifier = retile_deviancy_8 days = -1 }
+						}
+						retile_deviancy_10 = {
+							remove_modifier = retile_deviancy_10
+							add_modifier = { modifier = retile_deviancy_9 days = -1 }
+						}
+						default = {
+							add_modifier = { modifier = retile_deviancy_1 days = -1 }
+						}
+					}
+				}
+			}
+		} else = { # planet_crime >= 40
+			if = { limit = { planet_crime < 60 }
+				if = { limit = { planet_crime < 50 }
+					# add deviancy 4
+					switch = {
+						trigger = has_modifier
+						retile_deviancy_1 = {
+							remove_modifier = retile_deviancy_1
+							add_modifier = { modifier = retile_deviancy_2 days = -1 }
+						}
+						retile_deviancy_2 = {
+							remove_modifier = retile_deviancy_2
+							add_modifier = { modifier = retile_deviancy_3 days = -1 }
+						}
+						retile_deviancy_3 = {
+							remove_modifier = retile_deviancy_3
+							add_modifier = { modifier = retile_deviancy_4 days = -1 }
+						}
+						retile_deviancy_4 = { }
+						retile_deviancy_5 = {
+							remove_modifier = retile_deviancy_5
+							add_modifier = { modifier = retile_deviancy_4 days = -1 }
+						}
+						retile_deviancy_6 = {
+							remove_modifier = retile_deviancy_6
+							add_modifier = { modifier = retile_deviancy_5 days = -1 }
+						}
+						retile_deviancy_7 = {
+							remove_modifier = retile_deviancy_7
+							add_modifier = { modifier = retile_deviancy_6 days = -1 }
+						}
+						retile_deviancy_8 = {
+							remove_modifier = retile_deviancy_8
+							add_modifier = { modifier = retile_deviancy_7 days = -1 }
+						}
+						retile_deviancy_9 = {
+							remove_modifier = retile_deviancy_9
+							add_modifier = { modifier = retile_deviancy_8 days = -1 }
+						}
+						retile_deviancy_10 = {
+							remove_modifier = retile_deviancy_10
+							add_modifier = { modifier = retile_deviancy_9 days = -1 }
+						}
+						default = {
+							add_modifier = { modifier = retile_deviancy_1 days = -1 }
+						}
+					}
+				} else = { # planet_crime >= 50, < 60
+					# add deviancy 5
+					switch = {
+						trigger = has_modifier
+						retile_deviancy_1 = {
+							remove_modifier = retile_deviancy_1
+							add_modifier = { modifier = retile_deviancy_2 days = -1 }
+						}
+						retile_deviancy_2 = {
+							remove_modifier = retile_deviancy_2
+							add_modifier = { modifier = retile_deviancy_3 days = -1 }
+						}
+						retile_deviancy_3 = {
+							remove_modifier = retile_deviancy_3
+							add_modifier = { modifier = retile_deviancy_4 days = -1 }
+						}
+						retile_deviancy_4 = {
+							remove_modifier = retile_deviancy_4
+							add_modifier = { modifier = retile_deviancy_5 days = -1 }
+						}
+						retile_deviancy_5 = { }
+						retile_deviancy_6 = {
+							remove_modifier = retile_deviancy_6
+							add_modifier = { modifier = retile_deviancy_5 days = -1 }
+						}
+						retile_deviancy_7 = {
+							remove_modifier = retile_deviancy_7
+							add_modifier = { modifier = retile_deviancy_6 days = -1 }
+						}
+						retile_deviancy_8 = {
+							remove_modifier = retile_deviancy_8
+							add_modifier = { modifier = retile_deviancy_7 days = -1 }
+						}
+						retile_deviancy_9 = {
+							remove_modifier = retile_deviancy_9
+							add_modifier = { modifier = retile_deviancy_8 days = -1 }
+						}
+						retile_deviancy_10 = {
+							remove_modifier = retile_deviancy_10
+							add_modifier = { modifier = retile_deviancy_9 days = -1 }
+						}
+						default = {
+							add_modifier = { modifier = retile_deviancy_1 days = -1 }
+						}
+					}
+				}
+			} else = { # planet_crime >= 60
+				if = { limit = { planet_crime < 80 }
+					if = { limit = { planet_crime < 70 }
+						# add deviancy 6
+						switch = {
+							trigger = has_modifier
+							retile_deviancy_1 = {
+								remove_modifier = retile_deviancy_1
+								add_modifier = { modifier = retile_deviancy_2 days = -1 }
+							}
+							retile_deviancy_2 = {
+								remove_modifier = retile_deviancy_2
+								add_modifier = { modifier = retile_deviancy_3 days = -1 }
+							}
+							retile_deviancy_3 = {
+								remove_modifier = retile_deviancy_3
+								add_modifier = { modifier = retile_deviancy_4 days = -1 }
+							}
+							retile_deviancy_4 = {
+								remove_modifier = retile_deviancy_4
+								add_modifier = { modifier = retile_deviancy_5 days = -1 }
+							}
+							retile_deviancy_5 = {
+								remove_modifier = retile_deviancy_5
+								add_modifier = { modifier = retile_deviancy_6 days = -1 }
+							}
+							retile_deviancy_6 = { }
+							retile_deviancy_7 = {
+								remove_modifier = retile_deviancy_7
+								add_modifier = { modifier = retile_deviancy_6 days = -1 }
+							}
+							retile_deviancy_8 = {
+								remove_modifier = retile_deviancy_8
+								add_modifier = { modifier = retile_deviancy_7 days = -1 }
+							}
+							retile_deviancy_9 = {
+								remove_modifier = retile_deviancy_9
+								add_modifier = { modifier = retile_deviancy_8 days = -1 }
+							}
+							retile_deviancy_10 = {
+								remove_modifier = retile_deviancy_10
+								add_modifier = { modifier = retile_deviancy_9 days = -1 }
+							}
+							default = {
+								add_modifier = { modifier = retile_deviancy_1 days = -1 }
+							}
+						}
+					} else = { # planet_crime >= 70, < 80
+						# add deviancy 7
+						switch = {
+							trigger = has_modifier
+							retile_deviancy_1 = {
+								remove_modifier = retile_deviancy_1
+								add_modifier = { modifier = retile_deviancy_2 days = -1 }
+							}
+							retile_deviancy_2 = {
+								remove_modifier = retile_deviancy_2
+								add_modifier = { modifier = retile_deviancy_3 days = -1 }
+							}
+							retile_deviancy_3 = {
+								remove_modifier = retile_deviancy_3
+								add_modifier = { modifier = retile_deviancy_4 days = -1 }
+							}
+							retile_deviancy_4 = {
+								remove_modifier = retile_deviancy_4
+								add_modifier = { modifier = retile_deviancy_5 days = -1 }
+							}
+							retile_deviancy_5 = {
+								remove_modifier = retile_deviancy_5
+								add_modifier = { modifier = retile_deviancy_6 days = -1 }
+							}
+							retile_deviancy_6 = {
+								remove_modifier = retile_deviancy_6
+								add_modifier = { modifier = retile_deviancy_7 days = -1 }
+							}
+							retile_deviancy_7 = { }
+							retile_deviancy_8 = {
+								remove_modifier = retile_deviancy_8
+								add_modifier = { modifier = retile_deviancy_7 days = -1 }
+							}
+							retile_deviancy_9 = {
+								remove_modifier = retile_deviancy_9
+								add_modifier = { modifier = retile_deviancy_8 days = -1 }
+							}
+							retile_deviancy_10 = {
+								remove_modifier = retile_deviancy_10
+								add_modifier = { modifier = retile_deviancy_9 days = -1 }
+							}
+							default = {
+								add_modifier = { modifier = retile_deviancy_1 days = -1 }
+							}
+						}
+					}
+				} else = { # planet_crime >= 80
+					if = { limit = { planet_crime < 90 }
+						# add deviancy 8
+						switch = {
+							trigger = has_modifier
+							retile_deviancy_1 = {
+								remove_modifier = retile_deviancy_1
+								add_modifier = { modifier = retile_deviancy_2 days = -1 }
+							}
+							retile_deviancy_2 = {
+								remove_modifier = retile_deviancy_2
+								add_modifier = { modifier = retile_deviancy_3 days = -1 }
+							}
+							retile_deviancy_3 = {
+								remove_modifier = retile_deviancy_3
+								add_modifier = { modifier = retile_deviancy_4 days = -1 }
+							}
+							retile_deviancy_4 = {
+								remove_modifier = retile_deviancy_4
+								add_modifier = { modifier = retile_deviancy_5 days = -1 }
+							}
+							retile_deviancy_5 = {
+								remove_modifier = retile_deviancy_5
+								add_modifier = { modifier = retile_deviancy_6 days = -1 }
+							}
+							retile_deviancy_6 = {
+								remove_modifier = retile_deviancy_6
+								add_modifier = { modifier = retile_deviancy_7 days = -1 }
+							}
+							retile_deviancy_7 = {
+								remove_modifier = retile_deviancy_7
+								add_modifier = { modifier = retile_deviancy_8 days = -1 }
+							}
+							retile_deviancy_8 = { }
+							retile_deviancy_9 = {
+								remove_modifier = retile_deviancy_9
+								add_modifier = { modifier = retile_deviancy_8 days = -1 }
+							}
+							retile_deviancy_10 = {
+								remove_modifier = retile_deviancy_10
+								add_modifier = { modifier = retile_deviancy_9 days = -1 }
+							}
+							default = {
+								add_modifier = { modifier = retile_deviancy_1 days = -1 }
+							}
+						}
+					} else = { # planet_crime >= 90
+						if = { limit = { planet_crime < 100 }
+							# add deviancy 9
+							switch = {
+								trigger = has_modifier
+								retile_deviancy_1 = {
+									remove_modifier = retile_deviancy_1
+									add_modifier = { modifier = retile_deviancy_2 days = -1 }
+								}
+								retile_deviancy_2 = {
+									remove_modifier = retile_deviancy_2
+									add_modifier = { modifier = retile_deviancy_3 days = -1 }
+								}
+								retile_deviancy_3 = {
+									remove_modifier = retile_deviancy_3
+									add_modifier = { modifier = retile_deviancy_4 days = -1 }
+								}
+								retile_deviancy_4 = {
+									remove_modifier = retile_deviancy_4
+									add_modifier = { modifier = retile_deviancy_5 days = -1 }
+								}
+								retile_deviancy_5 = {
+									remove_modifier = retile_deviancy_5
+									add_modifier = { modifier = retile_deviancy_6 days = -1 }
+								}
+								retile_deviancy_6 = {
+									remove_modifier = retile_deviancy_6
+									add_modifier = { modifier = retile_deviancy_7 days = -1 }
+								}
+								retile_deviancy_7 = {
+									remove_modifier = retile_deviancy_7
+									add_modifier = { modifier = retile_deviancy_8 days = -1 }
+								}
+								retile_deviancy_8 = {
+									remove_modifier = retile_deviancy_8
+									add_modifier = { modifier = retile_deviancy_9 days = -1 }
+								}
+								retile_deviancy_9 = { }
+								retile_deviancy_10 = {
+									remove_modifier = retile_deviancy_10
+									add_modifier = { modifier = retile_deviancy_9 days = -1 }
+								}
+								default = {
+									add_modifier = { modifier = retile_deviancy_1 days = -1 }
+								}
+							}
+						} else = { # planet_crime = 100
+							# add deviancy 10
+							switch = {
+								trigger = has_modifier
+								retile_deviancy_1 = {
+									remove_modifier = retile_deviancy_1
+									add_modifier = { modifier = retile_deviancy_2 days = -1 }
+								}
+								retile_deviancy_2 = {
+									remove_modifier = retile_deviancy_2
+									add_modifier = { modifier = retile_deviancy_3 days = -1 }
+								}
+								retile_deviancy_3 = {
+									remove_modifier = retile_deviancy_3
+									add_modifier = { modifier = retile_deviancy_4 days = -1 }
+								}
+								retile_deviancy_4 = {
+									remove_modifier = retile_deviancy_4
+									add_modifier = { modifier = retile_deviancy_5 days = -1 }
+								}
+								retile_deviancy_5 = {
+									remove_modifier = retile_deviancy_5
+									add_modifier = { modifier = retile_deviancy_6 days = -1 }
+								}
+								retile_deviancy_6 = {
+									remove_modifier = retile_deviancy_6
+									add_modifier = { modifier = retile_deviancy_7 days = -1 }
+								}
+								retile_deviancy_7 = {
+									remove_modifier = retile_deviancy_7
+									add_modifier = { modifier = retile_deviancy_8 days = -1 }
+								}
+								retile_deviancy_8 = {
+									remove_modifier = retile_deviancy_8
+									add_modifier = { modifier = retile_deviancy_9 days = -1 }
+								}
+								retile_deviancy_9 = {
+									remove_modifier = retile_deviancy_9
+									add_modifier = { modifier = retile_deviancy_10 days = -1 }
+								}
+								retile_deviancy_10 = { }
+								default = {
+									add_modifier = { modifier = retile_deviancy_1 days = -1 }
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

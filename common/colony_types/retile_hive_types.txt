@@ -1,0 +1,294 @@
+# Hive Capital
+col_hive_capital = {
+	icon = 10
+
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes 
+			is_plantoid = no
+		}
+		is_capital = yes
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_crime_no_happiness_add = -30
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+# Hive Capital - Plantoid
+col_hive_capital_plantoid = {
+	icon = 10
+
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes 
+			is_plantoid = yes
+		}
+		is_capital = yes
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 5
+		pop_environment_tolerance = 0.40
+		planet_crime_no_happiness_add = -30
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+# Breeding
+col_hive_breeding = {
+	icon = 11
+
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes}
+		is_capital = no
+	}
+
+	planet_modifier = {
+		pop_growth_speed = 0.5
+	}
+
+	weight_modifier = {
+		base = 5
+		modifier = {
+			add = -4
+			free_district_slots = 0
+		}
+	}
+}
+
+# Manufacturing
+col_hive_manufacturing = {
+	icon = 1
+	
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.15
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			num_districts = { type = district_city value > 0 }
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_factory_1
+				has_building = building_factory_2
+				has_building = building_factory_3
+			}
+		}
+	}
+}
+
+# Refining
+col_hive_refining = {
+	icon = 1
+	
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		planet_jobs_alloys_produces_mult = 0.15
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			num_districts = { type = district_city value > 0 }
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_foundry_1
+				has_building = building_foundry_2
+				has_building = building_foundry_3
+			}
+		}
+	}
+}
+
+# Farming
+col_hive_farming = {
+	icon = 1
+	
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		planet_jobs_food_produces_mult = 0.25
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			OR = {
+				num_districts = { type = district_farming value > 0 }
+				num_districts = { type = district_farming_uncapped value > 0 }
+				num_districts = { type = district_hab_hydroponics value > 0 }
+				num_districts = { type = district_rw_farming value > 0 }
+			}
+		}
+		modifier = {
+			add = 3
+				num_districts = { type = district_farming value > 2 }
+				num_districts = { type = district_farming_uncapped value > 2 }
+				num_districts = { type = district_hab_hydroponics value > 2 }
+				num_districts = { type = district_rw_farming value > 2 }
+		}
+	}
+}
+
+# mining
+col_hive_mining = {
+	icon = 1
+	
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		planet_jobs_minerals_produces_mult = 0.25
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			OR = {
+				num_districts = { type = district_mining value > 0 }
+				num_districts = { type = district_mining_uncapped value > 0 }
+				num_districts = { type = district_hab_mining value > 0 }
+				num_districts = { type = district_rw_mining value > 0 }
+			}
+		}
+		modifier = {
+			add = 3
+				num_districts = { type = district_mining value > 2 }
+				num_districts = { type = district_mining_uncapped value > 2 }
+				num_districts = { type = district_hab_mining value > 2 }
+				num_districts = { type = district_rw_mining value > 2 }
+		}
+	}
+}
+
+# energy
+col_hive_energy = {
+	icon = 1
+	
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		planet_jobs_energy_produces_mult = 0.25
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			OR = {
+				num_districts = { type = district_generator value > 0 }
+				num_districts = { type = district_generator_uncapped value > 0 }
+				num_districts = { type = district_hab_generator value > 0 }
+				num_districts = { type = district_rw_generator value > 0 }
+			}
+		}
+		modifier = {
+			add = 3
+				num_districts = { type = district_generator value > 2 }
+				num_districts = { type = district_generator_uncapped value > 2 }
+				num_districts = { type = district_hab_generator value > 2 }
+				num_districts = { type = district_rw_generator value > 2 }
+		}
+	}
+}
+
+# unity
+col_hive_unity = {
+	icon = 1
+	
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		planet_jobs_unity_produces_mult = 0.1
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			num_districts = { type = district_city value > 0 }
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_hive_node
+				has_building = building_hive_cluster
+				has_building = building_hive_confluence
+			}
+		}
+	}
+}
+
+# research
+col_hive_research = {
+	icon = 1
+	
+	potential = {
+		exists = owner
+		owner = { is_hive_empire = yes}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		planet_jobs_physics_research_produces_mult = 0.1
+		planet_jobs_society_research_produces_mult = 0.1
+		planet_jobs_engineering_research_produces_mult = 0.1
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			num_districts = { type = district_city value > 0 }
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_research_lab_1
+				has_building = building_research_lab_2
+				has_building = building_research_lab_3
+			}
+		}
+	}
+}
+
