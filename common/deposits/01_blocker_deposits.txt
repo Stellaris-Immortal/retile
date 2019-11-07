@@ -5,8 +5,309 @@
 # constant_modifier - applied to planet always
 # station = station class in orbit to gather
 
-@blocker_high = 6
+@blocker_high = 5
+@blocker_mid = 4
 @blocker_low = 3
+
+d_bountiful_forest = {	
+	time = 180
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 250
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_wet = yes
+		}
+	}
+	
+	planet_modifier = { 
+		planet_max_districts_add = -1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -100
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -100
+	}
+	
+	use_weights_for_blocker_swap_types = no
+	blocker_swap_types = {
+		d_destroyed_habitat
+		d_mass_extinction
+	}
+
+	drop_weight = {
+		weight = @blocker_mid
+		modifier = {
+			factor = 4
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 2
+			is_planet_class = pc_tropical
+		}
+		modifier = {
+			factor = 0
+			is_planet_class = pc_ocean
+		}
+		modifier = {
+			factor = 0.5
+			planet_size < 16
+		}
+		modifier = {
+			factor = 0
+			free_district_slots < 4
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+d_relaxing_beach = {	
+	time = 180
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 250
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_wet = yes
+		}
+	}
+	
+	planet_modifier = { 
+		planet_max_districts_add = -1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -100
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -100
+	}
+	
+	use_weights_for_blocker_swap_types = no
+	blocker_swap_types = {
+		d_destroyed_habitat
+		d_mass_extinction
+	}
+
+	drop_weight = {
+		weight = @blocker_mid
+		modifier = {
+			factor = 5
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 2
+			is_planet_class = pc_ocean
+		}
+		modifier = {
+			factor = 0
+			is_planet_class = pc_tropical
+		}
+		modifier = {
+			factor = 0.5
+			planet_size < 16
+		}
+		modifier = {
+			factor = 0
+			free_district_slots < 4
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+d_quiet_foothills = {	
+	time = 180
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 250
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_cold = yes
+		}
+	}
+	
+	planet_modifier = { 
+		planet_max_districts_add = -1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -100
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -100
+	}
+
+	drop_weight = {
+		weight = @blocker_mid
+		modifier = {
+			factor = 3.5
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_alpine
+		}
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_tundra
+		}
+		modifier = {
+			factor = 0.5
+			planet_size < 16
+		}
+		modifier = {
+			factor = 0
+			free_district_slots < 4
+		}
+	}
+	
+	use_weights_for_blocker_swap_types = no
+	blocker_swap_types = {
+		d_destroyed_habitat
+		d_mass_extinction
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+d_majestic_canyon = {	
+	time = 180
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 250
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_dry = yes
+		}
+	}
+	
+	planet_modifier = { 
+		planet_max_districts_add = -1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = -100
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = -100
+	}
+	
+	use_weights_for_blocker_swap_types = no
+	blocker_swap_types = {
+		d_destroyed_habitat
+		d_mass_extinction
+	}
+
+	drop_weight = {
+		weight = @blocker_mid
+		modifier = {
+			factor = 3.5
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_arid
+		}
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_desert
+		}
+		modifier = {
+			factor = 0.5
+			planet_size < 16
+		}
+		modifier = {
+			factor = 0
+			free_district_slots < 4
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
 
 d_mountain_range = {	
 	time = 270
@@ -47,6 +348,10 @@ d_mountain_range = {
 
 	drop_weight = {
 		weight = @blocker_low
+		modifier = {
+			factor = 1.5
+			is_planet_class = pc_gaia
+		}
 		modifier = {
 			factor = 2
 			is_planet_class = pc_alpine
@@ -110,6 +415,10 @@ d_active_volcano = {
 		modifier = {
 			factor = 0.5
 			is_planet_class = pc_alpine
+		}
+		modifier = {
+			factor = 0
+			is_planet_class = pc_gaia
 		}
 		modifier = {
 			factor = 0.5
@@ -178,6 +487,18 @@ d_dangerous_wildlife_blocker = {
 	drop_weight = {
 		weight = @blocker_low
 		modifier = {
+			factor = 1.5
+			OR = { 
+				is_planet_class = pc_tropical
+				is_planet_class = pc_savannah
+				is_planet_class = pc_tundra
+			}
+		}
+		modifier = {
+			factor = 0
+			is_planet_class = pc_gaia
+		}
+		modifier = {
 			factor = 0.5
 			planet_size < 16
 		}
@@ -232,7 +553,7 @@ d_dense_jungle = {
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
-			factor = 2
+			factor = 2.5
 			OR = {
 				is_planet_class = pc_continental
 				is_planet_class = pc_tropical
@@ -289,7 +610,7 @@ d_toxic_kelp = {
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
-			factor = 2
+			factor = 2.5
 			is_planet_class = pc_ocean
 		}
 		modifier = {
@@ -343,7 +664,7 @@ d_deep_sinkhole = {
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
-			factor = 2
+			factor = 2.5
 			OR = {
 				is_planet_class = pc_arid
 				is_planet_class = pc_savannah
@@ -401,7 +722,7 @@ d_quicksand_basin = {
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
-			factor = 2
+			factor = 2.5
 			is_planet_class = pc_desert
 		}
 		modifier = {
@@ -455,7 +776,7 @@ d_noxious_swamp = {
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
-			factor = 2
+			factor = 2.5
 			is_planet_class = pc_tundra
 		}
 		modifier = {
@@ -509,7 +830,7 @@ d_massive_glacier = {
 	drop_weight = {
 		weight = @blocker_high
 		modifier = {
-			factor = 2
+			factor = 2.5
 			OR = {
 				is_planet_class = pc_alpine
 				is_planet_class = pc_arctic
@@ -1618,6 +1939,70 @@ d_lithoid_devastation = {
 		category = deposit_blockers
 		cost = {
 			energy = 1000
+		}
+	}
+}
+
+d_destroyed_habitat = {
+	time = 360
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers	
+	
+	potential = { always = no }
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = 100
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = 100
+	}
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 250
+		}
+	}
+}
+
+d_mass_extinction = {
+	time = 360
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers	
+	
+	potential = { always = no }
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = 200
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = 400
+	}
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 200
 		}
 	}
 }
