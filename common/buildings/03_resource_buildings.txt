@@ -77,7 +77,8 @@ building_hydroponics_farm = {
 	triggered_desc = {
 		trigger = { 
 			exists = owner
-			is_plantoid_empire = no
+			owner = { is_plantoid_empire = no }
+			owner = { is_gestalt = no }
 		}
 		text = retile_food_buff_city_effect
 	}
@@ -85,7 +86,8 @@ building_hydroponics_farm = {
 	triggered_desc = {
 		trigger = { 
 			exists = owner
-			is_plantoid_empire = yes
+			owner = { is_plantoid_empire = yes }
+			owner = { is_gestalt = no }
 		}
 		text = retile_food_buff_city_plantoid_effect
 	}
@@ -176,7 +178,10 @@ building_recycling_center = {
 	}
 	
 	triggered_desc = {
-		trigger = { exists = owner }
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
 		text = retile_minerals_buff_city_effect
 	}
 	
@@ -266,7 +271,10 @@ building_solar_panels = {
 	}
 	
 	triggered_desc = {
-		trigger = { exists = owner }
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
 		text = retile_energy_buff_city_effect
 	}
 	
@@ -369,7 +377,10 @@ building_food_processing_facility = {
 	}
 	
 	triggered_desc = {
-		trigger = { exists = owner }
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
 		text = retile_food_buff_1_effect
 	}
 	
@@ -474,7 +485,10 @@ building_food_processing_center = {
 	}
 	
 	triggered_desc = {
-		trigger = { exists = owner }
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
 		text = retile_food_buff_2_effect
 	}
 	
@@ -564,7 +578,10 @@ building_mineral_purification_plant = {
 	}
 	
 	triggered_desc = {
-		trigger = { exists = owner }
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
 		text = retile_minerals_buff_1_effect
 	}
 	
@@ -652,6 +669,14 @@ building_mineral_purification_hub = {
 		}
 	}
 	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = retile_minerals_buff_2_effect
+	}
+	
 	ai_weight = {	# always upgrade
 		weight = 100000
 	}
@@ -735,6 +760,14 @@ building_energy_grid = {
 			planet_housing_add = 1
 			job_maintenance_drone_add = 1
 		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = retile_energy_buff_1_effect
 	}
 	
 	ai_weight = {
@@ -831,6 +864,14 @@ building_energy_nexus = {
 		weight = 100000
 	}
 
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = retile_energy_buff_2_effect
+	}
+	
 	ai_resource_production = {
 		energy = 1
 		trigger = {
@@ -895,6 +936,14 @@ building_maintenance_depot = {
 		}
 	}
 	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = retile_custodian_buff_1_effect
+	}
+	
 	ai_weight = {
 		weight = 0
 		modifier = {
@@ -955,6 +1004,14 @@ building_maintenance_depot_2 = {
 			planet_housing_add = 3
 			job_maintenance_drone_add = 3
 		}
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = retile_custodian_buff_2_effect
 	}
 	
 	ai_weight = {
