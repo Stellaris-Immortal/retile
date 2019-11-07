@@ -8,7 +8,7 @@
 
 namespace = retile_pop
 
-# frequently 
+# Pops look for work about once per month...
 pop_event = {
 	id = retile_pop.101
 	hide_window = yes
@@ -31,6 +31,7 @@ pop_event = {
 	}
 }
 
+# Pops check if they should migrate about once per 3 months...
 pop_event = {
 	id = retile_pop.90
 	hide_window = yes
@@ -46,12 +47,13 @@ pop_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 30
+		days = 90
 	}
 
 	after = {
 		IF = {
 			limit = {
+				planet = { has_building_construction = no }
 				NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
 				OR = {
 					has_job = no
@@ -91,7 +93,10 @@ planet_event = {
 	after = {
 		if = {
 			limit = {
-				this = { free_housing < 0 }
+				this = {
+					free_housing < 0
+					#has_building_construction = no	# new pops never cancel construction, and they stop growth...
+				}
 			}
 		}
 		from = { random_owned_planet = {
