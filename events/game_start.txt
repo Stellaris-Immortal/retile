@@ -258,6 +258,26 @@ event = {
 							limit = { has_modifier = irradiated_planet }
 							remove_modifier = irradiated_planet
 						}
+						if = {
+							limit = { has_modifier = bioscarce }
+							remove_modifier = bioscarce
+						}
+						if = {
+							limit = { has_modifier = biodiverse }
+							remove_modifier = biodiverse
+						}
+						if = {
+							limit = { has_modifier = slow_rotation }
+							remove_modifier = slow_rotation
+						}
+						if = {
+							limit = { has_modifier = fast_rotation }
+							remove_modifier = fast_rotation
+						}
+						if = {
+							limit = { has_modifier = calm_weather }
+							remove_modifier = calm_weather
+						}
 					}
 				}
 			}
@@ -587,6 +607,7 @@ planet_event = {
 	}
 
 	immediate = {
+		clear_blockers = yes
 		clear_blockers = yes		
 	}
 }

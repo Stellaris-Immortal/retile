@@ -327,3 +327,131 @@ event = {
 		}
 	}
 }
+
+# Terraforming
+event = {
+	id = retile_generate.5
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_modifier = biodiverse }
+			remove_modifier = biodiverse
+		}
+		if = {
+			limit = { has_modifier = bioscarce }
+			remove_modifier = bioscarce
+		}
+		if = {
+			limit = { has_modifier = calm_weather }
+			remove_modifier = calm_weather
+		}
+		if = {
+			limit = { from = { owner = { has_technology = tech_terrestrial_sculpting } } }
+			add_modifier = { modifier = "recently_terraformed_1" days = 7200 }
+		} else_if = {
+			limit = { from = { owner = { has_technology = tech_ecological_adaptation } } }
+			add_modifier = { modifier = "recently_terraformed_2" days = 7200 }
+		} else_if = {
+			limit = { from = { owner = { has_technology = tech_climate_restoration } } }
+			add_modifier = { modifier = "recently_terraformed_3" days = 7200 }
+		}
+
+		random_list = {
+			67 = { }
+			2 = { 
+				add_modifier = { modifier = "biodiverse" days = -1 }
+			}
+			2 = {
+				add_modifier = { modifier = "lush_planet" days = -1 }
+			}
+			1 = { 
+				add_modifier = { modifier = "biodiverse" days = -1 }
+				add_modifier = { modifier = "lush_planet" days = -1 }
+			}
+			1 = { 
+				add_modifier = { modifier = "biodiverse" days = -1 }
+				add_modifier = { modifier = "natural_beauty" days = -1 }
+			}
+			1 = { 
+				add_modifier = { modifier = "biodiverse" days = -1 }
+				add_modifier = { modifier = "calm_weather" days = -1 }
+			}
+			2 = { 
+				add_modifier = { modifier = "bioscarce" days = -1 }
+			}
+			2 = {
+				add_modifier = { modifier = "bleak_planet" days = -1 }
+			}
+			1 = { 
+				add_modifier = { modifier = "bioscarce" days = -1 }
+				add_modifier = { modifier = "bleak_planet" days = -1 }
+			}
+			1 = { 
+				add_modifier = { modifier = "bioscarce" days = -1 }
+				add_modifier = { modifier = "hazardous_weather" days = -1 }
+			}
+			1 = { 
+				add_modifier = { modifier = "bioscarce" days = -1 }
+				add_modifier = { modifier = "wild_storms" days = -1 }
+			}
+			1 = { 
+				add_modifier = { modifier = "bioscarce" days = -1 }
+				add_modifier = { modifier = "calm_weather" days = -1 }
+			}
+			2 = {
+				add_modifier = { modifier = "natural_beauty" days = -1 }
+			}
+			1 = {
+				add_modifier = { modifier = "natural_beauty" days = -1 }
+				add_modifier = { modifier = "lush_planet" days = -1 }
+			}
+			2 = {
+				add_modifier = { modifier = "calm_weather" days = -1 }
+			}
+			1 = {
+				add_modifier = { modifier = "calm_weather" days = -1 }
+				add_modifier = { modifier = "natural_beauty" days = -1 }
+			}
+			1 = {
+				add_modifier = { modifier = "calm_weather" days = -1 }
+				add_modifier = { modifier = "lush_planet" days = -1 }
+			}
+			1 = {
+				add_modifier = { modifier = "calm_weather" days = -1 }
+				add_modifier = { modifier = "bleak_planet" days = -1 }
+			}
+			2 = {
+				add_modifier = { modifier = "hazardous_weather" days = -1 }
+			}
+			1 = {
+				add_modifier = { modifier = "hazardous_weather" days = -1 }
+				add_modifier = { modifier = "bleak_planet" days = -1 }
+			}
+			1 = {
+				add_modifier = { modifier = "hazardous_weather" days = -1 }
+				add_modifier = { modifier = "lush_planet" days = -1 }
+			}
+			1 = {
+				add_modifier = { modifier = "hazardous_weather" days = -1 }
+				add_modifier = { modifier = "natural_beauty" days = -1 }
+			}
+			2 = {
+				add_modifier = { modifier = "wild_storms" days = -1 }
+			}
+			1 = {
+				add_modifier = { modifier = "wild_storms" days = -1 }
+				add_modifier = { modifier = "bleak_planet" days = -1 }
+			}
+			1 = {
+				add_modifier = { modifier = "wild_storms" days = -1 }
+				add_modifier = { modifier = "hazardous_weather" days = -1 }
+			}
+			1 = {
+				add_modifier = { modifier = "wild_storms" days = -1 }
+				add_modifier = { modifier = "natural_beauty" days = -1 }
+			}
+		}
+	}
+}

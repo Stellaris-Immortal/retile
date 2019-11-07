@@ -100,3 +100,53 @@ tech_housing_3 = {
 		}
 	}
 }
+
+# Industrial Metabolism
+tech_industrial_metabolism = {
+	cost = @tier2cost1
+	area = society
+	tier = 2
+	category = { biology }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier2weight1
+	
+	modifier = {
+		planet_custodians_produces_mult = 0.2
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = biology
+				has_trait = "leader_trait_expertise_biology"
+			}
+		}
+	}
+}
+
+# Industrial Symbiosis
+tech_industrial_symbiosis = {
+	cost = @tier3cost1
+	area = society
+	tier = 2
+	category = { biology }
+	prerequisites = { "tech_colonization_1" }
+	weight = @tier3weight1
+	
+	modifier = {
+		planet_custodians_produces_mult = 0.2
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = biology
+				has_trait = "leader_trait_expertise_biology"
+			}
+		}
+	}
+}

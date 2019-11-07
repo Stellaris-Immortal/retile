@@ -4,7 +4,7 @@ pm_null = {
 	is_null = yes
 	
 	spawn_chance = {
-		value = 10
+		value = 100
 		modifier = {
 			factor = 2
 			num_modifiers > 2
@@ -14,10 +14,86 @@ pm_null = {
 			num_modifiers > 1
 		}
 		modifier = {
-			factor = 20
+			factor = 5
 			num_modifiers > 0
 		}
 	}
+}
+
+pm_calm_weather = {
+	spawn_chance = {
+		modifier = {
+			add = 10
+			is_planet_class = "pc_desert"
+		}
+		modifier = {
+			add = 10
+			is_planet_class = "pc_tropical"
+		}
+		modifier = {
+			add = 10
+			is_planet_class = "pc_arid"
+		}
+		modifier = {
+			add = 10
+			is_planet_class = "pc_continental"
+		}
+		modifier = {
+			add = 10
+			is_planet_class = "pc_ocean"
+		}
+		modifier = {
+			add = 10
+			is_planet_class = "pc_tundra"
+		}
+		modifier = {
+			add = 10
+			is_planet_class = "pc_arctic"
+		}
+		modifier = {
+			add = 10
+			is_planet_class = "pc_alpine"
+		}
+		modifier = {
+			add = 10
+			is_planet_class = "pc_savannah"
+		}				
+		modifier = {
+			add = 10
+			is_planet_class = "pc_gaia"
+		}	
+		modifier = {
+			add = 10
+			is_planet_class = "pc_relic"
+		}	
+		modifier = {
+			add = 10
+			is_planet_class = "pc_nuked"
+		}
+		modifier = {
+			factor = 0
+			has_planet_modifier = "pm_hazardous_weather"
+		}
+		modifier = {
+			factor = 0
+			has_planet_modifier = "pm_wild_storms"
+		}
+		modifier = {
+			factor = 0
+			has_planet_modifier = "pm_calm_weather"
+		}
+		
+		modifier = {
+			factor = 0
+			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
+	}
+	
+	modifier = "calm_weather"
 }
 
 pm_biodiverse = {
@@ -94,6 +170,10 @@ pm_biodiverse = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -186,6 +266,10 @@ pm_biodiverse = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "biodiverse"
@@ -250,6 +334,10 @@ pm_slow_rotation = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "slow_rotation"
@@ -313,6 +401,10 @@ pm_fast_rotation = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -384,10 +476,18 @@ pm_hazardous_weather = {
 			factor = 0
 			has_planet_modifier = "pm_hazardous_weather"
 		}
+		modifier = {
+			factor = 0
+			has_planet_modifier = "pm_calm_weather"
+		}
 		
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -449,6 +549,10 @@ pm_dangerous_wildlife = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "dangerous_wildlife"
@@ -505,7 +609,7 @@ pm_weak_magnetic_field = {
 			is_star_class = sc_a
 		}
 		modifier = {
-			factor = 2
+			factor = 3
 			has_planet_modifier = "pm_slow_rotation"
 		}
 		modifier = {
@@ -520,6 +624,10 @@ pm_weak_magnetic_field = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -573,7 +681,7 @@ pm_strong_magnetic_field = {
 			is_star_class = sc_k
 		}
 		modifier = {
-			factor = 2
+			factor = 3
 			has_planet_modifier = "pm_fast_rotation"
 		}
 		modifier = {
@@ -588,6 +696,10 @@ pm_strong_magnetic_field = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -654,6 +766,10 @@ pm_unstable_tectonics = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "unstable_tectonics"
@@ -706,7 +822,7 @@ pm_tidal_locked = {
 			is_planet_class = pc_relic
 		}
 		modifier = {
-			factor = 2
+			factor = 3
 			OR = {
 				is_star_class = sc_m
 				is_star_class = sc_m_giant
@@ -717,7 +833,7 @@ pm_tidal_locked = {
 			has_planet_modifier = "pm_tidal_locked"
 		}
 		modifier = {
-			factor = 3
+			factor = 2
 			is_moon = yes
 		}
 		modifier = {
@@ -728,6 +844,10 @@ pm_tidal_locked = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -751,6 +871,10 @@ pm_chthonian_planet = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -804,7 +928,7 @@ pm_asteroid_impacts = {
 			is_planet_class = pc_relic
 		}
 		modifier = {
-			factor = 2
+			factor = 3
 			OR = { 
 				is_star_class = sc_trinary_1
 				is_star_class = sc_trinary_2
@@ -820,6 +944,10 @@ pm_asteroid_impacts = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -851,6 +979,10 @@ pm_extensive_moon_system = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -886,6 +1018,10 @@ pm_carbon_world = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -957,10 +1093,18 @@ pm_wild_storms = {
 			factor = 0
 			has_planet_modifier = "pm_wild_storms"
 		}
+		modifier = {
+			factor = 0
+			has_planet_modifier = "pm_calm_weather"
+		}
 
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -1086,6 +1230,10 @@ pm_low_gravity = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "low_gravity"
@@ -1210,6 +1358,10 @@ pm_high_gravity = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "high_gravity"
@@ -1293,6 +1445,10 @@ pm_mineral_rich = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "mineral_rich"
@@ -1375,6 +1531,10 @@ pm_ultra_rich = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -1476,6 +1636,10 @@ pm_mineral_poor = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "mineral_poor"
@@ -1551,6 +1715,10 @@ pm_titanic_life = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -1653,6 +1821,10 @@ pm_asteroid_belt = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "asteroid_belt"
@@ -1716,6 +1888,10 @@ pm_natural_beauty = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "natural_beauty"
@@ -1772,6 +1948,10 @@ pm_atmospheric_aphrodisiac = {
 			factor = 0
 			num_modifiers > 1
 		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
+		}
 	}
 	
 	modifier = "atmospheric_aphrodisiac"
@@ -1827,6 +2007,10 @@ pm_atmospheric_hallucinogen = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -1906,6 +2090,10 @@ pm_lush = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
@@ -1993,6 +2181,10 @@ pm_bleak = {
 		modifier = {
 			factor = 0
 			num_modifiers > 1
+		}
+		modifier = {
+			factor = 0.5
+			num_modifiers > 0
 		}
 	}
 	
