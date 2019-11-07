@@ -65,7 +65,10 @@ pop_event = {
 				limit = { AND = {
 					free_jobs > 0
 					is_under_colonization = no
-					habitability = { who = root value > 0.4 }
+					OR = {
+						habitability = { who = root value >= 0.5 }
+						root = { is_plantoid = yes }
+					}
 				} }
 				resettle_pop = { pop = root planet = this}
 			} }
@@ -104,7 +107,10 @@ planet_event = {
 			limit = { AND = {
 				free_jobs > 0
 				is_under_colonization = no
-				habitability = { who = fromfrom value > 0.4 }
+				OR = {
+					habitability = { who = fromfrom value >= 0.5 }
+					fromfrom = { is_plantoid = yes }
+				}
 			} }
 			resettle_pop = { pop = fromfrom planet = this}
 		} }
