@@ -493,7 +493,7 @@ atmospheric_hallucinogen_good = {
 }
 
 lush_planet = {
-	planet_amenities_add = -100
+	planet_amenities_mult = -0.10
 	planet_jobs_food_produces_mult = 0.10
 	district_farming_max = 2
 	
@@ -502,7 +502,7 @@ lush_planet = {
 }
 
 bleak_planet = {
-	planet_amenities_add = 100
+	planet_amenities_mult = 0.25
 	planet_jobs_food_produces_mult = -0.10
 	district_farming_max = -2
 	
@@ -709,7 +709,9 @@ gas_giant_colony = {
 }
 
 abandoned_terraforming = {
-	planet_amenities_mult = 0.25
+	planet_amenities_mult = 0.3
+	planet_jobs_food_produces_mult = -0.20
+	district_farming_max = -3
 	icon = "gfx/interface/icons/planet_modifiers/pm_asteroid_impacts.dds"
 	icon_frame = 3
 }

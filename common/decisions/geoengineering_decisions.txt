@@ -1,0 +1,115 @@
+# Terrestrial Engineering
+decision_terrestrial_engineering = {
+	owned_planets_only = yes
+
+	enactment_time = 180
+	resources = {
+		category = decisions
+		cost = {
+			energy = 1000
+		}
+	}
+	
+	prerequisites = { "tech_terrestrial_sculpting" }
+	
+	potential = {
+		OR = { 
+			has_modifier = bleak_planet
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_terrestrial_engineering_tooltip
+		if = { 
+			limit = { has_modifier = bleak_planet }
+			remove_modifier = bleak_planet
+			add_modifier = { modifier = "bioscarce" days = -1 }
+		}
+	}
+}
+
+# Ecological Engineering
+decision_ecological_engineering = {
+	owned_planets_only = yes
+
+	enactment_time = 180
+	resources = {
+		category = decisions
+		cost = {
+			energy = 1000
+		}
+	}
+	
+	prerequisites = { "tech_ecological_adaptation" }
+	
+	potential = {
+		OR = { 
+			has_modifier = dangerous_wildlife
+			has_modifier = predatory_plants
+			has_modifier = bioscarce
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_ecological_engineering_tooltip
+		if = {
+			limit = { has_modifier = dangerous_wildlife }
+			remove_modifier = dangerous_wildlife
+			add_modifier = { modifier = "bioscarce" days = -1 }
+		} else_if = {
+			limit = { has_modifier = predatory_plants }
+			remove_modifier = predatory_plants
+			add_modifier = { modifier = "bioscarce" days = -1 }
+		} else_if = {
+			limit = { has_modifier = bioscarce }
+			remove_modifier = bioscarce
+		}
+	}
+}
+
+# Climate Engineering
+decision_climate_engineering = {
+	owned_planets_only = yes
+
+	enactment_time = 180
+	resources = {
+		category = decisions
+		cost = {
+			energy = 1000
+		}
+	}
+	
+	prerequisites = { "tech_climate_restoration" }
+	
+	potential = {
+		OR = {
+			has_modifier = hazardous_weather
+			has_modifier = wild_storms
+			has_modifier = irradiated_planet
+			has_modifier = abandoned_terraforming
+		}
+	}
+	
+	effect = {
+		custom_tooltip = decision_climate_engineering_tooltip
+		if = {
+			limit = { has_modifier = irradiated_planet }
+			remove_modifier = irradiated_planet
+			add_modifier = { modifier = "bleak_planet" days = -1 }
+			add_deposit = d_mineral_fields
+			hidden_effect = { validate_planet_buildings_and_districts = yes }
+		} else_if = {
+			limit = { has_modifier = wild_storms }
+			remove_modifier = wild_storms
+		} else_if = {
+			limit = { has_modifier = hazardous_weather }
+			remove_modifier = hazardous_weather
+			add_deposit = d_tempestous_mountain
+			hidden_effect = { validate_planet_buildings_and_districts = yes }
+		} else_if = {
+			limit = { has_modifier = abandoned_terraforming }
+			remove_modifier = abandoned_terraforming
+			add_modifier = { modifier = "bleak_planet" days = -1 }
+		}
+	}
+}
