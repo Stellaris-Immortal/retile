@@ -36,6 +36,14 @@ solar_panels = {
 	ai_build_at_chokepoint = no
 	ai_weight = {
 		weight = 15
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_system_planet = {
+					habitable_planet = yes
+				}
+			}
+		}
 	}
 }
 
@@ -72,6 +80,14 @@ mining_terminal = {
 	ai_build_at_chokepoint = no
 	ai_weight = {
 		weight = 15
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_system_planet = {
+					habitable_planet = yes
+				}
+			}
+		}
 	}
 }
 
@@ -121,12 +137,15 @@ trade_terminal = {
 	possible = {
 		custom_tooltip = {
 			fail_text = "requires_trade"
-			solar_system = {
-				any_system_planet = {
-					OR = {
-						has_deposit = d_trade_value_small
-						has_deposit = d_trade_value_medium
-						has_deposit = d_trade_value_large
+			AND = {
+				owner = { is_regular_empire = yes }
+				solar_system = {
+					any_system_planet = {
+						OR = {
+							has_deposit = d_trade_value_small
+							has_deposit = d_trade_value_medium
+							has_deposit = d_trade_value_large
+						}
 					}
 				}
 			}
@@ -148,6 +167,14 @@ trade_terminal = {
 	ai_build_at_chokepoint = no
 	ai_weight = {
 		weight = 15
+		modifier = {
+			factor = 5
+			solar_system = {
+				any_system_planet = {
+					habitable_planet = yes
+				}
+			}
+		}
 	}
 }
 
@@ -183,6 +210,14 @@ research_terminal = {
 	ai_build_at_chokepoint = no
 	ai_weight = {
 		weight = 15
+		modifier = {
+			factor = 0
+			solar_system = {
+				any_system_planet = {
+					habitable_planet = yes
+				}
+			}
+		}
 	}
 }
 
