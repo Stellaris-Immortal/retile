@@ -44,6 +44,9 @@ alloys_expenditure_planets = {
 	fraction = {
 		weight = 1
 	}
+	static_max = {
+		base = 2500 # cost of arcology project
+	}
 }
 
 alloys_expenditure_stations_expand = {
@@ -74,6 +77,10 @@ alloys_expenditure_stations = {
 	fraction = {
 		weight = 0.1
 	}
+	
+	static_max = {
+		base = 200
+	}
 }
 
 alloys_expenditure_ships_essential = {
@@ -101,7 +108,7 @@ alloys_expenditure_ships = {
 	}
 	
 	fraction = {
-		weight = 0.4
+		weight = 1
 		
 		# spend less alloys on ships if over capacity
 		modifier = {
@@ -111,13 +118,13 @@ alloys_expenditure_ships = {
 		
 		# spend more alloys on ships if capacity very low
 		modifier = {
-			factor = 2
+			factor = 1.5
 			used_naval_capacity_percent < .7
 		}
 		
 		# prioritize military if under threat or later in the game
 		modifier = {
-			factor = 2.5
+			factor = 2
 			OR = {
 				is_at_war = yes
 				highest_threat > 50
@@ -146,7 +153,7 @@ alloys_expenditure_ship_upgrades = {
 
 		# spend more on ship upgrades if at capacity
 		modifier = {
-			factor = 2
+			factor = 5
 			used_naval_capacity_percent >= 1.0
 		}
 	}
@@ -165,7 +172,10 @@ alloys_expenditure_starbases = {
 	
 	fraction = {
 		weight = 1
-	}	
+	}
+	static_max = {
+		base = 3500 # cost of citadel upgrade
+	}
 }
 
 alloys_expenditure_starbases_fallen_empires = {
@@ -310,11 +320,12 @@ alloys_expenditure_armies_threatened = {
 	category = armies
 	
 	potential = {
+		years_passed > 25
 		highest_threat > 20
 	}
 	
 	fraction = {
-		weight = 0.05
+		weight = 0.15
 	}	
 }
 ############
