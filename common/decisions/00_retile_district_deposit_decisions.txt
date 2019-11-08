@@ -56,18 +56,6 @@ decision_retile_deposit_spawningpool_remove = {
 	
 	ai_weight = {
 		weight = 0
-		modifier = {
-			weight = 10000
-			OR = {
-				owner = { country_uses_food = yes }
-				NAND = {
-					num_districts = { type = district_farming value > 0 }
-					num_districts = { type = district_farming_uncapped value > 0 }
-					num_districts = { type = district_hab_hydroponics value > 0 }
-					num_districts = { type = district_rw_farming value > 0 }
-				}
-			}
-		}
 	}	
 }
 
@@ -185,8 +173,8 @@ decision_retile_deposit_precinct = {
 	ai_weight = {
 		weight = 0
 		modifier = {
-			weight = 500
-			planet_crime > 15
+			weight = 100
+			planet_crime > 50
 		}
 	}
 }
@@ -306,19 +294,19 @@ decision_retile_deposit_preserve = {
 		weight = 0
 		modifier = {
 			weight = 1000
-			free_amenities > 200
-		}
-		modifier = {
-			weight = 2000
 			free_amenities > 300
 		}
 		modifier = {
-			weight = 3000
-			free_amenities > 400
+			weight = 5000
+			free_amenities > 500
 		}
 		modifier = {
-			weight = 4000
-			free_amenities > 500
+			weight = 10000
+			free_amenities > 700
+		}
+		modifier = {
+			weight = 50000
+			free_amenities > 900
 		}
 	}	
 }
@@ -376,11 +364,7 @@ decision_retile_deposit_assembly = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		modifier = {
-			weight = 10000
-			free_district_slots > 4
-		}
+		weight = 10000
 	}	
 }
 
@@ -398,10 +382,6 @@ decision_retile_deposit_assembly_remove = {
 	
 	ai_weight = {
 		weight = 0
-		modifier = {
-			weight = 10000
-			free_district_slots < 3
-		}
 	}	
 }
 

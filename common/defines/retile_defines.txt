@@ -46,6 +46,8 @@ NGameplay = {
 	EMPIRE_COHESION_LOSS_EXTERNAL_HYPERLANE		= 2			# 1		# Cohesion loss per hyperlane entrance into empire
 	EMPIRE_COHESION_LOSS_ENCLAVE				= 3			# 3		# Cohesion loss per enclave (cut off system) in empire
 	EMPIRE_COHESION_EMPIRE_SIZE_MULT			= 5			# 2		# Empire size is multiplied by 1 + this at 0% cohesion
+
+	ADVANCED_EMPIRE_ALWAYS_COLONIZE_HABITABILITY = 0.50 	# 0.70	# If habitability is at least this, always colonize planet in advanced empire's borders
 }
 
 NPop = {
@@ -63,7 +65,7 @@ NPop = {
 }
 
 NAI = {
-	AI_MIN_HABITABILITY_TO_COLONIZE = 0						# 0.35	# AI will avoid colonizing planets with habitability lower than this.
+	AI_MIN_HABITABILITY_TO_COLONIZE = -100					# 0.35	# AI will avoid colonizing planets with habitability lower than this.
 	MAX_TRUST = 200											# 100	# trust can never be more than this
 	MAX_EXPANSION_DISTANCE = 1								# 2		# Max number of jumps away AI will build starbases
 	MAX_EXPANSION_DISTANCE_SUBJECT = 1						# 2		# Max number of jumps away AI subjects will build starbases
@@ -166,7 +168,7 @@ NAI = {
 }
 
 NSpecies = {
-	HOMEWORLD_HABITABILITY				= 0.2		# Habitability on homeworld is increased by this value
+	HOMEWORLD_HABITABILITY				= 0.25		# Habitability on homeworld is increased by this value
 }
 
 #NEconomy = {
