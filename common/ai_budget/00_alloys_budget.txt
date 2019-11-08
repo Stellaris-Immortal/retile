@@ -44,43 +44,9 @@ alloys_expenditure_planets = {
 	fraction = {
 		weight = 1
 	}
-	static_max = {
-		base = 2500 # cost of arcology project
-	}
-}
-
-alloys_expenditure_stations_expand = {
-	resource = alloys 
-	type = expenditure
-	category = stations
-	
-	potential = {
-		exploitable_planets >= 1
-		#has_resource = { type = alloys amount > 300 }
-	}
-	
-	static_min = {
-		base = 100
-	}
-}
-
-alloys_expenditure_stations = {
-	resource = alloys
-	type = expenditure
-	category = stations
-	
-	potential = {
-		always = yes
-		#has_resource = { type = alloys amount > 1000 }
-	}
-	
-	fraction = {
-		weight = 0.1
-	}
-	
-	static_max = {
-		base = 200
-	}
+	#static_max = {
+	#	base = 2500 # cost of arcology project
+	#}
 }
 
 alloys_expenditure_ships_essential = {
@@ -104,7 +70,10 @@ alloys_expenditure_ships = {
 	
 	potential = {
 		#years_passed > 5
-		has_resource = { type = alloys amount > 500 }
+		OR = {
+			has_resource = { type = alloys amount > 500 }
+			used_naval_capacity_percent < 0.5
+		}
 	}
 	
 	fraction = {
@@ -119,7 +88,7 @@ alloys_expenditure_ships = {
 		# spend more alloys on ships if capacity very low
 		modifier = {
 			factor = 1.5
-			used_naval_capacity_percent < .7
+			used_naval_capacity_percent < 0.7
 		}
 		
 		# prioritize military if under threat or later in the game
@@ -136,6 +105,36 @@ alloys_expenditure_ships = {
 			factor = 0
 			has_monthly_income = { resource = energy value < 0 }
 		}
+	}
+}
+
+alloys_expenditure_stations_expand = {
+	resource = alloys 
+	type = expenditure
+	category = stations
+	
+	potential = {
+		exploitable_planets >= 1
+		has_resource = { type = alloys amount > 500 }
+	}
+	
+	static_min = {
+		base = 100
+	}
+}
+
+alloys_expenditure_stations = {
+	resource = alloys
+	type = expenditure
+	category = stations
+	
+	potential = {
+		always = yes
+		#has_resource = { type = alloys amount > 1000 }
+	}
+	
+	fraction = {
+		weight = 0.1
 	}
 }
 
@@ -171,11 +170,11 @@ alloys_expenditure_starbases = {
 	}
 	
 	fraction = {
-		weight = 1
+		weight = 0.25
 	}
-	static_max = {
-		base = 3500 # cost of citadel upgrade
-	}
+	#static_max = {
+	#	base = 3500 # cost of citadel upgrade
+	#}
 }
 
 alloys_expenditure_starbases_fallen_empires = {
@@ -353,10 +352,10 @@ alloys_upkeep_buffer = {	# Buffer, will not be spent
 	}
 }
 
-alloys_upkeep_country = {
+alloys_upkeep_ships = {
 	resource = alloys 
 	type = upkeep
-	category = country
+	category = ships
 	
 	potential = {
 		always = yes
