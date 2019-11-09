@@ -192,7 +192,7 @@ custodian = {
 			has_trait = trait_plantoid
 		}
 		modifier = { 
-			pop_environment_tolerance = 10
+			pop_environment_tolerance = 0.10
 			pop_growth_speed = 0.10
 		}
 	}
@@ -732,6 +732,42 @@ farmer = {
 			pop_growth_speed = 0.05
 		}
 	}
+	triggered_planet_modifier = {
+		potential = { 
+			has_trait = trait_plantoid
+			owner = { has_technology = tech_eco_simulation }
+		}
+		modifier = { 
+			pop_growth_speed = 0.01
+		}
+	}
+	triggered_planet_modifier = {
+		potential = { 
+			has_trait = trait_plantoid
+			owner = { has_technology = tech_gene_crops }
+		}
+		modifier = { 
+			pop_growth_speed = 0.01
+		}
+	}
+	triggered_planet_modifier = {
+		potential = { 
+			has_trait = trait_plantoid
+			owner = { has_technology = tech_nano_vitality_crops }
+		}
+		modifier = { 
+			pop_growth_speed = 0.01
+		}
+	}
+	triggered_planet_modifier = {
+		potential = { 
+			has_trait = trait_plantoid
+			owner = { has_technology = tech_nutrient_replication }
+		}
+		modifier = { 
+			pop_growth_speed = 0.02
+		}
+	}
 
 	triggered_planet_modifier = {
 		potential = {
@@ -763,7 +799,17 @@ farmer = {
 			OR = {
 				has_trait = trait_robot_harvesters
 				has_trait = trait_agrarian
+				has_trait = trait_plantoid
 			}
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_plantoid
+			planet = { habitability = { who = prev value < 0.8 } }
+		}
+		modifier = {
+			factor = 1.5
+			has_trait = trait_plantoid_fruiting
 		}
 		modifier = {
 			factor = 10

@@ -15,7 +15,10 @@ building_hydroponics_farm = {
 	
 	potential = {
 		exists = owner
-		owner = { country_uses_food = yes }
+		owner = { 
+			is_lithoid_empire = no
+			NOT = { has_country_flag = lithoid_subspecies }
+		}
 		NOT = { has_modifier = slave_colony }
 	}
 	
@@ -98,6 +101,12 @@ building_hydroponics_farm = {
 		modifier = {	# REALLY don't let food go negative
 			weight = 10000
 			owner = { has_monthly_income = { resource = food value < 5 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = prev value < 0.7 }
+			num_districts = { type = district_farming value < 1 }
 		}
 		modifier = {	# Free building slots when food is good
 			weight = -1000

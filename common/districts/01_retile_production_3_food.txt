@@ -112,10 +112,24 @@ district_farming = {
 	triggered_desc = {
 		trigger = {
 			exists = owner
-			owner = { is_gestalt = no }
+			owner = { 
+				is_gestalt = no
+				is_plantoid_empire = no
+			}
 			NOT = { has_deposit = retile_deposit_bioreactor }
 		}
 		text = job_farmer_effect_desc
+	}
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { 
+				is_gestalt = no
+				is_plantoid_empire = yes
+			}
+			NOT = { has_deposit = retile_deposit_bioreactor }
+		}
+		text = job_farmer_plantoid_effect_desc
 	}
 	triggered_desc = {
 		trigger = {
@@ -144,6 +158,11 @@ district_farming = {
 			OR = {
 				owner = { has_monthly_income = { resource = food value < 10 } }
 			}
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = prev value < 0.6 }
 		}
 		modifier = {	# avoid bad food worlds...
 			factor = 0.5
