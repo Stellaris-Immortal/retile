@@ -192,7 +192,7 @@ custodian = {
 			has_trait = trait_plantoid
 		}
 		modifier = { 
-			pop_environment_tolerance = 10
+			pop_environment_tolerance = 0.10
 			pop_growth_speed = 0.10
 		}
 	}
@@ -801,6 +801,15 @@ farmer = {
 				has_trait = trait_agrarian
 				has_trait = trait_plantoid
 			}
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_plantoid
+			planet = { habitability = { who = prev value < 0.8 } }
+		}
+		modifier = {
+			factor = 1.5
+			has_trait = trait_plantoid_fruiting
 		}
 		modifier = {
 			factor = 10
