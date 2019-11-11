@@ -76,10 +76,10 @@ habitat_0 = {
 					is_planet_class = pc_habitat
 				}
 			}
-			custom_tooltip = {
-				fail_text = "requires_no_orbital_station"
-				has_orbital_station = no
-			}
+			#custom_tooltip = {
+			#	fail_text = "requires_no_orbital_station"
+			#	has_orbital_station = no
+			#}
 
  			# balance for habitats
 			custom_tooltip = {
@@ -119,6 +119,16 @@ habitat_0 = {
 	on_build_cancel = {}
 	
 	on_build_complete = {
+		fromfrom.planet = {
+			if = {
+				limit = { has_research_station = yes }
+				random_research_station = { dismantle = yes }
+			}
+			if = {
+				limit = { has_mining_station = yes }
+				random_mining_station = { dismantle = yes }
+			}
+		}
 		spawn_planet = {
 			class = "pc_habitat"
 			location = fromfrom.planet
