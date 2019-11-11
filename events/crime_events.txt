@@ -29,16 +29,7 @@ planet_event = {
 			has_modifier = center_of_drug_trade
 			has_modifier = mob_rule
 		}
-		NOT = { has_planet_flag = criminal_underworld_disappeared } # Cooldown
 		planet_crime > 30
-	}
-
-	immediate = {
-		set_planet_flag = criminal_underworld_event_up
-	}
-
-	after = {
-		hidden_effect = { remove_planet_flag = criminal_underworld_event_up }
 	}
 
 	mean_time_to_happen = {
