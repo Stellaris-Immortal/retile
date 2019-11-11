@@ -1,0 +1,269 @@
+namespace = ecology
+
+# Pollution Generation
+planet_event = {
+	id = ecology.1
+	hide_window = yes
+	
+	trigger = {
+
+	}
+	
+	immediate = {
+		if = {
+			limit = { check_variable = { which = pollution value > 2000 } }
+			set_variable = { which = pollution value = 2000 }
+		} else_if = {
+			limit = { check_variable = { which = pollution value < 0 } }
+			set_variable = { which = pollution value = 0 }
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 360
+	}
+	
+	after = {
+		# Stage 10 Pollution
+		if = { 
+			limit = { free_amenities >= 1800 }
+			change_variable = { which = pollution value = 10 }
+			random_list = {
+				98 = { }
+				1 = { planet_event = { id = ecology.2 } }
+				1 = { planet_event = { id = ecology.3 } }
+			}
+		}
+		# Stage 9 Pollution
+		else_if = { 
+			limit = { free_amenities >= 1600 }
+			change_variable = { which = pollution value = 9 }
+			random_list = {
+				98 = { }
+				1 = { planet_event = { id = ecology.2 } }
+				1 = { planet_event = { id = ecology.3 } }
+			}
+		}
+		# Stage 8 Pollution
+		else_if = { 
+			limit = { free_amenities >= 1400 }
+			change_variable = { which = pollution value = 8 }
+			random_list = {
+				98 = { }
+				1 = { planet_event = { id = ecology.2 } }
+				1 = { planet_event = { id = ecology.3 } }
+			}
+		}
+		# Stage 7 Pollution
+		else_if = { 
+			limit = { free_amenities >= 1200 }
+			change_variable = { which = pollution value = 7 }
+			random_list = {
+				98 = { }
+				1 = { planet_event = { id = ecology.2 } }
+				1 = { planet_event = { id = ecology.3 } }
+			}
+		}
+		# Stage 6 Pollution
+		else_if = { 
+			limit = { free_amenities >= 1000 }
+			change_variable = { which = pollution value = 6 }
+			random_list = {
+				98 = { }
+				1 = { planet_event = { id = ecology.2 } }
+				1 = { planet_event = { id = ecology.3 } }
+			}
+		}
+		# Stage 5 Pollution
+		else_if = { 
+			limit = { free_amenities >= 800 }
+			change_variable = { which = pollution value = 5 }
+			random_list = {
+				98 = { }
+				1 = { planet_event = { id = ecology.2 } }
+				1 = { planet_event = { id = ecology.3 } }
+			}
+		}
+		# Stage 4 Pollution
+		else_if = { 
+			limit = { free_amenities >= 600 }
+			change_variable = { which = pollution value = 4 }
+			random_list = {
+				98 = { }
+				1 = { planet_event = { id = ecology.2 } }
+				1 = { planet_event = { id = ecology.3 } }
+			}
+		}
+		# Stage 3 Pollution
+		else_if = { 
+			limit = { free_amenities >= 400 }
+			change_variable = { which = pollution value = 3 }
+			random_list = {
+				98 = { }
+				1 = { planet_event = { id = ecology.2 } }
+				1 = { planet_event = { id = ecology.3 } }
+			}
+		}
+		# Stage 2 Pollution
+		else_if = { 
+			limit = { free_amenities >= 200 }
+			change_variable = { which = pollution value = 2 }
+			random_list = {
+				98 = { }
+				1 = { planet_event = { id = ecology.2 } }
+				1 = { planet_event = { id = ecology.3 } }
+			}
+		}
+		# Stage 1 Pollution
+		else_if = { 
+			limit = { free_amenities >= 0 }
+			change_variable = { which = pollution value = 1 }
+			random_list = {
+				100 = { }
+			}
+		}
+		# Stage 0 Pollution
+		else_if =
+			{ limit = { free_amenities < 0 }
+			change_variable = { which = pollution value = -1 }
+			random_list = {
+				100 = { }
+				1 = { }
+			}
+		}
+	}
+}
+
+# Drought
+planet_event = {
+	id = ecology.2
+	title = ecology.2.name
+	desc = ecology.2.desc
+	picture = GFX_evt_relic_world_street
+	show_sound = event_planetary_riot
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_owner = yes
+		NOT  = { 
+			is_planet_class = pc_city
+			is_planet_class = pc_relic
+			is_planet_class = pc_habitat
+			is_planet_class = pc_gas_giant
+			is_planet_class = pc_asteroid
+			is_planet_class = pc_ice_asteroid
+			is_planet_class = pc_rare_crystal_asteroid
+			is_planet_class = pc_molten
+			is_planet_class = pc_barren
+			is_planet_class = pc_barren_cold
+			is_planet_class = pc_toxic
+			is_planet_class = pc_frozen
+			is_planet_class = pc_machine
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_ringworld_habitable
+			has_modifier = drought
+			has_planet_flag = recent_ecology_event
+		}
+	}
+	
+	immediate = {
+		set_timed_planet_flag = {
+			flag = recent_ecology_event
+			days = 360
+		}
+		change_variable = { which = pollution value = -10 }
+	}
+	
+	option = {
+		name = ecology.2.a
+		add_modifier = { modifier = drought days = 360 }
+		add_planet_devastation = 10
+	}
+	
+	option = {
+		name = ecology.2.b
+		allow = {
+			owner = { resource_stockpile_compare = { resource = energy value >= 500 } }
+		}
+		owner = { add_resource = { energy = -500 } }
+		add_modifier = { modifier = drought days = 180 }
+		add_planet_devastation = 10
+	}
+	
+	option = {
+		name = ecology.2.c
+		allow = {
+			owner = { resource_stockpile_compare = { resource = energy value >= 1000 } }
+			solar_system.starbase = { has_starbase_building = climate_control }
+		}
+		owner = { add_resource = { energy = -1000 } }
+	}
+}
+
+# Drought
+planet_event = {
+	id = ecology.3
+	title = ecology.3.name
+	desc = ecology.3.desc
+	picture = GFX_evt_relic_world_street
+	show_sound = event_planetary_riot
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_owner = yes
+		NOT  = { 
+			is_planet_class = pc_city
+			is_planet_class = pc_relic
+			is_planet_class = pc_habitat
+			is_planet_class = pc_gas_giant
+			is_planet_class = pc_asteroid
+			is_planet_class = pc_ice_asteroid
+			is_planet_class = pc_rare_crystal_asteroid
+			is_planet_class = pc_molten
+			is_planet_class = pc_barren
+			is_planet_class = pc_barren_cold
+			is_planet_class = pc_toxic
+			is_planet_class = pc_frozen
+			is_planet_class = pc_machine
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_ringworld_habitable
+			has_modifier = flood
+			has_planet_flag = recent_ecology_event
+		}
+	}
+	
+	immediate = {
+		set_timed_planet_flag = {
+			flag = recent_ecology_event
+			days = 360
+		}
+		change_variable = { which = pollution value = -10 }
+	}
+	
+	option = {
+		name = ecology.3.a
+		add_modifier = { modifier = flood days = 360 }
+		add_planet_devastation = 10
+	}
+	
+	option = {
+		name = ecology.3.b
+		allow = {
+			owner = { resource_stockpile_compare = { resource = energy value >= 500 } }
+		}
+		owner = { add_resource = { energy = -500 } }
+		add_modifier = { modifier = flood days = 180 }
+		add_planet_devastation = 10
+	}
+	
+	option = {
+		name = ecology.3.c
+		allow = {
+			owner = { resource_stockpile_compare = { resource = energy value >= 1000 } }
+			solar_system.starbase = { has_starbase_building = climate_control }
+		}
+		owner = { add_resource = { energy = -1000 } }
+	}
+}
