@@ -2937,8 +2937,14 @@ d_fossil_record = {
 	is_for_colonizeable = yes
 	category = deposit_cat_rare
 	
+	resources = {
+		category = planet_deposits
+		produces = {
+			society_research = 8
+		}
+	}
+	
 	planet_modifier = {
-		society_research = 8
 		planet_jobs_society_research_produces_mult = 0.10
 	}
 	
@@ -2948,6 +2954,7 @@ d_fossil_record = {
 			is_dry = yes
 			is_cold = yes
 		}
+		NOT = { is_planet_class = pc_relic }
 	}
 	
 	drop_weight = {
@@ -2957,7 +2964,14 @@ d_fossil_record = {
 			OR = {
 				is_star_class = sc_m
 				is_star_class = sc_m_giant
+				is_star_class = sc_a
+				is_star_class = sc_b
+				is_star_class = sc_t
 			}
+		}
+		modifier = {
+			factor = 2
+			is_dry = yes
 		}
 	}
 }
@@ -2966,8 +2980,14 @@ d_archaeological_record = {
 	is_for_colonizeable = yes
 	category = deposit_cat_rare
 	
+	resources = {
+		category = planet_deposits
+		produces = {
+			society_research = 8
+		}
+	}
+	
 	planet_modifier = {
-		society_research = 8
 		planet_jobs_society_research_produces_mult = 0.10
 	}
 	
@@ -2976,6 +2996,7 @@ d_archaeological_record = {
 			is_wet = yes
 			is_dry = yes
 			is_cold = yes
+			NOT = { is_planet_class = pc_relic }
 		}
 	}
 	
@@ -2983,7 +3004,18 @@ d_archaeological_record = {
 		weight = @high_rare
 		modifier = {
 			factor = 2
-			is_planet_class = pc_nuked
+			OR = {
+				is_star_class = sc_g
+				is_star_class = sc_k
+				is_star_class = sc_f
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_planet_class = pc_nuked
+				is_wet = yes
+			}
 		}
 	}
 }
