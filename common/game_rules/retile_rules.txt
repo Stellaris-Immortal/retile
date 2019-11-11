@@ -5,6 +5,25 @@ can_support_branch_offices = {
 	#NOT = { has_authority = auth_corporate }
 }
 
+# This = pop
+can_resettle_pop = {
+	IF = { #Done as an IF/ELSE so the tooltip isn't hideous and unreadable
+		limit = { is_shackled_robot = yes }
+		is_shackled_robot = yes
+	}
+	ELSE = {
+		owner = {
+			OR = {
+				has_policy_flag = resettlement_allowed
+				is_gestalt = yes
+			}
+		}
+	}
+	planet = {
+		num_pops > 1
+	}
+}
+
 # This = planet
 # Root = country
 can_build_branch_office_on_planet = {
