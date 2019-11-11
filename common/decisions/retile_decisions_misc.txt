@@ -17,10 +17,10 @@ decision_retile_abandon_planet = {
 	effect = {
 		custom_tooltip = decision_retile_abandon_planet_effects
 		hidden_effect = {
-			random_pop = { retile_abandon_migrate_outside_border = yes }
-			if = {
+			random_pop = { pop_event = { id = retile_pop.1001 } }	# become refugee
+			while = {
 				limit = { num_pops > 0 }
-				every_pop = { retile_abandon_migrate = yes }
+				random_pop = { pop_event = { id = retile_pop.1000 } }	# migrate inside border, or become refugee
 			}
 			retile_abandon_infrastructure = yes
 		}
