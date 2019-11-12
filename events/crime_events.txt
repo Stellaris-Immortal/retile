@@ -1327,6 +1327,8 @@ planet_event = {
 	immediate = {
 		random_owned_pop = { kill_pop = yes }
 		random_owned_pop = { kill_pop = yes }
+		add_deposit = retile_damaged_infrastructure
+		add_deposit = retile_damaged_infrastructure
 		add_planet_devastation = 20
 	}
 	
@@ -1610,11 +1612,10 @@ planet_event = {
 	}
 	
 	option = {
-		name = crime.103.b
+		name = crime.303.b
 		allow = {
 			any_pop = { has_job = soldier }
 		}
-		sector = { leader = { kill_leader = { show_notification = no } } }
 		owner = { set_country_flag = gangsters_killed_governor }
 		add_modifier = { modifier = "martial_law" days = 3600 }
 	}
