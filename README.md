@@ -7,7 +7,9 @@ Stellaris Immortal is a total rebuild mod of Stellaris, focusing on speed, balan
 Have an idea? Great! Head over to our [discord](https://discord.gg/Jty9qk8) to discuss it with the devs. You can also check out the issues page on [Github](https://github.com/gebnar/retile/issues) and see if we've already talked about this!  
 
 ### Submitting pull requests
-If you aren't a member of the mod team, and want to contribute, that's awesome (and easy!). Just fork the repository (there should be a little button on the top right saying "fork"), clone it to your machine, make all the changes you want, commit and push back to GitHub. Then, go back to our repository, click the "submit pull request" buttton (on the right, under the number of commits). Clikc "compare across forks", choose "master" as your base (that is, where you want your changes to end up), and choose your fork as the head repository. Select the branch on your fork with your changes, and create the PR! 
+If you aren't a member of the mod team, and want to contribute, that's awesome (and easy!). Just fork the repository (there should be a little button on the top right saying "fork"), clone it to your machine, make all the changes you want, commit and push back to GitHub.
+
+Then, go back to our repository, click the "submit pull request" buttton (on the right, under the number of commits). Clikc "compare across forks", choose "master" as your base (that is, where you want your changes to end up), and choose your fork as the head repository. Select the branch on your fork with your changes, and create the PR! 
 
 ## Submitting bug reports 
  
