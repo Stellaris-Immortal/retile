@@ -625,11 +625,11 @@ planet_event = {
 			add_building = building_capital
 			break = yes
 		}
-		if = {
-			limit = { has_building = building_deployment_post }
-			remove_building = building_deployment_post
-			add_building = building_machine_capital
-		}
+		#if = {
+		#	limit = { has_building = building_deployment_post }
+		#	remove_building = building_deployment_post
+		#	add_building = building_machine_capital
+		#}
 		if = {
 			limit = { has_building = building_hive_colony }
 			remove_building = building_hive_colony
@@ -656,7 +656,7 @@ planet_event = {
 			
 			if = {	# +2 = 3
 				limit = { owner = { has_authority = auth_machine_intelligence } }
-				add_district = district_nexus
+				#add_district = district_nexus
 			}
 			else_if = {
 				limit = { owner = { has_authority = auth_hive_mind } }
@@ -695,7 +695,7 @@ planet_event = {
 			
 			if = {	# +3 = 5
 				limit = { owner = { has_authority = auth_machine_intelligence } }
-				add_district = district_nexus
+				#add_district = district_nexus
 				add_district = district_generator			
 			}
 			else_if = {

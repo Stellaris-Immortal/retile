@@ -1,7 +1,7 @@
 clear_non_district_deposits = { # planet scope
 	every_deposit = {
 		if = {
-			limit = { NAND = {
+			limit = { OR = {
 				is_deposit_type = retile_deposit_spawningpool
 				is_deposit_type = retile_deposit_bioreactor
 				is_deposit_type = retile_deposit_precinct
@@ -14,6 +14,8 @@ clear_non_district_deposits = { # planet scope
 				is_deposit_type = retile_deposit_slave
 				is_deposit_type = retile_deposit_alignment
 			} }
+			# do nothing...
+		} else = {
 			remove_deposit = yes
 		}
 	}

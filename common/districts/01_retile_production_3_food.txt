@@ -162,7 +162,7 @@ district_farming = {
 		modifier = {	# Plantoid Fix Habitability
 			weight = 10000
 			owner = { is_plantoid_empire = yes }
-			habitability = { who = prev value < 0.6 }
+			habitability = { who = owner_main_species value < 0.6 }
 		}
 		modifier = {	# avoid bad food worlds...
 			factor = 0.5
@@ -317,6 +317,11 @@ district_farming_uncapped = {
 				owner = { has_monthly_income = { resource = food value < 5 } }
 			}
 		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner_main_species value < 0.6 }
+		}
 		modifier = {	# avoid bad food worlds...
 			factor = 0.5
 			retile_template_good_food = no
@@ -470,6 +475,11 @@ district_hab_hydroponics = {
 			factor = 0.5
 			retile_template_good_food = no
 		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner_main_species value < 0.6 }
+		}
 		modifier = {	# avoid urban worlds...
 			factor = 0.5
 			retile_urban_development = yes
@@ -613,6 +623,11 @@ district_rw_farming = {
 			OR = {
 				owner = { has_monthly_income = { resource = food value < 5 } }
 			}
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner_main_species value < 0.6 }
 		}
 		modifier = {	# avoid bad food worlds...
 			factor = 0.5

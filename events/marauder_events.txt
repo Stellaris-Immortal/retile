@@ -7577,8 +7577,10 @@ country_event = {
 				}
 				create_pop = { species = root.species }
 			}
-			while = {
-				limit = { free_housing > 0 }
+			if = {
+				limit = { free_housing >= 3 }
+				create_pop = { species = root.species }
+				create_pop = { species = root.species }
 				create_pop = { species = root.species }
 			}
 			
