@@ -135,3 +135,72 @@ country_event = {
 		retile_apply_growth_malus = yes
 	}
 }
+
+pop_event = { # retile_abandon_migrate
+	id = retile_pop.1000
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = yes
+	}
+	
+	immediate = {
+		random_list = {
+			50 = { # refugee event
+				modifier = {
+					factor = 0
+					is_valid_refugee_pop = no
+				}
+				save_event_target_as = refugee_pop #Must be saved for refugee_pop_effect to work
+				refugee_pop_effect = yes					
+			}
+			50 = { # resettle inside border
+				modifier = {
+					factor = 0
+					NOT = { owner = { any_planet_within_border = {
+						NOT = { is_same_value = root.planet }
+						free_housing > 0
+					} } }
+				}
+				owner = { random_owned_planet = {
+					limit = { free_housing > 0 }
+					resettle_pop = { pop = root planet = this }
+				} }
+			}
+			50 = {
+				modifier = {
+					factor = 0
+					NAND = {
+						is_valid_refugee_pop = no
+						NOT = { owner = { any_planet_within_border = {
+							NOT = { is_same_value = root.planet }
+							free_housing > 0
+						} } }
+					}
+				}
+				kill_pop = yes
+			}
+		}
+	}
+}
+
+pop_event = { # retile_abandon_migrate_outside_border
+	id = retile_pop.1001
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = yes
+	}
+	
+	immediate = {
+		if = {
+			limit = { is_valid_refugee_pop = yes }
+			save_event_target_as = refugee_pop #Must be saved for refugee_pop_effect to work
+			refugee_pop_effect = yes
+		} else = {
+			kill_pop = yes
+		}
+	}
+}

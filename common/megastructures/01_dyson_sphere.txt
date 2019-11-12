@@ -95,10 +95,6 @@ dyson_sphere_0 = {
 				fail_text = "requires_no_anomaly"
 				NOT = { has_anomaly = yes }
 			}
-			custom_tooltip = {
-				fail_text = "requires_no_orbital_station"
-				has_orbital_station = no
-			}
 		}
 	}
 	
@@ -126,6 +122,16 @@ dyson_sphere_0 = {
 	on_build_start = {}
 	on_build_cancel = {}
 	on_build_complete = {
+		fromfrom.planet = {
+			if = {
+				limit = { has_research_station = yes }
+				random_research_station = { dismantle = yes }
+			}
+			if = {
+				limit = { has_mining_station = yes }
+				random_mining_station = { dismantle = yes }
+			}
+		}
 		set_star_flag = dyson_sphere_built
 		from = { set_country_flag = built_dyson_sphere }
 	}

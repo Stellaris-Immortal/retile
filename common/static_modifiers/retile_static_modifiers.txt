@@ -200,7 +200,7 @@ slow_rotation = {
 }
 
 fast_rotation = {
-	icon = "gfx/interface/icons/planet_modifiers/pm_slow_rotation.dds"
+	icon = "gfx/interface/icons/planet_modifiers/pm_fast_rotation.dds"
 	pop_environment_tolerance = -0.10
 	icon_frame = 3
 }
@@ -214,6 +214,13 @@ biodiverse = {
 bioscarce = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_biodiverse.dds"
 	planet_amenities_mult = 0.2
+	icon_frame = 1
+}
+
+ring_system = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_ring_system.dds"
+	pop_happiness = 0.05
+	planet_jobs_engineering_research_produces_mult = 0.10
 	icon_frame = 1
 }
 
@@ -240,4 +247,29 @@ recently_terraformed_3 = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_recently_terraformed_1.dds"
 	pop_environment_tolerance = 0.10
 	icon_frame = 1
+}
+
+drought = { # Hot x2, Wet x1, Cold x0, No Ecu/Relic
+	icon = "gfx/interface/icons/planet_modifiers/pm_drought.dds"
+	planet_jobs_food_produces_mult = -0.20
+	pop_growth_speed = -0.10
+	icon_frame = 3
+}
+
+flood = { # Hot x0, Wet x2, Cold x1, No Ecu/Relic
+	icon = "gfx/interface/icons/planet_modifiers/pm_flood.dds"
+	planet_max_districts_add = -2
+	icon_frame = 3
+}
+
+heat_wave = { # Hot x1, Wet x1, Cold x1
+	icon = "gfx/interface/icons/planet_modifiers/pm_heat_wave.dds"
+	pop_growth_speed = -0.20
+	icon_frame = 3
+}
+
+cold_wave = { # Hot x0, Wet x1, Cold x2
+	icon = "gfx/interface/icons/planet_modifiers/pm_cold_wave.dds"
+	pop_environment_tolerance = -0.10
+	icon_frame = 3
 }

@@ -1,0 +1,32 @@
+# Abandon a colony
+decision_retile_abandon_planet = {
+	owned_planets_only = yes
+
+	enactment_time = 360
+	
+	potential = {
+		is_under_colonization = no
+		num_pops > 0
+	}
+
+	allow = {
+		always = yes
+		# probaby needs a few more limits, to prevent abuse...
+	}
+	
+	effect = {
+		custom_tooltip = decision_retile_abandon_planet_effects
+		hidden_effect = {
+			random_pop = { pop_event = { id = retile_pop.1001 } }	# become refugee
+			while = {
+				limit = { num_pops > 0 }
+				random_pop = { pop_event = { id = retile_pop.1000 } }	# migrate inside border, or become refugee
+			}
+			retile_abandon_infrastructure = yes
+		}
+	}
+	
+	ai_weight = {
+		weight = -1000
+	}
+}
