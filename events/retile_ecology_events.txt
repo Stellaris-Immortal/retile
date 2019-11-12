@@ -139,7 +139,7 @@ planet_event = {
 	id = ecology.2
 	title = ecology.2.name
 	desc = ecology.2.desc
-	picture = GFX_evt_news_room
+	picture = GFX_evt_ecology_event
 	show_sound = event_planetary_riot
 	
 	is_triggered_only = yes
@@ -206,7 +206,7 @@ planet_event = {
 	id = ecology.3
 	title = ecology.3.name
 	desc = ecology.3.desc
-	picture = GFX_evt_news_room
+	picture = GFX_evt_ecology_event
 	show_sound = event_planetary_riot
 	
 	is_triggered_only = yes
@@ -260,6 +260,136 @@ planet_event = {
 	
 	option = {
 		name = ecology.3.c
+		allow = {
+			owner = { resource_stockpile_compare = { resource = energy value >= 1000 } }
+			solar_system.starbase = { has_starbase_building = climate_control }
+		}
+		owner = { add_resource = { energy = -1000 } }
+	}
+}
+
+# Heat Wave
+planet_event = {
+	id = ecology.4
+	title = ecology.4.name
+	desc = ecology.4.desc
+	picture = GFX_evt_ecology_event
+	show_sound = event_planetary_riot
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_owner = yes
+		NOT  = { 
+			is_planet_class = pc_habitat
+			is_planet_class = pc_gas_giant
+			is_planet_class = pc_asteroid
+			is_planet_class = pc_ice_asteroid
+			is_planet_class = pc_rare_crystal_asteroid
+			is_planet_class = pc_molten
+			is_planet_class = pc_barren
+			is_planet_class = pc_barren_cold
+			is_planet_class = pc_toxic
+			is_planet_class = pc_frozen
+			is_planet_class = pc_machine
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_ringworld_habitable
+			has_modifier = heat_wave
+			has_planet_flag = recent_ecology_event
+		}
+	}
+	
+	immediate = {
+		set_timed_planet_flag = {
+			flag = recent_ecology_event
+			days = 360
+		}
+		change_variable = { which = pollution value = -10 }
+	}
+	
+	option = {
+		name = ecology.4.a
+		add_modifier = { modifier = heat_wave days = 360 }
+		add_planet_devastation = 10
+	}
+	
+	option = {
+		name = ecology.4.b
+		allow = {
+			owner = { resource_stockpile_compare = { resource = energy value >= 500 } }
+		}
+		owner = { add_resource = { energy = -500 } }
+		add_modifier = { modifier = heat_wave days = 180 }
+		add_planet_devastation = 10
+	}
+	
+	option = {
+		name = ecology.4.c
+		allow = {
+			owner = { resource_stockpile_compare = { resource = energy value >= 1000 } }
+			solar_system.starbase = { has_starbase_building = climate_control }
+		}
+		owner = { add_resource = { energy = -1000 } }
+	}
+}
+
+# Heat Wave
+planet_event = {
+	id = ecology.5
+	title = ecology.5.name
+	desc = ecology.5.desc
+	picture = GFX_evt_ecology_event
+	show_sound = event_planetary_riot
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_owner = yes
+		NOT  = { 
+			is_planet_class = pc_habitat
+			is_planet_class = pc_gas_giant
+			is_planet_class = pc_asteroid
+			is_planet_class = pc_ice_asteroid
+			is_planet_class = pc_rare_crystal_asteroid
+			is_planet_class = pc_molten
+			is_planet_class = pc_barren
+			is_planet_class = pc_barren_cold
+			is_planet_class = pc_toxic
+			is_planet_class = pc_frozen
+			is_planet_class = pc_machine
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_ringworld_habitable
+			has_modifier = cold_wave
+			has_planet_flag = recent_ecology_event
+		}
+	}
+	
+	immediate = {
+		set_timed_planet_flag = {
+			flag = recent_ecology_event
+			days = 360
+		}
+		change_variable = { which = pollution value = -10 }
+	}
+	
+	option = {
+		name = ecology.5.a
+		add_modifier = { modifier = cold_wave days = 360 }
+		add_planet_devastation = 10
+	}
+	
+	option = {
+		name = ecology.5.b
+		allow = {
+			owner = { resource_stockpile_compare = { resource = energy value >= 500 } }
+		}
+		owner = { add_resource = { energy = -500 } }
+		add_modifier = { modifier = cold_wave days = 180 }
+		add_planet_devastation = 10
+	}
+	
+	option = {
+		name = ecology.5.c
 		allow = {
 			owner = { resource_stockpile_compare = { resource = energy value >= 1000 } }
 			solar_system.starbase = { has_starbase_building = climate_control }
