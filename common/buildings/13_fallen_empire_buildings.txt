@@ -94,6 +94,7 @@ building_dimensional_fabricator = {
 		owner = { OR = {
 			is_fallen_empire = yes
 			#has_technology = retile_new_fe_tech
+			check_variable = { which = dimensional_fabricator_build_count value > 0 }
 		} }
 	}
 	
@@ -169,6 +170,18 @@ building_dimensional_fabricator = {
 			minerals = 500
 		}
 	}
+
+	on_queued = {
+		owner = {
+			subtract_variable = { which = dimensional_fabricator_build_count value = 1 }
+		}
+	}
+
+	on_unqueued = {
+		owner = {
+			change_variable = { which = dimensional_fabricator_build_count value = 1 }
+		}
+	}
 }
 
 # Gives Custodians rural production (+4/+10/+10)
@@ -185,6 +198,7 @@ building_nano_forge = {
 		owner = { OR = {
 			is_fallen_empire = yes
 			#has_technology = retile_new_fe_tech
+			check_variable = { which = nano_forge_build_count value > 0 }
 		} }
 	}
 	
@@ -233,6 +247,18 @@ building_nano_forge = {
 			energy = 50
 		}
 	}
+	
+	on_queued = {
+		owner = {
+			subtract_variable = { which = nano_forge_build_count value = 1 }
+		}
+	}
+
+	on_unqueued = {
+		owner = {
+			change_variable = { which = nano_forge_build_count value = 1 }
+		}
+	}
 }
 
 # Gives Custodians rural production (+4/+10/+10)
@@ -249,6 +275,7 @@ building_class_4_singularity = {
 		owner = { OR = {
 			is_fallen_empire = yes
 			#has_technology = retile_new_fe_tech
+			check_variable = { which = class_4_singularity_build_count value > 0 }
 		} }
 	}
 	
@@ -297,6 +324,18 @@ building_class_4_singularity = {
 			energy = 50
 		}
 	}
+	
+	on_queued = {
+		owner = {
+			subtract_variable = { which = class_4_singularity_build_count value = 1 }
+		}
+	}
+
+	on_unqueued = {
+		owner = {
+			change_variable = { which = class_4_singularity_build_count value = 1 }
+		}
+	}
 }
 
 # Gives Custodians rural production (+4/+10/+10)
@@ -314,6 +353,7 @@ building_empyrean_shrine = { # Spiritualist
 		owner = { OR = {
 			is_fallen_empire = yes
 			#has_technology = retile_new_fe_tech
+			check_variable = { which = empyrean_shrine_build_count value > 0 }
 		} }
 	}
 	
@@ -360,6 +400,17 @@ building_empyrean_shrine = { # Spiritualist
 		}
 		upkeep = {
 			energy = 50
+		}
+	}
+	on_queued = {
+		owner = {
+			subtract_variable = { which = empyrean_shrine_build_count value = 1 }
+		}
+	}
+
+	on_unqueued = {
+		owner = {
+			change_variable = { which = empyrean_shrine_build_count value = 1 }
 		}
 	}
 }
@@ -506,6 +557,7 @@ building_fe_dome = {
 		owner = { OR = {
 			is_fallen_empire = yes
 			#has_technology = retile_new_fe_tech
+			check_variable = { which = skydome_build_count value > 0 }
 		} }
 	}
 	
@@ -553,6 +605,18 @@ building_fe_dome = {
 		}
 		upkeep = {
 			energy = 50
+		}
+	}
+	
+	on_queued = {
+		owner = {
+			subtract_variable = { which = skydome_build_count value = 1 }
+		}
+	}
+
+	on_unqueued = {
+		owner = {
+			change_variable = { which = skydome_build_count value = 1 }
 		}
 	}
 }
