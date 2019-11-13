@@ -56,7 +56,10 @@ district_city = {
 	triggered_planet_modifier = {						# Basic Jobs
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -67,12 +70,26 @@ district_city = {
 	triggered_planet_modifier = {						# Hive Jobs
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
 			job_brain_drone_add = 1
 			job_artisan_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {						# Fallen Empire Housing
+		potential = {
+			exists = owner
+			owner = {
+				is_fallen_empire = yes
+			}
+		}
+		modifier = {
+			planet_housing_add = 4
 		}
 	}
 	
@@ -168,7 +185,10 @@ district_hab_housing = {
 	triggered_planet_modifier = {						# Basic Jobs
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -179,7 +199,10 @@ district_hab_housing = {
 	triggered_planet_modifier = {						# Hive Jobs
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -187,6 +210,18 @@ district_hab_housing = {
 			job_artisan_drone_add = 1
 		}
 	}
+	triggered_planet_modifier = {						# Fallen Empire Housing
+		potential = {
+			exists = owner
+			owner = {
+				is_fallen_empire = yes
+			}
+		}
+		modifier = {
+			planet_housing_add = 4
+		}
+	}
+	
 	
 	ai_weight = {
 		weight = 0
@@ -286,7 +321,10 @@ district_rw_city = {
 	triggered_planet_modifier = {						# Basic Jobs
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -297,7 +335,10 @@ district_rw_city = {
 	triggered_planet_modifier = {						# Hive Jobs
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				is_hive_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -305,6 +346,18 @@ district_rw_city = {
 			job_artisan_drone_add = 1
 		}
 	}
+	triggered_planet_modifier = {						# Fallen Empire Housing
+		potential = {
+			exists = owner
+			owner = {
+				is_fallen_empire = yes
+			}
+		}
+		modifier = {
+			planet_housing_add = 4
+		}
+	}
+	
 	
 	ai_weight = {
 		weight = 0

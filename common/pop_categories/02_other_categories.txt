@@ -1358,22 +1358,22 @@ corrupt_drone = {
 }
 
 precursor = {
-	rank = 3
+	rank = 2
 	clothes_texture_index = 1
 	
 	assign_to_pop = {
-		always = no
-	#	exists = owner
-	#	is_same_species = owner
-	#	owner = { 
-	#		OR = {
-	#			is_country_type = fallen_empire 
-	#			is_country_type = awakened_fallen_empire
-	#		}
-	#	}
+		#always = no
+		exists = owner
+		is_same_species = owner
+		owner = { 
+			OR = {
+				is_country_type = fallen_empire 
+				is_country_type = awakened_fallen_empire
+			}
+		}
 	}
 	weight = {
-		weight = 100
+		weight = 2
 
 		# crisis purge
 		modifier = {

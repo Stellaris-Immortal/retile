@@ -18,7 +18,7 @@ building_ancient_palace = {
 	}
 	
 	triggered_planet_modifier = {
-		planet_housing_add = 4
+		planet_housing_add = 10
 		planet_max_buildings_add = 3
 		planet_max_branch_office_buildings_add = 3
 	}
@@ -30,8 +30,7 @@ building_ancient_palace = {
 		}
 		modifier = {
 			job_head_researcher_add = 1
-			job_researcher_add = 3
-			#job_roboticist_add = 1
+			job_custodian_add = 4
 		}
 	}
 
@@ -42,7 +41,7 @@ building_ancient_palace = {
 		}
 		modifier = {
 			job_high_priest_add = 1
-			job_researcher_add = 3
+			job_fe_custodian_add = 4
 		}
 	}
 
@@ -53,7 +52,7 @@ building_ancient_palace = {
 		}
 		modifier = {
 			job_diplomat_add = 1
-			job_researcher_add = 3
+			job_custodian_add = 4
 		}
 	}
 
@@ -64,7 +63,7 @@ building_ancient_palace = {
 		}
 		modifier = {
 			job_strategos_add = 1
-			job_researcher_add = 3
+			job_custodian_add = 4
 		}
 	}
 
@@ -131,6 +130,17 @@ building_dimensional_fabricator = {
 		job_custodian_add = 4
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_custodian_add = -4
+			job_fe_custodian_add = 4
+		}
+	}
+	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -196,6 +206,17 @@ building_nano_forge = {
 		job_custodian_add = 4
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_custodian_add = -4
+			job_fe_custodian_add = 4
+		}
+	}
+	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -246,6 +267,17 @@ building_class_4_singularity = {
 		job_custodian_add = 4
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_custodian_add = -4
+			job_fe_custodian_add = 4
+		}
+	}
+	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -297,6 +329,17 @@ building_empyrean_shrine = { # Spiritualist
 		job_custodian_add = 4
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_custodian_add = -4
+			job_fe_custodian_add = 4
+		}
+	}
+	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -347,6 +390,17 @@ building_master_archive = { # Materialist
 		job_custodian_add = 4
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_custodian_add = -4
+			job_fe_custodian_add = 4
+		}
+	}
+	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -397,6 +451,17 @@ building_fe_xeno_zoo = { # Xenophile
 		job_custodian_add = 4
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_custodian_add = -4
+			job_fe_custodian_add = 4
+		}
+	}
+	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -445,9 +510,20 @@ building_fe_dome = {
 	planet_modifier = {
 		planet_housing_add = 4
 		job_custodian_add = 4
-		max_districts_add = 4
+		planet_max_districts_add = 4
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_fallen_empire_spiritualist = yes }
+		}
+		modifier = {
+			job_custodian_add = -4
+			job_fe_custodian_add = 4
+		}
+	}
+	
 	resources = {
 		category = planet_buildings
 		cost = {

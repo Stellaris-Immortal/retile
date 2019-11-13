@@ -262,6 +262,19 @@ custodian = {
 	}
 
 	triggered_planet_modifier = {
+		potential = { 
+			owner = {
+				is_fallen_empire = yes
+				is_plantoid_empire = yes
+			}
+		}
+		modifier = { 
+			pop_environment_tolerance = 0.10
+			#pop_growth_speed = 0.10
+		}
+	}
+
+	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_civic = civic_warrior_culture }
@@ -289,6 +302,11 @@ custodian = {
 		modifier = {
 			factor = 20
 			has_trait = trait_nerve_stapled
+		}
+		modifier = {
+			factor = 1000
+			owner = { is_fallen_empire = yes }
+			NOT = { is_same_species = owner }
 		}
 		modifier = {
 			factor = 2
