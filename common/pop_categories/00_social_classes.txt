@@ -659,7 +659,17 @@ worker = {
 	clothes_texture_index = 2
 	
 	change_job_threshold = 1.1
+	keep_from_former_job = yes
 	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		modifier = {
+			pop_defense_armies_add = 2
+		}
+	}
 	triggered_planet_modifier = {
 		potential = {
 			can_generate_trade_value = yes
