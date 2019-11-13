@@ -1,0 +1,368 @@
+fe_hedonist = {
+	category = precursor
+	is_capped_by_modifier = no
+	building_icon = building_hyper_entertainment_forum
+	clothes_texture_index = 2
+		
+	possible_pre_triggers = {
+		has_owner = yes
+	}
+
+	possible = {
+		owner = { 	
+			is_fallen_empire = yes
+			is_fallen_empire_spiritualist = no 
+			is_fallen_machine_empire = no
+		}
+		is_same_species = owner
+		NOR = {
+			has_trait = trait_mechanical
+			has_trait = trait_machine_unit
+		}
+	}
+	
+	resources = {
+		category = planet_jobs
+		produces = {
+			unity = 5
+			physics_research = 5
+			engineering_research = 5
+			society_research = 5
+			consumer_goods = 5
+			alloys = 5
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { has_building = building_class_4_singularity } }
+			physics_research = 10
+			engineering_research = 10
+			society_research = 10
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { OR = {
+				has_building = building_empyrean_shrine
+				has_building = building_master_archive
+				has_building = building_fe_xeno_zoo
+			} } }
+			unity = 10
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { has_building = building_dimensional_fabricator } }
+			consumer_goods = 10
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { has_building = building_nano_forge } }
+			alloys = 10
+		}
+	}
+	planet_modifier = {
+		planet_amenities_add = 25
+		planet_crime_add = -10
+	}
+	pop_modifier = {
+		pop_defense_armies_add = 1
+	}
+	
+	weight = {
+		weight = 1000
+
+		# crisis purge
+		modifier = {
+			factor = 0.01
+			planet.controller = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+				}
+			}
+		}
+	}
+}
+
+fe_ascetic = {
+	category = precursor
+	is_capped_by_modifier = no
+	icon = fe_hedonist
+	building_icon = building_hyper_entertainment_forum
+	clothes_texture_index = 2
+		
+	possible_pre_triggers = {
+		has_owner = yes
+	}
+
+	possible = {
+		owner = { 	
+			is_fallen_empire_spiritualist = yes
+		}
+		is_same_species = owner
+		NOR = {
+			has_trait = trait_mechanical
+			has_trait = trait_machine_unit
+		}
+	}
+	
+	resources = {
+		category = planet_jobs
+		produces = {
+			unity = 5
+			physics_research = 5
+			engineering_research = 5
+			society_research = 5
+			consumer_goods = 5
+			alloys = 5
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { has_building = building_class_4_singularity } }
+			physics_research = 10
+			engineering_research = 10
+			society_research = 10
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { OR = {
+				has_building = building_empyrean_shrine
+				has_building = building_master_archive
+				has_building = building_fe_xeno_zoo
+			} } }
+			unity = 10
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { has_building = building_dimensional_fabricator } }
+			consumer_goods = 10
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { has_building = building_nano_forge } }
+			alloys = 10
+		}
+	}
+	planet_modifier = {
+		planet_amenities_add = 25
+		planet_crime_add = -10
+	}
+	pop_modifier = {
+		pop_defense_armies_add = 1
+	}
+	
+	weight = {
+		weight = 1000
+
+		# crisis purge
+		modifier = {
+			factor = 0.01
+			planet.controller = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+				}
+			}
+		}
+	}
+}
+
+fe_xeno_ward = {
+	category = xeno_ward
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+		
+	possible_pre_triggers = {
+		has_owner = yes
+	}
+
+	possible = {
+		owner = { 	
+			is_fallen_empire = yes
+			is_xenophile = yes
+		}
+		NOT = { is_same_species = owner }
+		is_robot_pop = no
+		planet = {
+			has_building = building_fe_xeno_zoo
+		}
+	}
+	
+	resources = {
+		category = planet_jobs
+		produces = {
+			unity = 50
+		}
+	}
+	
+	weight = {
+		weight = 10000
+
+		# crisis purge
+		modifier = {
+			factor = 0.01
+			planet.controller = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+				}
+			}
+		}
+	}
+}
+
+fe_custodian = {
+	icon = custodian
+	category = precursor
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_residence
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = fe_custodian
+			retile_job_seeking = yes
+		}
+		worker_job_check_trigger = yes
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = -50
+	}
+
+	resources = {
+		category = planet_custodians
+		produces = {	### Fallen Empire buildings
+			trigger = { 
+				planet = {
+					has_building = building_dimensional_fabricator
+				} 
+			}
+			food = 4
+			energy = 10
+			minerals = 10
+		}
+		produces = {
+			trigger = { 
+				planet = {
+					has_building = building_nano_forge
+				} 
+			}
+			food = 4
+			energy = 10
+			minerals = 10
+		}
+		produces = {
+			trigger = { 
+				planet = {
+					has_building = building_class_4_singularity
+				} 
+			}
+			food = 4
+			energy = 10
+			minerals = 10
+		}
+		produces = {
+			trigger = { 
+				planet = {
+					has_building = building_empyrean_shrine
+				} 
+			}
+			food = 4
+			energy = 10
+			minerals = 10
+		}
+		produces = {
+			trigger = { 
+				planet = {
+					has_building = building_master_archive
+				} 
+			}
+			food = 4
+			energy = 10
+			minerals = 10
+		}
+		produces = {
+			trigger = { 
+				planet = {
+					has_building = building_fe_xeno_zoo
+				} 
+			}
+			food = 4
+			energy = 10
+			minerals = 10
+		}
+		produces = {
+			trigger = { 
+				planet = {
+					has_building = building_fe_dome
+				} 
+			}
+			food = 4
+			energy = 10
+			minerals = 10
+		}
+		produces = {	### Natural *** Traits
+			#trigger = { pop = { has_trait = trait_natural_physicists } }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
+			physics_research = 3
+		}
+		produces = {
+			#trigger = { pop = { has_trait = trait_natural_sociologists } }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
+			society_research = 3
+		}
+		produces = {
+			#trigger = { pop = { has_trait = trait_natural_engineers } }
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
+			engineering_research = 3
+		}				### End Natural *** Traits
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = {
+				is_fallen_empire = yes
+				is_plantoid_empire = yes
+			}
+		}
+		modifier = {
+			pop_environment_tolerance = 0.10
+			#pop_growth_speed = 0.10
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		modifier = {
+			pop_defense_armies_add = 2
+		}
+	}
+
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
+	}
+	
+	weight = {
+		weight = 10000
+	}
+}

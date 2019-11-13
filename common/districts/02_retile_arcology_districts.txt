@@ -32,10 +32,13 @@ district_embassy_arcology = {
 		}		
 	}	
 
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {		# Regular Jobs
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -45,21 +48,24 @@ district_embassy_arcology = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { OR = {
+			owner = {
 				has_ascension_perk = ap_arcology_project
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			} }
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_diplomat_add = 1
 		}
 	}
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {		# Gestalt Jobs
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_gestalt = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -69,11 +75,26 @@ district_embassy_arcology = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				has_ascension_perk = ap_arcology_project
+				is_gestalt = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
-			planet_housing_add = 2
-			#job_diplomat_drone_add = 2
+			planet_housing_add = 1
+			#job_diplomat_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {		# Fallen Empire Housing
+		potential = {
+			exists = owner
+			owner = {
+				is_fallen_empire = yes
+			}
+		}
+		modifier = {
+			planet_housing_add = 4
 		}
 	}
 	
@@ -116,10 +137,13 @@ district_trade_arcology = {
 		}		
 	}	
 
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {		# Regular Jobs
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -129,35 +153,53 @@ district_trade_arcology = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { OR = {
+			owner = {
 				has_ascension_perk = ap_arcology_project
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			} }
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_clerk_add = 1
 		}
 	}
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {		# Gestalt Jobs
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_gestalt = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
-			#job_foundry_drone_add = 2
+			#job_diplomat_drone_add = 2
 		}
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				has_ascension_perk = ap_arcology_project
+				is_gestalt = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
-			planet_housing_add = 2
-			#job_foundry_drone_add = 2
+			planet_housing_add = 1
+			#job_clerk_add = 1
+		}
+	}
+	triggered_planet_modifier = {		# Fallen Empire Housing
+		potential = {
+			exists = owner
+			owner = {
+				is_fallen_empire = yes
+			}
+		}
+		modifier = {
+			planet_housing_add = 4
 		}
 	}
 	
@@ -211,10 +253,13 @@ district_engineering_arcology = {
 		}		
 	}	
 
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {		# Regular Jobs
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -224,21 +269,24 @@ district_engineering_arcology = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { OR = {
+			owner = {
 				has_ascension_perk = ap_arcology_project
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			} }
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_foundry_add = 1
 		}
 	}
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {		# Gestalt Jobs
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_gestalt = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -248,11 +296,26 @@ district_engineering_arcology = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				has_ascension_perk = ap_arcology_project
+				is_gestalt = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
-			planet_housing_add = 2
-			#job_foundry_drone_add = 2
+			planet_housing_add = 1
+			#job_foundry_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {		# Fallen Empire Housing
+		potential = {
+			exists = owner
+			owner = {
+				is_fallen_empire = yes
+			}
+		}
+		modifier = {
+			planet_housing_add = 4
 		}
 	}
 	
@@ -415,10 +478,13 @@ district_digsite_arcology = {
 		planet_researchers_engineering_research_produces_mult = 0.05
 	}
 	
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {		# Regular Jobs
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -428,35 +494,53 @@ district_digsite_arcology = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { OR = {
+			owner = {
 				has_ascension_perk = ap_arcology_project
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			} }
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_researcher_add = 1
 		}
 	}
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {		# Gestalt Jobs
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_gestalt = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
-			#job_calculator_add = 2
+			#job_brain_drone_add = 2
 		}
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				has_ascension_perk = ap_arcology_project
+				is_gestalt = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
-			planet_housing_add = 2
-			#job_synapse_drone_add = 2
+			planet_housing_add = 1
+			#job_brain_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {		# Fallen Empire Housing
+		potential = {
+			exists = owner
+			owner = {
+				is_fallen_empire = yes
+			}
+		}
+		modifier = {
+			planet_housing_add = 4
 		}
 	}
 	
@@ -526,10 +610,13 @@ district_research_arcology = {
 		}		
 	}	
 
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {		# Regular Jobs
 		potential = {
 			exists = owner
-			owner = { is_regular_empire = yes }
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
@@ -539,35 +626,53 @@ district_research_arcology = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { OR = {
+			owner = {
 				has_ascension_perk = ap_arcology_project
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			} }
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_researcher_add = 1
 		}
 	}
-	triggered_planet_modifier = {
+	triggered_planet_modifier = {		# Gestalt Jobs
 		potential = {
 			exists = owner
-			owner = { is_machine_empire = yes }
+			owner = {
+				is_gestalt = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
 			planet_housing_add = 2
-			#job_calculator_add = 2
+			#job_brain_drone_add = 2
 		}
 	}
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { is_hive_empire = yes }
+			owner = {
+				has_ascension_perk = ap_arcology_project
+				is_gestalt = yes
+				is_fallen_empire = no
+			}
 		}
 		modifier = {
-			planet_housing_add = 2
-			#job_synapse_drone_add = 2
+			planet_housing_add = 1
+			#job_brain_drone_add = 1
+		}
+	}
+	triggered_planet_modifier = {		# Fallen Empire Housing
+		potential = {
+			exists = owner
+			owner = {
+				is_fallen_empire = yes
+			}
+		}
+		modifier = {
+			planet_housing_add = 4
 		}
 	}
 	

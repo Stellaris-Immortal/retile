@@ -1,0 +1,1462 @@
+################################
+#
+# Ancient Relics Events
+#
+# Written by Stephen Muray
+#
+################################
+
+namespace = ancrel
+
+# Arcane Deciphering Events
+country_event = {
+	id = ancrel.10001
+	title = "ancrel.10001.name"
+	desc = "ancrel.10001.desc"
+	picture = GFX_evt_ancient_records
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "FASCINATING"
+        locked_random_list = {
+            10 = {
+                add_monthly_resource_mult = {
+                    resource = engineering_research
+                    value = @tier3researchreward
+                    min = @tier3researchmin
+                    max = @tier3researchmax
+                }
+            }
+            10 = {
+                add_monthly_resource_mult = {
+                    resource = physics_research
+                    value = @tier3researchreward
+                    min = @tier3researchmin
+                    max = @tier3researchmax
+                }
+            }
+            10 = {
+                add_monthly_resource_mult = {
+                    resource = society_research
+                    value = @tier3researchreward
+                    min = @tier3researchmin
+                    max = @tier3researchmax
+                }
+            }
+        }
+    }
+}
+
+country_event = {
+	id = ancrel.10002
+	title = "ancrel.10002.name"
+	desc = "ancrel.10002.desc"
+	picture = GFX_evt_ancient_records
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "FASCINATING"
+        add_modifier = {
+            modifier = "arcane_insight"
+            days = 1800
+        }  
+    }
+}
+
+country_event = {
+	id = ancrel.10003
+	title = "ancrel.10003.name"
+	desc = "ancrel.10003.desc"
+	picture = GFX_evt_ancient_records
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "FASCINATING"
+        locked_random_list = {
+            10 = {
+                add_random_research_option = {
+                    add_progress = 0.20
+                    area = engineering
+                    ignore_prereqs = no
+                    fail_effects = {
+                        add_monthly_resource_mult = {
+                            resource = engineering_research
+                            value = @tier3researchreward
+                            min = @tier3researchmin
+                            max = @tier3researchmax
+                        }
+                    }
+                }
+            }
+            10 = {
+                add_random_research_option = {
+                    add_progress = 0.20
+                    area = physics
+                    ignore_prereqs = no
+                    fail_effects = {
+                        add_monthly_resource_mult = {
+                            resource = physics_research
+                            value = @tier3researchreward
+                            min = @tier3researchmin
+                            max = @tier3researchmax
+                        }
+                    }
+                }
+            }
+            10 = {
+                add_random_research_option = {
+                    add_progress = 0.20
+                    area = society
+                    ignore_prereqs = no
+                    fail_effects = {
+                        add_monthly_resource_mult = {
+                            resource = society_research
+                            value = @tier3researchreward
+                            min = @tier3researchmin
+                            max = @tier3researchmax
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+country_event = {
+	id = ancrel.10004
+	title = "ancrel.10004.name"
+	desc = "ancrel.10004.nanoforge"
+	picture = GFX_evt_ancient_records
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {						
+				change_variable = { which = nano_forge_build_count value = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ancrel.10005
+	title = "ancrel.10004.name"
+	desc = "ancrel.10004.skydome"
+	picture = GFX_evt_ancient_records
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {						
+				change_variable = { which = skydome_build_count value = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ancrel.10006
+	title = "ancrel.10004.name"
+	desc = "ancrel.10004.dimensional_fabricator"
+	picture = GFX_evt_ancient_records
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {						
+				change_variable = { which = dimensional_fabricator_build_count value = 1 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ancrel.10007
+	title = "ancrel.10004.name"
+	desc = "ancrel.10004.empyrean_shrine"
+	picture = GFX_evt_ancient_records
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {						
+				change_variable = { which = empyrean_shrine_build_count value = 1 }
+			}
+		}
+	}
+}
+
+country_event = {	### Remove
+	id = ancrel.10008
+	title = "ancrel.10004.name"
+	desc = "ancrel.10004.nourishment_center"
+	picture = GFX_evt_ancient_records
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {						
+				change_variable = { which = nourishment_center_build_count value = 1 }
+			}
+		}
+	}
+}	
+
+country_event = {
+	id = ancrel.10009
+	title = "ancrel.10004.name"
+	desc = "ancrel.10004.class_4_singularity"
+	picture = GFX_evt_ancient_records
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+
+		hidden_effect = {
+			owner = {						
+				change_variable = { which = class_4_singularity_build_count value = 1 }
+			}
+		}
+	}
+}	
+		
+# Find military applications
+country_event = {
+	id = ancrel.10010
+	title = "ancrel.10010.name"
+	desc = "ancrel.10010.desc"
+	picture = GFX_evt_engineering_research
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "artifact_find_military_application_army"
+        custom_tooltip = "artifact_find_military_application_army_desc"
+        trigger = {	is_machine_empire = no }
+        add_modifier = {
+            modifier = "artifact_find_military_application_army"
+            days = 1800
+        }
+    }
+    option = {
+		name = "artifact_find_military_application_army_machine"
+        custom_tooltip = "artifact_find_military_application_army_machine_desc"
+        trigger = {	is_machine_empire = yes }
+        add_modifier = {
+            modifier = "artifact_find_military_application_army_machine"
+            days = 1800
+        }
+    }
+    option = {
+		name = "artifact_find_military_application_shield_damage"
+        custom_tooltip = "artifact_find_military_application_shield_damage_desc"
+        add_modifier = {
+            modifier = "artifact_find_military_application_shield_damage"
+            days = 1800
+        }
+    }
+    option = {
+		name = "artifact_find_military_application_armor_damage"
+        custom_tooltip = "artifact_find_military_application_armor_damage_desc"
+        add_modifier = {
+            modifier = "artifact_find_military_application_armor_damage"
+            days = 1800
+        }
+    }
+	option = {
+		name = "marauder.30.e"
+
+		hidden_effect = {
+			add_resource = { minor_artifacts = 5 }
+			remove_modifier = "artifact_find_applications_cooldown"
+		}
+	}
+}
+
+# Find peaceful applications
+country_event = {
+	id = ancrel.10020
+	title = "ancrel.10020.name"
+	desc = "ancrel.10020.desc"
+	picture = GFX_evt_society_research
+	
+	is_triggered_only = yes
+
+	option = {
+		name = "artifact_find_peaceful_application_happy_bios"
+        custom_tooltip = "artifact_find_peaceful_application_happy_bios_desc"
+        trigger = {	
+            OR = {
+                is_gestalt = no
+                has_civic = civic_machine_servitor
+            }
+        }
+        add_modifier = {
+            modifier = "artifact_find_peaceful_application_happy_bios"
+            days = 1800
+        }
+    }
+    option = {
+		name = "artifact_find_peaceful_application_consumer_goods"
+        custom_tooltip = "artifact_find_peaceful_application_consumer_goods_desc"
+        trigger = {	
+            OR = {
+                is_gestalt = no
+                has_civic = civic_machine_servitor
+            }
+        }
+        add_modifier = {
+            modifier = "artifact_find_peaceful_application_consumer_goods"
+            days = 1800
+        }
+    }
+    option = {
+		name = "artifact_find_peaceful_application_amenities"
+        custom_tooltip = "artifact_find_peaceful_application_amenities_desc"
+        trigger = {	is_regular_empire = yes }
+        add_modifier = {
+            modifier = "artifact_find_peaceful_application_amenities"
+            days = 1800
+        }
+    }
+    option = {
+		name = "artifact_find_peaceful_application_amenities_hivemind"
+        custom_tooltip = "artifact_find_peaceful_application_amenities_hivemind_desc"
+        trigger = {	is_hive_empire = yes }
+        add_modifier = {
+            modifier = "artifact_find_peaceful_application_amenities_hivemind"
+            days = 1800
+        }
+    }
+    option = {
+		name = "artifact_find_peaceful_application_amenities_machine"
+        custom_tooltip = "artifact_find_peaceful_application_amenities_machine_desc"
+        trigger = {	is_machine_empire = yes }
+        add_modifier = {
+            modifier = "artifact_find_peaceful_application_amenities_machine"
+            days = 1800
+        }
+    }
+    option = {
+		name = "artifact_find_peaceful_application_leader_improvement"
+        custom_tooltip = "artifact_find_peaceful_application_leader_improvement_desc"
+        trigger = {	is_regular_empire = yes }
+        add_modifier = {
+            modifier = "artifact_find_peaceful_application_leader_improvement"
+            days = 1800
+        }
+    }
+    option = {
+		name = "artifact_find_peaceful_application_leader_improvement_hivemind"
+        custom_tooltip = "artifact_find_peaceful_application_leader_improvement_hivemind_desc"
+        trigger = {	is_hive_empire = yes }
+        add_modifier = {
+            modifier = "artifact_find_peaceful_application_leader_improvement_hivemind"
+            days = 1800
+        }
+    }
+    option = {
+		name = "artifact_find_peaceful_application_leader_improvement_machine"
+        custom_tooltip = "artifact_find_peaceful_application_leader_improvement_machine_desc"
+        trigger = {	is_machine_empire = yes }
+        add_modifier = {
+            modifier = "artifact_find_peaceful_application_leader_improvement_machine"
+            days = 1800
+        }
+    }
+	option = {
+		name = "marauder.30.e"
+
+		hidden_effect = {
+			add_resource = { minor_artifacts = 5 }
+			remove_modifier = "artifact_find_applications_cooldown"
+		}
+	}
+}
+
+# Extra tier on Mega Art Installation
+country_event = {
+	id = "ancrel.10030"
+	title = "ancrel.10030.name"
+	desc = {
+		trigger = { 
+			OR = {
+				is_xenophobe = yes 
+				is_homicidal = yes
+			}
+		}
+		text = ancrel.10030.phobe.desc
+	}
+	desc = {
+		trigger = { 
+			NOR = {
+				is_xenophobe = yes 
+				is_homicidal = yes
+			}
+		}
+		text = ancrel.10030.desc
+	}
+	show_sound = event_mystic_reveal
+	picture = GFX_evt_mega_art_installation
+	is_triggered_only = yes
+	location = FROM
+
+	option = {
+		name = EXCELLENT
+	}
+}
+
+# Irassian Artifact Research Complete
+country_event = {
+	id = ancrel.9001
+	title = ancrel.9001.name
+	
+	# Phobe
+	desc = {
+		trigger = {
+			OR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		text = ancrel.9001.desc.phobe
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		text = ancrel.9001.desc
+	}
+
+	picture = GFX_evt_circuitry_modification
+	location = from
+
+	is_triggered_only = yes
+
+	option = {
+		name = INTERESTING
+		
+		random_owned_leader = {
+			limit = {
+				is_researching_area = society
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_biology }
+				}
+				add_trait = leader_trait_expertise_biology
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			if = {
+				limit = {
+					OR = {
+						NOT = { has_authority = auth_machine_intelligence }
+						has_civic = civic_machine_assimilator
+						has_civic = civic_machine_servitor	
+					}
+                    NOT = { has_technology = tech_genome_mapping }
+                }
+				give_technology = { tech = tech_genome_mapping }
+			}
+			else_if = {
+				limit = {
+					is_gestalt = no
+                    NOT = { has_technology = tech_frontier_health }
+                }
+				give_technology = { tech = tech_frontier_health }
+			}
+			else_if = {
+				limit = {
+					is_gestalt = no
+                    NOT = { has_technology = tech_frontier_hospital }
+                }
+				give_technology = { tech = tech_frontier_hospital }
+			}
+			else_if = {
+				limit = {
+					OR = {
+						NOT = { has_authority = auth_machine_intelligence }
+						has_civic = civic_machine_assimilator
+						has_civic = civic_machine_servitor	
+					}
+                    NOT = { has_technology = tech_gene_tailoring }
+                }
+				add_research_option = tech_gene_tailoring
+                add_tech_progress = {
+                    tech = tech_gene_tailoring
+                    progress = 0.5
+                }
+			}
+			else = {
+				add_monthly_resource_mult = {
+					resource = society_research
+					value = @tier4researchreward
+					min = @tier4researchmin
+					max = @tier4researchmax
+				}
+			}
+		}
+		
+		add_modifier = {
+			modifier = artifact_irassian_research_completed # biology research and growth speed bonus
+			days = -1
+		}
+	}
+}
+
+# Yuht Artifact Research Complete
+country_event = {
+	id = ancrel.10050
+	title = ancrel.10050.name
+	
+	# Phobe
+	desc = {
+		trigger = {
+			OR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		text = ancrel.10050.desc.1.phobe
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		text = ancrel.10050.desc.1
+	}
+
+	picture = GFX_evt_animal_wildlife
+	location = from
+
+	is_triggered_only = yes
+
+	option = {
+		trigger = { owner = { NOT = { has_technology = tech_colonization_3 } } }
+
+		name = INTERESTING
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = society
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_new_worlds }
+				}
+				add_trait = leader_trait_expertise_new_worlds
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+        custom_tooltip = "ancrel.10050.unlock"
+		owner = {
+			if = {
+				limit = {
+                    NOT = { has_technology = tech_colonization_2 }  # Atmospheric Filtering
+                }
+				give_technology = { tech = tech_colonization_2 }
+			}
+			else = {
+                add_research_option = tech_colonization_3
+                add_tech_progress = {
+                    tech = tech_colonization_3
+                    progress = 0.5
+                }
+            }
+			
+		}
+        hidden_effect = {
+            set_country_flag = artifact_yuht_research_completed
+        }	
+	}
+	
+	option = {
+		trigger = { owner = {  has_technology = tech_colonization_3 } }
+
+		name = INTERESTING
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = society
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_new_worlds }
+				}
+				add_trait = leader_trait_expertise_new_worlds
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+        custom_tooltip = "ancrel.10050.unlock"
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+        hidden_effect = {
+            set_country_flag = artifact_yuht_research_completed
+        }	
+	}
+}
+
+
+# First League Research Complete
+country_event = {
+	id = ancrel.10200
+	title = ancrel.10200.name
+	
+	# Phobe
+	desc = {
+		trigger = {
+			OR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		text = ancrel.10200.desc.phobe
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		text = ancrel.10200.desc
+	}
+
+	picture = GFX_evt_city_planet
+	location = from
+
+	is_triggered_only = yes
+
+	option = {
+        exclusive_trigger = {
+			has_technology = tech_housing_2
+		}
+
+		name = INTERESTING
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = engineering
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_industry }
+				}
+				add_trait = leader_trait_expertise_industry
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+		add_modifier = {
+			modifier = artifact_league_research_completed # industry research and building build speed
+			days = -1
+		}
+	}
+
+    option = {
+        exclusive_trigger = {
+			has_technology = tech_housing_1
+            NOT = {
+                has_technology = tech_housing_2
+            }
+		}
+
+		name = INTERESTING
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = engineering
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_industry }
+				}
+				add_trait = leader_trait_expertise_industry
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+            add_research_option = tech_housing_2
+            add_tech_progress = {
+				tech = tech_housing_2
+				progress = 0.5
+			}
+		}
+        
+		add_modifier = {
+			modifier = artifact_league_research_completed # industry research and building build speed
+			days = -1
+		}        
+	}
+
+    option = {
+        exclusive_trigger = {
+            NOT = {
+                has_technology = tech_housing_1
+            }
+		}
+
+		name = INTERESTING
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = engineering
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_industry }
+				}
+				add_trait = leader_trait_expertise_industry
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+        give_technology = { tech = tech_housing_1 }
+		add_research_option = tech_housing_2
+
+		add_modifier = {
+			modifier = artifact_league_research_completed # industry research and building build speed
+			days = -1
+		}        
+	}
+}
+
+# Cybrex Artifact Research Complete
+country_event = {
+	id = ancrel.10250
+	title = ancrel.10250.name
+
+	desc = {
+		trigger = {
+			OR = {
+                has_policy_flag = ai_outlawed
+                has_ethic = ethic_spiritualist
+                has_ethic = ethic_fanatic_spiritualist
+            }
+		}
+		text = ancrel.10250.desc.antimachine
+	}
+	desc = {
+		trigger = {
+			NOR = {
+                has_policy_flag = ai_outlawed
+                has_ethic = ethic_spiritualist
+                has_ethic = ethic_fanatic_spiritualist
+            }
+		}
+		text = ancrel.10250.desc
+	}
+	
+	picture = GFX_evt_ringworld
+	location = from
+
+	is_triggered_only = yes
+
+    option = {
+		exclusive_trigger = {
+			has_technology = tech_mega_engineering
+		}
+		name = INTERESTING
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = engineering
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_voidcraft }
+				}
+				add_trait = leader_trait_expertise_voidcraft
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			add_monthly_resource_mult = {
+				resource = engineering_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+        add_modifier = {
+			modifier = artifact_cybrex_research_completed # megastructure build speed
+			days = -1
+		}
+	}
+
+	option = {
+		name = INTERESTING
+     
+		random_owned_leader = {
+			limit = {
+				is_researching_area = engineering
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_voidcraft }
+				}
+				add_trait = leader_trait_expertise_voidcraft
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			add_research_option = tech_mega_engineering
+			add_tech_progress = {
+				tech = tech_mega_engineering
+				progress = 0.25
+			}
+		}
+        add_modifier = {
+			modifier = artifact_cybrex_research_completed # megastructure build speed
+			days = -1
+		}        
+	}
+}
+
+# Vultaum Artifact Research Complete
+country_event = {
+	id = ancrel.10100
+	title = ancrel.10100.name
+	
+	desc = {
+		trigger = { is_machine_empire = yes	}
+		text = ancrel.10100.desc_machine
+	}
+	desc = {
+		trigger = { is_hive_empire = yes }
+		text = ancrel.10100.desc_hive
+	}
+    desc = {
+        trigger = {
+		    is_regular_empire = yes
+        	has_ethic = ethic_fanatic_materialist
+		}
+        text = ancrel.10100.desc_fm
+    }
+    desc = {
+        trigger = {
+		    is_regular_empire = yes
+        	NOT = { has_ethic = ethic_fanatic_materialist }
+		}
+        text = ancrel.10100.desc
+    }
+
+	picture = GFX_evt_ancient_databank
+	location = from
+
+	is_triggered_only = yes
+
+    option = {
+        exclusive_trigger = { is_machine_empire = yes }
+
+		name = progress.2.a.mech # Acknowledged.
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = physics
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_computing }
+				}
+				add_trait = leader_trait_expertise_computing
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+
+		add_modifier = {
+			modifier = artifact_vultaum_research_completed_machine # computer research and assembly speed
+			days = -1
+		}
+	}
+
+    option = {
+        exclusive_trigger = { is_hive_empire = yes }
+
+		name = story.210.a # Noted.
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = physics
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_computing }
+				}
+				add_trait = leader_trait_expertise_computing
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+
+		add_modifier = {
+			modifier = artifact_vultaum_research_completed_hive # computer research
+			days = -1
+		}
+	}
+
+	option = {
+        trigger = {
+            owner = {
+                is_regular_empire = yes
+                NOT = { has_ethic = ethic_fanatic_materialist } 
+            }
+        }
+
+		name = INTERESTING
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = physics
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_computing }
+				}
+				add_trait = leader_trait_expertise_computing
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+    
+		add_modifier = {
+			modifier = artifact_vultaum_research_completed_suppressed # computer research and amenities bonus
+			days = -1
+		}
+	}
+
+    option = {
+        trigger = {
+            owner = { has_ethic = ethic_fanatic_materialist }
+        }
+
+		name = ancrel.10100.option.fm_enough
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = physics
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_computing }
+				}
+				add_trait = leader_trait_expertise_computing
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+    
+		add_modifier = {
+			modifier = artifact_vultaum_research_completed_suppressed # computer research and amenities bonus
+			days = -1
+		}
+	}
+
+    option = {
+        trigger = {
+			owner = {
+				has_ethic = ethic_fanatic_materialist
+			}
+		}
+
+		name = ancrel.10100.option.fm_delve_deeper
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = physics
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_computing }
+				}
+				add_trait = leader_trait_expertise_computing
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+
+		add_modifier = {
+			modifier = artifact_vultaum_research_completed_suppressed # computer research and amenities bonus
+			days = -1
+		}
+
+        enable_special_project = {
+			name = "VULTAUM_SECRETS_2"
+			location = capital_scope
+			owner = ROOT
+		}
+	}
+}
+
+country_event = {
+	id = ancrel.10110
+	title = ancrel.10110.name
+	
+    desc = ancrel.10110.desc
+    
+	picture = GFX_evt_glitchy_matrix
+	location = from
+
+	is_triggered_only = yes
+
+    option = {
+        name = ancrel.10110.option.fm_suppress # Suppress the findings.
+		owner = {
+            add_monthly_resource_mult = {
+				resource = influence
+				value = @tier4influencereward
+				min = @tier4influencemin
+				max = @tier4influencemax
+			}
+		}
+        
+        random_owned_leader = {
+			limit = {
+				is_researching_area = physics 	
+			}
+			add_experience = 200
+
+            save_global_event_target_as = leading_vultaum_research_scientist
+		}
+
+        hidden_effect = {
+            random_list = {
+                50 = {
+                    # physicist commits suicide
+                    country_event = { id = ancrel.10111 days = 5 }
+                }
+                35 = {
+                    # physicist gains maniacal and substance abuser
+                    country_event = { id = ancrel.10112 days = 5 }
+                }
+                15 = {
+                    # physicist gains maniacal
+                    country_event = { id = ancrel.10113 days = 5 }
+                }
+            }
+        }
+	}
+
+    option = {
+        name = ancrel.10110.option.fm_public # The public deserves to know.
+		owner = {
+			add_monthly_resource_mult = {
+				resource = influence
+				value = @tier4influencereward
+				min = @tier4influencemin
+				max = @tier4influencemax
+			}
+            add_monthly_resource_mult = {
+				resource = unity
+				value = @tier5unityreward
+				min = @tier5unitymin
+				max = @tier5unitymax
+			}
+		}
+        
+        random_owned_leader = {
+			limit = {
+				is_researching_area = physics 	
+			}
+			add_experience = 300
+
+            save_global_event_target_as = leading_vultaum_research_scientist
+		}
+        
+        custom_tooltip = "artifact_vultaum_research_completed_public_tooltip"
+        add_modifier = {
+			modifier = artifact_vultaum_research_completed_public # all research, computer research, amenities bonus, unhappiness
+			days = -1
+		}
+
+        hidden_effect = {
+            remove_modifier = artifact_vultaum_research_completed_suppressed
+        
+            random_list = {
+                35 = {
+                    # physicist gains maniacal and substance abuser
+                    country_event = { id = ancrel.10112 days = 5 }
+                }
+                65 = {
+                    # physicist gains maniacal
+                    country_event = { id = ancrel.10113 days = 5 }
+                }
+            }
+        }
+	}    
+}
+
+country_event = {
+	id = ancrel.10111
+	title = ancrel.10111.name
+	
+    desc = ancrel.10111.desc
+    
+	picture = GFX_evt_space_funeral
+	location = from
+
+	is_triggered_only = yes
+    trigger = {
+		exists = event_target:leading_vultaum_research_scientist
+	}
+
+    option = {
+		name = UNFORTUNATE
+        event_target:leading_vultaum_research_scientist = {
+			kill_leader = { show_notification = no }
+		}
+	}
+}
+
+country_event = {
+	id = ancrel.10112
+	title = ancrel.10112.name
+	
+    desc = ancrel.10112.desc
+    
+	picture = GFX_evt_smugglers_in_bar
+	location = from
+
+	is_triggered_only = yes
+    trigger = {
+		exists = event_target:leading_vultaum_research_scientist
+	}
+
+    option = {
+		name = INTERESTING
+		event_target:leading_vultaum_research_scientist = {
+			add_trait = leader_trait_maniacal
+            add_trait = leader_trait_substance_abuser
+            add_experience = 200
+		}
+	}
+}
+
+country_event = {
+	id = ancrel.10113
+	title = ancrel.10113.name
+	
+    desc = ancrel.10113.desc
+    
+	picture = GFX_evt_physics_research
+	location = from
+
+	is_triggered_only = yes
+    trigger = {
+		exists = event_target:leading_vultaum_research_scientist
+	}
+
+    option = {
+		name = INTERESTING
+		event_target:leading_vultaum_research_scientist = {
+			add_trait = leader_trait_maniacal
+            add_experience = 200
+		}
+	}
+}
+
+# Baol Artifact Research Complete
+country_event = {
+	id = ancrel.10300
+	title = ancrel.10300.name
+	desc = {
+		trigger = { has_technology = tech_epigenetic_triggers }
+		text = ancrel.10300.desc.terraform
+	}
+	desc = {
+		trigger = { 
+			NOT = { has_technology = tech_epigenetic_triggers }
+		}
+		text = ancrel.10300.desc.uplift
+	}
+
+	picture = GFX_evt_baol_grunur
+	location = from
+
+	is_triggered_only = yes
+	
+	option = {
+        exclusive_trigger = {
+			NOT = { has_technology = tech_epigenetic_triggers }
+		}
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = society
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_biology }
+				}
+				add_trait = leader_trait_expertise_biology
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		name = INTERESTING
+		owner = {
+			give_technology = { tech = tech_epigenetic_triggers }
+		}
+		add_modifier = {
+			modifier = artifact_baol_research_completed # terraforming speed
+			days = -1
+		}
+	}
+
+	option = {
+		exclusive_trigger = { 
+			owner = { 
+				has_technology = tech_epigenetic_triggers
+				NOT = { has_technology = tech_terrestrial_sculpting }
+			} 
+		}
+
+		name = INTERESTING
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = society
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_biology }
+				}
+				add_trait = leader_trait_expertise_biology
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			give_technology = { tech = tech_terrestrial_sculpting }			
+		}
+        add_modifier = {
+			modifier = artifact_baol_research_completed # terraforming speed bonus
+			days = -1
+		}	
+	}
+	
+	option = {
+		name = INTERESTING
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = society
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_biology }
+				}
+				add_trait = leader_trait_expertise_biology
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier4researchreward
+				min = @tier4researchmin
+				max = @tier4researchmax
+			}
+		}
+        add_modifier = {
+			modifier = artifact_baol_research_completed # terraforming speed bonus
+			days = -1
+		}	
+	}
+}
+
+# Zroni Artifact Research Complete
+country_event = {
+	id = ancrel.10350
+	title = ancrel.10350.name
+	desc = ancrel.10350.desc
+
+	picture = GFX_evt_surreal_visions
+	location = from
+
+	is_triggered_only = yes
+
+	option = {
+		name = INTERESTING
+
+		random_owned_leader = {
+			limit = {
+				is_researching_area = society
+			}
+
+			if = {
+				limit = {
+					NOT = { has_trait = leader_trait_expertise_psionics }
+				}
+				add_trait = leader_trait_expertise_psionics
+			}
+			else = {
+				add_experience = 200
+			}
+		}
+		
+        owner = {
+			if = {
+				limit = {
+                    NOT = { has_technology = tech_psionic_theory }  # Psionic Theory
+					NOT = { has_ethic = ethic_gestalt_consciousness }
+                }
+				add_research_option = tech_psionic_theory
+				add_tech_progress = {
+                    tech = tech_psionic_theory
+                    progress = 0.2
+                }
+			}
+			else = {
+                add_monthly_resource_mult = {
+					resource = society_research
+					value = @tier4researchreward
+					min = @tier4researchmin
+					max = @tier4researchmax
+				}
+            }
+		}
+
+        add_modifier = {
+			modifier = artifact_zroni_research_completed # psionic research bonus
+			days = -1
+		}	
+	}
+}
