@@ -165,7 +165,7 @@ totalitarian = {
 
 		potential = {
 			exists = owner
-			can_set_ai_policy = yes
+			owner = { can_set_ai_policy = yes }
 		}
 
 		trigger = {
@@ -203,7 +203,7 @@ totalitarian = {
 
 		potential = {
 			exists = owner
-			NOT = { is_subject_type = signatory }
+			owner = { NOT = { is_subject_type = signatory } }
 		}
 
 		trigger = {
@@ -240,7 +240,7 @@ totalitarian = {
 
 		potential = {
 			exists = owner
-			has_tradition = tr_domination_workplace_motivators
+			owner = { has_tradition = tr_domination_workplace_motivators }
 		}
 
 		trigger = {
@@ -323,6 +323,22 @@ totalitarian = {
 		}
 	}
 	
+	# Hates Common Law
+	demand = {
+		title = "AUTHORITARIAN_COMMON_LAW"
+		unfulfilled_title = "AUTHORITARIAN_NO_COMMON_LAW"
+		desc = "AUTHORITARIAN_COMMON_LAW_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = criminal_common_law } }
+		}
+	}
+	
 	# Hates Universal Healthcare
 	demand = {
 		title = "AUTHORITARIAN_UNIVERSAL_HEALTHCARE"
@@ -394,7 +410,7 @@ totalitarian = {
 	demand = {
 		title = "AUTHORITARIAN_SLAVERY_BAN"
 		unfulfilled_title = "AUTHORITARIAN_NO_SLAVERY_BAN"
-		desc = "AUTHORITARIAN_APPROPRIATION_SLAVERY_BAN_DESC"
+		desc = "AUTHORITARIAN_SLAVERY_BAN_DESC"
 
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
@@ -417,7 +433,7 @@ totalitarian = {
 
 		potential = {
 			exists = owner
-			has_technology = tech_planetary_unification
+			owner = { has_technology = tech_planetary_unification }
 		}
 
 		trigger = {
