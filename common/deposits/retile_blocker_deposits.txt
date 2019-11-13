@@ -1,0 +1,37 @@
+## Possible Deposit Variables ##
+# resources, resource and amount
+# potential trigger (planet scope)
+# blocked_modifier - applied to planet
+# constant_modifier - applied to planet always
+# station = station class in orbit to gather
+
+##################################
+############# CRIME ##############
+##################################
+retile_damaged_infrastructure = {
+	icon = d_metal_boneyard
+	time = 120
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers	
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+	
+	on_cleared = {
+		create_pop = {
+			species = owner
+		}
+	}
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 300
+		}
+	}
+}
+

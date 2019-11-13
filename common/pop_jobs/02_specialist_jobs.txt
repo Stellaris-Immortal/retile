@@ -19,7 +19,6 @@ clerk = {
 			retile_job_seeking = yes
 		}
 		complex_specialist_job_check_trigger = yes
-		owner = { is_fallen_empire = no }
 	}
 
 	planet_modifier = {
@@ -194,7 +193,7 @@ researcher = {	### Scholar
 		upkeep = {
 			trigger = { planet = { has_building = building_institute } }
 			consumer_goods = 1.25
-		}		
+		}
 		produces = {
 			trigger = { planet = { OR = {
 				has_building = building_temple
@@ -242,7 +241,21 @@ researcher = {	### Scholar
 				has_building = building_corporate_forum
 			} } }
 			consumer_goods = 3.75
-		}		
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { has_building = building_class_4_singularity } }
+			physics_research = 10
+			engineering_research = 10
+			society_research = 10
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { OR = {
+				has_building = building_empyrean_shrine
+				has_building = building_master_archive
+				has_building = building_fe_xeno_zoo
+			} } }
+			unity = 10
+		}
 	}
 
 	############################################################ Scholar Pollution
@@ -519,6 +532,14 @@ foundry = {	### Engineer
 		upkeep = {
 			trigger = { planet = { has_building = building_ministry_production } }
 			minerals = 10
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { has_building = building_dimensional_fabricator } }
+			consumer_goods = 10
+		}
+		produces = { ### Fallen Empire
+			trigger = { planet = { has_building = building_nano_forge } }
+			alloys = 10
 		}
 	}
 

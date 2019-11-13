@@ -1028,7 +1028,7 @@ planet_event = {
 	}
 	
 	option = {
-		name = crime.100.b
+		name = crime.102.a
 		solar_system = {
 			save_event_target_as = pirate_system
 			create_normal_pirate_country = yes
@@ -1290,14 +1290,14 @@ planet_event = {
 	}
 	
 	option = {
-		name = crime.203.a
+		name = crime.202.a
 		tooltip = {
 			add_modifier = { modifier = "cartel_war" days = 3600 }
 		}
 	}
 	
 	option = {
-		name = crime.103.b
+		name = crime.202.b
 		allow = {
 			any_pop = { has_job = soldier }
 		}
@@ -1327,6 +1327,8 @@ planet_event = {
 	immediate = {
 		random_owned_pop = { kill_pop = yes }
 		random_owned_pop = { kill_pop = yes }
+		add_deposit = retile_damaged_infrastructure
+		add_deposit = retile_damaged_infrastructure
 		add_planet_devastation = 20
 	}
 	
@@ -1610,11 +1612,10 @@ planet_event = {
 	}
 	
 	option = {
-		name = crime.103.b
+		name = crime.303.b
 		allow = {
 			any_pop = { has_job = soldier }
 		}
-		sector = { leader = { kill_leader = { show_notification = no } } }
 		owner = { set_country_flag = gangsters_killed_governor }
 		add_modifier = { modifier = "martial_law" days = 3600 }
 	}
@@ -1665,7 +1666,7 @@ planet_event = {
 	}
 	
 	option = {
-		name = crime.40.a
+		name = crime.304.a
 		tooltip = {
 			add_modifier = { modifier = "trade_pilfering" days = 3600 }
 		}
