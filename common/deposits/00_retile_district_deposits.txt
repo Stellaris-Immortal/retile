@@ -67,6 +67,24 @@ retile_deposit_precinct = {
 		}
 		job_enforcer_add = 2
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { OR = {
+				AND = {
+					has_ascension_perk = ap_arcology_project
+					NOT = { has_policy_flag = criminal_military_police }
+				}
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			} }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_soldier_add = 1
+		}
+	}
 	
 	triggered_planet_modifier = {
 		potential = {
@@ -74,6 +92,24 @@ retile_deposit_precinct = {
 			owner = { has_policy_flag = criminal_military_police }
 		}
 		job_soldier_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { OR = {
+				AND = {
+					has_ascension_perk = ap_arcology_project
+					has_policy_flag = criminal_military_police
+				}
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			} }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_soldier_add = 1
+		}
 	}
 	
 	drop_weight = {
@@ -99,6 +135,21 @@ retile_deposit_stronghold = {
 		job_soldier_add = 2
 		planet_max_districts_add = -1
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { OR = {
+				has_ascension_perk = ap_arcology_project
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			} }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_soldier_add = 1
+		}
+	}
 	
 	drop_weight = {
 		weight = 0
@@ -122,6 +173,36 @@ retile_deposit_preserve = {
 		planet_housing_add = 2
 		job_custodian_add = 2
 		planet_max_districts_add = -1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_arcology_project
+				NOR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
+				}
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_custodian_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { OR = {
+				is_country_type = fallen_empire
+				is_country_type = awakened_fallen_empire
+			} }
+		}
+		modifier = {
+			planet_housing_add = 3
+			job_custodian_add = 3
+		}
 	}
 	
 	drop_weight = {

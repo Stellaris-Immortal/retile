@@ -37,6 +37,8 @@ pop_event = {
 	hide_window = yes
 
 	trigger = {
+		exists = owner
+		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
 		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
 		OR = {
 			has_job = no

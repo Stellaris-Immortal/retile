@@ -52,20 +52,27 @@ create_fe_fringe_colony = {
 	set_planet_flag = fallen_empire_world
 	prevent_anomaly = yes
 	set_owner = ROOT
-	add_building = building_ancient_palace
+
+	add_building = building_ancient_palace		# 4 capital jobs
+	add_building = building_class_4_singularity # 12 custodians
+	add_building = building_nano_forge
 	add_building = building_fe_dome
+	
 	while = {
-		count = 5
+		count = 11	# 11 scholars, 11 engineers
 		add_district = district_city
 	}
+	add_deposit = retile_deposit_precinct	# 2 enforcers
+	add_deposit = retile_deposit_stronghold	# 2 soldiers
+	add_deposit = retile_deposit_preserve	# 5 custodians
 	while = {
-		count = 8
+		count = 30
 		create_pop = {
 			species = owner_main_species
 		}
 	}
 	while = {
-		count = 8
+		count = 17
 		create_pop = {
 			species = event_target:fe_servants
 		}
@@ -76,26 +83,20 @@ create_fe_spiritualist_fringe_colony = {
 	set_planet_flag = fallen_empire_world
 	prevent_anomaly = yes
 	set_owner = ROOT
-	add_building = building_ancient_palace
+	add_building = building_ancient_palace		# 4 capital jobs
+	add_building = building_class_4_singularity # 12 custodians
+	add_building = building_nano_forge
 	add_building = building_fe_dome
+	
 	while = {
-		count = 3
+		count = 11	# 11 scholars, 11 engineers
 		add_district = district_city
 	}
+	add_deposit = retile_deposit_precinct	# 2 enforcers
+	add_deposit = retile_deposit_stronghold	# 2 soldiers
+	add_deposit = retile_deposit_preserve	# 5 custodians
 	while = {
-		count = 2
-		add_district = district_generator
-	}
-	while = {
-		count = 2
-		add_district = district_mining
-	}
-	while = {
-		count = 2
-		add_district = district_farming
-	}
-	while = {
-		count = 20
+		count = 47
 		create_pop = {
 			species = owner_main_species
 		}
