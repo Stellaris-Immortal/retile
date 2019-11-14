@@ -1,0 +1,667 @@
+##############################
+# Peaceful Prosperity Faction
+##############################
+
+prosperity = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_pacifist
+	
+	unique = yes
+	support_multiplier = 1
+	
+	is_potential = {
+		years_passed > 10
+		has_encountered_other_species = yes
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	parameters = {
+		empire = {
+			type = country
+			valid_objects = {
+				is_same_value = root
+			}
+		}
+	}
+
+	resources = {
+		category = pop_factions
+		produces = {
+			influence = 2
+		}		
+	}
+
+	can_join_pre_triggers = {
+		is_enslaved = no
+		is_being_purged = no
+	}
+
+	can_join_faction = {
+		is_shackled_robot = no
+		has_culture_shock = no
+		NOT = { has_trait = trait_nerve_stapled }
+		OR = {
+			has_ethic = ethic_pacifist
+			has_ethic = ethic_fanatic_pacifist
+		}
+	}
+	
+	attraction = {
+		base = 100
+		
+		modifier = {
+			factor = 1.50
+			has_very_high_living_standard_type = yes
+		}
+		
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_academic_living_standard_type = yes
+				has_high_living_standard_type = yes
+				has_shared_burden_living_standard_type = yes
+			}
+		}
+		
+		modifier = {
+			factor = 0.75
+			OR = {
+				has_stratified_living_standard_type = yes
+				has_low_living_standard_type = yes
+			}
+		}
+		
+		modifier = {
+			factor = 0.50
+			has_citizenship_rights = no
+		}
+	}
+	
+	leader = {
+		base = 100
+		
+		modifier = {
+			factor = 0.0
+			OR = {
+				leader_class = admiral
+				leader_class = general
+			}			
+		}
+		
+		modifier = {
+			factor = 0.0
+			is_event_leader = yes
+		}		
+	}
+	
+	# Wants a Federation
+	demand = { 
+		title = "DIPLOMAT_MY_FEDERATION"
+		unfulfilled_title = "DIPLOMAT_NO_MY_FEDERATION"
+		desc = "DIPLOMAT_MY_FEDERATION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_diplomacy_the_federation }
+		}
+
+		trigger = {
+			owner = { is_federation_leader = yes }
+		}
+	}
+	
+	# Wants Two-Tier Healthcare
+	demand = {
+		title = "DIPLOMAT_HEALTHCARE"
+		unfulfilled_title = "DIPLOMAT_NO_HEALTHCARE"
+		desc = "DIPLOMAT_HEALTHCARE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = healthcare_public_private }
+		}
+	}
+	
+	# Wants Embassies
+	demand = {
+		title = "DIPLOMAT_EMBASSIES"
+		unfulfilled_title = "DIPLOMAT_NO_EMBASSIES"
+		desc = "DIPLOMAT_EMBASSIES_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_diplomacy_open_markets }
+		}
+
+		trigger = {
+			owner = { has_policy_flag = xenodiplomacy_embassy }
+		}
+	}
+	
+	# Wants Interference
+	demand = {
+		title = "DIPLOMAT_INTERFERENCE"
+		unfulfilled_title = "DIPLOMAT_NO_INTERFERENCE"
+		desc = "DIPLOMAT_INTERFERENCE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = interference_active }
+		}
+	}
+	
+	# Wants Peaceful Contact
+	demand = {
+		title = "DIPLOMAT_PEACEFUL_CONTACT"
+		unfulfilled_title = "DIPLOMAT_NO_PEACEFUL_CONTACT"
+		desc = "DIPLOMAT_PEACEFUL_CONTACT_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = first_contact_attack_not_allowed }
+		}
+	}
+	
+	# Wants No Wars
+	demand = {
+		title = "DIPLOMAT_PACIFISM"
+		unfulfilled_title = "DIPLOMAT_NO_PACIFISM"
+		desc = "DIPLOMAT_PACIFISM_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 0 }
+		}
+
+		trigger = {
+			owner = { has_policy_flag = no_wars }
+		}
+	}
+	
+	# Wants Parley
+	demand = {
+		title = "DIPLOMAT_PARLEY"
+		unfulfilled_title = "DIPLOMAT_NO_PARLEY"
+		desc = "DIPLOMAT_PARLEY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_adaptive_bureaucracy }
+		}
+
+		trigger = {
+			owner = { has_policy_flag = piracy_peaceful }
+		}
+	}
+	
+	# Wants Diplomatic Grants
+	demand = { 
+		title = "DIPLOMAT_GRANTS"
+		unfulfilled_title = "DIPLOMAT_NO_GRANTS"
+		desc = "DIPLOMAT_GRANTS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_diplomacy_insider_trading }
+		}
+
+		trigger = {
+			owner = { has_edict = diplomatic_grants }
+		}
+	}
+	
+	# Wants Bureaucratic Campaign
+	demand = { 
+		title = "DIPLOMAT_BUREAUCRATIC_CAMPAIGN"
+		unfulfilled_title = "DIPLOMAT_NO_BUREAUCRATIC_CAMPAIGN"
+		desc = "DIPLOMAT_BUREAUCRATIC_CAMPAIGN_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_galactic_administration }
+		}
+
+		trigger = {
+			owner = { has_edict = bureaucratic_campaign }
+		}
+	}
+	
+	# Wants Non-Agression Pacts
+	demand = { 
+		title = "DIPLOMAT_NONAGGRESSION"
+		unfulfilled_title = "DIPLOMAT_NO_NONAGGRESSION"
+		desc = "DIPLOMAT_NONAGGRESSION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 2 }
+		}
+
+		trigger = {
+			any_country = {
+				OR = {
+					prev.owner = { has_non_aggression_pact = PREV }
+					prev.owner = { has_defensive_pact = PREV }
+				}
+			}
+		}
+	}
+	
+	# Wants Federation
+	demand = { 
+		title = "DIPLOMAT_FEDERATION"
+		unfulfilled_title = "DIPLOMAT_NO_FEDERATION"
+		desc = "DIPLOMAT_FEDERATION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 2 }
+		}
+
+		trigger = {
+			any_country = {
+				OR = {
+					prev.owner = { is_in_federation_with = PREV }
+					prev.owner = { has_association_status = PREV }
+				}
+			}
+		}
+	}
+	
+	# Hates Indescriminate Bombardment
+	demand = { 
+		title = "DIPLOMAT_BOMBARDMENT"
+		unfulfilled_title = "DIPLOMAT_NO_BOMBARDMENT"
+		desc = "DIPLOMAT_BOMBARDMENT_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 0 }
+		}
+
+		trigger = {
+			OR = {
+				owner = { NOT = { has_policy_flag = orbital_bombardment_indiscriminate } }
+				owner = { NOT = { has_policy_flag = orbital_bombardment_armageddon } }
+			}
+		}
+	}
+	
+	# Hates Unrestricted Wars
+	demand = { 
+		title = "DIPLOMAT_UNRESTRICTED_WAR"
+		unfulfilled_title = "DIPLOMAT_NO_UNRESTRICTED_WAR"
+		desc = "DIPLOMAT_UNRESTRICTED_WAR_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 0 }
+		}
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = unrestricted_wars } }
+		}
+	}
+	
+	# Hates Hostile Contact
+	demand = {
+		title = "DIPLOMAT_HOSTILE_CONTACT"
+		unfulfilled_title = "DIPLOMAT_NO_HOSTILE_CONTACT"
+		desc = "DIPLOMAT_HOSTILE_CONTACT_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = first_contact_attack_allowed } }
+		}
+	}
+	
+	# Hates Eating Presapients
+	demand = {
+		title = "DIPLOMAT_EAT_PRESAPIENTS"
+		unfulfilled_title = "DIPLOMAT_NO_EAT_PRESAPIENTS"
+		desc = "DIPLOMAT_EAT_PRESAPIENTS_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = pre_sapients_eat } }
+		}
+	}
+	
+	# Hates Enemy of the State
+	demand = {
+		title = "DIPLOMAT_PIRACY_HOSTILE"
+		unfulfilled_title = "DIPLOMAT_NO_PIRACY_HOSTILE"
+		desc = "DIPLOMAT_PIRACY_HOSTILE_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_adaptive_bureaucracy }
+		}
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = piracy_hostile } }
+		}
+	}
+	
+	# Hates War Games
+	demand = { 
+		title = "DIPLOMAT_WAR_GAMES"
+		unfulfilled_title = "DIPLOMAT_NO_WAR_GAMES"
+		desc = "DIPLOMAT_WAR_GAMES_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_supremacy_war_games }
+		}
+
+		trigger = {
+			owner = { NOT = { has_edict = war_games } }
+		}
+	}
+	
+	# Hates Aggressive Wars
+	demand = {
+		title = "DIPLOMAT_NOT_AGGRESSOR"
+		unfulfilled_title = "DIPLOMAT_AGGRESSOR"
+		desc = "DIPLOMAT_NOT_AGGRESSOR_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+			owner = {
+				num_communications > 2
+			}
+		}
+
+		trigger = {
+			owner = {
+				NOR = {
+					has_country_flag = entered_war_as_attacker
+					any_war = { is_war_participant = { who = prev side = attackers } }
+				}
+			}
+		}
+	}
+	
+	# Hates Insults
+	demand = { 
+		title = "DIPLOMAT_INSULT"
+		unfulfilled_title = "DIPLOMAT_NO_INSULT"
+		desc = "DIPLOMAT_INSULT_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 0 }
+		}
+
+		trigger = {
+			any_country = {
+				NOT = { has_opinion_modifier = { who = prev.owner modifier = opinion_insult } }
+			}
+		}
+	}
+
+	on_destroy = {
+		if = {
+			limit = {
+				has_modifier = promoted_pacifist
+			}
+			remove_modifier = promoted_pacifist
+		}
+		if = {
+			limit = {
+				has_modifier = suppressed_pacifist
+			}
+			remove_modifier = suppressed_pacifist
+		}
+	}
+
+	actions = {
+		embrace_faction = {
+			title = "EMBRACE_FACTION"
+			description = "EMBRACE_FACTION_DESC"
+			
+			cost = {
+				influence = 500
+			}
+			
+			potential = {
+				exists = owner
+				owner = {
+					OR = {
+						is_subject = no
+						NOT = { is_subject_type = dominion }
+					}
+				}
+			}
+			
+			valid = {
+				custom_tooltip = {
+					fail_text = EMBRACE_FACTION_COOLDOWN
+					parameter:empire = {
+						NOT = { has_modifier = embraced_faction_timer }
+					}
+				}
+				support > 0.20
+				parameter:empire = {
+					NOT = { has_ethic = "ethic_fanatic_pacifist" }
+				}
+			}
+
+			effect = {
+				add_modifier = { modifier = embraced_faction days = 3600 }
+				parameter:empire = {
+					shift_ethic = ethic_pacifist
+					hidden_effect = {
+						add_modifier = { modifier = embraced_faction_timer days = 3600 }
+						every_pop_faction = {
+							limit = { NOT = { is_same_value = root } }
+							add_modifier = { modifier = embraced_another_faction days = 3600 }
+						}
+					}
+				}
+				hidden_effect = {
+					save_event_target_as = TargetFaction
+					parameter:empire = {
+						every_relation = {
+							limit = {
+								is_ai = no
+								is_country_type = default			
+								has_communications = prev
+							}
+							country_event = { id = factions.2000 }
+						}
+					}				
+				}				
+			}
+			
+			ai_weight = {
+				base = 1
+				modifier = {
+					factor = 0
+					support < 0.50
+					owner = {
+						has_ethic = ethic_pacifist
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = { has_valid_civic = civic_fanatic_purifiers }
+				}				
+				modifier = {
+					factor = 0
+					NOT = { 
+						owner = {
+							exists = ruler
+							ruler = {
+								leader_of_faction = prosperity
+							}
+						}
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						count_pop_factions = {
+							count < 4
+						}					
+					}
+				}				
+			}
+		}
+		
+		promote_faction = {
+			title = "PROMOTE_FACTION"
+			description = "PROMOTE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = {
+					NOR = {
+						has_ethic = ethic_pacifist
+						has_ethic = ethic_fanatic_pacifist
+					}
+				}
+			}
+
+			effect = {
+				parameter:empire = {
+					add_modifier = { modifier = promoted_pacifist days = -1 }
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_promote_faction = {
+			title = "CANCEL_PROMOTE_FACTION"
+			description = "CANCEL_PROMOTE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = {
+					has_modifier = promoted_pacifist
+				}
+			}
+
+			effect = {
+				parameter:empire = {
+					remove_modifier = promoted_pacifist
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		suppress_faction = {
+			title = "SUPPRESS_FACTION"
+			description = "SUPPRESS_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = {
+					NOR = {
+						has_modifier = suppressed_pacifist
+						has_modifier = promoted_pacifist
+					}
+				}
+			}
+
+			effect = {
+				add_modifier = { modifier = suppressed_faction days = -1 }
+				parameter:empire = {
+					add_modifier = { modifier = suppressed_pacifist days = -1 }
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_suppress_faction = {
+			title = "CANCEL_SUPPRESS_FACTION"
+			description = "CANCEL_SUPPRESS_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = {
+					has_modifier = suppressed_pacifist
+				}
+			}
+
+			effect = {
+				remove_modifier = suppressed_faction
+				parameter:empire = {
+					remove_modifier = suppressed_pacifist
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+	}
+}

@@ -138,7 +138,10 @@ imperialist = {
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_adaptive_bureaucracy }
+		}
 
 		trigger = {
 			owner = { has_policy_flag = piracy_hostile }
@@ -315,6 +318,7 @@ imperialist = {
 
 		potential = { 
 			exists = owner
+			owner = { num_communications > 0 }
 		}
 
 		trigger = {
@@ -324,9 +328,9 @@ imperialist = {
 	
 	# Hates Non-Agression Pacts
 	demand = { 
-		title = "EGALITARIAN_NONAGGRESSION"
-		unfulfilled_title = "EGALITARIAN_NO_NONAGGRESSION"
-		desc = "EGALITARIAN_NONAGGRESSION_DESC"
+		title = "MILITARIST_NONAGGRESSION"
+		unfulfilled_title = "MILITARIST_NO_NONAGGRESSION"
+		desc = "MILITARIST_NONAGGRESSION_DESC"
 
 		fulfilled_effect = -10
 		unfulfilled_effect = 1
@@ -338,7 +342,10 @@ imperialist = {
 
 		trigger = {
 			any_country = {
-				prev.owner = { has_non_aggression_pact = PREV }
+				OR = {
+					prev.owner = { has_non_aggression_pact = PREV }
+					prev.owner = { has_defensive_pact = PREV }
+				}
 			}
 		}
 	}
