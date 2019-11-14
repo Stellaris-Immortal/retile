@@ -44,15 +44,6 @@ servant = {
 		}
 	}	
 		
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	weight = {
 		weight = @special_job_weight
 	}
@@ -98,15 +89,6 @@ slave_toiler = {
 		}
 	}		
 		
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	weight = {
 		weight = @special_job_weight
 	}
@@ -178,15 +160,6 @@ organic_battery = {
 		}
 	}
 	
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	weight = {
 		weight = @special_job_weight
 	}
@@ -227,15 +200,6 @@ livestock = {
 		}
 	}
 		
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	weight = {
 		weight = @special_job_weight
 	}
@@ -261,15 +225,6 @@ bio_trophy = {
 	}
 	triggered_pop_modifier = {
 		pop_housing_usage_add = -1
-	}
-	
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
 	}
 	
 	weight = {
@@ -341,15 +296,6 @@ purge = {
 		}		
 	}	
 		
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	weight = {
 		weight = @special_job_weight
 
@@ -409,15 +355,6 @@ crisis_purge = {
 		}
 	}		
 		
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-
 	weight = {
 		weight = @special_job_weight
 
@@ -476,15 +413,6 @@ assimilation = {
 		}
 	}	
 		
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	weight = {
 		weight = @special_job_weight
 
@@ -523,15 +451,7 @@ criminal = {
 	pop_modifier = {
 		pop_defense_armies_add = 2
 	}
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	triggered_planet_modifier = {
+	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_civic = civic_warrior_culture }
@@ -543,6 +463,49 @@ criminal = {
 
 	resources = {
 		category = planet_criminals
+		############################################################ Syndicate Buildings
+		produces = {
+			trigger = { planet = { has_building = building_illicit_research_labs } }
+			physics_research = 2.5
+			engineering_research = 2.5
+			society_research = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_illicit_research_labs } }
+			consumer_goods = 1.25
+		}
+		produces = {
+			trigger = { planet = { has_building = building_syndicate_outreach_office } }
+			unity = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_syndicate_outreach_office } }
+			consumer_goods = 1.25
+		}
+		produces = {
+			trigger = { planet = { has_building = building_underground_chemists } }
+			consumer_goods = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_underground_chemists } }
+			minerals = 5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_wrecking_yards } }
+			alloys = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_wrecking_yards } }
+			minerals = 5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_wildcat_miners } }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_bio_reprocessing_facilities } }
+			food = 4
+		}
 		############################################################ Research Production
 		produces = {
 			trigger = { planet = { has_building = building_research_lab_1 } }
@@ -741,21 +704,50 @@ criminal = {
 			trigger = { planet = { has_building = building_food_processing_center } }
 			food = 4
 		}
-		############################################################ Natural Science Traits
-		produces = {
-			trigger = { has_trait = trait_natural_physicists }
-			physics_research = 3
-		}
-		produces = {
-			trigger = { has_trait = trait_natural_sociologists }
-			society_research = 3
-		}
-		produces = {
-			trigger = { has_trait = trait_natural_engineers }
-			engineering_research = 3
-		}
 	}
 	
+	############################################################ Syndicate Pollution
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_wildcat_miners } }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_bio_reprocessing_facilities } }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_underground_chemists } }
+		modifier = { planet_amenities_add = 15 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_wrecking_yards } }
+		modifier = { planet_amenities_add = 15 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_pirate_haven } }
+		modifier = { planet_amenities_add = 20 }
+	}
+	triggered_pop_modifier = {
+		potential = { planet = { has_building = building_pirate_haven } }
+		pop_defense_armies_add = 6
+	}
+	triggered_country_modifier = {
+		potential = { planet = { has_building = building_pirate_haven } }
+		country_naval_cap_add = 10
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = syndicate_outreach_office } }
+		modifier = { planet_amenities_add = 7.5 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_illicit_research_labs } }
+		modifier = { planet_amenities_add = 7.5 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_smuggling_rings } }
+		modifier = { planet_amenities_add = 30 }
+		trade_value_add = 10
+	}
 	############################################################ Research Pollution
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_research_lab_1 } }
@@ -954,15 +946,6 @@ deviant_drone = {
 	
 	country_modifier = {
 		planet_crime_no_happiness_mult = 0.01
-	}
-	
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_no_happiness_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 	
 	weight = {

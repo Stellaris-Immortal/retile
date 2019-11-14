@@ -10,6 +10,17 @@ ship_section_template = {
 	
 	prerequisites = { tech_missiles_1 }
 	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_explosive
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_explosive }
+		}		
+	}
+	
 	component_slot = {
 		name = "TORPEDO_01"
 		slot_size = torpedo
@@ -53,6 +64,23 @@ ship_section_template = {
 	should_draw_components = yes
 	entity = "corvette_M1S1_entity"
 	icon = "GFX_ship_part_core_mid"
+	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}	
+	}
 	
 	component_slot = {
 		name = "MEDIUM_GUN_01"
@@ -100,6 +128,23 @@ ship_section_template = {
 	should_draw_components = yes
 	entity = "corvette_S3_entity"
 	icon = "GFX_ship_part_core_mid"
+	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}	
+	}
 	
 	component_slot = {
 		name = "PD_01"
@@ -185,6 +230,23 @@ ship_section_template = {
 	
 	prerequisites = { tech_corvette_hull_1 }
 	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}	
+	}
+	
 	component_slot = {
 		name = "LARGE_GUN_01"
 		slot_size = large
@@ -225,6 +287,17 @@ ship_section_template = {
 	
 	prerequisites = { tech_corvette_hull_2 }
 	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_strike_craft
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_strike_craft }
+		}		
+	}
+
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large

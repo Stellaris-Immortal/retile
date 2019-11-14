@@ -58,9 +58,6 @@ fe_hedonist = {
 		planet_amenities_add = 25
 		planet_crime_add = -10
 	}
-	pop_modifier = {
-		pop_defense_armies_add = 1
-	}
 	
 	weight = {
 		weight = 1000
@@ -136,9 +133,6 @@ fe_ascetic = {
 	planet_modifier = {
 		planet_amenities_add = 25
 		planet_crime_add = -10
-	}
-	pop_modifier = {
-		pop_defense_armies_add = 1
 	}
 	
 	weight = {
@@ -298,36 +292,6 @@ fe_custodian = {
 			energy = 10
 			minerals = 10
 		}
-		produces = {	### Natural *** Traits
-			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_physicists
-					has_trait = trait_prodigy
-				}
-			}
-			physics_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_sociologists
-					has_trait = trait_prodigy
-				}
-			}
-			society_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_engineers
-					has_trait = trait_prodigy
-				}
-			}
-			engineering_research = 3
-		}				### End Natural *** Traits
 	}
 
 	triggered_planet_modifier = {
@@ -343,25 +307,6 @@ fe_custodian = {
 		}
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_warrior_culture }
-		}
-		modifier = {
-			pop_defense_armies_add = 2
-		}
-	}
-
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	weight = {
 		weight = 10000
 	}

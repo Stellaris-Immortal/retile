@@ -16,22 +16,13 @@ spawning_drone = {
 			retile_job_seeking = yes
 		}
 		drone_job_check_trigger = yes
-		owner = { is_hive_mind = yes }
+		owner = { is_hive_empire = yes }
 	}
 	
 	planet_modifier = {
 		planet_amenities_no_happiness_add = 50
 		pop_growth_speed = 0.50
 		planet_stability_add = 5
-	}
-	
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_no_happiness_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_no_happiness_add = -10 }
 	}
 	
 	resources = {
@@ -73,7 +64,7 @@ brain_drone = {
 			retile_job_seeking = yes
 		}
 		drone_job_check_trigger = yes
-		owner = { is_hive_mind = yes }
+		owner = { is_hive_empire = yes }
 	}
 
 	############################################################ Brain Drone Production/Upkeep
@@ -218,15 +209,6 @@ brain_drone = {
 	
 	############################################################ Brain Drone Job Weight
 	
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_no_happiness_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_no_happiness_add = -10 }
-	}
-	
 	weight = {
 		weight = 20
 	}
@@ -250,7 +232,7 @@ artisan_drone = {
 			has_job = artisan_drone
 			retile_job_seeking = yes
 		}
-		owner = { is_hive_mind = yes }
+		owner = { is_hive_empire = yes }
 	}
 	
 	############################################################ Factory Drone Production/Upkeep
@@ -359,15 +341,6 @@ artisan_drone = {
 
 	############################################################ Engineer Job Weight
 
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_no_happiness_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_no_happiness_add = -10 }
-	}
-	
 	weight = {
 		weight = 20
 	}
@@ -391,7 +364,7 @@ patrol_drone = {
 			has_job = patrol_drone
 			retile_job_seeking = yes
 		}
-		owner = { is_hive_mind = yes }
+		owner = { is_hive_empire = yes }
 	}
 	
 	pop_modifier = {
@@ -413,7 +386,7 @@ patrol_drone = {
 		}		
 	}
 	
-	triggered_planet_modifier = {
+	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_policy_flag = criminal_common_law }
@@ -433,15 +406,6 @@ patrol_drone = {
 		}		
 	}
 
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_no_happiness_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_no_happiness_add = -10 }
-	}
-		
 	weight = {
 		weight = 20
 	}
@@ -465,7 +429,7 @@ warrior_drone = {
 			has_job = warrior_drone
 			retile_job_seeking = yes
 		}
-		owner = { is_hive_mind = yes }
+		owner = { is_hive_empire = yes }
 	}
 	
 	pop_modifier = {
@@ -563,15 +527,6 @@ warrior_drone = {
 		}		
 	}
 
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_no_happiness_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_no_happiness_add = -10 }
-	}
-	
 	weight = {
 		weight = 20
 	}
@@ -595,7 +550,7 @@ mining_drone = {
 			has_job = mining_drone
 			retile_job_seeking = yes
 		}
-		owner = { is_hive_mind = yes }
+		owner = { is_hive_empire = yes }
 	}
 
 	resources = {
@@ -615,21 +570,6 @@ mining_drone = {
 			trigger = { owner = { has_civic = civic_mining_guilds } }
 			unity = 3
 		}
-		produces = {	### Natural *** Traits
-			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { has_trait = trait_natural_physicists }
-			physics_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { has_trait = trait_natural_sociologists }
-			society_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { has_trait = trait_natural_engineers }
-			engineering_research = 3
-		}				### End Natural *** Traits
 	}	
 	
 	planet_modifier = {
@@ -645,7 +585,7 @@ mining_drone = {
 	}
 
 
-	triggered_planet_modifier = {
+	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_civic = civic_warrior_culture }
@@ -655,15 +595,6 @@ mining_drone = {
 		}		
 	}
 
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_no_happiness_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_no_happiness_add = -10 }
-	}
-	
 	weight = {
 		weight = 10
 	}
@@ -687,7 +618,7 @@ agri_drone = {
 			has_job = agri_drone
 			retile_job_seeking = yes
 		}
-		owner = { is_hive_mind = yes }
+		owner = { is_hive_empire = yes }
 	}
 
 	resources = {
@@ -707,21 +638,6 @@ agri_drone = {
 			trigger = { owner = { has_civic = civic_agrarian_idyll } }
 			unity = 3
 		}
-		produces = {	### Natural *** Traits
-			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { has_trait = trait_natural_physicists }
-			physics_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { has_trait = trait_natural_sociologists }
-			society_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { has_trait = trait_natural_engineers }
-			engineering_research = 3
-		}				### End Natural *** Traits
 	}	
 	
 	planet_modifier = {
@@ -736,7 +652,7 @@ agri_drone = {
 		modifier = { planet_amenities_no_happiness_add = 60 }
 	}
 
-	triggered_planet_modifier = {
+	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_civic = civic_warrior_culture }
@@ -746,15 +662,6 @@ agri_drone = {
 		}		
 	}
 
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_no_happiness_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_no_happiness_add = -10 }
-	}
-	
 	weight = {
 		weight = 10		
 	}
@@ -778,7 +685,7 @@ technician_drone = {
 			has_job = technician_drone
 			retile_job_seeking = yes
 		}
-		owner = { is_hive_mind = yes }
+		owner = { is_hive_empire = yes }
 	}
 
 	resources = {
@@ -794,21 +701,6 @@ technician_drone = {
 			trigger = { planet = { has_building = building_energy_nexus } }
 			energy = 20
 		}
-		produces = {	### Natural *** Traits
-			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { has_trait = trait_natural_physicists }
-			physics_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { has_trait = trait_natural_sociologists }
-			society_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { has_trait = trait_natural_engineers }
-			engineering_research = 3
-		}				### End Natural *** Traits
 	}
 
 	planet_modifier = {
@@ -823,7 +715,7 @@ technician_drone = {
 		modifier = { planet_amenities_no_happiness_add = 60 }
 	}
 
-	triggered_planet_modifier = {
+	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_civic = civic_warrior_culture }
@@ -833,15 +725,6 @@ technician_drone = {
 		}		
 	}
 
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_no_happiness_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_no_happiness_add = -10 }
-	}
-	
 	weight = {
 		weight = 10	
 	}
@@ -865,7 +748,7 @@ maintenance_drone = {
 			has_job = maintenance_drone
 			retile_job_seeking = yes
 		}
-		owner = { is_hive_mind = yes }
+		owner = { is_hive_empire = yes }
 	}
 	
 	planet_modifier = {
@@ -958,21 +841,6 @@ maintenance_drone = {
 			} }
 			food = 4
 		}
-		produces = {	### Natural *** Traits
-			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { has_trait = trait_natural_physicists }
-			physics_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { has_trait = trait_natural_sociologists }
-			society_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { has_trait = trait_natural_engineers }
-			engineering_research = 3
-		}				### End Natural *** Traits
 	}
 	
 	triggered_planet_modifier = {
@@ -1010,7 +878,7 @@ maintenance_drone = {
 		modifier = { planet_amenities_no_happiness_add = 30 }
 	}
 
-	triggered_planet_modifier = {
+	triggered_pop_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_civic = civic_warrior_culture }
@@ -1020,15 +888,6 @@ maintenance_drone = {
 		}
 	}
 
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_no_happiness_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_no_happiness_add = -10 }
-	}
-	
 	weight = {
 		weight = 10	
 	}

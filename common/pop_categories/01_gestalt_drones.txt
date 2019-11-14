@@ -6,6 +6,23 @@ breeding_drone = {
 		weight = 2
 	}
 
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {	# Deviant Pop!
+		potential = { has_trait = trait_deviant }
+		modifier = { planet_crime_add = 2 }
+	}
+	triggered_planet_modifier = {	# Conformist Pop!
+		potential = { has_trait = trait_conformist }
+		modifier = { planet_crime_add = -2 }
+	}
+
 	pop_modifier = {
 		pop_housing_usage_base = 1
 		pop_amenities_usage_no_happiness_base = 0
@@ -73,6 +90,33 @@ breeding_drone = {
 			}
 			volatile_motes = @lithoid_trait_resource_production
 		}
+		produces = {	### Natural Scientist Traits
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
+			physics_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
+			engineering_research = 1
+		}				### End Natural Scientist Traits
 	}
 }
 
@@ -84,6 +128,23 @@ complex_drone = {
 		weight = 2
 	}
 
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {	# Deviant Pop!
+		potential = { has_trait = trait_deviant }
+		modifier = { planet_crime_add = 2 }
+	}
+	triggered_planet_modifier = {	# Conformist Pop!
+		potential = { has_trait = trait_conformist }
+		modifier = { planet_crime_add = -2 }
+	}
+
 	pop_modifier = {
 		pop_housing_usage_base = 1
 		pop_amenities_usage_no_happiness_base = 0
@@ -151,6 +212,33 @@ complex_drone = {
 			}
 			volatile_motes = @lithoid_trait_resource_production
 		}
+		produces = {	### Natural Scientist Traits
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
+			physics_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
+			engineering_research = 1
+		}				### End Natural Scientist Traits
 	}
 }
 
@@ -165,6 +253,23 @@ simple_drone = {
 	}
 	weight = {
 		weight = 1
+	}
+
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {	# Deviant Pop!
+		potential = { has_trait = trait_deviant }
+		modifier = { planet_crime_add = 2 }
+	}
+	triggered_planet_modifier = {	# Conformist Pop!
+		potential = { has_trait = trait_conformist }
+		modifier = { planet_crime_add = -2 }
 	}
 
 	pop_modifier = {
@@ -252,5 +357,32 @@ simple_drone = {
 			}
 			volatile_motes = @lithoid_trait_resource_production
 		}
+		produces = {	### Natural Scientist Traits
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
+			physics_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
+			engineering_research = 1
+		}				### End Natural Scientist Traits
 	}
 }

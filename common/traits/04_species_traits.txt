@@ -249,11 +249,11 @@ trait_plantoid_woody = {
 trait_very_strong = {
 	cost = 3
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_weak" "trait_strong" }
+	opposites = { "trait_very_weak" "trait_weak" "trait_strong" }
 	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {
-		army_damage_mult = 0.40
-		planet_jobs_worker_produces_mult = 0.05
+		army_damage_mult = 0.30
+		planet_jobs_worker_produces_mult = 0.1
 	}
 	slave_cost = {
 		energy = 150
@@ -263,11 +263,11 @@ trait_very_strong = {
 trait_strong = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_weak" "trait_very_strong" }
+	opposites = { "trait_very_weak" "trait_weak" "trait_very_strong" }
 	allowed_archetypes = { BIOLOGICAL LITHOID }
 	modifier = {
-		army_damage_mult = 0.20
-		planet_jobs_worker_produces_mult = 0.025
+		army_damage_mult = 0.15
+		planet_jobs_worker_produces_mult = 0.05
 	}
 	slave_cost = {
 		energy = 50
@@ -277,11 +277,28 @@ trait_strong = {
 trait_weak = {
 	cost = -1
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_plantoid_woody" "trait_strong" "trait_very_strong" }
+	opposites = { "trait_plantoid_woody" "trait_very_weak" "trait_strong" "trait_very_strong" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
-		army_damage_mult = -0.20
-		planet_jobs_worker_produces_mult = -0.025
+		army_damage_mult = -0.15
+		planet_jobs_worker_produces_mult = -0.05
+	}
+	slave_cost = {
+		energy = -50
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_very_weak = {
+	cost = -3
+	potential_crossbreeding_chance = 1.0
+	opposites = { "trait_weak" "trait_strong" "trait_very_strong" }
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	modifier = {
+		army_damage_mult = -0.30
+		planet_jobs_worker_produces_mult = -0.1
 	}
 	slave_cost = {
 		energy = -50
@@ -298,7 +315,7 @@ trait_nomadic = {
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		pop_growth_from_immigration = 0.50
-		pop_resettlement_cost_mult = -0.25
+		pop_resettlement_cost_mult = -0.50
 	}
 }
 
@@ -309,7 +326,7 @@ trait_sedentary = {
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	modifier = {
 		pop_growth_from_immigration = -0.50
-		pop_resettlement_cost_mult = 0.25
+		pop_resettlement_cost_mult = 0.50
 	}
 	ai_weight = {
 		weight = 0
@@ -404,7 +421,7 @@ trait_uplifted = {
 trait_conformists = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
-	modifier = { planet_crime_add = -0.2 }
+	#modifier = { planet_crime_add = -2 } ### Implemented in Pop Categories
 	custom_tooltip = trait_conformists_effect
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
@@ -417,7 +434,7 @@ trait_conformists = {
 trait_deviants = {
 	cost = -2
 	potential_crossbreeding_chance = 1.0
-	modifier = { planet_crime_add = 0.2 }
+	#modifier = { planet_crime_add = 2 } ### Implmented in Pop Categories
 	custom_tooltip = trait_deviants_effect
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	

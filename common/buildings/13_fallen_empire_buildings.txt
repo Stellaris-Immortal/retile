@@ -119,9 +119,12 @@ building_dimensional_fabricator = {
 			fail_text = retile_fe_building_limit_fab
 			exists = owner
 			NOT = {
-				owner = { any_owned_planet = {
-					has_building = building_dimensional_fabricator
-				} }
+				owner = {
+					is_fallen_empire = yes
+					any_owned_planet = {
+						has_building = building_dimensional_fabricator
+					}
+				}
 			}
 		}
 	}

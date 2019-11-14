@@ -64,6 +64,23 @@ ruler = {
 		pop_amenities_usage_base = 0
 	}
 	
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {	# Deviant Pop!
+		potential = { has_trait = trait_deviant }
+		modifier = { planet_crime_add = 2 }
+	}
+	triggered_planet_modifier = {	# Conformist Pop!
+		potential = { has_trait = trait_conformist }
+		modifier = { planet_crime_add = -2 }
+	}
+	
 	# scope: pop to be resettled
 	allow_resettlement = {
 		always = yes
@@ -292,6 +309,33 @@ ruler = {
 			}
 			volatile_motes = @lithoid_trait_resource_production
 		}
+		produces = {	### Natural Scientist Traits
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
+			physics_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
+			engineering_research = 1
+		}				### End Natural Scientist Traits
 	}	
 }
 
@@ -353,6 +397,23 @@ specialist = {
 	weight = {
 		weight = 2
 	}	
+	
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {	# Deviant Pop!
+		potential = { has_trait = trait_deviant }
+		modifier = { planet_crime_add = 2 }
+	}
+	triggered_planet_modifier = {	# Conformist Pop!
+		potential = { has_trait = trait_conformist }
+		modifier = { planet_crime_add = -2 }
+	}
 	
 	pop_modifier = {
 		pop_housing_usage_base = 1
@@ -651,6 +712,33 @@ specialist = {
 			}
 			volatile_motes = @lithoid_trait_resource_production
 		}
+		produces = {	### Natural Scientist Traits
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
+			physics_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
+			engineering_research = 1
+		}				### End Natural Scientist Traits
 	}
 }
 
@@ -659,7 +747,34 @@ worker = {
 	clothes_texture_index = 2
 	
 	change_job_threshold = 1.1
+	keep_from_former_job = yes
 	
+	triggered_planet_modifier = {	# Dirty Pop!
+		potential = { has_trait = trait_repugnant }
+		modifier = { planet_amenities_add = 10 }
+	}
+	triggered_planet_modifier = {	# Clean Pop!
+		potential = { has_trait = trait_charismatic }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {	# Deviant Pop!
+		potential = { has_trait = trait_deviant }
+		modifier = { planet_crime_add = 2 }
+	}
+	triggered_planet_modifier = {	# Conformist Pop!
+		potential = { has_trait = trait_conformist }
+		modifier = { planet_crime_add = -2 }
+	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		modifier = {
+			pop_defense_armies_add = 2
+		}
+	}
 	triggered_planet_modifier = {
 		potential = {
 			can_generate_trade_value = yes
@@ -1072,5 +1187,32 @@ worker = {
 			}
 			volatile_motes = @lithoid_trait_resource_production
 		}
+		produces = {	### Natural Scientist Traits
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
+			physics_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
+			engineering_research = 1
+		}				### End Natural Scientist Traits
 	}
 }

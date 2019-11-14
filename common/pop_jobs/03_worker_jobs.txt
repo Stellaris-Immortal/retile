@@ -193,36 +193,6 @@ custodian = {
 			energy = 10
 			minerals = 10
 		}
-		produces = {	### Natural *** Traits
-			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_physicists
-					has_trait = trait_prodigy
-				}
-			}
-			physics_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_sociologists
-					has_trait = trait_prodigy
-				}
-			}
-			society_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_engineers
-					has_trait = trait_prodigy
-				}
-			}
-			engineering_research = 3
-		}				### End Natural *** Traits
 	}
 	
 	triggered_planet_modifier = {
@@ -284,25 +254,6 @@ custodian = {
 		}
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_warrior_culture }
-		}
-		modifier = {
-			pop_defense_armies_add = 2
-		}
-	}
-
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	weight = {
 		weight = @worker_job_weight
 		modifier = {
@@ -330,10 +281,30 @@ custodian = {
 			factor = 0.25
 			can_take_servant_job = yes
 		}
-		modifier = {	# AI loses pop growth a lot to pollution. This should help...
-			weight = 100
-			owner = { is_ai = yes }
+		modifier = {
+			factor = 2
+			planet = { free_amenities > 200 }
 		}
+		modifier = {
+			factor = 2
+			planet = { free_amenities > 400 }
+		}
+		modifier = {
+			factor = 2
+			planet = { free_amenities > 600 }
+		}
+		modifier = {
+			factor = 2
+			planet = { free_amenities > 800 }
+		}
+		modifier = {
+			factor = 2
+			planet = { free_amenities > 1000 }
+		}
+		#modifier = {	# AI loses pop growth a lot to pollution. This should help...
+		#	weight = 100
+		#	owner = { is_ai = yes }
+		#}
 	}
 }
 
@@ -374,36 +345,6 @@ technician = {
 			trigger = { planet = { has_building = building_energy_nexus } }
 			energy = 20
 		}
-		produces = {	### Natural *** Traits
-			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_physicists
-					has_trait = trait_prodigy
-				}
-			}
-			physics_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_sociologists
-					has_trait = trait_prodigy
-				}
-			}
-			society_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_engineers
-					has_trait = trait_prodigy
-				}
-			}
-			engineering_research = 3
-		}				### End Natural *** Traits
 	}
 
 	planet_modifier = {
@@ -418,25 +359,6 @@ technician = {
 		modifier = { planet_amenities_add = 60 }
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_warrior_culture }
-		}
-		modifier = {
-			pop_defense_armies_add = 2
-		}		
-	}
-
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	############################################################ Commerce Buildings
 
 	triggered_planet_modifier = {
@@ -609,36 +531,6 @@ miner = {
 			trigger = { owner = { has_civic = civic_mining_guilds } }
 			unity = 3
 		}
-		produces = {	### Natural *** Traits
-			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_physicists
-					has_trait = trait_prodigy
-				}
-			}
-			physics_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_sociologists
-					has_trait = trait_prodigy
-				}
-			}
-			society_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_engineers
-					has_trait = trait_prodigy
-				}
-			}
-			engineering_research = 3
-		}				### End Natural *** Traits
 	}	
 	
 	planet_modifier = {
@@ -653,26 +545,6 @@ miner = {
 		modifier = { planet_amenities_add = 60 }
 	}
 
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_warrior_culture }
-		}
-		modifier = {
-			pop_defense_armies_add = 2
-		}		
-	}
-
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	############################################################ Commerce Buildings
 
 	triggered_planet_modifier = {
@@ -865,36 +737,6 @@ farmer = {
 			trigger = { owner = { has_civic = civic_agrarian_idyll } }
 			unity = 3
 		}
-		produces = {	### Natural *** Traits
-			#trigger = { pop = { has_trait = trait_natural_physicists } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_physicists
-					has_trait = trait_prodigy
-				}
-			}
-			physics_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_sociologists } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_sociologists
-					has_trait = trait_prodigy
-				}
-			}
-			society_research = 3
-		}
-		produces = {
-			#trigger = { pop = { has_trait = trait_natural_engineers } }
-			trigger = { 
-				OR = { 
-					has_trait = trait_natural_engineers
-					has_trait = trait_prodigy
-				}
-			}
-			engineering_research = 3
-		}				### End Natural *** Traits
 	}	
 	
 	planet_modifier = {
@@ -953,25 +795,6 @@ farmer = {
 		}
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_warrior_culture }
-		}
-		modifier = {
-			pop_defense_armies_add = 2
-		}		
-	}
-
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
-	
 	############################################################ Commerce Buildings
 
 	triggered_planet_modifier = {
@@ -1147,15 +970,6 @@ priest = {
 		potential = { has_trait = trait_nuumismatic_administration }
 		modifier = { trade_value_add = 3.75 }
 	}		
-	
-	triggered_planet_modifier = {	# Dirty Pop!
-		potential = { has_trait = trait_repugnant }
-		modifier = { planet_amenities_add = 10 }
-	}
-	triggered_planet_modifier = {	# Clean Pop!
-		potential = { has_trait = trait_charismatic }
-		modifier = { planet_amenities_add = -10 }
-	}
 	
 	weight = {
 		weight = @specialist_job_weight
