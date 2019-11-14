@@ -36,6 +36,23 @@ ship_section_template = {
 	entity = "military_station_section_light_entity"
 	icon = "GFX_ship_part_core_mid"
 	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}	
+	}
+	
 	component_slot = {
 		name = "Medium_GUN_01"
 		slot_size = medium
@@ -98,6 +115,23 @@ ship_section_template = {
 	entity = "military_station_section_light_entity"
 	icon = "GFX_ship_part_core_mid"
 	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}	
+	}
+	
 	component_slot = {
 		name = "LARGE_GUN_01"
 		slot_size = large
@@ -154,6 +188,17 @@ ship_section_template = {
 	entity = "military_station_section_light_entity"
 	icon = "GFX_ship_part_core_mid"	
 		
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_strike_craft
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_strike_craft }
+		}		
+	}
+
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large
@@ -223,6 +268,17 @@ ship_section_template = {
 	icon = "GFX_ship_part_core_mid"
 	
 		
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_explosive
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_explosive }
+		}		
+	}
+	
 	component_slot = {
 		name = "TORPEDO_01"
 		slot_size = torpedo
@@ -287,7 +343,6 @@ ship_section_template = {
 	entity = "military_station_section_medium_entity"
 	icon = "GFX_ship_part_core_mid"
 	
-	
 	component_slot = {
 		name = "LARGE_GUN_01"
 		slot_size = large
@@ -333,7 +388,6 @@ ship_section_template = {
 	
 	entity = "military_station_section_light_entity"
 	icon = "GFX_ship_part_core_mid"
-	
 	
 	component_slot = {
 		name = "MEDIUM_GUN_01"
