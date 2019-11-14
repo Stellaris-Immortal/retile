@@ -311,10 +311,30 @@ custodian = {
 			factor = 0.25
 			can_take_servant_job = yes
 		}
-		modifier = {	# AI loses pop growth a lot to pollution. This should help...
-			weight = 100
-			owner = { is_ai = yes }
+		modifier = {
+			factor = 2
+			planet = { free_amenities > 200 }
 		}
+		modifier = {
+			factor = 2
+			planet = { free_amenities > 400 }
+		}
+		modifier = {
+			factor = 2
+			planet = { free_amenities > 600 }
+		}
+		modifier = {
+			factor = 2
+			planet = { free_amenities > 800 }
+		}
+		modifier = {
+			factor = 2
+			planet = { free_amenities > 1000 }
+		}
+		#modifier = {	# AI loses pop growth a lot to pollution. This should help...
+		#	weight = 100
+		#	owner = { is_ai = yes }
+		#}
 	}
 }
 
