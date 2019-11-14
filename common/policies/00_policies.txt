@@ -19,8 +19,6 @@ piracy = {
 	option = {
 		name = "piracy_hostile"
 		
-		modifier = { }
-		
 		on_enabled = { 
 			hidden_effect = {
 				if = {
@@ -39,16 +37,27 @@ piracy = {
 		}
 		
 		AI_weight = {
-			factor = 1
+			modifier = {
+				factor = 10
+				OR = {
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+			}
 		}
 	}
 	
 	option = {
 		name = "piracy_peaceful"
 		
-		potential = {
-			has_technology = tech_adaptive_bureaucracy
-		}
+		potential = { has_technology = tech_adaptive_bureaucracy }
 		
 		policy_flags = { piracy_peaceful }
 		
@@ -72,7 +81,20 @@ piracy = {
 		}
 		
 		AI_weight = {
-			factor = 0
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
+				}
+			}
+			modifier = {
+				factor = 10
+				OR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+			}
 		}
 	}
 	
@@ -86,21 +108,13 @@ piracy = {
 		modifier = { }
 		
 		AI_weight = {
-			factor = 1
+			factor = 0
 		}
 	}
 }
 
 war_philosophy = {
 
-	potential = {
-		OR = {
-			is_country_type = default
-			is_country_type = fallen_empire
-			is_country_type = awakened_fallen_empire
-		}
-	}
-	
 	allow = {
 		is_at_war = no # Not allowed to change policies in this group while at war
 	}
@@ -116,29 +130,8 @@ war_philosophy = {
 			modifier = {
 				factor = 10
 				OR = {
-					has_valid_ai_personality = no
-					is_ai = no
-				}
-				NOT = {
-					has_ethic = "ethic_pacifist"
-					has_ethic = "ethic_fanatic_pacifist"
-				}
-			}
-			modifier = {
-				factor = 10
-				has_valid_ai_personality = yes
-				is_ai = yes
-				OR = {
-					has_ai_personality_behaviour = conqueror
-					has_ai_personality_behaviour = subjugator
-					has_ai_personality_behaviour = purger
-				}
-			}
-			modifier = {
-				factor = 0
-				OR = {
-					has_ethic = "ethic_pacifist"
-					has_ethic = "ethic_fanatic_pacifist"
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
 				}
 			}
 		}
@@ -173,21 +166,17 @@ war_philosophy = {
 		
 		AI_weight = {
 			modifier = {
-				factor = 2
+				factor = 10
 				OR = {
-					has_valid_ai_personality = no
-					is_ai = no
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
 				}
-				has_ethic = "ethic_pacifist"
 			}
 			modifier = {
-				factor = 2
-				has_valid_ai_personality = yes
-				is_ai = yes
+				factor = 0
 				OR = {
-					has_ai_personality_behaviour = conqueror
-					has_ai_personality_behaviour = subjugator
-					has_ai_personality_behaviour = liberator
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
 				}
 			}
 		}
@@ -199,24 +188,21 @@ war_philosophy = {
 		policy_flags = {
 			no_wars
 		}
-
-		valid = {
-			NOR = {
-				has_ethic = "ethic_fanatic_militarist"
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
-			}
-		}
 		
 		AI_weight = {
 			modifier = {
-				factor = 5
-				has_ethic = "ethic_fanatic_pacifist"
+				factor = 10
+				OR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
 			}
 			modifier = {
 				factor = 0
-				NOT = { has_ethic = "ethic_fanatic_pacifist" }
+				OR = {
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
+				}
 			}
 		}
 	}
@@ -291,15 +277,21 @@ war_doctrine = {
 		}	
 
 		AI_weight = {
-			factor = 100
 			modifier = {
-				factor = 0
-				NOR = { 
-					has_ai_personality = honorbound_warriors 
-					has_ai_personality = devouring_swarm 
+				factor = 10
+				OR = {
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
 				}
 			}
-		}		
+			modifier = {
+				factor = 100
+				NOR = {
+					has_ai_personality = honorbound_warriors
+					has_ai_personality = devouring_swarm
+				}
+			}
+		}
 	}
 }
 
@@ -314,9 +306,31 @@ orbital_bombardment = {
 	
 	option = {
 		name = "orbital_bombardment_selective"
-		policy_flags = {
-			orbital_bombardment_selective
+		
+		policy_flags = { orbital_bombardment_selective }
+		
+		AI_weight = {
+			modifier = {
+				factor = 10
+				NOR = {
+					has_ethic = "ethic_pacifist"
+					has_ethic = "ethic_fanatic_pacifist"
+				}
+			}
+			modifier = {
+				factor = 0
+				NOR = {
+					has_ethic = "ethic_xenophobe"
+					has_ethic = "ethic_fanatic_xenophobe"
+				}
+			}
 		}
+	}
+	option = {
+		name = "orbital_bombardment_indiscriminate"
+		
+		policy_flags = { orbital_bombardment_indiscriminate }
+		
 		
 		AI_weight = {
 			modifier = {
@@ -329,30 +343,25 @@ orbital_bombardment = {
 		}
 	}
 	option = {
-		name = "orbital_bombardment_indiscriminate"
-		
-		policy_flags = {
-			orbital_bombardment_indiscriminate
-		}
-		modifier = {}
-
-	}
-	option = {
 		name = "orbital_bombardment_armageddon"
 		
-		potential = {
-			OR = {
-				has_valid_civic = civic_fanatic_purifiers
-				has_valid_civic = civic_machine_terminator
-			}
-		}
-		
-		policy_flags = {
-			orbital_bombardment_armageddon
-		}
-		modifier = {}
+		policy_flags = { orbital_bombardment_armageddon }
 		
 		AI_weight = {
+			modifier = {
+				factor = 10
+				NOR = {
+					has_ethic = "ethic_xenophobe"
+					has_ethic = "ethic_fanatic_pacifist"
+				}
+			}
+			modifier = {
+				factor = 0
+				NOR = {
+					has_ethic = "ethic_pacifist"
+					has_ethic = "ethic_fanatic_pacifist"
+				}
+			}
 			modifier = {
 				factor = 10
 				OR = {
@@ -373,12 +382,7 @@ interference = {
 	option = {
 		name = "interference_passive"
 		
-		policy_flags = {
-			interference_passive
-		}
-		
-		on_enabled = {
-		}
+		policy_flags = { interference_passive }
 		
 		valid = {
 			OR = {
@@ -390,10 +394,7 @@ interference = {
 	option = {
 		name = "interference_active"
 		
-		policy_flags = {
-			interference_active
-		}
-		modifier = {}
+		policy_flags = { interference_active }
 		
 		valid = {
 			NOR = {
