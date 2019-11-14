@@ -73,11 +73,11 @@ ruler = {
 		modifier = { planet_amenities_add = -10 }
 	}
 	triggered_planet_modifier = {	# Deviant Pop!
-		potential = { has_trait = trait_repugnant }
+		potential = { has_trait = trait_deviant }
 		modifier = { planet_crime_add = 2 }
 	}
 	triggered_planet_modifier = {	# Conformist Pop!
-		potential = { has_trait = trait_charismatic }
+		potential = { has_trait = trait_conformist }
 		modifier = { planet_crime_add = -2 }
 	}
 	
@@ -309,6 +309,33 @@ ruler = {
 			}
 			volatile_motes = @lithoid_trait_resource_production
 		}
+		produces = {	### Natural Scientist Traits
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
+			physics_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
+			engineering_research = 1
+		}				### End Natural Scientist Traits
 	}	
 }
 
@@ -380,11 +407,11 @@ specialist = {
 		modifier = { planet_amenities_add = -10 }
 	}
 	triggered_planet_modifier = {	# Deviant Pop!
-		potential = { has_trait = trait_repugnant }
+		potential = { has_trait = trait_deviant }
 		modifier = { planet_crime_add = 2 }
 	}
 	triggered_planet_modifier = {	# Conformist Pop!
-		potential = { has_trait = trait_charismatic }
+		potential = { has_trait = trait_conformist }
 		modifier = { planet_crime_add = -2 }
 	}
 	
@@ -685,6 +712,33 @@ specialist = {
 			}
 			volatile_motes = @lithoid_trait_resource_production
 		}
+		produces = {	### Natural Scientist Traits
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_physicists
+					has_trait = trait_prodigy
+				}
+			}
+			physics_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_sociologists
+					has_trait = trait_prodigy
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_engineers
+					has_trait = trait_prodigy
+				}
+			}
+			engineering_research = 1
+		}				### End Natural Scientist Traits
 	}
 }
 
@@ -704,11 +758,11 @@ worker = {
 		modifier = { planet_amenities_add = -10 }
 	}
 	triggered_planet_modifier = {	# Deviant Pop!
-		potential = { has_trait = trait_repugnant }
+		potential = { has_trait = trait_deviant }
 		modifier = { planet_crime_add = 2 }
 	}
 	triggered_planet_modifier = {	# Conformist Pop!
-		potential = { has_trait = trait_charismatic }
+		potential = { has_trait = trait_conformist }
 		modifier = { planet_crime_add = -2 }
 	}
 	
@@ -1133,36 +1187,32 @@ worker = {
 			}
 			volatile_motes = @lithoid_trait_resource_production
 		}
-		
-		produces = {	### Natural *** Traits
-			#trigger = { has_trait = trait_natural_physicists }
+		produces = {	### Natural Scientist Traits
 			trigger = { 
 				OR = { 
 					has_trait = trait_natural_physicists
 					has_trait = trait_prodigy
 				}
 			}
-			physics_research = 3
+			physics_research = 1
 		}
 		produces = {
-			#trigger = { has_trait = trait_natural_sociologists }
 			trigger = { 
 				OR = { 
 					has_trait = trait_natural_sociologists
 					has_trait = trait_prodigy
 				}
 			}
-			society_research = 3
+			society_research = 1
 		}
 		produces = {
-			#trigger = { has_trait = trait_natural_engineers }
 			trigger = { 
 				OR = { 
 					has_trait = trait_natural_engineers
 					has_trait = trait_prodigy
 				}
 			}
-			engineering_research = 3
-		}				### End Natural *** Traits
+			engineering_research = 1
+		}				### End Natural Scientist Traits
 	}
 }
