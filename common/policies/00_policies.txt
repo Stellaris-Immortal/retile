@@ -19,6 +19,8 @@ piracy = {
 	option = {
 		name = "piracy_hostile"
 		
+		policy_flags = { piracy_hostile }
+		
 		modifier = { }
 		
 		on_enabled = { 
@@ -283,7 +285,10 @@ war_doctrine = {
 	option = {
 		name = "no_retreat_doctrine"	
 		
-		policy_flags = {}
+		policy_flags = {
+			no_retreat_doctrine
+		}
+		
 		modifier = {
 			ship_disengage_chance_reduction = 1
 			ship_emergency_ftl_min_days_mult = 0.5
