@@ -1367,38 +1367,6 @@ border_policy = {
 	}
 }
 
-psionic_policy = {
-
-	potential = {	
-		has_technology = tech_psionic_theory
-		NOT = { has_ethic = ethic_gestalt_consciousness }
-	}
-	
-	option = {
-		name = "psionics_banned"
-		
-		policy_flags = {
-			psionics_banned
-		}
-		
-		AI_weight = {
-			factor = 1		
-		}
-	}
-	
-	option = {
-		name = "psionics_allowed"
-		
-		policy_flags = {
-			psionics_allowed
-		}
-		
-		AI_weight = {
-			factor = 2				
-		}
-	}
-}
-
 artificial_intelligence_policy = {
 
 	potential = {	
@@ -1526,11 +1494,7 @@ robot_pop_policy = {
 		name = "robot_pops_outlawed"
 
 		valid = {
-			NOR = {
-				has_ethic = "ethic_materialist"
-				has_ethic = "ethic_fanatic_materialist"
-			}				
-			NOT = { has_policy_flag = ai_full_rights }
+			always = no
 		}
 		
 		policy_flags = {
@@ -1538,22 +1502,7 @@ robot_pop_policy = {
 		}
 		
 		AI_weight = {
-			factor = 1
-			modifier = {
-				factor = 0
-				OR = {
-					has_ethic = "ethic_materialist"
-					has_ethic = "ethic_fanatic_materialist"
-				}
-			}
-			modifier = {
-				factor = 10
-				has_valid_ai_personality = yes
-				NOR = {
-					has_ai_personality_behaviour = robot_exploiter
-					has_ai_personality_behaviour = robot_liberator
-				}
-			}		
+			factor = 0		
 		}
 	}
 	
@@ -1565,7 +1514,7 @@ robot_pop_policy = {
 		}
 		
 		AI_weight = {
-			factor = 2				
+			factor = 10			
 		}
 	}
 }
