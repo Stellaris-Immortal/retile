@@ -1,0 +1,32 @@
+
+
+
+# Deposit on starting world
+d_cryo_sleep_vaults = {
+
+    icon = d_metal_boneyard
+	time = 120
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers	
+	
+	potential = { always = no }
+	
+	planet_modifier = {
+		planet_max_districts_add = -1
+	}
+	
+	on_cleared = {
+		create_pop = {
+			species = owner
+		}
+	}
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+            energy = 500
+            minerals = 300
+		}
+	}
+}
