@@ -7,6 +7,7 @@ can_support_branch_offices = {
 
 # This = pop
 can_resettle_pop = {
+	always = yes
 	#IF = { #Done as an IF/ELSE so the tooltip isn't hideous and unreadable
 	#	limit = { is_shackled_robot = yes }
 	#	is_shackled_robot = yes
@@ -19,9 +20,31 @@ can_resettle_pop = {
 	#		}
 	#	}
 	#}
-	planet = {
-		num_pops > 1
-	}
+	#planet = {
+	#	num_pops > 1
+	#}
+}
+
+# This = Planet
+can_resettle_planet = {
+	num_pops > 1
+	#is_controlled_by = owner
+	#has_ground_combat = no
+	#has_orbital_bombardment = no
+	#owner = {
+	#	OR = {
+	#		has_policy_flag = resettlement_allowed
+	#		is_gestalt = yes
+	#		any_owned_pop = {
+	#			is_shackled_robot = yes
+	#		}
+	#	}
+	#}
+	#custom_tooltip = {
+	#	text = "RESETTLE_PLANET_UNDER_COLONIZATION"
+	#	exists = this
+	#	is_under_colonization = no
+	#}
 }
 
 # This = planet
