@@ -1,0 +1,620 @@
+##############################
+# Technologist Faction
+##############################
+
+technologist = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_materialist
+	
+	unique = yes
+	support_multiplier = 1
+	
+	resources = {
+		category = pop_factions
+		produces = {
+			influence = 2
+		}
+	}
+
+	is_potential = {
+		years_passed > 10
+		has_encountered_other_species = yes
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	parameters = {
+		empire = {
+			type = country
+			valid_objects = {
+				is_same_value = root
+			}
+		}
+	}
+	can_join_pre_triggers = {
+		is_enslaved = no
+		is_being_purged = no
+	}
+	
+	can_join_faction = {
+		is_shackled_robot = no
+		has_culture_shock = no
+		NOT = { has_trait = trait_nerve_stapled }
+		OR = {
+			has_ethic = ethic_materialist
+			has_ethic = ethic_fanatic_materialist
+		}
+	}
+	
+	attraction = {
+		base = 100
+		
+		modifier = {
+			factor = 1.50
+			has_living_standard = { type = living_standard_utopian }
+			has_living_standard = { type = living_standard_chemical_bliss }
+			has_living_standard = { type = living_standard_organic_trophy }
+			
+		}
+		
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_academic_living_standard_type = yes
+				has_living_standard = { type = living_standard_good }
+			}
+		}
+		
+		modifier = {
+			factor = 0.75
+			OR = {
+				has_shared_burden_living_standard_type = yes
+				has_stratified_living_standard_type = yes
+				has_living_standard = { type = living_standard_normal }
+			}
+		}
+		
+		modifier = {
+			factor = 0.5
+			has_living_standard = { type = living_standard_subsistence }
+		}
+		
+	}
+	
+	leader = {
+		base = 100
+		
+		modifier = {
+			factor = 0.0
+			is_event_leader = yes
+		}
+	}
+	
+	# Wants Private Education
+	demand = { 
+		title = "MATERIALIST_PRIVATE_EDUCATION"
+		unfulfilled_title = "MATERIALIST_NO_PRIVATE_EDUCATION"
+		desc = "MATERIALIST_PRIVATE_EDUCATION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = education_for_profit }
+		}
+	}
+	
+	# Wants Private Police
+	demand = { 
+		title = "MATERIALIST_PRIVATE_POLICE"
+		unfulfilled_title = "MATERIALIST_NO_PRIVATE_POLICE"
+		desc = "MATERIALIST_PRIVATE_POLICE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = criminal_private_police }
+		}
+	}
+	
+	# Wants Environmental Deregulation
+	demand = { 
+		title = "MATERIALIST_ENVIRONMENTAL_DEREGULATION"
+		unfulfilled_title = "MATERIALIST_NO_ENVIRONMENTAL_DEREGULATION"
+		desc = "MATERIALIST_ENVIRONMENTAL_DEREGULATION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = environmental_deregulation }
+		}
+	}
+	
+	# Wants AI Rights
+	demand = { 
+		title = "MATERIALIST_AI_RIGHTS"
+		unfulfilled_title = "MATERIALIST_NO_AI_RIGHTS"
+		desc = "MATERIALIST_AI_RIGHTS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { can_set_ai_policy = yes }
+		}
+
+		trigger = {
+			owner = { has_policy_flag = ai_full_rights }
+		}
+	}
+	
+	# Wants Capacity Boosters
+	demand = { 
+		title = "MATERIALIST_CAPACITY_BOOSTERS"
+		unfulfilled_title = "MATERIALIST_NO_CAPACITY_BOOSTERS"
+		desc = "MATERIALIST_CAPACITY_BOOSTERS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_capacity_boosters }
+		}
+
+		trigger = {
+			owner = { has_policy_flag = leader_enhancement_capacity_boosters }
+		}
+	}
+	
+	# Wants Space Campaign
+	demand = { 
+		title = "MATERIALIST_SPACE_CAMPAIGN"
+		unfulfilled_title = "MATERIALIST_NO_SPACE_CAMPAIGN"
+		desc = "MATERIALIST_SPACE_CAMPAIGN_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_edict = space_campaign }
+		}
+	}
+	
+	# Wants Research Grants
+	demand = { 
+		title = "MATERIALIST_RESEARCH_GRANTS"
+		unfulfilled_title = "MATERIALIST_NO_RESEARCH_GRANTS"
+		desc = "MATERIALIST_RESEARCH_GRANTS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_discovery_faith_in_science }
+		}
+
+		trigger = {
+			owner = { has_edict = research_focus }
+		}
+	}
+
+	# Wants Research Agreement
+	demand = {
+		title = "MATERIALIST_RESEARCH_AGREEMENT"
+		unfulfilled_title = "MATERIALIST_NO_RESEARCH_AGREEMENT"
+		desc = "MATERIALIST_RESEARCH_AGREEMENT_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = {
+			exists = owner
+			owner = {
+				num_communications > 2
+			}
+		}
+
+		trigger = {
+			owner = {
+				count_country = {
+					count > 0
+					limit = {
+						exists = this
+						root.owner = { has_research_agreement = prev }
+					}
+				}
+			}
+		}
+	}
+	
+	# Wants Commercial Pact
+	demand = {
+		title = "MATERIALIST_COMMERCIAL_PACT"
+		unfulfilled_title = "MATERIALIST_NO_COMMERCIAL_PACT"
+		desc = "MATERIALIST_COMMERCIAL_PACT_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = {
+			exists = owner
+			owner = {
+				num_communications > 2
+			}
+		}
+
+		trigger = {
+			owner = {
+				count_country = {
+					count > 0
+					limit = {
+						exists = this
+						root.owner = { has_commercial_pact = prev }
+					}
+				}
+			}
+		}
+	}
+	
+	# Wants Luxury
+	demand = {
+		title = "MATERIALIST_LUXURY"
+		unfulfilled_title = "MATERIALIST_NO_LUXURY"
+		desc = "MATERIALIST_LUXURY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				OR = {
+					any_owned_pop = { has_living_standard = { type = living_standard_chemical_bliss } }
+					any_owned_pop = { has_living_standard = { type = has_academic_living_standard_type } }
+				}
+			}
+		}
+	}
+	
+	# Wants Presurcer Secrets
+	demand = {
+		title = "MATERIALIST_PRECURSOR_SECRETS"
+		unfulfilled_title = "MATERIALIST_NO_PRECURSOR_SECRETS"
+		desc = "MATERIALIST_PRECURSOR_SECRETS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_modifier = cybrex_world_found
+					has_modifier = irassian_world_found
+					has_modifier = league_world_found
+					has_modifier = vultaum_world_found
+				}
+			}
+		}
+		
+		trigger = {
+			owner = {
+				OR = {
+					has_modifier = artifact_cybrex_research_completed
+					has_modifier = artifact_irassian_research_completed
+					has_modifier = artifact_league_research_completed
+					has_modifier = artifact_vultaum_research_completed_suppressed
+					has_modifier = artifact_vultaum_research_completed_public
+					has_country_flag = artifact_yuht_research_completed
+				}
+			}
+		}
+	}
+	
+	# Hates Environmental Protections
+	demand = { 
+		title = "MATERIALIST_ENVIRONMENTAL_PROTECTION"
+		unfulfilled_title = "MATERIALIST_NO_ENVIRONMENTAL_PROTECTION"
+		desc = "MATERIALIST_ENVIRONMENTAL_PROTECTION_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			NOT = { owner = { has_policy_flag = environmental_protection } }
+		}
+	}
+
+	on_create = {
+		pop_faction_event = { id = factions.1 }
+	}
+
+	# Hates Public Education
+	demand = { 
+		title = "MATERIALIST_PUBLIC_EDUCATION"
+		unfulfilled_title = "MATERIALIST_NO_PUBLIC_EDUCATION"
+		desc = "MATERIALIST_PUBLIC_EDUCATION_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			NOT = { owner = { has_policy_flag = education_public_private } }
+		}
+	}
+	
+	# Hates AI Outlawed
+	demand = { 
+		title = "MATERIALIST_AI_OUTLAWED"
+		unfulfilled_title = "MATERIALIST_NO_AI_OUTLAWED"
+		desc = "MATERIALIST_AI_OUTLAWED_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			NOT = { owner = { has_policy_flag = ai_outlawed } }
+		}
+	}
+	
+	# Hates Celebration Campaign
+	demand = { 
+		title = "MATERIALIST_CELEBRATION_CAMPAIGN"
+		unfulfilled_title = "MATERIALIST_NO_CELEBRATION_CAMPAIGN"
+		desc = "MATERIALIST_CELEBRATION_CAMPAIGN_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_colonial_centralization }
+		}
+
+		trigger = {
+			NOT = { owner = { has_edict = celebration_campaign } }
+		}
+	}
+	
+	# Hates Basic Subsistence
+	demand = {
+		title = "MATERIALIST_BASIC_SUBSISTENCE"
+		unfulfilled_title = "MATERIALIST_NO_BASIC_SUBSISTENCE"
+		desc = "MATERIALIST_BASIC_SUBSISTENCE_DESC"
+
+		fulfilled_effect = -10
+		unfulfilled_effect = 1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				OR = {
+					any_owned_pop = { has_living_standard = { type = living_standard_shared_burden } }
+					any_owned_pop = { has_living_standard = { type = living_standard_subsistence } }
+				}
+			}
+		}
+	}
+
+	on_destroy = {
+		if = {
+			limit = {
+				has_modifier = promoted_materialist
+			}
+			remove_modifier = promoted_materialist
+		}
+		if = {
+			limit = {
+				has_modifier = suppressed_materialist
+			}
+			remove_modifier = suppressed_materialist
+		}
+	}
+	
+	actions = {
+		embrace_faction = {
+			title = "EMBRACE_FACTION"
+			description = "EMBRACE_FACTION_DESC"
+			
+			cost = {
+				influence = 500
+			}
+			
+			potential = {
+				exists = owner
+				owner = {
+					OR = {
+						is_subject = no
+						NOT = { is_subject_type = dominion }
+					}
+				}
+			}
+			
+			valid = {
+				custom_tooltip = {
+					fail_text = EMBRACE_FACTION_COOLDOWN
+					parameter:empire = {
+						NOT = { has_modifier = embraced_faction_timer }
+					}
+				}
+				support > 0.20
+				parameter:empire = {
+					NOT = { has_ethic = "ethic_fanatic_materialist" }
+				}
+			}
+
+			effect = {
+				add_modifier = { modifier = embraced_faction days = 3600 }			
+				parameter:empire = {
+					shift_ethic = ethic_materialist
+					hidden_effect = {
+						add_modifier = { modifier = embraced_faction_timer days = 3600 }
+						every_pop_faction = {
+							limit = { NOT = { is_same_value = root } }
+							add_modifier = { modifier = embraced_another_faction days = 3600 }
+						}
+					}
+				}
+				hidden_effect = {
+					save_event_target_as = TargetFaction
+					parameter:empire = {
+						every_relation = {
+							limit = {
+								is_ai = no
+								is_country_type = default			
+								has_communications = prev
+							}
+							country_event = { id = factions.2000 }
+						}
+					}				
+				}				
+			}
+			
+			ai_weight = {
+				base = 1
+				modifier = {
+					factor = 0
+					support < 0.50
+					owner = {
+						has_ethic = ethic_materialist
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = { has_valid_civic = civic_fanatic_purifiers }
+				}				
+				modifier = {
+					factor = 0
+					NOT = { 
+						owner = {
+							exists = ruler
+							ruler = {
+								leader_of_faction = technologist
+							}
+						}
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						count_pop_factions = {
+							count < 4
+						}					
+					}
+				}				
+			}
+		}
+		promote_faction = {
+			title = "PROMOTE_FACTION"
+			description = "PROMOTE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = { 			
+					NOR = { 
+						has_modifier = suppressed_materialist
+						has_modifier = promoted_materialist 
+					}
+				}
+			}
+
+			effect = {
+				parameter:empire = {
+					add_modifier = { modifier = promoted_materialist days = -1 }
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_promote_faction = {
+			title = "CANCEL_PROMOTE_FACTION"
+			description = "CANCEL_PROMOTE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = { 
+					has_modifier = promoted_materialist
+				}
+			}
+
+			effect = {
+				parameter:empire = {
+					remove_modifier = promoted_materialist
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}		
+		suppress_faction = {
+			title = "SUPPRESS_FACTION"
+			description = "SUPPRESS_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = { 
+					NOR = { 
+						has_modifier = suppressed_materialist
+						has_modifier = promoted_materialist 
+					}
+				}
+			}
+
+			effect = {
+				add_modifier = { modifier = suppressed_faction days = -1 }
+				parameter:empire = {
+					add_modifier = { modifier = suppressed_materialist days = -1 }
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_suppress_faction = {
+			title = "CANCEL_SUPPRESS_FACTION"
+			description = "CANCEL_SUPPRESS_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = { 
+					has_modifier = suppressed_materialist
+				}
+			}
+
+			effect = {
+				remove_modifier = suppressed_faction
+				parameter:empire = {
+					remove_modifier = suppressed_materialist
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}	
+	}
+}
