@@ -1,0 +1,572 @@
+##############################
+# Imperialist Faction
+##############################
+
+imperialist = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_militarist
+	
+	unique = yes
+	support_multiplier = 1
+	
+	resources = {
+		category = pop_factions
+		produces = {
+			influence = 2
+		}
+	}
+
+	is_potential = {
+		years_passed > 10
+		has_encountered_other_species = yes
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	parameters = {
+		empire = {
+			type = country
+			valid_objects = {
+				is_same_value = root
+			}
+		}
+	}
+	
+	can_join_pre_triggers = {
+		is_enslaved = no
+		is_being_purged = no
+	}
+
+	can_join_faction = {
+		is_shackled_robot = no
+		has_culture_shock = no
+		NOT = { has_trait = trait_nerve_stapled }
+		OR = {
+			has_ethic = ethic_militarist
+			has_ethic = ethic_fanatic_militarist
+		}
+	}
+	
+	attraction = {
+		base = 100
+		
+		modifier = {
+			factor = 0.75
+			has_citizenship_rights = no
+		}
+		
+		modifier = {
+			factor = 1.25
+			can_be_soldier = yes
+		}
+		
+		modifier = {
+			factor = 1.25
+			can_be_military_leader = yes
+		}
+	}
+	
+	leader = {
+		base = 100
+		
+		modifier = {
+			factor = 0.0
+			is_event_leader = yes
+		}
+	}
+	# Loves Slaying
+	demand = {
+		title = "MILITARIST_SLAYER"
+		unfulfilled_title = "MILITARIST_NOT_SLAYER"
+		desc = "MILITARIST_SLAYER_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = {
+			exists = owner
+			owner = {
+				host_has_dlc = "Leviathans Story Pack"
+				any_country = {
+					OR = {
+						is_country_type = guardian
+						is_country_type = guardian_dragon
+						is_country_type = guardian_stellarite
+						is_country_type = guardian_wraith #
+						is_country_type = guardian_hiver
+						is_country_type = guardian_horror
+						is_country_type = guardian_fortress
+						is_country_type = guardian_dreadnought
+						is_country_type = guardian_sphere
+						is_country_type = guardian_scavenger_bot
+						is_country_type = guardian_elderly_tiyanki
+						is_country_type = guardian_hatchling
+					}
+					has_communications = prev
+				}
+			}
+		}
+
+		trigger = {
+			owner = {
+				has_country_flag = killed_guardian
+			}
+		}
+	}
+	
+	# Wants Military Police
+	demand = {
+		title = "MILITARIST_MILITARY_POLICE"
+		unfulfilled_title = "MILITARIST_NO_MILITARY_POLICE"
+		desc = "MILITARIST_MILITARY_POLICE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = criminal_military_police }
+		}
+	}
+	
+	# Wants Enemy of the State
+	demand = {
+		title = "MILITARIST_PIRACY_HOSTILE"
+		unfulfilled_title = "MILITARIST_NO_PIRACY_HOSTILE"
+		desc = "MILITARIST_PIRACY_HOSTILE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_adaptive_bureaucracy }
+		}
+
+		trigger = {
+			owner = { has_policy_flag = piracy_hostile }
+		}
+	}
+	
+	# Wants Gunboat Diplomacy
+	demand = {
+		title = "MILITARIST_GUNBOAT_DIPLOMACY"
+		unfulfilled_title = "MILITARIST_NO_GUNBOAT_DIPLOMACY"
+		desc = "MILITARIST_GUNBOAT_DIPLOMACY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_diplomacy_open_markets }
+		}
+
+		trigger = {
+			owner = { has_policy_flag = xenodiplomacy_gunboat }
+		}
+	}
+	
+	# Wants Unrestricted Wars
+	demand = {
+		title = "MILITARIST_UNRESTRICTED_WAR"
+		unfulfilled_title = "MILITARIST_NO_UNRESTRICTED_WAR"
+		desc = "MILITARIST_UNRESTRICTED_WAR_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = unrestricted_wars }
+		}
+	}
+	
+	# Wants No Retreat
+	demand = {
+		title = "MILITARIST_NO_RETREAT"
+		unfulfilled_title = "MILITARIST_NO_NO_RETREAT"
+		desc = "MILITARIST_NO_RETREAT_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_supremacy_finish }
+		}
+
+		trigger = {
+			owner = { has_policy_flag = no_retreat_doctrine }
+		}
+	}
+	
+	# Wants War Games
+	demand = { 
+		title = "MILITARIST_WAR_GAMES"
+		unfulfilled_title = "MILITARIST_NO_WAR_GAMES"
+		desc = "MILITARIST_WAR_GAMES_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_supremacy_war_games }
+		}
+
+		trigger = {
+			owner = { has_edict = war_games }
+		}
+	}
+	
+	# Wants War
+	demand = { 
+		title = "MILITARIST_WAR"
+		unfulfilled_title = "MILITARIST_NO_WAR"
+		desc = "MILITARIST_WAR_DESC"
+
+		fulfilled_effect = 20
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 0 }
+		}
+
+		trigger = {
+			owner = { is_at_war = yes }
+		}
+	}
+	
+	# Wants Military Leaders
+	demand = {
+		title = "MILITARIST_LEADERS"
+		unfulfilled_title = "MILITARIST_NO_LEADERS"
+		desc = "MILITARIST_LEADERS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { any_owned_pop = { can_be_military_leader = yes } }
+		}
+	}
+	
+	# Hates State Police Policy
+	demand = { 
+		title = "MILITARIST_STATE_POLICE"
+		unfulfilled_title = "MILITARIST_NO_STATE_POLICE"
+		desc = "MILITARIST_STATE_POLICE_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = criminal_state_police } }
+		}
+	}
+	
+	# Hates Parley System
+	demand = { 
+		title = "MILITARIST_PARLEY"
+		unfulfilled_title = "MILITARIST_NO_PARLEY"
+		desc = "MILITARIST_PARLEY_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = piracy_peaceful } }
+		}
+	}
+	
+	# Hates Isolation
+	demand = { 
+		title = "MILITARIST_ISOLATIONISM"
+		unfulfilled_title = "MILITARIST_NO_ISOLATIONISM"
+		desc = "MILITARIST_ISOLATIONISM_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_diplomacy_open_markets }
+		}
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = xenodiplomacy_isolation } }
+		}
+	}
+	
+	# Hates Pacifism
+	demand = { 
+		title = "MILITARIST_PACIFISM"
+		unfulfilled_title = "MILITARIST_NO_PACIFISM"
+		desc = "MILITARIST_PACIFISM_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 0 }
+		}
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = no_wars } }
+		}
+	}
+	
+	# Hates Non-Agression Pacts
+	demand = { 
+		title = "MILITARIST_NONAGGRESSION"
+		unfulfilled_title = "MILITARIST_NO_NONAGGRESSION"
+		desc = "MILITARIST_NONAGGRESSION_DESC"
+
+		fulfilled_effect = -10
+		unfulfilled_effect = 1
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 2 }
+		}
+
+		trigger = {
+			any_country = {
+				OR = {
+					prev.owner = { has_non_aggression_pact = PREV }
+					prev.owner = { has_defensive_pact = PREV }
+				}
+			}
+		}
+	}
+	
+	# Hates No Military Service
+	demand = {
+		title = "MILITARIST_SERVICE"
+		unfulfilled_title = "MILITARIST_NO_SERVICE"
+		desc = "MILITARIST_SERVICE_DESC"
+
+		fulfilled_effect = -10
+		unfulfilled_effect = 1
+
+		potential = {
+			exists = owner
+		}
+
+		trigger = {
+			owner = { any_owned_pop = { can_be_soldier = no } }
+		}
+	}
+	
+	on_create = {
+		pop_faction_event = { id = factions.1 }
+	}
+
+	on_destroy = {
+		if = {
+			limit = {
+				has_modifier = promoted_militarist
+			}
+			remove_modifier = promoted_militarist
+		}
+		if = {
+			limit = {
+				has_modifier = suppressed_militarist
+			}
+			remove_modifier = suppressed_militarist
+		}
+	}
+	
+	actions = {
+		embrace_faction = {
+			title = "EMBRACE_FACTION"
+			description = "EMBRACE_FACTION_DESC"
+			
+			cost = {
+				influence = 500
+			}
+			
+			potential = {
+				exists = owner
+				owner = {
+					OR = {
+						is_subject = no
+						NOT = { is_subject_type = dominion }
+					}
+				}
+			}
+			
+			valid = {
+				custom_tooltip = {
+					fail_text = EMBRACE_FACTION_COOLDOWN
+					parameter:empire = {
+						NOT = { has_modifier = embraced_faction_timer }
+					}
+				}
+				support > 0.20
+				parameter:empire = {
+					NOT = { has_ethic = "ethic_fanatic_militarist" }
+				}
+			}
+
+			effect = {
+				add_modifier = { modifier = embraced_faction days = 3600 }
+				parameter:empire = {
+					shift_ethic = ethic_militarist
+					hidden_effect = {
+						add_modifier = { modifier = embraced_faction_timer days = 3600 }
+						every_pop_faction = {
+							limit = { NOT = { is_same_value = root } }
+							add_modifier = { modifier = embraced_another_faction days = 3600 }
+						}
+					}
+				}
+				hidden_effect = {
+					save_event_target_as = TargetFaction
+					parameter:empire = {
+						every_relation = {
+							limit = {
+								is_ai = no
+								is_country_type = default			
+								has_communications = prev
+							}
+							country_event = { id = factions.2000 }
+						}
+					}				
+				}				
+			}
+			
+			ai_weight = {
+				base = 1
+				modifier = {
+					factor = 0
+					support < 0.50
+					owner = {
+						has_ethic = ethic_militarist
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = { has_valid_civic = civic_fanatic_purifiers }
+				}
+				modifier = {
+					factor = 0
+					NOT = { 
+						owner = {	
+							exists = ruler
+							ruler = {
+								leader_of_faction = imperialist
+							}
+						}
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						count_pop_factions = {
+							count < 4
+						}					
+					}
+				}				
+			}
+		}
+		promote_faction = {
+			title = "PROMOTE_FACTION"
+			description = "PROMOTE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = {
+					NOR = {
+						has_modifier = suppressed_militarist
+						has_modifier = promoted_militarist
+					}
+				}
+			}
+
+			effect = {
+				parameter:empire = {
+					add_modifier = { modifier = promoted_militarist days = -1 }
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_promote_faction = {
+			title = "CANCEL_PROMOTE_FACTION"
+			description = "CANCEL_PROMOTE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = { has_modifier = promoted_militarist }
+			}
+
+			effect = {
+				parameter:empire = {
+					remove_modifier = promoted_militarist
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		suppress_faction = {
+			title = "SUPPRESS_FACTION"
+			description = "SUPPRESS_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = {
+					NOR = {
+						has_modifier = suppressed_militarist
+						has_modifier = promoted_militarist
+					}
+				}
+			}
+
+			effect = {
+				add_modifier = { modifier = suppressed_faction days = -1 }
+				parameter:empire = {
+					add_modifier = { modifier = suppressed_militarist days = -1 }
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_suppress_faction = {
+			title = "CANCEL_SUPPRESS_FACTION"
+			description = "CANCEL_SUPPRESS_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = { has_modifier = suppressed_militarist }
+			}
+
+			effect = {
+				remove_modifier = suppressed_faction
+				parameter:empire = {
+					remove_modifier = suppressed_militarist
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+	}
+}
