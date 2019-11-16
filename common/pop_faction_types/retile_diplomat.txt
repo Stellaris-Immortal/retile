@@ -191,7 +191,7 @@ prosperity = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 0 }
+			owner = { num_communications > 1 }
 		}
 
 		trigger = {
@@ -304,6 +304,25 @@ prosperity = {
 		}
 	}
 	
+	# Hates Gunboat Diplomacy
+	demand = {
+		title = "DIPLOMAT_GUNBOAT_DIPLOMACY"
+		unfulfilled_title = "DIPLOMAT_NO_GUNBOAT_DIPLOMACY"
+		desc = "DIPLOMAT_GUNBOAT_DIPLOMACY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_diplomacy_open_markets }
+		}
+
+		trigger = {
+			owner = { has_policy_flag = xenodiplomacy_gunboat }
+		}
+	}
+	
 	# Hates Indescriminate Bombardment
 	demand = { 
 		title = "DIPLOMAT_BOMBARDMENT"
@@ -315,7 +334,7 @@ prosperity = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 0 }
+			owner = { num_communications > 1 }
 		}
 
 		trigger = {
@@ -337,7 +356,7 @@ prosperity = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 0 }
+			owner = { num_communications > 1 }
 		}
 
 		trigger = {
@@ -370,7 +389,15 @@ prosperity = {
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = {
+				has_country_flag = found_presapients
+				any_planet_within_border = {
+					any_pop = { is_sapient = no }
+				}
+			}
+		}
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = pre_sapients_eat } }
@@ -426,9 +453,7 @@ prosperity = {
 
 		potential = {
 			exists = owner
-			owner = {
-				num_communications > 2
-			}
+			owner = { num_communications > 1 }
 		}
 
 		trigger = {
@@ -452,7 +477,7 @@ prosperity = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 0 }
+			owner = { num_communications > 1 }
 		}
 
 		trigger = {
