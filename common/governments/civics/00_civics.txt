@@ -14,33 +14,6 @@
 #		traits = { trait = ... }					# default: empty; trait set to enforce on the secondary species. They cannot be removed, but more can be added if points/picks permit
 #	}
 #}
-civic_the_foundation = {
-	
-	potential = {
-		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-		authority = { NOT = { value = auth_corporate } }
-	}
-	possible = {
-		civics = {
-			NOR = {
-				value = civic_mechanists
-				value = civic_syncretic_evolution
-				value = civic_post_apocalyptic
-				value = civic_life_seeded
-			}
-		}
-	}
-	modification = no
-	random_weight = {
-		base = 0 # Should be fairly rare
-		modifier = {
-			# civic has no effect after galaxy generation, disable for random generation
-			factor = 0
-			has_global_flag = game_started
-		}
-	}	
-	description = "civic_tooltip_the_foundation"
-}
 
 civic_corvee_system = {
 	potential = {
@@ -825,8 +798,6 @@ civic_post_apocalyptic = {
 		trait = trait_survivor
 	}
 }
-
-
 
 civic_life_seeded = {
 	playable = { host_has_dlc = "Apocalypse" }
