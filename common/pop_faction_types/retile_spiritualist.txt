@@ -1,0 +1,549 @@
+##############################
+# Traditionalist Faction
+##############################
+
+traditionalist = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_spiritualist
+	
+	unique = yes
+	support_multiplier = 1
+	
+	resources = {
+		category = pop_factions
+		produces = {
+			influence = 2
+		}		
+	}
+
+	is_potential = {
+		years_passed > 10
+		has_encountered_other_species = yes
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	parameters = {
+		empire = {
+			type = country
+			valid_objects = {
+				is_same_value = root
+			}
+		}
+	}
+	
+	can_join_pre_triggers = {
+		is_enslaved = no
+		is_being_purged = no
+		is_robot_pop = no
+	}
+
+	can_join_faction = {
+		has_culture_shock = no
+		NOT = { has_trait = trait_nerve_stapled }
+		OR = {
+			has_ethic = ethic_spiritualist
+			has_ethic = ethic_fanatic_spiritualist
+		}
+	}
+	
+	attraction = {
+		base = 100
+		
+		modifier = {
+			factor = 0.50
+			has_very_high_living_standard_type = yes
+		}
+		
+		modifier = {
+			factor = 0.75
+			OR = {
+				has_academic_living_standard_type = yes
+				has_high_living_standard_type = yes
+				has_shared_burden_living_standard_type = yes
+			}
+		}
+		
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_stratified_living_standard_type = yes
+				has_low_living_standard_type = yes
+			}
+		}
+		
+		modifier = {
+			factor = 1.50
+			has_citizenship_rights = no
+		}
+	}
+	
+	leader = {
+		base = 100
+
+		modifier = {
+			factor = 0.0
+			is_event_leader = yes
+		}		
+	}
+	
+	# Wants Universal Healthcare
+	demand = { 
+		title = "SPIRITUALIST_UNIVERSAL_HEALTHCARE"
+		unfulfilled_title = "SPIRITUALIST_NO_UNIVERSAL_HEALTHCARE"
+		desc = "SPIRITUALIST_UNIVERSAL_HEALTHCARE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				has_policy_flag = healthcare_universal
+			}
+		}
+	}
+	
+	# Wants Environmental Protections
+	demand = { 
+		title = "SPIRITUALIST_ENVIRONMENTAL_PROTECTION"
+		unfulfilled_title = "SPIRITUALIST_NO_ENVIRONMENTAL_PROTECTION"
+		desc = "SPIRITUALIST_ENVIRONMENTAL_PROTECTION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				has_policy_flag = environmental_protection
+			}
+		}
+	}
+	
+	# Wants Enlightenment Allowed
+	demand = { 
+		title = "SPIRITUALIST_ENLIGHTENMENT_ALLOWED"
+		unfulfilled_title = "SPIRITUALIST_NO_ENLIGHTENMENT_ALLOWED"
+		desc = "SPIRITUALIST_ENLIGHTENMENT_ALLOWED_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				has_policy_flag = enlightenment_allowed
+			}
+		}
+	}
+	
+	# Wants Philosophy Progream
+	demand = { 
+		title = "SPIRITUALIST_PHILOSOPHY"
+		unfulfilled_title = "SPIRITUALIST_NO_PHILOSOPHY"
+		desc = "SPIRITUALIST_PHILOSOPHY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_discovery_faith_in_science }
+		}
+
+		trigger = {
+			owner = { has_edict = declare_saint }
+		}
+	}
+	
+	# Wants Helathcare Campaign
+	demand = { 
+		title = "SPIRITUALIST_HEALTHCARE_CAMPAIGN"
+		unfulfilled_title = "SPIRITUALIST_NO_HEALTHCARE_CAMPAIGN"
+		desc = "SPIRITUALIST_HEALTHCARE_CAMPAIGN_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_planetary_unification }
+		}
+
+		trigger = {
+			owner = { has_edict = healthcare_campaign }
+		}
+	}
+	
+	# Wants Recycling Campaign
+	demand = { 
+		title = "SPIRITUALIST_RECYCLING_CAMPAIGN"
+		unfulfilled_title = "SPIRITUALIST_NO_RECYCLING_CAMPAIGN"
+		desc = "SPIRITUALIST_RECYCLING_CAMPAIGN_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_colonial_centralization }
+		}
+
+		trigger = {
+			owner = { has_edict = recycling_campaign }
+		}
+	}
+	
+	# Wants Basic Needs
+	demand = {
+		title = "SPIRITUALIST_BASICS"
+		unfulfilled_title = "SPIRITUALIST_NO_BASICS"
+		desc = "SPIRITUALIST_BASICS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				OR = {
+					any_owned_pop = { has_living_standard = { type = living_standard_shared_burden } }
+					any_owned_pop = { has_living_standard = { type = living_standard_subsistence } }
+				}
+			}
+		}
+	}
+
+	# Wants Holy Worlds
+	demand = {
+		title = "SPIRITUALITY_HOLY_WORLD"
+		unfulfilled_title = "SPIRITUALITY_NO_HOLY_WORLD"
+		desc = "SPIRITUALITY_HOLY_WORLD_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = 1
+
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_consecrated_worlds }
+		}
+
+		trigger = {
+			owner = {
+				any_planet_within_border = {
+					is_colony = no
+					OR = {
+						has_modifier = consecrated_quality_1
+						has_modifier = consecrated_quality_2
+						has_modifier = consecrated_quality_3
+						has_modifier = consecrated_quality_4
+					}
+				}
+			}
+		}
+	}
+	
+	# Hates Priority Healthcare
+	demand = { 
+		title = "SPIRITUALIST_PRIORITY_HEALTHCARE"
+		unfulfilled_title = "SPIRITUALIST_NO_PRIORITY_HEALTHCARE"
+		desc = "SPIRITUALIST_PRIORITY_HEALTHCARE_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				NOT = { has_policy_flag = healthcare_for_profit }
+			}
+		}
+	}
+	
+	# Hates Environmental Deregulation
+	demand = { 
+		title = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION"
+		unfulfilled_title = "SPIRITUALIST_NO_ENVIRONMENTAL_DEREGULATION"
+		desc = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				NOT = { has_policy_flag = environmental_deregulation }
+			}
+		}
+	}
+	
+	# Hates Enlightenment not Allowed
+	demand = { 
+		title = "SPIRITUALIST_NO_ENLIGHTENMENT"
+		unfulfilled_title = "SPIRITUALIST_NO_NO_ENLIGHTENMENT"
+		desc = "SPIRITUALIST_NO_ENLIGHTENMENT_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				NOT = { has_policy_flag = enlightenment_not_allowed }
+			}
+		}
+	}
+	
+	# Hates Labor Campaign
+	demand = { 
+		title = "SPIRITUALIST_LABOR_CAMPAIGN"
+		unfulfilled_title = "SPIRITUALIST_NO_LABOR_CAMPAIGN"
+		desc = "SPIRITUALIST_LABOR_CAMPAIGN_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_planetary_unification }
+		}
+
+		trigger = {
+			NOT = { owner = { has_edict = labor_campaign } }
+		}
+	}
+	
+	# Hates Chemical Bliss
+	demand = {
+		title = "SPIRITUALIST_CHEMICAL_BLISS"
+		unfulfilled_title = "SPIRITUALIST_NO_CHEMICAL_BLISS"
+		desc = "SPIRITUALIST_CHEMICAL_BLISS_DESC"
+
+		fulfilled_effect = -10
+		unfulfilled_effect = 1
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_subdermal_stimulation }
+		}
+
+		trigger = {
+			owner = {
+				any_owned_pop = { has_living_standard = { type = living_standard_chemical_bliss } }
+			}
+		}
+	}
+
+	on_create = {
+		pop_faction_event = { id = factions.1 }
+	}
+
+	on_destroy = {
+		if = {
+			limit = {
+				has_modifier = promoted_spiritualist
+			}
+			remove_modifier = promoted_spiritualist
+		}
+		if = {
+			limit = {
+				has_modifier = suppressed_spiritualist
+			}
+			remove_modifier = suppressed_spiritualist
+		}
+	}
+	
+	actions = {
+		embrace_faction = {
+			title = "EMBRACE_FACTION"
+			description = "EMBRACE_FACTION_DESC"
+			
+			cost = {
+				influence = 500
+			}
+			
+			potential = {
+				exists = owner
+				owner = {
+					OR = {
+						is_subject = no
+						NOT = { is_subject_type = dominion }
+					}
+				}
+			}
+			
+			valid = {
+				custom_tooltip = {
+					fail_text = EMBRACE_FACTION_COOLDOWN
+					parameter:empire = {
+						NOT = { has_modifier = embraced_faction_timer }
+					}
+				}
+				support > 0.20
+				parameter:empire = {
+					NOT = { has_ethic = "ethic_fanatic_spiritualist" }
+				}
+			}
+
+			effect = {
+				add_modifier = { modifier = embraced_faction days = 3600 }
+				parameter:empire = {
+					shift_ethic = ethic_spiritualist
+					hidden_effect = {
+						add_modifier = { modifier = embraced_faction_timer days = 3600 }
+						every_pop_faction = {
+							limit = { NOT = { is_same_value = root } }
+							add_modifier = { modifier = embraced_another_faction days = 3600 }
+						}
+					}
+				}
+				hidden_effect = {
+					save_event_target_as = TargetFaction
+					parameter:empire = {
+						every_relation = {
+							limit = {
+								is_ai = no
+								is_country_type = default			
+								has_communications = prev
+							}
+							country_event = { id = factions.2000 }
+						}
+					}				
+				}				
+			}
+			
+			ai_weight = {
+				base = 1
+				modifier = {
+					factor = 0
+					support < 0.50
+					owner = {
+						has_ethic = ethic_spiritualist
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = { has_valid_civic = civic_fanatic_purifiers }
+				}				
+				modifier = {
+					factor = 0
+					NOT = { 
+						owner = {
+							exists = ruler
+							ruler = {
+								leader_of_faction = traditionalist
+							}
+						}
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						count_pop_factions = {
+							count < 4
+						}					
+					}
+				}				
+			}
+		}
+		promote_faction = {
+			title = "PROMOTE_FACTION"
+			description = "PROMOTE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = {
+					NOR = {
+						has_modifier = suppressed_spiritualist
+						has_modifier = promoted_spiritualist
+					}
+				}
+			}
+
+			effect = {
+				parameter:empire = {
+					add_modifier = { modifier = promoted_spiritualist days = -1 }
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_promote_faction = {
+			title = "CANCEL_PROMOTE_FACTION"
+			description = "CANCEL_PROMOTE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = {
+					has_modifier = promoted_spiritualist
+				}
+			}
+
+			effect = {
+				parameter:empire = {
+					remove_modifier = promoted_spiritualist
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}		
+		suppress_faction = {
+			title = "SUPPRESS_FACTION"
+			description = "SUPPRESS_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = {
+					NOR = {
+						has_modifier = suppressed_spiritualist
+						has_modifier = promoted_spiritualist
+					}
+				}
+			}
+
+			effect = {
+				add_modifier = { modifier = suppressed_faction days = -1 }
+				parameter:empire = {
+					add_modifier = { modifier = suppressed_spiritualist days = -1 }
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_suppress_faction = {
+			title = "CANCEL_SUPPRESS_FACTION"
+			description = "CANCEL_SUPPRESS_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = {
+					has_modifier = suppressed_spiritualist
+				}
+			}
+
+			effect = {
+				remove_modifier = suppressed_faction
+				parameter:empire = {
+					remove_modifier = suppressed_spiritualist
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+	}
+}
