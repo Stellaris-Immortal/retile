@@ -1,0 +1,86 @@
+military_base_medium = {
+	entity = "military_station_medium_entity"
+	max_speed = 6
+	rotation_speed = 10
+	acceleration = 10
+	modifier = {
+		ship_evasion_mult = -1
+		ship_armor_add = 30
+		ship_shield_mult = 1
+		ships_upkeep_mult = -0.25
+	}
+	ship_modifier = {
+		ship_weapon_range_mult = 0.20
+	}
+	max_hitpoints = 10000
+	size_multiplier = 8
+	fleet_slot_size = 4
+	section_slots = {
+		"north" = { locator = "part1" }
+		"west" = { locator = "part2" }
+		"east" = { locator = "part3" }
+		"south" = { locator = "part4" }
+	}
+	num_target_locators = 0
+	is_space_station = yes
+	base_buildtime = 360
+	is_designable = yes
+	uses_name_prefix = no
+	takes_name_from_ship_design = yes
+	prerequisites = { "tech_military_base_medium" }
+
+	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
+	class =  shipclass_military_station 
+	required_component_set = "power_core"
+	required_component_set = "sensor_components"
+	required_component_set = "combat_computers"
+
+	build_block_radius = @build_block_radius_military
+
+	resources = {
+		category = ships
+	}
+}
+
+military_base_large = {
+	entity = "military_station_large_entity"
+	max_speed = 6
+	rotation_speed = 10
+	acceleration = 10
+	modifier = {
+		ship_evasion_mult = -1
+		ship_armor_add = 44
+		ship_shield_mult = 1
+		ships_upkeep_mult = -0.25
+	}
+	ship_modifier = {
+		ship_weapon_range_mult = 0.20
+	}
+	max_hitpoints = 15000
+	size_multiplier = 16
+	fleet_slot_size = 8
+	section_slots = {
+		"north" = { locator = "part1" locator = "part2" }
+		"west" = { locator = "part3" locator = "part4" }
+		"east" = { locator = "part5" locator = "part6" }
+		"south" = { locator = "part7" locator = "part8" }
+	}
+	num_target_locators = 0
+	is_space_station = yes
+	is_designable = yes
+	uses_name_prefix = no
+	takes_name_from_ship_design = yes
+	prerequisites = { "tech_military_base_large" }
+
+	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
+	class =  shipclass_military_station 
+	required_component_set = "power_core"
+	required_component_set = "sensor_components"
+	required_component_set = "combat_computers"
+
+	build_block_radius = @build_block_radius_military
+
+	resources = {
+		category = ships
+	}
+}

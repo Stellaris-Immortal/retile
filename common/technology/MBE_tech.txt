@@ -1,0 +1,99 @@
+tech_military_base_medium = {
+	cost = @tier2cost1
+	area = engineering
+	tier = 2
+	category = { voidcraft }	
+	prerequisites = { "tech_starbase_3" "tech_space_defense_station_1" }
+	weight = @tier2weight1
+	
+	modifier = {
+		shipsize_military_station_small_hull_add = 2000
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 2
+			is_ai = yes
+		}		
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_voidcraft"
+			}
+		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist	# Pacifists want defense
+			}
+		}
+	}
+	
+	prereqfor_desc = {
+		ship = {
+			title = "TECH_UNLOCK_MEDIUM_MILITARY_BASE_TITLE"
+			desc = "TECH_UNLOCK_MEDIUM_MILITARY_BASE_DESC"
+		}
+	}
+	
+	ai_weight = {
+		factor = 10 # semi-important tech
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_voidcraft"
+			}
+		}
+	}
+}
+
+tech_military_base_large = {
+	cost = @tier3cost1
+	area = engineering
+	tier = 3
+	category = { voidcraft }	
+	prerequisites = { tech_starbase_4 tech_military_base_medium }
+	weight = @tier3weight1
+	
+	modifier = {
+		shipsize_military_station_small_hull_add = 2000
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_voidcraft"
+			}
+		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist
+			}
+		}
+	}
+	
+	prereqfor_desc = {
+		ship = {
+			title = "TECH_UNLOCK_LARGE_MILITARY_BASE_TITLE"
+			desc = "TECH_UNLOCK_LARGE_MILITARY_BASE_DESC"
+		}
+	}
+	
+	ai_weight = {
+		factor = 10 # semi-important tech
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_voidcraft"
+			}
+		}
+	}
+}

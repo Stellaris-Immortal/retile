@@ -1,0 +1,731 @@
+@section_cost = 60
+@large_section_cost = 120
+
+ship_section_template = {
+	key = "MEDIUM_BASE_LIGHT_WEAPONS_SECTION"
+	ship_size = military_base_medium
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_light_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	component_slot = {
+		name = "SMALL_GUN_01"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_01"
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_02"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_02"
+	}
+
+	component_slot = {
+		name = "SMALL_GUN_03"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_03"
+		is_side_slot = no
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_04"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_04"
+		is_side_slot = no
+	}
+	
+	medium_utility_slots = 3
+	aux_utility_slots = 1
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 10
+			is_preferred_weapons = weapon_type_kinetic
+		}
+	}
+}
+
+ship_section_template = {
+	key = "MEDIUM_BASE_PD_WEAPONS_SECTION"
+
+	ship_size = military_base_medium
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_light_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	component_slot = {
+		name = "SMALL_GUN_01"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_01"
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_02"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_02"
+	}
+
+	component_slot = {
+		name = "SMALL_GUN_03"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_03"
+		is_side_slot = no
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_04"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_04"
+		is_side_slot = no
+	}	
+				
+	medium_utility_slots = 3
+	aux_utility_slots = 1
+	
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+	
+	ai_weight = {
+		factor = 1
+	}
+}
+
+ship_section_template = {
+	key = "MEDIUM_BASE_MEDIUM_STATION_SECTION"
+
+	ship_size = military_base_medium
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_medium_entity"
+	icon = "GFX_ship_part_core_mid"	
+		
+	component_slot = {
+		name = "MEDIUM_GUN_01"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "medium_gun_01"
+	}
+
+	component_slot = {
+		name = "MEDIUM_GUN_02"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+	}
+			
+	medium_utility_slots = 3
+	aux_utility_slots = 1
+	
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 10
+			OR = {
+				is_preferred_weapons = weapon_type_energy
+				is_preferred_weapons = weapon_type_kinetic
+			}			
+		}
+	}
+}
+
+ship_section_template = {
+	key = "MEDIUM_BASE_MISSILE_STATION_SECTION"
+
+	ship_size = military_base_medium
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_medium_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+		
+	component_slot = {
+		name = "TORPEDO_01"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "medium_gun_01"
+	}
+
+	component_slot = {
+		name = "TORPEDO_02"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+	}
+			
+	medium_utility_slots = 3
+	aux_utility_slots = 1
+	
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 10
+			is_preferred_weapons = weapon_type_explosive
+		}		
+	}
+}
+
+ship_section_template = {
+	key = "MEDIUM_BASE_LARGE_STATION_SECTION"
+
+	ship_size = military_base_medium
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_heavy_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	
+	component_slot = {
+		name = "LARGE_GUN_01"
+		slot_size = large
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+		
+	medium_utility_slots = 3
+	aux_utility_slots = 1
+	
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+	
+	ai_weight = {
+		factor = 1
+	}
+}
+
+
+ship_section_template = {
+	key = "MEDIUM_BASE_HANGER_STATION_SECTION"
+
+	ship_size = military_base_medium
+	
+	prerequisites = { tech_strike_craft_1 tech_strike_craft_2 tech_strike_craft_3 }
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_heavy_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+				
+	medium_utility_slots = 3
+	aux_utility_slots = 1
+	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 10
+			is_preferred_weapons = weapon_type_strike_craft
+		}		
+	}	
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
+######
+ship_section_template = {
+	key = "LARGE_BASE_PD_WEAPONS_SECTION"
+	ship_size = military_base_large
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_light_entity"
+	icon = "GFX_ship_part_core_mid"
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @large_section_cost
+		}
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_01"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_01"
+		section_instance = 0
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_02"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_02"
+		section_instance = 0
+	}
+
+	component_slot = {
+		name = "SMALL_GUN_03"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_03"
+		is_side_slot = no
+		section_instance = 0
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_04"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_04"
+		is_side_slot = no
+		section_instance = 0
+	}	
+	
+	component_slot = {
+		name = "SMALL_GUN_05"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_01"
+		section_instance = 1
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_06"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_02"
+		section_instance = 1
+	}
+
+	component_slot = {
+		name = "SMALL_GUN_07"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_03"
+		is_side_slot = no
+		section_instance = 1
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_08"
+		slot_size = point_defence
+		slot_type = weapon
+		locatorname = "small_gun_04"
+		is_side_slot = no
+		section_instance = 1
+	}
+				
+	large_utility_slots = 6
+	aux_utility_slots = 1
+	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 10
+			is_preferred_weapons = weapon_type_kinetic
+		}
+	}
+}
+
+ship_section_template = {
+	key = "LARGE_BASE_LIGHT_WEAPONS_SECTION"
+	ship_size = military_base_large
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_light_entity"
+	icon = "GFX_ship_part_core_mid"
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @large_section_cost
+		}
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_01"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_01"
+		section_instance = 0
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_02"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_02"
+		section_instance = 0
+	}
+
+	component_slot = {
+		name = "SMALL_GUN_03"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_03"
+		is_side_slot = no
+		section_instance = 0
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_04"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_04"
+		is_side_slot = no
+		section_instance = 0
+	}	
+	
+	component_slot = {
+		name = "SMALL_GUN_05"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_01"
+		section_instance = 1
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_06"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_02"
+		section_instance = 1
+	}
+
+	component_slot = {
+		name = "SMALL_GUN_07"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_03"
+		is_side_slot = no
+		section_instance = 1
+	}
+	
+	component_slot = {
+		name = "SMALL_GUN_08"
+		slot_size = small
+		slot_type = weapon
+		locatorname = "small_gun_04"
+		is_side_slot = no
+		section_instance = 1
+	}
+				
+	large_utility_slots = 6
+	aux_utility_slots = 1
+	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 10
+			is_preferred_weapons = weapon_type_kinetic
+		}
+	}
+}
+
+ship_section_template = {
+	key = "LARGE_BASE_MEDIUM_STATION_SECTION"
+	ship_size = military_base_large
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_medium_entity"
+	icon = "GFX_ship_part_core_mid"
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @large_section_cost
+		}
+	}
+		
+	component_slot = {
+		name = "MEDIUM_GUN_01"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "medium_gun_01"
+		section_instance = 0
+	}
+
+	component_slot = {
+		name = "MEDIUM_GUN_02"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+		section_instance = 0
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_03"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "medium_gun_01"
+		section_instance = 1
+	}
+
+	component_slot = {
+		name = "MEDIUM_GUN_04"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+		section_instance = 1
+	}
+			
+	large_utility_slots = 6
+	aux_utility_slots = 1
+	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 10
+			OR = {
+				is_preferred_weapons = weapon_type_energy
+				is_preferred_weapons = weapon_type_kinetic
+			}			
+		}
+	}
+}
+
+ship_section_template = {
+	key = "LARGE_BASE_MILITARY_STATION_SECTION"
+	ship_size = military_base_large
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @large_section_cost
+		}
+	}
+
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_heavy_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	
+	component_slot = {
+		name = "LARGE_GUN_01"
+		slot_size = large
+		slot_type = weapon
+		locatorname = "large_gun_01"
+		section_instance = 0
+	}
+	component_slot = {
+		name = "LARGE_GUN_02"
+		slot_size = large
+		slot_type = weapon
+		locatorname = "large_gun_01"
+		section_instance = 1
+	}
+		
+	large_utility_slots = 6
+	aux_utility_slots = 1
+
+	
+	ai_weight = {
+		factor = 1
+	}
+}
+
+ship_section_template = {
+	key = "LARGE_BASE_HANGER_STATION_SECTION"
+	ship_size = military_base_large
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @large_section_cost
+		}
+	}
+
+	prerequisites = { tech_strike_craft_1 tech_strike_craft_2 tech_strike_craft_3 }
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_heavy_entity"
+	icon = "GFX_ship_part_core_mid"
+	
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+		section_instance = 0
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+		section_instance = 1
+	}
+		
+	large_utility_slots = 6
+	aux_utility_slots = 1
+	
+
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 10
+			is_preferred_weapons = weapon_type_strike_craft
+		}		
+	}
+}
+
+ship_section_template = {
+	key = "LARGE_BASE_MISSILE_STATION_SECTION"
+	ship_size = military_base_large
+	
+	fits_on_slot = "north"
+	fits_on_slot = "west"
+	fits_on_slot = "east"
+	fits_on_slot = "south"
+	should_draw_components = yes
+	
+	entity = "military_station_section_medium_entity"
+	icon = "GFX_ship_part_core_mid"
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @large_section_cost
+		}
+	}
+		
+	component_slot = {
+		name = "TORPEDO_01"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "medium_gun_01"
+		section_instance = 0
+	}
+
+	component_slot = {
+		name = "TORPEDO_02"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+		section_instance = 0
+	}
+	component_slot = {
+		name = "TORPEDO_03"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "medium_gun_01"
+		section_instance = 1
+	}
+
+	component_slot = {
+		name = "TORPEDO_04"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "medium_gun_02"
+		section_instance = 1
+	}
+			
+	large_utility_slots = 6
+	aux_utility_slots = 1
+
+	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 10
+			is_preferred_weapons = weapon_type_explosive
+		}		
+	}
+}

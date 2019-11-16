@@ -1,0 +1,198 @@
+military_base_medium = {
+	entity = "military_station_medium_entity"
+	construction_entity = "military_station_medium_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = yes
+	entity_offset = { x = 0 y = -10 }
+	build_time = 360
+	construction_blocks_others = no
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 500
+			influence = 25
+		}
+
+		upkeep = {
+			energy = 1
+			alloys = 1
+		}
+	}
+	potential = {
+		has_technology = tech_military_base_medium
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+	}
+
+	placement_rules = {
+		planet_possible = {
+			custom_tooltip = {
+				fail_text = "requires_surveyed_planet"
+				is_surveyed = {			# prevent leaking habitability information
+					who = prev.from
+					status = yes
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_orbital_station"
+				NOT = { any_fleet_in_orbit = { has_fleet_flag = military_base_constructed } }
+			}
+
+			custom_tooltip = {
+				fail_text = "requires_no_anomaly"
+				NOT = { has_anomaly = yes }
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_existing_megastructure"
+				NOR = {
+					has_planet_flag = megastructure
+					has_planet_flag = has_megastructure
+					solar_system = {
+						has_star_flag = ring_world_built
+					}
+					is_planet_class = pc_ringworld_habitable
+					is_planet_class = pc_ringworld_habitable_damaged
+					is_planet_class = pc_ringworld_tech
+					is_planet_class = pc_ringworld_tech_damaged
+					is_planet_class = pc_ringworld_seam
+					is_planet_class = pc_ringworld_seam_damaged
+					is_planet_class = pc_habitat
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_colonized_or_no_deposit"
+				OR = {
+					AND = {
+						has_owner = yes
+						NOT = {
+							owner = {
+								is_primitive = yes
+							}
+						}
+					}
+					NOR = {
+						has_deposit_for = shipclass_mining_station
+						has_deposit_for = shipclass_research_station
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_minor_planetary_body"
+				OR = {
+					is_asteroid = yes
+					is_moon = yes
+				}
+			}
+			custom_tooltip = {
+				fail_text = "requires_not_star"
+				is_star = no
+			}
+		} # use these for all non-star megastructures
+	}
+
+	# root = system
+	# from = country	
+	ai_weight = {
+		factor = 1
+		modifier = {
+			factor = 0.5
+			from = { has_technology = "tech_military_base_large" }
+		}
+		modifier = {
+			factor = 2
+			starbase = { has_starbase_size >= starbase_starport }
+		}
+		modifier = {
+			factor = 2
+			any_system_planet = {
+				is_colony = yes
+			}
+		}
+		modifier = {
+			factor = 2
+			any_system_planet = {
+				is_colony = no
+			}
+		}
+		modifier = {
+			factor = 2
+			any_system_planet = {
+				is_capital  = yes
+			}
+		}
+		modifier = {
+			factor = 2.0
+			any_neighbor_system = {
+				exists = owner
+				owner = { NOT = { is_same_value = from } }
+			}
+		}
+		modifier = {
+			factor = 0.2
+			any_neighbor_system = {
+				exists = owner
+				owner = { is_same_value = from }
+			}
+		}
+		modifier = {
+			factor = 2.0
+			solar_system = {
+				has_natural_wormhole = yes
+			}
+		}
+		modifier = {
+			factor = 2.0
+			solar_system = {
+				is_bottleneck_system = yes
+			}
+		}
+		modifier = {
+			factor = 2.0
+			from = {
+				OR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+				}			
+			}
+		}
+		modifier = {
+			factor = 0.5
+			from = {
+				OR = {
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
+				}			
+			}
+		}
+	}
+	
+	on_build_start = {}
+	on_build_cancel = {}
+	
+	on_build_complete = {
+		remove_megastructure = fromfrom
+		
+		create_fleet = {
+			name = "NAME_Medium_Military_Station"
+			effect = {
+				set_owner = from
+					create_ship = {
+						name = random
+						random_existing_design = military_base_medium
+					}
+				set_fleet_flag = military_base_constructed
+				set_location = {
+								target = fromfrom.planet
+							}
+				
+			}
+			
+	}
+}
