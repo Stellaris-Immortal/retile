@@ -131,12 +131,13 @@ traditionalist = {
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_met_primitives = yes }
+		}
 
 		trigger = {
-			owner = {
-				has_policy_flag = enlightenment_allowed
-			}
+			owner = { has_policy_flag = enlightenment_allowed }
 		}
 	}
 	
@@ -206,7 +207,13 @@ traditionalist = {
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			OR = {
+				owner = { has_valid_civic = civic_shared_burden }
+				any_owned_pop = { has_citizenship_rights = no }
+			}
+		}
 
 		trigger = {
 			owner = {

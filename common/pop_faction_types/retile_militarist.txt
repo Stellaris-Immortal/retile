@@ -148,6 +148,22 @@ imperialist = {
 		}
 	}
 	
+	# Wants Hostile Contact
+	demand = {
+		title = "MILITARIST_HOSTILE_CONTACT"
+		unfulfilled_title = "MILITARIST_NO_HOSTILE_CONTACT"
+		desc = "MILITARIST_HOSTILE_CONTACT_DESC"
+		
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = first_contact_attack_allowed }
+		}
+	}
+	
 	# Wants Gunboat Diplomacy
 	demand = {
 		title = "MILITARIST_GUNBOAT_DIPLOMACY"
@@ -232,7 +248,7 @@ imperialist = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 0 }
+			owner = { num_communications > 1 }
 		}
 
 		trigger = {
@@ -288,6 +304,22 @@ imperialist = {
 		}
 	}
 	
+	# Pates Peaceful Contact
+	demand = {
+		title = "MILITARIST_PEACEFUL_CONTACT"
+		unfulfilled_title = "MILITARIST_NO_PEACEFUL_CONTACT"
+		desc = "MILITARIST_PEACEFUL_CONTACT_DESC"
+		
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = first_contact_attack_not_allowed }
+		}
+	}
+	
 	# Hates Isolation
 	demand = { 
 		title = "MILITARIST_ISOLATIONISM"
@@ -318,7 +350,7 @@ imperialist = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 0 }
+			owner = { num_communications > 1 }
 		}
 
 		trigger = {
