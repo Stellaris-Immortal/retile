@@ -1,0 +1,330 @@
+##############################
+# Supremacist Faction (DISABLED)
+##############################
+
+supremacist = {
+	election_header = "GFX_faction_header_yellow"
+	
+	unique = yes
+	support_multiplier = 0
+	
+	resources = {
+		category = pop_factions
+		produces = {
+			influence = 2
+		}		
+	}
+
+	is_potential = {
+		years_passed > 10
+		has_encountered_other_species = yes
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	parameters = {
+		empire = {
+			type = country
+			valid_objects = {
+				is_same_value = root
+			}
+		}
+	}
+	
+	can_join_pre_triggers = {
+		is_enslaved = no
+		is_being_purged = no
+	}
+
+	can_join_faction = {
+		is_shackled_robot = no
+		has_culture_shock = no
+		NOT = { has_trait = trait_nerve_stapled }
+	}
+	
+	attraction = {
+		base = 100
+		
+		modifier = {
+			factor = 1.25
+			happiness > 0.90
+		}
+		
+		modifier = {
+			factor = 1.25
+			happiness > 0.70
+		}
+		
+		modifier = {
+			factor = 0.50
+			happiness < 0.50
+		}
+		
+		modifier = {
+			factor = 0.50
+			happiness < 0.20
+		}
+	}
+	
+	leader = {
+		base = 100
+	}
+	
+	# Wants Experienced Ruler
+	demand = {
+		title = "CENTRIST_EXPERIENCE"
+		unfulfilled_title = "CENTRIST_NO_EXPERIENCE"
+		desc = "CENTRIST_EXPERIENCE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = ruler }
+
+		trigger = {
+			ruler = { has_level > 2 }
+		}
+	}
+	
+	# Wants Energy Surplus
+	demand = {
+		title = "CENTRIST_ENERGY_SURPLUS"
+		unfulfilled_title = "CENTRIST_NO_ENERGY_SURPLUS"
+		desc = "CENTRIST_ENERGY_SURPLUS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { 
+				has_monthly_income = {
+					resource = energy
+					value >= 0
+				}
+			}
+		}
+	}
+	
+	# Wants Mineral Surplus
+	demand = {
+		title = "CENTRIST_MINERAL_SURPLUS"
+		unfulfilled_title = "CENTRIST_NO_MINERAL_SURPLUS"
+		desc = "CENTRIST_MINERAL_SURPLUS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { 
+				has_monthly_income = {
+					resource = minerals
+					value >= 0
+				}
+			}
+		}
+	}
+	
+	# Wants Food Surplus
+	demand = {
+		title = "CENTRIST_FOOD_SURPLUS"
+		unfulfilled_title = "CENTRIST_NO_FOOD_SURPLUS"
+		desc = "CENTRIST_FOOD_SURPLUS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { country_uses_food = yes }
+		}
+
+		trigger = {
+			owner = { 
+				has_monthly_income = {
+					resource = food
+					value >= 0
+				}
+			}
+		}
+	}
+	
+	# Wants Goods Surplus
+	demand = {
+		title = "CENTRIST_GOODS_SURPLUS"
+		unfulfilled_title = "CENTRIST_NO_GOODS_SURPLUS"
+		desc = "CENTRIST_GOODS_SURPLUS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { 
+				has_monthly_income = {
+					resource = consumer_goods
+					value >= 0
+				}
+			}
+		}
+	}
+	
+	# Wants Alloys Surplus
+	demand = {
+		title = "CENTRIST_ALLOYS_SURPLUS"
+		unfulfilled_title = "CENTRIST_NO_ALLOYS_SURPLUS"
+		desc = "CENTRIST_ALLOYS_SURPLUS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { 
+				has_monthly_income = {
+					resource = alloys
+					value >= 0
+				}
+			}
+		}
+	}
+	
+	# Wants Influence
+	demand = {
+		title = "CENTRIST_INFLUENCE_SURPLUS"
+		unfulfilled_title = "CENTRIST_NO_INFLUENCE_SURPLUS"
+		desc = "CENTRIST_INFLUENCE_SURPLUS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { 
+				has_monthly_income = {
+					resource = influence
+					value >= 0
+				}
+			}
+		}
+	}
+	
+	on_create = {
+		pop_faction_event = { id = factions.1 }
+	}
+
+	on_destroy = {
+		if = {
+			limit = {
+				has_modifier = promoted_xenophobe
+			}
+			remove_modifier = promoted_xenophobe
+		}
+		if = {
+			limit = {
+				has_modifier = suppressed_xenophobe
+			}
+			remove_modifier = suppressed_xenophobe
+		}
+	}
+	
+	actions = {
+		embrace_faction = {
+			title = "EMBRACE_FACTION"
+			description = "EMBRACE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				owner = {
+					OR = {
+						is_subject = no
+						NOT = { is_subject_type = dominion }
+					}
+				}
+			}
+			
+			valid = {
+				custom_tooltip = {
+					fail_text = EMBRACE_CENTRIST_COOLDOWN
+				}
+				always = no
+			}
+
+			effect = {
+				
+			}
+			
+			ai_weight = {
+				base = 0		
+			}
+		}
+		promote_faction = {
+			title = "PROMOTE_FACTION"
+			description = "PROMOTE_FACTION_DESC"
+			
+			potential = { exists = owner }
+			
+			valid = {
+				custom_tooltip = {
+					fail_text = PROMOTE_CENTRIST_COOLDOWN
+				}
+				always = no
+			}
+
+			effect = {
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_promote_faction = {
+			title = "CANCEL_PROMOTE_FACTION"
+			description = "CANCEL_PROMOTE_FACTION_DESC"
+			
+			potential = { always = no }
+
+			effect = { }
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		suppress_faction = {
+			title = "SUPPRESS_FACTION"
+			description = "SUPPRESS_FACTION_DESC"
+			
+			potential = { exists = owner }
+			
+			valid = {
+				custom_tooltip = {
+					fail_text = SUPPRESS_CENTRIST_COOLDOWN
+				}
+				always = no
+			}
+
+			effect = { }
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_suppress_faction = {
+			title = "CANCEL_SUPPRESS_FACTION"
+			description = "CANCEL_SUPPRESS_FACTION_DESC"
+			
+			potential = { always = no}
+
+			effect = { }
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+	}
+}

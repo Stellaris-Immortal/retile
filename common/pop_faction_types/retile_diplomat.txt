@@ -304,14 +304,32 @@ prosperity = {
 		}
 	}
 	
+	# Hates Military Police
+	demand = {
+		title = "DIPLOMAT_MILITARY_POLICE"
+		unfulfilled_title = "DIPLOMAT_NO_MILITARY_POLICE"
+		desc = "DIPLOMAT_MILITARY_POLICE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+		}
+
+		trigger = {
+			owner = { has_policy_flag = criminal_military_police }
+		}
+	}
+	
 	# Hates Gunboat Diplomacy
 	demand = {
 		title = "DIPLOMAT_GUNBOAT_DIPLOMACY"
 		unfulfilled_title = "DIPLOMAT_NO_GUNBOAT_DIPLOMACY"
 		desc = "DIPLOMAT_GUNBOAT_DIPLOMACY_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
 
 		potential = { 
 			exists = owner
@@ -319,7 +337,7 @@ prosperity = {
 		}
 
 		trigger = {
-			owner = { has_policy_flag = xenodiplomacy_gunboat }
+			owner = { NOT = { has_policy_flag = xenodiplomacy_gunboat } }
 		}
 	}
 	
