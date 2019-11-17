@@ -1,0 +1,722 @@
+##############################
+# Xenoist Faction
+##############################
+
+xenoist = {
+	election_header = "GFX_faction_header_yellow"
+	guiding_ethic = ethic_xenophile
+	
+	unique = yes
+	support_multiplier = 1
+	
+	resources = {
+		category = pop_factions
+		produces = {
+			influence = 2
+		}		
+	}
+
+	is_potential = {
+		years_passed > 10
+		has_encountered_other_species = yes
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	parameters = {
+		empire = {
+			type = country
+			valid_objects = {
+				is_same_value = root
+			}
+		}
+	}
+	
+	can_join_pre_triggers = {
+		is_enslaved = no
+		is_being_purged = no
+	}
+
+	can_join_faction = {
+		is_shackled_robot = no
+		has_culture_shock = no
+		NOT = { has_trait = trait_nerve_stapled }
+		OR = {
+			has_ethic = ethic_xenophile
+			has_ethic = ethic_fanatic_xenophile
+		}
+	}
+	
+	attraction = {
+		base = 100
+		
+		modifier = {
+			factor = 1.25
+			NOT = { is_same_species = owner_species }
+		}
+		
+		modifier = {
+			factor = 1.25
+			is_pop_category = worker
+		}
+		
+		modifier = {
+			factor = 1.25
+			owner = {
+				num_species > 3
+			}
+		}
+		
+		modifier = {
+			factor = 0.50
+			owner = {
+				num_species < 2
+			}
+		}
+		
+	}
+	
+	leader = {
+		base = 100
+		
+		modifier = {
+			factor = 2.0
+			NOT = { is_same_species = owner_species }
+		}
+		
+		modifier = {
+			factor = 0.0
+			is_event_leader = yes
+		}	
+	}
+	
+	# Wants Environmental Regulation
+	demand = {
+		title = "XENOPHILE_ENVIRONMENTAL_REGULATION"
+		unfulfilled_title = "XENOPHILE_NO_ENVIRONMENTAL_REGULATION"
+		desc = "XENOPHILE_ENVIRONMENTAL_REGULATION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = environmental_regulation }
+		}
+	}
+	
+	# Wants No Pop Controls
+	demand = {
+		title = "XENOPHILE_NO_POP_CONTROL"
+		unfulfilled_title = "XENOPHILE_NO_NO_POP_CONTROL"
+		desc = "XENOPHILE_NO_POP_CONTROL_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = population_controls_not_allowed }
+		}
+	}
+	
+	# Wants Passive Interference
+	demand = {
+		title = "XENOPHILE_PASSIVE_INTERFERENCE"
+		unfulfilled_title = "XENOPHILE_NO_PASSIVE_INTERFERENCE"
+		desc = "XENOPHILE_PASSIVE_INTERFERENCE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+		
+		potential = {
+			exists = owner
+			owner = {
+				any_relation = { is_country_type = primitive }
+			}
+		}
+		
+		trigger = {
+			owner = { has_policy_flag = interference_passive }
+		}
+	}
+	
+	# Wants to Protect Presapients
+	demand = {
+		title = "XENOPHILE_PROTECT_PRESAPIENTS"
+		unfulfilled_title = "XENOPHILE_NO_PROTECT_PRESAPIENTS"
+		desc = "XENOPHILE_PROTECT_PRESAPIENTS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+		
+		potential = {
+			exists = owner
+			owner = { 
+				has_country_flag = found_presapients
+				any_planet_within_border = {
+					any_pop = {
+						is_sapient = no
+					}
+				}			
+			}
+		}
+		
+		trigger = {
+			owner = { has_policy_flag = pre_sapients_protect }
+		}
+	}
+	
+	# Wants Genocide Ban
+	demand = {
+		title = "XENOPHILE_GENOCIDE_BAN"
+		unfulfilled_title = "XENOPHILE_NO_GENOCIDE_BAN"
+		desc = "XENOPHILE_GENOCIDE_BAN_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+		
+		potential = { exists = owner }
+		
+		trigger = {
+			owner = { has_policy_flag = purge_not_allowed }
+		}
+	}
+	
+	# Wants Refugees
+	demand = {
+		title = "XENOPHILE_REFUGEES"
+		unfulfilled_title = "XENOPHILE_NO_REFUGEES"
+		desc = "XENOPHILE_REFUGEES_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+		
+		potential = { 
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
+		
+		trigger = {
+			owner = { has_policy_flag = refugees_allowed }
+		}
+	}
+	
+	# Wants Open Borders
+	demand = {
+		title = "XENOPHILE_OPEN_BORDERS"
+		unfulfilled_title = "XENOPHILE_NO_OPEN_BORDERS"
+		desc = "XENOPHILE_OPEN_BORDERS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+		
+		potential = { 
+			exists = owner
+			owner = { num_communications > 2 }
+		}
+		
+		trigger = {
+			owner = { has_policy_flag = border_policy_open }
+		}
+	}
+	
+	# Wants Land of Opportunity
+	demand = { 
+		title = "XENOPHILE_OPPORTUNITY"
+		unfulfilled_title = "XENOPHILE_NO_OPPORTUNITY"
+		desc = "XENOPHILE_OPPORTUNITY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_tradition = tr_diplomacy_secure_shipping }
+		}
+
+		trigger = {
+			owner = { has_edict = land_of_opportunity }
+		}
+	}
+	
+	# Wants Celebration Campaign
+	demand = { 
+		title = "XENOPHILE_CELEBRATION_CAMPAIGN"
+		unfulfilled_title = "XENOPHILE_NO_CELEBRATION_CAMPAIGN"
+		desc = "XENOPHILE_CELEBRATION_CAMPAIGN_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_colonial_centralization }
+		}
+
+		trigger = {
+			owner = { has_edict = celebration_campaign }
+		}
+	}
+	
+	# Wants Migration Treaties
+	demand = {
+		title = "XENOPHILE_MIGRATION_TREATIES"
+		unfulfilled_title = "XENOPHILE_NO_MIGRATION_TREATIES"
+		desc = "XENOPHILE_MIGRATION_TREATIES_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = {
+			exists = owner
+			owner = { num_communications > 4 }
+		}
+
+		trigger = {
+			owner = {
+				any_country = {
+					is_country_type = default
+					has_communications = root.owner
+					OR = {
+						has_diplo_migration_treaty = root.owner
+						root = {
+							owner = {
+								has_diplo_migration_treaty = prevprev
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	# Wants Full Citizenship for Aliens
+	demand = {
+		title = "XENOPHILE_ALIEN_CITIZENSHIP"
+		unfulfilled_title = "XENOPHILE_NO_ALIEN_CITIZENSHIP"
+		desc = "XENOPHILE_ALIEN_CITIZENSHIP_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			any_owned_pop = {
+				NOT = { is_same_species = owner_species }
+				is_robot_pop = no
+				is_sapient = yes
+				is_being_purged = no
+			}
+		}
+
+		trigger = {
+			owner = {  
+				any_owned_pop = { 
+					NOT = { is_same_species = owner_species }
+					has_citizenship_type = { type = citizenship_full }
+				}
+			}
+		}
+	}
+	
+	# Hates Pop Controls
+	demand = {
+		title = "XENOPHILE_POP_CONTROLS"
+		unfulfilled_title = "XENOPHILE_NO_POP_CONTROLS"
+		desc = "XENOPHILE_POP_CONTROLS_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = population_controls_not_allowed } }
+		}
+	}
+	
+	# Wants Killing or Eating Presapients
+	demand = {
+		title = "XENOPHILE_KILL_PRESAPIENTS"
+		unfulfilled_title = "XENOPHILE_NO_KILL_PRESAPIENTS"
+		desc = "XENOPHILE_KILL_PRESAPIENTS_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+		
+		potential = {
+			exists = owner
+			owner = { 
+				has_country_flag = found_presapients
+				any_planet_within_border = {
+					any_pop = {
+						is_sapient = no
+					}
+				}			
+			}
+		}
+		
+		trigger = {
+			NOR = {
+				owner = { has_policy_flag = pre_sapients_eat }
+				owner = { has_policy_flag = pre_sapients_purge }
+			}
+		}
+	}
+	
+	# Hates Refugee Ban
+	demand = {
+		title = "XENOPHILE_REFUGEE_BAN"
+		unfulfilled_title = "XENOPHILE_NO_REFUGEE_BAN"
+		desc = "XENOPHILE_REFUGEE_BAN_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+		
+		potential = { 
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
+		
+		trigger = {
+			NOR = {
+				owner = { has_policy_flag = refugees_not_allowed }
+				owner = { has_policy_flag = refugees_only_citizens }
+			}
+		}
+	}
+	
+	# Hates Closed Borders
+	demand = {
+		title = "XENOPHILE_CLOSED_BORDERS"
+		unfulfilled_title = "XENOPHILE_NO_CLOSED_BORDERS"
+		desc = "XENOPHILE_CLOSED_BORDERS_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+		
+		potential = { 
+			exists = owner
+			owner = { num_communications > 2 }
+		}
+		
+		trigger = {
+			owner = { NOT = { has_policy_flag = border_policy_closed } }
+		}
+	}
+	
+	# Hates Geoengineering
+	demand = {
+		title = "XENOPHILE_GEOENGINEERING"
+		unfulfilled_title = "XENOPHILE_NO_GEOENGINEERING"
+		desc = "XENOPHILE_GEOENGINEERING_DESC"
+		
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner 
+			owner = { has_tradition = tr_expansion_a_new_life }
+		}
+
+		trigger = {
+			owner = { NOT = { has_edict = climate_engineering } }
+		}
+	}
+	
+	# Hates Rival
+	demand = { 
+		title = "XENOPHILE_RIVAL"
+		unfulfilled_title = "XENOPHILE_NO_RIVAL"
+		desc = "XENOPHILE_RIVAL_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 2 }
+		}
+
+		trigger = {
+			NOT = {
+				any_country = {
+					prev.owner = { is_rival = PREV }
+				}
+			}
+		}
+	}
+	
+	# Hates Alien not Free
+	demand = {
+		title = "XENOPHILE_ALIEN_FREEDOM"
+		unfulfilled_title = "XENOPHILE_NO_ALIEN_FREEDOM"
+		desc = "XENOPHILE_ALIEN_FREEDOM_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			any_owned_pop = {
+				NOT = { is_same_species = owner_species }
+				is_robot_pop = no
+				is_sapient = yes
+				is_being_purged = no
+			}
+		}
+
+		trigger = {
+			owner = { 
+				NOT = { 
+					any_owned_pop = { 
+						NOT = { is_same_species = owner_species }
+						OR = { 
+							has_citizenship_type = { type = citizenship_slavery }
+							has_citizenship_type = { type = citizenship_purge }
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	# Hates Alien Restrictions
+	demand = {
+		title = "XENOPHILE_ALIEN_RESTRICTION"
+		unfulfilled_title = "XENOPHILE_NO_ALIEN_RESTRICTION"
+		desc = "XENOPHILE_ALIEN_RESTRICTION_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			any_owned_pop = {
+				NOT = { is_same_species = owner_species }
+				is_robot_pop = no
+				is_sapient = yes
+				is_being_purged = no
+			}
+		}
+
+		trigger = {
+			owner = { 
+				NOT = { 
+					any_owned_pop = { 
+						NOT = { is_same_species = owner_species }
+						has_colonization_control = { value = no country =root }
+					}
+				}
+			}
+		}
+	}
+	
+	on_create = {
+		pop_faction_event = { id = factions.1 }
+	}
+
+	on_destroy = {
+		if = {
+			limit = {
+				has_modifier = promoted_xenophile
+			}
+			remove_modifier = promoted_xenophile
+		}
+		if = {
+			limit = {
+				has_modifier = suppressed_xenophile
+			}
+			remove_modifier = suppressed_xenophile
+		}
+	}
+	
+	actions = {
+		embrace_faction = {
+			title = "EMBRACE_FACTION"
+			description = "EMBRACE_FACTION_DESC"
+			
+			cost = {
+				influence = 500
+			}
+			
+			potential = {
+				exists = owner
+				owner = {
+					OR = {
+						is_subject = no
+						NOT = { is_subject_type = dominion }
+					}
+				}
+			}
+			
+			valid = {
+				custom_tooltip = {
+					fail_text = EMBRACE_FACTION_COOLDOWN
+					parameter:empire = {
+						NOT = { has_modifier = embraced_faction_timer }
+					}
+				}
+				support > 0.20
+				parameter:empire = {
+					NOT = { has_ethic = "ethic_fanatic_xenophile" }
+				}
+			}
+
+			effect = {
+				add_modifier = { modifier = embraced_faction days = 3600 }				
+				parameter:empire = {
+					shift_ethic = ethic_xenophile
+					hidden_effect = {
+						add_modifier = { modifier = embraced_faction_timer days = 3600 }
+						every_pop_faction = {
+							limit = { NOT = { is_same_value = root } }
+							add_modifier = { modifier = embraced_another_faction days = 3600 }
+						}
+					}
+				}
+				hidden_effect = {
+					save_event_target_as = TargetFaction
+					parameter:empire = {
+						every_relation = {
+							limit = {
+								is_ai = no
+								is_country_type = default			
+								has_communications = prev
+							}
+							country_event = { id = factions.2000 }
+						}
+					}				
+				}				
+			}
+			
+			ai_weight = {
+				base = 1
+				modifier = {
+					factor = 0
+					support < 0.50
+					owner = {
+						has_ethic = ethic_xenophile
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = { has_valid_civic = civic_fanatic_purifiers }
+				}				
+				modifier = {
+					factor = 0
+					NOT = { 
+						owner = {
+							exists = ruler
+							ruler = {
+								leader_of_faction = xenoist
+							}
+						}
+					}
+				}
+				modifier = {
+					factor = 0
+					owner = {
+						count_pop_factions = {
+							count < 4
+						}					
+					}
+				}			
+			}
+		}
+		promote_faction = {
+			title = "PROMOTE_FACTION"
+			description = "PROMOTE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = { 				
+					NOR = { 
+						has_modifier = suppressed_xenophile
+						has_modifier = promoted_xenophile 
+					}
+				}
+			}
+
+			effect = {
+				parameter:empire = {
+					add_modifier = { modifier = promoted_xenophile days = -1 }
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_promote_faction = {
+			title = "CANCEL_PROMOTE_FACTION"
+			description = "CANCEL_PROMOTE_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = { 
+					has_modifier = promoted_xenophile
+				}
+			}
+
+			effect = {
+				parameter:empire = {
+					remove_modifier = promoted_xenophile
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}		
+		suppress_faction = {
+			title = "SUPPRESS_FACTION"
+			description = "SUPPRESS_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = { 
+					NOR = { 
+						has_modifier = suppressed_xenophile
+						has_modifier = promoted_xenophile 
+					}
+				}
+			}
+
+			effect = {
+				add_modifier = { modifier = suppressed_faction days = -1 }
+				parameter:empire = {
+					add_modifier = { modifier = suppressed_xenophile days = -1 }
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}
+		cancel_suppress_faction = {
+			title = "CANCEL_SUPPRESS_FACTION"
+			description = "CANCEL_SUPPRESS_FACTION_DESC"
+			
+			potential = {
+				exists = owner
+				parameter:empire = { 
+					has_modifier = suppressed_xenophile
+				}
+			}
+
+			effect = {
+				remove_modifier = suppressed_faction
+				parameter:empire = {
+					remove_modifier = suppressed_xenophile
+				}
+			}
+			
+			ai_weight = {
+				base = 0
+			}
+		}	
+	}
+}

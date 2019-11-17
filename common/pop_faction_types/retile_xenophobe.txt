@@ -164,7 +164,10 @@ isolationist = {
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
 
 		trigger = {
 			owner = { has_policy_flag = refugees_not_allowed }
@@ -279,6 +282,37 @@ isolationist = {
 		}
 	}
 	
+	# Wants the Purge Aliens
+	demand = {
+		title = "XENOPHOBE_ALIEN_PURGE"
+		unfulfilled_title = "XENOPHOBE_NO_ALIEN_PURGE"
+		desc = "XENOPHOBE_ALIEN_PURGES_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			any_owned_pop = {
+				NOT = { is_same_species = owner_species }
+				is_robot_pop = no
+				is_sapient = yes
+				is_being_purged = no
+			}
+		}
+
+		trigger = {
+			owner = { 
+				OR = { 
+					any_owned_pop = { 
+						NOT = { is_same_species = owner_species }
+						has_citizenship_type = { type = citizenship_purge }
+					}
+				}
+			}
+		}
+	}
+	
 	# Wants Alien Opression
 	demand = {
 		title = "XENOPHOBE_ALIEN_OPRESSION"
@@ -386,7 +420,10 @@ isolationist = {
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = refugees_allowed } }
@@ -512,7 +549,7 @@ isolationist = {
 	demand = {
 		title = "XENOPHOBE_MIGRATION_TREATIES"
 		unfulfilled_title = "XENOPHOBE_NO_MIGRATION_TREATIES"
-		desc = "XENOPHOBET_MIGRATION_TREATIES_DESC"
+		desc = "XENOPHOBE_MIGRATION_TREATIES_DESC"
 
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
