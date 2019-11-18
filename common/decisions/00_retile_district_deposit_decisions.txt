@@ -34,7 +34,10 @@ decision_retile_deposit_spawningpool = {
 	
 	effect = {
 		custom_tooltip = decision_retile_deposit_spawningpool_effects
-		add_deposit = retile_deposit_spawningpool
+		if = {
+			limit = { NOT = { has_deposit = retile_deposit_spawningpool } }
+			add_deposit = retile_deposit_spawningpool
+		}
 	}
 	
 	ai_weight = {
@@ -76,6 +79,7 @@ decision_retile_deposit_bioreactor = {
 			is_machine_empire = yes
 			is_lithoid_empire = yes
 		} }
+		NOT = { has_deposit = retile_deposit_bioreactor }
 	}
 
 	allow = {
@@ -87,7 +91,10 @@ decision_retile_deposit_bioreactor = {
 	
 	effect = {
 		custom_tooltip = decision_retile_deposit_bioreactor_effects
-		add_deposit = retile_deposit_bioreactor
+		if = {
+			limit = { NOT = { has_deposit = retile_deposit_bioreactor } }
+			add_deposit = retile_deposit_bioreactor
+		}
 	}
 	
 	ai_weight = {
@@ -165,16 +172,21 @@ decision_retile_deposit_precinct = {
 	effect = {
 		custom_tooltip = decision_retile_deposit_precinct_effects
 		add_deposit = retile_deposit_precinct
-		hidden_effect = {
-			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
-		}
 	}
 	
 	ai_weight = {
 		weight = 0
 		modifier = {
 			weight = 100
-			planet_crime > 50
+			planet_crime > 33
+		}
+		modifier = {
+			weight = 150
+			planet_crime > 66
+		}
+		modifier = {
+			weight = 250
+			planet_crime > 99
 		}
 	}
 }
@@ -193,6 +205,10 @@ decision_retile_deposit_precinct_remove = {
 	
 	ai_weight = {
 		weight = 0
+		modifier = {
+			weight = 100
+			planet_crime < 1
+		}
 	}	
 }
 
@@ -225,9 +241,6 @@ decision_retile_deposit_stronghold = {
 	effect = {
 		custom_tooltip = decision_retile_deposit_stronghold_effects
 		add_deposit = retile_deposit_stronghold
-		hidden_effect = {
-			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
-		}
 	}
 	
 	ai_weight = {
@@ -285,27 +298,24 @@ decision_retile_deposit_preserve = {
 	effect = {
 		custom_tooltip = decision_retile_deposit_preserve_effects
 		add_deposit = retile_deposit_preserve
-		hidden_effect = {
-			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
-		}
 	}
 	
 	ai_weight = {
 		weight = 0
 		modifier = {
-			weight = 1000
+			weight = 100
 			free_amenities > 300
 		}
 		modifier = {
-			weight = 5000
+			weight = 200
 			free_amenities > 500
 		}
 		modifier = {
-			weight = 10000
+			weight = 600
 			free_amenities > 700
 		}
 		modifier = {
-			weight = 50000
+			weight = 1100
 			free_amenities > 900
 		}
 	}	
@@ -325,6 +335,10 @@ decision_retile_deposit_preserve_remove = {
 	
 	ai_weight = {
 		weight = 0
+		modifier = {
+			weight = 100
+			free_amenities < -50
+		}
 	}	
 }
 
@@ -357,9 +371,9 @@ decision_retile_deposit_assembly = {
 
 	effect = {
 		custom_tooltip = decision_retile_deposit_assembly_effects
-		add_deposit = retile_deposit_assembly
-		hidden_effect = {
-			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		if = {
+			limit = { NOT = { has_deposit = retile_deposit_assembly } }
+			add_deposit = retile_deposit_assembly
 		}
 	}
 	
@@ -415,8 +429,9 @@ decision_retile_deposit_numistic = {
 	effect = {
 		custom_tooltip = decision_retile_deposit_numistic_effects
 		add_deposit = retile_deposit_numistic
-		hidden_effect = {
-			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		if = {
+			limit = { NOT = { has_deposit = retile_deposit_numistic } }
+			add_deposit = retile_deposit_numistic
 		}
 	}
 	
@@ -474,8 +489,11 @@ decision_retile_deposit_ministry = {
 	effect = {
 		custom_tooltip = decision_retile_deposit_ministry_effects
 		add_deposit = retile_deposit_ministry
-		hidden_effect = {
-			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		if = {
+			limit = { NOT = { owner = { any_owned_planet = {
+				has_deposit = retile_deposit_ministry
+			} } } }
+			add_deposit = retile_deposit_ministry
 		}
 	}
 	
@@ -532,8 +550,9 @@ decision_retile_deposit_waste_reprocessing = {
 	effect = {
 		custom_tooltip = decision_retile_deposit_waste_reprocessing_effects
 		add_deposit = retile_deposit_waste_reprocessing
-		hidden_effect = {
-			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		if = {
+			limit = { NOT = { has_deposit = retile_deposit_waste_reprocessing } }
+			add_deposit = retile_deposit_waste_reprocessing
 		}
 	}
 	
@@ -591,8 +610,9 @@ decision_retile_deposit_slave = {
 	effect = {
 		custom_tooltip = decision_retile_deposit_slave_effects
 		add_deposit = retile_deposit_slave
-		hidden_effect = {
-			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		if = {
+			limit = { NOT = { has_deposit = retile_deposit_slave } }
+			add_deposit = retile_deposit_slave
 		}
 	}
 	
@@ -631,7 +651,10 @@ decision_retile_deposit_alignment = {
 	}
 	
 	potential = {
-		NOT = { has_deposit = retile_deposit_alignment }
+		is_capital = yes
+		NOT = { owner = { any_owned_planet = {
+			has_deposit = retile_deposit_alignment
+		} } }
 		owner = {
 			has_technology = tech_akx_worm_3
 		}
@@ -646,9 +669,11 @@ decision_retile_deposit_alignment = {
 
 	effect = {
 		custom_tooltip = decision_retile_deposit_alignment_effects
-		add_deposit = retile_deposit_alignment
-		hidden_effect = {
-			set_timed_planet_flag = { flag = retile_new_jobs days = 5 }
+		if = {
+			limit = { NOT = { owner = { any_owned_planet = {
+				has_deposit = retile_deposit_alignment
+			} } } }
+			add_deposit = retile_deposit_alignment
 		}
 	}
 	
@@ -670,6 +695,6 @@ decision_retile_deposit_alignment_remove = {
 	}
 	
 	ai_weight = {
-		weight = 0
+		weight = -1
 	}	
 }
