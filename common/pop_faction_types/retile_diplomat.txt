@@ -95,22 +95,27 @@ prosperity = {
 		}		
 	}
 	
-	# Wants a Federation
+	# Wants Pacification
 	demand = { 
-		title = "DIPLOMAT_MY_FEDERATION"
-		unfulfilled_title = "DIPLOMAT_NO_MY_FEDERATION"
-		desc = "DIPLOMAT_MY_FEDERATION_DESC"
+		title = "DIPLOMAT_PACIFICATION"
+		unfulfilled_title = "DIPLOMAT_NO_PACIFICATION"
+		desc = "DIPLOMAT_PACIFICATION_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
 
 		potential = { 
 			exists = owner
-			owner = { has_tradition = tr_diplomacy_the_federation }
+			owner = { num_communications > 0 }
 		}
 
 		trigger = {
-			owner = { is_federation_leader = yes }
+			owner = { 
+				OR = { 
+					has_modifier = pacified_amoebas
+					has_modifier = pacified_crystals
+				}
+			}
 		}
 	}
 	
@@ -500,6 +505,28 @@ prosperity = {
 		trigger = {
 			any_country = {
 				NOT = { has_opinion_modifier = { who = prev.owner modifier = opinion_insult } }
+			}
+		}
+	}
+	
+	# Hates Planet Killers
+	demand = {
+		title = "DIPLOMAT_DEATH_STAR"
+		unfulfilled_title = "DIPLOMAT_NO_DEATH_STAR"
+		desc = "DIPLOMAT_DEATH_STAR_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+			owner = { has_country_flag = colossus_project }
+		}
+
+		trigger = {
+			owner = {
+			NOT = { has_country_flag = fired_cracker }
+			NOT = { has_country_flag = fired_neutron }
 			}
 		}
 	}
