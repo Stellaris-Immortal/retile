@@ -34,6 +34,7 @@ xenoist = {
 	can_join_pre_triggers = {
 		is_enslaved = no
 		is_being_purged = no
+		is_being_assimilated = no
 	}
 
 	can_join_faction = {
@@ -333,7 +334,7 @@ xenoist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { NOT = { has_policy_flag = population_controls_not_allowed } }
+			owner = { NOT = { has_policy_flag = population_controls_allowed } }
 		}
 	}
 	

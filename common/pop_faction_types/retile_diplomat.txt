@@ -34,6 +34,7 @@ prosperity = {
 	can_join_pre_triggers = {
 		is_enslaved = no
 		is_being_purged = no
+		is_being_assimilated = no
 	}
 
 	can_join_faction = {
@@ -310,15 +311,13 @@ prosperity = {
 		unfulfilled_title = "DIPLOMAT_NO_MILITARY_POLICE"
 		desc = "DIPLOMAT_MILITARY_POLICE_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
 
-		potential = { 
-			exists = owner
-		}
+		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = criminal_military_police }
+			owner = { NOT = { has_policy_flag = criminal_military_police } }
 		}
 	}
 	
