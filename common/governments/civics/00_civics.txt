@@ -15,6 +15,29 @@
 #	}
 #}
 
+civic_eternal_ruler = {
+	
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = { value = auth_imperial
+		}
+	}
+	modification = no
+	random_weight = {
+		base = 1 # Should be fairly rare
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}	
+	
+	description = "civic_tooltip_eternal_ruler"
+}
+
 civic_corvee_system = {
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }

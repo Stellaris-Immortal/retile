@@ -1,0 +1,21 @@
+namespace = civic_origin_modifications
+# Add flags and leader  traits for the civic "Eternal Ruler"
+country_event = {
+	id = civic_origin_modifications.1
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		if = {
+			limit = {
+				
+						has_civic = civic_eternal_ruler
+			}
+			random_owned_leader = {
+				limit = {
+					leader_class = ruler
+				}
+				add_ruler_trait = leader_trait_ruler_eternal
+			}
+		}
+	}
+}
