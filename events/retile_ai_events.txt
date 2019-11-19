@@ -353,7 +353,7 @@ country_event = {
 					NOR = {
 						is_planet_class = pc_city
 						is_planet_class = pc_hive
-						is_planet_class = pc_nexus
+						is_planet_class = pc_machine
 						has_modifier = resort_colony
 						has_modifier = slave_colony
 					}
@@ -398,14 +398,15 @@ country_event = {
 planet_event = {
 	id = retile_ai.51
 	hide_window = yes
-	is_triggered_only = yes
 
 	trigger = {
-		is_ai = yes
-		owner = { OR = {
-			is_country_type = default
-			is_country_type = awakened_fallen_empire
-		} }
+		owner = {
+			is_ai = yes
+			OR = {
+				is_country_type = default
+				is_country_type = awakened_fallen_empire
+			}
+		}
 	}
 	
 	mean_time_to_happen = {
@@ -450,7 +451,6 @@ planet_event = {
 country_event = {
 	id = retile_ai.52
 	hide_window = yes
-	is_triggered_only = yes
 
 	trigger = {
 		is_ai = yes
@@ -503,11 +503,14 @@ country_event = {
 				}
 				if = { limit = { num_districts = { type = district_generator value > 0 } }
 					remove_district = district_generator
-				} else_if { limit = { num_districts = { type = district_generator_uncapped value > 0 } }
+				}
+				if = { limit = { num_districts = { type = district_generator_uncapped value > 0 } }
 					remove_district = district_generator_uncapped
-				} else_if { limit = { num_districts = { type = district_hab_energy value > 0 } }
+				}
+				if = { limit = { num_districts = { type = district_hab_energy value > 0 } }
 					remove_district = district_hab_energy
-				} else_if { limit = { num_districts = { type = district_rw_generator value > 0 } }
+				}
+				if = { limit = { num_districts = { type = district_rw_generator value > 0 } }
 					remove_district = district_rw_generator
 				}
 			}
@@ -550,11 +553,14 @@ country_event = {
 				}
 				if = { limit = { num_districts = { type = district_mining value > 0 } }
 					remove_district = district_mining
-				} else_if { limit = { num_districts = { type = district_mining_uncapped value > 0 } }
+				}
+				if = { limit = { num_districts = { type = district_mining_uncapped value > 0 } }
 					remove_district = district_mining_uncapped
-				} else_if { limit = { num_districts = { type = district_hab_mining value > 0 } }
+				}
+				if = { limit = { num_districts = { type = district_hab_mining value > 0 } }
 					remove_district = district_hab_mining
-				} else_if { limit = { num_districts = { type = district_rw_mining value > 0 } }
+				}
+				if = { limit = { num_districts = { type = district_rw_mining value > 0 } }
 					remove_district = district_rw_mining
 				}
 			}
@@ -597,11 +603,14 @@ country_event = {
 				}
 				if = { limit = { num_districts = { type = district_farming value > 0 } }
 					remove_district = district_farming
-				} else_if { limit = { num_districts = { type = district_farming_uncapped value > 0 } }
+				}
+				if = { limit = { num_districts = { type = district_farming_uncapped value > 0 } }
 					remove_district = district_farming_uncapped
-				} else_if { limit = { num_districts = { type = district_hab_hydroponics value > 0 } }
+				}
+				if = { limit = { num_districts = { type = district_hab_hydroponics value > 0 } }
 					remove_district = district_hab_hydroponics
-				} else_if { limit = { num_districts = { type = district_rw_farming value > 0 } }
+				}
+				if = { limit = { num_districts = { type = district_rw_farming value > 0 } }
 					remove_district = district_rw_farming
 				}
 			}

@@ -265,16 +265,20 @@ decision_retile_deposit_stronghold_remove = {
 	}
 	
 	ai_weight = {
-		owner = { AND = {
-			used_naval_capacity_percent < 0.5
-			OR = {
-				has_monthly_income = { resource = alloys value < 25 }
-				has_monthly_income = { resource = consumer_goods value < 0 }
-				has_monthly_income = { resource = food value < 0 }
-				has_monthly_income = { resource = minerals value < 0 }
-				has_monthly_income = { resource = energy value < 100 }
-			}
-		} }
+		weight = 0
+		modifier = {
+			weight = 100
+			owner = { AND = {
+				used_naval_capacity_percent < 0.5
+				owner = { OR = {
+					has_monthly_income = { resource = alloys value < 25 }
+					has_monthly_income = { resource = consumer_goods value < 0 }
+					has_monthly_income = { resource = food value < 0 }
+					has_monthly_income = { resource = minerals value < 0 }
+					has_monthly_income = { resource = energy value < 100 }
+				} }
+			} }
+		}
 	}
 }
 
