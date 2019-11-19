@@ -305,7 +305,7 @@ imperialist = {
 		}
 	}
 	
-	# Pates Peaceful Contact
+	# Hates Peaceful Contact
 	demand = {
 		title = "MILITARIST_PEACEFUL_CONTACT"
 		unfulfilled_title = "MILITARIST_NO_PEACEFUL_CONTACT"
@@ -404,6 +404,35 @@ imperialist = {
 	on_create = {
 		pop_faction_event = { id = factions.1 }
 	}
+	
+	# Hates Pacification
+	demand = { 
+		title = "MILITARIST_PACIFICATION"
+		unfulfilled_title = "MILITARIST_NO_PACIFICATION"
+		desc = "MILITARIST_PACIFICATION_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { 
+				OR = {
+					has_country_flag = amoeba_encountered
+					has_country_flag = crystal_encountered
+				}
+			}
+		}
+
+		trigger = {
+			owner = { 
+				NOR = { 
+					has_modifier = pacified_amoebas
+					has_modifier = pacified_crystals
+				}
+			}
+		}
+	}
 
 	on_destroy = {
 		if = {
@@ -426,7 +455,7 @@ imperialist = {
 			description = "EMBRACE_FACTION_DESC"
 			
 			cost = {
-				influence = 500
+				influence = 250
 			}
 			
 			potential = {
