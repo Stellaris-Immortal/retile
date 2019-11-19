@@ -46,43 +46,51 @@ supremacist = {
 		base = 100
 		
 		modifier = {
-			factor = 1.40
+			factor = 1.25
 			happiness >= 0.90
 		}
 		
 		modifier = {
-			factor = 1.20
+			factor = 1.125
 			happiness < 0.90
 			happiness > 0.70
 		}
 		
 		modifier = {
 			factor = 0.90
-			years_passed >= 50
-			years_passed < 100
+			owner = {
+				years_passed >= 50
+				years_passed < 100
+			}
 		}
 		
 		modifier = {
 			factor = 0.80
-			years_passed >= 100
-			years_passed < 150
+			owner = {
+				years_passed >= 100
+				years_passed < 150
+			}
 		}
 		
 		modifier = {
 			factor = 0.70
-			years_passed >= 150
-			years_passed < 200
+			owner = {
+				years_passed >= 150
+				years_passed < 200
+			}
 		}
 		
 		modifier = {
 			factor = 0.60
-			years_passed >= 200
-			years_passed < 300
+			owner = {
+				years_passed >= 200
+				years_passed < 300
+			}
 		}
 		
 		modifier = {
 			factor = 0.50
-			years_passed >= 300
+			owner = { years_passed >= 300 }
 		}
 		
 		modifier = {
@@ -113,6 +121,26 @@ supremacist = {
 
 		trigger = {
 			ruler = { has_level > 2 }
+		}
+	}
+	
+	# Wants Experienced Ruler
+	demand = {
+		title = "CENTRIST_GOVERNOR"
+		unfulfilled_title = "CENTRIST_NO_GOVERNOR"
+		desc = "CENTRIST_GOVERNOR_DESC"
+
+		fulfilled_effect = -10
+		unfulfilled_effect = 10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				any_sector = {
+					NOT = { exists = leader }
+				}
+			}
 		}
 	}
 	

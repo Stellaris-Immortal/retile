@@ -90,6 +90,35 @@ technologist = {
 		}
 	}
 	
+	# Wants a Megastructure
+	demand = { 
+		title = "MATERIALIST_MEGASTRUCTURE"
+		unfulfilled_title = "MATERIALIST_NO_MEGASTRUCTURE"
+		desc = "MATERIALIST_MEGASTRUCTURE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_technology = tech_strategic_coordination
+					has_technology = tech_science_nexus
+				}
+			}
+		}
+
+		trigger = {
+			owner = { 
+				OR = {
+					has_country_flag = built_think_tank
+					has_country_flag = built_mega_art_installation_site
+				}
+			}
+		}
+	}
+	
 	# Wants Private Education
 	demand = { 
 		title = "MATERIALIST_PRIVATE_EDUCATION"
@@ -290,6 +319,35 @@ technologist = {
 		}
 	}
 	
+	# Wants Enclave Trade
+	demand = {
+		title = "MATERIALIST_ENCLAVE"
+		unfulfilled_title = "MATERIALIST_NO_ENCLAVE"
+		desc = "MATERIALIST_ENCLAVEY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = {
+				OR = {
+					has_country_flag = artist_enclave_country
+					has_country_flag = curator_enclave_country
+				}
+			}
+		}
+
+		trigger = {
+			owner = {
+				OR = {
+					has_modifier = enclave_artist_patron
+					has_modifier = curator_insight
+				}
+			}
+		}
+	}
+	
 	# Wants Presurcer Secrets
 	demand = {
 		title = "MATERIALIST_PRECURSOR_SECRETS"
@@ -416,6 +474,35 @@ technologist = {
 			}
 		}
 	}
+	
+	# Hates Holy Worlds
+	demand = {
+		title = "MATERIALIST_HOLY_WORLD"
+		unfulfilled_title = "MATERIALIST_NO_HOLY_WORLD"
+		desc = "MATERIALIST_HOLY_WORLD_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_consecrated_worlds }
+		}
+
+		trigger = {
+			owner = {
+				any_planet_within_border = {
+					is_colony = no
+					NOR = {
+						has_modifier = consecrated_quality_1
+						has_modifier = consecrated_quality_2
+						has_modifier = consecrated_quality_3
+						has_modifier = consecrated_quality_4
+					}
+				}
+			}
+		}
+	}
 
 	on_destroy = {
 		if = {
@@ -438,7 +525,7 @@ technologist = {
 			description = "EMBRACE_FACTION_DESC"
 			
 			cost = {
-				influence = 500
+				influence = 250
 			}
 			
 			potential = {
