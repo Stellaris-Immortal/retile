@@ -112,6 +112,7 @@ leader_trait_environmental_engineer = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_environmental_engineer.dds"
 	modifier = {
+		pop_environment_tolerance = 0.10
 		deposit_blockers_cost_mult = -0.25
 		planet_clear_blocker_time_mult = -0.25
 	}
@@ -142,7 +143,7 @@ leader_trait_governor_cyborg = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_cyborg.dds"
 	modifier = {
-		planet_jobs_minerals_produces_mult = 0.05
+		planet_jobs_alloys_produces_mult = 0.05
 	}
 	leader_trait = { governor }
 	leader_class = { governor }
@@ -156,7 +157,7 @@ leader_trait_governor_synthetic = {
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_synthetic.dds"
 	modifier = {
 		planet_jobs_energy_produces_mult = 0.05
-		planet_jobs_minerals_produces_mult = 0.05
+		planet_jobs_alloys_produces_mult = 0.05
 	}
 	leader_trait = { governor }
 	leader_class = { governor }
@@ -217,6 +218,7 @@ leader_trait_corrupt = {
 	}
 	leader_potential_add = {
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
+		NOT = { from = { has_civic = "civic_philosopher_king" } }
 	}
 	leader_trait = { governor }
 	leader_class = { governor }
@@ -230,7 +232,7 @@ leader_trait_ecologist = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_ecologist.dds"
 	modifier = {
-		planet_amenities_add = -50
+		planet_amenities_add = -100
 	}
 	leader_potential_add = {
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
