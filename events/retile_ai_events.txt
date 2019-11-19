@@ -325,25 +325,49 @@ planet_event = {
 	}
 }
 
-# iterate through AI empires and clear superfluous or problematic districts
-# NOTE: unused
-event = {
+# Look for worlds in AI space that would make good arcology candidates, and flag them
+country_event = {
 	id = retile_ai.50
 	hide_window = yes
-	is_triggered_only = yes
 
 	trigger = {
-		always = yes
+		OR = {
+			is_country_type = default
+			is_country_type = awakened_fallen_empire
+		}
+		is_ai = yes
 	}
 
-	immediate = {
-		every_country = {	# For each country
-			limit = {
-				is_country_type = default
-				is_ai = yes
-			}
+	mean_time_to_happen = {
+		days = 360
+	}
+
+	after = {
+		IF = {
+			limit = { NOT = { any_owned_planet = { has_planet_flag = retile_future_arcology } } }
 			
-			# nothing here yet.
 		}
+	}
+}
+
+# iterate through AI empires and clear superfluous or problematic districts
+country_event = {
+	id = retile_ai.51
+	hide_window = yes
+
+	trigger = {
+		OR = {
+			is_country_type = default
+			is_country_type = awakened_fallen_empire
+		}
+		is_ai = yes
+	}
+
+	mean_time_to_happen = {
+		days = 360
+	}
+
+	after = {
+		
 	}
 }
