@@ -471,12 +471,12 @@ country_event = {
 				has_monthly_income = { resource = energy value > 200 }
 			}
 			random_owned_planet = {
-				limit = {
+				limit = { {
 					num_districts = { type = district_generator value > 0 }
 					num_districts = { type = district_generator_uncapped value > 0 }
 					num_districts = { type = district_hab_energy value > 0 }
 					num_districts = { type = district_rw_generator value > 0 }
-				}
+				} }
 				weights = {
 					base = 1000
 					modifier = {
@@ -521,12 +521,12 @@ country_event = {
 				has_monthly_income = { resource = minerals value > 50 }
 			}
 			random_owned_planet = {
-				limit = {
+				limit = { OR = {
 					num_districts = { type = district_mining value > 0 }
 					num_districts = { type = district_mining_uncapped value > 0 }
 					num_districts = { type = district_hab_mining value > 0 }
 					num_districts = { type = district_rw_mining value > 0 }
-				}
+				} }
 				weights = {
 					base = 1000
 					modifier = {
@@ -568,14 +568,24 @@ country_event = {
 		}
 		if = {
 			limit = {
-				has_monthly_income = { resource = food value > 35 }
+				OR = {
+					has_monthly_income = { resource = food value > 35 }
+					is_plantoid_empire = yes
+				}
 			}
 			random_owned_planet = {
 				limit = {
-					num_districts = { type = district_farming value > 0 }
-					num_districts = { type = district_farming_uncapped value > 0 }
-					num_districts = { type = district_hab_hydroponics value > 0 }
-					num_districts = { type = district_rw_farming value > 0 }
+					OR = {
+						num_districts = { type = district_farming value > 0 }
+						num_districts = { type = district_farming_uncapped value > 0 }
+						num_districts = { type = district_hab_hydroponics value > 0 }
+						num_districts = { type = district_rw_farming value > 0 }
+					}
+					OR = {
+						owner = { is_plantoid_empire = no }
+						habitability = { who = owner_main_species value > 0.99 }
+						has_planet_flag = ai_arcology_development
+					}
 				}
 				weights = {
 					base = 1000
