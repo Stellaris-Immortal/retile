@@ -209,7 +209,7 @@ decision_retile_deposit_precinct_remove = {
 			weight = 100
 			planet_crime < 1
 		}
-	}	
+	}
 }
 
 ##################################################### Military Stronghold
@@ -265,8 +265,17 @@ decision_retile_deposit_stronghold_remove = {
 	}
 	
 	ai_weight = {
-		weight = 0
-	}	
+		owner = { AND = {
+			used_naval_capacity_percent < 0.5
+			OR = {
+				has_monthly_income = { resource = alloys value < 25 }
+				has_monthly_income = { resource = consumer_goods value < 0 }
+				has_monthly_income = { resource = food value < 0 }
+				has_monthly_income = { resource = minerals value < 0 }
+				has_monthly_income = { resource = energy value < 100 }
+			}
+		} }
+	}
 }
 
 ##################################################### Nature Preserve
@@ -315,7 +324,7 @@ decision_retile_deposit_preserve = {
 			free_amenities > 700
 		}
 		modifier = {
-			weight = 1100
+			weight = 1200
 			free_amenities > 900
 		}
 	}	

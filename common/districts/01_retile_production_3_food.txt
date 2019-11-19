@@ -156,7 +156,7 @@ district_farming = {
 		modifier = {	# REALLY don't let food go negative
 			weight = 100000
 			OR = {
-				owner = { has_monthly_income = { resource = food value < 10 } }
+				owner = { has_monthly_income = { resource = food value < 5 } }
 			}
 		}
 		modifier = {	# Plantoid Fix Habitability
@@ -179,7 +179,13 @@ district_farming = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 25 } }
+			OR = {
+				owner = { has_monthly_income = { resource = food value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 5 } }
+				}
+			}
 		}
 	}
 
@@ -337,7 +343,13 @@ district_farming_uncapped = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 25 } }
+			OR = {
+				owner = { has_monthly_income = { resource = food value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 5 } }
+				}
+			}
 		}
 	}
 
@@ -491,7 +503,13 @@ district_hab_hydroponics = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 25 } }
+			OR = {
+				owner = { has_monthly_income = { resource = food value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 5 } }
+				}
+			}
 		}
 	}
 
@@ -644,7 +662,13 @@ district_rw_farming = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 25 } }
+			OR = {
+				owner = { has_monthly_income = { resource = food value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 5 } }
+				}
+			}
 		}
 	}
 
