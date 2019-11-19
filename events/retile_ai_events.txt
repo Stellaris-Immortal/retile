@@ -325,25 +325,306 @@ planet_event = {
 	}
 }
 
-# iterate through AI empires and clear superfluous or problematic districts
-# NOTE: unused
-event = {
+# Flag AI planets for arcology development
+country_event = {
 	id = retile_ai.50
 	hide_window = yes
-	is_triggered_only = yes
 
 	trigger = {
-		always = yes
+		is_ai = yes
+		OR = {
+			is_country_type = default
+			is_country_type = awakened_fallen_empire
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 360
 	}
 
-	immediate = {
-		every_country = {	# For each country
+	after = {
+		IF = {
 			limit = {
-				is_country_type = default
-				is_ai = yes
+				NOT = { any_owned_planet = { has_planet_flag = ai_arcology_development } }
 			}
-			
-			# nothing here yet.
+			random_owned_planet = {
+				limit = {
+					habitable_structure = no
+					NOR = {
+						is_planet_class = pc_city
+						is_planet_class = pc_hive
+						is_planet_class = pc_machine
+						has_modifier = resort_colony
+						has_modifier = slave_colony
+					}
+				}
+				weights = {
+					base = 1000
+					modifier = {
+						mult = 10
+						is_capital = yes
+					}
+					modifier = {
+						mult = 0.3
+						retile_template_good_energy = yes
+					}
+					modifier = {
+						mult = 0.3
+						retile_template_good_minerals = yes
+					}
+					modifier = {
+						mult = 0.3
+						retile_template_good_food = yes
+					}
+					modifier = {
+						mult = 0.01
+						OR = {
+							has_building = building_food_processing_facility
+							has_building = building_food_processing_center
+							has_building = building_mineral_purification_plant
+							has_building = building_mineral_purification_hub
+							has_building = building_energy_grid
+							has_building = building_energy_nexus
+						}
+					}
+				}
+				set_planet_flag = ai_arcology_development
+			}
+		}
+	}
+}
+
+# Check AI planets and remove wasteful district deposits
+planet_event = {
+	id = retile_ai.51
+	hide_window = yes
+
+	trigger = {
+		exists = owner
+		owner = {
+			is_ai = yes
+			OR = {
+				is_country_type = default
+				is_country_type = awakened_fallen_empire
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 90
+	}
+
+	after = {
+		if = {
+			limit = {
+				has_deposit = retile_deposit_precinct
+				planet_crime < 1
+			}
+			remove_deposit = retile_deposit_precinct
+		}
+		if = {
+			limit = {
+				has_deposit = retile_deposit_stronghold
+				owner = { AND = {
+					used_naval_capacity_percent < 0.5
+					OR = {
+						has_monthly_income = { resource = alloys value < 25 }
+						has_monthly_income = { resource = consumer_goods value < 0 }
+						has_monthly_income = { resource = food value < 0 }
+						has_monthly_income = { resource = minerals value < 0 }
+						has_monthly_income = { resource = energy value < 100 }
+					}
+				} }
+			}
+			remove_deposit = retile_deposit_stronghold
+		}
+		if = {
+			limit = {
+				has_deposit = retile_deposit_preserve
+				free_amenities < -50
+			}
+			remove_deposit = retile_deposit_preserve
+		}
+	}
+}
+
+# Check AI countries and remove wasteful rural districts
+country_event = {
+	id = retile_ai.52
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		OR = {
+			is_country_type = default
+			is_country_type = awakened_fallen_empire
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 90
+	}
+
+	after = {
+		if = {
+			limit = {
+				has_monthly_income = { resource = energy value > 200 }
+			}
+			random_owned_planet = {
+				limit = { OR = {
+					num_districts = { type = district_generator value > 0 }
+					num_districts = { type = district_generator_uncapped value > 0 }
+					num_districts = { type = district_hab_energy value > 0 }
+					num_districts = { type = district_rw_generator value > 0 }
+				} }
+				weights = {
+					base = 1000
+					modifier = {
+						mult = 100
+						has_planet_flag = ai_arcology_development
+					}
+					modifier = {
+						mult = 0
+						owner = { any_owned_planet = { AND = {
+							NOT = { is_same_value = prevprev }
+							has_planet_flag = ai_arcology_development
+						} } }
+					}
+					modifier = {
+						mult = 0.01
+						OR = {
+							has_building = building_energy_grid
+							has_building = building_energy_nexus
+						}
+					}
+					modifier = {
+						mult = 0.3
+						retile_template_good_energy = yes
+					}
+				}
+				if = { limit = { num_districts = { type = district_generator value > 0 } }
+					remove_district = district_generator
+				}
+				if = { limit = { num_districts = { type = district_generator_uncapped value > 0 } }
+					remove_district = district_generator_uncapped
+				}
+				if = { limit = { num_districts = { type = district_hab_energy value > 0 } }
+					remove_district = district_hab_energy
+				}
+				if = { limit = { num_districts = { type = district_rw_generator value > 0 } }
+					remove_district = district_rw_generator
+				}
+			}
+		}
+		if = {
+			limit = {
+				has_monthly_income = { resource = minerals value > 50 }
+			}
+			random_owned_planet = {
+				limit = { OR = {
+					num_districts = { type = district_mining value > 0 }
+					num_districts = { type = district_mining_uncapped value > 0 }
+					num_districts = { type = district_hab_mining value > 0 }
+					num_districts = { type = district_rw_mining value > 0 }
+				} }
+				weights = {
+					base = 1000
+					modifier = {
+						mult = 100
+						has_planet_flag = ai_arcology_development
+					}
+					modifier = {
+						mult = 0
+						owner = { any_owned_planet = { AND = {
+							NOT = { is_same_value = prevprev }
+							has_planet_flag = ai_arcology_development
+						} } }
+					}
+					modifier = {
+						mult = 0.01
+						OR = {
+							has_building = building_mineral_purification_plant
+							has_building = building_mineral_purification_hub
+						}
+					}
+					modifier = {
+						mult = 0.3
+						retile_template_good_minerals = yes
+					}
+				}
+				if = { limit = { num_districts = { type = district_mining value > 0 } }
+					remove_district = district_mining
+				}
+				if = { limit = { num_districts = { type = district_mining_uncapped value > 0 } }
+					remove_district = district_mining_uncapped
+				}
+				if = { limit = { num_districts = { type = district_hab_mining value > 0 } }
+					remove_district = district_hab_mining
+				}
+				if = { limit = { num_districts = { type = district_rw_mining value > 0 } }
+					remove_district = district_rw_mining
+				}
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					has_monthly_income = { resource = food value > 35 }
+					is_plantoid_empire = yes
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					OR = {
+						num_districts = { type = district_farming value > 0 }
+						num_districts = { type = district_farming_uncapped value > 0 }
+						num_districts = { type = district_hab_hydroponics value > 0 }
+						num_districts = { type = district_rw_farming value > 0 }
+					}
+					OR = {
+						owner = { is_plantoid_empire = no }
+						habitability = { who = owner.owner_species value > 0.99 }
+						has_planet_flag = ai_arcology_development
+					}
+				}
+				weights = {
+					base = 1000
+					modifier = {
+						mult = 100
+						has_planet_flag = ai_arcology_development
+					}
+					modifier = {
+						mult = 0
+						owner = { any_owned_planet = { AND = {
+							NOT = { is_same_value = prevprev }
+							has_planet_flag = ai_arcology_development
+						} } }
+					}
+					modifier = {
+						mult = 0.01
+						OR = {
+							has_building = building_food_processing_facility
+							has_building = building_food_processing_center
+						}
+					}
+					modifier = {
+						mult = 0.3
+						retile_template_good_food = yes
+					}
+				}
+				if = { limit = { num_districts = { type = district_farming value > 0 } }
+					remove_district = district_farming
+				}
+				if = { limit = { num_districts = { type = district_farming_uncapped value > 0 } }
+					remove_district = district_farming_uncapped
+				}
+				if = { limit = { num_districts = { type = district_hab_hydroponics value > 0 } }
+					remove_district = district_hab_hydroponics
+				}
+				if = { limit = { num_districts = { type = district_rw_farming value > 0 } }
+					remove_district = district_rw_farming
+				}
+			}
 		}
 	}
 }

@@ -135,7 +135,13 @@ district_mining = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = minerals value > 100 } }
+			OR = {
+				owner = { has_monthly_income = { resource = minerals value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 0 } }
+				}
+			}
 		}
 	}
 
@@ -261,7 +267,13 @@ district_mining_uncapped = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = minerals value > 100 } }
+			OR = {
+				owner = { has_monthly_income = { resource = minerals value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 0 } }
+				}
+			}
 		}
 	}
 
@@ -374,7 +386,13 @@ district_hab_mining = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = minerals value > 100 } }
+			OR = {
+				owner = { has_monthly_income = { resource = minerals value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 0 } }
+				}
+			}
 		}
 	}
 
@@ -487,7 +505,13 @@ district_rw_mining = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = minerals value > 100 } }
+			OR = {
+				owner = { has_monthly_income = { resource = minerals value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 0 } }
+				}
+			}
 		}
 	}
 

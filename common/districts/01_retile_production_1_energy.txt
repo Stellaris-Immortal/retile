@@ -124,7 +124,13 @@ district_generator = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = energy value > 1000 } }
+			OR = {
+				owner = { has_monthly_income = { resource = energy value > 100 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 25 } }
+				}
+			}
 		}
 	}
 
@@ -253,7 +259,13 @@ district_generator_uncapped = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = energy value > 1000 } }
+			OR = {
+				owner = { has_monthly_income = { resource = energy value > 100 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 25 } }
+				}
+			}
 		}
 	}
 
@@ -368,7 +380,13 @@ district_hab_energy = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = energy value > 1000 } }
+			OR = {
+				owner = { has_monthly_income = { resource = energy value > 100 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 25 } }
+				}
+			}
 		}
 	}
 
@@ -483,7 +501,13 @@ district_rw_generator = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = energy value > 1000 } }
+			OR = {
+				owner = { has_monthly_income = { resource = energy value > 100 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 25 } }
+				}
+			}
 		}
 	}
 
