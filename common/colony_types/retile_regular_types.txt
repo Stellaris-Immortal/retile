@@ -94,6 +94,7 @@ col_urban_world = {
 	}
 
 	weight_modifier = {
+		base = 0
 		modifier = {
 			add = 2
 			has_designation = col_urban_world
@@ -132,28 +133,34 @@ col_rural_world = {
 	}
 
 	weight_modifier = {
-		base = 1
+		base = 0
 		modifier = {
 			add = 2
 			has_designation = col_rural_world
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_generator value > 0 }
-			num_districts = { type = district_mining value > 0 }
-			num_districts = { type = district_farming value > 0 }
+			OR = { 
+				num_districts = { type = district_generator value > 0 }
+				num_districts = { type = district_mining value > 0 }
+				num_districts = { type = district_farming value > 0 }
+			}
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_generator value > 1 }
-			num_districts = { type = district_mining value > 1 }
-			num_districts = { type = district_farming value > 1 }
+			OR = {
+				num_districts = { type = district_generator value > 1 }
+				num_districts = { type = district_mining value > 1 }
+				num_districts = { type = district_farming value > 1 }
+			}
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_generator value > 2 }
-			num_districts = { type = district_mining value > 2 }
-			num_districts = { type = district_farming value > 2 }
+			OR = {
+				num_districts = { type = district_generator value > 2 }
+				num_districts = { type = district_mining value > 2 }
+				num_districts = { type = district_farming value > 2 }
+			}
 		}
 	}
 }
@@ -430,6 +437,86 @@ col_farming_world = {
 		modifier = {
 			add = 2
 			has_building = building_food_processing_center
+		}
+	}
+}
+
+# Fortress World
+col_fortress_world = {
+	icon = 3
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes}
+		is_capital = no
+		OR = {
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_habitat
+			is_planet_class = pc_relic
+		}
+	}
+	
+	planet_modifier = {
+		army_defense_health_mult = 0.10
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_deposit = retile_deposit_stronghold
+		}
+	}
+}
+
+# Recycling World
+col_recycling_world = {
+	icon = 3
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes}
+		is_capital = no
+		OR = {
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_habitat
+			is_planet_class = pc_relic
+		}
+	}
+	
+	planet_modifier = {
+		planet_custodians_produces_mult = 0.10
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 1
+			has_deposit = retile_deposit_preserve
+		}
+		modifier = {
+			add = 2
+			has_building = building_hydroponics_farm
+		}
+		modifier = {
+			add = 2
+			has_building = building_recycling_center
+		}
+		modifier = {
+			add = 2
+			has_building = building_solar_panels
 		}
 	}
 }

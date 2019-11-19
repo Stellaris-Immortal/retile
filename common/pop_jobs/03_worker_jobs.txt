@@ -34,6 +34,10 @@ custodian = {
 		modifier = { planet_amenities_add = -10 }
 	}
 	triggered_planet_modifier = {
+		potential = { owner = { has_civic = civic_environmentalist } }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {
 		potential = { owner = { has_technology = tech_industrial_ecology } }
 		modifier = { planet_amenities_add = -5 }
 	}
@@ -52,6 +56,10 @@ custodian = {
 
 	resources = {
 		category = planet_custodians
+		produces = {
+			trigger = { owner = { has_civic = civic_environmentalist } }
+			unity = 3
+		}
 		produces = {
 			society_research = 2.5
 		}
