@@ -25,7 +25,7 @@ district_city = {
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = slave_colony }
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_city = yes
 		}
 	}
 
@@ -94,47 +94,11 @@ district_city = {
 	}
 	
 	ai_weight = {
-		weight = 0
+		weight = 100
 		
-		modifier = {	# Safe to develop our empire?
-			weight = 10
+		modifier = {	# Safe to build more cities?
+			factor = 10
 			retile_basic_economy = yes
-		}
-		modifier = {	# extra weight if safe and we don't have at least 3 cities here yet...
-			weight = 50
-			AND = {
-				retile_basic_economy = yes
-				num_districts = { type = district_city value < 2 }
-			}
-		}
-		modifier = {	# Already has basic urban buildings?
-			factor = 10
-			retile_urban_development = yes
-		}
-		modifier = {	# Already has advanced urban buildings?
-			factor = 10
-			retile_urban_advanced = yes
-		}
-		modifier = {	# planet might be better for rural development...
-			factor = 0.5
-			NOT = { has_planet_flag = ai_arcology_development }
-			OR = {
-				AND = {
-					owner = { country_uses_food = yes }
-					retile_template_good_food = yes
-				}
-				retile_template_good_minerals = yes
-				retile_template_good_energy = yes
-			}
-		}
-		modifier = {	# planet is already focused on rural development
-			factor = 0.25
-			retile_rural_development = yes
-			NOT = { has_planet_flag = ai_arcology_development }
-		}
-		modifier = { # Not building city world
-			factor = 0
-			NOT = { has_planet_flag = ai_arcology_development }
 		}
 	}
 
@@ -169,7 +133,7 @@ district_hab_housing = {
 	
 	allow = {
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_city = yes
 		}
 	}
 
@@ -230,45 +194,11 @@ district_hab_housing = {
 	
 	
 	ai_weight = {
-		weight = 0
+		weight = 100
 		
-		modifier = {	# Safe to develop our empire?
-			weight = 10
+		modifier = {	# Safe to build more cities?
+			factor = 10
 			retile_basic_economy = yes
-		}
-		modifier = {	# extra weight if safe and we don't have at least 3 cities here yet...
-			weight = 50
-			AND = {
-				retile_basic_economy = yes
-				num_districts = { type = district_hab_housing value < 2 }
-			}
-		}
-		modifier = {	# Already has basic urban buildings?
-			factor = 10
-			retile_urban_development = yes
-		}
-		modifier = {	# Already has advanced urban buildings?
-			factor = 10
-			retile_urban_advanced = yes
-		}
-		modifier = {	# planet might be better for rural development...
-			factor = 0.5
-			OR = {
-				AND = {
-					owner = { country_uses_food = yes }
-					retile_template_good_food = yes
-				}
-				retile_template_good_minerals = yes
-				retile_template_good_energy = yes
-			}
-		}
-		modifier = {	# planet is already focused on rural development
-			factor = 0.25
-			retile_rural_development = yes
-		}
-		modifier = { # Not building city world
-			factor = 0
-			NOT = { has_planet_flag = ai_arcology_development }
 		}
 	}
 
@@ -303,7 +233,7 @@ district_rw_city = {
 
 	allow = {
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_city = yes
 		}
 	}
 
@@ -370,45 +300,11 @@ district_rw_city = {
 	
 	
 	ai_weight = {
-		weight = 0
+		weight = 100
 		
-		modifier = {	# Safe to develop our empire?
-			weight = 10
+		modifier = {	# Safe to build more cities?
+			factor = 10
 			retile_basic_economy = yes
-		}
-		modifier = {	# extra weight if safe and we don't have at least 3 cities here yet...
-			weight = 50
-			AND = {
-				retile_basic_economy = yes
-				num_districts = { type = district_rw_city value < 2 }
-			}
-		}
-		modifier = {	# Already has basic urban buildings?
-			factor = 10
-			retile_urban_development = yes
-		}
-		modifier = {	# Already has advanced urban buildings?
-			factor = 10
-			retile_urban_advanced = yes
-		}
-		modifier = {	# planet might be better for rural development...
-			factor = 0.5
-			OR = {
-				AND = {
-					owner = { country_uses_food = yes }
-					retile_template_good_food = yes
-				}
-				retile_template_good_minerals = yes
-				retile_template_good_energy = yes
-			}
-		}
-		modifier = {	# planet is already focused on rural development
-			factor = 0.25
-			retile_rural_development = yes
-		}
-		modifier = { # Not building city world
-			factor = 0
-			NOT = { has_planet_flag = ai_arcology_development }
 		}
 	}
 

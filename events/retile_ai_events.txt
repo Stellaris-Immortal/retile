@@ -347,7 +347,7 @@ country_event = {
 			set_planet_flag = ai_food_development_former
 		}
 		IF = {
-			limit = { has_monthly_income = { resource = food value < 500 } }
+			limit = { has_monthly_income = { resource = food value < 100 } }
 			random_owned_planet = {
 				limit = {
 					NOR = {
@@ -355,12 +355,12 @@ country_event = {
 						#is_planet_class = pc_relic
 						has_modifier = resort_colony
 						is_under_colonization = yes
-						OR = {
-							num_free_districts = { type = district_farming value > 0 }
-							num_free_districts = { type = district_farming_uncapped value > 0 }
-							num_free_districts = { type = district_hab_hydroponics value > 0 }
-							num_free_districts = { type = district_rw_farming value > 0 }
-						}
+					}
+					OR = {
+						num_free_districts = { type = district_farming value > 0 }
+						num_free_districts = { type = district_farming_uncapped value > 0 }
+						num_free_districts = { type = district_hab_hydroponics value > 0 }
+						num_free_districts = { type = district_rw_farming value > 0 }
 					}
 				}
 				weights = {
@@ -426,12 +426,12 @@ country_event = {
 						#is_planet_class = pc_relic
 						has_modifier = resort_colony
 						is_under_colonization = yes
-						OR = {
-							num_free_districts = { type = district_generator value > 0 }
-							num_free_districts = { type = district_generator_uncapped value > 0 }
-							num_free_districts = { type = district_hab_energy value > 0 }
-							num_free_districts = { type = district_rw_generator value > 0 }
-						}
+					}
+					OR = {
+						num_free_districts = { type = district_generator value > 0 }
+						num_free_districts = { type = district_generator_uncapped value > 0 }
+						num_free_districts = { type = district_hab_energy value > 0 }
+						num_free_districts = { type = district_rw_generator value > 0 }
 					}
 				}
 				weights = {
@@ -489,7 +489,7 @@ country_event = {
 			set_planet_flag = ai_minerals_development_former
 		}
 		IF = {
-			limit = { has_monthly_income = { resource = minerals value < 300 } }
+			limit = { has_monthly_income = { resource = minerals value < 500 } }
 			random_owned_planet = {
 				limit = {
 					NOR = {
@@ -497,12 +497,12 @@ country_event = {
 						#is_planet_class = pc_relic
 						has_modifier = resort_colony
 						is_under_colonization = yes
-						OR = {
-							num_free_districts = { type = district_mining value > 0 }
-							num_free_districts = { type = district_mining_uncapped value > 0 }
-							num_free_districts = { type = district_hab_mining value > 0 }
-							num_free_districts = { type = district_rw_mining value > 0 }
-						}
+					}
+					OR = {
+						num_free_districts = { type = district_mining value > 0 }
+						num_free_districts = { type = district_mining_uncapped value > 0 }
+						num_free_districts = { type = district_hab_mining value > 0 }
+						num_free_districts = { type = district_rw_mining value > 0 }
 					}
 				}
 				weights = {
@@ -615,6 +615,74 @@ country_event = {
 				set_planet_flag = ai_arcology_development
 			}
 		}
+		####################################  Cities
+		every_owned_planet = {
+			limit = { has_planet_flag = ai_city_development }
+			remove_planet_flag = ai_city_development
+			set_planet_flag = ai_city_development_former
+		}
+		IF = {
+			random_owned_planet = {
+				limit = {
+					NOR = {
+						has_modifier = slave_colony
+						is_under_colonization = yes
+					}
+					free_district_slots > 0
+				}
+				weights = {
+					base = 10000
+					modifier = {
+						mult = 100
+						OR = {
+							is_capital = yes
+							has_planet_flag = ai_arcology_development
+							is_planet_class = pc_city
+							is_planet_class = pc_relic
+						}
+					}
+					modifier = {
+						mult = 10
+						OR = {
+							retile_urban_development = yes
+							has_planet_flag = ai_city_development_former
+						}
+					}
+					modifier = {
+						mult = 0.3
+						OR = {
+							retile_template_good_energy = yes
+							has_planet_flag = ai_energy_development
+							has_planet_flag = ai_energy_development_former
+							has_building = building_energy_grid
+							has_building = building_energy_nexus
+						}
+					}
+					modifier = {
+						mult = 0.3
+						OR = {
+							retile_template_good_food = yes
+							has_planet_flag = ai_food_development
+							has_planet_flag = ai_food_development_former
+							has_building = building_food_processing_facility
+							has_building = building_food_processing_center
+						}
+					}
+					modifier = {
+						mult = 0.3
+						OR = {
+							retile_template_good_minerals = yes
+							has_planet_flag = ai_minerals_development
+							has_planet_flag = ai_minerals_development_former
+							has_building = building_mineral_purification_plant
+							has_building = building_mineral_purification_hub
+						}
+					}
+				}
+				set_planet_flag = ai_city_development
+				remove_planet_flag = ai_city_development_former
+			}
+		}
 	}
 }
 
@@ -652,8 +720,8 @@ planet_event = {
 						has_monthly_income = { resource = alloys value < 25 }
 						has_monthly_income = { resource = consumer_goods value < 0 }
 						has_monthly_income = { resource = food value < 0 }
-						has_monthly_income = { resource = minerals value < 0 }
-						has_monthly_income = { resource = energy value < 100 }
+						has_monthly_income = { resource = minerals value < 25 }
+						has_monthly_income = { resource = energy value < 25 }
 					}
 				} }
 			}
@@ -751,7 +819,7 @@ country_event = {
 	after = {
 		if = {
 			limit = {
-				has_monthly_income = { resource = minerals value > 300 }
+				has_monthly_income = { resource = minerals value > 500 }
 			}
 			random_owned_planet = {
 				limit = { OR = {

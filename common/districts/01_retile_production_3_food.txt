@@ -33,8 +33,15 @@ district_farming = {
 				NOT = { exists = owner }
 				owner = { is_ai = no }
 				owner = { country_uses_food = yes }
+				is_plantoid_empire = yes
 			}
-			retile_ready = yes
+			OR = {
+				retile_ready_food = yes
+				AND = {
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value <= 0.7 }
+				}
+			}
 		}
 	}
 
@@ -143,53 +150,31 @@ district_farming = {
 	ai_weight = {
 		weight = 0
 		
-		modifier = {	# just a bit of food security.
-			weight = 15
+		modifier = {	# farming security
+			weight = 100
 			OR = {
-				retile_template_good_food = yes
 				AND = {
+					country_uses_food = yes
 					owner = { has_monthly_income = { resource = food value < 25 } }
-					num_districts = { type = district_farming value < 2 }
 				}
-			}
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 100000
-			OR = {
-				owner = { has_monthly_income = { resource = food value < 5 } }
-			}
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			habitability = { who = owner.owner_species value < 0.6 }
-		}
-		modifier = {	# avoid bad food worlds...
-			factor = 0.5
-			retile_template_good_food = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with food buildings
-			factor = 10
-			has_building = building_food_processing_facility
-			has_building = building_food_processing_center
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = food value > 25 } }
 				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = food value > 5 } }
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value < 0.7 }
 				}
 			}
 		}
-		modifier = { # Not building food
-			factor = 0
-			NOT = { has_planet_flag = ai_food_development }
+		modifier = {	# farming emergency!
+			weight = 5000
+			OR = {
+				AND = {
+					country_uses_food = yes
+					owner = { has_monthly_income = { resource = food value < 5 } }
+				}
+				AND = {
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value < 0.5 }
+				}
+			}
 		}
 	}
 
@@ -219,8 +204,15 @@ district_farming_uncapped = {
 				NOT = { exists = owner }
 				owner = { is_ai = no }
 				owner = { country_uses_food = yes }
+				is_plantoid_empire = yes
 			}
-			retile_ready = yes
+			OR = {
+				retile_ready_food = yes
+				AND = {
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value <= 0.7 }
+				}
+			}
 		}
 	}
 	
@@ -311,53 +303,31 @@ district_farming_uncapped = {
 	ai_weight = {
 		weight = 0
 		
-		modifier = {	# just a bit of food security.
-			weight = 10
+		modifier = {	# farming security
+			weight = 100
 			OR = {
-				retile_template_good_food = yes
 				AND = {
+					country_uses_food = yes
 					owner = { has_monthly_income = { resource = food value < 25 } }
-					num_districts = { type = district_farming_uncapped value < 2 }
 				}
-			}
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 100000
-			OR = {
-				owner = { has_monthly_income = { resource = food value < 5 } }
-			}
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			habitability = { who = owner.owner_species value < 0.6 }
-		}
-		modifier = {	# avoid bad food worlds...
-			factor = 0.5
-			retile_template_good_food = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with food buildings
-			factor = 10
-			has_building = building_food_processing_facility
-			has_building = building_food_processing_center
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = food value > 25 } }
 				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = food value > 5 } }
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value < 0.7 }
 				}
 			}
 		}
-		modifier = { # Not building food
-			factor = 0
-			NOT = { has_planet_flag = ai_food_development }
+		modifier = {	# farming emergency!
+			weight = 5000
+			OR = {
+				AND = {
+					country_uses_food = yes
+					owner = { has_monthly_income = { resource = food value < 5 } }
+				}
+				AND = {
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value < 0.5 }
+				}
+			}
 		}
 	}
 
@@ -388,8 +358,15 @@ district_hab_hydroponics = {
 				NOT = { exists = owner }
 				owner = { is_ai = no }
 				owner = { country_uses_food = yes }
+				is_plantoid_empire = yes
 			}
-			retile_ready = yes
+			OR = {
+				retile_ready_food = yes
+				AND = {
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value <= 0.7 }
+				}
+			}
 		}
 	}
 
@@ -475,53 +452,31 @@ district_hab_hydroponics = {
 	ai_weight = {
 		weight = 0
 		
-		modifier = {	# just a bit of food security.
-			weight = 10
+		modifier = {	# farming security
+			weight = 100
 			OR = {
-				retile_template_good_food = yes
 				AND = {
+					country_uses_food = yes
 					owner = { has_monthly_income = { resource = food value < 25 } }
-					num_districts = { type = district_hab_hydroponics value < 2 }
 				}
-			}
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 100000
-			OR = {
-				owner = { has_monthly_income = { resource = food value < 5 } }
-			}
-		}
-		modifier = {	# avoid bad food worlds...
-			factor = 0.5
-			retile_template_good_food = no
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			habitability = { who = owner.owner_species value < 0.6 }
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with food buildings
-			factor = 10
-			has_building = building_food_processing_facility
-			has_building = building_food_processing_center
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = food value > 25 } }
 				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = food value > 5 } }
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value < 0.7 }
 				}
 			}
 		}
-		modifier = { # Not building food
-			factor = 0
-			NOT = { has_planet_flag = ai_food_development }
+		modifier = {	# farming emergency!
+			weight = 5000
+			OR = {
+				AND = {
+					country_uses_food = yes
+					owner = { has_monthly_income = { resource = food value < 5 } }
+				}
+				AND = {
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value < 0.5 }
+				}
+			}
 		}
 	}
 
@@ -551,8 +506,15 @@ district_rw_farming = {
 				NOT = { exists = owner }
 				owner = { is_ai = no }
 				owner = { country_uses_food = yes }
+				is_plantoid_empire = yes
 			}
-			retile_ready = yes
+			OR = {
+				retile_ready_food = yes
+				AND = {
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value <= 0.7 }
+				}
+			}
 		}
 	}
 
@@ -638,53 +600,31 @@ district_rw_farming = {
 	ai_weight = {
 		weight = 0
 		
-		modifier = {	# just a bit of food security.
-			weight = 10
+		modifier = {	# farming security
+			weight = 100
 			OR = {
-				retile_template_good_food = yes
 				AND = {
+					country_uses_food = yes
 					owner = { has_monthly_income = { resource = food value < 25 } }
-					num_districts = { type = district_rw_farming value < 2 }
 				}
-			}
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 100000
-			OR = {
-				owner = { has_monthly_income = { resource = food value < 5 } }
-			}
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			habitability = { who = owner.owner_species value < 0.6 }
-		}
-		modifier = {	# avoid bad food worlds...
-			factor = 0.5
-			retile_template_good_food = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with food buildings
-			factor = 10
-			has_building = building_food_processing_facility
-			has_building = building_food_processing_center
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = food value > 25 } }
 				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = food value > 5 } }
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value < 0.7 }
 				}
 			}
 		}
-		modifier = { # Not building food
-			factor = 0
-			NOT = { has_planet_flag = ai_food_development }
+		modifier = {	# farming emergency!
+			weight = 5000
+			OR = {
+				AND = {
+					country_uses_food = yes
+					owner = { has_monthly_income = { resource = food value < 5 } }
+				}
+				AND = {
+					is_plantoid_empire = yes
+					habitability = { who = owner.owner_species value < 0.5 }
+				}
+			}
 		}
 	}
 

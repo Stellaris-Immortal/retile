@@ -11,6 +11,62 @@ retile_ready = {	# Planet scope
 	}
 }
 
+# Ready to build new cities?
+retile_ready_city = {	# Planet scope
+	OR = {
+		NOT = { exists = owner }
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			PREV = {
+				free_jobs < 1
+				has_planet_flag = ai_city_development
+			}
+		}
+	}
+}
+
+# Ready to build new energy districts
+retile_ready_energy = {	# Planet scope
+	OR = {
+		NOT = { exists = owner }
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			PREV = {
+				free_jobs < 1
+				has_planet_flag = ai_energy_development
+			}
+		}
+	}
+}
+
+# Ready to build new mining districts
+retile_ready_minerals = {	# Planet scope
+	OR = {
+		NOT = { exists = owner }
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			PREV = {
+				free_jobs < 1
+				has_planet_flag = ai_minerals_development
+			}
+		}
+	}
+}
+
+# Ready to build new farming districts
+retile_ready_food = {	# Planet scope
+	OR = {
+		NOT = { exists = owner }
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			PREV = {
+				free_jobs < 1
+				has_planet_flag = ai_food_development
+			}
+		}
+	}
+}
+
 ### NOT USED...
 # Does this country have excess pops and places for them to migrate to?
 retile_migrate_ready = { # country scope
