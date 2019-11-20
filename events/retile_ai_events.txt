@@ -355,6 +355,12 @@ country_event = {
 						#is_planet_class = pc_relic
 						has_modifier = resort_colony
 						is_under_colonization = yes
+						OR = {
+							num_free_districts = { type = district_farming value > 0 }
+							num_free_districts = { type = district_farming_uncapped value > 0 }
+							num_free_districts = { type = district_hab_hydroponics value > 0 }
+							num_free_districts = { type = district_rw_farming value > 0 }
+						}
 					}
 				}
 				weights = {
@@ -420,6 +426,12 @@ country_event = {
 						#is_planet_class = pc_relic
 						has_modifier = resort_colony
 						is_under_colonization = yes
+						OR = {
+							num_free_districts = { type = district_generator value > 0 }
+							num_free_districts = { type = district_generator_uncapped value > 0 }
+							num_free_districts = { type = district_hab_energy value > 0 }
+							num_free_districts = { type = district_rw_generator value > 0 }
+						}
 					}
 				}
 				weights = {
@@ -485,6 +497,12 @@ country_event = {
 						#is_planet_class = pc_relic
 						has_modifier = resort_colony
 						is_under_colonization = yes
+						OR = {
+							num_free_districts = { type = district_mining value > 0 }
+							num_free_districts = { type = district_mining_uncapped value > 0 }
+							num_free_districts = { type = district_hab_mining value > 0 }
+							num_free_districts = { type = district_rw_mining value > 0 }
+						}
 					}
 				}
 				weights = {
