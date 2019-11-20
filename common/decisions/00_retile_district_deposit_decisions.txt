@@ -246,6 +246,13 @@ decision_retile_deposit_stronghold = {
 	ai_weight = {
 		weight = 0
 		modifier = {
+			weight = 1000
+			AND = {
+				num_pops > 5
+				NOT = { as_deposit = retile_deposit_stronghold }
+			}
+		}
+		modifier = {
 			weight = 500
 			owner = { used_naval_capacity_percent > 1.0 }
 		}
