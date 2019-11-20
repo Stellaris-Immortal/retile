@@ -1,0 +1,74 @@
+# Capitalist
+civic_capitalist = {
+	description = "civic_tooltip_capitalist_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		always = no
+	}
+	possible = {
+		authority = {
+			NOR = {
+				value = auth_democratic
+				value = auth_imperial
+			}
+		}
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	random_weight = { base = 5 }
+}
+
+# Socialist
+civic_socialist = {
+	description = "civic_tooltip_socialist_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		always = no
+	}
+	possible = {
+		authority = {
+			NOR = {
+				value = auth_dictatorial
+				value = auth_imperial
+			}
+		}
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	random_weight = { base = 5 }
+}
+
+# Fascist
+civic_fascist = {
+	description = "civic_tooltip_fascist_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		always = no
+	}
+	possible = {
+		authority = {
+			OR = {
+				value = auth_dictatorial
+				value = auth_imperial
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_not_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
+	}
+	random_weight = { base = 5 }
+}
