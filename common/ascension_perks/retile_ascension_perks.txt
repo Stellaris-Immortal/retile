@@ -1,0 +1,37 @@
+# Land Ethic
+ap_land_ethic = {
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+	}
+	
+	on_enabled = {
+		custom_tooltip = "land_ethic_tooltip"
+	}
+	
+	ai_weight = {
+		factor = 5
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_xenophile
+				has_ethic = ethic_egalitarian
+				has_ethic = ethic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_ethic = ethic_fanatic_xenophile
+				has_ethic = ethic_fanatic_egalitarian
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 2
+			num_owned_planets > 5
+		}
+	}
+}
