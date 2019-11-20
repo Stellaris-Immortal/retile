@@ -114,7 +114,7 @@ ap_colossus = {
 			}
 		}	
 		modifier = {
-			factor = 0.1
+			factor = 0
 			is_xenophile = yes
 		}
 		modifier = {
@@ -195,6 +195,15 @@ ap_engineered_evolution = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 10
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
 		}
 	}
 }
@@ -309,9 +318,9 @@ ap_the_flesh_is_weak = {
 	}
 	
 	ai_weight = {
-		factor = 20
+		factor = 2
 		modifier = {
-			factor = 0.1
+			factor = 10
 			NOR = {
 				has_ethic = ethic_materialist
 				has_ethic = ethic_fanatic_materialist
@@ -431,10 +440,10 @@ ap_mind_over_matter = {
 	}
 	
 	ai_weight = {
-		factor = 20
+		factor = 2
 		modifier = {
-			factor = 0.1
-			NOR = {
+			factor = 10
+			OR = {
 				has_ethic = ethic_spiritualist
 				has_ethic = ethic_fanatic_spiritualist
 			}
@@ -530,6 +539,22 @@ ap_world_shaper = {
 	
 	ai_weight = {
 		factor = 5
+		modifier = {
+			factor = 2
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_xenophile
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_egalitarian
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_egalitarian
+		}
 	}
 }
 
@@ -609,6 +634,22 @@ ap_defender_of_the_galaxy = {
 				has_global_flag = gray_goo_crisis_active	
 			}
 		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_egalitarian
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_egalitarian
+		}
 	}
 }
 
@@ -681,7 +722,7 @@ ap_eternal_vigilance = {
 		shipclass_starbase_damage_mult = 0.25
 		shipclass_starbase_hull_mult = 0.25
 		shipclass_military_station_damage_mult = 0.25
-		starbase_defense_platform_capacity_add = 5
+		starbase_defense_platform_capacity_add = 4
 	}
 	
 	potential = {
@@ -747,6 +788,22 @@ ap_galactic_contender = {
 			any_country = {
 				is_country_type = awakened_fallen_empire
 			}
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_pacifist
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_egalitarian
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_egalitarian
 		}
 	}
 }
@@ -859,7 +916,15 @@ ap_mastery_of_nature = {
 		modifier = {
 			factor = 0.1
 			num_ascension_perks > 1
-		}		
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_xenophile
+		}
 	}
 }
 
@@ -877,6 +942,13 @@ ap_imperial_prerogative = {
 	
 	ai_weight = {
 		factor = 10
+		modifier = {
+			factor = 2
+			OR = { 
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
 	}
 	
 	on_enabled = {
@@ -886,7 +958,8 @@ ap_imperial_prerogative = {
 
 ap_executive_vigor = {
 	modifier = {
-		edict_length_mult = 0.50
+		edicts_cost_mult = -0.25
+		edict_length_mult = 0.25
 	}
 	
 	potential = {
@@ -897,6 +970,13 @@ ap_executive_vigor = {
 	
 	ai_weight = {
 		factor = 10
+		modifier = {
+			factor = 2
+			OR = { 
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
 	}
 }
 
@@ -914,6 +994,14 @@ ap_transcendent_learning = {
 	
 	ai_weight = {
 		factor = 10
+		modifier = {
+			factor = 2
+			has_ethic = ethic_egalitarian
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_egalitarian
+		}
 	}
 }
 
@@ -961,13 +1049,6 @@ ap_voidborn = {
 		}
 	}
 	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_ascension_perks_1"
-			num_ascension_perks > 0
-		}
-	}
-	
 	on_enabled = {
 		custom_tooltip = "ap_master_builders_habitat_size"
 		if = {
@@ -1002,11 +1083,11 @@ ap_voidborn = {
 		factor = 10
 		modifier = {
 			factor = 2
-			has_ethic = ethic_pacifist
+			has_ethic = ethic_materialist
 		}
 		modifier = {
 			factor = 3
-			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_materialist
 		}
 	}
 }
@@ -1046,19 +1127,39 @@ ap_master_builders = {
 		factor = 10
 		modifier = {
 			factor = 2
-			has_ethic = ethic_pacifist
+			has_ethic = ethic_materialist
 		}
 		modifier = {
 			factor = 3
-			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_materialist
 		}
 	}
 }
 
 ap_galactic_wonders_utopia = {
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_tech_starbase_5"
+			has_technology = tech_starbase_5
+		}
+	}
 	on_enabled = {
 		custom_tooltip = "add_research_options_galactic_wonders_utopia"
 		hidden_effect = {
+			if = {
+				limit = { 
+					NOT = { has_technology = tech_mega_engineering }
+				}
+				add_research_option = tech_mega_engineering
+				add_tech_progress = {
+					tech = tech_mega_engineering
+					progress = 0.50
+				}
+			}
 			if = {
 				limit = { 
 					NOT = { has_technology = tech_ring_world }
@@ -1074,17 +1175,6 @@ ap_galactic_wonders_utopia = {
 		}
 	}
 	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_mega_engineering"
-			has_technology = tech_mega_engineering
-		}
-		custom_tooltip = {
-			fail_text = "requires_built_or_repaired_megastructure"
-			has_country_flag = has_built_or_repaired_megastructure
-		}
-	}				
-	
 	potential = {
 		host_has_dlc = "Utopia"
 		NOR = {
@@ -1097,35 +1187,44 @@ ap_galactic_wonders_utopia = {
 		factor = 10
 		modifier = {
 			factor = 2
-			has_ethic = ethic_pacifist
+			has_ethic = ethic_materialist
 		}
 		modifier = {
 			factor = 3
-			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_materialist
 		}
 	}
 }
 
 ap_galactic_wonders_megacorp = {
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_tech_starbase_5"
+			has_technology = tech_starbase_5
+		}
+	}
 	on_enabled = {
+		if = {
+				limit = { 
+					NOT = { has_technology = tech_mega_engineering }
+				}
+				add_research_option = tech_mega_engineering
+				add_tech_progress = {
+					tech = tech_mega_engineering
+					progress = 0.50
+				}
+			}
 		if = {
 			limit = { 
 				NOT = { has_technology = tech_matter_decompressor }
 			}
 			add_research_option = tech_matter_decompressor
 		}
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_mega_engineering"
-			has_technology = tech_mega_engineering
-		}
-		custom_tooltip = {
-			fail_text = "requires_built_or_repaired_megastructure"
-			has_country_flag = has_built_or_repaired_megastructure
-		}
-	}				
+	}			
 	
 	potential = {
 		host_has_dlc = "Megacorp"
@@ -1139,19 +1238,39 @@ ap_galactic_wonders_megacorp = {
 		factor = 10
 		modifier = {
 			factor = 2
-			has_ethic = ethic_pacifist
+			has_ethic = ethic_materialist
 		}
 		modifier = {
 			factor = 3
-			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_materialist
 		}
 	}
 }
 
 ap_galactic_wonders_utopia_and_megacorp = {
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+		custom_tooltip = {
+			fail_text = "requires_technology_tech_starbase_5"
+			has_technology = tech_starbase_5
+		}
+	}
 	on_enabled = {
 		custom_tooltip = "add_research_options_galactic_wonders_utopia_megacorp"
 		hidden_effect = {
+			if = {
+				limit = { 
+					NOT = { has_technology = tech_mega_engineering }
+				}
+				add_research_option = tech_mega_engineering
+				add_tech_progress = {
+					tech = tech_mega_engineering
+					progress = 0.50
+				}
+			}
 			if = {
 				limit = { 
 					NOT = { has_technology = tech_ring_world }
@@ -1171,19 +1290,7 @@ ap_galactic_wonders_utopia_and_megacorp = {
 				add_research_option = tech_matter_decompressor
 			}		
 		}
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_mega_engineering"
-			has_technology = tech_mega_engineering
-		}
-		custom_tooltip = {
-			fail_text = "requires_built_or_repaired_megastructure"
-			has_country_flag = has_built_or_repaired_megastructure
-		}
-		
-	}				
+	}		
 	
 	potential = {
 		host_has_dlc = "Utopia"
@@ -1197,11 +1304,11 @@ ap_galactic_wonders_utopia_and_megacorp = {
 		factor = 10
 		modifier = {
 			factor = 2
-			has_ethic = ethic_pacifist
+			has_ethic = ethic_materialist
 		}
 		modifier = {
 			factor = 3
-			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_materialist
 		}
 	}
 }
@@ -1330,8 +1437,8 @@ ap_arcology_project = {
 			has_technology = tech_housing_2
 		}
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_2"
-			num_ascension_perks > 1
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
 		}		
 	}
 	
