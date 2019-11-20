@@ -107,10 +107,6 @@ district_city = {
 				num_districts = { type = district_city value < 2 }
 			}
 		}
-		modifier = {	# Building toward arcology
-			factor = 100
-			NOT = { has_planet_flag = ai_arcology_development }
-		}
 		modifier = {	# Already has basic urban buildings?
 			factor = 10
 			retile_urban_development = yes
@@ -134,6 +130,10 @@ district_city = {
 		modifier = {	# planet is already focused on rural development
 			factor = 0.25
 			retile_rural_development = yes
+			NOT = { has_planet_flag = ai_arcology_development }
+		}
+		modifier = { # Not building city world
+			factor = 0
 			NOT = { has_planet_flag = ai_arcology_development }
 		}
 	}
@@ -265,6 +265,10 @@ district_hab_housing = {
 		modifier = {	# planet is already focused on rural development
 			factor = 0.25
 			retile_rural_development = yes
+		}
+		modifier = { # Not building city world
+			factor = 0
+			NOT = { has_planet_flag = ai_arcology_development }
 		}
 	}
 
@@ -401,6 +405,10 @@ district_rw_city = {
 		modifier = {	# planet is already focused on rural development
 			factor = 0.25
 			retile_rural_development = yes
+		}
+		modifier = { # Not building city world
+			factor = 0
+			NOT = { has_planet_flag = ai_arcology_development }
 		}
 	}
 
