@@ -965,7 +965,7 @@ trade_policy = {
 		}
 		
 		AI_weight = {
-			factor = 1
+			factor = 10
 		}
 	}
 
@@ -1015,7 +1015,26 @@ trade_policy = {
 		modifier = {}
 		
 		AI_weight = {
-			factor = 0
+			factor = 1
+			modifier = {
+				factor = 100
+				any_neighbor_country = { 
+					count >= 1
+					is_country_type = default
+					prev = {
+						relative_power = { 
+							who = prev
+							category = technology 
+							value > superior
+						}
+						relative_power = { 
+							who = prev 
+							category = all 
+							value < superior
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -1051,7 +1070,7 @@ trade_policy = {
 		}
 		
 		AI_weight = {
-			factor = 100
+			factor = 0
 		}
 	}
 	
@@ -1070,7 +1089,7 @@ trade_policy = {
 		}
 		
 		AI_weight = {
-			factor = 200
+			factor = 0
 		}
 	}
 }
