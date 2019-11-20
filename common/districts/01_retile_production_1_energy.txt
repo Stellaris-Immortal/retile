@@ -132,6 +132,10 @@ district_generator = {
 				}
 			}
 		}
+		modifier = { # Not building energy
+			factor = 0
+			NOT = { has_planet_flag = ai_energy_development }
+		}
 	}
 
 	ai_resource_production = {
@@ -267,6 +271,10 @@ district_generator_uncapped = {
 				}
 			}
 		}
+		modifier = { # Not building energy
+			factor = 0
+			NOT = { has_planet_flag = ai_energy_development }
+		}
 	}
 
 	ai_resource_production = {
@@ -388,6 +396,10 @@ district_hab_energy = {
 				}
 			}
 		}
+		modifier = { # Not building energy
+			factor = 0
+			NOT = { has_planet_flag = ai_energy_development }
+		}
 	}
 
 	ai_resource_production = {
@@ -508,6 +520,10 @@ district_rw_generator = {
 					owner = { has_monthly_income = { resource = energy value > 25 } }
 				}
 			}
+		}
+		modifier = { # Not building energy
+			factor = 0
+			NOT = { has_planet_flag = ai_energy_development }
 		}
 	}
 
