@@ -101,19 +101,25 @@ building_research_lab_1 = {
 		modifier = {	# behind in tech!!!
 			weight = 100
 			owner = {
-				any_neighbor_country = { 
-					count >= 1
+				any_neighbor_country = {
 					is_country_type = default
 					prev = {
-						relative_power = { 
+						relative_power = {
 							who = prev
 							category = technology 
-							value > superior
+							value > inferior
 						}
-						relative_power = { 
-							who = prev 
-							category = all 
-							value < superior
+						OR = {
+							NOT = { relative_power = {
+								who = prev 
+								category = all
+								value = overwhelming
+							} }
+							NOT = { relative_power = {
+								who = prev 
+								category = all
+								value < equivalent
+							} }
 						}
 					}
 				}
