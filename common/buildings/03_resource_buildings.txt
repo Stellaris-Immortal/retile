@@ -15,16 +15,11 @@ building_hydroponics_farm = {
 	
 	potential = {
 		exists = owner
-		owner = { 
-			is_lithoid_empire = no
-			NOT = { has_country_flag = lithoid_subspecies }
-		}
 		NOT = { has_modifier = slave_colony }
 	}
 	
 	allow = {
-		always = yes
-		#retile_ready = yes
+		retile_ready_food = yes
 	}
 	
 	destroy_trigger = {
@@ -95,11 +90,11 @@ building_hydroponics_farm = {
 	}
 	
 	ai_weight = {
-		weight = 100
+		weight = 10
 		
 		modifier = {	# REALLY don't let food go negative
-			weight = 10000
-			owner = { has_monthly_income = { resource = food value < 5 } }
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
 		}
 		modifier = {	# Plantoid Fix Habitability
 			weight = 10000
@@ -109,7 +104,10 @@ building_hydroponics_farm = {
 		}
 		modifier = {	# Free building slots when food is good
 			weight = -1000
-			owner = { has_monthly_income = { resource = food value > 100 } }
+			owner = {
+				has_monthly_income = { resource = food value > 100 }
+				is_plantoid_empire = no
+			}
 		}
 	}
 

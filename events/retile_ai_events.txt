@@ -7,32 +7,6 @@
 
 namespace = retile_ai
 
-# Evaluate the resource districts of habitable planets...
-event = {
-	id = retile_ai.1
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		always = yes
-	}
-
-	immediate = {
-		every_planet = {
-			limit = {
-				habitable_planet = yes
-				NOR = {
-					is_planet_class = pc_city
-					is_planet_class = pc_relic
-				}
-			}
-			retile_evaluate_energy_world = yes
-			retile_evaluate_minerals_world = yes
-			retile_evaluate_food_world = yes
-		}
-	}
-}
-
 # Flag AI planets for food focus
 country_event = {
 	id = retile_ai.51
