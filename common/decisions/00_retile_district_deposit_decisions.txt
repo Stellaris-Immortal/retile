@@ -165,7 +165,7 @@ decision_retile_deposit_precinct = {
 	allow = {
 		free_district_slots > 0
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_crime = yes
 		}
 	}
 	
@@ -175,11 +175,7 @@ decision_retile_deposit_precinct = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		modifier = {
-			weight = 100
-			planet_crime > 33
-		}
+		weight = 100
 		modifier = {
 			weight = 150
 			planet_crime > 66
@@ -234,29 +230,7 @@ decision_retile_deposit_stronghold = {
 	allow = {
 		free_district_slots > 0
 		hidden_trigger = {
-			retile_ready = yes
-			OR = {
-				owner = { is_ai = no }
-				owner = { # is_ai = yes
-					AND = {
-						has_monthly_income = { resource = alloys value > 25 }
-						OR = {
-							country_uses_goods = no
-							has_monthly_income = { resource = consumer_goods value > 15 }
-						}
-						OR = {
-							country_uses_food = no
-							has_monthly_income = { resource = food value > 15 }
-						}
-						has_monthly_income = { resource = minerals value < 50 }
-						has_monthly_income = { resource = energy value < 50 }
-						OR = {
-							is_plantoid_empire = no
-							habitability = { who = owner.owner_species value > 0.7 }
-						}
-					}
-				}
-			}
+			retile_ready_soldier = yes
 		}
 	}
 
@@ -266,13 +240,10 @@ decision_retile_deposit_stronghold = {
 	}
 	
 	ai_weight = {
-		weight = 0
+		weight = 50
 		modifier = {
-			weight = 500
-			AND = {
-				num_pops > 15
-				NOT = { has_deposit = retile_deposit_stronghold }
-			}
+			weight = 100
+			NOT = { has_deposit = retile_deposit_stronghold }
 		}
 		modifier = {
 			weight = 500
@@ -333,7 +304,7 @@ decision_retile_deposit_preserve = {
 	allow = {
 		free_district_slots > 0
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_preserve = yes
 		}
 	}
 
@@ -343,11 +314,7 @@ decision_retile_deposit_preserve = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		modifier = {
-			weight = 100
-			free_amenities > 300
-		}
+		weight = 100
 		modifier = {
 			weight = 200
 			free_amenities > 500

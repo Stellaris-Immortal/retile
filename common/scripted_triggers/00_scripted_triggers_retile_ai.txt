@@ -11,16 +11,75 @@ retile_ready = {	# Planet scope
 	}
 }
 
+# Does this planet need more custodians?
+retile_ready_preserve = {	# Planet scope
+	OR = {
+		NOT = { exists = owner }
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			PREV = {
+				free_jobs < 1
+				free_amenities > 300
+			}
+		}
+	}
+}
+
+# Does this planet need a precinct?
+retile_ready_crime = {	# Planet scope
+	OR = {
+		NOT = { exists = owner }
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			PREV = {
+				free_jobs < 1
+				planet_crime > 33
+			}
+		}
+	}
+}
+
+# Can this planet support a fortress?
+retile_ready_soldier = {	# Planet scope
+	OR = {
+		NOT = { exists = owner }
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			PREV = {
+				free_jobs < 1
+				num_pops > 10
+			}
+			AND = {
+				has_monthly_income = { resource = alloys value > 25 }
+				OR = {
+					country_uses_goods = no
+					has_monthly_income = { resource = consumer_goods value > 15 }
+				}
+				OR = {
+					country_uses_food = no
+					has_monthly_income = { resource = food value > 15 }
+				}
+				has_monthly_income = { resource = minerals value < 50 }
+				has_monthly_income = { resource = energy value < 50 }
+				OR = {
+					is_plantoid_empire = no
+					prev = { habitability = { who = owner.owner_species value > 0.7 } }
+				}
+			}
+		}
+	}
+}
+
 # Ready to build new cities?
 retile_ready_city = {	# Planet scope
 	OR = {
 		NOT = { exists = owner }
 		owner = { is_ai = no }
 		owner = { is_ai = yes
+			retile_basic_economy = yes
 			PREV = {
 				has_planet_flag = ai_city_development
 				free_jobs < 1
-				retile_basic_economy = yes
 			}
 		}
 	}
@@ -76,8 +135,10 @@ retile_ready_food = {	# Planet scope
 					prev = { habitability = { who = owner.owner_species value <= 0.7 } }
 					NAND = {
 						has_technology = tech_housing_3
-						has_planet_flag = ai_arcology_development
-						NOT = { has_planet_flag = ai_food_development }
+						prev = {
+							has_planet_flag = ai_arcology_development
+							NOT = { has_planet_flag = ai_food_development }
+						}
 					}
 				}
 			}
