@@ -42,7 +42,13 @@
  ap_land_ethic:0 "Land Ethic"
  land_ethic_tooltip:0 "Replaces £job_soldier£ §YSoldier§! Jobs with £job_ranger£ §YRanger§! Jobs on £building£ §YCapital Buildings§!\n£job_ranger£ §YRangers§! reduce £crime£ §YCrime§! and £amenities£ §YPollution§!, increase §YNaval Capacity§!, and provide §YDefensive Armies§!"
  ap_land_ethic_desc:0 "A thing is right when it tends to preserve the integrity, stability, and beauty of the biotic community. It is wrong when it tends otherwise."
+ ap_mega_specialization:0 "Mega-Specialization"
+ ap_mega_specialization_desc:0 "Dedicate an entire planet for a singular purpose."
+ mega_specialization_tooltip:0 "Research options gained:\n£society_research£§Y$tech_resort_colonies$§!\n£society_research£§Y$tech_penal_colonies$§!\n£society_research£§Y$tech_slave_colonies$§!\nResort Colonies, Penal Colonies, and Slave Colonies provide additional bonuses."
  requires_technology_tech_starbase_5:0 "$TRIGGER_FAIL$Requires the £engineering£ §Y$tech_starbase_5$§! technology."
+ describe_decision_mastery_of_nature:0 "Terraforming generates more desirable worlds."
+ requires_mastery_of_nature:0 "$TRIGGER_FAIL$Requires the §Y$ap_master_of_nature$§! Ascension Perk."
+ world_shaper_tooltip:0 "Allows us to terraform worlds into §YGaia Planets§!.\n§YTerrestial Engineering§! decision can remove additional negative planetary modifiers."
 # Policies
  policy_environmental:0 "Environmental Policy"
  policy_environmental_desc:0 "TODO"
@@ -312,7 +318,7 @@
  retile_syndicate_outreach_office_effect:0 "Criminals produce §G+2.5§! £unity §YUnity§!, and §R+7.5§! £amenities£ §YPollution§!."
  retile_illicit_research_labs_effect:0 "Criminals produce §G+2.5§! £science£ §YResearch§!, and §R+7.5§! £amenities£ §YPollution§!."
  retile_smuggling_rings_effect:0 "Criminals produce §G+10§! £trade_value£ §YTrade Value§!, and §R+30§! £amenities£ §YPollution§!."
- 
+# Gestalt Buildings
  building_hive_colony:0 "Hive Colony"
  building_hive_colony_desc:0 "TODO: description"
  building_hive_system_capital:0 "Hive Core"
@@ -324,9 +330,10 @@
  building_maintenance_depot_2:0 "Mainentance Complexes"
  building_maintenance_depot_2_desc:0 "TODO: description"
  retile_requires_urban_district:0 "$TRIGGER_FAIL$§RPlanet does not have any £district£ §YUrban Districts§!"
+# Fallen Empire Buildings
  retile_fe_building_limit:0 "$TRIGGER_FAIL$§RCan't build more than one £building£ §YAscended§R building per planet§!"
  retile_fe_building_limit_fab:0 "$TRIGGER_FAIL$§RCan't build more than one £building£ §Y$building_dimensional_fabricator$§R per empire§!"
- # Districts
+# Districts
  job_farmer_plantoid_effect_desc:0 "Plantoid Farmers produce §YHabitability§! §G+20§!, §YPop Growth Speed§! §G+5§!, and §R+30§! £amenities£ §YPollution§!"
  district_digsite:0 "Ancient Dig Site"
  district_digsite_arcology:0 "Dig Site Arcology"
@@ -344,7 +351,11 @@
  district_digsite_arcology_desc:0 "TODO: description"
  district_research_arcology:0 "Research Arcology"
  district_research_arcology_desc:0 "TODO: description"
- # Special District Decisions
+ district_resort:0 "Resort District"
+ district_resort_desc:0 "TODO: description"
+ district_prison:0 "Prison District"
+ district_prison_desc:0 "TODO: description"
+# Special District Decisions
  decision_retile_deposit_precinct:0 "Precinct Houses"
  decision_retile_deposit_precinct_desc:0 "§YUnlimited§!\nTODO: Description"
  decision_retile_deposit_precinct_effects:0 "+2 £housing£ Housing\n+2 £job_enforcer£ Enforcer Jobs"
@@ -429,7 +440,7 @@
  retile_deposit_alignment_desc:0 "TODO"
  retile_deposit_bioreactor:0 "Bioreactor"
  retile_deposit_bioreactor_desc:0 "Replaces Farmer Jobs with Technician Jobs on Agricultural Districts."
- # Planetary Decisions
+# Planetary Decisions
  decision_terrestrial_engineering:0 "Terrestrial Engineering"
  decision_terrestrial_engineering_desc:0 "I don't want to protect the environment. I want to create a world where the environment doesn't need protection."
  decision_terrestrial_engineering_tooltip:0 "Modifies Planetary Features"
@@ -552,6 +563,8 @@
  recently_terraformed_2_desc:0 "The near total recreation of this world's biosphere has left it vulnerable to further disruption."
  recently_terraformed_3:0 "Recently Terraformed"
  recently_terraformed_3_desc:0 "The artificial environment left behind from this world's recent reconfiguration should be pleasant for its inhabitants."
+ stabalized_tectonics:0 "Stabalized Techtonics"
+ stabalized_tectonics_desc:0 "TODO"
 # Pollution Modifiers
  drought:0 "Drought"
  drought_desc:0 "TODO"
@@ -620,11 +633,11 @@
  tech_industrial_ecology:0 "Industrial Ecology"
  tech_industrial_ecology_effect:0 "Custodians generate an additional §G-5§! £amenities£ §YPollution§!"
  tech_industrial_ecology_desc:0 "TODO"
- # Events
+# Events
  pirate.100.name:0 "Parlay Broken"
  pirate.100.desc:0 "This act of aggression has sent a clear message to any remaining pirates that the parlay has been broken and hostilities have returned."
  pirate.100.a:0 "They must be dealt with."
- # Ship Sections
+# Ship Sections
  TECH_UNLOCK_CORVETTE_HULLS_1_TITLE: "Unlocks §HCorvette§! Sections: §YArtillery Ship§!"
  TECH_UNLOCK_CORVETTE_HULLS_1_DESC: "TODO: Description"
  TECH_UNLOCK_CORVETTE_HULLS_2_TITLE: "Unlocks §HCorvette§! Sections: §YCarrier Ship§!"
@@ -677,5 +690,5 @@
  BATTERY_MILITARY_STATION_SECTION:0 "Battery Platform"
  TECH_UNLOCK_PLATFORM_HULLS_1_TITLE: "Unlocks §HDefense Platform§! Sections: §YBarrage Platform§!, §YCurtain Platform§!, §YSupport Platform§!, §YBattery Platform§!, §YDevastator Platform§!"
  TECH_UNLOCK_PLATFORM_HULLS_1_DESC: "TODO: Description"
- # Branch Offices
+# Branch Offices
  requires_recipient_not_self:0 "$TRIGGER_FAIL$§RCan't establish §YBranch Offices§R on our own planets!§!"

@@ -2,12 +2,10 @@
 decision_terrestrial_engineering = {
 	owned_planets_only = yes
 
-	enactment_time = 180
+	enactment_time = 360
 	resources = {
 		category = decisions
-		cost = {
-			energy = 1000
-		}
+		cost = { energy = 1000 }
 	}
 	
 	prerequisites = { "tech_terrestrial_sculpting" }
@@ -15,6 +13,30 @@ decision_terrestrial_engineering = {
 	potential = {
 		OR = { 
 			has_modifier = bleak_planet
+			AND = {
+				owner = { has_ascension_perk = ap_world_shaper }
+				has_modifier = unstable_tectonics
+			}
+			AND = {
+				owner = { has_ascension_perk = ap_world_shaper }
+				has_modifier = tidal_locked
+			}
+			AND = {
+				owner = { has_ascension_perk = ap_world_shaper }
+				has_modifier = slow_rotation
+			}
+			AND = {
+				owner = { has_ascension_perk = ap_world_shaper }
+				has_modifier = fast_rotation
+			}
+			AND = {
+				owner = { has_ascension_perk = ap_world_shaper }
+				has_modifier = weak_magnetic_field
+			}
+			AND = {
+				owner = { has_ascension_perk = ap_world_shaper }
+				has_modifier = mineral_poor
+			}
 		}
 	}
 	
@@ -24,6 +46,56 @@ decision_terrestrial_engineering = {
 			limit = { has_modifier = bleak_planet }
 			remove_modifier = bleak_planet
 			add_modifier = { modifier = "bioscarce" days = -1 }
+		} else_if = {
+			limit = {
+				AND = {
+					owner = { has_ascension_perk = ap_world_shaper }
+					has_modifier = unstable_tectonics
+				}
+			}
+			remove_modifier = unstable_tectonics
+			add_modifier = { modifier = "stabalized_tectonics" days = -1 }
+		} else_if = {
+			limit = {
+				AND = {
+					owner = { has_ascension_perk = ap_world_shaper }
+					has_modifier = slow_rotation
+				}
+			}
+			remove_modifier = slow_rotation
+		} else_if = {
+			limit = {
+				AND = {
+					owner = { has_ascension_perk = ap_world_shaper }
+					has_modifier = fast_rotation
+				}
+			}
+			remove_modifier = fast_rotation
+		} else_if = {
+			limit = {
+				AND = {
+					owner = { has_ascension_perk = ap_world_shaper }
+					has_modifier = tidal_locked
+				}
+			}
+			remove_modifier = tidal_locked
+			add_modifier = { modifier = "slow_rotation" days = -1 }
+		} else_if = {
+			limit = {
+				AND = {
+					owner = { has_ascension_perk = ap_world_shaper }
+					has_modifier = weak_magnetic_field
+				}
+			}
+			remove_modifier = weak_magnetic_field
+		} else_if = {
+			limit = {
+				AND = {
+					owner = { has_ascension_perk = ap_world_shaper }
+					has_modifier = mineral_poor
+				}
+			}
+			remove_modifier = mineral_poor
 		}
 	}
 	ai_weight = {
@@ -35,12 +107,10 @@ decision_terrestrial_engineering = {
 decision_ecological_engineering = {
 	owned_planets_only = yes
 
-	enactment_time = 180
+	enactment_time = 360
 	resources = {
 		category = decisions
-		cost = {
-			energy = 1000
-		}
+		cost = { energy = 1000 }
 	}
 	
 	prerequisites = { "tech_ecological_adaptation" }
@@ -77,21 +147,19 @@ decision_ecological_engineering = {
 decision_climate_engineering = {
 	owned_planets_only = yes
 
-	enactment_time = 180
+	enactment_time = 360
 	resources = {
 		category = decisions
-		cost = {
-			energy = 1000
-		}
+		cost = { energy = 1000 }
 	}
 	
 	prerequisites = { "tech_climate_restoration" }
 	
 	potential = {
 		OR = {
-			has_modifier = hazardous_weather
-			has_modifier = wild_storms
 			has_modifier = irradiated_planet
+			has_modifier = wild_storms
+			has_modifier = hazardous_weather
 			has_modifier = abandoned_terraforming
 		}
 	}

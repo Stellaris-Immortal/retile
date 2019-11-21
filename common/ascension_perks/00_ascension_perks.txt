@@ -504,6 +504,38 @@ ap_transcendence = {
 # GENERIC ASCENSION PERKS
 #################
 
+ap_mastery_of_nature = {
+	on_enabled = {
+		custom_tooltip = "allow_decision_mastery_of_nature"
+		custom_tooltip = "describe_decision_mastery_of_nature"
+	}
+	modifier = { planet_non_artificial_max_districts_add = 2 }
+	
+	potential = {
+		NOT = { has_ascension_perk = ap_mastery_of_nature }
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 0.5
+			num_ascension_perks > 0
+		}
+		modifier = {
+			factor = 0.1
+			num_ascension_perks > 1
+		}
+		modifier = {
+			factor = 2
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_xenophile
+		}
+	}
+}
+
 ap_world_shaper = {
 	possible = {
 		custom_tooltip = {
@@ -511,18 +543,15 @@ ap_world_shaper = {
 			has_technology = tech_climate_restoration
 		}	
 		custom_tooltip = {
-			fail_text = "requires_ascension_perks_1"
-			num_ascension_perks > 0
+			fail_text = "requires_mastery_of_nature"
+			has_ascension_perk = ap_mastery_of_nature
 		}
 	}
 
-	modifier = {
-		terraforming_cost_mult = -0.25
-		deposit_blockers_cost_mult = -0.25
-	}
+	modifier = { terraforming_cost_mult = -0.25 }
 	
 	on_enabled = {
-		custom_tooltip = "allow_gaia"
+		custom_tooltip = "world_shaper_tooltip"
 	}
 	
 	potential = {
@@ -656,14 +685,13 @@ ap_defender_of_the_galaxy = {
 
 ap_interstellar_dominion = {
 	modifier = {
-		country_starbase_influence_cost_mult = -0.20
-		country_claim_influence_cost_mult = -0.20
+		country_starbase_influence_cost_mult = -0.25
+		country_claim_influence_cost_mult = -0.25
+		country_admin_cap_add = 32
 	}
 	
 	potential = {
-		NOT = {
-			has_ascension_perk = ap_interstellar_dominion
-		}
+		NOT = { has_ascension_perk = ap_interstellar_dominion }
 	}
 	
 	ai_weight = {
@@ -892,52 +920,13 @@ ap_consecrated_worlds = {
 	}
 }
 
-ap_mastery_of_nature = {
-	on_enabled = {
-		custom_tooltip = "allow_decision_mastery_of_nature"
-		custom_tooltip = "describe_decision_mastery_of_nature"
-	}
-	modifier = {
-		planet_non_artificial_max_districts_add = 1
-	}
-	
-	potential = {
-		NOT = {
-			has_ascension_perk = ap_mastery_of_nature
-		}
-	}
-	
-	ai_weight = {
-		factor = 10
-		modifier = {
-			factor = 0.5
-			num_ascension_perks > 0
-		}
-		modifier = {
-			factor = 0.1
-			num_ascension_perks > 1
-		}
-		modifier = {
-			factor = 2
-			has_ethic = ethic_xenophile
-		}
-		modifier = {
-			factor = 3
-			has_ethic = ethic_fanatic_xenophile
-		}
-	}
-}
-
 ap_imperial_prerogative = {
-	modifier = {
-		country_admin_cap_add = 32
-	}
+	modifier = { }
 	
 	potential = {
-		NOT = {
-			has_ascension_perk = ap_imperial_prerogative
-		}
+		NOT = { has_ascension_perk = ap_imperial_prerogative }
 		NOT = { has_authority = auth_corporate }
+		always = no
 	}
 	
 	ai_weight = {
@@ -963,9 +952,7 @@ ap_executive_vigor = {
 	}
 	
 	potential = {
-		NOT = {
-			has_ascension_perk = ap_executive_vigor
-		}
+		NOT = { has_ascension_perk = ap_executive_vigor }
 	}
 	
 	ai_weight = {
@@ -987,9 +974,7 @@ ap_transcendent_learning = {
 	}
 	
 	potential = {
-		NOT = {
-			has_ascension_perk = ap_transcendent_learning
-		}
+		NOT = { has_ascension_perk = ap_transcendent_learning }
 	}
 	
 	ai_weight = {
