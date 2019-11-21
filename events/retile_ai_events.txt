@@ -7,6 +7,26 @@
 
 namespace = retile_ai
 
+# Initialize galaxy with rural district counts
+event = {
+	id = retile_ai.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		always = yes
+	}
+
+	immediate = {
+		every_planet = {
+			limit = { habitable_planet = yes }
+			retile_count_districts_generator = yes
+			retile_count_districts_mining = yes
+			retile_count_districts_farming = yes
+		}
+	}
+}
+
 # Flag AI planets for food focus
 country_event = {
 	id = retile_ai.51

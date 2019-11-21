@@ -255,21 +255,24 @@ retile_rural_development = {	# planet scope
 ai_good_food_world = {
 	NOT = { is_planet_class = pc_relic }
 	OR = {
-		district_farming_available > 5
+		check_variable = { which = rtd_farming value > 5 }
 		AND = {
-			district_farming_uncapped_available > 0
+			OR = {
+				is_planet_class = pc_hive
+				is_planet_class = pc_machine
+			}
 			num_districts = { type = district_generator_uncapped value < 1 }
 			num_districts = { type = district_mining_uncapped value < 1 }
 			num_districts = { type = district_city value < 1 }
 		}
 		AND = {
-			district_hab_hydroponics_available > 0
+			is_planet_class = pc_habitat
 			num_districts = { type = district_hab_mining value < 1 }
 			num_districts = { type = district_hab_energy value < 1 }
 			num_districts = { type = district_hab_housing value < 1 }
 		}
 		AND = {
-			district_rw_farming_available > 0
+			is_planet_class = pc_ringworld_habitable
 			num_districts = { type = district_rw_mining value < 1 }
 			num_districts = { type = district_rw_generator value < 1 }
 			num_districts = { type = district_rw_city value < 1 }
@@ -285,21 +288,24 @@ ai_good_food_world = {
 ai_good_energy_world = {
 	NOT = { is_planet_class = pc_relic }
 	OR = {
-		district_generator_available > 5
+		check_variable = { which = rtd_generator value > 5 }
 		AND = {
-			district_generator_uncapped_available > 0
+			OR = {
+				is_planet_class = pc_hive
+				is_planet_class = pc_machine
+			}
 			num_districts = { type = district_farming_uncapped value < 1 }
 			num_districts = { type = district_mining_uncapped value < 1 }
 			num_districts = { type = district_city value < 1 }
 		}
 		AND = {
-			district_hab_energy_available > 0
+			is_planet_class = pc_habitat
 			num_districts = { type = district_hab_mining value < 1 }
 			num_districts = { type = district_hab_hydroponics value < 1 }
 			num_districts = { type = district_hab_housing value < 1 }
 		}
 		AND = {
-			district_rw_generator_available > 0
+			is_planet_class = pc_ringworld_habitable
 			num_districts = { type = district_rw_mining value < 1 }
 			num_districts = { type = district_rw_farming value < 1 }
 			num_districts = { type = district_rw_city value < 1 }
@@ -311,21 +317,24 @@ ai_good_energy_world = {
 ai_good_minerals_world = {
 	NOT = { is_planet_class = pc_relic }
 	OR = {
-		district_mining_available > 5
+		check_variable = { which = rtd_mining value > 5 }
 		AND = {
-			district_mining_uncapped_available > 0
+			OR = {
+				is_planet_class = pc_hive
+				is_planet_class = pc_machine
+			}
 			num_districts = { type = district_generator_uncapped value < 1 }
 			num_districts = { type = district_farming_uncapped value < 1 }
 			num_districts = { type = district_city value < 1 }
 		}
 		AND = {
-			district_hab_mining_available > 0
+			is_planet_class = pc_habitat
 			num_districts = { type = district_hab_hydroponics value < 1 }
 			num_districts = { type = district_hab_energy value < 1 }
 			num_districts = { type = district_hab_housing value < 1 }
 		}
 		AND = {
-			district_rw_mining_available > 0
+			is_planet_class = pc_ringworld_habitable
 			num_districts = { type = district_rw_farming value < 1 }
 			num_districts = { type = district_rw_generator value < 1 }
 			num_districts = { type = district_rw_city value < 1 }

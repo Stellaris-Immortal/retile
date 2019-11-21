@@ -5,8 +5,191 @@
 #
 #########################################
 
+is_colonizable = yes
+
+# planet scope
+retile_count_districts_generator = {
+	if = {
+		limit = { num_districts = { type = district_generator value = 1 } }
+		set_variable = { which = rtd_generator value = 1 }
+	} else_if = {
+		limit = { num_districts = { type = district_generator value = 2 } }
+		set_variable = { which = rtd_generator value = 2 }
+	} else_if = {
+		limit = { num_districts = { type = district_generator value = 3 } }
+		set_variable = { which = rtd_generator value = 3 }
+	} else_if = {
+		limit = { num_districts = { type = district_generator value = 4 } }
+		set_variable = { which = rtd_generator value = 4 }
+	} else_if = {
+		limit = { num_districts = { type = district_generator value = 4 } }
+		set_variable = { which = rtd_generator value = 5 }
+	} else_if = {
+		limit = { num_districts = { type = district_generator value = 5 } }
+		set_variable = { which = rtd_generator value = 6 }
+	} else_if = {
+		limit = { num_districts = { type = district_generator value = 7 } }
+		set_variable = { which = rtd_generator value = 7 }
+	} else_if = {
+		limit = { num_districts = { type = district_generator value = 8 } }
+		set_variable = { which = rtd_generator value = 8 }
+	} else_if = {
+		limit = { num_districts = { type = district_generator value = 9 } }
+		set_variable = { which = rtd_generator value = 9 }
+	}
+	if = {
+		limit = { num_free_districts = { type = district_generator value = 1 } }
+		change_variable = { which = rtd_generator value = 1 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_generator value = 2 } }
+		change_variable = { which = rtd_generator value = 2 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_generator value = 3 } }
+		change_variable = { which = rtd_generator value = 3 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_generator value = 4 } }
+		change_variable = { which = rtd_generator value = 4 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_generator value = 5 } }
+		change_variable = { which = rtd_generator value = 5 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_generator value = 6 } }
+		change_variable = { which = rtd_generator value = 6 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_generator value = 7 } }
+		change_variable = { which = rtd_generator value = 7 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_generator value = 8 } }
+		change_variable = { which = rtd_generator value = 8 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_generator value = 9 } }
+		change_variable = { which = rtd_generator value = 9 }
+	}
+}
+
+retile_count_districts_mining = {
+	if = {
+		limit = { num_districts = { type = district_mining value = 1 } }
+		set_variable = { which = rtd_mining value = 1 }
+	} else_if = {
+		limit = { num_districts = { type = district_mining value = 2 } }
+		set_variable = { which = rtd_mining value = 2 }
+	} else_if = {
+		limit = { num_districts = { type = district_mining value = 3 } }
+		set_variable = { which = rtd_mining value = 3 }
+	} else_if = {
+		limit = { num_districts = { type = district_mining value = 4 } }
+		set_variable = { which = rtd_mining value = 4 }
+	} else_if = {
+		limit = { num_districts = { type = district_mining value = 4 } }
+		set_variable = { which = rtd_mining value = 5 }
+	} else_if = {
+		limit = { num_districts = { type = district_mining value = 5 } }
+		set_variable = { which = rtd_mining value = 6 }
+	} else_if = {
+		limit = { num_districts = { type = district_mining value = 7 } }
+		set_variable = { which = rtd_mining value = 7 }
+	} else_if = {
+		limit = { num_districts = { type = district_mining value = 8 } }
+		set_variable = { which = rtd_mining value = 8 }
+	} else_if = {
+		limit = { num_districts = { type = district_mining value = 9 } }
+		set_variable = { which = rtd_mining value = 9 }
+	}
+	if = {
+		limit = { num_free_districts = { type = district_mining value = 1 } }
+		change_variable = { which = rtd_mining value = 1 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_mining value = 2 } }
+		change_variable = { which = rtd_mining value = 2 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_mining value = 3 } }
+		change_variable = { which = rtd_mining value = 3 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_mining value = 4 } }
+		change_variable = { which = rtd_mining value = 4 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_mining value = 5 } }
+		change_variable = { which = rtd_mining value = 5 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_mining value = 6 } }
+		change_variable = { which = rtd_mining value = 6 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_mining value = 7 } }
+		change_variable = { which = rtd_mining value = 7 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_mining value = 8 } }
+		change_variable = { which = rtd_mining value = 8 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_mining value = 9 } }
+		change_variable = { which = rtd_mining value = 9 }
+	}
+}
+
+retile_count_districts_farming = {
+	if = {
+		limit = { num_districts = { type = district_farming value = 1 } }
+		set_variable = { which = rtd_farming value = 1 }
+	} else_if = {
+		limit = { num_districts = { type = district_farming value = 2 } }
+		set_variable = { which = rtd_farming value = 2 }
+	} else_if = {
+		limit = { num_districts = { type = district_farming value = 3 } }
+		set_variable = { which = rtd_farming value = 3 }
+	} else_if = {
+		limit = { num_districts = { type = district_farming value = 4 } }
+		set_variable = { which = rtd_farming value = 4 }
+	} else_if = {
+		limit = { num_districts = { type = district_farming value = 4 } }
+		set_variable = { which = rtd_farming value = 5 }
+	} else_if = {
+		limit = { num_districts = { type = district_farming value = 5 } }
+		set_variable = { which = rtd_farming value = 6 }
+	} else_if = {
+		limit = { num_districts = { type = district_farming value = 7 } }
+		set_variable = { which = rtd_farming value = 7 }
+	} else_if = {
+		limit = { num_districts = { type = district_farming value = 8 } }
+		set_variable = { which = rtd_farming value = 8 }
+	} else_if = {
+		limit = { num_districts = { type = district_farming value = 9 } }
+		set_variable = { which = rtd_farming value = 9 }
+	}
+	if = {
+		limit = { num_free_districts = { type = district_farming value = 1 } }
+		change_variable = { which = rtd_farming value = 1 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_farming value = 2 } }
+		change_variable = { which = rtd_farming value = 2 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_farming value = 3 } }
+		change_variable = { which = rtd_farming value = 3 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_farming value = 4 } }
+		change_variable = { which = rtd_farming value = 4 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_farming value = 5 } }
+		change_variable = { which = rtd_farming value = 5 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_farming value = 6 } }
+		change_variable = { which = rtd_farming value = 6 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_farming value = 7 } }
+		change_variable = { which = rtd_farming value = 7 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_farming value = 8 } }
+		change_variable = { which = rtd_farming value = 8 }
+	} else_if = {
+		limit = { num_free_districts = { type = district_farming value = 9 } }
+		change_variable = { which = rtd_farming value = 9 }
+	}
+}
+
 # country scope
 retile_flag_ai_food_world = {
+	every_owned_planet = {
+		retile_count_districts_farming = yes
+	}
 	every_owned_planet = {
 		limit = { has_planet_flag = ai_food_development_former }
 		remove_planet_flag = ai_food_development_former
@@ -84,15 +267,15 @@ retile_flag_ai_food_world = {
 				base = 1
 				modifier = {	### World is good for food
 					add = 9
-					district_farming_available > 2
+					check_variable = { which = rtd_farming value > 2 }
 				}
 				modifier = {
 					add = 90
-					district_farming_available > 5
+					check_variable = { which = rtd_farming value > 5 }
 				}
 				modifier = {
 					add = 900
-					district_farming_available > 8
+					check_variable = { which = rtd_farming value > 8 }
 				}
 				modifier = {	### Static high weight for uncapped planets.
 					add = 9999
@@ -100,28 +283,28 @@ retile_flag_ai_food_world = {
 					ai_good_food_world = yes
 				}
 				modifier = {	### World is good for minerals
+					add = 9
+					check_variable = { which = rtd_mining value > 2 }
+				}
+				modifier = {
+					add = 90
+					check_variable = { which = rtd_mining value > 5 }
+				}
+				modifier = {
+					add = 900
+					check_variable = { which = rtd_mining value > 8 }
+				}
+				modifier = {	### World is good for minerals
 					add = -4
-					district_mining_available > 2
+					check_variable = { which = rtd_generator value > 2 }
 				}
 				modifier = {
 					add = -36
-					district_mining_available > 5
+					check_variable = { which = rtd_generator value > 5 }
 				}
 				modifier = {
 					add = -360
-					district_mining_available > 8
-				}
-				modifier = {	### World is good for food
-					add = -4
-					district_generator_available > 2
-				}
-				modifier = {
-					add = -36
-					district_generator_available > 5
-				}
-				modifier = {
-					add = -360
-					district_generator_available > 8
+					check_variable = { which = rtd_generator value > 8 }
 				}
 				modifier = {
 					mult = 2	### Former food world, but wasn't sticky
@@ -140,6 +323,9 @@ retile_flag_ai_food_world = {
 
 # country scope
 retile_flag_ai_energy_world = {
+	every_owned_planet = {
+		retile_count_districts_generator = yes
+	}
 	every_owned_planet = {
 		limit = { has_planet_flag = ai_energy_development_former }
 		remove_planet_flag = ai_energy_development_former
@@ -216,16 +402,16 @@ retile_flag_ai_energy_world = {
 			weights = {
 				base = 1
 				modifier = {	### World is good for energy
-					add = 9
-					district_generator_available > 2
+					add = -4
+					check_variable = { which = rtd_generator value > 2 }
 				}
 				modifier = {
-					add = 90
-					district_generator_available > 5
+					add = -36
+					check_variable = { which = rtd_generator value > 5 }
 				}
 				modifier = {
-					add = 900
-					district_generator_available > 8
+					add = -360
+					check_variable = { which = rtd_generator value > 8 }
 				}
 				modifier = {	### Static high weight for uncapped planets.
 					add = 9999
@@ -233,28 +419,28 @@ retile_flag_ai_energy_world = {
 					ai_good_energy_world = yes
 				}
 				modifier = {	### World is good for minerals
-					add = -4
-					district_mining_available > 2
+					add = 9
+					check_variable = { which = rtd_mining value > 2 }
 				}
 				modifier = {
-					add = -36
-					district_mining_available > 5
+					add = 90
+					check_variable = { which = rtd_mining value > 5 }
 				}
 				modifier = {
-					add = -360
-					district_mining_available > 8
+					add = 900
+					check_variable = { which = rtd_mining value > 8 }
 				}
 				modifier = {	### World is good for food
 					add = -4
-					district_farming_available > 2
+					check_variable = { which = rtd_farming value > 2 }
 				}
 				modifier = {
 					add = -36
-					district_farming_available > 5
+					check_variable = { which = rtd_farming value > 5 }
 				}
 				modifier = {
 					add = -360
-					district_farming_available > 8
+					check_variable = { which = rtd_farming value > 8 }
 				}
 				modifier = {
 					mult = 2	### Former energy world, but wasn't sticky
@@ -273,6 +459,9 @@ retile_flag_ai_energy_world = {
 
 # country scope
 retile_flag_ai_minerals_world = {
+	every_owned_planet = {
+		retile_count_districts_mining = yes
+	}
 	every_owned_planet = {
 		limit = { has_planet_flag = ai_minerals_development_former }
 		remove_planet_flag = ai_minerals_development_former
@@ -350,44 +539,44 @@ retile_flag_ai_minerals_world = {
 				base = 1
 				modifier = {	### World is good for minerals
 					add = 9
-					district_mining_available > 2
+					check_variable = { which = rtd_mining value > 2 }
 				}
 				modifier = {
 					add = 90
-					district_mining_available > 5
+					check_variable = { which = rtd_mining value > 5 }
 				}
 				modifier = {
 					add = 900
-					district_mining_available > 8
+					check_variable = { which = rtd_mining value > 8 }
 				}
 				modifier = {	### Static high weight for uncapped planets.
 					add = 9999
 					num_free_districts = { type = district_mining value < 1 } # must be an uncapped planet
 					ai_good_minerals_world = yes
 				}
-				modifier = {	### World is good for minerals
+				modifier = {	### World is good for energy
 					add = -4
-					district_generator_available > 2
+					check_variable = { which = rtd_generator value > 2 }
 				}
 				modifier = {
 					add = -36
-					district_generator_available > 5
+					check_variable = { which = rtd_generator value > 5 }
 				}
 				modifier = {
 					add = -360
-					district_generator_available > 8
+					check_variable = { which = rtd_generator value > 8 }
 				}
 				modifier = {	### World is good for food
 					add = -4
-					district_farming_available > 2
+					check_variable = { which = rtd_farming value > 2 }
 				}
 				modifier = {
 					add = -36
-					district_farming_available > 5
+					check_variable = { which = rtd_farming value > 5 }
 				}
 				modifier = {
 					add = -360
-					district_farming_available > 8
+					check_variable = { which = rtd_farming value > 8 }
 				}
 				modifier = {
 					mult = 2	### Former minerals world, but wasn't sticky
@@ -408,6 +597,11 @@ retile_flag_ai_minerals_world = {
 retile_flag_ai_arcology_world = {
 	IF = {
 		limit = { NOT = { any_owned_planet = { has_planet_flag = ai_arcology_development } } }
+		every_owned_planet = {
+			retile_count_districts_generator = yes
+			retile_count_districts_mining = yes
+			retile_count_districts_farming = yes
+		}
 		random_owned_planet = {
 			limit = {
 				habitable_structure = no
