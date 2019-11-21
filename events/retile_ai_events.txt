@@ -1,12 +1,8 @@
 #########################################
 #
 # Retile AI Events
+# Author: Gebnar
 #
-#########################################
-
-@template_decay = 1795				# How frequently can ai planet templates change? (5 years)
-@player_migrate_delay = 355			# How often do players get auto-migration? (1 year)
-
 #########################################
 
 namespace = retile_ai
@@ -325,9 +321,9 @@ planet_event = {
 	}
 }
 
-# Flag AI planets for development focus
+# Flag AI planets for food focus
 country_event = {
-	id = retile_ai.50
+	id = retile_ai.51
 	hide_window = yes
 
 	trigger = {
@@ -336,11 +332,10 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 12
+		months = 60
 	}
 
 	after = {
-		####################################  Food
 		every_owned_planet = {
 			limit = { has_planet_flag = ai_food_development }
 			remove_planet_flag = ai_food_development
@@ -348,70 +343,26 @@ country_event = {
 		}
 		IF = {
 			limit = { has_monthly_income = { resource = food value < 100 } }
-			random_owned_planet = {
-				limit = {
-					NOR = {
-						is_planet_class = pc_city
-						#is_planet_class = pc_relic
-						has_modifier = resort_colony
-						is_under_colonization = yes
-					}
-					OR = {
-						num_free_districts = { type = district_farming value > 0 }
-						num_free_districts = { type = district_farming_uncapped value > 0 }
-						num_free_districts = { type = district_hab_hydroponics value > 0 }
-						num_free_districts = { type = district_rw_farming value > 0 }
-					}
-				}
-				weights = {
-					base = 10000
-					modifier = {
-						mult = 100
-						is_capital = no
-						OR = {
-							has_planet_flag = ai_food_development_former
-							has_building = building_food_processing_facility
-							has_building = building_food_processing_center
-						}
-					}
-					modifier = {
-						mult = 10
-						retile_template_good_food = yes
-					}
-					modifier = {
-						mult = 0.5
-						is_capital = yes
-					}
-					modifier = {
-						mult = 0.5
-						OR = {
-							retile_template_good_minerals = yes
-							has_planet_flag = ai_minerals_development
-							has_planet_flag = ai_minerals_development_former
-							has_building = building_mineral_purification_plant
-							has_building = building_mineral_purification_hub
-						}
-					}
-					modifier = {
-						mult = 0.5
-						OR = {
-							retile_template_good_energy = yes
-							has_planet_flag = ai_energy_development
-							has_planet_flag = ai_energy_development_former
-							has_building = building_energy_grid
-							has_building = building_energy_nexus
-						}
-					}
-					modifier = {
-						mult = 0.01
-						has_planet_flag = ai_arcology_development
-					}
-				}
-				set_planet_flag = ai_food_development
-				remove_planet_flag = ai_food_development_former
-			}
+			retile_flag_ai_food_world = yes
 		}
-		####################################  Energy
+	}
+}
+
+# Flag AI planets for energy focus
+country_event = {
+	id = retile_ai.52
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	after = {
 		every_owned_planet = {
 			limit = { has_planet_flag = ai_energy_development }
 			remove_planet_flag = ai_energy_development
@@ -419,70 +370,26 @@ country_event = {
 		}
 		IF = {
 			limit = { has_monthly_income = { resource = energy value < 500 } }
-			random_owned_planet = {
-				limit = {
-					NOR = {
-						is_planet_class = pc_city
-						#is_planet_class = pc_relic
-						has_modifier = resort_colony
-						is_under_colonization = yes
-					}
-					OR = {
-						num_free_districts = { type = district_generator value > 0 }
-						num_free_districts = { type = district_generator_uncapped value > 0 }
-						num_free_districts = { type = district_hab_energy value > 0 }
-						num_free_districts = { type = district_rw_generator value > 0 }
-					}
-				}
-				weights = {
-					base = 10000
-					modifier = {
-						mult = 100
-						is_capital = no
-						OR = {
-							has_planet_flag = ai_energy_development_former
-							has_building = building_energy_grid
-							has_building = building_energy_nexus
-						}
-					}
-					modifier = {
-						mult = 10
-						retile_template_good_energy = yes
-					}
-					modifier = {
-						mult = 0.5
-						is_capital = yes
-					}
-					modifier = {
-						mult = 0.5
-						OR = {
-							retile_template_good_minerals = yes
-							has_planet_flag = ai_minerals_development
-							has_planet_flag = ai_minerals_development_former
-							has_building = building_mineral_purification_plant
-							has_building = building_mineral_purification_hub
-						}
-					}
-					modifier = {
-						mult = 0.5
-						OR = {
-							retile_template_good_food = yes
-							has_planet_flag = ai_food_development
-							has_planet_flag = ai_food_development_former
-							has_building = building_food_processing_facility
-							has_building = building_food_processing_center
-						}
-					}
-					modifier = {
-						mult = 0.01
-						has_planet_flag = ai_arcology_development
-					}
-				}
-				set_planet_flag = ai_energy_development
-				remove_planet_flag = ai_energy_development_former
-			}
+			retile_flag_ai_energy_world = yes
 		}
-		####################################  Minerals
+	}
+}
+
+# Flag AI planets for minerals focus
+country_event = {
+	id = retile_ai.53
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	after = {
 		every_owned_planet = {
 			limit = { has_planet_flag = ai_minerals_development }
 			remove_planet_flag = ai_minerals_development
@@ -490,205 +397,68 @@ country_event = {
 		}
 		IF = {
 			limit = { has_monthly_income = { resource = minerals value < 500 } }
-			random_owned_planet = {
-				limit = {
-					NOR = {
-						is_planet_class = pc_city
-						#is_planet_class = pc_relic
-						has_modifier = resort_colony
-						is_under_colonization = yes
-					}
-					OR = {
-						num_free_districts = { type = district_mining value > 0 }
-						num_free_districts = { type = district_mining_uncapped value > 0 }
-						num_free_districts = { type = district_hab_mining value > 0 }
-						num_free_districts = { type = district_rw_mining value > 0 }
-					}
-				}
-				weights = {
-					base = 10000
-					modifier = {
-						mult = 100
-						is_capital = no
-						OR = {
-							has_planet_flag = ai_minerals_development_former
-							has_building = building_mineral_purification_plant
-							has_building = building_mineral_purification_hub
-						}
-					}
-					modifier = {
-						mult = 10
-						retile_template_good_minerals = yes
-					}
-					modifier = {
-						mult = 0.5
-						is_capital = yes
-					}
-					modifier = {
-						mult = 0.5
-						OR = {
-							retile_template_good_energy = yes
-							has_planet_flag = ai_energy_development
-							has_planet_flag = ai_energy_development_former
-							has_building = building_energy_grid
-							has_building = building_energy_nexus
-						}
-					}
-					modifier = {
-						mult = 0.5
-						OR = {
-							retile_template_good_food = yes
-							has_planet_flag = ai_food_development
-							has_planet_flag = ai_food_development_former
-							has_building = building_food_processing_facility
-							has_building = building_food_processing_center
-						}
-					}
-					modifier = {
-						mult = 0.01
-						has_planet_flag = ai_arcology_development
-					}
-				}
-				set_planet_flag = ai_minerals_development
-				remove_planet_flag = ai_minerals_development_former
-			}
+			retile_flag_ai_minerals_world = yes
 		}
-		####################################  Arcology
+	}
+}
+
+# Flag AI planets for arcology focus
+country_event = {
+	id = retile_ai.54
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	after = {
 		IF = {
-			limit = {
-				NOT = { any_owned_planet = { has_planet_flag = ai_arcology_development } }
-			}
-			random_owned_planet = {
-				limit = {
-					habitable_structure = no
-					NOR = {
-						is_planet_class = pc_city
-						is_planet_class = pc_relic
-						is_planet_class = pc_hive
-						is_planet_class = pc_machine
-						has_modifier = resort_colony
-						has_modifier = slave_colony
-						is_under_colonization = yes
-					}
-				}
-				weights = {
-					base = 10000
-					modifier = {
-						mult = 100
-						is_capital = yes
-					}
-					modifier = {
-						mult = 0.5
-						retile_template_good_food = yes
-					}
-					modifier = {
-						mult = 0.5
-						retile_template_good_minerals = yes
-					}
-					modifier = {
-						mult = 0.5
-						retile_template_good_energy = yes
-					}
-					modifier = {
-						mult = 0.5
-						OR = {
-							has_planet_flag = ai_energy_development_former
-							has_planet_flag = ai_minerals_development_former
-							has_planet_flag = ai_food_development_former
-						}
-					}
-					modifier = {
-						mult = 0.01
-						OR = {
-							has_building = building_food_processing_facility
-							has_building = building_food_processing_center
-							has_building = building_mineral_purification_plant
-							has_building = building_mineral_purification_hub
-							has_building = building_energy_grid
-							has_building = building_energy_nexus
-							has_planet_flag = ai_energy_development
-							has_planet_flag = ai_minerals_development
-							has_planet_flag = ai_food_development
-						}
-					}
-				}
-				set_planet_flag = ai_arcology_development
-			}
+			limit = { NOT = { any_owned_planet = { has_planet_flag = ai_arcology_development } } }
+			retile_flag_ai_arcology_world = yes
 		}
-		####################################  Cities
+	}
+}
+
+# Flag AI planets for city focus
+country_event = {
+	id = retile_ai.55
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	after = {
 		every_owned_planet = {
 			limit = { has_planet_flag = ai_city_development }
 			remove_planet_flag = ai_city_development
 			set_planet_flag = ai_city_development_former
 		}
+		retile_flag_ai_city_world = yes
 		IF = {
-			random_owned_planet = {
-				limit = {
-					NOR = {
-						has_modifier = slave_colony
-						is_under_colonization = yes
-					}
-					free_district_slots > 0
-				}
-				weights = {
-					base = 10000
-					modifier = {
-						mult = 100
-						OR = {
-							is_capital = yes
-							has_planet_flag = ai_arcology_development
-							is_planet_class = pc_city
-							is_planet_class = pc_relic
-						}
-					}
-					modifier = {
-						mult = 10
-						OR = {
-							retile_urban_development = yes
-							has_planet_flag = ai_city_development_former
-						}
-					}
-					modifier = {
-						mult = 0.3
-						OR = {
-							retile_template_good_energy = yes
-							has_planet_flag = ai_energy_development
-							has_planet_flag = ai_energy_development_former
-							has_building = building_energy_grid
-							has_building = building_energy_nexus
-						}
-					}
-					modifier = {
-						mult = 0.3
-						OR = {
-							retile_template_good_food = yes
-							has_planet_flag = ai_food_development
-							has_planet_flag = ai_food_development_former
-							has_building = building_food_processing_facility
-							has_building = building_food_processing_center
-						}
-					}
-					modifier = {
-						mult = 0.3
-						OR = {
-							retile_template_good_minerals = yes
-							has_planet_flag = ai_minerals_development
-							has_planet_flag = ai_minerals_development_former
-							has_building = building_mineral_purification_plant
-							has_building = building_mineral_purification_hub
-						}
-					}
-				}
-				set_planet_flag = ai_city_development
-				remove_planet_flag = ai_city_development_former
-			}
+			limit = { years_passed > 100 }
+			retile_flag_ai_city_world = yes
+		}
+		IF = {
+			limit = { years_passed > 200 }
+			retile_flag_ai_city_world = yes
 		}
 	}
 }
 
 # Check AI planets and remove wasteful district deposits
 planet_event = {
-	id = retile_ai.51
+	id = retile_ai.101
 	hide_window = yes
 
 	trigger = {
@@ -700,7 +470,7 @@ planet_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 6
+		months = 18
 	}
 
 	after = {
@@ -739,7 +509,7 @@ planet_event = {
 
 # Check AI countries and remove wasteful energy districts
 country_event = {
-	id = retile_ai.52
+	id = retile_ai.102
 	hide_window = yes
 
 	trigger = {
@@ -804,7 +574,7 @@ country_event = {
 
 # Check AI countries and remove wasteful mining districts
 country_event = {
-	id = retile_ai.53
+	id = retile_ai.103
 	hide_window = yes
 
 	trigger = {
@@ -869,7 +639,7 @@ country_event = {
 
 # Check AI countries and remove wasteful farming districts
 country_event = {
-	id = retile_ai.54
+	id = retile_ai.104
 	hide_window = yes
 
 	trigger = {

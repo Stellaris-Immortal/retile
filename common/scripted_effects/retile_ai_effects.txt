@@ -1,3 +1,11 @@
+#########################################
+#
+# Retile AI Effects
+# Author: Gebnar
+#
+#########################################
+
+
 # planet scope # Clears planet flags used for ai planet templates
 retile_clear_template = {
 	remove_planet_flag = retile_template_generic
@@ -18,4 +26,327 @@ retile_clear_template = {
 	remove_planet_flag = active_retile_template_research
 	remove_planet_flag = active_retile_template_unity
 	remove_planet_flag = active_retile_template_trade
+}
+
+# country scope
+retile_flag_ai_food_world = {
+	random_owned_planet = {
+		limit = {
+			NOR = {
+				is_planet_class = pc_city
+				#is_planet_class = pc_relic
+				has_modifier = resort_colony
+				is_under_colonization = yes
+			}
+			OR = {
+				num_free_districts = { type = district_farming value > 0 }
+				num_free_districts = { type = district_farming_uncapped value > 0 }
+				num_free_districts = { type = district_hab_hydroponics value > 0 }
+				num_free_districts = { type = district_rw_farming value > 0 }
+			}
+		}
+		weights = {
+			base = 10000
+			modifier = {
+				mult = 100
+				is_capital = no
+				OR = {
+					has_planet_flag = ai_food_development_former
+					has_building = building_food_processing_facility
+					has_building = building_food_processing_center
+				}
+			}
+			modifier = {
+				mult = 10
+				retile_template_good_food = yes
+			}
+			modifier = {
+				mult = 0.5
+				is_capital = yes
+			}
+			modifier = {
+				mult = 0.5
+				OR = {
+					retile_template_good_minerals = yes
+					has_planet_flag = ai_minerals_development
+					has_planet_flag = ai_minerals_development_former
+					has_building = building_mineral_purification_plant
+					has_building = building_mineral_purification_hub
+				}
+			}
+			modifier = {
+				mult = 0.5
+				OR = {
+					retile_template_good_energy = yes
+					has_planet_flag = ai_energy_development
+					has_planet_flag = ai_energy_development_former
+					has_building = building_energy_grid
+					has_building = building_energy_nexus
+				}
+			}
+			modifier = {
+				mult = 0.01
+				has_planet_flag = ai_arcology_development
+			}
+		}
+		set_planet_flag = ai_food_development
+		remove_planet_flag = ai_food_development_former
+	}
+}
+
+# country scope
+retile_flag_ai_energy_world = {
+	random_owned_planet = {
+		limit = {
+			NOR = {
+				is_planet_class = pc_city
+				#is_planet_class = pc_relic
+				has_modifier = resort_colony
+				is_under_colonization = yes
+			}
+			OR = {
+				num_free_districts = { type = district_generator value > 0 }
+				num_free_districts = { type = district_generator_uncapped value > 0 }
+				num_free_districts = { type = district_hab_energy value > 0 }
+				num_free_districts = { type = district_rw_generator value > 0 }
+			}
+		}
+		weights = {
+			base = 10000
+			modifier = {
+				mult = 100
+				is_capital = no
+				OR = {
+					has_planet_flag = ai_energy_development_former
+					has_building = building_energy_grid
+					has_building = building_energy_nexus
+				}
+			}
+			modifier = {
+				mult = 10
+				retile_template_good_energy = yes
+			}
+			modifier = {
+				mult = 0.5
+				is_capital = yes
+			}
+			modifier = {
+				mult = 0.5
+				OR = {
+					retile_template_good_minerals = yes
+					has_planet_flag = ai_minerals_development
+					has_planet_flag = ai_minerals_development_former
+					has_building = building_mineral_purification_plant
+					has_building = building_mineral_purification_hub
+				}
+			}
+			modifier = {
+				mult = 0.5
+				OR = {
+					retile_template_good_food = yes
+					has_planet_flag = ai_food_development
+					has_planet_flag = ai_food_development_former
+					has_building = building_food_processing_facility
+					has_building = building_food_processing_center
+				}
+			}
+			modifier = {
+				mult = 0.01
+				has_planet_flag = ai_arcology_development
+			}
+		}
+		set_planet_flag = ai_energy_development
+		remove_planet_flag = ai_energy_development_former
+	}
+}
+
+# country scope
+retile_flag_ai_minerals_world = {
+	random_owned_planet = {
+		limit = {
+			NOR = {
+				is_planet_class = pc_city
+				#is_planet_class = pc_relic
+				has_modifier = resort_colony
+				is_under_colonization = yes
+			}
+			OR = {
+				num_free_districts = { type = district_mining value > 0 }
+				num_free_districts = { type = district_mining_uncapped value > 0 }
+				num_free_districts = { type = district_hab_mining value > 0 }
+				num_free_districts = { type = district_rw_mining value > 0 }
+			}
+		}
+		weights = {
+			base = 10000
+			modifier = {
+				mult = 100
+				is_capital = no
+				OR = {
+					has_planet_flag = ai_minerals_development_former
+					has_building = building_mineral_purification_plant
+					has_building = building_mineral_purification_hub
+				}
+			}
+			modifier = {
+				mult = 10
+				retile_template_good_minerals = yes
+			}
+			modifier = {
+				mult = 0.5
+				is_capital = yes
+			}
+			modifier = {
+				mult = 0.5
+				OR = {
+					retile_template_good_energy = yes
+					has_planet_flag = ai_energy_development
+					has_planet_flag = ai_energy_development_former
+					has_building = building_energy_grid
+					has_building = building_energy_nexus
+				}
+			}
+			modifier = {
+				mult = 0.5
+				OR = {
+					retile_template_good_food = yes
+					has_planet_flag = ai_food_development
+					has_planet_flag = ai_food_development_former
+					has_building = building_food_processing_facility
+					has_building = building_food_processing_center
+				}
+			}
+			modifier = {
+				mult = 0.01
+				has_planet_flag = ai_arcology_development
+			}
+		}
+		set_planet_flag = ai_minerals_development
+		remove_planet_flag = ai_minerals_development_former
+	}
+}
+
+# country scope
+retile_flag_ai_arcology_world = {
+	random_owned_planet = {
+		limit = {
+			habitable_structure = no
+			NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_relic
+				is_planet_class = pc_hive
+				is_planet_class = pc_machine
+				has_modifier = resort_colony
+				has_modifier = slave_colony
+				is_under_colonization = yes
+			}
+		}
+		weights = {
+			base = 10000
+			modifier = {
+				mult = 100
+				is_capital = yes
+			}
+			modifier = {
+				mult = 0.5
+				retile_template_good_food = yes
+			}
+			modifier = {
+				mult = 0.5
+				retile_template_good_minerals = yes
+			}
+			modifier = {
+				mult = 0.5
+				retile_template_good_energy = yes
+			}
+			modifier = {
+				mult = 0.5
+				OR = {
+					has_planet_flag = ai_energy_development_former
+					has_planet_flag = ai_minerals_development_former
+					has_planet_flag = ai_food_development_former
+				}
+			}
+			modifier = {
+				mult = 0.01
+				OR = {
+					has_building = building_food_processing_facility
+					has_building = building_food_processing_center
+					has_building = building_mineral_purification_plant
+					has_building = building_mineral_purification_hub
+					has_building = building_energy_grid
+					has_building = building_energy_nexus
+					has_planet_flag = ai_energy_development
+					has_planet_flag = ai_minerals_development
+					has_planet_flag = ai_food_development
+				}
+			}
+		}
+		set_planet_flag = ai_arcology_development
+	}
+}
+
+# country scope
+retile_flag_ai_city_world = {
+	random_owned_planet = {
+		limit = {
+			NOR = {
+				has_modifier = slave_colony
+				is_under_colonization = yes
+				has_planet_flag = ai_city_development	# can have more than 1, eventually
+			}
+			free_district_slots > 0
+		}
+		weights = {
+			base = 10000
+			modifier = {
+				mult = 100
+				OR = {
+					is_capital = yes
+					has_planet_flag = ai_arcology_development
+					is_planet_class = pc_city
+					is_planet_class = pc_relic
+				}
+			}
+			modifier = {
+				mult = 10
+				OR = {
+					retile_urban_development = yes
+					has_planet_flag = ai_city_development_former
+				}
+			}
+			modifier = {
+				mult = 0.3
+				OR = {
+					retile_template_good_energy = yes
+					has_planet_flag = ai_energy_development
+					has_planet_flag = ai_energy_development_former
+					has_building = building_energy_grid
+					has_building = building_energy_nexus
+				}
+			}
+			modifier = {
+				mult = 0.3
+				OR = {
+					retile_template_good_food = yes
+					has_planet_flag = ai_food_development
+					has_planet_flag = ai_food_development_former
+					has_building = building_food_processing_facility
+					has_building = building_food_processing_center
+				}
+			}
+			modifier = {
+				mult = 0.3
+				OR = {
+					retile_template_good_minerals = yes
+					has_planet_flag = ai_minerals_development
+					has_planet_flag = ai_minerals_development_former
+					has_building = building_mineral_purification_plant
+					has_building = building_mineral_purification_hub
+				}
+			}
+		}
+		set_planet_flag = ai_city_development
+		remove_planet_flag = ai_city_development_former
+	}
 }
