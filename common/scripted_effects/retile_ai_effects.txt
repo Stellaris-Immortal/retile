@@ -10,6 +10,9 @@ is_colonizable = yes
 # planet scope
 retile_count_districts_generator = {
 	if = {
+		limit = { num_districts = { type = district_generator value < 1 } }
+		set_variable = { which = rtd_generator value = 0 }
+	} else_if = {
 		limit = { num_districts = { type = district_generator value = 1 } }
 		set_variable = { which = rtd_generator value = 1 }
 	} else_if = {
@@ -34,10 +37,13 @@ retile_count_districts_generator = {
 		limit = { num_districts = { type = district_generator value = 8 } }
 		set_variable = { which = rtd_generator value = 8 }
 	} else_if = {
-		limit = { num_districts = { type = district_generator value = 9 } }
+		limit = { num_districts = { type = district_generator value >= 9 } }
 		set_variable = { which = rtd_generator value = 9 }
 	}
 	if = {
+		limit = { num_free_districts = { type = district_generator value < 1 } }
+		change_variable = { which = rtd_generator value = 0 }
+	} else_if = {
 		limit = { num_free_districts = { type = district_generator value = 1 } }
 		change_variable = { which = rtd_generator value = 1 }
 	} else_if = {
@@ -62,13 +68,16 @@ retile_count_districts_generator = {
 		limit = { num_free_districts = { type = district_generator value = 8 } }
 		change_variable = { which = rtd_generator value = 8 }
 	} else_if = {
-		limit = { num_free_districts = { type = district_generator value = 9 } }
+		limit = { num_free_districts = { type = district_generator value >= 9 } }
 		change_variable = { which = rtd_generator value = 9 }
 	}
 }
 
 retile_count_districts_mining = {
 	if = {
+		limit = { num_districts = { type = district_mining value < 1 } }
+		set_variable = { which = rtd_mining value = 0 }
+	} else_if = {
 		limit = { num_districts = { type = district_mining value = 1 } }
 		set_variable = { which = rtd_mining value = 1 }
 	} else_if = {
@@ -93,10 +102,13 @@ retile_count_districts_mining = {
 		limit = { num_districts = { type = district_mining value = 8 } }
 		set_variable = { which = rtd_mining value = 8 }
 	} else_if = {
-		limit = { num_districts = { type = district_mining value = 9 } }
+		limit = { num_districts = { type = district_mining value >= 9 } }
 		set_variable = { which = rtd_mining value = 9 }
 	}
 	if = {
+		limit = { num_free_districts = { type = district_mining value < 1 } }
+		change_variable = { which = rtd_mining value = 0 }
+	} else_if = {
 		limit = { num_free_districts = { type = district_mining value = 1 } }
 		change_variable = { which = rtd_mining value = 1 }
 	} else_if = {
@@ -121,13 +133,16 @@ retile_count_districts_mining = {
 		limit = { num_free_districts = { type = district_mining value = 8 } }
 		change_variable = { which = rtd_mining value = 8 }
 	} else_if = {
-		limit = { num_free_districts = { type = district_mining value = 9 } }
+		limit = { num_free_districts = { type = district_mining value >= 9 } }
 		change_variable = { which = rtd_mining value = 9 }
 	}
 }
 
 retile_count_districts_farming = {
 	if = {
+		limit = { num_districts = { type = district_farming value < 1 } }
+		set_variable = { which = rtd_farming value = 0 }
+	} else_if = {
 		limit = { num_districts = { type = district_farming value = 1 } }
 		set_variable = { which = rtd_farming value = 1 }
 	} else_if = {
@@ -152,10 +167,13 @@ retile_count_districts_farming = {
 		limit = { num_districts = { type = district_farming value = 8 } }
 		set_variable = { which = rtd_farming value = 8 }
 	} else_if = {
-		limit = { num_districts = { type = district_farming value = 9 } }
+		limit = { num_districts = { type = district_farming value >= 9 } }
 		set_variable = { which = rtd_farming value = 9 }
 	}
 	if = {
+		limit = { num_free_districts = { type = district_farming value < 1 } }
+		change_variable = { which = rtd_farming value = 0 }
+	} else_if = {
 		limit = { num_free_districts = { type = district_farming value = 1 } }
 		change_variable = { which = rtd_farming value = 1 }
 	} else_if = {
@@ -180,7 +198,7 @@ retile_count_districts_farming = {
 		limit = { num_free_districts = { type = district_farming value = 8 } }
 		change_variable = { which = rtd_farming value = 8 }
 	} else_if = {
-		limit = { num_free_districts = { type = district_farming value = 9 } }
+		limit = { num_free_districts = { type = district_farming value >= 9 } }
 		change_variable = { which = rtd_farming value = 9 }
 	}
 }
@@ -188,6 +206,7 @@ retile_count_districts_farming = {
 # country scope
 retile_flag_ai_food_world = {
 	every_owned_planet = {
+		limit = { habitable_planet = yes }
 		retile_count_districts_farming = yes
 	}
 	every_owned_planet = {
@@ -324,6 +343,7 @@ retile_flag_ai_food_world = {
 # country scope
 retile_flag_ai_energy_world = {
 	every_owned_planet = {
+		limit = { habitable_planet = yes }
 		retile_count_districts_generator = yes
 	}
 	every_owned_planet = {
@@ -460,6 +480,7 @@ retile_flag_ai_energy_world = {
 # country scope
 retile_flag_ai_minerals_world = {
 	every_owned_planet = {
+		limit = { habitable_planet = yes }
 		retile_count_districts_mining = yes
 	}
 	every_owned_planet = {
@@ -598,6 +619,7 @@ retile_flag_ai_arcology_world = {
 	IF = {
 		limit = { NOT = { any_owned_planet = { has_planet_flag = ai_arcology_development } } }
 		every_owned_planet = {
+			limit = { habitable_planet = yes }
 			retile_count_districts_generator = yes
 			retile_count_districts_mining = yes
 			retile_count_districts_farming = yes
