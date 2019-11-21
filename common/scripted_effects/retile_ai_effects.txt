@@ -5,38 +5,32 @@
 #
 #########################################
 
-
-# planet scope # Clears planet flags used for ai planet templates
-retile_clear_template = {
-	remove_planet_flag = retile_template_generic
-	remove_planet_flag = retile_template_minerals
-	remove_planet_flag = retile_template_energy
-	remove_planet_flag = retile_template_food
-	remove_planet_flag = retile_template_alloys
-	remove_planet_flag = retile_template_goods
-	remove_planet_flag = retile_template_research
-	remove_planet_flag = retile_template_unity
-	remove_planet_flag = retile_template_trade
-	remove_planet_flag = active_retile_template_generic
-	remove_planet_flag = active_retile_template_minerals
-	remove_planet_flag = active_retile_template_energy
-	remove_planet_flag = active_retile_template_food
-	remove_planet_flag = active_retile_template_alloys
-	remove_planet_flag = active_retile_template_goods
-	remove_planet_flag = active_retile_template_research
-	remove_planet_flag = active_retile_template_unity
-	remove_planet_flag = active_retile_template_trade
-}
-
 # country scope
 retile_flag_ai_food_world = {
-	random_owned_planet = {
-		limit = {
+	every_owned_planet = {
+		limit = { has_planet_flag = ai_food_development_former }
+		remove_planet_flag = ai_food_development_former
+	}
+	every_owned_planet = {
+		limit = { has_planet_flag = ai_food_development }
+		remove_planet_flag = ai_food_development
+		set_planet_flag = ai_food_development_former
+	}
+	if = {	### Really good world already designated for food - no need to change things.
+		limit = { any_owned_planet = {
+			OR = {
+				has_planet_flag = ai_food_development_former
+				has_planet_flag = ai_food_development_sticky
+			}
+			ai_good_food_world = yes
 			NOR = {
-				is_planet_class = pc_city
-				#is_planet_class = pc_relic
-				has_modifier = resort_colony
-				is_under_colonization = yes
+				has_planet_flag = ai_minerals_development
+				has_planet_flag = ai_energy_development
+				has_planet_flag = ai_city_development
+				has_planet_flag = ai_arcology_development
+				has_planet_flag = ai_minerals_development_sticky
+				has_planet_flag = ai_energy_development_sticky
+				has_planet_flag = ai_city_development_sticky
 			}
 			OR = {
 				num_free_districts = { type = district_farming value > 0 }
@@ -44,65 +38,132 @@ retile_flag_ai_food_world = {
 				num_free_districts = { type = district_hab_hydroponics value > 0 }
 				num_free_districts = { type = district_rw_farming value > 0 }
 			}
-		}
-		weights = {
-			base = 10000
-			modifier = {
-				mult = 100
-				is_capital = no
+		} }
+		random_owned_planet = {	### Sticky energy world found!!! Designate it...
+			limit = {
 				OR = {
 					has_planet_flag = ai_food_development_former
-					has_building = building_food_processing_facility
-					has_building = building_food_processing_center
+					has_planet_flag = ai_food_development_sticky
 				}
-			}
-			modifier = {
-				mult = 10
-				retile_template_good_food = yes
-			}
-			modifier = {
-				mult = 0.5
-				is_capital = yes
-			}
-			modifier = {
-				mult = 0.5
-				OR = {
-					retile_template_good_minerals = yes
+				ai_good_food_world = yes
+				NOR = {
 					has_planet_flag = ai_minerals_development
-					has_planet_flag = ai_minerals_development_former
-					has_building = building_mineral_purification_plant
-					has_building = building_mineral_purification_hub
-				}
-			}
-			modifier = {
-				mult = 0.5
-				OR = {
-					retile_template_good_energy = yes
 					has_planet_flag = ai_energy_development
-					has_planet_flag = ai_energy_development_former
-					has_building = building_energy_grid
-					has_building = building_energy_nexus
+					has_planet_flag = ai_city_development
+					has_planet_flag = ai_arcology_development
+					has_planet_flag = ai_minerals_development_sticky
+					has_planet_flag = ai_energy_development_sticky
+					has_planet_flag = ai_city_development_sticky
+				}
+				OR = {
+					num_free_districts = { type = district_farming value > 0 }
+					num_free_districts = { type = district_farming_uncapped value > 0 }
+					num_free_districts = { type = district_hab_hydroponics value > 0 }
+					num_free_districts = { type = district_rw_farming value > 0 }
 				}
 			}
-			modifier = {
-				mult = 0.01
-				has_planet_flag = ai_arcology_development
-			}
+			remove_planet_flag = ai_food_development_former
+			set_planet_flag = ai_food_development
+			set_planet_flag = ai_food_development_sticky
 		}
-		set_planet_flag = ai_food_development
-		remove_planet_flag = ai_food_development_former
+	} else = {	### No sticky food world found, search for candidates
+		random_owned_planet = {
+			limit = {
+				NOR = {
+					has_modifier = resort_colony
+					is_under_colonization = yes
+				}
+				OR = {
+					num_free_districts = { type = district_farming value > 0 }
+					num_free_districts = { type = district_farming_uncapped value > 0 }
+					num_free_districts = { type = district_hab_hydroponics value > 0 }
+					num_free_districts = { type = district_rw_farming value > 0 }
+				}
+			}
+			weights = {
+				base = 1
+				modifier = {	### World is good for food
+					add = 9
+					district_farming_available > 2
+				}
+				modifier = {
+					add = 90
+					district_farming_available > 5
+				}
+				modifier = {
+					add = 900
+					district_farming_available > 8
+				}
+				modifier = {	### Static high weight for uncapped planets.
+					add = 9999
+					num_free_districts = { type = district_farming value < 1 } # must be an uncapped planet
+					ai_good_food_world = yes
+				}
+				modifier = {	### World is good for minerals
+					add = -4
+					district_mining_available > 2
+				}
+				modifier = {
+					add = -36
+					district_mining_available > 5
+				}
+				modifier = {
+					add = -360
+					district_mining_available > 8
+				}
+				modifier = {	### World is good for food
+					add = -4
+					district_generator_available > 2
+				}
+				modifier = {
+					add = -36
+					district_generator_available > 5
+				}
+				modifier = {
+					add = -360
+					district_generator_available > 8
+				}
+				modifier = {
+					mult = 2	### Former food world, but wasn't sticky
+					has_planet_flag = ai_food_development_former
+				}
+				modifier = {
+					mult = 100	### Former sticky world, but somehow isn't sticky now
+					has_planet_flag = ai_food_development_sticky
+				}
+			}
+			set_planet_flag = ai_food_development
+			remove_planet_flag = ai_food_development_former
+		}
 	}
 }
 
 # country scope
 retile_flag_ai_energy_world = {
-	random_owned_planet = {
-		limit = {
+	every_owned_planet = {
+		limit = { has_planet_flag = ai_energy_development_former }
+		remove_planet_flag = ai_energy_development_former
+	}
+	every_owned_planet = {
+		limit = { has_planet_flag = ai_energy_development }
+		remove_planet_flag = ai_energy_development
+		set_planet_flag = ai_energy_development_former
+	}
+	if = {	### Really good world already designated for energy - no need to change things.
+		limit = { any_owned_planet = {
+			OR = {
+				has_planet_flag = ai_energy_development_former
+				has_planet_flag = ai_energy_development_sticky
+			}
+			ai_good_energy_world = yes
 			NOR = {
-				is_planet_class = pc_city
-				#is_planet_class = pc_relic
-				has_modifier = resort_colony
-				is_under_colonization = yes
+				has_planet_flag = ai_minerals_development
+				has_planet_flag = ai_food_development
+				has_planet_flag = ai_city_development
+				has_planet_flag = ai_arcology_development
+				has_planet_flag = ai_minerals_development_sticky
+				has_planet_flag = ai_food_development_sticky
+				has_planet_flag = ai_city_development_sticky
 			}
 			OR = {
 				num_free_districts = { type = district_generator value > 0 }
@@ -110,65 +171,132 @@ retile_flag_ai_energy_world = {
 				num_free_districts = { type = district_hab_energy value > 0 }
 				num_free_districts = { type = district_rw_generator value > 0 }
 			}
-		}
-		weights = {
-			base = 10000
-			modifier = {
-				mult = 100
-				is_capital = no
+		} }
+		random_owned_planet = {	### Sticky energy world found!!! Designate it...
+			limit = {
 				OR = {
 					has_planet_flag = ai_energy_development_former
-					has_building = building_energy_grid
-					has_building = building_energy_nexus
+					has_planet_flag = ai_energy_development_sticky
 				}
-			}
-			modifier = {
-				mult = 10
-				retile_template_good_energy = yes
-			}
-			modifier = {
-				mult = 0.5
-				is_capital = yes
-			}
-			modifier = {
-				mult = 0.5
-				OR = {
-					retile_template_good_minerals = yes
+				ai_good_energy_world = yes
+				NOR = {
 					has_planet_flag = ai_minerals_development
-					has_planet_flag = ai_minerals_development_former
-					has_building = building_mineral_purification_plant
-					has_building = building_mineral_purification_hub
-				}
-			}
-			modifier = {
-				mult = 0.5
-				OR = {
-					retile_template_good_food = yes
 					has_planet_flag = ai_food_development
-					has_planet_flag = ai_food_development_former
-					has_building = building_food_processing_facility
-					has_building = building_food_processing_center
+					has_planet_flag = ai_city_development
+					has_planet_flag = ai_arcology_development
+					has_planet_flag = ai_minerals_development_sticky
+					has_planet_flag = ai_food_development_sticky
+					has_planet_flag = ai_city_development_sticky
+				}
+				OR = {
+					num_free_districts = { type = district_generator value > 0 }
+					num_free_districts = { type = district_generator_uncapped value > 0 }
+					num_free_districts = { type = district_hab_energy value > 0 }
+					num_free_districts = { type = district_rw_generator value > 0 }
 				}
 			}
-			modifier = {
-				mult = 0.01
-				has_planet_flag = ai_arcology_development
-			}
+			remove_planet_flag = ai_energy_development_former
+			set_planet_flag = ai_energy_development
+			set_planet_flag = ai_energy_development_sticky
 		}
-		set_planet_flag = ai_energy_development
-		remove_planet_flag = ai_energy_development_former
+	} else = {	### No sticky energy world found, search for candidates
+		random_owned_planet = {
+			limit = {
+				NOR = {
+					has_modifier = resort_colony
+					is_under_colonization = yes
+				}
+				OR = {
+					num_free_districts = { type = district_generator value > 0 }
+					num_free_districts = { type = district_generator_uncapped value > 0 }
+					num_free_districts = { type = district_hab_energy value > 0 }
+					num_free_districts = { type = district_rw_generator value > 0 }
+				}
+			}
+			weights = {
+				base = 1
+				modifier = {	### World is good for energy
+					add = 9
+					district_generator_available > 2
+				}
+				modifier = {
+					add = 90
+					district_generator_available > 5
+				}
+				modifier = {
+					add = 900
+					district_generator_available > 8
+				}
+				modifier = {	### Static high weight for uncapped planets.
+					add = 9999
+					num_free_districts = { type = district_generator value < 1 } # must be an uncapped planet
+					ai_good_energy_world = yes
+				}
+				modifier = {	### World is good for minerals
+					add = -4
+					district_mining_available > 2
+				}
+				modifier = {
+					add = -36
+					district_mining_available > 5
+				}
+				modifier = {
+					add = -360
+					district_mining_available > 8
+				}
+				modifier = {	### World is good for food
+					add = -4
+					district_farming_available > 2
+				}
+				modifier = {
+					add = -36
+					district_farming_available > 5
+				}
+				modifier = {
+					add = -360
+					district_farming_available > 8
+				}
+				modifier = {
+					mult = 2	### Former energy world, but wasn't sticky
+					has_planet_flag = ai_energy_development_former
+				}
+				modifier = {
+					mult = 100	### Former sticky world, but somehow isn't sticky now
+					has_planet_flag = ai_energy_development_sticky
+				}
+			}
+			set_planet_flag = ai_energy_development
+			remove_planet_flag = ai_energy_development_former
+		}
 	}
 }
 
 # country scope
 retile_flag_ai_minerals_world = {
-	random_owned_planet = {
-		limit = {
+	every_owned_planet = {
+		limit = { has_planet_flag = ai_minerals_development_former }
+		remove_planet_flag = ai_minerals_development_former
+	}
+	every_owned_planet = {
+		limit = { has_planet_flag = ai_minerals_development }
+		remove_planet_flag = ai_minerals_development
+		set_planet_flag = ai_minerals_development_former
+	}
+	if = {	### Really good world already designated for minerals - no need to change things.
+		limit = { any_owned_planet = {
+			OR = {
+				has_planet_flag = ai_minerals_development_former
+				has_planet_flag = ai_minerals_development_sticky
+			}
+			ai_good_minerals_world = yes
 			NOR = {
-				is_planet_class = pc_city
-				#is_planet_class = pc_relic
-				has_modifier = resort_colony
-				is_under_colonization = yes
+				has_planet_flag = ai_energy_development
+				has_planet_flag = ai_food_development
+				has_planet_flag = ai_city_development
+				has_planet_flag = ai_arcology_development
+				has_planet_flag = ai_energy_development_sticky
+				has_planet_flag = ai_food_development_sticky
+				has_planet_flag = ai_city_development_sticky
 			}
 			OR = {
 				num_free_districts = { type = district_mining value > 0 }
@@ -176,131 +304,204 @@ retile_flag_ai_minerals_world = {
 				num_free_districts = { type = district_hab_mining value > 0 }
 				num_free_districts = { type = district_rw_mining value > 0 }
 			}
-		}
-		weights = {
-			base = 10000
-			modifier = {
-				mult = 100
-				is_capital = no
+		} }
+		random_owned_planet = {	### Sticky minerals world found!!! Designate it...
+			limit = {
 				OR = {
 					has_planet_flag = ai_minerals_development_former
-					has_building = building_mineral_purification_plant
-					has_building = building_mineral_purification_hub
+					has_planet_flag = ai_minerals_development_sticky
 				}
-			}
-			modifier = {
-				mult = 10
-				retile_template_good_minerals = yes
-			}
-			modifier = {
-				mult = 0.5
-				is_capital = yes
-			}
-			modifier = {
-				mult = 0.5
-				OR = {
-					retile_template_good_energy = yes
+				ai_good_minerals_world = yes
+				NOR = {
 					has_planet_flag = ai_energy_development
-					has_planet_flag = ai_energy_development_former
-					has_building = building_energy_grid
-					has_building = building_energy_nexus
-				}
-			}
-			modifier = {
-				mult = 0.5
-				OR = {
-					retile_template_good_food = yes
 					has_planet_flag = ai_food_development
-					has_planet_flag = ai_food_development_former
-					has_building = building_food_processing_facility
-					has_building = building_food_processing_center
+					has_planet_flag = ai_city_development
+					has_planet_flag = ai_arcology_development
+					has_planet_flag = ai_energy_development_sticky
+					has_planet_flag = ai_food_development_sticky
+					has_planet_flag = ai_city_development_sticky
+				}
+				OR = {
+					num_free_districts = { type = district_mining value > 0 }
+					num_free_districts = { type = district_mining_uncapped value > 0 }
+					num_free_districts = { type = district_hab_mining value > 0 }
+					num_free_districts = { type = district_rw_mining value > 0 }
 				}
 			}
-			modifier = {
-				mult = 0.01
-				has_planet_flag = ai_arcology_development
-			}
+			remove_planet_flag = ai_minerals_development_former
+			set_planet_flag = ai_minerals_development
+			set_planet_flag = ai_minerals_development_sticky
 		}
-		set_planet_flag = ai_minerals_development
-		remove_planet_flag = ai_minerals_development_former
+	} else = {	### No sticky minerals world found, search for candidates
+		random_owned_planet = {
+			limit = {
+				NOR = {
+					has_modifier = resort_colony
+					is_under_colonization = yes
+				}
+				OR = {
+					num_free_districts = { type = district_mining value > 0 }
+					num_free_districts = { type = district_mining_uncapped value > 0 }
+					num_free_districts = { type = district_hab_mining value > 0 }
+					num_free_districts = { type = district_rw_mining value > 0 }
+				}
+			}
+			weights = {
+				base = 1
+				modifier = {	### World is good for minerals
+					add = 9
+					district_mining_available > 2
+				}
+				modifier = {
+					add = 90
+					district_mining_available > 5
+				}
+				modifier = {
+					add = 900
+					district_mining_available > 8
+				}
+				modifier = {	### Static high weight for uncapped planets.
+					add = 9999
+					num_free_districts = { type = district_mining value < 1 } # must be an uncapped planet
+					ai_good_minerals_world = yes
+				}
+				modifier = {	### World is good for minerals
+					add = -4
+					district_generator_available > 2
+				}
+				modifier = {
+					add = -36
+					district_generator_available > 5
+				}
+				modifier = {
+					add = -360
+					district_generator_available > 8
+				}
+				modifier = {	### World is good for food
+					add = -4
+					district_farming_available > 2
+				}
+				modifier = {
+					add = -36
+					district_farming_available > 5
+				}
+				modifier = {
+					add = -360
+					district_farming_available > 8
+				}
+				modifier = {
+					mult = 2	### Former minerals world, but wasn't sticky
+					has_planet_flag = ai_minerals_development_former
+				}
+				modifier = {
+					mult = 100	### Former sticky world, but somehow isn't sticky now
+					has_planet_flag = ai_minerals_development_sticky
+				}
+			}
+			set_planet_flag = ai_minerals_development
+			remove_planet_flag = ai_minerals_development_former
+		}
 	}
 }
 
 # country scope
 retile_flag_ai_arcology_world = {
-	random_owned_planet = {
-		limit = {
-			habitable_structure = no
-			NOR = {
-				is_planet_class = pc_city
-				is_planet_class = pc_relic
-				is_planet_class = pc_hive
-				is_planet_class = pc_machine
-				has_modifier = resort_colony
-				has_modifier = slave_colony
-				is_under_colonization = yes
-			}
-		}
-		weights = {
-			base = 10000
-			modifier = {
-				mult = 100
-				is_capital = yes
-			}
-			modifier = {
-				mult = 0.5
-				retile_template_good_food = yes
-			}
-			modifier = {
-				mult = 0.5
-				retile_template_good_minerals = yes
-			}
-			modifier = {
-				mult = 0.5
-				retile_template_good_energy = yes
-			}
-			modifier = {
-				mult = 0.5
-				OR = {
-					has_planet_flag = ai_energy_development_former
-					has_planet_flag = ai_minerals_development_former
-					has_planet_flag = ai_food_development_former
-				}
-			}
-			modifier = {
-				mult = 0.01
-				OR = {
-					has_building = building_food_processing_facility
-					has_building = building_food_processing_center
-					has_building = building_mineral_purification_plant
-					has_building = building_mineral_purification_hub
-					has_building = building_energy_grid
-					has_building = building_energy_nexus
+	IF = {
+		limit = { NOT = { any_owned_planet = { has_planet_flag = ai_arcology_development } } }
+		random_owned_planet = {
+			limit = {
+				habitable_structure = no
+				NOR = {
+					is_planet_class = pc_city
+					is_planet_class = pc_relic
+					is_planet_class = pc_hive
+					is_planet_class = pc_machine
+					has_modifier = resort_colony
+					has_modifier = slave_colony
+					has_modifier = penal_colony
+					is_under_colonization = yes
+					has_planet_flag = ai_energy_development_sticky
+					has_planet_flag = ai_minerals_development_sticky
+					has_planet_flag = ai_food_development_sticky
 					has_planet_flag = ai_energy_development
 					has_planet_flag = ai_minerals_development
 					has_planet_flag = ai_food_development
 				}
 			}
+			weights = {
+				base = 10000
+				modifier = {
+					add = -3000
+					ai_good_minerals_world = yes
+				}
+				modifier = {
+					add = -3000
+					ai_good_food_world = yes
+				}
+				modifier = {
+					add = -3000
+					ai_good_energy_world = yes
+				}
+				modifier = {
+					add = -999
+					OR = {
+						has_planet_flag = ai_energy_development_former
+						has_planet_flag = ai_minerals_development_former
+						has_planet_flag = ai_food_development_former
+					}
+				}
+			}
+			set_planet_flag = ai_arcology_development
 		}
-		set_planet_flag = ai_arcology_development
 	}
 }
 
 # country scope
 retile_flag_ai_city_world = {
+	every_owned_planet = {
+		limit = { has_planet_flag = ai_city_development_former }
+		remove_planet_flag = ai_city_development_former
+	}
+	every_owned_planet = {
+		limit = { has_planet_flag = ai_city_development }
+		remove_planet_flag = ai_city_development
+		set_planet_flag = ai_city_development_former
+	}
 	random_owned_planet = {
 		limit = {
+			free_district_slots > 0
 			NOR = {
 				has_modifier = slave_colony
+				has_modifier = penal_colony
 				is_under_colonization = yes
 				has_planet_flag = ai_city_development	# can have more than 1, eventually
+				AND = {
+					has_planet_flag = ai_energy_development_sticky
+					num_free_districts = { type = district_generator value > 0 }
+					num_free_districts = { type = district_generator_uncapped value > 0 }
+					num_free_districts = { type = district_hab_energy value > 0 }
+					num_free_districts = { type = district_rw_generator value > 0 }
+				}
+				AND = {
+					has_planet_flag = ai_minerals_development_sticky
+					num_free_districts = { type = district_mining value > 0 }
+					num_free_districts = { type = district_mining_uncapped value > 0 }
+					num_free_districts = { type = district_hab_mining value > 0 }
+					num_free_districts = { type = district_rw_mining value > 0 }
+				}
+				AND = {
+					has_planet_flag = ai_food_development_sticky
+					num_free_districts = { type = district_farming value > 0 }
+					num_free_districts = { type = district_farming_uncapped value > 0 }
+					num_free_districts = { type = district_hab_hydroponics value > 0 }
+					num_free_districts = { type = district_rw_farming value > 0 }
+				}
 			}
-			free_district_slots > 0
 		}
 		weights = {
 			base = 10000
 			modifier = {
-				mult = 100
+				add = 10000
 				OR = {
 					is_capital = yes
 					has_planet_flag = ai_arcology_development
@@ -309,40 +510,35 @@ retile_flag_ai_city_world = {
 				}
 			}
 			modifier = {
-				mult = 10
+				add = -3000
 				OR = {
-					retile_urban_development = yes
-					has_planet_flag = ai_city_development_former
-				}
-			}
-			modifier = {
-				mult = 0.3
-				OR = {
-					retile_template_good_energy = yes
 					has_planet_flag = ai_energy_development
-					has_planet_flag = ai_energy_development_former
-					has_building = building_energy_grid
-					has_building = building_energy_nexus
+					has_planet_flag = ai_energy_development_sticky
+					ai_good_energy_world = yes
 				}
 			}
 			modifier = {
-				mult = 0.3
+				add = -3000
 				OR = {
-					retile_template_good_food = yes
-					has_planet_flag = ai_food_development
-					has_planet_flag = ai_food_development_former
-					has_building = building_food_processing_facility
-					has_building = building_food_processing_center
-				}
-			}
-			modifier = {
-				mult = 0.3
-				OR = {
-					retile_template_good_minerals = yes
 					has_planet_flag = ai_minerals_development
+					has_planet_flag = ai_minerals_development_sticky
+					ai_good_minerals_world = yes
+				}
+			}
+			modifier = {
+				add = -3000
+				OR = {
+					has_planet_flag = ai_food_development
+					has_planet_flag = ai_food_development_sticky
+					ai_good_food_world = yes
+				}
+			}
+			modifier = {
+				add = -999
+				OR = {
+					has_planet_flag = ai_energy_development_former
 					has_planet_flag = ai_minerals_development_former
-					has_building = building_mineral_purification_plant
-					has_building = building_mineral_purification_hub
+					has_planet_flag = ai_food_development_former
 				}
 			}
 		}
