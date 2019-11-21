@@ -7,9 +7,7 @@ ap_land_ethic = {
 		}
 	}
 	
-	on_enabled = {
-		custom_tooltip = "land_ethic_tooltip"
-	}
+	on_enabled = { custom_tooltip = "land_ethic_tooltip" }
 	
 	ai_weight = {
 		factor = 5
@@ -32,6 +30,62 @@ ap_land_ethic = {
 		modifier = {
 			factor = 2
 			num_owned_planets > 5
+		}
+	}
+}
+
+# Mega-Specialization
+ap_mega_specialization = {
+	potential = { NOT = { has_ascension_perk = ap_mega_specialization } }
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_ascension_perks_1"
+			num_ascension_perks > 0
+		}
+	}
+	
+	on_enabled = { 
+		custom_tooltip = "mega_specialization_tooltip"
+		hidden_effect = {
+			if = {
+				limit = { 
+					NOT = { has_technology = tech_resort_colonies }
+				}
+				add_research_option = tech_resort_colonies
+				add_tech_progress = {
+					tech = tech_resort_colonies
+					progress = 0.50
+				}
+			}
+			if = {
+				limit = { 
+					NOT = { has_technology = tech_penal_colonies }
+				}
+				add_research_option = tech_penal_colonies
+				add_tech_progress = {
+					tech = tech_penal_colonies
+					progress = 0.50
+				}
+			}
+			if = {
+				limit = { 
+					NOT = { has_technology = tech_slave_colonies }
+				}
+				add_research_option = tech_slave_colonies
+				add_tech_progress = {
+					tech = tech_slave_colonies
+					progress = 0.50
+				}
+			}			
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 2
+			num_owned_planets > 10
 		}
 	}
 }

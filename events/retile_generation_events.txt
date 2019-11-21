@@ -458,27 +458,61 @@ event = {
 				add_modifier = { modifier = "biodiverse" days = -1 }
 				add_modifier = { modifier = "calm_weather" days = -1 }
 			}
-			2 = { 
-				add_modifier = { modifier = "bioscarce" days = -1 }
+			2 = {
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "bioscarce" days = -1 }
+				} else = {
+					add_modifier = { modifier = "biodiverse" days = -1 }
+				}
 			}
 			2 = {
-				add_modifier = { modifier = "bleak_planet" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "bleak_planet" days = -1 }
+				} else = {
+					add_modifier = { modifier = "lush_planet" days = -1 }
+				}
 			}
 			1 = { 
-				add_modifier = { modifier = "bioscarce" days = -1 }
-				add_modifier = { modifier = "bleak_planet" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "bioscarce" days = -1 }
+					add_modifier = { modifier = "bleak_planet" days = -1 }
+				} else = {
+					add_modifier = { modifier = "biodiverse" days = -1 }
+					add_modifier = { modifier = "lush_planet" days = -1 }
+				}
 			}
 			1 = { 
-				add_modifier = { modifier = "bioscarce" days = -1 }
-				add_modifier = { modifier = "hazardous_weather" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "bioscarce" days = -1 }
+					add_modifier = { modifier = "hazardous_weather" days = -1 }
+				} else = {
+					add_modifier = { modifier = "biodiverse" days = -1 }
+					add_modifier = { modifier = "calm_weather" days = -1 }
+				}
 			}
 			1 = { 
-				add_modifier = { modifier = "bioscarce" days = -1 }
-				add_modifier = { modifier = "wild_storms" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "bioscarce" days = -1 }
+					add_modifier = { modifier = "wild_storms" days = -1 }
+				} else = {
+					add_modifier = { modifier = "biodiverse" days = -1 }
+					add_modifier = { modifier = "natural_beauty" days = -1 }
+				}
 			}
 			1 = { 
-				add_modifier = { modifier = "bioscarce" days = -1 }
-				add_modifier = { modifier = "calm_weather" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "bioscarce" days = -1 }
+					add_modifier = { modifier = "calm_weather" days = -1 }
+				} else = {
+					add_modifier = { modifier = "biodiverse" days = -1 }
+					add_modifier = { modifier = "calm_weather" days = -1 }
+				}
 			}
 			2 = {
 				add_modifier = { modifier = "natural_beauty" days = -1 }
@@ -499,38 +533,90 @@ event = {
 				add_modifier = { modifier = "lush_planet" days = -1 }
 			}
 			1 = {
-				add_modifier = { modifier = "calm_weather" days = -1 }
-				add_modifier = { modifier = "bleak_planet" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "calm_weather" days = -1 }
+					add_modifier = { modifier = "bleak_planet" days = -1 }
+				} else = {
+					add_modifier = { modifier = "natural_beauty" days = -1 }
+					add_modifier = { modifier = "lush_planet" days = -1 }
+				}
 			}
 			2 = {
-				add_modifier = { modifier = "hazardous_weather" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "hazardous_weather" days = -1 }
+				}  else = {
+					add_modifier = { modifier = "calm_weather" days = -1 }
+				}
 			}
 			1 = {
-				add_modifier = { modifier = "hazardous_weather" days = -1 }
-				add_modifier = { modifier = "bleak_planet" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "hazardous_weather" days = -1 }
+					add_modifier = { modifier = "bleak_planet" days = -1 }
+				} else = {
+					add_modifier = { modifier = "calm_weather" days = -1 }
+					add_modifier = { modifier = "lush_planet" days = -1 }
+				}
 			}
 			1 = {
-				add_modifier = { modifier = "hazardous_weather" days = -1 }
-				add_modifier = { modifier = "lush_planet" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "hazardous_weather" days = -1 }
+					add_modifier = { modifier = "lush_planet" days = -1 }
+				} else = {
+					add_modifier = { modifier = "calm_weather" days = -1 }
+					add_modifier = { modifier = "lush_planet" days = -1 }
+				}
 			}
 			1 = {
-				add_modifier = { modifier = "hazardous_weather" days = -1 }
-				add_modifier = { modifier = "natural_beauty" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "hazardous_weather" days = -1 }
+					add_modifier = { modifier = "natural_beauty" days = -1 }
+				} else = {
+					add_modifier = { modifier = "calm_weather" days = -1 }
+					add_modifier = { modifier = "natural_beauty" days = -1 }
+				}
 			}
 			2 = {
-				add_modifier = { modifier = "wild_storms" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "wild_storms" days = -1 }
+				} else = {
+					add_modifier = { modifier = "natural_beauty" days = -1 }
+				}
 			}
 			1 = {
-				add_modifier = { modifier = "wild_storms" days = -1 }
-				add_modifier = { modifier = "bleak_planet" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "wild_storms" days = -1 }
+					add_modifier = { modifier = "bleak_planet" days = -1 }
+				} else = {
+					add_modifier = { modifier = "lush_planet" days = -1 }
+					add_modifier = { modifier = "natural_beauty" days = -1 }
+				}
 			}
 			1 = {
-				add_modifier = { modifier = "wild_storms" days = -1 }
-				add_modifier = { modifier = "hazardous_weather" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "wild_storms" days = -1 }
+					add_modifier = { modifier = "hazardous_weather" days = -1 }
+				}  else = {
+					add_modifier = { modifier = "calm_weather" days = -1 }
+					add_modifier = { modifier = "natural_beauty" days = -1 }
+				}
 			}
 			1 = {
-				add_modifier = { modifier = "wild_storms" days = -1 }
-				add_modifier = { modifier = "natural_beauty" days = -1 }
+				if = {
+					limit = { NOT = { owner = { has_ascension_perk = ap_mastery_of_nature } } }
+					add_modifier = { modifier = "wild_storms" days = -1 }
+					add_modifier = { modifier = "natural_beauty" days = -1 }
+				}  else = {
+					add_modifier = { modifier = "calm_weather" days = -1 }
+					add_modifier = { modifier = "natural_beauty" days = -1 }
+				}
 			}
 		}
 	}
