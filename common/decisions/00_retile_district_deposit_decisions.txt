@@ -235,6 +235,28 @@ decision_retile_deposit_stronghold = {
 		free_district_slots > 0
 		hidden_trigger = {
 			retile_ready = yes
+			OR = {
+				owner = { is_ai = no }
+				owner = { # is_ai = yes
+					AND = {
+						has_monthly_income = { resource = alloys value > 25 }
+						OR = {
+							country_uses_goods = no
+							has_monthly_income = { resource = consumer_goods value > 15 }
+						}
+						OR = {
+							country_uses_food = no
+							has_monthly_income = { resource = food value > 15 }
+						}
+						has_monthly_income = { resource = minerals value < 50 }
+						has_monthly_income = { resource = energy value < 50 }
+						OR = {
+							is_plantoid_empire = no
+							habitability = { who = owner.owner_species value > 0.7 }
+						}
+					}
+				}
+			}
 		}
 	}
 
