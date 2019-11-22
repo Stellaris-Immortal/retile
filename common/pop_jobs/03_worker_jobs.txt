@@ -703,7 +703,7 @@ farmer = {
 	resources = {
 		category = planet_farmers
 		produces = {
-			trigger = { pop = { not = { has_trait = trait_plantoid } } }
+			trigger = { not = { has_trait = trait_plantoid } }
 			food = 4
 		}
 		produces = {
@@ -721,7 +721,7 @@ farmer = {
 			food = 8
 		}
 		produces = {
-			trigger = { pop = { has_trait = trait_plantoid_fruiting } }
+			trigger = { has_trait = trait_plantoid_fruiting }
 			food = 2
 		}
 		produces = {
@@ -1007,18 +1007,11 @@ priest = {
 		}
 		modifier = {
 			factor = 1.1
-			OR = {
-				has_trait = trait_robot_propaganda_machines
-				has_trait = trait_traditional
-			}		
+			has_trait = trait_robot_propaganda_machines	
 		}
 		modifier = {
 			factor = 1.2
 			has_ethic = ethic_spiritualist
-		}
-		modifier = {
-			factor = 0.5
-			has_trait = trait_quarrelsome
 		}		
 		modifier = {
 			factor = 0.1
