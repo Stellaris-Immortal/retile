@@ -261,7 +261,10 @@ living_standard_shared_burden = {
 	
 	potential = {
 		exists = from
-		from = { has_valid_civic = civic_shared_burden }
+		OR = {
+			from = { has_valid_civic = civic_shared_burden }
+			from = { has_valid_civic = civic_socialist }
+		}
 	}
 	
 	triggered_pop_modifier = {
@@ -342,15 +345,6 @@ living_standard_utopian = {
 	
 	allow = {
 		hidden_trigger = { exists = from }
-		custom_tooltip = {
-			fail_text = empire_not_egalitarian
-			from = {
-				OR = {
-					has_ethic = ethic_egalitarian
-					has_ethic = ethic_fanatic_egalitarian
-				}
-			}
-		}
 		NOR = {
 			custom_tooltip = {
 				has_citizenship_type = { country = from type = citizenship_slavery }
@@ -438,6 +432,7 @@ living_standard_academic_privilege = {
 		exists = from
 		from = { is_gestalt = no }
 		NOT = { from = { has_valid_civic = civic_shared_burden } }
+		NOT = { from = { has_valid_civic = civic_socialist } }
 		NOR = {
 			has_trait = trait_hive_mind
 			has_trait = trait_machine_unit
@@ -447,15 +442,6 @@ living_standard_academic_privilege = {
 	
 	allow = {
 		hidden_trigger = { exists = from }
-		custom_tooltip = {
-			fail_text = empire_not_materialist
-			from = {
-				OR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
-				}
-			}
-		}
 		NOR = {
 			custom_tooltip = {
 				has_citizenship_type = { country = from type = citizenship_slavery }
@@ -716,6 +702,7 @@ living_standard_stratified = {
 		exists = from
 		from = { is_gestalt = no }
 		NOT = { from = { has_valid_civic = civic_shared_burden } }
+		NOT = { from = { has_valid_civic = civic_socialist } }
 		NOR = {
 			has_trait = trait_hive_mind
 			has_trait = trait_machine_unit
@@ -725,10 +712,6 @@ living_standard_stratified = {
 	
 	allow = {
 		hidden_trigger = { exists = from }
-		custom_tooltip = {
-			fail_text = empire_not_authoritarian
-			from = { is_authoritarian = yes }
-		}
 		NOR = {
 			custom_tooltip = {
 				AND = {
@@ -780,6 +763,7 @@ living_standard_subsistence = {
 	potential = {	
 		exists = from
 		NOT = { from = { has_valid_civic = civic_shared_burden } }
+		NOT = { from = { has_valid_civic = civic_socialist } }
 		OR = {
 			from = { is_gestalt = no }
 			has_citizenship_type = { type = citizenship_slavery country = from }

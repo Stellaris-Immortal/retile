@@ -217,24 +217,6 @@ civic_technocracy = {
 	
 }
 
-civic_feudal_realm = {
-	potential = {
-		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-		authority = { NOT = { value = auth_corporate } }
-	}
-	possible = {
-		authority = {
-			value = auth_imperial
-		}
-	}
-	random_weight = { base = 5 }
-	
-	description = "civic_tooltip_feudal_realm_effects"
-	modifier = {
-		country_subject_power_penalty_mult = -0.5
-	}
-}
-
 civic_police_state = {
 	description = "civic_tooltip_police_state_effects"
 	potential = {
@@ -626,50 +608,6 @@ civic_mechanists = {
 
 	description = "civic_tooltip_mechanists_effects"
 	#used when starting a new game to give robots (see game_start.11) and techs (see game_start.8)
-}
-
-civic_shared_burden = { 
-	playable = { host_has_dlc = "Megacorp" }
-	potential = {
-		authority = { 
-			NOR = { 
-				value = auth_corporate 
-				value = auth_hive_mind
-				value = auth_machine_intelligence
-			}
-		}
-	}
-	possible = {
-		ethics = {
-			OR = {
-				value = ethic_egalitarian
-				value = ethic_fanatic_egalitarian
-			}
-			NOR = {
-				text = civic_tooltip_not_xenophobe
-				value = ethic_xenophobe
-				value = ethic_fanatic_xenophobe
-			}
-		}
-		civics = {
-			NOR = {
-				value = civic_merchant_guilds
-				value = civic_exalted_priesthood
-				value = civic_aristocratic_elite
-				value = civic_byzantine_bureaucracy
-				value = civic_technocracy
-			}
-		}		
-	}
-	modifier = {
-		planet_stability_add = 10
-		planet_jobs_produces_mult = 0.10
-	}		
-	random_weight = {
-		base = 1 # Should be fairly rare
-	}
-
-	description = civic_tooltip_shared_burden_effects
 }
 
 civic_syncretic_evolution = {

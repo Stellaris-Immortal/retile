@@ -1259,10 +1259,6 @@ leader_enhancement = {
 			leaders_cost_mult = 0.5
 		}
 		
-		valid = {
-			NOT = { has_ethic = "ethic_fanatic_egalitarian" }
-		}
-		
 		AI_weight = {
 			factor = 2
 		}
@@ -1566,11 +1562,7 @@ artificial_intelligence_policy = {
 		name = "ai_outlawed"
 
 		valid = {
-			NOR = {
-				has_ethic = "ethic_materialist"
-				has_ethic = "ethic_fanatic_materialist"
-				has_country_flag = synthetic_empire
-			}
+			has_country_flag = synthetic_empire
 		}
 		
 		policy_flags = {
@@ -1631,10 +1623,6 @@ artificial_intelligence_policy = {
 		name = "ai_full_rights"
 
 		valid = {
-			NOR = {
-				has_ethic = "ethic_spiritualist"
-				has_ethic = "ethic_fanatic_spiritualist"
-			}
 			NOT = { has_policy_flag = robots_outlawed }
 		}
 		
@@ -2048,8 +2036,6 @@ purge = {
 			NOR = { 
 				is_subject_type = signatory
 				has_ethic = ethic_gestalt_consciousness
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
 			}
 			NOT = { has_valid_civic = "civic_fanatic_purifiers" }
 		}
@@ -2073,12 +2059,7 @@ purge = {
 		modifier = {}
 		
 		valid = {		
-			NOT = { is_subject_type = signatory }
-			OR = {
-				has_ethic = ethic_gestalt_consciousness
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}			
+			NOT = { is_subject_type = signatory }		
 		}
 		
 		AI_weight = {
