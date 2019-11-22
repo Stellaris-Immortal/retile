@@ -839,6 +839,7 @@ ap_galactic_contender = {
 ap_technological_ascendancy = {
 	modifier = {
 		all_technology_research_speed = 0.1
+		num_tech_alternatives_add = 2
 	}
 	
 	potential = {
@@ -868,7 +869,8 @@ ap_one_vision = {
 	modifier = {
 		planet_crime_add = -10
 		country_unity_produces_mult = 0.10
-		pop_government_ethic_attraction = 0.50
+		local_trade_protection_add = 5
+		pop_government_ethic_attraction = 0.25
 	}
 	
 	potential = {
@@ -921,39 +923,20 @@ ap_consecrated_worlds = {
 }
 
 ap_imperial_prerogative = {
-	modifier = { }
-	
-	potential = {
-		NOT = { has_ascension_perk = ap_imperial_prerogative }
-		NOT = { has_authority = auth_corporate }
-		always = no
-	}
-	
-	ai_weight = {
-		factor = 10
-		modifier = {
-			factor = 2
-			OR = { 
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}
-		}
-	}
-	
-	on_enabled = {
-		run_ai_strategic_data = yes
-	}
+	modifier = { country_admin_cap_add = 32 }
+	potential = { always = no }
+	ai_weight = { factor = 0 }
+	on_enabled = { run_ai_strategic_data = yes }
 }
 
 ap_executive_vigor = {
 	modifier = {
 		edicts_cost_mult = -0.25
 		edict_length_mult = 0.25
+		pop_factions_produces_mult = 0.5
 	}
 	
-	potential = {
-		NOT = { has_ascension_perk = ap_executive_vigor }
-	}
+	potential = { NOT = { has_ascension_perk = ap_executive_vigor } }
 	
 	ai_weight = {
 		factor = 10
@@ -971,6 +954,7 @@ ap_transcendent_learning = {
 	modifier = {
 		leaders_upkeep_mult = -0.25
 		species_leader_exp_gain = 1
+		country_leader_pool_size = 2
 	}
 	
 	potential = {
@@ -993,6 +977,7 @@ ap_transcendent_learning = {
 ap_shared_destiny = {
 	modifier = {
 		subject_integration_influence_cost_mult = -0.5
+		country_subject_power_penalty_mult = -0.5
 		country_subject_trust_cap_add = 100
 	}
 	
