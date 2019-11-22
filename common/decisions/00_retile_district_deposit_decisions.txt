@@ -209,7 +209,7 @@ decision_retile_deposit_precinct_remove = {
 			weight = 100
 			planet_crime < 1
 		}
-	}	
+	}
 }
 
 ##################################################### Military Stronghold
@@ -246,6 +246,13 @@ decision_retile_deposit_stronghold = {
 	ai_weight = {
 		weight = 0
 		modifier = {
+			weight = 1000
+			AND = {
+				num_pops > 5
+				NOT = { has_deposit = retile_deposit_stronghold }
+			}
+		}
+		modifier = {
 			weight = 500
 			owner = { used_naval_capacity_percent > 1.0 }
 		}
@@ -266,7 +273,20 @@ decision_retile_deposit_stronghold_remove = {
 	
 	ai_weight = {
 		weight = 0
-	}	
+		modifier = {
+			weight = 100
+			owner = { AND = {
+				used_naval_capacity_percent < 0.5
+				owner = { OR = {
+					has_monthly_income = { resource = alloys value < 25 }
+					has_monthly_income = { resource = consumer_goods value < 0 }
+					has_monthly_income = { resource = food value < 0 }
+					has_monthly_income = { resource = minerals value < 0 }
+					has_monthly_income = { resource = energy value < 100 }
+				} }
+			} }
+		}
+	}
 }
 
 ##################################################### Nature Preserve
@@ -315,7 +335,7 @@ decision_retile_deposit_preserve = {
 			free_amenities > 700
 		}
 		modifier = {
-			weight = 1100
+			weight = 1200
 			free_amenities > 900
 		}
 	}	
@@ -674,6 +694,9 @@ decision_retile_deposit_alignment = {
 				has_deposit = retile_deposit_alignment
 			} } } }
 			add_deposit = retile_deposit_alignment
+			hidden_effect = {
+				planet_event = { id = akx.10000 }
+			}
 		}
 	}
 	

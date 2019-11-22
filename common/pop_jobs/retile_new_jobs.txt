@@ -1,0 +1,463 @@
+# Ranger Job
+ranger = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_stronghold
+	clothes_texture_index = 5
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = ranger
+			retile_job_seeking = yes
+		}
+		battle_thrall_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_custodians
+		produces = {
+			trigger = { owner = { has_civic = civic_environmentalist } }
+			unity = 3
+		}
+		produces = {
+			society_research = 2.5
+		}
+	}
+	
+	pop_modifier = {
+		pop_defense_armies_add = 6
+	}
+	
+	planet_modifier = {
+		planet_crime_add = -35
+		planet_amenities_add = -30
+	}
+	
+	country_modifier = {
+		country_naval_cap_add = 10
+	}
+	
+	# He Enforcers
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_police_state }
+		}
+		modifier = {
+			planet_stability_add = 1
+		}		
+	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_common_law }
+		}
+		pop_defense_armies_add = -4
+	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_private_police }
+		}
+		pop_defense_armies_add = -4
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_private_police }
+		}
+		trade_value_add = 10
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		planet_crime_add = -15
+		planet_amenities_add = 25
+	}
+
+	# He Soldiers
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_citizen_service }
+		}
+		modifier = {
+			planet_stability_add = 1
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner 
+			owner = { has_technology = "tech_ground_defense_planning" }
+		}
+		modifier = {
+			country_naval_cap_add = 5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = "tech_ground_defense_planning" }
+		}
+		modifier = {
+			planet_amenities_add = 10
+		}
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner 
+			owner = { has_technology = "tech_global_defense_grid" }
+		}
+		modifier = {
+			country_naval_cap_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = "tech_global_defense_grid" }
+		}
+		modifier = {
+			planet_amenities_add = 10
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_global_defense_grid }
+		}
+		pop_defense_armies_add = 2
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_mind_over_matter }
+		}
+		modifier = {
+			country_naval_cap_add = 5
+		}		
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_mind_over_matter }
+		}
+		modifier = {
+			planet_crime_add = -10
+			planet_stability_add = 2
+			planet_amenities_add = 10
+		}		
+	}
+	
+	# He Custodians
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_industrial_metabolism } }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_industrial_symbiosis } }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_civic = civic_environmentalist } }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_industrial_ecology } }
+		modifier = { planet_amenities_add = -5 }
+	}
+
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 5
+			has_job = ranger
+		}
+		modifier = {
+			factor = 0.02
+			has_citizenship_rights = no	
+			NOT = { has_trait = trait_mechanical }
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_resilient
+		}			
+		modifier = {
+			factor = 2
+			has_trait = trait_very_strong
+		}	
+		modifier = {
+			factor = 1.5
+			has_trait = trait_strong
+		}
+		modifier = {
+			factor = 10
+			is_enslaved = yes
+			has_slavery_type = { type = slavery_military }
+		}			
+		modifier = {
+			factor = 0.50
+			has_trait = trait_weak
+		}
+		modifier = {
+			factor = 0.01
+			can_take_servant_job = yes
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_cybernetic
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_presapient_earthbound
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_limited_regeneration
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_presapient_proles
+		}
+	}
+}
+
+# Tax Collector
+tax_collector = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_residence
+	clothes_texture_index = 2
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = tax_collector
+			retile_job_seeking = yes
+		}
+		complex_specialist_job_check_trigger = yes
+	}
+
+	planet_modifier = {
+		planet_crime_add = -5
+		trade_value_add = 25
+		planet_amenities_add = 80
+	}
+	triggered_planet_modifier = {
+		potential = { has_trait = trait_thrifty }
+		modifier = { trade_value_add = 6.25 }
+	}
+	triggered_planet_modifier = {
+		potential = { has_trait = trait_nuumismatic_administration }
+		modifier = { trade_value_add = 6.25 }
+	}
+	
+	resources = {
+		category = planet_researchers
+		produces = {
+			trigger = { owner = { has_authority = auth_corporate } }
+			unity = 3
+		}
+	}
+
+	############################################################ Commerce Buildings
+
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_commercial_zone } }
+		modifier = {
+			trade_value_add = 6.25
+			planet_amenities_add = 15
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_commercial_zone }
+			has_trait = trait_thrifty
+		}
+		modifier = { trade_value_add = 1.5625 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_commercial_zone }
+			has_trait = trait_nuumismatic_administration
+		}
+		modifier = { trade_value_add = 1.5625 }
+	}
+
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_commercial_megaplex } }
+		modifier = {
+			trade_value_add = 12.5
+			planet_amenities_add = 37.5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_commercial_megaplex }
+			has_trait = trait_thrifty
+		}
+		modifier = { trade_value_add = 3.125 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_commercial_megaplex }
+			has_trait = trait_nuumismatic_administration
+		}
+		modifier = { trade_value_add = 3.125 }
+	}
+
+	############################################################ Clerk Job Weight
+
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.01
+			is_enslaved = yes
+			can_take_servant_job = no
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_trait = trait_thrifty
+				has_trait = trait_nuumismatic_administration
+			}	
+		}
+		modifier = {
+			factor = 0.01
+			can_take_servant_job = yes
+		}	
+	}
+}
+
+# Investor
+investor = {
+	category = ruler
+	condition_string = RULER_JOB_TRIGGER
+	building_icon = building_residence
+	clothes_texture_index = 1
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = investor
+			retile_job_seeking = yes
+		}
+		complex_specialist_job_check_trigger = yes
+	}
+
+	planet_modifier = {
+		planet_pops_upkeep_mult = 0.10
+		trade_value_add = 30
+		planet_amenities_add = 90
+	}
+	triggered_planet_modifier = {
+		potential = { has_trait = trait_thrifty }
+		modifier = { trade_value_add = 7.5 }
+	}
+	triggered_planet_modifier = {
+		potential = { has_trait = trait_nuumismatic_administration }
+		modifier = { trade_value_add = 7.5 }
+	}
+	
+	resources = {
+		category = planet_researchers
+		produces = {
+			trigger = { owner = { has_authority = auth_corporate } }
+			unity = 3
+		}
+	}
+
+	############################################################ Commerce Buildings
+
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_commercial_zone } }
+		modifier = {
+			trade_value_add = 7.5
+			planet_amenities_add = 22.5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_commercial_zone }
+			has_trait = trait_thrifty
+		}
+		modifier = { trade_value_add = 1.875 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_commercial_zone }
+			has_trait = trait_nuumismatic_administration
+		}
+		modifier = { trade_value_add = 1.875 }
+	}
+
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_commercial_megaplex } }
+		modifier = {
+			trade_value_add = 15
+			planet_amenities_add = 45
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_commercial_megaplex }
+			has_trait = trait_thrifty
+		}
+		modifier = { trade_value_add = 3.75 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_commercial_megaplex }
+			has_trait = trait_nuumismatic_administration
+		}
+		modifier = { trade_value_add = 3.75 }
+	}
+
+	############################################################ Clerk Job Weight
+
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.01
+			is_enslaved = yes
+			can_take_servant_job = no
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_trait = trait_thrifty
+				has_trait = trait_nuumismatic_administration
+			}	
+		}
+		modifier = {
+			factor = 0.01
+			can_take_servant_job = yes
+		}	
+	}
+}

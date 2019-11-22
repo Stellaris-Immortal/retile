@@ -1,5 +1,8 @@
 ﻿l_english:
 # Species Traits
+ trait_natural_philosopher:0 "Natural Philosopher"
+ trait_natural_philosopher_desc:0 "§LCertain aspects of this species' cognition makes it predisposed to observing and reflecting on its life.§!"
+ trait_natural_philosopher_effect:0 "Free pops produce §G+1§! £unity£ Unity"
  trait_plantoid:0 "Plantoid"
  trait_plantoid_desc:0 "TODO"
  TRAIT_PLANTOID_EFFECT:0 "No §YFood§! upkeep on §YPops§!.\n§YHabitability§! §R-40%§! when not on §GHomeworld§!.\n§YFarmers§! and §YCustodians§! produce §YHabitability§! and §YPop Growth Speed§! instead of §YFood§!."
@@ -13,8 +16,8 @@
  trait_plantoid_thorned:0 "Thorned"
  trait_plantoid_thorned_desc:0 "TODO"
  trait_prodigy:0 "Prodigy"
- trait_prodigy_desc:0 "Free pops produce §G+1§! £engineering_research£ Engineering, §G+1§! £physics_research£ Physics, §G+1§! £society_research£ Society"
- TRAIT_PRODIGY_EFFECT:0 "§YWorkers§! produce §G+3§! £science£ Research"
+ trait_prodigy_desc:0 "TODO"
+ TRAIT_PRODIGY_EFFECT:0 "Free pops produce §G+1§! £unity£ Unity and §G+1§! £science£ Research"
  trait_telluric:0 "Telluric"
  trait_telluric_desc:0 "TODO"
  trait_very_weak:0 "Very Weak"
@@ -26,6 +29,23 @@
  civic_tooltip_philosopher_king_effects:0 "Edict Length: §G+25%§!\n§YLeaders do not gain negative traits on level up.§!"
  civic_tooltip_environmentalist_effects:0 "Custodian produce §G+3§! £unity£ §YUnity§!\nCustodians generate an additional §G-10§! £amenities£ §YPollution§!"
  civic_tooltip_mining_guilds_effects:0 "£district£ §GMining Districts§! provide §G+1§G £housing£ §YHousing§! and §G+1§! £job_foundry£ §YEngineer Job§!"
+ civic_capitalist:0 "All for One"
+ civic_capitalist_desc:0 "All property in this society is owned by a few elites, who only allow it to be used for payment. Otherwise the property is left abandoned or simply destroyed, even if it is still useful."
+ civic_tooltip_capitalist_effects:0 "Market Trade Fee: -10%\nReplaces Clerk Jobs with Investor Jobs, which produce more Trade by increasing Population Upkeep\nUtopian Abundance Living Standard cannot be used."
+ civic_socialist:0 "One for All"
+ civic_socialist_desc:0 "All property in this society is owned by the individuals who use it and nobody is allowed to own more than they can use."
+ civic_tooltip_socialist_effects:0 "Planetary Pollution: -5%\nEmpire Trade: -10%\nSpecialist and Worker Production: +10%\nShared Burden Living Standard can be used, but Stratified Living Standard cannot."
+# Ascension Perks
+ ap_land_ethic:0 "Land Ethic"
+ land_ethic_tooltip:0 "Replaces £job_soldier£ §YSoldier§! Jobs with £job_ranger£ §YRanger§! Jobs on £building£ §YCapital Buildings§!\n£job_ranger£ §YRangers§! reduce £crime£ §YCrime§! and £amenities£ §YPollution§!, increase §YNaval Capacity§!, and provide §YDefensive Armies§!"
+ ap_land_ethic_desc:0 "A thing is right when it tends to preserve the integrity, stability, and beauty of the biotic community. It is wrong when it tends otherwise."
+ ap_mega_specialization:0 "Mega-Specialization"
+ ap_mega_specialization_desc:0 "Dedicate an entire planet for a singular purpose."
+ mega_specialization_tooltip:0 "Research options gained:\n£society_research£§Y$tech_resort_colonies$§!\n£society_research£§Y$tech_penal_colonies$§!\n£society_research£§Y$tech_slave_colonies$§!\nResort Colonies, Penal Colonies, and Slave Colonies provide additional bonuses."
+ requires_technology_tech_starbase_5:0 "$TRIGGER_FAIL$Requires the £engineering£ §Y$tech_starbase_5$§! technology."
+ describe_decision_mastery_of_nature:0 "Terraforming generates more desirable worlds."
+ requires_mastery_of_nature:0 "$TRIGGER_FAIL$Requires the §Y$ap_master_of_nature$§! Ascension Perk."
+ world_shaper_tooltip:0 "Allows us to terraform worlds into §YGaia Planets§!.\n§YTerrestial Engineering§! decision can remove additional negative planetary modifiers."
 # Policies
  policy_environmental:0 "Environmental Policy"
  policy_environmental_desc:0 "TODO"
@@ -99,7 +119,7 @@
  criminal_private_police_desc:0 "Enforcers produce 10 Trade Value and 2 defensive armies."
  criminal_military_police:0 "Military Police"
  criminal_military_police_name:0 "Military Police"
- criminal_military_police_desc:0 "Soldiers replace Enforcers and reduce Crime by 15."
+ criminal_military_police_desc:0 "Soldiers replace Enforcers and reduce Crime by 25."
  trade_policy_influence:0 "Influence Marketing"
  trade_policy_influence_name:0 "Influence Marketing"
  trade_policy_influence_desc:0 "Each collected £trade_value£ §YTrade Value§! earns us £energy£ §Y0.5§!"
@@ -205,9 +225,14 @@
  col_manufacturing_arcology:0 "Manufacturing Arcology"
  col_academic_arcology:0 "Academic Arcology"
  # Economic Categories
- planet_criminals:0 "Criminals"
- planet_colonists:0 "Colonists"
- planet_strategos:0 "Strategos"
+ planet_criminals:0 "Criminal Jobs"
+ planet_colonists:0 "Colonist Jobs"
+ planet_strategos:0 "Strategos Jobs"
+ planet_rangers:0 "Ranger Jobs"
+ planet_custodians:0 "Custodian Jobs"
+ planet_beauracrats:0 "Bureaucrat Jobs"
+ planet_diplomats:0 "Diplomat Jobs"
+ planet_overseers"0 "Overseer Jobs"
  # Jobs
  job_diplomat:0 "Diplomat"
  job_diplomat_plural:0 "Diplomats"
@@ -225,9 +250,6 @@
  job_custodian_effect_desc:0 "£job_custodian£ $job_custodian_plural$ reduce £amenities£ §YPollution§! and produce §G+2.5§! £society_research£ §Y$society_research$§!"
  mod_job_custodian_add:0 "Custodian Jobs"
  mod_planet_custodians_produces_mult:0 "Custodian Production"
- planet_custodians:0 "Custodian Jobs"
- planet_beauracrats:0 "Bureaucrat Jobs"
- planet_diplomats:0 "Diplomat Jobs"
  job_bureaucrat:0 "Bureaucrat"
  job_bureaucrat_plural:0 "Bureaucrats"
  job_bureaucrat_desc:0 "TODO Bureaucrat Description"
@@ -238,6 +260,18 @@
  job_overseer_desc:0 "TODO: Overseer Description" 
  job_overseer_effect_desc:0 "TODO: Overseer Effect Description" 
  mod_job_overseer_add:0 "Overseer Jobs"
+ job_ranger:0 "Ranger"
+ job_ranger_plural:0 "Rangers"
+ job_ranger_desc:0 "These outdoor enthusiasts are one part ecologist, one part law enforcement, and one part tour guide."
+ mod_job_ranger_add:0 "Ranger Jobs"
+ job_tax_collector:0 "Tax Collector"
+ job_tax_collector_plural:0 "Tax Collectors"
+ job_tax_collector_desc:0 "TODO"
+ mod_tax_collector_add:0 "Tax Collector Jobs"
+ job_investor:0 "Investor"
+ job_investor_plural:0 "Investors"
+ job_investor_desc:0 "TODO"
+ mod_investor_add:0 "Investor Jobs"
  # Buildings
  building_recycling_center:0 "Recycling Centers"
  building_solar_panels:0 "Photovoltaic Modules"
@@ -289,7 +323,7 @@
  retile_syndicate_outreach_office_effect:0 "Criminals produce §G+2.5§! £unity §YUnity§!, and §R+7.5§! £amenities£ §YPollution§!."
  retile_illicit_research_labs_effect:0 "Criminals produce §G+2.5§! £science£ §YResearch§!, and §R+7.5§! £amenities£ §YPollution§!."
  retile_smuggling_rings_effect:0 "Criminals produce §G+10§! £trade_value£ §YTrade Value§!, and §R+30§! £amenities£ §YPollution§!."
- 
+# Gestalt Buildings
  building_hive_colony:0 "Hive Colony"
  building_hive_colony_desc:0 "TODO: description"
  building_hive_system_capital:0 "Hive Core"
@@ -301,9 +335,10 @@
  building_maintenance_depot_2:0 "Mainentance Complexes"
  building_maintenance_depot_2_desc:0 "TODO: description"
  retile_requires_urban_district:0 "$TRIGGER_FAIL$§RPlanet does not have any £district£ §YUrban Districts§!"
+# Fallen Empire Buildings
  retile_fe_building_limit:0 "$TRIGGER_FAIL$§RCan't build more than one £building£ §YAscended§R building per planet§!"
  retile_fe_building_limit_fab:0 "$TRIGGER_FAIL$§RCan't build more than one £building£ §Y$building_dimensional_fabricator$§R per empire§!"
- # Districts
+# Districts
  job_farmer_plantoid_effect_desc:0 "Plantoid Farmers produce §YHabitability§! §G+20§!, §YPop Growth Speed§! §G+5§!, and §R+30§! £amenities£ §YPollution§!"
  district_digsite:0 "Ancient Dig Site"
  district_digsite_arcology:0 "Dig Site Arcology"
@@ -321,7 +356,11 @@
  district_digsite_arcology_desc:0 "TODO: description"
  district_research_arcology:0 "Research Arcology"
  district_research_arcology_desc:0 "TODO: description"
- # Special District Decisions
+ district_resort:0 "Resort District"
+ district_resort_desc:0 "TODO: description"
+ district_prison:0 "Prison District"
+ district_prison_desc:0 "TODO: description"
+# Special District Decisions
  decision_retile_deposit_precinct:0 "Precinct Houses"
  decision_retile_deposit_precinct_desc:0 "§YUnlimited§!\nTODO: Description"
  decision_retile_deposit_precinct_effects:0 "+2 £housing£ Housing\n+2 £job_enforcer£ Enforcer Jobs\nUpkeep: 5 £energy£, -1 £district£ district"
@@ -406,7 +445,7 @@
  retile_deposit_alignment_desc:0 "TODO"
  retile_deposit_bioreactor:0 "Bioreactor"
  retile_deposit_bioreactor_desc:0 "Replaces Farmer Jobs with Technician Jobs on Agricultural Districts."
- # Planetary Decisions
+# Planetary Decisions
  decision_terrestrial_engineering:0 "Terrestrial Engineering"
  decision_terrestrial_engineering_desc:0 "I don't want to protect the environment. I want to create a world where the environment doesn't need protection."
  decision_terrestrial_engineering_tooltip:0 "Modifies Planetary Features"
@@ -529,6 +568,8 @@
  recently_terraformed_2_desc:0 "The near total recreation of this world's biosphere has left it vulnerable to further disruption."
  recently_terraformed_3:0 "Recently Terraformed"
  recently_terraformed_3_desc:0 "The artificial environment left behind from this world's recent reconfiguration should be pleasant for its inhabitants."
+ stabalized_tectonics:0 "Stabalized Techtonics"
+ stabalized_tectonics_desc:0 "TODO"
 # Pollution Modifiers
  drought:0 "Drought"
  drought_desc:0 "TODO"
@@ -597,11 +638,11 @@
  tech_industrial_ecology:0 "Industrial Ecology"
  tech_industrial_ecology_effect:0 "Custodians generate an additional §G-5§! £amenities£ §YPollution§!"
  tech_industrial_ecology_desc:0 "TODO"
- # Events
+# Events
  pirate.100.name:0 "Parlay Broken"
  pirate.100.desc:0 "This act of aggression has sent a clear message to any remaining pirates that the parlay has been broken and hostilities have returned."
  pirate.100.a:0 "They must be dealt with."
- # Ship Sections
+# Ship Sections
  TECH_UNLOCK_CORVETTE_HULLS_1_TITLE: "Unlocks §HCorvette§! Sections: §YArtillery Ship§!"
  TECH_UNLOCK_CORVETTE_HULLS_1_DESC: "TODO: Description"
  TECH_UNLOCK_CORVETTE_HULLS_2_TITLE: "Unlocks §HCorvette§! Sections: §YCarrier Ship§!"
@@ -654,5 +695,5 @@
  BATTERY_MILITARY_STATION_SECTION:0 "Battery Platform"
  TECH_UNLOCK_PLATFORM_HULLS_1_TITLE: "Unlocks §HDefense Platform§! Sections: §YBarrage Platform§!, §YCurtain Platform§!, §YSupport Platform§!, §YBattery Platform§!, §YDevastator Platform§!"
  TECH_UNLOCK_PLATFORM_HULLS_1_DESC: "TODO: Description"
- # Branch Offices
+# Branch Offices
  requires_recipient_not_self:0 "$TRIGGER_FAIL$§RCan't establish §YBranch Offices§R on our own planets!§!"
