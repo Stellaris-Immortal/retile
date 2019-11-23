@@ -364,11 +364,11 @@ investor = {
 	}
 
 	possible = {
+		ruler_job_check_trigger = yes
 		or = {
 			has_job = investor
 			retile_job_seeking = yes
 		}
-		complex_specialist_job_check_trigger = yes
 	}
 
 	planet_modifier = {
@@ -458,6 +458,72 @@ investor = {
 		modifier = {
 			factor = 0.01
 			can_take_servant_job = yes
+		}	
+	}
+}
+
+# Bureaucrat
+bureaucrat = {
+	category = specialist
+	condition_string = RULER_SPECIALIST_TRIGGER
+	building_icon = building_residence
+	clothes_texture_index = 2
+		
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		complex_specialist_job_check_trigger = yes
+		or = {
+			has_job = bureaucrat
+			retile_job_seeking = yes
+		}
+	}
+	
+	country_modifier = {
+		country_admin_cap_add = 12
+	}
+	
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 5
+			has_job = bureaucrat
+		}		
+		modifier = {
+			factor = 0.1
+			has_citizenship_rights = no	
+			NOT = { has_trait = trait_mechanical }	
+		}		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_robot_propaganda_machines
+		}
+		modifier = {
+			factor = 1.25
+			has_trait = trait_brainslug
+		}
+		modifier = {
+			factor = 1.125
+			has_trait = trait_presapient_natural_intellectuals
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_robust
+		}
+		# crisis purge
+		modifier = {
+			factor = 0.01
+			planet.controller = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+				}
+			}
 		}	
 	}
 }

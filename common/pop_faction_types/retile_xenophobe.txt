@@ -350,9 +350,9 @@ isolationist = {
 	
 	# Hates No Pop Controls
 	demand = {
-		title = "XENOPHOBE_NO_POP_CONTROLS"
-		unfulfilled_title = "XENOPHOBE_NO_NO_POP_CONTROLS"
-		desc = "XENOPHOBE_POP_NO_CONTROLS_DESC"
+		title = "XENOPHOBE_NO_POP_CONTROL"
+		unfulfilled_title = "XENOPHOBE_NO_NO_POP_CONTROL"
+		desc = "XENOPHOBE_POP_NO_CONTROL_DESC"
 		
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
@@ -360,7 +360,7 @@ isolationist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { NOT = { has_policy_flag = population_controls_allowed } }
+			owner = { NOT = { has_policy_flag = population_controls_not_allowed } }
 		}
 	}
 	

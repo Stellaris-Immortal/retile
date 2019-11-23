@@ -192,7 +192,7 @@ building_capital = {
 			owner = { has_civic = civic_byzantine_bureaucracy }					
 		}
 		modifier = {
-			job_bureaucrat_add = 1
+			job_bureaucrat_head_add = 1
 		}
 	}	
 	
@@ -361,8 +361,8 @@ building_major_capital = {
 			owner = { has_civic = civic_feudal_realm }
 		}
 		modifier = {
-			job_clerk_add = -1
-			job_tax_collector_add = 1
+			job_clerk_add = -2
+			job_tax_collector_add = 2
 		}
 	}
 	
@@ -372,8 +372,8 @@ building_major_capital = {
 			owner = { has_civic = civic_capitalist }
 		}
 		modifier = {
-			job_clerk_add = -1
-			job_investor_add = 1
+			job_clerk_add = -2
+			job_investor_add = 2
 		}
 	}
 
@@ -403,7 +403,7 @@ building_major_capital = {
 			owner = { has_civic = civic_byzantine_bureaucracy }					
 		}
 		modifier = {
-			job_bureaucrat_add = 1
+			job_bureaucrat_head_add = 1
 		}
 	}	
 	
@@ -568,13 +568,54 @@ building_system_capital = {
 		potential = {
 			exists = owner
 			owner = { 
-				NOR = {
+				NOT = {
+					has_policy_flag = xenodiplomacy_isolation
 					has_policy_flag = xenodiplomacy_embassy
 					has_policy_flag = xenodiplomacy_gunboat
+					has_civic = civic_feudal_realm
+					has_civic = civic_capitalist
 				}
 			}
 		}
 		job_clerk_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				NOR = {
+					has_policy_flag = xenodiplomacy_isolation
+					has_policy_flag = xenodiplomacy_embassy
+					has_policy_flag = xenodiplomacy_gunboat
+				}
+				owner = { has_civic = civic_feudal_realm }
+			}
+		}
+		job_tax_collector_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				NOR = {
+					has_policy_flag = xenodiplomacy_isolation
+					has_policy_flag = xenodiplomacy_embassy
+					has_policy_flag = xenodiplomacy_gunboat
+				}
+				owner = { has_civic = civic_capitalist }
+			}
+		}
+		job_investor_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_isolation }
+		}
+		job_bureaucrat_add = 1
 	}
 	
 	triggered_planet_modifier = {
@@ -613,8 +654,8 @@ building_system_capital = {
 			owner = { has_civic = civic_feudal_realm }
 		}
 		modifier = {
-			job_clerk_add = -1
-			job_tax_collector_add = 1
+			job_clerk_add = -2
+			job_tax_collector_add = 2
 		}
 	}
 	
@@ -655,7 +696,7 @@ building_system_capital = {
 			owner = { has_civic = civic_byzantine_bureaucracy }					
 		}
 		modifier = {
-			job_bureaucrat_add = 1
+			job_bureaucrat_head_add = 1
 		}
 	}	
 	
