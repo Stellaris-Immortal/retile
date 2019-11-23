@@ -61,42 +61,38 @@ decision_prospect = {
 # Penal Colony
 decision_penal_colony = {
 	owned_planets_only = yes
+	enactment_time = 180
 	
-	prerequisites = {
-		"tech_penal_colonies"		
-	}
+	prerequisites = { "tech_penal_colonies"	}
 
 	resources = {
 		category = decisions
-		cost = {
-			influence = 100
-		}
+		cost = { influence = 100 }
 	}
 	
 	potential = {
 		is_capital = no
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = slave_colony }
-		owner = { 
-			is_regular_empire = yes 
-		}
+		NOT = { is_planet_class = pc_city }
+		NOT = { is_planet_class = pc_relic }
+		owner = { is_regular_empire = yes }
 		habitable_structure = no
 		NOT = { 
-			owner = { 
-				any_owned_planet = { has_modifier = penal_colony }
-			} 
+			owner = { any_owned_planet = { has_modifier = penal_colony } } 
 		}
 	}
 	
 	allow = {
-		planet_size >= 15
+		custom_tooltip = {
+			fail_text = decision_resort_colony_no_districts
+			num_districts = { type = any value < 1 }
+			num_buildings = { type = any value < 2 }
+		}
 	}
 	
 	effect = {
-		add_modifier = {
-			modifier = penal_colony
-			days = -1
-		}	
+		add_modifier = { modifier = penal_colony days = -1 }
 		hidden_effect = { validate_planet_buildings_and_districts = yes }
 	}
 	
@@ -108,12 +104,11 @@ decision_penal_colony = {
 decision_abolish_penal_colony = {
 	owned_planets_only = yes
 	icon = decision_penal_colony
+	enactment_time = 180
 
 	resources = {
 		category = decisions
-		cost = {
-			influence = 250
-		}
+		cost = { influence = 50 }
 	}
 	
 	potential = {
@@ -133,16 +128,13 @@ decision_abolish_penal_colony = {
 # Thrall-World
 decision_slave_colony = {
 	owned_planets_only = yes
+	enactment_time = 180
 	
-	prerequisites = {
-		"tech_slave_colonies"		
-	}
+	prerequisites = { "tech_slave_colonies"	}
 
 	resources = {
 		category = decisions
-		cost = {
-			influence = 100
-		}
+		cost = { influence = 100 }
 	}
 	
 	potential = {
@@ -151,18 +143,14 @@ decision_slave_colony = {
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = penal_colony }
 		NOT = { has_modifier = slave_colony }	
-		owner = { 
-			is_regular_empire = yes 
-		}
+		owner = { is_regular_empire = yes }
 		habitable_structure = no
 	}
 	
 	allow = {
 		custom_tooltip = {
 			fail_text = decision_slave_colony_must_have_slave
-			any_owned_pop = {
-				has_citizenship_type = { type = citizenship_slavery }
-			}
+			any_owned_pop = { has_citizenship_type = { type = citizenship_slavery } }
 		}			
 		custom_tooltip = {
 			fail_text = decision_resort_colony_no_districts
@@ -173,10 +161,7 @@ decision_slave_colony = {
 	
 	effect = {
 		custom_tooltip = decision_slave_colony_effects
-		add_modifier = {
-			modifier = slave_colony
-			days = -1
-		}	
+		add_modifier = { modifier = slave_colony days = -1 }	
 		hidden_effect = { validate_planet_buildings_and_districts = yes }
 	}
 	
@@ -188,17 +173,14 @@ decision_slave_colony = {
 decision_abolish_slave_colony = {
 	owned_planets_only = yes
 	icon = decision_slave_colony
+	enactment_time = 180
 
 	resources = {
 		category = decisions
-		cost = {
-			influence = 250
-		}
+		cost = { influence = 50 }
 	}
 	
-	potential = {
-		has_modifier = slave_colony
-	}
+	potential = { has_modifier = slave_colony }
 	
 	effect = {
 		remove_modifier = slave_colony
@@ -213,16 +195,13 @@ decision_abolish_slave_colony = {
 # Resort Colony
 decision_resort_colony = {
 	owned_planets_only = yes
+	enactment_time = 180
 	
-	prerequisites = {
-		"tech_resort_colonies"
-	}
+	prerequisites = { "tech_resort_colonies" }
 
 	resources = {
 		category = decisions
-		cost = {
-			influence = 100
-		}
+		cost = { influence = 100 }
 	}
 	
 	potential = {
@@ -230,9 +209,8 @@ decision_resort_colony = {
 		NOT = { has_modifier = penal_colony }
 		NOT = { has_modifier = slave_colony }
 		NOT = { is_planet_class = pc_city }
-		owner = { 
-			is_regular_empire = yes 
-		}
+		NOT = { is_planet_class = pc_relic }
+		owner = { is_regular_empire = yes }
 		habitable_structure = no
 		NOT = { 
 			owner = { 
@@ -242,7 +220,6 @@ decision_resort_colony = {
 	}
 	
 	allow = {
-		planet_size >= 15
 		custom_tooltip = {
 			fail_text = decision_resort_colony_no_districts
 			num_districts = { type = any value < 1 }
@@ -251,10 +228,7 @@ decision_resort_colony = {
 	}
 	
 	effect = {
-		add_modifier = {
-			modifier = resort_colony
-			days = -1
-		}	
+		add_modifier = { modifier = resort_colony days = -1 }	
 		hidden_effect = { validate_planet_buildings_and_districts = yes }
 	}
 	
@@ -266,12 +240,11 @@ decision_resort_colony = {
 decision_abolish_resort_colony = {
 	owned_planets_only = yes
 	icon = decision_resort_colony
-
+	enactment_time = 180
+	
 	resources = {
 		category = decisions
-		cost = {
-			influence = 250
-		}
+		cost = { influence = 50 }
 	}
 	
 	potential = {
@@ -291,7 +264,6 @@ decision_abolish_resort_colony = {
 # Mastery of Nature
 decision_mastery_of_nature = {
 	owned_planets_only = yes
-
 	enactment_time = 360
 	resources = {
 		category = decisions
@@ -308,9 +280,7 @@ decision_mastery_of_nature = {
 			is_planet_class = pc_relic
 			is_planet_class = pc_machine
 		}
-		owner = {
-			has_ascension_perk = ap_mastery_of_nature
-		}
+		owner = { always = no }
 		NOT = { has_modifier = mastery_of_nature_retile }
 	}
 	
@@ -334,17 +304,13 @@ decision_mastery_of_nature = {
 decision_consecrated_worlds = {
 	resources = {
 		category = decisions
-		cost = {
-			influence = 50
-		}
+		cost = { influence = 50 }
 	}
 	
 	potential = {
 		exists = space_owner
 		space_owner = { is_same_value = from }
-		from = {
-			has_ascension_perk = ap_consecrated_worlds
-		}
+		from = { has_ascension_perk = ap_consecrated_worlds }
 		is_star = no
 		habitable_structure = no
 		is_ringworld = no
@@ -684,15 +650,11 @@ decision_consecrated_worlds = {
 decision_unconsecrated_worlds = {
 	resources = {
 		category = decisions
-		cost = {
-			influence = 50
-		}
+		cost = { influence = 50 }
 	}
 	
 	potential = {
-		from = {
-			has_ascension_perk = ap_consecrated_worlds
-		}
+		from = { has_ascension_perk = ap_consecrated_worlds }
 		has_planet_flag = consecrated@from
 	}
 
@@ -790,6 +752,7 @@ decision_arcology_project = {
 		habitable_structure = no
 		exists = owner
 		owner = { 
+			host_has_dlc = "Megacorp"
 			has_technology = tech_housing_3
 			is_regular_empire = yes 
 		}
@@ -810,6 +773,7 @@ decision_arcology_project = {
 	effect = {
 		# Make city-planet
 		custom_tooltip = decision_arcology_project_effects
+		remove_planet_flag = ai_arcology_development
 		hidden_effect = {
 			
 			# figure out how many engineering districts we need...
@@ -953,6 +917,10 @@ decision_arcology_project = {
 	
 	ai_weight = {
 		weight = 0
+		modifier = {
+			weight = 1000000
+			has_planet_flag = ai_arcology_development
+		}
 	}
 }
 
@@ -1156,7 +1124,7 @@ decision_arcology_project_relic = {
 	}
 	
 	ai_weight = {
-		weight = 0
+		weight = 1000000
 	}
 }
 

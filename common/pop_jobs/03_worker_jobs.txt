@@ -34,6 +34,10 @@ custodian = {
 		modifier = { planet_amenities_add = -10 }
 	}
 	triggered_planet_modifier = {
+		potential = { owner = { has_civic = civic_environmentalist } }
+		modifier = { planet_amenities_add = -10 }
+	}
+	triggered_planet_modifier = {
 		potential = { owner = { has_technology = tech_industrial_ecology } }
 		modifier = { planet_amenities_add = -5 }
 	}
@@ -52,6 +56,10 @@ custodian = {
 
 	resources = {
 		category = planet_custodians
+		produces = {
+			trigger = { owner = { has_civic = civic_environmentalist } }
+			unity = 3
+		}
 		produces = {
 			society_research = 2.5
 		}
@@ -248,10 +256,7 @@ custodian = {
 				is_plantoid_empire = yes
 			}
 		}
-		modifier = { 
-			pop_environment_tolerance = 0.10
-			#pop_growth_speed = 0.10
-		}
+		modifier = { pop_environment_tolerance = 0.10 }
 	}
 
 	weight = {
@@ -1002,18 +1007,11 @@ priest = {
 		}
 		modifier = {
 			factor = 1.1
-			OR = {
-				has_trait = trait_robot_propaganda_machines
-				has_trait = trait_traditional
-			}		
+			has_trait = trait_robot_propaganda_machines	
 		}
 		modifier = {
 			factor = 1.2
 			has_ethic = ethic_spiritualist
-		}
-		modifier = {
-			factor = 0.5
-			has_trait = trait_quarrelsome
 		}		
 		modifier = {
 			factor = 0.1

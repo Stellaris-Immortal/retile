@@ -26,6 +26,7 @@ district_mining = {
 	
 	allow = {
 		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = penal_colony }
 		hidden_trigger = {
 			retile_ready = yes
 		}
@@ -70,6 +71,31 @@ district_mining = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_miner_add = 1
+		}
+	}
+	
+	# Mining Guilds
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_mining_guilds }
+			NOT = { has_modifier = slave_colony }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_foundry_add = 1
+		}
+	}
+	
+	# Slave Colony
+	triggered_planet_modifier = {
+		potential = {
+			has_modifier = slave_colony
+			owner = { has_ascension_perk = ap_mega_specialization }
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -123,7 +149,13 @@ district_mining = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = minerals value > 100 } }
+			OR = {
+				owner = { has_monthly_income = { resource = minerals value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 0 } }
+				}
+			}
 		}
 	}
 
@@ -249,7 +281,13 @@ district_mining_uncapped = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = minerals value > 100 } }
+			OR = {
+				owner = { has_monthly_income = { resource = minerals value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 0 } }
+				}
+			}
 		}
 	}
 
@@ -315,6 +353,18 @@ district_hab_mining = {
 			job_miner_add = 1
 		}
 	}
+	
+	# Mining Guilds
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_mining_guilds }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_foundry_add = 1
+		}
+	}
 
 	triggered_desc = {
 		trigger = {
@@ -362,7 +412,13 @@ district_hab_mining = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = minerals value > 100 } }
+			OR = {
+				owner = { has_monthly_income = { resource = minerals value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 0 } }
+				}
+			}
 		}
 	}
 
@@ -428,6 +484,17 @@ district_rw_mining = {
 			job_miner_add = 1
 		}
 	}
+	# Mining Guilds
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_mining_guilds }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_foundry_add = 1
+		}
+	}
 
 	triggered_desc = {
 		trigger = {
@@ -475,7 +542,13 @@ district_rw_mining = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = minerals value > 100 } }
+			OR = {
+				owner = { has_monthly_income = { resource = minerals value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 0 } }
+				}
+			}
 		}
 	}
 

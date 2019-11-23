@@ -103,7 +103,7 @@ building_capital = {
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 2
+		planet_housing_add = 3
 		job_clerk_add = 1
 		planet_max_buildings_add = 1
 		planet_max_branch_office_buildings_add = 1
@@ -121,6 +121,48 @@ building_capital = {
 		modifier = {
 			job_clerk_add = -1
 			job_roboticist_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_feudal_realm }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_tax_collector_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_capitalist }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_investor_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { NOT = { has_ascension_perk = ap_land_ethic } }
+		}
+		modifier = {
+			job_soldier_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_land_ethic }
+		}
+		modifier = {
+			job_ranger_add = 1
 		}
 	}
 
@@ -150,7 +192,7 @@ building_capital = {
 			owner = { has_civic = civic_byzantine_bureaucracy }					
 		}
 		modifier = {
-			job_bureaucrat_add = 1
+			job_bureaucrat_head_add = 1
 		}
 	}	
 	
@@ -272,11 +314,31 @@ building_major_capital = {
 	}
 
 	planet_modifier = {
-		planet_housing_add = 3
+		planet_housing_add = 4
 		job_clerk_add = 2
 		planet_max_buildings_add = 2
 		planet_max_branch_office_buildings_add = 2
 		#pop_growth_speed_reduction = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { NOT = { has_ascension_perk = ap_land_ethic } }
+		}
+		modifier = {
+			job_soldier_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_land_ethic }
+		}
+		modifier = {
+			job_ranger_add = 1
+		}
 	}
 	
 	triggered_planet_modifier = {
@@ -290,6 +352,28 @@ building_major_capital = {
 		modifier = {
 			job_clerk_add = -1
 			job_roboticist_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_feudal_realm }
+		}
+		modifier = {
+			job_clerk_add = -2
+			job_tax_collector_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_capitalist }
+		}
+		modifier = {
+			job_clerk_add = -2
+			job_investor_add = 2
 		}
 	}
 
@@ -319,7 +403,7 @@ building_major_capital = {
 			owner = { has_civic = civic_byzantine_bureaucracy }					
 		}
 		modifier = {
-			job_bureaucrat_add = 1
+			job_bureaucrat_head_add = 1
 		}
 	}	
 	
@@ -437,7 +521,7 @@ building_system_capital = {
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 4
+		planet_housing_add = 6
 		job_clerk_add = 2
 		planet_max_buildings_add = 3
 		planet_max_branch_office_buildings_add = 3
@@ -447,14 +531,91 @@ building_system_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
+			owner = { NOT = { has_policy_flag = criminal_military_police } }
+		}
+		job_enforcer_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		job_soldier_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { NOT = { has_ascension_perk = ap_land_ethic } }
+		}
+		modifier = {
+			job_soldier_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_land_ethic }
+		}
+		modifier = {
+			job_ranger_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
 			owner = { 
-				NOR = {
+				NOT = {
+					has_policy_flag = xenodiplomacy_isolation
 					has_policy_flag = xenodiplomacy_embassy
 					has_policy_flag = xenodiplomacy_gunboat
+					has_civic = civic_feudal_realm
+					has_civic = civic_capitalist
 				}
 			}
 		}
 		job_clerk_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				NOR = {
+					has_policy_flag = xenodiplomacy_isolation
+					has_policy_flag = xenodiplomacy_embassy
+					has_policy_flag = xenodiplomacy_gunboat
+				}
+				owner = { has_civic = civic_feudal_realm }
+			}
+		}
+		job_tax_collector_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				NOR = {
+					has_policy_flag = xenodiplomacy_isolation
+					has_policy_flag = xenodiplomacy_embassy
+					has_policy_flag = xenodiplomacy_gunboat
+				}
+				owner = { has_civic = civic_capitalist }
+			}
+		}
+		job_investor_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_isolation }
+		}
+		job_bureaucrat_add = 1
 	}
 	
 	triggered_planet_modifier = {
@@ -486,6 +647,28 @@ building_system_capital = {
 			job_roboticist_add = 1
 		}
 	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_feudal_realm }
+		}
+		modifier = {
+			job_clerk_add = -2
+			job_tax_collector_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_capitalist }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_investor_add = 1
+		}
+	}
 
 	triggered_planet_modifier = {
 		potential = {
@@ -513,7 +696,7 @@ building_system_capital = {
 			owner = { has_civic = civic_byzantine_bureaucracy }					
 		}
 		modifier = {
-			job_bureaucrat_add = 1
+			job_bureaucrat_head_add = 1
 		}
 	}	
 	

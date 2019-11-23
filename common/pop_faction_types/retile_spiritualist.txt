@@ -86,6 +86,25 @@ traditionalist = {
 		}		
 	}
 	
+	# Wants a Relic
+	demand = { 
+		title = "SPIRITUALIST_RELIC"
+		unfulfilled_title = "SPIRITUALIST_NO_RELIC"
+		desc = "SPIRITUALIST_RELIC_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { host_has_dlc = "Ancient Relics Story Pack" }
+		}
+
+		trigger = {
+			owner = { num_owned_relics > 0 }
+		}
+	}
+	
 	# Wants Universal Healthcare
 	demand = { 
 		title = "SPIRITUALIST_UNIVERSAL_HEALTHCARE"
@@ -131,7 +150,7 @@ traditionalist = {
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
 
-		potential = { 
+		potential = {
 			exists = owner
 			owner = { has_met_primitives = yes }
 		}
@@ -232,7 +251,7 @@ traditionalist = {
 		desc = "SPIRITUALITY_HOLY_WORLD_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 1
+		unfulfilled_effect = -1
 
 		potential = {
 			exists = owner
@@ -347,6 +366,46 @@ traditionalist = {
 			}
 		}
 	}
+	
+	# Loves Slaying
+	demand = {
+		title = "SPIRITUALIST_SLAYER"
+		unfulfilled_title = "SPIRITUALIST_NO_SLAYER"
+		desc = "SPIRITUALIST_SLAYER_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+			owner = {
+				host_has_dlc = "Leviathans Story Pack"
+				any_country = {
+					OR = {
+						is_country_type = guardian
+						is_country_type = guardian_dragon
+						is_country_type = guardian_stellarite
+						is_country_type = guardian_wraith #
+						is_country_type = guardian_hiver
+						is_country_type = guardian_horror
+						is_country_type = guardian_fortress
+						is_country_type = guardian_dreadnought
+						is_country_type = guardian_sphere
+						is_country_type = guardian_scavenger_bot
+						is_country_type = guardian_elderly_tiyanki
+						is_country_type = guardian_hatchling
+					}
+					has_communications = prev
+				}
+			}
+		}
+
+		trigger = {
+			owner = {
+				NOT = { has_country_flag = killed_guardian }
+			}
+		}
+	}
 
 	on_create = {
 		pop_faction_event = { id = factions.1 }
@@ -373,7 +432,7 @@ traditionalist = {
 			description = "EMBRACE_FACTION_DESC"
 			
 			cost = {
-				influence = 500
+				influence = 250
 			}
 			
 			potential = {

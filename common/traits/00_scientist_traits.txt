@@ -20,25 +20,25 @@
 # Scientist Traits #
 ####################
 
-#leader_trait_careful = {
-#	cost = 1
-#	modification = no
-#	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_careful.dds"
-#	modifier = {
-#		ship_anomaly_fail_risk = -0.10
-#	}
-#	leader_trait = yes
-#	leader_class = { scientist }
-#	opposites = { "leader_trait_carefree" }
-#	
-#	ai_categories = {
-#		survey
-#	}
-#	
-#	ai_weight = {
-#		weight = 50
-#	}
-#}
+leader_trait_careful = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_careful.dds"
+	modifier = {
+		shipclass_science_ship_disengage_mult = 0.5
+	}
+	leader_trait = { scientist }
+	leader_class = { scientist }
+	opposites = { "leader_trait_carefree" }
+	
+	ai_categories = {
+		survey
+	}
+	
+	ai_weight = {
+		weight = 50
+	}
+}
 
 leader_trait_meticulous = {
 	cost = 1
@@ -242,6 +242,9 @@ leader_trait_paranoid = {
 	cost = 1
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_paranoid.dds"
+	leader_potential_add = {
+		NOT = { from = { has_civic = "civic_philosopher_king" } }
+	}
 	modifier = {
 		all_technology_research_speed = -0.05
 		ship_anomaly_research_speed_mult = -0.10
@@ -340,8 +343,10 @@ leader_trait_expertise_materials = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_materials.dds"
 	modifier = {
-		country_engineering_tech_research_speed = 0.05
-		category_materials_research_speed_mult = 0.10
+		category_materials_research_speed_mult = 0.15
+		category_propulsion_research_speed_mult = 0.05
+		category_industry_research_speed_mult = 0.05
+		category_voidcraft_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -374,8 +379,10 @@ leader_trait_expertise_propulsion = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_propulsion.dds"
 	modifier = {
-		country_engineering_tech_research_speed = 0.05
-		category_propulsion_research_speed_mult = 0.10
+		category_propulsion_research_speed_mult = 0.15
+		category_industry_research_speed_mult = 0.05
+		category_voidcraft_research_speed_mult = 0.05
+		category_materials_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -408,8 +415,10 @@ leader_trait_expertise_voidcraft = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_voidcraft.dds"
 	modifier = {
-		country_engineering_tech_research_speed = 0.05
-		category_voidcraft_research_speed_mult = 0.10
+		category_voidcraft_research_speed_mult = 0.15
+		category_propulsion_research_speed_mult = 0.05
+		category_materials_research_speed_mult = 0.05
+		category_industry_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -442,8 +451,10 @@ leader_trait_expertise_industry = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_industry.dds"
 	modifier = {
-		country_engineering_tech_research_speed = 0.05
-		category_industry_research_speed_mult = 0.10
+		category_industry_research_speed_mult = 0.15
+		category_voidcraft_research_speed_mult = 0.05
+		category_propulsion_research_speed_mult = 0.05
+		category_materials_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -476,8 +487,9 @@ leader_trait_expertise_field_manipulation = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_field_manipulation.dds"
 	modifier = {
-		country_physics_tech_research_speed = 0.05
-		category_field_manipulation_research_speed_mult = 0.10
+		category_field_manipulation_research_speed_mult = 0.15
+		category_particles_research_speed_mult = 0.05
+		category_computing_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -510,8 +522,9 @@ leader_trait_expertise_particles = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_particles.dds"
 	modifier = {
-		country_physics_tech_research_speed = 0.05
-		category_particles_research_speed_mult = 0.10
+		category_particles_research_speed_mult = 0.15
+		category_field_manipulation_research_speed_mult = 0.05
+		category_computing_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -543,8 +556,9 @@ leader_trait_expertise_computing = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_computing.dds"
 	modifier = {
-		country_physics_tech_research_speed = 0.05
-		category_computing_research_speed_mult = 0.10
+		category_computing_research_speed_mult = 0.15
+		category_particles_research_speed_mult = 0.05
+		category_field_manipulation_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -577,8 +591,11 @@ leader_trait_expertise_psionics = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_psionics.dds"
 	modifier = {
-		country_society_tech_research_speed = 0.05
-		category_psionics_research_speed_mult = 0.10
+		category_psionics_research_speed_mult = 0.15
+		category_new_worlds_research_speed_mult = 0.05
+		category_statecraft_research_speed_mult = 0.05
+		category_biology_research_speed_mult = 0.05
+		category_military_theory_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -612,8 +629,11 @@ leader_trait_expertise_new_worlds = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_new_worlds.dds"
 	modifier = {
-		country_society_tech_research_speed = 0.05
-		category_new_worlds_research_speed_mult = 0.10
+		category_new_worlds_research_speed_mult = 0.15
+		category_statecraft_research_speed_mult = 0.05
+		category_biology_research_speed_mult = 0.05
+		category_military_theory_research_speed_mult = 0.05
+		category_psionics_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -646,8 +666,11 @@ leader_trait_expertise_statecraft = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_statecraft.dds"
 	modifier = {
-		country_society_tech_research_speed = 0.05
-		category_statecraft_research_speed_mult = 0.10
+		category_statecraft_research_speed_mult = 0.15
+		category_new_worlds_research_speed_mult = 0.05
+		category_biology_research_speed_mult = 0.05
+		category_military_theory_research_speed_mult = 0.05
+		category_psionics_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -680,8 +703,11 @@ leader_trait_expertise_biology = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_biology.dds"
 	modifier = {
-		country_society_tech_research_speed = 0.05
-		category_biology_research_speed_mult = 0.10
+		category_biology_research_speed_mult = 0.15
+		category_statecraft_research_speed_mult = 0.05
+		category_new_worlds_research_speed_mult = 0.05
+		category_military_theory_research_speed_mult = 0.05
+		category_psionics_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -714,8 +740,11 @@ leader_trait_expertise_military_theory = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_expertise_military_theory.dds"
 	modifier = {
-		country_society_tech_research_speed = 0.05
-		category_military_theory_research_speed_mult = 0.10
+		category_military_theory_research_speed_mult = 0.15
+		category_biology_research_speed_mult = 0.05
+		category_statecraft_research_speed_mult = 0.05
+		category_new_worlds_research_speed_mult = 0.05
+		category_psionics_research_speed_mult = 0.05
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }

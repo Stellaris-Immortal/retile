@@ -73,11 +73,11 @@ ruler = {
 		modifier = { planet_amenities_add = -10 }
 	}
 	triggered_planet_modifier = {	# Deviant Pop!
-		potential = { has_trait = trait_deviant }
+		potential = { has_trait = trait_deviants }
 		modifier = { planet_crime_add = 2 }
 	}
 	triggered_planet_modifier = {	# Conformist Pop!
-		potential = { has_trait = trait_conformist }
+		potential = { has_trait = trait_conformists }
 		modifier = { planet_crime_add = -2 }
 	}
 	
@@ -336,6 +336,16 @@ ruler = {
 			}
 			engineering_research = 1
 		}				### End Natural Scientist Traits
+		# Natural Philosopher
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_philosopher
+					has_trait = trait_prodigy
+				}
+			}
+			unity = 1
+		}	
 	}	
 }
 
@@ -407,11 +417,11 @@ specialist = {
 		modifier = { planet_amenities_add = -10 }
 	}
 	triggered_planet_modifier = {	# Deviant Pop!
-		potential = { has_trait = trait_deviant }
+		potential = { has_trait = trait_deviants }
 		modifier = { planet_crime_add = 2 }
 	}
 	triggered_planet_modifier = {	# Conformist Pop!
-		potential = { has_trait = trait_conformist }
+		potential = { has_trait = trait_conformists }
 		modifier = { planet_crime_add = -2 }
 	}
 	
@@ -739,6 +749,16 @@ specialist = {
 			}
 			engineering_research = 1
 		}				### End Natural Scientist Traits
+		# Natural Philosopher
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_philosopher
+					has_trait = trait_prodigy
+				}
+			}
+			unity = 1
+		}
 	}
 }
 
@@ -758,11 +778,11 @@ worker = {
 		modifier = { planet_amenities_add = -10 }
 	}
 	triggered_planet_modifier = {	# Deviant Pop!
-		potential = { has_trait = trait_deviant }
+		potential = { has_trait = trait_deviants }
 		modifier = { planet_crime_add = 2 }
 	}
 	triggered_planet_modifier = {	# Conformist Pop!
-		potential = { has_trait = trait_conformist }
+		potential = { has_trait = trait_conformists }
 		modifier = { planet_crime_add = -2 }
 	}
 	
@@ -1214,5 +1234,15 @@ worker = {
 			}
 			engineering_research = 1
 		}				### End Natural Scientist Traits
+		# Natural Philosopher
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_natural_philosopher
+					has_trait = trait_prodigy
+				}
+			}
+			unity = 1
+		}
 	}
 }

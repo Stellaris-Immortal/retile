@@ -28,6 +28,7 @@ district_farming = {
 	
 	allow = {
 		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = penal_colony }
 		hidden_trigger = {
 			OR = {
 				NOT = { exists = owner }
@@ -101,6 +102,18 @@ district_farming = {
 			job_technician_add = 1
 		}
 	}	
+	
+	# Slave Colony
+	triggered_planet_modifier = {
+		potential = {
+			has_modifier = slave_colony
+			owner = { has_ascension_perk = ap_mega_specialization }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_farmer_add = 1
+		}
+	}
 		
 	triggered_desc = {
 		trigger = {
@@ -156,13 +169,13 @@ district_farming = {
 		modifier = {	# REALLY don't let food go negative
 			weight = 100000
 			OR = {
-				owner = { has_monthly_income = { resource = food value < 10 } }
+				owner = { has_monthly_income = { resource = food value < 5 } }
 			}
 		}
 		modifier = {	# Plantoid Fix Habitability
 			weight = 10000
 			owner = { is_plantoid_empire = yes }
-			habitability = { who = owner_main_species value < 0.6 }
+			habitability = { who = owner.owner_species value < 0.6 }
 		}
 		modifier = {	# avoid bad food worlds...
 			factor = 0.5
@@ -179,7 +192,13 @@ district_farming = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 50 } }
+			OR = {
+				owner = { has_monthly_income = { resource = food value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 5 } }
+				}
+			}
 		}
 	}
 
@@ -320,7 +339,7 @@ district_farming_uncapped = {
 		modifier = {	# Plantoid Fix Habitability
 			weight = 10000
 			owner = { is_plantoid_empire = yes }
-			habitability = { who = owner_main_species value < 0.6 }
+			habitability = { who = owner.owner_species value < 0.6 }
 		}
 		modifier = {	# avoid bad food worlds...
 			factor = 0.5
@@ -337,7 +356,13 @@ district_farming_uncapped = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 50 } }
+			OR = {
+				owner = { has_monthly_income = { resource = food value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 5 } }
+				}
+			}
 		}
 	}
 
@@ -478,7 +503,7 @@ district_hab_hydroponics = {
 		modifier = {	# Plantoid Fix Habitability
 			weight = 10000
 			owner = { is_plantoid_empire = yes }
-			habitability = { who = owner_main_species value < 0.6 }
+			habitability = { who = owner.owner_species value < 0.6 }
 		}
 		modifier = {	# avoid urban worlds...
 			factor = 0.5
@@ -491,7 +516,13 @@ district_hab_hydroponics = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 50 } }
+			OR = {
+				owner = { has_monthly_income = { resource = food value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 5 } }
+				}
+			}
 		}
 	}
 
@@ -627,7 +658,7 @@ district_rw_farming = {
 		modifier = {	# Plantoid Fix Habitability
 			weight = 10000
 			owner = { is_plantoid_empire = yes }
-			habitability = { who = owner_main_species value < 0.6 }
+			habitability = { who = owner.owner_species value < 0.6 }
 		}
 		modifier = {	# avoid bad food worlds...
 			factor = 0.5
@@ -644,7 +675,13 @@ district_rw_farming = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = food value > 50 } }
+			OR = {
+				owner = { has_monthly_income = { resource = food value > 25 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 5 } }
+				}
+			}
 		}
 	}
 

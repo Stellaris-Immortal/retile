@@ -1,0 +1,184 @@
+@base_cost = 150
+@base_upkeep = 0
+@base_buildtime = 240
+
+district_resort = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = { has_modifier = resort_colony }
+
+	potential = { has_modifier = resort_colony }
+	
+	allow = {
+		hidden_trigger = { retile_ready = yes }
+	}
+
+	conversion_ratio = 1
+	convert_to = { district_city }
+	
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			energy = @base_upkeep
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			consumer_goods = 1
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_clerk_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = { owner = { has_ascension_perk = ap_mega_specialization } }
+		planet_housing_add = 1
+		job_clerk_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_feudal_realm }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_tax_collector_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_capitalist }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_investor_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { 
+				has_civic = civic_feudal_realm
+				has_ascension_perk = ap_mega_specialization
+			}
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_tax_collector_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_capitalist
+				has_ascension_perk = ap_mega_specialization
+			}
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_investor_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {	# Safe to develop our empire?
+			weight = 10
+			retile_basic_economy = yes
+		}
+		modifier = {	# extra weight if safe and we don't have at least 3 cities here yet...
+			weight = 50
+			AND = {
+				retile_basic_economy = yes
+				num_districts = { type = district_city value < 2 }
+			}
+		}
+		modifier = {	# Already has basic urban buildings?
+			factor = 10
+			retile_urban_development = yes
+		}
+		modifier = {	# Already has advanced urban buildings?
+			factor = 10
+			retile_urban_advanced = yes
+		}
+	}
+}
+
+district_prison = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = { has_modifier = penal_colony }
+
+	potential = { has_modifier = penal_colony }
+	
+	allow = {
+		hidden_trigger = { retile_ready = yes }
+	}
+
+	conversion_ratio = 1
+	convert_to = { district_city }
+	
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			energy = @base_upkeep
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			consumer_goods = 1
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_criminal_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = { owner = { has_ascension_perk = ap_mega_specialization } }
+		planet_housing_add = 1
+		job_criminal_add = 1
+	}
+	
+	ai_weight = {
+		weight = 0
+		modifier = {	# Safe to develop our empire?
+			weight = 10
+			retile_basic_economy = yes
+		}
+		modifier = {	# extra weight if safe and we don't have at least 3 cities here yet...
+			weight = 50
+			AND = {
+				retile_basic_economy = yes
+				num_districts = { type = district_city value < 2 }
+			}
+		}
+		modifier = {	# Already has basic urban buildings?
+			factor = 10
+			retile_urban_development = yes
+		}
+		modifier = {	# Already has advanced urban buildings?
+			factor = 10
+			retile_urban_advanced = yes
+		}
+	}
+}

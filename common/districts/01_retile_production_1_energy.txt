@@ -26,6 +26,7 @@ district_generator = {
 	
 	allow = {
 		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = penal_colony }
 		hidden_trigger = {
 			retile_ready = yes
 		}
@@ -70,6 +71,18 @@ district_generator = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_technician_add = 1
+		}
+	}
+	
+	# Slave Colony
+	triggered_planet_modifier = {
+		potential = {
+			has_modifier = slave_colony
+			owner = { has_ascension_perk = ap_mega_specialization }
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -124,7 +137,13 @@ district_generator = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = energy value > 1000 } }
+			OR = {
+				owner = { has_monthly_income = { resource = energy value > 100 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 25 } }
+				}
+			}
 		}
 	}
 
@@ -253,7 +272,13 @@ district_generator_uncapped = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = energy value > 1000 } }
+			OR = {
+				owner = { has_monthly_income = { resource = energy value > 100 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 25 } }
+				}
+			}
 		}
 	}
 
@@ -368,7 +393,13 @@ district_hab_energy = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = energy value > 1000 } }
+			OR = {
+				owner = { has_monthly_income = { resource = energy value > 100 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 25 } }
+				}
+			}
 		}
 	}
 
@@ -483,7 +514,13 @@ district_rw_generator = {
 		}
 		modifier = {
 			factor = 0
-			owner = { has_monthly_income = { resource = energy value > 1000 } }
+			OR = {
+				owner = { has_monthly_income = { resource = energy value > 100 } }
+				AND = {
+					has_planet_flag = ai_arcology_development
+					owner = { has_monthly_income = { resource = energy value > 25 } }
+				}
+			}
 		}
 	}
 

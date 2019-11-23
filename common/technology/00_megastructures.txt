@@ -1,0 +1,824 @@
+tech_mega_engineering = {
+	area = engineering
+	cost = @tier5cost1
+	tier = 5
+	category = { voidcraft }
+	ai_update_type = all
+	prerequisites = { "tech_starbase_5" "tech_battleships" "tech_zero_point_power" }
+	weight = @tier5weight1
+	is_rare = yes
+
+	feature_flags = { megaengineering }
+	
+	modifier = { country_resource_max_add = 10000 }
+	
+	weight_modifier = {
+		factor = 0.25
+		modifier = {
+			factor = 1.5
+			OR = {
+				research_leader = {
+					area = engineering
+					has_trait = "leader_trait_expertise_voidcraft"
+				}
+				research_leader = {
+					area = engineering
+					has_trait = "leader_trait_curator"
+				}
+				research_leader = {
+					area = engineering
+					has_trait = "leader_trait_maniacal"
+				}				
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_starhold
+				count >= 1
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_starhold
+				count >= 2
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_starhold
+				count >= 3
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_starhold
+				count >= 4
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_starhold
+				count >= 5
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_starhold
+				count >= 6
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_citadel
+				count >= 1
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_citadel
+				count >= 2
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_citadel
+				count >= 3
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_citadel
+				count >= 4
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_citadel
+				count >= 5
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			count_starbase_sizes = {
+				starbase_size = starbase_citadel
+				count >= 6
+			}
+		}
+
+		modifier = {
+			factor = 2
+			any_owned_planet = {
+				is_planet_class = pc_habitat
+			}
+		}
+
+		modifier = {
+			factor = 1.5
+			any_neighbor_country = {
+				has_technology = tech_mega_engineering
+			}
+		}	
+
+		modifier = {
+			factor = 20
+			has_any_megastructure_in_empire = yes
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_voidcraft"
+			}
+		}
+	}
+}
+
+# ##################
+# Megastructures
+# ##################
+
+tech_science_nexus = {
+	area = physics
+	cost = @tier5cost1
+	tier = 5
+	category = { computing }
+	ai_update_type = all
+	prerequisites = { "tech_mega_engineering" }
+	weight = @tier5weight1
+	is_rare = yes
+		
+	potential = { host_has_dlc = "Utopia" }
+	
+	weight_modifier = {
+		factor = 0.25
+		modifier = {
+			factor = 2
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_maniacal"
+			}
+		}
+		modifier = {
+			factor = 2
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_spark_of_genius"
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_master_builders
+		}
+		modifier = {
+			factor = 9
+			has_ascension_perk = ap_technological_ascendancy
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_computing"
+			}
+		}
+	}
+}
+
+tech_sentry_array = {
+	area = physics
+	cost = @tier5cost1
+	tier = 5
+	category = { computing }
+	ai_update_type = all
+	prerequisites = { "tech_mega_engineering" }
+	weight = @tier5weight1
+	is_rare = yes
+		
+	potential = { host_has_dlc = "Utopia" }
+		
+	weight_modifier = {
+		factor = 0.25
+		modifier = {
+			factor = 2
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_maniacal"
+				}
+		}
+		modifier = {
+			factor = 2
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_spark_of_genius"
+				}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_master_builders
+		}
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_enigmatic_engineering
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_computing"
+			}
+		}
+	}
+}
+
+tech_strategic_coordination = {
+	area = society
+	cost = @tier5cost1
+	tier = 5
+	category = { military_theory }
+	ai_update_type = all
+	prerequisites = { "tech_mega_engineering" }
+	weight = @tier5weight1
+	is_rare = yes
+		
+	potential = {
+		host_has_dlc = "Megacorp"
+	}
+	
+	weight_modifier = {
+		factor = 0.25
+		modifier = {
+			factor = 0.5
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 2
+				research_leader = {
+					area = society
+					has_trait = "leader_trait_maniacal"
+				}
+		}
+		modifier = {
+			factor = 2
+				research_leader = {
+					area = society
+					has_trait = "leader_trait_spark_of_genius"
+				}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ascension_perk = ap_galactic_wonders_megacorp
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_master_builders
+		}
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_eternal_vigilance
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_military_theory"
+			}
+		}
+	}
+}
+
+tech_interstellar_assembly = {
+	area = society
+	cost = @tier5cost1
+	tier = 5
+	category = { statecraft }
+	ai_update_type = all
+	prerequisites = { "tech_mega_engineering" }
+	weight = @tier5weight1
+	is_rare = yes
+		
+	potential = {
+		host_has_dlc = "Megacorp"
+	}
+	
+	weight_modifier = {
+		factor = 0.25
+		modifier = {
+			factor = 0.5
+			is_xenophobe = yes
+		}
+		modifier = {
+			factor = 2
+			is_xenophile = yes
+		}
+		modifier = {
+			factor = 2
+				research_leader = {
+					area = society
+					has_trait = "leader_trait_maniacal"
+				}
+		}
+		modifier = {
+			factor = 2
+				research_leader = {
+					area = society
+					has_trait = "leader_trait_spark_of_genius"
+				}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ascension_perk = ap_galactic_wonders_megacorp
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_master_builders
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_statecraft"
+			}
+		}
+	}
+}
+
+tech_mega_art = {
+	area = society
+	cost = @tier5cost1
+	tier = 5
+	category = { statecraft }
+	ai_update_type = all
+	prerequisites = { "tech_mega_engineering" }
+	weight = @tier5weight1
+	is_rare = yes
+		
+	potential = {
+		host_has_dlc = "Megacorp"
+	}
+	
+	weight_modifier = {
+		factor = 0.25
+		modifier = {
+			factor = 0.5
+			is_militarist = yes
+		}	
+		modifier = {
+			factor = 2
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 2
+				research_leader = {
+					area = society
+					has_trait = "leader_trait_maniacal"
+				}
+		}		
+		modifier = {
+			factor = 2
+				research_leader = {
+					area = society
+					has_trait = "leader_trait_spark_of_genius"
+				}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ascension_perk = ap_galactic_wonders_megacorp
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}		
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_master_builders
+		}
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_one_vision
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_statecraft"
+			}
+		}
+	}
+}
+
+tech_gateway_activation = {
+	cost = @tier4cost3
+	area = physics
+	tier = 4
+	category = { particles }
+	is_rare = yes
+	is_reverse_engineerable = no
+	weight = @tier4weight3
+	prerequisites = { "tech_hyper_drive_3" }
+	
+	feature_flags = { gateway_activation }
+	
+	weight_modifier = {
+		factor = 0.5
+		modifier = {
+			factor = 0.1
+			NOR = {
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_expertise_particles"
+				}
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_curator"
+				}
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_spark_of_genius"
+				}
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_maniacal"
+				}
+			}		
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_particles"
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 0
+			NOR = { 
+				OR = {
+					has_seen_any_bypass = gateway
+					has_seen_any_bypass = lgate
+				}
+				any_relation = {
+					is_country_type = default
+					has_communications = ROOT
+					has_technology = tech_gateway_activation
+				}
+			}
+		}
+		modifier = {
+			factor = 4
+			OR = {
+				owns_any_bypass = gateway
+				owns_any_bypass = lgate
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 4 #FTL techs are good
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_particles"
+			}
+		}
+	}
+}
+
+tech_gateway_construction = {
+	cost = @tier5cost1
+	area = physics
+	tier = 5
+	category = { particles }
+	is_rare = yes
+	is_reverse_engineerable = no
+	weight = @tier5cost1
+	prerequisites = { "tech_gateway_activation" "tech_mega_engineering"}
+	
+	feature_flags = { gateway_construction }
+	
+	weight_modifier = {
+		factor = 0.5
+		modifier = {
+			factor = 0.1
+			NOR = {
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_expertise_particles"
+				}
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_curator"
+				}
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_spark_of_genius"
+				}
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_maniacal"
+				}
+			}		
+		}
+		modifier = {
+			factor = 1.25
+			has_tradition = tr_discovery_adopt
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_particles"
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 4
+			owns_any_bypass = gateway
+		}
+	}
+	
+	ai_weight = {
+		factor = 4 #FTL techs are good
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_particles"
+			}
+		}
+	}
+}
+
+# ##################
+# Galactic Wonders
+# ##################
+
+tech_dyson_sphere = {
+	area = physics
+	cost = @tier5cost3
+	tier = 5
+	category = { field_manipulation }
+	ai_update_type = all
+	prerequisites = { "tech_mega_engineering" "tech_power_plant_4" }
+	weight = @tier5weight3
+	is_rare = yes
+		
+	potential = { host_has_dlc = "Utopia" }
+	
+	weight_modifier = {
+		factor = 0.25
+		modifier = {
+			factor = 2
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_maniacal"
+			}
+		}
+		modifier = {
+			factor = 2
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_spark_of_genius"
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_master_builders
+		}
+		modifier = {
+			factor = 9
+			has_ascension_perk = ap_technological_ascendancy
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_field_manipulation"
+			}
+		}
+	}
+}
+
+tech_matter_decompressor = {
+	area = physics
+	cost = @tier5cost3
+	tier = 5
+	category = { field_manipulation }
+	ai_update_type = all
+	prerequisites = { "tech_mega_engineering" "tech_mining_3"}
+	weight = @tier5weight3
+	is_rare = yes
+		
+	potential = { host_has_dlc = "Megacorp" }
+	
+	weight_modifier = {
+		factor = 0.25
+		modifier = {
+			factor = 2
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_maniacal"
+			}
+		}
+		modifier = {
+			factor = 2
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_spark_of_genius"
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_master_builders
+		}
+		modifier = {
+			factor = 9
+			has_ascension_perk = ap_technological_ascendancy
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_field_manipulation"
+			}
+		}
+	}
+}
+
+tech_ring_world = {
+	area = engineering
+	cost = @tier5cost3
+	tier = 5
+	category = { voidcraft }
+	ai_update_type = all
+	prerequisites = { "tech_mega_engineering" "tech_habitat_1"}
+	weight = @tier5weight3
+	is_rare = yes
+		
+	potential = { host_has_dlc = "Utopia" }
+	
+	weight_modifier = {
+		factor = 0.25
+		modifier = {
+			factor = 2
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_maniacal"
+			}
+		}
+		modifier = {
+			factor = 2
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_spark_of_genius"
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ascension_perk = ap_galactic_wonders_utopia
+				has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+			}
+		}
+		modifier = {
+			factor = 6
+			has_ascension_perk = ap_master_builders
+		}
+		modifier = {
+			factor = 9
+			has_ascension_perk = ap_technological_ascendancy
+		}
+	}
+	
+	ai_weight = {
+		factor = 10
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_voidcraft"
+			}
+		}
+	}
+}
