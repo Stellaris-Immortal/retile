@@ -979,7 +979,17 @@ trade_policy = {
 		modifier = {}
 		
 		AI_weight = {
-            factor = 0
+			factor = 1
+			modifier = {
+
+					factor = 10000
+					has_monthly_income = {
+						resource = consumer_goods
+						value < 0
+					}
+				
+
+			}
         }
 	}
 	
