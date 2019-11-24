@@ -741,6 +741,25 @@ living_standard_stratified = {
 	}
 	ai_will_do = {
 		factor = 5
+		modifier = {
+			factor = 0
+			from = {
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			from = {
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+		}
+		
 	}
 }
 
