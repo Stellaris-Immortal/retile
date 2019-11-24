@@ -476,6 +476,15 @@ living_standard_academic_privilege = {
 		}
 		modifier = {
 			factor = 0
+			from = {
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
+		}
+		modifier = {
+			factor = 0
 			NOT = { has_living_standard = { country = from type = living_standard_academic_privilege } }
 			NOT = {
 				from = {
@@ -822,6 +831,15 @@ living_standard_subsistence = {
 			from = { 
 				is_xenophobe = no 
 				is_gestalt = no
+			}
+		}
+		modifier = {
+			factor = 0
+			from = {
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
 			}
 		}
 	}
