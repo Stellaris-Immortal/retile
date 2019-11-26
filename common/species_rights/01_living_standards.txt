@@ -379,6 +379,15 @@ living_standard_utopian = {
 		}
 		modifier = {
 			factor = 0
+			from = {
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+		}
+		modifier = {
+			factor = 0
 			NOT = { has_living_standard = { country = from type = living_standard_utopian } }
 			NOT = {
 				from = {
@@ -473,6 +482,15 @@ living_standard_academic_privilege = {
 		modifier = {
 			factor = 0
 			NOT = { has_citizenship_type = { country = from type = citizenship_full } }
+		}
+		modifier = {
+			factor = 0
+			from = {
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
 		}
 		modifier = {
 			factor = 0
@@ -579,11 +597,9 @@ living_standard_good = {
 		modifier = {
 			factor = 0
 			from = {
-				NOR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-					has_ethic = ethic_egalitarian
-					has_ethic = ethic_fanatic_egalitarian
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
 				}
 			}
 		}
@@ -657,6 +673,7 @@ living_standard_normal = {
 				}
 			}
 		}
+		
 		custom_tooltip = {
 			NAND = {
 				OR = {
@@ -670,6 +687,15 @@ living_standard_normal = {
 	}
 	ai_will_do = {
 		factor = 1
+		modifier = {
+			factor = 0
+			from = {
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+		}
 	}
 }
 
@@ -741,6 +767,25 @@ living_standard_stratified = {
 	}
 	ai_will_do = {
 		factor = 5
+		modifier = {
+			factor = 0
+			from = {
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
+		}
+		modifier = {
+			factor = 2
+			from = {
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+		}
+		
 	}
 }
 
@@ -803,6 +848,15 @@ living_standard_subsistence = {
 			from = { 
 				is_xenophobe = no 
 				is_gestalt = no
+			}
+		}
+		modifier = {
+			factor = 0
+			from = {
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
 			}
 		}
 	}

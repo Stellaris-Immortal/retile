@@ -58,14 +58,48 @@ energy_expenditure_trade_food_deficit = {
 	}
 	
 	fraction = {
-		weight = 1
+		weight = 1000
 	}
 	
 	static_min = {
 		base = 300
 	}
 	static_max = {
-		base = 800
+		base = 2000
+	}
+}
+
+energy_expenditure_supply_deficit = {
+	resource = energy 
+	type = expenditure
+	category = trade
+	
+	potential = {
+		has_resource = { 
+			type = energy 
+			amount > 1000
+		}
+		AND = {
+			has_monthly_income = {
+				resource = consumer_goods
+				value < -1
+			}
+			has_resource = { 
+				type = consumer_goods 
+				amount < 500
+			}
+		}
+	}
+	
+	fraction = {
+		weight = 1000
+	}
+	
+	static_min = {
+		base = 300
+	}
+	static_max = {
+		base = 2000
 	}
 }
 
