@@ -162,11 +162,15 @@ pop_event = { # retile_abandon_migrate
 					factor = 0
 					NOT = { owner = { any_planet_within_border = {
 						NOT = { is_same_value = root.planet }
+						NOT = { is_under_colonization }
 						free_housing > 0
 					} } }
 				}
 				owner = { random_owned_planet = {
-					limit = { free_housing > 0 }
+					limit = {
+						free_housing > 0
+						NOT = { is_under_colonization }
+					}
 					resettle_pop = { pop = root planet = this }
 				} }
 			}
