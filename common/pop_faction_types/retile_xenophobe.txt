@@ -128,7 +128,7 @@ isolationist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = first_contact_attack_allowed }
+			owner = { has_policy_flag = border_policy_closed }
 		}
 	}
 	
@@ -360,7 +360,7 @@ isolationist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { NOT = { has_policy_flag = population_controls_not_allowed } }
+			owner = { NOT = { has_policy_flag = population_controls_allowed } }
 		}
 	}
 	
