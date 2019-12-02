@@ -621,3 +621,176 @@ event = {
 		}
 	}
 }
+
+# New Sun Modifier
+planet_event = {
+	id = retile_generate.6
+	hide_window = yes
+	
+	trigger = {
+		
+	}
+
+	mean_time_to_happen = { days = 360 }
+	
+	immediate = {
+		if = {
+			limit = { 
+				has_ring = yes
+				NOT = { has_modifier = ring_system }
+			}
+			add_modifier = { modifier = ring_system days = -1 }
+		}
+		if = {
+			limit = { 
+				is_star_class = sc_b
+				NOT = { has_modifier = pm_class_b }
+			}
+			add_modifier = { modifier = pm_class_b days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_a
+				NOT = { has_modifier = pm_class_a }
+			}
+			add_modifier = { modifier = pm_class_a days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_f
+				NOT = { has_modifier = pm_class_f }
+			}
+			add_modifier = { modifier = pm_class_f days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_g
+				NOT = { has_modifier = pm_class_g }
+			}
+			add_modifier = { modifier = pm_class_g days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_k
+				NOT = { has_modifier = pm_class_k }
+			}
+			add_modifier = { modifier = pm_class_k days = -1 }
+		} else_if = {
+			limit = {
+				is_star_class = sc_m
+				NOT = { has_modifier = pm_class_m }
+			}
+			add_modifier = { modifier = pm_class_m days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_m_giant
+				NOT = { has_modifier = pm_class_m_giant }
+			}
+			add_modifier = { modifier = pm_class_m_giant days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_t
+				NOT = { has_modifier = pm_class_t }
+			}
+			add_modifier = { modifier = pm_class_t days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_black_hole
+				NOT = { has_modifier = pm_class_black_hole }
+			}
+			add_modifier = { modifier = pm_class_black_hole days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_neutron_star
+				NOT = { has_modifier = pm_class_neutron_star }
+			}
+			add_modifier = { modifier = pm_class_neutron_star days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_pulsar
+				NOT = { has_modifier = pm_class_pulsar }
+			}
+			add_modifier = { modifier = pm_class_pulsar days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_binary_1
+				NOT = { has_modifier = pm_class_binary_1 }
+			}
+			add_modifier = { modifier = pm_class_binary_1 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_binary_2
+				NOT = { has_modifier = pm_class_binary_2 }
+			}
+			add_modifier = { modifier = pm_class_binary_2 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_binary_3
+				NOT = { has_modifier = pm_class_binary_3 }
+			}
+			add_modifier = { modifier = pm_class_binary_3 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_binary_4
+				NOT = { has_modifier = pm_class_binary_4 }
+			}
+			add_modifier = { modifier = pm_class_binary_4 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_binary_5
+				NOT = { has_modifier = pm_class_binary_5 }
+			}
+			add_modifier = { modifier = pm_class_binary_5 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_binary_6
+				NOT = { has_modifier = pm_class_binary_6 }
+			}
+			add_modifier = { modifier = pm_class_binary_6 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_binary_7
+				NOT = { has_modifier = pm_class_binary_7 }
+			}
+			add_modifier = { modifier = pm_class_binary_7 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_binary_8
+				NOT = { has_modifier = pm_class_binary_8 }
+			}
+			add_modifier = { modifier = pm_class_binary_8 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_binary_9
+				NOT = { has_modifier = pm_class_binary_9 }
+			}
+			add_modifier = { modifier = pm_class_binary_9 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_binary_10
+				NOT = { has_modifier = pm_class_binary_10 }
+			}
+			add_modifier = { modifier = pm_class_binary_10 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_trinary_1
+				NOT = { has_modifier = pm_class_trinary_1 }
+			}
+			add_modifier = { modifier = pm_class_trinary_1 days = -1 }
+		} else_if = {
+			limit = {
+				is_star_class = sc_trinary_2
+				NOT = { has_modifier = pm_class_trinary_2 }
+			}
+			add_modifier = { modifier = pm_class_trinary_2 days = -1 }
+		} else_if = {
+			limit = {
+				is_star_class = sc_trinary_3
+				NOT = { has_modifier = pm_class_trinary_3 }
+			}
+			add_modifier = { modifier = pm_class_trinary_3 days = -1 }
+		} else_if = {
+			limit = { 
+				is_star_class = sc_trinary_4
+				NOT = { has_modifier = pm_class_trinary_4 }
+			}
+			add_modifier = { modifier = pm_class_trinary_4 days = -1 }
+		}
+	}
+}

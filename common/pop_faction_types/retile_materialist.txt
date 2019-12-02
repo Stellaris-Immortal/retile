@@ -105,6 +105,7 @@ technologist = {
 				OR = {
 					has_technology = tech_strategic_coordination
 					has_technology = tech_science_nexus
+					has_any_megastructure_in_empire = yes
 				}
 			}
 		}
@@ -112,8 +113,11 @@ technologist = {
 		trigger = {
 			owner = { 
 				OR = {
-					has_country_flag = built_think_tank
-					has_country_flag = built_mega_art_installation_site
+					any_owned_megastructure = { is_megastructure_type = think_tank_4 }
+					any_owned_megastructure = { is_megastructure_type = think_tank_3 }
+					any_owned_megastructure = { is_megastructure_type = think_tank_restored }
+					any_owned_megastructure = { is_megastructure_type = mega_art_installation_3 }
+					any_owned_megastructure = { is_megastructure_type = mega_art_installation_restored }
 				}
 			}
 		}
@@ -287,12 +291,15 @@ technologist = {
 
 		trigger = {
 			owner = {
-				count_country = {
-					count > 0
-					limit = {
-						exists = this
-						root.owner = { has_commercial_pact = prev }
+				OR = {
+					count_country = {
+						count > 0
+						limit = {
+							exists = this
+							root.owner = { has_commercial_pact = prev }
+						}
 					}
+					has_federation = yes
 				}
 			}
 		}
@@ -365,6 +372,7 @@ technologist = {
 					has_modifier = irassian_world_found
 					has_modifier = league_world_found
 					has_modifier = vultaum_world_found
+					has_country_flag = yuht_world_found
 				}
 			}
 		}

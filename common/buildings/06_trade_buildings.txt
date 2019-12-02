@@ -19,7 +19,10 @@ building_commercial_zone = {
 	}
 	
 	allow = {
-		retile_urban = yes
+		OR = { 
+			retile_urban = yes
+			has_modifier = resort_colony
+		}
 		#retile_ready = yes
 	}
 
@@ -27,7 +30,10 @@ building_commercial_zone = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
-			retile_urban = no
+			NOR = { 
+				retile_urban = yes
+				has_modifier = resort_colony
+			}
 		}
 	}
 	
@@ -200,7 +206,10 @@ building_galactic_stock_exchange = {
 	}
 	
 	allow = {
-		retile_urban = yes
+		OR = { 
+			retile_urban = yes
+			has_modifier = resort_colony
+		}
 		#retile_ready = yes
 	}
 	
@@ -208,6 +217,10 @@ building_galactic_stock_exchange = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
+			NOR = { 
+				retile_urban = yes
+				has_modifier = resort_colony
+			}
 		}
 	}
 	

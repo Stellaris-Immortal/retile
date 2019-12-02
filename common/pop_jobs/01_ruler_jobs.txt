@@ -383,7 +383,7 @@ administrator = {
 	}
 }
 
-bureaucrat = {	
+bureaucrat_head = {	
 	category = ruler
 	condition_string = RULER_JOB_TRIGGER
 	building_icon = building_capital
@@ -399,7 +399,7 @@ bureaucrat = {
 	possible = {
 		ruler_job_check_trigger = yes
 		or = {
-			has_job = bureaucrat
+			has_job = bureaucrat_head
 			retile_job_seeking = yes
 		}
 	}
@@ -420,7 +420,7 @@ bureaucrat = {
 		weight = @ruler_job_weight
 		modifier = {
 			factor = 5
-			has_job = bureaucrat
+			has_job = bureaucrat_head
 		}		
 		modifier = {
 			factor = 0.1
@@ -429,10 +429,7 @@ bureaucrat = {
 		}		
 		modifier = {
 			factor = 1.25
-			OR = {
-				has_trait = trait_robot_propaganda_machines
-				has_trait = trait_traditional
-			}		
+			has_trait = trait_robot_propaganda_machines		
 		}
 		modifier = {
 			factor = 1.25

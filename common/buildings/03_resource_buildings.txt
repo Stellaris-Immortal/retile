@@ -93,6 +93,14 @@ building_hydroponics_farm = {
 		}
 		text = retile_food_buff_city_plantoid_effect
 	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_food_buff_city_gestalt_effect
+	}
 	
 	ai_weight = {
 		weight = 100
@@ -104,7 +112,7 @@ building_hydroponics_farm = {
 		modifier = {	# Plantoid Fix Habitability
 			weight = 10000
 			owner = { is_plantoid_empire = yes }
-			habitability = { who = owner_main_species value < 0.7 }
+			habitability = { who = owner.owner_species value < 0.7 }
 			num_districts = { type = district_farming value < 1 }
 		}
 		modifier = {	# Free building slots when food is good
@@ -191,6 +199,14 @@ building_recycling_center = {
 			owner = { is_gestalt = no }
 		}
 		text = retile_minerals_buff_city_effect
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_minerals_buff_city_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -285,7 +301,15 @@ building_solar_panels = {
 		}
 		text = retile_energy_buff_city_effect
 	}
-	
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_energy_buff_city_gestalt_effect
+	}
+
 	ai_weight = {
 		weight = 100
 		
@@ -391,6 +415,14 @@ building_food_processing_facility = {
 		}
 		text = retile_food_buff_1_effect
 	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_food_buff_1_gestalt_effect
+	}
 	
 	ai_weight = {
 		weight = 0
@@ -416,6 +448,10 @@ building_food_processing_facility = {
 		modifier = {	# avoid bad food worlds...
 			factor = 0.5
 			retile_template_good_food = no
+		}
+		modifier = {
+			factor = -1
+			has_planet_flag = ai_arcology_development
 		}
 	}
 
@@ -499,9 +535,21 @@ building_food_processing_center = {
 		}
 		text = retile_food_buff_2_effect
 	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_food_buff_2_gestalt_effect
+	}
 	
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {
+			factor = -1
+			has_planet_flag = ai_arcology_development
+		}
 	}
 
 	ai_resource_production = {
@@ -592,6 +640,14 @@ building_mineral_purification_plant = {
 		}
 		text = retile_minerals_buff_1_effect
 	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_minerals_buff_1_gestalt_effect
+	}
 	
 	ai_weight = {
 		weight = 0
@@ -603,6 +659,10 @@ building_mineral_purification_plant = {
 		modifier = {	# avoid bad worlds...
 			factor = 0.5
 			retile_template_good_minerals = no
+		}
+		modifier = {
+			factor = -1
+			has_planet_flag = ai_arcology_development
 		}
 	}
 
@@ -684,9 +744,21 @@ building_mineral_purification_hub = {
 		}
 		text = retile_minerals_buff_2_effect
 	}
-	
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_minerals_buff_2_gestalt_effect
+	}
+
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {
+			factor = -1
+			has_planet_flag = ai_arcology_development
+		}
 	}
 
 	ai_resource_production = {
@@ -777,6 +849,14 @@ building_energy_grid = {
 		}
 		text = retile_energy_buff_1_effect
 	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_energy_buff_1_gestalt_effect
+	}
 	
 	ai_weight = {
 		weight = 0
@@ -798,6 +878,10 @@ building_energy_grid = {
 		modifier = {	# avoid bad worlds...
 			factor = 0.5
 			retile_template_good_energy = no
+		}
+		modifier = {
+			factor = -1
+			has_planet_flag = ai_arcology_development
 		}
 	}
 	
@@ -870,6 +954,10 @@ building_energy_nexus = {
 	
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {
+			factor = -1
+			has_planet_flag = ai_arcology_development
+		}
 	}
 
 	triggered_desc = {
@@ -878,6 +966,14 @@ building_energy_nexus = {
 			owner = { is_gestalt = no }
 		}
 		text = retile_energy_buff_2_effect
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_energy_buff_2_gestalt_effect
 	}
 	
 	ai_resource_production = {
@@ -952,6 +1048,14 @@ building_maintenance_depot = {
 		}
 		text = retile_custodian_buff_1_effect
 	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_custodian_buff_1_gestalt_effect
+	}
 	
 	ai_weight = {
 		weight = 0
@@ -1021,6 +1125,14 @@ building_maintenance_depot_2 = {
 			owner = { is_gestalt = no }
 		}
 		text = retile_custodian_buff_2_effect
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_custodian_buff_2_gestalt_effect
 	}
 	
 	ai_weight = {
