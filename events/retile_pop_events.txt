@@ -40,10 +40,7 @@ pop_event = {
 		exists = owner
 		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
 		NOT = { 
-			OR = {
-				has_migration_control = yes 	
-				has_citizenship_type = { type = citizenship_organic_trophy } 
-			}
+			has_citizenship_type = { type = citizenship_organic_trophy } 
 		}
 		OR = {
 			has_job = no
@@ -96,10 +93,7 @@ planet_event = {
 	trigger = {
 		this = { free_housing < 1 }
 		NOT = { 
-			OR = {
-				has_migration_control = yes 	
-				has_citizenship_type = { type = citizenship_organic_trophy } 
-			}
+			has_citizenship_type = { type = citizenship_organic_trophy } 
 		}
 	}
 
