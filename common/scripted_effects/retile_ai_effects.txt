@@ -233,18 +233,18 @@ retile_flag_ai_food_world = {
 					ai_good_food_world = yes
 				}
 				modifier = {	### World is good for minerals
-					add = 9
+					add = -4
 					check_variable = { which = rtd_mining value > 2 }
 				}
 				modifier = {
-					add = 90
+					add = -36
 					check_variable = { which = rtd_mining value > 5 }
 				}
 				modifier = {
-					add = 900
+					add = -360
 					check_variable = { which = rtd_mining value > 8 }
 				}
-				modifier = {	### World is good for minerals
+				modifier = {	### World is good for energy
 					add = -4
 					check_variable = { which = rtd_generator value > 2 }
 				}
@@ -356,15 +356,15 @@ retile_flag_ai_energy_world = {
 			weights = {
 				base = 1
 				modifier = {	### World is good for energy
-					add = -4
+					add = 9
 					check_variable = { which = rtd_generator value > 2 }
 				}
 				modifier = {
-					add = -36
+					add = 90
 					check_variable = { which = rtd_generator value > 5 }
 				}
 				modifier = {
-					add = -360
+					add = 900
 					check_variable = { which = rtd_generator value > 8 }
 				}
 				modifier = {	### Static high weight for uncapped planets.
@@ -373,15 +373,15 @@ retile_flag_ai_energy_world = {
 					ai_good_energy_world = yes
 				}
 				modifier = {	### World is good for minerals
-					add = 9
+					add = -4
 					check_variable = { which = rtd_mining value > 2 }
 				}
 				modifier = {
-					add = 90
+					add = -36
 					check_variable = { which = rtd_mining value > 5 }
 				}
 				modifier = {
-					add = 900
+					add = -360
 					check_variable = { which = rtd_mining value > 8 }
 				}
 				modifier = {	### World is good for food
