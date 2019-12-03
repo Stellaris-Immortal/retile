@@ -59,8 +59,8 @@ retile_ready_soldier = {	# Planet scope
 					country_uses_food = no
 					has_monthly_income = { resource = food value > 15 }
 				}
-				has_monthly_income = { resource = minerals value < 50 }
-				has_monthly_income = { resource = energy value < 50 }
+				has_monthly_income = { resource = minerals value > 50 }
+				has_monthly_income = { resource = energy value > 50 }
 				OR = {
 					is_plantoid_empire = no
 					prev = { habitability = { who = owner.owner_species value > 0.7 } }
