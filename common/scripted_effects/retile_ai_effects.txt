@@ -137,9 +137,12 @@ retile_flag_ai_food_world = {
 		limit = { habitable_planet = yes }
 		retile_count_districts_farming = yes
 	}
-	every_owned_planet = {
-		limit = { has_planet_flag = ai_food_development_former }
-		remove_planet_flag = ai_food_development_former
+	if = {
+		limit = { any_owned_planet = { has_planet_flag = ai_food_development } }
+		every_owned_planet = {
+			limit = { has_planet_flag = ai_food_development_former }
+			remove_planet_flag = ai_food_development_former
+		}
 	}
 	every_owned_planet = {
 		limit = { has_planet_flag = ai_food_development }
@@ -274,9 +277,12 @@ retile_flag_ai_energy_world = {
 		limit = { habitable_planet = yes }
 		retile_count_districts_generator = yes
 	}
-	every_owned_planet = {
-		limit = { has_planet_flag = ai_energy_development_former }
-		remove_planet_flag = ai_energy_development_former
+	if = {
+		limit = { any_owned_planet = { has_planet_flag = ai_energy_development } }
+		every_owned_planet = {
+			limit = { has_planet_flag = ai_energy_development_former }
+			remove_planet_flag = ai_energy_development_former
+		}
 	}
 	every_owned_planet = {
 		limit = { has_planet_flag = ai_energy_development }
@@ -411,9 +417,12 @@ retile_flag_ai_minerals_world = {
 		limit = { habitable_planet = yes }
 		retile_count_districts_mining = yes
 	}
-	every_owned_planet = {
-		limit = { has_planet_flag = ai_minerals_development_former }
-		remove_planet_flag = ai_minerals_development_former
+	if = {
+		limit = { any_owned_planet = { has_planet_flag = ai_minerals_development } }
+		every_owned_planet = {
+			limit = { has_planet_flag = ai_minerals_development_former }
+			remove_planet_flag = ai_minerals_development_former
+		}
 	}
 	every_owned_planet = {
 		limit = { has_planet_flag = ai_minerals_development }
