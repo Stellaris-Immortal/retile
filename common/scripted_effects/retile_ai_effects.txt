@@ -9,198 +9,126 @@ is_colonizable = yes
 
 # planet scope
 retile_count_districts_generator = {
-	if = {
-		limit = { num_districts = { type = district_generator value < 1 } }
-		set_variable = { which = rtd_generator value = 0 }
-	} else_if = {
-		limit = { num_districts = { type = district_generator value = 1 } }
-		set_variable = { which = rtd_generator value = 1 }
-	} else_if = {
-		limit = { num_districts = { type = district_generator value = 2 } }
-		set_variable = { which = rtd_generator value = 2 }
-	} else_if = {
-		limit = { num_districts = { type = district_generator value = 3 } }
-		set_variable = { which = rtd_generator value = 3 }
-	} else_if = {
-		limit = { num_districts = { type = district_generator value = 4 } }
-		set_variable = { which = rtd_generator value = 4 }
-	} else_if = {
-		limit = { num_districts = { type = district_generator value = 5 } }
-		set_variable = { which = rtd_generator value = 5 }
-	} else_if = {
-		limit = { num_districts = { type = district_generator value = 6 } }
-		set_variable = { which = rtd_generator value = 6 }
-	} else_if = {
-		limit = { num_districts = { type = district_generator value = 7 } }
-		set_variable = { which = rtd_generator value = 7 }
-	} else_if = {
-		limit = { num_districts = { type = district_generator value = 8 } }
-		set_variable = { which = rtd_generator value = 8 }
-	} else_if = {
-		limit = { num_districts = { type = district_generator value >= 9 } }
-		set_variable = { which = rtd_generator value = 9 }
+	set_variable = { which = rtd_generator value = 0 }
+	every_deposit = {
+		switch = {
+			trigger = is_deposit_type
+			d_arid_highlands = { planet = { change_variable = { which = rtd_generator value = 1 } } }
+			d_buzzing_plains = { planet = { change_variable = { which = rtd_generator value = 1 } } }
+			d_hot_springs = { planet = { change_variable = { which = rtd_generator value = 2 } } }
+			d_rushing_waterfalls = { planet = { change_variable = { which = rtd_generator value = 2 } } }
+			d_searing_desert = { planet = { change_variable = { which = rtd_generator value = 2 } } }
+			d_frozen_gas_lake = { planet = { change_variable = { which = rtd_generator value = 2 } } }
+			d_odd_factory_wreckage_1 = { planet = { change_variable = { which = rtd_generator value = 2 } } }
+			d_underground_contact_zone = { planet = { change_variable = { which = rtd_generator value = 2 } } }
+			d_numas_breath = { planet = { change_variable = { which = rtd_generator value = 2 } } }
+			d_delhi_sprawl = { planet = { change_variable = { which = rtd_generator value = 2 } } }
+			d_immense_solar_array = { planet = { change_variable = { which = rtd_generator value = 2 } } }
+			d_geothermal_vent = { planet = { change_variable = { which = rtd_generator value = 3 } } }
+			d_underwater_vent = { planet = { change_variable = { which = rtd_generator value = 3 } } }
+			d_tempestous_mountain = { planet = { change_variable = { which = rtd_generator value = 3 } } }
+			d_irradiated_valley = { planet = { change_variable = { which = rtd_generator value = 3 } } }
+			d_underground_generator = { planet = { change_variable = { which = rtd_generator value = 3 } } }
+			d_junk_hollows = { planet = { change_variable = { which = rtd_generator value = 3 } } }
+			d_boswash_metropolitan_axis = { planet = { change_variable = { which = rtd_generator value = 3 } } }
+			d_pearl_river_agglomerate = { planet = { change_variable = { which = rtd_generator value = 3 } } }
+			d_organic_landfill = { planet = { change_variable = { which = rtd_generator value = 4 } } }
+			d_ancient_reactor_pits = { planet = { change_variable = { which = rtd_generator value = 4 } } }
+			d_migrating_forests = { planet = { change_variable = { which = rtd_generator value = -1 } } }
+		}
 	}
-	if = {
-		limit = { num_free_districts = { type = district_generator value < 1 } }
-		change_variable = { which = rtd_generator value = 0 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_generator value = 1 } }
-		change_variable = { which = rtd_generator value = 1 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_generator value = 2 } }
-		change_variable = { which = rtd_generator value = 2 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_generator value = 3 } }
-		change_variable = { which = rtd_generator value = 3 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_generator value = 4 } }
-		change_variable = { which = rtd_generator value = 4 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_generator value = 5 } }
-		change_variable = { which = rtd_generator value = 5 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_generator value = 6 } }
-		change_variable = { which = rtd_generator value = 6 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_generator value = 7 } }
-		change_variable = { which = rtd_generator value = 7 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_generator value = 8 } }
-		change_variable = { which = rtd_generator value = 8 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_generator value >= 9 } }
-		change_variable = { which = rtd_generator value = 9 }
-	}
+	if = { limit = { has_modifier = hazardous_weather } change_variable = { which = rtd_generator value = 2 } }
+	if = { limit = { has_modifier = strong_magnetic_field } change_variable = { which = rtd_generator value = 2 } }
+	if = { limit = { has_modifier = tidal_locked } change_variable = { which = rtd_generator value = -2 } }
+	if = { limit = { has_modifier = mastery_of_nature_retile } change_variable = { which = rtd_generator value = 3 } }
+	if = { limit = { has_modifier = mastery_of_nature } change_variable = { which = rtd_generator value = 3 } }
+	if = { limit = { has_modifier = calm_weather } change_variable = { which = rtd_generator value = -2 } }
 }
 
 retile_count_districts_mining = {
-	if = {
-		limit = { num_districts = { type = district_mining value < 1 } }
-		set_variable = { which = rtd_mining value = 0 }
-	} else_if = {
-		limit = { num_districts = { type = district_mining value = 1 } }
-		set_variable = { which = rtd_mining value = 1 }
-	} else_if = {
-		limit = { num_districts = { type = district_mining value = 2 } }
-		set_variable = { which = rtd_mining value = 2 }
-	} else_if = {
-		limit = { num_districts = { type = district_mining value = 3 } }
-		set_variable = { which = rtd_mining value = 3 }
-	} else_if = {
-		limit = { num_districts = { type = district_mining value = 4 } }
-		set_variable = { which = rtd_mining value = 4 }
-	} else_if = {
-		limit = { num_districts = { type = district_mining value = 4 } }
-		set_variable = { which = rtd_mining value = 5 }
-	} else_if = {
-		limit = { num_districts = { type = district_mining value = 5 } }
-		set_variable = { which = rtd_mining value = 6 }
-	} else_if = {
-		limit = { num_districts = { type = district_mining value = 7 } }
-		set_variable = { which = rtd_mining value = 7 }
-	} else_if = {
-		limit = { num_districts = { type = district_mining value = 8 } }
-		set_variable = { which = rtd_mining value = 8 }
-	} else_if = {
-		limit = { num_districts = { type = district_mining value >= 9 } }
-		set_variable = { which = rtd_mining value = 9 }
+	set_variable = { which = rtd_mining value = 0 }
+	every_deposit = {
+		switch = {
+			trigger = is_deposit_type
+			d_veiny_cliffs = { planet = { change_variable = { which = rtd_mining value = 1 } } }
+			d_mineral_fields = { planet = { change_variable = { which = rtd_mining value = 1 } } }
+			d_mineral_striations = { planet = { change_variable = { which = rtd_mining value = 1 } } }
+			d_mauritanian_security_zone = { planet = { change_variable = { which = rtd_mining value = 1 } } }
+			d_prosperous_mesa = { planet = { change_variable = { which = rtd_mining value = 2 } } }
+			d_ore_rich_caverns = { planet = { change_variable = { which = rtd_mining value = 2 } } }
+			d_odd_factory_wreckage_2 = { planet = { change_variable = { which = rtd_mining value = 2 } } }
+			d_underground_vault_2 = { planet = { change_variable = { which = rtd_mining value = 2 } } }
+			d_nanosands = { planet = { change_variable = { which = rtd_mining value = 2 } } }
+			d_relic_metal_boneyard = { planet = { change_variable = { which = rtd_mining value = 2 } } }
+			d_rich_mountain = { planet = { change_variable = { which = rtd_mining value = 3 } } }
+			d_submerged_ore_veins = { planet = { change_variable = { which = rtd_mining value = 3 } } }
+			d_junk_wastes = { planet = { change_variable = { which = rtd_mining value = 3 } } }
+			d_impact_crater = { planet = { change_variable = { which = rtd_mining value = 3 } } }
+			d_underground_mine = { planet = { change_variable = { which = rtd_mining value = 3 } } }
+			d_mesopotamian_urban_corridor = { planet = { change_variable = { which = rtd_mining value = 3 } } }
+			d_great_albertan_crater = { planet = { change_variable = { which = rtd_mining value = 3 } } }
+			d_metal_boneyard = { planet = { change_variable = { which = rtd_mining value = 4 } } }
+			d_worm_mine = { planet = { change_variable = { which = rtd_mining value = 4 } } }
+			d_abandoned_mining_tunnels = { planet = { change_variable = { which = rtd_mining value = 4 } } }
+			d_ancient_mining_site = { planet = { change_variable = { which = rtd_mining value = 5 } } }
+			d_migrating_forests = { planet = { change_variable = { which = rtd_mining value = -1 } } }
+		}
 	}
-	if = {
-		limit = { num_free_districts = { type = district_mining value < 1 } }
-		change_variable = { which = rtd_mining value = 0 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_mining value = 1 } }
-		change_variable = { which = rtd_mining value = 1 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_mining value = 2 } }
-		change_variable = { which = rtd_mining value = 2 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_mining value = 3 } }
-		change_variable = { which = rtd_mining value = 3 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_mining value = 4 } }
-		change_variable = { which = rtd_mining value = 4 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_mining value = 5 } }
-		change_variable = { which = rtd_mining value = 5 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_mining value = 6 } }
-		change_variable = { which = rtd_mining value = 6 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_mining value = 7 } }
-		change_variable = { which = rtd_mining value = 7 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_mining value = 8 } }
-		change_variable = { which = rtd_mining value = 8 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_mining value >= 9 } }
-		change_variable = { which = rtd_mining value = 9 }
-	}
+	if = { limit = { has_modifier = tidal_locked } change_variable = { which = rtd_mining value = -2 } }
+	if = { limit = { has_modifier = asteroid_impacts } change_variable = { which = rtd_mining value = 1 } }
+	if = { limit = { has_modifier = asteroid_belt } change_variable = { which = rtd_mining value = 1 } }
+	if = { limit = { has_modifier = extensive_moon_system } change_variable = { which = rtd_mining value = 2 } }
+	if = { limit = { has_modifier = irradiated_planet } change_variable = { which = rtd_mining value = 2 } }
+	if = { limit = { has_modifier = mineral_rich } change_variable = { which = rtd_mining value = 2 } }
+	if = { limit = { has_modifier = slow_rotation } change_variable = { which = rtd_mining value = 2 } }
+	if = { limit = { has_modifier = ultra_rich } change_variable = { which = rtd_mining value = 4 } }
+	if = { limit = { has_modifier = mineral_poor } change_variable = { which = rtd_mining value = -2 } }
+	if = { limit = { has_modifier = mastery_of_nature_retile } change_variable = { which = rtd_mining value = 3 } }
+	if = { limit = { has_modifier = mastery_of_nature } change_variable = { which = rtd_mining value = 3 } }
 }
 
 retile_count_districts_farming = {
-	if = {
-		limit = { num_districts = { type = district_farming value < 1 } }
-		set_variable = { which = rtd_farming value = 0 }
-	} else_if = {
-		limit = { num_districts = { type = district_farming value = 1 } }
-		set_variable = { which = rtd_farming value = 1 }
-	} else_if = {
-		limit = { num_districts = { type = district_farming value = 2 } }
-		set_variable = { which = rtd_farming value = 2 }
-	} else_if = {
-		limit = { num_districts = { type = district_farming value = 3 } }
-		set_variable = { which = rtd_farming value = 3 }
-	} else_if = {
-		limit = { num_districts = { type = district_farming value = 4 } }
-		set_variable = { which = rtd_farming value = 4 }
-	} else_if = {
-		limit = { num_districts = { type = district_farming value = 4 } }
-		set_variable = { which = rtd_farming value = 5 }
-	} else_if = {
-		limit = { num_districts = { type = district_farming value = 5 } }
-		set_variable = { which = rtd_farming value = 6 }
-	} else_if = {
-		limit = { num_districts = { type = district_farming value = 7 } }
-		set_variable = { which = rtd_farming value = 7 }
-	} else_if = {
-		limit = { num_districts = { type = district_farming value = 8 } }
-		set_variable = { which = rtd_farming value = 8 }
-	} else_if = {
-		limit = { num_districts = { type = district_farming value >= 9 } }
-		set_variable = { which = rtd_farming value = 9 }
+	set_variable = { which = rtd_farming value = 0 }
+	every_deposit = {
+		switch = {
+			trigger = is_deposit_type
+			d_lichen_fields = { planet = { change_variable = { which = rtd_farming value = 1 } } }
+			d_bountiful_plains = { planet = { change_variable = { which = rtd_farming value = 1 } } }
+			d_rugged_woods = { planet = { change_variable = { which = rtd_farming value = 1 } } }
+			d_green_hills = { planet = { change_variable = { which = rtd_farming value = 1 } } }
+			d_forgiving_tundra = { planet = { change_variable = { which = rtd_farming value = 1 } } }
+			d_boggy_fens = { planet = { change_variable = { which = rtd_farming value = 1 } } }
+			d_nutritious_mudland = { planet = { change_variable = { which = rtd_farming value = 1 } } }
+			d_natural_farmland = { planet = { change_variable = { which = rtd_farming value = 1 } } }
+			d_scandinavian_reclamation_sector = { planet = { change_variable = { which = rtd_farming value = 1 } } }
+			d_fungal_caves = { planet = { change_variable = { which = rtd_farming value = 2 } } }
+			d_lush_jungle = { planet = { change_variable = { which = rtd_farming value = 2 } } }
+			d_fertile_lands = { planet = { change_variable = { which = rtd_farming value = 2 } } }
+			d_great_river = { planet = { change_variable = { which = rtd_farming value = 2 } } }
+			d_abandoned_primitive_homesteads = { planet = { change_variable = { which = rtd_farming value = 2 } } }
+			d_black_soil = { planet = { change_variable = { which = rtd_farming value = 3 } } }
+			d_teeming_reef = { planet = { change_variable = { which = rtd_farming value = 3 } } }
+			d_marvelous_oasis = { planet = { change_variable = { which = rtd_farming value = 3 } } }
+			d_tropical_island = { planet = { change_variable = { which = rtd_farming value = 3 } } }
+			d_fungal_forest = { planet = { change_variable = { which = rtd_farming value = 3 } } }
+			d_junk_canals = { planet = { change_variable = { which = rtd_farming value = 3 } } }
+			d_underground_farm = { planet = { change_variable = { which = rtd_farming value = 3 } } }
+			d_pacific_algae_tracts = { planet = { change_variable = { which = rtd_farming value = 3 } } }
+			d_worm_farm = { planet = { change_variable = { which = rtd_farming value = 4 } } }
+			d_saharan_irrigation_project = { planet = { change_variable = { which = rtd_farming value = 4 } } }
+			d_hyperfertile_valley = { planet = { change_variable = { which = rtd_farming value = 5 } } }
+			d_harvester_fields = { planet = { change_variable = { which = rtd_farming value = 6 } } }
+		}
 	}
-	if = {
-		limit = { num_free_districts = { type = district_farming value < 1 } }
-		change_variable = { which = rtd_farming value = 0 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_farming value = 1 } }
-		change_variable = { which = rtd_farming value = 1 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_farming value = 2 } }
-		change_variable = { which = rtd_farming value = 2 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_farming value = 3 } }
-		change_variable = { which = rtd_farming value = 3 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_farming value = 4 } }
-		change_variable = { which = rtd_farming value = 4 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_farming value = 5 } }
-		change_variable = { which = rtd_farming value = 5 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_farming value = 6 } }
-		change_variable = { which = rtd_farming value = 6 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_farming value = 7 } }
-		change_variable = { which = rtd_farming value = 7 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_farming value = 8 } }
-		change_variable = { which = rtd_farming value = 8 }
-	} else_if = {
-		limit = { num_free_districts = { type = district_farming value >= 9 } }
-		change_variable = { which = rtd_farming value = 9 }
-	}
+	if = { limit = { has_modifier = tidal_locked } change_variable = { which = rtd_farming value = -2 } }
+	if = { limit = { has_modifier = eat_the_titans } change_variable = { which = rtd_farming value = 4 } }
+	if = { limit = { has_modifier = lush_planet } change_variable = { which = rtd_farming value = 2 } }
+	if = { limit = { has_modifier = bleak_planet } change_variable = { which = rtd_farming value = -2 } }
+	if = { limit = { has_modifier = irradiated_planet } change_variable = { which = rtd_farming value = -4 } }
+	if = { limit = { has_modifier = abandoned_terraforming } change_variable = { which = rtd_farming value = -3 } }
+	if = { limit = { has_modifier = mastery_of_nature_retile } change_variable = { which = rtd_farming value = 3 } }
+	if = { limit = { has_modifier = mastery_of_nature } change_variable = { which = rtd_farming value = 3 } }
+	if = { limit = { has_modifier = slow_rotation } change_variable = { which = rtd_farming value = -2 } }
 }
 
 # country scope
