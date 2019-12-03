@@ -26,6 +26,7 @@ district_generator = {
 	
 	allow = {
 		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = penal_colony }
 		hidden_trigger = {
 			retile_ready_energy = yes
 		}
@@ -70,6 +71,18 @@ district_generator = {
 		potential = {
 			exists = owner
 			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_technician_add = 1
+		}
+	}
+	
+	# Slave Colony
+	triggered_planet_modifier = {
+		potential = {
+			has_modifier = slave_colony
+			owner = { has_ascension_perk = ap_mega_specialization }
 		}
 		modifier = {
 			planet_housing_add = 1

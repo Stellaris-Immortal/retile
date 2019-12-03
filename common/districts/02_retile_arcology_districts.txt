@@ -153,15 +153,68 @@ district_trade_arcology = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
+			owner = { has_civic = civic_feudal_realm }
+		}
+		modifier = {
+			job_clerk_add = -2
+			job_tax_collector_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_capitalist }
+		}
+		modifier = {
+			job_clerk_add = -2
+			job_investor_add = 2
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
 			owner = {
 				has_ascension_perk = ap_arcology_project
 				is_regular_empire = yes
 				is_fallen_empire = no
+				NOT = { has_civic = civic_capitalist }
+				NOT = { has_civic = civic_feudal_realm }
 			}
 		}
 		modifier = {
 			planet_housing_add = 1
 			job_clerk_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_arcology_project
+				is_regular_empire = yes
+				is_fallen_empire = no
+				has_civic = civic_capitalist
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_investor_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_arcology_project
+				is_regular_empire = yes
+				is_fallen_empire = no
+				has_civic = civic_feudal_realm
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_tax_collector_add = 1
 		}
 	}
 	triggered_planet_modifier = {		# Gestalt Jobs

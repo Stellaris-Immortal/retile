@@ -965,7 +965,7 @@ trade_policy = {
 		}
 		
 		AI_weight = {
-			factor = 10
+			factor = 0
 		}
 	}
 
@@ -979,7 +979,8 @@ trade_policy = {
 		modifier = {}
 		
 		AI_weight = {
-            factor = 0
+			factor = 0
+			
         }
 	}
 	
@@ -1000,6 +1001,8 @@ trade_policy = {
 			factor = 0
 		}
 	}	
+
+	
 	
 	option = {
 		name = "trade_policy_research"
@@ -1015,9 +1018,9 @@ trade_policy = {
 		modifier = {}
 		
 		AI_weight = {
-			factor = 1
+			factor = 0
 			modifier = {
-				factor = 100
+				factor = 0 
 				any_neighbor_country = {
 					is_country_type = default
 					prev = {
@@ -1076,7 +1079,7 @@ trade_policy = {
 		}
 		
 		AI_weight = {
-			factor = 0
+			factor = 1
 		}
 	}
 	
@@ -1095,7 +1098,7 @@ trade_policy = {
 		}
 		
 		AI_weight = {
-			factor = 0
+			factor = 2
 		}
 	}
 }
@@ -1257,10 +1260,6 @@ leader_enhancement = {
 			leader_skill_levels = 1
 			leader_age = 10
 			leaders_cost_mult = 0.5
-		}
-		
-		valid = {
-			NOT = { has_ethic = "ethic_fanatic_egalitarian" }
 		}
 		
 		AI_weight = {
@@ -1566,11 +1565,7 @@ artificial_intelligence_policy = {
 		name = "ai_outlawed"
 
 		valid = {
-			NOR = {
-				has_ethic = "ethic_materialist"
-				has_ethic = "ethic_fanatic_materialist"
-				has_country_flag = synthetic_empire
-			}
+			has_country_flag = synthetic_empire
 		}
 		
 		policy_flags = {
@@ -1631,10 +1626,6 @@ artificial_intelligence_policy = {
 		name = "ai_full_rights"
 
 		valid = {
-			NOR = {
-				has_ethic = "ethic_spiritualist"
-				has_ethic = "ethic_fanatic_spiritualist"
-			}
 			NOT = { has_policy_flag = robots_outlawed }
 		}
 		
@@ -2048,8 +2039,6 @@ purge = {
 			NOR = { 
 				is_subject_type = signatory
 				has_ethic = ethic_gestalt_consciousness
-				has_ethic = ethic_xenophile
-				has_ethic = ethic_fanatic_xenophile
 			}
 			NOT = { has_valid_civic = "civic_fanatic_purifiers" }
 		}
@@ -2073,12 +2062,7 @@ purge = {
 		modifier = {}
 		
 		valid = {		
-			NOT = { is_subject_type = signatory }
-			OR = {
-				has_ethic = ethic_gestalt_consciousness
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-			}			
+			NOT = { is_subject_type = signatory }		
 		}
 		
 		AI_weight = {

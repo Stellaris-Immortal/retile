@@ -97,7 +97,6 @@ traditionalist = {
 
 		potential = { 
 			exists = owner
-			owner = { host_has_dlc = "Ancient Relics Story Pack" }
 		}
 
 		trigger = {
@@ -352,8 +351,8 @@ traditionalist = {
 		unfulfilled_title = "SPIRITUALIST_NO_CHEMICAL_BLISS"
 		desc = "SPIRITUALIST_CHEMICAL_BLISS_DESC"
 
-		fulfilled_effect = -10
-		unfulfilled_effect = 1
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
 
 		potential = { 
 			exists = owner
@@ -361,13 +360,15 @@ traditionalist = {
 		}
 
 		trigger = {
-			owner = {
-				any_owned_pop = { has_living_standard = { type = living_standard_chemical_bliss } }
+			NOT = {
+				owner = {
+					any_owned_pop = { has_living_standard = { type = living_standard_chemical_bliss } }
+				}
 			}
 		}
 	}
 	
-	# Loves Slaying
+	# Hates Slaying
 	demand = {
 		title = "SPIRITUALIST_SLAYER"
 		unfulfilled_title = "SPIRITUALIST_NO_SLAYER"

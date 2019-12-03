@@ -98,6 +98,13 @@ trait_natural_sociologists = {
 	}
 }
 
+trait_natural_philosopher = {
+	cost = 1
+	potential_crossbreeding_chance = 1.0
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
+	custom_tooltip = trait_natural_philosopher_effect
+}
+
 trait_extremely_adaptive = {
 	cost = 4
 	potential_crossbreeding_chance = 1.0
@@ -199,33 +206,6 @@ trait_slow_learners = {
 	}
 	ai_weight = {
 		weight = 0
-	}
-}
-
-trait_traditional = {
-	cost = 1
-	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_quarrelsome" }
-	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
-	modifier = {
-		planet_jobs_unity_produces_mult = 0.1
-	}
-}
-
-trait_quarrelsome = {
-	cost = -1
-	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_traditional" }
-	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
-	modifier = {
-		planet_jobs_unity_produces_mult = -0.1
-	}
-	ai_weight = {
-		weight = 1
-		modifier = {
-			factor = 0
-			years_passed > 5
-		}
 	}
 }
 
@@ -351,7 +331,7 @@ trait_plantoid_flowering = {
 trait_communal = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_solitary" }
+	opposites = { "trait_solitary" "trait_hive_mind" "trait_machine_unit" }
 
 	allowed_archetypes = { BIOLOGICAL LITHOID }
 	
@@ -363,7 +343,7 @@ trait_communal = {
 trait_solitary = {
 	cost = -1
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_communal" }
+	opposites = { "trait_communal" "trait_hive_mind" "trait_machine_unit" }
 
 	allowed_archetypes = { BIOLOGICAL LITHOID }
 	
@@ -739,12 +719,8 @@ trait_prodigy = {
 	initial = no
 	randomized = no
 	advanced_trait = yes
-	opposites = { "trait_natural_engineers" "trait_natural_physicists" "trait_natural_sociologists" "trait_quick_learners" "trait_slow_learners" }
+	opposites = { "trait_natural_engineers" "trait_natural_physicists" "trait_natural_sociologists" "trait_natural_philosopher" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
-	modifier = {
-		species_leader_exp_gain = 0.25
-	}
-	
 	custom_tooltip = TRAIT_PRODIGY_EFFECT
 	
 	slave_cost = {
