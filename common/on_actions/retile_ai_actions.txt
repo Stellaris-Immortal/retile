@@ -1,12 +1,41 @@
 on_game_start = {
 	events = {
-		retile_ai.1 # Deposit Inspection / Resource Flagging
-		#retile_ai.50 # AI district clearing
+		retile_ai.1 # count districts on all planets
 	}
 }
-on_yearly_pulse = {
+
+# This = Planet
+on_blocker_cleared = {
 	events = {
-		retile_ai.1 # Deposit Inspection / Resource Flagging
-		#retile_ai.50 # AI district clearing
+		retile_ai.2 # count districts on planet
+	}
+}
+
+# Scope = Planet
+on_colonized = {
+	events = {
+		retile_ai.2 # count districts on planet
+	}
+}
+
+# This = Planet
+# From = Terraforming country
+on_terraforming_complete = {
+	events = {
+		retile_ai.2 # count districts on planet
+	}
+}
+
+# This = Planet
+on_building_complete = {
+	events = {
+		retile_ai.2 # count districts on planet
+	}
+}
+
+# This = Planet
+on_district_complete = {
+	events = {
+		retile_ai.2 # count districts on planet
 	}
 }

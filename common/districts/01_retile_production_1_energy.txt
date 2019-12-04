@@ -1,4 +1,4 @@
-@base_cost = 150
+@base_cost = 300
 @base_upkeep = 0
 @base_buildtime = 240
 
@@ -28,7 +28,7 @@ district_generator = {
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = penal_colony }
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_energy = yes
 		}
 	}
 	
@@ -44,7 +44,7 @@ district_generator = {
 	resources = {
 		category = planet_districts
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 		upkeep = {
 			trigger = { owner = { is_primitive = no } }
@@ -106,44 +106,10 @@ district_generator = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# energy security
-			weight = 10
-			OR = {
-				retile_template_good_energy = yes
-				AND = {
-					owner = { has_monthly_income = { resource = energy value < 100 } }
-					num_districts = { type = district_generator value < 2 }
-				}
-			}
-		}
+		weight = 100
 		modifier = {	# energy emergency!
-			weight = 1000
+			weight = 2000
 			owner = { has_monthly_income = { resource = energy value < 25 } }
-		}
-		modifier = {	# avoid bad worlds...
-			factor = 0.5
-			retile_template_good_energy = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with energy buildings
-			factor = 10
-			has_building = building_energy_grid
-			has_building = building_energy_nexus
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = energy value > 100 } }
-				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = energy value > 25 } }
-				}
-			}
 		}
 	}
 
@@ -190,11 +156,10 @@ district_generator_uncapped = {
 	resources = {
 		category = planet_districts
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 		upkeep = {
 			energy = @base_upkeep
-			#alloys = 1
 		}
 		upkeep = {
 			trigger = { owner = { is_hive_empire = yes } }
@@ -240,45 +205,10 @@ district_generator_uncapped = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# energy security
-			weight = 10
-			OR = {
-				retile_template_good_energy = yes
-				AND = {
-					owner = { has_monthly_income = { resource = energy value < 100 } }
-					num_districts = { type = district_generator_uncapped value < 2 }
-				}
-				owner = { has_monthly_income = { resource = energy value < 0 } }
-			}
-		}
+		weight = 100
 		modifier = {	# energy emergency!
-			weight = 1000
+			weight = 2000
 			owner = { has_monthly_income = { resource = energy value < 25 } }
-		}
-		modifier = {	# avoid bad worlds...
-			factor = 0.5
-			retile_template_good_energy = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with energy buildings
-			factor = 10
-			has_building = building_energy_grid
-			has_building = building_energy_nexus
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = energy value > 100 } }
-				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = energy value > 25 } }
-				}
-			}
 		}
 	}
 
@@ -311,11 +241,10 @@ district_hab_energy = {
 	resources = {
 		category = planet_districts
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 		upkeep = {
 			energy = @base_upkeep
-			#alloys = 1
 		}
 		upkeep = {
 			trigger = { owner = { is_hive_empire = yes } }
@@ -361,45 +290,10 @@ district_hab_energy = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# energy security
-			weight = 10
-			OR = {
-				retile_template_good_energy = yes
-				AND = {
-					owner = { has_monthly_income = { resource = energy value < 100 } }
-					num_districts = { type = district_hab_energy value < 2 }
-				}
-				owner = { has_monthly_income = { resource = energy value < 0 } }
-			}
-		}
+		weight = 100
 		modifier = {	# energy emergency!
-			weight = 1000
+			weight = 2000
 			owner = { has_monthly_income = { resource = energy value < 25 } }
-		}
-		modifier = {	# avoid bad worlds...
-			factor = 0.5
-			retile_template_good_energy = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with energy buildings
-			factor = 10
-			has_building = building_energy_grid
-			has_building = building_energy_nexus
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = energy value > 100 } }
-				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = energy value > 25 } }
-				}
-			}
 		}
 	}
 
@@ -432,7 +326,7 @@ district_rw_generator = {
 	resources = {
 		category = planet_districts
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 		upkeep = {
 			trigger = { owner = { is_primitive = no } }
@@ -482,45 +376,10 @@ district_rw_generator = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# energy security
-			weight = 10
-			OR = {
-				retile_template_good_energy = yes
-				AND = {
-					owner = { has_monthly_income = { resource = energy value < 100 } }
-					num_districts = { type = district_rw_generator value < 2 }
-				}
-				owner = { has_monthly_income = { resource = energy value < 0 } }
-			}
-		}
+		weight = 100
 		modifier = {	# energy emergency!
-			weight = 1000
+			weight = 2000
 			owner = { has_monthly_income = { resource = energy value < 25 } }
-		}
-		modifier = {	# avoid bad worlds...
-			factor = 0.5
-			retile_template_good_energy = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with energy buildings
-			factor = 10
-			has_building = building_energy_grid
-			has_building = building_energy_nexus
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = energy value > 100 } }
-				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = energy value > 25 } }
-				}
-			}
 		}
 	}
 
