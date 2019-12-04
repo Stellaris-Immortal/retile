@@ -342,3 +342,30 @@ ai_good_minerals_world = {
 	}
 	NOT = { has_modifier = mineral_poor }
 }
+
+# Is this a world we should only build food on if absolutely necessary?
+ai_bad_food_world = {
+	OR = {
+		has_planet_flag = ai_arcology_development
+		has_planet_flag = ai_energy_development_sticky
+		has_planet_flag = ai_minerals_development_sticky
+	}
+}
+
+# Is this a world we should only build energy on if absolutely necessary?
+ai_bad_energy_world = {
+	OR = {
+		has_planet_flag = ai_arcology_development
+		has_planet_flag = ai_food_development_sticky
+		has_planet_flag = ai_minerals_development_sticky
+	}
+}
+
+# Is this a world we should only build minerals on if absolutely necessary?
+ai_bad_minerals_world = {
+	OR = {
+		has_planet_flag = ai_arcology_development
+		has_planet_flag = ai_food_development_sticky
+		has_planet_flag = ai_energy_development_sticky
+	}
+}
