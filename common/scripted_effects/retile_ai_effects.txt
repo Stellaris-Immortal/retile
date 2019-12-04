@@ -611,9 +611,12 @@ retile_flag_ai_arcology_world = {
 
 # country scope
 retile_flag_ai_city_world = {
-	every_owned_planet = {
-		limit = { has_planet_flag = ai_city_development_former }
-		remove_planet_flag = ai_city_development_former
+	if = {
+		limit = { any_owned_planet = { has_planet_flag = ai_city_development } }
+		every_owned_planet = {
+			limit = { has_planet_flag = ai_city_development_former }
+			remove_planet_flag = ai_city_development_former
+		}
 	}
 	every_owned_planet = {
 		limit = { has_planet_flag = ai_city_development }
