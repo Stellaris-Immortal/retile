@@ -1,17 +1,13 @@
 #########################################
 #
 # Retile AI Events
+# Author: Gebnar
 #
-#########################################
-
-@template_decay = 1795				# How frequently can ai planet templates change? (5 years)
-@player_migrate_delay = 355			# How often do players get auto-migration? (1 year)
-
 #########################################
 
 namespace = retile_ai
 
-# Evaluate the resource districts of habitable planets...
+# Initialize galaxy with rural district counts
 event = {
 	id = retile_ai.1
 	hide_window = yes
@@ -23,17 +19,15 @@ event = {
 
 	immediate = {
 		every_planet = {
-			limit = {
-				habitable_planet = yes
-				NOT = { is_planet_class = pc_city }
-			}
-			planet_event = { id = retile_ai.2 }
+			limit = { habitable_planet = yes }
+			retile_count_districts_generator = yes
+			retile_count_districts_mining = yes
+			retile_count_districts_farming = yes
 		}
 	}
 }
 
-# Checks to see if planets are good for developing into energy/mineral/food worlds
-# Applies planet flags retile_energy_world, retile_food_world, retile_minerals_world
+# count districts on a planet when blockers are cleared
 planet_event = {
 	id = retile_ai.2
 	hide_window = yes
@@ -44,376 +38,123 @@ planet_event = {
 	}
 
 	immediate = {
-		#set_planet_flag = retile_evaluated_resources		# Does nothing right now
-
-		################################################ Energy
-		remove_planet_flag = retile_energy_world
-		set_variable = { which = rtd_energy value = 0 }
-		IF = {
-			limit = { districts_good_energy = yes }
-			set_planet_flag = retile_energy_world
-		} ELSE = {
-			every_deposit = {
-				if = {
-					limit = { is_deposit_type = d_arid_highlands }
-					ROOT = { change_variable = { which = rtd_energy value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_hot_springs }
-					ROOT = { change_variable = { which = rtd_energy value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_rushing_waterfalls }
-					ROOT = { change_variable = { which = rtd_energy value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_searing_desert }
-					ROOT = { change_variable = { which = rtd_energy value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_frozen_gas_lake }
-					ROOT = { change_variable = { which = rtd_energy value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_geothermal_vent }
-					ROOT = { change_variable = { which = rtd_energy value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_underwater_vent }
-					ROOT = { change_variable = { which = rtd_energy value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_tempestous_mountain }
-					ROOT = { change_variable = { which = rtd_energy value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_buzzing_plains }
-					ROOT = { change_variable = { which = rtd_energy value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_migrating_forests }
-					ROOT = { change_variable = { which = rtd_energy value = -1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_irradiated_valley }
-					ROOT = { change_variable = { which = rtd_energy value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_odd_factory_wreckage_1 }
-					ROOT = { change_variable = { which = rtd_energy value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_organic_landfill }
-					ROOT = { change_variable = { which = rtd_energy value = 4 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_underground_generator }
-					ROOT = { change_variable = { which = rtd_energy value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_underground_contact_zone }
-					ROOT = { change_variable = { which = rtd_energy value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_numas_breath }
-					ROOT = { change_variable = { which = rtd_energy value = 2 } }
-				}
-			}
-		}
-		if = {
-			limit = { check_variable = { which = rtd_energy value > 3 } }
-			set_planet_flag = retile_energy_world
-		}
-		
-		################################################ Minerals
-		remove_planet_flag = retile_minerals_world
-		set_variable = { which = rtd_minerals value = 0 }
-		IF = {
-			limit = { districts_good_minerals = yes }
-			set_planet_flag = retile_minerals_world
-		} ELSE = {
-			every_deposit = {
-				if = {
-					limit = { is_deposit_type = d_veiny_cliffs }
-					ROOT = { change_variable = { which = rtd_minerals value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_mineral_fields }
-					ROOT = { change_variable = { which = rtd_minerals value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_prosperous_mesa }
-					ROOT = { change_variable = { which = rtd_minerals value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_ore_rich_caverns }
-					ROOT = { change_variable = { which = rtd_minerals value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_rich_mountain }
-					ROOT = { change_variable = { which = rtd_minerals value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_submerged_ore_veins }
-					ROOT = { change_variable = { which = rtd_minerals value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_mineral_striations }
-					ROOT = { change_variable = { which = rtd_minerals value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_migrating_forests }
-					ROOT = { change_variable = { which = rtd_minerals value = -1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_metal_boneyard }
-					ROOT = { change_variable = { which = rtd_minerals value = 4 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_junk_wastes }
-					ROOT = { change_variable = { which = rtd_minerals value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_junk_canals }
-					ROOT = { change_variable = { which = rtd_minerals value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_junk_hollows }
-					ROOT = { change_variable = { which = rtd_minerals value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_ancient_mining_site }
-					ROOT = { change_variable = { which = rtd_minerals value = 5 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_impact_crater }
-					ROOT = { change_variable = { which = rtd_minerals value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_odd_factory_wreckage_2 }
-					ROOT = { change_variable = { which = rtd_minerals value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_underground_vault_2 }
-					ROOT = { change_variable = { which = rtd_minerals value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_worm_mine }
-					ROOT = { change_variable = { which = rtd_minerals value = 4 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_underground_mine }
-					ROOT = { change_variable = { which = rtd_minerals value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_nanosands }
-					ROOT = { change_variable = { which = rtd_minerals value = 2 } }
-				}
-			}
-		}
-		if = {
-			limit = { check_variable = { which = rtd_minerals value > 3 } }
-			set_planet_flag = retile_minerals_world
-		}
-
-		################################################ Food
-		remove_planet_flag = retile_food_world
-		set_variable = { which = rtd_food value = 0 }
-		IF = {
-			limit = { districts_good_food = yes }
-			set_planet_flag = retile_food_world
-		} ELSE = {
-			every_deposit = {
-				if = {
-					limit = { is_deposit_type = d_lichen_fields }
-					ROOT = { change_variable = { which = rtd_food value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_bountiful_plains }
-					ROOT = { change_variable = { which = rtd_food value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_rugged_woods }
-					ROOT = { change_variable = { which = rtd_food value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_green_hills }
-					ROOT = { change_variable = { which = rtd_food value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_forgiving_tundra }
-					ROOT = { change_variable = { which = rtd_food value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_boggy_fens }
-					ROOT = { change_variable = { which = rtd_food value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_nutritious_mudland }
-					ROOT = { change_variable = { which = rtd_food value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_fungal_caves }
-					ROOT = { change_variable = { which = rtd_food value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_lush_jungle }
-					ROOT = { change_variable = { which = rtd_food value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_fertile_lands }
-					ROOT = { change_variable = { which = rtd_food value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_great_river }
-					ROOT = { change_variable = { which = rtd_food value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_black_soil }
-					ROOT = { change_variable = { which = rtd_food value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_teeming_reef }
-					ROOT = { change_variable = { which = rtd_food value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_marvelous_oasis }
-					ROOT = { change_variable = { which = rtd_food value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_tropical_island }
-					ROOT = { change_variable = { which = rtd_food value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_fungal_forest }
-					ROOT = { change_variable = { which = rtd_food value = 3 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_natural_farmland }
-					ROOT = { change_variable = { which = rtd_food value = 1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_migrating_forests }
-					ROOT = { change_variable = { which = rtd_food value = -1 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_abandoned_primitive_homesteads }
-					ROOT = { change_variable = { which = rtd_food value = 2 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_hyperfertile_valley }
-					ROOT = { change_variable = { which = rtd_food value = 5 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_harvester_fields }
-					ROOT = { change_variable = { which = rtd_food value = 6 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_worm_farm }
-					ROOT = { change_variable = { which = rtd_food value = 4 } }
-				}
-				else_if = {
-					limit = { is_deposit_type = d_underground_farm }
-					ROOT = { change_variable = { which = rtd_food value = 3 } }
-				}
-			}
-		}
-		if = {
-			limit = { check_variable = { which = rtd_food value > 3 } }
-			set_planet_flag = retile_food_world
-		}
+		retile_count_districts_generator = yes
+		retile_count_districts_mining = yes
+		retile_count_districts_farming = yes
 	}
 }
 
-# Flag AI planets for arcology development
+
+# Flag AI planets for food focus
 country_event = {
-	id = retile_ai.50
+	id = retile_ai.51
 	hide_window = yes
 
 	trigger = {
-		always = no
 		is_ai = yes
-		OR = {
-			is_country_type = default
-			#is_country_type = awakened_fallen_empire
-		}
+		is_country_type = default
 	}
 	
 	mean_time_to_happen = {
-		days = 360
+		months = 60
 	}
 
 	after = {
-		IF = {
-			limit = {
-				NOT = { any_owned_planet = { has_planet_flag = ai_arcology_development } }
-			}
-			random_owned_planet = {
-				limit = {
-					habitable_structure = no
-					NOR = {
-						is_planet_class = pc_city
-						is_planet_class = pc_hive
-						is_planet_class = pc_machine
-						has_modifier = resort_colony
-						has_modifier = slave_colony
-					}
-				}
-				weights = {
-					base = 1000
-					modifier = {
-						mult = 10
-						is_capital = yes
-					}
-					modifier = {
-						mult = 0.3
-						retile_template_good_energy = yes
-					}
-					modifier = {
-						mult = 0.3
-						retile_template_good_minerals = yes
-					}
-					modifier = {
-						mult = 0.3
-						retile_template_good_food = yes
-					}
-					modifier = {
-						mult = 0.01
-						OR = {
-							has_building = building_food_processing_facility
-							has_building = building_food_processing_center
-							has_building = building_mineral_purification_plant
-							has_building = building_mineral_purification_hub
-							has_building = building_energy_grid
-							has_building = building_energy_nexus
-						}
-					}
-				}
-				set_planet_flag = ai_arcology_development
-			}
-		}
+		retile_flag_ai_food_world = yes
+	}
+}
+
+# Flag AI planets for energy focus
+country_event = {
+	id = retile_ai.52
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	after = {
+		retile_flag_ai_energy_world = yes
+	}
+}
+
+# Flag AI planets for minerals focus
+country_event = {
+	id = retile_ai.53
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	after = {
+		retile_flag_ai_minerals_world = yes
+	}
+}
+
+# Flag AI planets for arcology focus
+country_event = {
+	id = retile_ai.54
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	after = {
+		retile_flag_ai_arcology_world = yes
+	}
+}
+
+# Flag AI planets for city focus
+country_event = {
+	id = retile_ai.55
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+
+	after = {
+		retile_flag_ai_city_world = yes
 	}
 }
 
 # Check AI planets and remove wasteful district deposits
 planet_event = {
-	id = retile_ai.51
+	id = retile_ai.101
 	hide_window = yes
 
 	trigger = {
-		always = no
 		exists = owner
 		owner = {
 			is_ai = yes
-			OR = {
-				is_country_type = default
-				#is_country_type = awakened_fallen_empire
-			}
+			is_country_type = default
 		}
 	}
 	
 	mean_time_to_happen = {
-		days = 90
+		months = 18
 	}
 
 	after = {
@@ -433,8 +174,8 @@ planet_event = {
 						has_monthly_income = { resource = alloys value < 25 }
 						has_monthly_income = { resource = consumer_goods value < 0 }
 						has_monthly_income = { resource = food value < 0 }
-						has_monthly_income = { resource = minerals value < 0 }
-						has_monthly_income = { resource = energy value < 100 }
+						has_monthly_income = { resource = minerals value < 25 }
+						has_monthly_income = { resource = energy value < 25 }
 					}
 				} }
 			}
@@ -450,22 +191,18 @@ planet_event = {
 	}
 }
 
-# Check AI countries and remove wasteful rural districts
+# Check AI countries and remove wasteful energy districts
 country_event = {
-	id = retile_ai.52
+	id = retile_ai.102
 	hide_window = yes
 
 	trigger = {
-		always = no
 		is_ai = yes
-		OR = {
-			is_country_type = default
-			#is_country_type = awakened_fallen_empire
-		}
+		is_country_type = default
 	}
 	
 	mean_time_to_happen = {
-		days = 90
+		months = 18
 	}
 
 	after = {
@@ -474,41 +211,31 @@ country_event = {
 				has_monthly_income = { resource = energy value > 500 }
 			}
 			random_owned_planet = {
-				limit = { OR = {
-					num_districts = { type = district_generator value > 0 }
-					num_districts = { type = district_generator_uncapped value > 0 }
-					num_districts = { type = district_hab_energy value > 0 }
-					num_districts = { type = district_rw_generator value > 0 }
-				} }
+				limit = {
+					NOT = { has_planet_flag = ai_energy_development_sticky }
+					OR = {
+						num_districts = { type = district_generator value > 0 }
+						num_districts = { type = district_generator_uncapped value > 0 }
+						num_districts = { type = district_hab_energy value > 0 }
+						num_districts = { type = district_rw_generator value > 0 }
+					}
+				}
 				weights = {
-					base = 1000
+					base = 100
 					modifier = {
-						mult = 1000
+						mult = 10000
 						OR = {
 							has_planet_flag = ai_arcology_development
 							is_planet_class = pc_relic
 						}
 					}
 					modifier = {
-						mult = 0
-						owner = { any_owned_planet = { AND = {
-							NOT = { is_same_value = prevprev }
-							OR = {
-								has_planet_flag = ai_arcology_development
-								is_planet_class = pc_relic
-							}
-						} } }
+						mult = 0.5
+						has_planet_flag = ai_energy_development_former
 					}
 					modifier = {
-						mult = 0.01
-						OR = {
-							has_building = building_energy_grid
-							has_building = building_energy_nexus
-						}
-					}
-					modifier = {
-						mult = 0.3
-						retile_template_good_energy = yes
+						mult = 0.02
+						has_planet_flag = ai_energy_development
 					}
 				}
 				if = { limit = { num_districts = { type = district_generator value > 0 } }
@@ -524,47 +251,67 @@ country_event = {
 					remove_district = district_rw_generator
 				}
 			}
-		}
-		if = {
+		} else_if = {	# more aggressively clean up arcology worlds.
 			limit = {
-				has_monthly_income = { resource = minerals value > 200 }
+				has_monthly_income = { resource = energy value > 70 }
 			}
 			random_owned_planet = {
-				limit = { OR = {
-					num_districts = { type = district_mining value > 0 }
-					num_districts = { type = district_mining_uncapped value > 0 }
-					num_districts = { type = district_hab_mining value > 0 }
-					num_districts = { type = district_rw_mining value > 0 }
-				} }
+				limit = {
+					NOT = { has_planet_flag = ai_energy_development }
+					has_planet_flag = ai_arcology_development
+					num_districts = { type = district_generator value > 0 }
+				}
+				remove_district = district_generator
+			}
+		}
+	}
+}
+
+# Check AI countries and remove wasteful mining districts
+country_event = {
+	id = retile_ai.103
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 18
+	}
+
+	after = {
+		if = {
+			limit = {
+				has_monthly_income = { resource = minerals value > 500 }
+			}
+			random_owned_planet = {
+				limit = {
+					NOT = { has_planet_flag = ai_minerals_development_sticky }
+					OR = {
+						num_districts = { type = district_mining value > 0 }
+						num_districts = { type = district_mining_uncapped value > 0 }
+						num_districts = { type = district_hab_mining value > 0 }
+						num_districts = { type = district_rw_mining value > 0 }
+					}
+				}
 				weights = {
-					base = 1000
+					base = 100
 					modifier = {
-						mult = 1000
+						mult = 10000
 						OR = {
 							has_planet_flag = ai_arcology_development
 							is_planet_class = pc_relic
 						}
 					}
 					modifier = {
-						mult = 0
-						owner = { any_owned_planet = { AND = {
-							NOT = { is_same_value = prevprev }
-							OR = {
-								has_planet_flag = ai_arcology_development
-								is_planet_class = pc_relic
-							}
-						} } }
+						mult = 0.5
+						has_planet_flag = ai_minerals_development_former
 					}
 					modifier = {
-						mult = 0.01
-						OR = {
-							has_building = building_mineral_purification_plant
-							has_building = building_mineral_purification_hub
-						}
-					}
-					modifier = {
-						mult = 0.3
-						retile_template_good_minerals = yes
+						mult = 0.02
+						has_planet_flag = ai_minerals_development
 					}
 				}
 				if = { limit = { num_districts = { type = district_mining value > 0 } }
@@ -580,7 +327,37 @@ country_event = {
 					remove_district = district_rw_mining
 				}
 			}
+		} else_if = {	# more aggressively clean up arcology worlds.
+			limit = {
+				has_monthly_income = { resource = minerals value > 70 }
+			}
+			random_owned_planet = {
+				limit = {
+					NOT = { has_planet_flag = ai_minerals_development }
+					has_planet_flag = ai_arcology_development
+					num_districts = { type = district_mining value > 0 }
+				}
+				remove_district = district_mining
+			}
 		}
+	}
+}
+
+# Check AI countries and remove wasteful farming districts
+country_event = {
+	id = retile_ai.104
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 18
+	}
+
+	after = {
 		if = {
 			limit = {
 				OR = {
@@ -590,6 +367,7 @@ country_event = {
 			}
 			random_owned_planet = {
 				limit = {
+					NOT = { has_planet_flag = ai_food_development_sticky }
 					OR = {
 						num_districts = { type = district_farming value > 0 }
 						num_districts = { type = district_farming_uncapped value > 0 }
@@ -599,38 +377,32 @@ country_event = {
 					OR = {
 						owner = { is_plantoid_empire = no }
 						habitability = { who = owner.owner_species value > 0.99 }
-						has_planet_flag = ai_arcology_development
+						AND = {
+							owner = { has_technology = tech_housing_3 }
+							has_planet_flag = ai_arcology_development
+							NOT = { has_planet_flag = ai_food_development }
+						}
 					}
 				}
 				weights = {
-					base = 1000
+					base = 100
 					modifier = {
-						mult = 1000
+						mult = 10000
 						OR = {
 							has_planet_flag = ai_arcology_development
-							is_planet_class = pc_relic
 						}
 					}
 					modifier = {
-						mult = 0
-						owner = { any_owned_planet = { AND = {
-							NOT = { is_same_value = prevprev }
-							OR = {
-								has_planet_flag = ai_arcology_development
-								is_planet_class = pc_relic
-							}
-						} } }
+						mult = 0.5
+						has_planet_flag = ai_food_development_former
 					}
 					modifier = {
-						mult = 0.01
+						mult = 0.02
 						OR = {
 							has_building = building_food_processing_facility
 							has_building = building_food_processing_center
+							has_planet_flag = ai_food_development
 						}
-					}
-					modifier = {
-						mult = 0.3
-						retile_template_good_food = yes
 					}
 				}
 				if = { limit = { num_districts = { type = district_farming value > 0 } }
@@ -645,6 +417,18 @@ country_event = {
 				if = { limit = { num_districts = { type = district_rw_farming value > 0 } }
 					remove_district = district_rw_farming
 				}
+			}
+		} else_if = {	# more aggressively clean up arcology worlds.
+			limit = {
+				has_monthly_income = { resource = food value > 35 }
+			}
+			random_owned_planet = {
+				limit = {
+					NOT = { has_planet_flag = ai_food_development }
+					has_planet_flag = ai_arcology_development
+					num_districts = { type = district_farming value > 0 }
+				}
+				remove_district = district_farming
 			}
 		}
 	}

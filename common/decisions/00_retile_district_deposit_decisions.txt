@@ -1,8 +1,8 @@
 ##########################################################################
 # Decisions
 ##########################################################################
-@base_cost = 150
-@base_cost_expensive = 250
+@base_cost = 300
+@base_cost_expensive = 500
 @base_upkeep = 5
 @base_buildtime = 240
 
@@ -14,7 +14,7 @@ decision_retile_deposit_spawningpool = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 	}
 	
@@ -70,7 +70,7 @@ decision_retile_deposit_bioreactor = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 	}
 	
@@ -151,7 +151,7 @@ decision_retile_deposit_precinct = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 	}
 	
@@ -165,7 +165,7 @@ decision_retile_deposit_precinct = {
 	allow = {
 		free_district_slots > 0
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_crime = yes
 		}
 	}
 	
@@ -175,11 +175,7 @@ decision_retile_deposit_precinct = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		modifier = {
-			weight = 100
-			planet_crime > 33
-		}
+		weight = 100
 		modifier = {
 			weight = 150
 			planet_crime > 66
@@ -220,7 +216,7 @@ decision_retile_deposit_stronghold = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 	}
 	
@@ -234,7 +230,7 @@ decision_retile_deposit_stronghold = {
 	allow = {
 		free_district_slots > 0
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_soldier = yes
 		}
 	}
 
@@ -244,16 +240,13 @@ decision_retile_deposit_stronghold = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		modifier = {
-			weight = 1000
-			AND = {
-				num_pops > 5
-				NOT = { has_deposit = retile_deposit_stronghold }
-			}
-		}
+		weight = 50
 		modifier = {
 			weight = 500
+			NOT = { has_deposit = retile_deposit_stronghold }
+		}
+		modifier = {
+			weight = 100
 			owner = { used_naval_capacity_percent > 1.0 }
 		}
 	}
@@ -297,7 +290,7 @@ decision_retile_deposit_preserve = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 	}
 	
@@ -311,7 +304,7 @@ decision_retile_deposit_preserve = {
 	allow = {
 		free_district_slots > 0
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_preserve = yes
 		}
 	}
 
@@ -321,11 +314,7 @@ decision_retile_deposit_preserve = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		modifier = {
-			weight = 100
-			free_amenities > 300
-		}
+		weight = 100
 		modifier = {
 			weight = 200
 			free_amenities > 500
@@ -370,7 +359,7 @@ decision_retile_deposit_assembly = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 	}
 	
@@ -427,7 +416,7 @@ decision_retile_deposit_numistic = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost_expensive
+			minerals = @base_cost_expensive
 		}
 	}
 	
@@ -485,7 +474,7 @@ decision_retile_deposit_ministry = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost_expensive
+			minerals = @base_cost_expensive
 		}
 	}
 	
@@ -547,7 +536,7 @@ decision_retile_deposit_waste_reprocessing = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost_expensive
+			minerals = @base_cost_expensive
 		}
 	}
 
@@ -606,7 +595,7 @@ decision_retile_deposit_slave = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost_expensive
+			minerals = @base_cost_expensive
 		}
 	}
 	
@@ -666,7 +655,7 @@ decision_retile_deposit_alignment = {
 	resources = {
 		category = planets
 		cost = {
-			alloys = @base_cost_expensive
+			minerals = @base_cost_expensive
 		}
 	}
 	
