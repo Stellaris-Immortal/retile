@@ -251,6 +251,18 @@ country_event = {
 					remove_district = district_rw_generator
 				}
 			}
+		} else_if = {	# more aggressively clean up arcology worlds.
+			limit = {
+				has_monthly_income = { resource = energy value > 70 }
+			}
+			random_owned_planet = {
+				limit = {
+					NOT = { has_planet_flag = ai_energy_development }
+					has_planet_flag = ai_arcology_development
+					num_districts = { type = district_generator value > 0 }
+				}
+				remove_district = district_generator
+			}
 		}
 	}
 }
@@ -314,6 +326,18 @@ country_event = {
 				if = { limit = { num_districts = { type = district_rw_mining value > 0 } }
 					remove_district = district_rw_mining
 				}
+			}
+		} else_if = {	# more aggressively clean up arcology worlds.
+			limit = {
+				has_monthly_income = { resource = minerals value > 70 }
+			}
+			random_owned_planet = {
+				limit = {
+					NOT = { has_planet_flag = ai_minerals_development }
+					has_planet_flag = ai_arcology_development
+					num_districts = { type = district_mining value > 0 }
+				}
+				remove_district = district_mining
 			}
 		}
 	}
@@ -393,6 +417,18 @@ country_event = {
 				if = { limit = { num_districts = { type = district_rw_farming value > 0 } }
 					remove_district = district_rw_farming
 				}
+			}
+		} else_if = {	# more aggressively clean up arcology worlds.
+			limit = {
+				has_monthly_income = { resource = food value > 35 }
+			}
+			random_owned_planet = {
+				limit = {
+					NOT = { has_planet_flag = ai_food_development }
+					has_planet_flag = ai_arcology_development
+					num_districts = { type = district_farming value > 0 }
+				}
+				remove_district = district_farming
 			}
 		}
 	}
