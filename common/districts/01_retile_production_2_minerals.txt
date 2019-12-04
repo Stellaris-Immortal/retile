@@ -1,4 +1,4 @@
-@base_cost = 150
+@base_cost = 300
 @base_upkeep = 5
 @base_buildtime = 240
 
@@ -28,7 +28,7 @@ district_mining = {
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = penal_colony }
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_minerals = yes
 		}
 	}
 
@@ -44,7 +44,7 @@ district_mining = {
 	resources = {
 		category = planet_districts
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 		upkeep = {
 			trigger = { owner = { is_primitive = no } }
@@ -122,43 +122,13 @@ district_mining = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# only if necessary
-			weight = 100
-			OR = {
-				AND = {
-					owner = { has_monthly_income = { resource = minerals value < 25 } }
-					num_districts = { type = district_mining value < 2 }
-				}
-				owner = { has_monthly_income = { resource = minerals value < 0 } }
-			}
-		}
-		modifier = {	# avoid bad worlds...
-			factor = 0.5
-			retile_template_good_minerals = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with food buildings
-			factor = 10
-			has_building = building_mineral_purification_plant
-			has_building = building_mineral_purification_hub
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = minerals value > 25 } }
-				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = energy value > 0 } }
-				}
-			}
+		weight = 100
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
 		}
 	}
-
+	
 	ai_resource_production = {
 		minerals = 1
 		trigger = {
@@ -189,7 +159,7 @@ district_mining_uncapped = {
 	allow = {
 		NOT = { has_modifier = resort_colony }
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_minerals = yes
 		}
 	}	
 	
@@ -201,11 +171,10 @@ district_mining_uncapped = {
 	resources = {
 		category = planet_districts
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 		upkeep = {
 			energy = @base_upkeep
-			#alloys = 1
 		}		
 		upkeep = {
 			trigger = { owner = { is_hive_empire = yes } }
@@ -254,43 +223,13 @@ district_mining_uncapped = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# only if necessary
-			weight = 100
-			OR = {
-				AND = {
-					owner = { has_monthly_income = { resource = minerals value < 25 } }
-					num_districts = { type = district_mining_uncapped value < 2 }
-				}
-				owner = { has_monthly_income = { resource = minerals value < 0 } }
-			}
-		}
-		modifier = {	# avoid bad worlds...
-			factor = 0.5
-			retile_template_good_minerals = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with food buildings
-			factor = 10
-			has_building = building_mineral_purification_plant
-			has_building = building_mineral_purification_hub
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = minerals value > 25 } }
-				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = energy value > 0 } }
-				}
-			}
+		weight = 100
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
 		}
 	}
-
+	
 	ai_resource_production = {
 		minerals = 1
 		trigger = {
@@ -313,18 +252,17 @@ district_hab_mining = {
 	
 	allow = {
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_minerals = yes
 		}
 	}
 
 	resources = {
 		category = planet_districts
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 		upkeep = {
 			energy = @base_upkeep
-			#alloys = 1
 		}		
 		upkeep = {
 			trigger = { owner = { is_hive_empire = yes } }
@@ -385,43 +323,13 @@ district_hab_mining = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# only if necessary
-			weight = 100
-			OR = {
-				AND = {
-					owner = { has_monthly_income = { resource = minerals value < 25 } }
-					num_districts = { type = district_hab_mining value < 2 }
-				}
-				owner = { has_monthly_income = { resource = minerals value < 0 } }
-			}
-		}
-		modifier = {	# avoid bad worlds...
-			factor = 0.5
-			retile_template_good_minerals = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with food buildings
-			factor = 10
-			has_building = building_mineral_purification_plant
-			has_building = building_mineral_purification_hub
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = minerals value > 25 } }
-				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = energy value > 0 } }
-				}
-			}
+		weight = 100
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
 		}
 	}
-
+	
 	ai_resource_production = {
 		minerals = 1
 		trigger = {
@@ -444,14 +352,14 @@ district_rw_mining = {
 	
 	allow = {
 		hidden_trigger = {
-			retile_ready = yes
+			retile_ready_minerals = yes
 		}
 	}
 
 	resources = {
 		category = planet_districts
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 		upkeep = {
 			trigger = { owner = { is_primitive = no } }
@@ -515,44 +423,13 @@ district_rw_mining = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# only if necessary
-			weight = 100
-			OR = {
-				AND = {
-					owner = { has_monthly_income = { resource = minerals value < 25 } }
-					num_districts = { type = district_rw_mining value < 2 }
-				}
-				owner = { has_monthly_income = { resource = minerals value < 0 } }
-			}
-		}
-		modifier = {	# avoid bad worlds...
-			factor = 0.5
-			retile_template_good_minerals = no
-		}
-		modifier = {	# avoid urban worlds...
-			factor = 0.5
-			retile_urban_development = yes
-		}
-		modifier = {	# greatly prefer worlds with food buildings
-			factor = 10
-			has_building = building_mineral_purification_plant
-			has_building = building_mineral_purification_hub
-		}
-		modifier = {
-			factor = 0
-			OR = {
-				owner = { has_monthly_income = { resource = minerals value > 25 } }
-				AND = {
-					has_planet_flag = ai_arcology_development
-					owner = { has_monthly_income = { resource = energy value > 0 } }
-				}
-			}
+		weight = 100
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
 		}
 	}
-
-
+	
 	ai_resource_production = {
 		minerals = 1
 		trigger = {

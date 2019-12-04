@@ -1,7 +1,7 @@
-@cost_low = 250
-@cost_med = 500
-@cost_high = 750
-@cost_ultra = 1000
+@cost_low = 500
+@cost_med = 1000
+@cost_high = 1500
+@cost_ultra = 2000
 
 #############
 # Resource buildings
@@ -15,16 +15,11 @@ building_hydroponics_farm = {
 	
 	potential = {
 		exists = owner
-		owner = { 
-			is_lithoid_empire = no
-			NOT = { has_country_flag = lithoid_subspecies }
-		}
 		NOT = { has_modifier = slave_colony }
 	}
 	
 	allow = {
-		always = yes
-		#retile_ready = yes
+		retile_ready_food = yes
 	}
 	
 	destroy_trigger = {
@@ -40,7 +35,7 @@ building_hydroponics_farm = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_med
+			minerals = @cost_med
 		}
 		upkeep = {
 			energy = 25
@@ -103,11 +98,11 @@ building_hydroponics_farm = {
 	}
 	
 	ai_weight = {
-		weight = 100
+		weight = 10
 		
 		modifier = {	# REALLY don't let food go negative
-			weight = 10000
-			owner = { has_monthly_income = { resource = food value < 5 } }
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
 		}
 		modifier = {	# Plantoid Fix Habitability
 			weight = 10000
@@ -117,7 +112,10 @@ building_hydroponics_farm = {
 		}
 		modifier = {	# Free building slots when food is good
 			weight = -1000
-			owner = { has_monthly_income = { resource = food value > 100 } }
+			owner = {
+				has_monthly_income = { resource = food value > 100 }
+				is_plantoid_empire = no
+			}
 		}
 	}
 
@@ -157,7 +155,7 @@ building_recycling_center = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_med
+			minerals = @cost_med
 		}
 		upkeep = {
 			energy = 25
@@ -258,7 +256,7 @@ building_solar_panels = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_med
+			minerals = @cost_med
 		}
 		#upkeep = {
 		#	energy = 0	# upkeep removed because it costs MORE than it produces without other buildings on the planet...
@@ -372,7 +370,7 @@ building_food_processing_facility = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_low
+			minerals = @cost_low
 		}
 		upkeep = {
 			energy = 10
@@ -447,7 +445,7 @@ building_food_processing_facility = {
 		}
 		modifier = {	# avoid bad food worlds...
 			factor = 0.5
-			retile_template_good_food = no
+			ai_good_food_world = no
 		}
 		modifier = {
 			factor = -1
@@ -491,7 +489,7 @@ building_food_processing_center = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_med
+			minerals = @cost_med
 			volatile_motes = @cost_med
 		}
 		upkeep = {
@@ -597,7 +595,7 @@ building_mineral_purification_plant = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_low
+			minerals = @cost_low
 		}
 		upkeep = {
 			energy = 10
@@ -658,7 +656,7 @@ building_mineral_purification_plant = {
 		}
 		modifier = {	# avoid bad worlds...
 			factor = 0.5
-			retile_template_good_minerals = no
+			ai_good_minerals_world = no
 		}
 		modifier = {
 			factor = -1
@@ -696,7 +694,7 @@ building_mineral_purification_hub = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_med
+			minerals = @cost_med
 			exotic_gases = @cost_med
 		}
 		upkeep = {
@@ -798,7 +796,7 @@ building_energy_grid = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_low
+			minerals = @cost_low
 		}
 		upkeep = {
 			energy = 0
@@ -877,7 +875,7 @@ building_energy_grid = {
 		}
 		modifier = {	# avoid bad worlds...
 			factor = 0.5
-			retile_template_good_energy = no
+			ai_good_energy_world = no
 		}
 		modifier = {
 			factor = -1
@@ -910,7 +908,7 @@ building_energy_nexus = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_med
+			minerals = @cost_med
 			rare_crystals = @cost_med
 		}
 		upkeep = {
@@ -997,7 +995,7 @@ building_maintenance_depot = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_low
+			minerals = @cost_low
 		}
 		upkeep = {
 			energy = 5
@@ -1079,7 +1077,7 @@ building_maintenance_depot_2 = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = @cost_med
+			minerals = @cost_med
 		}
 		upkeep = {
 			energy = 10
