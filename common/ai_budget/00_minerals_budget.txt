@@ -18,6 +18,26 @@ minerals_expenditure_buffer = { # Buffer, will not be spent
 	}	
 }
 
+minerals_expenditure_planets = {
+	resource = minerals 
+	type = expenditure
+	category = planets
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 1
+	}
+	static_min = {
+		base = 500
+	}
+	#static_max = {
+	#	base = 2500 # cost of arcology project
+	#}
+}
+
 minerals_expenditure_trade = {
 	resource = minerals 
 	type = expenditure
@@ -26,7 +46,7 @@ minerals_expenditure_trade = {
 	potential = {
 		has_resource = { 
 			type = minerals
-			amount > 1000
+			amount > 10000
 		}
 	}
 	
