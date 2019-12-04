@@ -40,10 +40,7 @@ pop_event = {
 		exists = owner
 		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
 		NOT = { 
-			OR = {
-				has_migration_control = yes 	
-				has_citizenship_type = { type = citizenship_organic_trophy } 
-			}
+			has_citizenship_type = { type = citizenship_organic_trophy } 
 		}
 		OR = {
 			has_job = no
@@ -96,10 +93,7 @@ planet_event = {
 	trigger = {
 		this = { free_housing < 1 }
 		NOT = { 
-			OR = {
-				has_migration_control = yes 	
-				has_citizenship_type = { type = citizenship_organic_trophy } 
-			}
+			fromfrom = { has_citizenship_type = { type = citizenship_organic_trophy } }
 		}
 	}
 
@@ -173,14 +167,14 @@ pop_event = { # retile_abandon_migrate
 					factor = 0
 					NOT = { owner = { any_planet_within_border = {
 						NOT = { is_same_value = root.planet }
-						NOT = { is_under_colonization }
+						is_under_colonization = no
 						free_housing > 0
 					} } }
 				}
 				owner = { random_owned_planet = {
 					limit = {
 						free_housing > 0
-						NOT = { is_under_colonization }
+						is_under_colonization = no
 					}
 					resettle_pop = { pop = root planet = this }
 				} }

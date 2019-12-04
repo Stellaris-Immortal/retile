@@ -24,7 +24,7 @@ alloys_expenditure_planets_essential = {
 	category = planets
 	
 	potential = {
-		always = yes
+		always = no
 	}
 	
 	static_min = {
@@ -38,7 +38,7 @@ alloys_expenditure_planets = {
 	category = planets
 	
 	potential = {
-		always = yes
+		always = no
 	}
 	
 	fraction = {
@@ -56,7 +56,6 @@ alloys_expenditure_ships_essential = {
 	
 	potential = {
 		always = yes
-		#years_passed > 1
 	}
 	static_min = {	# Always able to build construction/science ships
 		base = 100
@@ -136,6 +135,9 @@ alloys_expenditure_stations = {
 	fraction = {
 		weight = 0.1
 	}
+	static_max = {
+		base = 300
+	}
 }
 
 alloys_expenditure_ship_upgrades = {
@@ -148,12 +150,12 @@ alloys_expenditure_ship_upgrades = {
 	}
 	
 	fraction = {
-		weight = 0.05
+		weight = 0.1
 
 		# spend more on ship upgrades if at capacity
 		modifier = {
-			factor = 5
-			used_naval_capacity_percent >= 1.0
+			factor = 10
+			used_naval_capacity_percent >= 1
 		}
 	}
 }
@@ -170,11 +172,11 @@ alloys_expenditure_starbases = {
 	}
 	
 	fraction = {
-		weight = 0.25
+		weight = 0.5
 	}
-	#static_max = {
-	#	base = 3500 # cost of citadel upgrade
-	#}
+	static_max = {
+		base = 5000
+	}
 }
 
 alloys_expenditure_starbases_fallen_empires = {
@@ -309,7 +311,7 @@ alloys_expenditure_armies = {
 	}
 	
 	fraction = {
-		weight = 0.05
+		weight = 0.1
 	}	
 }
 
@@ -324,7 +326,7 @@ alloys_expenditure_armies_threatened = {
 	}
 	
 	fraction = {
-		weight = 0.15
+		weight = 0.2
 	}	
 }
 ############
@@ -365,17 +367,3 @@ alloys_upkeep_ships = {
 		weight = 1
 	}
 }
-
-#alloys_upkeep_planets = {
-#	resource = alloys 
-#	type = upkeep
-#	category = planets
-#	
-#	potential = {
-#		always = yes
-#	}
-#	
-#	fraction = {
-#		weight = 0.3
-#	}	
-#}
