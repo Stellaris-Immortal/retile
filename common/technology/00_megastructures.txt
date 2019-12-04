@@ -150,6 +150,15 @@ tech_mega_engineering = {
 			factor = 20
 			has_any_megastructure_in_empire = yes
 		}
+		
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	ai_weight = {
@@ -211,6 +220,15 @@ tech_science_nexus = {
 			factor = 9
 			has_ascension_perk = ap_technological_ascendancy
 		}
+		
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	ai_weight = {
@@ -265,12 +283,16 @@ tech_sentry_array = {
 			has_ascension_perk = ap_master_builders
 		}
 		modifier = {
-			factor = 6
-			has_ascension_perk = ap_enigmatic_engineering
-		}
-		modifier = {
 			factor = @ap_technological_ascendancy_rare_tech
 			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -303,14 +325,6 @@ tech_strategic_coordination = {
 	weight_modifier = {
 		factor = 0.25
 		modifier = {
-			factor = 0.5
-			is_pacifist = yes
-		}
-		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 2
 				research_leader = {
 					area = society
@@ -336,12 +350,16 @@ tech_strategic_coordination = {
 			has_ascension_perk = ap_master_builders
 		}
 		modifier = {
-			factor = 6
-			has_ascension_perk = ap_eternal_vigilance
-		}
-		modifier = {
 			factor = @ap_technological_ascendancy_rare_tech
 			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -374,14 +392,6 @@ tech_interstellar_assembly = {
 	weight_modifier = {
 		factor = 0.25
 		modifier = {
-			factor = 0.5
-			is_xenophobe = yes
-		}
-		modifier = {
-			factor = 2
-			is_xenophile = yes
-		}
-		modifier = {
 			factor = 2
 				research_leader = {
 					area = society
@@ -409,6 +419,14 @@ tech_interstellar_assembly = {
 		modifier = {
 			factor = @ap_technological_ascendancy_rare_tech
 			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -474,12 +492,16 @@ tech_mega_art = {
 			has_ascension_perk = ap_master_builders
 		}
 		modifier = {
-			factor = 6
-			has_ascension_perk = ap_one_vision
-		}
-		modifier = {
 			factor = @ap_technological_ascendancy_rare_tech
 			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -532,10 +554,6 @@ tech_gateway_activation = {
 		}
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_discovery_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_particles"
@@ -565,6 +583,14 @@ tech_gateway_activation = {
 				owns_any_bypass = gateway
 				owns_any_bypass = lgate
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -617,10 +643,6 @@ tech_gateway_construction = {
 		}
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_discovery_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_particles"
@@ -633,6 +655,14 @@ tech_gateway_construction = {
 		modifier = {
 			factor = 4
 			owns_any_bypass = gateway
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -695,6 +725,14 @@ tech_dyson_sphere = {
 			factor = 9
 			has_ascension_perk = ap_technological_ascendancy
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	ai_weight = {
@@ -752,6 +790,14 @@ tech_matter_decompressor = {
 			factor = 9
 			has_ascension_perk = ap_technological_ascendancy
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	ai_weight = {
@@ -808,6 +854,14 @@ tech_ring_world = {
 		modifier = {
 			factor = 9
 			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
