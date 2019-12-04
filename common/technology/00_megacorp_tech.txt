@@ -1,0 +1,87 @@
+tech_orbital_trash_dispersal = {
+	area = engineering
+	cost = @tier3cost1
+	tier = 1
+	is_rare = yes
+	category = { propulsion }
+	ai_update_type = military
+	weight = 0
+
+	weight_modifier = {
+		factor = 0 #Only granted as a deal from Caravan Fleet 3
+	}
+}
+
+# Xeno-Outreach Agencies
+tech_xeno_tourism_agency = {
+	cost = @tier3cost1
+	area = society
+	tier = 3
+	category = { statecraft }
+	weight = @tier3weight1
+
+	potential = {
+		is_megacorp = yes
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_statecraft"
+			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+	}
+	
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_statecraft"
+			}
+		}
+	}
+}
+
+# Executive Retreats
+tech_executive_retreat = {
+	cost = @tier3cost1
+	area = society
+	tier = 3
+	category = { statecraft }
+	weight = @tier3weight1
+
+	potential = {
+		is_megacorp = yes
+	}
+	
+	weight_modifier = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_statecraft"
+			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+	}
+	
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_statecraft"
+			}
+		}
+	}
+}

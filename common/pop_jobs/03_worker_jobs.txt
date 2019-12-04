@@ -353,6 +353,7 @@ technician = {
 	}
 
 	planet_modifier = {
+		planet_researchers_produces_mult = 0.05
 		planet_amenities_add = 30
 	}
 	triggered_planet_modifier = {
@@ -362,6 +363,20 @@ technician = {
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_nexus } }
 		modifier = { planet_amenities_add = 60 }
+	}
+	
+	# Technician Technology
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_power_plant_2 } }
+		modifier = { planet_researchers_produces_mult = 0.05 }
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_power_plant_3 } }
+		modifier = { planet_researchers_produces_mult = 0.05 }
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_power_plant_4 } }
+		modifier = { planet_researchers_produces_mult = 0.05 }
 	}
 
 	############################################################ Commerce Buildings
@@ -539,6 +554,7 @@ miner = {
 	}	
 	
 	planet_modifier = {
+		planet_metallurgists_produces_mult = 0.05
 		planet_amenities_add = 30
 	}
 	triggered_planet_modifier = {
@@ -548,6 +564,20 @@ miner = {
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_purification_hub } }
 		modifier = { planet_amenities_add = 60 }
+	}
+	
+	# Mining Technology
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_mining_1 } }
+		modifier = { planet_metallurgists_produces_mult = 0.05 }
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_mining_2 } }
+		modifier = { planet_metallurgists_produces_mult = 0.05 }
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_mining_3 } }
+		modifier = { planet_metallurgists_produces_mult = 0.05 }
 	}
 
 	############################################################ Commerce Buildings
@@ -745,6 +775,7 @@ farmer = {
 	}	
 	
 	planet_modifier = {
+		pop_growth_speed = 0.05
 		planet_amenities_add = 30
 	}
 	triggered_planet_modifier = {
@@ -765,38 +796,34 @@ farmer = {
 	}
 	triggered_planet_modifier = {
 		potential = { 
-			has_trait = trait_plantoid
 			owner = { has_technology = tech_eco_simulation }
 		}
 		modifier = { 
-			pop_growth_speed = 0.01
+			pop_growth_speed = 0.05
 		}
 	}
 	triggered_planet_modifier = {
 		potential = { 
-			has_trait = trait_plantoid
 			owner = { has_technology = tech_gene_crops }
 		}
 		modifier = { 
-			pop_growth_speed = 0.01
+			pop_growth_speed = 0.05
 		}
 	}
 	triggered_planet_modifier = {
 		potential = { 
-			has_trait = trait_plantoid
 			owner = { has_technology = tech_nano_vitality_crops }
 		}
 		modifier = { 
-			pop_growth_speed = 0.01
+			pop_growth_speed = 0.05
 		}
 	}
 	triggered_planet_modifier = {
-		potential = { 
-			has_trait = trait_plantoid
+		potential = {
 			owner = { has_technology = tech_nutrient_replication }
 		}
 		modifier = { 
-			pop_growth_speed = 0.02
+			pop_growth_speed = 0.05
 		}
 	}
 
