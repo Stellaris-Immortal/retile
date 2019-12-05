@@ -2047,10 +2047,6 @@ tech_ecological_adaptation = {
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_new_worlds"
@@ -4353,12 +4349,10 @@ tech_planetary_unification = {
 	weight_modifier = {
 		factor = 4
 		modifier = {
-			factor = 0.75
-			NOT = {
-				OR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "research_economic_development"
 			}
 		}
 	}
@@ -4497,13 +4491,6 @@ tech_subdermal_stimulation = {
 	
 	weight_modifier = {
 		factor = 0.5
-		modifier = {
-			factor = 1.25
-			NOR = {
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
-			}
-		}
 		modifier = {
 			factor = @ap_technological_ascendancy_rare_tech
 			has_ascension_perk = ap_technological_ascendancy

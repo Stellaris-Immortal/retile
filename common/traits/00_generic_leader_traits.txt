@@ -22,6 +22,7 @@ leader_trait_adaptable = {
 	}
 	leader_potential_add = {
 		NOT = { leader_class = ruler}
+		NOT = { has_trait = trait_nonadaptive }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
 		
 	}
@@ -51,6 +52,10 @@ leader_trait_stubborn = {
 	}
 	leader_potential_add = {
 		NOT = { leader_class = ruler}
+		NOT = { has_trait = trait_adaptive }
+		NOT = { has_trait = trait_extremely_adaptive }
+		NOT = { from = { has_policy_flag = leader_enhancement_selected_lineages } }
+		NOT = { from = { has_policy_flag = leader_enhancement_capacity_boosters } }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
 		NOT = { from = { has_civic = "civic_philosopher_king" } }
 	}
@@ -70,6 +75,8 @@ leader_trait_resilient = {
 	}
 	leader_potential_add = {
 		NOT = { leader_class = ruler}
+		NOT = { has_trait = trait_weak }
+		NOT = { has_trait = trait_very_weak }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
 	}
 	leader_trait = all
@@ -96,6 +103,8 @@ leader_trait_substance_abuser = {
 	}
 	leader_potential_add = {
 		NOT = { leader_class = ruler}
+		NOT = { has_trait = trait_survivor }
+		NOT = { from = { has_policy_flag = healthcare_universal } }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
 		NOT = { from = { has_civic = "civic_philosopher_king" } }
 	}
@@ -115,6 +124,7 @@ leader_trait_eager = {
 	}
 	leader_potential_add = {
 		NOT = { leader_class = ruler}
+		NOT = { has_trait = trait_slow_learners }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
 	}
 	leader_class = { admiral scientist general governor }
@@ -130,6 +140,9 @@ leader_trait_arrested_development = {
 	}
 	leader_potential_add = {
 		NOT = { leader_class = ruler}
+		NOT = { has_trait = trait_talented }
+		NOT = { from = { has_policy_flag = leader_enhancement_selected_lineages } }
+		NOT = { from = { has_policy_flag = leader_enhancement_capacity_boosters } }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
 		NOT = { from = { has_civic = "civic_philosopher_king" } }
 	}
