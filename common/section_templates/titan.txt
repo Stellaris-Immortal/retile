@@ -1,4 +1,4 @@
-@section_cost = 160
+@section_cost = 240
 
 #BOW
 
@@ -12,12 +12,8 @@ ship_section_template = {
 		
 	ai_weight = {
 		modifier = {
-			factor = 10.0
-			NOT = { is_preferred_weapons = weapon_type_explosive }
-		}
-		modifier = {
-			factor = 0.1
-			is_preferred_weapons = weapon_type_explosive
+			factor = 1
+			always = yes
 		}
 	}
 	
@@ -38,6 +34,8 @@ ship_section_template = {
 	}
 }
 
+#CORE
+
 ship_section_template = {
 	key = "TITAN_MID"
 	ship_size = titan
@@ -46,6 +44,23 @@ ship_section_template = {
 	entity = "titan_mid_entity"
 	icon = "GFX_ship_part_core_mid"
 
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large
@@ -117,6 +132,23 @@ ship_section_template = {
 	entity = "titan_mid_entity"
 	icon = "GFX_ship_part_core_mid"
 
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large
@@ -214,6 +246,17 @@ ship_section_template = {
 
 	prerequisites = { tech_titan_hull_1 }
 
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_explosive
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_explosive }
+		}		
+	}
+	
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large
@@ -311,6 +354,17 @@ ship_section_template = {
 
 	prerequisites = { tech_titan_hull_1 }
 
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_strike_craft
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_strike_craft }
+		}		
+	}
+
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large
@@ -398,6 +452,23 @@ ship_section_template = {
 
 	prerequisites = { tech_titan_hull_2 }
 
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large
@@ -459,6 +530,23 @@ ship_section_template = {
 	entity = "titan_stern_entity"
 	icon = "GFX_ship_part_core_stern"
 	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large
@@ -503,6 +591,17 @@ ship_section_template = {
 	should_draw_components = yes
 	entity = "titan_stern_entity"
 	icon = "GFX_ship_part_core_stern"
+	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_explosive
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_explosive }
+		}		
+	}
 	
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
@@ -563,6 +662,17 @@ ship_section_template = {
 	
 	prerequisites = { tech_titan_hull_1 }
 
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_strike_craft
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_strike_craft }
+		}		
+	}
+
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large
@@ -617,6 +727,23 @@ ship_section_template = {
 	
 	prerequisites = { tech_titan_hull_1 }
 
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large
@@ -676,6 +803,23 @@ ship_section_template = {
 	
 	prerequisites = { tech_titan_hull_2 }
 
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
 	component_slot = {
 		name = "STRIKE_CRAFT_01"
 		slot_size = large
