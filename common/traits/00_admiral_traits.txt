@@ -33,6 +33,7 @@ leader_trait_fleet_logistician = {
 		ships_upkeep_mult = -0.1
 	}
 	leader_potential_add = {
+		NOT = { from = { has_policy_flag = no_retreat_doctrine } }
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
 	}
 	leader_trait = { admiral }
@@ -47,6 +48,9 @@ leader_trait_engineer = {
 		ship_hull_regen_add_perc = 0.5
 		ship_armor_regen_add_perc = 0.5
 	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = no_retreat_doctrine } }
+	}
 	leader_trait = { admiral }
 	leader_class = { admiral }
 	prerequisites = { tech_doctrine_fleet_size_3 }
@@ -60,6 +64,9 @@ leader_trait_aggressive = {
 		ship_fire_rate_mult = 0.05
 		ship_speed_mult = 0.1
 	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = defense_in_depth_doctrine } }
+	}
 	leader_trait = { admiral }
 	leader_class = { admiral }
 	opposites = { "leader_trait_cautious" }
@@ -71,6 +78,9 @@ leader_trait_cautious = {
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_cautious.dds"
 	modifier = {
 		ship_weapon_range_mult = 0.20
+	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = defense_in_depth_doctrine } }
 	}
 	leader_trait = { admiral }
 	leader_class = { admiral }
@@ -102,6 +112,9 @@ leader_trait_unyielding = {
 		ship_weapon_damage = 0.05
 		ship_disengage_chance_mult = -0.33
 	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = hit_and_run_doctrine } }
+	}
 	leader_trait = { admiral }
 	leader_class = { admiral }
 	opposites = { "leader_trait_nervous" "leader_trait_trickster" }
@@ -113,6 +126,7 @@ leader_trait_nervous = {
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_nervous.dds"
 	leader_potential_add = {
 		NOT = { from = { has_civic = "civic_philosopher_king" } }
+		NOT = { from = { has_policy_flag = defense_in_depth_doctrine } }
 	}
 	modifier = {
 		ship_fire_rate_mult = -0.1
@@ -147,6 +161,7 @@ leader_trait_lethargic = {
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_lethargic.dds"
 	leader_potential_add = {
 		NOT = { from = { has_civic = "civic_philosopher_king" } }
+		NOT = { from = { has_policy_flag = hit_and_run_doctrine } }
 	}
 	modifier = {
 		ship_evasion_mult = -0.05
