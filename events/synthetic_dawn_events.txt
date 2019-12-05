@@ -15,6 +15,10 @@ event = {
 	id = syndaw.10
 	hide_window = yes
 	is_triggered_only = yes
+	
+	trigger = {
+		#always = no ## RETILE TODO
+	}
 
 	immediate = {
 		every_playable_country = {
@@ -34,6 +38,10 @@ country_event = {
 	id = syndaw.11
 	hide_window = yes
 	is_triggered_only = yes
+
+	trigger = {
+		#always = no ## RETILE TODO
+	}
 
 	immediate = {
 		random_list = {
@@ -321,6 +329,10 @@ country_event = {
 
 	is_triggered_only = yes
 
+	trigger = {
+		#always = no ## RETILE TODO
+	}
+
 	immediate = {
 		event_target:malfunctioning_leader = {
 			kill_leader = { type = scientist show_notification = no }
@@ -342,6 +354,10 @@ country_event = {
 	location = capital_scope
 
 	is_triggered_only = yes
+
+	trigger = {
+		#always = no ## RETILE TODO
+	}
 
 	immediate = {
 		event_target:malfunctioning_leader = {
@@ -365,6 +381,10 @@ country_event = {
 
 	is_triggered_only = yes
 
+	trigger = {
+		#always = no ## RETILE TODO
+	}
+
 	immediate = {
 		event_target:malfunctioning_leader = {
 			kill_leader = { type = scientist show_notification = no }
@@ -386,6 +406,10 @@ country_event = {
 	location = capital_scope
 
 	is_triggered_only = yes
+
+	trigger = {
+		#always = no ## RETILE TODO
+	}
 
 	immediate = {
 		event_target:malfunctioning_leader = {
@@ -409,6 +433,10 @@ country_event = {
 
 	is_triggered_only = yes
 
+	trigger = {
+		#always = no ## RETILE TODO
+	}
+
 	immediate = {
 		event_target:malfunctioning_leader = {
 			kill_leader = { type = admiral show_notification = no }
@@ -430,6 +458,10 @@ country_event = {
 	#location = event_target:malfunctioning_leader.Planet
 
 	is_triggered_only = yes
+
+	trigger = {
+		#always = no ## RETILE TODO
+	}
 
 	immediate = {
 		event_target:malfunctioning_leader = {
@@ -453,6 +485,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		has_authority = auth_machine_intelligence
 		fromfrom = {
 			exists = leader
@@ -490,6 +523,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		any_owned_fleet = {
 			NOT = { exists = leader }
 			any_owned_ship = {
@@ -545,8 +579,9 @@ event = { # unscoped gatekeeper
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
-		mid_game_years_passed >= -10
+		mid_game_years_passed >= 10000000	## RETILE TEMP FIX
 	}
 
 	immediate = {
@@ -576,6 +611,7 @@ country_event = { # per-country gatekeeper
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		NOR = {
 			has_ethic = ethic_gestalt_consciousness
@@ -841,7 +877,10 @@ country_event = {
 	location = capital_scope
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	immediate = { 
 		set_country_flag = triggered_syndaw_500
@@ -879,7 +918,10 @@ country_event = {
 	location = capital_scope
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	option = {
 		name = syndaw.501.a
@@ -907,7 +949,10 @@ country_event = {
 	location = capital_scope
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	option =  {
 		name = syndaw.502.a
@@ -932,7 +977,10 @@ country_event = {	# RETILE
 	location = event_target:target_planet
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	immediate = {
 		set_country_flag = triggered_syndaw_505
@@ -986,7 +1034,10 @@ country_event = {
 	location = event_target:target_station
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	immediate = {
 		set_country_flag = triggered_syndaw_510
@@ -1030,6 +1081,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		exists = event_target:target_station
 	}
@@ -1057,7 +1109,10 @@ country_event = {
 	location = event_target:target_planetoid
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	immediate = {
 		set_country_flag = triggered_syndaw_515
@@ -1172,7 +1227,10 @@ planet_event = {
 
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	immediate = {
 		owner = {
@@ -1228,6 +1286,7 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		owner = { is_same_value = event_target:syndaw_520_planet_owner }
 		is_occupied_flag = no
@@ -1267,6 +1326,7 @@ planet_event = {
 	}
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		owner = { is_same_value = event_target:syndaw_520_planet_owner }
 	}
@@ -1292,7 +1352,10 @@ country_event = {
 	location = event_target:target_planet
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	immediate = {
 		set_country_flag = triggered_syndaw_525
@@ -1340,6 +1403,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		event_target:target_planet = {
 			owner = { is_same_value = root }
@@ -1378,7 +1442,10 @@ country_event = {
 	location = event_target:destroyed_ships
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	immediate = {
 		set_country_flag = triggered_syndaw_530
@@ -1434,7 +1501,10 @@ country_event = {
 	location = capital_scope
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	immediate = {
 		set_country_flag = triggered_syndaw_535
@@ -1468,7 +1538,10 @@ planet_event = {
 	location = root
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	immediate = {
 		owner = {
@@ -1567,7 +1640,10 @@ planet_event = { # does this unit have a soul
 		}
 	}
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	option = { #decrements MachUp strength
 		name = syndaw.545.a
@@ -1624,7 +1700,10 @@ country_event = {
 		set_country_flag = triggered_syndaw_550
 	}
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
 
 	option = { # patch
 		name = syndaw.550.a
@@ -1658,6 +1737,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		mid_game_years_passed >= 0
 		is_country_type = default
@@ -1854,9 +1934,10 @@ planet_event = { #uprising
 	}
 	
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 	}
-	
+
 	immediate = {
 		owner = {
 			save_event_target_as = organic_empire
@@ -2034,7 +2115,11 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
+
 
 	immediate = {
 		# saving uprising and host as event targets
@@ -2528,6 +2613,7 @@ country_event = {
 	show_sound = event_robo
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		exists = event_target:current_uprising_originator
 		exists = event_target:current_uprising
@@ -2568,7 +2654,11 @@ country_event = {
 	location = fromfrom.capital_scope
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
+
 
 	option = {
 		name = OK
@@ -2601,7 +2691,11 @@ country_event = {
 	location = fromfrom
 	is_triggered_only = yes
 
-	trigger = { host_has_dlc = "Synthetic Dawn Story Pack" }
+	trigger = {
+		#always = no ## RETILE TODO
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
+
 
 	option = {
 		name = OK
@@ -2615,6 +2709,7 @@ country_event = {
 	hide_window = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		has_authority = auth_machine_intelligence
 		FROM = { leader_class = ruler }
 	}
@@ -2639,6 +2734,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		is_country_type = default
 		has_authority = auth_machine_intelligence
@@ -2788,6 +2884,7 @@ country_event = {
 	show_sound = event_mystic_reveal
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		is_country_type = default
 		has_relation_flag = {
@@ -2858,6 +2955,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = { # conquered an organic empire
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		has_authority = auth_machine_intelligence
 		has_civic = civic_machine_terminator
@@ -2899,6 +2997,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		last_changed_policy = artificial_intelligence_policy
 		has_policy_flag = ai_outlawed
@@ -2933,6 +3032,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		last_changed_policy = robot_pop_policy
 		has_policy_flag = robots_outlawed
@@ -2967,6 +3067,7 @@ pop_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		has_trait = trait_mechanical
 		owner = {
@@ -3004,6 +3105,7 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		#always = no ## RETILE TODO
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		is_planet_class = pc_machine
 		from = { is_country_type = default }
@@ -3023,6 +3125,7 @@ planet_event = {
 	is_triggered_only = yes
 	
 	trigger = {
+		#always = no ## RETILE TODO
 		FROM = {
 			has_valid_civic = civic_machine_terminator
 		}

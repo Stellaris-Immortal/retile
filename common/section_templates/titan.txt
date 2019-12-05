@@ -1,4 +1,4 @@
-@section_cost = 160
+@section_cost = 240
 
 #BOW
 
@@ -12,12 +12,8 @@ ship_section_template = {
 		
 	ai_weight = {
 		modifier = {
-			factor = 10.0
-			NOT = { is_preferred_weapons = weapon_type_explosive }
-		}
-		modifier = {
-			factor = 0.1
-			is_preferred_weapons = weapon_type_explosive
+			factor = 1
+			always = yes
 		}
 	}
 	
@@ -28,7 +24,7 @@ ship_section_template = {
 		locatorname = "xl_gun_01"
 	}
 	
-	large_utility_slots = 6
+	large_utility_slots = 9
 
 	resources = {
 		category = ship_sections
@@ -38,14 +34,61 @@ ship_section_template = {
 	}
 }
 
+#CORE
+
 ship_section_template = {
-	key = "TITAN_MID"
+	key = "TITAN_MID_BROADSIDE"
 	ship_size = titan
 	fits_on_slot = mid
 	should_draw_components = yes
 	entity = "titan_mid_entity"
 	icon = "GFX_ship_part_core_mid"
 
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_03"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_04"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_04"
+	}
 	component_slot = {
 		name = "LARGE_GUN_01"
 		slot_size = large
@@ -71,7 +114,403 @@ ship_section_template = {
 		locatorname = "large_gun_04"
 	}
 	
-	large_utility_slots = 6
+	large_utility_slots = 9
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
+ship_section_template = {
+	key = "TITAN_MID_ESCORT"
+	ship_size = titan
+	fits_on_slot = mid
+	should_draw_components = yes
+	entity = "titan_mid_entity"
+	icon = "GFX_ship_part_core_mid"
+
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_03"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_04"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_04"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_01"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_02"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_03"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_04"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_05"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_06"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_07"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_04"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_08"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_04"
+	}
+	
+	large_utility_slots = 9
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
+ship_section_template = {
+	key = "TITAN_MID_MISSILE"
+	ship_size = titan
+	fits_on_slot = mid
+	should_draw_components = yes
+	entity = "titan_mid_entity"
+	icon = "GFX_ship_part_core_mid"
+
+	prerequisites = { tech_titan_hull_1 }
+
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_explosive
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_explosive }
+		}		
+	}
+	
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_03"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_04"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_04"
+	}
+	component_slot = {
+		name = "TORPEDO_01"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "TORPEDO_02"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "TORPEDO_03"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "TORPEDO_04"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "TORPEDO_05"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "TORPEDO_06"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "TORPEDO_07"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_04"
+	}
+	component_slot = {
+		name = "TORPEDO_08"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_04"
+	}
+	
+	large_utility_slots = 9
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
+ship_section_template = {
+	key = "TITAN_MID_CARRIER"
+	ship_size = titan
+	fits_on_slot = mid
+	should_draw_components = yes
+	entity = "titan_mid_entity"
+	icon = "GFX_ship_part_core_mid"
+
+	prerequisites = { tech_titan_hull_1 }
+
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_strike_craft
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_strike_craft }
+		}		
+	}
+
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_03"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_04"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_04"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_05"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_06"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_04"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_01"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_02"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_03"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_04"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_04"
+	}
+	
+	large_utility_slots = 9
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
+ship_section_template = {
+	key = "TITAN_MID_PERDITION"
+	ship_size = titan
+	fits_on_slot = mid
+	should_draw_components = yes
+	entity = "titan_mid_entity"
+	icon = "GFX_ship_part_core_mid"
+
+	prerequisites = { tech_titan_hull_2 }
+
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_03"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_03"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_04"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_04"
+	}
+	component_slot = {
+		name = "EXTRA_LARGE_01"
+		slot_size = extra_large
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "EXTRA_LARGE_02"
+		slot_size = extra_large
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	
+	large_utility_slots = 9
 
 	resources = {
 		category = ship_sections
@@ -84,13 +523,44 @@ ship_section_template = {
 #STERN
 
 ship_section_template = {
-	key = "TITAN_STERN"
+	key = "TITAN_STERN_BROADSIDE"
 	ship_size = titan
 	fits_on_slot = stern
 	should_draw_components = yes
 	entity = "titan_stern_entity"
 	icon = "GFX_ship_part_core_stern"
 	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_02"
+	}
 	component_slot = {
 		name = "LARGE_GUN_01"
 		slot_size = large
@@ -104,7 +574,7 @@ ship_section_template = {
 		locatorname = "large_gun_02"
 	}
 	
-	aux_utility_slots = 3
+	aux_utility_slots = 5
 
 	resources = {
 		category = ship_sections
@@ -113,3 +583,271 @@ ship_section_template = {
 		}
 	}
 }
+
+ship_section_template = {
+	key = "TITAN_STERN_MISSILE"
+	ship_size = titan
+	fits_on_slot = stern
+	should_draw_components = yes
+	entity = "titan_stern_entity"
+	icon = "GFX_ship_part_core_stern"
+	
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_explosive
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_explosive }
+		}		
+	}
+	
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "TORPEDO_01"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "TORPEDO_02"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "TORPEDO_03"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "TORPEDO_04"
+		slot_size = torpedo
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	
+	aux_utility_slots = 5
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
+ship_section_template = {
+	key = "TITAN_STERN_CARRIER"
+	ship_size = titan
+	fits_on_slot = stern
+	should_draw_components = yes
+	entity = "titan_stern_entity"
+	icon = "GFX_ship_part_core_stern"
+	
+	prerequisites = { tech_titan_hull_1 }
+
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			is_preferred_weapons = weapon_type_strike_craft
+		}
+		modifier = {
+			factor = 0.1
+			NOT = { is_preferred_weapons = weapon_type_strike_craft }
+		}		
+	}
+
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_03"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_01"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_02"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	
+	aux_utility_slots = 5
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
+ship_section_template = {
+	key = "TITAN_STERN_ESCORT"
+	ship_size = titan
+	fits_on_slot = stern
+	should_draw_components = yes
+	entity = "titan_stern_entity"
+	icon = "GFX_ship_part_core_stern"
+	
+	prerequisites = { tech_titan_hull_1 }
+
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_01"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_02"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_03"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "MEDIUM_GUN_04"
+		slot_size = medium
+		slot_type = weapon
+		locatorname = "large_gun_02"
+	}
+	
+	aux_utility_slots = 5
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
+ship_section_template = {
+	key = "TITAN_STERN_PERDITION"
+	ship_size = titan
+	fits_on_slot = stern
+	should_draw_components = yes
+	entity = "titan_stern_entity"
+	icon = "GFX_ship_part_core_stern"
+	
+	prerequisites = { tech_titan_hull_2 }
+
+	ai_weight = {
+		modifier = {
+			factor = 10.0
+			OR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+		modifier = {
+			factor = 0.1
+			NOR = {
+				is_preferred_weapons = weapon_type_kinetic
+				is_preferred_weapons = weapon_type_energy
+			}
+		}
+	}
+	
+	component_slot = {
+		name = "STRIKE_CRAFT_01"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = 90
+		locatorname = "large_gun_01"
+	}
+	component_slot = {
+		name = "STRIKE_CRAFT_02"
+		slot_size = large
+		slot_type = strike_craft
+		rotation = -90
+		locatorname = "large_gun_02"
+	}
+	component_slot = {
+		name = "EXTRA_LARGE_01"
+		slot_size = extra_large
+		slot_type = weapon
+		locatorname = "large_gun_01"
+	}
+	
+	aux_utility_slots = 5
+
+	resources = {
+		category = ship_sections
+		cost = {
+			alloys = @section_cost
+		}
+	}
+}
+
