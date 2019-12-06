@@ -37,6 +37,7 @@ leader_trait_army_veteran = {
 		army_defense_damage_mult = 0.2
 	}
 	leader_potential_add = {
+		NOT = { from = { has_policy_flag = no_wars } }
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
 	}
 	leader_trait = { governor }
@@ -54,6 +55,7 @@ leader_trait_retired_fleet_officer = {
 		starbase_shipyard_build_cost_mult = -0.10
 	}
 	leader_potential_add = {
+		NOT = { from = { has_policy_flag = no_wars } }
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
 	}
 	leader_trait = { governor }
@@ -219,6 +221,7 @@ leader_trait_corrupt = {
 	leader_potential_add = {
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
 		NOT = { from = { has_civic = "civic_philosopher_king" } }
+		NOT = { from = { has_edict = anticrime_campaign } }
 	}
 	leader_trait = { governor }
 	leader_class = { governor }
@@ -235,6 +238,7 @@ leader_trait_ecologist = {
 		planet_amenities_add = -100
 	}
 	leader_potential_add = {
+		NOT = { from = { has_policy_flag = environmental_deregulation } }
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
 	}
 	leader_trait = { governor }

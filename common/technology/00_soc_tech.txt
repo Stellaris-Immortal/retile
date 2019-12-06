@@ -58,8 +58,8 @@ tech_space_trading = {
 			}
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_prosperity_adopt
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -110,8 +110,8 @@ tech_interstellar_economics = {
 			}
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_prosperity_adopt
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -173,6 +173,14 @@ tech_galactic_markets = {
 			factor = 0
 			num_communications < 2
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	ai_weight = {
@@ -229,9 +237,7 @@ tech_eco_simulation = {
 	weight = @tier1weight1
 	
 	modifier = {
-		planet_farmers_food_produces_mult = 0.2
-		show_only_custom_tooltip = no
-		custom_tooltip = plantoid_farmer_effect
+		description = tech_eco_simulation_effect
 	}
 	
 	weight_modifier = {
@@ -255,18 +261,14 @@ tech_eco_simulation = {
 		}
 		modifier = {
 			factor = 1.25
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
-			factor = 1.5
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 	}
 	
@@ -300,9 +302,7 @@ tech_gene_crops = {
 	weight = @tier2weight1
 	
 	modifier = {
-		planet_farmers_food_produces_mult = 0.2
-		show_only_custom_tooltip = no
-		custom_tooltip = plantoid_farmer_effect
+		description = tech_gene_crops_effect
 	}
 	
 	weight_modifier = {
@@ -326,18 +326,14 @@ tech_gene_crops = {
 		}
 		modifier = {
 			factor = 1.25
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
-			factor = 1.5
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 	}
 	
@@ -371,9 +367,7 @@ tech_nano_vitality_crops = {
 	weight = @tier3weight1
 	
 	modifier = {
-		planet_farmers_food_produces_mult = 0.2
-		show_only_custom_tooltip = no
-		custom_tooltip = plantoid_farmer_effect
+		description = tech_nano_vitality_crops_effect
 	}
 	
 	weight_modifier = {
@@ -397,18 +391,14 @@ tech_nano_vitality_crops = {
 		}
 		modifier = {
 			factor = 1.25
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
-			factor = 1.5
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 	}
 	
@@ -442,9 +432,7 @@ tech_nutrient_replication = {
 	weight = @tier4weight3
 		
 	modifier = {
-		planet_jobs_food_produces_mult = 0.15
-		show_only_custom_tooltip = no
-		custom_tooltip = plantoid_farmer_2_effect
+		description = tech_nutrient_replication_effect
 	}
 	
 	potential = {
@@ -488,12 +476,12 @@ tech_nutrient_replication = {
 			has_ascension_perk = ap_technological_ascendancy
 		}
 		modifier = {
-			factor = 1.25
-			has_ethic = ethic_pacifist
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 		modifier = {
-			factor = 1.5
-			has_ethic = ethic_fanatic_pacifist
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -554,6 +542,10 @@ tech_hydroponics = {
 				has_trait = "leader_trait_expertise_biology"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
 	}
 	
 	ai_weight = {
@@ -605,6 +597,10 @@ tech_food_processing_1 = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 	}
 	
@@ -665,6 +661,10 @@ tech_food_processing_2 = {
 				has_country_flag = has_market_access
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
 	}
 	
 	ai_weight = {
@@ -687,11 +687,11 @@ tech_society_1 = {
 	cost = @tier1cost1
 	area = society
 	tier = 1
-	category = { biology }
+	category = { statecraft }
 	weight = @tier1weight1
 	
 	modifier = {
-		planet_researchers_society_research_produces_mult = 0.2
+		trade_value_mult = 0.16
 	}
 	
 	weight_modifier = {
@@ -722,6 +722,10 @@ tech_society_1 = {
 				has_trait = "leader_trait_expertise_biology"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -741,12 +745,12 @@ tech_society_2 = {
 	cost = @tier2cost3
 	area = society
 	tier = 2
-	category = { biology }
+	category = { statecraft }
 	prerequisites = { "tech_society_1" }
 	weight = @tier2weight3
 	
 	modifier = {
-		planet_researchers_society_research_produces_mult = 0.2
+		trade_value_mult = 0.17
 	}
 	
 	weight_modifier = {
@@ -770,8 +774,12 @@ tech_society_2 = {
 			factor = 1.25
 			research_leader = {
 				area = society
-				has_trait = "leader_trait_expertise_biology"
+				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}	
 	
@@ -781,7 +789,7 @@ tech_society_2 = {
 			factor = 1.25
 			research_leader = {
 				area = society
-				has_trait = "leader_trait_expertise_biology"
+				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
 	}
@@ -792,12 +800,12 @@ tech_society_3 = {
 	cost = @tier4cost2
 	area = society
 	tier = 4
-	category = { biology }	
+	category = { statecraft }	
 	prerequisites = { "tech_society_2" }
 	weight = @tier4weight2
 	
 	modifier = {
-		planet_researchers_society_research_produces_mult = 0.2
+		trade_value_mult = 0.17
 	}
 	
 	weight_modifier = {
@@ -821,8 +829,12 @@ tech_society_3 = {
 			factor = 1.25
 			research_leader = {
 				area = society
-				has_trait = "leader_trait_expertise_biology"
+				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -832,7 +844,7 @@ tech_society_3 = {
 			factor = 1.25
 			research_leader = {
 				area = society
-				has_trait = "leader_trait_expertise_biology"
+				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
 	}
@@ -856,14 +868,6 @@ tech_alien_life_studies = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 2
-			has_ethic = ethic_xenophile
-		}
-		modifier = {
-			factor = 3
-			has_ethic = ethic_fanatic_xenophile
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
@@ -877,7 +881,11 @@ tech_alien_life_studies = {
 					has_deposit = d_alien_pets_deposit
 				}
 			}
-		}		
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
 	}
 	
 	ai_weight = {
@@ -937,6 +945,14 @@ tech_arcane_deciphering = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -1013,6 +1029,10 @@ tech_colonization_2 = {
 				has_civic = civic_machine_assimilator
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -1062,6 +1082,10 @@ tech_colonization_3 = {
 				has_civic = civic_machine_servitor
 				has_civic = civic_machine_assimilator
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1113,6 +1137,10 @@ tech_colonization_4 = {
 				has_civic = civic_machine_assimilator
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -1162,6 +1190,10 @@ tech_colonization_5 = {
 				has_civic = civic_machine_servitor
 				has_civic = civic_machine_assimilator
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1223,7 +1255,15 @@ tech_tomb_world_adaption = {
 			any_owned_planet = {
 				is_planet_class = pc_nuked
 			}
-		}	
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	ai_weight = {
@@ -1267,6 +1307,10 @@ tech_frontier_health = {
 				has_trait = "leader_trait_expertise_biology"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
 	}
 }
 
@@ -1307,6 +1351,10 @@ tech_frontier_hospital = {
 				has_trait = "leader_trait_expertise_biology"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
 	}
 }
 
@@ -1330,14 +1378,6 @@ tech_mountain_range = {
 			factor = 2
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 4
-			has_ascension_perk = ap_mastery_of_nature
-		}
-		modifier = {
 			factor = 0
 			NOT = {
 				any_owned_planet =  {
@@ -1355,6 +1395,10 @@ tech_mountain_range = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1404,14 +1448,6 @@ tech_volcano = {
 			factor = 2
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 4
-			has_ascension_perk = ap_mastery_of_nature
-		}
-		modifier = {
 			factor = 0
 			NOT = {
 				any_owned_planet =  {
@@ -1429,6 +1465,10 @@ tech_volcano = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1479,14 +1519,6 @@ tech_dangerous_wildlife = {
 			factor = 2
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 4
-			has_ascension_perk = ap_mastery_of_nature
-		}
-		modifier = {
 			factor = 0
 			NOT = {
 				any_owned_planet =  {
@@ -1504,6 +1536,10 @@ tech_dangerous_wildlife = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1553,14 +1589,6 @@ tech_dense_jungle = {
 			factor = 2
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 4
-			has_ascension_perk = ap_mastery_of_nature
-		}
-		modifier = {
 			factor = 0
 			NOT = {
 				any_owned_planet =  {
@@ -1578,6 +1606,10 @@ tech_dense_jungle = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1627,14 +1659,6 @@ tech_quicksand_basin = {
 			factor = 2
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 4
-			has_ascension_perk = ap_mastery_of_nature
-		}
-		modifier = {
 			factor = 0
 			NOT = {
 				any_owned_planet =  {
@@ -1652,6 +1676,10 @@ tech_quicksand_basin = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1701,14 +1729,6 @@ tech_noxious_swamp = {
 			factor = 2
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 4
-			has_ascension_perk = ap_mastery_of_nature
-		}
-		modifier = {
 			factor = 0
 			NOT = {
 				any_owned_planet =  {
@@ -1726,6 +1746,10 @@ tech_noxious_swamp = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1775,14 +1799,6 @@ tech_massive_glacier = {
 			factor = 2
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 4
-			has_ascension_perk = ap_mastery_of_nature
-		}
-		modifier = {
 			factor = 0
 			NOT = {
 				any_owned_planet =  {
@@ -1800,6 +1816,10 @@ tech_massive_glacier = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1849,14 +1869,6 @@ tech_toxic_kelp = {
 			factor = 2
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 4
-			has_ascension_perk = ap_mastery_of_nature
-		}
-		modifier = {
 			factor = 0
 			NOT = {
 				any_owned_planet =  {
@@ -1874,6 +1886,10 @@ tech_toxic_kelp = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1923,14 +1939,6 @@ tech_deep_sinkhole = {
 			factor = 2
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 4
-			has_ascension_perk = ap_mastery_of_nature
-		}
-		modifier = {
 			factor = 0
 			NOT = {
 				any_owned_planet =  {
@@ -1948,6 +1956,10 @@ tech_deep_sinkhole = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1997,14 +2009,14 @@ tech_terrestrial_sculpting = {
 		factor = 1.5 	# terraforming needs to be a bit more common
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_new_worlds"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -2035,14 +2047,14 @@ tech_ecological_adaptation = {
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_new_worlds"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -2078,14 +2090,14 @@ tech_climate_restoration = {
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_expansion_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_new_worlds"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -2134,14 +2146,14 @@ tech_genome_mapping = {
 		}
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_supremacy_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 	}
 	
@@ -2184,14 +2196,14 @@ tech_vitality_boosters = {
 		}
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_supremacy_adopt
-		}	
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 	}
 	
@@ -2234,22 +2246,6 @@ tech_epigenetic_triggers = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0.5
-			has_ethic = ethic_fanatic_xenophobe
-		}
-		modifier = {
-			factor = 0.75
-			has_ethic = ethic_xenophobe
-		}
-		modifier = {
-			factor = 1.25
-			has_ethic = ethic_xenophile
-		}
-		modifier = {
-			factor = 1.5
-			has_ethic = ethic_fanatic_xenophile
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
@@ -2266,6 +2262,10 @@ tech_epigenetic_triggers = {
 					}
 				}			
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 	}
 	
@@ -2324,14 +2324,14 @@ tech_cloning = {
 		}
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_supremacy_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 	}
 	
@@ -2404,6 +2404,14 @@ tech_gene_banks = {
 				has_level < 2
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	ai_weight = {
@@ -2443,14 +2451,6 @@ tech_gene_seed_purification = {
 			has_authority = auth_hive_mind
 		}			
 		modifier = {
-			factor = 1.25
-			has_ethic = ethic_militarist
-		}
-		modifier = {
-			factor = 1.5
-			has_ethic = ethic_fanatic_militarist
-		}
-		modifier = {
 			factor = 0.10
 			NOR = {
 				research_leader = {
@@ -2489,6 +2489,14 @@ tech_gene_seed_purification = {
 					has_level > 3
 				}
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -2538,14 +2546,6 @@ tech_morphogenetic_field_mastery = {
 			has_authority = auth_hive_mind
 		}		
 		modifier = {
-			factor = 1.25
-			has_ethic = ethic_militarist
-		}
-		modifier = {
-			factor = 1.5
-			has_ethic = ethic_fanatic_militarist
-		}
-		modifier = {
 			factor = 0.20
 			NOR = {
 				research_leader = {
@@ -2591,6 +2591,14 @@ tech_morphogenetic_field_mastery = {
 					has_level > 2
 				}
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -2652,17 +2660,17 @@ tech_gene_tailoring = {
 		modifier = {
 			factor = 1.25
 			has_authority = auth_hive_mind
-		}
-		modifier = {
-			factor = 1.25
-			is_xenophile = yes
-		}			
+		}		
 		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 	}
 	
@@ -2710,6 +2718,10 @@ tech_glandular_acclimation = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
 		}
 	}
 	
@@ -2810,6 +2822,14 @@ tech_gene_expressions = {
 				has_trait = "leader_trait_expertise_biology"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}	
 	
 	ai_weight = {
@@ -2860,14 +2880,6 @@ tech_selected_lineages = {
 			}
 		}
 		modifier = {
-			factor = 0.5
-			is_egalitarian = yes
-		}	
-		modifier = {
-			factor = 2
-			is_authoritarian = yes
-		}
-		modifier = {
 			factor = @ap_technological_ascendancy_rare_tech
 			has_ascension_perk = ap_technological_ascendancy
 		}
@@ -2877,6 +2889,14 @@ tech_selected_lineages = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -2932,14 +2952,6 @@ tech_capacity_boosters = {
 			}
 		}
 		modifier = {
-			factor = 0.5
-			is_egalitarian = yes
-		}	
-		modifier = {
-			factor = 2
-			is_authoritarian = yes
-		}
-		modifier = {
 			factor = @ap_technological_ascendancy_rare_tech
 			has_ascension_perk = ap_technological_ascendancy
 		}
@@ -2949,6 +2961,14 @@ tech_capacity_boosters = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -2998,15 +3018,15 @@ tech_doctrine_fleet_size_1 = {
 	weight_modifier = {
 		factor = 3
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3042,15 +3062,15 @@ tech_doctrine_fleet_size_2 = {
 	weight_modifier = {
 		factor = 3
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3086,15 +3106,15 @@ tech_doctrine_fleet_size_3 = {
 	weight_modifier = {
 		factor = 3
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3130,15 +3150,15 @@ tech_doctrine_fleet_size_4 = {
 	weight_modifier = {
 		factor = 3
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3174,15 +3194,15 @@ tech_doctrine_fleet_size_5 = {
 	weight_modifier = {
 		factor = 3
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3214,15 +3234,15 @@ tech_interstellar_fleet_traditions = {
 	weight_modifier = {
 		factor = 3
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3258,15 +3278,15 @@ tech_refit_standards = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3302,15 +3322,15 @@ tech_command_matrix = {
 	weight_modifier = {
 		factor = 3
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3345,15 +3365,15 @@ tech_doctrine_navy_size_1 = {
 	weight_modifier = {
 		factor = 3
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3389,15 +3409,15 @@ tech_doctrine_navy_size_2 = {
 	weight_modifier = {
 		factor = 10
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3433,15 +3453,15 @@ tech_doctrine_navy_size_3 = {
 	weight_modifier = {
 		factor = 3
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3477,15 +3497,15 @@ tech_doctrine_navy_size_4 = {
 	weight_modifier = {
 		factor = 3
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3525,15 +3545,15 @@ tech_centralized_command = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3568,15 +3588,15 @@ tech_combat_training = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3614,15 +3634,15 @@ tech_ground_defense_planning = {
 	weight_modifier = {
 		factor = 2
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3660,15 +3680,15 @@ tech_global_defense_grid = {
 	weight_modifier = {
 		factor = 2
 		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_military_theory"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -3714,15 +3734,7 @@ tech_psionic_theory = {
 	}
 	
 	weight_modifier = {
-		factor = 0.5
-		modifier = {
-			factor = 0.5
-			is_spiritualist = no
-		}
-		modifier = {
-			factor = 2
-			has_ethic = "ethic_fanatic_spiritualist"
-		}
+		factor = 1
 		modifier = {
 			factor = 2
 			research_leader = {
@@ -3761,7 +3773,6 @@ tech_psionic_theory = {
 		modifier = {
 			factor = 0
 			AND = {
-				is_materialist = yes
 				NOR = {
 					research_leader = {
 						area = society
@@ -3775,6 +3786,14 @@ tech_psionic_theory = {
 					}
 				}
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -3813,7 +3832,7 @@ tech_telepathy = {
 	}
 	
 	weight_modifier = {
-		factor = 0.5
+		factor = 1
 		modifier = {
 			factor = 0
 			host_has_dlc = "Utopia"
@@ -3856,19 +3875,19 @@ tech_telepathy = {
 			has_ascension_perk = ap_technological_ascendancy
 		}
 		modifier = {
-			factor = 2
-			has_ethic = "ethic_spiritualist"
-		}
-		modifier = {
-			factor = 3
-			has_ethic = "ethic_fanatic_spiritualist"
-		}
-		modifier = {
 			factor = 4
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_maniacal"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -3913,7 +3932,7 @@ tech_precognition_interface = {
 	}
 	
 	weight_modifier = {
-		factor = 0.5
+		factor = 1
 		modifier = {
 			factor = 0
 			host_has_dlc = "Utopia"
@@ -3933,14 +3952,6 @@ tech_precognition_interface = {
 		}
 		modifier = {
 			factor = 2
-			has_ethic = "ethic_spiritualist"
-		}
-		modifier = {
-			factor = 3
-			has_ethic = "ethic_fanatic_spiritualist"
-		}
-		modifier = {
-			factor = 2
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_maniacal"
@@ -3952,6 +3963,14 @@ tech_precognition_interface = {
 				area = society
 				has_trait = "leader_trait_expertise_psionics"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -4029,7 +4048,15 @@ tech_psi_jump_drive_1 = {
 		modifier = {
 			factor = @ap_technological_ascendancy_rare_tech
 			has_ascension_perk = ap_technological_ascendancy
-		}		
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 }
 
@@ -4068,7 +4095,11 @@ tech_galactic_ambitions = {
 		modifier = {
 			factor = 0
 			num_communications < 1
-		}		
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -4122,7 +4153,11 @@ tech_manifest_destiny = {
 		modifier = {
 			factor = 0
 			num_communications < 1
-		}		
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -4188,7 +4223,11 @@ tech_interstellar_campaigns = {
 		modifier = {
 			factor = 0
 			num_communications < 1
-		}		
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
 	}
 	
 	ai_weight = {
@@ -4250,7 +4289,11 @@ tech_galactic_campaigns = {
 		modifier = {
 			factor = 0
 			num_communications < 1
-		}		
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
 	}
 	
 	ai_weight = {
@@ -4306,12 +4349,10 @@ tech_planetary_unification = {
 	weight_modifier = {
 		factor = 4
 		modifier = {
-			factor = 0.75
-			NOT = {
-				OR = {
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
-				}
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "research_economic_development"
 			}
 		}
 	}
@@ -4329,18 +4370,14 @@ tech_planetary_unification = {
 		}
 		modifier = {
 			factor = 1.25
-			has_ethic = ethic_authoritarian
-		}
-		modifier = {
-			factor = 1.5
-			has_ethic = ethic_fanatic_authoritarian
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 }
@@ -4371,6 +4408,10 @@ tech_colonial_centralization = {
 				area = society
 				has_trait = "leader_trait_expertise_new_worlds"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -4410,6 +4451,10 @@ tech_galactic_administration = {
 				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -4447,13 +4492,6 @@ tech_subdermal_stimulation = {
 	weight_modifier = {
 		factor = 0.5
 		modifier = {
-			factor = 1.25
-			NOR = {
-				has_ethic = ethic_egalitarian
-				has_ethic = ethic_fanatic_egalitarian
-			}
-		}
-		modifier = {
 			factor = @ap_technological_ascendancy_rare_tech
 			has_ascension_perk = ap_technological_ascendancy
 		}
@@ -4463,6 +4501,14 @@ tech_subdermal_stimulation = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -4503,6 +4549,10 @@ tech_global_production_strategy = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -4557,6 +4607,10 @@ tech_adaptive_bureaucracy = {
 				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -4606,6 +4660,10 @@ tech_colonial_bureaucracy = {
 				has_trait = "leader_trait_expertise_new_worlds"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -4654,6 +4712,10 @@ tech_galactic_bureaucracy = {
 				area = society
 				has_trait = "leader_trait_expertise_new_worlds"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -4716,6 +4778,10 @@ tech_living_state = {
 				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -4766,18 +4832,15 @@ tech_collective_self = {
 			num_owned_planets > 10
 		}
 		modifier = {
-			factor = 1.5
-			OR = {
-				has_ethic = ethic_authoritarian
-				has_ethic = ethic_fanatic_authoritarian			
-			}
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -4832,6 +4895,10 @@ tech_autonomous_agents = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -4888,6 +4955,10 @@ tech_embodied_dynamism = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -4958,6 +5029,10 @@ tech_neural_implants = {
 				NOT = { any_owned_pop = { is_enslaved = yes } }
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -5008,6 +5083,10 @@ tech_artificial_moral_codes = {
 				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -5046,6 +5125,10 @@ tech_synthetic_thought_patterns = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -5086,6 +5169,10 @@ tech_unity_of_purpose = {
 				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -5123,6 +5210,10 @@ tech_collective_production_methods = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -5162,6 +5253,10 @@ tech_resource_processing_algorithms = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -5244,6 +5339,10 @@ tech_cultural_heritage = {
 				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -5289,6 +5388,10 @@ tech_heritage_site = {
 				has_country_flag = has_market_access
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -5325,6 +5428,10 @@ tech_hypercomms_forum = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -5366,6 +5473,10 @@ tech_autocurating_vault = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -5411,6 +5522,10 @@ tech_holographic_rituals = {
 				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -5446,6 +5561,10 @@ tech_consecration_fields = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -5487,6 +5606,10 @@ tech_transcendent_faith = {
 				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -5520,6 +5643,10 @@ tech_hive_node = {
 				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -5549,6 +5676,10 @@ tech_hive_cluster = {
 				has_trait = "leader_trait_expertise_statecraft"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -5577,6 +5708,10 @@ tech_hive_confluence = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -5637,6 +5772,14 @@ tech_ascension_theory = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -5726,12 +5869,16 @@ tech_penal_colonies = {
 			}
 		}
 		modifier = {
-			factor = 2
-			is_authoritarian = yes
+			factor = 0
+			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 		modifier = {
 			factor = 0
-			num_owned_planets < 2
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -5789,6 +5936,14 @@ tech_resort_colonies = {
 		modifier = {
 			factor = 0
 			num_owned_planets < 2
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -5849,6 +6004,14 @@ tech_slave_colonies = {
 				allows_slavery = no
 				NOT = { any_owned_pop = { is_enslaved = yes } }
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}	
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}		
 	}
 	

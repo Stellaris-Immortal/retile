@@ -1,10 +1,627 @@
+supercapacitor_system = {
+	icon = "GFX_spaceport_supercapacitor_system"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_power_plant_2 }
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+		produces = {
+			energy = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 1
+				}
+			}
+			energy = 4
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 2
+				}
+			}
+			energy = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 3
+				}
+			}
+			energy = 12
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 4
+				}
+			}
+			energy = 16
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 5
+				}
+			}
+			energy = 20
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = solar_panels
+					count = 6
+				}
+			}
+			energy = 24
+		}
+	}
+	
+	show_in_tech = "tech_power_plant_2"
+	custom_tooltip = supercapacitor_system_tooltip
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 1
+	}
+}
+
+sensor_array = {
+	icon = "GFX_spaceport_sensor_array"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_space_science_2 }
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+		produces = {
+			physics_research = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 1
+				}
+			}
+			physics_research = 4
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 2
+				}
+			}
+			physics_research = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 3
+				}
+			}
+			physics_research = 12
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 4
+				}
+			}
+			physics_research = 16
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 5
+				}
+			}
+			physics_research = 20
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 6
+				}
+			}
+			physics_research = 24
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	
+	show_in_tech = "tech_space_science_2"
+	custom_tooltip = sensor_array_tooltip
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 50
+	}
+}
+
+astrogeology_station = {
+	icon = "GFX_spaceport_astrogeology_station"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_space_science_3 }
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+		produces = {
+			society_research = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 1
+				}
+			}
+			society_research = 4
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 2
+				}
+			}
+			society_research = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 3
+				}
+			}
+			society_research = 12
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 4
+				}
+			}
+			society_research = 16
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 5
+				}
+			}
+			society_research = 20
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 6
+				}
+			}
+			society_research = 24
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	
+	show_in_tech = "tech_space_science_3"
+	custom_tooltip = astrogeology_station_tooltip
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 50
+	}
+}
+
+aerospace_station = {
+	icon = "GFX_spaceport_aerospace_station"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_space_science_1 }
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+		produces = {
+			engineering_research = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 1
+				}
+			}
+			engineering_research = 4
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 2
+				}
+			}
+			engineering_research = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 3
+				}
+			}
+			engineering_research = 12
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 4
+				}
+			}
+			engineering_research = 16
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 5
+				}
+			}
+			engineering_research = 20
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = research_terminal
+					count = 6
+				}
+			}
+			engineering_research = 24
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	show_in_tech = "tech_space_science_1"
+	custom_tooltip = aerospace_station_tooltip
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 50
+	}
+}
+
+black_hole_observatory = {
+	icon = "GFX_spaceport_module_observatory"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_sensors_3 }
+	}		
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+		custom_tooltip = {
+			fail_text = "requires_black_hole"
+			star = { is_star_class = sc_black_hole }
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	country_modifier = {
+		category_field_manipulation_research_speed_mult = 0.10
+			category_particles_research_speed_mult = 0.10
+			category_voidcraft_research_speed_mult = 0.10
+			category_propulsion_research_speed_mult = 0.10
+	}
+
+	show_in_tech = "tech_sensors_3"
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 150
+	}
+}
+
+offworld_trading_company = {
+	icon = "GFX_starbase_offworld_trading_company"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = {
+			has_technology = tech_space_trading
+			is_gestalt = no
+		}
+	}	
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	
+	station_modifier = {
+		trade_value_add = 8
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			count_starbase_modules = {
+				type = trade_terminal
+				count = 1
+			}			
+		}
+		trade_value_add = 4
+	}
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			count_starbase_modules = {
+				type = trade_terminal
+				count = 2
+			}			
+		}
+		trade_value_add = 8
+	}
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			count_starbase_modules = {
+				type = trade_terminal
+				count = 3
+			}			
+		}
+		trade_value_add = 12
+	}
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			count_starbase_modules = {
+				type = trade_terminal
+				count = 4
+			}			
+		}
+		trade_value_add = 16
+	}
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			count_starbase_modules = {
+				type = trade_terminal
+				count = 5
+			}			
+		}
+		trade_value_add = 20
+	}
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			count_starbase_modules = {
+				type = trade_terminal
+				count = 6
+			}			
+		}
+		trade_value_add = 24
+	}
+
+	show_in_tech = "tech_space_trading"
+	custom_tooltip = offworld_trading_company_tooltip
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 2
+	}
+}
+
+mining_hub = {
+	icon = "GFX_spaceport_mining_hub"
+	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_space_mining_1 }
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
+		}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+		produces = {
+			minerals = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = mining_terminal
+					count = 1
+				}
+			}
+			minerals = 4
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = mining_terminal
+					count = 2
+				}
+			}
+			minerals = 8
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = mining_terminal
+					count = 3
+				}
+			}
+			minerals = 12
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = mining_terminal
+					count = 4
+				}
+			}
+			minerals = 16
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = mining_terminal
+					count = 5
+				}
+			}
+			minerals = 20
+		}
+		produces = {
+			trigger = {
+				count_starbase_modules = {
+					type = mining_terminal
+					count = 6
+				}
+			}
+			minerals = 24
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	
+	show_in_tech = "tech_space_mining_1"
+	custom_tooltip = mining_hub_tooltip
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 50
+	}
+}
+
 resource_silo = {
 	icon = "GFX_spaceport_module_resource_silo"
 	construction_days = 360
 	
 	potential = {
 		exists = owner
-		owner = { has_technology = tech_space_mining_1 }
+		owner = { has_technology = tech_space_mining_2 }
 		star = { is_inside_nebula = no }
 	}
 	
@@ -29,7 +646,7 @@ resource_silo = {
 		}
 	}
 	
-	show_in_tech = "tech_space_mining_1"
+	show_in_tech = "tech_space_mining_2"
 
 	country_modifier = {
 		country_resource_max_add = 2000
@@ -48,7 +665,7 @@ nebula_refinery = {
 	
 	potential = {
 		exists = owner
-		owner = { has_technology = tech_space_mining_1 }
+		owner = { has_technology = tech_space_mining_2 }
 		star = { is_inside_nebula = yes }
 	}
 	
@@ -78,199 +695,6 @@ nebula_refinery = {
 	ai_build_outside_chokepoint = yes
 	ai_weight = {
 		weight = 1
-	}
-}
-
-supercapacitor_system = {
-	icon = "GFX_spaceport_supercapacitor_system"
-	construction_days = 360
-	
-	potential = {
-		exists = owner
-		owner = { has_technology = tech_power_plant_2 }
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
-	}
-
-	resources = {
-		category = starbase_buildings
-		cost = {
-			alloys = 150
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = solar_panels
-					count = 1
-				}
-			}
-			energy = 2
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = solar_panels
-					count = 2
-				}
-			}
-			energy = 4
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = solar_panels
-					count = 3
-				}
-			}
-			energy = 6
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = solar_panels
-					count = 4
-				}
-			}
-			energy = 8
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = solar_panels
-					count = 5
-				}
-			}
-			energy = 10
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = solar_panels
-					count = 6
-				}
-			}
-			energy = 12
-		}
-	}
-	
-	show_in_tech = "tech_power_plant_2"
-	custom_tooltip = supercapacitor_system_tooltip
-
-	ai_build_at_chokepoint = no
-	ai_build_outside_chokepoint = yes
-	ai_weight = {
-		weight = 1
-	}
-}
-
-sensor_array = {
-	icon = "GFX_spaceport_sensor_array"
-	construction_days = 360
-	
-	potential = {
-		exists = owner
-		owner = { has_technology = tech_space_science_1 }
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
-	}
-
-	resources = {
-		category = starbase_buildings
-		cost = {
-			alloys = 150
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = research_terminal
-					count = 1
-				}
-			}
-			physics_research = 2
-			society_research = 2
-			engineering_research = 2
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = research_terminal
-					count = 2
-				}
-			}
-			physics_research = 4
-			society_research = 4
-			engineering_research = 4
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = research_terminal
-					count = 3
-				}
-			}
-			physics_research = 6
-			society_research = 6
-			engineering_research = 6
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = research_terminal
-					count = 4
-				}
-			}
-			physics_research = 8
-			society_research = 8
-			engineering_research = 8
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = research_terminal
-					count = 5
-				}
-			}
-			physics_research = 10
-			society_research = 10
-			engineering_research = 10
-		}
-		produces = {
-			trigger = {
-				count_starbase_modules = {
-					type = research_terminal
-					count = 6
-				}
-			}
-			physics_research = 12
-			society_research = 12
-			engineering_research = 12
-		}
-		upkeep = {
-			energy = 2
-		}
-	}
-	
-	show_in_tech = "tech_space_science_1"
-	custom_tooltip = sensor_array_tooltip
-
-	country_modifier = {
-		country_resource_max_add = 2000
-	}
-
-	ai_build_at_chokepoint = no
-	ai_build_outside_chokepoint = yes
-	ai_weight = {
-		weight = 50
 	}
 }
 
@@ -306,107 +730,6 @@ listening_post = {
 	}	
 	
 	show_in_tech = "tech_sensors_2"
-}
-
-hydroponics_bay = {
-	icon = "GFX_spaceport_module_hydroponic_farms"
-	construction_days = 360
-	
-	potential = { 
-		exists = owner
-		owner = { 
-			has_technology = tech_hydroponics
-			is_plantoid_empire = no
-			is_lithoid_empire = no
-		}
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
-		custom_tooltip = {
-			fail_text = "requires_colonized_planet"
-			solar_system = {
-				any_system_planet = {
-					is_owned_by = from
-				}
-			}
-		}
-	}
-
-	resources = {
-		category = starbase_buildings
-		cost = {
-			alloys = 150
-		}
-		upkeep = {
-			energy = 2
-		}
-	}
-	
-	system_modifier = {
-		planet_jobs_food_produces_mult = 0.10
-	}
-	
-	show_in_tech = "tech_hydroponics"
-
-	ai_build_at_chokepoint = no
-	ai_build_outside_chokepoint = yes
-	ai_weight = {
-		weight = 0
-	}
-}
-
-offworld_trading_company = {
-	icon = "GFX_starbase_offworld_trading_company"
-	construction_days = 360
-	
-	potential = {
-		exists = owner
-		owner = {
-			has_technology = tech_space_trading
-			is_gestalt = no
-		}
-	}	
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
-		custom_tooltip = {
-			fail_text = "requires_colonized_planet"
-			solar_system = {
-				any_system_planet = {
-					is_owned_by = from
-				}
-			}
-		}
-	}
-
-	resources = {
-		category = starbase_buildings
-		cost = {
-			alloys = 150
-		}
-		upkeep = {
-			energy = 2
-		}
-	}
-	
-	system_modifier = {
-		trade_value_mult = 0.10
-	}
-
-	show_in_tech = "tech_space_trading"
-	
-	ai_build_at_chokepoint = no
-	ai_build_outside_chokepoint = yes
-	ai_weight = {
-		weight = 2
-	}
 }
 
 climate_control = {
@@ -903,17 +1226,17 @@ defense_grid = {
 	resources = {
 		category = starbase_buildings
 		cost = {
-			alloys = 150
+			alloys = 500
 		}
 
 		upkeep = {
-			energy = 2
+			energy = 5
 		}
 	}
 
 	station_modifier = {
 		starbase_module_capacity_add = 1
-		starbase_defense_platform_capacity_add = 6
+		starbase_defense_platform_capacity_add = 8
 	}
 
 	show_in_tech = "tech_synchronized_defences"
@@ -922,53 +1245,6 @@ defense_grid = {
 	ai_build_outside_chokepoint = no
 	ai_weight = {
 		weight = 10
-	}
-}
-
-black_hole_observatory = {
-	icon = "GFX_spaceport_module_observatory"
-	construction_days = 360
-	
-	potential = {
-		exists = owner
-		owner = { has_technology = tech_sensors_3 }
-	}		
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
-		custom_tooltip = {
-			fail_text = "requires_black_hole"
-			star = { is_star_class = sc_black_hole }
-		}
-	}
-
-	resources = {
-		category = starbase_buildings
-		cost = {
-			alloys = 150
-		}
-
-		upkeep = {
-			energy = 2
-		}
-	}
-	
-	country_modifier = {
-		category_field_manipulation_research_speed_mult = 0.10
-			category_particles_research_speed_mult = 0.10
-			category_voidcraft_research_speed_mult = 0.10
-			category_propulsion_research_speed_mult = 0.10
-	}
-
-	show_in_tech = "tech_sensors_3"
-	
-	ai_build_at_chokepoint = no
-	ai_build_outside_chokepoint = yes
-	ai_weight = {
-		weight = 150
 	}
 }
 

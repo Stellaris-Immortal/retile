@@ -38,6 +38,10 @@ tech_basic_science_lab_2 = {
 				has_trait = "leader_trait_expertise_computing"
 			}			
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -67,6 +71,10 @@ tech_basic_science_lab_3 = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}			
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -111,6 +119,10 @@ tech_curator_lab = {
 			has_ascension_perk = ap_technological_ascendancy
 		}
 		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
 			factor = 0
 			NOR = {
 				research_leader = {
@@ -119,6 +131,10 @@ tech_curator_lab = {
 				}
 				has_modifier = "curator_insight"	
 			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 		
@@ -161,6 +177,10 @@ tech_archeology_lab_ancrel = {
 			}
 		}
 		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
 			factor = 0
 			NOR = {
 				research_leader = {
@@ -169,6 +189,10 @@ tech_archeology_lab_ancrel = {
 				}
 				has_modifier = "curator_insight"	
 			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 		
@@ -211,6 +235,10 @@ tech_archeology_lab = {
 			}
 		}
 		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
 			factor = 0
 			NOR = {
 				research_leader = {
@@ -219,6 +247,10 @@ tech_archeology_lab = {
 				}
 				has_modifier = "curator_insight"	
 			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 		
@@ -236,7 +268,7 @@ tech_archeology_lab = {
 
 
 tech_space_science_1 = {
-	cost = @tier1cost1
+	cost = @tier1cost3
 	area = physics
 	tier = 1
 	category = { computing }	
@@ -254,6 +286,10 @@ tech_space_science_1 = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}			
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -273,7 +309,7 @@ tech_space_science_2 = {
 	area = physics
 	tier = 1
 	category = { computing }	
-	prerequisites = { "tech_space_science_1" }
+	prerequisites = { "tech_space_construction" }
 	weight = @tier1weight3
 	
 	modifier = {
@@ -287,6 +323,10 @@ tech_space_science_2 = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}			
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -302,11 +342,11 @@ tech_space_science_2 = {
 }
 
 tech_space_science_3 = {
-	cost = @tier2cost1
+	cost = @tier1cost3
 	area = physics
 	tier = 2
 	category = { computing }	
-	prerequisites = { "tech_space_science_2" }
+	prerequisites = { "tech_space_construction" }
 	weight = @tier2weight1
 	
 	modifier = {
@@ -320,6 +360,10 @@ tech_space_science_3 = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}			
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -339,7 +383,7 @@ tech_space_science_4 = {
 	area = physics
 	tier = 2
 	category = { computing }	
-	prerequisites = { "tech_space_science_3" }
+	prerequisites = { "tech_space_science_1" "tech_space_science_2" "tech_space_science_3" }
 	weight = @tier2weight3
 	
 	modifier = {
@@ -353,6 +397,10 @@ tech_space_science_4 = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}			
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -387,6 +435,10 @@ tech_space_science_5 = {
 				has_trait = "leader_trait_expertise_computing"
 			}			
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -412,7 +464,7 @@ tech_physics_1 = {
 	weight = @tier1weight1
 	
 	modifier = {
-		planet_researchers_physics_research_produces_mult = 0.2
+		planet_researchers_produces_mult = 0.16
 	}
 	
 	weight_modifier = {
@@ -443,6 +495,10 @@ tech_physics_1 = {
 				has_trait = "leader_trait_expertise_computing"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -466,7 +522,7 @@ tech_physics_2 = {
 	weight = @tier2weight3
 	
 	modifier = {
-		planet_researchers_physics_research_produces_mult = 0.2
+		planet_researchers_produces_mult = 0.17
 	}
 	
 	weight_modifier = {
@@ -493,6 +549,10 @@ tech_physics_2 = {
 				has_trait = "leader_trait_expertise_computing"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -516,7 +576,7 @@ tech_physics_3 = {
 	weight = @tier4weight2
 	
 	modifier = {
-		planet_researchers_physics_research_produces_mult = 0.2
+		planet_researchers_produces_mult = 0.17
 	}
 	
 	weight_modifier = {
@@ -542,6 +602,10 @@ tech_physics_3 = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -587,6 +651,10 @@ tech_global_research_initiative = {
 				has_trait = "leader_trait_expertise_computing"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -619,6 +687,10 @@ tech_administrative_ai = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -654,6 +726,10 @@ tech_cryostasis_1 = {
 				has_trait = "leader_trait_expertise_computing"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -688,6 +764,10 @@ tech_cryostasis_2 = {
 				has_trait = "leader_trait_expertise_computing"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -720,6 +800,10 @@ tech_self_aware_logic = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -806,6 +890,10 @@ tech_automated_exploration = {
 			factor = 2.0
 			num_owned_planets > 20
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -843,6 +931,10 @@ tech_sapient_ai = {
 				has_trait = "leader_trait_expertise_computing"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	ai_weight = {
@@ -879,6 +971,10 @@ tech_positronic_implants = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -924,6 +1020,10 @@ tech_combat_computers_1 = {
 				has_trait = "leader_trait_expertise_computing"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
 	}
 	
 	prereqfor_desc = {
@@ -964,6 +1064,10 @@ tech_combat_computers_2 = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1038,6 +1142,14 @@ tech_combat_computers_3 = {
 				has_level > 2
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 		#BREAKTHROUGH - check for scientist
 	}
 	
@@ -1107,6 +1219,14 @@ tech_combat_computers_autonomous = {
 				has_level > 2
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	prereqfor_desc = {
@@ -1146,6 +1266,10 @@ tech_auxiliary_fire_control = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1215,6 +1339,14 @@ tech_synchronized_defences = {
 			factor = @ap_technological_ascendancy_rare_tech
 			has_ascension_perk = ap_technological_ascendancy
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	ai_weight = {
@@ -1281,6 +1413,10 @@ tech_fusion_power = {
 				has_trait = "leader_trait_expertise_particles"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
 	}
 	
 	ai_weight = {
@@ -1326,6 +1462,10 @@ tech_cold_fusion_power = {
 				area = physics
 				has_trait = "leader_trait_expertise_particles"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}	
 	
@@ -1373,6 +1513,10 @@ tech_antimatter_power = {
 				has_trait = "leader_trait_expertise_particles"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
 	}
 	
 	ai_weight = {
@@ -1419,6 +1563,10 @@ tech_zero_point_power = {
 				has_trait = "leader_trait_expertise_particles"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
 	}
 	
 	ai_weight = {
@@ -1461,6 +1609,10 @@ tech_reactor_boosters_2 = {
 				has_trait = "leader_trait_expertise_particles"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
 	}
 	
 	ai_weight = {
@@ -1491,6 +1643,10 @@ tech_reactor_boosters_3 = {
 				area = physics
 				has_trait = "leader_trait_expertise_particles"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -1538,6 +1694,10 @@ tech_shields_2 = {
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}	
 	
 	ai_weight = {
@@ -1569,6 +1729,10 @@ tech_shields_3 = {
 				area = physics
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -1602,6 +1766,10 @@ tech_shields_4 = {
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -1634,6 +1802,10 @@ tech_shields_5 = {
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
 	}
 	
 	ai_weight = {
@@ -1664,6 +1836,10 @@ tech_shield_rechargers_1 = {
 				area = physics
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -1723,6 +1899,14 @@ tech_planetary_shield_generator = {
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	# unlocks building: planetary shield generator
@@ -1743,14 +1927,14 @@ tech_sensors_2 = {
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_discovery_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1785,14 +1969,14 @@ tech_sensors_3 = {
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_discovery_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}
 	
@@ -1827,14 +2011,14 @@ tech_sensors_4 = {
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_discovery_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_computing"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
 		}
 	}	
 	
@@ -1881,20 +2065,20 @@ tech_power_plant_2 = {
 	weight = @tier1weight1
 		
 	modifier = {
-		planet_technician_energy_produces_mult = 0.2
+		description = tech_power_plant_2_effect
 	}
 	
 	weight_modifier = {
-		modifier = {
-			factor = 1.25
-			has_tradition = tr_prosperity_adopt
-		}
 		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -1920,20 +2104,20 @@ tech_power_plant_3 = {
 	weight = @tier2weight1
 		
 	modifier = {
-		planet_technician_energy_produces_mult = 0.2
+		description = tech_power_plant_3_effect
 	}
 	
 	weight_modifier = {
-		modifier = {
-			factor = 1.25
-			has_tradition = tr_prosperity_adopt
-		}
 		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -1959,20 +2143,20 @@ tech_power_plant_4 = {
 	weight = @tier3weight1
 		
 	modifier = {
-		planet_technician_energy_produces_mult = 0.2
+		description = tech_power_plant_4_effect
 	}
 	
 	weight_modifier = {
-		modifier = {
-			factor = 1.25
-			has_tradition = tr_prosperity_adopt
-		}
 		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -2001,14 +2185,14 @@ tech_power_hub_1 = {
 		factor = 2
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_prosperity_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}			
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -2042,15 +2226,15 @@ tech_power_hub_2 = {
 			}
 		}
 		modifier = {
-			factor = 2
-			has_tradition = tr_prosperity_adopt
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_field_manipulation"
 			}			
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
 		}
 	}
 	
@@ -2101,14 +2285,14 @@ tech_hyper_drive_2 = {
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_discovery_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_particles"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -2144,14 +2328,14 @@ tech_hyper_drive_3 = {
 	weight_modifier = {
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_discovery_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_particles"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -2239,6 +2423,14 @@ tech_wormhole_stabilization = {
 			factor = 4
 			owns_any_bypass = wormhole
 		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
+		}
 	}
 	
 	ai_weight = {
@@ -2297,8 +2489,12 @@ tech_jump_drive_1 = {
 			has_ascension_perk = ap_technological_ascendancy
 		}
 		modifier = {
-			factor = 1.25
-			has_tradition = tr_discovery_adopt
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
 	}
 	
@@ -2334,14 +2530,14 @@ tech_ftl_inhibitor = {
 		factor = 4 #FTL inhibitor is very important
 		modifier = {
 			factor = 1.25
-			has_tradition = tr_supremacy_adopt
-		}
-		modifier = {
-			factor = 1.25
 			research_leader = {
 				area = physics
 				has_trait = "leader_trait_expertise_particles"
 			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
