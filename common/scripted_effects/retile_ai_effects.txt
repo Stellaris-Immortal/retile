@@ -215,54 +215,189 @@ retile_flag_ai_food_world = {
 			}
 			weights = {
 				base = 1
-				modifier = {	### World is good for food
-					add = 9
-					check_variable = { which = rtd_farming value > 2 }
-					ai_bad_food_world = no
-				}
-				modifier = {
-					add = 90
-					check_variable = { which = rtd_farming value > 5 }
-					ai_bad_food_world = no
-				}
-				modifier = {
-					add = 900
-					check_variable = { which = rtd_farming value > 8 }
-					ai_bad_food_world = no
-				}
 				modifier = {	### Static high weight for uncapped planets.
-					add = 9999
+					add = 10000
 					num_free_districts = { type = district_farming value < 1 } # must be an uncapped planet
 					ai_good_food_world = yes
 				}
-				modifier = {	### World is good for minerals
-					add = -4
-					check_variable = { which = rtd_mining value > 2 }
+				modifier = {	### World is good for food ???
+					add = 3
+					check_variable = { which = rtd_farming value >= 1 }
 					ai_bad_food_world = no
 				}
 				modifier = {
-					add = -36
-					check_variable = { which = rtd_mining value > 5 }
+					add = 6
+					check_variable = { which = rtd_farming value >= 2 }
 					ai_bad_food_world = no
 				}
 				modifier = {
-					add = -360
-					check_variable = { which = rtd_mining value > 8 }
-					ai_bad_food_world = no
-				}
-				modifier = {	### World is good for energy
-					add = -4
-					check_variable = { which = rtd_generator value > 2 }
+					add = 9
+					check_variable = { which = rtd_farming value >= 3 }
 					ai_bad_food_world = no
 				}
 				modifier = {
-					add = -36
-					check_variable = { which = rtd_generator value > 5 }
+					add = 12
+					check_variable = { which = rtd_farming value >= 4 }
 					ai_bad_food_world = no
 				}
 				modifier = {
-					add = -360
-					check_variable = { which = rtd_generator value > 8 }
+					add = 15
+					check_variable = { which = rtd_farming value >= 5 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 18
+					check_variable = { which = rtd_farming value >= 6 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 21
+					check_variable = { which = rtd_farming value >= 7 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 24
+					check_variable = { which = rtd_farming value >= 8 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 27
+					check_variable = { which = rtd_farming value >= 9 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 30
+					check_variable = { which = rtd_farming value >= 10 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 33
+					check_variable = { which = rtd_farming value >= 11 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 36
+					check_variable = { which = rtd_farming value >= 12 }
+					ai_bad_food_world = no
+				}
+				modifier = {	### World is good for Minerals ???
+					add = 12
+					check_variable = { which = rtd_mining value <= 1 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 11
+					check_variable = { which = rtd_mining value <= 2 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 10
+					check_variable = { which = rtd_mining value <= 3 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 9
+					check_variable = { which = rtd_mining value <= 4 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 8
+					check_variable = { which = rtd_mining value <= 5 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 7
+					check_variable = { which = rtd_mining value <= 6 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 6
+					check_variable = { which = rtd_mining value <= 7 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 5
+					check_variable = { which = rtd_mining value <= 8 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 4
+					check_variable = { which = rtd_mining value <= 9 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 3
+					check_variable = { which = rtd_mining value <= 10 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 2
+					check_variable = { which = rtd_mining value <= 11 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 1
+					check_variable = { which = rtd_mining value <= 12 }
+					ai_bad_food_world = no
+				}
+				modifier = {	### World is good for Energy ???
+					add = 12
+					check_variable = { which = rtd_generator value <= 1 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 11
+					check_variable = { which = rtd_generator value <= 2 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 10
+					check_variable = { which = rtd_generator value <= 3 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 9
+					check_variable = { which = rtd_generator value <= 4 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 8
+					check_variable = { which = rtd_generator value <= 5 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 7
+					check_variable = { which = rtd_generator value <= 6 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 6
+					check_variable = { which = rtd_generator value <= 7 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 5
+					check_variable = { which = rtd_generator value <= 8 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 4
+					check_variable = { which = rtd_generator value <= 9 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 3
+					check_variable = { which = rtd_generator value <= 10 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 2
+					check_variable = { which = rtd_generator value <= 11 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 1
+					check_variable = { which = rtd_generator value <= 12 }
 					ai_bad_food_world = no
 				}
 				modifier = {
@@ -273,57 +408,6 @@ retile_flag_ai_food_world = {
 				modifier = {
 					mult = 100	### Former sticky world, but somehow isn't sticky now
 					has_planet_flag = ai_food_development_sticky
-				}
-			}
-			set_planet_flag = ai_food_development
-			remove_planet_flag = ai_food_development_former
-		}
-	}
-	if = { # No planet was better for food than for other things. Try again without bias against other resources.
-		limit = { NOT = { any_owned_planet = { has_planet_flag = ai_food_development } } }
-		random_owned_planet = {
-			limit = {
-				NOR = {
-					has_modifier = resort_colony
-					is_under_colonization = yes
-				}
-				OR = {
-					num_free_districts = { type = district_farming value > 0 }
-					num_free_districts = { type = district_farming_uncapped value > 0 }
-					num_free_districts = { type = district_hab_hydroponics value > 0 }
-					num_free_districts = { type = district_rw_farming value > 0 }
-				}
-			}
-			weights = {
-				base = 1
-				modifier = {	### World is good for food
-					add = 9
-					check_variable = { which = rtd_farming value > 2 }
-					ai_bad_food_world = no
-				}
-				modifier = {
-					add = 90
-					check_variable = { which = rtd_farming value > 5 }
-					ai_bad_food_world = no
-				}
-				modifier = {
-					add = 900
-					check_variable = { which = rtd_farming value > 8 }
-					ai_bad_food_world = no
-				}
-				modifier = {	### Static high weight for uncapped planets.
-					add = 9999
-					num_free_districts = { type = district_farming value < 1 } # must be an uncapped planet
-					ai_good_food_world = yes
-				}
-				modifier = {
-					mult = 2	### Former food world, but wasn't sticky
-					has_planet_flag = ai_food_development_former
-					ai_bad_food_world = no
-				}
-				modifier = {
-					mult = 100	### Former sticky world, but somehow isn't sticky now
-					ai_bad_food_world = no
 				}
 			}
 			set_planet_flag = ai_food_development
@@ -416,106 +500,190 @@ retile_flag_ai_energy_world = {
 			}
 			weights = {
 				base = 1
-				modifier = {	### World is good for energy
-					add = 9
-					check_variable = { which = rtd_generator value > 2 }
-					ai_bad_energy_world = no
-				}
-				modifier = {
-					add = 90
-					check_variable = { which = rtd_generator value > 5 }
-					ai_bad_energy_world = no
-				}
-				modifier = {
-					add = 900
-					check_variable = { which = rtd_generator value > 8 }
-					ai_bad_energy_world = no
-				}
 				modifier = {	### Static high weight for uncapped planets.
-					add = 9999
+					add = 10000
 					num_free_districts = { type = district_generator value < 1 } # must be an uncapped planet
 					ai_good_energy_world = yes
 				}
-				modifier = {	### World is good for minerals
-					add = -4
-					check_variable = { which = rtd_mining value > 2 }
-					ai_bad_energy_world = no
+				modifier = {	### World is good for Energy ???
+					add = 3
+					check_variable = { which = rtd_generator value >= 1 }
+					ai_bad_food_world = no
 				}
 				modifier = {
-					add = -36
-					check_variable = { which = rtd_mining value > 5 }
-					ai_bad_energy_world = no
+					add = 6
+					check_variable = { which = rtd_generator value >= 2 }
+					ai_bad_food_world = no
 				}
 				modifier = {
-					add = -360
-					check_variable = { which = rtd_mining value > 8 }
-					ai_bad_energy_world = no
-				}
-				modifier = {	### World is good for food
-					add = -4
-					check_variable = { which = rtd_farming value > 2 }
-					ai_bad_energy_world = no
-				}
-				modifier = {
-					add = -36
-					check_variable = { which = rtd_farming value > 5 }
-					ai_bad_energy_world = no
-				}
-				modifier = {
-					add = -360
-					check_variable = { which = rtd_farming value > 8 }
-					ai_bad_energy_world = no
-				}
-				modifier = {
-					mult = 2	### Former energy world, but wasn't sticky
-					has_planet_flag = ai_energy_development_former
-					ai_bad_energy_world = no
-				}
-				modifier = {
-					mult = 100	### Former sticky world, but somehow isn't sticky now
-					has_planet_flag = ai_energy_development_sticky
-				}
-			}
-			set_planet_flag = ai_energy_development
-			remove_planet_flag = ai_energy_development_former
-		}
-	}
-	if = { # No planet was better for energy than for other things. Try again without bias against other resources.
-		limit = { NOT = { any_owned_planet = { has_planet_flag = ai_energy_development } } }
-		random_owned_planet = {
-			limit = {
-				NOR = {
-					has_modifier = resort_colony
-					is_under_colonization = yes
-				}
-				OR = {
-					num_free_districts = { type = district_generator value > 0 }
-					num_free_districts = { type = district_generator_uncapped value > 0 }
-					num_free_districts = { type = district_hab_energy value > 0 }
-					num_free_districts = { type = district_rw_generator value > 0 }
-				}
-			}
-			weights = {
-				base = 1
-				modifier = {	### World is good for energy
 					add = 9
-					check_variable = { which = rtd_generator value > 2 }
-					ai_bad_energy_world = no
+					check_variable = { which = rtd_generator value >= 3 }
+					ai_bad_food_world = no
 				}
 				modifier = {
-					add = 90
-					check_variable = { which = rtd_generator value > 5 }
-					ai_bad_energy_world = no
+					add = 12
+					check_variable = { which = rtd_generator value >= 4 }
+					ai_bad_food_world = no
 				}
 				modifier = {
-					add = 900
-					check_variable = { which = rtd_generator value > 8 }
-					ai_bad_energy_world = no
+					add = 15
+					check_variable = { which = rtd_generator value >= 5 }
+					ai_bad_food_world = no
 				}
-				modifier = {	### Static high weight for uncapped planets.
-					add = 9999
-					num_free_districts = { type = district_generator value < 1 } # must be an uncapped planet
-					ai_good_energy_world = yes
+				modifier = {
+					add = 18
+					check_variable = { which = rtd_generator value >= 6 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 21
+					check_variable = { which = rtd_generator value >= 7 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 24
+					check_variable = { which = rtd_generator value >= 8 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 27
+					check_variable = { which = rtd_generator value >= 9 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 30
+					check_variable = { which = rtd_generator value >= 10 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 33
+					check_variable = { which = rtd_generator value >= 11 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 36
+					check_variable = { which = rtd_generator value >= 12 }
+					ai_bad_food_world = no
+				}
+				modifier = {	### World is good for Minerals ???
+					add = 12
+					check_variable = { which = rtd_mining value <= 1 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 11
+					check_variable = { which = rtd_mining value <= 2 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 10
+					check_variable = { which = rtd_mining value <= 3 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 9
+					check_variable = { which = rtd_mining value <= 4 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 8
+					check_variable = { which = rtd_mining value <= 5 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 7
+					check_variable = { which = rtd_mining value <= 6 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 6
+					check_variable = { which = rtd_mining value <= 7 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 5
+					check_variable = { which = rtd_mining value <= 8 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 4
+					check_variable = { which = rtd_mining value <= 9 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 3
+					check_variable = { which = rtd_mining value <= 10 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 2
+					check_variable = { which = rtd_mining value <= 11 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 1
+					check_variable = { which = rtd_mining value <= 12 }
+					ai_bad_food_world = no
+				}
+				modifier = {	### World is good for Food ???
+					add = 12
+					check_variable = { which = rtd_farming value <= 1 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 11
+					check_variable = { which = rtd_farming value <= 2 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 10
+					check_variable = { which = rtd_farming value <= 3 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 9
+					check_variable = { which = rtd_farming value <= 4 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 8
+					check_variable = { which = rtd_farming value <= 5 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 7
+					check_variable = { which = rtd_farming value <= 6 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 6
+					check_variable = { which = rtd_farming value <= 7 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 5
+					check_variable = { which = rtd_farming value <= 8 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 4
+					check_variable = { which = rtd_farming value <= 9 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 3
+					check_variable = { which = rtd_farming value <= 10 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 2
+					check_variable = { which = rtd_farming value <= 11 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 1
+					check_variable = { which = rtd_farming value <= 12 }
+					ai_bad_food_world = no
 				}
 				modifier = {
 					mult = 2	### Former energy world, but wasn't sticky
@@ -617,106 +785,190 @@ retile_flag_ai_minerals_world = {
 			}
 			weights = {
 				base = 1
-				modifier = {	### World is good for minerals
-					add = 9
-					check_variable = { which = rtd_mining value > 2 }
-					ai_bad_minerals_world = no
-				}
-				modifier = {
-					add = 90
-					check_variable = { which = rtd_mining value > 5 }
-					ai_bad_minerals_world = no
-				}
-				modifier = {
-					add = 900
-					check_variable = { which = rtd_mining value > 8 }
-					ai_bad_minerals_world = no
-				}
 				modifier = {	### Static high weight for uncapped planets.
-					add = 9999
+					add = 10000
 					num_free_districts = { type = district_mining value < 1 } # must be an uncapped planet
 					ai_good_minerals_world = yes
 				}
-				modifier = {	### World is good for energy
-					add = -4
-					check_variable = { which = rtd_generator value > 2 }
-					ai_bad_minerals_world = no
+				modifier = {	### World is good for Minerals ???
+					add = 3
+					check_variable = { which = rtd_mining value >= 1 }
+					ai_bad_food_world = no
 				}
 				modifier = {
-					add = -36
-					check_variable = { which = rtd_generator value > 5 }
-					ai_bad_minerals_world = no
+					add = 6
+					check_variable = { which = rtd_mining value >= 2 }
+					ai_bad_food_world = no
 				}
 				modifier = {
-					add = -360
-					check_variable = { which = rtd_generator value > 8 }
-					ai_bad_minerals_world = no
-				}
-				modifier = {	### World is good for food
-					add = -4
-					check_variable = { which = rtd_farming value > 2 }
-					ai_bad_minerals_world = no
-				}
-				modifier = {
-					add = -36
-					check_variable = { which = rtd_farming value > 5 }
-					ai_bad_minerals_world = no
-				}
-				modifier = {
-					add = -360
-					check_variable = { which = rtd_farming value > 8 }
-					ai_bad_minerals_world = no
-				}
-				modifier = {
-					mult = 2	### Former minerals world, but wasn't sticky
-					has_planet_flag = ai_minerals_development_former
-					ai_bad_minerals_world = no
-				}
-				modifier = {
-					mult = 100	### Former sticky world, but somehow isn't sticky now
-					has_planet_flag = ai_minerals_development_sticky
-				}
-			}
-			set_planet_flag = ai_minerals_development
-			remove_planet_flag = ai_minerals_development_former
-		}
-	}
-	if = { # No planet was better for minerals than for other things. Try again without bias against other resources.
-		limit = { NOT = { any_owned_planet = { has_planet_flag = ai_minerals_development } } }
-		random_owned_planet = {
-			limit = {
-				NOR = {
-					has_modifier = resort_colony
-					is_under_colonization = yes
-				}
-				OR = {
-					num_free_districts = { type = district_mining value > 0 }
-					num_free_districts = { type = district_mining_uncapped value > 0 }
-					num_free_districts = { type = district_hab_mining value > 0 }
-					num_free_districts = { type = district_rw_mining value > 0 }
-				}
-			}
-			weights = {
-				base = 1
-				modifier = {	### World is good for minerals
 					add = 9
-					check_variable = { which = rtd_mining value > 2 }
-					ai_bad_minerals_world = no
+					check_variable = { which = rtd_mining value >= 3 }
+					ai_bad_food_world = no
 				}
 				modifier = {
-					add = 90
-					check_variable = { which = rtd_mining value > 5 }
-					ai_bad_minerals_world = no
+					add = 12
+					check_variable = { which = rtd_mining value >= 4 }
+					ai_bad_food_world = no
 				}
 				modifier = {
-					add = 900
-					check_variable = { which = rtd_mining value > 8 }
-					ai_bad_minerals_world = no
+					add = 15
+					check_variable = { which = rtd_mining value >= 5 }
+					ai_bad_food_world = no
 				}
-				modifier = {	### Static high weight for uncapped planets.
-					add = 9999
-					num_free_districts = { type = district_mining value < 1 } # must be an uncapped planet
-					ai_good_minerals_world = yes
+				modifier = {
+					add = 18
+					check_variable = { which = rtd_mining value >= 6 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 21
+					check_variable = { which = rtd_mining value >= 7 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 24
+					check_variable = { which = rtd_mining value >= 8 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 27
+					check_variable = { which = rtd_mining value >= 9 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 30
+					check_variable = { which = rtd_mining value >= 10 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 33
+					check_variable = { which = rtd_mining value >= 11 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 36
+					check_variable = { which = rtd_mining value >= 12 }
+					ai_bad_food_world = no
+				}
+				modifier = {	### World is good for Energy ???
+					add = 12
+					check_variable = { which = rtd_generator value <= 1 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 11
+					check_variable = { which = rtd_generator value <= 2 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 10
+					check_variable = { which = rtd_generator value <= 3 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 9
+					check_variable = { which = rtd_generator value <= 4 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 8
+					check_variable = { which = rtd_generator value <= 5 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 7
+					check_variable = { which = rtd_generator value <= 6 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 6
+					check_variable = { which = rtd_generator value <= 7 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 5
+					check_variable = { which = rtd_generator value <= 8 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 4
+					check_variable = { which = rtd_generator value <= 9 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 3
+					check_variable = { which = rtd_generator value <= 10 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 2
+					check_variable = { which = rtd_generator value <= 11 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 1
+					check_variable = { which = rtd_generator value <= 12 }
+					ai_bad_food_world = no
+				}
+				modifier = {	### World is good for Food ???
+					add = 12
+					check_variable = { which = rtd_farming value <= 1 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 11
+					check_variable = { which = rtd_farming value <= 2 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 10
+					check_variable = { which = rtd_farming value <= 3 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 9
+					check_variable = { which = rtd_farming value <= 4 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 8
+					check_variable = { which = rtd_farming value <= 5 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 7
+					check_variable = { which = rtd_farming value <= 6 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 6
+					check_variable = { which = rtd_farming value <= 7 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 5
+					check_variable = { which = rtd_farming value <= 8 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 4
+					check_variable = { which = rtd_farming value <= 9 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 3
+					check_variable = { which = rtd_farming value <= 10 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 2
+					check_variable = { which = rtd_farming value <= 11 }
+					ai_bad_food_world = no
+				}
+				modifier = {
+					add = 1
+					check_variable = { which = rtd_farming value <= 12 }
+					ai_bad_food_world = no
 				}
 				modifier = {
 					mult = 2	### Former minerals world, but wasn't sticky
@@ -765,25 +1017,28 @@ retile_flag_ai_arcology_world = {
 				}
 			}
 			weights = {
-				base = 10000
+				base = 1
 				modifier = {
-					add = -3000
-					ai_good_minerals_world = yes
+					add = 3000
+					ai_good_minerals_world = no
 				}
 				modifier = {
-					add = -3000
-					ai_good_food_world = yes
+					add = 3000
+					ai_good_food_world = no
 				}
 				modifier = {
-					add = -3000
-					ai_good_energy_world = yes
+					add = 3000
+					ai_good_energy_world = no
 				}
 				modifier = {
-					add = -999
-					OR = {
+					add = 3000
+					NOR = {
 						has_planet_flag = ai_energy_development_former
 						has_planet_flag = ai_minerals_development_former
 						has_planet_flag = ai_food_development_former
+						has_planet_flag = ai_energy_development
+						has_planet_flag = ai_minerals_development
+						has_planet_flag = ai_food_development
 					}
 				}
 			}
@@ -869,9 +1124,9 @@ retile_flag_ai_city_world = {
 					}
 				}
 				weights = {
-					base = 10000
+					base = 1
 					modifier = {
-						add = 10000
+						add = 15000
 						OR = {
 							is_capital = yes
 							has_planet_flag = ai_arcology_development
@@ -880,32 +1135,32 @@ retile_flag_ai_city_world = {
 						}
 					}
 					modifier = {
-						add = -3000
-						OR = {
+						add = 3000
+						NOR = {
 							has_planet_flag = ai_energy_development
 							has_planet_flag = ai_energy_development_sticky
 							ai_good_energy_world = yes
 						}
 					}
 					modifier = {
-						add = -3000
-						OR = {
+						add = 3000
+						NOR = {
 							has_planet_flag = ai_minerals_development
 							has_planet_flag = ai_minerals_development_sticky
 							ai_good_minerals_world = yes
 						}
 					}
 					modifier = {
-						add = -3000
-						OR = {
+						add = 3000
+						NOR = {
 							has_planet_flag = ai_food_development
 							has_planet_flag = ai_food_development_sticky
 							ai_good_food_world = yes
 						}
 					}
 					modifier = {
-						add = -999
-						OR = {
+						add = 1000
+						NOR = {
 							has_planet_flag = ai_energy_development_former
 							has_planet_flag = ai_minerals_development_former
 							has_planet_flag = ai_food_development_former
