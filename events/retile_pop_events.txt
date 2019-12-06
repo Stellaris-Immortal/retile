@@ -147,26 +147,26 @@ planet_event = {
 			} }
 			weights = {
 				base = 1
-				modifier = { add = 1 habitability = { who = root value >= 0.05 } }
-				modifier = { add = 2 habitability = { who = root value >= 0.10 } }
-				modifier = { add = 3 habitability = { who = root value >= 0.15 } }
-				modifier = { add = 4 habitability = { who = root value >= 0.20 } }
-				modifier = { add = 5 habitability = { who = root value >= 0.25 } }
-				modifier = { add = 6 habitability = { who = root value >= 0.30 } }
-				modifier = { add = 7 habitability = { who = root value >= 0.35 } }
-				modifier = { add = 8 habitability = { who = root value >= 0.40 } }
-				modifier = { add = 9 habitability = { who = root value >= 0.45 } }
-				modifier = { add = 10 habitability = { who = root value >= 0.50 } }
-				modifier = { add = 11 habitability = { who = root value >= 0.55 } }
-				modifier = { add = 12 habitability = { who = root value >= 0.60 } }
-				modifier = { add = 13 habitability = { who = root value >= 0.65 } }
-				modifier = { add = 14 habitability = { who = root value >= 0.70 } }
-				modifier = { add = 15 habitability = { who = root value >= 0.75 } }
-				modifier = { add = 16 habitability = { who = root value >= 0.80 } }
-				modifier = { add = 17 habitability = { who = root value >= 0.85 } }
-				modifier = { add = 18 habitability = { who = root value >= 0.90 } }
-				modifier = { add = 19 habitability = { who = root value >= 0.95 } }
-				modifier = { add = 20 habitability = { who = root value >= 1.00 } }
+				modifier = { add = 1 habitability = { who = fromfrom value >= 0.05 } }
+				modifier = { add = 2 habitability = { who = fromfrom value >= 0.10 } }
+				modifier = { add = 3 habitability = { who = fromfrom value >= 0.15 } }
+				modifier = { add = 4 habitability = { who = fromfrom value >= 0.20 } }
+				modifier = { add = 5 habitability = { who = fromfrom value >= 0.25 } }
+				modifier = { add = 6 habitability = { who = fromfrom value >= 0.30 } }
+				modifier = { add = 7 habitability = { who = fromfrom value >= 0.35 } }
+				modifier = { add = 8 habitability = { who = fromfrom value >= 0.40 } }
+				modifier = { add = 9 habitability = { who = fromfrom value >= 0.45 } }
+				modifier = { add = 10 habitability = { who = fromfrom value >= 0.50 } }
+				modifier = { add = 11 habitability = { who = fromfrom value >= 0.55 } }
+				modifier = { add = 12 habitability = { who = fromfrom value >= 0.60 } }
+				modifier = { add = 13 habitability = { who = fromfrom value >= 0.65 } }
+				modifier = { add = 14 habitability = { who = fromfrom value >= 0.70 } }
+				modifier = { add = 15 habitability = { who = fromfrom value >= 0.75 } }
+				modifier = { add = 16 habitability = { who = fromfrom value >= 0.80 } }
+				modifier = { add = 17 habitability = { who = fromfrom value >= 0.85 } }
+				modifier = { add = 18 habitability = { who = fromfrom value >= 0.90 } }
+				modifier = { add = 19 habitability = { who = fromfrom value >= 0.95 } }
+				modifier = { add = 20 habitability = { who = fromfrom value >= 1.00 } }
 			}
 			resettle_pop = { pop = fromfrom planet = this}
 		} }
@@ -203,22 +203,22 @@ pop_event = { # retile_abandon_migrate
 	
 	immediate = {
 		random_list = {
-			50 = { # refugee event
+			0 = { # refugee event
 				modifier = {
-					factor = 0
-					is_valid_refugee_pop = no
+					add = 50
+					is_valid_refugee_pop = yes
 				}
 				save_event_target_as = refugee_pop #Must be saved for refugee_pop_effect to work
 				refugee_pop_effect = yes					
 			}
-			50 = { # resettle inside border
+			0 = { # resettle inside border
 				modifier = {
-					factor = 0
-					NOT = { owner = { any_planet_within_border = {
+					add = 50
+					owner = { any_planet_within_border = {
 						NOT = { is_same_value = root.planet }
 						is_under_colonization = no
 						free_housing > 0
-					} } }
+					} }
 				}
 				owner = { random_owned_planet = {
 					limit = {
@@ -228,16 +228,15 @@ pop_event = { # retile_abandon_migrate
 					resettle_pop = { pop = root planet = this }
 				} }
 			}
-			50 = {
+			0 = {
 				modifier = {
-					factor = 0
-					NAND = {
-						is_valid_refugee_pop = no
-						NOT = { owner = { any_planet_within_border = {
+					add = 50
+					is_valid_refugee_pop = no
+					NOT = { owner = { any_planet_within_border = {
 							NOT = { is_same_value = root.planet }
+							is_under_colonization = no
 							free_housing > 0
-						} } }
-					}
+					} } }
 				}
 				kill_pop = yes
 			}
