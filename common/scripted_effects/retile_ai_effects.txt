@@ -1064,9 +1064,9 @@ retile_flag_ai_city_world = {
 	
 	switch = {
 		trigger = num_owned_planets
-		10 < { set_variable = { which = city_development_count value = 1} }
-		10 >= { set_variable = { which = city_development_count value = 2} }
-		30 >= { set_variable = { which = city_development_count value = 3} }
+		20 < { set_variable = { which = city_development_count value = 1} }
+		20 >= { set_variable = { which = city_development_count value = 2} }
+		50 >= { set_variable = { which = city_development_count value = 3} }
 	}
 	while = {
 		count = city_development_count
@@ -1133,6 +1133,10 @@ retile_flag_ai_city_world = {
 							is_planet_class = pc_city
 							is_planet_class = pc_relic
 						}
+					}
+					modifier = {
+						add = 3000
+						has_planet_flag = ai_city_development_former
 					}
 					modifier = {
 						add = 3000
