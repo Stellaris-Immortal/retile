@@ -1,0 +1,115 @@
+namespace = tradition
+
+# Gain Upgraded Network
+event = {
+	id = tradition.1
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		every_owned_starbase = {
+			if = {
+				limit = { owner = { has_tradition = tr_expansion_courier_network } }
+				set_starbase_building = {
+					slot = 0
+					building = courier_network
+				}
+			} else_if = {
+				limit = { owner = { has_tradition = tr_domination_workplace_motivators } }
+				set_starbase_building = {
+					slot = 0
+					building = patrol_network
+				}
+			}
+		}
+	}
+}
+
+# Gatekeeper Event
+ship_event = {
+	id = tradition.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = { ship_event = { id = tradition.3  days = 1} }
+}
+
+# Add Network to Outpost
+ship_event = {
+	id = tradition.3
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { owner = { has_tradition = tr_expansion_courier_network } }
+			FROM = {
+				solar_system = {
+					starbase = { 
+						set_starbase_building = {
+							slot = 0
+							building = courier_network
+						}
+					}
+				}
+			}
+		} else_if = {
+			limit = { owner = { has_tradition = tr_domination_workplace_motivators } }
+			FROM = {
+				solar_system = {
+					starbase = { 
+						set_starbase_building = {
+							slot = 0
+							building = patrol_network
+						}
+					}
+				}
+			}
+		} else = {
+			FROM = {
+				solar_system = {
+					starbase = {
+						set_starbase_building = {
+							slot = 0
+							building = default_network
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+# Replace Network on Conquer
+ship_event = {
+	id = tradition.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { owner = { has_tradition = tr_expansion_courier_network } }
+			THIS = {
+				set_starbase_building = {
+					slot = 0
+					building = courier_network
+				}
+			}
+		} else_if = {
+			limit = { owner = { has_tradition = tr_domination_workplace_motivators } }
+			THIS = {
+				set_starbase_building = {
+					slot = 0
+					building = patrol_network
+				}
+			}
+		} else = {
+			THIS = {
+				set_starbase_building = {
+					slot = 0
+					building = default_network
+				}
+			}
+		}
+	}
+}

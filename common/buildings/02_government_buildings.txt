@@ -1,0 +1,65 @@
+# Colonial Offices
+building_colonial_offices = {
+	base_buildtime = 480	
+	base_cap_amount = 1
+	icon = building_bureaucratic_complex
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { has_tradition = tr_expansion_a_new_life }
+		is_capital = no
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_low
+		}
+		upkeep = {
+			energy = 10
+		}
+		upkeep = {
+			trigger = { owner = { is_hive_empire = yes } }
+			energy = -5
+			consumer_goods = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_colonist_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		modifier = {
+			planet_housing_add = 1
+			job_colonist_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+		
+		modifier = {
+			weight = 10
+			num_pops < 10
+		}
+		
+		modifier = {
+			weight = 10
+			num_pops < 20
+		}
+	}
+}
