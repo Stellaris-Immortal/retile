@@ -7,13 +7,42 @@ col_capital = {
 		owner = { 
 			is_regular_empire = yes 
 			is_plantoid = no
+			NOT = { has_tradition = tr_domination_adopt }
 		}
 		is_capital = yes
 	}
 	
 	planet_modifier = {
 		planet_stability_add = 5
-		planet_crime_add = -30
+		pop_government_ethic_attraction = 0.50
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+# Capital World - Centralization
+col_capital = {
+	icon = 10
+
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes 
+			is_plantoid = no
+			has_tradition = tr_domination_adopt
+		}
+		is_capital = yes
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 5
+		pop_government_ethic_attraction = 0.50
+		pop_growth_speed_reduction = -0.20
+		planet_pop_assembly_reduction = -0.20
+		planet_jobs_produces_mult = 0.20
+		trade_value_mult = 0.20
 	}
 
 	weight_modifier = {
@@ -30,6 +59,7 @@ col_capital_plantoid = {
 		owner = { 
 			is_regular_empire = yes 
 			is_plantoid = yes
+			NOT = { has_tradition = tr_domination_adopt }
 		}
 		is_capital = yes
 	}
@@ -37,7 +67,7 @@ col_capital_plantoid = {
 	planet_modifier = {
 		planet_stability_add = 5
 		pop_environment_tolerance = 0.40
-		planet_crime_add = -30
+		pop_government_ethic_attraction = 0.50
 	}
 
 	weight_modifier = {
@@ -45,10 +75,39 @@ col_capital_plantoid = {
 	}
 }
 
-# Frontier World
-col_frontier_world = {
-	icon = 11
+# Capital World - Plantoid - Centralization
+col_capital_plantoid = {
+	icon = 10
 
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes 
+			is_plantoid = yes
+			has_tradition = tr_domination_adopt
+		}
+		is_capital = yes
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 5
+		pop_environment_tolerance = 0.40
+		pop_government_ethic_attraction = 0.50
+		pop_growth_speed_reduction = -0.20
+		planet_pop_assembly_reduction = -0.20
+		planet_jobs_produces_mult = 0.20
+		trade_value_mult = 0.20
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+# Frontier Urban World
+col_urban_world = {
+	icon = 1
+	
 	potential = {
 		exists = owner
 		owner = { is_regular_empire = yes}
@@ -61,36 +120,10 @@ col_frontier_world = {
 			is_planet_class = pc_habitat
 		}
 	}
-
-	planet_modifier = {
-		planet_immigration_pull_mult = 0.25
-	}
-
-	weight_modifier = {
-		base = 5
-	}
-}
-
-# Urban World
-col_urban_world = {
-	icon = 1
-	
-	potential = {
-		exists = owner
-		owner = { is_regular_empire = yes}
-		is_capital = no
-		has_building = building_capital
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
-		}
-	}
 	
 	planet_modifier = {
 		planet_immigration_pull_mult = 0.10
-		planet_jobs_specialist_produces_mult = 0.05
+		planet_jobs_specialist_produces_mult = 0.10
 	}
 
 	weight_modifier = {
@@ -110,7 +143,7 @@ col_urban_world = {
 	}
 }
 
-# Rural World
+# Frontier Rural World
 col_rural_world = {
 	icon = 13
 	
@@ -118,7 +151,41 @@ col_rural_world = {
 		exists = owner
 		owner = { is_regular_empire = yes}
 		is_capital = no
-		has_building = building_capital
+		has_building = building_colony_shelter
+		NOT = { is_planet_class = pc_city }
+	}
+	
+	planet_modifier = {
+		planet_immigration_pull_mult = 0.10
+		planet_jobs_worker_produces_mult = 0.10
+		# planet_deposits_active_produces_mult = 0.10
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_rural_world
+		}
+	}
+}
+
+# Galactic Engineering World
+col_engineering_world = {
+	icon = 1
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+		is_capital = no
+		OR = {
+			has_building = building_capital
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
 		NOR = {
 			is_planet_class = pc_city
 			is_planet_class = pc_ringworld_habitable
@@ -128,39 +195,145 @@ col_rural_world = {
 	}
 	
 	planet_modifier = {
-		planet_immigration_pull_mult = 0.10
-		planet_jobs_worker_produces_mult = 0.05
+		planet_metallurgists_produces_mult = 0.10
 	}
 
 	weight_modifier = {
 		base = 0
 		modifier = {
 			add = 2
-			has_designation = col_rural_world
+			has_designation = col_engineering_world
 		}
 		modifier = {
 			add = 1
-			OR = { 
-				num_districts = { type = district_generator value > 0 }
-				num_districts = { type = district_mining value > 0 }
-				num_districts = { type = district_farming value > 0 }
-			}
+			num_districts = { type = district_city value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_city value > 1 }
+		}
+	}
+}
+
+# Galactic Scholar World
+col_scholar_world = {
+	icon = 1
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+		is_capital = no
+		OR = {
+			has_building = building_capital
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_habitat
+		}
+	}
+	
+	planet_modifier = {
+		planet_researchers_produces_mult = 0.10
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_scholar_world
 		}
 		modifier = {
 			add = 1
-			OR = {
-				num_districts = { type = district_generator value > 1 }
-				num_districts = { type = district_mining value > 1 }
-				num_districts = { type = district_farming value > 1 }
-			}
+			num_districts = { type = district_city value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_city value > 1 }
+		}
+	}
+}
+
+# Galactic Commerce World
+col_commerce_world = {
+	icon = 1
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+		is_capital = no
+		OR = {
+			has_building = building_capital
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
+		NOR = {
+			is_planet_class = pc_city
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_habitat
+		}
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.10
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_commerce_world
 		}
 		modifier = {
 			add = 1
-			OR = {
-				num_districts = { type = district_generator value > 2 }
-				num_districts = { type = district_mining value > 2 }
-				num_districts = { type = district_farming value > 2 }
-			}
+			num_districts = { type = district_city value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_city value > 1 }
+		}
+	}
+}
+
+# Galactic Rural World
+col_gal_rural_world = {
+	icon = 13
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+		is_capital = no
+		OR = {
+			has_building = building_capital
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
+		NOT = { is_planet_class = pc_city }
+	}
+	
+	planet_modifier = {
+		planet_jobs_worker_produces_mult = 0.10
+		# planet_deposits_active_produces_mult = 0.10
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_gal_rural_world
 		}
 	}
 }
@@ -171,9 +344,13 @@ col_manufacturing_world = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
 		is_capital = no
 		OR = {
+			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
@@ -223,9 +400,13 @@ col_refining_world = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
 		is_capital = no
 		OR = {
+			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
@@ -275,9 +456,13 @@ col_research_world = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
 		is_capital = no
 		OR = {
+			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
@@ -338,9 +523,13 @@ col_scholastic_world = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
 		is_capital = no
 		OR = {
+			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
@@ -405,9 +594,13 @@ col_generator_world = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
 		is_capital = no
 		OR = {
+			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
@@ -421,6 +614,7 @@ col_generator_world = {
 	
 	planet_modifier = {
 		planet_jobs_energy_produces_mult = 0.10
+		# planet_deposits_active_energy_produces_mult = 0.10
 	}
 
 	weight_modifier = {
@@ -453,9 +647,13 @@ col_mining_world = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
 		is_capital = no
 		OR = {
+			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
@@ -469,6 +667,7 @@ col_mining_world = {
 	
 	planet_modifier = {
 		planet_jobs_minerals_produces_mult = 0.10
+		# planet_deposits_active_mining_produces_mult = 0.10
 	}
 
 	weight_modifier = {
@@ -501,9 +700,13 @@ col_farming_world = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
 		is_capital = no
 		OR = {
+			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
@@ -518,6 +721,7 @@ col_farming_world = {
 	
 	planet_modifier = {
 		planet_farmers_produces_mult = 0.10
+		# planet_deposits_active_food_produces_mult = 0.10
 	}
 
 	weight_modifier = {
@@ -550,9 +754,10 @@ col_fortress_world = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
+		owner = { is_regular_empire = yes }
 		is_capital = no
 		OR = {
+			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
@@ -584,9 +789,10 @@ col_recycling_world = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
+		owner = { is_regular_empire = yes }
 		is_capital = no
 		OR = {
+			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}

@@ -76,6 +76,17 @@ retile_apply_growth_malus = {	# country scope
 		limit = { num_pops > 0 }
 		prev = { change_variable = { which = col_count value = 1 } }
 	}
+	
+	# Colonialism Tradition Calculation
+	if = { 
+		limit = { has_tradition = tr_expansion_finish }
+		change_variable = { which = col_count value = -5 }
+		
+		if = {
+			limit = { check_variable = { which = col_count value > 25 } }
+			set_variable = { which = col_count value = 25 }
+		}
+	}
 
 	if = { limit = { check_variable = { which = col_count value < 16 } }
 		if = { limit = { check_variable = { which = col_count value < 8 } }
