@@ -5,36 +5,6 @@ retile_abandon_infrastructure = {
 # END Planet Abandonment
 ##########################################################################
 
-# Migrate one pop between planets within an empire... ### LEGACY MIGRATION CODE - NO LONGER USED
-retile_pop_migrate = {	# country scope
-	random_owned_planet = {
-		limit = { AND = {
-			free_jobs > 0
-			is_under_colonization = no
-		} }
-		owner = { random_owned_pop = {
-			limit = { AND = {
-				OR = {
-					AND = {
-						is_unemployed = yes
-						NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
-					}
-					has_job = servant
-				}
-				planet = {
-					has_building_construction = no
-					OR = {
-						free_jobs < 1
-						prev = { is_shackled_robot = yes }
-					}
-				}
-				prevprev = { habitability = { who = prev value >= 0.5 } }
-			} }
-			resettle_pop = { pop = this planet = prevprev }
-		} }
-	}
-}
-
 # Remove pop growth malus modifiers
 retile_clear_growth_malus = {	# country scope
 	#remove_modifier = retile_growth_malus_1
