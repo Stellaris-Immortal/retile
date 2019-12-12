@@ -832,6 +832,54 @@ deep_space_black_site = {
 	}
 }
 
+fleet_hangar = {
+	icon = "GFX_spaceport_module_fleet_hangar"
+	construction_days = 360
+	initial = yes
+	
+	potential = {
+		exists = owner
+	}	
+	
+	possible = {
+		has_starbase_module = shipyard
+	}
+	
+	station_modifier = {
+		starbase_shipyard_build_cost_mult = -0.10
+		starbase_shipyard_build_speed_mult = 0.10
+	}
+	
+	orbit_modifier = {
+		ship_hull_regen_add_perc = 2
+		ship_armor_regen_add_perc = 2
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 200
+		modifier = {
+			factor = 0
+			count_starbase_modules = {
+				type = shipyard
+				count < 3
+			}
+		}
+	}
+}
+
 fleet_academy = {
 	icon = "GFX_spaceport_module_fleet_academy"
 	construction_days = 360
@@ -1046,6 +1094,11 @@ target_uplink_computer = {
 disruption_field = {
 	icon = "GFX_spaceport_module_orbital_mind_control_lazer"
 	construction_days = 180
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_shields_2 }		
+	}
 
 	possible = {
 		custom_tooltip = {
@@ -1066,6 +1119,7 @@ disruption_field = {
 	}
 
 	equipped_component = "STARBASE_AURA_DISRUPTION_FIELD"
+	show_in_tech = "tech_shields_2"
 
 	ai_build_at_chokepoint = yes
 	ai_build_outside_chokepoint = no
@@ -1077,6 +1131,11 @@ disruption_field = {
 communications_jammer = {
 	icon = "GFX_starbase_communication_jammer"
 	construction_days = 180
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_sensors_2 }		
+	}
 
 	possible = {
 		custom_tooltip = {
@@ -1097,6 +1156,7 @@ communications_jammer = {
 	}
 
 	equipped_component = "STARBASE_AURA_COMMUNICATIONS_JAMMER"
+	show_in_tech = "tech_sensors_2"
 
 	ai_build_at_chokepoint = yes
 	ai_build_outside_chokepoint = no
@@ -1477,7 +1537,7 @@ courier_network = {
 	resources = {
 		category = starbase_buildings
 		cost = {
-			alloys = 250
+			alloys = 100
 		}
 
 		upkeep = {
@@ -1517,7 +1577,7 @@ default_network = {
 	resources = {
 		category = starbase_buildings
 		cost = {
-			alloys = 250
+			alloys = 100
 		}
 
 		upkeep = {
@@ -1557,7 +1617,7 @@ patrol_network = {
 	resources = {
 		category = starbase_buildings
 		cost = {
-			alloys = 250
+			alloys = 100
 		}
 
 		upkeep = {

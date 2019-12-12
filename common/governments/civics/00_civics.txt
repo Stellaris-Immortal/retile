@@ -675,8 +675,14 @@ civic_fanatic_purifiers = {
 	}
 	possible = {
 		ethics = {
-			value = ethic_xenophobe
-			value = ethic_fanatic_militarist
+			OR = {
+				value = ethic_fanatic_xenophobe
+				value = ethic_militarist
+			}
+			OR = {
+				value = ethic_xenophobe
+				value = ethic_fanatic_militarist
+			}	
 		}
 		civics = {
 			NOR = {
