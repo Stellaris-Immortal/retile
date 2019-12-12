@@ -853,3 +853,36 @@ country_event = {
 		}
 	}
 }
+
+### Death World civic gamestart
+country_event = {
+	id = game_start.dwc
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { 
+		has_civic = civic_death_world 
+	}
+
+	immediate = {
+		set_country_flag = death_world_start
+		random_owned_planet = {
+			limit = { is_capital = yes }
+			add_modifier = { modifier = "death_world" days = -1	}
+		}
+		every_owned_pop = {
+			limit = {
+				species = {
+					NOT = { has_trait = trait_death_worlder	}
+				}
+				is_sapient = yes
+			}
+			modify_species = {
+				species = this
+				add_trait = trait_death_worlder
+				add_traits_at_start_of_list = yes
+				base = none
+			}
+		}
+	}
+}

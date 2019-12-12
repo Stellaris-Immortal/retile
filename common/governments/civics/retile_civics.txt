@@ -132,3 +132,34 @@ civic_shared_burden = {
 	}		
 	random_weight = { base = 5 }
 }
+
+civic_death_world = {
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_agrarian_idyll
+				value = civic_life_seeded
+				value = civic_post_apocalyptic
+				value = civic_environmentalist
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = 1
+		modifier = {
+			# civic cannot appear after game started
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+	description = "civic_tooltip_death_world_effects"
+
+	modifier = {
+		
+	}
+
+	traits = {
+		trait = trait_death_worlder
+	}
+}
