@@ -23,8 +23,8 @@ col_capital = {
 }
 
 # Capital World - Centralization
-col_capital = {
-	icon = 10
+col_capital_galactic = {
+	icon = 12
 
 	potential = {
 		exists = owner
@@ -39,8 +39,8 @@ col_capital = {
 	planet_modifier = {
 		planet_stability_add = 5
 		pop_government_ethic_attraction = 0.50
-		pop_growth_speed_reduction = -0.20
-		planet_pop_assembly_reduction = -0.20
+		pop_growth_speed = 1
+		planet_pop_assembly_mult = 1
 		planet_jobs_produces_mult = 0.20
 		trade_value_mult = 0.20
 	}
@@ -76,8 +76,8 @@ col_capital_plantoid = {
 }
 
 # Capital World - Plantoid - Centralization
-col_capital_plantoid = {
-	icon = 10
+col_capital_plantoid_galactic = {
+	icon = 12
 
 	potential = {
 		exists = owner
@@ -93,8 +93,8 @@ col_capital_plantoid = {
 		planet_stability_add = 5
 		pop_environment_tolerance = 0.40
 		pop_government_ethic_attraction = 0.50
-		pop_growth_speed_reduction = -0.20
-		planet_pop_assembly_reduction = -0.20
+		pop_growth_speed = 1
+		planet_pop_assembly_mult = 1
 		planet_jobs_produces_mult = 0.20
 		trade_value_mult = 0.20
 	}
@@ -113,12 +113,6 @@ col_urban_world = {
 		owner = { is_regular_empire = yes}
 		is_capital = no
 		has_building = building_colony_shelter
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
-		}
 	}
 	
 	planet_modifier = {
@@ -170,9 +164,45 @@ col_rural_world = {
 	}
 }
 
+# Commerce World
+col_commerce_world = {
+	icon = 14
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		is_capital = no
+		OR = {
+			has_building = building_capital
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.10
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_commerce_world
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_city value > 0 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_city value > 1 }
+		}
+	}
+}
+
 # Galactic Engineering World
 col_engineering_world = {
-	icon = 1
+	icon = 7
 	
 	potential = {
 		exists = owner
@@ -185,12 +215,6 @@ col_engineering_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
-		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
 		}
 	}
 	
@@ -217,7 +241,7 @@ col_engineering_world = {
 
 # Galactic Scholar World
 col_scholar_world = {
-	icon = 1
+	icon = 8
 	
 	potential = {
 		exists = owner
@@ -230,12 +254,6 @@ col_scholar_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
-		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
 		}
 	}
 	
@@ -260,54 +278,9 @@ col_scholar_world = {
 	}
 }
 
-# Galactic Commerce World
-col_commerce_world = {
-	icon = 1
-	
-	potential = {
-		exists = owner
-		owner = { 
-			is_regular_empire = yes
-			has_tradition = tr_domination_grand_council
-		}
-		is_capital = no
-		OR = {
-			has_building = building_capital
-			has_building = building_major_capital
-			has_building = building_system_capital
-		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
-		}
-	}
-	
-	planet_modifier = {
-		trade_value_mult = 0.10
-	}
-
-	weight_modifier = {
-		base = 0
-		modifier = {
-			add = 2
-			has_designation = col_commerce_world
-		}
-		modifier = {
-			add = 1
-			num_districts = { type = district_city value > 0 }
-		}
-		modifier = {
-			add = 2
-			num_districts = { type = district_city value > 1 }
-		}
-	}
-}
-
 # Galactic Rural World
-col_gal_rural_world = {
-	icon = 13
+col_rural_world_galactic = {
+	icon = 3
 	
 	potential = {
 		exists = owner
@@ -333,14 +306,14 @@ col_gal_rural_world = {
 		base = 0
 		modifier = {
 			add = 2
-			has_designation = col_gal_rural_world
+			has_designation = col_rural_world_galactic
 		}
 	}
 }
 
 # Manufacturing World
 col_manufacturing_world = {
-	icon = 7
+	icon = 6
 	
 	potential = {
 		exists = owner
@@ -353,12 +326,6 @@ col_manufacturing_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
-		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
 		}
 	}
 	
@@ -396,7 +363,7 @@ col_manufacturing_world = {
 
 # Refining World
 col_refining_world = {
-	icon = 7
+	icon = 5
 	
 	potential = {
 		exists = owner
@@ -409,12 +376,6 @@ col_refining_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
-		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
 		}
 	}
 	
@@ -452,7 +413,7 @@ col_refining_world = {
 
 # Research World
 col_research_world = {
-	icon = 8
+	icon = 16
 	
 	potential = {
 		exists = owner
@@ -465,12 +426,6 @@ col_research_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
-		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
 		}
 	}
 	
@@ -517,9 +472,9 @@ col_research_world = {
 	}
 }
 
-# Scholastic World
-col_scholastic_world = {
-	icon = 8
+# Cultural World
+col_cultural_world = {
+	icon = 17
 	
 	potential = {
 		exists = owner
@@ -533,12 +488,6 @@ col_scholastic_world = {
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
-		}
 	}
 	
 	planet_modifier = {
@@ -548,7 +497,7 @@ col_scholastic_world = {
 	weight_modifier = {
 		modifier = {
 			add = 2
-			has_designation = col_scholastic_world
+			has_designation = col_cultural_world
 		}
 		modifier = {
 			add = 1
@@ -604,12 +553,7 @@ col_generator_world = {
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
-		}
+		NOT = {	is_planet_class = pc_city }
 	}
 	
 	planet_modifier = {
@@ -657,12 +601,7 @@ col_mining_world = {
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
-		}
+		NOT = { is_planet_class = pc_city }
 	}
 	
 	planet_modifier = {
@@ -712,9 +651,6 @@ col_farming_world = {
 		}
 		NOR = {
 			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
 			is_planet_class = pc_relic
 		}
 	}
@@ -750,7 +686,7 @@ col_farming_world = {
 
 # Fortress World
 col_fortress_world = {
-	icon = 3
+	icon = 9
 	
 	potential = {
 		exists = owner
@@ -760,13 +696,6 @@ col_fortress_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
-		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
-			is_planet_class = pc_relic
 		}
 	}
 	
@@ -785,7 +714,7 @@ col_fortress_world = {
 
 # Recycling World
 col_recycling_world = {
-	icon = 3
+	icon = 18
 	
 	potential = {
 		exists = owner
@@ -795,13 +724,6 @@ col_recycling_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
-		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_cybrex
-			is_planet_class = pc_habitat
-			is_planet_class = pc_relic
 		}
 	}
 	
