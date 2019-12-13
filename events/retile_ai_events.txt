@@ -56,7 +56,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 12
 	}
 
 	after = {
@@ -75,7 +75,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 12
 	}
 
 	after = {
@@ -94,7 +94,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 12
 	}
 
 	after = {
@@ -113,7 +113,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 12
 	}
 
 	after = {
@@ -132,7 +132,7 @@ country_event = {
 	}
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 36
 	}
 
 	after = {
@@ -221,21 +221,24 @@ country_event = {
 					}
 				}
 				weights = {
-					base = 100
+					base = 1
 					modifier = {
 						mult = 10000
 						OR = {
 							has_planet_flag = ai_arcology_development
 							is_planet_class = pc_relic
 						}
+						NOT = { has_planet_flag = ai_energy_development }
 					}
 					modifier = {
-						mult = 0.5
+						add = 50
 						has_planet_flag = ai_energy_development_former
+						NOT = { has_planet_flag = ai_energy_development }
 					}
 					modifier = {
-						mult = 0.02
-						has_planet_flag = ai_energy_development
+						add = 500
+						NOT = { has_planet_flag = ai_energy_development }
+						NOT = { has_planet_flag = ai_energy_development_former }
 					}
 				}
 				if = { limit = { num_districts = { type = district_generator value > 0 } }
@@ -297,21 +300,24 @@ country_event = {
 					}
 				}
 				weights = {
-					base = 100
+					base = 1
 					modifier = {
 						mult = 10000
 						OR = {
 							has_planet_flag = ai_arcology_development
 							is_planet_class = pc_relic
 						}
+						NOT = { has_planet_flag = ai_minerals_development }
 					}
 					modifier = {
-						mult = 0.5
+						add = 50
 						has_planet_flag = ai_minerals_development_former
+						NOT = { has_planet_flag = ai_minerals_development }
 					}
 					modifier = {
-						mult = 0.02
-						has_planet_flag = ai_minerals_development
+						add = 500
+						NOT = { has_planet_flag = ai_minerals_development }
+						NOT = { has_planet_flag = ai_minerals_development_former }
 					}
 				}
 				if = { limit = { num_districts = { type = district_mining value > 0 } }
@@ -385,24 +391,24 @@ country_event = {
 					}
 				}
 				weights = {
-					base = 100
+					base = 1
 					modifier = {
 						mult = 10000
 						OR = {
 							has_planet_flag = ai_arcology_development
+							is_planet_class = pc_relic
 						}
+						NOT = { has_planet_flag = ai_food_development }
 					}
 					modifier = {
-						mult = 0.5
+						add = 50
 						has_planet_flag = ai_food_development_former
+						NOT = { has_planet_flag = ai_food_development }
 					}
 					modifier = {
-						mult = 0.02
-						OR = {
-							has_building = building_food_processing_facility
-							has_building = building_food_processing_center
-							has_planet_flag = ai_food_development
-						}
+						add = 500
+						NOT = { has_planet_flag = ai_food_development }
+						NOT = { has_planet_flag = ai_food_development_former }
 					}
 				}
 				if = { limit = { num_districts = { type = district_farming value > 0 } }

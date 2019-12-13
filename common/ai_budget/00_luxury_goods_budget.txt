@@ -26,7 +26,16 @@ consumer_goods_expenditure_colonies_expand = {
 	potential = {
 		is_regular_empire = yes
 		ai_colonize_plans > 0
-		has_resource = { type = food amount > 400 }
+		OR = {
+			AND = {
+				is_lithoid_empire = yes
+				has_resource = { type = minerals amount > 500 }
+			}
+			AND = {
+				is_lithoid_empire = no
+				has_resource = { type = food amount > 500 }
+			}
+		}
 	}
 	
 	fraction = {

@@ -222,8 +222,16 @@ alloys_expenditure_colonies_expand = {
 		is_machine_empire = no
 		is_at_war = no
 		ai_colonize_plans > 0
-		has_resource = { type = food amount > 500 }
-		has_monthly_income = { resource = food value > 0 }
+		OR = {
+			AND = {
+				is_lithoid_empire = yes
+				has_resource = { type = minerals amount > 500 }
+			}
+			AND = {
+				is_lithoid_empire = no
+				has_resource = { type = food amount > 500 }
+			}
+		}
 	}
 	
 	static_min = {
