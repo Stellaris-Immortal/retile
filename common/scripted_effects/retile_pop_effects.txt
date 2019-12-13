@@ -57,6 +57,18 @@ retile_apply_growth_malus = {	# country scope
 			set_variable = { which = col_count value = 25 }
 		}
 	}
+	
+	# Genome Mapping
+	if = { 
+		limit = { has_technology = tech_genome_mapping }
+		change_variable = { which = col_count value = -2 }
+	}
+	
+	# Cloning
+	if = { 
+		limit = { has_technology = tech_cloning }
+		change_variable = { which = col_count value = -2 }
+	}
 
 	if = { limit = { check_variable = { which = col_count value < 16 } }
 		if = { limit = { check_variable = { which = col_count value < 8 } }

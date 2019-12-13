@@ -1,282 +1,222 @@
-generate_start_buildings_and_districts = {		
-	if = {
-		limit = {
-			owner = {
-				OR = {
-					has_valid_civic = civic_machine_assimilator
-					has_valid_civic = civic_machine_servitor
-					has_valid_civic = civic_syncretic_evolution
-				}
-			}
-		}
-
-		if = {
-			limit = { owner = { last_created_species = { is_lithoid = yes } } }
-			owner = {
-				set_country_flag = lithoid_subspecies
-			}
-		}
-		else = {
-			owner = {
-				set_country_flag = non_lithoid_subspecies
-			}
-		}
-		
-		if = {
-			limit = { owner = { last_created_species = { is_plantoid = yes } } }
-			owner = {
-				set_country_flag = plantoid_subspecies
-			}
-		}
-		else = {
-			owner = {
-				set_country_flag = non_plantoid_subspecies
-			}
-		}
-	}
-	
-	if = {
-		limit = { owner = { is_regular_empire = yes } }
-		
-		# total - 10 jobs
-		
-		# 2 jobs
-		add_district = district_city
-		
-		# 1 job
-		add_district = district_mining
-		
-		# 1 jobs
-		if = {
-			limit = { owner = { OR = {
-				is_lithoid_empire = no
-				has_country_flag = non_lithoid_subspecies
-			} } }
-			add_district = district_farming
-		} else = {
-			add_district = district_mining
-		}
-		
-		# 1 jobs
-		add_district = district_generator
-		
-		# 4 jobs
-		add_building = building_system_capital
-
-		# 1 jobs
-		#add_building = building_research_lab_1
-		add_building = building_foundry_1
-		#add_building = building_factory_1
-
-		if = { limit = { owner = { is_megacorp = yes } }
-			add_building = building_commercial_zone
-			remove_district = district_generator
-		}
-	}
-	
-	if = {
-		limit = { owner = { is_hive_empire = yes } }
-		
-		# total - 10 jobs
-		
-		# 2 jobs
-		add_district = district_city
-		
-		# 1 job
-		add_district = district_mining
-		
-		# 1 jobs
-		if = {
-			limit = { owner = { OR = {
-				is_lithoid_empire = no
-				has_country_flag = non_lithoid_subspecies
-			} } }
-			add_district = district_farming
-			add_district = district_farming
-		} else = {
-			add_district = district_mining
-			add_district = district_mining
-		}
-		
-		# 1 jobs
-		add_district = district_generator
-		
-		# 4 jobs
-		add_building = building_hive_system_capital
-
-		# 2 jobs
-		#add_building = building_research_lab_1
-		add_building = building_foundry_1
-		#add_building = building_factory_1
-	}
-	
-	# Additional resources based on empire type and possible subspecies
-	owner = {
-		if = {
-			limit = { is_lithoid_empire = no }
-			if = {
-				limit = { has_country_flag = lithoid_subspecies }
-				add_resource = { food = 100	}
-				add_resource = { minerals = 100 }
-			}
-			else = {
-				add_resource = { food = 200 }
-			}
-		}
-		else = {
-			if = {
-				limit = { has_country_flag = non_lithoid_subspecies }
-				add_resource = { food = 100	}
-				add_resource = { minerals = 100 }
-			}
-			else = {
-				add_resource = { minerals = 200 }
-			}
-		}
-	}
-	
-	# capital world planet flags
-	if = {
-		limit = { owner = { is_country_type = default } }
-		set_planet_flag = ai_energy_development
-		set_planet_flag = ai_minerals_development
-		set_planet_flag = ai_food_development
-		set_planet_flag = ai_arcology_development
-		set_planet_flag = ai_city_development
-	}
+# This is called in initializers for all standard empires, before the empire actually exists
+generate_empire_home_planet = {
 }
 
-generate_start_pops = {	
-	if = { 
-		limit = { 
-			owner = {
+generate_home_system_resources = {
+	every_system_planet = {
+		limit = { colonizeable_planet = no }
+		prevent_anomaly = yes
+		clear_deposits = yes
+	}
+
+	system_star = {
+		set_planet_flag = starting_mining_target
+		set_planet_flag = starting_deposit
+		set_deposit = d_energy_medium
+	}
+
+	random_system_planet = {
+		limit = {
+			NOT = { has_planet_flag = starting_deposit }
+			OR = {
+				is_planet_class = pc_a_star
+				is_planet_class = pc_b_star
+				is_planet_class = pc_f_star
+				is_planet_class = pc_g_star
+				is_planet_class = pc_k_star
+				is_planet_class = pc_m_star
+				is_planet_class = pc_m_giant_star
+				is_planet_class = pc_t_star
+			}
+		}
+
+		set_planet_flag = starting_mining_target
+		set_planet_flag = starting_deposit
+		
+		if = {
+			limit = {
 				OR = {
-					has_valid_civic = civic_syncretic_evolution
-					has_valid_civic = civic_machine_servitor
-					has_valid_civic = civic_machine_assimilator
+					is_planet_class = pc_k_star
+					is_planet_class = pc_m_star
+					is_planet_class = pc_m_giant_star
+					is_planet_class = pc_t_star
 				}
 			}
-		}
-
-		if = { limit = { last_created_species = { is_species_class = MACHINE } }
-			modify_species = {
-				species = last_created_species
-				add_trait = trait_machine_unit
-				add_traits_at_start_of_list = yes
-			}
-			last_created_species = { save_event_target_as = last_created_species }
-		}
-
-		if = { limit = { owner = { has_valid_civic = civic_syncretic_evolution } }
-			last_created_species = {
-				set_citizenship_type = {
-					country = root.owner
-					type = citizenship_slavery
-				}
-			}
-			while = {
-				count = 4
-				create_pop = {
-					species = last_created_species
-					ethos = random
-				}
-			}		
+			set_deposit = d_energy_small
 		}
 		
-		if = { 
-			limit = { owner = { has_valid_civic = civic_machine_servitor } }
-			last_created_species = {
-				set_citizenship_type = {
-					country = root.owner
-					type = citizenship_limited
-				}
-				set_living_standard = {
-					country = root.owner
-					type = living_standard_organic_trophy
+		else_if = {
+			limit = {
+				OR = { 
+					is_planet_class = pc_f_star
+					is_planet_class = pc_g_star
 				}
 			}
-			while = {
-				count = 1
-				create_pop = {
-					species = last_created_species
-					ethos = random
-				}
-				last_created_pop = {
-					clear_ethos = yes
-				}
-			}
+			set_deposit = d_energy_medium
 		}
 		
-		if = { 
-			limit = { owner = { has_valid_civic = civic_machine_assimilator } }
-			last_created_species = {
-				set_citizenship_type = {
-					country = root.owner
-					type = citizenship_full_machine
-				}
-				set_living_standard = {
-					country = root.owner
-					type = living_standard_hive_mind
+		else_if = {
+			limit = {
+				OR = { 
+					is_planet_class = pc_a_star
+					is_planet_class = pc_b_star
 				}
 			}
-			while = {
-				count = 3
-				create_pop = {
-					species = last_created_species
-					ethos = random
-				}
-				last_created_pop = {
-					clear_ethos = yes
-				}
-			}
-		} 
-	}
-	
-	if = { 
-		limit = { owner = { has_valid_civic = civic_mechanists } }
-		owner = { create_built_robot_species = yes }
-		while = {
-			count = 3
-			create_pop = {
-				species = last_created_species
-			}
+			set_deposit = d_energy_large
 		}
 	}
 	
+	random_system_planet = {
+		limit = {
+			NOT = { has_planet_flag = starting_deposit }
+			OR = {
+				is_asteroid = yes
+				is_planet_class = pc_barren
+				is_planet_class = pc_barren_cold
+			}
+		}
+		
+		set_planet_flag = starting_deposit
+		
+		if = {
+			limit = {
+				is_asteroid = yes
+			}
+			set_deposit = d_alloys_asteroid
+		}
+		
+		else_if = {
+			limit = {
+				OR = { 
+					is_planet_class = pc_barren
+					is_planet_class = pc_barren_cold
+				}
+				is_moon = no
+			}
+			set_deposit = d_minerals_world
+		}
+		
+		else_if = {
+			limit = {
+				OR = { 
+					is_planet_class = pc_barren
+					is_planet_class = pc_barren_cold
+				}
+				is_moon = yes
+			}
+			set_deposit = d_minerals_moon
+		}
+	}
+
 	while = {
-		limit = { num_pops < 12 }
-		create_pop = {
-			species = owner_main_species
-			ethos = random
-		}
-	}
-	
-	if = {
-		limit = { owner = { is_hive_empire = yes } }
-		while = {
-			#limit = { num_pops < 12 }
-			count = 1
-			create_pop = {
-				species = owner_main_species
-				ethos = random
+		count = 2
+		random_system_planet = {
+			limit = {
+				NOT = { has_planet_flag = starting_deposit }
+				OR = {
+					is_asteroid = yes
+					is_planet_class = pc_barren
+					is_planet_class = pc_barren_cold
+				}
+			}
+
+			set_planet_flag = starting_mining_target
+			set_planet_flag = starting_deposit
+			
+			if = {
+				limit = {
+					is_asteroid = yes
+				}
+				set_deposit = d_alloys_asteroid
+			}
+		
+			else_if = {
+				limit = {
+					OR = { 
+						is_planet_class = pc_barren
+						is_planet_class = pc_barren_cold
+					}
+					is_moon = no
+				}
+				set_deposit = d_minerals_random
+			}
+		
+			else_if = {
+				limit = {
+					OR = { 
+						is_planet_class = pc_barren
+						is_planet_class = pc_barren_cold
+					}
+					is_moon = yes
+				}
+				set_deposit = d_minerals_moon
 			}
 		}
 	}
-	
-	# One extra pop for Servitors
-	if = {
-		limit = { owner = { has_valid_civic = civic_machine_servitor } }
-		create_pop = {
-			species = owner_main_species
-			ethos = random
+
+	random_system_planet = {
+		limit = {
+			NOT = { has_planet_flag = starting_deposit }
+			OR = {
+				is_planet_class = pc_toxic
+				is_planet_class = pc_frozen
+				is_planet_class = pc_molten
+			}
+		}
+
+		set_planet_flag = starting_research_target
+		set_planet_flag = starting_deposit
+
+		if = {
+			limit = {
+				is_planet_class = pc_toxic
+			}
+			set_deposit = d_society_small
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_molten
+			}
+			set_deposit = d_physics_small
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_frozen
+			}
+			set_deposit = d_engineering_small
 		}
 	}
-	# One extra pop for Mining Guilds
-	if = {
-		limit = { owner = { has_valid_civic = civic_mining_guilds } }
-		create_pop = {
-			species = owner_main_species
-			ethos = random
+
+	random_system_planet = {
+		limit = {
+			NOT = { has_planet_flag = starting_deposit }
+			OR = {
+				is_planet_class = pc_toxic
+				is_planet_class = pc_frozen
+				is_planet_class = pc_molten
+			}
+		}
+
+		set_planet_flag = starting_research_target
+		set_planet_flag = starting_deposit
+
+		if = {
+			limit = {
+				is_planet_class = pc_toxic
+			}
+			set_deposit = d_society_medium
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_molten
+			}
+			set_deposit = d_physics_medium
+		}
+		else_if = {
+			limit = {
+				is_planet_class = pc_frozen
+			}
+			set_deposit = d_engineering_medium
 		}
 	}
 }
@@ -887,5 +827,309 @@ generate_earth_deposits_and_blockers = {
 		add_deposit = d_dust_caverns
 		add_deposit = d_bubbling_swamp
 		add_deposit = d_crystalline_caverns
+	}
+}
+
+generate_start_buildings_and_districts = {		
+	if = {
+		limit = {
+			owner = {
+				OR = {
+					has_valid_civic = civic_machine_assimilator
+					has_valid_civic = civic_machine_servitor
+					has_valid_civic = civic_syncretic_evolution
+				}
+			}
+		}
+
+		if = {
+			limit = { owner = { last_created_species = { is_lithoid = yes } } }
+			owner = {
+				set_country_flag = lithoid_subspecies
+			}
+		}
+		else = {
+			owner = {
+				set_country_flag = non_lithoid_subspecies
+			}
+		}
+		
+		if = {
+			limit = { owner = { last_created_species = { is_plantoid = yes } } }
+			owner = {
+				set_country_flag = plantoid_subspecies
+			}
+		}
+		else = {
+			owner = {
+				set_country_flag = non_plantoid_subspecies
+			}
+		}
+	}
+	
+	if = {
+		limit = { owner = { is_regular_empire = yes } }
+		
+		# total - 10 jobs
+		
+		# 2 jobs
+		add_district = district_city
+		
+		# 1 job
+		add_district = district_mining
+		
+		# 1 jobs
+		if = {
+			limit = { owner = { OR = {
+				is_lithoid_empire = no
+				has_country_flag = non_lithoid_subspecies
+			} } }
+			add_district = district_farming
+		} else = {
+			add_district = district_mining
+		}
+		
+		# 1 jobs
+		add_district = district_generator
+		
+		# 4 jobs
+		add_building = building_system_capital
+
+		# 1 jobs
+		#add_building = building_research_lab_1
+		add_building = building_foundry_1
+		#add_building = building_factory_1
+
+		if = { limit = { owner = { is_megacorp = yes } }
+			add_building = building_commercial_zone
+			remove_district = district_generator
+		}
+	}
+	
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		
+		# total - 10 jobs
+		
+		# 2 jobs
+		add_district = district_city
+		
+		# 1 job
+		add_district = district_mining
+		
+		# 1 jobs
+		if = {
+			limit = { owner = { OR = {
+				is_lithoid_empire = no
+				has_country_flag = non_lithoid_subspecies
+			} } }
+			add_district = district_farming
+			add_district = district_farming
+		} else = {
+			add_district = district_mining
+			add_district = district_mining
+		}
+		
+		# 1 jobs
+		add_district = district_generator
+		
+		# 4 jobs
+		add_building = building_hive_system_capital
+
+		# 2 jobs
+		#add_building = building_research_lab_1
+		add_building = building_foundry_1
+		#add_building = building_factory_1
+	}
+	
+	# Additional resources based on empire type and possible subspecies
+	owner = {
+		if = {
+			limit = { is_lithoid_empire = no }
+			if = {
+				limit = { has_country_flag = lithoid_subspecies }
+				add_resource = { food = 100	}
+				add_resource = { minerals = 100 }
+			}
+			else = {
+				add_resource = { food = 200 }
+			}
+		}
+		else = {
+			if = {
+				limit = { has_country_flag = non_lithoid_subspecies }
+				add_resource = { food = 100	}
+				add_resource = { minerals = 100 }
+			}
+			else = {
+				add_resource = { minerals = 200 }
+			}
+		}
+	}
+	
+	# capital world planet flags
+	if = {
+		limit = { owner = { is_country_type = default } }
+		set_planet_flag = ai_energy_development
+		set_planet_flag = ai_minerals_development
+		set_planet_flag = ai_food_development
+		set_planet_flag = ai_arcology_development
+		set_planet_flag = ai_city_development
+	}
+}
+
+generate_start_pops = {	
+	if = { 
+		limit = { 
+			owner = {
+				OR = {
+					has_valid_civic = civic_syncretic_evolution
+					has_valid_civic = civic_machine_servitor
+					has_valid_civic = civic_machine_assimilator
+				}
+			}
+		}
+
+		if = { limit = { last_created_species = { is_species_class = MACHINE } }
+			modify_species = {
+				species = last_created_species
+				add_trait = trait_machine_unit
+				add_traits_at_start_of_list = yes
+			}
+			last_created_species = { save_event_target_as = last_created_species }
+		}
+
+		if = { limit = { owner = { has_valid_civic = civic_syncretic_evolution } }
+			last_created_species = {
+				set_citizenship_type = {
+					country = root.owner
+					type = citizenship_slavery
+				}
+			}
+			while = {
+				count = 4
+				create_pop = {
+					species = last_created_species
+					ethos = random
+				}
+			}		
+		}
+		
+		if = { 
+			limit = { owner = { has_valid_civic = civic_machine_servitor } }
+			last_created_species = {
+				set_citizenship_type = {
+					country = root.owner
+					type = citizenship_limited
+				}
+				set_living_standard = {
+					country = root.owner
+					type = living_standard_organic_trophy
+				}
+			}
+			while = {
+				count = 1
+				create_pop = {
+					species = last_created_species
+					ethos = random
+				}
+				last_created_pop = {
+					clear_ethos = yes
+				}
+			}
+		}
+		
+		if = { 
+			limit = { owner = { has_valid_civic = civic_machine_assimilator } }
+			last_created_species = {
+				set_citizenship_type = {
+					country = root.owner
+					type = citizenship_full_machine
+				}
+				set_living_standard = {
+					country = root.owner
+					type = living_standard_hive_mind
+				}
+			}
+			while = {
+				count = 3
+				create_pop = {
+					species = last_created_species
+					ethos = random
+				}
+				last_created_pop = {
+					clear_ethos = yes
+				}
+			}
+		} 
+	}
+	
+	if = { 
+		limit = { owner = { has_valid_civic = civic_mechanists } }
+		owner = { create_built_robot_species = yes }
+		while = {
+			count = 3
+			create_pop = {
+				species = last_created_species
+			}
+		}
+	}
+	
+	while = {
+		limit = { num_pops < 12 }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+	}
+	
+	if = {
+		limit = { owner = { is_hive_empire = yes } }
+		while = {
+			#limit = { num_pops < 12 }
+			count = 1
+			create_pop = {
+				species = owner_main_species
+				ethos = random
+			}
+		}
+	}
+	
+	# One extra pop for Servitors
+	if = {
+		limit = { owner = { has_valid_civic = civic_machine_servitor } }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+	}
+	# One extra pop for Mining Guilds
+	if = {
+		limit = { owner = { has_valid_civic = civic_mining_guilds } }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+	}
+}
+
+generate_home_planet_final_pass = {
+	# Adjust life-seeded colonies
+	if = {
+		limit = {
+			owner = {
+				has_civic = civic_life_seeded
+			}
+		}
+
+		owner = {
+			# Nuke other colonies gained from advanced empire, etc
+			every_owned_planet = {
+				limit = { is_capital = no }
+				remove_all_buildings = yes
+				destroy_colony = yes
+			}
+			change_dominant_species = { species = last_created change_all = yes }
+		}
 	}
 }
