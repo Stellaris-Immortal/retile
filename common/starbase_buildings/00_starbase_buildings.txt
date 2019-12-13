@@ -5,6 +5,7 @@ supercapacitor_system = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_power_plant_2 }
+		NOT = { has_starbase_building = supercapacitor_system }
 	}
 	
 	possible = {
@@ -12,6 +13,7 @@ supercapacitor_system = {
 			fail_text = "requires_starport"
 			has_starbase_size >= starbase_starport
 		}
+		has_starbase_module = solar_panels
 	}
 
 	resources = {
@@ -95,6 +97,7 @@ sensor_array = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_space_science_2 }
+		NOT = { has_starbase_building = sensor_array }
 	}
 	
 	possible = {
@@ -102,6 +105,7 @@ sensor_array = {
 			fail_text = "requires_starport"
 			has_starbase_size >= starbase_starport
 		}
+		has_starbase_module = research_terminal
 	}
 
 	resources = {
@@ -188,6 +192,7 @@ astrogeology_station = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_space_science_3 }
+		NOT = { has_starbase_building = astrogeology_station }
 	}
 	
 	possible = {
@@ -195,6 +200,7 @@ astrogeology_station = {
 			fail_text = "requires_starport"
 			has_starbase_size >= starbase_starport
 		}
+		has_starbase_module = research_terminal
 	}
 
 	resources = {
@@ -281,6 +287,7 @@ aerospace_station = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_space_science_1 }
+		NOT = { has_starbase_building = aerospace_station }
 	}
 	
 	possible = {
@@ -288,6 +295,7 @@ aerospace_station = {
 			fail_text = "requires_starport"
 			has_starbase_size >= starbase_starport
 		}
+		has_starbase_module = research_terminal
 	}
 
 	resources = {
@@ -374,6 +382,7 @@ black_hole_observatory = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_sensors_3 }
+		NOT = { has_starbase_building = black_hole_observatory }
 	}		
 	
 	possible = {
@@ -424,6 +433,7 @@ offworld_trading_company = {
 			has_technology = tech_space_trading
 			is_gestalt = no
 		}
+		NOT = { has_starbase_building = offworld_trading_company }
 	}	
 	
 	possible = {
@@ -431,6 +441,7 @@ offworld_trading_company = {
 			fail_text = "requires_starport"
 			has_starbase_size >= starbase_starport
 		}
+		has_starbase_module = trade_terminal
 	}
 
 	resources = {
@@ -525,6 +536,7 @@ mining_hub = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_space_mining_1 }
+		NOT = { has_starbase_building = mining_hub }
 	}
 	
 	possible = {
@@ -532,6 +544,7 @@ mining_hub = {
 			fail_text = "requires_starport"
 			has_starbase_size >= starbase_starport
 		}
+		has_starbase_module = mining_terminal
 	}
 
 	resources = {
@@ -623,6 +636,7 @@ resource_silo = {
 		exists = owner
 		owner = { has_technology = tech_space_mining_2 }
 		star = { is_inside_nebula = no }
+		NOT = { has_starbase_building = resource_silo }
 	}
 	
 	possible = {
@@ -667,6 +681,7 @@ nebula_refinery = {
 		exists = owner
 		owner = { has_technology = tech_space_mining_2 }
 		star = { is_inside_nebula = yes }
+		NOT = { has_starbase_building = nebula_refinery }
 	}
 	
 	possible = {
@@ -716,6 +731,7 @@ listening_post = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_sensors_2 }
+		NOT = { has_starbase_building = listening_post }
 	}	
 	
 	station_modifier = {
@@ -732,13 +748,19 @@ listening_post = {
 	show_in_tech = "tech_sensors_2"
 }
 
-climate_control = {
-	icon = "GFX_spaceport_module_atmospheric_manipulator"
-	construction_days = 360
+hydroponics_bay = {
+	icon = "GFX_spaceport_module_hydroponic_farms"
+	construction_days = 180
 	
-	potential = { 
+	potential = {
 		exists = owner
-		owner = { has_technology = tech_ecological_adaptation }
+		owner = { has_technology = "tech_hydroponics" }
+		solar_system = {
+			any_system_planet = {
+				is_owned_by = from
+			}
+		}
+		NOT = { has_starbase_building = hydroponics_bay }
 	}
 	
 	possible = {
@@ -746,13 +768,54 @@ climate_control = {
 			fail_text = "requires_starport"
 			has_starbase_size >= starbase_starport
 		}
-		custom_tooltip = {
-			fail_text = "requires_colonized_planet"
-			solar_system = {
-				any_system_planet = {
-					is_owned_by = from
-				}
+	}
+
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 150
+		}
+
+		produces = {
+			food = 4
+		}
+
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	system_modifier = {
+		pop_growth_speed = 0.10
+	}
+	
+	show_in_tech = "tech_hydroponics"
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = yes
+	ai_weight = {
+		weight = 50
+	}
+}
+
+climate_control = {
+	icon = "GFX_spaceport_module_atmospheric_manipulator"
+	construction_days = 360
+	
+	potential = { 
+		exists = owner
+		owner = { has_technology = tech_climate_restoration }
+		solar_system = {
+			any_system_planet = {
+				is_owned_by = from
 			}
+		}
+	}
+	
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_starport"
+			has_starbase_size >= starbase_starport
 		}
 	}
 
@@ -770,7 +833,7 @@ climate_control = {
 		planet_amenities_add = -100
 	}
 	
-	show_in_tech = "tech_ecological_adaptation"
+	show_in_tech = "tech_climate_restoration"
 
 	ai_build_at_chokepoint = no
 	ai_build_outside_chokepoint = yes
@@ -789,20 +852,18 @@ deep_space_black_site = {
 			has_technology = tech_living_state
 			NOT = { has_ethic = ethic_gestalt_consciousness }
 		}
+		solar_system = {
+			any_system_planet = {
+				is_owned_by = from
+			}
+		}
+		NOT = { has_starbase_building = deep_space_black_site }
 	}
 	
 	possible = {
 		custom_tooltip = {
 			fail_text = "requires_starport"
 			has_starbase_size >= starbase_starport
-		}
-		custom_tooltip = {
-			fail_text = "requires_colonized_planet"
-			solar_system = {
-				any_system_planet = {
-					is_owned_by = from
-				}
-			}
 		}
 	}
 
@@ -819,7 +880,6 @@ deep_space_black_site = {
 
 	system_modifier = {
 		planet_crime_add = -25
-		planet_jobs_unity_produces_mult = 0.05
 		pop_government_ethic_attraction = 0.25
 	}
 	
@@ -839,6 +899,7 @@ fleet_hangar = {
 	
 	potential = {
 		exists = owner
+		NOT = { has_starbase_building = fleet_hangar }
 	}	
 	
 	possible = {
@@ -887,6 +948,7 @@ fleet_academy = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_interstellar_fleet_traditions }
+		NOT = { has_starbase_building = fleet_academy }
 	}	
 	
 	possible = {
@@ -931,6 +993,7 @@ naval_logistics_office = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_interstellar_fleet_traditions }
+		NOT = { has_starbase_building = naval_logistics_office }
 	}	
 	
 	possible = {
@@ -971,7 +1034,8 @@ titan_yards = {
 	
 	potential = {
 		exists = owner
-		owner = { has_technology = tech_titans }			
+		owner = { has_technology = tech_titans }
+		NOT = { has_starbase_building = titan_yards }		
 	}
 	
 	possible = {
@@ -1015,7 +1079,8 @@ colossus_yards = {
 	
 	potential = {
 		exists = owner
-		owner = { has_technology = tech_colossus }		
+		owner = { has_technology = tech_colossus }	
+		NOT = { has_starbase_building = colossus_yards }		
 	}
 	
 	possible = {
@@ -1060,6 +1125,7 @@ target_uplink_computer = {
 
 	potential = {
 		exists = owner
+		NOT = { has_starbase_building = target_uplink_computer }
 	}		
 	
 	possible = {
@@ -1097,7 +1163,8 @@ disruption_field = {
 	
 	potential = {
 		exists = owner
-		owner = { has_technology = tech_shields_2 }		
+		owner = { has_technology = tech_shields_2 }	
+		NOT = { has_starbase_building = disruption_field }		
 	}
 
 	possible = {
@@ -1135,6 +1202,7 @@ communications_jammer = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_sensors_2 }		
+		NOT = { has_starbase_building = communications_jammer }
 	}
 
 	possible = {
@@ -1172,6 +1240,7 @@ warp_fluctuator = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_hyper_drive_2 }
+		NOT = { has_starbase_building = warp_fluctuator }
 	}
 
 	possible = {
@@ -1209,6 +1278,7 @@ command_center = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_command_matrix }
+		NOT = { has_starbase_building = command_center }
 	}	
 
 	possible = {
@@ -1246,6 +1316,7 @@ defense_grid = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_synchronized_defences }
+		NOT = { has_starbase_building = defense_grid }
 	}		
 	
 	possible = {
@@ -1297,6 +1368,7 @@ curator_think_tank = {
 				has_valid_civic = civic_machine_terminator 
 			}
 		}
+		NOT = { has_starbase_building = curator_think_tank }
 	}
 	
 	possible = {
@@ -1340,15 +1412,37 @@ curator_think_tank = {
 		upkeep = {
 			energy = 2
 		}
-	}
-	
-	country_modifier = {
-		category_computing_research_speed_mult = 0.10
-		category_statecraft_research_speed_mult = 0.10
-		category_military_theory_research_speed_mult = 0.10
-		category_industry_research_speed_mult = 0.10
+		
+		produces = {
+			trigger = { has_starbase_size = starbase_starport }
+			physics_research = 10
+			society_research = 10
+			engineering_research = 10
+		}
+		
+		produces = {
+			trigger = { has_starbase_size = starbase_starhold }
+			physics_research = 20
+			society_research = 20
+			engineering_research = 20
+		}
+		
+		produces = {
+			trigger = { has_starbase_size = starbase_starfortress }
+			physics_research = 30
+			society_research = 30
+			engineering_research = 30
+		}
+		
+		produces = {
+			trigger = { has_starbase_size = starbase_citadel }
+			physics_research = 40
+			society_research = 40
+			engineering_research = 40
+		}
 	}
 
+	custom_tooltip = curator_think_tank_tooltip
 	ai_build_at_chokepoint = yes
 	ai_build_outside_chokepoint = yes
 	ai_weight = {
@@ -1373,6 +1467,7 @@ art_college = {
 				has_valid_civic = civic_machine_terminator 
 			}
 		}
+		NOT = { has_starbase_building = art_college }
 	}
 	
 	possible = {
@@ -1416,15 +1511,29 @@ art_college = {
 		upkeep = {
 			energy = 2
 		}
-	}
-	
-	country_modifier = {
-		country_unity_produces_mult = 0.05
-		pop_happiness = 0.02
-		lithoid_pop_happiness = 0.02
-		num_tech_alternatives_add = 1
+		
+		produces = {
+			trigger = { has_starbase_size = starbase_starport }
+			unity = 10
+		}
+		
+		produces = {
+			trigger = { has_starbase_size = starbase_starhold }
+			unity = 20
+		}
+		
+		produces = {
+			trigger = { has_starbase_size = starbase_starfortress }
+			unity = 30
+		}
+		
+		produces = {
+			trigger = { has_starbase_size = starbase_citadel }
+			unity = 40
+		}
 	}
 
+	custom_tooltip = art_college_tooltip
 	ai_build_at_chokepoint = yes
 	ai_build_outside_chokepoint = yes
 	ai_weight = {
@@ -1449,6 +1558,7 @@ trader_proxy_office = {
 				fleet = { has_fleet_flag = trader_enclave_station }
 			}
 		}
+		NOT = { has_starbase_building = trader_proxy_office }
 	}
 
 	possible = {
@@ -1487,11 +1597,39 @@ trader_proxy_office = {
 		}
 	}
 	
-	country_modifier = {
-		country_trade_fee = -0.05
-		country_trade_attractiveness = 0.10
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			has_starbase_size = starbase_starport	
+		}
+		trade_value_add = 20
 	}
 	
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			has_starbase_size = starbase_starhold
+		}
+		trade_value_add = 40
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			has_starbase_size = starbase_starfortress 	
+		}
+		trade_value_add = 40
+	}
+	
+	triggered_station_modifier = {
+		potential = {
+			hidden_trigger = { exists = this }
+			has_starbase_size = starbase_citadel	
+		}
+		trade_value_add = 80
+	}
+	
+	custom_tooltip = trader_proxy_office_tooltip
 	ai_build_at_chokepoint = no
 	ai_build_outside_chokepoint = yes
 	ai_weight = {
