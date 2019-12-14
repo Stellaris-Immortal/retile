@@ -113,6 +113,11 @@ col_urban_world = {
 		owner = { is_regular_empire = yes}
 		is_capital = no
 		has_building = building_colony_shelter
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
 	}
 	
 	planet_modifier = {
@@ -147,6 +152,11 @@ col_rural_world = {
 		is_capital = no
 		has_building = building_colony_shelter
 		NOT = { is_planet_class = pc_city }
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
 	}
 	
 	planet_modifier = {
@@ -176,6 +186,12 @@ col_commerce_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
+			has_building = building_galactic_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
 		}
 	}
 	
@@ -215,6 +231,12 @@ col_engineering_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
+			has_building = building_galactic_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
 		}
 	}
 	
@@ -254,6 +276,12 @@ col_scholar_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
+			has_building = building_galactic_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
 		}
 	}
 	
@@ -293,8 +321,14 @@ col_rural_world_galactic = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
+			has_building = building_galactic_capital
 		}
 		NOT = { is_planet_class = pc_city }
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
 	}
 	
 	planet_modifier = {
@@ -326,6 +360,11 @@ col_manufacturing_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
 		}
 	}
 	
@@ -377,6 +416,11 @@ col_refining_world = {
 			has_building = building_major_capital
 			has_building = building_system_capital
 		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
 	}
 	
 	planet_modifier = {
@@ -426,6 +470,11 @@ col_research_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
 		}
 	}
 	
@@ -487,6 +536,11 @@ col_cultural_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
 		}
 	}
 	
@@ -554,6 +608,11 @@ col_generator_world = {
 			has_building = building_system_capital
 		}
 		NOT = {	is_planet_class = pc_city }
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
 	}
 	
 	planet_modifier = {
@@ -602,6 +661,11 @@ col_mining_world = {
 			has_building = building_system_capital
 		}
 		NOT = { is_planet_class = pc_city }
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
 	}
 	
 	planet_modifier = {
@@ -653,6 +717,11 @@ col_farming_world = {
 			is_planet_class = pc_city
 			is_planet_class = pc_relic
 		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
 	}
 	
 	planet_modifier = {
@@ -696,6 +765,12 @@ col_fortress_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
+			has_building = building_galactic_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
 		}
 	}
 	
@@ -724,6 +799,12 @@ col_recycling_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
+			has_building = building_galactic_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
 		}
 	}
 	
@@ -749,5 +830,65 @@ col_recycling_world = {
 			add = 2
 			has_building = building_solar_panels
 		}
+	}
+}
+
+# Resort World
+col_resort_world = {
+	icon = 19
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		is_capital = no
+		has_modifier = resort_colony
+	}
+	
+	planet_modifier = {
+		pop_happiness = 0.05
+	}
+
+	weight_modifier = {
+		base = 1
+	}
+}
+
+# Penal World
+col_penal_world = {
+	icon = 20
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		is_capital = no
+		has_modifier = penal_colony
+	}
+	
+	planet_modifier = {
+		planet_crime_add = -25
+	}
+
+	weight_modifier = {
+		base = 1
+	}
+}
+
+# Slave World
+col_slave_world = {
+	icon = 21
+	
+	potential = {
+		exists = owner
+		owner = { is_regular_empire = yes }
+		is_capital = no
+		has_modifier = slave_colony
+	}
+	
+	planet_modifier = {
+		pop_government_ethic_attraction = 0.25
+	}
+
+	weight_modifier = {
+		base = 1
 	}
 }
