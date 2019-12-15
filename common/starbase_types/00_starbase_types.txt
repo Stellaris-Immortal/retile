@@ -553,13 +553,15 @@ ssolar_station = {
 smining_hub = {
 	potential = {
 		has_starbase_size > starbase_outpost
-		count_starbase_modules = {
-			type = mining_terminal
-			count > 0
-		}
-		count_starbase_modules = {
-			type = foundry_terminal
-			count > 0
+		OR = { 
+			count_starbase_modules = {
+				type = mining_terminal
+				count > 0
+			}
+			count_starbase_modules = {
+				type = foundry_terminal
+				count > 0
+			}
 		}
 		exists = owner
 	}
