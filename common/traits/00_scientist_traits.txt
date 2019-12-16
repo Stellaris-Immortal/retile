@@ -28,6 +28,9 @@ leader_trait_careful = {
 		ship_sensor_range_add = 1
 		shipclass_science_ship_disengage_mult = 0.25
 	}
+	leader_potential_add = {
+		NOT = { has_trait = trait_fleeting }
+	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
 	opposites = { "leader_trait_carefree" }
@@ -47,6 +50,9 @@ leader_trait_meticulous = {
 	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_meticulous.dds"
 	modifier = {
 		ship_anomaly_research_speed_mult = 0.25
+	}
+	leader_potential_add = {
+		NOT = { has_trait = trait_slow_learners }
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -90,6 +96,9 @@ leader_trait_carefree = {
 	modifier = {
 		ship_speed_mult = 0.25
 	}
+	leader_potential_add = {
+		NOT = { has_trait = trait_conservational }
+	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
 	opposites = { "leader_trait_meticulous" }
@@ -111,6 +120,7 @@ leader_trait_roamer = {
 	}
 	leader_potential_add = {
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
+		NOT = { has_trait = trait_sedentary }
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -265,6 +275,11 @@ leader_trait_maniacal = {
 		all_technology_research_speed = 0.05
 		ship_speed_mult = 0.10
 	}
+	leader_potential_add = {
+		NOT = { has_trait = trait_slow_learners }
+		NOT = { has_trait = trait_sedentary }
+		NOT = { has_trait = trait_conformists }
+	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
 	# increased chance to discover risky techs (weighted in tech-script)
@@ -350,6 +365,11 @@ leader_trait_expertise_materials = {
 		category_industry_research_speed_mult = 0.05
 		category_voidcraft_research_speed_mult = 0.05
 	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_space_exploration } }
+		NOT = { from = { has_policy_flag = research_military_technology } }
+		NOT = { from = { has_policy_flag = research_xenoecology } }
+	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
 	opposites = { 
@@ -385,6 +405,11 @@ leader_trait_expertise_propulsion = {
 		category_industry_research_speed_mult = 0.05
 		category_voidcraft_research_speed_mult = 0.05
 		category_materials_research_speed_mult = 0.05
+	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_space_exploration } }
+		NOT = { from = { has_policy_flag = research_economic_development } }
+		NOT = { from = { has_policy_flag = research_xenoecology } }
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -422,6 +447,11 @@ leader_trait_expertise_voidcraft = {
 		category_materials_research_speed_mult = 0.05
 		category_industry_research_speed_mult = 0.05
 	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_military_technology } }
+		NOT = { from = { has_policy_flag = research_economic_development } }
+		NOT = { from = { has_policy_flag = research_xenoecology } }
+	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
 	opposites = {
@@ -458,6 +488,11 @@ leader_trait_expertise_industry = {
 		category_propulsion_research_speed_mult = 0.05
 		category_materials_research_speed_mult = 0.05
 	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_military_technology } }
+		NOT = { from = { has_policy_flag = research_space_exploration } }
+		NOT = { from = { has_policy_flag = research_xenoecology } }
+	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
 	opposites = { 
@@ -492,6 +527,11 @@ leader_trait_expertise_field_manipulation = {
 		category_field_manipulation_research_speed_mult = 0.15
 		category_particles_research_speed_mult = 0.05
 		category_computing_research_speed_mult = 0.05
+	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_military_technology } }
+		NOT = { from = { has_policy_flag = research_space_exploration } }
+		NOT = { from = { has_policy_flag = research_xenoecology } }
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -528,6 +568,11 @@ leader_trait_expertise_particles = {
 		category_field_manipulation_research_speed_mult = 0.05
 		category_computing_research_speed_mult = 0.05
 	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_economic_development } }
+		NOT = { from = { has_policy_flag = research_space_exploration } }
+		NOT = { from = { has_policy_flag = research_xenoecology } }
+	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
 	opposites = { 
@@ -561,6 +606,11 @@ leader_trait_expertise_computing = {
 		category_computing_research_speed_mult = 0.15
 		category_particles_research_speed_mult = 0.05
 		category_field_manipulation_research_speed_mult = 0.05
+	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_economic_development } }
+		NOT = { from = { has_policy_flag = research_space_exploration } }
+		NOT = { from = { has_policy_flag = research_xenoecology } }
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -598,6 +648,11 @@ leader_trait_expertise_psionics = {
 		category_statecraft_research_speed_mult = 0.05
 		category_biology_research_speed_mult = 0.05
 		category_military_theory_research_speed_mult = 0.05
+	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_economic_development } }
+		NOT = { from = { has_policy_flag = research_space_exploration } }
+		NOT = { from = { has_policy_flag = research_military_technology } }
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -637,6 +692,11 @@ leader_trait_expertise_new_worlds = {
 		category_military_theory_research_speed_mult = 0.05
 		category_psionics_research_speed_mult = 0.05
 	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_economic_development } }
+		NOT = { from = { has_policy_flag = research_xenoecology } }
+		NOT = { from = { has_policy_flag = research_military_technology } }
+	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
 	opposites = { 
@@ -673,6 +733,11 @@ leader_trait_expertise_statecraft = {
 		category_biology_research_speed_mult = 0.05
 		category_military_theory_research_speed_mult = 0.05
 		category_psionics_research_speed_mult = 0.05
+	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_space_exploration } }
+		NOT = { from = { has_policy_flag = research_xenoecology } }
+		NOT = { from = { has_policy_flag = research_military_technology } }
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
@@ -711,6 +776,11 @@ leader_trait_expertise_biology = {
 		category_military_theory_research_speed_mult = 0.05
 		category_psionics_research_speed_mult = 0.05
 	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_space_exploration } }
+		NOT = { from = { has_policy_flag = research_economic_development } }
+		NOT = { from = { has_policy_flag = research_military_technology } }
+	}
 	leader_trait = { scientist }
 	leader_class = { scientist }
 	opposites = { 
@@ -747,6 +817,11 @@ leader_trait_expertise_military_theory = {
 		category_statecraft_research_speed_mult = 0.05
 		category_new_worlds_research_speed_mult = 0.05
 		category_psionics_research_speed_mult = 0.05
+	}
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = research_space_exploration } }
+		NOT = { from = { has_policy_flag = research_economic_development } }
+		NOT = { from = { has_policy_flag = research_xenoecology } }
 	}
 	leader_trait = { scientist }
 	leader_class = { scientist }

@@ -22,6 +22,7 @@ leader_trait_iron_fist = {
 	leader_potential_add = {
 		from = { allows_slavery = yes }
 		NOT = { from = { has_ethic = ethic_gestalt_consciousness } }
+		NOT = { has_trait = trait_communal }
 	}
 	leader_trait = { governor }
 	leader_class = { governor }
@@ -73,6 +74,9 @@ leader_trait_architectural_interest = {
 		planet_districts_cost_mult = -0.10
 		planet_building_build_speed_mult = 0.10
 	}
+	leader_potential_add = {
+		NOT = { has_trait = trait_thrifty }
+	}
 	leader_trait = { governor }
 	leader_class = { governor }
 }
@@ -89,6 +93,12 @@ leader_trait_agrarian_upbringing = {
 		is_lithoid = no
 		is_plantoid = no
 	}
+	leader_potential_add = {
+		OR = {
+			has_trait = trait_agrarian
+			has_trait = trait_plantoid_fruiting
+		}
+	}
 	leader_trait = { governor }
 	leader_class = { governor }
 }
@@ -104,6 +114,7 @@ leader_trait_intellectual = {
 	}
 	leader_potential_add = {
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
+		NOT = { has_trait = trait_slow_learners }
 	}
 	leader_trait = { governor }
 	leader_class = { governor }
@@ -120,6 +131,7 @@ leader_trait_environmental_engineer = {
 	}
 	leader_potential_add = {
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
+		NOT = { has_trait = trait_wasteful }
 	}
 	leader_trait = { governor }
 	leader_class = { governor }
@@ -240,6 +252,7 @@ leader_trait_ecologist = {
 	leader_potential_add = {
 		NOT = { from = { has_policy_flag = environmental_deregulation } }
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
+		NOT = { has_trait = trait_repugnant }
 	}
 	leader_trait = { governor }
 	leader_class = { governor }

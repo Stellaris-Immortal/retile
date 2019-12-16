@@ -6,7 +6,7 @@ supremacist = {
 	election_header = "GFX_faction_header_yellow"
 	
 	unique = yes
-	support_multiplier = 0
+	support_multiplier = 1
 	
 	resources = {
 		category = pop_factions
@@ -56,17 +56,6 @@ supremacist = {
 		base = 100
 		
 		modifier = {
-			factor = 1.20
-			happiness >= 0.90
-		}
-		
-		modifier = {
-			factor = 1.10
-			happiness < 0.90
-			happiness > 0.70
-		}
-		
-		modifier = {
 			factor = 0.75
 			owner = {
 				years_passed >= 50
@@ -94,29 +83,34 @@ supremacist = {
 			factor = 0
 			owner = {
 				years_passed >= 200
-				years_passed < 300
 			}
 		}
 		
 		modifier = {
-			factor = 0.50
-			owner = { years_passed >= 300 }
+			factor = 1.00
+			happiness >= 0.90
 		}
 		
 		modifier = {
-			factor = 0.75
+			factor = 0.80
+			happiness < 0.90
+			happiness > 0.70
+		}
+		
+		modifier = {
+			factor = 0.60
 			happiness <= 0.60
 			happiness > 0.50
 		}
 		
 		modifier = {
-			factor = 0.50
+			factor = 0.40
 			happiness <= 0.50
 			happiness > 0.40
 		}
 		
 		modifier = {
-			factor = 0.25
+			factor = 0.20
 			happiness <= 0.40
 			happiness < 0.30
 		}
@@ -124,6 +118,21 @@ supremacist = {
 		modifier = {
 			factor = 0
 			happiness <= 0.30
+		}
+		
+		modifier = {
+			factor = 0.50
+			has_citizenship_rights = no
+		}
+		
+		modifier = {
+			factor = 0.75
+			NOT = { is_same_species = owner_species }
+		}
+		
+		modifier = {
+			factor = 0.75
+			owner = { has_encountered_other_species = yes }
 		}
 	}
 	
