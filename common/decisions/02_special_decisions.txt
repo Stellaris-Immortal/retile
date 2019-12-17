@@ -9,8 +9,8 @@ decision_prospect = {
 	resources = {
 		category = decisions
 		cost = {
-			influence = 25
-			energy = 500
+			influence = 50
+			energy = 1000
 		}
 	}
 	
@@ -19,9 +19,7 @@ decision_prospect = {
 		NOT = { is_planet_class = pc_machine }
 		NOT = { is_planet_class = pc_hive }
 		NOT = { is_planet_class = pc_city }
-		owner = {
-			has_swapped_tradition = tr_adaptability_finish
-		}
+		owner = { has_tradition = tr_prosperity_sct }
 		NOT = { has_planet_flag = planet_prospected }
 	}
 	
@@ -53,7 +51,7 @@ decision_prospect = {
 		weight = 1
 		modifier = {
 			factor = 0
-			num_pops < 20
+			num_pops < 10
 		}
 	}	
 }

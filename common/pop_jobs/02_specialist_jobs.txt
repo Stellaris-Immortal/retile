@@ -35,10 +35,18 @@ clerk = {
 	}
 	
 	resources = {
-		category = planet_researchers
+		category = planet_jobs
 		produces = {
 			trigger = { owner = { has_authority = auth_corporate } }
 			unity = 3
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_restaurant_megachain } }
+			food = 1
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_business_park } }
+			consumer_goods = 1
 		}
 	}
 
@@ -86,6 +94,36 @@ clerk = {
 			has_trait = trait_nuumismatic_administration
 		}
 		modifier = { trade_value_add = 2.5 }
+	}
+	
+	############################################################ Prosperity Buildings
+	
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_restaurant_megachain }
+		}
+		modifier = {
+			pop_growth_speed = 0.10
+			planet_amenities_add = 10
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_country_club }
+		}
+		modifier = {
+			pop_happiness = 0.02
+			planet_amenities_add = 20
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_business_park }
+		}
+		modifier = {
+			planet_jobs_produces_mult = 0.05
+			planet_amenities_add = 10
+		}
 	}
 
 	############################################################ Clerk Job Weight
@@ -144,35 +182,77 @@ researcher = {	### Scholar
 		}
 		upkeep = {
 			consumer_goods = 2.5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_metascience_lab_1 } }
+			unity = 2
+		}
+		produces = {
+			trigger = { planet = { has_building = building_metascience_lab_2 } }
+			unity = 3
+		}
+		produces = {
+			trigger = { planet = { has_building = building_metascience_lab_3 } }
+			unity = 4
 		}		
 		produces = {
-			trigger = { planet = { has_building = building_research_lab_1 } }
+			trigger = { 
+				OR = {
+					planet = { has_building = building_research_lab_1 }
+					planet = { has_building = building_metascience_lab_1 }
+				}
+			}
 			physics_research = 2.5
 			engineering_research = 2.5
 			society_research = 2.5
 		}
 		upkeep = {
-			trigger = { planet = { has_building = building_research_lab_1 } }
+			trigger = { 
+				OR = {
+					planet = { has_building = building_research_lab_1 }
+					planet = { has_building = building_metascience_lab_1 }
+				}
+			}
 			consumer_goods = 1.25
 		}		
 		produces = {
-			trigger = { planet = { has_building = building_research_lab_2 } }
+			trigger = { 
+				OR = {
+					planet = { has_building = building_research_lab_2 }
+					planet = { has_building = building_metascience_lab_2 }
+				}
+			}
 			physics_research = 5
 			engineering_research = 5
 			society_research = 5
 		}
 		upkeep = {
-			trigger = { planet = { has_building = building_research_lab_2 } }
+			trigger = { 
+				OR = {
+					planet = { has_building = building_research_lab_2 }
+					planet = { has_building = building_metascience_lab_2 }
+				}
+			}
 			consumer_goods = 2.5
 		}		
 		produces = {
-			trigger = { planet = { has_building = building_research_lab_3 } }
+			trigger = { 
+				OR = {
+					planet = { has_building = building_research_lab_3 }
+					planet = { has_building = building_metascience_lab_3 }
+				}
+			}
 			physics_research = 7.5
 			engineering_research = 7.5
 			society_research = 7.5
 		}
 		upkeep = {
-			trigger = { planet = { has_building = building_research_lab_3 } }
+			trigger = { 
+				OR = {
+					planet = { has_building = building_research_lab_3 }
+					planet = { has_building = building_metascience_lab_3 }
+				}
+			}
 			consumer_goods = 3.75
 		}		
 		produces = {
@@ -255,15 +335,30 @@ researcher = {	### Scholar
 		planet_amenities_add = 15
 	}
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_research_lab_1 } }
+		potential = { 
+			OR = {
+				planet = { has_building = building_research_lab_1 }
+				planet = { has_building = building_metascience_lab_1 }
+			}
+		}
 		modifier = { planet_amenities_add = 7.5 }
 	}
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_research_lab_2 } }
+		potential = { 
+			OR = {
+				planet = { has_building = building_research_lab_2 }
+				planet = { has_building = building_metascience_lab_2 }
+			}
+		}
 		modifier = { planet_amenities_add = 15 }
 	}
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_research_lab_3 } }
+		potential = { 
+			OR = {
+				planet = { has_building = building_research_lab_3 }
+				planet = { has_building = building_metascience_lab_3 }
+			}
+		}
 		modifier = { planet_amenities_add = 22.5 }
 	}
 	triggered_planet_modifier = {

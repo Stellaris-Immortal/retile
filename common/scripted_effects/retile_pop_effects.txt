@@ -47,15 +47,16 @@ retile_apply_growth_malus = {	# country scope
 		prev = { change_variable = { which = col_count value = 1 } }
 	}
 	
+	# Pop Sprawl Cap
+	if = {
+		limit = { check_variable = { which = col_count value > 30 } }
+		set_variable = { which = col_count value = 30 }
+	}
+	
 	# Colonialism Tradition Calculation
-	if = { 
+	if = {
 		limit = { has_tradition = tr_expansion_finish }
 		change_variable = { which = col_count value = -5 }
-		
-		if = {
-			limit = { check_variable = { which = col_count value > 25 } }
-			set_variable = { which = col_count value = 25 }
-		}
 	}
 	
 	# Genome Mapping

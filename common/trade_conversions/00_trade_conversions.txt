@@ -4,6 +4,7 @@
 basic_conversion = {
 	potential = {
 		has_policy_flag = trade_conversion_default
+		NOT = { has_tradition = tr_prosperity_finish }
 	}
 	
 	weight = {
@@ -18,9 +19,28 @@ basic_conversion = {
 	economic_category = trade_routes
 }
 
+alloy_conversion_advanced = {
+	potential = {
+		has_policy_flag = trade_conversion_default
+		has_tradition = tr_prosperity_finish
+	}
+	
+	weight = {
+		weight = 1
+	}
+	
+	conversion_rate = {
+		energy = 0.5
+		alloys = 0.25
+	}
+
+	economic_category = trade_routes
+}
+
 consumer_goods_conversion = {
 	potential = {
 		has_policy_flag = trade_conversion_consumer_goods
+		NOT = { has_tradition = tr_prosperity_finish }
 	}
 	
 	weight = {
@@ -35,9 +55,28 @@ consumer_goods_conversion = {
 	economic_category = trade_routes
 }
 
+consumer_goods_conversion_advanced = {
+	potential = {
+		has_policy_flag = trade_conversion_consumer_goods
+		has_tradition = tr_prosperity_finish
+	}
+	
+	weight = {
+		weight = 10
+	}
+	
+	conversion_rate = {
+		energy = 0.5
+		consumer_goods = 0.25
+	}
+
+	economic_category = trade_routes
+}
+
 unity_conversion = {
 	potential = {
 		has_policy_flag = trade_conversion_unity
+		NOT = { has_tradition = tr_prosperity_finish }
 	}
 	
 	weight = {
@@ -52,9 +91,28 @@ unity_conversion = {
 	economic_category = trade_routes
 }
 
+unity_conversion_advanced = {
+	potential = {
+		has_policy_flag = trade_conversion_unity
+		has_tradition = tr_prosperity_finish
+	}
+	
+	weight = {
+		weight = 0
+	}
+	
+	conversion_rate = {
+		energy = 0.5
+		unity = 0.25
+	}
+
+	economic_category = trade_routes
+}
+
 research_conversion = {
 	potential = {
 		has_policy_flag = trade_conversion_research
+		NOT = { has_tradition = tr_prosperity_finish }
 	}
 	
 	weight = {
@@ -66,6 +124,26 @@ research_conversion = {
 		physics_research = 0.2
 		society_research = 0.2
 		engineering_research = 0.2
+	}
+
+	economic_category = trade_routes
+}
+
+research_conversion_advanced = {
+	potential = {
+		has_policy_flag = trade_conversion_research
+		has_tradition = tr_prosperity_finish
+	}
+	
+	weight = {
+		weight = 0
+	}
+	
+	conversion_rate = {
+		energy = 0.5
+		physics_research = 0.25
+		society_research = 0.25
+		engineering_research = 0.25
 	}
 
 	economic_category = trade_routes
@@ -87,6 +165,8 @@ influence_conversion = {
 	economic_category = trade_routes
 }
 
+# AI Trade Convsersions
+=======
 ai_conversion_ensign = {
 	potential = {
 		has_policy_flag = trade_conversion_ai
