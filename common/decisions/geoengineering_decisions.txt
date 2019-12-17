@@ -119,7 +119,6 @@ decision_ecological_engineering = {
 		OR = { 
 			has_modifier = dangerous_wildlife
 			has_modifier = predatory_plants
-			has_modifier = bioscarce
 		}
 	}
 	
@@ -133,9 +132,6 @@ decision_ecological_engineering = {
 			limit = { has_modifier = predatory_plants }
 			remove_modifier = predatory_plants
 			add_modifier = { modifier = "bioscarce" days = -1 }
-		} else_if = {
-			limit = { has_modifier = bioscarce }
-			remove_modifier = bioscarce
 		}
 	}
 	ai_weight = {
@@ -184,6 +180,47 @@ decision_climate_engineering = {
 			limit = { has_modifier = abandoned_terraforming }
 			remove_modifier = abandoned_terraforming
 			add_modifier = { modifier = "bleak_planet" days = -1 }
+		}
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Ecological Restoration
+decision_ecological_restoration = {
+	owned_planets_only = yes
+
+	enactment_time = 360
+	resources = {
+		category = decisions
+		cost = { energy = 1000 }
+	}
+	
+	potential = {
+		OR = {
+			has_modifier = bioscarce
+			NOT = { has_modifier = biodiverse }
+			NOT = { has_modifier = natural_beauty }
+			NOT = { has_modifier = lush_planet }
+		}
+		owner = { has_tradition = tr_harmony_finish }
+	}
+	
+	effect = {
+		custom_tooltip = decision_ecological_restoration_tooltip
+		if = {
+			limit = { has_modifier = bioscarce }
+			remove_modifier = bioscarce
+		} else_if = {
+			limit = { NOT = { has_modifier = biodiverse } }
+			add_modifier = { modifier = "biodiverse" days = -1 }
+		} else_if = {
+			limit = { NOT = { has_modifier = natural_beauty } }
+			add_modifier = { modifier = "natural_beauty" days = -1 }
+		} else_if = {
+			limit = { NOT = { has_modifier = lush_planet } }
+			add_modifier = { modifier = "lush_planet" days = -1 }
 		}
 	}
 	ai_weight = {

@@ -16,11 +16,16 @@ building_research_lab_1 = {
 		NOT = { has_modifier = resort_colony }	
 		NOT = { has_modifier = slave_colony }
 		NOT = { has_modifier = penal_colony }
+		NOT = { owner = { has_tradition = tr_harmony_bulwark_of_harmony } }
 	}
 	
 	allow = {
 		retile_urban = yes
 		#retile_ready = yes
+	}
+	
+	convert_to = {
+		building_metascience_lab_1
 	}
 
 	destroy_trigger = {
@@ -29,6 +34,7 @@ building_research_lab_1 = {
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			has_modifier = penal_colony
+			owner = { has_tradition = tr_harmony_bulwark_of_harmony }
 		}
 	}
 
@@ -160,12 +166,17 @@ building_research_lab_2 = {
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			has_modifier = penal_colony
+			owner = { has_tradition = tr_harmony_bulwark_of_harmony }
 		}
 	}
 	
 	allow = {
 		#retile_ready = yes
 		always = yes
+	}
+	
+	convert_to = {
+		building_metascience_lab_2
 	}
 
 	resources = {
@@ -250,12 +261,17 @@ building_research_lab_3 = {
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			has_modifier = penal_colony
+			owner = { has_tradition = tr_harmony_bulwark_of_harmony }
 		}
 	}
 	
 	allow = {
 		#retile_ready = yes
 		always = yes
+	}
+	
+	convert_to = {
+		building_metascience_lab_3
 	}
 	
 	resources = {

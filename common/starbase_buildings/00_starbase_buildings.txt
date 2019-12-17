@@ -1239,7 +1239,10 @@ warp_fluctuator = {
 	
 	potential = {
 		exists = owner
-		owner = { has_technology = tech_hyper_drive_2 }
+		owner = { 
+			has_technology = tech_hyper_drive_2
+			NOT = { has_tradition = tr_expansion_courier_network }
+		}
 		NOT = { has_starbase_building = warp_fluctuator }
 	}
 
@@ -1658,9 +1661,6 @@ courier_network = {
 		owner = { has_tradition = tr_expansion_courier_network }
 		NOT = { has_starbase_building = courier_network }
 	}
-	country_modifier = {
-		country_admin_cap_add = 1
-	}
 	station_modifier = {
 		ship_armor_add = 1000
 		starbase_defense_platform_capacity_add = 4
@@ -1722,6 +1722,8 @@ default_network = {
 			energy = 0
 		}
 	}
+	
+	equipped_component = "STARBASE_AURA_WARP_FLUCTUATOR"
 
 	ai_build_at_chokepoint = no
 	ai_build_outside_chokepoint = no
