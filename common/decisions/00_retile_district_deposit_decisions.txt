@@ -240,13 +240,14 @@ decision_retile_deposit_stronghold = {
 	}
 	
 	ai_weight = {
-		weight = 50
+		weight = 0
 		modifier = {
 			weight = 500
 			NOT = { has_deposit = retile_deposit_stronghold }
+			owner = { used_naval_capacity_percent > 1.0 }
 		}
 		modifier = {
-			weight = 100
+			weight = 25
 			owner = { used_naval_capacity_percent > 1.0 }
 		}
 	}
