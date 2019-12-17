@@ -30,7 +30,7 @@ alloy_conversion_advanced = {
 	}
 	
 	conversion_rate = {
-		energy = 0.5
+		energy = 0.625
 		alloys = 0.25
 	}
 
@@ -66,7 +66,7 @@ consumer_goods_conversion_advanced = {
 	}
 	
 	conversion_rate = {
-		energy = 0.5
+		energy = 0.625
 		consumer_goods = 0.25
 	}
 
@@ -102,7 +102,7 @@ unity_conversion_advanced = {
 	}
 	
 	conversion_rate = {
-		energy = 0.5
+		energy = 0.625
 		unity = 0.25
 	}
 
@@ -140,7 +140,7 @@ research_conversion_advanced = {
 	}
 	
 	conversion_rate = {
-		energy = 0.5
+		energy = 0.625
 		physics_research = 0.25
 		society_research = 0.25
 		engineering_research = 0.25
@@ -152,6 +152,7 @@ research_conversion_advanced = {
 influence_conversion = {
 	potential = {
 		has_policy_flag = trade_conversion_influence
+		NOT = { has_tradition = tr_prosperity_finish }
 	}
 	
 	weight = {
@@ -160,6 +161,23 @@ influence_conversion = {
 	
 	conversion_rate = {
 		energy = 0.5
+	}
+
+	economic_category = trade_routes
+}
+
+influence_conversion_advanced = {
+	potential = {
+		has_policy_flag = trade_conversion_influence
+		has_tradition = tr_prosperity_finish
+	}
+	
+	weight = {
+		weight = 0
+	}
+	
+	conversion_rate = {
+		energy = 0.625
 	}
 
 	economic_category = trade_routes
