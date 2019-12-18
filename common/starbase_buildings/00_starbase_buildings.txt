@@ -6,13 +6,15 @@ supercapacitor_system = {
 		exists = owner
 		owner = { has_technology = tech_power_plant_2 }
 		NOT = { has_starbase_building = supercapacitor_system }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}
 	
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
 		has_starbase_module = solar_panels
 	}
 
@@ -98,13 +100,15 @@ sensor_array = {
 		exists = owner
 		owner = { has_technology = tech_space_science_2 }
 		NOT = { has_starbase_building = sensor_array }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}
 	
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
 		has_starbase_module = research_terminal
 	}
 
@@ -193,13 +197,15 @@ astrogeology_station = {
 		exists = owner
 		owner = { has_technology = tech_space_science_3 }
 		NOT = { has_starbase_building = astrogeology_station }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}
 	
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
 		has_starbase_module = research_terminal
 	}
 
@@ -288,13 +294,15 @@ aerospace_station = {
 		exists = owner
 		owner = { has_technology = tech_space_science_1 }
 		NOT = { has_starbase_building = aerospace_station }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}
 	
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
 		has_starbase_module = research_terminal
 	}
 
@@ -383,13 +391,15 @@ black_hole_observatory = {
 		exists = owner
 		owner = { has_technology = tech_sensors_3 }
 		NOT = { has_starbase_building = black_hole_observatory }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}		
 	
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
 		custom_tooltip = {
 			fail_text = "requires_black_hole"
 			star = { is_star_class = sc_black_hole }
@@ -434,13 +444,15 @@ offworld_trading_company = {
 			is_gestalt = no
 		}
 		NOT = { has_starbase_building = offworld_trading_company }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}	
 	
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
 		has_starbase_module = trade_terminal
 	}
 
@@ -537,13 +549,15 @@ mining_hub = {
 		exists = owner
 		owner = { has_technology = tech_space_mining_1 }
 		NOT = { has_starbase_building = mining_hub }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}
 	
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
 		has_starbase_module = mining_terminal
 	}
 
@@ -637,13 +651,12 @@ resource_silo = {
 		owner = { has_technology = tech_space_mining_2 }
 		star = { is_inside_nebula = no }
 		NOT = { has_starbase_building = resource_silo }
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
 		}
+		has_starbase_size >= starbase_starport
 	}
 
 	resources = {
@@ -682,13 +695,12 @@ nebula_refinery = {
 		owner = { has_technology = tech_space_mining_2 }
 		star = { is_inside_nebula = yes }
 		NOT = { has_starbase_building = nebula_refinery }
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
 		}
+		has_starbase_size >= starbase_starport
 	}
 
 	resources = {
@@ -716,6 +728,18 @@ nebula_refinery = {
 listening_post = {
 	icon = "GFX_spaceport_module_navigators_guild"
 	construction_days = 360
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_sensors_2 }
+		NOT = { has_starbase_building = listening_post }
+		OR = {
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
+	}
 
 	resources = {
 		category = starbase_buildings
@@ -726,12 +750,6 @@ listening_post = {
 		upkeep = {
 			energy = 2
 		}
-	}
-
-	potential = {
-		exists = owner
-		owner = { has_technology = tech_sensors_2 }
-		NOT = { has_starbase_building = listening_post }
 	}	
 	
 	station_modifier = {
@@ -761,13 +779,12 @@ hydroponics_bay = {
 			}
 		}
 		NOT = { has_starbase_building = hydroponics_bay }
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
 		}
+		has_starbase_size >= starbase_starport
 	}
 
 	resources = {
@@ -810,13 +827,12 @@ climate_control = {
 				is_owned_by = from
 			}
 		}
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
 		}
+		has_starbase_size >= starbase_starport
 	}
 
 	resources = {
@@ -858,13 +874,12 @@ deep_space_black_site = {
 			}
 		}
 		NOT = { has_starbase_building = deep_space_black_site }
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
 		}
+		has_starbase_size >= starbase_starport
 	}
 
 	resources = {
@@ -900,6 +915,12 @@ fleet_hangar = {
 	potential = {
 		exists = owner
 		NOT = { has_starbase_building = fleet_hangar }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}	
 	
 	possible = {
@@ -949,6 +970,12 @@ fleet_academy = {
 		exists = owner
 		owner = { has_technology = tech_interstellar_fleet_traditions }
 		NOT = { has_starbase_building = fleet_academy }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}	
 	
 	possible = {
@@ -994,6 +1021,12 @@ naval_logistics_office = {
 		exists = owner
 		owner = { has_technology = tech_interstellar_fleet_traditions }
 		NOT = { has_starbase_building = naval_logistics_office }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}	
 	
 	possible = {
@@ -1035,7 +1068,13 @@ titan_yards = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_titans }
-		NOT = { has_starbase_building = titan_yards }		
+		NOT = { has_starbase_building = titan_yards }	
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}
 	
 	possible = {
@@ -1080,7 +1119,13 @@ colossus_yards = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_colossus }	
-		NOT = { has_starbase_building = colossus_yards }		
+		NOT = { has_starbase_building = colossus_yards }	
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}
 	
 	possible = {
@@ -1126,14 +1171,13 @@ target_uplink_computer = {
 	potential = {
 		exists = owner
 		NOT = { has_starbase_building = target_uplink_computer }
-	}		
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
 		}
-	}
+		has_starbase_size >= starbase_starport
+	}		
 
 	resources = {
 		category = starbase_buildings
@@ -1164,14 +1208,13 @@ disruption_field = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_shields_2 }	
-		NOT = { has_starbase_building = disruption_field }		
-	}
-
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		NOT = { has_starbase_building = disruption_field }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
 		}
+		has_starbase_size >= starbase_starport
 	}
 
 	resources = {
@@ -1203,13 +1246,12 @@ communications_jammer = {
 		exists = owner
 		owner = { has_technology = tech_sensors_2 }		
 		NOT = { has_starbase_building = communications_jammer }
-	}
-
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
 		}
+		has_starbase_size >= starbase_starport
 	}
 
 	resources = {
@@ -1244,13 +1286,12 @@ warp_fluctuator = {
 			NOT = { has_tradition = tr_expansion_courier_network }
 		}
 		NOT = { has_starbase_building = warp_fluctuator }
-	}
-
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
 		}
+		has_starbase_size >= starbase_starport
 	}
 
 	resources = {
@@ -1282,6 +1323,12 @@ command_center = {
 		exists = owner
 		owner = { has_technology = tech_command_matrix }
 		NOT = { has_starbase_building = command_center }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}	
 
 	possible = {
@@ -1320,13 +1367,12 @@ defense_grid = {
 		exists = owner
 		owner = { has_technology = tech_synchronized_defences }
 		NOT = { has_starbase_building = defense_grid }
-	}		
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
 		}
+		has_starbase_size >= starbase_starport
 	}
 
 	resources = {
@@ -1341,7 +1387,6 @@ defense_grid = {
 	}
 
 	station_modifier = {
-		starbase_module_capacity_add = 1
 		starbase_defense_platform_capacity_add = 8
 	}
 
@@ -1372,13 +1417,15 @@ curator_think_tank = {
 			}
 		}
 		NOT = { has_starbase_building = curator_think_tank }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}
 	
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
 		custom_tooltip = {
 			fail_text = "requires_curator"
 			solar_system = {
@@ -1471,13 +1518,15 @@ art_college = {
 			}
 		}
 		NOT = { has_starbase_building = art_college }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}
 	
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
 		custom_tooltip = {
 			fail_text = "requires_artisans"
 			solar_system = {
@@ -1562,13 +1611,15 @@ trader_proxy_office = {
 			}
 		}
 		NOT = { has_starbase_building = trader_proxy_office }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+		has_starbase_size >= starbase_starport
 	}
 
 	possible = {
-		custom_tooltip = {
-			fail_text = "requires_starport"
-			has_starbase_size >= starbase_starport
-		}
 		NOT = { has_starbase_building = trader_proxy_office }
 
 		custom_tooltip = {
@@ -1735,7 +1786,6 @@ default_network = {
 patrol_network = {
 	icon = "GFX_starbase_patrol_network"
 	construction_days = 0
-	initial = yes
 
 	potential = {
 		exists = owner
