@@ -59,7 +59,7 @@ honorbound_warriors = {
 	defensive_pact_acceptance = 20
 	migration_pact_acceptance = 0
 
-	advanced_start_chance = 75
+	advanced_start_chance = 50
 
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.4
@@ -101,8 +101,12 @@ honorbound_warriors = {
 				}			
 			}
 			AND = {
-				has_ethic = "ethic_fanatic_xenophile"
 				has_ethic = "ethic_militarist"
+				OR = {
+					has_ethic = "ethic_fanatic_spiritualist"
+					has_ethic = "ethic_fanatic_egalitarian"
+					has_ethic = "ethic_fanatic_xenophile"
+				}
 			}
 		}
 
@@ -255,8 +259,6 @@ erudite_explorers = {
 		NOR = {
 			has_ethic = "ethic_xenophobe"
 			has_ethic = "ethic_fanatic_xenophobe"
-			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"
 			has_ethic =  "ethic_militarist"
 			has_ethic =  "ethic_fanatic_militarist"
 		}
@@ -449,16 +451,16 @@ ruthless_capitalists = {
 	allow = {
 		is_country_type = default
 		NOR = {
-			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"
+			has_ethic = "ethic_egalitarian"
+			has_ethic = "ethic_fanatic_egalitarian"
 		}
 		OR = {
-			has_ethic = "ethic_militarist"
-			has_ethic = "ethic_fanatic_militarist"
+			has_ethic = "ethic_authoritarian"
+			has_ethic = "ethic_fanatic_authoritarian"
 			NOR = {
 				has_ethic = "ethic_xenophile"
 				has_ethic = "ethic_fanatic_xenophile"					
-			}		
+			}
 		}
 		OR = {
 			has_authority = auth_corporate
@@ -530,7 +532,9 @@ peaceful_traders = {
 				}
 				OR = {
 					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"				
+					has_ethic = "ethic_fanatic_xenophile"
+					has_ethic = "ethic_materialists"
+					has_ethic = "ethic_fanatic_materialists"					
 				}				
 			}
 		}		
@@ -759,7 +763,7 @@ democratic_crusaders = {
 	defensive_pact_acceptance = 20
 	migration_pact_acceptance = 0
 
-	advanced_start_chance = 50
+	advanced_start_chance = 75
 
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.5
@@ -827,7 +831,7 @@ harmonious_hierarchy = {
 	defensive_pact_acceptance = 0
 	migration_pact_acceptance = -10
 
-	advanced_start_chance = 10
+	advanced_start_chance = 25
 
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.6
@@ -874,6 +878,7 @@ harmonious_hierarchy = {
 		OR = {
 			has_ethic = "ethic_authoritarian"
 			has_ethic = "ethic_fanatic_authoritarian"
+			has_ethic = "ethic_spiritualist"
 		}
 	}
 
@@ -1013,7 +1018,7 @@ xenophobic_isolationists = {
 	defensive_pact_acceptance = -20
 	migration_pact_acceptance = -100
 
-	advanced_start_chance = 10
+	advanced_start_chance = 25
 
 	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.3
@@ -1108,7 +1113,7 @@ fanatic_purifiers = {
 	federation_acceptance = -1000
 	migration_pact_acceptance = -1000
 
-	advanced_start_chance = 100
+	advanced_start_chance = 75
 
 	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.4
@@ -1232,7 +1237,7 @@ devouring_swarm = {
 	defensive_pact_acceptance = -1000
 	migration_pact_acceptance = -1000
 
-	advanced_start_chance = 100
+	advanced_start_chance = 75
 
 	weapon_preferences = weapon_type_strike_craft
 	armor_ratio = 0.2
@@ -1394,8 +1399,6 @@ metalhead = {
 		has_ethic = "ethic_militarist"
 		has_ethic = "ethic_materialist"
 		has_ethic = "ethic_xenophobe"
-		has_trait = "trait_industrious"
-		has_trait = "trait_strong"
 	}
 
 	weight_modifier = {
@@ -1679,9 +1682,6 @@ fanatic_befrienders = {
 		is_country_type = default
 		has_ethic = "ethic_militarist"
 		has_ethic = "ethic_fanatic_xenophile"
-		has_trait = "trait_repugnant"
-		has_trait = "trait_solitary"
-		has_trait = "trait_venerable"
 	}
 
 	weight_modifier = {
