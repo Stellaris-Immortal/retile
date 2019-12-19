@@ -1057,6 +1057,7 @@ trade_policy = {
 		
 		potential = {
 			has_technology = tech_interstellar_economics
+			NOT = { has_tradition = tr_prosperity_finish }
 		}
 		
 		policy_flags = {
@@ -1070,7 +1071,28 @@ trade_policy = {
 		AI_weight = {
 			factor = 0
 		}
-	}	
+	}
+	
+	option = {
+		name = "trade_policy_influence_advanced"
+		
+		potential = {
+			has_technology = tech_interstellar_economics
+			has_tradition = tr_prosperity_finish
+		}
+		
+		policy_flags = {
+			trade_conversion_influence
+		}		
+		
+		modifier = {
+			country_base_influence_produces_add = 1.25
+		}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
 
 	option = {
 		name = "trade_policy_ai"
@@ -1390,9 +1412,7 @@ first_contact_protocol = {
 }
 
 xenodiplomacy = {
-	potential = {
-		has_tradition = tr_diplomacy_open_markets
-	}
+	potential = { has_technology = tech_adaptive_bureaucracy }
 	
 	option = {
 		name = "xenodiplomacy_none"

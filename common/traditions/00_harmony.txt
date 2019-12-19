@@ -1,112 +1,14 @@
 tr_harmony_adopt = {
+	possible = {
+		NOT = { has_tradition = tr_prosperity_adopt }
+	}
+	
 	modifier = {
-		planet_pops_organics_food_upkeep_mult = -0.10
-	}
-	
-	tradition_swap = {
-		name = tr_synchronicity_machine_adopt
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}
-		modifier = {
-			planet_pops_robotics_upkeep_mult = -0.10
-		}
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_synchronicity_hive_adopt
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-			is_lithoid_empire = no
-			is_plantoid_empire = no
-		}
-		modifier = {
-			planet_pops_organics_food_upkeep_mult = -0.10
-		}
-		weight = {
-			factor = 1
-		}
-	}
-	
-	tradition_swap = {
-		name = tr_harmony_lithoid_adopt
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = no
-			is_lithoid_empire = yes
-			is_plantoid_empire = no
-		}
-		modifier = {
-			planet_pops_organics_minerals_upkeep_mult = -0.10
-		}
-		weight = {
-			factor = 1
-		}
-	}
-	
-	tradition_swap = {
-		name = tr_harmony_plantoid_adopt
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = no
-			is_plantoid_empire = yes
-		}
-		modifier = {
-			planet_pops_consumer_goods_upkeep_mult = -0.10
-		}
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_synchronicity_lithoid_adopt
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-			is_lithoid_empire = yes
-		}
-		modifier = {
-			planet_pops_organics_minerals_upkeep_mult = -0.10
-		}
-		weight = {
-			factor = 1
-		}
+		country_unity_produces_mult = 0.20
 	}
 	
 	ai_weight = {
-		factor = 10
-		modifier = {
-			factor = 2
-			has_ethic = ethic_egalitarian
-		}
-		modifier = {
-			factor = 3
-			has_ethic = ethic_fanatic_egalitarian
-		}
-		modifier = {
-			factor = 2
-			has_ethic = ethic_authoritarian
-		}
-		modifier = {
-			factor = 3
-			has_ethic = ethic_fanatic_authoritarian
-		}	
+		factor = 10	
 		modifier = {
 			factor = 2
 			has_ethic = ethic_spiritualist
@@ -149,31 +51,55 @@ tr_harmony_adopt = {
 
 tr_harmony_finish = {
 	modifier = {
-		planet_stability_add = 5
+		# Ecological Restoration Decision
 		ascension_perks_add = 1
 	}
+}
+
+tr_harmony_mind_and_body = {
 	
-	tradition_swap = {
-		name = tr_synchronicity_finish
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_gestalt = yes
-		}
-		modifier = {
-			planet_stability_add = 5
-			ascension_perks_add = 1		
-		}		
-		weight = {
-			factor = 1
-		}
+	modifier = {
+		planet_jobs_upkeep_mult = -0.20
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_harmony_kinship = {
+	
+	modifier = {
+		planet_pops_upkeep_mult = -0.20
+	}
+	
+	ai_weight = {
+		factor = 1000
+	}
+}
+
+tr_harmony_bulwark_of_harmony = {
+	possible = {
+		has_tradition = tr_harmony_kinship
+		has_tradition = tr_harmony_mind_and_body
+	}
+	
+	modifier = {
+		# Unlocks Metascience Lab Buildings
+	}
+	
+	on_enabled = {
+		hidden_effect = { every_owned_planet = { validate_planet_buildings_and_districts = yes } }
+	}
+
+	ai_weight = {
+		factor = 5000
 	}
 }
 
 tr_harmony_the_greater_good = {	
 	modifier = {
-		planet_amenities_mult = -0.05
+		local_trade_protection_add = 10
 	}
 	
 	tradition_swap = {
@@ -185,34 +111,7 @@ tr_harmony_the_greater_good = {
 			is_gestalt = yes
 		}
 		modifier = {
-			planet_amenities_no_happiness_mult = -0.10
-		}
-		weight = {
-			factor = 1
-		}
-	}
-	
-	ai_weight = {
-		factor = 1000
-	}
-}
-
-tr_harmony_kinship = {
-	
-	modifier = {
-		pop_growth_speed = 0.10
-	}
-	
-	tradition_swap = {
-		name = tr_synchronicity_kinship_gestalt
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_gestalt = yes
-		}
-		modifier = {
-			planet_pops_upkeep_mult = -0.10
+			# SOmething Else
 		}
 		weight = {
 			factor = 1
@@ -230,79 +129,10 @@ tr_harmony_utopian_dream = {
 	}
 	
 	modifier = {
-		pop_happiness = 0.05
-	}
-	
-	tradition_swap = {
-		name = tr_synchronicity_collective_reasoning
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_gestalt = yes
-		}
-		modifier = {
-			pop_resettlement_cost_mult = -0.25
-		}
-		weight = {
-			factor = 1
-		}
+		starbase_building_capacity_add = 1
 	}	
 	
 	ai_weight = {
 		factor = 5000
-	}
-}
-
-tr_harmony_bulwark_of_harmony = {
-	possible = {
-		has_tradition = tr_harmony_kinship
-		has_tradition = tr_harmony_mind_and_body
-	}
-	
-	modifier = {
-		starbase_defensive_war_ship_build_speed_mult = 0.33
-		ship_home_territory_fire_rate_mult = 0.15
-	}
-
-	ai_weight = {
-		factor = 5000
-	}
-}
-
-tr_harmony_mind_and_body = {
-	
-	modifier = {
-		leader_age = 20
-	}
-
-	tradition_swap = {
-		name = tr_synchronicity_cloned_organs
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-		}
-		weight = {
-			factor = 1
-		}
-	}
-	
-	tradition_swap = {
-		name = tr_synchronicity_self_preservation
-		inherit_effects = no
-		inherit_icon = no
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}
-		weight = {
-			factor = 1
-		}
-	}
-	
-	ai_weight = {
-		factor = 1000
 	}
 }

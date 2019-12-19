@@ -1,7 +1,10 @@
 tr_prosperity_adopt = {
+	possible = {
+		NOT = { has_tradition = tr_harmony_adopt }
+	}
+
 	modifier = {
-		station_gatherers_produces_mult = 0.10
-		station_gatherers_cost_mult = -0.10
+		trade_value_mult = 0.2
 	}
 
 	tradition_swap = {
@@ -10,28 +13,10 @@ tr_prosperity_adopt = {
 		inherit_icon = yes
 		inherit_name = yes
 		trigger = {
-			is_machine_empire = yes
+			is_gestalt = yes
 		}
 		modifier = {
-			station_gatherers_produces_mult = 0.10
-			station_gatherers_cost_mult = -0.10
-		}
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_prosperity_adopt_hive
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = yes
-		trigger = {
-			is_hive_empire = yes
-		}
-		modifier = {
-			station_gatherers_produces_mult = 0.10
-			station_gatherers_cost_mult = -0.10
+			# Something Else
 		}
 		weight = {
 			factor = 1
@@ -41,16 +26,12 @@ tr_prosperity_adopt = {
 	ai_weight = {
 		factor = 10
 		modifier = {
-			factor = 5
-			years_passed < 10
-		}
-		modifier = {
 			factor = 2
-			has_ethic = ethic_pacifist
+			has_ethic = ethic_materialist
 		}
 		modifier = {
 			factor = 3
-			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_materialist
 		}
 		modifier = {
 			factor = 0
@@ -87,56 +68,15 @@ tr_prosperity_adopt = {
 tr_prosperity_finish = {
 	modifier = {
 		ascension_perks_add = 1		
-		country_base_volatile_motes_produces_add = 1
-		country_base_exotic_gases_produces_add = 1
-		country_base_rare_crystals_produces_add = 1
+		# Improved Trade Policies
 	}
 }
 
 tr_prosperity_sct = {
 	modifier = {
-		local_trade_protection_add = 5
+		# Planetary Prospect Decision
 	}
 
-	tradition_swap = {
-		name = tr_prosperity_sct_machine
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}
-		weight = {
-			factor = 1
-		}
-	}
-	
-	tradition_swap = {
-		name = tr_prosperity_administrative_operations_hive
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-		}
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_prosperity_administrative_operations_machine
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}
-		weight = {
-			factor = 1
-		}
-	}
-	
 	ai_weight = {
 		factor = 1000
 	}
@@ -144,8 +84,7 @@ tr_prosperity_sct = {
 
 tr_prosperity_administrative_operations = {
 	modifier = {
-		planet_structures_cost_mult = -0.10
-		planet_building_refund_mult = 0.30
+		starbase_module_capacity_add = 1
 	}
 	
 	ai_weight = {
@@ -159,39 +98,7 @@ tr_prosperity_public_works = {
 	}
 	
 	modifier = {
-		trade_value_mult = 0.1
-	}
-
-	tradition_swap = {
-		name = tr_prosperity_extended_hives
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-		}
-		modifier = {
-			country_energy_produces_mult = 0.05
-		}
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_prosperity_optimized_nexus
-		inherit_effects = no
-		inherit_icon = no
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}
-		modifier = {
-			country_energy_produces_mult = 0.05
-		}
-		weight = {
-			factor = 1
-		}
+		# Corporate Buildings
 	}
 	
 	ai_weight = {
@@ -205,42 +112,8 @@ tr_prosperity_interstellar_franchising = {
 	}
 
 	modifier = {
-		planet_buildings_upkeep_mult = -0.10
-		planet_districts_upkeep_mult = -0.10
-	}
-	
-	tradition_swap = {
-		name = tr_prosperity_efficiency_algorithms
-		inherit_effects = no
-		inherit_icon = no
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}
-		modifier = {
-			planet_buildings_upkeep_mult = -0.10
-			planet_districts_upkeep_mult = -0.10
-		}
-		weight = {
-			factor = 1
-		}
-	}
-	
-	tradition_swap = {
-		name = tr_prosperity_efficiency_instincts
-		inherit_effects = no
-		inherit_icon = no
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-		}
-		modifier = {
-			planet_buildings_upkeep_mult = -0.10
-			planet_districts_upkeep_mult = -0.10
-		}
-		weight = {
-			factor = 1
-		}
+		starbase_modules_cost_mult  = -0.20
+		starbase_buildings_cost_mult = -0.20
 	}
 
 	ai_weight = {
@@ -254,52 +127,7 @@ tr_prosperity_pursuit_of_profit = {
 	}
 	
 	modifier = {
-		planet_jobs_specialist_produces_mult = 0.05
-	}
-	
-	tradition_swap = {
-		name = tr_prosperity_creative_collectives
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_egalitarian = yes
-		}	
-		weight = {
-			factor = 1
-		}
-	}	
-	
-	tradition_swap = {
-		name = tr_prosperity_hive_neural_signal_boosters
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-		}	
-		modifier = {
-			planet_jobs_complex_drone_produces_mult = 0.05
-		}
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_prosperity_peak_performance
-		inherit_effects = no
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}	
-		modifier = {
-			planet_jobs_complex_drone_produces_mult = 0.05
-		}
-		weight = {
-			factor = 1
-		}
+		starbase_upgrade_cost_mult = -0.20
 	}
 	
 	ai_weight = {

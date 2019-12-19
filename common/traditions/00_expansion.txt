@@ -98,14 +98,16 @@ tr_expansion_courier_network = {
 		has_tradition = tr_expansion_reach_for_the_stars
 	}
 	
+	modifier = {
+		# Courier Network Building
+	}
+	
 	on_enabled = { 
 		hidden_effect = {
 			country_event = { id = tradition.1 }
 		}
 	}
-	
-	# Courier Network Module
-	
+
 	ai_weight = {
 		factor = 5000
 	}
@@ -127,7 +129,7 @@ tr_expansion_galactic_ambition = {
 	}
 	
 	modifier = {
-		country_starbase_capacity_add = 2
+		empire_size_penalty_mult = -0.5
 	}
 	
 	ai_weight = {
