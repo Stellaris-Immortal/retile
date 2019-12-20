@@ -75,7 +75,12 @@ clerk = {
 	}
 
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_commercial_megaplex } }
+		potential = { 
+			OR = {
+				planet = { has_building = building_commercial_megaplex }
+				planet = { has_building = building_galactic_stock_exchange }
+			}
+		}
 		modifier = {
 			trade_value_add = 10
 			planet_amenities_add = 30
@@ -83,14 +88,20 @@ clerk = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			planet = { has_building = building_commercial_megaplex }
+			OR = {
+				planet = { has_building = building_commercial_megaplex }
+				planet = { has_building = building_galactic_stock_exchange }
+			}
 			has_trait = trait_thrifty
 		}
 		modifier = { trade_value_add = 2.5 }
 	}
 	triggered_planet_modifier = {
 		potential = {
-			planet = { has_building = building_commercial_megaplex }
+			OR = {
+				planet = { has_building = building_commercial_megaplex }
+				planet = { has_building = building_galactic_stock_exchange }
+			}
 			has_trait = trait_nuumismatic_administration
 		}
 		modifier = { trade_value_add = 2.5 }
