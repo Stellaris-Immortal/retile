@@ -1,3 +1,124 @@
+courier_network = {
+	icon = "GFX_starbase_courier_network"
+	construction_days = 0
+
+	potential = {
+		exists = owner
+		owner = { has_tradition = tr_expansion_courier_network }
+		NOT = { has_starbase_building = courier_network }
+	}
+	station_modifier = {
+		ship_armor_add = 1000
+		starbase_defense_platform_capacity_add = 4
+	}
+	ship_modifier = {
+		ship_fire_rate_mult = 0.50
+		ship_weapon_range_mult = 0.20
+	}
+	orbit_modifier = {
+		ship_orbit_upkeep_mult = -0.25
+	}
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 0
+		}
+	}
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 0
+	}
+}
+
+default_network = {
+	icon = "GFX_starbase_default_network"
+	construction_days = 0
+	initial = yes
+
+	potential = {
+		exists = owner
+		owner = { NOT = { has_tradition = tr_expansion_courier_network } }
+		owner = { NOT = { has_tradition = tr_domination_workplace_motivators } }
+		NOT = { has_starbase_building = default_network }
+	}
+	station_modifier = {
+		ship_armor_add = 1000
+		starbase_defense_platform_capacity_add = 4
+	}
+	ship_modifier = {
+		ship_fire_rate_mult = 0.50
+		ship_weapon_range_mult = 0.20
+	}
+	orbit_modifier = {
+		ship_orbit_upkeep_mult = -0.25
+	}
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 0
+		}
+	}
+	
+	equipped_component = "STARBASE_AURA_WARP_FLUCTUATOR"
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 0
+	}
+}
+
+patrol_network = {
+	icon = "GFX_starbase_patrol_network"
+	construction_days = 0
+
+	potential = {
+		exists = owner
+		owner = { has_tradition = tr_domination_workplace_motivators }
+		NOT = { has_starbase_building = patrol_network }
+	}
+	station_modifier = {
+		ship_armor_add = 1000
+		starbase_defense_platform_capacity_add = 4
+		ship_piracy_suppression_add = 8
+	}
+	ship_modifier = {
+		ship_fire_rate_mult = 0.50
+		ship_weapon_range_mult = 0.20
+	}
+	orbit_modifier = {
+		ship_orbit_upkeep_mult = -0.25
+	}
+	resources = {
+		category = starbase_buildings
+		cost = {
+			alloys = 100
+		}
+
+		upkeep = {
+			energy = 0
+		}
+	}
+	
+	equipped_component = "LARGE_SCOUT_HANGAR_1"
+
+	ai_build_at_chokepoint = no
+	ai_build_outside_chokepoint = no
+	ai_weight = {
+		weight = 0
+	}
+}
+
 supercapacitor_system = {
 	icon = "GFX_spaceport_supercapacitor_system"
 	construction_days = 360
@@ -915,11 +1036,6 @@ fleet_hangar = {
 	potential = {
 		exists = owner
 		NOT = { has_starbase_building = fleet_hangar }
-		OR = { 
-			has_starbase_building = default_network
-			has_starbase_building = courier_network
-			has_starbase_building = patrol_network
-		}
 		has_starbase_size >= starbase_starport
 	}	
 	
@@ -1700,126 +1816,5 @@ trader_proxy_office = {
 				}
 			}
 		}
-	}
-}
-
-courier_network = {
-	icon = "GFX_starbase_courier_network"
-	construction_days = 0
-
-	potential = {
-		exists = owner
-		owner = { has_tradition = tr_expansion_courier_network }
-		NOT = { has_starbase_building = courier_network }
-	}
-	station_modifier = {
-		ship_armor_add = 1000
-		starbase_defense_platform_capacity_add = 4
-	}
-	ship_modifier = {
-		ship_fire_rate_mult = 0.50
-		ship_weapon_range_mult = 0.20
-	}
-	orbit_modifier = {
-		ship_orbit_upkeep_mult = -0.25
-	}
-	resources = {
-		category = starbase_buildings
-		cost = {
-			alloys = 100
-		}
-
-		upkeep = {
-			energy = 0
-		}
-	}
-
-	ai_build_at_chokepoint = no
-	ai_build_outside_chokepoint = no
-	ai_weight = {
-		weight = 0
-	}
-}
-
-default_network = {
-	icon = "GFX_starbase_default_network"
-	construction_days = 0
-	initial = yes
-
-	potential = {
-		exists = owner
-		owner = { NOT = { has_tradition = tr_expansion_courier_network } }
-		owner = { NOT = { has_tradition = tr_domination_workplace_motivators } }
-		NOT = { has_starbase_building = default_network }
-	}
-	station_modifier = {
-		ship_armor_add = 1000
-		starbase_defense_platform_capacity_add = 4
-	}
-	ship_modifier = {
-		ship_fire_rate_mult = 0.50
-		ship_weapon_range_mult = 0.20
-	}
-	orbit_modifier = {
-		ship_orbit_upkeep_mult = -0.25
-	}
-	resources = {
-		category = starbase_buildings
-		cost = {
-			alloys = 100
-		}
-
-		upkeep = {
-			energy = 0
-		}
-	}
-	
-	equipped_component = "STARBASE_AURA_WARP_FLUCTUATOR"
-
-	ai_build_at_chokepoint = no
-	ai_build_outside_chokepoint = no
-	ai_weight = {
-		weight = 0
-	}
-}
-
-patrol_network = {
-	icon = "GFX_starbase_patrol_network"
-	construction_days = 0
-
-	potential = {
-		exists = owner
-		owner = { has_tradition = tr_domination_workplace_motivators }
-		NOT = { has_starbase_building = patrol_network }
-	}
-	station_modifier = {
-		ship_armor_add = 1000
-		starbase_defense_platform_capacity_add = 4
-		ship_piracy_suppression_add = 8
-	}
-	ship_modifier = {
-		ship_fire_rate_mult = 0.50
-		ship_weapon_range_mult = 0.20
-	}
-	orbit_modifier = {
-		ship_orbit_upkeep_mult = -0.25
-	}
-	resources = {
-		category = starbase_buildings
-		cost = {
-			alloys = 100
-		}
-
-		upkeep = {
-			energy = 0
-		}
-	}
-	
-	equipped_component = "LARGE_SCOUT_HANGAR_1"
-
-	ai_build_at_chokepoint = no
-	ai_build_outside_chokepoint = no
-	ai_weight = {
-		weight = 0
 	}
 }
