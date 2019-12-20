@@ -2074,6 +2074,7 @@ tech_climate_restoration = {
 	cost = @tier4cost1
 	area = society
 	tier = 4
+	is_rare = yes
 	category = { new_worlds }
 	prerequisites = { "tech_terrestrial_sculpting" }
 	weight = @tier4weight1
@@ -2088,6 +2089,7 @@ tech_climate_restoration = {
 	}
 	
 	weight_modifier = {
+		weight = 0.50
 		modifier = {
 			factor = 1.25
 			research_leader = {
@@ -2098,6 +2100,14 @@ tech_climate_restoration = {
 		modifier = {
 			factor = 1.5
 			has_policy_flag = research_space_exploration		
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
 		}
 	}
 	
