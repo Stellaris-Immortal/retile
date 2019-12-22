@@ -160,14 +160,14 @@ planet_event = {
 	after = {
 		if = {
 			limit = {
-				has_deposit = retile_deposit_precinct
+				num_districts = { type = district_enforcer value > 0 }
 				planet_crime < 1
 			}
-			remove_deposit = retile_deposit_precinct
+			remove_district = district_enforcer
 		}
 		if = {
 			limit = {
-				has_deposit = retile_deposit_stronghold
+				num_districts = { type = district_soldier value > 0 }
 				owner = { AND = {
 					used_naval_capacity_percent < 0.5
 					OR = {
@@ -179,14 +179,14 @@ planet_event = {
 					}
 				} }
 			}
-			remove_deposit = retile_deposit_stronghold
+			remove_district = district_soldier
 		}
 		if = {
 			limit = {
-				has_deposit = retile_deposit_preserve
+				num_districts = { type = district_custodian value > 0 }
 				free_amenities < -50
 			}
-			remove_deposit = retile_deposit_preserve
+			remove_district = district_custodian
 		}
 	}
 }

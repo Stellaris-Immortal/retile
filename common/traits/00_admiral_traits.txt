@@ -20,6 +20,9 @@ leader_trait_trickster = {
 		ship_emergency_ftl_mult = -0.15
 		ship_disengage_chance_mult = 0.25
 	}
+	leader_potential_add = { 
+		NOT = { has_trait = trait_conformists }
+	}
 	leader_trait = { admiral }
 	leader_class = { admiral }
 	opposites = { "leader_trait_unyielding" }
@@ -35,6 +38,7 @@ leader_trait_fleet_logistician = {
 	leader_potential_add = {
 		NOT = { from = { has_policy_flag = no_retreat_doctrine } }
 		NOT = { from = { has_authority = "auth_machine_intelligence" } }
+		NOT = { has_trait = trait_wasteful }
 	}
 	leader_trait = { admiral }
 	leader_class = { admiral }
@@ -66,6 +70,7 @@ leader_trait_aggressive = {
 	}
 	leader_potential_add = {
 		NOT = { from = { has_policy_flag = defense_in_depth_doctrine } }
+		NOT = { has_trait = trait_very_weak }
 	}
 	leader_trait = { admiral }
 	leader_class = { admiral }
@@ -127,6 +132,7 @@ leader_trait_nervous = {
 	leader_potential_add = {
 		NOT = { from = { has_civic = "civic_philosopher_king" } }
 		NOT = { from = { has_policy_flag = defense_in_depth_doctrine } }
+		NOT = { has_trait = trait_quick_learners }
 	}
 	modifier = {
 		ship_fire_rate_mult = -0.1

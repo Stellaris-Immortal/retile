@@ -30,10 +30,6 @@ building_commercial_zone = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
-			NOR = { 
-				retile_urban = yes
-				has_modifier = resort_colony
-			}
 		}
 	}
 	
@@ -121,7 +117,6 @@ building_commercial_megaplex = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
-			retile_urban = no
 		}
 	}
 	
@@ -148,6 +143,10 @@ building_commercial_megaplex = {
 	
 	show_tech_unlock_if = { 
 		is_regular_empire = yes
+	}
+	
+	upgrades = {
+		"building_galactic_stock_exchange"
 	}
 	
 	country_modifier = {
@@ -194,8 +193,8 @@ building_commercial_megaplex = {
 
 building_galactic_stock_exchange = {
 	base_buildtime = 480	
-	base_cap_amount = 1
-
+	can_build = no
+	
 	category = trade
 	can_be_disabled = no
 	
@@ -217,10 +216,6 @@ building_galactic_stock_exchange = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
-			NOR = { 
-				retile_urban = yes
-				has_modifier = resort_colony
-			}
 		}
 	}
 	
@@ -252,8 +247,8 @@ building_galactic_stock_exchange = {
 			owner = { is_gestalt = no }
 		}
 		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 1
+			planet_housing_add = 3
+			job_custodian_add = 2
 			job_merchant_add = 1
 		}
 	}

@@ -12,6 +12,14 @@ solar_panels = {
 	construction_days = 360
 	initial = yes
 	
+	potential = {
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+	}
+	
 	possible = {
 		custom_tooltip = {
 			fail_text = "requires_energy_station"
@@ -52,6 +60,14 @@ mining_terminal = {
 	section = "REFINERY_STARBASE_SECTION"
 	construction_days = 360
 	initial = no
+	
+	potential = {
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+	}
 	
 	possible = {
 		custom_tooltip = {
@@ -97,6 +113,14 @@ foundry_terminal = {
 	construction_days = 360
 	initial = no
 	
+	potential = {
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+	}
+	
 	possible = {
 		custom_tooltip = {
 			fail_text = "requires_alloy_station"
@@ -133,6 +157,14 @@ trade_terminal = {
 	section = "REFINERY_STARBASE_SECTION"
 	construction_days = 360
 	initial = yes
+	
+	potential = {
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+	}
 	
 	possible = {
 		custom_tooltip = {
@@ -184,6 +216,14 @@ research_terminal = {
 	section = "REFINERY_STARBASE_SECTION"
 	construction_days = 360
 	initial = no
+	
+	potential = {
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+	}
 	
 	possible = {
 		custom_tooltip = {
@@ -266,6 +306,14 @@ anchorage = {
 	section = "ANCHORAGE_STARBASE_SECTION"
 	construction_days = 180
 	
+	potential = {
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+	}
+	
 	possible = {
 		custom_tooltip = {
 			fail_text = "requires_starport"
@@ -309,6 +357,14 @@ anchorage = {
 gun_battery = {
 	section = "BATTERY_STARBASE_SECTION"
 	construction_days = 180
+	
+	potential = {
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+	}
 	
 	possible = {
 		custom_tooltip = {
@@ -359,6 +415,14 @@ missile_battery = {
 	icon = "GFX_starbase_missile_battery"
 	construction_days = 180	
 	
+	potential = {
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
+	}
+	
 	possible = {
 		custom_tooltip = {
 			fail_text = "requires_starport"
@@ -406,6 +470,11 @@ hangar_bay = {
 	potential = {
 		exists = owner
 		owner = { has_technology = tech_strike_craft_1 }
+		OR = { 
+			has_starbase_building = default_network
+			has_starbase_building = courier_network
+			has_starbase_building = patrol_network
+		}
 	}
 	
 	possible = {

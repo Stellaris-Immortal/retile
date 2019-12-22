@@ -534,17 +534,11 @@ ethic_egalitarian = {
 		modifier = {
 			factor = 1.25
 			NOT = { has_citizenship_type = { type = citizenship_full } }
-		}		
+		}	
 		modifier = {
 			factor = 1.5
-			is_enslaved = no
-			from = {
-				any_owned_pop = {
-					is_robot_pop = no
-					is_enslaved = yes
-				}
-			}
-		}	
+			is_enslaved = yes
+		}
 		modifier = {
 			factor = 1.25
 			OR = {
@@ -552,7 +546,7 @@ ethic_egalitarian = {
 				has_living_standard = { type = living_standard_good }
 				has_living_standard = { type = living_standard_shared_burden }
 			}
-		}			
+		}	
 	}	
 }
 
@@ -781,9 +775,7 @@ ethic_xenophobe = {
 		modifier = {
 			factor = 1.5
 			exists = ruler
-			ruler = { 
-				leader_of_faction = isolationist
-			}				
+			ruler = { leader_of_faction = isolationist }				
 		}		
 		modifier = {
 			factor = 2
@@ -837,7 +829,7 @@ ethic_xenophobe = {
 			}
 		}
 		modifier = {
-			factor = 4.0
+			factor = 2.0
 			is_country_type = default
 			is_same_species = root
 			any_relation = {
@@ -1170,7 +1162,7 @@ ethic_xenophile = {
 			}
 		}
 		modifier = {
-			factor = 0.25
+			factor = 0.5
 			is_same_species = root
 			any_relation = {
 				has_opinion_modifier = { 
@@ -1471,11 +1463,6 @@ ethic_militarist = {
 			factor = 3
 			has_ethic = ethic_fanatic_militarist
 		}
-		
-		modifier = {
-			factor = 0.33
-			has_valid_civic = civic_inwards_perfection
-		}
 
 		modifier = {
 			factor = 0.75
@@ -1567,7 +1554,7 @@ ethic_militarist = {
 			from = { owner = { is_at_war = yes } }
 		}
 		modifier = {
-			factor = 2.0
+			factor = 0.75
 			OR = {
 				has_citizenship_rights = yes
 				can_be_military_leader = yes
@@ -1759,11 +1746,7 @@ ethic_pacifist = {
 				has_ethic = ethic_fanatic_pacifist
 			}
 			has_faction = prosperity
-		}
-		modifier = {
-			factor = 1.5
-			has_valid_civic = civic_inwards_perfection
-		}				
+		}			
 		modifier = {
 			factor = 0.5
 			has_valid_civic = civic_fanatic_purifiers
@@ -1991,18 +1974,7 @@ ethic_spiritualist = {
 				}				
 			}
 		}
-	}		
-
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_ROBOTS_NEG
-		trigger = {
-			any_owned_planet = {
-				any_owned_pop = {
-					is_robot_pop = yes
-				}
-			}
-		}
-	}	
+	}
 
 	pop_attraction_tag = {
 		desc = POP_ATTRACTION_ROBOT_RIGHTS_NEG
@@ -2087,20 +2059,15 @@ ethic_spiritualist = {
 			has_technology = "tech_psionic_theory"
 		}
 		modifier = {
-			factor = 1.5
+			factor = 1.25
 			is_country_type = default
 			has_ascension_perk = ap_mind_over_matter
 		}
 		modifier = {
-			factor = 1.5
+			factor = 1.25
 			is_country_type = default
 			has_ascension_perk = ap_transcendence
 		}		
-		modifier = {
-			factor = 0.75
-			is_country_type = default
-			has_policy_flag = ai_full_rights
-		}
 		modifier = {
 			factor = 2.0
 			is_subject = yes
@@ -2147,9 +2114,13 @@ ethic_spiritualist = {
 			has_trait = trait_hive_mind
 		}		
 		modifier = {
-			factor = 0.25
-			is_robot_pop = yes
-		}				
+			factor = 1.25
+			has_trait = trait_charismatic
+		}
+		modifier = {
+			factor = 0.75
+			has_trait = trait_repugnant
+		}			
 	}		
 }
 
@@ -2244,24 +2215,6 @@ ethic_materialist = {
 					has_trait = trait_cybernetic
 				}
 			}
-		}
-	}	
-
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_ROBOTS_POS
-		trigger = {
-			any_owned_planet = {
-				any_owned_pop = {
-					is_robot_pop = yes
-				}
-			}
-		}
-	}	
-
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_ROBOT_RIGHTS_POS
-		trigger = {
-			has_policy_flag = ai_full_rights
 		}
 	}	
 
@@ -2366,12 +2319,7 @@ ethic_materialist = {
 		modifier = {
 			factor = 1.25
 			has_valid_civic = civic_mechanists
-		}			
-		modifier = {
-			factor = 1.25
-			is_country_type = default
-			has_policy_flag = ai_full_rights
-		}	
+		}				
 		modifier = {
 			factor = 1.33
 			any_relation = {
@@ -2398,23 +2346,6 @@ ethic_materialist = {
 				has_job = high_priest
 			}			
 		}
-		modifier = {
-			factor = 2.0
-			is_robot_pop = yes
-		}
-		modifier = {
-			factor = 1.5
-			has_trait = "trait_cybernetic"
-		}			
-		modifier = {
-			factor = 1.25
-			is_robot_pop = no
-			from = {
-				any_owned_pop = {
-					is_robot_pop = yes
-				}
-			}
-		}	
 		modifier = {
 			factor = 1.25
 			has_trait = "trait_natural_engineers"

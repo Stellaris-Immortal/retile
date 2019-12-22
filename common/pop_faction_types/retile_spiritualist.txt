@@ -104,6 +104,52 @@ traditionalist = {
 		}
 	}
 	
+	# Wants Holy Worlds
+	demand = {
+		title = "SPIRITUALITY_HOLY_WORLD"
+		unfulfilled_title = "SPIRITUALITY_NO_HOLY_WORLD"
+		desc = "SPIRITUALITY_HOLY_WORLD_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = {
+			exists = owner
+		}
+
+		trigger = {
+			owner = {
+				any_planet_within_border = {
+					is_colony = no
+					OR = {
+						has_modifier = consecrated_quality_1
+						has_modifier = consecrated_quality_2
+						has_modifier = consecrated_quality_3
+						has_modifier = consecrated_quality_4
+					}
+				}
+			}
+		}
+	}
+	
+	# Wants Harmony
+	demand = { 
+		title = "SPIRITUALIST_HARMONY"
+		unfulfilled_title = "SPIRITUALIST_NO_HARMONY"
+		desc = "SPIRITUALIST_HARMONY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				has_tradition = tr_harmony_adopt
+			}
+		}
+	}
+	
 	# Wants Universal Healthcare
 	demand = { 
 		title = "SPIRITUALIST_UNIVERSAL_HEALTHCARE"
@@ -149,131 +195,72 @@ traditionalist = {
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
 
-		potential = {
-			exists = owner
-			owner = { has_met_primitives = yes }
-		}
+		potential = { exists = owner }
 
 		trigger = {
 			owner = { has_policy_flag = enlightenment_allowed }
 		}
 	}
 	
-	# Wants Philosophy Progream
+	# Wants Selective Bombardment
 	demand = { 
-		title = "SPIRITUALIST_PHILOSOPHY"
-		unfulfilled_title = "SPIRITUALIST_NO_PHILOSOPHY"
-		desc = "SPIRITUALIST_PHILOSOPHY_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { has_tradition = tr_discovery_faith_in_science }
-		}
-
-		trigger = {
-			owner = { has_edict = declare_saint }
-		}
-	}
-	
-	# Wants Helathcare Campaign
-	demand = { 
-		title = "SPIRITUALIST_HEALTHCARE_CAMPAIGN"
-		unfulfilled_title = "SPIRITUALIST_NO_HEALTHCARE_CAMPAIGN"
-		desc = "SPIRITUALIST_HEALTHCARE_CAMPAIGN_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { has_technology = tech_planetary_unification }
-		}
-
-		trigger = {
-			owner = { has_edict = healthcare_campaign }
-		}
-	}
-	
-	# Wants Recycling Campaign
-	demand = { 
-		title = "SPIRITUALIST_RECYCLING_CAMPAIGN"
-		unfulfilled_title = "SPIRITUALIST_NO_RECYCLING_CAMPAIGN"
-		desc = "SPIRITUALIST_RECYCLING_CAMPAIGN_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { has_technology = tech_colonial_centralization }
-		}
-
-		trigger = {
-			owner = { has_edict = recycling_campaign }
-		}
-	}
-	
-	# Wants Basic Needs
-	demand = {
-		title = "SPIRITUALIST_BASICS"
-		unfulfilled_title = "SPIRITUALIST_NO_BASICS"
-		desc = "SPIRITUALIST_BASICS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			OR = {
-				owner = { has_valid_civic = civic_shared_burden }
-				any_owned_pop = { has_citizenship_rights = no }
-			}
-		}
-
-		trigger = {
-			owner = {
-				OR = {
-					any_owned_pop = { has_living_standard = { type = living_standard_shared_burden } }
-					any_owned_pop = { has_living_standard = { type = living_standard_subsistence } }
-				}
-			}
-		}
-	}
-
-	# Wants Holy Worlds
-	demand = {
-		title = "SPIRITUALITY_HOLY_WORLD"
-		unfulfilled_title = "SPIRITUALITY_NO_HOLY_WORLD"
-		desc = "SPIRITUALITY_HOLY_WORLD_DESC"
+		title = "SPIRITUALIST_SELECTIVE_BOMBARDMENT"
+		unfulfilled_title = "SPIRITUALIST_NO_SELECTIVE_BOMBARDMENT"
+		desc = "SPIRITUALIST_SELECTIVE_BOMBARDMENT_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
 
 		potential = {
 			exists = owner
-			owner = { has_ascension_perk = ap_consecrated_worlds }
 		}
 
 		trigger = {
+			owner = { has_policy_flag = orbital_bombardment_selective }
+		}
+	}
+	
+	# Hates Destroying Worlds
+	demand = { 
+		title = "SPIRITUALIST_DESTROY_WORLD"
+		unfulfilled_title = "SPIRITUALIST_NO_DESTROY_WORLD"
+		desc = "SPIRITUALIST_DESTROY_WORLD_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
 			owner = {
-				any_planet_within_border = {
-					is_colony = no
-					OR = {
-						has_modifier = consecrated_quality_1
-						has_modifier = consecrated_quality_2
-						has_modifier = consecrated_quality_3
-						has_modifier = consecrated_quality_4
-					}
+				NOR = { 
+					has_country_flag = fired_cracker
+					has_country_flag = fired_neutron
 				}
 			}
 		}
 	}
 	
-	# Hates Priority Healthcare
+	# Hates Prosperity
 	demand = { 
+		title = "SPIRITUALIST_PROSPERITY"
+		unfulfilled_title = "SPIRITUALIST_NO_PROSPERITY"
+		desc = "SPIRITUALIST_PROSPERITY_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				NOT = { has_tradition = tr_prosperity_adopt }
+			}
+		}
+	}
+	
+	# Hates Priority Healthcare
+	demand = {
 		title = "SPIRITUALIST_PRIORITY_HEALTHCARE"
 		unfulfilled_title = "SPIRITUALIST_NO_PRIORITY_HEALTHCARE"
 		desc = "SPIRITUALIST_PRIORITY_HEALTHCARE_DESC"
@@ -326,22 +313,21 @@ traditionalist = {
 		}
 	}
 	
-	# Hates Labor Campaign
+	# Wants Heavy Bombardment
 	demand = { 
-		title = "SPIRITUALIST_LABOR_CAMPAIGN"
-		unfulfilled_title = "SPIRITUALIST_NO_LABOR_CAMPAIGN"
-		desc = "SPIRITUALIST_LABOR_CAMPAIGN_DESC"
+		title = "SPIRITUALIST_HEAVY_BOMBARDMENT"
+		unfulfilled_title = "SPIRITUALIST_NO_HEAVY_BOMBARDMENT"
+		desc = "SPIRITUALIST_HEAVY_BOMBARDMENT_DESC"
 
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
 
-		potential = { 
+		potential = {
 			exists = owner
-			owner = { has_technology = tech_planetary_unification }
 		}
 
 		trigger = {
-			NOT = { owner = { has_edict = labor_campaign } }
+			owner = { has_policy_flag = orbital_bombardment_selective }
 		}
 	}
 	

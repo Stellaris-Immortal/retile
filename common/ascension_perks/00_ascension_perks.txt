@@ -187,7 +187,6 @@ ap_engineered_evolution = {
 			has_authority = "auth_machine_intelligence"
 		}
 		is_mechanical_empire = no
-		is_cyborg_empire = no
 	}
 	
 	ai_weight = {
@@ -423,10 +422,6 @@ ap_mind_over_matter = {
 			fail_text = "requires_not_ap_evolutionary_mastery"
 			NOT = { has_ascension_perk = ap_evolutionary_mastery }
 		}
-		custom_tooltip = {
-			fail_text = "requires_not_ap_the_flesh_is_weak"
-			NOT = { has_ascension_perk = ap_the_flesh_is_weak }
-		}
 	}
 	
 	potential = {
@@ -436,7 +431,6 @@ ap_mind_over_matter = {
 			has_authority = "auth_machine_intelligence"
 		}
 		is_mechanical_empire = no
-		is_cyborg_empire = no
 	}
 	
 	ai_weight = {
@@ -505,14 +499,25 @@ ap_transcendence = {
 #################
 
 ap_mastery_of_nature = {
-	on_enabled = {
-		custom_tooltip = "allow_decision_mastery_of_nature"
-		custom_tooltip = "describe_decision_mastery_of_nature"
-	}
-	modifier = { planet_non_artificial_max_districts_add = 2 }
+
+	modifier = { planet_non_artificial_max_districts_add = 1 }
 	
 	potential = {
 		NOT = { has_ascension_perk = ap_mastery_of_nature }
+	}
+	
+	on_enabled = {
+		custom_tooltip = "decision_mastery_of_nature_tooltip"
+		if = {
+			limit = { 
+				NOT = { has_technology = tech_climate_restoration }
+			}
+			add_research_option = tech_climate_restoration
+			add_tech_progress = {
+				tech = tech_climate_restoration
+				progress = 0.50
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -1178,21 +1183,24 @@ ap_galactic_wonders_megacorp = {
 		}
 	}
 	on_enabled = {
-		if = {
+		custom_tooltip = "add_research_options_galactic_wonders_megacorp"
+		hidden_effect = {
+			if = {
+					limit = { 
+						NOT = { has_technology = tech_mega_engineering }
+					}
+					add_research_option = tech_mega_engineering
+					add_tech_progress = {
+						tech = tech_mega_engineering
+						progress = 0.50
+					}
+				}
+			if = {
 				limit = { 
-					NOT = { has_technology = tech_mega_engineering }
+					NOT = { has_technology = tech_matter_decompressor }
 				}
-				add_research_option = tech_mega_engineering
-				add_tech_progress = {
-					tech = tech_mega_engineering
-					progress = 0.50
-				}
+				add_research_option = tech_matter_decompressor
 			}
-		if = {
-			limit = { 
-				NOT = { has_technology = tech_matter_decompressor }
-			}
-			add_research_option = tech_matter_decompressor
 		}
 	}			
 	
