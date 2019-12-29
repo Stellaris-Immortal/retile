@@ -410,7 +410,7 @@ planet_event = {
 		owner = {
 			#end_event_chain = "establish_colony"
 			if = {
-				limit = { NOT = has_modifier = first_colony }
+				limit = { NOT = { has_modifier = first_colony } }
 				add_modifier = { modifier = first_colony days = -1 }
 			}
 		}
@@ -796,7 +796,7 @@ planet_event = {
 		owner = {
 			set_country_flag = first_colony
 			if = {
-				limit = { NOT = has_modifier = first_colony }
+				limit = { NOT = { has_modifier = first_colony } }
 				add_modifier = { modifier = first_colony days = -1 }
 			}
 		}
