@@ -1,0 +1,31 @@
+entity = {
+	name = "frontend_background_entity"
+	
+	locator = { name = "loc" position = { 0.0 0.0 0.0 } } #position = { 0.0 0.025 0.0 }
+	
+	attach = { loc = "apocalypse_frontend_attached_entity" }
+	
+}
+
+entity = {
+	name = "apocalypse_frontend_attached_entity"
+	pdxmesh = "apocalypse_frontend_mesh"
+	
+	default_state = "idle"
+	state = { name = "idle"		animation = "idle" 
+		start_event = { node = "corner_swirl" particle = "apocalypse_frontend_corner_swirl_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "stars_locator_01" particle = "apocalypse_frontend_stars_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "stars_locator_02" particle = "apocalypse_frontend_stars_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "ship_light_locator_01" particle = "apocalypse_frontend_ship_light_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "ship_light_locator_02" particle = "apocalypse_frontend_ship_light_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "ship_light_locator_03" particle = "apocalypse_frontend_ship_light_effect" keep_particle = yes trigger_once = yes }
+		start_event = { node = "ship_light_locator_04" particle = "apocalypse_frontend_ship_light_effect" keep_particle = yes trigger_once = yes }
+	}
+	
+	scale = 1.1
+}
+
+animation = {
+	name = "apocalypse_frontend_idle_animation"
+	file = "apocalypse_frontend_idle.anim"
+}
