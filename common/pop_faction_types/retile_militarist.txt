@@ -114,6 +114,24 @@ imperialist = {
 		}
 	}
 	
+	# Wants Supremacy
+	demand = {
+		title = "MILITARIST_SUPREMACY"
+		unfulfilled_title = "MILITARIST_NO_SUPREMACY"
+		desc = "MILITARIST_SUPREMACY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+		}
+
+		trigger = {
+			owner = { has_policy_flag = tr_supremacy_adopt }
+		}
+	}
+	
 	# Wants Military Police
 	demand = {
 		title = "MILITARIST_MILITARY_POLICE"
@@ -197,25 +215,6 @@ imperialist = {
 
 		trigger = {
 			owner = { has_policy_flag = unrestricted_wars }
-		}
-	}
-	
-	# Wants No Retreat
-	demand = {
-		title = "MILITARIST_NO_RETREAT"
-		unfulfilled_title = "MILITARIST_NO_NO_RETREAT"
-		desc = "MILITARIST_NO_RETREAT_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { has_tradition = tr_supremacy_finish }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = no_retreat_doctrine }
 		}
 	}
 	
