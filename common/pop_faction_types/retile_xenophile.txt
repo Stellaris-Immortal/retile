@@ -90,6 +90,49 @@ xenoist = {
 		}	
 	}
 	
+	# Wants Citizenship
+	demand = {
+		title = "XENOPHILE_CITIZENSHIP"
+		unfulfilled_title = "XENOPHILE_NO_CITIZENSHIP"
+		desc = "XENOPHILE_CITIZENSHIP_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = {
+			exists = owner
+		}
+
+		trigger = {
+			owner = {
+				NOR = {
+					any_owned_pop = {  has_citizenship_type = { type = citizenship_limited } }
+					any_owned_pop = {  has_citizenship_type = { type = citizenship_slavery } }
+					any_owned_pop = {  has_citizenship_type = { type = citizenship_purge } }
+				}
+			}
+		}
+	}
+		
+	# Wants to Guarentee Independence
+	demand = { 
+		title = "XENOPHILE_INDEPENDENCE"
+		unfulfilled_title = "XENOPHILE_NO_INDEPENDENCE"
+		desc = "XENOPHILE_INDEPENDENCE_DESC"
+
+		fulfilled_effect = 20
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 4 }
+		}
+
+		trigger = {
+			any_country = { prev.owner = { is_guaranteeing = PREV } }
+		}
+	}
+	
 	# Wants Environmental Regulation
 	demand = {
 		title = "XENOPHILE_ENVIRONMENTAL_REGULATION"
@@ -133,9 +176,7 @@ xenoist = {
 		
 		potential = {
 			exists = owner
-			owner = {
-				any_relation = { is_country_type = primitive }
-			}
+			owner = { has_encountered_other_species = yes }
 		}
 		
 		trigger = {
@@ -154,14 +195,7 @@ xenoist = {
 		
 		potential = {
 			exists = owner
-			owner = { 
-				has_country_flag = found_presapients
-				any_planet_within_border = {
-					any_pop = {
-						is_sapient = no
-					}
-				}			
-			}
+			owner = { has_encountered_other_species = yes }
 		}
 		
 		trigger = {
@@ -223,44 +257,6 @@ xenoist = {
 		}
 	}
 	
-	# Wants Land of Opportunity
-	demand = { 
-		title = "XENOPHILE_OPPORTUNITY"
-		unfulfilled_title = "XENOPHILE_NO_OPPORTUNITY"
-		desc = "XENOPHILE_OPPORTUNITY_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { has_tradition = tr_diplomacy_secure_shipping }
-		}
-
-		trigger = {
-			owner = { has_edict = land_of_opportunity }
-		}
-	}
-	
-	# Wants Celebration Campaign
-	demand = { 
-		title = "XENOPHILE_CELEBRATION_CAMPAIGN"
-		unfulfilled_title = "XENOPHILE_NO_CELEBRATION_CAMPAIGN"
-		desc = "XENOPHILE_CELEBRATION_CAMPAIGN_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { has_technology = tech_colonial_centralization }
-		}
-
-		trigger = {
-			owner = { has_edict = celebration_campaign }
-		}
-	}
-	
 	# Wants Migration Treaties
 	demand = {
 		title = "XENOPHILE_MIGRATION_TREATIES"
@@ -293,30 +289,24 @@ xenoist = {
 		}
 	}
 	
-	# Wants Full Citizenship for Aliens
-	demand = {
-		title = "XENOPHILE_ALIEN_CITIZENSHIP"
-		unfulfilled_title = "XENOPHILE_NO_ALIEN_CITIZENSHIP"
-		desc = "XENOPHILE_ALIEN_CITIZENSHIP_DESC"
+	# Hates Rival
+	demand = { 
+		title = "XENOPHILE_RIVAL"
+		unfulfilled_title = "XENOPHILE_NO_RIVAL"
+		desc = "XENOPHILE_RIVAL_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
 
 		potential = { 
 			exists = owner
-			any_owned_pop = {
-				NOT = { is_same_species = owner_species }
-				is_robot_pop = no
-				is_sapient = yes
-				is_being_purged = no
-			}
+			owner = { num_communications > 2 }
 		}
 
 		trigger = {
-			owner = {  
-				any_owned_pop = { 
-					NOT = { is_same_species = owner_species }
-					has_citizenship_type = { type = citizenship_full }
+			NOT = {
+				any_country = {
+					prev.owner = { is_rival = PREV }
 				}
 			}
 		}
@@ -349,14 +339,6 @@ xenoist = {
 		
 		potential = {
 			exists = owner
-			owner = { 
-				has_country_flag = found_presapients
-				any_planet_within_border = {
-					any_pop = {
-						is_sapient = no
-					}
-				}			
-			}
 		}
 		
 		trigger = {
@@ -405,113 +387,6 @@ xenoist = {
 		
 		trigger = {
 			owner = { NOT = { has_policy_flag = border_policy_closed } }
-		}
-	}
-	
-	# Hates Geoengineering
-	demand = {
-		title = "XENOPHILE_GEOENGINEERING"
-		unfulfilled_title = "XENOPHILE_NO_GEOENGINEERING"
-		desc = "XENOPHILE_GEOENGINEERING_DESC"
-		
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner 
-			owner = { has_tradition = tr_expansion_a_new_life }
-		}
-
-		trigger = {
-			owner = { NOT = { has_edict = climate_engineering } }
-		}
-	}
-	
-	# Hates Rival
-	demand = { 
-		title = "XENOPHILE_RIVAL"
-		unfulfilled_title = "XENOPHILE_NO_RIVAL"
-		desc = "XENOPHILE_RIVAL_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			NOT = {
-				any_country = {
-					prev.owner = { is_rival = PREV }
-				}
-			}
-		}
-	}
-	
-	# Hates Alien not Free
-	demand = {
-		title = "XENOPHILE_ALIEN_FREEDOM"
-		unfulfilled_title = "XENOPHILE_NO_ALIEN_FREEDOM"
-		desc = "XENOPHILE_ALIEN_FREEDOM_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			any_owned_pop = {
-				NOT = { is_same_species = owner_species }
-				is_robot_pop = no
-				is_sapient = yes
-				is_being_purged = no
-			}
-		}
-
-		trigger = {
-			owner = { 
-				NOT = { 
-					any_owned_pop = { 
-						NOT = { is_same_species = owner_species }
-						OR = { 
-							has_citizenship_type = { type = citizenship_slavery }
-							has_citizenship_type = { type = citizenship_purge }
-						}
-					}
-				}
-			}
-		}
-	}
-	
-	# Hates Alien Restrictions
-	demand = {
-		title = "XENOPHILE_ALIEN_RESTRICTION"
-		unfulfilled_title = "XENOPHILE_NO_ALIEN_RESTRICTION"
-		desc = "XENOPHILE_ALIEN_RESTRICTION_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			any_owned_pop = {
-				NOT = { is_same_species = owner_species }
-				is_robot_pop = no
-				is_sapient = yes
-				is_being_purged = no
-			}
-		}
-
-		trigger = {
-			owner = { 
-				NOT = { 
-					any_owned_pop = { 
-						NOT = { is_same_species = owner_species }
-						has_colonization_control = { value = no country =root }
-					}
-				}
-			}
 		}
 	}
 	

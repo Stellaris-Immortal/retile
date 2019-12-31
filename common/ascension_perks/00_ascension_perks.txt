@@ -507,7 +507,7 @@ ap_mastery_of_nature = {
 	}
 	
 	on_enabled = {
-		custom_tooltip = "describe_decision_mastery_of_nature"
+		custom_tooltip = "decision_mastery_of_nature_tooltip"
 		if = {
 			limit = { 
 				NOT = { has_technology = tech_climate_restoration }
@@ -1183,21 +1183,24 @@ ap_galactic_wonders_megacorp = {
 		}
 	}
 	on_enabled = {
-		if = {
+		custom_tooltip = "add_research_options_galactic_wonders_megacorp"
+		hidden_effect = {
+			if = {
+					limit = { 
+						NOT = { has_technology = tech_mega_engineering }
+					}
+					add_research_option = tech_mega_engineering
+					add_tech_progress = {
+						tech = tech_mega_engineering
+						progress = 0.50
+					}
+				}
+			if = {
 				limit = { 
-					NOT = { has_technology = tech_mega_engineering }
+					NOT = { has_technology = tech_matter_decompressor }
 				}
-				add_research_option = tech_mega_engineering
-				add_tech_progress = {
-					tech = tech_mega_engineering
-					progress = 0.50
-				}
+				add_research_option = tech_matter_decompressor
 			}
-		if = {
-			limit = { 
-				NOT = { has_technology = tech_matter_decompressor }
-			}
-			add_research_option = tech_matter_decompressor
 		}
 	}			
 	
