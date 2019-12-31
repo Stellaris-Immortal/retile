@@ -114,6 +114,25 @@ imperialist = {
 		}
 	}
 	
+	# Wants War
+	demand = { 
+		title = "MILITARIST_WAR"
+		unfulfilled_title = "MILITARIST_NO_WAR"
+		desc = "MILITARIST_WAR_DESC"
+
+		fulfilled_effect = 20
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 1 }
+		}
+
+		trigger = {
+			owner = { is_at_war = yes }
+		}
+	}
+	
 	# Wants Supremacy
 	demand = {
 		title = "MILITARIST_SUPREMACY"
@@ -128,7 +147,7 @@ imperialist = {
 		}
 
 		trigger = {
-			owner = { has_policy_flag = tr_supremacy_adopt }
+			owner = { has_tradition = tr_supremacy_adopt }
 		}
 	}
 	
@@ -217,22 +236,49 @@ imperialist = {
 			owner = { has_policy_flag = unrestricted_wars }
 		}
 	}
-	# Wants War
+	
+	# Hates Pacification
 	demand = { 
-		title = "MILITARIST_WAR"
-		unfulfilled_title = "MILITARIST_NO_WAR"
-		desc = "MILITARIST_WAR_DESC"
+		title = "MILITARIST_PACIFICATION"
+		unfulfilled_title = "MILITARIST_NO_PACIFICATION"
+		desc = "MILITARIST_PACIFICATION_DESC"
 
-		fulfilled_effect = 20
-		unfulfilled_effect = -1
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 1 }
+			owner = { 
+				OR = {
+					has_country_flag = amoeba_encountered
+					has_country_flag = crystal_encountered
+				}
+			}
 		}
 
 		trigger = {
-			owner = { is_at_war = yes }
+			owner = { 
+				NOR = { 
+					has_modifier = pacified_amoebas
+					has_modifier = pacified_crystals
+				}
+			}
+		}
+	}
+	
+	# Hates Diplomacy
+	demand = { 
+		title = "MILITARIST_DIPLOMACY"
+		unfulfilled_title = "MILITARIST_NO_DIPLOMACY"
+		desc = "MILITARIST_DIPLOMACY_DESC"
+
+		fulfilled_effect = -10
+		unfulfilled_effect = 1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_tradition = tr_diplomacy_adopt }
 		}
 	}
 	
@@ -319,59 +365,6 @@ imperialist = {
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = no_wars } }
-		}
-	}
-	
-	# Hates Non-Agression Pacts
-	demand = { 
-		title = "MILITARIST_NONAGGRESSION"
-		unfulfilled_title = "MILITARIST_NO_NONAGGRESSION"
-		desc = "MILITARIST_NONAGGRESSION_DESC"
-
-		fulfilled_effect = -10
-		unfulfilled_effect = 1
-
-		potential = { 
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			any_country = {
-				OR = {
-					prev.owner = { has_non_aggression_pact = PREV }
-					prev.owner = { has_defensive_pact = PREV }
-				}
-			}
-		}
-	}
-
-	# Hates Pacification
-	demand = { 
-		title = "MILITARIST_PACIFICATION"
-		unfulfilled_title = "MILITARIST_NO_PACIFICATION"
-		desc = "MILITARIST_PACIFICATION_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { 
-				OR = {
-					has_country_flag = amoeba_encountered
-					has_country_flag = crystal_encountered
-				}
-			}
-		}
-
-		trigger = {
-			owner = { 
-				NOR = { 
-					has_modifier = pacified_amoebas
-					has_modifier = pacified_crystals
-				}
-			}
 		}
 	}
 
