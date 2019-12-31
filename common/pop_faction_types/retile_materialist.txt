@@ -101,13 +101,6 @@ technologist = {
 
 		potential = {
 			exists = owner
-			owner = {
-				OR = {
-					has_technology = tech_strategic_coordination
-					has_technology = tech_science_nexus
-					has_any_megastructure_in_empire = yes
-				}
-			}
 		}
 
 		trigger = {
@@ -119,6 +112,24 @@ technologist = {
 					any_owned_megastructure = { is_megastructure_type = mega_art_installation_3 }
 					any_owned_megastructure = { is_megastructure_type = mega_art_installation_restored }
 				}
+			}
+		}
+	}
+	
+	# Wants Prosperity
+	demand = { 
+		title = "MATERIALIST_PROSPERITY"
+		unfulfilled_title = "MATERIALIST_NO_PROSPERITY"
+		desc = "MATERIALIST_PROSPERITY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				has_tradition = tr_prosperity_adopt
 			}
 		}
 	}
@@ -201,7 +212,6 @@ technologist = {
 
 		potential = { 
 			exists = owner
-			owner = { has_technology = tech_capacity_boosters }
 		}
 
 		trigger = {
@@ -209,99 +219,21 @@ technologist = {
 		}
 	}
 	
-	# Wants Space Campaign
+	# Wants Active Interference
 	demand = { 
-		title = "MATERIALIST_SPACE_CAMPAIGN"
-		unfulfilled_title = "MATERIALIST_NO_SPACE_CAMPAIGN"
-		desc = "MATERIALIST_SPACE_CAMPAIGN_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_edict = space_campaign }
-		}
-	}
-	
-	# Wants Research Grants
-	demand = { 
-		title = "MATERIALIST_RESEARCH_GRANTS"
-		unfulfilled_title = "MATERIALIST_NO_RESEARCH_GRANTS"
-		desc = "MATERIALIST_RESEARCH_GRANTS_DESC"
+		title = "MATERIALIST_INTERFERENCE"
+		unfulfilled_title = "MATERIALIST_NO_INTERFERENCE"
+		desc = "MATERIALIST_INTERFERENCE_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
 
 		potential = { 
 			exists = owner
-			owner = { has_tradition = tr_discovery_faith_in_science }
 		}
 
 		trigger = {
-			owner = { has_edict = research_focus }
-		}
-	}
-
-	# Wants Research Agreement
-	demand = {
-		title = "MATERIALIST_RESEARCH_AGREEMENT"
-		unfulfilled_title = "MATERIALIST_NO_RESEARCH_AGREEMENT"
-		desc = "MATERIALIST_RESEARCH_AGREEMENT_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = {
-			exists = owner
-			owner = {
-				num_communications > 2
-			}
-		}
-
-		trigger = {
-			owner = {
-				count_country = {
-					count > 0
-					limit = {
-						exists = this
-						root.owner = { has_research_agreement = prev }
-					}
-				}
-			}
-		}
-	}
-	
-	# Wants Commercial Pact
-	demand = {
-		title = "MATERIALIST_COMMERCIAL_PACT"
-		unfulfilled_title = "MATERIALIST_NO_COMMERCIAL_PACT"
-		desc = "MATERIALIST_COMMERCIAL_PACT_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = {
-			exists = owner
-			owner = {
-				num_communications > 2
-			}
-		}
-
-		trigger = {
-			owner = {
-				OR = {
-					count_country = {
-						count > 0
-						limit = {
-							exists = this
-							root.owner = { has_commercial_pact = prev }
-						}
-					}
-					has_federation = yes
-				}
-			}
+			owner = { has_policy_flag = interference_active }
 		}
 	}
 	
@@ -391,6 +323,24 @@ technologist = {
 		}
 	}
 	
+	# Hates Harmong
+	demand = { 
+		title = "MATERIALIST_HARMONY"
+		unfulfilled_title = "MATERIALIST_NO_HARMONY"
+		desc = "MATERIALIST_HARMONY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				NOT = { has_tradition = tr_harmony_adopt }
+			}
+		}
+	}
+	
 	# Hates Environmental Protections
 	demand = { 
 		title = "MATERIALIST_ENVIRONMENTAL_PROTECTION"
@@ -443,22 +393,21 @@ technologist = {
 		}
 	}
 	
-	# Hates Celebration Campaign
-	demand = { 
-		title = "MATERIALIST_CELEBRATION_CAMPAIGN"
-		unfulfilled_title = "MATERIALIST_NO_CELEBRATION_CAMPAIGN"
-		desc = "MATERIALIST_CELEBRATION_CAMPAIGN_DESC"
+	# Hates Passive Interference
+	demand = {
+		title = "MATERIALIST_PASSIVE"
+		unfulfilled_title = "MATERIALIST_NO_PASSIVE"
+		desc = "MATERIALIST_PASSIVE_DESC"
 
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
 
 		potential = { 
 			exists = owner
-			owner = { has_technology = tech_colonial_centralization }
 		}
 
 		trigger = {
-			NOT = { owner = { has_edict = celebration_campaign } }
+			NOT = { owner = { has_policy_flag = interference_passive } }
 		}
 	}
 	
@@ -478,35 +427,6 @@ technologist = {
 				OR = {
 					any_owned_pop = { has_living_standard = { type = living_standard_shared_burden } }
 					any_owned_pop = { has_living_standard = { type = living_standard_subsistence } }
-				}
-			}
-		}
-	}
-	
-	# Hates Holy Worlds
-	demand = {
-		title = "MATERIALIST_HOLY_WORLD"
-		unfulfilled_title = "MATERIALIST_NO_HOLY_WORLD"
-		desc = "MATERIALIST_HOLY_WORLD_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = {
-			exists = owner
-			owner = { has_ascension_perk = ap_consecrated_worlds }
-		}
-
-		trigger = {
-			owner = {
-				any_planet_within_border = {
-					is_colony = no
-					NOR = {
-						has_modifier = consecrated_quality_1
-						has_modifier = consecrated_quality_2
-						has_modifier = consecrated_quality_3
-						has_modifier = consecrated_quality_4
-					}
 				}
 			}
 		}

@@ -129,7 +129,12 @@ fleet_event = {
 					owner = { is_same_value = root.owner }
 				}
 				any_system_planet = {
-					habitable_planet = yes
+					OR = {
+						habitable_planet = yes
+						is_planet_class = pc_barren
+						is_planet_class = pc_barren_cold
+						is_planet_class = pc_toxic
+					}
 					is_colony = no
 					has_anomaly = no
 					NOT = { exists = archaeological_site }
@@ -242,7 +247,12 @@ fleet_event = {
 			max_steps = 10
 			random_system_planet = {
 				limit = {
-					habitable_planet = yes
+					OR = {
+						habitable_planet = yes
+						is_planet_class = pc_barren
+						is_planet_class = pc_barren_cold
+						is_planet_class = pc_toxic
+					}
 					has_anomaly = no
 					is_colony = no
 					NOT = { exists = archaeological_site }
@@ -316,7 +326,12 @@ fleet_event = {
 			max_steps = 10
 			random_system_planet = {
 				limit = {
-					habitable_planet = yes
+					OR = {
+						habitable_planet = yes
+						is_planet_class = pc_barren
+						is_planet_class = pc_barren_cold
+						is_planet_class = pc_toxic
+					}
 					has_anomaly = no
 					is_colony = no
 					NOT = { exists = archaeological_site }
@@ -390,7 +405,12 @@ fleet_event = {
 			max_steps = 10
 			random_system_planet = {
 				limit = {
-					habitable_planet = yes
+					OR = {
+						habitable_planet = yes
+						is_planet_class = pc_barren
+						is_planet_class = pc_barren_cold
+						is_planet_class = pc_toxic
+					}
 					has_anomaly = no
 					is_colony = no
 					NOT = { exists = archaeological_site }
