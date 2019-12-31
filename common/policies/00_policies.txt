@@ -106,9 +106,9 @@ piracy = {
 
 war_philosophy = {
 
-	allow = {
-		is_at_war = no # Not allowed to change policies in this group while at war
-	}
+	potential = { has_tradition = tr_supremacy_overwhelming_force }
+
+	allow = { is_at_war = no }
 	
 	option = {
 		name = "unrestricted_wars"
@@ -346,6 +346,8 @@ orbital_bombardment = {
 	option = {
 		name = "orbital_bombardment_armageddon"
 		policy_flags = { orbital_bombardment_armageddon }
+		
+		potential = { has_tradition = tr_supremacy_great_game }
 		
 		AI_weight = {
 			modifier = {
