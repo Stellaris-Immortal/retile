@@ -159,42 +159,22 @@ totalitarian = {
 			owner = { has_policy_flag = appropriation_allowed }
 		}
 	}
-
-	# Wants AI Servitude
-	demand = { 
-		title = "AUTHORITARIAN_AI_SERVITUDE"
-		unfulfilled_title = "AUTHORITARIAN_NO_AI_SERVITUDE"
-		desc = "AUTHORITARIAN_AI_SERVITUDE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = {
-			exists = owner
-			owner = { can_set_ai_policy = yes }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = ai_servitude }
-		}
-	}
 	
-	# Wants Ony Citizen Refugees
-	demand = { 
-		title = "AUTHORITARIAN_CITIZEN_REFUGEES"
-		unfulfilled_title = "AUTHORITARIAN_NO_CITIZEN_REFUGEES"
-		desc = "AUTHORITARIAN_CITIZEN_REFUGEES_DESC"
-
+	# Wants Purge Hunted
+	demand = {
+		title = "AUTHORITARIAN_HUNTING"
+		unfulfilled_title = "AUTHORITARIAN_NO_HUNTING"
+		desc = "AUTHORITARIAN_HUNTING_DESC"
+		
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
 
-		potential = {
+		potential = { 
 			exists = owner
-			owner = { has_encountered_other_species = yes }
 		}
 
 		trigger = {
-			owner = { has_policy_flag = refugees_only_citizens }
+			owner = { has_policy_flag = pre_sapients_eat }
 		}
 	}
 	
@@ -209,48 +189,10 @@ totalitarian = {
 
 		potential = {
 			exists = owner
-			owner = { NOT = { is_subject_type = signatory } }
 		}
 
 		trigger = {
 			owner = { has_policy_flag = slavery_allowed }
-		}
-	}
-	
-	# Wants Anti-Crime Campaign
-	demand = { 
-		title = "AUTHORITARIAN_ANTICRIME_CAMPAIGN"
-		unfulfilled_title = "AUTHORITARIAN_NO_ANTICRIME_CAMPAIGN"
-		desc = "AUTHORITARIAN_ANTICRIME_CAMPAIGN_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = {
-			exists = owner
-		}
-
-		trigger = {
-			owner = { has_edict = anticrime_campaign }
-		}
-	}
-	
-	# Wants Propaganda
-	demand = { 
-		title = "AUTHORITARIAN_PROPAGANDA"
-		unfulfilled_title = "AUTHORITARIAN_NO_PROPAGANDA"
-		desc = "AUTHORITARIAN_PROPAGANDA_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = {
-			exists = owner
-			owner = { has_tradition = tr_domination_workplace_motivators }
-		}
-
-		trigger = {
-			owner = { has_edict = information_quarantine }
 		}
 	}
 	
@@ -270,46 +212,6 @@ totalitarian = {
 
 		trigger = {
 			owner = { is_overlord = yes }
-		}
-	}
-	
-	# Wants Stratified Society
-	demand = {
-		title = "AUTHORITARIAN_STRATIFICATION"
-		unfulfilled_title = "AUTHORITARIAN_NO_STRATIFICATION"
-		desc = "AUTHORITARIAN_STRATIFICATION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = {
-			exists = owner
-		}
-
-		trigger = {
-			owner = {
-				any_owned_pop = { has_living_standard = { type = living_standard_stratified } }
-			}
-		}
-	}
-	
-	# Wants Slaves
-	demand = {
-		title = "AUTHORITARIAN_SLAVES"
-		unfulfilled_title = "AUTHORITARIAN_NO_SLAVES"
-		desc = "AUTHORITARIAN_SLAVES_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = {
-			exists = owner
-		}
-
-		trigger = {
-			owner = {
-				any_owned_pop = { has_citizenship_type = { type = citizenship_slavery } }
-			}
 		}
 	}
 	
@@ -393,25 +295,6 @@ totalitarian = {
 		}
 	}
 	
-	# Hates AI Full Rights
-	demand = {
-		title = "AUTHORITARIAN_AI_FULL_RIGHTS"
-		unfulfilled_title = "AUTHORITARIAN_NO_AI_FULL_RIGHTS"
-		desc = "AUTHORITARIAN_APPROPRIATION_AI_FULL_RIGHTS_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { can_set_ai_policy = yes }
-		}
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = ai_full_rights } }
-		}
-	}
-	
 	# Hates Slavery Ban
 	demand = {
 		title = "AUTHORITARIAN_SLAVERY_BAN"
@@ -425,47 +308,6 @@ totalitarian = {
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = slavery_not_allowed } }
-		}
-	}
-	
-	# Hates Healthcare Campaign
-	demand = { 
-		title = "AUTHORITARIAN_HEALTHCARE_CAMPAIGN"
-		unfulfilled_title = "AUTHORITARIAN_NO_HEALTHCARE_CAMPAIGN"
-		desc = "AUTHORITARIAN_HEALTHCARE_CAMPAIGN_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = {
-			exists = owner
-			owner = { has_technology = tech_planetary_unification }
-		}
-
-		trigger = {
-			owner = { NOT = { has_edict = healthcare_campaign } }
-		}
-	}
-	
-	# Hates Welfare
-	demand = {
-		title = "AUTHORITARIAN_WELFARE"
-		unfulfilled_title = "AUTHORITARIAN_NO_WELFARE"
-		desc = "AUTHORITARIAN_WELFARE_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				NOR = {
-					any_owned_pop = { has_living_standard = { type = living_standard_good } }
-					any_owned_pop = { has_living_standard = { type = living_standard_shared_burden } }
-					any_owned_pop = { has_living_standard = { type = living_standard_utopian } }
-				}
-			}
 		}
 	}
 

@@ -81,6 +81,27 @@ isolationist = {
 		}
 	}
 	
+	# Wants Rival
+	demand = { 
+		title = "XENOPHOBE_RIVAL"
+		unfulfilled_title = "XENOPHOBE_NO_RIVAL"
+		desc = "XENOPHOBE_RIVAL_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 2 }
+		}
+
+		trigger = {
+			any_country = {
+				prev.owner = { is_rival = PREV }
+			}
+		}
+	}
+	
 	# Wants Pop Controls
 	demand = {
 		title = "XENOPHOBE_POP_CONTROLS"
@@ -108,7 +129,7 @@ isolationist = {
 
 		potential = {
 			exists = owner
-			owner = { has_tradition = tr_diplomacy_open_markets }
+			owner = { has_technology = tech_adaptive_bureaucracy }
 		}
 
 		trigger = {
@@ -143,12 +164,7 @@ isolationist = {
 
 		potential = { 
 			exists = owner
-			owner = {
-				has_country_flag = found_presapients
-				any_planet_within_border = {
-					any_pop = { is_sapient = no }
-				}
-			}
+			owner = { has_encountered_other_species = yes }
 		}
 
 		trigger = {
@@ -191,168 +207,11 @@ isolationist = {
 		}
 	}
 	
-	# Wants Geoengineering
-	demand = {
-		title = "XENOPHOBE_GEOENGINEERING"
-		unfulfilled_title = "XENOPHOBE_NO_GEOENGINEERING"
-		desc = "XENOPHOBE_GEOENGINEERING_DESC"
-		
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner 
-			owner = { has_tradition = tr_expansion_a_new_life }
-		}
-
-		trigger = {
-			owner = { has_edict = climate_engineering }
-		}
-	}
-	
-	# Wants Rival
-	demand = { 
-		title = "XENOPHOBE_RIVAL"
-		unfulfilled_title = "XENOPHOBE_NO_RIVAL"
-		desc = "XENOPHOBE_RIVAL_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			any_country = {
-				prev.owner = { is_rival = PREV }
-			}
-		}
-	}
-	
-	# Wants Insult
-	demand = { 
-		title = "XENOPHOBE_INSULT"
-		unfulfilled_title = "XENOPHOBE_NO_INSULT"
-		desc = "XENOPHOBE_INSULT_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			any_country = {
-				has_opinion_modifier = { who = prev.owner modifier = opinion_insult }
-			}
-		}
-	}
-	
-	# Wants Alien Slaves
-	demand = {
-		title = "XENOPHOBE_ALIEN_SLAVES"
-		unfulfilled_title = "XENOPHOBE_NO_ALIEN_SLAVES"
-		desc = "XENOPHOBE_ALIEN_SLAVES_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			any_owned_pop = {
-				NOT = { is_same_species = owner_species }
-				is_robot_pop = no
-				is_sapient = yes
-				is_being_purged = no
-			}
-		}
-
-		trigger = {
-			owner = { 
-				OR = { 
-					any_owned_pop = { 
-						NOT = { is_same_species = owner_species }
-						has_citizenship_type = { type = citizenship_slavery }
-					}
-				}
-			}
-		}
-	}
-	
-	# Wants the Purge Aliens
-	demand = {
-		title = "XENOPHOBE_ALIEN_PURGE"
-		unfulfilled_title = "XENOPHOBE_NO_ALIEN_PURGE"
-		desc = "XENOPHOBE_ALIEN_PURGES_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			any_owned_pop = {
-				NOT = { is_same_species = owner_species }
-				is_robot_pop = no
-				is_sapient = yes
-				is_being_purged = no
-			}
-		}
-
-		trigger = {
-			owner = { 
-				OR = { 
-					any_owned_pop = { 
-						NOT = { is_same_species = owner_species }
-						has_citizenship_type = { type = citizenship_purge }
-					}
-				}
-			}
-		}
-	}
-	
-	# Wants Alien Opression
-	demand = {
-		title = "XENOPHOBE_ALIEN_OPRESSION"
-		unfulfilled_title = "XENOPHOBE_NO_ALIEN_OPRESSION"
-		desc = "XENOPHOBE_ALIEN_OPRESSION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			any_owned_pop = {
-				NOT = { is_same_species = owner_species }
-				is_robot_pop = no
-				is_sapient = yes
-				is_being_purged = no
-			}
-		}
-
-		trigger = {
-			owner = { 
-				OR = { 
-					any_owned_pop = { 
-						NOT = { is_same_species = owner_species }
-						OR = { 
-							has_citizenship_rights = no
-							has_citizenship_type = { type = living_standard_none  }
-						}
-					}
-				}
-			}
-		}
-	}
-	
 	# Hates No Pop Controls
 	demand = {
 		title = "XENOPHOBE_NO_POP_CONTROL"
 		unfulfilled_title = "XENOPHOBE_NO_NO_POP_CONTROL"
-		desc = "XENOPHOBE_POP_NO_CONTROL_DESC"
+		desc = "XENOPHOBE_NO_POP_CONTROL_DESC"
 		
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
@@ -360,7 +219,7 @@ isolationist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { NOT = { has_policy_flag = population_controls_allowed } }
+			owner = { NOT = { has_policy_flag = population_controls_not_allowed } }
 		}
 	}
 	
@@ -368,7 +227,7 @@ isolationist = {
 	demand = {
 		title = "XENOPHOBE_EMBASSIES"
 		unfulfilled_title = "XENOPHOBE_NO_EMBASSIES"
-		desc = "XENOPHOBE_POP_EMBASSIES_DESC"
+		desc = "XENOPHOBE_NO_EMBASSIES_DESC"
 		
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
@@ -463,63 +322,6 @@ isolationist = {
 		}
 	}
 	
-	# Hates Land of Opportunity
-	demand = { 
-		title = "XENOPHOBE_OPPORTUNITY"
-		unfulfilled_title = "XENOPHOBE_NO_OPPORTUNITY"
-		desc = "XENOPHOBE_OPPORTUNITY_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_tradition = tr_diplomacy_secure_shipping }
-		}
-
-		trigger = {
-			owner = { NOT = { has_edict = land_of_opportunity } }
-		}
-	}
-	
-	# Hates Diplomatic Grants
-	demand = { 
-		title = "XENOPHOBE_DIPLOMAT_GRANTS"
-		unfulfilled_title = "XENOPHOBE_NO_DIPLOMAT_GRANTS"
-		desc = "XENOPHOBE_DIPLOMAT_GRANTS_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_tradition = tr_diplomacy_insider_trading }
-		}
-
-		trigger = {
-			owner = { NOT = { has_edict = diplomatic_grants } }
-		}
-	}
-
-	# Hates Federation
-	demand = {
-		title = "XENOPHOBE_NO_FEDERATION"
-		unfulfilled_title = "XENOPHOBE_NO_NO_FEDERATION"
-		desc = "XENOPHOBE_NO_FEDERATION_DESC"
-		
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-		
-		potential = {
-			exists = owner
-			owner = { num_communications > 4 }
-		}
-		
-		trigger = {
-			owner = { NOT = { has_federation = yes } }
-		}
-	}
-	
 	# Hates Open Borders
 	demand = {
 		title = "XENOPHOBE_OPEN_BORDERS"
@@ -544,107 +346,6 @@ isolationist = {
 				}
 			}
 		}
-	}
-	
-	# Hates Migration Treaties
-	demand = {
-		title = "XENOPHOBE_MIGRATION_TREATIES"
-		unfulfilled_title = "XENOPHOBE_NO_MIGRATION_TREATIES"
-		desc = "XENOPHOBE_MIGRATION_TREATIES_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = {
-			exists = owner
-			owner = {
-				NOT = { has_valid_civic = civic_fanatic_purifiers }
-				num_communications > 4
-			}
-		}
-
-		trigger = {
-			owner = {
-				NOT = {
-					any_country = {
-						is_country_type = default
-						has_communications = root.owner
-						OR = {
-							has_diplo_migration_treaty = root.owner
-							root = {
-								owner = {
-									has_diplo_migration_treaty = prevprev
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	
-	# Hates Alien Ruler
-	demand = {
-		title = "XENOPHOBE_RULER_SAME_SPECIES"
-		unfulfilled_title = "XENOPHOBE_NO_RULER_SAME_SPECIES"
-		desc = "XENOPHOBE_RULER_SAME_SPECIES_DESC"
-		
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-		
-		potential = {
-			exists = owner
-			owner = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
-		}
-		
-		trigger = {
-			owner = {
-				exists = ruler
-				ruler = { is_same_species = owner_species }
-			}
-		}
-	}
-
-	# Hates Free Aliens
-	demand = {
-		title = "XENOPHOBE_FREE_ALIENS"
-		unfulfilled_title = "XENOPHOBE_NO_FREE_ALIENS"
-		desc = "XENOPHOBE_FREE_ALIENS_DESC"
-		
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-		
-		potential = {
-			exists = owner
-			owner = {
-				NOT = { has_valid_civic = civic_fanatic_purifiers }
-				any_owned_pop = {
-					NOT = { is_same_species = owner_species }
-					is_robot_pop = no
-					is_sapient = yes
-					is_being_purged = no
-				}
-			}
-		}
-		
-		trigger = {
-			owner = {
-				NOT = {
-					any_owned_pop = {
-						NOT = {
-							is_same_species = root.owner
-						}
-						is_robot_pop = no
-						is_sapient = yes
-						has_citizenship_type = { type = citizenship_full }
-					}
-				}
-			}
-		}
-	}
-	
-	on_create = {
-		pop_faction_event = { id = factions.1 }
 	}
 	
 	on_destroy = {

@@ -194,7 +194,7 @@ imperialist = {
 
 		potential = { 
 			exists = owner
-			owner = { has_tradition = tr_diplomacy_open_markets }
+			owner = { has_technology = tech_adaptive_bureaucracy }
 		}
 
 		trigger = {
@@ -217,26 +217,6 @@ imperialist = {
 			owner = { has_policy_flag = unrestricted_wars }
 		}
 	}
-	
-	# Wants War Games
-	demand = { 
-		title = "MILITARIST_WAR_GAMES"
-		unfulfilled_title = "MILITARIST_NO_WAR_GAMES"
-		desc = "MILITARIST_WAR_GAMES_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { has_tradition = tr_supremacy_war_games }
-		}
-
-		trigger = {
-			owner = { has_edict = war_games }
-		}
-	}
-	
 	# Wants War
 	demand = { 
 		title = "MILITARIST_WAR"
@@ -253,22 +233,6 @@ imperialist = {
 
 		trigger = {
 			owner = { is_at_war = yes }
-		}
-	}
-	
-	# Wants Military Leaders
-	demand = {
-		title = "MILITARIST_LEADERS"
-		unfulfilled_title = "MILITARIST_NO_LEADERS"
-		desc = "MILITARIST_LEADERS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { any_owned_pop = { can_be_military_leader = yes } }
 		}
 	}
 	
@@ -331,7 +295,7 @@ imperialist = {
 
 		potential = { 
 			exists = owner
-			owner = { has_tradition = tr_diplomacy_open_markets }
+			owner = { has_technology = tech_adaptive_bureaucracy }
 		}
 
 		trigger = {
@@ -381,29 +345,7 @@ imperialist = {
 			}
 		}
 	}
-	
-	# Hates No Military Service
-	demand = {
-		title = "MILITARIST_SERVICE"
-		unfulfilled_title = "MILITARIST_NO_SERVICE"
-		desc = "MILITARIST_SERVICE_DESC"
 
-		fulfilled_effect = -10
-		unfulfilled_effect = 1
-
-		potential = {
-			exists = owner
-		}
-
-		trigger = {
-			owner = { any_owned_pop = { can_be_soldier = no } }
-		}
-	}
-	
-	on_create = {
-		pop_faction_event = { id = factions.1 }
-	}
-	
 	# Hates Pacification
 	demand = { 
 		title = "MILITARIST_PACIFICATION"

@@ -11,7 +11,7 @@ supremacist = {
 	resources = {
 		category = pop_factions
 		produces = {
-			influence = 2
+			influence = 1
 		}		
 	}
 
@@ -156,21 +156,36 @@ supremacist = {
 		}
 	}
 	
-	# Wants Experienced Ruler
+	# Wants Free Speech
 	demand = {
-		title = "CENTRIST_GOVERNOR"
-		unfulfilled_title = "CENTRIST_NO_GOVERNOR"
-		desc = "CENTRIST_GOVERNOR_DESC"
+		title = "CENTRIST_FREE_SPEECH"
+		unfulfilled_title = "CENTRIST_NO_FREE_SPEECH"
+		desc = "CENTRIST_FREE_SPEECH_DESC"
 
-		fulfilled_effect = -10
-		unfulfilled_effect = 10
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
 		trigger = {
 			owner = {
-				any_sector = {
-					NOT = { exists = leader }
+				NOR = {
+					has_modifier = promoted_authoritarian
+					has_modifier = suppressed_authoritarian
+					has_modifier = promoted_egalitarian
+					has_modifier = suppressed_egalitarian
+					has_modifier = promoted_xenophile
+					has_modifier = suppressed_xenophile
+					has_modifier = promoted_xenophobe
+					has_modifier = suppressed_xenophobe
+					has_modifier = promoted_militarist
+					has_modifier = suppressed_militarist
+					has_modifier = promoted_pacifist
+					has_modifier = suppressed_pacifist
+					has_modifier = promoted_spiritualist
+					has_modifier = suppressed_spiritualist
+					has_modifier = promoted_materialist
+					has_modifier = suppressed_materialist
 				}
 			}
 		}

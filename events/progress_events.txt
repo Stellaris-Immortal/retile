@@ -409,7 +409,10 @@ planet_event = {
 		name = "progress.3.a"
 		owner = {
 			#end_event_chain = "establish_colony"
-			add_modifier = { modifier = first_colony days = -1 }
+			if = {
+				limit = { NOT = { has_modifier = first_colony } }
+				add_modifier = { modifier = first_colony days = -1 }
+			}
 		}
 	}
 }
@@ -503,7 +506,7 @@ country_event = {
 				has_ethic = ethic_xenophile
 				has_ethic = ethic_fanatic_xenophile
 			}
-		}	
+		}
 	}
 	option = {
 		name = "progress.4.c"
@@ -792,6 +795,10 @@ planet_event = {
 	immediate = {
 		owner = {
 			set_country_flag = first_colony
+			if = {
+				limit = { NOT = { has_modifier = first_colony } }
+				add_modifier = { modifier = first_colony days = -1 }
+			}
 		}
 	}
 }

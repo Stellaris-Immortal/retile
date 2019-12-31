@@ -17,8 +17,10 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 	
+	trigger = { NOT = { has_global_flag = spawn_terraforming_candidiates } }
 
 	immediate = {
+		set_global_flag = spawn_terraforming_candidiates
 		every_planet = {
 			if = {
 				limit = {
@@ -106,7 +108,10 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 	
+	trigger = { NOT = { has_global_flag = spawn_retile_deposits } }
+	
 	immediate = {
+		set_global_flag = spawn_retile_deposits
 		every_planet = {
 			if = {
 				limit = { 
@@ -247,7 +252,10 @@ event = {
 	hide_window = yes
 	is_triggered_only = yes
 	
+	trigger = { NOT = { has_global_flag = spawn_sun_modifiers } }
+	
 	immediate = {
+		set_global_flag = spawn_sun_modifiers
 		every_planet = {
 			if = {
 				limit = { has_ring = yes }
