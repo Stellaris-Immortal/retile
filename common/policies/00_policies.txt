@@ -699,7 +699,7 @@ environmental = {
 		name = "environmental_deregulation"
 		
 		modifier = {
-			planet_jobs_worker_produces_mult = 0.05
+			planet_jobs_produces_mult = 0.10
 			planet_amenities_mult = 0.10
 		}
 		
@@ -747,7 +747,7 @@ environmental = {
 		name = "environmental_protection"
 		
 		modifier = {
-			planet_jobs_worker_produces_mult = -0.05
+			planet_jobs_produces_mult = -0.10
 			planet_amenities_mult = -0.10
 		}
 		
@@ -785,8 +785,7 @@ education = {
 		
 		modifier = {
 			trade_value_mult = 0.10
-			planet_jobs_upkeep_mult = 0.05
-			planet_jobs_specialist_produces_mult = -0.05
+			planet_jobs_upkeep_mult = 0.10
 		}
 		
 		policy_flags = {
@@ -845,8 +844,7 @@ education = {
 		
 		modifier = {
 			trade_value_mult = -0.10
-			planet_jobs_upkeep_mult = -0.05
-			planet_jobs_specialist_produces_mult = 0.05
+			planet_jobs_upkeep_mult = -0.10
 		}
 		
 		policy_flags = {
@@ -882,7 +880,7 @@ healthcare = {
 		
 		modifier = {
 			trade_value_mult = 0.10
-			pop_growth_speed = -0.10
+			pop_environment_tolerance = -0.10
 		}
 		
 		policy_flags = {
@@ -932,7 +930,7 @@ healthcare = {
 		
 		modifier = {
 			trade_value_mult = -0.10
-			pop_growth_speed = 0.10
+			pop_environment_tolerance = 0.10
 		}
 		
 		policy_flags = {
@@ -1414,7 +1412,30 @@ first_contact_protocol = {
 }
 
 xenodiplomacy = {
-	potential = { has_technology = tech_adaptive_bureaucracy }
+	potential = { has_technology = tech_xenodiplomacy }
+	
+	option = { 
+		name = "xenodiplomacy_default"
+		modifier = { }
+		
+		AI_weight = {
+			factor = 1
+			modifier = {
+				factor = 2
+				OR = {
+					has_ethic = ethic_materialist
+					has_ethic = ethic_fanatic_materialist
+				}				
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+				}				
+			}
+		}
+	}
 	
 	option = {
 		name = "xenodiplomacy_none"
@@ -1446,13 +1467,14 @@ xenodiplomacy = {
 		policy_flags = { xenodiplomacy_embassy }
 		modifier = { }
 		
-		valid = { 
-			has_tradition = tr_diplomacy_open_markets
+		valid = {
 			NOR = {
-				has_valid_civic = "civic_fanatic_purifiers"
-				has_valid_civic = "civic_hive_devouring_swarm"
-				has_valid_civic = "civic_machine_terminator"
-				has_valid_civic = "civic_inwards_perfection"
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_inwards_perfection
+				has_valid_civic = civic_barbaric_despoilers
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+				is_criminal_syndicate = yes
 			}
 		}
 		
@@ -1482,11 +1504,7 @@ xenodiplomacy = {
 		modifier = { }
 		
 		valid = { 
-			has_tradition = tr_diplomacy_open_markets
-			NOR = {
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-			}
+			NOT = { has_policy_flag = no_wars }
 		}
 		
 		AI_weight = {
