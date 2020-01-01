@@ -10,29 +10,6 @@
 
 @EdictDuration = 3600
 
-education_campaign = {
-	length = @EdictDuration
-	resources = {
-		category = edicts
-		cost = {
-			influence = @Edict1Cost
-		}
-	}
-
-	modifier = {
-		species_leader_exp_gain = 0.25
-		country_leader_pool_size = 1
-	}
-
-	potential = {
-		NOT = { has_ethic = ethic_gestalt_consciousness }
-	}
-
-	ai_weight = {
-		weight = 0
-	}
-}
-
 anticrime_campaign = {
 	length = @EdictDuration
 	resources = {
@@ -43,7 +20,7 @@ anticrime_campaign = {
 	}
 
 	modifier = {
-		planet_crime_add = -25
+		planet_crime_add = -35
 	}
 
 	potential = {
@@ -66,9 +43,7 @@ space_campaign = {
 
 	modifier = {
 		science_ship_survey_speed = 0.25
-		ship_archaeological_site_excavation_speed_mult = 0.25
-		ship_anomaly_research_speed_mult = 0.25
-		category_particles_research_speed_mult = 0.10
+		ship_speed_mult = 0.10
 	}
 
 	potential = {
@@ -80,28 +55,29 @@ space_campaign = {
 	}
 }
 
-healthcare_campaign = {
+recycling_campaign = {
 	length = @EdictDuration
 	resources = {
 		category = edicts
 		cost = {
-			influence = @Edict2Cost
+			influence = @Edict1Cost
 		}
 	}
 
 	modifier = {
-		pop_growth_speed = 0.10
-		leader_age = 10
-		category_biology_research_speed_mult = 0.10
+		planet_amenities_add = -50
 	}
 
 	potential = {
 		NOT = { has_ethic = ethic_gestalt_consciousness }
-		has_technology = tech_planetary_unification
+		has_technology = tech_colonial_centralization
 	}
 
 	ai_weight = {
 		weight = 0
+		modifier = {
+			weight = 0
+		}
 	}
 }
 
@@ -116,7 +92,6 @@ labor_campaign = {
 
 	modifier = {
 		planet_jobs_produces_mult = 0.10
-		category_industry_research_speed_mult = 0.1
 	}
 
 	potential = {
@@ -126,32 +101,6 @@ labor_campaign = {
 
 	ai_weight = {
 		weight = 0
-	}
-}
-
-recycling_campaign = {
-	length = @EdictDuration
-	resources = {
-		category = edicts
-		cost = {
-			influence = @Edict2Cost
-		}
-	}
-
-	modifier = {
-		planet_amenities_add = -100
-	}
-
-	potential = {
-		NOT = { has_ethic = ethic_gestalt_consciousness }
-		has_technology = tech_colonial_centralization
-	}
-
-	ai_weight = {
-		weight = 0
-		modifier = {
-			weight = 0
-		}
 	}
 }
 
@@ -178,7 +127,7 @@ celebration_campaign = {
 	}
 }
 
-construction_campaign = {
+military_campaign = {
 	length = @EdictDuration
 	resources = {
 		category = edicts
@@ -188,9 +137,9 @@ construction_campaign = {
 	}
 
 	modifier = {
-		planet_building_build_speed_mult = 0.25
-		starbase_upgrade_speed_mult = 0.25
-		category_voidcraft_research_speed_mult = 0.10
+		starbase_shipyard_build_speed_mult = 0.10
+		ship_fire_rate_mult = 0.10
+		ship_weapon_range_mult = 0.10
 	}
 
 	potential = {
@@ -208,14 +157,65 @@ bureaucratic_campaign = {
 	resources = {
 		category = edicts
 		cost = {
-			influence = @Edict2Cost
+			influence = @Edict3Cost
 		}
 	}
 
 	modifier = {
-		country_admin_cap_add = 20
-		country_starbase_influence_cost_mult = -0.15
-		country_claim_influence_cost_mult = -0.2
+		country_admin_cap_add = 12
+		empire_size_penalty_mult = -0.25
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		has_technology = tech_galactic_administration
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+diplomatic_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict3Cost
+		}
+	}
+
+	modifier = {
+		planet_immigration_pull_mult = 1
+		pop_growth_from_immigration = 0.10
+		country_trust_growth = 0.50
+		country_trust_cap_add = 20
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		has_technology = tech_galactic_administration
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+administrative_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict3Cost
+		}
+	}
+
+	modifier = {
+		leaders_upkeep_mult = -0.25
+		planet_buildings_upkeep_mult = -0.25
+		planet_districts_upkeep_mult = -0.25
+		starbases_upkeep_mult = -0.25
 	}
 
 	potential = {
