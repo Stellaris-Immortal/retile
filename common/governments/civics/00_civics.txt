@@ -257,14 +257,37 @@ civic_idealistic_foundation = {
 }
 
 civic_environmentalist = {
-	description = "civic_tooltip_environmentalist_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
 	}
+	possible = {
+		civics = {
+			NOT = { value = civic_functional_architecture }
+		}
+	}
 	random_weight = { base = 5 }
 	modifier = {
-		planet_custodians_produces_mult = 0.2
+		planet_max_districts_mult = -0.20
+		planet_amenities_mult = -0.20
+		planet_custodians_produces_mult = 0.20
+	}
+}
+
+civic_functional_architecture = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		civics = {
+			NOT = { value = civic_environmentalist }
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		planet_max_districts_mult = 0.20
+		planet_amenities_mult = 0.20
+		planet_custodians_produces_mult = -0.20
 	}
 }
 
@@ -534,19 +557,7 @@ civic_nationalistic_zeal = {
 		country_war_exhaustion_mult = -0.1
 		country_claim_influence_cost_mult = -0.1
 	}
-}
 
-civic_functional_architecture = {
-	description = "civic_tooltip_functional_architecture_effects"
-	potential = {
-		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-	}
-	random_weight = { base = 5 }
-	modifier = {
-		planet_structures_cost_mult = -0.10
-		planet_structures_upkeep_mult = -0.10
-	}
-}
 
 civic_aristocratic_elite = {
 	description = "civic_tooltip_aristocratic_elite_effects"
