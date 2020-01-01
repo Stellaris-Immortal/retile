@@ -167,25 +167,6 @@ imperialist = {
 		}
 	}
 	
-	# Wants Enemy of the State
-	demand = {
-		title = "MILITARIST_PIRACY_HOSTILE"
-		unfulfilled_title = "MILITARIST_NO_PIRACY_HOSTILE"
-		desc = "MILITARIST_PIRACY_HOSTILE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { has_technology = tech_adaptive_bureaucracy }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = piracy_hostile }
-		}
-	}
-	
 	# Wants Hostile Contact
 	demand = {
 		title = "MILITARIST_HOSTILE_CONTACT"
@@ -272,13 +253,13 @@ imperialist = {
 		unfulfilled_title = "MILITARIST_NO_DIPLOMACY"
 		desc = "MILITARIST_DIPLOMACY_DESC"
 
-		fulfilled_effect = -10
-		unfulfilled_effect = 1
+		fulfilled_effect = -1
+		unfulfilled_effect = 10
 
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_tradition = tr_diplomacy_adopt }
+			owner = { NOT = { has_tradition = tr_diplomacy_adopt } }
 		}
 	}
 	
