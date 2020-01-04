@@ -75,6 +75,12 @@ retile_apply_growth_malus = {	# country scope
 			limit = { owner = { has_policy_flag = healthcare_universal } }
 			prev = { change_variable = { which = col_count value = -0.1 } }
 		}
+		
+		# Anarchism
+		if = { 
+			limit = { owner = { has_valid_civic = civic_anarchist } }
+			prev = { change_variable = { which = col_count value = -0.2 } }
+		}
 	}
 	
 #	# Pop Sprawl Cap - Shouldn't matter any more

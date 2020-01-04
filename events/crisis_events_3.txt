@@ -617,6 +617,10 @@ country_event = {
 	option = {
 		name = ONSCREEN
 		if = {
+			limit = { NOT = { has_modifier = crisis_ascension } }
+			add_modifier = { modifier = crisis_ascension days = -1 }
+		}
+		if = {
 			limit = { has_authority = auth_machine_intelligence }
 			tooltip = {
 				enable_special_project = {

@@ -208,6 +208,7 @@ living_standard_chemical_bliss = {
 	potential = {
 		from = { has_technology = tech_subdermal_stimulation }
 		NOT = { has_trait = trait_hive_mind }
+		from = { NOT = { has_valid_civic = civic_anarchist } }
 		NOR = {
 			has_trait = trait_mechanical
 			has_trait = trait_machine_unit
@@ -261,10 +262,7 @@ living_standard_shared_burden = {
 	
 	potential = {
 		exists = from
-		OR = {
-			from = { has_valid_civic = civic_shared_burden }
-			from = { has_valid_civic = civic_socialist }
-		}
+		from = { has_valid_civic = civic_shared_burden }
 	}
 	
 	triggered_pop_modifier = {
@@ -439,8 +437,10 @@ living_standard_academic_privilege = {
 	potential = {
 		exists = from
 		from = { is_gestalt = no }
-		NOT = { from = { has_valid_civic = civic_shared_burden } }
-		NOT = { from = { has_valid_civic = civic_socialist } }
+		NOR = { 
+			from = { has_valid_civic = civic_shared_burden }
+			from = { has_valid_civic = civic_anarchist }
+		}
 		NOR = {
 			has_trait = trait_hive_mind
 			has_trait = trait_machine_unit
@@ -545,7 +545,10 @@ living_standard_good = {
 	potential = {
 		exists = from
 		from = { is_gestalt = no }
-		NOT = { from = { has_valid_civic = civic_shared_burden } }
+		NOT = { 
+			from = { has_valid_civic = civic_shared_burden }
+			from = { has_valid_civic = civic_anarchist }
+		}
 		NOR = {
 			has_trait = trait_hive_mind
 			has_trait = trait_machine_unit
@@ -653,8 +656,10 @@ living_standard_normal = {
 	potential = {
 		exists = from
 		from = { is_gestalt = no }
-		NOT = { from = { has_valid_civic = civic_shared_burden } }
-		NOT = { from = { has_valid_civic = civic_socialist } }
+		NOR = { 
+			from = { has_valid_civic = civic_shared_burden }
+			from = { has_valid_civic = civic_anarchist }
+		}
 		NOR = {
 			has_trait = trait_hive_mind
 			has_trait = trait_machine_unit
@@ -725,8 +730,10 @@ living_standard_stratified = {
 	potential = {
 		exists = from
 		from = { is_gestalt = no }
-		NOT = { from = { has_valid_civic = civic_shared_burden } }
-		NOT = { from = { has_valid_civic = civic_socialist } }
+		NOR = {
+			from = { has_valid_civic = civic_shared_burden }
+			from = { has_valid_civic = civic_anarchist }
+		}
 		NOR = {
 			has_trait = trait_hive_mind
 			has_trait = trait_machine_unit
@@ -805,8 +812,10 @@ living_standard_subsistence = {
 	
 	potential = {	
 		exists = from
-		NOT = { from = { has_valid_civic = civic_shared_burden } }
-		NOT = { from = { has_valid_civic = civic_socialist } }
+		NOR = {
+			from = { has_valid_civic = civic_shared_burden }
+			from = { has_valid_civic = civic_anarchist }
+		}
 		OR = {
 			from = { is_gestalt = no }
 			has_citizenship_type = { type = citizenship_slavery country = from }
