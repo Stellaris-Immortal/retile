@@ -39,6 +39,7 @@ pop_event = {
 	trigger = {
 		exists = owner
 		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
+		owner = { NOT = { has_valid_civic = civic_corvee_system } }
 		exists = planet
 		planet = { NOT = { has_modifier = penal_colony } }
 		NOT = { 

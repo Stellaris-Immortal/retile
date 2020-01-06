@@ -386,17 +386,34 @@ country_event = {
 			}
 			add_resource = { consumer_goods = 100 }
 		}
-	
 		if = { 
-			limit = { 
-				has_civic = civic_mechanists 
-			} 
+			limit = { has_civic = civic_aristocratic_elite } 
+			add_resource = { influence = 100 }
+		}
+		if = { 
+			limit = { has_civic = civic_warrior_culture } 
+			give_technology = { message = no tech = tech_ground_defense_planning }
+		}
+		if = { 
+			limit = { has_civic = civic_citizen_service } 
+			give_technology = { message = no tech = tech_space_force_command }
+		}
+		if = { 
+			limit = { has_civic = civic_byzantine_bureaucracy } 
+			give_technology = { message = no tech = tech_planetary_unification }
+			give_technology = { message = no tech = tech_adaptive_bureaucracy }
+		}
+		if = { 
+			limit = { has_civic = civic_mechanists } 
 			give_technology = { message = no tech = tech_powered_exoskeletons }
 			give_technology = { message = no tech = tech_robotic_workers }
 		}
 		if = { 
 			limit = { 
-				has_civic = civic_corporate_dominion 
+				OR = {
+					has_civic = civic_corporate_dominion 
+					has_civic = civic_merchant_guilds
+				}
 			}
 			give_technology = { message = no tech = tech_space_trading }
 		}
