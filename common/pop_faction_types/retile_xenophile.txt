@@ -11,9 +11,7 @@ xenoist = {
 	
 	resources = {
 		category = pop_factions
-		produces = {
-			influence = 2
-		}		
+		produces = { influence = 1 }		
 	}
 
 	is_potential = {
@@ -145,6 +143,30 @@ xenoist = {
 			}
 		}
 	}
+	
+	# Wants Diversity
+	demand = {
+		title = "XENOPHILE_DIVERSITY"
+		unfulfilled_title = "XENOPHILE_NO_DIVERSITY"
+		desc = "XENOPHILE_DIVERSITY_DESC"
+		
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				any_owned_pop = {
+					NOT = { is_same_species = owner_species }
+					is_robot_pop = no
+					is_sapient = yes
+					is_being_purged = no
+					is_enslaved = no
+				}
+			}
+		}
+	}
 		
 	# Wants to Guarentee Independence
 	demand = { 
@@ -165,11 +187,11 @@ xenoist = {
 		}
 	}
 	
-	# Wants No Pop Controls
+	# Wants Alien Rights
 	demand = {
-		title = "XENOPHILE_NO_POP_CONTROL"
-		unfulfilled_title = "XENOPHILE_NO_NO_POP_CONTROL"
-		desc = "XENOPHILE_NO_POP_CONTROL_DESC"
+		title = "XENOPHILE_ALIEN_RIGHTS"
+		unfulfilled_title = "XENOPHILE_NO_ALIEN_RIGHTS"
+		desc = "XENOPHILE_ALIEN_RIGHTS_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
@@ -177,7 +199,7 @@ xenoist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = population_controls_not_allowed }
+			owner = { has_policy_flag = alien_full_rights }
 		}
 	}
 	
@@ -216,22 +238,6 @@ xenoist = {
 		
 		trigger = {
 			owner = { has_policy_flag = pre_sapients_protect }
-		}
-	}
-	
-	# Wants Genocide Ban
-	demand = {
-		title = "XENOPHILE_GENOCIDE_BAN"
-		unfulfilled_title = "XENOPHILE_NO_GENOCIDE_BAN"
-		desc = "XENOPHILE_GENOCIDE_BAN_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-		
-		potential = { exists = owner }
-		
-		trigger = {
-			owner = { has_policy_flag = purge_not_allowed }
 		}
 	}
 	

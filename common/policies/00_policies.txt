@@ -804,7 +804,7 @@ education = {
 		name = "education_for_profit"
 		
 		modifier = {
-			trade_value_mult = 0.10
+			country_energy_produces_mult = 0.10
 			planet_jobs_upkeep_mult = 0.10
 		}
 		
@@ -871,7 +871,7 @@ education = {
 		name = "education_for_all"
 		
 		modifier = {
-			trade_value_mult = -0.10
+			empire_size_penalty_mult = 0.10
 			planet_jobs_upkeep_mult = -0.10
 		}
 		
@@ -907,8 +907,8 @@ healthcare = {
 		name = "healthcare_for_profit"
 		
 		modifier = {
-			trade_value_mult = 0.10
 			pop_environment_tolerance = -0.10
+			country_energy_produces_mult = 0.10
 		}
 		
 		valid = {
@@ -965,8 +965,8 @@ healthcare = {
 		name = "healthcare_universal"
 		
 		modifier = {
-			trade_value_mult = -0.10
 			pop_environment_tolerance = 0.10
+			empire_size_penalty_mult = 0.10
 		}
 		
 		policy_flags = {
@@ -1175,7 +1175,7 @@ population_controls = {
 		name = "population_controls_not_allowed"
 		
 		modifier = {
-			pop_growth_speed = -0.10
+			# Population Sprawl +1
 			pop_happiness = 0.05
 		}
 		
@@ -1208,10 +1208,7 @@ population_controls = {
 		policy_flags = {
 			population_controls_allowed
 		}
-		modifier = {
-			pop_growth_speed = 0.10
-			pop_happiness = -0.05
-		}
+		modifier = { pop_happiness = -0.05 }
 		
 		valid = {
 			NOR = { 

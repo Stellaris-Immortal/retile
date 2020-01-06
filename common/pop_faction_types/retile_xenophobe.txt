@@ -11,9 +11,7 @@ isolationist = {
 	
 	resources = {
 		category = pop_factions
-		produces = {
-			influence = 2
-		}		
+		produces = { influence = 1 }		
 	}
 
 	is_potential = {
@@ -98,6 +96,32 @@ isolationist = {
 		trigger = {
 			any_country = {
 				prev.owner = { is_rival = PREV }
+			}
+		}
+	}
+	
+	# Wants Purity
+	demand = {
+		title = "XENOPHOBE_PURITY"
+		unfulfilled_title = "XENOPHOBE_NO_PURITY"
+		desc = "XENOPHOBE_PURITY_DESC"
+		
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = { exists = owner }
+
+		trigger = {
+			NOT = {
+				owner = { 
+					any_owned_pop = {
+						NOT = { is_same_species = owner_species }
+						is_robot_pop = no
+						is_sapient = yes
+						is_being_purged = no
+						is_enslaved = no
+					}
+				}
 			}
 		}
 	}
@@ -188,22 +212,6 @@ isolationist = {
 
 		trigger = {
 			owner = { has_policy_flag = refugees_not_allowed }
-		}
-	}
-	
-	# Wants Genocide
-	demand = {
-		title = "XENOPHOBE_GENOCIDE"
-		unfulfilled_title = "XENOPHOBE_NO_GENOCIDE"
-		desc = "XENOPHOBE_GENOCIDE_DESC"
-		
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = purge_allowed }
 		}
 	}
 	
@@ -322,11 +330,11 @@ isolationist = {
 		}
 	}
 	
-	# Hates Genocide Ban
+	# Hates Alien Rights
 	demand = {
-		title = "XENOPHOBE_GENOCIDE_BAN"
-		unfulfilled_title = "XENOPHOBE_NO_GENOCIDE_BAN"
-		desc = "XENOPHOBE_GENOCIDE_BAN_DESC"
+		title = "XENOPHOBE_ALIEN_RIGHTS"
+		unfulfilled_title = "XENOPHOBE_NO_ALIEN_RIGHTS"
+		desc = "XENOPHOBE_ALIEN_RIGHTS_DESC"
 		
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
@@ -334,7 +342,7 @@ isolationist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { NOT = { has_policy_flag = purge_not_allowed } }
+			owner = { NOT = { has_policy_flag = alien_full_rights } }
 		}
 	}
 	

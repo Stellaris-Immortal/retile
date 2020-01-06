@@ -26,9 +26,7 @@ prosperity = {
 
 	resources = {
 		category = pop_factions
-		produces = {
-			influence = 2
-		}		
+		produces = { influence = 1 }		
 	}
 
 	can_join_pre_triggers = {
@@ -318,11 +316,11 @@ prosperity = {
 		}
 	}
 	
-	# Hates Hostile Contact
+	# Hates Genocide
 	demand = {
-		title = "DIPLOMAT_HOSTILE_CONTACT"
-		unfulfilled_title = "DIPLOMAT_NO_HOSTILE_CONTACT"
-		desc = "DIPLOMAT_HOSTILE_CONTACT_DESC"
+		title = "DIPLOMAT_PURGE"
+		unfulfilled_title = "DIPLOMAT_NO_PURGE"
+		desc = "DIPLOMAT_PURGET_DESC"
 
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
@@ -330,7 +328,7 @@ prosperity = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { NOT = { has_policy_flag = first_contact_attack_allowed } }
+			owner = { NOT = { has_policy_flag = purge_allowed } }
 		}
 	}
 	
