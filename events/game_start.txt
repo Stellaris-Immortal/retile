@@ -417,27 +417,6 @@ country_event = {
 			}
 			give_technology = { message = no tech = tech_space_trading }
 		}
-		if = {
-			limit = { 
-				has_authority = auth_machine_intelligence 
-			}
-			if = {
-				limit = {
-					OR = {
-						has_valid_civic = civic_machine_servitor
-						has_valid_civic = civic_machine_assimilator
-					}
-				}
-				add_resource = { food = 100	}
-				add_resource = { energy = 100 }
-			}			
-			else = {
-				add_resource = { energy = 200 }
-			}
-		}
-		else = {
-				add_resource = { food = 200	}
-		}
 	}
 }
 

@@ -11,9 +11,7 @@ imperialist = {
 	
 	resources = {
 		category = pop_factions
-		produces = {
-			influence = 2
-		}
+		produces = { influence = 1 }
 	}
 
 	is_potential = {
@@ -295,11 +293,11 @@ imperialist = {
 		}
 	}
 	
-	# Hates Peaceful Contact
+	# Hates Purge Ban
 	demand = {
-		title = "MILITARIST_PEACEFUL_CONTACT"
-		unfulfilled_title = "MILITARIST_NO_PEACEFUL_CONTACT"
-		desc = "MILITARIST_PEACEFUL_CONTACT_DESC"
+		title = "MILITARIST_PURGE"
+		unfulfilled_title = "MILITARIST_NO_PURGE"
+		desc = "MILITARIST_PURGE_DESC"
 		
 		fulfilled_effect = 1
 		unfulfilled_effect = -10
@@ -307,7 +305,7 @@ imperialist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = first_contact_attack_not_allowed }
+			owner = { has_policy_flag = purge_not_allowed }
 		}
 	}
 	

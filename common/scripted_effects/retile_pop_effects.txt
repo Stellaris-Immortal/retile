@@ -76,6 +76,12 @@ retile_apply_growth_malus = {	# country scope
 			prev = { change_variable = { which = col_count value = -0.1 } }
 		}
 		
+		# Full Reproductive Rights
+		if = { 
+			limit = { owner = { has_policy_flag = population_controls_not_allowed } }
+			prev = { change_variable = { which = col_count value = 0.1 } }
+		}
+		
 		# Anarchism
 		if = { 
 			limit = { owner = { has_valid_civic = civic_anarchist } }
