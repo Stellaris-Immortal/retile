@@ -64,6 +64,13 @@ ruler = {
 		pop_amenities_usage_base = 0
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_valid_civic = civic_imperial_cult }
+		}
+		pop_government_ethic_attraction = 0.10
+	}	
+	
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -87,7 +94,7 @@ ruler = {
 	}
 
 	resettlement_cost = {
-		energy = 200
+		influence = 10
 	}
 	
 	triggered_planet_modifier = {
@@ -123,7 +130,7 @@ ruler = {
 			has_low_living_standard_type = yes	
 		}
 		trade_value_add = @trade_value_high
-	}		
+	}
 
 	resources = {
 		category = pop_category_rulers
@@ -345,7 +352,14 @@ ruler = {
 				}
 			}
 			unity = 1
-		}	
+		}
+		# Imperial Cult
+		produces = {
+			trigger = { 
+				owner = { has_valid_civic = civic_imperial_cult }
+			}
+			unity = 5
+		}
 	}	
 }
 
@@ -436,7 +450,7 @@ specialist = {
 	}
 
 	resettlement_cost = {
-		energy = 150
+		influence = 10
 	}
 	
 	triggered_planet_modifier = {
@@ -480,7 +494,8 @@ specialist = {
 			has_low_living_standard_type = yes	
 		}
 		trade_value_add = @trade_value_normal
-	}				
+	}	
+	
 
 	resources = {
 		category = pop_category_specialists
@@ -785,16 +800,6 @@ worker = {
 		potential = { has_trait = trait_conformists }
 		modifier = { planet_crime_add = -2 }
 	}
-	
-	triggered_pop_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_warrior_culture }
-		}
-		modifier = {
-			pop_defense_armies_add = 2
-		}
-	}
 	triggered_planet_modifier = {
 		potential = {
 			can_generate_trade_value = yes
@@ -917,7 +922,7 @@ worker = {
 	}
 
 	resettlement_cost = {
-		energy = 100
+		influence = 10
 	}
 
 	resources = {

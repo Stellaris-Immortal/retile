@@ -16,6 +16,7 @@
 #}
 
 civic_corvee_system = {
+	description = "civic_tooltip_corvee_system_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 	}
@@ -30,12 +31,12 @@ civic_corvee_system = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		pop_resettlement_cost_mult = -0.50
-		planet_jobs_slave_produces_mult = 0.10
+		pop_resettlement_cost_mult = -1
 	}
 }
 
 civic_imperial_cult = {
+	description = "civic_tooltip_imperial_cult_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
@@ -50,13 +51,14 @@ civic_imperial_cult = {
 				value = ethic_authoritarian
 				value = ethic_fanatic_authoritarian
 			}
+			OR = {
+				text = civic_tooltip_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
 		}
 	}
 	random_weight = { base = 5 }
-	modifier = {
-		pop_cat_ruler_political_power = 2
-		pop_government_ethic_attraction = 0.20
-	}
 }
 
 civic_beacon_of_liberty = {
@@ -112,6 +114,9 @@ civic_exalted_priesthood = {
 				value = civic_shared_burden
 			}
 		}	
+	}
+	modifier = {
+		country_base_unity_produces_add = 10
 	}
 	random_weight = { base = 5 }
 }
@@ -171,9 +176,6 @@ civic_citizen_service = {
 				value = ethic_militarist
 				value = ethic_fanatic_militarist
 			}
-			NOT = {
-				value = ethic_fanatic_xenophile
-			}
 		}
 		authority = {
 			OR = {
@@ -185,7 +187,7 @@ civic_citizen_service = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		country_naval_cap_mult = 0.10
+		ship_experience_gain_mult = 0.25
 	}
 }
 
@@ -211,7 +213,11 @@ civic_technocracy = {
 		}		
 	}
 	random_weight = { base = 5 }
-	
+	modifier = {
+		country_society_research_produces_add = 5
+		country_physics_research_produces_add = 5
+		country_engineering_research_produces_add = 5
+	}
 }
 
 civic_police_state = {
@@ -221,12 +227,15 @@ civic_police_state = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	modifier = {
-		planet_crime_mult = -0.10
+		starbase_trade_protection_add = 10
+		pop_ethic_authoritarian_attraction_mult = 0.10
 	}
 	possible = {
 		ethics = {
-			NOT = {
-				value = ethic_fanatic_egalitarian
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
 			}
 		}
 	}
@@ -367,7 +376,7 @@ civic_warrior_culture = {
 	random_weight = { base = 5 }
 	description = "civic_tooltip_warrior_culture_effects"
 	modifier = {
-		army_damage_mult = 0.20
+		army_experience_gain_mult = 0.25
 	}
 }
 
@@ -414,6 +423,7 @@ civic_free_haven = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
+		planet_immigration_pull_mult = 0.25
 		pop_growth_from_immigration = 0.50
 	}
 }
@@ -465,6 +475,7 @@ civic_agrarian_idyll = {
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
+		always = no
 	}
 	possible = {
 		ethics = {
@@ -542,16 +553,15 @@ civic_nationalistic_zeal = {
 	possible = {
 		ethics = {
 			OR = {
-				text = civic_tooltip_militarist
-				value = ethic_militarist
-				value = ethic_fanatic_militarist
+				text = civic_tooltip_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
 			}
 		}
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		country_war_exhaustion_mult = -0.1
-		country_claim_influence_cost_mult = -0.1
+		
 	}
 }
 
@@ -561,9 +571,6 @@ civic_aristocratic_elite = {
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
-	}
-	modifier = {
-		governor_skill_levels = 1
 	}
 	possible = {
 		ethics = {
@@ -795,13 +802,14 @@ civic_barbaric_despoilers = {
 	possible = {
 		ethics = {
 			OR = {
-				text = civic_tooltip_militarist
+				text = civic_tooltip_mil_phobe
 				value = ethic_fanatic_militarist
 				value = ethic_militarist
 				value = ethic_fanatic_xenophobe
 				value = ethic_xenophobe
 			}	
 			NOR = {
+				text = civic_tooltip_pac_phile
 				value = ethic_xenophile
 				value = ethic_fanatic_xenophile
 				value = ethic_pacifist
@@ -815,6 +823,10 @@ civic_barbaric_despoilers = {
 		}		
 	}
 	modification = no
+	modifier = {
+		ship_orbital_bombardment_mult = 0.25
+		ship_weapon_damage = 0.25
+	}
 	random_weight = {
 		base = 2
 		modifier = {
@@ -879,5 +891,8 @@ civic_merchant_guilds = {
 	}
 	random_weight = {
 		base = 2
-	}	
+	}
+	modifier = {
+		country_trade_attractiveness = 0.10
+	}
 }

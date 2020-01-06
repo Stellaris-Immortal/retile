@@ -1,0 +1,372 @@
+#*** Orbital Researcher, build X research stations. on_building_research_station
+mandate_orbital_researcher = {
+	valid = {
+		exists = owner
+		owner = { has_technology = tech_space_construction }
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_orbresearch_chain }
+				end_event_chain = mandate_orbresearch_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_orbresearch_chain"
+				target = this
+			}
+			# Detail event chain reward in comment here:
+			# +300 Influence
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_orbital_researcher end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_orbital_researcher end_of_term fired for AI" }
+			country_event = { id = mandate.2 }
+		}
+	}
+}
+
+#*** Miner, build X mining stations. on_building_mining_station on-action
+mandate_miner = {
+	valid = {
+		exists = owner
+		owner = { has_technology = tech_space_construction }
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_miner_chain }
+				end_event_chain = mandate_miner_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_miner_chain"
+				target = this
+			}
+			# Detail event chain reward in comment here:
+			# +300 Influence
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_miner end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_miner end_of_term fired for AI" }
+			country_event = { id = mandate.2 }
+		}
+	}
+}
+
+# Peacemaker Mandate, check if at peace in 4 years
+mandate_peacemaker = {
+	valid = {
+		always = no
+		exists = owner
+		owner = {
+			is_at_war = yes
+			is_war_leader = yes
+		}
+	}
+
+	parameters = {
+		self = country
+		enemy = country
+	}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_peacemaker_chain"
+				target = this
+			}
+			# Detail event chain reward in comment here:
+			# +300 Influence
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_peacemaker end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_peacemaker end_of_term fired for AI" }
+			country_event = { id = mandate.160 }
+			#country_event = { id = mandate.2 }
+		}
+	}
+}
+
+#*** Shipwright, build X ships by year Y. count_ships trigger
+mandate_shipwright = {
+	valid = {
+		always = no
+		exists = owner
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_shipwright_chain"
+				target = this
+			}
+			# Detail event chain reward in comment here:
+			# +500 Influence
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+		if = { limit = { is_ai = no } 	log = "mandate_shipwright end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_shipwright end_of_term fired for AI" }
+			country_event = { id = mandate.140 }
+			#country_event = { id = mandate.2 }
+		}
+	}
+}
+
+# Uplifter, uplift species X on_uplift_completion on-action
+
+# Slavery Proponent, enable slavery and enslave X pops
+
+# Planet Builder, construct X number of buildings on planet Y by year Z
+
+# Planet Builder variant, 0 free_building_tiles on planet X by year Y
+
+# More Jobs, less than 3 pops unemployed by year X
+
+# Fiscal Conservative
+mandate_monthly_energy = {
+	valid = {
+		exists = owner
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_monthly_energy_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_monthly_energy end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_monthly_energy end_of_term fired for AI" }
+			country_event = { id = mandate.171 }
+		}
+	}
+}
+
+mandate_monthly_minerals = {
+	valid = {
+		exists = owner
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_monthly_minerals_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_monthly_minerals end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_monthly_minerals end_of_term fired for AI" }
+			country_event = { id = mandate.171 }
+		}
+	}
+}
+
+mandate_monthly_food = {
+	valid = {
+		exists = owner
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_monthly_food_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_monthly_food end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_monthly_food end_of_term fired for AI" }
+			country_event = { id = mandate.171 }
+		}
+	}
+}
+
+mandate_monthly_alloys = {
+	valid = {
+		exists = owner
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_monthly_alloys_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_monthly_alloys end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_monthly_alloys end_of_term fired for AI" }
+			country_event = { id = mandate.171 }
+		}
+	}
+}
+
+mandate_monthly_consumer_goods = {
+	valid = {
+		exists = owner
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_monthly_consumer_goods_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_monthly_consumer_goods end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_monthly_consumer_goods end_of_term fired for AI" }
+			country_event = { id = mandate.171 }
+		}
+	}
+}
+
+# District Builders Urban
+mandate_district_city = {
+	valid = {
+		exists = owner
+		owner = {
+			any_owned_planet = {
+				free_district_slots >= 2
+			}
+		}
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_district_city_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_districts_city end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_districts_city end_of_term fired for AI" }
+			country_event = { id = mandate.185 }
+		}
+	}
+}
+
+# District Buildings Rural
+mandate_district_generator = {
+	valid = {
+		exists = owner
+		owner = {
+			any_owned_planet = {
+				free_district_slots >= 2
+			}
+		}
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_district_generator_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_districts_generator end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_districts_generator end_of_term fired for AI" }
+			country_event = { id = mandate.185 }
+		}
+	}
+}
+
+mandate_district_mining = {
+	valid = {
+		exists = owner
+		always = no
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_district_mining_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_districts_mining end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_districts_mining end_of_term fired for AI" }
+			country_event = { id = mandate.185 }
+		}
+	}
+}
+
+mandate_district_farming = {
+	valid = {
+		exists = owner
+		always = no
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			begin_event_chain = {
+				event_chain = "mandate_district_farming_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_districts_farming end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_districts_farming end_of_term fired for AI" }
+			country_event = { id = mandate.185 }
+		}
+	}
+}
+
+# Population Grower, 0 free_housing on planet X by year Y

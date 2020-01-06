@@ -241,3 +241,93 @@ tech_xenodiplomacy = {
 		}
 	}
 }
+
+# Space Force Command
+tech_space_force_command = {
+	cost = @tier1cost3
+	area = society
+	tier = 1
+	category = { military_theory }
+	prerequisites = { "tech_planetary_defenses" }
+	weight = @tier1weight3
+	
+	modifier = {
+		show_only_custom_tooltip = no
+		custom_tooltip = ADD_NAVAL_CAPACITY_FROM_SOLDIERS
+	}
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_military_theory"
+			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_military_theory"
+			}
+		}
+	}
+}
+
+# Wargame Simulations
+tech_wargame_simulations = {
+	cost = @tier2cost2
+	area = society
+	tier = 2
+	category = { military_theory }
+	prerequisites = { "tech_space_force_command" }
+	weight = @tier2weight2
+	
+	modifier = {
+		show_only_custom_tooltip = no
+		custom_tooltip = ADD_NAVAL_CAPACITY_FROM_SOLDIERS
+	}	
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_military_theory"
+			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_military_theory"
+			}
+		}
+	}
+}

@@ -12,6 +12,14 @@ citizenship_full = {
 			is_shackled_robot_species_rights = yes
 		}
 	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		pop_defense_armies_add = 1
+	}
 
 	allow = {
 		hidden_trigger = { exists = from }
@@ -392,6 +400,10 @@ citizenship_limited = {
 			NOT = { is_same_species = from }
 		}
 		custom_tooltip = {
+			fail_text = has_full_rights
+			NOT = { from = { has_policy_flag = alien_full_rights } }
+		}
+		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
 			is_lonely_hive_mind_pop = no
 		}
@@ -463,6 +475,10 @@ citizenship_slavery = {
 			NOT = { is_same_species = from }
 		}
 		custom_tooltip = {
+			fail_text = has_full_rights
+			NOT = { from = { has_policy_flag = alien_full_rights } }
+		}
+		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
 			is_lonely_hive_mind_pop = no
 		}
@@ -475,15 +491,6 @@ citizenship_slavery = {
 			}
 		}
 		custom_tooltip = {
-			fail_text = empire_xenophile
-			from = {
-				NOR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
-			}
-		}
-		custom_tooltip = {
 			fail_text = "FANATIC_PURIFIERS_MUST_PURIFY"
 			OR = {
 				NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
@@ -491,15 +498,11 @@ citizenship_slavery = {
 			}
 		}
 		custom_tooltip = {
-			fail_text = does_not_embrace_species_slavery
-			from = {
-				allows_slavery = yes
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-					has_ethic = ethic_authoritarian
-					has_ethic = ethic_fanatic_authoritarian
-					has_ethic = ethic_gestalt_consciousness
+			fail_text = does_not_embrace_slavery
+			from = { 
+				OR = { 
+					allows_slavery = yes
+					has_policy_flag = alien_no_rights
 				}
 			}
 		}
@@ -588,6 +591,14 @@ citizenship_purge = {
 			custom_tooltip = {
 				fail_text = same_species_disallowed
 				NOT = { is_same_species = from }
+			}
+			custom_tooltip = {
+				fail_text = has_full_rights
+				NOT = { from = { has_policy_flag = alien_full_rights } }
+			}
+			custom_tooltip = {
+				fail_text = has_limited_rights
+				NOT = { from = { has_policy_flag = alien_limited_rights } }
 			}
 
 			OR = {
