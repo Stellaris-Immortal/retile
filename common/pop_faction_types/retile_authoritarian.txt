@@ -96,6 +96,25 @@ totalitarian = {
 		}
 	}
 	
+	# Wants a Subject
+	demand = {
+		title = "AUTHORITARIAN_OVERLORD"
+		unfulfilled_title = "AUTHORITARIAN_NO_OVERLORD"
+		desc = "AUTHORITARIAN_OVERLORD_DESC"
+
+		fulfilled_effect = 20
+		unfulfilled_effect = -1
+
+		potential = {
+			exists = owner
+			owner = { num_communications > 2 }
+		}
+
+		trigger = {
+			owner = { is_overlord = yes }
+		}
+	}
+	
 	# Wants State Police Policy
 	demand = { 
 		title = "AUTHORITARIAN_STATE_POLICE"
@@ -125,22 +144,6 @@ totalitarian = {
 
 		trigger = {
 			owner = { has_policy_flag = healthcare_for_profit }
-		}
-	}
-	
-	# Wants Public Education Policy
-	demand = { 
-		title = "AUTHORITARIAN_PUBLIC_EDUCATION"
-		unfulfilled_title = "AUTHORITARIAN_NO_PUBLIC_EDUCATION"
-		desc = "AUTHORITARIAN_PUBLIC_EDUCATION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = education_public_private }
 		}
 	}
 	
@@ -196,25 +199,6 @@ totalitarian = {
 		}
 	}
 	
-	# Wants a Subject
-	demand = {
-		title = "AUTHORITARIAN_OVERLORD"
-		unfulfilled_title = "AUTHORITARIAN_NO_OVERLORD"
-		desc = "AUTHORITARIAN_OVERLORD_DESC"
-
-		fulfilled_effect = 20
-		unfulfilled_effect = -1
-
-		potential = {
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			owner = { is_overlord = yes }
-		}
-	}
-	
 	# Hates Democracy
 	demand = {
 		title = "AUTHORITARIAN_DEMOCRACY"
@@ -229,6 +213,26 @@ totalitarian = {
 		trigger = {
 			owner = { NOT = { has_authority = auth_democratic } }
 		}
+	}
+	
+	# Hates Subservience
+	demand = {
+		title = "AUTHORITARIAN_UNDERLING"
+		unfulfilled_title = "AUTHORITARIAN_NO_UNDERLING"
+		desc = "AUTHORITARIAN_UNDERLING_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -20
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { is_subject = yes } }
+		}
+	}
+	
+	on_create = {
+		pop_faction_event = { id = factions.1 }
 	}
 	
 	# Hates Common Law
@@ -309,26 +313,6 @@ totalitarian = {
 		trigger = {
 			owner = { NOT = { has_policy_flag = slavery_not_allowed } }
 		}
-	}
-
-	# Hates Subservience
-	demand = {
-		title = "AUTHORITARIAN_UNDERLING"
-		unfulfilled_title = "AUTHORITARIAN_NO_UNDERLING"
-		desc = "AUTHORITARIAN_UNDERLING_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { is_subject = yes } }
-		}
-	}
-	
-	on_create = {
-		pop_faction_event = { id = factions.1 }
 	}
 
 	on_destroy = {
@@ -450,6 +434,7 @@ totalitarian = {
 					NOR = {
 						has_modifier = suppressed_authoritarian
 						has_modifier = promoted_authoritarian
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}
@@ -495,6 +480,7 @@ totalitarian = {
 					NOR = {
 						has_modifier = suppressed_authoritarian
 						has_modifier = promoted_authoritarian
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}

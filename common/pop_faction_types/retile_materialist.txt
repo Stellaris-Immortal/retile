@@ -90,11 +90,11 @@ technologist = {
 		}
 	}
 	
-	# Wants a Megastructure
-	demand = { 
-		title = "MATERIALIST_MEGASTRUCTURE"
-		unfulfilled_title = "MATERIALIST_NO_MEGASTRUCTURE"
-		desc = "MATERIALIST_MEGASTRUCTURE_DESC"
+	# Wants Presurcer Secrets
+	demand = {
+		title = "MATERIALIST_PRECURSOR_SECRETS"
+		unfulfilled_title = "MATERIALIST_NO_PRECURSOR_SECRETS"
+		desc = "MATERIALIST_PRECURSOR_SECRETS_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
@@ -102,15 +102,16 @@ technologist = {
 		potential = {
 			exists = owner
 		}
-
+		
 		trigger = {
-			owner = { 
+			owner = {
 				OR = {
-					any_owned_megastructure = { is_megastructure_type = think_tank_4 }
-					any_owned_megastructure = { is_megastructure_type = think_tank_3 }
-					any_owned_megastructure = { is_megastructure_type = think_tank_restored }
-					any_owned_megastructure = { is_megastructure_type = mega_art_installation_3 }
-					any_owned_megastructure = { is_megastructure_type = mega_art_installation_restored }
+					has_modifier = artifact_cybrex_research_completed
+					has_modifier = artifact_irassian_research_completed
+					has_modifier = artifact_league_research_completed
+					has_modifier = artifact_vultaum_research_completed_suppressed
+					has_modifier = artifact_vultaum_research_completed_public
+					has_country_flag = artifact_yuht_research_completed
 				}
 			}
 		}
@@ -201,24 +202,6 @@ technologist = {
 		}
 	}
 	
-	# Wants Capacity Boosters
-	demand = { 
-		title = "MATERIALIST_CAPACITY_BOOSTERS"
-		unfulfilled_title = "MATERIALIST_NO_CAPACITY_BOOSTERS"
-		desc = "MATERIALIST_CAPACITY_BOOSTERS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-		}
-
-		trigger = {
-			owner = { has_policy_flag = leader_enhancement_capacity_boosters }
-		}
-	}
-	
 	# Wants Active Interference
 	demand = { 
 		title = "MATERIALIST_INTERFERENCE"
@@ -237,106 +220,43 @@ technologist = {
 		}
 	}
 	
-	# Wants Luxury
-	demand = {
-		title = "MATERIALIST_LUXURY"
-		unfulfilled_title = "MATERIALIST_NO_LUXURY"
-		desc = "MATERIALIST_LUXURY_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				OR = {
-					any_owned_pop = { has_living_standard = { type = living_standard_chemical_bliss } }
-					any_owned_pop = { has_living_standard = { type = living_standard_academic_privilege  } }
-				}
-			}
-		}
-	}
-	
-	# Wants Enclave Trade
-	demand = {
-		title = "MATERIALIST_ENCLAVE"
-		unfulfilled_title = "MATERIALIST_NO_ENCLAVE"
-		desc = "MATERIALIST_ENCLAVEY_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = {
-				OR = {
-					has_country_flag = artist_enclave_country
-					has_country_flag = curator_enclave_country
-				}
-			}
-		}
-
-		trigger = {
-			owner = {
-				OR = {
-					has_modifier = enclave_artist_patron
-					has_modifier = curator_insight
-				}
-			}
-		}
-	}
-	
-	# Wants Presurcer Secrets
-	demand = {
-		title = "MATERIALIST_PRECURSOR_SECRETS"
-		unfulfilled_title = "MATERIALIST_NO_PRECURSOR_SECRETS"
-		desc = "MATERIALIST_PRECURSOR_SECRETS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = {
-			exists = owner
-			owner = {
-				OR = {
-					has_modifier = cybrex_world_found
-					has_modifier = irassian_world_found
-					has_modifier = league_world_found
-					has_modifier = vultaum_world_found
-					has_country_flag = yuht_world_found
-				}
-			}
-		}
-		
-		trigger = {
-			owner = {
-				OR = {
-					has_modifier = artifact_cybrex_research_completed
-					has_modifier = artifact_irassian_research_completed
-					has_modifier = artifact_league_research_completed
-					has_modifier = artifact_vultaum_research_completed_suppressed
-					has_modifier = artifact_vultaum_research_completed_public
-					has_country_flag = artifact_yuht_research_completed
-				}
-			}
-		}
-	}
-	
-	# Hates Harmong
+	# Hates Harmony
 	demand = { 
 		title = "MATERIALIST_HARMONY"
 		unfulfilled_title = "MATERIALIST_NO_HARMONY"
 		desc = "MATERIALIST_HARMONY_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
 		trigger = {
 			owner = {
 				NOT = { has_tradition = tr_harmony_adopt }
+			}
+		}
+	}
+	
+	# Hates Basic Subsistence
+	demand = {
+		title = "MATERIALIST_BASIC_SUBSISTENCE"
+		unfulfilled_title = "MATERIALIST_BASIC_SUBSISTENCE"
+		desc = "MATERIALIST_BASIC_SUBSISTENCE"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				NOR = {
+					any_owned_pop = { has_living_standard = { type = living_standard_chemical_bliss } }
+					any_owned_pop = { has_living_standard = { type = living_standard_academic_privilege  } }
+					any_owned_pop = { has_living_standard = { type = living_standard_utopian  } }
+					any_owned_pop = { has_living_standard = { type = living_standard_good  } }
+				}
 			}
 		}
 	}
@@ -411,24 +331,19 @@ technologist = {
 		}
 	}
 	
-	# Hates Basic Subsistence
-	demand = {
-		title = "MATERIALIST_BASIC_SUBSISTENCE"
-		unfulfilled_title = "MATERIALIST_NO_BASIC_SUBSISTENCE"
-		desc = "MATERIALIST_BASIC_SUBSISTENCE_DESC"
+	# Hates Enlightenment Allowed
+	demand = { 
+		title = "MATERIALIST_ENLIGHTENMENT_ALLOWED"
+		unfulfilled_title = "MATERIALIST_NO_ENLIGHTENMENT_ALLOWED"
+		desc = "MATERIALIST_ENLIGHTENMENT_ALLOWED_DESC"
 
-		fulfilled_effect = -10
-		unfulfilled_effect = 1
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
 		trigger = {
-			owner = {
-				OR = {
-					any_owned_pop = { has_living_standard = { type = living_standard_shared_burden } }
-					any_owned_pop = { has_living_standard = { type = living_standard_subsistence } }
-				}
-			}
+			owner = { NOT = { has_policy_flag = enlightenment_allowed } }
 		}
 	}
 
@@ -550,6 +465,7 @@ technologist = {
 					NOR = { 
 						has_modifier = suppressed_materialist
 						has_modifier = promoted_materialist 
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}
@@ -595,6 +511,7 @@ technologist = {
 					NOR = { 
 						has_modifier = suppressed_materialist
 						has_modifier = promoted_materialist 
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}

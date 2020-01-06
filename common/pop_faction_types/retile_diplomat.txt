@@ -119,30 +119,6 @@ prosperity = {
 		}
 	}
 	
-	# Wants Non-Agression Pacts
-	demand = { 
-		title = "DIPLOMAT_NONAGGRESSION"
-		unfulfilled_title = "DIPLOMAT_NO_NONAGGRESSION"
-		desc = "DIPLOMAT_NONAGGRESSION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			any_country = {
-				OR = {
-					prev.owner = { has_non_aggression_pact = PREV }
-					prev.owner = { has_defensive_pact = PREV }
-				}
-			}
-		}
-	}
-	
 	# Wants Federation
 	demand = { 
 		title = "DIPLOMAT_FEDERATION"
@@ -162,11 +138,11 @@ prosperity = {
 		}
 	}
 	
-	# Wants Two-Tier Healthcare
-	demand = {
-		title = "DIPLOMAT_HEALTHCARE"
-		unfulfilled_title = "DIPLOMAT_NO_HEALTHCARE"
-		desc = "DIPLOMAT_HEALTHCARE_DESC"
+	# Wants Diplomacy
+	demand = { 
+		title = "DIPLOMAT_DIPLOMACY"
+		unfulfilled_title = "DIPLOMAT_NO_DIPLOMACY"
+		desc = "DIPLOMAT_DIPLOMACY_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -1
@@ -174,7 +150,7 @@ prosperity = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = healthcare_public_private }
+			owner = { has_tradition = tr_diplomacy_adopt }
 		}
 	}
 	
@@ -189,7 +165,6 @@ prosperity = {
 
 		potential = { 
 			exists = owner
-			owner = { has_technology = tech_adaptive_bureaucracy }
 		}
 
 		trigger = {
@@ -243,11 +218,50 @@ prosperity = {
 
 		potential = { 
 			exists = owner
-			owner = { has_technology = tech_adaptive_bureaucracy }
 		}
 
 		trigger = {
 			owner = { has_policy_flag = piracy_peaceful }
+		}
+	}
+	
+	# Hates Aggressive Wars
+	demand = {
+		title = "DIPLOMAT_NOT_AGGRESSOR"
+		unfulfilled_title = "DIPLOMAT_AGGRESSOR"
+		desc = "DIPLOMAT_NOT_AGGRESSOR_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+			owner = { num_communications > 1 }
+		}
+
+		trigger = {
+			owner = {
+				NOR = {
+					has_country_flag = entered_war_as_attacker
+					any_war = { is_war_participant = { who = prev side = attackers } }
+				}
+			}
+		}
+	}
+	
+	# Hates Supremacy
+	demand = {
+		title = "DIPLOMAT_SUPREMACY"
+		unfulfilled_title = "DIPLOMAT_NO_SUPREMACY"
+		desc = "DIPLOMAT_SUPREMACY_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_tradition = tr_supremacy_adopt } }
 		}
 	}
 	
@@ -278,7 +292,6 @@ prosperity = {
 
 		potential = { 
 			exists = owner
-			owner = { has_technology = tech_adaptive_bureaucracy }
 		}
 
 		trigger = {
@@ -321,24 +334,6 @@ prosperity = {
 		}
 	}
 	
-	# Hates Eating Presapients
-	demand = {
-		title = "DIPLOMAT_EAT_PRESAPIENTS"
-		unfulfilled_title = "DIPLOMAT_NO_EAT_PRESAPIENTS"
-		desc = "DIPLOMAT_EAT_PRESAPIENTS_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-		}
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = pre_sapients_eat } }
-		}
-	}
-	
 	# Hates Enemy of the State
 	demand = {
 		title = "DIPLOMAT_PIRACY_HOSTILE"
@@ -350,35 +345,10 @@ prosperity = {
 
 		potential = { 
 			exists = owner
-			owner = { has_technology = tech_adaptive_bureaucracy }
 		}
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = piracy_hostile } }
-		}
-	}
-	
-	# Hates Aggressive Wars
-	demand = {
-		title = "DIPLOMAT_NOT_AGGRESSOR"
-		unfulfilled_title = "DIPLOMAT_AGGRESSOR"
-		desc = "DIPLOMAT_NOT_AGGRESSOR_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = {
-			exists = owner
-			owner = { num_communications > 1 }
-		}
-
-		trigger = {
-			owner = {
-				NOR = {
-					has_country_flag = entered_war_as_attacker
-					any_war = { is_war_participant = { who = prev side = attackers } }
-				}
-			}
 		}
 	}
 
@@ -501,6 +471,7 @@ prosperity = {
 					NOR = {
 						has_ethic = ethic_pacifist
 						has_ethic = ethic_fanatic_pacifist
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}
@@ -546,6 +517,7 @@ prosperity = {
 					NOR = {
 						has_modifier = suppressed_pacifist
 						has_modifier = promoted_pacifist
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}

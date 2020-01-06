@@ -3232,7 +3232,7 @@ tech_doctrine_fleet_size_5 = {
 	}
 }
 
-#Interstellar Fleet Traditions
+#Interstellar Fleet Traditions (outdated)
 tech_interstellar_fleet_traditions = {
 	cost = @tier2cost2
 	area = society
@@ -3240,35 +3240,17 @@ tech_interstellar_fleet_traditions = {
 	category = { military_theory }
 	prerequisites = {}
 	weight = @tier2weight2
+	
+	potential = {
+		always = no
+	}
 		
 	weight_modifier = {
-		factor = 3
-		modifier = {
-			factor = 1.25
-			research_leader = {
-				area = society
-				has_trait = "leader_trait_expertise_military_theory"
-			}
-		}
-		modifier = {
-			factor = 1.5
-			has_policy_flag = research_military_technology		
-		}
+		factor = 0
 	}
 	
 	ai_weight = {
-		factor = 3
-		modifier = {
-			factor = 2
-			is_militarist = yes
-		}
-		modifier = {
-			factor = 1.25
-			research_leader = {
-				area = society
-				has_trait = "leader_trait_expertise_military_theory"
-			}
-		}
+		factor = 0
 	}
 }
 
@@ -3549,7 +3531,7 @@ tech_centralized_command = {
 	# unlocks military academy
 	
 	modifier = { 
-		country_occupation_armies_add = 2
+		country_occupation_armies_add = 1
 		army_starting_experience_add = 100
 	}
 	
@@ -3592,8 +3574,8 @@ tech_combat_training = {
 	weight = @tier3weight1
 	
 	modifier = { 
-		army_attack_damage_mult = 0.15
-		army_attack_morale_mult = 0.15
+		country_occupation_armies_add = 2
+		army_starting_experience_add = 400
 	}
 	
 	weight_modifier = {
@@ -3636,9 +3618,10 @@ tech_ground_defense_planning = {
 	weight = @tier1weight2
 	
 	modifier = {
-		army_defense_damage_mult = 0.33
+		army_defense_damage_mult = 0.10
+		army_defense_health_mult = 0.10
 		show_only_custom_tooltip = no
-		custom_tooltip = ADD_NAVAL_CAPACITY_FROM_SOLDIERS
+		custom_tooltip = ADD_ARMIES_FROM_SOLDIERS
 	}
 	
 	weight_modifier = {
@@ -3681,10 +3664,11 @@ tech_global_defense_grid = {
 	prerequisites = { "tech_ground_defense_planning" }
 	weight = @tier2weight1
 	
-	# unlocks fortress
-	
 	modifier = {
-		army_defense_health_mult = 0.25
+		army_defense_damage_mult = 0.10
+		army_defense_health_mult = 0.10
+		show_only_custom_tooltip = no
+		custom_tooltip = ADD_ARMIES_FROM_SOLDIERS
 	}	
 	
 	weight_modifier = {
@@ -4199,6 +4183,7 @@ tech_interstellar_campaigns = {
 	prerequisites = { tech_galactic_ambitions }
 	
 	modifier = {
+		country_starbase_influence_cost_mult = -0.10
 		country_claim_influence_cost_mult = -0.1
 		country_war_exhaustion_mult = -0.1
 	}
@@ -4265,6 +4250,7 @@ tech_galactic_campaigns = {
 	prerequisites = { tech_interstellar_campaigns }
 	
 	modifier = {
+		country_starbase_influence_cost_mult = -0.10
 		country_claim_influence_cost_mult = -0.1
 		country_war_exhaustion_mult = -0.1
 	}
@@ -5079,6 +5065,7 @@ tech_artificial_moral_codes = {
 	
 	modifier = {
 		planet_crime_mult = -0.10
+		pop_government_ethic_attraction = 0.10
 	}
 	
 	potential = {

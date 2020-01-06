@@ -1,35 +1,12 @@
 tr_supremacy_adopt = {
+
+	possible = {
+		NOT = { has_tradition = tr_diplomacy_adopt }
+	}
+
 	modifier = {
-		country_starbase_capacity_add = 2
-		army_damage_mult = 0.20
-	}
-
-	tradition_swap = {
-		name = tr_supremacy_adopt_machine
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}
-
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_supremacy_adopt_hive
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-		}
-
-		weight = {
-			factor = 1
-		}
+		ships_upkeep_mult = -0.20
+		starbase_shipyard_build_cost_mult = -0.20
 	}
 	
 	ai_weight = {
@@ -85,41 +62,16 @@ tr_supremacy_adopt = {
 tr_supremacy_finish = {
 	modifier = {
 		ascension_perks_add = 1
+		ship_orbital_bombardment_mult = 0.20
+		shipclass_starbase_damage_mult = 0.20
+		army_damage_mult = 0.20
+		ship_weapon_damage = 0.20
 	}
 }
 
 tr_supremacy_fleet_logistical_corps = {
 	modifier = {
-		ships_upkeep_mult = -0.10
-		country_naval_cap_mult = 0.20
-	}
-	
-	tradition_swap = {
-		name = tr_supremacy_fleet_logistical_corps_machine
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}
-
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_supremacy_fleet_logistical_corps_hive
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-		}
-
-		weight = {
-			factor = 1
-		}
+		country_ship_upgrade_cost_mult = -0.20
 	}
 	
 	ai_weight = {
@@ -130,35 +82,6 @@ tr_supremacy_fleet_logistical_corps = {
 tr_supremacy_master_shipwrights = {
 	modifier = {
 		starbase_shipyard_build_speed_mult = 0.25
-		starbase_shipyard_build_cost_mult = -0.10
-	}
-
-	tradition_swap = {
-		name = tr_supremacy_master_shipwrights_machine
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}
-
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_supremacy_master_shipwrights_hive
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-		}
-
-		weight = {
-			factor = 1
-		}
 	}
 	
 	ai_weight = {
@@ -172,36 +95,8 @@ tr_supremacy_war_games = {
 		has_tradition = tr_supremacy_fleet_logistical_corps
 	}
 	modifier = {
+		country_naval_cap_mult = 0.20
 		country_command_limit_add = 20
-		admiral_skill_levels = 2
-	}
-
-	tradition_swap = {
-		name = tr_supremacy_war_games_machine
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_machine_empire = yes
-		}
-
-		weight = {
-			factor = 1
-		}
-	}
-
-	tradition_swap = {
-		name = tr_supremacy_war_games_hive
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			is_hive_empire = yes
-		}
-
-		weight = {
-			factor = 1
-		}
 	}
 	
 	ai_weight = {
@@ -212,8 +107,7 @@ tr_supremacy_war_games = {
 tr_supremacy_overwhelming_force = {
 	
 	modifier = {
-		ship_orbital_bombardment_mult = 0.20
-		ship_fire_rate_mult = 0.10
+		# Unlocks War Doctrines
 	}
 	
 	ai_weight = {
@@ -227,25 +121,10 @@ tr_supremacy_great_game = {
 	}
 
 	modifier = {
-		shipclass_starbase_damage_mult = 0.20
-		starbase_upgrade_cost_mult = -0.33
+		# Unlocks Armageddon Bombardment
 	}
 	
 	#implementation in the "should_apply_neighbor_rival_modifier" game rule
-
-	tradition_swap = {
-		name = tr_supremacy_great_game_hive
-		inherit_effects = yes
-		inherit_icon = yes
-		inherit_name = no
-		trigger = {
-			has_valid_civic = civic_hive_devouring_swarm
-		}
-
-		weight = {
-			factor = 1
-		}
-	}
 	
 	ai_weight = {
 		factor = 1000

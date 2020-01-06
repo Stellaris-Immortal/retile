@@ -207,6 +207,38 @@ isolationist = {
 		}
 	}
 	
+	# Hates Migration Treaties
+	demand = {
+		title = "XENOPHOBE_MIGRATION_TREATIES"
+		unfulfilled_title = "XENOPHOBE_NO_MIGRATION_TREATIES"
+		desc = "XENOPHOBE_MIGRATION_TREATIES_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+			owner = { num_communications > 4 }
+		}
+
+		trigger = {
+			owner = {
+				any_country = {
+					is_country_type = default
+					has_communications = root.owner
+					NOR = {
+						has_diplo_migration_treaty = root.owner
+						root = {
+							owner = {
+								has_diplo_migration_treaty = prevprev
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	
 	# Hates No Pop Controls
 	demand = {
 		title = "XENOPHOBE_NO_POP_CONTROL"
@@ -303,48 +335,6 @@ isolationist = {
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = purge_not_allowed } }
-		}
-	}
-	
-	# Hates Liberation
-	demand = {
-		title = "XENOPHOBE_LIBERATION"
-		unfulfilled_title = "XENOPHOBE_NO_LIBERATION"
-		desc = "XENOPHOBE_LIBERATION_DESC"
-		
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = liberation_wars } }
-		}
-	}
-	
-	# Hates Open Borders
-	demand = {
-		title = "XENOPHOBE_OPEN_BORDERS"
-		unfulfilled_title = "XENOPHOBE_NO_OPEN_BORDERS"
-		desc = "XENOPHOBE_OPEN_BORDERS_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = {
-			exists = owner
-			owner = {
-				NOT = { has_valid_civic = civic_fanatic_purifiers }
-				num_communications > 2
-			}
-		}
-
-		trigger = {
-			owner = {
-				any_country = {
-					has_closed_borders = prev
-				}
-			}
 		}
 	}
 	
@@ -470,6 +460,7 @@ isolationist = {
 					NOR = {
 						has_modifier = suppressed_xenophobe
 						has_modifier = promoted_xenophobe
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}
@@ -515,6 +506,7 @@ isolationist = {
 					NOR = {
 						has_modifier = suppressed_xenophobe
 						has_modifier = promoted_xenophobe
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}

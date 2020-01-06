@@ -11,22 +11,45 @@
 ####################
 # Tradition Edicts #
 ####################
-production_targets = {
+
+climate_engineering = {
 	length = @EdictDuration
 	resources = {
-		category = edicts
+		category = campaigns
 		cost = {
-			influence = @Edict2Cost
+			energy = 2000
 		}
 	}
 
 	modifier = {
-		planet_jobs_upkeep_mult = -0.10
-		category_materials_research_speed_mult = 0.1
+		terraform_speed_mult = 0.5
 	}
 	
 	prerequisites = {
-		"tech_collective_self"		
+		"tech_ecological_adaptation"		
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+production_targets = {
+	length = @EdictDuration
+	resources = {
+		category = campaigns
+		cost = {
+			minerals = 2000
+		}
+	}
+
+	modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.20
+		planet_jobs_alloys_produces_mult = 0.20
+	}
+	
+	prerequisites = {
+		"tech_mining_1"		
 	}
 	
 	ai_weight = {
@@ -34,17 +57,45 @@ production_targets = {
 	}
 }
 
-research_focus = {
+healthcare_campaign = {
 	length = @EdictDuration
 	resources = {
-		category = edicts
+		category = campaigns
 		cost = {
-			influence = @Edict2Cost
+			food = 500
 		}
 	}
 
 	modifier = {
-		all_technology_research_speed = 0.10
+		pop_growth_speed = 0.25
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	prerequisites = {
+		"tech_eco_simulation"		
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+research_focus = {
+	length = @EdictDuration
+	resources = {
+		category = campaigns
+		cost = {
+			consumer_goods = 500
+		}
+	}
+
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.20
+		planet_jobs_society_research_produces_mult = 0.20
+		planet_jobs_engineering_research_produces_mult = 0.20
 	}
 		
 	prerequisites = {
@@ -59,19 +110,19 @@ research_focus = {
 declare_saint = {
 	length = @EdictDuration
 	resources = {
-		category = edicts
+		category = campaigns
 		cost = {
-			influence = @Edict2Cost
+			consumer_goods = 500
 		}
 	}
 
 	modifier = {
-		country_unity_produces_mult = 0.10
-		num_tech_alternatives_add = 1
+		country_unity_produces_mult = 0.20
+		pop_government_ethic_attraction = 0.20
 	}
 	
 	prerequisites = {
-		"tech_living_state"		
+		"tech_heritage_site"		
 	}
 	
 	ai_weight = {
@@ -79,118 +130,49 @@ declare_saint = {
 	}
 }
 
-information_quarantine = {
+declare_saint_2 = {
 	length = @EdictDuration
+	potential = {
+		NOT = { has_technology = tech_heritage_site }
+	}
+	
 	resources = {
-		category = edicts
+		category = campaigns
 		cost = {
-			influence = @Edict2Cost
+			consumer_goods = 500
 		}
 	}
 
 	modifier = {
-		pop_government_ethic_attraction = 0.25
-		pop_ethics_shift_speed_mult = 0.25
-	}	
-	
-	prerequisites = {
-		"tech_artificial_moral_codes"		
-	}
-	
-	ai_weight = {
-		weight = @EdictLowPrio
-	}
-}
-
-diplomatic_grants = {
-	length = @EdictDuration
-	resources = {
-		category = edicts
-		cost = {
-			influence = @Edict1Cost
-		}
-	}
-
-	modifier = {
-		country_trust_growth = 0.50
-		country_trade_attractiveness = 0.10
+		country_unity_produces_mult = 0.20
+		pop_government_ethic_attraction = 0.20
 	}
 	
 	prerequisites = {
-		"tech_galactic_bureaucracy"		
+		"tech_holographic_rituals"
 	}
 	
 	ai_weight = {
-		weight = 0
-	}	
-}
-
-land_of_opportunity = {
-	length = @EdictDuration
-	resources = {
-		category = edicts
-		cost = {
-			influence = @Edict1Cost
-		}
+		weight = @EdictMedPrio
 	}
-
-	modifier = {
-		planet_immigration_pull_mult = 0.50
-		pop_growth_from_immigration = 0.10
-	}
-	
-	prerequisites = {
-		"tech_colonial_bureaucracy"		
-	}
-	
-	ai_weight = {
-		weight = 0
-	}	
 }
 
 war_games = {
 	length = @EdictDuration
 	resources = {
-		category = edicts
+		category = campaigns
 		cost = {
-			influence = @Edict2Cost
+			alloys = 500
 		}
 	}
 
 	modifier = {
-		ship_sensor_range_add = 1
-		ship_hyperlane_range_add = 2
-		ship_speed_mult = 0.15
-		category_propulsion_research_speed_mult = 0.10
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
 	}
 	
 	prerequisites = {
-		"tech_interstellar_fleet_traditions"		
-	}
-	
-	ai_weight = {
-		weight = 0
-	}
-}
-
-climate_engineering = {
-	length = @EdictDuration
-	resources = {
-		category = edicts
-		cost = {
-			influence = @Edict2Cost
-		}
-	}
-
-	modifier = {
-		terraform_speed_mult = 0.50
-		deposit_blockers_cost_mult = -0.25
-		planet_clear_blocker_time_mult = -0.50
-		category_new_worlds_research_speed_mult = 0.10
-	}
-	
-	prerequisites = {
-		"tech_ecological_adaptation"		
+		"tech_centralized_command"		
 	}
 	
 	ai_weight = {

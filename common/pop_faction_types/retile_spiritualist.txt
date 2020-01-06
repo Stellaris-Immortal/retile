@@ -220,6 +220,46 @@ traditionalist = {
 		}
 	}
 	
+	# Hates Slaying
+	demand = {
+		title = "SPIRITUALIST_SLAYER"
+		unfulfilled_title = "SPIRITUALIST_NO_SLAYER"
+		desc = "SPIRITUALIST_SLAYER_DESC"
+
+		fulfilled_effect = 1
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+			owner = {
+				host_has_dlc = "Leviathans Story Pack"
+				any_country = {
+					OR = {
+						is_country_type = guardian
+						is_country_type = guardian_dragon
+						is_country_type = guardian_stellarite
+						is_country_type = guardian_wraith #
+						is_country_type = guardian_hiver
+						is_country_type = guardian_horror
+						is_country_type = guardian_fortress
+						is_country_type = guardian_dreadnought
+						is_country_type = guardian_sphere
+						is_country_type = guardian_scavenger_bot
+						is_country_type = guardian_elderly_tiyanki
+						is_country_type = guardian_hatchling
+					}
+					has_communications = prev
+				}
+			}
+		}
+
+		trigger = {
+			owner = {
+				NOT = { has_country_flag = killed_guardian }
+			}
+		}
+	}
+	
 	# Hates Destroying Worlds
 	demand = { 
 		title = "SPIRITUALIST_DESTROY_WORLD"
@@ -328,69 +368,6 @@ traditionalist = {
 
 		trigger = {
 			owner = { has_policy_flag = orbital_bombardment_selective }
-		}
-	}
-	
-	# Hates Chemical Bliss
-	demand = {
-		title = "SPIRITUALIST_CHEMICAL_BLISS"
-		unfulfilled_title = "SPIRITUALIST_NO_CHEMICAL_BLISS"
-		desc = "SPIRITUALIST_CHEMICAL_BLISS_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_technology = tech_subdermal_stimulation }
-		}
-
-		trigger = {
-			NOT = {
-				owner = {
-					any_owned_pop = { has_living_standard = { type = living_standard_chemical_bliss } }
-				}
-			}
-		}
-	}
-	
-	# Hates Slaying
-	demand = {
-		title = "SPIRITUALIST_SLAYER"
-		unfulfilled_title = "SPIRITUALIST_NO_SLAYER"
-		desc = "SPIRITUALIST_SLAYER_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = {
-			exists = owner
-			owner = {
-				host_has_dlc = "Leviathans Story Pack"
-				any_country = {
-					OR = {
-						is_country_type = guardian
-						is_country_type = guardian_dragon
-						is_country_type = guardian_stellarite
-						is_country_type = guardian_wraith #
-						is_country_type = guardian_hiver
-						is_country_type = guardian_horror
-						is_country_type = guardian_fortress
-						is_country_type = guardian_dreadnought
-						is_country_type = guardian_sphere
-						is_country_type = guardian_scavenger_bot
-						is_country_type = guardian_elderly_tiyanki
-						is_country_type = guardian_hatchling
-					}
-					has_communications = prev
-				}
-			}
-		}
-
-		trigger = {
-			owner = {
-				NOT = { has_country_flag = killed_guardian }
-			}
 		}
 	}
 
@@ -516,6 +493,7 @@ traditionalist = {
 					NOR = {
 						has_modifier = suppressed_spiritualist
 						has_modifier = promoted_spiritualist
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}
@@ -561,6 +539,7 @@ traditionalist = {
 					NOR = {
 						has_modifier = suppressed_spiritualist
 						has_modifier = promoted_spiritualist
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}

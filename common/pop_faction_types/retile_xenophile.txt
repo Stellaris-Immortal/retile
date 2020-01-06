@@ -113,6 +113,38 @@ xenoist = {
 			}
 		}
 	}
+	
+	# Wants Migration Treaties
+	demand = {
+		title = "XENOPHILE_MIGRATION_TREATIES"
+		unfulfilled_title = "XENOPHILE_NO_MIGRATION_TREATIES"
+		desc = "XENOPHILE_MIGRATION_TREATIES_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -1
+
+		potential = {
+			exists = owner
+			owner = { num_communications > 4 }
+		}
+
+		trigger = {
+			owner = {
+				any_country = {
+					is_country_type = default
+					has_communications = root.owner
+					OR = {
+						has_diplo_migration_treaty = root.owner
+						root = {
+							owner = {
+								has_diplo_migration_treaty = prevprev
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 		
 	# Wants to Guarentee Independence
 	demand = { 
@@ -130,22 +162,6 @@ xenoist = {
 
 		trigger = {
 			any_country = { prev.owner = { is_guaranteeing = PREV } }
-		}
-	}
-	
-	# Wants Environmental Regulation
-	demand = {
-		title = "XENOPHILE_ENVIRONMENTAL_REGULATION"
-		unfulfilled_title = "XENOPHILE_NO_ENVIRONMENTAL_REGULATION"
-		desc = "XENOPHILE_ENVIRONMENTAL_REGULATION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = environmental_regulation }
 		}
 	}
 	
@@ -254,38 +270,6 @@ xenoist = {
 		
 		trigger = {
 			owner = { has_policy_flag = border_policy_open }
-		}
-	}
-	
-	# Wants Migration Treaties
-	demand = {
-		title = "XENOPHILE_MIGRATION_TREATIES"
-		unfulfilled_title = "XENOPHILE_NO_MIGRATION_TREATIES"
-		desc = "XENOPHILE_MIGRATION_TREATIES_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = {
-			exists = owner
-			owner = { num_communications > 4 }
-		}
-
-		trigger = {
-			owner = {
-				any_country = {
-					is_country_type = default
-					has_communications = root.owner
-					OR = {
-						has_diplo_migration_treaty = root.owner
-						root = {
-							owner = {
-								has_diplo_migration_treaty = prevprev
-							}
-						}
-					}
-				}
-			}
 		}
 	}
 	
@@ -512,6 +496,7 @@ xenoist = {
 					NOR = { 
 						has_modifier = suppressed_xenophile
 						has_modifier = promoted_xenophile 
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}
@@ -557,6 +542,7 @@ xenoist = {
 					NOR = { 
 						has_modifier = suppressed_xenophile
 						has_modifier = promoted_xenophile 
+						has_valid_civic = civic_anarchist
 					}
 				}
 			}

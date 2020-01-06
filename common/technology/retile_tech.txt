@@ -190,3 +190,144 @@ tech_industrial_ecology = {
 		}
 	}
 }
+
+tech_xenodiplomacy = {
+	cost = @tier1cost3
+	area = society
+	tier = 1
+	category = { statecraft }
+	prerequisites = { "tech_planetary_unification" }
+	weight = @tier1weight3
+	
+	# Unlocks Federations and Xenodiplomacy Policies
+	
+	modifier = {
+		show_only_custom_tooltip = no
+		custom_tooltip = tech_xenodiplomacy_effect
+	}
+	
+	weight_modifier = {
+		factor = 4
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_statecraft"
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 0.75
+			NOT = {
+				OR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+			}
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_statecraft"
+			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_economic_development		
+		}
+	}
+}
+
+# Space Force Command
+tech_space_force_command = {
+	cost = @tier1cost3
+	area = society
+	tier = 1
+	category = { military_theory }
+	prerequisites = { "tech_planetary_defenses" }
+	weight = @tier1weight3
+	
+	modifier = {
+		show_only_custom_tooltip = no
+		custom_tooltip = ADD_NAVAL_CAPACITY_FROM_SOLDIERS
+	}
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_military_theory"
+			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_military_theory"
+			}
+		}
+	}
+}
+
+# Wargame Simulations
+tech_wargame_simulations = {
+	cost = @tier2cost2
+	area = society
+	tier = 2
+	category = { military_theory }
+	prerequisites = { "tech_space_force_command" }
+	weight = @tier2weight2
+	
+	modifier = {
+		show_only_custom_tooltip = no
+		custom_tooltip = ADD_NAVAL_CAPACITY_FROM_SOLDIERS
+	}	
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_military_theory"
+			}
+		}
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_military_technology		
+		}
+	}
+	
+	ai_weight = {
+		factor = 2
+		modifier = {
+			factor = 2
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = society
+				has_trait = "leader_trait_expertise_military_theory"
+			}
+		}
+	}
+}
