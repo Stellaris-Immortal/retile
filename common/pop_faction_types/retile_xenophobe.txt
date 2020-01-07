@@ -85,8 +85,8 @@ isolationist = {
 		unfulfilled_title = "XENOPHOBE_NO_RIVAL"
 		desc = "XENOPHOBE_RIVAL_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 20
+		unfulfilled_effect = 0
 
 		potential = { 
 			exists = owner
@@ -107,7 +107,7 @@ isolationist = {
 		desc = "XENOPHOBE_PURITY_DESC"
 		
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -126,30 +126,14 @@ isolationist = {
 		}
 	}
 	
-	# Wants Pop Controls
-	demand = {
-		title = "XENOPHOBE_POP_CONTROLS"
-		unfulfilled_title = "XENOPHOBE_NO_POP_CONTROLS"
-		desc = "XENOPHOBE_POP_CONTROLS_DESC"
-		
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = population_controls_allowed }
-		}
-	}
-	
 	# Wants Isolationism
 	demand = {
 		title = "XENOPHOBE_ISOLATIONISM"
 		unfulfilled_title = "XENOPHOBE_NO_ISOLATIONISM"
 		desc = "XENOPHOBE_ISOLATIONISM_DESC"
 		
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 20
+		unfulfilled_effect = 0
 
 		potential = {
 			exists = owner
@@ -167,13 +151,29 @@ isolationist = {
 		unfulfilled_title = "XENOPHOBE_NO_CLOSED_BORDERS"
 		desc = "XENOPHOBE_CLOSED_BORDERS_DESC"
 		
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 20
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
 		trigger = {
 			owner = { has_policy_flag = border_policy_closed }
+		}
+	}
+	
+	# Wants Pop Controls
+	demand = {
+		title = "XENOPHOBE_POP_CONTROLS"
+		unfulfilled_title = "XENOPHOBE_NO_POP_CONTROLS"
+		desc = "XENOPHOBE_POP_CONTROLS_DESC"
+		
+		fulfilled_effect = 10
+		unfulfilled_effect = 0
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = population_controls_allowed }
 		}
 	}
 	
@@ -184,7 +184,7 @@ isolationist = {
 		desc = "XENOPHOBE_PRESAPIENTS_PURGE_DESC"
 		
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { 
 			exists = owner
@@ -203,7 +203,7 @@ isolationist = {
 		desc = "XENOPHOBE_REFUGEE_BAN_DESC"
 		
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { 
 			exists = owner
@@ -221,8 +221,8 @@ isolationist = {
 		unfulfilled_title = "XENOPHOBE_NO_MIGRATION_TREATIES"
 		desc = "XENOPHOBE_MIGRATION_TREATIES_DESC"
 
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
 
 		potential = {
 			exists = owner
@@ -247,13 +247,45 @@ isolationist = {
 		}
 	}
 	
+	# Hates Alien Rights
+	demand = {
+		title = "XENOPHOBE_ALIEN_RIGHTS"
+		unfulfilled_title = "XENOPHOBE_NO_ALIEN_RIGHTS"
+		desc = "XENOPHOBE_ALIEN_RIGHTS_DESC"
+		
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = alien_full_rights } }
+		}
+	}
+	
+	# Hates Protecting Presapients
+	demand = {
+		title = "XENOPHOBE_PRESAPIENT_PROTECT"
+		unfulfilled_title = "XENOPHOBE_NO_PRESAPIENT_PROTECT"
+		desc = "XENOPHOBE_PRESAPIENT_PROTECT_DESC"
+		
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = pre_sapients_protect } }
+		}
+	}
+	
 	# Hates No Pop Controls
 	demand = {
 		title = "XENOPHOBE_NO_POP_CONTROL"
 		unfulfilled_title = "XENOPHOBE_NO_NO_POP_CONTROL"
 		desc = "XENOPHOBE_NO_POP_CONTROL_DESC"
 		
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -269,7 +301,7 @@ isolationist = {
 		unfulfilled_title = "XENOPHOBE_NO_EMBASSIES"
 		desc = "XENOPHOBE_NO_EMBASSIES_DESC"
 		
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -285,7 +317,7 @@ isolationist = {
 		unfulfilled_title = "XENOPHOBE_NO_OPEN_BORDERS"
 		desc = "XENOPHOBE_OPEN_BORDERS_DESC"
 		
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -295,29 +327,13 @@ isolationist = {
 		}
 	}
 	
-	# Hates Protecting Presapients
-	demand = {
-		title = "XENOPHOBE_PRESAPIENT_PROTECT"
-		unfulfilled_title = "XENOPHOBE_NO_PRESAPIENT_PROTECT"
-		desc = "XENOPHOBE_PRESAPIENT_PROTECT_DESC"
-		
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = pre_sapients_protect } }
-		}
-	}
-	
 	# Hates Refugees
 	demand = {
 		title = "XENOPHOBE_REFUGEES_ALLOWED"
 		unfulfilled_title = "XENOPHOBE_NO_REFUGEES_ALLOWED"
 		desc = "XENOPHOBE_REFUGEES_ALLOWED_DESC"
 		
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { 
@@ -327,22 +343,6 @@ isolationist = {
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = refugees_allowed } }
-		}
-	}
-	
-	# Hates Alien Rights
-	demand = {
-		title = "XENOPHOBE_ALIEN_RIGHTS"
-		unfulfilled_title = "XENOPHOBE_NO_ALIEN_RIGHTS"
-		desc = "XENOPHOBE_ALIEN_RIGHTS_DESC"
-		
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = alien_full_rights } }
 		}
 	}
 	

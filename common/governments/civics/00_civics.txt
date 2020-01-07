@@ -77,10 +77,19 @@ civic_beacon_of_liberty = {
 				value = ethic_fanatic_egalitarian
 			}
 		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_xenophile
+				value = ethic_xenophile
+				value = ethic_fanatic_xenophile
+			}
+		}
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		country_unity_produces_mult = 0.15
+		force_disparity_fire_rate_mult = 0.25
+		ship_home_territory_fire_rate_mult = 0.25
+		starbase_defensive_war_ship_build_speed_mult = 0.25
 	}
 }
 
@@ -158,8 +167,12 @@ civic_meritocracy = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		leader_skill_levels = 1
+		pop_cat_specialist_happiness = 0.05
 		planet_jobs_specialist_produces_mult = 0.10
+		pop_cat_worker_happiness = -0.05
+		planet_jobs_worker_produces_mult = -0.10
+		pop_cat_slave_happiness = -0.10
+		planet_jobs_slave_produces_mult = -0.20
 	}
 }
 
@@ -301,13 +314,11 @@ civic_slaver_guilds = {
 				value = ethic_fanatic_authoritarian
 			}
 		}
-		civics = {
-			NOT = { value = civic_syncretic_evolution }
-		}	
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		country_pop_enslaved_mult = 0.40
+		slave_market_cost_mult = -0.25
+		planet_jobs_slave_produces_mult = 0.20
 	}
 }
 
@@ -427,6 +438,7 @@ civic_cutthroat_politics = {
 	random_weight = { base = 5 }
 	modifier = {
 		edicts_cost_mult = -0.20
+		planet_decision_enact_speed_mult = 0.50
 	}
 }
 
@@ -463,11 +475,11 @@ civic_corporate_dominion = {
 }
 
 civic_agrarian_idyll = {
-	description = "civic_tooltip_agrarian_idyll_effects"
+	description = "civic_agrarian_idyll_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
-		always = no
+		is_lithoid_empire = no
 	}
 	possible = {
 		ethics = {
@@ -478,8 +490,32 @@ civic_agrarian_idyll = {
 			}
 		}
 	}
+	modifier = { 
+		district_farming_max = 3
+	}
 	random_weight = { base = 5 }
 }
+
+civic_mining_guilds = {
+	description = "civic_tooltip_mining_guilds_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
+	}
+	modifier = {
+		district_mining_max = 3
+	}
+	random_weight = { base = 5 }
+}
+
 
 civic_shadow_council = {
 	potential = {
@@ -501,15 +537,6 @@ civic_shadow_council = {
 		country_election_influence_cost_mult = -1
 	}
 }
-
-civic_mining_guilds = {
-	description = "civic_tooltip_mining_guilds_effects"
-	potential = {
-		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-	}
-	random_weight = { base = 5 }
-}
-
 civic_parliamentary_system = {
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
@@ -553,7 +580,9 @@ civic_nationalistic_zeal = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		
+		max_rivalries = 1
+		country_insult_efficiency = 0.50
+		pop_government_ethic_attraction = 0.25
 	}
 }
 
@@ -644,11 +673,9 @@ civic_syncretic_evolution = {
 			NOR = {
 				value = civic_mechanists
 				value = civic_fanatic_purifiers
-				value = civic_agrarian_idyll
 				value = civic_post_apocalyptic
 				value = civic_life_seeded
 				value = civic_shared_burden
-				value = civic_slaver_guilds
 			}
 		}
 	}
