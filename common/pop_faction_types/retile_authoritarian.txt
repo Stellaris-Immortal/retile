@@ -85,7 +85,7 @@ totalitarian = {
 		desc = "AUTHORITARIAN_EMPIRE_DESC"
 
 		fulfilled_effect = 20
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -101,7 +101,7 @@ totalitarian = {
 		desc = "AUTHORITARIAN_OVERLORD_DESC"
 
 		fulfilled_effect = 20
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = {
 			exists = owner
@@ -119,8 +119,8 @@ totalitarian = {
 		unfulfilled_title = "AUTHORITARIAN_NO_STATE_POLICE"
 		desc = "AUTHORITARIAN_STATE_POLICE_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 20
+		unfulfilled_effect = 0
 
 		potential = {exists = owner }
 
@@ -136,7 +136,7 @@ totalitarian = {
 		desc = "AUTHORITARIAN_PRIORITY_HEALTHCARE_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -152,7 +152,7 @@ totalitarian = {
 		desc = "AUTHORITARIAN_APPROPRIATION_ALLOWED_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -168,7 +168,7 @@ totalitarian = {
 		desc = "AUTHORITARIAN_HUNTING_DESC"
 		
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { 
 			exists = owner
@@ -186,7 +186,7 @@ totalitarian = {
 		desc = "AUTHORITARIAN_SLAVERY_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = {
 			exists = owner
@@ -203,7 +203,7 @@ totalitarian = {
 		unfulfilled_title = "AUTHORITARIAN_NO_DEMOCRACY"
 		desc = "AUTHORITARIAN_DEMOCRACY_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
 		potential = { exists = owner }
@@ -219,7 +219,7 @@ totalitarian = {
 		unfulfilled_title = "AUTHORITARIAN_NO_UNDERLING"
 		desc = "AUTHORITARIAN_UNDERLING_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
 		potential = { exists = owner }
@@ -229,18 +229,14 @@ totalitarian = {
 		}
 	}
 	
-	on_create = {
-		pop_faction_event = { id = factions.1 }
-	}
-	
 	# Hates Common Law
 	demand = {
 		title = "AUTHORITARIAN_COMMON_LAW"
 		unfulfilled_title = "AUTHORITARIAN_NO_COMMON_LAW"
 		desc = "AUTHORITARIAN_COMMON_LAW_DESC"
 
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
 
 		potential = { exists = owner }
 
@@ -255,7 +251,7 @@ totalitarian = {
 		unfulfilled_title = "AUTHORITARIAN_NO_UNIVERSAL_HEALTHCARE"
 		desc = "AUTHORITARIAN_UNIVERSAL_HEALTHCARE_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -271,7 +267,7 @@ totalitarian = {
 		unfulfilled_title = "AUTHORITARIAN_NO_EDUCATION_FOR_ALL"
 		desc = "AUTHORITARIAN_EDUCATION_FOR_ALL_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -287,7 +283,7 @@ totalitarian = {
 		unfulfilled_title = "AUTHORITARIAN_NO_APPROPRIATION_NOT_ALLOWED"
 		desc = "AUTHORITARIAN_APPROPRIATION_NOT_ALLOWED_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -303,7 +299,7 @@ totalitarian = {
 		unfulfilled_title = "AUTHORITARIAN_NO_SLAVERY_BAN"
 		desc = "AUTHORITARIAN_SLAVERY_BAN_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -311,6 +307,10 @@ totalitarian = {
 		trigger = {
 			owner = { NOT = { has_policy_flag = slavery_not_allowed } }
 		}
+	}
+	
+	on_create = {
+		pop_faction_event = { id = factions.1 }
 	}
 
 	on_destroy = {

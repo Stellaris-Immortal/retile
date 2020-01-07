@@ -23,7 +23,7 @@ civic_franchising = {
 	description = "civic_tooltip_franchising_effects"
 	modifier = {
 		country_subject_power_penalty_mult = -0.33
-		empire_size_branch_office_mult = -0.25
+		empire_size_branch_office_mult = -0.50
 	}
 }
 
@@ -67,6 +67,7 @@ civic_free_traders = {
 	modifier = {
 		trade_value_mult = 0.10
 		branch_office_value_mult = 0.10
+		piracy_growth_mult = -0.50
 	}
 }
 
@@ -104,8 +105,9 @@ civic_ruthless_competition = {
 	potential = { authority = { value = auth_corporate } }
 	random_weight = { base = 5 }
 	modifier = {
-        leader_skill_levels = 1
-		species_leader_exp_gain = 0.1
+		country_leader_pool_size = 2
+        leaders_cost_mult = -0.50
+		leaders_upkeep_mult = -0.50
     }
 }
 
@@ -150,8 +152,8 @@ civic_indentured_assets = {
 		}
 	}
 	modifier = {
-		planet_jobs_slave_produces_mult = 0.10
-		country_pop_enslaved_mult = 0.40
+		slave_market_cost_mult = -0.25
+		planet_jobs_slave_produces_mult = 0.20
 	}
 }
 
@@ -159,6 +161,6 @@ civic_brand_loyalty = {
 	potential = { authority = { value = auth_corporate } }
 	random_weight = { base = 5 }
 	modifier = {
-		country_unity_produces_mult = 0.15
+		faction_approval = 0.10
 	}
 }

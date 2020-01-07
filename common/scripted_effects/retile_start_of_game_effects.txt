@@ -894,6 +894,17 @@ generate_start_buildings_and_districts = {
 			add_building = building_commercial_zone
 			remove_district = district_generator
 		}
+		
+		# One extra district for Mining Guilds
+		if = {
+			limit = { owner = { has_valid_civic = civic_mining_guilds } }
+			add_district = district_mining
+		}
+		# One extra district for Agrarian Idyll
+		if = {
+			limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
+			add_district = district_farming
+		}
 	}
 	
 	if = {
@@ -1135,6 +1146,14 @@ generate_start_pops = {
 	# One extra pop for Mining Guilds
 	if = {
 		limit = { owner = { has_valid_civic = civic_mining_guilds } }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+	}
+	# One extra pop for Agrarian Idyll
+	if = {
+		limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
 		create_pop = {
 			species = owner_main_species
 			ethos = random

@@ -43,15 +43,13 @@ ranger = {
 		country_naval_cap_add = 10
 	}
 	
-	# He Enforcers
+	# Enforcers
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_civic = civic_police_state }
 		}
-		modifier = {
-			planet_stability_add = 1
-		}		
+		planet_crime_mult = -0.25
 	}
 	
 	triggered_pop_modifier = {
@@ -87,41 +85,38 @@ ranger = {
 		planet_amenities_add = 25
 	}
 
-	# He Soldiers
+	# Soldiers
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
 			owner = { has_civic = civic_citizen_service }
 		}
 		modifier = {
-			planet_stability_add = 1
+			planet_jobs_produces_mult = 0.05
 		}
 	}
-
 	triggered_country_modifier = {
 		potential = {
 			exists = owner 
-			owner = { has_technology = "tech_ground_defense_planning" }
+			owner = { has_technology = "tech_space_force_command" }
 		}
 		modifier = {
 			country_naval_cap_add = 5
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_technology = "tech_ground_defense_planning" }
+			owner = { has_technology = "tech_space_force_command" }
 		}
 		modifier = {
 			planet_amenities_add = 10
 		}
 	}
-
 	triggered_country_modifier = {
 		potential = {
 			exists = owner 
-			owner = { has_technology = "tech_global_defense_grid" }
+			owner = { has_technology = "tech_wargame_simulations" }
 		}
 		modifier = {
 			country_naval_cap_add = 5
@@ -130,7 +125,7 @@ ranger = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_technology = "tech_global_defense_grid" }
+			owner = { has_technology = "tech_wargame_simulations" }
 		}
 		modifier = {
 			planet_amenities_add = 10
