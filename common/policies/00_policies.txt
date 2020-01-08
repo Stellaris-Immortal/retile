@@ -117,6 +117,10 @@ war_philosophy = {
 			unrestricted_wars
 		}
 		
+		valid = {
+			NOT = { has_valid_civic = civic_anarchist }
+		}
+		
 		AI_weight = {
 			modifier = {
 				factor = 10
@@ -186,6 +190,7 @@ war_philosophy = {
 				has_valid_civic = "civic_fanatic_purifiers"
 				has_valid_civic = "civic_hive_devouring_swarm"
 				has_valid_civic = "civic_machine_terminator"
+				has_valid_civic = civic_anarchist
 			}
 		}
 		
@@ -657,6 +662,7 @@ criminal = {
 		
 		valid = {
 			NOT = { has_civic = civic_police_state }
+			NOT = { has_valid_civic = civic_anarchist }
 		}
 		
 		policy_flags = { criminal_private_police }
@@ -686,6 +692,7 @@ criminal = {
 		
 		valid = {
 			NOT = { has_civic = civic_police_state }
+			NOT = { has_valid_civic = civic_anarchist }
 		}
 		
 		policy_flags = { criminal_military_police }
@@ -717,6 +724,7 @@ environmental = {
 		
 		valid = {
 			NOT = { has_valid_civic = civic_shared_burden }
+			NOT = { has_valid_civic = civic_anarchist }
 		}
 		
 		policy_flags = {
@@ -765,10 +773,6 @@ environmental = {
 		modifier = {
 			planet_jobs_produces_mult = -0.10
 			planet_amenities_mult = -0.10
-		}
-		
-		valid = {
-			NOT = { has_valid_civic = civic_anarchist }
 		}
 		
 		policy_flags = {
@@ -1241,10 +1245,6 @@ appropriation = {
 	option = {
 		name = "appropriation_not_allowed"
 		
-		valid = {
-			NOT = { has_valid_civic = civic_anarchist }
-		}
-		
 		policy_flags = {
 			appropriation_not_allowed
 		}
@@ -1277,7 +1277,10 @@ appropriation = {
 		policy_flags = {
 			appropriation_allowed
 		}
-		modifier = {}
+		
+		valid = {
+			NOT = { has_valid_civic = civic_anarchist }
+		}
 		
 		AI_weight = {
 			modifier = {
@@ -1551,6 +1554,7 @@ xenodiplomacy = {
 		
 		valid = { 
 			NOT = { has_policy_flag = no_wars }
+			NOT = { has_valid_civic = civic_anarchist }
 		}
 		
 		AI_weight = {
@@ -1806,6 +1810,7 @@ artificial_intelligence_policy = {
 
 		valid = {
 			NOT = { has_country_flag = synthetic_empire }
+			NOT = { has_valid_civic = civic_anarchist }
 		}
 		
 		policy_flags = {
@@ -1993,6 +1998,7 @@ pre_sapients = {
 			is_synthetic_empire = no
 			NOT = {
 				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_anarchist
 			}
 		}
 		
@@ -2020,6 +2026,10 @@ pre_sapients = {
 		
 		policy_flags = {
 			pre_sapients_purge
+		}
+		
+		valid = {
+			NOT = { has_valid_civic = civic_anarchist }
 		}
 		
 		modifier = {}
@@ -2077,6 +2087,10 @@ alien_rights = {
 	option = {
 		name = "alien_limited_rights"
 		
+		valid = {
+			NOT = { has_valid_civic = civic_anarchist }
+		}
+		
 		policy_flags = {
 			alien_limited_rights
 		}
@@ -2088,6 +2102,10 @@ alien_rights = {
 		
 		policy_flags = {
 			alien_no_rights
+		}
+		
+		valid = {
+			NOT = { has_valid_civic = civic_anarchist }
 		}
 		
 		AI_weight = {
