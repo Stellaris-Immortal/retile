@@ -600,7 +600,7 @@ planet_event = {
 			has_modifier = drought
 			has_planet_flag = recent_ecology_event
 			check_variable = { which = pollution value < 10 }
-			check_variable = { which = pollution value >= 1000 }
+			check_variable = { which = pollution value >= 500 }
 		}
 	}
 	
@@ -626,6 +626,7 @@ planet_event = {
 		owner = { add_resource = { energy = -500 } }
 		add_planet_devastation = 5
 		add_modifier = { modifier = drought days = 180 }
+		hidden_effect = { change_variable = { which = pollution value = -5 } }
 	}
 	
 	option = {
@@ -635,6 +636,7 @@ planet_event = {
 			solar_system.starbase = { has_starbase_building = climate_control }
 		}
 		owner = { add_resource = { energy = -1000 } }
+		hidden_effect = { change_variable = { which = pollution value = -5 } }
 	}
 	
 	option = {
@@ -681,7 +683,7 @@ planet_event = {
 			has_modifier = flood
 			has_planet_flag = recent_ecology_event
 			check_variable = { which = pollution value < 10 }
-			check_variable = { which = pollution value >= 1000 }
+			check_variable = { which = pollution value >= 500 }
 			is_dry = yes
 		}
 	}
@@ -709,7 +711,7 @@ planet_event = {
 		owner = { add_resource = { consumer_goods = -100 } }
 		add_planet_devastation = 5
 		add_modifier = { modifier = flood days = 180 }
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
+		hidden_effect = { change_variable = { which = pollution value = -5 } }
 	}
 	
 	option = {
@@ -719,6 +721,7 @@ planet_event = {
 			solar_system.starbase = { has_starbase_building = climate_control }
 		}
 		owner = { add_resource = { energy = -1000 } }
+		hidden_effect = { change_variable = { which = pollution value = -5 } }
 	}
 	
 	option = {
@@ -731,7 +734,6 @@ planet_event = {
 		add_planet_devastation = 5
 		add_modifier = { modifier = flood days = 360 }
 		add_modifier = { modifier = black_propaganda days = 360 }
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 	}
 }
 
@@ -764,7 +766,7 @@ planet_event = {
 			has_modifier = heat_wave
 			has_planet_flag = recent_ecology_event
 			check_variable = { which = pollution value < 50 }
-			check_variable = { which = pollution value >= 1000 }
+			check_variable = { which = pollution value >= 500 }
 			is_cold = yes
 		}
 	}
@@ -791,6 +793,7 @@ planet_event = {
 		owner = { add_resource = { energy = -500 } }
 		add_planet_devastation = 5
 		add_modifier = { modifier = heat_wave days = 180 }
+		hidden_effect = { change_variable = { which = pollution value = -25 } }
 	}
 	
 	option = {
@@ -800,6 +803,7 @@ planet_event = {
 			solar_system.starbase = { has_starbase_building = climate_control }
 		}
 		owner = { add_resource = { energy = -1000 } }
+		hidden_effect = { change_variable = { which = pollution value = -25 } }
 	}
 	
 	option = {
@@ -844,7 +848,7 @@ planet_event = {
 			has_modifier = cold_wave
 			has_planet_flag = recent_ecology_event
 			check_variable = { which = pollution value < 50 }
-			check_variable = { which = pollution value >= 1000 }
+			check_variable = { which = pollution value >= 500 }
 		}
 		is_cold = yes
 	}
@@ -871,6 +875,7 @@ planet_event = {
 		owner = { add_resource = { consumer_goods = -100 } }
 		add_planet_devastation = 5
 		add_modifier = { modifier = cold_wave days = 180 }
+		hidden_effect = { change_variable = { which = pollution value = -25 } }
 	}
 	
 	option = {
@@ -880,6 +885,7 @@ planet_event = {
 			solar_system.starbase = { has_starbase_building = climate_control }
 		}
 		owner = { add_resource = { energy = -1000 } }
+		hidden_effect = { change_variable = { which = pollution value = -25 } }
 	}
 	
 	option = {
@@ -924,7 +930,7 @@ planet_event = {
 			has_modifier = storm
 			has_planet_flag = recent_ecology_event
 			check_variable = { which = pollution value < 100 }
-			check_variable = { which = pollution value >= 2000 }
+			check_variable = { which = pollution value >= 1000 }
 		}
 		has_building = yes
 	}
@@ -941,7 +947,6 @@ planet_event = {
 		name = ecology.6.a
 		add_planet_devastation = 10
 		add_modifier = { modifier = storm days = 360 }
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 	}
 	
 	option = {
@@ -951,8 +956,8 @@ planet_event = {
 		}
 		add_planet_devastation = 5
 		add_modifier = { modifier = storm days = 180 }
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 		owner = { add_resource = { consumer_goods = -100 } }
+		hidden_effect = { change_variable = { which = pollution value = -50 } }
 	}
 	
 	option = {
@@ -963,8 +968,8 @@ planet_event = {
 		}
 		add_planet_devastation = 5
 		add_modifier = { modifier = storm days = 90 }
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 		owner = { add_resource = { energy = -1000 } }
+		hidden_effect = { change_variable = { which = pollution value = -50 } }
 	}
 	
 	option = {
@@ -977,7 +982,6 @@ planet_event = {
 		add_planet_devastation = 10
 		add_modifier = { modifier = storm days = 360 }
 		add_modifier = { modifier = black_propaganda days = 360 }
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 	}
 }
 
@@ -1010,7 +1014,7 @@ planet_event = {
 			has_planet_flag = recent_ecology_event
 			has_planet_flag = desertification_event
 			check_variable = { which = pollution value < 100 }
-			check_variable = { which = pollution value >= 2000 }
+			check_variable = { which = pollution value >= 1000 }
 		}
 	}
 	
@@ -1035,6 +1039,7 @@ planet_event = {
 		}
 		# reduce largest food district by -1 and add a +1 mineral or energy district
 		owner = { add_resource = { consumer_goods = -100 } }
+		hidden_effect = { change_variable = { which = pollution value = -50 } }
 	}
 	
 	option = {
@@ -1045,6 +1050,7 @@ planet_event = {
 		}
 		# prevent the change
 		owner = { add_resource = { energy = -1000 } }
+		hidden_effect = { change_variable = { which = pollution value = -50 } }
 	}
 }
 
@@ -1107,8 +1113,8 @@ planet_event = {
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
 			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 500 }
-			check_variable = { which = pollution value >= 3000 }
+			check_variable = { which = pollution value < 250 }
+			check_variable = { which = pollution value >= 1500 }
 		}
 	}
 	
@@ -1117,7 +1123,7 @@ planet_event = {
 			flag = recent_ecology_event
 			days = 360
 		}
-		change_variable = { which = pollution value = -500 }
+		change_variable = { which = pollution value = -250 }
 	}
 	
 	option = {
@@ -1164,6 +1170,7 @@ planet_event = {
 			}
 		}
 		owner = { add_resource = { energy = -1000 } }
+		hidden_effect = { change_variable = { which = pollution value = -125 } }
 	}
 	
 	option = {
@@ -1174,6 +1181,7 @@ planet_event = {
 		}
 		# prevent the change
 		owner = { add_resource = { energy = -2000 } }
+		hidden_effect = { change_variable = { which = pollution value = -125 } }
 	}
 }
 
@@ -1214,7 +1222,7 @@ planet_event = {
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
 			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 500 }
+			check_variable = { which = pollution value < 250 }
 		}
 	}
 	
@@ -1223,7 +1231,7 @@ planet_event = {
 			flag = recent_ecology_event
 			days = 360
 		}
-		change_variable = { which = pollution value = -500 }
+		change_variable = { which = pollution value = -250 }
 	}
 	
 	option = {
@@ -1275,6 +1283,7 @@ planet_event = {
 			solar_system.starbase = { has_starbase_building = climate_control }
 		}
 		owner = { add_resource = { energy = -2000 } }
+		hidden_effect = { change_variable = { which = pollution value = -125 } }
 	}
 	
 	option = {
@@ -1289,6 +1298,7 @@ planet_event = {
 			remove_modifier = greenhouse_effect
 		}
 		owner = { add_resource = { energy = -2000 } }
+		hidden_effect = { change_variable = { which = pollution value = -125 } }
 	}
 }
 
@@ -1319,7 +1329,8 @@ planet_event = {
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
 			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 1000 }
+			check_variable = { which = pollution value < 500 }
+			check_variable = { which = pollution value < 2000 }
 			is_dry = yes
 		}
 	}
@@ -1329,7 +1340,7 @@ planet_event = {
 			flag = recent_ecology_event
 			days = 360
 		}
-		change_variable = { which = pollution value = -1000 }
+		change_variable = { which = pollution value = -500 }
 	}
 	
 	option = {
@@ -1351,8 +1362,8 @@ planet_event = {
 			1 = { random_owned_pop = { kill_pop = yes } }
 			1 = { }
 		}
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 		owner = { add_resource = { consumer_goods = -250 } }
+		hidden_effect = { change_variable = { which = pollution value = -250 } }
 	}
 	
 	option = {
@@ -1363,8 +1374,8 @@ planet_event = {
 		}
 		add_planet_devastation = 10
 		add_modifier = { modifier = tidal_wave days = 90 }
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 		owner = { add_resource = { energy = -2000 } }
+		hidden_effect = { change_variable = { which = pollution value = -250 } }
 	}
 	
 	option = {
@@ -1379,7 +1390,6 @@ planet_event = {
 		add_modifier = { modifier = tidal_wave days = 360 }
 		random_owned_pop = { kill_pop = yes }
 		owner = { add_modifier = { modifier = black_propaganda_empire days = 360 } }
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 	}
 }
 
@@ -1410,7 +1420,8 @@ planet_event = {
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
 			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 1000 }
+			check_variable = { which = pollution value < 500 }
+			check_variable = { which = pollution value < 2000 }
 		}
 		is_dry = yes
 	}
@@ -1420,7 +1431,7 @@ planet_event = {
 			flag = recent_ecology_event
 			days = 360
 		}
-		change_variable = { which = pollution value = -1000 }
+		change_variable = { which = pollution value = -500 }
 	}
 	
 	option = {
@@ -1442,8 +1453,8 @@ planet_event = {
 			1 = { random_owned_pop = { kill_pop = yes } }
 			1 = { }
 		}
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 		owner = { add_resource = { consumer_goods = -250 } }
+		hidden_effect = { change_variable = { which = pollution value = -250 } }
 	}
 	
 	option = {
@@ -1454,8 +1465,8 @@ planet_event = {
 		}
 		add_planet_devastation = 10
 		add_modifier = { modifier = firestorm days = 90 }
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 		owner = { add_resource = { energy = -2000 } }
+		hidden_effect = { change_variable = { which = pollution value = -250 } }
 	}
 	
 	option = {
@@ -1470,7 +1481,6 @@ planet_event = {
 		add_modifier = { modifier = firestorm days = 360 }
 		random_owned_pop = { kill_pop = yes }
 		owner = { add_modifier = { modifier = black_propaganda_empire days = 360 } }
-		hidden_effect = { validate_planet_buildings_and_districts = yes }
 	}
 }
 
@@ -1511,7 +1521,7 @@ planet_event = {
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
 			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 2000 }
+			check_variable = { which = pollution value < 500 }
 			has_modifier = environmental_collapse
 		}
 		has_modifier = greenhouse_effect
@@ -1522,7 +1532,7 @@ planet_event = {
 			flag = recent_ecology_event
 			days = 360
 		}
-		change_variable = { which = pollution value = -2000 }
+		change_variable = { which = pollution value = -500 }
 	}
 	
 	option = {
@@ -1577,6 +1587,7 @@ planet_event = {
 			1 = { }
 		}
 		owner = { add_resource = { energy = -5000 } }
+		hidden_effect = { change_variable = { which = pollution value = -250 } }
 	}
 	
 	option = {
