@@ -326,7 +326,6 @@ lost_owned_pop = {
 hazardous_weather = {
 	pop_environment_tolerance = -0.10
 	planet_jobs_energy_produces_mult = 0.10
-	district_generator_max = 2
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_hazardous_weather.dds"
 	icon_frame = 2
@@ -349,7 +348,6 @@ weak_magnetic_field = {
 
 strong_magnetic_field = {
 	planet_jobs_energy_produces_mult = 0.10
-	district_generator_max = 2
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_strong_magnetic_field.dds"
 	icon_frame = 1
@@ -365,10 +363,7 @@ unstable_tectonics = {
 }
 
 tidal_locked = {
-	pop_environment_tolerance = -0.10
-	district_generator_max = -2
-	district_mining_max = -2
-	district_farming_max = -2
+	planet_max_districts_mult = -0.50
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_tidal_locked.dds"
 	icon_frame = 3
@@ -381,15 +376,14 @@ chthonian_planet = {
 
 asteroid_impacts = {
 	planet_jobs_minerals_produces_mult = 0.10
-	district_mining_max = 1
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_asteroid_impacts.dds"
 	icon_frame = 1
 }
 
 extensive_moon_system = {
+	planet_jobs_unity_produces_mult = 0.10
 	planet_jobs_minerals_produces_mult = 0.20
-	district_mining_max = 2
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_extensive_moon_system.dds"
 	icon_frame = 1
@@ -403,17 +397,16 @@ carbon_world = {
 }
 
 wild_storms = {
-	pop_happiness = -0.10
+	planet_max_districts_mult = -0.10
 	planet_jobs_physics_research_produces_mult = 0.20
 	planet_jobs_society_research_produces_mult = 0.20
 
-	icon = "gfx/interface/icons/planet_modifiers/pm_wild_storms.dds"
+	icon = "gfx/interface/icons/planet_modifiers/pm_storm.dds"
 	icon_frame = 2
 }
 
 mineral_rich = {
 	planet_jobs_minerals_produces_mult = 0.20
-	district_mining_max = 2
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_mineral_rich.dds"
 	icon_frame = 1
@@ -503,7 +496,6 @@ lush_planet = {
 bleak_planet = {
 	planet_amenities_mult = 0.25
 	planet_jobs_food_produces_mult = -0.10
-	district_farming_max = -2
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_bleak.dds"
 	icon_frame = 3
@@ -513,8 +505,6 @@ irradiated_planet = {
 	pop_environment_tolerance = -0.10
 	planet_amenities_add = 100
 	planet_jobs_food_produces_mult = -0.50
-	district_farming_max = -4
-	district_mining_max = 2
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_irradiated.dds"
 	icon_frame = 3
@@ -659,7 +649,10 @@ gamma_ray = {
 }
 	
 greenhouse_effect = {
-	icon = "gfx/interface/icons/planet_modifiers/pm_atmospheric_hallucinogen.dds"
+	icon = "gfx/interface/icons/planet_modifiers/pm_global_warming.dds"
+	planet_stability_add = -10
+	planet_amenities_mult = 0.2
+	icon_frame = 3
 }
 
 ammonia_biosphere = {
@@ -679,7 +672,7 @@ alien_mural = {
 }
 
 damaged_ecology = {
-	planet_amenities_mult = 0.25
+	planet_amenities_mult = 0.2
 	icon = "gfx/interface/icons/planet_modifiers/pm_wasteland.dds"
 	icon_frame = 3
 }

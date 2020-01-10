@@ -11,9 +11,7 @@ technologist = {
 	
 	resources = {
 		category = pop_factions
-		produces = {
-			influence = 2
-		}
+		produces = { influence = 1 }
 	}
 
 	is_potential = {
@@ -97,7 +95,7 @@ technologist = {
 		desc = "MATERIALIST_PRECURSOR_SECRETS_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = -0
 
 		potential = {
 			exists = owner
@@ -124,7 +122,7 @@ technologist = {
 		desc = "MATERIALIST_PROSPERITY_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = -0
 
 		potential = { exists = owner }
 
@@ -135,14 +133,33 @@ technologist = {
 		}
 	}
 	
+	# Wants AI Rights
+	demand = { 
+		title = "MATERIALIST_AI_RIGHTS"
+		unfulfilled_title = "MATERIALIST_NO_AI_RIGHTS"
+		desc = "MATERIALIST_AI_RIGHTS_DESC"
+
+		fulfilled_effect = 20
+		unfulfilled_effect = -0
+
+		potential = { 
+			exists = owner
+			owner = { can_set_ai_policy = yes }
+		}
+
+		trigger = {
+			owner = { has_policy_flag = ai_full_rights }
+		}
+	}
+	
 	# Wants Private Education
 	demand = { 
 		title = "MATERIALIST_PRIVATE_EDUCATION"
 		unfulfilled_title = "MATERIALIST_NO_PRIVATE_EDUCATION"
 		desc = "MATERIALIST_PRIVATE_EDUCATION_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 20
+		unfulfilled_effect = -0
 
 		potential = { exists = owner }
 
@@ -157,48 +174,13 @@ technologist = {
 		unfulfilled_title = "MATERIALIST_NO_PRIVATE_POLICE"
 		desc = "MATERIALIST_PRIVATE_POLICE_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 20
+		unfulfilled_effect = -0
 
 		potential = { exists = owner }
 
 		trigger = {
 			owner = { has_policy_flag = criminal_private_police }
-		}
-	}
-	
-	# Wants Environmental Deregulation
-	demand = { 
-		title = "MATERIALIST_ENVIRONMENTAL_DEREGULATION"
-		unfulfilled_title = "MATERIALIST_NO_ENVIRONMENTAL_DEREGULATION"
-		desc = "MATERIALIST_ENVIRONMENTAL_DEREGULATION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = environmental_deregulation }
-		}
-	}
-	
-	# Wants AI Rights
-	demand = { 
-		title = "MATERIALIST_AI_RIGHTS"
-		unfulfilled_title = "MATERIALIST_NO_AI_RIGHTS"
-		desc = "MATERIALIST_AI_RIGHTS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { 
-			exists = owner
-			owner = { can_set_ai_policy = yes }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = ai_full_rights }
 		}
 	}
 	
@@ -209,7 +191,7 @@ technologist = {
 		desc = "MATERIALIST_INTERFERENCE_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = -0
 
 		potential = { 
 			exists = owner
@@ -220,13 +202,29 @@ technologist = {
 		}
 	}
 	
+	# Wants Environmental Deregulation
+	demand = { 
+		title = "MATERIALIST_ENVIRONMENTAL_DEREGULATION"
+		unfulfilled_title = "MATERIALIST_NO_ENVIRONMENTAL_DEREGULATION"
+		desc = "MATERIALIST_ENVIRONMENTAL_DEREGULATION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -0
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = environmental_deregulation }
+		}
+	}
+	
 	# Hates Harmony
 	demand = { 
 		title = "MATERIALIST_HARMONY"
 		unfulfilled_title = "MATERIALIST_NO_HARMONY"
 		desc = "MATERIALIST_HARMONY_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -244,20 +242,38 @@ technologist = {
 		unfulfilled_title = "MATERIALIST_BASIC_SUBSISTENCE"
 		desc = "MATERIALIST_BASIC_SUBSISTENCE"
 
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
 
 		potential = { exists = owner }
 
 		trigger = {
-			owner = {
-				NOR = {
-					any_owned_pop = { has_living_standard = { type = living_standard_chemical_bliss } }
-					any_owned_pop = { has_living_standard = { type = living_standard_academic_privilege  } }
-					any_owned_pop = { has_living_standard = { type = living_standard_utopian  } }
-					any_owned_pop = { has_living_standard = { type = living_standard_good  } }
+			NOT = {
+				owner = {
+					NOR = {
+						any_owned_pop = { has_living_standard = { type = living_standard_chemical_bliss } }
+						any_owned_pop = { has_living_standard = { type = living_standard_academic_privilege  } }
+						any_owned_pop = { has_living_standard = { type = living_standard_utopian  } }
+						any_owned_pop = { has_living_standard = { type = living_standard_good  } }
+					}
 				}
 			}
+		}
+	}
+	
+	# Hates Enlightenment Allowed
+	demand = { 
+		title = "MATERIALIST_ENLIGHTENMENT_ALLOWED"
+		unfulfilled_title = "MATERIALIST_NO_ENLIGHTENMENT_ALLOWED"
+		desc = "MATERIALIST_ENLIGHTENMENT_ALLOWED_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = enlightenment_allowed } }
 		}
 	}
 	
@@ -267,8 +283,8 @@ technologist = {
 		unfulfilled_title = "MATERIALIST_NO_ENVIRONMENTAL_PROTECTION"
 		desc = "MATERIALIST_ENVIRONMENTAL_PROTECTION_DESC"
 
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
 
 		potential = { exists = owner }
 
@@ -277,17 +293,13 @@ technologist = {
 		}
 	}
 
-	on_create = {
-		pop_faction_event = { id = factions.1 }
-	}
-
 	# Hates Public Education
 	demand = { 
 		title = "MATERIALIST_PUBLIC_EDUCATION"
 		unfulfilled_title = "MATERIALIST_NO_PUBLIC_EDUCATION"
 		desc = "MATERIALIST_PUBLIC_EDUCATION_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -303,7 +315,7 @@ technologist = {
 		unfulfilled_title = "MATERIALIST_NO_AI_OUTLAWED"
 		desc = "MATERIALIST_AI_OUTLAWED_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -319,7 +331,7 @@ technologist = {
 		unfulfilled_title = "MATERIALIST_NO_PASSIVE"
 		desc = "MATERIALIST_PASSIVE_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { 
@@ -331,20 +343,8 @@ technologist = {
 		}
 	}
 	
-	# Hates Enlightenment Allowed
-	demand = { 
-		title = "MATERIALIST_ENLIGHTENMENT_ALLOWED"
-		unfulfilled_title = "MATERIALIST_NO_ENLIGHTENMENT_ALLOWED"
-		desc = "MATERIALIST_ENLIGHTENMENT_ALLOWED_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = enlightenment_allowed } }
-		}
+	on_create = {
+		pop_faction_event = { id = factions.1 }
 	}
 
 	on_destroy = {

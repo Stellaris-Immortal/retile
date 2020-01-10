@@ -11,9 +11,7 @@ progressive = {
 	
 	resources = {
 		category = pop_factions
-		produces = {
-			influence = 2
-		}		
+		produces = { influence = 1 }		
 	}
 
 	is_potential = {
@@ -88,7 +86,7 @@ progressive = {
 		desc = "EGALITARIAN_DEMOCRACY_DESC"
 
 		fulfilled_effect = 20
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -103,21 +101,39 @@ progressive = {
 		unfulfilled_title = "EGALITARIAN_NO_WELFARE"
 		desc = "EGALITARIAN_WELFARE_DESC"
 
-		fulfilled_effect = -1
-		unfulfilled_effect = 10
+		fulfilled_effect = 20
+		unfulfilled_effect = 0
 
 		potential = {
 			exists = owner
 		}
 
 		trigger = {
-			owner = {
-				NOR = {
-					any_owned_pop = { has_living_standard = { type = living_standard_good } }
-					any_owned_pop = { has_living_standard = { type = living_standard_shared_burden } }
-					any_owned_pop = { has_living_standard = { type = living_standard_utopian } }
+			NOT = {
+				owner = {
+					NOR = {
+						any_owned_pop = { has_living_standard = { type = living_standard_good } }
+						any_owned_pop = { has_living_standard = { type = living_standard_shared_burden } }
+						any_owned_pop = { has_living_standard = { type = living_standard_utopian } }
+					}
 				}
 			}
+		}
+	}
+	
+	# Wants Slavery Ban
+	demand = {
+		title = "EGALITARIAN_SLAVERY_BAN"
+		unfulfilled_title = "EGALITARIAN_NO_SLAVERY_BAN"
+		desc = "EGALITARIAN_SLAVERY_BAN_DESC"
+
+		fulfilled_effect = 20
+		unfulfilled_effect = 0
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = slavery_not_allowed }
 		}
 	}
 	
@@ -128,7 +144,7 @@ progressive = {
 		desc = "EGALITARIAN_COMMON_LAW_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -144,7 +160,7 @@ progressive = {
 		desc = "EGALITARIAN_UNIVERSAL_HEALTHCARE_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -160,7 +176,7 @@ progressive = {
 		desc = "EGALITARIAN_EDUCATION_FOR_ALL_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -176,28 +192,12 @@ progressive = {
 		desc = "EGALITARIAN_APPROPRIATION_NOT_ALLOWED_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
 		trigger = {
 			owner = { has_policy_flag = appropriation_not_allowed }
-		}
-	}
-	
-	# Wants Slavery Ban
-	demand = {
-		title = "EGALITARIAN_SLAVERY_BAN"
-		unfulfilled_title = "EGALITARIAN_NO_SLAVERY_BAN"
-		desc = "EGALITARIAN_SLAVERY_BAN_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = slavery_not_allowed }
 		}
 	}
 
@@ -207,7 +207,7 @@ progressive = {
 		unfulfilled_title = "EGALITARIAN_NO_IMPERIAL"
 		desc = "EGALITARIAN_IMPERIAL_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
 		potential = { exists = owner }
@@ -223,7 +223,7 @@ progressive = {
 		unfulfilled_title = "EGALITARIAN_NO_OVERLORD"
 		desc = "EGALITARIAN_OVERLORD_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
 		potential = {
@@ -242,8 +242,8 @@ progressive = {
 		unfulfilled_title = "EGALITARIAN_NO_INEQUALITY"
 		desc = "EGALITARIAN_INEQUALITY_DESC"
 
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
 
 		potential = { exists = owner }
 
@@ -263,7 +263,7 @@ progressive = {
 		unfulfilled_title = "EGALITARIAN_NO_PRIVATE_POLICE"
 		desc = "EGALITARIAN_PRIVATE_POLICE_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = {exists = owner }
@@ -279,7 +279,7 @@ progressive = {
 		unfulfilled_title = "EGALITARIAN_NO_PRIVATE_EDUCATION"
 		desc = "EGALITARIAN_PRIVATE_EDUCATION_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = {exists = owner }
@@ -295,7 +295,7 @@ progressive = {
 		unfulfilled_title = "EGALITARIAN_NO_APPROPRIATION_ALLOWED"
 		desc = "EGALITARIAN_APPROPRIATION_ALLOWED_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -311,7 +311,7 @@ progressive = {
 		unfulfilled_title = "EGALITARIAN_NO_SLAVERY"
 		desc = "EGALITARIAN_SLAVERY_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = {

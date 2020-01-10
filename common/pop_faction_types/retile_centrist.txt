@@ -10,9 +10,7 @@ supremacist = {
 	
 	resources = {
 		category = pop_factions
-		produces = {
-			influence = 1
-		}		
+		produces = { unity = 1 }		
 	}
 
 	is_potential = {
@@ -140,30 +138,14 @@ supremacist = {
 		base = 100
 	}
 	
-	# Wants Experienced Ruler
-	demand = {
-		title = "CENTRIST_EXPERIENCE"
-		unfulfilled_title = "CENTRIST_NO_EXPERIENCE"
-		desc = "CENTRIST_EXPERIENCE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { exists = ruler }
-
-		trigger = {
-			ruler = { has_level > 2 }
-		}
-	}
-	
 	# Wants Free Speech
 	demand = {
 		title = "CENTRIST_FREE_SPEECH"
 		unfulfilled_title = "CENTRIST_NO_FREE_SPEECH"
 		desc = "CENTRIST_FREE_SPEECH_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
+		fulfilled_effect = 20
+		unfulfilled_effect = -20
 
 		potential = { exists = owner }
 

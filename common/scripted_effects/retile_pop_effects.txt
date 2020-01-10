@@ -52,18 +52,6 @@ retile_apply_growth_malus = {	# country scope
 			prev = { change_variable = { which = col_count value = -0.3 } }
 		}
 		
-		# Genome Mapping
-		if = { 
-			limit = { owner = { has_technology = tech_genome_mapping } }
-			prev = { change_variable = { which = col_count value = -0.1 } }
-		}
-		
-		# Cloning
-		if = { 
-			limit = { owner = { has_technology = tech_cloning } }
-			prev = { change_variable = { which = col_count value = -0.1 } }
-		}
-		
 		# Priority Healthcare
 		if = { 
 			limit = { owner = { has_policy_flag = healthcare_for_profit } }
@@ -74,6 +62,12 @@ retile_apply_growth_malus = {	# country scope
 		if = { 
 			limit = { owner = { has_policy_flag = healthcare_universal } }
 			prev = { change_variable = { which = col_count value = -0.1 } }
+		}
+		
+		# Full Reproductive Rights
+		if = { 
+			limit = { owner = { has_policy_flag = population_controls_not_allowed } }
+			prev = { change_variable = { which = col_count value = 0.1 } }
 		}
 		
 		# Anarchism

@@ -11,9 +11,7 @@ traditionalist = {
 	
 	resources = {
 		category = pop_factions
-		produces = {
-			influence = 2
-		}		
+		produces = { influence = 1 }		
 	}
 
 	is_potential = {
@@ -93,7 +91,7 @@ traditionalist = {
 		desc = "SPIRITUALIST_RELIC_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { 
 			exists = owner
@@ -111,7 +109,7 @@ traditionalist = {
 		desc = "SPIRITUALITY_HOLY_WORLD_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = {
 			exists = owner
@@ -139,7 +137,7 @@ traditionalist = {
 		desc = "SPIRITUALIST_HARMONY_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -150,32 +148,14 @@ traditionalist = {
 		}
 	}
 	
-	# Wants Universal Healthcare
-	demand = { 
-		title = "SPIRITUALIST_UNIVERSAL_HEALTHCARE"
-		unfulfilled_title = "SPIRITUALIST_NO_UNIVERSAL_HEALTHCARE"
-		desc = "SPIRITUALIST_UNIVERSAL_HEALTHCARE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				has_policy_flag = healthcare_universal
-			}
-		}
-	}
-	
 	# Wants Environmental Protections
 	demand = { 
 		title = "SPIRITUALIST_ENVIRONMENTAL_PROTECTION"
 		unfulfilled_title = "SPIRITUALIST_NO_ENVIRONMENTAL_PROTECTION"
 		desc = "SPIRITUALIST_ENVIRONMENTAL_PROTECTION_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 20
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -186,19 +166,21 @@ traditionalist = {
 		}
 	}
 	
-	# Wants Enlightenment Allowed
+	# Wants Universal Healthcare
 	demand = { 
-		title = "SPIRITUALIST_ENLIGHTENMENT_ALLOWED"
-		unfulfilled_title = "SPIRITUALIST_NO_ENLIGHTENMENT_ALLOWED"
-		desc = "SPIRITUALIST_ENLIGHTENMENT_ALLOWED_DESC"
+		title = "SPIRITUALIST_UNIVERSAL_HEALTHCARE"
+		unfulfilled_title = "SPIRITUALIST_NO_UNIVERSAL_HEALTHCARE"
+		desc = "SPIRITUALIST_UNIVERSAL_HEALTHCARE_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 20
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = enlightenment_allowed }
+			owner = {
+				has_policy_flag = healthcare_universal
+			}
 		}
 	}
 	
@@ -208,8 +190,8 @@ traditionalist = {
 		unfulfilled_title = "SPIRITUALIST_NO_SELECTIVE_BOMBARDMENT"
 		desc = "SPIRITUALIST_SELECTIVE_BOMBARDMENT_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -1
+		fulfilled_effect = 20
+		unfulfilled_effect = 0
 
 		potential = {
 			exists = owner
@@ -220,13 +202,29 @@ traditionalist = {
 		}
 	}
 	
+	# Wants Enlightenment Allowed
+	demand = { 
+		title = "SPIRITUALIST_ENLIGHTENMENT_ALLOWED"
+		unfulfilled_title = "SPIRITUALIST_NO_ENLIGHTENMENT_ALLOWED"
+		desc = "SPIRITUALIST_ENLIGHTENMENT_ALLOWED_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = 0
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = enlightenment_allowed }
+		}
+	}
+	
 	# Hates Slaying
 	demand = {
 		title = "SPIRITUALIST_SLAYER"
 		unfulfilled_title = "SPIRITUALIST_NO_SLAYER"
 		desc = "SPIRITUALIST_SLAYER_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = {
@@ -266,7 +264,7 @@ traditionalist = {
 		unfulfilled_title = "SPIRITUALIST_NO_DESTROY_WORLD"
 		desc = "SPIRITUALIST_DESTROY_WORLD_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -287,7 +285,7 @@ traditionalist = {
 		unfulfilled_title = "SPIRITUALIST_NO_PROSPERITY"
 		desc = "SPIRITUALIST_PROSPERITY_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -299,50 +297,14 @@ traditionalist = {
 		}
 	}
 	
-	# Hates Priority Healthcare
-	demand = {
-		title = "SPIRITUALIST_PRIORITY_HEALTHCARE"
-		unfulfilled_title = "SPIRITUALIST_NO_PRIORITY_HEALTHCARE"
-		desc = "SPIRITUALIST_PRIORITY_HEALTHCARE_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				NOT = { has_policy_flag = healthcare_for_profit }
-			}
-		}
-	}
-	
-	# Hates Environmental Deregulation
-	demand = { 
-		title = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION"
-		unfulfilled_title = "SPIRITUALIST_NO_ENVIRONMENTAL_DEREGULATION"
-		desc = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION_DESC"
-
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				NOT = { has_policy_flag = environmental_deregulation }
-			}
-		}
-	}
-	
 	# Hates Enlightenment not Allowed
 	demand = { 
 		title = "SPIRITUALIST_NO_ENLIGHTENMENT"
 		unfulfilled_title = "SPIRITUALIST_NO_NO_ENLIGHTENMENT"
 		desc = "SPIRITUALIST_NO_ENLIGHTENMENT_DESC"
 
-		fulfilled_effect = 1
-		unfulfilled_effect = -10
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
 
 		potential = { exists = owner }
 
@@ -353,13 +315,49 @@ traditionalist = {
 		}
 	}
 	
-	# Wants Heavy Bombardment
+	# Hates Environmental Deregulation
+	demand = { 
+		title = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION"
+		unfulfilled_title = "SPIRITUALIST_NO_ENVIRONMENTAL_DEREGULATION"
+		desc = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				NOT = { has_policy_flag = environmental_deregulation }
+			}
+		}
+	}
+	
+	# Hates Priority Healthcare
+	demand = {
+		title = "SPIRITUALIST_PRIORITY_HEALTHCARE"
+		unfulfilled_title = "SPIRITUALIST_NO_PRIORITY_HEALTHCARE"
+		desc = "SPIRITUALIST_PRIORITY_HEALTHCARE_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				NOT = { has_policy_flag = healthcare_for_profit }
+			}
+		}
+	}
+	
+	# Hates Heavy Bombardment
 	demand = { 
 		title = "SPIRITUALIST_HEAVY_BOMBARDMENT"
 		unfulfilled_title = "SPIRITUALIST_NO_HEAVY_BOMBARDMENT"
 		desc = "SPIRITUALIST_HEAVY_BOMBARDMENT_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = {

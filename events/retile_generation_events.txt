@@ -258,8 +258,39 @@ event = {
 		set_global_flag = spawn_sun_modifiers
 		every_planet = {
 			if = {
-				limit = { has_ring = yes }
+				limit = { 
+					has_ring = yes
+					NOT = { has_modifier = ring_system }
+				}
 				add_modifier = { modifier = ring_system days = -1 }
+			}
+			if = {
+				limit = { has_moon = yes }
+				if = {
+					limit = { num_moons = 1 }
+					if = { 
+						limit = { NOT = { has_modifier = pm_moon } }
+						add_modifier = { modifier = pm_moon days = -1 }
+					}
+				} else_if = {
+					limit = { num_moons = 2 }
+					if = { 
+						limit = { NOT = { has_modifier = pm_twin_moons } }
+						add_modifier = { modifier = pm_twin_moons days = -1 }
+					}
+				} else_if = {
+					limit = { num_moons = 3 }
+					if = { 
+						limit = { NOT = { has_modifier = pm_triple_moons } }
+						add_modifier = { modifier = pm_triple_moons days = -1 }
+					}
+				} else_if = {
+					limit = { num_moons > 3 }
+					if = {
+						limit = { NOT = { has_modifier = extensive_moon_system } }
+						add_modifier = { modifier = extensive_moon_system days = -1 }
+					}
+				}
 			}
 			if = {
 				limit = { 
@@ -648,6 +679,34 @@ planet_event = {
 				NOT = { has_modifier = ring_system }
 			}
 			add_modifier = { modifier = ring_system days = -1 }
+		}
+		if = {
+			limit = { has_moon = yes }
+			if = {
+				limit = { num_moons = 1 }
+				if = { 
+					limit = { NOT = { has_modifier = pm_moon } }
+					add_modifier = { modifier = pm_moon days = -1 }
+				}
+			} else_if = {
+				limit = { num_moons = 2 }
+				if = { 
+					limit = { NOT = { has_modifier = pm_twin_moons } }
+					add_modifier = { modifier = pm_twin_moons days = -1 }
+				}
+			} else_if = {
+				limit = { num_moons = 3 }
+				if = { 
+					limit = { NOT = { has_modifier = pm_triple_moons } }
+					add_modifier = { modifier = pm_triple_moons days = -1 }
+				}
+			} else_if = {
+				limit = { num_moons > 3 }
+				if = {
+					limit = { NOT = { has_modifier = extensive_moon_system } }
+					add_modifier = { modifier = extensive_moon_system days = -1 }
+				}
+			}
 		}
 		if = {
 			limit = { 

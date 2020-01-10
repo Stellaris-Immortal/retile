@@ -211,10 +211,28 @@ pm_class_trinary_4 = {
 	icon_frame = 2
 }
 
+pm_moon = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_moon.dds"
+	planet_jobs_unity_produces_mult = 0.10
+	icon_frame = 1
+}
+
+pm_twin_moons = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_twin_moons.dds"
+	planet_jobs_unity_produces_mult = 0.20
+	icon_frame = 1
+}
+
+pm_triple_moons = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_extensive_moon_system.dds"
+	planet_jobs_unity_produces_mult = 0.10
+	planet_jobs_minerals_produces_mult = 0.10
+	icon_frame = 1
+}
+
 slow_rotation = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_slow_rotation.dds"
-	district_mining_max = 2
-	district_farming_max = -2
+	planet_max_districts_mult = -0.20
 	icon_frame = 2
 }
 
@@ -246,7 +264,6 @@ ring_system = {
 calm_weather = {
 	icon = "gfx/interface/icons/planet_modifiers/pm_calm_weather.dds"
 	pop_environment_tolerance = 0.10
-	district_generator_max = -2
 	icon_frame = 1
 }
 
@@ -277,25 +294,91 @@ recently_terraformed_3 = {
 
 drought = { # Hot x2, Wet x1, Cold x0, No Ecu/Relic
 	icon = "gfx/interface/icons/planet_modifiers/pm_drought.dds"
-	planet_jobs_food_produces_mult = -0.20
-	pop_growth_speed = -0.10
+	planet_stability_add = -5
+	planet_jobs_food_produces_mult = -0.25
 	icon_frame = 3
 }
 
 flood = { # Hot x0, Wet x2, Cold x1, No Ecu/Relic
 	icon = "gfx/interface/icons/planet_modifiers/pm_flood.dds"
-	planet_max_districts_add = -2
+	planet_stability_add = -5
+	planet_max_districts_mult = -0.10
 	icon_frame = 3
 }
 
 heat_wave = { # Hot x1, Wet x1, Cold x1
 	icon = "gfx/interface/icons/planet_modifiers/pm_heat_wave.dds"
-	pop_growth_speed = -0.20
+	planet_stability_add = -5
+	pop_environment_tolerance = -0.10
 	icon_frame = 3
 }
 
 cold_wave = { # Hot x0, Wet x1, Cold x2
 	icon = "gfx/interface/icons/planet_modifiers/pm_cold_wave.dds"
+	planet_stability_add = -5
 	pop_environment_tolerance = -0.10
+	icon_frame = 3
+}
+
+storm = { 
+	icon = "gfx/interface/icons/planet_modifiers/pm_storm.dds"
+	planet_stability_add = -5
+	planet_max_buildings_add = -1
+	icon_frame = 3
+}
+
+invasive_species = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_dangerous_wildlife.dds"
+	planet_amenities_mult = 0.1
+	icon_frame = 3
+}
+
+introduced_species = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_animal_wildlife.dds"
+	icon_frame = 2
+}
+
+environmental_awareness = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_awareness.dds"
+	planet_amenities_mult = -0.10
+	planet_pops_upkeep_mult = -0.10
+	icon_frame = 1
+}
+
+tidal_wave = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_wild_storms.dds"
+	planet_stability_add = -5
+	planet_max_districts_mult = -0.20
+	planet_max_buildings_add = -1
+	icon_frame = 3
+}
+
+firestorm = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_firestorm.dds"
+	planet_stability_add = -5
+	planet_max_districts_mult = -0.20
+	planet_max_buildings_add = -1
+	icon_frame = 3
+}
+
+black_propaganda = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_alien_propaganda.dds"
+	planet_stability_add = 5
+	pop_government_ethic_attraction = 0.20
+	icon_frame = 2
+}
+
+black_propaganda_empire = {
+	icon = "gfx/interface/icons/modifiers/mod_ethic_attraction_mult.dds"
+	planet_stability_add = 5
+	pop_government_ethic_attraction = 0.20
+	icon_frame = 2
+}
+
+environmental_collapse = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_starvation.dds"
+	planet_stability_add = -10
+	pop_environment_tolerance = -0.20
+	planet_emigration_push_add = 100
 	icon_frame = 3
 }

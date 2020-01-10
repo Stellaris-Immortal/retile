@@ -844,26 +844,16 @@ generate_start_buildings_and_districts = {
 
 		if = {
 			limit = { owner = { last_created_species = { is_lithoid = yes } } }
-			owner = {
-				set_country_flag = lithoid_subspecies
-			}
-		}
-		else = {
-			owner = {
-				set_country_flag = non_lithoid_subspecies
-			}
+			owner = { set_country_flag = lithoid_subspecies }
+		} else = {
+			owner = { set_country_flag = non_lithoid_subspecies }
 		}
 		
 		if = {
 			limit = { owner = { last_created_species = { is_plantoid = yes } } }
-			owner = {
-				set_country_flag = plantoid_subspecies
-			}
-		}
-		else = {
-			owner = {
-				set_country_flag = non_plantoid_subspecies
-			}
+			owner = { set_country_flag = plantoid_subspecies }
+		} else = {
+			owner = { set_country_flag = non_plantoid_subspecies }
 		}
 	}
 	
@@ -903,6 +893,17 @@ generate_start_buildings_and_districts = {
 		if = { limit = { owner = { is_megacorp = yes } }
 			add_building = building_commercial_zone
 			remove_district = district_generator
+		}
+		
+		# One extra district for Mining Guilds
+		if = {
+			limit = { owner = { has_valid_civic = civic_mining_guilds } }
+			add_district = district_mining
+		}
+		# One extra district for Agrarian Idyll
+		if = {
+			limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
+			add_district = district_farming
 		}
 	}
 	
@@ -945,9 +946,17 @@ generate_start_buildings_and_districts = {
 	# Additional resources based on empire type and possible subspecies
 	owner = {
 		if = {
-			limit = { is_lithoid_empire = no }
+			limit = { 
+				is_lithoid_empire = no
+				is_plantoid_empire = no
+			}
 			if = {
-				limit = { has_country_flag = lithoid_subspecies }
+				limit = { 
+					OR = { 
+						has_country_flag = lithoid_subspecies
+						has_country_flag = plantoid_subspecies
+					}
+				}
 				add_resource = { food = 100	}
 				add_resource = { minerals = 100 }
 			}
@@ -955,14 +964,45 @@ generate_start_buildings_and_districts = {
 				add_resource = { food = 200 }
 			}
 		}
-		else = {
+		else_if = {
+			limit = { is_lithoid_empire = yes }
 			if = {
-				limit = { has_country_flag = non_lithoid_subspecies }
+				limit = { 
+					has_country_flag = non_lithoid_subspecies
+					has_country_flag = plantoid_subspecies
+				}
+				add_resource = { minerals = 100 }
+			}
+			else_if = {
+				limit = { 
+					has_country_flag = non_lithoid_subspecies
+					has_country_flag = non_plantoid_subspecies
+				}
 				add_resource = { food = 100	}
 				add_resource = { minerals = 100 }
 			}
 			else = {
 				add_resource = { minerals = 200 }
+			}
+		}
+		else_if = {
+			limit = { is_plantoid_empire = yes }
+			if = {
+				limit = { 
+					has_country_flag = non_plantoid_subspecies
+					has_country_flag = lithoid_subspecies
+				}
+				add_resource = { minerals = 100 }
+			}
+			else_if = {
+				limit = { 
+					has_country_flag = non_lithoid_subspecies
+					has_country_flag = non_plantoid_subspecies
+				}
+				add_resource = { food = 100	}
+			}
+			else = {
+				add_resource = { food = 0 }
 			}
 		}
 	}
@@ -1106,6 +1146,14 @@ generate_start_pops = {
 	# One extra pop for Mining Guilds
 	if = {
 		limit = { owner = { has_valid_civic = civic_mining_guilds } }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+	}
+	# One extra pop for Agrarian Idyll
+	if = {
+		limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
 		create_pop = {
 			species = owner_main_species
 			ethos = random
