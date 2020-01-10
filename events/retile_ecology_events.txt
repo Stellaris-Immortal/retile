@@ -632,7 +632,7 @@ planet_event = {
 	title = ecology.3.name
 	desc = ecology.3.desc
 	picture = GFX_evt_underwater_ruins
-	show_sound = event_air_raid_siren_02
+	show_sound = event_air_raid_siren
 	
 	is_triggered_only = yes
 	
@@ -1062,7 +1062,7 @@ planet_event = {
 	}
 	
 	picture = GFX_evt_animal_wildlife
-	show_sound = event_alien_nature_03
+	show_sound = event_alien_nature
 	
 	is_triggered_only = yes
 	
@@ -1169,7 +1169,7 @@ planet_event = {
 	}
 	
 	picture = GFX_evt_colony_settlement
-	show_sound = event_cityscape_02
+	show_sound = event_cityscape
 	
 	is_triggered_only = yes
 	
@@ -1274,7 +1274,7 @@ planet_event = {
 	title = ecology.11.name
 	desc = ecology.11.desc
 	picture = GFX_evt_ecology_event
-	show_sound = event_air_raid_siren_03
+	show_sound = event_air_raid_siren
 	
 	is_triggered_only = yes
 	
@@ -1365,7 +1365,7 @@ planet_event = {
 	title = ecology.12.name
 	desc = ecology.12.desc
 	picture = GFX_evt_burning_settlement
-	show_sound = event_air_raid_siren_03
+	show_sound = event_air_raid_siren
 	
 	is_triggered_only = yes
 	
@@ -1466,7 +1466,7 @@ planet_event = {
 	}
 	
 	picture = GFX_evt_alien_wildlife
-	show_sound = event_yellow_alert_01
+	show_sound = event_yellow_alert
 	
 	is_triggered_only = yes
 	
@@ -1638,6 +1638,7 @@ planet_event = {
 	
 	option = {
 		name = ecology.14.a
+		planet_event = { id = ecology.15 }
 		if = {
 			limit = { is_dry = yes }
 			hidden_effect = {
@@ -1778,6 +1779,7 @@ planet_event = {
 		
 	option = {
 		name = ecology.14.b
+		planet_event = { id = ecology.15 }
 		random_list = {
 			1 = { 
 				hidden_effect = {
@@ -1856,5 +1858,45 @@ planet_event = {
 				change_pc = "pc_molten"
 			}
 		}
+	}
+}
+
+# The End
+planet_event = {
+	id = ecology.15
+	title = ecology.15.name
+	
+	desc = {
+		trigger = { is_planet_class = pc_barren }
+		text = ecology.15.desc.barren
+	}
+	
+	desc = {
+		trigger = { is_planet_class = pc_toxic }
+		text = ecology.15.desc.toxic
+	}
+	
+	desc = {
+		trigger = { is_planet_class = pc_barren_cold }
+		text = ecology.15.desc.cold
+	}
+	
+	desc = {
+		trigger = { is_planet_class = pc_molten }
+		text = ecology.15.desc.molten
+	}
+	
+	desc = {
+		trigger = { is_planet_class = pc_nuked }
+		text = ecology.15.desc.tomb
+	}
+	
+	picture = GFX_evt_dead_city
+	show_sound = event_scanner
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = ecology.15.a
 	}
 }
