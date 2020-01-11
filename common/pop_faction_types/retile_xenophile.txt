@@ -11,12 +11,15 @@ xenoist = {
 	
 	resources = {
 		category = pop_factions
-		produces = { influence = 1 }		
+		produces = { influence = 2 }		
 	}
 
 	is_potential = {
-		years_passed > 10
-		has_encountered_other_species = yes
+		OR = {
+			years_passed > 20
+			has_country_flag = first_contact_event
+			has_country_flag = first_alien_life
+		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	
@@ -172,7 +175,10 @@ xenoist = {
 		fulfilled_effect = 20
 		unfulfilled_effect = 0
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
 
 		trigger = {
 			owner = { has_policy_flag = alien_full_rights }
@@ -324,7 +330,10 @@ xenoist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
 
 		trigger = {
 			owner = { has_policy_flag = alien_full_rights }

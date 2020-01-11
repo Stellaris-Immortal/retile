@@ -10,8 +10,12 @@ prosperity = {
 	support_multiplier = 1
 	
 	is_potential = {
-		years_passed > 10
-		has_encountered_other_species = yes
+		OR = {
+			years_passed > 20
+			has_country_flag = first_contact_event
+			has_ethic = ethic_pacifist
+			has_ethic = ethic_fanatic_pacifist
+		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	
@@ -26,7 +30,7 @@ prosperity = {
 
 	resources = {
 		category = pop_factions
-		produces = { influence = 1 }		
+		produces = { influence = 2 }		
 	}
 
 	can_join_pre_triggers = {
@@ -338,7 +342,7 @@ prosperity = {
 		unfulfilled_title = "DIPLOMAT_NO_PIRACY_HOSTILE"
 		desc = "DIPLOMAT_PIRACY_HOSTILE_DESC"
 
-		fulfilled_effect = 1
+		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { 

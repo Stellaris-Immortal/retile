@@ -14,8 +14,6 @@ supremacist = {
 	}
 
 	is_potential = {
-		years_passed > 10
-		has_encountered_other_species = yes
 		NOT = { 
 			has_ethic = ethic_gestalt_consciousness
 			has_valid_civic = civic_anarchist
@@ -54,86 +52,11 @@ supremacist = {
 	}
 	
 	attraction = {
-		base = 100
-		
-		modifier = {
-			factor = 0.75
-			owner = {
-				years_passed >= 50
-				years_passed < 100
-			}
-		}
-		
-		modifier = {
-			factor = 0.50
-			owner = {
-				years_passed >= 100
-				years_passed < 150
-			}
-		}
-		
-		modifier = {
-			factor = 0.25
-			owner = {
-				years_passed >= 150
-				years_passed < 200
-			}
-		}
-		
-		modifier = {
-			factor = 0
-			owner = {
-				years_passed >= 200
-			}
-		}
-		
-		modifier = {
-			factor = 1.00
-			happiness >= 0.90
-		}
-		
-		modifier = {
-			factor = 0.80
-			happiness < 0.90
-			happiness > 0.70
-		}
-		
-		modifier = {
-			factor = 0.60
-			happiness <= 0.60
-			happiness > 0.50
-		}
-		
-		modifier = {
-			factor = 0.40
-			happiness <= 0.50
-			happiness > 0.40
-		}
-		
-		modifier = {
-			factor = 0.20
-			happiness <= 0.40
-			happiness < 0.30
-		}
-		
-		modifier = {
-			factor = 0
-			happiness <= 0.30
-		}
+		base = 50
 		
 		modifier = {
 			factor = 0.50
 			has_citizenship_rights = no
-		}
-		
-		modifier = {
-			factor = 0.75
-			NOT = { is_same_species = owner_species }
-		}
-		
-		modifier = {
-			factor = 0.75
-			owner = { has_encountered_other_species = yes }
 		}
 	}
 	
