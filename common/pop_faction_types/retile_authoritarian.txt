@@ -11,12 +11,17 @@ totalitarian = {
 	
 	resources = {
 		category = pop_factions
-		produces = { influence = 1 }		
+		produces = { influence = 2 }		
 	}
 
 	is_potential = {
-		years_passed > 10
-		has_encountered_other_species = yes
+		OR = {
+			years_passed > 20
+			has_authority = auth_dictatorial
+			has_authority = auth_imperial
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
+		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	
