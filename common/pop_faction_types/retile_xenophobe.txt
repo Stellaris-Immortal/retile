@@ -11,12 +11,19 @@ isolationist = {
 	
 	resources = {
 		category = pop_factions
-		produces = { influence = 1 }		
+		produces = { influence = 2 }		
 	}
 
 	is_potential = {
-		years_passed > 10
-		has_encountered_other_species = yes
+		OR = {
+			years_passed > 20
+			has_country_flag = amoeba_encountered
+			has_country_flag = crystal_encountered
+			has_country_flag = drone_encountered
+			has_country_flag = cloud_encountered
+			has_country_flag = tiyanki_encountered
+			has_country_flag = has_encountered_other_empire
+		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	

@@ -11,12 +11,20 @@ technologist = {
 	
 	resources = {
 		category = pop_factions
-		produces = { influence = 1 }
+		produces = { influence = 2 }
 	}
 
 	is_potential = {
-		years_passed > 10
-		has_encountered_other_species = yes
+		OR = {
+			years_passed > 20
+			has_country_flag = volatile_motes_found
+			has_country_flag = exotic_gases_found
+			has_country_flag = rare_crystals_found
+			has_country_flag = living_metal_found
+			has_country_flag = dark_matter_found
+			has_ethic = ethic_materialist
+			has_ethic = ethic_fanatic_materialist
+		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	
@@ -239,8 +247,8 @@ technologist = {
 	# Hates Basic Subsistence
 	demand = {
 		title = "MATERIALIST_BASIC_SUBSISTENCE"
-		unfulfilled_title = "MATERIALIST_BASIC_SUBSISTENCE"
-		desc = "MATERIALIST_BASIC_SUBSISTENCE"
+		unfulfilled_title = "MATERIALIST_NO_BASIC_SUBSISTENCE"
+		desc = "MATERIALIST_BASIC_SUBSISTENCE_DESC"
 
 		fulfilled_effect = 0
 		unfulfilled_effect = -20

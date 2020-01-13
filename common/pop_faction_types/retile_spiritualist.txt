@@ -11,12 +11,20 @@ traditionalist = {
 	
 	resources = {
 		category = pop_factions
-		produces = { influence = 1 }		
+		produces = { influence = 2 }		
 	}
 
 	is_potential = {
-		years_passed > 10
-		has_encountered_other_species = yes
+		OR = {
+			years_passed > 20
+			has_country_flag = zro_found
+			has_country_flag = encountered_first_wormhole
+			has_country_flag = found_presapients
+			has_country_flag = encountered_first_primitive
+			has_country_flag = gaia_surveyed
+			has_ethic = ethic_spiritualist
+			has_ethic = ethic_fanatic_spiritualist
+		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	

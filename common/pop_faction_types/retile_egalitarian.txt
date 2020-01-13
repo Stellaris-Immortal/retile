@@ -11,12 +11,17 @@ progressive = {
 	
 	resources = {
 		category = pop_factions
-		produces = { influence = 1 }		
+		produces = { influence = 2 }		
 	}
 
 	is_potential = {
-		years_passed > 10
-		has_encountered_other_species = yes
+		OR = {
+			years_passed > 20
+			has_authority = auth_democratic
+			has_authority = auth_oligarchic
+			has_ethic = ethic_egalitarian
+			has_ethic = ethic_fanatic_egalitarian
+		}
 		NOT = { has_authority = auth_hive_mind }
 	}
 	
