@@ -105,7 +105,7 @@ totalitarian = {
 		unfulfilled_title = "AUTHORITARIAN_NO_OVERLORD"
 		desc = "AUTHORITARIAN_OVERLORD_DESC"
 
-		fulfilled_effect = 20
+		fulfilled_effect = 10
 		unfulfilled_effect = 0
 
 		potential = {
@@ -115,6 +115,22 @@ totalitarian = {
 
 		trigger = {
 			owner = { is_overlord = yes }
+		}
+	}
+	
+	# Wants Workers Owned
+	demand = { 
+		title = "AUTHORITARIAN_SLAVERY"
+		unfulfilled_title = "AUTHORITARIAN_NO_SLAVERY"
+		desc = "AUTHORITARIAN_SLAVERY_DESC"
+
+		fulfilled_effect = 20
+		unfulfilled_effect = 0
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = slavery_allowed }
 		}
 	}
 	
@@ -181,24 +197,6 @@ totalitarian = {
 
 		trigger = {
 			owner = { has_policy_flag = pre_sapients_eat }
-		}
-	}
-	
-	# Wants Slavery Allowed
-	demand = { 
-		title = "AUTHORITARIAN_SLAVERY"
-		unfulfilled_title = "AUTHORITARIAN_NO_SLAVERY"
-		desc = "AUTHORITARIAN_SLAVERY_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = {
-			exists = owner
-		}
-
-		trigger = {
-			owner = { has_policy_flag = slavery_allowed }
 		}
 	}
 	
@@ -298,7 +296,7 @@ totalitarian = {
 		}
 	}
 	
-	# Hates Slavery Ban
+	# Hates Worker Control
 	demand = {
 		title = "AUTHORITARIAN_SLAVERY_BAN"
 		unfulfilled_title = "AUTHORITARIAN_NO_SLAVERY_BAN"

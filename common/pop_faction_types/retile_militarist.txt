@@ -188,11 +188,11 @@ imperialist = {
 		}
 	}
 	
-	# Wants Hostile Contact
+	# Wants Indescriminate Bombardment
 	demand = {
-		title = "MILITARIST_HOSTILE_CONTACT"
-		unfulfilled_title = "MILITARIST_NO_HOSTILE_CONTACT"
-		desc = "MILITARIST_HOSTILE_CONTACT_DESC"
+		title = "MILITARIST_BOMBARDMENT"
+		unfulfilled_title = "MILITARIST_NO_BOMBARDMENT"
+		desc = "MILITARIST_BOMBARDMENT_DESC"
 		
 		fulfilled_effect = 10
 		unfulfilled_effect = 0
@@ -200,7 +200,12 @@ imperialist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = first_contact_attack_allowed }
+			owner = { 
+				OR = {
+					has_policy_flag = orbital_bombardment_indiscriminate
+					has_policy_flag = orbital_bombardment_armageddon
+				}
+			}
 		}
 	}
 	
@@ -265,7 +270,7 @@ imperialist = {
 		}
 	}
 	
-	# Hates Purge Ban
+	# Hates Genocide Ban
 	demand = {
 		title = "MILITARIST_PURGE"
 		unfulfilled_title = "MILITARIST_NO_PURGE"
@@ -277,7 +282,7 @@ imperialist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = purge_not_allowed }
+			owner = { NOT = { has_policy_flag = purge_not_allowed } }
 		}
 	}
 	
@@ -349,6 +354,10 @@ imperialist = {
 		trigger = {
 			owner = { NOT = { has_policy_flag = xenodiplomacy_isolation } }
 		}
+	}
+	
+	on_create = {
+		pop_faction_event = { id = factions.1 }
 	}
 
 	on_destroy = {
