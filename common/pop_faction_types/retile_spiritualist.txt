@@ -210,7 +210,7 @@ traditionalist = {
 		}
 	}
 	
-	# Wants Enlightenment Allowed
+	# Wants Active Interference
 	demand = { 
 		title = "SPIRITUALIST_ENLIGHTENMENT_ALLOWED"
 		unfulfilled_title = "SPIRITUALIST_NO_ENLIGHTENMENT_ALLOWED"
@@ -305,11 +305,11 @@ traditionalist = {
 		}
 	}
 	
-	# Hates Enlightenment not Allowed
+	# Hates Economic Diplomacy
 	demand = { 
-		title = "SPIRITUALIST_NO_ENLIGHTENMENT"
-		unfulfilled_title = "SPIRITUALIST_NO_NO_ENLIGHTENMENT"
-		desc = "SPIRITUALIST_NO_ENLIGHTENMENT_DESC"
+		title = "SPIRITUALIST_ECONOMIC_DIPLOMACY"
+		unfulfilled_title = "SPIRITUALIST_NO_ECONOMIC_DIPLOMACY"
+		desc = "SPIRITUALIST_ECONOMIC_DIPLOMACY_DESC"
 
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
@@ -318,7 +318,7 @@ traditionalist = {
 
 		trigger = {
 			owner = {
-				NOT = { has_policy_flag = enlightenment_not_allowed }
+				NOT = { has_policy_flag = xenodiplomacy_default }
 			}
 		}
 	}
@@ -341,24 +341,6 @@ traditionalist = {
 		}
 	}
 	
-	# Hates Priority Healthcare
-	demand = {
-		title = "SPIRITUALIST_PRIORITY_HEALTHCARE"
-		unfulfilled_title = "SPIRITUALIST_NO_PRIORITY_HEALTHCARE"
-		desc = "SPIRITUALIST_PRIORITY_HEALTHCARE_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				NOT = { has_policy_flag = healthcare_for_profit }
-			}
-		}
-	}
-	
 	# Hates Heavy Bombardment
 	demand = { 
 		title = "SPIRITUALIST_HEAVY_BOMBARDMENT"
@@ -366,7 +348,7 @@ traditionalist = {
 		desc = "SPIRITUALIST_HEAVY_BOMBARDMENT_DESC"
 
 		fulfilled_effect = 0
-		unfulfilled_effect = -10
+		unfulfilled_effect = -20
 
 		potential = {
 			exists = owner
@@ -374,6 +356,24 @@ traditionalist = {
 
 		trigger = {
 			owner = { has_policy_flag = orbital_bombardment_selective }
+		}
+	}
+	
+	# Hates Priority Healthcare
+	demand = {
+		title = "SPIRITUALIST_PRIORITY_HEALTHCARE"
+		unfulfilled_title = "SPIRITUALIST_NO_PRIORITY_HEALTHCARE"
+		desc = "SPIRITUALIST_PRIORITY_HEALTHCARE_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				NOT = { has_policy_flag = healthcare_for_profit }
+			}
 		}
 	}
 

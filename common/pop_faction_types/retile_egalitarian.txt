@@ -126,7 +126,7 @@ progressive = {
 		}
 	}
 	
-	# Wants Slavery Ban
+	# Wants Worker Control
 	demand = {
 		title = "EGALITARIAN_SLAVERY_BAN"
 		unfulfilled_title = "EGALITARIAN_NO_SLAVERY_BAN"
@@ -241,11 +241,11 @@ progressive = {
 		}
 	}
 	
-	# Wants No Slaves
-	demand = {
-		title = "EGALITARIAN_INEQUALITY"
-		unfulfilled_title = "EGALITARIAN_NO_INEQUALITY"
-		desc = "EGALITARIAN_INEQUALITY_DESC"
+	# Hates Appropriation
+	demand = { 
+		title = "EGALITARIAN_APPROPRIATION_ALLOWED"
+		unfulfilled_title = "EGALITARIAN_NO_APPROPRIATION_ALLOWED"
+		desc = "EGALITARIAN_APPROPRIATION_ALLOWED_DESC"
 
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
@@ -253,12 +253,7 @@ progressive = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { 
-				NOR = { 
-					any_owned_pop = { has_citizenship_type = { type = citizenship_slavery } }
-					any_owned_pop = { has_citizenship_type = { type = living_standard_stratified } }
-				}
-			}
+			owner = { NOT = { has_policy_flag = appropriation_allowed } }
 		}
 	}
 
@@ -278,6 +273,22 @@ progressive = {
 		}
 	}
 	
+	# Wants No AI Servants
+	demand = {
+		title = "EGALITARIAN_SERVITUDE"
+		unfulfilled_title = "EGALITARIAN_NO_SERVITUDE"
+		desc = "EGALITARIAN_SERVITUDE_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { NOT = { has_policy_flag = ai_servitude } }
+		}
+	}
+	
 	# Hates Private Education Policy
 	demand = { 
 		title = "EGALITARIAN_PRIVATE_EDUCATION"
@@ -291,22 +302,6 @@ progressive = {
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = education_for_profit } }
-		}
-	}
-	
-	# Hates Appropriation
-	demand = { 
-		title = "EGALITARIAN_APPROPRIATION_ALLOWED"
-		unfulfilled_title = "EGALITARIAN_NO_APPROPRIATION_ALLOWED"
-		desc = "EGALITARIAN_APPROPRIATION_ALLOWED_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = appropriation_allowed } }
 		}
 	}
 	

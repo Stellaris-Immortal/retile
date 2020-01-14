@@ -70,8 +70,8 @@ supremacist = {
 		unfulfilled_title = "CENTRIST_NO_FREE_SPEECH"
 		desc = "CENTRIST_FREE_SPEECH_DESC"
 
-		fulfilled_effect = 20
-		unfulfilled_effect = -20
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
@@ -99,11 +99,11 @@ supremacist = {
 		}
 	}
 	
-	# Wants Energy Surplus
+	# Wants Stability
 	demand = {
-		title = "CENTRIST_ENERGY_SURPLUS"
-		unfulfilled_title = "CENTRIST_NO_ENERGY_SURPLUS"
-		desc = "CENTRIST_ENERGY_SURPLUS_DESC"
+		title = "CENTRIST_STABILITY"
+		unfulfilled_title = "CENTRIST_NO_STABILITY"
+		desc = "CENTRIST_STABILITY_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -10
@@ -111,20 +111,22 @@ supremacist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { 
-				has_monthly_income = {
-					resource = energy
-					value >= 0
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						num_pops > 0
+						planet_stability < 50
+					}
 				}
 			}
 		}
 	}
 	
-	# Wants Mineral Surplus
+	# Wants Less Crime
 	demand = {
-		title = "CENTRIST_MINERAL_SURPLUS"
-		unfulfilled_title = "CENTRIST_NO_MINERAL_SURPLUS"
-		desc = "CENTRIST_MINERAL_SURPLUS_DESC"
+		title = "CENTRIST_CRIME"
+		unfulfilled_title = "CENTRIST_NO_CRIME"
+		desc = "CENTRIST_CRIME_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -10
@@ -132,44 +134,22 @@ supremacist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { 
-				has_monthly_income = {
-					resource = minerals
-					value >= 0
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						num_pops > 0
+						planet_crime > 50
+					}
 				}
 			}
 		}
 	}
 	
-	# Wants Food Surplus
+	# Wants Less Pollution
 	demand = {
-		title = "CENTRIST_FOOD_SURPLUS"
-		unfulfilled_title = "CENTRIST_NO_FOOD_SURPLUS"
-		desc = "CENTRIST_FOOD_SURPLUS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { country_uses_food = yes }
-		}
-
-		trigger = {
-			owner = { 
-				has_monthly_income = {
-					resource = food
-					value >= 0
-				}
-			}
-		}
-	}
-	
-	# Wants Goods Surplus
-	demand = {
-		title = "CENTRIST_GOODS_SURPLUS"
-		unfulfilled_title = "CENTRIST_NO_GOODS_SURPLUS"
-		desc = "CENTRIST_GOODS_SURPLUS_DESC"
+		title = "CENTRIST_POLLUTION"
+		unfulfilled_title = "CENTRIST_NO_POLLUTION"
+		desc = "CENTRIST_POLLUTION_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -10
@@ -177,20 +157,22 @@ supremacist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { 
-				has_monthly_income = {
-					resource = consumer_goods
-					value >= 0
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						num_pops > 0
+						free_amenities >= 1000
+					}
 				}
 			}
 		}
 	}
 	
-	# Wants Alloys Surplus
+	# Wants Habitability
 	demand = {
-		title = "CENTRIST_ALLOYS_SURPLUS"
-		unfulfilled_title = "CENTRIST_NO_ALLOYS_SURPLUS"
-		desc = "CENTRIST_ALLOYS_SURPLUS_DESC"
+		title = "CENTRIST_HABITABILITY"
+		unfulfilled_title = "CENTRIST_NO_HABITABILITY"
+		desc = "CENTRIST_HABITABILITY_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -10
@@ -198,31 +180,12 @@ supremacist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { 
-				has_monthly_income = {
-					resource = alloys
-					value >= 0
-				}
-			}
-		}
-	}
-	
-	# Wants Influence
-	demand = {
-		title = "CENTRIST_INFLUENCE_SURPLUS"
-		unfulfilled_title = "CENTRIST_NO_INFLUENCE_SURPLUS"
-		desc = "CENTRIST_INFLUENCE_SURPLUS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { 
-				has_monthly_income = {
-					resource = influence
-					value >= 0
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						num_pops > 0
+						habitability = { who = prev value < 0.5 }
+					}
 				}
 			}
 		}
