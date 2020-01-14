@@ -5,21 +5,17 @@
 #########################################
 
 #########################################
+### Pop Job Searching
 
 namespace = retile_pop
 
 # Pops look for work about once per month...
 pop_event = {
-	id = retile_pop.101
+	id = retile_pop.1
 	hide_window = yes
 
 	trigger = {
 		always = yes
-		#OR = {
-		#	is_unemployed = yes
-		#	has_job = servant
-		#	NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
-		#}
 	}
 
 	mean_time_to_happen = {
@@ -31,148 +27,233 @@ pop_event = {
 	}
 }
 
-# Pops check if they should migrate about once per 3 months...
-pop_event = {
+############################################
+### Regular Pop Migration
+
+# Planet needs to migrate a pop for some reason. Choose a preferable pop at random.
+# THIS = planet
+planet_event = {
 	id = retile_pop.90
 	hide_window = yes
+	is_triggered_only = yes
 
-	trigger = {
-		exists = owner
-		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
-		owner = { NOT = { has_valid_civic = civic_corvee_system } }
-		exists = planet
-		planet = { NOT = { has_modifier = penal_colony } }
-		NOT = { 
-			has_citizenship_type = { type = citizenship_organic_trophy } 
-		}
-		OR = {
-			has_job = no
-			has_job = servant
-			has_job = slave_toiler
-			#is_unemployed = yes
-		}
-	}
-
-	mean_time_to_happen = {
-		days = 90
-	}
-
-	after = {
-		IF = {
-			limit = {
-				planet = {
-					has_building_construction = no
-					NOT = { has_modifier = penal_colony }
+	trigger = { always = yes }
+	
+	immediate = {
+		random_owned_pop = {
+			limit = { NOT = { has_citizenship_type = { type = citizenship_organic_trophy } } }
+			weights = {
+				base = 1
+				modifier = {
+					mult = 5
+					OR = {
+						has_job = no
+						has_job = servant
+						#has_job = laborer
+						#has_job = slave_toiler ### Not sure what to do here...
+					}
 				}
-				NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
-				OR = {
-					has_job = no
-					has_job = servant
-					has_job = slave_toiler
-				}
+				modifier = { add = 20 root = { habitability = { who = prev value <= 0 } } }
+				modifier = { add = 19 root = { habitability = { who = prev value <= 0.05 } } }
+				modifier = { add = 18 root = { habitability = { who = prev value <= 0.10 } } }
+				modifier = { add = 17 root = { habitability = { who = prev value <= 0.15 } } }
+				modifier = { add = 16 root = { habitability = { who = prev value <= 0.20 } } }
+				modifier = { add = 15 root = { habitability = { who = prev value <= 0.25 } } }
+				modifier = { add = 14 root = { habitability = { who = prev value <= 0.30 } } }
+				modifier = { add = 13 root = { habitability = { who = prev value <= 0.35 } } }
+				modifier = { add = 12 root = { habitability = { who = prev value <= 0.40 } } }
+				modifier = { add = 11 root = { habitability = { who = prev value <= 0.45 } } }
+				modifier = { add = 10 root = { habitability = { who = prev value <= 0.50 } } }
+				modifier = { add = 9 root = { habitability = { who = prev value <= 0.55 } } }
+				modifier = { add = 8 root = { habitability = { who = prev value <= 0.60 } } }
+				modifier = { add = 7 root = { habitability = { who = prev value <= 0.65 } } }
+				modifier = { add = 6 root = { habitability = { who = prev value <= 0.70 } } }
+				modifier = { add = 5 root = { habitability = { who = prev value <= 0.75 } } }
+				modifier = { add = 4 root = { habitability = { who = prev value <= 0.80 } } }
+				modifier = { add = 3 root = { habitability = { who = prev value <= 0.85 } } }
+				modifier = { add = 2 root = { habitability = { who = prev value <= 0.90 } } }
+				modifier = { add = 1 root = { habitability = { who = prev value <= 0.95 } } }
 			}
-			root.owner = { random_owned_planet = {
-				limit = { AND = {
-					free_jobs > 0
-					NOT = { has_modifier = penal_colony }
-					is_under_colonization = no
-				} }
-				weights = {
-					base = 1
-					modifier = { add = 1 habitability = { who = root value >= 0.05 } }
-					modifier = { add = 2 habitability = { who = root value >= 0.10 } }
-					modifier = { add = 3 habitability = { who = root value >= 0.15 } }
-					modifier = { add = 4 habitability = { who = root value >= 0.20 } }
-					modifier = { add = 5 habitability = { who = root value >= 0.25 } }
-					modifier = { add = 6 habitability = { who = root value >= 0.30 } }
-					modifier = { add = 7 habitability = { who = root value >= 0.35 } }
-					modifier = { add = 8 habitability = { who = root value >= 0.40 } }
-					modifier = { add = 9 habitability = { who = root value >= 0.45 } }
-					modifier = { add = 10 habitability = { who = root value >= 0.50 } }
-					modifier = { add = 11 habitability = { who = root value >= 0.55 } }
-					modifier = { add = 12 habitability = { who = root value >= 0.60 } }
-					modifier = { add = 13 habitability = { who = root value >= 0.65 } }
-					modifier = { add = 14 habitability = { who = root value >= 0.70 } }
-					modifier = { add = 15 habitability = { who = root value >= 0.75 } }
-					modifier = { add = 16 habitability = { who = root value >= 0.80 } }
-					modifier = { add = 17 habitability = { who = root value >= 0.85 } }
-					modifier = { add = 18 habitability = { who = root value >= 0.90 } }
-					modifier = { add = 19 habitability = { who = root value >= 0.95 } }
-					modifier = { add = 20 habitability = { who = root value >= 1.00 } }
-				}
-				resettle_pop = { pop = root planet = this}
-			} }
+			pop_event = { id = retile_pop.91 }
 		}
 	}
 }
 
+# A pop has been chosen to migrate. Choose a preferable destination at random.
+# THIS = pop
+# FROM = planet
+pop_event = {
+	id = retile_pop.91
+	hide_window = yes
+	is_triggered_only = yes
 
-# migrate newly grown pops if there's no room for them...
+	trigger = { always = yes }
+	
+	immediate = {
+		owner = { random_owned_planet = {
+			limit = {
+				free_housing > 0
+				NOT = { has_modifier = penal_colony }
+				is_under_colonization = no
+				NOT = { is_same_value = FROM }
+				is_occupied_flag = no
+				has_orbital_bombardment = no
+			}
+			weights = {
+				base = 1
+				modifier = { add = 1 habitability = { who = root value >= 0.05 } }
+				modifier = { add = 2 habitability = { who = root value >= 0.10 } }
+				modifier = { add = 3 habitability = { who = root value >= 0.15 } }
+				modifier = { add = 4 habitability = { who = root value >= 0.20 } }
+				modifier = { add = 5 habitability = { who = root value >= 0.25 } }
+				modifier = { add = 6 habitability = { who = root value >= 0.30 } }
+				modifier = { add = 7 habitability = { who = root value >= 0.35 } }
+				modifier = { add = 8 habitability = { who = root value >= 0.40 } }
+				modifier = { add = 9 habitability = { who = root value >= 0.45 } }
+				modifier = { add = 10 habitability = { who = root value >= 0.50 } }
+				modifier = { add = 11 habitability = { who = root value >= 0.55 } }
+				modifier = { add = 12 habitability = { who = root value >= 0.60 } }
+				modifier = { add = 13 habitability = { who = root value >= 0.65 } }
+				modifier = { add = 14 habitability = { who = root value >= 0.70 } }
+				modifier = { add = 15 habitability = { who = root value >= 0.75 } }
+				modifier = { add = 16 habitability = { who = root value >= 0.80 } }
+				modifier = { add = 17 habitability = { who = root value >= 0.85 } }
+				modifier = { add = 18 habitability = { who = root value >= 0.90 } }
+				modifier = { add = 19 habitability = { who = root value >= 0.95 } }
+				modifier = { add = 20 habitability = { who = root value >= 1.00 } }
+			}
+			resettle_pop = { pop = root planet = this}
+		} }
+	}
+}
+
+
+# Migrate periodically if housing is full.
+planet_event = {
+	id = retile_pop.100
+	hide_window = yes
+
+	pre_triggers = {
+		has_owner = yes
+	}
+	
+	trigger = {
+		is_under_colonization = no
+		has_orbital_bombardment = no
+		is_occupied_flag = no
+		free_housing < 0
+		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
+		NOT = { has_modifier = penal_colony }
+	}
+
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	immediate = {
+		planet_event = { id = retile_pop.90 }
+	}
+}
+
+# Migrate immediately on pop growth if there's no room
 # This = Planet scope
 # From = Country
 # FromFrom = Pop
 planet_event = {
-	id = retile_pop.100
+	id = retile_pop.101
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		this = {
-			free_housing < 1
-			NOT = { has_modifier = penal_colony }
-		}
-		NOT = { 
-			fromfrom = { has_citizenship_type = { type = citizenship_organic_trophy } }
-		}
+		always = yes
 	}
 
-	#mean_time_to_happen = {
-	#	days = 1
-	#}
+	immediate = {
+		if = {
+			limit = {
+				exists = owner
+				owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
+				free_housing < 1
+				NOT = { has_modifier = penal_colony }
+				is_occupied_flag = no
+				has_orbital_bombardment = no
+			}
+			planet_event = { id = retile_pop.90 }
+		}
+	}
+}
 
+############################################
+### Habitability Swap Migration
+
+# Swap-migrate eligible pops to improve overall habitability.
+# THIS = pop
+pop_event = {
+	id = retile_pop.110
+	hide_window = yes
+
+	mean_time_to_happen = {
+		days = 1800
+	}
+	
 	after = {
 		if = {
 			limit = {
-				this = {
-					free_housing < 0
+				exists = owner
+				owner = { is_country_type = default }
+				NOT = { has_job = colonist }
+				NAND = {
+					is_plantoid = yes
+					OR = {
+						has_job = farmer
+						has_job = custodian
+					}
+				}
+				exists = planet
+				planet = {
 					NOT = { has_modifier = penal_colony }
-					#has_building_construction = no	# new pops never cancel construction, and they stop growth...
+					is_under_colonization = no
+					is_occupied_flag = no
+					has_orbital_bombardment = no
+					habitability = { who = root value < 70 }
 				}
 			}
-		}
-		from = { random_owned_planet = {
-			limit = { AND = {
-				free_jobs > 0
-				NOT = { has_modifier = penal_colony }
-				is_under_colonization = no
+			owner = { random_owned_pop = {
+				limit = {
+					exists = owner
+					owner = { is_country_type = default }
+					NOT = { has_job = colonist }
+					NAND = {
+						is_plantoid = yes
+						OR = {
+							has_job = farmer
+							has_job = custodian
+						}
+					}
+					exists = planet
+					planet = {
+						NOT = { is_same_value = root.planet }
+						NOT = { has_modifier = penal_colony }
+						is_under_colonization = no
+						is_occupied_flag = no
+						has_orbital_bombardment = no
+						habitability = { who = prev value < 70 }
+						habitability = { who = root value >= 70 }
+					}
+					root.planet = {
+						habitability = { who = prev value >= 70 }
+					}
+				}
+				root.planet = { save_event_target_as = RootPlanet }
+				resettle_pop = { pop = root planet = this.planet }
+				resettle_pop = { pop = this planet = EventTarget:RootPlanet }
 			} }
-			weights = {
-				base = 1
-				modifier = { add = 1 habitability = { who = fromfrom value >= 0.05 } }
-				modifier = { add = 2 habitability = { who = fromfrom value >= 0.10 } }
-				modifier = { add = 3 habitability = { who = fromfrom value >= 0.15 } }
-				modifier = { add = 4 habitability = { who = fromfrom value >= 0.20 } }
-				modifier = { add = 5 habitability = { who = fromfrom value >= 0.25 } }
-				modifier = { add = 6 habitability = { who = fromfrom value >= 0.30 } }
-				modifier = { add = 7 habitability = { who = fromfrom value >= 0.35 } }
-				modifier = { add = 8 habitability = { who = fromfrom value >= 0.40 } }
-				modifier = { add = 9 habitability = { who = fromfrom value >= 0.45 } }
-				modifier = { add = 10 habitability = { who = fromfrom value >= 0.50 } }
-				modifier = { add = 11 habitability = { who = fromfrom value >= 0.55 } }
-				modifier = { add = 12 habitability = { who = fromfrom value >= 0.60 } }
-				modifier = { add = 13 habitability = { who = fromfrom value >= 0.65 } }
-				modifier = { add = 14 habitability = { who = fromfrom value >= 0.70 } }
-				modifier = { add = 15 habitability = { who = fromfrom value >= 0.75 } }
-				modifier = { add = 16 habitability = { who = fromfrom value >= 0.80 } }
-				modifier = { add = 17 habitability = { who = fromfrom value >= 0.85 } }
-				modifier = { add = 18 habitability = { who = fromfrom value >= 0.90 } }
-				modifier = { add = 19 habitability = { who = fromfrom value >= 0.95 } }
-				modifier = { add = 20 habitability = { who = fromfrom value >= 1.00 } }
-			}
-			resettle_pop = { pop = fromfrom planet = this}
-		} }
+		}
 	}
 }
+
+############################################
+### Pop Sprawl
 
 # apply an appropriate pop growth malus to each empire based on the number of planets it has.
 country_event = {
@@ -192,6 +273,9 @@ country_event = {
 		retile_apply_growth_malus = yes
 	}
 }
+
+############################################
+### Planet Abandonment
 
 pop_event = { # retile_abandon_migrate
 	id = retile_pop.1000
