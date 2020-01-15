@@ -199,7 +199,10 @@ progressive = {
 		fulfilled_effect = 10
 		unfulfilled_effect = 0
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_comms_with_alien_empire = yes }
+		}
 
 		trigger = {
 			owner = { has_policy_flag = appropriation_not_allowed }
@@ -250,7 +253,10 @@ progressive = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
-		potential = { exists = owner }
+		potential = {
+			exists = owner
+			owner = { has_comms_with_alien_empire = yes }
+		}
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = appropriation_allowed } }
@@ -266,7 +272,7 @@ progressive = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
-		potential = {exists = owner }
+		potential = { exists = owner }
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = criminal_private_police } }
@@ -282,7 +288,10 @@ progressive = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner 
+			owner = { can_set_ai_policy = yes }
+		}
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = ai_servitude } }
@@ -298,7 +307,7 @@ progressive = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
-		potential = {exists = owner }
+		potential = { exists = owner }
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = education_for_profit } }
@@ -314,9 +323,7 @@ progressive = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
-		potential = {
-			exists = owner
-		}
+		potential = { exists = owner }
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = slavery_allowed } }
