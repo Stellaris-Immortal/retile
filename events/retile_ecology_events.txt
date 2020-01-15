@@ -142,7 +142,7 @@ planet_event = {
 			}
 		}
 		else_if = {
-			limit = { free_amenities < 0 }
+			limit = { free_amenities > -100 }
 			if = {
 				limit = { owner = { has_policy_flag = environmental_deregulation } }
 				change_variable = { which = pollution value = 2 }
@@ -152,7 +152,19 @@ planet_event = {
 			} else = {
 				change_variable = { which = pollution value = 0 }
 			}
+		} else_if = {
+			limit = { free_amenities <= -100 }
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 1 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = -3 }
+			} else = {
+				change_variable = { which = pollution value = -1 }
+			}
 		}
+		
 		
 		# Pollution Events
 		random_list = {
@@ -290,8 +302,8 @@ planet_event = {
 			has_modifier = drought
 			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 25 }
-			free_amenities < 0
 		}
+		free_amenities >= 200
 	}
 	
 	immediate = {
@@ -371,8 +383,8 @@ planet_event = {
 			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 25 }
 			is_dry = yes
-			free_amenities < 0
 		}
+		free_amenities >= 200
 	}
 	
 	immediate = {
@@ -450,6 +462,7 @@ planet_event = {
 			check_variable = { which = pollution value < 25 }
 			is_cold = yes
 		}
+		free_amenities >= 400
 	}
 	
 	immediate = {
@@ -525,6 +538,7 @@ planet_event = {
 			check_variable = { which = pollution value < 25 }
 		}
 		is_cold = yes
+		free_amenities >= 400
 	}
 	
 	immediate = {
@@ -601,9 +615,9 @@ planet_event = {
 			has_modifier = storm
 			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 50 }
-			free_amenities < 200
 		}
 		has_building = yes
+		free_amenities >= 600
 	}
 	
 	immediate = {
@@ -682,8 +696,8 @@ planet_event = {
 			owner = { has_country_flag = recent_ecology_event }
 			has_planet_flag = desertification_event
 			check_variable = { which = pollution value < 100 }
-			free_amenities < 400
 		}
+		free_amenities >= 600
 	}
 	
 	immediate = {
@@ -819,8 +833,8 @@ planet_event = {
 			is_planet_class = pc_machine
 			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 100 }
-			free_amenities < 400
 		}
+		free_amenities >= 600
 	}
 	
 	immediate = {
@@ -927,8 +941,8 @@ planet_event = {
 			is_planet_class = pc_ringworld_habitable
 			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 250 }
-			free_amenities < 600
 		}
+		free_amenities >= 800
 	}
 	
 	immediate = {
@@ -1033,8 +1047,8 @@ planet_event = {
 			is_planet_class = pc_ringworld_habitable
 			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 250 }
-			free_amenities < 600
 		}
+		free_amenities >= 800
 	}
 	
 	immediate = {
@@ -1139,8 +1153,8 @@ planet_event = {
 			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 250 }
 			is_dry = yes
-			free_amenities < 600
 		}
+		free_amenities >= 1000
 	}
 	
 	immediate = {
@@ -1226,9 +1240,9 @@ planet_event = {
 			is_planet_class = pc_ringworld_habitable
 			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 250 }
-			free_amenities < 600
 		}
 		is_dry = yes
+		free_amenities >= 1000
 	}
 	
 	immediate = {
@@ -1325,9 +1339,9 @@ planet_event = {
 			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 500 }
 			has_modifier = environmental_collapse
-			free_amenities < 1000
 		}
 		has_modifier = greenhouse_effect
+		free_amenities >= 1000
 	}
 	
 	immediate = {
