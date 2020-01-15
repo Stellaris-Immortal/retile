@@ -668,7 +668,7 @@ living_standard_normal = {
 	
 	allow = {
 		hidden_trigger = { exists = from }
-		from = { has_policy_flag = slavery_not_allowed }
+		from = { NOT = { has_policy_flag = slavery_not_allowed } }
 		custom_tooltip = {
 			fail_text = SPECIES_MUST_NOT_BE_ASSIMILATING
 			NOT = {
@@ -743,7 +743,7 @@ living_standard_stratified = {
 	
 	allow = {
 		hidden_trigger = { exists = from }
-		from = { has_policy_flag = slavery_not_allowed }
+		from = { NOT = { has_policy_flag = slavery_not_allowed } }
 		NOR = {
 			custom_tooltip = {
 				AND = {
