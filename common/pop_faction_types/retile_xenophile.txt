@@ -150,7 +150,7 @@ xenoist = {
 
 		potential = {
 			exists = owner
-			owner = { num_communications > 4 }
+			owner = { num_communications > 2 }
 		}
 
 		trigger = {
@@ -182,7 +182,7 @@ xenoist = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 4 }
+			owner = { num_communications > 2 }
 		}
 
 		trigger = {
@@ -199,7 +199,10 @@ xenoist = {
 		fulfilled_effect = 10
 		unfulfilled_effect = 0
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_comms_with_alien_empire = yes }
+		}
 
 		trigger = {
 			owner = {
@@ -325,7 +328,7 @@ xenoist = {
 			NOT = {
 				owner = {
 					any_owned_planet = {
-						is_original_owner = no
+						is_original_owner = root.owner
 					}
 				}
 			}
@@ -359,6 +362,7 @@ xenoist = {
 		
 		potential = {
 			exists = owner
+			owner = { has_encountered_other_species = yes }
 		}
 		
 		trigger = {

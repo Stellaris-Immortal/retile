@@ -127,7 +127,7 @@ imperialist = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 1 }
+			owner = { has_comms_with_alien_empire = yes }
 		}
 
 		trigger = {
@@ -254,6 +254,33 @@ imperialist = {
 		}
 	}
 	
+	# Hates Being Weak
+	demand = { 
+		title = "MILITARIST_WEAK"
+		unfulfilled_title = "MILITARIST_NO_WEAK"
+		desc = "MILITARIST_WEAK_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { has_comms_with_alien_empire = yes }
+		}
+
+		trigger = {
+			NOT = {
+				owner = {
+					any_country = {
+						is_country_type = default
+						has_communications = root.owner
+						relative_power = { who = root.owner value >= superior }
+					}
+				}
+			}
+		}
+	}
+	
 	# Hates Diplomacy
 	demand = { 
 		title = "MILITARIST_DIPLOMACY"
@@ -295,10 +322,7 @@ imperialist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
-		potential = { 
-			exists = owner
-			owner = { num_communications > 1 }
-		}
+		potential = { exists = owner }
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = no_wars } }
@@ -314,7 +338,10 @@ imperialist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
-		potential = { exists = owner }
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_adaptive_bureaucracy }
+		}
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = piracy_peaceful } }
@@ -334,25 +361,6 @@ imperialist = {
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = criminal_state_police } }
-		}
-	}
-	
-	# Hates Isolation
-	demand = { 
-		title = "MILITARIST_ISOLATIONISM"
-		unfulfilled_title = "MILITARIST_NO_ISOLATIONISM"
-		desc = "MILITARIST_ISOLATIONISM_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_technology = tech_adaptive_bureaucracy }
-		}
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = xenodiplomacy_isolation } }
 		}
 	}
 	

@@ -169,7 +169,10 @@ technologist = {
 		fulfilled_effect = 20
 		unfulfilled_effect = 0
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_xenodiplomacy }
+		}
 
 		trigger = {
 			owner = { has_policy_flag = xenodiplomacy_default }
@@ -201,9 +204,7 @@ technologist = {
 		fulfilled_effect = 10
 		unfulfilled_effect = 0
 
-		potential = { 
-			exists = owner
-		}
+		potential = {  exists = owner }
 
 		trigger = {
 			owner = { has_policy_flag = slavery_secretly_allowed }
@@ -257,8 +258,10 @@ technologist = {
 
 		trigger = {
 			NOT = {
-				any_owned_planet = {
-					has_anomaly = yes
+				owner = {
+					any_owned_planet = {
+						has_anomaly = yes
+					}
 				}
 			}
 		}
@@ -273,7 +276,10 @@ technologist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
 
 		trigger = {
 			owner = { has_policy_flag = interference_passive }
@@ -348,7 +354,10 @@ technologist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { can_set_ai_policy = yes }
+		}
 
 		trigger = {
 			NOT = { owner = { has_policy_flag = ai_outlawed } }
