@@ -160,7 +160,7 @@ technologist = {
 		}
 	}
 	
-	# Wants Economic Diplomacy
+	# Wants Internal Affairs
 	demand = { 
 		title = "MATERIALIST_ECONOMIC_DIPLOMACY"
 		unfulfilled_title = "MATERIALIST_NO_ECONOMIC_DIPLOMACY"
@@ -175,7 +175,13 @@ technologist = {
 		}
 
 		trigger = {
-			owner = { has_policy_flag = xenodiplomacy_default }
+			owner = { 
+				OR = {
+					has_policy_flag = xenodiplomacy_assembly
+					has_policy_flag = xenodiplomacy_magistrate
+					has_policy_flag = xenodiplomacy_lr
+				}
+			}
 		}
 	}
 	
