@@ -1249,28 +1249,89 @@ first_contact_protocol = {
 }
 
 xenodiplomacy = {
-	potential = { has_technology = tech_xenodiplomacy }
 	
-	option = { 
-		name = "xenodiplomacy_default"
+	option = {
+		name = "xenodiplomacy_assembly"
+		potential = {
+			OR = { 
+				has_authority = auth_democratic
+				has_authority = auth_oligarchic
+			}
+			NOT = { has_authority = auth_corporate }
+		}
 		
-		policy_flags = { xenodiplomacy_default }
-		modifier = { }
+		policy_flags = { xenodiplomacy_assembly }
 		
 		AI_weight = {
 			factor = 1
 			modifier = {
 				factor = 2
 				OR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
 				}				
 			}
 			modifier = {
 				factor = 0
 				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}				
+			}
+		}
+	}
+	
+	option = {
+		name = "xenodiplomacy_magistrate"
+		potential = {
+			OR = { 
+				has_authority = auth_dictatorial
+				has_authority = auth_imperial
+			}
+			NOT = { has_authority = auth_corporate }
+		}
+		
+		policy_flags = { xenodiplomacy_magistrate }
+		
+		AI_weight = {
+			factor = 1
+			modifier = {
+				factor = 2
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}				
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}				
+			}
+		}
+	}
+	
+	option = {
+		name = "xenodiplomacy_lr"
+		potential = { has_authority = auth_corporate }
+		
+		policy_flags = { xenodiplomacy_lr }
+		
+		AI_weight = {
+			factor = 1
+			modifier = {
+				factor = 2
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}				
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
 				}				
 			}
 		}
@@ -1280,7 +1341,6 @@ xenodiplomacy = {
 		name = "xenodiplomacy_none"
 		
 		policy_flags = { xenodiplomacy_isolation }
-		modifier = { }
 		
 		AI_weight = {
 			modifier = {
@@ -1302,12 +1362,10 @@ xenodiplomacy = {
 	
 	option = {
 		name = "xenodiplomacy_embassy"
-		
-		policy_flags = { xenodiplomacy_embassy }
-		modifier = { }
-		
 		potential = {
+			has_technology = tech_xenodiplomacy
 			NOR = {
+				has_authority = auth_corporate
 				has_valid_civic = civic_fanatic_purifiers
 				has_valid_civic = civic_inwards_perfection
 				has_valid_civic = civic_barbaric_despoilers
@@ -1316,6 +1374,8 @@ xenodiplomacy = {
 				is_criminal_syndicate = yes
 			}
 		}
+		
+		policy_flags = { xenodiplomacy_embassy }
 		
 		AI_weight = {
 			factor = 1
@@ -1337,14 +1397,42 @@ xenodiplomacy = {
 	}
 	
 	option = {
+		name = "xenodiplomacy_pr"
+		potential = {
+			has_technology = tech_xenodiplomacy
+			has_authority = auth_corporate
+		}
+		
+		policy_flags = { xenodiplomacy_pr }
+		
+		AI_weight = {
+			factor = 1
+			modifier = {
+				factor = 2
+				OR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}				
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}				
+			}
+		}
+	}
+	
+	option = {
 		name = "xenodiplomacy_gunboat"
+		potential = {
+			has_technology = tech_xenodiplomacy
+			NOT = { has_valid_civic = civic_anarchist }
+			NOT = { has_authority = auth_corporate }
+		}
 		
 		policy_flags = { xenodiplomacy_gunboat }
-		modifier = { }
-		
-		potential = {
-			NOT = { has_valid_civic = civic_anarchist }
-		}
 		
 		valid = { 
 			NOT = { has_policy_flag = no_wars }

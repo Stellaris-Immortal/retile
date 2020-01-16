@@ -290,6 +290,29 @@ traditionalist = {
 		}
 	}
 	
+	# Hates Artificial Habitats
+	demand = { 
+		title = "SPIRITUALIST_HABITAT"
+		unfulfilled_title = "SPIRITUALIST_NO_HABITAT"
+		desc = "SPIRITUALIST_HABITAT_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						num_pops > 0
+						habitable_structure = yes
+					}
+				}
+			}
+		}
+	}
+	
 	# Hates Prosperity
 	demand = { 
 		title = "SPIRITUALIST_PROSPERITY"
@@ -308,23 +331,20 @@ traditionalist = {
 		}
 	}
 	
-	# Hates Economic Diplomacy
-	demand = { 
-		title = "SPIRITUALIST_ECONOMIC_DIPLOMACY"
-		unfulfilled_title = "SPIRITUALIST_NO_ECONOMIC_DIPLOMACY"
-		desc = "SPIRITUALIST_ECONOMIC_DIPLOMACY_DESC"
+	# Hates Priority Healthcare
+	demand = {
+		title = "SPIRITUALIST_PRIORITY_HEALTHCARE"
+		unfulfilled_title = "SPIRITUALIST_NO_PRIORITY_HEALTHCARE"
+		desc = "SPIRITUALIST_PRIORITY_HEALTHCARE_DESC"
 
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
-		potential = { 
-			exists = owner 
-			owner = { has_technology = tech_xenodiplomacy }
-		}
+		potential = { exists = owner }
 
 		trigger = {
 			owner = {
-				NOT = { has_policy_flag = xenodiplomacy_default }
+				NOT = { has_policy_flag = healthcare_for_profit }
 			}
 		}
 	}
@@ -360,24 +380,6 @@ traditionalist = {
 
 		trigger = {
 			owner = { has_policy_flag = orbital_bombardment_selective }
-		}
-	}
-	
-	# Hates Priority Healthcare
-	demand = {
-		title = "SPIRITUALIST_PRIORITY_HEALTHCARE"
-		unfulfilled_title = "SPIRITUALIST_NO_PRIORITY_HEALTHCARE"
-		desc = "SPIRITUALIST_PRIORITY_HEALTHCARE_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				NOT = { has_policy_flag = healthcare_for_profit }
-			}
 		}
 	}
 
