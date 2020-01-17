@@ -1,0 +1,158 @@
+# from = country
+# this = species
+
+slavery_normal = {
+	token = slavery_normal
+	
+	pop_modifier = {
+		planet_jobs_produces_mult = 0.10
+		pop_happiness = -0.30	
+	}
+
+	potential = {
+		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+	}
+	
+	allow = {
+		hidden_trigger = { always = yes }
+	}
+	ai_will_do = {
+		factor = 1
+	}
+}
+
+slavery_domestic = {
+	token = slavery_domestic
+	
+	pop_modifier = {
+		pop_happiness = -0.20	
+	}
+	
+	potential = {
+		host_has_dlc = "Utopia"
+		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+		always = no
+	}
+
+	allow = {
+		hidden_trigger = { always = yes }
+	}
+	ai_will_do = {
+		factor = 3
+		modifier = {
+			factor = 0
+			NOT = { has_trait = trait_charismatic }
+		}
+	}
+}
+
+slavery_military = {
+	token = slavery_military
+	
+	modifier = {
+		army_damage_mult = 0.2
+	}
+	
+	pop_modifier = {
+		pop_happiness = -0.20
+	}
+
+	potential = {
+		host_has_dlc = "Utopia"
+		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+	}
+	
+	allow = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			has_citizenship_type = { country = from type = citizenship_slavery }
+			fail_text = species_is_not_enslaved
+		}
+		custom_tooltip = {
+			fail_text = species_is_machine_integrated
+			OR = {
+				NOT = { from = { has_authority = auth_machine_intelligence } }
+				AND = {
+					from = { has_authority = auth_machine_intelligence }
+					has_citizenship_type = { country = from type = citizenship_full_machine }
+				}
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 0
+			NOT = { has_trait = trait_very_strong }
+		}
+	}
+}
+
+slavery_matrix = {
+	token = slavery_matrix
+	
+	pop_modifier = {
+		pop_happiness = -0.40
+	}
+
+	potential = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+		from = { has_authority = auth_machine_intelligence }
+	}
+
+	allow = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			fail_text = species_is_not_organic
+			NAND = {
+				from = { is_mechanical_empire = no }
+				OR = {
+					has_trait = trait_mechanical
+					has_trait = trait_machine_unit				
+				}
+			}
+		}
+	}
+
+	ai_will_do = {
+		factor = 50		
+	}
+}
+
+slavery_livestock = {
+	token = slavery_livestock
+	
+	pop_modifier = {
+		pop_happiness = -0.40
+	}
+
+	potential = {
+		host_has_dlc = "Utopia"
+		from = { NOT = { has_authority = auth_machine_intelligence } }
+	}
+
+	allow = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			has_citizenship_type = { country = from type = citizenship_slavery }
+			fail_text = species_is_not_enslaved
+		}
+		custom_tooltip = {
+			fail_text = CANNOT_LIVESTOCK_MATRIX_MACHINES
+			NOR = {
+				has_trait = trait_mechanical
+				has_trait = trait_machine_unit
+			}
+		}		
+	}
+	ai_will_do = {
+		factor = 3
+		modifier = {
+			factor = 0
+			NOR = { 
+				has_trait = trait_delicious 
+				from = { has_authority = auth_hive_mind }
+			}
+		}		
+	}
+}
