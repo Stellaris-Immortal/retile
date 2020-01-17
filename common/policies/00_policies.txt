@@ -2378,6 +2378,8 @@ population_controls = {
 				OR = {
 					has_ethic = ethic_xenophile
 					has_ethic = ethic_fanatic_xenophile
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
 				}
 			}
 			modifier = {
@@ -2385,6 +2387,38 @@ population_controls = {
 				OR = {
 					has_ethic = ethic_xenophobe
 					has_ethic = ethic_fanatic_xenophobe
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}			
+		}
+	}
+	
+	option = {
+		name = "population_controls_mixed"
+		
+		policy_flags = {
+			population_controls_mixed
+		}
+		
+		modifier = { 
+			pop_growth_speed = 0.10
+		}
+		
+		potential = {
+			NOR = { 
+				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_anarchist
+			}
+		}
+		
+		AI_weight = {
+			factor = 0
+			modifier = {
+				factor = 3
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
 				}
 			}			
 		}

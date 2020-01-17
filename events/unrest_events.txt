@@ -63,6 +63,15 @@ planet_event = {
 			}
 		}
 	}
+	
+	option = {
+		name = unrest.security
+		tooltip = {
+			add_modifier = { modifier = minor_terrorist_action days = 7200 }
+		}
+		allow = { owner = { NOT = { has_policy_flag = criminal_common_law } } }
+		add_modifier = { modifier = martial_law days = 10800 }
+	}
 }
 
 # calc_true_if check for having too many modifiers?
@@ -114,6 +123,18 @@ planet_event = {
 				days = 3600 # 10 years
 			}
 		}
+	}
+	
+	option = {
+		name = unrest.security
+		tooltip = {
+			add_modifier = {
+				modifier = major_terrorist_action
+				days = 3600 # 10 years
+			}
+		}
+		allow = { owner = { NOT = { has_policy_flag = criminal_common_law } } }
+		add_modifier = { modifier = martial_law days = 7200 }
 	}
 }
 
@@ -183,6 +204,7 @@ planet_event = {
 		}
 	}
 }
+
 # Unrest: Hallowed
 planet_event = {
 	id = unrest.115
@@ -246,6 +268,18 @@ planet_event = {
 				days = 7200 # 20 years
 			}
 		}
+	}
+	
+	option = {
+		name = unrest.infiltrate
+		tooltip = {
+			add_modifier = {
+				modifier = spiritualist_unrest
+				days = 7200 # 20 years
+			}
+		}
+		allow = { solar_system.starbase = { has_starbase_building = deep_space_black_site } }
+		add_modifier = { modifier = smear_campaign days = 7200 }
 	}
 }
 
@@ -311,6 +345,18 @@ planet_event = {
 				days = 7200 # 20 years
 			}
 		}
+	}
+	
+	option = {
+		name = unrest.infiltrate
+		tooltip = {
+			add_modifier = {
+				modifier = authoritarian_unrest
+				days = 7200 # 20 years
+			}
+		}
+		allow = { solar_system.starbase = { has_starbase_building = deep_space_black_site } }
+		add_modifier = { modifier = smear_campaign days = 7200 }
 	}
 }
 
@@ -386,6 +432,18 @@ planet_event = {
 			}
 		}
 	}
+	
+	option = {
+		name = unrest.infiltrate
+		tooltip = {
+			add_modifier = {
+				modifier = xenophobe_unrest
+				days = 7200 # 20 years
+			}
+		}
+		allow = { solar_system.starbase = { has_starbase_building = deep_space_black_site } }
+		add_modifier = { modifier = smear_campaign days = 7200 }
+	}
 }
 
 planet_event = {
@@ -448,6 +506,18 @@ planet_event = {
 				days = 7200 # 20 years
 			}
 		}
+	}
+	
+	option = {
+		name = unrest.infiltrate
+		tooltip = {
+			add_modifier = {
+				modifier = materialist_unrest
+				days = 7200 # 20 years
+			}
+		}
+		allow = { solar_system.starbase = { has_starbase_building = deep_space_black_site } }
+		add_modifier = { modifier = smear_campaign days = 7200 }
 	}
 }
 
@@ -523,6 +593,18 @@ planet_event = {
 			}
 		}
 	}
+	
+	option = {
+		name = unrest.infiltrate
+		tooltip = {
+			add_modifier = {
+				modifier = xenophile_unrest
+				days = 7200 # 20 years
+			}
+		}
+		allow = { solar_system.starbase = { has_starbase_building = deep_space_black_site } }
+		add_modifier = { modifier = smear_campaign days = 7200 }
+	}
 }
 
 planet_event = {
@@ -590,6 +672,18 @@ planet_event = {
 			}
 		}
 	}
+	
+	option = {
+		name = unrest.infiltrate
+		tooltip = {
+			add_modifier = {
+				modifier = egalitarian_unrest
+				days = 7200 # 20 years
+			}
+		}
+		allow = { solar_system.starbase = { has_starbase_building = deep_space_black_site } }
+		add_modifier = { modifier = smear_campaign days = 7200 }
+	}
 }
 
 planet_event = {
@@ -654,6 +748,18 @@ planet_event = {
 				days = 7200 # 20 years
 			}
 		}
+	}
+	
+	option = {
+		name = unrest.infiltrate
+		tooltip = {
+			add_modifier = {
+				modifier = pacifist_unrest
+				days = 7200 # 20 years
+			}
+		}
+		allow = { solar_system.starbase = { has_starbase_building = deep_space_black_site } }
+		add_modifier = { modifier = smear_campaign days = 7200 }
 	}
 }
 
@@ -720,6 +826,18 @@ planet_event = {
 			}
 		}
 	}
+	
+	option = {
+		name = unrest.infiltrate
+		tooltip = {
+			add_modifier = {
+				modifier = militarist_unrest
+				days = 7200 # 20 years
+			}
+		}
+		allow = { solar_system.starbase = { has_starbase_building = deep_space_black_site } }
+		add_modifier = { modifier = smear_campaign days = 7200 }
+	}
 }
 
 # SLAVE REVOLT CHAIN #
@@ -762,10 +880,6 @@ planet_event = {
 	mean_time_to_happen = { years = 25 }
 
 	immediate = {
-		add_modifier = {
-			modifier = adding_unrest_slaves
-			days = 7200
-		}
 		set_timed_planet_flag = {
 			flag = recent_unrest_event
 			days = 720
@@ -782,6 +896,20 @@ planet_event = {
 
 	option = {
 		name = unrest.155.a
+		add_modifier = { modifier = adding_unrest_slaves days = 7200 }
+	}
+	
+	option = {
+		name = unrest.example
+		allow = { any_owned_pop = { has_job = job_enforcer } }
+		random_owned_pop = {
+			limit = { 
+				NOT = { has_trait = trait_mechanical }
+				is_sapient = yes
+				is_enslaved = yes
+			}
+			kill_pop = yes
+		}
 	}
 }
 
@@ -953,9 +1081,12 @@ planet_event = {
 		name = unrest.156.a
 		tooltip = { add_planet_devastation = 30 }
 	}
+	
 	option = {
-		name = unrest.156.b
+		name = unrest.security
+		allow = { owner = { NOT = { has_policy_flag = criminal_common_law } } }
 		tooltip = { add_planet_devastation = 30 }
+		add_modifier = { modifier = martial_law days = 10800 }
 	}
 }
 
@@ -977,31 +1108,33 @@ planet_event = {
 				days = 720
 			}	
 		}
-		add_modifier = {
-			modifier = slave_hunger_strike
-			days = 1800
-		}
-		set_timed_planet_flag = { 
-			flag = slave_resistance
-			days = 3600
-		}
 	}
 
 	option = {
 		name = unrest.159.a
-		tooltip = {
-			add_modifier = {
-			modifier = slave_hunger_strike
-			days = 1800
-			}
-		}
+		add_modifier = { modifier = slave_hunger_strike days = 1800 }
+		set_timed_planet_flag = { flag = slave_resistance days = 3600 }
 	}
+	
 	option = {
 		name = unrest.159.b
-		tooltip = {
-			add_modifier = {
-			modifier = slave_hunger_strike
-			days = 1800
+		add_modifier = { modifier = slave_hunger_strike days = 30 }
+		
+		if = {
+			limit = { owner = { has_policy_flag = slavery_allowed } }
+			set_policy = {
+				policy = slavery
+				option = slavery_secretly_allowed
+				cooldown = yes
+			}
+		}
+		
+		if = {
+			limit = { owner = { has_policy_flag = alien_no_rights } }
+			set_policy = {
+				policy = alien_rights
+				option = alien_limited_rights
+				cooldown = yes
 			}
 		}
 	}
@@ -1046,28 +1179,23 @@ planet_event = {
 			flag = slave_riots
 			days = 3600
 		}
-
-		add_modifier = {
-			modifier = slave_riots
-			days = 3600
-		}
 	}	
 	option = {
 		name = unrest.157.a
 		tooltip = {
-			add_modifier = {
-			modifier = slave_riots
-			days = 3600
-			}
+			add_modifier = { modifier = slave_riots days = 3600 }
 		}
+		add_modifier = { modifier = slave_riots days = 3600 }
 	}
 	option = {
-		name = unrest.157.b
+		name = unrest.military
+		allow = { any_owned_pop = { has_job = job_soldier } }
 		tooltip = {
-			add_modifier = {
-			modifier = slave_riots
-			days = 3600
-			}
+			add_modifier = { modifier = slave_riots days = 1800 }
+		}
+		random_owned_pop = {
+			limit = { is_enslaved = yes }
+			kill_pop = yes
 		}
 	}
 }
@@ -1088,7 +1216,7 @@ planet_event = {
 	trigger = {
 		owner = { is_country_type = default }
 		exists = controller
-controller = { is_same_value = root.owner }
+		controller = { is_same_value = root.owner }
 		planet_stability < @stabilitylevel1
 		has_planet_flag = slave_riots
  		any_owned_pop = {
