@@ -11,6 +11,21 @@ migration_control_yes = {
 			from = { NOT = { has_authority = auth_machine_intelligence } }		
 		}
 	}
+	
+	allow = {
+		if = {
+			limit = { is_same_species = from }
+			NOT = { from = { has_policy_flag = slavery_not_allowed } }
+		} else_if = {
+			limit = { NOT = { is_same_species = from } }
+			if = {
+				limit = { NOT = { from = { has_policy_flag = alien_full_rights } } }
+				always = yes
+			} else = {
+				from = { NOT = { has_policy_flag = slavery_not_allowed } }
+			}
+		}
+	}
 }
 
 migration_control_no = {
@@ -55,9 +70,6 @@ population_control_yes = {
 
 	allow = {
 		hidden_trigger = { exists = from }
-		from = {
-			NOT = { has_policy_flag = population_controls_not_allowed }
-		}
 		if = { 
 			limit = {
 				OR = {
@@ -66,22 +78,17 @@ population_control_yes = {
 				}			
 			}
 			always = yes
-		}
-		else = {
-			custom_tooltip = {
-				fail_text = same_species_disallowed
-				NOT = { is_same_species = from }
+		} else_if = {
+			limit = { NOT = { is_same_species = from } }
+			if = {
+				limit = { from = { has_policy_flag = alien_no_rights } }
+				always = yes
+			} else = {
+				from = { has_policy_flag = population_controls_allowed }
 			}
-			custom_tooltip = {
-				fail_text = empire_xenophile
-				from = {
-					NOR = {
-						has_ethic = ethic_xenophile
-						has_ethic = ethic_fanatic_xenophile
-					}
-				}
-			}		
-		}				
+		} else = {
+			from = { has_policy_flag = population_controls_allowed }	
+		}
 	}
 	ai_will_do = {
 		factor = 2
@@ -149,11 +156,16 @@ colonization_control_yes = {
 				}
 			}
 			always = yes
-		}
-		else = {
-			custom_tooltip = {
-				fail_text = same_species_disallowed
-				NOT = { is_same_species = from }
+		} else_if = {
+			limit = { is_same_species = from }
+			NOT = { from = { has_policy_flag = slavery_not_allowed } }
+		} else_if = {
+			limit = { NOT = { is_same_species = from } }
+			if = {
+				limit = { NOT = { from = { has_policy_flag = alien_full_rights } } }
+				always = yes
+			} else = {
+				from = { NOT = { has_policy_flag = slavery_not_allowed } }
 			}
 		}
 	}

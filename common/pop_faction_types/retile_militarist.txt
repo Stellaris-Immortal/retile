@@ -127,7 +127,7 @@ imperialist = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 1 }
+			owner = { has_comms_with_alien_empire = yes }
 		}
 
 		trigger = {
@@ -188,11 +188,11 @@ imperialist = {
 		}
 	}
 	
-	# Wants Hostile Contact
+	# Wants Indescriminate Bombardment
 	demand = {
-		title = "MILITARIST_HOSTILE_CONTACT"
-		unfulfilled_title = "MILITARIST_NO_HOSTILE_CONTACT"
-		desc = "MILITARIST_HOSTILE_CONTACT_DESC"
+		title = "MILITARIST_BOMBARDMENT"
+		unfulfilled_title = "MILITARIST_NO_BOMBARDMENT"
+		desc = "MILITARIST_BOMBARDMENT_DESC"
 		
 		fulfilled_effect = 10
 		unfulfilled_effect = 0
@@ -200,7 +200,12 @@ imperialist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = first_contact_attack_allowed }
+			owner = { 
+				OR = {
+					has_policy_flag = orbital_bombardment_indiscriminate
+					has_policy_flag = orbital_bombardment_armageddon
+				}
+			}
 		}
 	}
 	
@@ -249,6 +254,33 @@ imperialist = {
 		}
 	}
 	
+	# Hates Being Weak
+	demand = { 
+		title = "MILITARIST_WEAK"
+		unfulfilled_title = "MILITARIST_NO_WEAK"
+		desc = "MILITARIST_WEAK_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { has_comms_with_alien_empire = yes }
+		}
+
+		trigger = {
+			NOT = {
+				owner = {
+					any_country = {
+						is_country_type = default
+						has_communications = root.owner
+						relative_power = { who = root.owner value >= superior }
+					}
+				}
+			}
+		}
+	}
+	
 	# Hates Diplomacy
 	demand = { 
 		title = "MILITARIST_DIPLOMACY"
@@ -265,7 +297,7 @@ imperialist = {
 		}
 	}
 	
-	# Hates Purge Ban
+	# Hates Genocide Ban
 	demand = {
 		title = "MILITARIST_PURGE"
 		unfulfilled_title = "MILITARIST_NO_PURGE"
@@ -277,7 +309,7 @@ imperialist = {
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = purge_not_allowed }
+			owner = { NOT = { has_policy_flag = purge_not_allowed } }
 		}
 	}
 	
@@ -290,10 +322,7 @@ imperialist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
-		potential = { 
-			exists = owner
-			owner = { num_communications > 1 }
-		}
+		potential = { exists = owner }
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = no_wars } }
@@ -309,7 +338,10 @@ imperialist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
-		potential = { exists = owner }
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_adaptive_bureaucracy }
+		}
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = piracy_peaceful } }
@@ -332,23 +364,8 @@ imperialist = {
 		}
 	}
 	
-	# Hates Isolation
-	demand = { 
-		title = "MILITARIST_ISOLATIONISM"
-		unfulfilled_title = "MILITARIST_NO_ISOLATIONISM"
-		desc = "MILITARIST_ISOLATIONISM_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_technology = tech_adaptive_bureaucracy }
-		}
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = xenodiplomacy_isolation } }
-		}
+	on_create = {
+		pop_faction_event = { id = factions.1 }
 	}
 
 	on_destroy = {

@@ -1,0 +1,327 @@
+namespace = political
+
+country_event = {
+	id = political.1
+	hide_window = yes
+
+	immediate = {
+		if = {
+			limit = { check_variable = { which = unrest value > 100 } }
+			set_variable = { which = unrest value = 100 }
+		} else_if = {
+			limit = { check_variable = { which = unrest value < 0 } }
+			set_variable = { which = unrest value = 0 }
+		}
+	}
+	
+	trigger = {
+		is_regular_empire = yes
+		always = no
+	}
+	
+	mean_time_to_happen = {
+		days = 360
+	}
+	
+	after = {
+		random_list = {
+			50 = { }
+			# Authoritarian Request
+			1 = { country_event = { id = political.2 } }
+		}
+	}
+}
+
+# Authoritarian Request
+country_event = {
+	id = political.2
+	title = political.2.name
+	
+	desc = {
+		trigger = { 
+			NOR = { 
+				has_policy_flag = criminal_state_police
+				has_country_flag = state_police_never
+			}
+		}
+		text = political.2.desc.police
+	}
+	
+	desc = {
+		trigger = { 
+			is_overlord = no 
+			NOR = { 
+				has_country_flag = overlord_never
+				has_modifier = vassal_promised
+			}
+			OR = {
+				has_policy_flag = criminal_state_police
+				has_country_flag = state_police_never
+			}
+		}
+		text = political.2.desc.overlord
+	}
+	
+	desc = {
+		trigger = {
+			NOR = { 
+				has_authority = auth_imperial
+				has_country_flag = empire_never
+				has_ethic = ethic_egalitarian
+				has_ethic = ethic_fanatic_egalitarian
+			}
+			OR = {
+				has_policy_flag = criminal_state_police
+				has_country_flag = state_police_never
+			}
+			OR = {
+				is_overlord = yes
+				has_country_flag = overlord_never
+			}
+			owner = { resource_stockpile_compare = { resource = influence value >= 100 } }
+		}
+		text = political.2.desc.empire
+	}
+	
+	desc = {
+		trigger = {
+			has_policy_flag = criminal_state_police
+			is_overlord = yes
+			has_authority = auth_imperial
+		}
+		text = political.2.desc.happy
+	}
+	
+	desc = {
+		trigger = {
+			has_country_flag = state_police_never
+			has_country_flag = overlord_never
+			OR = {
+				has_country_flag = empire_never
+				owner = { resource_stockpile_compare = { resource = influence value < 100 } }
+				has_ethic = ethic_egalitarian
+				has_ethic = ethic_fanatic_egalitarian
+			}
+		}
+		text = political.2.desc.mad
+	}
+	
+	picture = GFX_evt_political_event
+	show_sound = event_factions
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		any_owned_planet = {
+			any_pop = {
+				exists = pop_faction
+				pop_faction = { is_pop_faction_type = totalitarian }
+				happiness < 0.80
+			}
+		}
+		NOT = { 
+			has_country_flag = recent_political_event
+			has_valid_civic = civic_anarchist
+		}
+	}
+	
+	immediate = {
+		set_timed_country_flag = { flag = recent_political_event days = 360 }
+	}
+	
+	# This will never happen
+	option = {
+		allow = {
+			OR = {
+				NOT = { has_policy_flag = criminal_state_police }
+				is_overlord = no
+				NOT = { has_authority = auth_imperial }
+			}
+		}
+		name = political.2.a
+		custom_tooltip = political.2.a.tooltip
+		if = {
+			limit = {
+				NOT = { 
+					has_policy_flag = criminal_state_police
+					has_country_flag = state_police_never
+				}
+			}
+			hidden_effect = { 
+				set_country_flag = state_police_never
+				every_pop_faction = {
+					limit = { is_pop_faction_type = totalitarian }
+					add_modifier = { modifier = request_rejected days = 3600 }
+				}
+			}
+		} else_if = {
+			limit = {
+				is_overlord = no 
+				NOT = { has_country_flag = overlord_never }
+				OR = {
+					has_policy_flag = criminal_state_police
+					has_country_flag = state_police_never
+				}
+			}
+			hidden_effect = { 
+				set_country_flag = overlord_never
+				hidden_effect = {
+					every_pop_faction = {
+						limit = { is_pop_faction_type = totalitarian }
+						add_modifier = { modifier = request_rejected days = 3600 }
+					}
+				}
+			}
+		} else_if = {
+			limit = {
+				NOT = { 
+					has_authority = auth_imperial
+					has_country_flag = empire_never
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+				OR = {
+					has_policy_flag = criminal_state_police
+					has_country_flag = state_police_never
+				}
+				OR = {
+					is_overlord = yes
+					has_country_flag = overlord_never
+				}
+				owner = { resource_stockpile_compare = { resource = influence value >= 100 } }
+			}
+			hidden_effect = { 
+				set_country_flag = empire_never
+				every_pop_faction = {
+					limit = { is_pop_faction_type = totalitarian }
+					add_modifier = { modifier = request_rejected days = 3600 }
+				}
+			}
+		} else_if = {
+			limit = {
+				has_country_flag = state_police_never
+				has_country_flag = overlord_never
+				has_country_flag = empire_never
+			}
+			hidden_effect = {
+				every_pop_faction = {
+					limit = { is_pop_faction_type = totalitarian }
+					add_modifier = { modifier = request_rejected days = 3600 }
+				}
+			}
+		}
+	}
+	
+	# It will be considered
+	option = {
+		allow = {
+			OR = {
+				NOT = { has_policy_flag = criminal_state_police }
+				is_overlord = no
+				NOT = { has_authority = auth_imperial }
+			}
+		}
+		name = political.2.b
+	}
+	
+	# Request Granted
+	option = {
+		allow = {
+			OR = {
+				NOT = { has_policy_flag = criminal_state_police }
+				is_overlord = no
+				NOT = { has_authority = auth_imperial }
+			}
+		}
+		name = political.2.c
+		custom_tooltip = political.2.c.tooltip
+		if = {
+			limit = {
+				NOT = { 
+					has_policy_flag = criminal_state_police
+					has_country_flag = state_police_never
+				}
+			}
+			hidden_effect = { 
+				set_policy = {
+					policy = criminal
+					option = criminal_state_police
+					cooldown = yes
+				}
+				every_pop_faction = {
+					limit = { is_pop_faction_type = totalitarian }
+					add_modifier = { modifier = request_approved days = 3600 }
+				}
+			}
+		} else_if = {
+			limit = {
+				is_overlord = no 
+				NOT = { has_country_flag = overlord_never }
+				OR = {
+					has_policy_flag = criminal_state_police
+					has_country_flag = state_police_never
+				}
+			}
+			hidden_effect = { 
+				add_modifier = { modifier = vassal_promised days = 3600 }
+				hidden_effect = {
+					every_pop_faction = {
+						limit = { is_pop_faction_type = totalitarian }
+						add_modifier = { modifier = request_approved days = 3600 }
+					}
+				}
+			}
+		} else_if = {
+			limit = {
+				NOT = { 
+					has_authority = auth_imperial
+					has_country_flag = empire_never
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+				OR = {
+					has_policy_flag = criminal_state_police
+					has_country_flag = state_police_never
+				}
+				OR = {
+					is_overlord = yes
+					has_country_flag = overlord_never
+				}
+				owner = { resource_stockpile_compare = { resource = influence value >= 100 } }
+			}
+			owner = { add_resource = { influence = -100 } }
+			hidden_effect = { 
+				change_government = auth_imperial
+				every_pop_faction = {
+					limit = { is_pop_faction_type = totalitarian }
+					add_modifier = { modifier = request_approved days = 3600 }
+				}
+			}
+		} else_if = {
+			limit = {
+				has_country_flag = state_police_never
+				has_country_flag = overlord_never
+				has_country_flag = empire_never
+			}
+			hidden_effect = {
+				remove_country_flag = state_police_never
+				remove_country_flag = overlord_never
+				remove_country_flag = empire_never
+				every_pop_faction = {
+					limit = { is_pop_faction_type = totalitarian }
+					add_modifier = { modifier = request_approved days = 3600 }
+				}
+			}
+		}
+	}
+	
+	# You're Welcome
+	option = {
+		allow = {
+			has_policy_flag = criminal_state_police
+			is_overlord = yes
+			has_authority = auth_imperial
+		}
+		name = political.2.d
+	}
+}

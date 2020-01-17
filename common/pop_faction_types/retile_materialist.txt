@@ -103,7 +103,7 @@ technologist = {
 		desc = "MATERIALIST_PRECURSOR_SECRETS_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -0
+		unfulfilled_effect = 0
 
 		potential = {
 			exists = owner
@@ -130,7 +130,7 @@ technologist = {
 		desc = "MATERIALIST_PROSPERITY_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -0
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -148,7 +148,7 @@ technologist = {
 		desc = "MATERIALIST_AI_RIGHTS_DESC"
 
 		fulfilled_effect = 20
-		unfulfilled_effect = -0
+		unfulfilled_effect = 0
 
 		potential = { 
 			exists = owner
@@ -160,19 +160,28 @@ technologist = {
 		}
 	}
 	
-	# Wants Private Education
+	# Wants Internal Affairs
 	demand = { 
-		title = "MATERIALIST_PRIVATE_EDUCATION"
-		unfulfilled_title = "MATERIALIST_NO_PRIVATE_EDUCATION"
-		desc = "MATERIALIST_PRIVATE_EDUCATION_DESC"
+		title = "MATERIALIST_ECONOMIC_DIPLOMACY"
+		unfulfilled_title = "MATERIALIST_NO_ECONOMIC_DIPLOMACY"
+		desc = "MATERIALIST_ECONOMIC_DIPLOMACY_DESC"
 
 		fulfilled_effect = 20
-		unfulfilled_effect = -0
+		unfulfilled_effect = 0
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_technology = tech_xenodiplomacy }
+		}
 
 		trigger = {
-			owner = { has_policy_flag = education_for_profit }
+			owner = { 
+				OR = {
+					has_policy_flag = xenodiplomacy_assembly
+					has_policy_flag = xenodiplomacy_magistrate
+					has_policy_flag = xenodiplomacy_lr
+				}
+			}
 		}
 	}
 	
@@ -183,7 +192,7 @@ technologist = {
 		desc = "MATERIALIST_PRIVATE_POLICE_DESC"
 
 		fulfilled_effect = 20
-		unfulfilled_effect = -0
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -192,21 +201,19 @@ technologist = {
 		}
 	}
 	
-	# Wants Active Interference
+	# Wants Labor Employment
 	demand = { 
-		title = "MATERIALIST_INTERFERENCE"
-		unfulfilled_title = "MATERIALIST_NO_INTERFERENCE"
-		desc = "MATERIALIST_INTERFERENCE_DESC"
+		title = "MATERIALIST_EMPLOYMENT"
+		unfulfilled_title = "MATERIALIST_NO_EMPLOYMENT"
+		desc = "MATERIALIST_EMPLOYMENT_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -0
+		unfulfilled_effect = 0
 
-		potential = { 
-			exists = owner
-		}
+		potential = {  exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = interference_active }
+			owner = { has_policy_flag = slavery_secretly_allowed }
 		}
 	}
 	
@@ -217,7 +224,7 @@ technologist = {
 		desc = "MATERIALIST_ENVIRONMENTAL_DEREGULATION_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = -0
+		unfulfilled_effect = 0
 
 		potential = { exists = owner }
 
@@ -244,44 +251,71 @@ technologist = {
 		}
 	}
 	
-	# Hates Basic Subsistence
+	# Hates Ignored Anomolies
 	demand = {
-		title = "MATERIALIST_BASIC_SUBSISTENCE"
-		unfulfilled_title = "MATERIALIST_NO_BASIC_SUBSISTENCE"
-		desc = "MATERIALIST_BASIC_SUBSISTENCE_DESC"
+		title = "MATERIALIST_ANOMOLY"
+		unfulfilled_title = "MATERIALIST_NO_ANOMOLY"
+		desc = "MATERIALIST_ANOMOLY_DESC"
 
 		fulfilled_effect = 0
-		unfulfilled_effect = -20
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
 		trigger = {
 			NOT = {
 				owner = {
-					NOR = {
-						any_owned_pop = { has_living_standard = { type = living_standard_chemical_bliss } }
-						any_owned_pop = { has_living_standard = { type = living_standard_academic_privilege  } }
-						any_owned_pop = { has_living_standard = { type = living_standard_utopian  } }
-						any_owned_pop = { has_living_standard = { type = living_standard_good  } }
+					any_owned_planet = {
+						has_anomaly = yes
 					}
 				}
 			}
 		}
 	}
 	
-	# Hates Enlightenment Allowed
-	demand = { 
-		title = "MATERIALIST_ENLIGHTENMENT_ALLOWED"
-		unfulfilled_title = "MATERIALIST_NO_ENLIGHTENMENT_ALLOWED"
-		desc = "MATERIALIST_ENLIGHTENMENT_ALLOWED_DESC"
+	# Hates Prime Directive
+	demand = {
+		title = "MATERIALIST_PASSIVE"
+		unfulfilled_title = "MATERIALIST_NO_PASSIVE"
+		desc = "MATERIALIST_PASSIVE_DESC"
 
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_met_primitives = yes }
+		}
 
 		trigger = {
-			owner = { NOT = { has_policy_flag = enlightenment_allowed } }
+			owner = { has_policy_flag = interference_passive }
+		}
+	}
+	
+	# Hates Deficit
+	demand = { 
+		title = "MATERIALIST_DEFICIT"
+		unfulfilled_title = "MATERIALIST_NO_DEFICIT"
+		desc = "MATERIALIST_DEFICIT_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
+
+		potential = { 
+			exists = owner
+			owner = { num_communications > 2 }
+		}
+
+		trigger = {
+			owner = { 
+				NOR = {
+					has_monthly_income = { resource = energy value < 0 }
+					has_monthly_income = { resource = minerals value < 0 }
+					has_monthly_income = { resource = food value < 0 }
+					has_monthly_income = { resource = alloys value < 0 }
+					has_monthly_income = { resource = consumer_goods value < 0 }
+				}
+			}
 		}
 	}
 	
@@ -326,28 +360,13 @@ technologist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { can_set_ai_policy = yes }
+		}
 
 		trigger = {
 			NOT = { owner = { has_policy_flag = ai_outlawed } }
-		}
-	}
-	
-	# Hates Passive Interference
-	demand = {
-		title = "MATERIALIST_PASSIVE"
-		unfulfilled_title = "MATERIALIST_NO_PASSIVE"
-		desc = "MATERIALIST_PASSIVE_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-		}
-
-		trigger = {
-			NOT = { owner = { has_policy_flag = interference_passive } }
 		}
 	}
 	

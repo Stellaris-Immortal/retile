@@ -5,10 +5,6 @@ planet_event = {
 	id = ecology.1
 	hide_window = yes
 	
-	trigger = {
-
-	}
-	
 	immediate = {
 		if = {
 			limit = { check_variable = { which = pollution value > 2000 } }
@@ -24,620 +20,254 @@ planet_event = {
 	}
 	
 	after = {
-		# Stage 10 Pollution
+		# Pollution Buildup
 		if = { 
 			limit = { free_amenities >= 1800 }
-			change_variable = { which = pollution value = 10 }
-			random_list = {
-				76 = { }
-				1 = { planet_event = { id = ecology.2 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.2 }
-					}
-				}
-				1 = { planet_event = { id = ecology.3 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.3 }
-					}
-				}
-				1 = { planet_event = { id = ecology.4 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.4 }
-					}
-				}
-				1 = { planet_event = { id = ecology.5 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.5 }
-					}
-				}
-				1 = { planet_event = { id = ecology.6 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.6 }
-					}
-				}
-				1 = { planet_event = { id = ecology.7 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.7 }
-					}
-				}
-				1 = { planet_event = { id = ecology.8 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.8 }
-					}
-				}
-				1 = { planet_event = { id = ecology.9 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 1000 } }
-						planet_event = { id = ecology.9 }
-					}
-				}
-				1 = { planet_event = { id = ecology.10 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 1000 } }
-						planet_event = { id = ecology.10 }
-					}
-				}
-				1 = { planet_event = { id = ecology.11 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
-						planet_event = { id = ecology.11 }
-					}
-				}
-				1 = { planet_event = { id = ecology.12 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
-						planet_event = { id = ecology.12 }
-					}
-				}
-				1 = { planet_event = { id = ecology.14 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
-						planet_event = { id = ecology.14 }
-					}
-				}
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 12 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = 8 }
+			} else = {
+				change_variable = { which = pollution value = 10 }
 			}
 		}
-		# Stage 9 Pollution
 		else_if = { 
 			limit = { free_amenities >= 1600 }
-			change_variable = { which = pollution value = 9 }
-			random_list = {
-				76 = { }
-				1 = { planet_event = { id = ecology.2 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.2 }
-					}
-				}
-				1 = { planet_event = { id = ecology.3 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.3 }
-					}
-				}
-				1 = { planet_event = { id = ecology.4 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.4 }
-					}
-				}
-				1 = { planet_event = { id = ecology.5 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.5 }
-					}
-				}
-				1 = { planet_event = { id = ecology.6 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.6 }
-					}
-				}
-				1 = { planet_event = { id = ecology.7 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.7 }
-					}
-				}
-				1 = { planet_event = { id = ecology.8 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.8 }
-					}
-				}
-				1 = { planet_event = { id = ecology.9 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 1000 } }
-						planet_event = { id = ecology.9 }
-					}
-				}
-				1 = { planet_event = { id = ecology.10 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 1000 } }
-						planet_event = { id = ecology.10 }
-					}
-				}
-				1 = { planet_event = { id = ecology.11 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
-						planet_event = { id = ecology.11 }
-					}
-				}
-				1 = { planet_event = { id = ecology.12 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
-						planet_event = { id = ecology.12 }
-					}
-				}
-				1 = { planet_event = { id = ecology.14 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
-						planet_event = { id = ecology.14 }
-					}
-				}
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 11 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = 7 }
+			} else = {
+				change_variable = { which = pollution value = 8 }
 			}
 		}
-		# Stage 8 Pollution
 		else_if = { 
 			limit = { free_amenities >= 1400 }
-			change_variable = { which = pollution value = 8 }
-			random_list = {
-				76 = { }
-				1 = { planet_event = { id = ecology.2 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.2 }
-					}
-				}
-				1 = { planet_event = { id = ecology.3 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.3 }
-					}
-				}
-				1 = { planet_event = { id = ecology.4 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.4 }
-					}
-				}
-				1 = { planet_event = { id = ecology.5 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.5 }
-					}
-				}
-				1 = { planet_event = { id = ecology.6 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.6 }
-					}
-				}
-				1 = { planet_event = { id = ecology.7 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.7 }
-					}
-				}
-				1 = { planet_event = { id = ecology.8 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.8 }
-					}
-				}
-				1 = { planet_event = { id = ecology.9 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 1000 } }
-						planet_event = { id = ecology.9 }
-					}
-				}
-				1 = { planet_event = { id = ecology.10 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 1000 } }
-						planet_event = { id = ecology.10 }
-					}
-				}
-				1 = { planet_event = { id = ecology.11 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
-						planet_event = { id = ecology.11 }
-					}
-				}
-				1 = { planet_event = { id = ecology.12 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
-						planet_event = { id = ecology.12 }
-					}
-				}
-				1 = { planet_event = { id = ecology.14 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
-						planet_event = { id = ecology.14 }
-					}
-				}
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 10 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = 6 }
+			} else = {
+				change_variable = { which = pollution value = 8 }
 			}
 		}
-		# Stage 7 Pollution
 		else_if = { 
 			limit = { free_amenities >= 1200 }
-			change_variable = { which = pollution value = 7 }
-			random_list = {
-				77 = { }
-				1 = { planet_event = { id = ecology.2 } }
-				1 = { 
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 9 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = 5 }
+			} else = {
+				change_variable = { which = pollution value = 7 }
+			}
+		}
+		else_if = { 
+			limit = { free_amenities >= 1000 }
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 8 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = 4 }
+			} else = {
+				change_variable = { which = pollution value = 6 }
+			}
+		}
+		else_if = { 
+			limit = { free_amenities >= 800 }
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 7 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = 3 }
+			} else = {
+				change_variable = { which = pollution value = 5 }
+			}
+		}
+		else_if = { 
+			limit = { free_amenities >= 600 }
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 6 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = 2 }
+			} else = {
+				change_variable = { which = pollution value = 4 }
+			}
+		}
+		else_if = { 
+			limit = { free_amenities >= 400 }
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 5 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = 1 }
+			} else = {
+				change_variable = { which = pollution value = 3 }
+			}
+		}
+		else_if = { 
+			limit = { free_amenities >= 200 }
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 4 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = 0 }
+			} else = {
+				change_variable = { which = pollution value = 2 }
+			}
+		}
+		else_if = {
+			limit = { free_amenities >= 0 }
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 2 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = -1 }
+			} else = {
+				change_variable = { which = pollution value = 1 }
+			}
+		}
+		else_if = {
+			limit = { free_amenities > -100 }
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 2 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = -2 }
+			} else = {
+				change_variable = { which = pollution value = 0 }
+			}
+		} else_if = {
+			limit = { free_amenities <= -100 }
+			if = {
+				limit = { owner = { has_policy_flag = environmental_deregulation } }
+				change_variable = { which = pollution value = 1 }
+			} else_if = {
+				limit = { owner = { has_policy_flag = environmental_protection } }
+				change_variable = { which = pollution value = -3 }
+			} else = {
+				change_variable = { which = pollution value = -1 }
+			}
+		}
+		
+		
+		# Pollution Events
+		random_list = {
+				50 = { }
+				# Drought
+				2 = { planet_event = { id = ecology.2 } }
+				2 = { 
 					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
+						limit = { check_variable = { which = pollution value >= 50 } }
 						planet_event = { id = ecology.2 }
 					}
 				}
-				1 = { planet_event = { id = ecology.3 } }
-				1 = { 
+				# Flood
+				2 = { planet_event = { id = ecology.3 } }
+				2 = { 
 					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
+						limit = { check_variable = { which = pollution value >= 50 } }
 						planet_event = { id = ecology.3 }
 					}
 				}
-				1 = { planet_event = { id = ecology.4 } }
-				1 = { 
+				# Heat Wave
+				2 = { planet_event = { id = ecology.4 } }
+				2 = { 
 					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
+						limit = { check_variable = { which = pollution value >= 50 } }
 						planet_event = { id = ecology.4 }
 					}
 				}
-				1 = { planet_event = { id = ecology.5 } }
-				1 = { 
+				# Cold Wave
+				2 = { planet_event = { id = ecology.5 } }
+				2 = { 
 					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
+						limit = { check_variable = { which = pollution value >= 50 } }
 						planet_event = { id = ecology.5 }
 					}
 				}
-				1 = { planet_event = { id = ecology.6 } }
-				1 = { 
+				# Storm
+				2 = { planet_event = { id = ecology.6 } }
+				2 = { 
 					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
+						limit = { check_variable = { which = pollution value >= 100 } }
 						planet_event = { id = ecology.6 }
 					}
 				}
-				1 = { planet_event = { id = ecology.7 } }
-				1 = { 
+				# Desertification
+				2 = { planet_event = { id = ecology.7 } }
+				2 = { 
 					if = {
 						limit = { check_variable = { which = pollution value >= 200 } }
 						planet_event = { id = ecology.7 }
 					}
 				}
-				1 = { planet_event = { id = ecology.8 } }
-				1 = { 
+				# Outbreak
+				2 = { planet_event = { id = ecology.8 } }
+				2 = { 
 					if = {
 						limit = { check_variable = { which = pollution value >= 200 } }
 						planet_event = { id = ecology.8 }
 					}
 				}
-				1 = { planet_event = { id = ecology.9 } }
-				1 = { 
+				# Mass Extinction
+				2 = { planet_event = { id = ecology.9 } }
+				2 = { 
 					if = {
-						limit = { check_variable = { which = pollution value >= 1000 } }
+						limit = { check_variable = { which = pollution value >= 500 } }
 						planet_event = { id = ecology.9 }
 					}
 				}
-				1 = { planet_event = { id = ecology.10 } }
-				1 = { 
+				# Climate Change
+				2 = { planet_event = { id = ecology.10 } }
+				2 = { 
 					if = {
-						limit = { check_variable = { which = pollution value >= 1000 } }
+						limit = { check_variable = { which = pollution value >= 500 } }
 						planet_event = { id = ecology.10 }
 					}
 				}
-				1 = { planet_event = { id = ecology.11 } }
-				1 = { 
+				# Tidal Wave
+				2 = { planet_event = { id = ecology.11 } }
+				2 = { 
 					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
+						limit = { check_variable = { which = pollution value >= 500 } }
 						planet_event = { id = ecology.11 }
 					}
 				}
-				1 = { planet_event = { id = ecology.12 } }
-				1 = { 
+				# Firestorm
+				2 = { planet_event = { id = ecology.12 } }
+				2 = { 
 					if = {
-						limit = { check_variable = { which = pollution value >= 2000 } }
+						limit = { check_variable = { which = pollution value >= 500 } }
 						planet_event = { id = ecology.12 }
 					}
 				}
-				1 = { planet_event = { id = ecology.14 } }
-			}
-		}
-		# Stage 6 Pollution
-		else_if = { 
-			limit = { free_amenities >= 1000 }
-			change_variable = { which = pollution value = 6 }
-			random_list = {
-				79 = { }
-				1 = { planet_event = { id = ecology.2 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.2 }
-					}
-				}
-				1 = { planet_event = { id = ecology.3 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.3 }
-					}
-				}
-				1 = { planet_event = { id = ecology.4 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.4 }
-					}
-				}
-				1 = { planet_event = { id = ecology.5 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.5 }
-					}
-				}
-				1 = { planet_event = { id = ecology.6 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.6 }
-					}
-				}
-				1 = { planet_event = { id = ecology.7 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.7 }
-					}
-				}
-				1 = { planet_event = { id = ecology.8 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.8 }
-					}
-				}
-				1 = { planet_event = { id = ecology.9 } }
-				1 = { 
+				# Environmental Collapse
+				2 = { planet_event = { id = ecology.13 } }
+				2 = { 
 					if = {
 						limit = { check_variable = { which = pollution value >= 1000 } }
-						planet_event = { id = ecology.9 }
+						planet_event = { id = ecology.13 }
 					}
 				}
-				1 = { planet_event = { id = ecology.10 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 1000 } }
-						planet_event = { id = ecology.10 }
-					}
-				}
-				1 = { planet_event = { id = ecology.11 } }
-				1 = { planet_event = { id = ecology.12 } }
-				1 = { planet_event = { id = ecology.14 } }
+				# Death of a World
+				2 = { planet_event = { id = ecology.14 } }
 			}
-		}
-		# Stage 5 Pollution
-		else_if = { 
-			limit = { free_amenities >= 800 }
-			change_variable = { which = pollution value = 5 }
-			random_list = {
-				83 = { }
-				1 = { planet_event = { id = ecology.2 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.2 }
-					}
-				}
-				1 = { planet_event = { id = ecology.3 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.3 }
-					}
-				}
-				1 = { planet_event = { id = ecology.4 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.4 }
-					}
-				}
-				1 = { planet_event = { id = ecology.5 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.5 }
-					}
-				}
-				1 = { planet_event = { id = ecology.6 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.6 }
-					}
-				}
-				1 = { planet_event = { id = ecology.7 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.7 }
-					}
-				}
-				1 = { planet_event = { id = ecology.8 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.8 }
-					}
-				}
-				1 = { planet_event = { id = ecology.9 } }
-				1 = { planet_event = { id = ecology.10 } }
-				1 = { planet_event = { id = ecology.14 } }
-			}
-		}
-		# Stage 4 Pollution
-		else_if = { 
-			limit = { free_amenities >= 600 }
-			change_variable = { which = pollution value = 4 }
-			random_list = {
-				88 = { }
-				1 = { planet_event = { id = ecology.2 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.2 }
-					}
-				}
-				1 = { planet_event = { id = ecology.3 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.3 }
-					}
-				}
-				1 = { planet_event = { id = ecology.4 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.4 }
-					}
-				}
-				1 = { planet_event = { id = ecology.5 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.5 }
-					}
-				}
-				1 = { planet_event = { id = ecology.6 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.6 }
-					}
-				}
-				1 = { planet_event = { id = ecology.7 } }
-				1 = { planet_event = { id = ecology.8 } }
-			}
-		}
-		# Stage 3 Pollution
-		else_if = { 
-			limit = { free_amenities >= 400 }
-			change_variable = { which = pollution value = 3 }
-			random_list = {
-				90 = { }
-				1 = { planet_event = { id = ecology.2 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.2 }
-					}
-				}
-				1 = { planet_event = { id = ecology.3 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 20 } }
-						planet_event = { id = ecology.3 }
-					}
-				}
-				1 = { planet_event = { id = ecology.4 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.4 }
-					}
-				}
-				1 = { planet_event = { id = ecology.5 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 100 } }
-						planet_event = { id = ecology.5 }
-					}
-				}
-				1 = { planet_event = { id = ecology.6 } }
-				1 = { 
-					if = {
-						limit = { check_variable = { which = pollution value >= 200 } }
-						planet_event = { id = ecology.6 }
-					}
-				}
-			}
-		}
-		# Stage 2 Pollution
-		else_if = { 
-			limit = { free_amenities >= 200 }
-			change_variable = { which = pollution value = 2 }
-			random_list = {
-				95 = { }
-				1 = { planet_event = { id = ecology.2 } }
-				1 = { planet_event = { id = ecology.3 } }
-				1 = { planet_event = { id = ecology.4 } }
-				1 = { planet_event = { id = ecology.5 } }
-				1 = { planet_event = { id = ecology.6 } }
-			}
-		}
-		# Stage 1 Pollution
-		else_if = { 
-			limit = { free_amenities >= 0 }
-			change_variable = { which = pollution value = 1 }
-			random_list = {
-				100 = { }
-			}
-		}
-		# Stage 0 Pollution
-		else_if =
-			{ limit = { free_amenities < 0 }
-			change_variable = { which = pollution value = -1 }
-			random_list = {
-				100 = { }
-				1 = { }
-			}
-		}
 	}
 }
 
@@ -670,17 +300,14 @@ planet_event = {
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
 			has_modifier = drought
-			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 10 }
-			check_variable = { which = pollution value >= 500 }
+			owner = { has_country_flag = recent_ecology_event }
+			check_variable = { which = pollution value < 25 }
 		}
+		free_amenities >= 200
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 360 } }
 		change_variable = { which = pollution value = -10 }
 	}
 	
@@ -753,18 +380,15 @@ planet_event = {
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
 			has_modifier = flood
-			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 10 }
-			check_variable = { which = pollution value >= 500 }
+			owner = { has_country_flag = recent_ecology_event }
+			check_variable = { which = pollution value < 25 }
 			is_dry = yes
 		}
+		free_amenities >= 200
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 360 } }
 		change_variable = { which = pollution value = -10 }
 	}
 	
@@ -783,7 +407,6 @@ planet_event = {
 		owner = { add_resource = { consumer_goods = -100 } }
 		add_planet_devastation = 5
 		add_modifier = { modifier = flood days = 180 }
-		hidden_effect = { change_variable = { which = pollution value = -5 } }
 	}
 	
 	option = {
@@ -793,7 +416,6 @@ planet_event = {
 			solar_system.starbase = { has_starbase_building = climate_control }
 		}
 		owner = { add_resource = { energy = -1000 } }
-		hidden_effect = { change_variable = { which = pollution value = -5 } }
 	}
 	
 	option = {
@@ -836,19 +458,16 @@ planet_event = {
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
 			has_modifier = heat_wave
-			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 50 }
-			check_variable = { which = pollution value >= 500 }
+			owner = { has_country_flag = recent_ecology_event }
+			check_variable = { which = pollution value < 25 }
 			is_cold = yes
 		}
+		free_amenities >= 400
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
-		change_variable = { which = pollution value = -50 }
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
+		change_variable = { which = pollution value = -25 }
 	}
 	
 	option = {
@@ -865,7 +484,6 @@ planet_event = {
 		owner = { add_resource = { energy = -500 } }
 		add_planet_devastation = 5
 		add_modifier = { modifier = heat_wave days = 180 }
-		hidden_effect = { change_variable = { which = pollution value = -25 } }
 	}
 	
 	option = {
@@ -875,7 +493,6 @@ planet_event = {
 			solar_system.starbase = { has_starbase_building = climate_control }
 		}
 		owner = { add_resource = { energy = -1000 } }
-		hidden_effect = { change_variable = { which = pollution value = -25 } }
 	}
 	
 	option = {
@@ -884,7 +501,6 @@ planet_event = {
 			owner = { resource_stockpile_compare = { resource = influence value >= 25 } }
 			solar_system.starbase = { has_starbase_building = deep_space_black_site }
 		}
-		owner = { add_resource = { influence = -25 } }
 		add_planet_devastation = 5
 		add_modifier = { modifier = heat_wave days = 360 }
 		add_modifier = { modifier = black_propaganda days = 360 }
@@ -918,18 +534,15 @@ planet_event = {
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
 			has_modifier = cold_wave
-			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 50 }
-			check_variable = { which = pollution value >= 500 }
+			owner = { has_country_flag = recent_ecology_event }
+			check_variable = { which = pollution value < 25 }
 		}
 		is_cold = yes
+		free_amenities >= 400
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
 		change_variable = { which = pollution value = -50 }
 	}
 	
@@ -1000,19 +613,16 @@ planet_event = {
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
 			has_modifier = storm
-			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 100 }
-			check_variable = { which = pollution value >= 1000 }
+			owner = { has_country_flag = recent_ecology_event }
+			check_variable = { which = pollution value < 50 }
 		}
 		has_building = yes
+		free_amenities >= 600
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
-		change_variable = { which = pollution value = -100 }
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
+		change_variable = { which = pollution value = -50 }
 	}
 	
 	option = {
@@ -1083,18 +693,15 @@ planet_event = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
-			has_planet_flag = recent_ecology_event
+			owner = { has_country_flag = recent_ecology_event }
 			has_planet_flag = desertification_event
 			check_variable = { which = pollution value < 100 }
-			check_variable = { which = pollution value >= 1000 }
 		}
+		free_amenities >= 600
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
 		set_planet_flag = desertification_event
 		change_variable = { which = pollution value = -100 }
 	}
@@ -1224,17 +831,14 @@ planet_event = {
 			is_planet_class = pc_toxic
 			is_planet_class = pc_frozen
 			is_planet_class = pc_machine
-			has_planet_flag = recent_ecology_event
+			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 100 }
-			check_variable = { which = pollution value >= 1000 }
 		}
+		free_amenities >= 600
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
 		change_variable = { which = pollution value = -100 }
 	}
 	
@@ -1335,17 +939,14 @@ planet_event = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
-			has_planet_flag = recent_ecology_event
+			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 250 }
-			check_variable = { which = pollution value >= 1500 }
 		}
+		free_amenities >= 800
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
 		change_variable = { which = pollution value = -250 }
 	}
 	
@@ -1444,16 +1045,14 @@ planet_event = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
-			has_planet_flag = recent_ecology_event
+			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 250 }
 		}
+		free_amenities >= 800
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
 		change_variable = { which = pollution value = -250 }
 	}
 	
@@ -1551,19 +1150,16 @@ planet_event = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
-			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 500 }
-			check_variable = { which = pollution value < 2000 }
+			owner = { has_country_flag = recent_ecology_event }
+			check_variable = { which = pollution value < 250 }
 			is_dry = yes
 		}
+		free_amenities >= 1000
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
-		change_variable = { which = pollution value = -500 }
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
+		change_variable = { which = pollution value = -250 }
 	}
 	
 	option = {
@@ -1642,19 +1238,16 @@ planet_event = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
-			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 500 }
-			check_variable = { which = pollution value < 2000 }
+			owner = { has_country_flag = recent_ecology_event }
+			check_variable = { which = pollution value < 250 }
 		}
 		is_dry = yes
+		free_amenities >= 1000
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
-		change_variable = { which = pollution value = -500 }
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
+		change_variable = { which = pollution value = -250 }
 	}
 	
 	option = {
@@ -1743,18 +1336,16 @@ planet_event = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
-			has_planet_flag = recent_ecology_event
+			owner = { has_country_flag = recent_ecology_event }
 			check_variable = { which = pollution value < 500 }
 			has_modifier = environmental_collapse
 		}
 		has_modifier = greenhouse_effect
+		free_amenities >= 1000
 	}
 	
 	immediate = {
-		set_timed_planet_flag = {
-			flag = recent_ecology_event
-			days = 360
-		}
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
 		change_variable = { which = pollution value = -500 }
 	}
 	
@@ -1884,14 +1475,14 @@ planet_event = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_cybrex
 			is_planet_class = pc_ringworld_habitable
-			has_planet_flag = recent_ecology_event
-			check_variable = { which = pollution value < 1000 }
+			owner = { has_country_flag = recent_ecology_event }
 		}
 		has_modifier = environmental_collapse
 	}
 	
 	immediate = {
-		change_variable = { which = pollution value = -1000 }
+		owner = { set_timed_country_flag = { flag = recent_ecology_event days = 1800 } }
+		set_variable = { which = pollution value = 0 }
 	}
 	
 	option = {

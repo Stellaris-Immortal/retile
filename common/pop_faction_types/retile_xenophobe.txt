@@ -97,7 +97,7 @@ isolationist = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 2 }
+			owner = { has_encountered_other_species = yes }
 		}
 
 		trigger = {
@@ -116,7 +116,10 @@ isolationist = {
 		fulfilled_effect = 10
 		unfulfilled_effect = 0
 
-		potential = { exists = owner }
+		potential = {
+			exists = owner 
+			owner = { has_encountered_other_species = yes }
+		}
 
 		trigger = {
 			NOT = {
@@ -133,7 +136,7 @@ isolationist = {
 		}
 	}
 	
-	# Wants Isolationism
+	# Wants Bureaucracy
 	demand = {
 		title = "XENOPHOBE_ISOLATIONISM"
 		unfulfilled_title = "XENOPHOBE_NO_ISOLATIONISM"
@@ -144,7 +147,7 @@ isolationist = {
 
 		potential = {
 			exists = owner
-			owner = { has_technology = tech_adaptive_bureaucracy }
+			owner = { has_technology = tech_xenodiplomacy }
 		}
 
 		trigger = {
@@ -233,7 +236,7 @@ isolationist = {
 
 		potential = {
 			exists = owner
-			owner = { num_communications > 4 }
+			owner = { num_communications > 2 }
 		}
 
 		trigger = {
@@ -263,7 +266,10 @@ isolationist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = alien_full_rights } }
@@ -279,7 +285,10 @@ isolationist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -20
 
-		potential = { exists = owner }
+		potential = {
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = pre_sapients_protect } }
@@ -311,7 +320,10 @@ isolationist = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_xenodiplomacy }
+		}
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = xenodiplomacy_embassy } }
@@ -351,6 +363,10 @@ isolationist = {
 		trigger = {
 			owner = { NOT = { has_policy_flag = refugees_allowed } }
 		}
+	}
+	
+	on_create = {
+		pop_faction_event = { id = factions.1 }
 	}
 	
 	on_destroy = {

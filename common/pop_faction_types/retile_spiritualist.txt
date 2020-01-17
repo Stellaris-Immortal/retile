@@ -210,7 +210,7 @@ traditionalist = {
 		}
 	}
 	
-	# Wants Enlightenment Allowed
+	# Wants Active Interference
 	demand = { 
 		title = "SPIRITUALIST_ENLIGHTENMENT_ALLOWED"
 		unfulfilled_title = "SPIRITUALIST_NO_ENLIGHTENMENT_ALLOWED"
@@ -219,7 +219,10 @@ traditionalist = {
 		fulfilled_effect = 10
 		unfulfilled_effect = 0
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_met_primitives = yes }
+		}
 
 		trigger = {
 			owner = { has_policy_flag = enlightenment_allowed }
@@ -287,6 +290,29 @@ traditionalist = {
 		}
 	}
 	
+	# Hates Artificial Habitats
+	demand = { 
+		title = "SPIRITUALIST_HABITAT"
+		unfulfilled_title = "SPIRITUALIST_NO_HABITAT"
+		desc = "SPIRITUALIST_HABITAT_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						num_pops > 0
+						habitable_structure = yes
+					}
+				}
+			}
+		}
+	}
+	
 	# Hates Prosperity
 	demand = { 
 		title = "SPIRITUALIST_PROSPERITY"
@@ -301,42 +327,6 @@ traditionalist = {
 		trigger = {
 			owner = {
 				NOT = { has_tradition = tr_prosperity_adopt }
-			}
-		}
-	}
-	
-	# Hates Enlightenment not Allowed
-	demand = { 
-		title = "SPIRITUALIST_NO_ENLIGHTENMENT"
-		unfulfilled_title = "SPIRITUALIST_NO_NO_ENLIGHTENMENT"
-		desc = "SPIRITUALIST_NO_ENLIGHTENMENT_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				NOT = { has_policy_flag = enlightenment_not_allowed }
-			}
-		}
-	}
-	
-	# Hates Environmental Deregulation
-	demand = { 
-		title = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION"
-		unfulfilled_title = "SPIRITUALIST_NO_ENVIRONMENTAL_DEREGULATION"
-		desc = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				NOT = { has_policy_flag = environmental_deregulation }
 			}
 		}
 	}
@@ -359,6 +349,24 @@ traditionalist = {
 		}
 	}
 	
+	# Hates Environmental Deregulation
+	demand = { 
+		title = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION"
+		unfulfilled_title = "SPIRITUALIST_NO_ENVIRONMENTAL_DEREGULATION"
+		desc = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				NOT = { has_policy_flag = environmental_deregulation }
+			}
+		}
+	}
+	
 	# Hates Heavy Bombardment
 	demand = { 
 		title = "SPIRITUALIST_HEAVY_BOMBARDMENT"
@@ -366,11 +374,9 @@ traditionalist = {
 		desc = "SPIRITUALIST_HEAVY_BOMBARDMENT_DESC"
 
 		fulfilled_effect = 0
-		unfulfilled_effect = -10
+		unfulfilled_effect = -20
 
-		potential = {
-			exists = owner
-		}
+		potential = { exists = owner }
 
 		trigger = {
 			owner = { has_policy_flag = orbital_bombardment_selective }

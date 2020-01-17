@@ -93,6 +93,7 @@ building_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
+			influence = 150
 			minerals = 500
 		}	
 		upkeep = {
@@ -181,6 +182,42 @@ building_capital = {
 		}
 		modifier = {
 			job_administrator_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { OR = {
+				has_civic = civic_mechanists
+				is_mechanical_empire = yes
+			} }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_roboticist_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_feudal_realm }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_tax_collector_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_capitalist }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_investor_add = 1
 		}
 	}
 	
@@ -303,6 +340,7 @@ building_major_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
+			influence = 150
 			minerals = 1000
 		}	
 		upkeep = {
@@ -513,6 +551,7 @@ building_system_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
+			influence = 150
 			minerals = 2000
 		}		
 		upkeep = {
@@ -567,47 +606,33 @@ building_system_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				NOT = {
-					has_policy_flag = xenodiplomacy_isolation
-					has_policy_flag = xenodiplomacy_embassy
-					has_policy_flag = xenodiplomacy_gunboat
-					has_civic = civic_feudal_realm
-					has_civic = civic_capitalist
-				}
-			}
+			owner = { has_policy_flag = xenodiplomacy_assembly }
 		}
-		job_clerk_add = 1
+		job_representitive_add = 1
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				NOR = {
-					has_policy_flag = xenodiplomacy_isolation
-					has_policy_flag = xenodiplomacy_embassy
-					has_policy_flag = xenodiplomacy_gunboat
-				}
-				owner = { has_civic = civic_feudal_realm }
-			}
+			owner = { has_policy_flag = xenodiplomacy_magistrate }
 		}
-		job_tax_collector_add = 1
+		job_magistrate_add = 1
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				NOR = {
-					has_policy_flag = xenodiplomacy_isolation
-					has_policy_flag = xenodiplomacy_embassy
-					has_policy_flag = xenodiplomacy_gunboat
-				}
-				owner = { has_civic = civic_capitalist }
-			}
+			owner = { has_policy_flag = xenodiplomacy_lr }
 		}
-		job_investor_add = 1
+		job_lr_manager_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_pr }
+		}
+		job_pr_manager_add = 1
 	}
 	
 	triggered_planet_modifier = {
@@ -805,6 +830,7 @@ building_galactic_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
+			influence = 150
 			minerals = 5000
 		}		
 		upkeep = {
@@ -859,47 +885,33 @@ building_galactic_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				NOT = {
-					has_policy_flag = xenodiplomacy_isolation
-					has_policy_flag = xenodiplomacy_embassy
-					has_policy_flag = xenodiplomacy_gunboat
-					has_civic = civic_feudal_realm
-					has_civic = civic_capitalist
-				}
-			}
+			owner = { has_policy_flag = xenodiplomacy_assembly }
 		}
-		job_clerk_add = 2
+		job_representitive_add = 2
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				NOR = {
-					has_policy_flag = xenodiplomacy_isolation
-					has_policy_flag = xenodiplomacy_embassy
-					has_policy_flag = xenodiplomacy_gunboat
-				}
-				owner = { has_civic = civic_feudal_realm }
-			}
+			owner = { has_policy_flag = xenodiplomacy_magistrate }
 		}
-		job_tax_collector_add = 2
+		job_magistrate_add = 2
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { 
-				NOR = {
-					has_policy_flag = xenodiplomacy_isolation
-					has_policy_flag = xenodiplomacy_embassy
-					has_policy_flag = xenodiplomacy_gunboat
-				}
-				owner = { has_civic = civic_capitalist }
-			}
+			owner = { has_policy_flag = xenodiplomacy_lr }
 		}
-		job_investor_add = 2
+		job_lr_manager_add = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_pr }
+		}
+		job_pr_manager_add = 2
 	}
 	
 	triggered_planet_modifier = {

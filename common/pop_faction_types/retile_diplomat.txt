@@ -116,6 +116,22 @@ prosperity = {
 		}
 	}
 	
+	# Wants Peace
+	demand = {
+		title = "DIPLOMAT_PEACE"
+		unfulfilled_title = "DIPLOMAT_NO_PEACE"
+		desc = "DIPLOMAT_PEACE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = 0
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { is_at_war = yes }
+		}
+	}
+	
 	# Wants Pacification
 	demand = { 
 		title = "DIPLOMAT_PACIFICATION"
@@ -167,6 +183,7 @@ prosperity = {
 
 		potential = { 
 			exists = owner
+			owner = { has_technology = tech_xenodiplomacy }
 		}
 
 		trigger = {
@@ -183,29 +200,10 @@ prosperity = {
 		fulfilled_effect = 20
 		unfulfilled_effect = 0
 
-		potential = { 
-			exists = owner
-			owner = { num_communications > 1 }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = no_wars }
-		}
-	}
-	
-	# Wants Peaceful Contact
-	demand = {
-		title = "DIPLOMAT_PEACEFUL_CONTACT"
-		unfulfilled_title = "DIPLOMAT_NO_PEACEFUL_CONTACT"
-		desc = "DIPLOMAT_PEACEFUL_CONTACT_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
 		potential = { exists = owner }
 
 		trigger = {
-			owner = { has_policy_flag = first_contact_attack_not_allowed }
+			owner = { has_policy_flag = no_wars }
 		}
 	}
 	
@@ -220,6 +218,7 @@ prosperity = {
 
 		potential = { 
 			exists = owner
+			owner = { has_technology = tech_adaptive_bureaucracy }
 		}
 
 		trigger = {
@@ -238,7 +237,7 @@ prosperity = {
 
 		potential = {
 			exists = owner
-			owner = { num_communications > 1 }
+			owner = { has_comms_with_alien_empire = yes }
 		}
 
 		trigger = {
@@ -246,6 +245,31 @@ prosperity = {
 				NOR = {
 					has_country_flag = entered_war_as_attacker
 					any_war = { is_war_participant = { who = prev side = attackers } }
+				}
+			}
+		}
+	}
+	
+	# Hates Claims
+	demand = {
+		title = "DIPLOMAT_CLAIM"
+		unfulfilled_title = "DIPLOMAT_CLAIM"
+		desc = "DIPLOMAT_CLAIM_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { has_comms_with_alien_empire = yes }
+		}
+
+		trigger = {
+			NOT = {
+				any_country = {
+					is_country_type = default
+					has_communications = root.owner
+					has_claim = root.owner
 				}
 			}
 		}
@@ -310,6 +334,7 @@ prosperity = {
 
 		potential = { 
 			exists = owner
+			owner = { has_technology = tech_xenodiplomacy }
 		}
 
 		trigger = {
@@ -326,32 +351,15 @@ prosperity = {
 		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
-		potential = { 
-			exists = owner
-			owner = { num_communications > 1 }
-		}
+		potential = { exists = owner }
 
 		trigger = {
 			owner = { NOT = { has_policy_flag = unrestricted_wars } }
 		}
 	}
 	
-	# Hates Enemy of the State
-	demand = {
-		title = "DIPLOMAT_PIRACY_HOSTILE"
-		unfulfilled_title = "DIPLOMAT_NO_PIRACY_HOSTILE"
-		desc = "DIPLOMAT_PIRACY_HOSTILE_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-		}
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = piracy_hostile } }
-		}
+	on_create = {
+		pop_faction_event = { id = factions.1 }
 	}
 
 	on_destroy = {

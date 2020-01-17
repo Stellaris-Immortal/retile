@@ -91,6 +91,54 @@ xenoist = {
 		}	
 	}
 	
+	# Wants Herism - If no Megacorp
+	demand = {
+		title = "XENOPHILE_DEFENDER"
+		unfulfilled_title = "XENOPHILE_NO_DEFENDER"
+		desc = "XENOPHILE_DEFENDER_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = 0
+		
+		potential = {
+			exists = owner
+			owner = { 
+				num_communications > 2
+				NOT = { host_has_dlc = "Megacorp" }
+			}
+		}
+		
+		trigger = {
+			owner = {
+				owner = { has_ascension_perk = ap_defender_of_the_galaxy }
+			}
+		}
+	}
+	
+	# Wants Hybrids
+	demand = {
+		title = "XENOPHILE_HYBRID"
+		unfulfilled_title = "XENOPHILE_NO_HYBRID"
+		desc = "XENOPHILE_HYBRID_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = 0
+		
+		potential = {
+			exists = owner
+			owner = { 
+				num_communications > 2
+				host_has_dlc = "Megacorp"
+			}
+		}
+		
+		trigger = {
+			owner = {
+				owner = { has_ascension_perk = ap_xeno_compatibility }
+			}
+		}
+	}
+	
 	# Wants Migration Treaties
 	demand = {
 		title = "XENOPHILE_MIGRATION_TREATIES"
@@ -102,7 +150,7 @@ xenoist = {
 
 		potential = {
 			exists = owner
-			owner = { num_communications > 4 }
+			owner = { num_communications > 2 }
 		}
 
 		trigger = {
@@ -122,30 +170,6 @@ xenoist = {
 			}
 		}
 	}
-	
-	# Wants Diversity
-	demand = {
-		title = "XENOPHILE_DIVERSITY"
-		unfulfilled_title = "XENOPHILE_NO_DIVERSITY"
-		desc = "XENOPHILE_DIVERSITY_DESC"
-		
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				any_owned_pop = {
-					NOT = { is_same_species = owner_species }
-					is_robot_pop = no
-					is_sapient = yes
-					is_being_purged = no
-					is_enslaved = no
-				}
-			}
-		}
-	}
 		
 	# Wants to Guarentee Independence
 	demand = { 
@@ -158,11 +182,38 @@ xenoist = {
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 4 }
+			owner = { num_communications > 2 }
 		}
 
 		trigger = {
 			any_country = { prev.owner = { is_guaranteeing = PREV } }
+		}
+	}
+	
+	# Wants Diversity
+	demand = {
+		title = "XENOPHILE_DIVERSITY"
+		unfulfilled_title = "XENOPHILE_NO_DIVERSITY"
+		desc = "XENOPHILE_DIVERSITY_DESC"
+		
+		fulfilled_effect = 10
+		unfulfilled_effect = 0
+
+		potential = { 
+			exists = owner
+			owner = { has_comms_with_alien_empire = yes }
+		}
+
+		trigger = {
+			owner = {
+				any_owned_pop = {
+					NOT = { is_same_species = owner_species }
+					is_robot_pop = no
+					is_sapient = yes
+					is_being_purged = no
+					is_enslaved = no
+				}
+			}
 		}
 	}
 	
@@ -204,25 +255,6 @@ xenoist = {
 		}
 	}
 	
-	# Wants Passive Interference
-	demand = {
-		title = "XENOPHILE_PASSIVE_INTERFERENCE"
-		unfulfilled_title = "XENOPHILE_NO_PASSIVE_INTERFERENCE"
-		desc = "XENOPHILE_PASSIVE_INTERFERENCE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-		
-		potential = {
-			exists = owner
-			owner = { has_encountered_other_species = yes }
-		}
-		
-		trigger = {
-			owner = { has_policy_flag = interference_passive }
-		}
-	}
-	
 	# Wants to Protect Presapients
 	demand = {
 		title = "XENOPHILE_PROTECT_PRESAPIENTS"
@@ -239,6 +271,22 @@ xenoist = {
 		
 		trigger = {
 			owner = { has_policy_flag = pre_sapients_protect }
+		}
+	}
+	
+	# Hates Overexpansion
+	demand = {
+		title = "XENOPHILE_OVEREXPANSION"
+		unfulfilled_title = "XENOPHILE_NO_OVEREXPANSION"
+		desc = "XENOPHILE_OVEREXPANSION_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -20
+		
+		potential = { exists = owner }
+		
+		trigger = {
+			owner = { NOT = { galaxy_percentage > 0.49 } }
 		}
 	}
 	
@@ -260,6 +308,29 @@ xenoist = {
 			NOT = {
 				any_country = {
 					prev.owner = { is_rival = PREV }
+				}
+			}
+		}
+	}
+	
+	# Hates Stealing Worlds
+	demand = {
+		title = "XENOPHILE_WORLDS"
+		unfulfilled_title = "XENOPHILE_NO_WORLDS"
+		desc = "XENOPHILE_WORLDS_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -10
+		
+		potential = { exists = owner }
+		
+		trigger = {
+			NOT = {
+				owner = {
+					any_owned_planet = {
+						num_pops > 0
+						NOT = { is_original_owner = root.owner }
+					}
 				}
 			}
 		}
@@ -292,6 +363,7 @@ xenoist = {
 		
 		potential = {
 			exists = owner
+			owner = { has_encountered_other_species = yes }
 		}
 		
 		trigger = {
@@ -299,25 +371,6 @@ xenoist = {
 				owner = { has_policy_flag = pre_sapients_eat }
 				owner = { has_policy_flag = pre_sapients_purge }
 			}
-		}
-	}
-	
-	# Hates Hostile First Contract
-	demand = {
-		title = "XENOPHILE_HOSTILE_CONTACT"
-		unfulfilled_title = "XENOPHILE_NO_HOSTILE_CONTACT"
-		desc = "XENOPHILE_HOSTILE_CONTACT_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-		
-		potential = { 
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-		
-		trigger = {
-			owner = { NOT = { has_policy_flag = first_contact_attack_allowed } }
 		}
 	}
 	
@@ -359,25 +412,6 @@ xenoist = {
 				owner = { has_policy_flag = refugees_not_allowed }
 				owner = { has_policy_flag = refugees_only_citizens }
 			}
-		}
-	}
-	
-	# Hates Closed Borders
-	demand = {
-		title = "XENOPHILE_CLOSED_BORDERS"
-		unfulfilled_title = "XENOPHILE_NO_CLOSED_BORDERS"
-		desc = "XENOPHILE_CLOSED_BORDERS_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-		
-		potential = { 
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-		
-		trigger = {
-			owner = { NOT = { has_policy_flag = border_policy_closed } }
 		}
 	}
 	
