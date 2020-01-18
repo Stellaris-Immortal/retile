@@ -241,10 +241,10 @@ colonization_control_no = {
 			}	
 		}	
 		custom_tooltip = {
-			fail_text = is_slaves_not_battle_thralls
-			NAND = {
-				has_citizenship_type = { country = from type = citizenship_slavery }
-				NOT = { has_slavery_type = { country = from type = slavery_military } }
+			fail_text = is_slaves_not_chattel
+			NOR = { 
+				has_slavery_type = { country = from type = slavery_normal }
+				has_slavery_type = { country = from type = slavery_livestock }
 			}
 		}			
 	}

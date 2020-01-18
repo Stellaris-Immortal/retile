@@ -114,3 +114,15 @@ can_build_branch_office_on_planet = {
 		}
 	}
 }
+
+#Root = country
+#This = pop
+can_vote_in_democratic_election = {
+	has_citizenship_rights = yes
+	is_sapient = yes
+	OR = { 
+		is_enslaved = no
+		has_slavery_type = { type = slavery_domestic }
+	}
+	is_being_purged = no
+}

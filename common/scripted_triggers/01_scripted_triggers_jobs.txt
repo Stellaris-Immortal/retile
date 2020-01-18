@@ -4,7 +4,10 @@ ruler_job_check_trigger = {
 	custom_tooltip = RULER_JOB_TRIGGER
 	hidden_trigger = {
 		exists = owner								## These are all the same as the 
-		is_enslaved = no							## "possible_pre_triggers" block
+		OR = { 
+			is_enslaved = no
+			has_slavery_type = { type = slavery_domestic }
+		}											## "possible_pre_triggers" block
 		is_being_purged = no						## except for "has_owner = yes"
 		is_being_assimilated = no					##
 		NOT = { has_trait = trait_syncretic_proles }		## Syncretic pops can't be rulers
@@ -42,7 +45,10 @@ specialist_job_check_trigger = {
 	custom_tooltip = SPECIALIST_JOB_TRIGGER
 	hidden_trigger = {
 		exists = owner				
-		is_enslaved = no
+		OR = { 
+			is_enslaved = no
+			has_slavery_type = { type = slavery_domestic }
+		}
 		is_being_purged = no
 		is_being_assimilated = no
 		NOT = { has_trait = trait_syncretic_proles }
