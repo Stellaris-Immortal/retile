@@ -387,7 +387,15 @@ citizenship_limited = {
 			NOT = { is_same_species = from }
 			NOT = { from = { has_policy_flag = alien_full_rights } }
 		} else = {
-			always = no
+			custom_tooltip = {
+				fail_text = species_is_majority
+				from = {
+					any_owned_pop = {
+						is_exact_same_species = yes
+						is_majority_species = yes
+					}
+				}
+			}
 		}
 		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
