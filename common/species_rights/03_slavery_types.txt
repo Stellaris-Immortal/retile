@@ -1,6 +1,29 @@
 # from = country
 # this = species
 
+slavery_domestic = {
+	token = slavery_domestic
+	
+	pop_modifier = {
+		planet_jobs_specialist_produces_mult = 0.05
+		planet_jobs_worker_produces_mult = 0.10
+		pop_happiness = -0.20
+	}
+
+	potential = {
+		host_has_dlc = "Utopia"
+		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+	}
+	
+	allow = {
+		hidden_trigger = { always = yes }
+	}
+	
+	ai_will_do = {
+		factor = 1
+	}
+}
+
 slavery_normal = {
 	token = slavery_normal
 	
@@ -14,35 +37,19 @@ slavery_normal = {
 	}
 	
 	allow = {
-		hidden_trigger = { always = yes }
+		custom_tooltip = {
+			fail_text = species_is_majority
+			from = {
+				any_owned_pop = {
+					is_exact_same_species = yes
+					is_majority_species = yes
+				}
+			}
+		}
 	}
+	
 	ai_will_do = {
 		factor = 1
-	}
-}
-
-slavery_domestic = {
-	token = slavery_domestic
-	
-	pop_modifier = {
-		pop_happiness = -0.20	
-	}
-	
-	potential = {
-		host_has_dlc = "Utopia"
-		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
-		always = no
-	}
-
-	allow = {
-		hidden_trigger = { always = yes }
-	}
-	ai_will_do = {
-		factor = 3
-		modifier = {
-			factor = 0
-			NOT = { has_trait = trait_charismatic }
-		}
 	}
 }
 
@@ -132,6 +139,15 @@ slavery_livestock = {
 	}
 
 	allow = {
+		custom_tooltip = {
+			fail_text = species_is_majority
+			from = {
+				any_owned_pop = {
+					is_exact_same_species = yes
+					is_majority_species = yes
+				}
+			}
+		}
 		hidden_trigger = { exists = from }
 		custom_tooltip = {
 			has_citizenship_type = { country = from type = citizenship_slavery }
