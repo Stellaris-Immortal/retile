@@ -35,7 +35,6 @@ totalitarian = {
 	}
 	
 	can_join_pre_triggers = {
-		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
 	}
@@ -47,6 +46,10 @@ totalitarian = {
 		OR = {
 			has_ethic = ethic_authoritarian
 			has_ethic = ethic_fanatic_authoritarian
+		}
+		OR = {
+			is_enslaved = no
+			has_slavery_type = { type = slavery_domestic }
 		}
 	}
 	
