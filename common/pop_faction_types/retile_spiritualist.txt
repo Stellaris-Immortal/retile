@@ -38,7 +38,6 @@ traditionalist = {
 	}
 	
 	can_join_pre_triggers = {
-		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
 	}
@@ -49,6 +48,10 @@ traditionalist = {
 		OR = {
 			has_ethic = ethic_spiritualist
 			has_ethic = ethic_fanatic_spiritualist
+		}
+		OR = {
+			is_enslaved = no
+			has_slavery_type = { type = slavery_domestic }
 		}
 	}
 	
