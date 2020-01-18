@@ -16,3 +16,27 @@ can_build_megastructures = {
 is_domestic_servant = {
 	always = no
 }
+
+can_be_military_leader = {
+	OR = { 
+		is_enslaved = no
+		has_slavery_type = { type = slavery_domestic }
+	}
+	is_sapient = yes
+	OR = {
+		is_robot_pop = no
+		owner = { has_policy_flag = ai_full_rights }
+		owner = { has_authority = auth_machine_intelligence }
+	}
+	OR = {
+		AND = { # MIs only accept Fully Integrated leaders
+			owner = { has_authority = auth_machine_intelligence }
+			has_citizenship_type = { type = citizenship_full_machine }
+			has_military_service_type = { type = military_service_full }
+		}
+		AND = { # non-MIs accept whatever
+			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			has_military_service_type = { type = military_service_full }
+		}
+	}
+}
