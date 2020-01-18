@@ -90,6 +90,7 @@ battle_thrall_job_check_trigger = {
 		OR = {
 			is_enslaved = no
 			has_slavery_type = { type = slavery_military }
+			has_slavery_type = { type = slavery_domestic }
 		}		
 		is_being_purged = no
 		is_being_assimilated = no
@@ -224,11 +225,13 @@ can_take_servant_job = {
 		is_domestic_robot = yes
 		is_domestic_servant = yes
 	}
+	always = no
 }
 
 is_domestic_servant = {	
 	is_enslaved = yes
-	has_slavery_type = { type = slavery_domestic }		
+	has_slavery_type = { type = slavery_domestic }	
+	always = no	
 }
 
 is_domestic_robot = {
