@@ -30,7 +30,6 @@ supremacist = {
 	}
 	
 	can_join_pre_triggers = {
-		is_enslaved = no
 		is_being_purged = no
 		is_being_assimilated = no
 	}
@@ -48,6 +47,10 @@ supremacist = {
 			has_ethic = ethic_fanatic_materialist
 			has_ethic = ethic_fanatic_xenophile
 			has_ethic = ethic_fanatic_xenophobe
+		}
+		OR = {
+			is_enslaved = no
+			has_slavery_type = { type = slavery_domestic }
 		}
 	}
 	
