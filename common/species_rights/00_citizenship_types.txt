@@ -577,8 +577,13 @@ citizenship_purge = {
 		}
 		else = {
 			custom_tooltip = {
-				fail_text = same_species_disallowed
-				NOT = { is_same_species = from }
+				fail_text = species_is_majority
+				from = {
+					any_owned_pop = {
+						is_exact_same_species = yes
+						is_majority_species = yes
+					}
+				}
 			}
 			custom_tooltip = {
 				fail_text = has_full_rights
