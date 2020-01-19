@@ -130,7 +130,7 @@ planet_event = {
 			}
 		}
 		else_if = {
-			limit = { free_amenities >= 0 }
+			limit = { free_amenities > -1 }
 			if = {
 				limit = { owner = { has_policy_flag = environmental_deregulation } }
 				change_variable = { which = pollution value = 2 }
