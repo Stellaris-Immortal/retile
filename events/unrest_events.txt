@@ -1122,19 +1122,23 @@ planet_event = {
 		
 		if = {
 			limit = { owner = { has_policy_flag = slavery_allowed } }
-			set_policy = {
-				policy = slavery
-				option = slavery_secretly_allowed
-				cooldown = yes
+			owner = {
+				set_policy = {
+					policy = slavery
+					option = slavery_secretly_allowed
+					cooldown = yes
+				}
 			}
 		}
 		
 		if = {
 			limit = { owner = { has_policy_flag = alien_no_rights } }
-			set_policy = {
-				policy = alien_rights
-				option = alien_limited_rights
-				cooldown = yes
+			owner = {
+				set_policy = {
+					policy = alien_rights
+					option = alien_limited_rights
+					cooldown = yes
+				}
 			}
 		}
 	}
