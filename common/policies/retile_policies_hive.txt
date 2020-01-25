@@ -1,206 +1,15 @@
-##########################################################################
-# Empire Policies
-#
-# #####
-#
-# AI:
-# Base AI-weight is 100, if unchanged
-# AI will grab whatever policy-option has the highest weight
-#
-# #####
-#
-##########################################################################
 
-deviant_hive = {
-	potential = {
-		has_authority = auth_hive_mind
-	}
+hive_ethics = {
+	potential = { has_authority = auth_hive_mind }
 
 	option = {
-		name = "deviant_hive_hunt"
+		name = "hive_ethics_authoritarian"
 		
-		modifier = { }
+		policy_flags = { hive_ethics_authoritarian }
 		
-		policy_flags = { deviant_hunt }
-		
-		AI_weight = {
-			factor = 1
+		modifier = { 
+			# Increased Influence Gain
 		}
-	}
-	option = {
-		name = "deviant_hive_self_destruct"
-		
-		modifier = {
-			planet_crime_no_happiness_mult = -1
-			pop_growth_speed = -0.5
-		}
-		
-		policy_flags = { deviant_self_destruct }
-		
-		AI_weight = {
-			factor = 0
-		}
-	}
-	option = {
-		name = "deviant_hive_reintegrate"
-		
-		valid = {
-			has_technology = tech_gene_tailoring
-		}
-		
-		modifier = { planet_crime_no_happiness_mult = -0.5 }
-		
-		policy_flags = { deviant_reintegrate }
-		
-		AI_weight = {
-			factor = 10
-		}
-	}
-}
-
-environmental_hive = {
-	potential = {
-		has_authority = auth_hive_mind
-	}
-
-	option = {
-		name = environmental_hive_foster
-		
-		modifier = {
-			planet_buildings_upkeep_mult = 0.20
-			planet_districts_upkeep_mult = 0.20
-			planet_amenities_no_happiness_mult = -0.20
-		}
-		
-		policy_flags = { environmental_hive_foster }
-		
-		AI_weight = {
-			factor = 0
-		}
-	}
-	option = {
-		name = environmental_hive_preserve
-		
-		modifier = { }
-		
-		policy_flags = { environmental_hive_preserve }
-		
-		AI_weight = {
-			factor = 1
-		}
-	}
-	option = {
-		name = environmental_hive_displace
-		
-		modifier = {
-			planet_buildings_upkeep_mult = -0.20
-			planet_districts_upkeep_mult = -0.20
-			planet_amenities_no_happiness_mult = 0.20
-		}
-		
-		policy_flags = { environmental_hive_displace }
-		
-		AI_weight = {
-			factor = 0
-		}
-	}
-}
-
-development_hive = {
-	potential = {
-		has_authority = auth_hive_mind
-	}
-
-	option = {
-		name = development_hive_unity
-		
-		modifier = {
-			country_unity_produces_mult = 0.25
-		}
-		
-		policy_flags = { development_hive_unity }
-		
-		AI_weight = {
-			factor = 1
-		}
-	}
-	option = {
-		name = development_hive_research
-		
-		modifier = {
-			country_physics_research_produces_mult = 0.25
-			country_society_research_produces_mult = 0.25
-			country_engineering_research_produces_mult = 0.25
-		}
-		
-		policy_flags = { development_hive_research }
-		
-		AI_weight = {
-			factor = 1
-		}
-	}
-	option = {
-		name = development_hive_influence
-		
-		modifier = {
-			country_base_influence_produces_add = 1
-		}
-		
-		policy_flags = { development_hive_influence }
-		
-		AI_weight = {
-			factor = 1
-		}
-	}
-}
-
-attitude_hive = {
-	potential = {
-		has_authority = auth_hive_mind
-	}
-
-	option = {
-		name = attitude_hive_serene
-		
-		modifier = {
-			# universal job production bonus
-			planet_jobs_produces_mult = 0.15
-		}
-		
-		policy_flags = { attitude_hive_serene }
-		
-		AI_weight = {
-			factor = 1
-		}
-	}
-
-	option = {
-		name = attitude_hive_cordial
-		
-		modifier = {
-			# big positive opinion modifier
-			country_trust_growth = 0.25
-			country_trust_cap_add = 25
-			country_trade_attractiveness = 0.25
-		}
-		
-		policy_flags = { attitude_hive_cordial }
-		
-		AI_weight = {
-			factor = 1
-		}
-	}
-
-	option = {
-		name = attitude_hive_timid
-		
-		modifier = {
-			# various bonuses to starbases/platforms
-			starbase_defensive_war_ship_build_speed_mult = 0.5
-			ship_home_territory_fire_rate_mult = 0.3
-		}
-		
-		policy_flags = { attitude_hive_timid }
 		
 		AI_weight = {
 			factor = 1
@@ -208,20 +17,100 @@ attitude_hive = {
 	}
 	
 	option = {
-		name = attitude_hive_hostile
+		name = "hive_ethics_egalitarian"
 		
-		modifier = {
-			# various bonuses to fire rate/damage
-			ship_fire_rate_mult = 0.15
-			army_damage_mult = 0.15
-			# big negative opinion modifier
+		policy_flags = { hive_ethics_egalitarian }
+		
+		modifier = { 
+			# Reduces Deviancy
 		}
 		
-		policy_flags = { attitude_hive_hostile }
+		AI_weight = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = "hive_ethics_militarist"
+		
+		policy_flags = { hive_ethics_militarist }
+		
+		modifier = { 
+			# Reduces War Exhaustion
+		}
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = "hive_ethics_pacifist"
+
+		policy_flags = { hive_ethics_pacifist }
+		
+		modifier = { 
+			# Increases Trust Gain
+		}
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = "hive_ethics_spiritualist"
+
+		policy_flags = { hive_ethics_spiritualist }
+		
+		modifier = { 
+			# Increases Unity Production
+		}
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = "hive_ethics_materialist"
+		
+		policy_flags = { hive_ethics_materialist }
+		
+		modifier = { 
+			# Increases Research Gain
+		}
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = "hive_ethics_xenophobe"
+		
+		policy_flags = { hive_ethics_materialist }
+		
+		modifier = { 
+			# Increase Purge / Assimilate Speed
+		}
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	
+	option = {
+		name = "hive_ethics_xenophile"
+		
+		policy_flags = { hive_ethics_materialist }
+		
+		modifier = { 
+			# Increase Pop Growth Speed
+		}
 		
 		AI_weight = {
 			factor = 1
 		}
 	}
 }
-

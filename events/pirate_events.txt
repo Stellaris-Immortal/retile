@@ -18,30 +18,22 @@ country_event = {
 
 	desc = { # Spiritual
 		text = pirate.1.desc_01
-		trigger = {
-			has_spiritualist_government = yes
-		}
+		trigger = { has_spiritualist_government = yes }
 	}
 
 	desc = { # Militarist
 		text = pirate.1.desc_02
-		trigger = {
-			has_militarist_government = yes
-		}
+		trigger = { has_militarist_government = yes }
 	}
 
 	desc = { # Materialist
 		text = pirate.1.desc_03
-		trigger = {
-			has_materialist_government = yes
-		}
+		trigger = { has_materialist_government = yes }
 	}
 
 	desc = { # Pacifist
 		text = pirate.1.desc_04
-		trigger = {
-			has_pacifist_government = yes
-		}
+		trigger = { has_pacifist_government = yes }
 	}
 
 	desc = { # Generic Autocracy
@@ -125,27 +117,19 @@ country_event = {
 
 	option = {
 		name = pirate.2.a
-		trigger = {
-			has_spiritualist_government = yes
-		}
+		trigger = { has_spiritualist_government = yes }
 	}
 	option = {
 		name = pirate.2.b
-		trigger = {
-			has_militarist_government = yes
-		}
+		trigger = { has_militarist_government = yes }
 	}
 	option = {
 		name = pirate.2.c
-		trigger = {
-			has_materialist_government = yes
-		}
+		trigger = { has_materialist_government = yes }
 	}
 	option = {
 		name = pirate.2.d
-		trigger = {
-			has_pacifist_government = yes
-		}
+		trigger = { has_pacifist_government = yes }
 	}
 	option = {
 		name = pirate.2.e
@@ -170,9 +154,7 @@ country_event = {
 	}
 	option = {
 		name = pirate.2.g
-		trigger = {
-			has_government = gov_representative_democracy
-		}
+		trigger = { has_government = gov_representative_democracy }
 	}
 }
 
@@ -448,22 +430,16 @@ fleet_event = {
 		from = {
 			has_star_flag = pirate_home_system
 			any_ship_in_system = {
-				fleet = {
-					has_fleet_flag = pirate_home_system_fleet
-				}
+				fleet = { has_fleet_flag = pirate_home_system_fleet }
 			}
 		}
 		NOT = {
-			owner = {
-				has_country_flag = privateers_found
-			}
+			owner = { has_country_flag = privateers_found }
 		}
 	}
 
 	immediate = {
-		owner = {
-			set_country_flag = privateers_found
-		}
+		owner = { set_country_flag = privateers_found }
 	}
 
 	option = {
