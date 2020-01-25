@@ -1122,9 +1122,7 @@ appropriation = {
 
 leader_enhancement = {
 
-	potential = {
-		has_technology = tech_selected_lineages
-	}
+	potential = { has_technology = tech_selected_lineages }
 	
 	option = {
 		name = "leader_enhancement_natural_selection"
@@ -1189,9 +1187,7 @@ leader_enhancement = {
 
 first_contact_protocol = {
 
-	potential = {
-		always = yes
-	}
+	potential = { always = yes }
 	
 	option = {
 		name = "first_contact_attack_not_allowed"
@@ -1257,7 +1253,6 @@ first_contact_protocol = {
 		
 		valid = {
 			OR = {
-				has_ethic = ethic_gestalt_consciousness
 				has_ethic = ethic_xenophobe
 				has_ethic = ethic_fanatic_xenophobe
 				has_ethic = ethic_militarist
@@ -1315,6 +1310,10 @@ first_contact_protocol = {
 }
 
 xenodiplomacy = {
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
 	
 	option = {
 		name = "xenodiplomacy_assembly"
@@ -1517,9 +1516,7 @@ xenodiplomacy = {
 }
 
 research_policy = {
-	potential = {
-		has_tradition = tr_discovery_finish
-	}
+	potential = { has_tradition = tr_discovery_finish }
 	
 	option = {
 		name = "research_space_exploration"
@@ -1890,9 +1887,7 @@ pre_sapients = {
 
 interference = {
 
-	potential = {
-		has_met_primitives = yes
-	}
+	potential = { has_met_primitives = yes }
 	
 	option = {
 		name = "interference_passive"
