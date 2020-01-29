@@ -1,0 +1,31 @@
+# Call Me Joe
+creature_gasgiant_category = {
+	desc = "creature_gasgiant_category_desc"
+	picture = GFX_evt_ship_in_orbit
+	level = 3
+	
+	spawn_chance = {		
+		modifier = {
+			add = 3
+			is_planet_class = pc_gas_giant
+		}
+	}
+
+	on_success = retile_anomaly.1
+}
+
+# Names Of God
+spiritual_calculator_category = {
+	desc = "spiritual_calculator_category_desc"
+	picture = GFX_evt_ancient_records
+	level = 9
+	
+	spawn_chance = {		
+		modifier = {
+			add = 3
+			has_deposit = d_archaeological_record
+		}
+	}
+
+	on_success = retile_anomaly.7
+}

@@ -1,0 +1,421 @@
+namespace = retile_anomaly
+
+### Call Me Joe
+ship_event = {
+	id = retile_anomaly.1
+	title = "retile_anomaly.1.name"
+	desc = "retile_anomaly.1.desc"
+	picture = GFX_evt_ship_in_orbit
+	show_sound = event_ship_bridge
+	location = FROM
+	
+	is_triggered_only = yes
+
+	immediate = {
+		owner = { 
+			save_global_event_target_as = call_me_joe_country
+			begin_event_chain = {
+				event_chain = "call_me_joe_chain"
+				target = root.owner
+			}
+			hidden_effect = {
+				create_point_of_interest = {
+					id = call_me_joe_poi.1
+					name = "call_me_joe_poi"
+					desc = call_me_joe_poi_desc
+					event_chain = call_me_joe_chain
+					location = from
+				}
+			}
+		}
+		from = { save_global_event_target_as = call_me_joe_planet }
+	}
+	
+	option = {
+		name = retile_anomaly.1.a
+		from = {
+			enable_special_project = {
+				name = "CALL_ME_JOE_1_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+	
+	option = {
+		name = retile_anomaly.1.b
+		from = {
+			enable_special_project = {
+				name = "CALL_ME_JOE_2_PROJECT"
+				location = this
+				owner = root
+			}
+		}
+	}
+}
+
+### Call Me Joe Result 1
+ship_event = {
+	id = retile_anomaly.2
+	title = "retile_anomaly.2.name"
+	desc = "retile_anomaly.2.desc"
+	picture = GFX_evt_gas_giant
+	show_sound = event_ship_bridge
+	location = FROM
+	
+	is_triggered_only = yes
+
+	immediate = {
+		
+	}
+	
+	option = {
+		name = retile_anomaly.2.a
+		from = {
+			enable_special_project = {
+				name = "CALL_ME_JOE_3_PROJECT"
+				location = from
+				owner = root
+			}
+		}
+		leader = { add_experience = 100 }
+	}
+	
+	option = {
+		name = retile_anomaly.2.b
+		leader = { 
+			add_trait = leader_trait_expertise_psionics
+			add_experience = 100
+		}
+	}
+}
+
+### Call Me Joe Result 2
+ship_event = {
+	id = retile_anomaly.3
+	title = "retile_anomaly.3.name"
+	desc = "retile_anomaly.3.desc"
+	picture = GFX_evt_gas_giant
+	show_sound = event_ship_bridge
+	location = FROM
+	
+	is_triggered_only = yes
+
+	immediate = {
+		
+	}
+	
+	option = {
+		name = retile_anomaly.3.a
+		from = { add_deposit = d_society_8 }
+		leader = { add_experience = 100 }
+	}
+}
+
+### Call Me Joe Result 3
+ship_event = {
+	id = retile_anomaly.4
+	title = "retile_anomaly.4.name"
+	desc = "retile_anomaly.4.desc"
+	picture = GFX_evt_emergency_workers
+	show_sound = event_ship_bridge
+	location = FROM
+	
+	is_triggered_only = yes
+
+	after = {
+		leader = { 
+			set_name = "Jove"
+			add_trait = leader_trait_scientist_psionic
+			exile_leader_as = i_am_jove
+		}
+		fleet = {
+			delete_fleet = this
+		}
+	}
+	
+	option = {
+		name = retile_anomaly.4.a
+		from = {
+			enable_special_project = {
+				name = "CALL_ME_JOE_4_PROJECT"
+				location = owner.capital_scope
+				owner = ROOT
+			}
+		}
+	}
+	
+	option = {
+		name = retile_anomaly.4.b
+		from = {
+			enable_special_project = {
+				name = "CALL_ME_JOE_5_PROJECT"
+				location = owner.capital_scope
+				owner = ROOT
+			}
+		}
+	}
+}
+
+### Call Me Joe Final Tranferrence
+planet_event = {
+	id = retile_anomaly.5
+	title = "retile_anomaly.5.name"
+	desc = "retile_anomaly.5.desc"
+	picture = GFX_evt_gas_giant
+	show_sound = event_ship_bridge
+	location = event_target:call_me_joe_country
+	
+	is_triggered_only = yes
+
+	immediate = {
+		event_target:call_me_joe_country = {
+			end_event_chain = "call_me_joe_chain"
+			create_fleet = {
+				effect = {
+					set_owner = event_target:call_me_joe_country
+
+					create_ship = {
+						name = random
+						random_existing_design = science
+					}
+
+					set_fleet_stance = evasive
+					set_location = event_target:call_me_joe_planet
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = retile_anomaly.5.a
+		event_target:call_me_joe_country = {
+			add_research_option = tech_psionic_theory
+			add_tech_progress = {
+				tech = tech_psionic_theory
+				progress = 0.1
+			}
+		}
+	}
+}
+
+### Call Me Joe Final Fatality
+planet_event = {
+	id = retile_anomaly.6
+	title = "retile_anomaly.6.name"
+	desc = "retile_anomaly.6.desc"
+	picture = GFX_evt_gas_giant
+	show_sound = event_ship_bridge
+	location = event_target:call_me_joe_country
+	
+	is_triggered_only = yes
+
+	immediate = {
+		event_target:call_me_joe_country = {
+			end_event_chain = "call_me_joe_chain" 
+			hidden_effect = {
+				create_fleet = {
+					effect = {
+						set_owner = event_target:call_me_joe_country
+
+						create_ship = {
+							name = random
+							random_existing_design = science
+						}
+
+						set_fleet_stance = evasive
+						set_location = event_target:call_me_joe_planet
+						
+						set_leader = i_am_jove
+					}
+				}
+			}
+		}
+	}
+	
+	option = {
+		name = retile_anomaly.6.a
+	}
+}
+
+### Names of God
+ship_event = {
+	id = retile_anomaly.7
+	title = "retile_anomaly.7.name"
+	desc = "retile_anomaly.7.desc"
+	picture = GFX_evt_ancient_records
+	show_sound = event_ship_bridge
+	location = from
+	
+	is_triggered_only = yes
+
+	immediate = {
+		
+	}
+	
+	option = {
+		name = retile_anomaly.7.a
+		enable_special_project = {
+			name = "NAMES_OF_GOD_1_PROJECT"
+			location = owner.capital_scope
+			owner = root.owner
+		}
+	}
+	
+	option = {
+		name = retile_anomaly.7.b
+		enable_special_project = {
+			name = "NAMES_OF_GOD_2_PROJECT"
+			location = owner.capital_scope
+			owner = root.owner
+		}
+	}
+}
+
+### Names of God Result 1
+planet_event = {
+	id = retile_anomaly.8
+	title = "retile_anomaly.8.name"
+	desc = "retile_anomaly.8.desc"
+	picture = GFX_evt_ancient_records
+	show_sound = event_ship_bridge
+	location = from
+	
+	is_triggered_only = yes
+
+	immediate = {
+		
+	}
+	
+	option = {
+		name = retile_anomaly.8.spiritualist
+		trigger = {
+			owner = {
+				OR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+				}
+			}
+		}
+		from = {
+			enable_special_project = {
+				name = "NAMES_OF_GOD_3_PROJECT"
+				location = owner.capital_scope
+				owner = ROOT
+			}
+		}
+	}
+	
+	option = {
+		name = retile_anomaly.8.materialist
+		trigger = {
+			owner = {
+				OR = {
+					has_ethic = ethic_materialist
+					has_ethic = ethic_fanatic_materialist
+				}
+			}
+		}
+		from = {
+			enable_special_project = {
+				name = "NAMES_OF_GOD_3_PROJECT"
+				location = owner.capital_scope
+				owner = ROOT
+			}
+		}
+	}
+	
+	option = {
+		name = retile_anomaly.8.a
+		trigger = {
+			owner = {
+				NOR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+					has_ethic = ethic_materialist
+					has_ethic = ethic_fanatic_materialist
+				}
+			}
+		}
+		from = {
+			enable_special_project = {
+				name = "NAMES_OF_GOD_3_PROJECT"
+				location = owner.capital_scope
+				owner = ROOT
+			}
+		}
+	}
+	
+	option = {
+		name = retile_anomaly.8.b
+		owner = {
+			add_monthly_resource_mult = {
+				resource = influence
+				value = @tier1influencereward
+				min = @tier1influencemin
+				max = @tier1influencemax
+			}
+		}
+	}
+}
+
+### Names of God Result 2
+planet_event = {
+	id = retile_anomaly.9
+	title = "retile_anomaly.9.name"
+	desc = "retile_anomaly.9.desc"
+	picture = GFX_evt_ancient_records
+	show_sound = event_ship_bridge
+	location = owner.capital_scope
+	
+	is_triggered_only = yes
+
+	immediate = {
+		
+	}
+	
+	option = {
+		name = retile_anomaly.9.a
+		owner = { 
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier3unityreward
+				min = @tier3unitymin
+				max = @tier3unitymax
+			}
+		}
+	}
+}
+
+### Names of God Final Result
+planet_event = {
+	id = retile_anomaly.10
+	title = "retile_anomaly.10.name"
+	desc = "retile_anomaly.10.desc"
+	picture = GFX_evt_surreal_visions
+	show_sound = event_ship_bridge
+	location = owner.capital_scope
+	
+	is_triggered_only = yes
+
+	immediate = {
+		
+	}
+	
+	option = {
+		name = retile_anomaly.10.a
+		owner = { 
+			add_monthly_resource_mult = {
+				resource = unity
+				value = @tier3unityreward
+				min = @tier3unitymin
+				max = @tier3unitymax
+			}
+			add_research_option = tech_ascension_theory
+			add_tech_progress = {
+				tech = tech_ascension_theory
+				progress = 0.1
+			}
+		}
+	}
+}
