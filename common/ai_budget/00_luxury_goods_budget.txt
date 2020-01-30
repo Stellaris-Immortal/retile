@@ -59,10 +59,42 @@ consumer_goods_expenditure_trade = {
 	potential = {
 		is_hive_empire = no
 		ai_colonize_plans <= 0
-		has_resource = { type = consumer_goods amount > 500 }
+		has_resource = { type = consumer_goods amount > 2000 }
+		has_resource = { type = energy amount < 1000 }
 	}
 	
 	fraction = {
 		weight = 1
 	}
+}
+
+############
+## Upkeep ##
+############
+consumer_goods_upkeep_buffer = {	# Buffer, will not be spent
+	resource = consumer_goods 
+	type = upkeep
+	category = buffer
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+consumer_goods_upkeep_country = {
+	resource = consumer_goods 
+	type = upkeep
+	category = country
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.9
+	}	
 }

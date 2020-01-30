@@ -145,8 +145,11 @@ planet_event = {
 	id = retile_ai.101
 	hide_window = yes
 
+	pre_triggers = {
+		has_owner = yes
+	}
+	
 	trigger = {
-		exists = owner
 		owner = {
 			is_ai = yes
 			is_country_type = default
@@ -437,5 +440,22 @@ country_event = {
 				remove_district = district_farming
 			}
 		}
+	}
+}
+
+ship_event = {
+	id = retile_ai.1000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			is_ship_class = shipclass_colonizer
+			is_ship_class = shipclass_sponsored_colonizer
+		}
+	}
+
+	immediate = {
+		owner = { set_timed_country_flag = { flag = colony_ship_built days = 720 } }
 	}
 }
