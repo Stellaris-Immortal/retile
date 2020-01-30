@@ -17,6 +17,8 @@ Check out the issues page on [Github](https://github.com/gebnar/retile/issues) a
  
  ## Installation
 
- You can get SI from our [workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=1891758612). You can also install by cloning the repository into your mod folder (C:\Users\<Your Username>\Paradox Interactive\Stellaris\mods, by default on Windows)
+ You can get SI from our [workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=1891758612).
+ 
+ You can also install by cloning the repository into your mod folder (C:\Users\<Your Username>\Paradox Interactive\Stellaris\mods, by default on Windows). After cloning the repository, move the retile.mod file from the retile folder up into the mods folder.
 
  
