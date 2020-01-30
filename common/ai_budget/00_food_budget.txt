@@ -26,15 +26,16 @@ food_expenditure_trade = {
 	potential = {
 		is_hive_empire = no
 		ai_colonize_plans <= 0
-		has_resource = { type = food amount > 500 }
+		has_resource = { type = food amount > 10000 }
+		has_resource = { type = energy amount < 1000 }
 	}
 	
 	fraction = {
 		weight = 1
-		modifier = {
-			factor = 0.5
-			is_hive_empire = yes
-		}
+		#modifier = {
+		#	factor = 0.5
+		#	is_hive_empire = yes
+		#}
 	}
 }
 
@@ -69,5 +70,36 @@ food_expenditure_campaigns = {
 	
 	fraction = {
 		weight = 0.7
+	}	
+}
+
+############
+## Upkeep ##
+############
+food_upkeep_buffer = {	# Buffer, will not be spent
+	resource = food 
+	type = upkeep
+	category = buffer
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.1
+	}	
+}
+
+food_upkeep_country = {
+	resource = food 
+	type = upkeep
+	category = country
+	
+	potential = {
+		always = yes
+	}
+	
+	fraction = {
+		weight = 0.9
 	}	
 }

@@ -26,102 +26,21 @@ energy_expenditure_trade = {
 	potential = {
 		has_resource = { 
 			type = energy 
-			amount > 500
-		}
-	}
-	
-	fraction = {
-		weight = 0.3
-	}
-}
-
-energy_expenditure_trade_food_deficit = {
-	resource = energy 
-	type = expenditure
-	category = trade
-	
-	potential = {
-		has_resource = { 
-			type = energy 
 			amount > 1000
 		}
-		AND = {
-			has_monthly_income = {
-				resource = food
-				value < -1
-			}
-			has_resource = { 
-				type = food 
-				amount < 500
-			}
-		}
-	}
-	
-	fraction = {
-		weight = 1000
-	}
-	
-	static_min = {
-		base = 300
-	}
-	static_max = {
-		base = 2000
-	}
-}
-
-energy_expenditure_supply_deficit = {
-	resource = energy 
-	type = expenditure
-	category = trade
-	
-	potential = {
-		has_resource = { 
-			type = energy 
-			amount > 1000
-		}
-		AND = {
-			has_monthly_income = {
-				resource = consumer_goods
-				value < -1
-			}
-			has_resource = { 
-				type = consumer_goods 
-				amount < 500
-			}
-		}
-	}
-	
-	fraction = {
-		weight = 1000
-	}
-	
-	static_min = {
-		base = 300
-	}
-	static_max = {
-		base = 2000
-	}
-}
-
-energy_expenditure_trade_deficit = {
-	resource = energy 
-	type = expenditure
-	category = trade
-	
-	potential = {
-		has_resource = { 
-			type = energy 
-			amount > 1000
+		has_monthly_income = {
+			resource = energy
+			value > 5
 		}
 		OR = {
 			AND = {
 				has_monthly_income = {
-					resource = minerals
+					resource = food
 					value < -1
 				}
 				has_resource = { 
-					type = minerals 
-					amount < 1000
+					type = food 
+					amount < 500
 				}
 			}
 			AND = {
@@ -136,19 +55,35 @@ energy_expenditure_trade_deficit = {
 			}
 			AND = {
 				has_monthly_income = {
+					resource = minerals
+					value < -1
+				}
+				has_resource = { 
+					type = minerals 
+					amount < 500
+				}
+			}
+			AND = {
+				has_monthly_income = {
 					resource = alloys
 					value < -1
 				}
 				has_resource = { 
 					type = alloys 
-					amount < 1000
+					amount < 500
 				}
 			}
 		}
 	}
 	
 	fraction = {
-		weight = 0.7
+		weight = 0.25
+	}
+	static_min = {
+		base = 100
+	}
+	static_max = {
+		base = 5000
 	}
 }
 
@@ -163,15 +98,13 @@ energy_expenditure_colonies = {
 			has_civic = civic_corporate_dominion
 			has_civic = civic_private_prospectors
 		}
-		has_resource = { type = food amount > 300 }
+		has_resource = { type = energy amount > 1000 }
 		has_monthly_income = { resource = food value > 0 }
 	}
 	
-	# if we can colonize with energy, we should
-	fraction = {
-		weight = 1.5
-	}	
-
+	static_min = {
+		base = 500
+	}
 	static_max = {
 		base = 500
 	}
@@ -187,16 +120,12 @@ energy_expenditure_colonies_plantoid = {
 		is_plantoid_empire = yes
 	}
 	
-	fraction = {
-		weight = 0.5
-	}
-
 	static_min = {
 		base = 200
 	}
 
 	static_max = {
-		base = 250
+		base = 200
 	}
 }
 
@@ -350,6 +279,6 @@ energy_upkeep_country = { # Covers most other things
 	}
 	
 	fraction = {
-		weight = 1
+		weight = 0.99
 	}	
 }
