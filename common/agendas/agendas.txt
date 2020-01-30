@@ -5,118 +5,175 @@
 # weight_modifier - scope = leader, from = country
 # modifier
 
-
-agenda_defensive_focus = {
+# Authoritarian Base Influence Gain
+agenda_undue_influence = {
 	weight_modifier = {
 		weight = 100
 		modifier = {
 			factor = 1.5
-				from = {
-					has_ethic = ethic_militarist
-				}
+			from = {
+				has_ethic = ethic_authoritarian
 			}
-		modifier = {
-			factor = 2
-				from = {
-					has_ethic = ethic_fanatic_militarist
-				}
-			}
-		modifier = {
-			factor = 1.5
-			leader_class = admiral
 		}
 		modifier = {
 			factor = 2
-			leader_class = general
+			from = {
+				has_ethic = ethic_fanatic_authoritarian
+			}
 		}
 	}
 	
 	modifier = {
-		shipclass_military_station_build_cost_mult = -0.15
-		shipclass_military_station_damage_mult = 0.25
-		shipclass_military_station_hull_mult = 0.25
+		country_base_influence_produces_add = 0.50
 	}
 }
 
-agenda_naval_focus = {
+# Egalitarian Faction Influence Gain
+agenda_social_influence = {
 	weight_modifier = {
 		weight = 100
 		modifier = {
 			factor = 1.5
-				from = {
-					has_ethic = ethic_militarist
-				}
+			from = {
+				has_ethic = ethic_egalitarian
 			}
+		}
 		modifier = {
 			factor = 2
-				from = {
-					has_ethic = ethic_fanatic_militarist
-				}
+			from = {
+				has_ethic = ethic_fanatic_egalitarian
 			}
-		modifier = {
-			factor = 1.5
-			leader_class = admiral
 		}
 	}
 	
 	modifier = {
-		starbase_shipyard_build_cost_mult = -0.10
-		ships_upkeep_mult = -0.05
-		starbase_shipyard_build_speed_mult = 0.20
+		pop_factions_produces_mult = 0.50
 	}
 }
 
-agenda_industrial = {
-	weight_modifier = {
-		weight = 100
-	}
-	
-	modifier = {
-		planet_jobs_minerals_produces_mult = 0.10
-	}
-}
-
-agenda_science = {
+# Materialist Capital Upgrade Cost
+agenda_economic_influence = {
 	weight_modifier = {
 		weight = 100
 		modifier = {
 			factor = 1.5
-				from = {
-					has_ethic = ethic_materialist
-				}
+			from = {
+				has_ethic = ethic_materialist
 			}
+		}
 		modifier = {
 			factor = 2
-				from = {
-					has_ethic = ethic_fanatic_materialist
-				}
+			from = {
+				has_ethic = ethic_fanatic_materialist
 			}
-		modifier = {
-			factor = 1.5
-			leader_class = scientist
 		}
 	}
 	
 	modifier = {
-		all_technology_research_speed = 0.10
+		planet_buildings_influence_cost_mult = -0.20
 	}
 }
 
-agenda_finanical = {
+# Spiritualist Edict Influence Cost
+agenda_cultural_influence = {
 	weight_modifier = {
 		weight = 100
 		modifier = {
 			factor = 1.5
-			leader_class = governor
+			from = {
+				has_ethic = ethic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 2
+			from = {
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
 	}
 	
 	modifier = {
-		planet_jobs_energy_produces_mult = 0.10
+		edicts_cost_mult = -0.20
 	}
 }
 
-agenda_welfare = {
+# Xenophobe Outpost Cost
+agenda_sphere_of_influence = {
+	weight_modifier = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			from = {
+				has_ethic = ethic_xenophobe
+			}
+		}
+		modifier = {
+			factor = 2
+			from = {
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+	}
+	
+	modifier = {
+		country_starbase_influence_cost_mult = -0.20
+	}
+}
+
+# Xenophile Colony Ship Cost
+agenda_colonial_influence = {
+	weight_modifier = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			from = {
+				has_ethic = ethic_xenophile
+			}
+		}
+		modifier = {
+			factor = 2
+			from = {
+				has_ethic = ethic_fanatic_xenophile
+			}
+		}
+	}
+	
+	modifier = {
+		ship_colonizer_influence_cost_mult = -0.20
+	}
+}
+
+# Militarist Claim Cost
+agenda_weapons_of_influence = {
+	weight_modifier = {
+		weight = 100
+		modifier = {
+			factor = 1.5
+			from = {
+				has_ethic = ethic_militarist
+			}
+		}
+		modifier = {
+			factor = 2
+			from = {
+				has_ethic = ethic_fanatic_militarist
+			}
+		}
+		modifier = {
+			factor = 0
+			from = {
+				num_communications < 3
+			}
+		}
+	}
+	
+	modifier = {
+		country_claim_influence_cost_mult = -0.20
+	}
+}
+
+# Diplomat Diplomatic Upkeep
+agenda_agent_of_influence = {
 	weight_modifier = {
 		weight = 100
 		modifier = {
@@ -131,6 +188,76 @@ agenda_welfare = {
 				has_ethic = ethic_fanatic_pacifist
 			}
 		}
+		modifier = {
+			factor = 0
+			from = {
+				num_communications < 3
+			}
+		}
+	}
+	
+	modifier = {
+		diplomacy_upkeep_mult = -0.20
+	}
+}
+
+agenda_defensive_focus = {
+	weight_modifier = {
+		weight = 0
+	}
+	
+	modifier = {
+		shipclass_military_station_build_cost_mult = -0.15
+		shipclass_military_station_damage_mult = 0.25
+		shipclass_military_station_hull_mult = 0.25
+	}
+}
+
+agenda_naval_focus = {
+	weight_modifier = {
+		weight = 0
+	}
+	
+	modifier = {
+		starbase_shipyard_build_cost_mult = -0.10
+		ships_upkeep_mult = -0.05
+		starbase_shipyard_build_speed_mult = 0.20
+	}
+}
+
+agenda_industrial = {
+	weight_modifier = {
+		weight = 0
+	}
+	
+	modifier = {
+		planet_jobs_minerals_produces_mult = 0.10
+	}
+}
+
+agenda_science = {
+	weight_modifier = {
+		weight = 0
+	}
+	
+	modifier = {
+		all_technology_research_speed = 0.10
+	}
+}
+
+agenda_finanical = {
+	weight_modifier = {
+		weight = 0
+	}
+	
+	modifier = {
+		planet_jobs_energy_produces_mult = 0.10
+	}
+}
+
+agenda_welfare = {
+	weight_modifier = {
+		weight = 0
 	}
 	
 	modifier = {
@@ -142,24 +269,7 @@ agenda_welfare = {
 # Faction-related agendas
 agenda_expansionist_overtures = {
 	weight_modifier = {
-		weight = 100
-		modifier = {
-			factor = 1.5
-			from = {
-				has_ethic = ethic_fanatic_militarist
-			}
-		}
-		modifier = {
-			factor = 2
-			exists = pop_faction
-			pop_faction = { is_pop_faction_type = imperialist }
-		}
-		modifier = {
-			factor = 0
-			from = {
-				num_communications < 1
-			}
-		}
+		weight = 0
 	}
 
 	modifier = {
@@ -169,27 +279,7 @@ agenda_expansionist_overtures = {
 
 agenda_national_purity = { # Reduced immigration attraction, influence bonus
 	weight_modifier = {
-		weight = 100
-		modifier = {
-			factor = 1.5
-			from = {
-				has_ethic = ethic_fanatic_xenophobe
-			}
-		}
-		modifier = {
-			factor = 2
-			exists = pop_faction
-			pop_faction = { is_pop_faction_type = isolationist }
-		}
-		modifier = {
-			factor = 0.0
-			from = {
-				OR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
-			}
-		}
+		weight = 0
 	}
 
 	modifier = {
@@ -200,22 +290,7 @@ agenda_national_purity = { # Reduced immigration attraction, influence bonus
 
 agenda_public_debates = {
 	weight_modifier = {
-		weight = 100
-		modifier = {
-			factor = 1.5
-			from = {
-				has_ethic = ethic_fanatic_egalitarian
-			}
-		}
-		modifier = {
-			factor = 2
-			exists = pop_faction
-			pop_faction = { is_pop_faction_type = progressive }
-		}
-		modifier = {
-			factor = 0
-			mid_game_years_passed < 0
-		}
+		weight = 0
 	}
 
 	modifier = {
@@ -227,18 +302,7 @@ agenda_public_debates = {
 agenda_import_export = {
 # Food bonus, trust growth bonus
 	weight_modifier = {
-		weight = 100
-		modifier = {
-			factor = 1.5
-			from = {
-				has_ethic = ethic_fanatic_pacifist
-			}
-		}
-		modifier = {
-			factor = 2
-			exists = pop_faction
-			pop_faction = { is_pop_faction_type = prosperity }
-		}
+		weight = 0
 	}
 
 	modifier = {
@@ -250,25 +314,7 @@ agenda_import_export = {
 agenda_native_privilege = {
 	# Xenophobe ethics attraction, reduced unrest
 	weight_modifier = {
-		weight = 100
-		modifier = {
-			factor = 1.5
-			from = {
-				OR = {
-					has_ethic = ethic_fanatic_xenophobe
-					has_ethic = ethic_xenophobe
-				}
-			}
-		}
-		modifier = {
-			factor = 0.0
-			from = {
-				OR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}
-			}
-		}
+		weight = 0
 	}
  
 	modifier = {
@@ -280,18 +326,7 @@ agenda_native_privilege = {
 agenda_skill_development = {
 	# leader skill gain
 	weight_modifier = {
-		weight = 100
-		modifier = {
-			factor = 1.5
-			from = {
-				has_ethic = ethic_fanatic_materialist
-			}
-		}
-		modifier = {
-			factor = 2
-			exists = pop_faction
-			pop_faction = { is_pop_faction_type = technologist }
-		}
+		weight = 0
 	}
 
 	modifier = {
@@ -302,22 +337,7 @@ agenda_skill_development = {
 agenda_slave_optimization = {
 	# Slave output bonus
 	weight_modifier = {
-		weight = 100
-		modifier = {
-			factor = 1.5
-			from = {
-				has_ethic = ethic_fanatic_authoritarian
-			}
-		}
-		modifier = {
-			factor = 2
-			exists = pop_faction
-			pop_faction = { is_pop_faction_type = totalitarian }
-		}
-		modifier = {
-			factor = 0
-			from = { has_policy_flag = slavery_not_allowed }
-		}
+		weight = 0
 	}
 
 	modifier = {
@@ -327,18 +347,7 @@ agenda_slave_optimization = {
 
 agenda_selective_nostalgia = { # Unity production modifier
 	weight_modifier = {
-		weight = 100
-		modifier = {
-			factor = 1.5
-			from = {
-				has_ethic = ethic_fanatic_spiritualist
-			}
-		}
-		modifier = {
-			factor = 2
-			exists = pop_faction
-			pop_faction = { is_pop_faction_type = traditionalist }
-		}
+		weight = 0
 	}
 
 	modifier = {
@@ -349,36 +358,7 @@ agenda_selective_nostalgia = { # Unity production modifier
 
 agenda_xeno_outreach = { # Xenophile ethics attraction, immigration attraction?
 	weight_modifier = {
-		weight = 100
-		modifier = {
-			factor = 1.5
-			from = {
-				OR = {
-					has_ethic = ethic_fanatic_xenophile
-					has_ethic = ethic_xenophile
-				}
-			}
-		}
-		modifier = {
-			factor = 2
-			exists = pop_faction
-			pop_faction = { is_pop_faction_type = xenoist }
-		}
-		modifier = {
-			factor = 0.5
-			from = {
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}
-			}
-		}
-		modifier = {
-			factor = 0
-			from = {
-				num_communications < 3
-			}
-		}
+		weight = 0
 	}
 
 	modifier = {
