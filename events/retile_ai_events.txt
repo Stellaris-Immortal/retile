@@ -170,16 +170,14 @@ planet_event = {
 		}
 		if = {
 			limit = {
-				num_districts = { type = district_soldier value > 0 }
-				owner = { AND = {
+				num_districts = { type = district_soldier value > 1 }
+				owner = { OR = {
 					used_naval_capacity_percent < 0.5
-					OR = {
-						has_monthly_income = { resource = alloys value < 25 }
-						has_monthly_income = { resource = consumer_goods value < 0 }
-						has_monthly_income = { resource = food value < 0 }
-						has_monthly_income = { resource = minerals value < 25 }
-						has_monthly_income = { resource = energy value < 25 }
-					}
+					has_monthly_income = { resource = alloys value < 10 }
+					has_monthly_income = { resource = consumer_goods value < 0 }
+					has_monthly_income = { resource = food value < 0 }
+					has_monthly_income = { resource = minerals value < 0 }
+					has_monthly_income = { resource = energy value < 25 }
 				} }
 			}
 			remove_district = district_soldier
