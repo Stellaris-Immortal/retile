@@ -36,7 +36,7 @@ planet_event = {
 	id = retile_pop.90
 	hide_window = yes
 	is_triggered_only = yes
-
+	
 	trigger = { always = yes }
 	
 	immediate = {
@@ -121,6 +121,7 @@ pop_event = {
 				modifier = { add = 18 habitability = { who = root value >= 0.90 } }
 				modifier = { add = 19 habitability = { who = root value >= 0.95 } }
 				modifier = { add = 20 habitability = { who = root value >= 1.00 } }
+				modifier = { mult = 5 free_jobs > 0 }
 			}
 			resettle_pop = { pop = root planet = this}
 		} }
@@ -147,10 +148,10 @@ planet_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 30
+		days = 90
 	}
 
-	immediate = {
+	after = {
 		planet_event = { id = retile_pop.90 }
 	}
 }
