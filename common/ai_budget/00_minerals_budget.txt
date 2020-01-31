@@ -48,10 +48,17 @@ minerals_expenditure_trade = {
 			type = minerals
 			amount > 10000
 		}
+		has_resource = {
+			type = energy
+			amount < 1000
+		}
 	}
 	
 	fraction = {
 		weight = 1
+	}
+	static_max = {
+		base = 1000
 	}
 }
 
@@ -98,10 +105,10 @@ minerals_upkeep_buffer = {	# Buffer, will not be spent
 	}	
 }
 
-minerals_upkeep_planets = {
+minerals_upkeep_country = {
 	resource = minerals 
 	type = upkeep
-	category = planets
+	category = country
 	
 	potential = {
 		always = yes

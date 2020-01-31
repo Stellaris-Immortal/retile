@@ -29,9 +29,6 @@ exotic_gases_expenditure_planets = {
 		always = yes
 	}
 	
-	fraction = {
-		weight = 0.5
-	}
 	static_min = {
 		base = 1500
 	}
@@ -71,17 +68,21 @@ exotic_gases_expenditure_trade = {
 	category = trade
 	
 	potential = {
-		has_resource = { type = exotic_gases amount > 1000 }
+		has_resource = { type = exotic_gases amount > 1600 }
+		has_resource = { type = energy amount < 1000 }
 	}
 	
-	fraction = {
-		weight = 0.1
-	}	
+	static_min = {
+		base = 100
+	}
+	static_max = {
+		base = 100
+	}
 }
 
 # Upkeep ----------------------------------------------------------
 
-exotic_gases_upkeep_planets = {
+exotic_gases_upkeep_buffer = {
 	resource = exotic_gases 
 	type = upkeep
 	category = buffer
@@ -95,16 +96,16 @@ exotic_gases_upkeep_planets = {
 	}	
 }
 
-exotic_gases_upkeep_ships = {
+exotic_gases_upkeep_country = {
 	resource = exotic_gases 
 	type = upkeep
-	category = ships
+	category = country
 	
 	potential = {
 		always = yes
 	}
 	
 	fraction = {
-		weight = 1
+		weight = 0.9
 	}	
 }

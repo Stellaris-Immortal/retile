@@ -18,6 +18,11 @@ anticrime_campaign = {
 			influence = @Edict1Cost
 		}
 	}
+	
+	effect = {
+		set_timed_country_flag = { flag = activate_anti_crime days = 30 }
+		country_event = { id = retile_mandate.2 }
+	}
 
 	modifier = {
 		planet_crime_add = -35
@@ -39,6 +44,11 @@ space_campaign = {
 		cost = {
 			influence = @Edict1Cost
 		}
+	}
+	
+	effect = {
+		set_timed_country_flag = { flag = activate_space_campaign days = 30 }
+		country_event = { id = retile_mandate.2 }
 	}
 
 	modifier = {
@@ -62,6 +72,11 @@ recycling_campaign = {
 		cost = {
 			influence = @Edict1Cost
 		}
+	}
+	
+	effect = {
+		set_timed_country_flag = { flag = activate_recycling days = 30 }
+		country_event = { id = retile_mandate.2 }
 	}
 
 	modifier = {
@@ -88,6 +103,11 @@ labor_campaign = {
 			influence = @Edict2Cost
 		}
 	}
+	
+	effect = {
+		set_timed_country_flag = { flag = activate_labor days = 30 }
+		country_event = { id = retile_mandate.2 }
+	}
 
 	modifier = {
 		planet_jobs_produces_mult = 0.10
@@ -111,6 +131,11 @@ celebration_campaign = {
 			influence = @Edict2Cost
 		}
 	}
+	
+	effect = {
+		set_timed_country_flag = { flag = activate_celebration days = 30 }
+		country_event = { id = retile_mandate.2 }
+	}
 
 	modifier = {
 		pop_happiness = 0.10
@@ -118,7 +143,7 @@ celebration_campaign = {
 
 	potential = {
 		NOT = { has_ethic = ethic_gestalt_consciousness }
-		has_technology = tech_colonial_centralization
+		has_technology = tech_planetary_unification
 	}
 
 	ai_weight = {
@@ -143,7 +168,38 @@ military_campaign = {
 
 	potential = {
 		NOT = { has_ethic = ethic_gestalt_consciousness }
-		has_technology = tech_galactic_administration
+		has_technology = tech_colonial_centralization
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+diplomatic_campaign = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = {
+			influence = @Edict2Cost
+		}
+	}
+	
+	effect = {
+		set_timed_country_flag = { flag = activate_diplomatic days = 30 }
+		country_event = { id = retile_mandate.2 }
+	}
+
+	modifier = {
+		planet_immigration_pull_mult = 0.50
+		pop_growth_from_immigration = 0.10
+		country_trust_growth = 0.25
+		country_trust_cap_add = 10
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		has_technology = tech_colonial_centralization
 	}
 
 	ai_weight = {
@@ -159,35 +215,14 @@ bureaucratic_campaign = {
 			influence = @Edict3Cost
 		}
 	}
+	
+	effect = {
+		set_timed_country_flag = { flag = activate_bureaucratic days = 30 }
+		country_event = { id = retile_mandate.2 }
+	}
 
 	modifier = {
 		empire_size_penalty_mult = -0.25
-	}
-
-	potential = {
-		NOT = { has_ethic = ethic_gestalt_consciousness }
-		has_technology = tech_galactic_administration
-	}
-
-	ai_weight = {
-		weight = 0
-	}
-}
-
-diplomatic_campaign = {
-	length = @EdictDuration
-	resources = {
-		category = edicts
-		cost = {
-			influence = @Edict3Cost
-		}
-	}
-
-	modifier = {
-		planet_immigration_pull_mult = 1
-		pop_growth_from_immigration = 0.10
-		country_trust_growth = 0.50
-		country_trust_cap_add = 20
 	}
 
 	potential = {

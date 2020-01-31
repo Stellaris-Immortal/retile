@@ -89,11 +89,11 @@ district_enforcer = {
 	ai_weight = {
 		weight = 100
 		modifier = {
-			weight = 150
+			weight = 900
 			planet_crime > 66
 		}
 		modifier = {
-			weight = 250
+			weight = 9000
 			planet_crime > 99
 		}
 	}
@@ -151,13 +151,12 @@ district_soldier = {
 	ai_weight = {
 		weight = 0
 		modifier = {
-			weight = 500
+			weight = 1000
 			num_districts = { type = district_soldier value < 1 }
-			owner = { used_naval_capacity_percent > 1.0 }
 		}
 		modifier = {
-			weight = 25
-			owner = { used_naval_capacity_percent > 1.0 }
+			weight = 100
+			owner = { used_naval_capacity_percent >= 1.0 }
 		}
 	}
 }

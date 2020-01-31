@@ -124,7 +124,7 @@ event = {
 						planet_size < 25
 					}
 				}
-					random_list = {
+				random_list = {
 					85 = { }
 					5 = { 
 						if = {
@@ -133,8 +133,15 @@ event = {
 						}
 					}
 					5 = { add_modifier = { modifier = "terraforming_candidate" days = -1 } }
-					}
 				}
+			}
+			if = {
+				limit = { 
+					is_planet_class = pc_broken 
+					NOT = { has_deposit = d_minerals_8 }
+				}
+				add_deposit = d_minerals_8
+			}
 			if = {
 				limit = {
 					has_deposit = d_minerals_moon
@@ -246,7 +253,7 @@ event = {
 	}
 }
 
-# Sun Modifier
+# New Modifiers
 event = {
 	id = retile_generate.4
 	hide_window = yes
@@ -257,6 +264,26 @@ event = {
 	immediate = {
 		set_global_flag = spawn_sun_modifiers
 		every_planet = {
+		
+			# Cracked Minerals
+			if = {
+				limit = { 
+					is_planet_class = pc_shattered
+					NOT = { has_deposit = d_minerals_10 }
+				}
+				add_deposit = d_minerals_10
+			}
+			
+			# Shielded Society
+			if = {
+				limit = { 
+					is_planet_class = pc_shielded
+					NOT = { has_deposit = d_society_8 }
+				}
+				add_deposit = d_society_8
+			}
+			
+			# Ring Modifier
 			if = {
 				limit = { 
 					has_ring = yes
@@ -264,8 +291,13 @@ event = {
 				}
 				add_modifier = { modifier = ring_system days = -1 }
 			}
+			
+			# Moon Modifier
 			if = {
-				limit = { has_moon = yes }
+				limit = { 
+					has_moon = yes
+					NOT = { has_planet_flag = has_megastructure }
+				}
 				if = {
 					limit = { num_moons = 1 }
 					if = { 
@@ -292,6 +324,8 @@ event = {
 					}
 				}
 			}
+			
+			# Sun Modifier
 			if = {
 				limit = { 
 					is_star_class = sc_b
@@ -661,7 +695,7 @@ event = {
 	}
 }
 
-# New Sun Modifier
+# New Modifier
 planet_event = {
 	id = retile_generate.6
 	hide_window = yes
@@ -673,6 +707,47 @@ planet_event = {
 	mean_time_to_happen = { days = 360 }
 	
 	immediate = {
+	
+		# Cracked Minerals
+		if = {
+			limit = { 
+				is_planet_class = pc_shattered
+				NOT = { has_deposit = d_minerals_10 }
+			}
+			add_deposit = d_minerals_10
+		}
+		if = {
+				limit = { 
+					is_planet_class = pc_broken 
+					NOT = { has_deposit = d_minerals_8 }
+				}
+				add_deposit = d_minerals_8
+			}
+		
+		# Shielded Society
+		if = {
+			limit = { 
+				is_planet_class = pc_shielded
+				NOT = { has_deposit = d_society_8 }
+			}
+			add_deposit = d_society_8
+		}
+		
+		# Ringworld AP
+		if = {
+			limit = {
+				exists = owner
+				is_planet_class = pc_ringworld_habitable
+				OR = { 
+					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
+					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
+				}
+				NOT = { has_modifier = galactic_wonder_ringworld }
+			}
+			add_modifier = { modifier = galactic_wonder_ringworld days = -1 }
+		}
+
+		# Ring Modifier
 		if = {
 			limit = { 
 				has_ring = yes
@@ -680,8 +755,13 @@ planet_event = {
 			}
 			add_modifier = { modifier = ring_system days = -1 }
 		}
+		
+		# Moon Modifier
 		if = {
-			limit = { has_moon = yes }
+			limit = { 
+				has_moon = yes
+				NOT = { has_planet_flag = has_megastructure }
+			}
 			if = {
 				limit = { num_moons = 1 }
 				if = { 
@@ -708,6 +788,8 @@ planet_event = {
 				}
 			}
 		}
+		
+		# Sun Modifier
 		if = {
 			limit = { 
 				is_star_class = sc_b
@@ -858,6 +940,63 @@ planet_event = {
 				NOT = { has_modifier = pm_class_trinary_4 }
 			}
 			add_modifier = { modifier = pm_class_trinary_4 days = -1 }
+		}
+	}
+}
+
+# Destroy the Universe
+event = {
+	id = retile_generate.7
+	title = "retile_generate.7.name"
+	desc = "retile_generate.7.desc"
+	picture = GFX_evt_surreal_visions
+	show_sound = event_mystic_reveal
+	
+	is_triggered_only = yes
+	
+	trigger = { 
+		has_global_flag = universe_destroyed
+		years_passed > 9999
+	}
+
+	immediate = {  
+		# every_ship = {
+		# 	delete_ship = this
+		# }
+		every_country = {
+				every_owned_leader = {
+					kill_leader = { show_notification = no }
+				}
+		}
+		every_system = {
+			limit = { has_hyperlane_to = prev }
+			remove_hyperlane = { from = this to = prev }
+		}
+		every_system = {
+			every_system_planet = {
+				remove_planet = yes
+			}
+			every_fleet_in_system = {
+				delete_fleet = this
+			}
+			every_system_ambient_object = {
+				destroy_ambient_object = this
+			}
+			every_system_megastructure = {
+				delete_megastructure = this
+			}
+			set_asteroid_belt = {
+				radius = 0
+			}
+		}
+	}
+	
+	option = {
+		name = retile_generate.7.a
+		hidden_effect = {
+			every_country = {
+				destroy_country = yes
+			}
 		}
 	}
 }

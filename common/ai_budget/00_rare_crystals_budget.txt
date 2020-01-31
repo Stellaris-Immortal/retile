@@ -29,9 +29,6 @@ rare_crystals_expenditure_planets = {
 		always = yes
 	}
 	
-	fraction = {
-		weight = 0.5
-	}	
 	static_min = {
 		base = 1500
 	}
@@ -71,17 +68,21 @@ rare_crystals_expenditure_trade = {
 	category = trade
 	
 	potential = {
-		has_resource = { type = rare_crystals amount > 1000 }
+		has_resource = { type = rare_crystals amount > 1600 }
+		has_resource = { type = energy amount < 1000 }
 	}
 	
-	fraction = {
-		weight = 0.1
-	}	
+	static_min = {
+		base = 100
+	}
+	static_max = {
+		base = 100
+	}
 }
 
 # Upkeep ---------------------------------------------------------------
 
-rare_crystals_upkeep_planets = {
+rare_crystals_upkeep_bufer = {
 	resource = rare_crystals 
 	type = upkeep
 	category = buffer
@@ -95,16 +96,16 @@ rare_crystals_upkeep_planets = {
 	}	
 }
 
-rare_crystals_upkeep_ships = {
+rare_crystals_upkeep_country = {
 	resource = rare_crystals 
 	type = upkeep
-	category = ships
+	category = country
 	
 	potential = {
 		always = yes
 	}
 	
 	fraction = {
-		weight = 1
+		weight = 0.9
 	}	
 }

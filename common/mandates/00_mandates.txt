@@ -1,9 +1,6 @@
 #*** Orbital Researcher, build X research stations. on_building_research_station
 mandate_orbital_researcher = {
-	valid = {
-		exists = owner
-		owner = { has_technology = tech_space_construction }
-	}
+	valid = { always = no }
 	parameters = {}
 	
 	on_term_started = {
@@ -32,10 +29,7 @@ mandate_orbital_researcher = {
 
 #*** Miner, build X mining stations. on_building_mining_station on-action
 mandate_miner = {
-	valid = {
-		exists = owner
-		owner = { has_technology = tech_space_construction }
-	}
+	valid = { always = no }
 	parameters = {}
 
 	on_term_started = {
@@ -64,14 +58,7 @@ mandate_miner = {
 
 # Peacemaker Mandate, check if at peace in 4 years
 mandate_peacemaker = {
-	valid = {
-		always = no
-		exists = owner
-		owner = {
-			is_at_war = yes
-			is_war_leader = yes
-		}
-	}
+	valid = { always = no }
 
 	parameters = {
 		self = country
@@ -101,10 +88,7 @@ mandate_peacemaker = {
 
 #*** Shipwright, build X ships by year Y. count_ships trigger
 mandate_shipwright = {
-	valid = {
-		always = no
-		exists = owner
-	}
+	valid = { always = no }
 	parameters = {}
 
 	on_term_started = {
@@ -140,8 +124,11 @@ mandate_shipwright = {
 
 # Fiscal Conservative
 mandate_monthly_energy = {
-	valid = {
+	valid = { 
 		exists = owner
+		owner = {
+			has_monthly_income = { resource = energy value < 20 }
+		} 
 	}
 	parameters = {}
 
@@ -166,6 +153,9 @@ mandate_monthly_energy = {
 mandate_monthly_minerals = {
 	valid = {
 		exists = owner
+		owner = {
+			has_monthly_income = { resource = minerals value < 30 }
+		}
 	}
 	parameters = {}
 
@@ -190,6 +180,10 @@ mandate_monthly_minerals = {
 mandate_monthly_food = {
 	valid = {
 		exists = owner
+		owner = {
+			is_lithoid_empire = no
+			has_monthly_income = { resource = food value < 15 }
+		}
 	}
 	parameters = {}
 
@@ -214,6 +208,9 @@ mandate_monthly_food = {
 mandate_monthly_alloys = {
 	valid = {
 		exists = owner
+		owner = {
+			has_monthly_income = { resource = alloys value < 12 }
+		}
 	}
 	parameters = {}
 
@@ -238,6 +235,9 @@ mandate_monthly_alloys = {
 mandate_monthly_consumer_goods = {
 	valid = {
 		exists = owner
+		owner = {
+			has_monthly_income = { resource = consumer_goods value < 6 }
+		}
 	}
 	parameters = {}
 
@@ -259,16 +259,9 @@ mandate_monthly_consumer_goods = {
 	}
 }
 
-# District Builders Urban
+# District builders
 mandate_district_city = {
-	valid = {
-		exists = owner
-		owner = {
-			any_owned_planet = {
-				free_district_slots >= 2
-			}
-		}
-	}
+	valid = { always = no }
 	parameters = {}
 
 	on_term_started = {
@@ -289,16 +282,8 @@ mandate_district_city = {
 	}
 }
 
-# District Buildings Rural
 mandate_district_generator = {
-	valid = {
-		exists = owner
-		owner = {
-			any_owned_planet = {
-				free_district_slots >= 2
-			}
-		}
-	}
+	valid = { always = no }
 	parameters = {}
 
 	on_term_started = {
@@ -320,10 +305,7 @@ mandate_district_generator = {
 }
 
 mandate_district_mining = {
-	valid = {
-		exists = owner
-		always = no
-	}
+	valid = { always = no }
 	parameters = {}
 
 	on_term_started = {
@@ -345,10 +327,7 @@ mandate_district_mining = {
 }
 
 mandate_district_farming = {
-	valid = {
-		exists = owner
-		always = no
-	}
+	valid = { always = no }
 	parameters = {}
 
 	on_term_started = {
