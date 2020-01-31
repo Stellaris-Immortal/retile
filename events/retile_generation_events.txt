@@ -943,3 +943,34 @@ planet_event = {
 		}
 	}
 }
+
+# Destroy the Universe
+event = {
+	id = retile_generate.7
+	title = "retile_generate.7.name"
+	desc = "retile_generate.7.desc"
+	picture = GFX_evt_surreal_visions
+	show_sound = event_mystic_reveal
+	
+	is_triggered_only = yes
+	
+	trigger = { 
+		has_global_flag = universe_destroyed
+		years_passed > 9999
+	}
+
+	immediate = {  
+		every_country = {
+			destroy_country = yes
+		}
+		every_system = {
+			every_system_planet = {
+				remove_planet = yes
+			}
+		}
+	}
+	
+	option = {
+		name = retile_generate.7.a
+	}
+}
