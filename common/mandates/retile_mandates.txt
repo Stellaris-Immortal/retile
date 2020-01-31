@@ -1,0 +1,564 @@
+#### Campaign Mandates
+mandate_anti_crime = {
+	valid = {
+		exists = owner
+		owner = { NOT = { has_edict = anticrime_campaign } }
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_anti_crime_chain }
+				end_event_chain = mandate_anti_crime_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_anti_crime_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_anti_crime end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_anti_crime end_of_term fired for AI" }
+			country_event = { id = retile_mandate.2 }
+		}
+	}
+}
+
+mandate_space_exploration = {
+	valid = {
+		exists = owner
+		owner = { NOT = { has_edict = space_campaign } }
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_space_exploration_chain }
+				end_event_chain = mandate_space_exploration_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_space_exploration_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_space_exploration_researcher end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_space_exploration_researcher end_of_term fired for AI" }
+			country_event = { id = retile_mandate.2 }
+		}
+	}
+}
+
+mandate_recycling = {
+	valid = {
+		exists = owner
+		owner = { NOT = { has_edict = recycling_campaign } }
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_recycling_chain }
+				end_event_chain = mandate_recycling_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_recycling_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_recycling end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_recycling end_of_term fired for AI" }
+			country_event = { id = retile_mandate.2 }
+		}
+	}
+}
+
+mandate_labor = {
+	valid = {
+		exists = owner
+		owner = { 
+			NOT = { has_edict = labor_campaign }
+			has_technology = tech_planetary_unification
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_labor_chain }
+				end_event_chain = mandate_labor_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_labor_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_labor end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_labor end_of_term fired for AI" }
+			country_event = { id = retile_mandate.2 }
+		}
+	}
+}
+
+mandate_celebration = {
+	valid = {
+		exists = owner
+		owner = { 
+			NOT = { has_edict = celebration_campaign }
+			has_technology = tech_planetary_unification
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_celebration_chain }
+				end_event_chain = mandate_celebration_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_celebration_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_celebration end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_celebration end_of_term fired for AI" }
+			country_event = { id = retile_mandate.2 }
+		}
+	}
+}
+
+mandate_diplomatic = {
+	valid = {
+		exists = owner
+		owner = { 
+			NOT = { has_edict = diplomatic_campaign }
+			has_technology = tech_colonial_centralization
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_diplomatic_chain }
+				end_event_chain = mandate_diplomatic_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_diplomatic_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_diplomatic end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_diplomatic end_of_term fired for AI" }
+			country_event = { id = retile_mandate.2 }
+		}
+	}
+}
+
+mandate_bureaucratic = {
+	valid = {
+		exists = owner
+		owner = { 
+			NOT = { has_edict = bureaucratic_campaign }
+			has_technology = tech_galactic_administration
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_bureaucratic_chain }
+				end_event_chain = mandate_bureaucratic_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_bureaucratic_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_bureaucratic end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_bureaucratic end_of_term fired for AI" }
+			country_event = { id = retile_mandate.2 }
+		}
+	}
+}
+
+mandate_administrative = {
+	valid = {
+		exists = owner
+		owner = { 
+			NOT = { has_edict = administrative_campaign }
+			has_technology = tech_galactic_administration
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_administrative_chain }
+				end_event_chain = mandate_administrative_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_administrative_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_administrative end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_administrative end_of_term fired for AI" }
+			country_event = { id = retile_mandate.2 }
+		}
+	}
+}
+
+### Policy Mandates
+
+mandate_common_law = {
+	valid = {
+		exists = owner
+		owner = { 
+			NOT = { has_policy_flag = criminal_common_law }
+			NOT = { has_civic = civic_police_state }
+		}
+		ROOT = { 
+			OR = {
+				leader_of_faction = progressive
+				leader_of_faction = supremacist
+				has_trait = trait_ruler_champion_of_the_people
+			}
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_common_law_chain }
+				end_event_chain = mandate_common_law_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_common_law_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_common_law end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_common_law end_of_term fired for AI" }
+			country_event = { id = retile_mandate.4 }
+		}
+	}
+}
+
+mandate_state_police = {
+	valid = {
+		exists = owner
+		owner = { 
+			NOT = { has_policy_flag = criminal_state_police }
+			NOT = { has_valid_civic = civic_anarchist }
+		}
+		ROOT = { 
+			OR = {
+				leader_of_faction = totalitarian
+				leader_of_faction = supremacist
+				has_trait = trait_ruler_deep_connections
+			}
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_state_police_chain }
+				end_event_chain = mandate_state_police_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_state_police_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_state_police end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_state_police end_of_term fired for AI" }
+			country_event = { id = retile_mandate.4 }
+		}
+	}
+}
+
+mandate_environmental_deregulation = {
+	valid = {
+		exists = owner
+		owner = { 
+			NOT = { has_policy_flag = environmental_deregulation }
+			NOT = { has_valid_civic = civic_shared_burden }
+			NOT = { has_valid_civic = civic_anarchist }
+		}
+		ROOT = { 
+			OR = {
+				leader_of_faction = technologist
+				leader_of_faction = supremacist
+				has_trait = trait_ruler_industrialist
+			}
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_environmental_deregulation_chain }
+				end_event_chain = mandate_environmental_deregulation_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_environmental_deregulation_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_environmental_deregulation end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_environmental_deregulation end_of_term fired for AI" }
+			country_event = { id = retile_mandate.4 }
+		}
+	}
+}
+
+mandate_environmental_protection = {
+	valid = {
+		exists = owner
+		owner = { 
+			NOT = { has_policy_flag = environmental_protection }
+		}
+		ROOT = { 
+			OR = {
+				leader_of_faction = traditionalist
+				leader_of_faction = supremacist
+				has_trait = trait_ruler_architectural_sense
+			}
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_environmental_protection_chain }
+				end_event_chain = mandate_environmental_protection_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_environmental_protection_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_environmental_protection end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_environmental_protection end_of_term fired for AI" }
+			country_event = { id = retile_mandate.4 }
+		}
+	}
+}
+
+mandate_unrestricted_wars = {
+	valid = {
+		exists = owner
+		owner = { 
+			NOT = { has_policy_flag = unrestricted_wars }
+			NOT = { has_valid_civic = civic_anarchist }
+		}
+		ROOT = { 
+			OR = {
+				leader_of_faction = imperialist
+				leader_of_faction = supremacist
+				has_trait = trait_ruler_warlike
+			}
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_unrestricted_wars_chain }
+				end_event_chain = mandate_unrestricted_wars_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_unrestricted_wars_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_unrestricted_wars end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_unrestricted_wars end_of_term fired for AI" }
+			country_event = { id = retile_mandate.4 }
+		}
+	}
+}
+
+mandate_no_wars = {
+	valid = {
+		exists = owner
+		owner = { 
+			has_encountered_other_species = yes
+			NOT = { has_policy_flag = unrestricted_wars }
+			NOT = { has_valid_civic = civic_anarchist }
+		}
+		ROOT = { 
+			OR = {
+				leader_of_faction = prosperity
+				leader_of_faction = supremacist
+				has_trait = trait_ruler_charismatic
+			}
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_no_wars_chain }
+				end_event_chain = mandate_no_wars_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_no_wars_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_no_wars end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_no_wars end_of_term fired for AI" }
+			country_event = { id = retile_mandate.4 }
+		}
+	}
+}
+
+mandate_alien_full_rights = {
+	valid = {
+		exists = owner
+		owner = { 
+			has_encountered_other_species = yes
+			NOT = { has_policy_flag = alien_full_rights }
+			NOT = { has_valid_civic = civic_anarchist }
+		}
+		ROOT = { 
+			OR = {
+				leader_of_faction = xenoist
+				leader_of_faction = supremacist
+				has_trait = trait_ruler_explorer
+			}
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_alien_full_rights_chain }
+				end_event_chain = mandate_alien_full_rights_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_alien_full_rights_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_alien_full_rights end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_alien_full_rights end_of_term fired for AI" }
+			country_event = { id = retile_mandate.4 }
+		}
+	}
+}
+
+mandate_alien_no_rights = {
+	valid = {
+		exists = owner
+		owner = { 
+			has_encountered_other_species = yes
+			NOT = { has_policy_flag = alien_no_rights }
+			NOT = { has_valid_civic = civic_anarchist }
+		}
+		ROOT = { 
+			OR = {
+				leader_of_faction = isolationist
+				leader_of_faction = supremacist
+				has_trait = trait_ruler_fortifier
+			}
+		}
+	}
+	parameters = {}
+	
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_alien_no_rights_chain }
+				end_event_chain = mandate_alien_no_rights_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_alien_no_rights_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_alien_no_rights end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_alien_no_rights end_of_term fired for AI" }
+			country_event = { id = retile_mandate.4 }
+		}
+	}
+}
