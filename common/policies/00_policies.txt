@@ -121,6 +121,11 @@ war_philosophy = {
 			NOT = { has_valid_civic = civic_anarchist }
 		}
 		
+		on_enabled = {
+			set_timed_country_flag = { flag = activate_unrestricted_wars days = 30 }
+			country_event = { id = retile_mandate.4 }
+		}
+		
 		AI_weight = {
 			modifier = {
 				factor = 10
@@ -192,6 +197,11 @@ war_philosophy = {
 				has_valid_civic = "civic_machine_terminator"
 				has_valid_civic = civic_anarchist
 			}
+		}
+		
+		on_enabled = {
+			set_timed_country_flag = { flag = activate_no_wars days = 30 }
+			country_event = { id = retile_mandate.4 }
 		}
 		
 		AI_weight = {
@@ -409,6 +419,11 @@ criminal = {
 		
 		policy_flags = { criminal_common_law }
 		
+		on_enabled = {
+			set_timed_country_flag = { flag = activate_common_law days = 30 }
+			country_event = { id = retile_mandate.4 }
+		}
+		
 		AI_weight = {
 			modifier = {
 				factor = 2
@@ -438,6 +453,11 @@ criminal = {
 		}
 		
 		policy_flags = { criminal_state_police }
+		
+		on_enabled = {
+			set_timed_country_flag = { flag = activate_state_police days = 30 }
+			country_event = { id = retile_mandate.4 }
+		}
 		
 		AI_weight = {
 			modifier = {
@@ -535,6 +555,11 @@ criminal = {
 		
 		policy_flags = { criminal_military_police }
 		
+		on_enabled = {
+			set_timed_country_flag = { flag = activate_military_police days = 30 }
+			country_event = { id = retile_mandate.4 }
+		}
+		
 		AI_weight = {
 			modifier = {
 				factor = 2
@@ -567,6 +592,11 @@ environmental = {
 		
 		policy_flags = {
 			environmental_deregulation
+		}
+		
+		on_enabled = {
+			set_timed_country_flag = { flag = activate_environmental_deregulation days = 30 }
+			country_event = { id = retile_mandate.4 }
 		}
 		
 		AI_weight = {
@@ -614,6 +644,11 @@ environmental = {
 		
 		policy_flags = {
 			environmental_protection
+		}
+		
+		on_enabled = {
+			set_timed_country_flag = { flag = activate_environmental_protection days = 30 }
+			country_event = { id = retile_mandate.4 }
 		}
 		
 		AI_weight = {
@@ -2019,6 +2054,11 @@ alien_rights = {
 			alien_full_rights
 		}
 		
+		on_enabled = {
+			set_timed_country_flag = { flag = activate_alien_full_rights days = 30 }
+			country_event = { id = retile_mandate.4 }
+		}
+		
 		AI_weight = {
 			modifier = {
 				factor = 2
@@ -2059,6 +2099,11 @@ alien_rights = {
 		
 		potential = {
 			NOT = { has_valid_civic = civic_anarchist }
+		}
+		
+		on_enabled = {
+			set_timed_country_flag = { flag = activate_alien_no_rights days = 30 }
+			country_event = { id = retile_mandate.4 }
 		}
 		
 		AI_weight = {

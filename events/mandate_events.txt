@@ -65,12 +65,18 @@ country_event = {
 			has_event_chain = mandate_district_generator_chain
 			has_event_chain = mandate_district_mining_chain
 			has_event_chain = mandate_district_farming_chain
+			## RETILE MANDATES ##
+			has_event_chain = mandate_space_exploration_chain
 		}
 	}
 
 	immediate = {
 		switch = {
 			trigger = has_event_chain
+			
+			mandate_space_exploration_chain = {
+				end_event_chain = mandate_space_exploration_chain
+			}
 			
 			mandate_separatist_chain = {
 				end_event_chain = mandate_separatist_chain

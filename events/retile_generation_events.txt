@@ -960,17 +960,43 @@ event = {
 	}
 
 	immediate = {  
+		# every_ship = {
+		# 	delete_ship = this
+		# }
 		every_country = {
-			destroy_country = yes
+				every_owned_leader = {
+					kill_leader = { show_notification = no }
+				}
+		}
+		every_system = {
+			limit = { has_hyperlane_to = prev }
+			remove_hyperlane = { from = this to = prev }
 		}
 		every_system = {
 			every_system_planet = {
 				remove_planet = yes
+			}
+			every_fleet_in_system = {
+				delete_fleet = this
+			}
+			every_system_ambient_object = {
+				destroy_ambient_object = this
+			}
+			every_system_megastructure = {
+				delete_megastructure = this
+			}
+			set_asteroid_belt = {
+				radius = 0
 			}
 		}
 	}
 	
 	option = {
 		name = retile_generate.7.a
+		hidden_effect = {
+			every_country = {
+				destroy_country = yes
+			}
+		}
 	}
 }

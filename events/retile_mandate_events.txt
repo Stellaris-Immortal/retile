@@ -1,0 +1,197 @@
+namespace = retile_mandate
+
+# Edict Mandate Finish
+country_event = {
+	id = retile_mandate.1
+	title = retile_mandate.1.title
+	desc = retile_mandate.1.desc
+	picture = GFX_evt_galactic_senate
+	show_sound = event_default
+	hide_window = no
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = ".1 active"
+		switch = {
+			trigger = has_event_chain
+			mandate_anti_crime_chain = { end_event_chain = mandate_anti_crime_chain }
+			mandate_space_exploration_chain = { end_event_chain = mandate_space_exploration_chain }
+			mandate_recycling_chain = { end_event_chain = mandate_recycling_chain }
+		}
+	}
+
+	option = {
+		name = OK
+		add_monthly_resource_mult = {
+			resource = unity
+			value = @unityreward
+			min = @unitymin
+			max = @unitymax
+		}
+	}
+}
+
+# Edict Mandate Check
+country_event = {
+	id = retile_mandate.2
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			OR = {
+				has_event_chain = mandate_anti_crime_chain
+				has_event_chain = mandate_space_exploration_chain
+				has_event_chain = mandate_recycling_chain
+				has_event_chain = mandate_labor_chain
+				has_event_chain = mandate_celebration_chain
+				has_event_chain = mandate_diplomatic_chain
+				has_event_chain = mandate_bureaucratic_chain
+				has_event_chain = mandate_administrative_chain
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						has_event_chain = mandate_anti_crime_chain
+						has_country_flag = activate_anti_crime
+					}
+					AND = {
+						has_event_chain = mandate_space_exploration_chain
+						has_country_flag = activate_space_campaign
+					}
+					AND = {
+						has_event_chain = mandate_recycling_chain
+						has_country_flag = activate_recycling
+					}
+					AND = {
+						has_event_chain = mandate_labor_chain
+						has_country_flag = activate_labor
+					}
+					AND = {
+						has_event_chain = mandate_celebration_chain
+						has_country_flag = activate_celebration
+					}
+					AND = {
+						has_event_chain = mandate_diplomatic_chain
+						has_country_flag = activate_diplomatic
+					}
+					AND = {
+						has_event_chain = mandate_bureaucratic_chain
+						has_country_flag = activate_bureaucratic
+					}
+					AND = {
+						has_event_chain = mandate_administrative_chain
+						has_country_flag = activate_administrative
+					}
+				}
+			}
+			country_event = { id = retile_mandate.1 }
+		}
+		else = {
+			country_event = { id = mandate.2 }
+		}
+	}
+}
+
+# Policy Mandate Finish
+country_event = {
+	id = retile_mandate.3
+	title = retile_mandate.3.title
+	desc = retile_mandate.3.desc
+	picture = GFX_evt_galactic_senate
+	show_sound = event_default
+	hide_window = no
+
+	is_triggered_only = yes
+
+	immediate = {
+		log = ".3 active"
+		switch = {
+			trigger = has_event_chain
+			mandate_anti_crime_chain = { end_event_chain = mandate_anti_crime_chain }
+		}
+	}
+
+	option = {
+		name = OK
+		add_monthly_resource_mult = {
+			resource = influence
+			value = @tier1influencereward
+			min = @tier1influencemin
+			max = @tier1influencemax
+		}
+	}
+}
+
+# Policy Mandate Check
+country_event = {
+	id = retile_mandate.4
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			OR = {
+				has_event_chain = mandate_common_law_chain
+				has_event_chain = mandate_state_police_chain
+				has_event_chain = mandate_environmental_deregulation_chain
+				has_event_chain = mandate_environmental_protection_chain
+				has_event_chain = mandate_unrestricted_wars_chain
+				has_event_chain = mandate_no_wars_chain
+				has_event_chain = mandate_alien_full_rights_chain
+				has_event_chain = mandate_alien_no_rights_chain
+			}
+		}
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				OR = {
+					AND = {
+						has_event_chain = mandate_common_law_chain
+						has_country_flag = activate_common_law
+					}
+					AND = {
+						has_event_chain = mandate_state_police_chain
+						has_country_flag = activate_state_police
+					}
+					AND = {
+						has_event_chain = mandate_environmental_deregulation_chain
+						has_country_flag = activate_environmental_deregulation
+					}
+					AND = {
+						has_event_chain = mandate_environmental_protection_chain
+						has_country_flag = activate_environmental_protection
+					}
+					AND = {
+						has_event_chain = mandate_unrestricted_wars_chain
+						has_country_flag = activate_unrestricted_wars
+					}
+					AND = {
+						has_event_chain = mandate_no_wars_chain
+						has_country_flag = activate_no_wars
+					}
+					AND = {
+						has_event_chain = mandate_alien_full_rights_chain
+						has_country_flag = activate_alien_full_rights
+					}
+					AND = {
+						has_event_chain = mandate_alien_no_rights_chain
+						has_country_flag = activate_alien_no_rights
+					}
+				}
+			}
+			country_event = { id = retile_mandate.3 }
+		}
+		else = {
+			country_event = { id = mandate.2 }
+		}
+	}
+}
