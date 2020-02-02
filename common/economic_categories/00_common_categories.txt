@@ -1,0 +1,1494 @@
+buffer = {
+	hidden = yes
+	use_for_ai_budget = yes
+}
+
+country = {
+	hidden = yes
+	generate_mult_modifiers = {
+		produces 
+	}
+
+	generate_add_modifiers = {
+		produces
+	}
+}
+
+# Base income of country
+country_base = {
+	parent = country
+	generate_add_modifiers = {
+		produces
+	}
+}
+
+trade = {
+}
+
+trade_routes = {
+	parent = trade
+}
+
+edicts = {
+	use_for_ai_budget = yes
+	parent = country
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+rare_edicts = {
+	use_for_ai_budget = yes
+	parent = edicts
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+ship_edicts = {
+	parent = rare_edicts
+	use_for_ai_budget = yes
+}
+
+campaigns = {
+	use_for_ai_budget = yes
+	parent = edicts
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+decisions = {
+	use_for_ai_budget = yes
+	parent = country
+}
+
+megastructures = {
+	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	parent = country
+}
+
+colonies = {
+	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	triggered_cost_modifier = {
+		key = ship_colonizer
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+		}
+
+		trigger = {
+			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_ship_class = shipclass_colonizer
+		}
+	}
+
+	parent = country
+}
+
+ships = {
+	use_for_ai_budget = yes
+	generate_mult_modifiers = {
+		upkeep
+	}
+
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	parent = country
+
+	triggered_cost_modifier = {
+		key = starbase_shipyard_build
+		use_parent_icon = yes
+
+		modifier_types = {
+			mult
+		}
+	}
+
+	triggered_cost_modifier = {
+		key = ship_corvette
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+		}
+
+		trigger = {
+			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_ship_size = corvette
+		}
+	}
+
+	triggered_cost_modifier = {
+		key = ship_destroyer
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+		}
+
+		trigger = {
+			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_ship_size = destroyer
+		}
+	}
+	
+	triggered_cost_modifier = {
+		key = ship_cruiser
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+		}
+
+		trigger = {
+			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_ship_size = cruiser
+		}
+	}
+	
+	triggered_cost_modifier = {
+		key = ship_battleship
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+		}
+
+		trigger = {
+			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_ship_size = battleship
+		}
+	}
+	
+	triggered_cost_modifier = {
+		key = ship_military_station_small
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+		}
+
+		trigger = {
+			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_ship_size = military_station_small
+		}
+	}
+
+	triggered_cost_modifier = {
+		key = ship_science
+		use_parent_icon = yes
+		modifier_types = {
+			mult
+		}
+
+		trigger = {
+			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_ship_class = shipclass_science_ship
+		}
+	}
+}
+
+ship_components = {
+	parent = ships
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+ship_sections = {
+	parent = ships
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+ship_upgrades = {
+	parent = ships
+	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+stations = {
+	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		produces
+	}
+
+	parent = country
+}
+
+station_gatherers = {
+	parent = stations
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		produces
+		cost
+	}
+}
+
+station_researchers = {
+	parent = stations
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		produces
+	}
+}
+
+station_observers = {
+	parent = stations
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+station_observer_missions = {
+	parent = station_observers
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+starbases = {
+	use_for_ai_budget = yes
+
+	generate_mult_modifiers = {
+		upkeep
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	parent = country
+}
+
+starbase_stations = {
+	parent = starbases
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	triggered_cost_modifier = {
+		key = starbase_outpost
+		modifier_types = {
+			mult
+		}
+
+		trigger = {
+			is_scope_valid = yes #When called from ship designer the design is not valid yet.
+			is_ship_size = starbase_outpost
+		}
+	}
+}
+
+starbase_buildings = {
+	parent = starbases
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+starbase_modules = {
+	parent = starbases
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+planets = {
+	parent = country
+	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	hidden = yes
+}
+
+planet_structures = {
+	parent = planets
+	hidden = yes
+	generate_mult_modifiers = {
+		cost
+		upkeep
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_buildings = {
+	parent = planet_structures
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+		upkeep
+	}
+}
+
+planet_buildings_strongholds = {
+	parent = planet_buildings
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+planet_branch_offices = {
+	parent = planets
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+	}
+
+	generate_add_modifiers = {
+		produces
+	}
+}
+
+planet_branch_office_buildings = {
+	parent = planets
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_districts = {
+	parent = planet_structures
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+		upkeep
+	}
+}
+
+planet_districts_cities = {
+	parent = planet_structures
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+planet_districts_hab_energy = {
+	parent = planet_districts
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+planet_districts_hab_research = {
+	parent = planet_districts
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+planet_districts_hab_mining = {
+	parent = planet_districts
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+planet_districts_hab_trade = {
+	parent = planet_districts
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+planet_districts_hab_leisure = {
+	parent = planet_districts
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		cost
+	}
+}
+
+planet_jobs = {
+	parent = planets
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+
+	triggered_produces_modifier = {
+		key = planet_jobs_slave
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_pop_category = slave
+		}
+	}
+
+	triggered_produces_modifier = {
+		key = planet_jobs_worker
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			OR = {
+				is_pop_category = worker
+				is_pop_category = slave # Yes, slave should count towards both worker and slave
+				is_pop_category = simple_drone
+			}
+		}
+	}
+
+	triggered_produces_modifier = {
+		key = planet_jobs_specialist
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_pop_category = specialist
+		}
+	}
+
+	triggered_produces_modifier = {
+		key = planet_jobs_simple_drone
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_pop_category = simple_drone
+		}
+	}	
+	
+	triggered_produces_modifier = {
+		key = planet_jobs_complex_drone
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_pop_category = complex_drone
+		}
+	}		
+
+	triggered_produces_modifier = {
+		key = planet_jobs_robotic
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_robot_pop = yes
+		}
+	}	
+}
+
+planet_bio_trophies = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		produces
+	}
+}
+
+planet_pop_assemblers = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		upkeep
+	}
+}
+
+planet_farmers = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		produces
+	}
+}
+
+planet_miners = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		produces
+	}
+
+	generate_add_modifiers = {
+		produces
+	}
+}
+
+planet_livestock = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_add_modifiers = {
+		produces
+	}
+}
+
+planet_technician = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		produces
+	}
+}
+
+planet_executives = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		produces
+	}
+}
+
+planet_managers = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		produces
+	}
+}
+
+planet_administrators = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_researchers = {
+	icon = "job_researcher"
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	parent = planet_jobs
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+}
+
+planet_metallurgists = {
+	icon = "job_foundry"
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	parent = planet_jobs
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+}
+
+planet_culture_workers = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		produces
+	}
+}
+
+planet_nobles = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_merchants = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_entertainers = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_soldiers = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_priests = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_enforcers = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_telepaths = {
+	parent = planet_enforcers
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_doctors = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_refiners = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		upkeep
+	}
+}
+
+planet_translucers = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		upkeep
+	}
+}
+
+planet_chemists = {
+	parent = planet_jobs
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		upkeep
+	}
+}
+
+planet_artisans = {
+	icon = "job_artisan"
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	parent = planet_jobs
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+}
+
+planet_pops = {
+	parent = planets
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		upkeep
+	}
+
+	triggered_upkeep_modifier = {
+		key = planet_pops_robotics
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_robot_pop = yes
+		}
+	}
+	
+	triggered_upkeep_modifier = {
+		key = planet_pops_organics
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_robot_pop = no
+		}
+	}
+
+	triggered_upkeep_modifier = {
+		key = planet_pops_unemployed
+		modifier_types = {
+			add
+		}
+		trigger = {
+			has_job = unemployed
+		}
+	}
+}
+
+unemployment_resources = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_add_modifiers = {
+		upkeep
+	}
+}
+
+pop_category_precursor = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_category_xeno_ward = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_category_pre_sapients = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_category_purge = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_category_bio_trophy = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_category_slave = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+	generate_mult_modifiers = {
+		upkeep
+	}
+}
+
+pop_category_robot = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_category_drones = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_category_workers = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_category_specialists = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_category_rulers = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_category_assimilation = {
+	parent = planet_pops
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+planet_deposits = {
+	parent = planets
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+orbital_mining_deposits = {
+	parent = station_gatherers
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+orbital_research_deposits = {
+	parent = station_researchers
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+deposit_blockers = {
+	use_for_ai_budget = yes
+	generate_mult_modifiers = {
+		cost
+	}
+
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	parent = country
+}
+
+armies = {
+	use_for_ai_budget = yes
+
+	generate_mult_modifiers = {
+		cost
+		upkeep
+	}
+
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	parent = country
+}
+
+leaders = {
+	use_for_ai_budget = yes
+	generate_mult_modifiers = {
+		cost
+		upkeep
+	}
+
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+	parent = country
+}
+
+leader_admirals = {
+	parent = leaders
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+leader_generals = {
+	parent = leaders
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+leader_scientists = {
+	parent = leaders
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+leader_governors = {
+	parent = leaders
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+diplomacy = {
+	hidden = yes
+	parent = country
+	generate_mult_modifiers = {
+		upkeep
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+pop_factions = {
+	parent = country
+	generate_mult_modifiers = {
+		produces
+	}
+
+	generate_add_modifiers = {
+		produces
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+subjects = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+federation = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+rivalries = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+non_aggression_pacts = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+research_agreements = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+commercial_pacts = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+defensive_pacts = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+guarantees = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+monthly_trades = {
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+claims = {
+	use_for_ai_budget = yes
+	parent = country
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+subject_tax = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+subject_integration = {
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+relics = {
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+artifact_actions = {
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+sector = {
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
