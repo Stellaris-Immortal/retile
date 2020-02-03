@@ -173,6 +173,10 @@ building_research_lab_2 = {
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_med }
+		} } }
 	}
 	
 	convert_to = {
@@ -268,6 +272,10 @@ building_research_lab_3 = {
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_high }
+		} } }
 	}
 	
 	convert_to = {

@@ -139,6 +139,10 @@ building_foundry_2 = {
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = volatile_motes amount > @cost_med }
+		} } }
 	}
 
 	resources = {
@@ -223,6 +227,10 @@ building_foundry_3 = {
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = volatile_motes amount > @cost_high }
+		} } }
 	}
 
 	resources = {
@@ -418,6 +426,10 @@ building_factory_2 = {
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = exotic_gases amount > @cost_med }
+		} } }
 	}
 	
 	resources = {
@@ -504,6 +516,10 @@ building_factory_3 = {
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = exotic_gases amount > @cost_high }
+		} } }
 	}
 	
 	resources = {

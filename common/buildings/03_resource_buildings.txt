@@ -19,6 +19,9 @@ building_hydroponics_farm = {
 	}
 	
 	allow = {
+		#hidden_trigger = { OR = { owner = { is_ai = no } owner = { is_ai = yes
+		#	
+		#} } }
 		retile_ready_food = yes
 	}
 	
@@ -484,6 +487,10 @@ building_food_processing_center = {
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = volatile_motes amount > @cost_med }
+		} } }
 	}
 	
 	prerequisites = {
@@ -695,6 +702,10 @@ building_mineral_purification_hub = {
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = exotic_gases amount > @cost_med }
+		} } }
 	}
 		
 	resources = {
@@ -913,6 +924,15 @@ building_energy_nexus = {
 		retile_energy = no
 	}
 	
+	allow = {
+		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_med }
+		} } }
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
