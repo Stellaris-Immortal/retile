@@ -524,7 +524,7 @@ country_event = {
 
 # Check AI countries and clean up mixed arcology districts
 country_event = {
-	id = retile_ai.104
+	id = retile_ai.105
 	hide_window = yes
 
 	trigger = {
@@ -537,6 +537,16 @@ country_event = {
 	}
 
 	after = {
+		every_owned_planet = {	### Specialize any un-flagged arcologies
+			limit = {
+				is_planet_class = pc_city
+				NOR = {
+					has_planet_flag = ai_research_arcology
+					has_planet_flag = ai_foundry_arcology
+				}
+			}
+			retile_set_arcology_focus = yes
+		}
 		if = {	# Got enough alloys, try to remove an engineering district from a research arcology
 			limit = {
 				has_monthly_income = { resource = alloys value > 50 }

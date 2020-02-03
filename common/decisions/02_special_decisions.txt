@@ -746,7 +746,7 @@ decision_arcology_project = {
 		owner = { 
 			host_has_dlc = "Megacorp"
 			has_technology = tech_housing_3
-			is_regular_empire = yes 
+			is_regular_empire = yes
 		}
 	}
 	
@@ -760,6 +760,17 @@ decision_arcology_project = {
 			num_districts = { type = district_generator value < 1 }
 		}
 		num_uncleared_blockers < 1
+		OR = {
+			owner = { is_ai = no }
+			NOR = {
+				has_planet_flag = ai_food_development
+				has_planet_flag = ai_minerals_development
+				has_planet_flag = ai_energy_development
+				has_planet_flag = ai_food_development_former
+				has_planet_flag = ai_minerals_development_former
+				has_planet_flag = ai_energy_development_former
+			}
+		}
 	}
 	
 	effect = {
@@ -964,6 +975,15 @@ decision_arcology_project_relic = {
 		}
 		num_uncleared_blockers < 1
 		owner = { has_technology = tech_housing_2 }
+		OR = {
+			owner = { is_ai = no }
+			NOR = {
+				has_planet_flag = ai_minerals_development
+				has_planet_flag = ai_energy_development
+				has_planet_flag = ai_minerals_development_former
+				has_planet_flag = ai_energy_development_former
+			}
+		}
 	}
 	
 	effect = {

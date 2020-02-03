@@ -1190,32 +1190,32 @@ retile_set_arcology_focus = {
 		} } }
 		set_planet_flag = ai_research_arcology
 	} else_if = {
-		limit = { NOT = {
+		limit = { NOT = { owner = {
 			any_owned_planet = {
 				is_planet_class = pc_city
 				has_planet_flag = ai_foundry_arcology
 				free_district_slots > 0
 			}
-		} }
+		} } }
 		set_planet_flag = ai_foundry_arcology
 	} else = {
 		random_list = {
 			10 = {
 				set_planet_flag = ai_research_arcology
 				modifier = {
-					mult = 2
+					factor = 2
 					owner = {
 						has_monthly_income = { resource = alloys value > 25 }
 					}
 				}
 				modifier = {
-					mult = 5
+					factor = 5
 					owner = {
 						has_monthly_income = { resource = alloys value > 50 }
 					}
 				}
 				modifier = {
-					mult = 10
+					factor = 10
 					owner = {
 						has_monthly_income = { resource = alloys value > 100 }
 					}
