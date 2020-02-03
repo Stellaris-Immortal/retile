@@ -24,12 +24,21 @@ building_commercial_zone = {
 		#	has_modifier = resort_colony
 		#}
 		retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_trade_arcology
+		} } }
 	}
 
 	destroy_trigger = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_trade_arcology }
+			}
 		}
 	}
 	
@@ -117,6 +126,11 @@ building_commercial_megaplex = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_trade_arcology }
+			}
 		}
 	}
 	
@@ -215,6 +229,11 @@ building_galactic_stock_exchange = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_trade_arcology }
+			}
 		}
 	}
 	

@@ -140,7 +140,7 @@ country_event = {
 	}
 }
 
-# Check AI planets and remove wasteful district deposits
+# Check AI planets and remove wasteful misc. districts
 planet_event = {
 	id = retile_ai.101
 	hide_window = yes
@@ -209,11 +209,10 @@ country_event = {
 	after = {
 		if = {
 			limit = {
-				has_monthly_income = { resource = energy value > 500 }
+				has_monthly_income = { resource = energy value > 225 }
 			}
 			random_owned_planet = {
 				limit = {
-					NOT = { has_planet_flag = ai_energy_development_sticky }
 					OR = {
 						num_districts = { type = district_generator value > 0 }
 						num_districts = { type = district_generator_uncapped value > 0 }
@@ -224,7 +223,7 @@ country_event = {
 				weights = {
 					base = 1
 					modifier = {
-						mult = 10000
+						mult = 1000
 						OR = {
 							has_planet_flag = ai_arcology_development
 							is_planet_class = pc_relic
@@ -241,23 +240,51 @@ country_event = {
 						NOT = { has_planet_flag = ai_energy_development }
 						NOT = { has_planet_flag = ai_energy_development_former }
 					}
+					modifier = {
+						mult = 1000
+						NOT = { has_planet_flag = ai_energy_development_sticky }
+					}
 				}
 				if = { limit = { num_districts = { type = district_generator value > 0 } }
 					remove_district = district_generator
+					if = { limit = { num_districts = { type = district_generator value < 1 } }
+						remove_planet_flag = ai_energy_development
+						remove_planet_flag = ai_energy_development_former
+						remove_planet_flag = ai_energy_development_sticky
+						#owner = { retile_flag_ai_energy_world = yes }
+					}
 				}
 				if = { limit = { num_districts = { type = district_generator_uncapped value > 0 } }
 					remove_district = district_generator_uncapped
+					if = { limit = { num_districts = { type = district_generator_uncapped value < 1 } }
+						remove_planet_flag = ai_energy_development
+						remove_planet_flag = ai_energy_development_former
+						remove_planet_flag = ai_energy_development_sticky
+						#owner = { retile_flag_ai_energy_world = yes }
+					}
 				}
 				if = { limit = { num_districts = { type = district_hab_energy value > 0 } }
 					remove_district = district_hab_energy
+					if = { limit = { num_districts = { type = district_hab_energy value < 1 } }
+						remove_planet_flag = ai_energy_development
+						remove_planet_flag = ai_energy_development_former
+						remove_planet_flag = ai_energy_development_sticky
+						#owner = { retile_flag_ai_energy_world = yes }
+					}
 				}
 				if = { limit = { num_districts = { type = district_rw_generator value > 0 } }
 					remove_district = district_rw_generator
+					if = { limit = { num_districts = { type = district_rw_generator value < 1 } }
+						remove_planet_flag = ai_energy_development
+						remove_planet_flag = ai_energy_development_former
+						remove_planet_flag = ai_energy_development_sticky
+						#owner = { retile_flag_ai_energy_world = yes }
+					}
 				}
 			}
 		} else_if = {	# more aggressively clean up arcology worlds.
 			limit = {
-				has_monthly_income = { resource = energy value > 70 }
+				has_monthly_income = { resource = energy value > 30 }
 			}
 			random_owned_planet = {
 				limit = {
@@ -288,11 +315,10 @@ country_event = {
 	after = {
 		if = {
 			limit = {
-				has_monthly_income = { resource = minerals value > 500 }
+				has_monthly_income = { resource = minerals value > 150 }
 			}
 			random_owned_planet = {
 				limit = {
-					NOT = { has_planet_flag = ai_minerals_development_sticky }
 					OR = {
 						num_districts = { type = district_mining value > 0 }
 						num_districts = { type = district_mining_uncapped value > 0 }
@@ -303,7 +329,7 @@ country_event = {
 				weights = {
 					base = 1
 					modifier = {
-						mult = 10000
+						mult = 1000
 						OR = {
 							has_planet_flag = ai_arcology_development
 							is_planet_class = pc_relic
@@ -320,23 +346,51 @@ country_event = {
 						NOT = { has_planet_flag = ai_minerals_development }
 						NOT = { has_planet_flag = ai_minerals_development_former }
 					}
+					modifier = {
+						mult = 1000
+						NOT = { has_planet_flag = ai_minerals_development_sticky }
+					}
 				}
 				if = { limit = { num_districts = { type = district_mining value > 0 } }
 					remove_district = district_mining
+					if = { limit = { num_districts = { type = district_mining value < 1 } }
+						remove_planet_flag = ai_minerals_development
+						remove_planet_flag = ai_minerals_development_former
+						remove_planet_flag = ai_minerals_development_sticky
+						#owner = { retile_flag_ai_minerals_world = yes }
+					}
 				}
 				if = { limit = { num_districts = { type = district_mining_uncapped value > 0 } }
 					remove_district = district_mining_uncapped
+					if = { limit = { num_districts = { type = district_mining_uncapped value < 1 } }
+						remove_planet_flag = ai_minerals_development
+						remove_planet_flag = ai_minerals_development_former
+						remove_planet_flag = ai_minerals_development_sticky
+						#owner = { retile_flag_ai_minerals_world = yes }
+					}
 				}
 				if = { limit = { num_districts = { type = district_hab_mining value > 0 } }
 					remove_district = district_hab_mining
+					if = { limit = { num_districts = { type = district_hab_mining value < 1 } }
+						remove_planet_flag = ai_minerals_development
+						remove_planet_flag = ai_minerals_development_former
+						remove_planet_flag = ai_minerals_development_sticky
+						#owner = { retile_flag_ai_minerals_world = yes }
+					}
 				}
 				if = { limit = { num_districts = { type = district_rw_mining value > 0 } }
 					remove_district = district_rw_mining
+					if = { limit = { num_districts = { type = district_rw_mining value < 1 } }
+						remove_planet_flag = ai_minerals_development
+						remove_planet_flag = ai_minerals_development_former
+						remove_planet_flag = ai_minerals_development_sticky
+						#owner = { retile_flag_ai_minerals_world = yes }
+					}
 				}
 			}
 		} else_if = {	# more aggressively clean up arcology worlds.
 			limit = {
-				has_monthly_income = { resource = minerals value > 70 }
+				has_monthly_income = { resource = minerals value > 30 }
 			}
 			random_owned_planet = {
 				limit = {
@@ -368,13 +422,12 @@ country_event = {
 		if = {
 			limit = {
 				OR = {
-					has_monthly_income = { resource = food value > 100 }
+					has_monthly_income = { resource = food value > 75 }
 					is_plantoid_empire = yes
 				}
 			}
 			random_owned_planet = {
 				limit = {
-					NOT = { has_planet_flag = ai_food_development_sticky }
 					OR = {
 						num_districts = { type = district_farming value > 0 }
 						num_districts = { type = district_farming_uncapped value > 0 }
@@ -411,23 +464,51 @@ country_event = {
 						NOT = { has_planet_flag = ai_food_development }
 						NOT = { has_planet_flag = ai_food_development_former }
 					}
+					modifier = {
+						mult = 1000
+						NOT = { has_planet_flag = ai_food_development_sticky }
+					}
 				}
 				if = { limit = { num_districts = { type = district_farming value > 0 } }
 					remove_district = district_farming
+					if = { limit = { num_districts = { type = district_farming value < 1 } }
+						remove_planet_flag = ai_food_development
+						remove_planet_flag = ai_food_development_former
+						remove_planet_flag = ai_food_development_sticky
+						#owner = { retile_flag_ai_food_world = yes }
+					}
 				}
 				if = { limit = { num_districts = { type = district_farming_uncapped value > 0 } }
 					remove_district = district_farming_uncapped
+					if = { limit = { num_districts = { type = district_farming_uncapped value < 1 } }
+						remove_planet_flag = ai_food_development
+						remove_planet_flag = ai_food_development_former
+						remove_planet_flag = ai_food_development_sticky
+						#owner = { retile_flag_ai_food_world = yes }
+					}
 				}
 				if = { limit = { num_districts = { type = district_hab_hydroponics value > 0 } }
 					remove_district = district_hab_hydroponics
+					if = { limit = { num_districts = { type = district_hab_hydroponics value < 1 } }
+						remove_planet_flag = ai_food_development
+						remove_planet_flag = ai_food_development_former
+						remove_planet_flag = ai_food_development_sticky
+						#owner = { retile_flag_ai_food_world = yes }
+					}
 				}
 				if = { limit = { num_districts = { type = district_rw_farming value > 0 } }
 					remove_district = district_rw_farming
+					if = { limit = { num_districts = { type = district_rw_farming value < 1 } }
+						remove_planet_flag = ai_food_development
+						remove_planet_flag = ai_food_development_former
+						remove_planet_flag = ai_food_development_sticky
+						#owner = { retile_flag_ai_food_world = yes }
+					}
 				}
 			}
 		} else_if = {	# more aggressively clean up arcology worlds.
 			limit = {
-				has_monthly_income = { resource = food value > 35 }
+				has_monthly_income = { resource = food value > 10 }
 			}
 			random_owned_planet = {
 				limit = {
@@ -436,6 +517,72 @@ country_event = {
 					num_districts = { type = district_farming value > 0 }
 				}
 				remove_district = district_farming
+			}
+		}
+	}
+}
+
+# Check AI countries and clean up mixed arcology districts
+country_event = {
+	id = retile_ai.104
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		months = 18
+	}
+
+	after = {
+		if = {	# Got enough alloys, try to remove an engineering district from a research arcology
+			limit = {
+				has_monthly_income = { resource = alloys value > 50 }
+				any_owned_planet = {
+					is_planet_class = pc_city
+					has_planet_flag = ai_research_arcology
+					num_districts = { type = district_engineering_arcology value > 0 }
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					is_planet_class = pc_city
+					has_planet_flag = ai_research_arcology
+					num_districts = { type = district_engineering_arcology value > 0 }
+				}
+				remove_district = district_engineering_arcology
+			}
+		} else_if = {	# Not enough alloys, try to remove a research district from an engineering arcology
+			limit = {
+				has_monthly_income = { resource = alloys value < 25 }
+				any_owned_planet = {
+					is_planet_class = pc_city
+					has_planet_flag = ai_foundry_arcology
+					OR = {
+						num_districts = { type = district_research_arcology value > 0 }
+						num_districts = { type = district_digsite_arcology value > 0 }
+					}
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					is_planet_class = pc_city
+					has_planet_flag = ai_foundry_arcology
+					OR = {
+						num_districts = { type = district_research_arcology value > 0 }
+						num_districts = { type = district_digsite_arcology value > 0 }
+					}
+				}
+				if = {
+					limit = { num_districts = { type = district_research_arcology value > 0 } }
+					remove_district = district_research_arcology
+				}
+				if = {
+					limit = { num_districts = { type = district_digsite_arcology value > 0 } }
+					remove_district = district_digsite_arcology
+				}
 			}
 		}
 	}

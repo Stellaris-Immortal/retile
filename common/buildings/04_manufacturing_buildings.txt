@@ -27,10 +27,21 @@ building_foundry_1 = {
 			}
 		}
 		#retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_foundry_arcology
+		} } }
 	}
 	
 	destroy_trigger = {
-		retile_urban = no	
+		OR = {
+			retile_urban = no	
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_foundry_arcology }
+			}
+		}
 	}
 
 	resources = {
@@ -133,7 +144,14 @@ building_foundry_2 = {
 	can_be_disabled = no
 
 	destroy_trigger = {
-		retile_urban = no
+		OR = {
+			retile_urban = no	
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_foundry_arcology }
+			}
+		}
 	}
 	
 	allow = {
@@ -221,7 +239,14 @@ building_foundry_3 = {
 	can_be_disabled = no
 
 	destroy_trigger = {
-		retile_urban = no
+		OR = {
+			retile_urban = no	
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_foundry_arcology }
+			}
+		}
 	}
 	
 	allow = {
@@ -318,12 +343,21 @@ building_factory_1 = {
 			}
 		}
 		#retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_foundry_arcology
+		} } }
 	}
 	
 	destroy_trigger = {
 		OR = {
 			retile_urban = no
 			owner = { country_uses_goods = no }
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_foundry_arcology }
+			}
 		}
 	}
 	
@@ -420,6 +454,11 @@ building_factory_2 = {
 		OR = {
 			retile_urban = no
 			owner = { country_uses_goods = no }
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_foundry_arcology }
+			}
 		}
 	}
 	
@@ -510,6 +549,11 @@ building_factory_3 = {
 		OR = {
 			retile_urban = no
 			owner = { country_uses_goods = no }
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_foundry_arcology }
+			}
 		}
 	}
 	
@@ -609,12 +653,21 @@ building_ministry_production = {
 				num_districts = { type = district_engineering_arcology value > 0 }
 			}
 		}
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_foundry_arcology
+		} } }
 	}
 
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_foundry_arcology }
+			}
 		}
 	}
 	

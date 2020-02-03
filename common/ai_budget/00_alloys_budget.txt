@@ -74,14 +74,7 @@ alloys_expenditure_ships = {
 			used_naval_capacity_percent < 0.5
 		}
 		has_monthly_income = { resource = energy value > 10 }
-		OR = {
-			years_passed < 50
-			has_monthly_income = { resource = energy value > 25 }
-		}
-		OR = {
-			years_passed < 100
-			has_monthly_income = { resource = energy value > 50 }
-		}
+		has_monthly_income = { resource = alloys value > 10 }
 	}
 	
 	fraction = {
