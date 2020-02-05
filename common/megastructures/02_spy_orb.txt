@@ -23,6 +23,7 @@ spy_orb_0 = {
 	prerequisites = { "tech_sentry_array" }
 	
 	possible = {
+		ai_no_unfinished_megastructures = yes
 		exists = starbase
 		custom_tooltip = {
 			fail_text = "requires_inside_border"
@@ -45,7 +46,23 @@ spy_orb_0 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_spyorb"
-			from = { NOT = { has_country_flag = built_spyorb } }
+			from = {
+				NOT = {
+					any_owned_megastructure = {
+						OR = {
+							is_megastructure_type = spy_orb_0
+							is_megastructure_type = spy_orb_1
+							is_megastructure_type = spy_orb_2
+							is_megastructure_type = spy_orb_3
+							is_megastructure_type = spy_orb_4
+							is_megastructure_type = spy_orb_ruined
+							is_megastructure_type = spy_orb_restored
+						}
+					}
+				}
+			}
+			### Removed this because it's a stupid way to check for this requirement...
+			# from = { NOT = { has_country_flag = built_spyorb } }
 		}
 	}
 	
@@ -272,8 +289,27 @@ spy_orb_restored = {
 	}
 
 	possible = {
-		from = { 
-			has_technology = tech_mega_engineering
+		ai_no_unfinished_megastructures = yes
+		from = { has_technology = tech_mega_engineering }
+		custom_tooltip = {
+			fail_text = "requires_no_existing_spyorb"
+			from = {
+				NOT = {
+					any_owned_megastructure = {
+						OR = {
+							is_megastructure_type = spy_orb_0
+							is_megastructure_type = spy_orb_1
+							is_megastructure_type = spy_orb_2
+							is_megastructure_type = spy_orb_3
+							is_megastructure_type = spy_orb_4
+							#is_megastructure_type = spy_orb_ruined
+							is_megastructure_type = spy_orb_restored
+						}
+					}
+				}
+			}
+			### Removed this because it's a stupid way to check for this requirement...
+			# from = { NOT = { has_country_flag = built_spyorb } }
 		}
 	}
 
