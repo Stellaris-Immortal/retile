@@ -23,6 +23,80 @@ colonist = {
 
 	resources = {
 		category = planet_colonists
+		produces = {
+			energy = 4
+			minerals = 4
+		}
+		produces = {
+			trigger = { 
+				NOR = { 
+					has_trait = trait_lithoid
+					has_trait = trait_plantoid
+				}
+			}
+			food = 1
+		}
+		produces = {
+			trigger = { has_trait = trait_lithoid }
+			minerals = 4
+		}
+		produces = {
+			trigger = { owner = { has_technology = tech_frontier_health } }
+			energy = 3
+			minerals = 3
+		}
+		produces = {
+			trigger = { 
+				owner = { has_technology = tech_frontier_health }
+				NOR = { 
+					has_trait = trait_lithoid
+					has_trait = trait_plantoid
+				}
+			}
+			food = 1
+		}
+		produces = {
+			trigger = {
+				owner = { has_technology = tech_frontier_health }
+				has_trait = trait_lithoid
+			}
+			minerals = 3
+		}
+		produces = {
+			trigger = { owner = { has_technology = tech_frontier_hospital } }
+			energy = 3
+			minerals = 3
+		}
+		produces = {
+			trigger = { 
+				owner = { has_technology = tech_frontier_hospital }
+				NOR = { 
+					has_trait = trait_lithoid
+					has_trait = trait_plantoid
+				}
+			}
+			food = 1
+		}
+		produces = {
+			trigger = {
+				owner = { has_technology = tech_frontier_hospital }
+				has_trait = trait_lithoid
+			}
+			minerals = 3
+		}
+		upkeep = {
+			consumer_goods = 5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			has_trait = trait_plantoid
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+		}
 	}
 	
 	triggered_planet_modifier = {
@@ -34,34 +108,51 @@ colonist = {
 			} }
 		}
 		modifier = {
-			pop_growth_speed = 0.33
+			pop_environment_tolerance = 0.10
 			planet_amenities_add = 15
 		}
 	}
 	
-
 	triggered_planet_modifier = {
 		potential = {
 			planet = { free_housing >= 0 }
-			owner = {
-				has_technology = tech_frontier_health
-			}
+			owner = { has_technology = tech_frontier_health }
+			has_trait = trait_plantoid
 		}
 		modifier = {
-			pop_growth_speed = 0.34
-			planet_amenities_add = 15
+			pop_environment_tolerance = 0.05
 		}
 	}
 
 	triggered_planet_modifier = {
 		potential = {
 			planet = { free_housing >= 0 }
-			owner = { 
-				has_technology = tech_frontier_hospital
-			}
+			owner = { has_technology = tech_frontier_health }
 		}
 		modifier = {
-			pop_growth_speed = 0.33
+			pop_environment_tolerance = 0.05
+			planet_amenities_add = 15
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			owner = { has_technology = tech_frontier_hospital }
+			has_trait = trait_plantoid
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			owner = { has_technology = tech_frontier_hospital }
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
 			planet_amenities_add = 15
 		}
 	}
@@ -78,16 +169,7 @@ colonist = {
 			planet_pop_assembly_add = 1
 			planet_amenities_add = 15
 		}
-	}
-
-#	resources = {
-#		category = planet_jobs
-#		produces = {
-#			energy = 10
-#			minerals = 10
-#			food = 4
-#		}
-#	}	
+	}	
 	
 	weight = {
 		weight = @ruler_job_weight
