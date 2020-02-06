@@ -203,7 +203,12 @@ planet_event = {
 pop_event = {
 	id = retile_pop.110
 	hide_window = yes
-	is_triggered_only = yes
+	
+	trigger = {
+		planet = {
+			habitability = { who = root value < 50 }
+		}
+	}
 
 	mean_time_to_happen = {
 		days = 1800

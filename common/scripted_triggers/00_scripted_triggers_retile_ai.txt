@@ -11,6 +11,19 @@ retile_ready = {	# Planet scope
 	}
 }
 
+retile_ready_labor = {
+	OR = {
+		NOT = { exists = owner }
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			PREV = {
+				free_jobs > 0
+				free_housing < 1
+			}
+		}
+	}
+}
+
 # Does this planet need more custodians?
 retile_ready_preserve = {	# Planet scope
 	OR = {
