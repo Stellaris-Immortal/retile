@@ -124,12 +124,7 @@ mandate_shipwright = {
 
 # Fiscal Conservative
 mandate_monthly_energy = {
-	valid = { 
-		exists = owner
-		owner = {
-			has_monthly_income = { resource = energy value < 20 }
-		} 
-	}
+	valid = { always = no }
 	parameters = {}
 
 	on_term_started = {
@@ -151,12 +146,7 @@ mandate_monthly_energy = {
 }
 
 mandate_monthly_minerals = {
-	valid = {
-		exists = owner
-		owner = {
-			has_monthly_income = { resource = minerals value < 30 }
-		}
-	}
+	valid = { always = no }
 	parameters = {}
 
 	on_term_started = {
@@ -178,13 +168,7 @@ mandate_monthly_minerals = {
 }
 
 mandate_monthly_food = {
-	valid = {
-		exists = owner
-		owner = {
-			is_lithoid_empire = no
-			has_monthly_income = { resource = food value < 15 }
-		}
-	}
+	valid = { always = no }
 	parameters = {}
 
 	on_term_started = {
@@ -206,12 +190,7 @@ mandate_monthly_food = {
 }
 
 mandate_monthly_alloys = {
-	valid = {
-		exists = owner
-		owner = {
-			has_monthly_income = { resource = alloys value < 12 }
-		}
-	}
+	valid = { always = no}
 	parameters = {}
 
 	on_term_started = {
@@ -233,12 +212,7 @@ mandate_monthly_alloys = {
 }
 
 mandate_monthly_consumer_goods = {
-	valid = {
-		exists = owner
-		owner = {
-			has_monthly_income = { resource = consumer_goods value < 6 }
-		}
-	}
+	valid = { always = no }
 	parameters = {}
 
 	on_term_started = {
