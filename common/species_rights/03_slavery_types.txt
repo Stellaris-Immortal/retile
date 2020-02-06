@@ -24,8 +24,10 @@ slavery_domestic = {
 		modifier = {
 			factor = 10
 			is_same_species = owner_species
-			#is_majority_species = yes
-			#this = { is_exact_same_species = from.owner_main_species }
+			from = { any_owned_pop = {
+				is_same_species = owner_species
+				is_majority_species = yes
+			} }
 		}
 	}
 }
