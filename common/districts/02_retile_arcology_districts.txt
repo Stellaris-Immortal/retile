@@ -16,9 +16,13 @@ district_embassy_arcology = {
 	
 	allow = {
 		retile_diplomacy = yes
-		hidden_trigger = {
-			retile_ready_city = yes
-		}
+		#hidden_trigger = {
+		#	retile_ready_city = yes
+		#}
+		hidden_trigger = { OR = { owner = { is_ai = no } AND = {
+			free_jobs < 1
+			has_planet_flag = ai_embassy_arcology
+		} } }
 	}
 
 	resources = {
@@ -120,9 +124,13 @@ district_trade_arcology = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_city = yes
-		}
+		#hidden_trigger = {
+		#	retile_ready_city = yes
+		#}
+		hidden_trigger = { OR = { owner = { is_ai = no } AND = {
+			free_jobs < 1
+			has_planet_flag = ai_trade_arcology
+		} } }
 	}
 
 	resources = {
@@ -288,9 +296,13 @@ district_engineering_arcology = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_city = yes
-		}
+		#hidden_trigger = {
+		#	retile_ready_city = yes
+		#}
+		hidden_trigger = { OR = { owner = { is_ai = no } AND = {
+			free_jobs < 1
+			has_planet_flag = ai_engineering_arcology
+		} } }
 	}
 
 	resources = {
@@ -505,9 +517,13 @@ district_digsite_arcology = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_city = yes
-		}
+		#hidden_trigger = {
+		#	retile_ready_city = yes
+		#}
+		hidden_trigger = { OR = { owner = { is_ai = no } AND = {
+			free_jobs < 1
+			has_planet_flag = ai_research_arcology
+		} } }
 	}
 
 	resources = {
@@ -642,9 +658,13 @@ district_research_arcology = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_city = yes
-		}
+		#hidden_trigger = {
+		#	retile_ready_city = yes
+		#}
+		hidden_trigger = { OR = { owner = { is_ai = no } AND = {
+			free_jobs < 1
+			has_planet_flag = ai_research_arcology
+		} } }
 	}
 
 	resources = {

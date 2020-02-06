@@ -44,15 +44,6 @@ planet_event = {
 			limit = { NOT = { has_citizenship_type = { type = citizenship_organic_trophy } } }
 			weights = {
 				base = 1
-				modifier = {
-					mult = 5
-					OR = {
-						has_job = no
-						has_job = servant
-						#has_job = laborer
-						#has_job = slave_toiler ### Not sure what to do here...
-					}
-				}
 				modifier = { add = 20 root = { habitability = { who = prev value <= 0 } } }
 				modifier = { add = 19 root = { habitability = { who = prev value <= 0.05 } } }
 				modifier = { add = 18 root = { habitability = { who = prev value <= 0.10 } } }
@@ -73,6 +64,26 @@ planet_event = {
 				modifier = { add = 3 root = { habitability = { who = prev value <= 0.85 } } }
 				modifier = { add = 2 root = { habitability = { who = prev value <= 0.90 } } }
 				modifier = { add = 1 root = { habitability = { who = prev value <= 0.95 } } }
+				modifier = {
+					mult = 5
+					NOR = {
+						is_plantoid = yes
+						#is_lithoid = yes
+					}
+				}
+				#modifier = {
+				#	mult = 20
+				#	NOT = { is_robotic_species = yes }
+				#}
+				#modifier = {
+				#	mult = 5
+				#	OR = {
+				#		has_job = no
+				#		has_job = servant
+				#		#has_job = laborer
+				#		#has_job = slave_toiler ### Not sure what to do here...
+				#	}
+				#}
 			}
 			pop_event = { id = retile_pop.91 }
 		}

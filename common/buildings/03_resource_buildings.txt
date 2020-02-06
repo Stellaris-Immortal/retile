@@ -19,12 +19,24 @@ building_hydroponics_farm = {
 	}
 	
 	allow = {
+		#hidden_trigger = { OR = { owner = { is_ai = no } owner = { is_ai = yes
+		#	
+		#} } }
 		retile_ready_food = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_custodian_arcology
+		} } }
 	}
 	
 	destroy_trigger = {
 		OR = {
 			has_modifier = slave_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_custodian_arcology }
+			}
 		}
 	}
 
@@ -141,11 +153,20 @@ building_recycling_center = {
 	allow = {
 		always = yes
 		#retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_custodian_arcology
+		} } }
 	}
 	
 	destroy_trigger = {
 		OR = {
 			has_modifier = slave_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_custodian_arcology }
+			}
 		}
 	}
 
@@ -243,11 +264,20 @@ building_solar_panels = {
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_custodian_arcology
+		} } }
 	}
 	
 	destroy_trigger = {
 		OR = {
 			has_modifier = slave_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_custodian_arcology }
+			}
 		}
 	}
 
@@ -350,16 +380,20 @@ building_food_processing_facility = {
 	allow = {
 		#retile_ready = yes
 		retile_food = yes
+		OR = {
+			owner = { is_ai = no }
+			has_planet_flag = ai_food_development_sticky
+		}
 	}
 	
 	destroy_trigger = {
-		owner = { country_uses_food = no }
 		OR = {
+			owner = { country_uses_food = no }
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
 			has_modifier = resort_colony
+			retile_food = no
 		}
-		retile_food = no
 	}
 		
 	upgrades = {
@@ -427,34 +461,7 @@ building_food_processing_facility = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# just a bit of food security.
-			weight = 100
-			owner = { has_monthly_income = { resource = food value < 25 } }
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 100000
-			owner = { has_monthly_income = { resource = food value < 5 } }
-		}
-		modifier = {	# try to build at least one...
-			weight = 100
-			NOR = {
-				is_capital = yes
-				owner = { any_owned_planet = { OR = {
-					has_building = building_food_processing_facility
-					has_building = building_food_processing_center
-				} } }
-			}
-		}
-		modifier = {	# avoid bad food worlds...
-			factor = 0.5
-			ai_good_food_world = no
-		}
-		modifier = {
-			factor = -1
-			has_planet_flag = ai_arcology_development
-		}
+		weight = 10000
 	}
 
 	ai_resource_production = {
@@ -472,18 +479,22 @@ building_food_processing_center = {
 	can_be_disabled = no
 		
 	destroy_trigger = {
-		owner = { country_uses_food = no }
 		OR = {
+			owner = { country_uses_food = no }
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
 			has_modifier = resort_colony
+			retile_food = no
 		}
-		retile_food = no
 	}
 	
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = volatile_motes amount > @cost_med }
+		} } }
 	}
 	
 	prerequisites = {
@@ -575,18 +586,22 @@ building_mineral_purification_plant = {
 			has_modifier = resort_colony
 		}
 	}
-	
+
 	allow = {
 		#retile_ready = yes
 		retile_minerals = yes
+		OR = {
+			owner = { is_ai = no }
+			has_planet_flag = ai_minerals_development_sticky
+		}
 	}
 	
 	destroy_trigger = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
+			retile_minerals = no
 		}
-		retile_minerals = no
 	}
 		
 	prerequisites = {
@@ -654,20 +669,7 @@ building_mineral_purification_plant = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# only build if needed
-			weight = 100
-			owner = { has_monthly_income = { resource = minerals value < 5 } }
-		}
-		modifier = {	# avoid bad worlds...
-			factor = 0.5
-			ai_good_minerals_world = no
-		}
-		modifier = {
-			factor = -1
-			has_planet_flag = ai_arcology_development
-		}
+		weight = 10000
 	}
 
 	ai_resource_production = {
@@ -688,13 +690,17 @@ building_mineral_purification_hub = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
+			retile_minerals = no
 		}
-		retile_minerals = no
 	}
 	
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = exotic_gases amount > @cost_med }
+		} } }
 	}
 		
 	resources = {
@@ -790,14 +796,18 @@ building_energy_grid = {
 	allow = {
 		#retile_ready = yes
 		retile_energy = yes
+		OR = {
+			owner = { is_ai = no }
+			has_planet_flag = ai_energy_development_sticky
+		}
 	}
 	
 	destroy_trigger = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
+			retile_energy = no
 		}
-		retile_energy = no
 	}
 	
 	resources = {
@@ -865,30 +875,7 @@ building_energy_grid = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# energy security
-			weight = 100
-			owner = { has_monthly_income = { resource = energy value < 25 } }
-		}
-		modifier = {	# try to build at least one...
-			weight = 100
-			NOR = {
-				is_capital = yes
-				owner = { any_owned_planet = { OR = {
-					has_building = building_energy_grid
-					has_building = building_energy_nexus
-				} } }
-			}
-		}
-		modifier = {	# avoid bad worlds...
-			factor = 0.5
-			ai_good_energy_world = no
-		}
-		modifier = {
-			factor = -1
-			has_planet_flag = ai_arcology_development
-		}
+		weight = 10000
 	}
 	
 	ai_resource_production = {
@@ -909,10 +896,19 @@ building_energy_nexus = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
+			retile_energy = no
 		}
-		retile_energy = no
 	}
 	
+	allow = {
+		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_med }
+		} } }
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {

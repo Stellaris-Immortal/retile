@@ -1,0 +1,44 @@
+
+### Declaration:
+sample_effect = {
+	set_variable = { which = $var|default$ value = $val|13$ }
+}
+
+### Usage:
+sample_effect = { var = test_variable val = 42 }
+
+test_effect_1 = {
+	if = {
+		limit = {
+			test_trigger = yes
+		}
+		log = "- test success -"
+	}
+}
+test_effect_2 = {
+	if = {
+		limit = {
+			test_trigger = no
+		}
+		log = "- test success -"
+	}
+}
+test_effect_3 = {
+	if = {
+		limit = {
+			test_trigger = { arg = yes }
+		}
+		log = "- test success -"
+	}
+}
+test_effect_4 = {
+	if = {
+		limit = {
+			test_trigger = { arg = no }
+		}
+		log = "- test success -"
+	}
+}
+test_trigger = {
+	always = $arg$
+}

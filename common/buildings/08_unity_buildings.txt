@@ -29,6 +29,10 @@ building_autochthon_monument = {
 	allow = {
 		retile_urban = yes
 		#retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_research_arcology
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -42,6 +46,11 @@ building_autochthon_monument = {
 					is_spiritualist = yes
 					is_megacorp = yes
 				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -138,8 +147,12 @@ building_heritage_site = {
 	can_be_disabled = no
 	
 	allow = {
-		retile_urban = yes
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_med }
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -153,6 +166,11 @@ building_heritage_site = {
 					is_spiritualist = yes
 					is_megacorp = yes
 				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -241,8 +259,12 @@ building_hypercomms_forum = {
 	can_be_disabled = no
 	
 	allow = {
-		retile_urban = yes
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_high }
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -256,6 +278,11 @@ building_hypercomms_forum = {
 					is_spiritualist = yes
 					is_megacorp = yes
 				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -350,6 +377,10 @@ building_temple = {
 	allow = {
 		retile_urban = yes
 		#retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_research_arcology
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -358,6 +389,11 @@ building_temple = {
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { is_spiritualist = no }
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -459,8 +495,12 @@ building_holotemple = {
 	can_be_disabled = no
 	
 	allow = {
-		retile_urban = yes
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_med }
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -469,6 +509,11 @@ building_holotemple = {
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { is_spiritualist = no }
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -558,8 +603,12 @@ building_sacred_nexus = {
 	can_be_disabled = no
 	
 	allow = {
-		retile_urban = yes
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_high }
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -568,6 +617,11 @@ building_sacred_nexus = {
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { is_spiritualist = no }
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -661,12 +715,21 @@ building_hive_node = {
 	allow = {
 		retile_urban = yes
 		#retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_research_arcology
+		} } }
 	}
 	
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
 			retile_urban = no
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -760,14 +823,23 @@ building_hive_cluster = {
 	can_be_disabled = no
 	
 	allow = {
-		retile_urban = yes
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_med }
+		} } }
 	}
 	
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
 			retile_urban = no
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -853,14 +925,23 @@ building_hive_confluence = {
 	can_be_disabled = no
 	
 	allow = {
-		retile_urban = yes
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_high }
+		} } }
 	}
 	
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
 			retile_urban = no
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -954,6 +1035,10 @@ building_uplink_node = {
 	allow = {
 		retile_urban = yes
 		#retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_research_arcology
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -963,6 +1048,11 @@ building_uplink_node = {
 				has_valid_civic = civic_machine_servitor
 			} }
 			retile_urban = no
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -1057,8 +1147,12 @@ building_network_junction = {
 	can_be_disabled = no
 	
 	allow = {
-		retile_urban = yes
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_med }
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -1068,6 +1162,11 @@ building_network_junction = {
 				has_valid_civic = civic_machine_servitor
 			} }
 			retile_urban = no
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -1153,8 +1252,12 @@ building_system_conflux = {
 	can_be_disabled = no
 	
 	allow = {
-		retile_urban = yes
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_high }
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -1164,6 +1267,11 @@ building_system_conflux = {
 				has_valid_civic = civic_machine_servitor
 			} }
 			retile_urban = no
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -1258,6 +1366,10 @@ building_corporate_monument = {
 	allow = {
 		retile_urban = yes
 		#retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_research_arcology
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -1270,6 +1382,11 @@ building_corporate_monument = {
 					is_spiritualist = yes
 					is_megacorp = no
 				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -1366,8 +1483,12 @@ building_corporate_site = {
 	can_be_disabled = no
 	
 	allow = {
-		retile_urban = yes
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_med }
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -1380,6 +1501,11 @@ building_corporate_site = {
 					is_spiritualist = yes
 					is_megacorp = no
 				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -1468,8 +1594,12 @@ building_corporate_forum = {
 	can_be_disabled = no
 	
 	allow = {
-		retile_urban = yes
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_high }
+		} } }
 	}
 	
 	destroy_trigger = {
@@ -1482,6 +1612,11 @@ building_corporate_forum = {
 					is_spiritualist = yes
 					is_megacorp = no
 				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}

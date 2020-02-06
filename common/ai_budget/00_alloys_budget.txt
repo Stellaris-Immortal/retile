@@ -73,6 +73,8 @@ alloys_expenditure_ships = {
 			has_resource = { type = alloys amount > 500 }
 			used_naval_capacity_percent < 0.5
 		}
+		has_monthly_income = { resource = energy value > 10 }
+		has_monthly_income = { resource = alloys value > 10 }
 	}
 	
 	fraction = {
@@ -98,11 +100,6 @@ alloys_expenditure_ships = {
 				highest_threat > 50
 				years_passed > 100
 			}
-		}
-		
-		modifier = {
-			factor = 0
-			has_monthly_income = { resource = energy value < 0 }
 		}
 	}
 }
@@ -155,7 +152,7 @@ alloys_expenditure_ship_upgrades = {
 		# spend more on ship upgrades if at capacity
 		modifier = {
 			factor = 10
-			used_naval_capacity_percent >= 1
+			used_naval_capacity_percent > 1
 		}
 	}
 }

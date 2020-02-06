@@ -202,6 +202,9 @@ retile_flag_ai_food_world = {
 				NOR = {
 					has_modifier = resort_colony
 					is_under_colonization = yes
+					is_planet_class = pc_relic
+					is_planet_class = pc_city
+					is_planet_class = pc_machine
 				}
 				OR = {
 					num_free_districts = { type = district_farming value > 0 }
@@ -1170,6 +1173,56 @@ retile_flag_ai_city_world = {
 				}
 				set_planet_flag = ai_city_development
 				remove_planet_flag = ai_city_development_former
+			}
+		}
+	}
+}
+
+# Planet Scope
+retile_set_arcology_focus = {
+	if = {
+		limit = { NOT = { owner = {
+			any_owned_planet = {
+				is_planet_class = pc_city
+				has_planet_flag = ai_research_arcology
+				free_district_slots > 0
+			}
+		} } }
+		set_planet_flag = ai_research_arcology
+	} else_if = {
+		limit = { NOT = { owner = {
+			any_owned_planet = {
+				is_planet_class = pc_city
+				has_planet_flag = ai_foundry_arcology
+				free_district_slots > 0
+			}
+		} } }
+		set_planet_flag = ai_foundry_arcology
+	} else = {
+		random_list = {
+			10 = {
+				set_planet_flag = ai_research_arcology
+				modifier = {
+					factor = 2
+					owner = {
+						has_monthly_income = { resource = alloys value > 25 }
+					}
+				}
+				modifier = {
+					factor = 5
+					owner = {
+						has_monthly_income = { resource = alloys value > 50 }
+					}
+				}
+				modifier = {
+					factor = 10
+					owner = {
+						has_monthly_income = { resource = alloys value > 100 }
+					}
+				}
+			}
+			10 = {
+				set_planet_flag = ai_foundry_arcology
 			}
 		}
 	}

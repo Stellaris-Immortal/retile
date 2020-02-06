@@ -72,6 +72,10 @@ building_capital = {
 	
 	allow = {
 		num_pops >= 5
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = influence amount > 150 }
+		} } }
 	}
 	
 	prerequisites = {
@@ -305,6 +309,10 @@ building_major_capital = {
 	
 	allow = {
 		num_pops >= 10
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = influence amount > 150 }
+		} } }
 	}
 	
 	prerequisites = {
@@ -516,6 +524,10 @@ building_system_capital = {
 
 	allow = {
 		num_pops >= 15
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = influence amount > 150 }
+		} } }
 	}
 
 	prerequisites = {
@@ -801,6 +813,10 @@ building_galactic_capital = {
 	allow = {
 		owner = { has_tradition = tr_domination_grand_council }
 		num_pops >= 20
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = influence amount > 150 }
+		} } }
 	}
 
 	show_tech_unlock_if = { 
