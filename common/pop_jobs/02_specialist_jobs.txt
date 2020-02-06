@@ -1121,10 +1121,222 @@ roboticist = {
 	
 	resources = {
 		category = planet_pop_assemblers
+
+		### UPKEEP ###
+		### should based on growth malus level
+		### every level of minerals upkeep is 10 * (1 - growth malus effect)
 		upkeep = {
-			trigger = {  planet = { free_housing >= 0 } }
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { check_variable = { which = col_count value < 1 } }
+			}
 			minerals = 10
 		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_2 }
+			}
+			minerals = 9
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_3 }
+			}
+			minerals = 8.1
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_4 }
+			}
+			minerals = 7.4
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_5 }
+			}
+			minerals = 6.7
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_6 }
+			}
+			minerals = 6.1
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_7 }
+			}
+			minerals = 5.7
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_8 }
+			}
+			minerals = 5.2
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_9 }
+			}
+			minerals = 4.8
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_10 }
+			}
+			minerals = 4.5
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_11 }
+			}
+			minerals = 4.2
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_12 }
+			}
+			minerals = 3.9
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_13 }
+			}
+			minerals = 3.6
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_14 }
+			}
+			minerals = 3.4
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_15 }
+			}
+			minerals = 3.2
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_16 }
+			}
+			minerals = 3.0
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_17 }
+			}
+			minerals = 2.8
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_18 }
+			}
+			minerals = 2.7
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_19 }
+			}
+			minerals = 2.6
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_20 }
+			}
+			minerals = 2.5
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_21 }
+			}
+			minerals = 2.4
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_22 }
+			}
+			minerals = 2.3
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_23 }
+			}
+			minerals = 2.2
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_24 }
+			}
+			minerals = 2.1
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_25 }
+			}
+			minerals = 2.0
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_26 }
+			}
+			minerals = 1.9
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_27 }
+			}
+			minerals = 1.8
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_28 }
+			}
+			minerals = 1.7
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_29 }
+			}
+			minerals = 1.6
+		}
+		upkeep = {
+			trigger = {
+				planet = { free_housing >= 0 }
+				owner = { has_modifier = retile_growth_malus_30 }
+			}
+			minerals = 1.5
+		}
+		### END UPKEEP ###
+
 		produces = {
 			trigger = { planet = {
 				free_housing < 0
