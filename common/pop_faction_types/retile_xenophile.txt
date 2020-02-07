@@ -11,7 +11,14 @@ xenoist = {
 	
 	resources = {
 		category = pop_factions
-		produces = { influence = 2 }		
+		produces = { 
+			trigger = { owner = { has_valid_civic = civic_pacifist } }
+			unity = 10
+		}
+		produces = { 
+			trigger = { owner = { NOT = { has_valid_civic = civic_pacifist } } }
+			influence = 2
+		}		
 	}
 
 	is_potential = {
@@ -19,6 +26,7 @@ xenoist = {
 			years_passed > 20
 			has_country_flag = first_contact_event
 			has_country_flag = first_alien_life
+			has_valid_civic = civic_pacifist
 		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
@@ -53,6 +61,13 @@ xenoist = {
 	
 	attraction = {
 		base = 100
+		
+		modifier = {
+			factor = 1.25
+			OR = { 
+				has_job = colonist
+			}
+		}
 		
 		modifier = {
 			factor = 1.25

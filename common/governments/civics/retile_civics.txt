@@ -8,10 +8,7 @@ civic_feudal_realm = {
 	possible = {
 		authority = { value = auth_imperial }
 		civics = {
-			NOR = {
-				value = civic_capitalist
-				value = civic_mechanists
-			}
+			NOT = { value = civic_mechanists }
 		}
 	}
 	modifier = { 
@@ -40,14 +37,11 @@ civic_capitalist = {
 			}
 		}
 		civics = {
-			NOR = {
-				value = civic_feudal_realm
-				value = civic_mechanists
-			}
+			NOT = { value = civic_pacifist }
 		}
 	}
 	modifier = { 
-		country_trade_fee = -0.10
+		
 	}
 	random_weight = { base = 5 }
 }
@@ -111,4 +105,28 @@ civic_anarchist = {
 	}
 	modification = no
 	random_weight = { base = 5 }
+}
+
+civic_pacifist = {
+	description = "civic_tooltip_pacifist_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				text = civic_tooltip_no_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+		}
+		civics = {
+			NOT = { value = civic_capitalist }
+		}
+	}
+	random_weight = { base = 5 }
+	modifier = {
+		country_base_influence_produces_add = 2
+		pop_factions_unity_produces_add = 5
+	}
 }

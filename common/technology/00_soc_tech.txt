@@ -5283,22 +5283,26 @@ tech_holo_entertainment = {
 	tier = 0
 	
 	potential = {
-		always = no
+		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	
 	## unlock holo-theatres building
 }
 
 tech_hyper_entertainment_forum = {
-	cost = @tier1cost3
+	cost = @tier3cost1
 	area = society
 	category = { statecraft }
-	tier = 1
+	tier = 3
 	prerequisites = { "tech_holo_entertainment" }
-	weight = @tier1weight3
+	weight = @tier3weight1
 	
 	potential = {
-		always = no
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	modifier = { 
+		pop_factions_unity_produces_mult = 1
 	}
 }
 

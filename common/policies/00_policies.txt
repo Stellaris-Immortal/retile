@@ -14,6 +14,7 @@
 piracy = {
 	potential = {
 		has_technology = tech_adaptive_bureaucracy
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
 	}
 	
 	option = {
@@ -118,7 +119,10 @@ war_philosophy = {
 		}
 		
 		potential = {
-			NOT = { has_valid_civic = civic_anarchist }
+			NOR = { 
+				has_valid_civic = civic_anarchist
+				has_valid_civic = civic_pacifist
+			}
 		}
 		
 		on_enabled = {
@@ -147,7 +151,10 @@ war_philosophy = {
 		}
 		
 		potential = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
+			NOR = { 
+				has_ethic = ethic_gestalt_consciousness
+				has_valid_civic = civic_pacifist
+			}
 		}
 
 		on_enabled = {
@@ -197,7 +204,6 @@ war_philosophy = {
 				has_valid_civic = "civic_fanatic_purifiers"
 				has_valid_civic = "civic_hive_devouring_swarm"
 				has_valid_civic = "civic_machine_terminator"
-				has_valid_civic = civic_anarchist
 			}
 		}
 		
@@ -283,6 +289,8 @@ war_doctrine = {
 		
 		policy_flags = { no_retreat_doctrine }
 		
+		potential = { NOT = { has_valid_civic = civic_pacifist } }
+		
 		modifier = {
 			ship_disengage_chance_reduction = 1
 			ship_emergency_ftl_min_days_mult = 0.5
@@ -347,6 +355,8 @@ orbital_bombardment = {
 		name = "orbital_bombardment_indiscriminate"
 		
 		policy_flags = { orbital_bombardment_indiscriminate }
+		
+		potential = { NOT = { has_valid_civic = civic_pacifist } }
 		
 		modifier = {}
 		
@@ -554,7 +564,10 @@ criminal = {
 		modifier = { }
 		
 		potential = {
-			NOT = { has_valid_civic = civic_anarchist }
+			NOT = { 
+				has_valid_civic = civic_anarchist
+				has_valid_civic = civic_pacifist
+			}
 		}
 		
 		valid = {
@@ -875,6 +888,34 @@ healthcare = {
 		
 		potential = {
 			NOT = { has_valid_civic = civic_anarchist }
+			NOT = { has_authority = auth_corporate }
+		}
+		
+		modifier = {
+			pop_growth_speed = 0.10
+		}
+		
+		AI_weight = {
+			modifier = {
+				factor = 2
+				OR = {
+					has_ethic = ethic_pacifist
+					has_ethic = ethic_fanatic_pacifist
+				}
+			}			
+		}
+	}
+	
+	option = {
+		name = "healthcare_corporate"
+		
+		policy_flags = {
+			healthcare_public_private
+		}
+		
+		potential = {
+			NOT = { has_valid_civic = civic_anarchist }
+			has_authority = auth_corporate
 		}
 		
 		modifier = {
@@ -1315,19 +1356,7 @@ first_contact_protocol = {
 		}
 		modifier = {}
 		
-		valid = {
-			OR = {
-				has_ethic = ethic_xenophobe
-				has_ethic = ethic_fanatic_xenophobe
-				has_ethic = ethic_militarist
-				has_ethic = ethic_fanatic_militarist
-			}
-			NOR = {
-				has_ethic = ethic_fanatic_xenophile
-				has_ethic = ethic_pacifist
-				has_ethic = ethic_fanatic_pacifist
-			}
-		}
+		potential = { NOT = { has_valid_civic = civic_pacifist } }
 		
 		
 		AI_weight = {
@@ -1557,7 +1586,10 @@ xenodiplomacy = {
 		name = "xenodiplomacy_gunboat"
 		potential = {
 			has_technology = tech_xenodiplomacy
-			NOT = { has_valid_civic = civic_anarchist }
+			NOR = { 
+				has_valid_civic = civic_anarchist
+				has_valid_civic = civic_pacifist
+			}
 			NOT = { has_authority = auth_corporate }
 		}
 		
@@ -1892,9 +1924,10 @@ pre_sapients = {
 		potential = {
 			host_has_dlc = "Utopia"
 			is_synthetic_empire = no
-			NOT = {
+			NOR = {
 				has_valid_civic = civic_fanatic_purifiers
 				has_valid_civic = civic_anarchist
+				has_valid_civic = civic_pacifist
 			}
 		}
 		
@@ -1925,7 +1958,10 @@ pre_sapients = {
 		}
 		
 		potential = {
-			NOT = { has_valid_civic = civic_anarchist }
+			NOR = { 
+				has_valid_civic = civic_anarchist
+				has_valid_civic = civic_pacifist
+			}
 		}
 		
 		modifier = {}
@@ -2463,7 +2499,10 @@ purge = {
 		modifier = {}
 		
 		potential = {		
-			NOT = { has_valid_civic = civic_anarchist }			
+			NOR = { 
+				has_valid_civic = civic_anarchist
+				has_valid_civic = civic_pacifist
+			}
 		}
 		
 		valid = {
