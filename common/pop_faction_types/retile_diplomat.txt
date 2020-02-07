@@ -15,6 +15,7 @@ prosperity = {
 			has_country_flag = first_contact_event
 			has_ethic = ethic_pacifist
 			has_ethic = ethic_fanatic_pacifist
+			has_valid_civic = civic_pacifist
 		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
@@ -30,7 +31,14 @@ prosperity = {
 
 	resources = {
 		category = pop_factions
-		produces = { influence = 2 }		
+		produces = { 
+			trigger = { owner = { has_valid_civic = civic_pacifist } }
+			unity = 10
+		}
+		produces = { 
+			trigger = { owner = { NOT = { has_valid_civic = civic_pacifist } } }
+			influence = 2
+		}		
 	}
 
 	can_join_pre_triggers = {
@@ -54,6 +62,16 @@ prosperity = {
 	
 	attraction = {
 		base = 100
+		
+		modifier = {
+			factor = 1.25
+			OR = { 
+				has_job = diplomat
+				has_job = pr_manager
+				has_job = clerk
+				has_job = merchant
+			}
+		}
 		
 		modifier = {
 			factor = 1.50

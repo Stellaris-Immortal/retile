@@ -11,7 +11,14 @@ isolationist = {
 	
 	resources = {
 		category = pop_factions
-		produces = { influence = 2 }		
+		produces = { 
+			trigger = { owner = { has_valid_civic = civic_pacifist } }
+			unity = 10
+		}
+		produces = { 
+			trigger = { owner = { NOT = { has_valid_civic = civic_pacifist } } }
+			influence = 2
+		}		
 	}
 
 	is_potential = {
@@ -23,6 +30,7 @@ isolationist = {
 			has_country_flag = cloud_encountered
 			has_country_flag = tiyanki_encountered
 			has_country_flag = has_encountered_other_empire
+			has_valid_civic = civic_pacifist
 		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
@@ -57,6 +65,14 @@ isolationist = {
 	
 	attraction = {
 		base = 100
+		
+		modifier = {
+			factor = 1.25
+			OR = { 
+				has_job = bureaucrat_head
+				has_job = bureaucrat
+			}
+		}
 		
 		modifier = {
 			factor = 1.5
