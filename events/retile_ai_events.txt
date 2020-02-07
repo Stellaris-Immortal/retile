@@ -614,3 +614,23 @@ ship_event = {
 		owner = { set_timed_country_flag = { flag = colony_ship_built days = 720 } }
 	}
 }
+
+# Trade away resources at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2000
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		
+	}
+}
+
