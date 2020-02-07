@@ -16,6 +16,22 @@
 # leader_class has to be set to include "ruler" for a ruler to be valid for a trait
 # modifiers granted to rulers are applied to the entire Empire
 
+trait_ruler_ship_focus = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_cruiser_focus.dds"
+	leader_potential_add = {
+		NOT = { from = { has_policy_flag = no_wars } }
+		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
+	}
+	modifier = {
+		starbase_shipyard_build_cost_mult = -0.10
+		starbase_shipyard_build_speed_mult = 0.10
+	}
+	leader_trait = { ruler }
+	leader_class = { ruler }
+}
+
 trait_ruler_corvette_focus = {
 	cost = 1
 	modification = no
@@ -38,10 +54,7 @@ trait_ruler_destroyer_focus = {
 	cost = 1
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_destroyer_focus.dds"
-	leader_potential_add = {
-		NOT = { from = { has_policy_flag = no_wars } }
-		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
-	}
+	leader_potential_add = { always = no }
 	modifier = {
 		starbase_shipyard_build_cost_mult = -0.10
 		ship_destroyer_cost_mult = -0.10
@@ -56,10 +69,7 @@ trait_ruler_cruiser_focus = {
 	cost = 1
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_cruiser_focus.dds"
-	leader_potential_add = {
-		NOT = { from = { has_policy_flag = no_wars } }
-		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
-	}
+	leader_potential_add = { always = no }
 	modifier = {
 		starbase_shipyard_build_cost_mult = -0.10
 		ship_cruiser_cost_mult = -0.10
@@ -74,10 +84,7 @@ trait_ruler_battleship_focus = {
 	cost = 1
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_battleship_focus.dds"
-	leader_potential_add = {
-		NOT = { from = { has_policy_flag = no_wars } }
-		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
-	}
+	leader_potential_add = { always = no }
 	modifier = {
 		starbase_shipyard_build_cost_mult = -0.10
 		ship_battleship_cost_mult = -0.10
@@ -116,7 +123,7 @@ trait_ruler_from_the_ranks = {
 	}
 	modifier = {
 		army_morale = 0.2
-		army_experience_gain_mult = 0.33
+		army_starting_experience_add = 500
 	}
 	leader_trait = { ruler }
 	leader_class = { ruler }
