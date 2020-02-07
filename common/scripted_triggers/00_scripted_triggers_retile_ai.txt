@@ -11,6 +11,19 @@ retile_ready = {	# Planet scope
 	}
 }
 
+retile_ready_labor = {
+	OR = {
+		NOT = { exists = owner }
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			PREV = {
+				free_jobs > 0
+				free_housing < 1
+			}
+		}
+	}
+}
+
 # Does this planet need more custodians?
 retile_ready_preserve = {	# Planet scope
 	OR = {
@@ -91,7 +104,7 @@ retile_ready_energy = {	# Planet scope
 		NOT = { exists = owner }
 		owner = { is_ai = no }
 		owner = { is_ai = yes
-			has_monthly_income = { resource = energy value < 200 }
+			has_monthly_income = { resource = energy value < 75 }
 			PREV = {
 				free_jobs < 1
 				has_planet_flag = ai_energy_development
@@ -106,7 +119,7 @@ retile_ready_minerals = {	# Planet scope
 		NOT = { exists = owner }
 		owner = { is_ai = no }
 		owner = { is_ai = yes
-			has_monthly_income = { resource = minerals value < 100 }
+			has_monthly_income = { resource = minerals value < 75 }
 			PREV = {
 				free_jobs < 1
 				has_planet_flag = ai_minerals_development

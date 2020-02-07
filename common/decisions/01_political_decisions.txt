@@ -1,0 +1,59 @@
+##########################################################################
+# Decisions
+##########################################################################
+decision_martial_law = {
+	owned_planets_only = yes
+	sound = event_air_raid_siren
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 50
+		}
+	}
+	
+	potential = {
+		owner = { is_regular_empire = yes }
+		NOT = { has_modifier = retile_martial_law }
+	}
+	
+	effect = {
+		custom_tooltip = decision_martial_law_effects_custom
+		hidden_effect = {
+			add_modifier = { modifier = "retile_martial_law" days = -1 }
+		}
+	}
+	
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_end_martial_law = {
+	owned_planets_only = yes
+	sound = event_administrative_work
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 50
+		}
+	}
+	
+	potential = {
+		#owner = { is_regular_empire = yes } #if you conquer the planet as a different type you need to be able to disable it
+		has_modifier = retile_martial_law
+	}
+	
+	effect = {
+		custom_tooltip = decision_end_martial_law_effects_short
+		hidden_effect = {
+			remove_modifier = retile_martial_law
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+

@@ -1,5 +1,9 @@
 @city_cost = 300
 @city_upkeep = 5
+@base_cost = 300
+@base_upkeep = 5
+@base_buildtime = 240
+
 
 district_enforcer = {
 	base_buildtime = 240
@@ -174,9 +178,10 @@ district_custodian = {
 	}
 	
 	allow = {
-		hidden_trigger = {
+		hidden_trigger = { OR = {
 			retile_ready_preserve = yes
-		}
+			retile_ready_labor = yes
+		} }
 	}
 
 	resources = {

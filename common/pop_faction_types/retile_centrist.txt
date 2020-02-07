@@ -1,5 +1,5 @@
 ##############################
-# Supremacist Faction (DISABLED)
+# Supremacist Faction
 ##############################
 
 supremacist = {
@@ -10,7 +10,14 @@ supremacist = {
 	
 	resources = {
 		category = pop_factions
-		produces = { unity = 10 }		
+		produces = { 
+			trigger = { owner = { NOT = { has_valid_civic = civic_capitalist } } }
+			unity = 10
+		}
+		produces = { 
+			trigger = { owner = { has_valid_civic = civic_capitalist } }
+			influence = 2
+		}
 	}
 
 	is_potential = {
@@ -56,6 +63,15 @@ supremacist = {
 	
 	attraction = {
 		base = 50
+		
+		modifier = {
+			factor = 1.25
+			OR = { 
+				has_job = administrator
+				has_job = foundry
+				has_job = technician
+			}
+		}
 		
 		modifier = {
 			factor = 0.50
@@ -188,7 +204,7 @@ supremacist = {
 	}
 	
 	on_create = {
-		pop_faction_event = { id = factions.1 }
+		
 	}
 
 	on_destroy = {

@@ -190,6 +190,20 @@ researcher = {	### Scholar
 			society_research = 2.5
 			unity = 2.5
 		}
+		produces = {
+			trigger = { has_trait = trait_intelligent }
+			physics_research = 0.5
+			engineering_research = 0.5
+			society_research = 0.5
+			unity = 0.5
+		}
+		produces = {
+			trigger = { has_trait = trait_erudite }
+			physics_research = 1
+			engineering_research = 1
+			society_research = 1
+			unity = 1
+		}
 		upkeep = {
 			consumer_goods = 2.5
 		}
@@ -926,6 +940,17 @@ soldier = {
 	
 	triggered_planet_modifier = {
 		potential = {
+			planet = {
+				has_modifier = retile_martial_law
+			}
+		}
+		modifier = {
+			planet_crime_add = -25
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
 			exists = owner
 			owner = { has_civic = civic_citizen_service }
 		}
@@ -1279,5 +1304,188 @@ overseer = {
 	
 	weight = {
 		weight = @specialist_job_weight
+	}
+}
+
+colonist = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_residence
+	clothes_texture_index = 2
+	
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		complex_specialist_job_check_trigger = yes
+		or = {
+			has_job = colonist
+			retile_job_seeking = yes
+		}
+	}
+
+	resources = {
+		category = planet_colonists
+		produces = {
+			energy = 4
+			minerals = 4
+		}
+		produces = {
+			trigger = { 
+				NOR = { 
+					has_trait = trait_lithoid
+					has_trait = trait_plantoid
+				}
+			}
+			food = 1
+		}
+		produces = {
+			trigger = { has_trait = trait_lithoid }
+			minerals = 4
+		}
+		produces = {
+			trigger = { owner = { has_technology = tech_frontier_health } }
+			energy = 3
+			minerals = 3
+		}
+		produces = {
+			trigger = { 
+				owner = { has_technology = tech_frontier_health }
+				NOR = { 
+					has_trait = trait_lithoid
+					has_trait = trait_plantoid
+				}
+			}
+			food = 1
+		}
+		produces = {
+			trigger = {
+				owner = { has_technology = tech_frontier_health }
+				has_trait = trait_lithoid
+			}
+			minerals = 3
+		}
+		produces = {
+			trigger = { owner = { has_technology = tech_frontier_hospital } }
+			energy = 3
+			minerals = 3
+		}
+		produces = {
+			trigger = { 
+				owner = { has_technology = tech_frontier_hospital }
+				NOR = { 
+					has_trait = trait_lithoid
+					has_trait = trait_plantoid
+				}
+			}
+			food = 1
+		}
+		produces = {
+			trigger = {
+				owner = { has_technology = tech_frontier_hospital }
+				has_trait = trait_lithoid
+			}
+			minerals = 3
+		}
+		upkeep = {
+			consumer_goods = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			has_trait = trait_plantoid
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			owner = { NOR = {
+				has_civic = civic_mechanists
+				is_mechanical_empire = yes
+			} }
+		}
+		modifier = {
+			pop_environment_tolerance = 0.10
+			planet_amenities_add = 15
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			owner = { has_technology = tech_frontier_health }
+			has_trait = trait_plantoid
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			owner = { has_technology = tech_frontier_health }
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+			planet_amenities_add = 15
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			owner = { has_technology = tech_frontier_hospital }
+			has_trait = trait_plantoid
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			owner = { has_technology = tech_frontier_hospital }
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+			planet_amenities_add = 15
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			planet = { free_housing >= 0 }
+			owner = { OR = {
+				has_civic = civic_mechanists
+				is_mechanical_empire = yes
+			} }
+		}
+		modifier = {
+			planet_pop_assembly_add = 1
+			planet_amenities_add = 15
+		}
+	}	
+	
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 0.01
+			can_take_servant_job = yes
+		}
+		modifier = {
+			factor = 5
+			has_job = colonist
+		}
 	}
 }

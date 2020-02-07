@@ -72,6 +72,10 @@ building_capital = {
 	
 	allow = {
 		num_pops >= 5
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = influence amount > 150 }
+		} } }
 	}
 	
 	prerequisites = {
@@ -93,7 +97,7 @@ building_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			influence = 150
+			influence = 50
 			minerals = 500
 		}	
 		upkeep = {
@@ -131,17 +135,6 @@ building_capital = {
 		modifier = {
 			job_clerk_add = -1
 			job_tax_collector_add = 1
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_capitalist }
-		}
-		modifier = {
-			job_clerk_add = -1
-			job_investor_add = 1
 		}
 	}
 	
@@ -193,17 +186,6 @@ building_capital = {
 		modifier = {
 			job_clerk_add = -1
 			job_tax_collector_add = 1
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_capitalist }
-		}
-		modifier = {
-			job_clerk_add = -1
-			job_investor_add = 1
 		}
 	}
 	
@@ -305,6 +287,10 @@ building_major_capital = {
 	
 	allow = {
 		num_pops >= 10
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = influence amount > 150 }
+		} } }
 	}
 	
 	prerequisites = {
@@ -326,7 +312,7 @@ building_major_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			influence = 150
+			influence = 50
 			minerals = 1000
 		}	
 		upkeep = {
@@ -384,17 +370,6 @@ building_major_capital = {
 		modifier = {
 			job_clerk_add = -2
 			job_tax_collector_add = 2
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_capitalist }
-		}
-		modifier = {
-			job_clerk_add = -2
-			job_investor_add = 2
 		}
 	}
 
@@ -516,6 +491,10 @@ building_system_capital = {
 
 	allow = {
 		num_pops >= 15
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = influence amount > 150 }
+		} } }
 	}
 
 	prerequisites = {
@@ -537,7 +516,7 @@ building_system_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			influence = 150
+			influence = 50
 			minerals = 2000
 		}		
 		upkeep = {
@@ -669,17 +648,6 @@ building_system_capital = {
 			job_tax_collector_add = 2
 		}
 	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_capitalist }
-		}
-		modifier = {
-			job_clerk_add = -1
-			job_investor_add = 1
-		}
-	}
 
 	triggered_planet_modifier = {
 		potential = {
@@ -801,6 +769,10 @@ building_galactic_capital = {
 	allow = {
 		owner = { has_tradition = tr_domination_grand_council }
 		num_pops >= 20
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = influence amount > 150 }
+		} } }
 	}
 
 	show_tech_unlock_if = { 
@@ -816,7 +788,7 @@ building_galactic_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			influence = 150
+			influence = 50
 			minerals = 5000
 		}		
 		upkeep = {
@@ -946,17 +918,6 @@ building_galactic_capital = {
 		modifier = {
 			job_clerk_add = -2
 			job_tax_collector_add = 2
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_capitalist }
-		}
-		modifier = {
-			job_clerk_add = -2
-			job_investor_add = 2
 		}
 	}
 

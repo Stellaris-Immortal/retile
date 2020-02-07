@@ -202,6 +202,9 @@ retile_flag_ai_food_world = {
 				NOR = {
 					has_modifier = resort_colony
 					is_under_colonization = yes
+					is_planet_class = pc_relic
+					is_planet_class = pc_city
+					is_planet_class = pc_machine
 				}
 				OR = {
 					num_free_districts = { type = district_farming value > 0 }
@@ -1061,9 +1064,9 @@ retile_flag_ai_city_world = {
 	
 	switch = {
 		trigger = num_owned_planets
-		20 < { set_variable = { which = city_development_count value = 1} }
-		20 >= { set_variable = { which = city_development_count value = 2} }
-		50 >= { set_variable = { which = city_development_count value = 3} }
+		5 < { set_variable = { which = city_development_count value = 1} }
+		5 >= { set_variable = { which = city_development_count value = 2} }
+		10 >= { set_variable = { which = city_development_count value = 3} }
 	}
 	while = {
 		count = city_development_count
@@ -1097,27 +1100,6 @@ retile_flag_ai_city_world = {
 						has_modifier = penal_colony
 						is_under_colonization = yes
 						has_planet_flag = ai_city_development	# can have more than 1, eventually
-						AND = {
-							has_planet_flag = ai_energy_development_sticky
-							num_free_districts = { type = district_generator value > 0 }
-							num_free_districts = { type = district_generator_uncapped value > 0 }
-							num_free_districts = { type = district_hab_energy value > 0 }
-							num_free_districts = { type = district_rw_generator value > 0 }
-						}
-						AND = {
-							has_planet_flag = ai_minerals_development_sticky
-							num_free_districts = { type = district_mining value > 0 }
-							num_free_districts = { type = district_mining_uncapped value > 0 }
-							num_free_districts = { type = district_hab_mining value > 0 }
-							num_free_districts = { type = district_rw_mining value > 0 }
-						}
-						AND = {
-							has_planet_flag = ai_food_development_sticky
-							num_free_districts = { type = district_farming value > 0 }
-							num_free_districts = { type = district_farming_uncapped value > 0 }
-							num_free_districts = { type = district_hab_hydroponics value > 0 }
-							num_free_districts = { type = district_rw_farming value > 0 }
-						}
 					}
 				}
 				weights = {
@@ -1170,6 +1152,56 @@ retile_flag_ai_city_world = {
 				}
 				set_planet_flag = ai_city_development
 				remove_planet_flag = ai_city_development_former
+			}
+		}
+	}
+}
+
+# Planet Scope
+retile_set_arcology_focus = {
+	if = {
+		limit = { NOT = { owner = {
+			any_owned_planet = {
+				is_planet_class = pc_city
+				has_planet_flag = ai_research_arcology
+				free_district_slots > 0
+			}
+		} } }
+		set_planet_flag = ai_research_arcology
+	} else_if = {
+		limit = { NOT = { owner = {
+			any_owned_planet = {
+				is_planet_class = pc_city
+				has_planet_flag = ai_foundry_arcology
+				free_district_slots > 0
+			}
+		} } }
+		set_planet_flag = ai_foundry_arcology
+	} else = {
+		random_list = {
+			10 = {
+				set_planet_flag = ai_research_arcology
+				modifier = {
+					factor = 2
+					owner = {
+						has_monthly_income = { resource = alloys value > 25 }
+					}
+				}
+				modifier = {
+					factor = 5
+					owner = {
+						has_monthly_income = { resource = alloys value > 50 }
+					}
+				}
+				modifier = {
+					factor = 10
+					owner = {
+						has_monthly_income = { resource = alloys value > 100 }
+					}
+				}
+			}
+			10 = {
+				set_planet_flag = ai_foundry_arcology
 			}
 		}
 	}

@@ -4634,7 +4634,7 @@ tech_colonial_bureaucracy = {
 	
 	modifier = {
 		country_admin_cap_add = 12
-		planet_buildings_influence_cost_mult = -0.16
+		planet_buildings_influence_cost_mult = -0.10
 	}
 	
 	weight_modifier = {
@@ -4688,7 +4688,7 @@ tech_galactic_bureaucracy = {
 	
 	modifier = {
 		country_admin_cap_add = 12
-		planet_buildings_influence_cost_mult = -0.16
+		planet_buildings_influence_cost_mult = -0.10
 	}
 	
 	weight_modifier = {
@@ -5283,22 +5283,26 @@ tech_holo_entertainment = {
 	tier = 0
 	
 	potential = {
-		always = no
+		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	
 	## unlock holo-theatres building
 }
 
 tech_hyper_entertainment_forum = {
-	cost = @tier1cost3
+	cost = @tier3cost1
 	area = society
 	category = { statecraft }
-	tier = 1
+	tier = 3
 	prerequisites = { "tech_holo_entertainment" }
-	weight = @tier1weight3
+	weight = @tier3weight1
 	
 	potential = {
-		always = no
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
+	
+	modifier = { 
+		pop_factions_unity_produces_mult = 1
 	}
 }
 
@@ -5357,12 +5361,12 @@ tech_cultural_heritage = {
 }
 
 tech_heritage_site = {
-	cost = @tier2cost2
+	cost = @tier2cost1
 	area = society
 	category = { statecraft }
 	tier = 2
 	prerequisites = { "tech_cultural_heritage" }
-	weight = @tier2weight2
+	weight = @tier2weight1
 	
 	potential = {
 		NOR = {

@@ -22,6 +22,10 @@ building_research_lab_1 = {
 	allow = {
 		retile_urban = yes
 		#retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_research_arcology
+		} } }
 	}
 	
 	convert_to = {
@@ -35,6 +39,11 @@ building_research_lab_1 = {
 			has_modifier = resort_colony
 			has_modifier = penal_colony
 			owner = { has_tradition = tr_harmony_bulwark_of_harmony }
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 
@@ -103,6 +112,10 @@ building_research_lab_1 = {
 		modifier = {
 			weight = 150000
 			is_capital = yes
+			NAND = {
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 		modifier = {	# behind in tech!!!
 			weight = 100
@@ -140,7 +153,11 @@ building_research_lab_1 = {
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -167,12 +184,21 @@ building_research_lab_2 = {
 			has_modifier = resort_colony
 			has_modifier = penal_colony
 			owner = { has_tradition = tr_harmony_bulwark_of_harmony }
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_med }
+		} } }
 	}
 	
 	convert_to = {
@@ -237,6 +263,14 @@ building_research_lab_2 = {
 	
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 	
 	ai_resource_production = {
@@ -262,12 +296,21 @@ building_research_lab_3 = {
 			has_modifier = resort_colony
 			has_modifier = penal_colony
 			owner = { has_tradition = tr_harmony_bulwark_of_harmony }
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_high }
+		} } }
 	}
 	
 	convert_to = {
@@ -328,6 +371,14 @@ building_research_lab_3 = {
 	
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 	
 	ai_resource_production = {
@@ -355,6 +406,10 @@ building_institute = {
 	allow = {
 		retile_urban = yes
 		#retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_research_arcology
+		} } }
 	}
 
 	destroy_trigger = {
@@ -362,6 +417,11 @@ building_institute = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 			has_modifier = penal_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -433,6 +493,14 @@ building_institute = {
 				has_building = building_research_lab_1
 				has_building = building_research_lab_2
 				has_building = building_research_lab_3
+			}
+		}
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}

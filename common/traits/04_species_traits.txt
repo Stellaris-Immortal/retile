@@ -1,3 +1,17 @@
+trait_latent_psionic = {
+	cost = 0
+	potential_crossbreeding_chance = 0.50
+	icon = "gfx/interface/icons/traits/trait_latent_psionic.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
+	
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.05
+		planet_jobs_society_research_produces_mult = 0.05
+		planet_pops_upkeep_mult = -0.10
+		pop_growth_speed_reduction = -0.10
+	}
+}
+
 trait_plantoid_fruiting = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
@@ -14,36 +28,24 @@ trait_agrarian = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0	# 1.0 = 100% chance of being considered for new traits when forming half-species. does not guarantee the trait will be added if it costs points.
 	allowed_archetypes = { BIOLOGICAL }
-	modifier = {
-		planet_jobs_food_produces_mult = 0.15
-	}
-	slave_cost = {
-		energy = 50
-	}
+	custom_tooltip = trait_agrarian_effect
+	slave_cost = { energy = 50 }
 }
 
 trait_ingenious = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
 	allowed_archetypes = { BIOLOGICAL LITHOID }
-	modifier = {
-		planet_jobs_energy_produces_mult = 0.15
-	}
-	slave_cost = {
-		energy = 50
-	}
+	custom_tooltip = trait_ingenious_effect
+	slave_cost = { energy = 50 }
 }
 
 trait_industrious = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
 	allowed_archetypes = { BIOLOGICAL LITHOID }
-	modifier = {
-		planet_jobs_minerals_produces_mult = 0.15
-	}
-	slave_cost = {
-		energy = 50
-	}
+	custom_tooltip = trait_industrious_effect
+	slave_cost = { energy = 50 }
 }
 
 trait_intelligent = {
@@ -51,11 +53,7 @@ trait_intelligent = {
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_nerve_stapled" "trait_erudite" "trait_enigmatic_intelligence_poor" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
-	modifier = {
-		planet_jobs_engineering_research_produces_mult = 0.1
-		planet_jobs_physics_research_produces_mult = 0.1
-		planet_jobs_society_research_produces_mult = 0.1
-	}
+	custom_tooltip = trait_intelligent_effect
 }
 
 trait_thrifty = {
@@ -71,9 +69,7 @@ trait_natural_engineers = {
 	opposites = { "trait_nerve_stapled" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	custom_tooltip = trait_natural_engineers_effect
-	slave_cost = {
-		energy = 25
-	}
+	slave_cost = { energy = 25 }
 }
 
 trait_natural_physicists = {
@@ -82,9 +78,7 @@ trait_natural_physicists = {
 	opposites = { "trait_nerve_stapled" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	custom_tooltip = trait_natural_physicists_effect
-	slave_cost = {
-		energy = 25
-	}
+	slave_cost = { energy = 25 }
 }
 
 trait_natural_sociologists = {
@@ -93,9 +87,7 @@ trait_natural_sociologists = {
 	opposites = { "trait_nerve_stapled" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	custom_tooltip = trait_natural_sociologists_effect
-	slave_cost = {
-		energy = 25
-	}
+	slave_cost = { energy = 25 }
 }
 
 trait_natural_philosopher = {
@@ -532,9 +524,6 @@ trait_wasteful = {
 
 trait_cybernetic = {
 	cost = 0
-	
-	opposites = { "trait_latent_psionic" "trait_psionic" }
-
 	improves_leaders = yes
 	initial = no
 	randomized = no
@@ -542,31 +531,11 @@ trait_cybernetic = {
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	modifier = {
-		pop_environment_tolerance = 0.20
+		pop_environment_tolerance = 0.10
+		planet_jobs_physics_research_produces_mult = 0.10
+		planet_jobs_engineering_research_produces_mult = 0.10
 		army_damage_mult = 0.1
 		leader_age = 40
-	}
-}
-
-
-trait_latent_psionic = {
-	cost = 0
-	potential_crossbreeding_chance = 0.25
-	icon = "gfx/interface/icons/traits/trait_psionic_species.dds"
-	
-	opposites = { "trait_cybernetic" }
-
-	initial = no
-	randomized = no
-	modification = no
-
-	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
-	
-	modifier = {
-		planet_jobs_engineering_research_produces_mult = 0.05
-		planet_jobs_physics_research_produces_mult = 0.05
-		planet_jobs_society_research_produces_mult = 0.05
-		planet_jobs_energy_produces_mult = 0.05
 	}
 }
 
@@ -574,8 +543,6 @@ trait_psionic = {
 	cost = 0
 	potential_crossbreeding_chance = 0.25
 	icon = "gfx/interface/icons/traits/trait_psionic_species.dds"
-	
-	opposites = { "trait_cybernetic" }
 
 	improves_leaders = yes
 	initial = no
@@ -585,10 +552,10 @@ trait_psionic = {
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
 	
 	modifier = {
-		planet_jobs_engineering_research_produces_mult = 0.10
-		planet_jobs_physics_research_produces_mult = 0.10
+		planet_jobs_unity_produces_mult = 0.10
 		planet_jobs_society_research_produces_mult = 0.10
-		planet_jobs_energy_produces_mult = 0.10
+		planet_pops_upkeep_mult = -0.20
+		army_morale_damage_mult = 0.1
 		pop_happiness = 0.05
 	}
 }
@@ -707,10 +674,8 @@ trait_erudite = {
 	advanced_trait = yes
 	opposites = { "trait_nerve_stapled" "trait_intelligent" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
-	modifier = {
-		planet_researchers_produces_mult = 0.2
-		leader_skill_levels = 1
-	}
+	custom_tooltip = trait_erudite_effect
+	modifier = { leader_skill_levels = 1 }
 }
 
 trait_prodigy = {

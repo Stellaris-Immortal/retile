@@ -39,34 +39,31 @@ country_event = {
 	id = mandate.2
 	title = mandate.2.title
 	desc = mandate.2.desc
-	picture = GFX_evt_galactic_senate
+	picture = GFX_evt_political_event
 	show_sound = event_default
 
 	is_triggered_only = yes
 
 	trigger = {
 		OR = {
-			has_event_chain = mandate_separatist_chain
-			has_event_chain = mandate_emancipation_chain
-			has_event_chain = mandate_emancipation2_chain
-			has_event_chain = mandate_orbresearch_chain
-			has_event_chain = mandate_miner_chain
-			has_event_chain = mandate_shipwright_chain
-			has_event_chain = mandate_peacemaker_chain
-			has_event_chain = mandate_slaver_chain
-			has_event_chain = mandate_xenopurge_chain
-			has_event_chain = mandate_nationalist_chain
-			has_event_chain = mandate_monthly_energy_chain
-			has_event_chain = mandate_monthly_minerals_chain
-			has_event_chain = mandate_monthly_food_chain
-			has_event_chain = mandate_monthly_alloys_chain
-			has_event_chain = mandate_monthly_consumer_goods_chain
-			has_event_chain = mandate_district_city_chain
-			has_event_chain = mandate_district_generator_chain
-			has_event_chain = mandate_district_mining_chain
-			has_event_chain = mandate_district_farming_chain
-			## RETILE MANDATES ##
+			has_event_chain = mandate_anti_crime_chain
 			has_event_chain = mandate_space_exploration_chain
+			has_event_chain = mandate_recycling_chain
+			has_event_chain = mandate_labor_chain
+			has_event_chain = mandate_celebration_chain
+			has_event_chain = mandate_diplomatic_chain
+			has_event_chain = mandate_bureaucratic_chain
+			has_event_chain = mandate_administrative_chain
+			has_event_chain = mandate_common_law_chain
+			has_event_chain = mandate_state_police_chain
+			has_event_chain = mandate_environmental_deregulation_chain
+			has_event_chain = mandate_environmental_protection_chain
+			has_event_chain = mandate_unrestricted_wars_chain
+			has_event_chain = mandate_no_wars_chain
+			has_event_chain = mandate_alien_full_rights_chain
+			has_event_chain = mandate_alien_no_rights_chain
+			has_event_chain = mandate_alloy_trade_chain
+			has_event_chain = mandate_supplies_trade_chain
 		}
 	}
 
@@ -74,81 +71,24 @@ country_event = {
 		switch = {
 			trigger = has_event_chain
 			
-			mandate_space_exploration_chain = {
-				end_event_chain = mandate_space_exploration_chain
-			}
-			
-			mandate_separatist_chain = {
-				end_event_chain = mandate_separatist_chain
-			}
-			
-			mandate_emancipation_chain = {
-				end_event_chain = mandate_emancipation_chain
-			}
-			
-			mandate_emancipation2_chain = {
-				end_event_chain = mandate_emancipation2_chain
-			}
-			
-			mandate_orbresearch_chain = {
-				end_event_chain = mandate_orbresearch_chain
-			}
-			
-			mandate_miner_chain = {
-				end_event_chain = mandate_miner_chain
-			}
-			
-			mandate_shipwright_chain = {
-				end_event_chain = mandate_shipwright_chain
-			}
-			
-			mandate_peacemaker_chain = {
-				end_event_chain = mandate_peacemaker_chain
-			}
-			
-			mandate_slaver_chain = {
-				end_event_chain = mandate_slaver_chain
-			}
-			
-			mandate_xenopurge_chain = {
-				end_event_chain = mandate_xenopurge_chain
-				random_owned_planet = {
-					limit = { has_planet_flag = purge_planet }
-					remove_planet_flag = purge_planet
-				}
-			}
-			
-			mandate_nationalist_chain = {
-				end_event_chain = mandate_nationalist_chain
-			}
-
-			mandate_monthly_energy_chain = {
-				end_event_chain = mandate_monthly_energy_chain
-			}
-
-			mandate_monthly_minerals_chain = {
-				end_event_chain = mandate_monthly_minerals_chain
-			}
-
-			mandate_monthly_alloys_chain = {
-				end_event_chain = mandate_monthly_alloys_chain
-			}
-
-			mandate_monthly_food_chain = {
-				end_event_chain = mandate_monthly_food_chain
-			}
-
-			mandate_monthly_consumer_goods_chain = {
-				end_event_chain = mandate_monthly_consumer_goods_chain
-			}
-
-			mandate_district_city_chain = { end_event_chain = mandate_district_city_chain }
-
-			mandate_district_generator_chain = { end_event_chain = mandate_district_generator_chain }
-
-			mandate_district_mining_chain = { end_event_chain = mandate_district_mining_chain }
-
-			mandate_district_farming_chain = { end_event_chain = mandate_district_farming_chain }
+			mandate_anti_crime_chain = { end_event_chain = mandate_anti_crime_chain }
+			mandate_space_exploration_chain = { end_event_chain = mandate_space_exploration_chain }
+			mandate_recycling_chain = { end_event_chain = mandate_recycling_chain }
+			mandate_labor_chain = { end_event_chain = mandate_labor_chain }
+			mandate_celebration_chain = { end_event_chain = mandate_celebration_chain }
+			mandate_diplomatic_chain = { end_event_chain = mandate_diplomatic_chain }
+			mandate_bureaucratic_chain = { end_event_chain = mandate_bureaucratic_chain }
+			mandate_administrative_chain = { end_event_chain = mandate_administrative_chain }
+			mandate_common_law_chain = { end_event_chain = mandate_common_law_chain }
+			mandate_state_police_chain = { end_event_chain = mandate_state_police_chain }
+			mandate_environmental_deregulation_chain = { end_event_chain = mandate_environmental_deregulation_chain }
+			mandate_environmental_protection_chain = { end_event_chain = mandate_environmental_protection_chain }
+			mandate_unrestricted_wars_chain = { end_event_chain = mandate_unrestricted_wars_chain }
+			mandate_no_wars_chain = { end_event_chain = mandate_no_wars_chain }
+			mandate_alien_full_rights_chain = { end_event_chain = mandate_alien_full_rights_chain }
+			mandate_alien_no_rights_chain = { end_event_chain = mandate_alien_no_rights_chain }
+			mandate_alloy_trade_chain = { end_event_chain = mandate_alloy_trade_chain }
+			mandate_supplies_trade_chain = { end_event_chain = mandate_supplies_trade_chain }
 		}
 	}
 

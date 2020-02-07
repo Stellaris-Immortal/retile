@@ -19,17 +19,26 @@ building_commercial_zone = {
 	}
 	
 	allow = {
-		OR = { 
-			retile_urban = yes
-			has_modifier = resort_colony
-		}
-		#retile_ready = yes
+		#OR = { 
+		#	retile_urban = yes
+		#	has_modifier = resort_colony
+		#}
+		retile_ready = yes
+		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
+			NOT = { is_planet_class = pc_city }
+			has_planet_flag = ai_trade_arcology
+		} } }
 	}
 
 	destroy_trigger = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_trade_arcology }
+			}
 		}
 	}
 	
@@ -117,12 +126,21 @@ building_commercial_megaplex = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_trade_arcology }
+			}
 		}
 	}
 	
 	allow = {
 		#retile_ready = yes
 		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_med }
+		} } }
 	}
 	
 	resources = {
@@ -198,24 +216,24 @@ building_galactic_stock_exchange = {
 	category = trade
 	can_be_disabled = no
 	
-	potential = {
-		exists = owner
-		owner = { is_regular_empire = yes }
-		NOT = { has_modifier = slave_colony }
-	}
-	
 	allow = {
-		OR = { 
-			retile_urban = yes
-			has_modifier = resort_colony
-		}
 		#retile_ready = yes
+		always = yes
+		hidden_trigger = { owner = { OR = {
+			is_ai = no
+			has_resource = { type = rare_crystals amount > @cost_high }
+		} } }
 	}
 	
 	destroy_trigger = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
+			AND = {
+				owner = { is_ai = yes }
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_trade_arcology }
+			}
 		}
 	}
 	
@@ -226,11 +244,12 @@ building_galactic_stock_exchange = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = @cost_low
-		}
+			minerals = @cost_high
+			rare_crystals = @cost_high
+		}	
 		upkeep = {
 			minerals = 0
-			energy = 25
+			energy = 50
 		}
 	}
 	
@@ -239,7 +258,7 @@ building_galactic_stock_exchange = {
 	}
 	
 	country_modifier = {
-		country_resource_max_add = 2000
+		country_resource_max_add = 3000
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -258,16 +277,8 @@ building_galactic_stock_exchange = {
 		text = retile_stock_exchange_effect
 	}
 	
-	ai_weight = {
-		weight = 0
-		
-		modifier = {	# really good, but only build if we are already doing this...
-			weight = 10000
-			OR = {
-				has_building = building_commercial_zone
-				has_building = building_commercial_megaplex
-			}
-		}
+	ai_weight = {	# always upgrade
+		weight = 100000
 	}
 	
 	ai_resource_production = {

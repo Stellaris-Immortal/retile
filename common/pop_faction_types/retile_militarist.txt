@@ -21,7 +21,10 @@ imperialist = {
 			has_ethic = ethic_militarist
 			has_ethic = ethic_fanatic_militarist
 		}
-		NOT = { has_ethic = ethic_gestalt_consciousness }
+		NOT = { 
+			has_ethic = ethic_gestalt_consciousness
+			has_valid_civic = civic_pacifist
+		}
 	}
 	
 	parameters = {
@@ -54,6 +57,14 @@ imperialist = {
 	
 	attraction = {
 		base = 100
+		
+		modifier = {
+			factor = 1.25
+			OR = { 
+				has_job = soldier
+				has_job = strategos
+			}
+		}
 		
 		modifier = {
 			factor = 0.75

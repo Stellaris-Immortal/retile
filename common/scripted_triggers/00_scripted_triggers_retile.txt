@@ -131,3 +131,104 @@ retile_diplomacy = {	# counry scope
 is_plantoid_empire = {
 	owner_species = { is_plantoid = yes }
 }
+
+ai_no_unfinished_megastructures = {
+	hidden_trigger = { OR = {
+		owner = { is_ai = no }
+		owner = { not = { any_owned_megastructure = { is_unfinished_megastructure = yes } } }
+	} }
+}
+
+is_unfinished_megastructure = {
+	OR = {
+		is_unfinished_matter_decompressor = yes
+		is_unfinished_dyson_sphere = yes
+		is_unfinished_sentry_array = yes
+		is_unfinished_science_nexus = yes
+		is_unfinished_strategic_coordination_center = yes
+		is_unfinished_mega_art_installation = yes
+		is_unfinished_interstellar_assembly = yes
+		is_unfinished_ring_world = yes
+	}
+}
+
+is_unfinished_ring_world = {	### Not sure how accurate this one is...
+	OR = {
+		is_megastructure_type = ring_world_1
+		is_megastructure_type = ring_world_2_intermediate
+		is_megastructure_type = ring_world_2
+		#is_megastructure_type = ring_world_3_intermediate
+		is_megastructure_type = ring_world_ruined
+	}
+}
+
+is_unfinished_matter_decompressor = {
+	OR = {
+		is_megastructure_type = matter_decompressor_0
+		is_megastructure_type = matter_decompressor_1
+		is_megastructure_type = matter_decompressor_2
+		is_megastructure_type = matter_decompressor_3
+		is_megastructure_type = matter_decompressor_ruined
+	}
+}
+
+is_unfinished_dyson_sphere = {
+	OR = {
+		is_megastructure_type = dyson_sphere_0
+		is_megastructure_type = dyson_sphere_1
+		is_megastructure_type = dyson_sphere_2
+		is_megastructure_type = dyson_sphere_3
+		is_megastructure_type = dyson_sphere_4
+		is_megastructure_type = dyson_sphere_ruined
+	}
+}
+
+is_unfinished_sentry_array = {
+	OR = {
+		is_megastructure_type = spy_orb_0
+		is_megastructure_type = spy_orb_1
+		is_megastructure_type = spy_orb_2
+		is_megastructure_type = spy_orb_3
+		is_megastructure_type = spy_orb_ruined
+	}
+}
+
+is_unfinished_science_nexus = {
+	OR = {
+		is_megastructure_type = think_tank_0
+		is_megastructure_type = think_tank_1
+		is_megastructure_type = think_tank_2
+		is_megastructure_type = think_tank_3
+		is_megastructure_type = think_tank_ruined
+	}
+}
+
+is_unfinished_strategic_coordination_center = {
+	OR = {
+		is_megastructure_type = strategic_coordination_center_0
+		is_megastructure_type = strategic_coordination_center_1
+		is_megastructure_type = strategic_coordination_center_2
+		is_megastructure_type = strategic_coordination_center_ruined
+	}
+}
+
+is_unfinished_mega_art_installation = {
+	OR = {
+		is_megastructure_type = mega_art_installation_0
+		is_megastructure_type = mega_art_installation_1
+		is_megastructure_type = mega_art_installation_2
+		is_megastructure_type = mega_art_installation_3
+		is_megastructure_type = mega_art_installation_ruined
+		#is_megastructure_type = mega_art_installation_restored # There is another tier
+	}
+}
+
+is_unfinished_interstellar_assembly = {
+	OR = {
+		is_megastructure_type = interstellar_assembly_0
+		is_megastructure_type = interstellar_assembly_1
+		is_megastructure_type = interstellar_assembly_2
+		is_megastructure_type = interstellar_assembly_3
+		is_megastructure_type = interstellar_assembly_ruined
+	}
+}

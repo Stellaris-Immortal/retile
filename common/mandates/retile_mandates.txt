@@ -92,6 +92,7 @@ mandate_labor = {
 		owner = { 
 			NOT = { has_edict = labor_campaign }
 			has_technology = tech_planetary_unification
+			resource_stockpile_compare = { resource = influence value >= 100 }
 		}
 	}
 	parameters = {}
@@ -124,6 +125,7 @@ mandate_celebration = {
 		owner = { 
 			NOT = { has_edict = celebration_campaign }
 			has_technology = tech_planetary_unification
+			resource_stockpile_compare = { resource = influence value >= 100 }
 		}
 	}
 	parameters = {}
@@ -156,6 +158,7 @@ mandate_diplomatic = {
 		owner = { 
 			NOT = { has_edict = diplomatic_campaign }
 			has_technology = tech_colonial_centralization
+			resource_stockpile_compare = { resource = influence value >= 100 }
 		}
 	}
 	parameters = {}
@@ -188,6 +191,7 @@ mandate_bureaucratic = {
 		owner = { 
 			NOT = { has_edict = bureaucratic_campaign }
 			has_technology = tech_galactic_administration
+			resource_stockpile_compare = { resource = influence value >= 200 }
 		}
 	}
 	parameters = {}
@@ -220,6 +224,7 @@ mandate_administrative = {
 		owner = { 
 			NOT = { has_edict = administrative_campaign }
 			has_technology = tech_galactic_administration
+			resource_stockpile_compare = { resource = influence value >= 200 }
 		}
 	}
 	parameters = {}
@@ -254,12 +259,9 @@ mandate_common_law = {
 		owner = { 
 			NOT = { has_policy_flag = criminal_common_law }
 			NOT = { has_civic = civic_police_state }
-		}
-		ROOT = { 
-			OR = {
-				leader_of_faction = progressive
-				leader_of_faction = supremacist
-				has_trait = trait_ruler_champion_of_the_people
+			NOR = {
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_fanatic_authoritarian
 			}
 		}
 	}
@@ -293,12 +295,9 @@ mandate_state_police = {
 		owner = { 
 			NOT = { has_policy_flag = criminal_state_police }
 			NOT = { has_valid_civic = civic_anarchist }
-		}
-		ROOT = { 
-			OR = {
-				leader_of_faction = totalitarian
-				leader_of_faction = supremacist
-				has_trait = trait_ruler_deep_connections
+			NOR = {
+				has_ethic = ethic_egalitarian
+				has_ethic = ethic_fanatic_egalitarian
 			}
 		}
 	}
@@ -333,12 +332,9 @@ mandate_environmental_deregulation = {
 			NOT = { has_policy_flag = environmental_deregulation }
 			NOT = { has_valid_civic = civic_shared_burden }
 			NOT = { has_valid_civic = civic_anarchist }
-		}
-		ROOT = { 
-			OR = {
-				leader_of_faction = technologist
-				leader_of_faction = supremacist
-				has_trait = trait_ruler_industrialist
+			NOR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
 			}
 		}
 	}
@@ -371,12 +367,9 @@ mandate_environmental_protection = {
 		exists = owner
 		owner = { 
 			NOT = { has_policy_flag = environmental_protection }
-		}
-		ROOT = { 
-			OR = {
-				leader_of_faction = traditionalist
-				leader_of_faction = supremacist
-				has_trait = trait_ruler_architectural_sense
+			NOR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
 			}
 		}
 	}
@@ -410,12 +403,9 @@ mandate_unrestricted_wars = {
 		owner = { 
 			NOT = { has_policy_flag = unrestricted_wars }
 			NOT = { has_valid_civic = civic_anarchist }
-		}
-		ROOT = { 
-			OR = {
-				leader_of_faction = imperialist
-				leader_of_faction = supremacist
-				has_trait = trait_ruler_warlike
+			NOR = {
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist
 			}
 		}
 	}
@@ -450,12 +440,9 @@ mandate_no_wars = {
 			has_encountered_other_species = yes
 			NOT = { has_policy_flag = unrestricted_wars }
 			NOT = { has_valid_civic = civic_anarchist }
-		}
-		ROOT = { 
-			OR = {
-				leader_of_faction = prosperity
-				leader_of_faction = supremacist
-				has_trait = trait_ruler_charismatic
+			NOR = {
+				has_ethic = ethic_militarist
+				has_ethic = ethic_fanatic_militarist
 			}
 		}
 	}
@@ -490,12 +477,9 @@ mandate_alien_full_rights = {
 			has_encountered_other_species = yes
 			NOT = { has_policy_flag = alien_full_rights }
 			NOT = { has_valid_civic = civic_anarchist }
-		}
-		ROOT = { 
-			OR = {
-				leader_of_faction = xenoist
-				leader_of_faction = supremacist
-				has_trait = trait_ruler_explorer
+			NOR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
 			}
 		}
 	}
@@ -530,12 +514,9 @@ mandate_alien_no_rights = {
 			has_encountered_other_species = yes
 			NOT = { has_policy_flag = alien_no_rights }
 			NOT = { has_valid_civic = civic_anarchist }
-		}
-		ROOT = { 
-			OR = {
-				leader_of_faction = isolationist
-				leader_of_faction = supremacist
-				has_trait = trait_ruler_fortifier
+			NOR = {
+				has_ethic = ethic_xenophile
+				has_ethic = ethic_fanatic_xenophile
 			}
 		}
 	}
@@ -559,6 +540,66 @@ mandate_alien_no_rights = {
 			if = { limit = { is_ai = no } 	log = "mandate_alien_no_rights end_of_term fired for player" }
 			if = { limit = { is_ai = yes } 	log = "mandate_alien_no_rights end_of_term fired for AI" }
 			country_event = { id = retile_mandate.4 }
+		}
+	}
+}
+
+### Trade Policy Mandates
+
+mandate_alloy_trade = {
+	valid = { 
+		exists = owner
+		owner = { has_monthly_income = { resource = alloys value < 100 } } 
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_alloy_trade_chain }
+				end_event_chain = mandate_alloy_trade_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_alloy_trade_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_alloy_trade end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_alloy_trade end_of_term fired for AI" }
+			country_event = { id = mandate.171 }
+		}
+	}
+}
+
+mandate_supplies_trade = {
+	valid = { 
+		exists = owner
+		owner = { has_monthly_income = { resource = consumer_goods value < 50 } } 
+	}
+	parameters = {}
+
+	on_term_started = {
+		owner = {
+			if = {
+				limit = { has_event_chain = mandate_supplies_trade_chain }
+				end_event_chain = mandate_supplies_trade_chain
+			}
+			begin_event_chain = {
+				event_chain = "mandate_supplies_trade_chain"
+				target = this
+			}
+		}
+	}
+
+	on_term_ended = {
+		owner = {
+			if = { limit = { is_ai = no } 	log = "mandate_supplies_trade end_of_term fired for player" }
+			if = { limit = { is_ai = yes } 	log = "mandate_supplies_trade end_of_term fired for AI" }
+			country_event = { id = mandate.171 }
 		}
 	}
 }

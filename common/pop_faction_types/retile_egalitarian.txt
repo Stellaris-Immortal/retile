@@ -11,7 +11,14 @@ progressive = {
 	
 	resources = {
 		category = pop_factions
-		produces = { influence = 2 }		
+		produces = { 
+			trigger = { owner = { has_valid_civic = civic_pacifist } }
+			unity = 10
+		}
+		produces = { 
+			trigger = { owner = { NOT = { has_valid_civic = civic_pacifist } } }
+			influence = 2
+		}		
 	}
 
 	is_potential = {
@@ -21,6 +28,7 @@ progressive = {
 			has_authority = auth_oligarchic
 			has_ethic = ethic_egalitarian
 			has_ethic = ethic_fanatic_egalitarian
+			has_valid_civic = civic_pacifist
 		}
 		NOT = { has_authority = auth_hive_mind }
 	}
@@ -55,6 +63,14 @@ progressive = {
 	
 	attraction = {
 		base = 100
+		
+		modifier = {
+			factor = 1.25
+			OR = { 
+				has_job = farmer
+				has_job = representitive
+			}
+		}
 		
 		modifier = {
 			factor = 0.75

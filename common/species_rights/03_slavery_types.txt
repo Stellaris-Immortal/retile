@@ -21,6 +21,14 @@ slavery_domestic = {
 	
 	ai_will_do = {
 		factor = 1
+		modifier = {
+			factor = 10
+			is_same_species = owner_species
+			from = { any_owned_pop = {
+				is_same_species = owner_species
+				is_majority_species = yes
+			} }
+		}
 	}
 }
 

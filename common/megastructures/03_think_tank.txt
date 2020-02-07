@@ -12,7 +12,7 @@ think_tank_0 = {
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
 	entity_offset = { x = @entity_x y = @entity_y }
-	build_time = 1800
+	build_time = 1080
 	resources = {
 		category = megastructures
 		cost = {
@@ -27,6 +27,7 @@ think_tank_0 = {
 	prerequisites = { "tech_science_nexus" }
 	
 	possible = {
+		ai_no_unfinished_megastructures = yes
 		exists = starbase
 		custom_tooltip = {
 			fail_text = "requires_inside_border"
@@ -49,7 +50,23 @@ think_tank_0 = {
 		}
 		custom_tooltip = {
 			fail_text = "requires_no_existing_think_tank"
-			from = { NOT = { has_country_flag = built_think_tank } }
+			from = {
+				NOT = {
+					any_owned_megastructure = {
+						OR = {
+							is_megastructure_type = think_tank_0
+							is_megastructure_type = think_tank_1
+							is_megastructure_type = think_tank_2
+							is_megastructure_type = think_tank_3
+							is_megastructure_type = think_tank_4
+							is_megastructure_type = think_tank_ruined
+							is_megastructure_type = think_tank_restored
+						}
+					}
+				}
+			}
+			### Removed this because it's a stupid way to check for this requirement...
+			# from = { NOT = { has_country_flag = built_think_tank } }
 		}
 	}
 	
@@ -132,7 +149,7 @@ think_tank_1 = {
 	portrait = "GFX_megastructure_construction_background"	
 	place_entity_on_planet_plane = no
 	entity_offset = { x = @entity_x y = @entity_y }
-	build_time = 3600
+	build_time = 1800
 	resources = {
 		category = megastructures
 		cost = {
@@ -167,7 +184,7 @@ think_tank_2 = {
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
 	entity_offset = { x = @entity_x y = @entity_y }
-	build_time = 3600
+	build_time = 1800
 	resources = {
 		category = megastructures
 		cost = {
@@ -202,7 +219,7 @@ think_tank_3 = {
 	portrait = "GFX_megastructure_think_tank_background"
 	place_entity_on_planet_plane = no
 	entity_offset = { x = @entity_x y = @entity_y }
-	build_time = 3600
+	build_time = 1800
 	resources = {
 		category = megastructures
 		cost = {
@@ -299,7 +316,7 @@ think_tank_restored = {
 	portrait = "GFX_megastructure_think_tank_background"
 	place_entity_on_planet_plane = no
 	entity_offset = { x = @entity_x y = @entity_y }
-	build_time = 4800
+	build_time = 1800
 	resources = {
 		category = megastructures
 		cost = {
@@ -323,6 +340,26 @@ think_tank_restored = {
 
 	possible = {
 		from = { has_technology = tech_mega_engineering }	
+		custom_tooltip = {
+			fail_text = "requires_no_existing_think_tank"
+			from = {
+				NOT = {
+					any_owned_megastructure = {
+						OR = {
+							is_megastructure_type = think_tank_0
+							is_megastructure_type = think_tank_1
+							is_megastructure_type = think_tank_2
+							is_megastructure_type = think_tank_3
+							is_megastructure_type = think_tank_4
+							#is_megastructure_type = think_tank_ruined
+							is_megastructure_type = think_tank_restored
+						}
+					}
+				}
+			}
+			### Removed this because it's a stupid way to check for this requirement...
+			# from = { NOT = { has_country_flag = built_think_tank } }
+		}
 	}
 	
 	country_modifier = {
