@@ -315,7 +315,7 @@ country_event = {
 	after = {
 		if = {
 			limit = {
-				has_monthly_income = { resource = minerals value > 150 }
+				has_monthly_income = { resource = minerals value > 225 }
 			}
 			random_owned_planet = {
 				limit = {
@@ -614,3 +614,255 @@ ship_event = {
 		owner = { set_timed_country_flag = { flag = colony_ship_built days = 720 } }
 	}
 }
+
+# Trade away energy at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2000
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_resource = { type = energy amount > 25000 }
+		has_monthly_income = { resource = energy value > 90 }
+		OR = {
+			has_resource = { type = minerals amount < 10000}
+			has_resource = { type = food amount < 10000}
+			has_resource = { type = alloys amount < 10000}
+			has_resource = { type = consumer_goods amount < 10000}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		while = {
+			limit = {
+				has_resource = { type = energy amount > 25000 }
+				OR = {
+					has_resource = { type = minerals amount < 10000}
+					has_resource = { type = food amount < 10000}
+					has_resource = { type = alloys amount < 10000}
+					has_resource = { type = consumer_goods amount < 10000}
+				}
+			}
+			random_list = {
+				10 = {	# Mineral Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = minerals amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = minerals amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = minerals amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = minerals value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = minerals value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { minerals = 500 }
+				}
+				10 = {	# Food Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = food amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = food amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = food amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = food value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = food value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { food = 125 }
+				}
+				10 = {	# Alloys Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = alloys amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = alloys amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = alloys amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = alloys value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = alloys value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { alloys = 125 }
+				}
+				10 = {	# Supplies Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = consumer_goods amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = consumer_goods amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = consumer_goods amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = consumer_goods value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = consumer_goods value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { consumer_goods = 125 }
+				}
+			}
+		}
+	}
+}
+
+# Trade away minerals at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2001
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_resource = { type = minerals amount > 15000 }
+		has_resource = { type = energy amount < 50000 }
+		has_monthly_income = { resource = minerals value > 90 }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		while = {
+			limit = {
+				has_resource = { type = minerals amount > 15000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { minerals = -1000 }
+			add_resource = { energy = 500 }
+		}
+	}
+}
+
+# Trade away food at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2002
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_resource = { type = food amount > 15000 }
+		has_resource = { type = energy amount < 50000 }
+		has_monthly_income = { resource = food value > 20 }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		while = {
+			limit = {
+				has_resource = { type = food amount > 15000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { food = -250 }
+			add_resource = { energy = 500 }
+		}
+	}
+}
+
+# Trade away supplies at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2003
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_resource = { type = consumer_goods amount > 15000 }
+		has_resource = { type = energy amount < 50000 }
+		has_monthly_income = { resource = consumer_goods value > 20 }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		while = {
+			limit = {
+				has_resource = { type = consumer_goods amount > 15000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { consumer_goods = -250 }
+			add_resource = { energy = 500 }
+		}
+	}
+}
+
+# Trade away alloys at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2004
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_resource = { type = alloys amount > 25000 }
+		has_resource = { type = energy amount < 50000 }
+		has_monthly_income = { resource = alloys value > 20 }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		while = {
+			limit = {
+				has_resource = { type = alloys amount > 25000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { alloys = -250 }
+			add_resource = { energy = 500 }
+		}
+	}
+}
+

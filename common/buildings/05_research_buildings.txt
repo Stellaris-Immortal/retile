@@ -112,6 +112,10 @@ building_research_lab_1 = {
 		modifier = {
 			weight = 150000
 			is_capital = yes
+			NAND = {
+				is_planet_class = pc_city
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 		modifier = {	# behind in tech!!!
 			weight = 100
@@ -149,7 +153,11 @@ building_research_lab_1 = {
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 	
@@ -255,6 +263,14 @@ building_research_lab_2 = {
 	
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 	
 	ai_resource_production = {
@@ -355,6 +371,14 @@ building_research_lab_3 = {
 	
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 	
 	ai_resource_production = {
@@ -469,6 +493,14 @@ building_institute = {
 				has_building = building_research_lab_1
 				has_building = building_research_lab_2
 				has_building = building_research_lab_3
+			}
+		}
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}

@@ -29,9 +29,10 @@ district_farming = {
 	allow = {
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = penal_colony }
-		hidden_trigger = {
+		hidden_trigger = { OR = {
 			retile_ready_food = yes
-		}
+			retile_ready_labor = yes
+		} }
 	}
 
 	prerequisites = {
@@ -186,9 +187,10 @@ district_farming_uncapped = {
 	
 	allow = {
 		NOT = { has_modifier = resort_colony }
-		hidden_trigger = {
+		hidden_trigger = { OR = {
 			retile_ready_food = yes
-		}
+			retile_ready_labor = yes
+		} }
 	}
 
 	conversion_ratio = 1
@@ -315,9 +317,10 @@ district_hab_hydroponics = {
 	
 	allow = {
 		NOT = { has_modifier = resort_colony }
-		hidden_trigger = {
+		hidden_trigger = { OR = {
 			retile_ready_food = yes
-		}
+			retile_ready_labor = yes
+		} }
 	}
 
 	resources = {
@@ -438,9 +441,10 @@ district_rw_farming = {
 	
 	allow = {
 		NOT = { has_modifier = resort_colony }
-		hidden_trigger = {
+		hidden_trigger = { OR = {
 			retile_ready_food = yes
-		}
+			retile_ready_labor = yes
+		} }
 	}
 
 	resources = {

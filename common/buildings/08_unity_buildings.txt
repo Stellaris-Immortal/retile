@@ -29,9 +29,12 @@ building_autochthon_monument = {
 	allow = {
 		retile_urban = yes
 		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_research_arcology
+		hidden_trigger = { OR = { owner = { is_ai = no } AND = {
+			years_passed > 5
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				has_planet_flag = ai_research_arcology
+			}
 		} } }
 	}
 	
@@ -127,7 +130,11 @@ building_autochthon_monument = {
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 
@@ -241,6 +248,14 @@ building_heritage_site = {
 
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 
 	ai_resource_production = {
@@ -349,6 +364,14 @@ building_hypercomms_forum = {
 
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 
 	ai_resource_production = {
@@ -475,7 +498,11 @@ building_temple = {
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 
@@ -585,6 +612,14 @@ building_holotemple = {
 
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 
 	ai_resource_production = {
@@ -689,6 +724,14 @@ building_sacred_nexus = {
 
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 
 	ai_resource_production = {
@@ -803,7 +846,11 @@ building_hive_node = {
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 
@@ -907,6 +954,14 @@ building_hive_cluster = {
 
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 
 	ai_resource_production = {
@@ -1005,6 +1060,14 @@ building_hive_confluence = {
 
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 
 	ai_resource_production = {
@@ -1126,7 +1189,11 @@ building_uplink_node = {
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 
@@ -1233,6 +1300,14 @@ building_network_junction = {
 
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 
 	ai_resource_production = {
@@ -1334,6 +1409,14 @@ building_system_conflux = {
 
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 
 	ai_resource_production = {
@@ -1366,9 +1449,12 @@ building_corporate_monument = {
 	allow = {
 		retile_urban = yes
 		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_research_arcology
+		hidden_trigger = { OR = { owner = { is_ai = no } AND = {
+			years_passed > 5
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				has_planet_flag = ai_research_arcology
+			}
 		} } }
 	}
 	
@@ -1462,7 +1548,11 @@ building_corporate_monument = {
 		}
 		modifier = {	# consumer goods collapse!!!
 			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -50 } }
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
 		}
 	}
 
@@ -1575,6 +1665,14 @@ building_corporate_site = {
 
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 
 	ai_resource_production = {
@@ -1682,6 +1780,14 @@ building_corporate_forum = {
 
 	ai_weight = {	# always upgrade
 		weight = 100000
+		modifier = {	# consumer goods collapse!!!
+			factor = -1
+			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
+			OR = {
+				NOT = { is_planet_class = pc_city }
+				NOT = { has_planet_flag = ai_research_arcology }
+			}
+		}
 	}
 
 	ai_resource_production = {

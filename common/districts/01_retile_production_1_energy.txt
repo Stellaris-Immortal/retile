@@ -27,9 +27,10 @@ district_generator = {
 	allow = {
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = penal_colony }
-		hidden_trigger = {
+		hidden_trigger = { OR = {
 			retile_ready_energy = yes
-		}
+			retile_ready_labor = yes
+		} }
 	}
 	
 	prerequisites = {
@@ -142,9 +143,10 @@ district_generator_uncapped = {
 	
 	allow = {
 		NOT = { has_modifier = resort_colony }
-		hidden_trigger = {
+		hidden_trigger = { OR = {
 			retile_ready_energy = yes
-		}
+			retile_ready_labor = yes
+		} }
 	}
 	
 	
@@ -233,9 +235,10 @@ district_hab_energy = {
 	}
 	
 	allow = {
-		hidden_trigger = {
+		hidden_trigger = { OR = {
 			retile_ready_energy = yes
-		}
+			retile_ready_labor = yes
+		} }
 	}
 
 	resources = {
@@ -318,9 +321,10 @@ district_rw_generator = {
 	}
 	
 	allow = {
-		hidden_trigger = {
+		hidden_trigger = { OR = {
 			retile_ready_energy = yes
-		}
+			retile_ready_labor = yes
+		} }
 	}
 
 	resources = {
