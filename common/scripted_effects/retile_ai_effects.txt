@@ -1100,27 +1100,6 @@ retile_flag_ai_city_world = {
 						has_modifier = penal_colony
 						is_under_colonization = yes
 						has_planet_flag = ai_city_development	# can have more than 1, eventually
-						AND = {
-							has_planet_flag = ai_energy_development_sticky
-							num_free_districts = { type = district_generator value > 0 }
-							num_free_districts = { type = district_generator_uncapped value > 0 }
-							num_free_districts = { type = district_hab_energy value > 0 }
-							num_free_districts = { type = district_rw_generator value > 0 }
-						}
-						AND = {
-							has_planet_flag = ai_minerals_development_sticky
-							num_free_districts = { type = district_mining value > 0 }
-							num_free_districts = { type = district_mining_uncapped value > 0 }
-							num_free_districts = { type = district_hab_mining value > 0 }
-							num_free_districts = { type = district_rw_mining value > 0 }
-						}
-						AND = {
-							has_planet_flag = ai_food_development_sticky
-							num_free_districts = { type = district_farming value > 0 }
-							num_free_districts = { type = district_farming_uncapped value > 0 }
-							num_free_districts = { type = district_hab_hydroponics value > 0 }
-							num_free_districts = { type = district_rw_farming value > 0 }
-						}
 					}
 				}
 				weights = {
