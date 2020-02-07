@@ -133,9 +133,10 @@ is_plantoid_empire = {
 }
 
 ai_no_unfinished_megastructures = {
-	hidden_trigger = { OR = { owner = { is_ai = no
-		not = { any_owned_megastructure = { is_unfinished_megastructure = yes } }
-	} } }
+	hidden_trigger = { OR = {
+		owner = { is_ai = no }
+		owner = { not = { any_owned_megastructure = { is_unfinished_megastructure = yes } } }
+	} }
 }
 
 is_unfinished_megastructure = {

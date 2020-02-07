@@ -64,13 +64,13 @@ planet_event = {
 				modifier = { add = 3 root = { habitability = { who = prev value <= 0.85 } } }
 				modifier = { add = 2 root = { habitability = { who = prev value <= 0.90 } } }
 				modifier = { add = 1 root = { habitability = { who = prev value <= 0.95 } } }
-				modifier = {
-					mult = 5
-					NOR = {
-						is_plantoid = yes
-						#is_lithoid = yes
-					}
-				}
+				#modifier = {
+				#	mult = 5
+				#	NOR = {
+				#		is_plantoid = yes
+				#		#is_lithoid = yes
+				#	}
+				#}
 				#modifier = {
 				#	mult = 20
 				#	NOT = { is_robotic_species = yes }
@@ -203,6 +203,12 @@ planet_event = {
 pop_event = {
 	id = retile_pop.110
 	hide_window = yes
+	
+	trigger = {
+		planet = {
+			habitability = { who = root value < 50 }
+		}
+	}
 
 	mean_time_to_happen = {
 		days = 1800
@@ -227,7 +233,7 @@ pop_event = {
 					is_under_colonization = no
 					is_occupied_flag = no
 					has_orbital_bombardment = no
-					habitability = { who = root value < 70 }
+					habitability = { who = root value < 50 }
 				}
 			}
 			owner = { random_owned_pop = {
@@ -249,7 +255,7 @@ pop_event = {
 						is_under_colonization = no
 						is_occupied_flag = no
 						has_orbital_bombardment = no
-						habitability = { who = prev value < 70 }
+						habitability = { who = prev value < 50 }
 						habitability = { who = root value >= 70 }
 					}
 					root.planet = {
@@ -273,16 +279,22 @@ country_event = {
 	hide_window = yes
 
 	trigger = {
-		is_country_type = default
+		OR = {
+			is_country_type = default
+			is_country_type = awakened_marauders
+			is_country_type = awakened_fallen_empire
+		}
+		not = { has_country_flag = growth_malus_cleared }
 	}
 
 	mean_time_to_happen = {
-		days = 15
+		days = 90
 	}
 
 	after = {
 		retile_clear_growth_malus = yes
-		retile_apply_growth_malus = yes
+		set_country_flag = growth_malus_cleared
+		#retile_apply_growth_malus = yes
 	}
 }
 
