@@ -625,6 +625,12 @@ country_event = {
 		is_country_type = default
 		has_resource = { type = energy amount > 25000 }
 		has_monthly_income = { resource = energy value > 90 }
+		OR = {
+			has_resource = { type = minerals amount < 10000}
+			has_resource = { type = food amount < 10000}
+			has_resource = { type = alloys amount < 10000}
+			has_resource = { type = consumer_goods amount < 10000}
+		}
 	}
 	
 	mean_time_to_happen = {
@@ -632,113 +638,113 @@ country_event = {
 	}
 
 	after = {
-		random_list = {
-			10 = {	# Default
-				modifier = {
-					factor = 0
-					OR = {
-						has_resource = { type = minerals amount < 10000}
-						has_resource = { type = food amount < 10000}
-						has_resource = { type = alloys amount < 10000}
-						has_resource = { type = consumer_goods amount < 10000}
+		while = {
+			limit = {
+				has_resource = { type = energy amount > 25000 }
+				OR = {
+					has_resource = { type = minerals amount < 10000}
+					has_resource = { type = food amount < 10000}
+					has_resource = { type = alloys amount < 10000}
+					has_resource = { type = consumer_goods amount < 10000}
+				}
+			}
+			random_list = {
+				10 = {	# Mineral Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = minerals amount >= 10000}
 					}
+					modifier = {
+						factor = 2
+						has_resource = { type = minerals amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = minerals amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = minerals value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = minerals value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { minerals = 500 }
 				}
-			}
-			10 = {	# Mineral Trades
-				modifier = {
-					factor = 0
-					has_resource = { type = minerals amount >= 10000}
+				10 = {	# Food Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = food amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = food amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = food amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = food value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = food value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { food = 125 }
 				}
-				modifier = {
-					factor = 2
-					has_resource = { type = minerals amount < 5000 }
+				10 = {	# Alloys Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = alloys amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = alloys amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = alloys amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = alloys value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = alloys value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { alloys = 125 }
 				}
-				modifier = {
-					factor = 5
-					has_resource = { type = minerals amount < 1000 }
+				10 = {	# Supplies Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = consumer_goods amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = consumer_goods amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = consumer_goods amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = consumer_goods value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = consumer_goods value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { consumer_goods = 125 }
 				}
-				modifier = {
-					factor = 5
-					has_monthly_income = { resource = minerals value < 25 }
-				}
-				modifier = {
-					factor = 10
-					has_monthly_income = { resource = minerals value < 0 }
-				}
-				add_resource = { energy = -1000 }
-				add_resource = { minerals = 500 }
-			}
-			10 = {	# Food Trades
-				modifier = {
-					factor = 0
-					has_resource = { type = food amount >= 10000}
-				}
-				modifier = {
-					factor = 2
-					has_resource = { type = food amount < 5000 }
-				}
-				modifier = {
-					factor = 5
-					has_resource = { type = food amount < 1000 }
-				}
-				modifier = {
-					factor = 5
-					has_monthly_income = { resource = food value < 25 }
-				}
-				modifier = {
-					factor = 10
-					has_monthly_income = { resource = food value < 0 }
-				}
-				add_resource = { energy = -1000 }
-				add_resource = { food = 125 }
-			}
-			10 = {	# Alloys Trades
-				modifier = {
-					factor = 0
-					has_resource = { type = alloys amount >= 10000}
-				}
-				modifier = {
-					factor = 2
-					has_resource = { type = alloys amount < 5000 }
-				}
-				modifier = {
-					factor = 5
-					has_resource = { type = alloys amount < 1000 }
-				}
-				modifier = {
-					factor = 5
-					has_monthly_income = { resource = alloys value < 25 }
-				}
-				modifier = {
-					factor = 10
-					has_monthly_income = { resource = alloys value < 0 }
-				}
-				add_resource = { energy = -1000 }
-				add_resource = { alloys = 125 }
-			}
-			10 = {	# Supplies Trades
-				modifier = {
-					factor = 0
-					has_resource = { type = consumer_goods amount >= 10000}
-				}
-				modifier = {
-					factor = 2
-					has_resource = { type = consumer_goods amount < 5000 }
-				}
-				modifier = {
-					factor = 5
-					has_resource = { type = consumer_goods amount < 1000 }
-				}
-				modifier = {
-					factor = 5
-					has_monthly_income = { resource = consumer_goods value < 25 }
-				}
-				modifier = {
-					factor = 10
-					has_monthly_income = { resource = consumer_goods value < 0 }
-				}
-				add_resource = { energy = -1000 }
-				add_resource = { consumer_goods = 125 }
 			}
 		}
 	}
@@ -762,8 +768,14 @@ country_event = {
 	}
 
 	after = {
-		add_resource = { minerals = -1000 }
-		add_resource = { energy = 500 }
+		while = {
+			limit = {
+				has_resource = { type = minerals amount > 15000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { minerals = -1000 }
+			add_resource = { energy = 500 }
+		}
 	}
 }
 
@@ -785,8 +797,14 @@ country_event = {
 	}
 
 	after = {
-		add_resource = { food = -250 }
-		add_resource = { energy = 500 }
+		while = {
+			limit = {
+				has_resource = { type = food amount > 15000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { food = -250 }
+			add_resource = { energy = 500 }
+		}
 	}
 }
 
@@ -808,8 +826,14 @@ country_event = {
 	}
 
 	after = {
-		add_resource = { consumer_goods = -250 }
-		add_resource = { energy = 500 }
+		while = {
+			limit = {
+				has_resource = { type = consumer_goods amount > 15000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { consumer_goods = -250 }
+			add_resource = { energy = 500 }
+		}
 	}
 }
 
@@ -831,8 +855,14 @@ country_event = {
 	}
 
 	after = {
-		add_resource = { alloys = -250 }
-		add_resource = { energy = 500 }
+		while = {
+			limit = {
+				has_resource = { type = alloys amount > 25000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { alloys = -250 }
+			add_resource = { energy = 500 }
+		}
 	}
 }
 
