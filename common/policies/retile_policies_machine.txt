@@ -1,11 +1,11 @@
 
-hive_ethics = {
-	potential = { has_authority = auth_hive_mind }
+machine_ethics = {
+	potential = { has_authority = auth_machine_intelligence }
 
 	option = {
-		name = "hive_ethics_authoritarian"
+		name = "machine_ethics_authoritarian"
 		
-		policy_flags = { hive_ethics_authoritarian }
+		policy_flags = { machine_ethics_authoritarian }
 		
 		modifier = { 
 			country_base_influence_produces_add = 1
@@ -17,9 +17,9 @@ hive_ethics = {
 	}
 	
 	option = {
-		name = "hive_ethics_egalitarian"
+		name = "machine_ethics_egalitarian"
 		
-		policy_flags = { hive_ethics_egalitarian }
+		policy_flags = { machine_ethics_egalitarian }
 		
 		modifier = { 
 			# Reduces Deviancy
@@ -31,9 +31,9 @@ hive_ethics = {
 	}
 	
 	option = {
-		name = "hive_ethics_militarist"
+		name = "machine_ethics_militarist"
 		
-		policy_flags = { hive_ethics_militarist }
+		policy_flags = { machine_ethics_militarist }
 		
 		modifier = { 
 			country_war_exhaustion_mult = -0.5
@@ -45,9 +45,9 @@ hive_ethics = {
 	}
 	
 	option = {
-		name = "hive_ethics_pacifist"
+		name = "machine_ethics_pacifist"
 
-		policy_flags = { hive_ethics_pacifist }
+		policy_flags = { machine_ethics_pacifist }
 		
 		modifier = { 
 			country_trust_growth = 0.50
@@ -59,9 +59,9 @@ hive_ethics = {
 	}
 	
 	option = {
-		name = "hive_ethics_spiritualist"
+		name = "machine_ethics_spiritualist"
 
-		policy_flags = { hive_ethics_spiritualist }
+		policy_flags = { machine_ethics_spiritualist }
 		
 		modifier = { 
 			country_unity_produces_mult = 0.20
@@ -73,9 +73,9 @@ hive_ethics = {
 	}
 	
 	option = {
-		name = "hive_ethics_materialist"
+		name = "machine_ethics_materialist"
 		
-		policy_flags = { hive_ethics_materialist }
+		policy_flags = { machine_ethics_materialist }
 		
 		modifier = { 
 			planet_jobs_physics_research_produces_mult = 0.20
@@ -89,9 +89,9 @@ hive_ethics = {
 	}
 	
 	option = {
-		name = "hive_ethics_xenophobe"
+		name = "machine_ethics_xenophobe"
 		
-		policy_flags = { hive_ethics_materialist }
+		policy_flags = { machine_ethics_materialist }
 		
 		modifier = { 
 			# Increase Purge / Assimilate Speed
@@ -103,12 +103,12 @@ hive_ethics = {
 	}
 	
 	option = {
-		name = "hive_ethics_xenophile"
+		name = "machine_ethics_xenophile"
 		
-		policy_flags = { hive_ethics_materialist }
+		policy_flags = { machine_ethics_materialist }
 		
 		modifier = { 
-			pop_growth_speed = 0.25
+			planet_pop_assembly_mult = 0.25
 		}
 		
 		AI_weight = {
@@ -117,24 +117,26 @@ hive_ethics = {
 	}
 }
 
-xenodiplomacy_hive = {
-	potential = { has_authority = auth_hive_mind }
+xenodiplomacy_machine = {
+	potential = { 
+		has_authority = auth_machine_intelligence
+	}
 	
 	option = {
-		name = "xenodiplomacy_isolation_hive"
+		name = "xenodiplomacy_isolation_machine"
 		
 		policy_flags = { xenodiplomacy_isolation }
 	}
 	
 	option = {
-		name = "xenodiplomacy_diplomat_hive"
+		name = "xenodiplomacy_diplomat_machine"
 		potential = { has_technology = tech_xenodiplomacy }
 		
 		policy_flags = { xenodiplomacy_embassy }
 	}
 	
 	option = {
-		name = "xenodiplomacy_military_hive"
+		name = "xenodiplomacy_military_machine"
 		potential = { has_technology = tech_xenodiplomacy }
 		
 		policy_flags = { xenodiplomacy_gunboat }

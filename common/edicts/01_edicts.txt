@@ -12,6 +12,29 @@
 # Tradition Edicts #
 ####################
 
+interest_representation = {
+	length = @EdictDuration
+	potential = {
+		has_valid_civic = civic_capitalist
+	}
+	
+	resources = {
+		category = campaigns
+		cost = {
+			energy = 2000
+		}
+	}
+
+	modifier = {
+		country_base_influence_produces_add = 0.50
+		pop_factions_produces_mult = 0.50
+	}
+	
+	ai_weight = {
+		weight = @EdictMedPrio
+	}
+}
+
 climate_engineering = {
 	length = @EdictDuration
 	resources = {
@@ -79,7 +102,7 @@ healthcare_campaign = {
 	}
 
 	ai_weight = {
-		weight = 0
+		weight = @EdictMedPrio
 	}
 }
 

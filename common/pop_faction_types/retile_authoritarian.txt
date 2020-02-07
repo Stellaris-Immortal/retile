@@ -11,7 +11,14 @@ totalitarian = {
 	
 	resources = {
 		category = pop_factions
-		produces = { influence = 2 }		
+		produces = { 
+			trigger = { owner = { has_valid_civic = civic_pacifist } }
+			unity = 10
+		}
+		produces = { 
+			trigger = { owner = { NOT = { has_valid_civic = civic_pacifist } } }
+			influence = 2
+		}
 	}
 
 	is_potential = {
@@ -21,6 +28,7 @@ totalitarian = {
 			has_authority = auth_imperial
 			has_ethic = ethic_authoritarian
 			has_ethic = ethic_fanatic_authoritarian
+			has_valid_civic = civic_pacifist
 		}
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
@@ -55,6 +63,16 @@ totalitarian = {
 	
 	attraction = {
 		base = 100
+		
+		modifier = {
+			factor = 1.25
+			OR = { 
+				has_job = enforcer
+				has_job = magistrate
+				has_job = executive
+				has_job = noble
+			}
+		}
 		
 		modifier = {
 			factor = 1.50
