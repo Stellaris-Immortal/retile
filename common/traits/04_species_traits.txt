@@ -3,12 +3,13 @@ trait_latent_psionic = {
 	potential_crossbreeding_chance = 0.50
 	icon = "gfx/interface/icons/traits/trait_latent_psionic.dds"
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
+	opposites = { "trait_psionic" }
 	
 	modifier = {
 		planet_jobs_unity_produces_mult = 0.05
 		planet_jobs_society_research_produces_mult = 0.05
 		planet_pops_upkeep_mult = -0.10
-		pop_growth_speed_reduction = -0.10
+		pop_growth_speed_reduction = 0.20
 	}
 }
 
@@ -543,6 +544,7 @@ trait_psionic = {
 	cost = 0
 	potential_crossbreeding_chance = 0.25
 	icon = "gfx/interface/icons/traits/trait_psionic_species.dds"
+	opposites = { "trait_lastent_psionic" }
 
 	improves_leaders = yes
 	initial = no

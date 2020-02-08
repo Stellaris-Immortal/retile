@@ -94,7 +94,10 @@ tech_housing_3 = {
 		}
 		modifier = {
 			factor = 0
-			NOT = { has_tradition = tr_discovery_faith_in_science }	
+			NOR = { 
+				has_tradition = tr_discovery_faith_in_science
+				has_ascension_perk = ap_technological_ascendancy
+			}	
 		}
 	}
 	
@@ -178,6 +181,17 @@ tech_industrial_ecology = {
 		planet_custodians_produces_mult = 0.1
 		show_only_custom_tooltip = no
 		custom_tooltip = tech_industrial_ecology_effect
+	}
+	
+	weight_modifier = {
+		factor = 1.5
+		modifier = {
+			factor = 0
+			NOR = { 
+				has_tradition = tr_discovery_faith_in_science
+				has_ascension_perk = ap_technological_ascendancy
+			}	
+		}
 	}
 	
 	ai_weight = {
