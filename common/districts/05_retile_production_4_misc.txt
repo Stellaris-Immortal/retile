@@ -36,27 +36,17 @@ district_enforcer = {
 	
 	planet_modifier = {
 		planet_housing_add = 2
+		job_enforcer_add = 2
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
-			owner = { NOT = { has_policy_flag = criminal_military_police } }
-		}
-		job_enforcer_add = 2
-	}
-	triggered_planet_modifier = {
-		potential = {
 			is_planet_class = pc_city
 			exists = owner
-			owner = { OR = {
-				AND = {
-					has_ascension_perk = ap_arcology_project
-					NOT = { has_policy_flag = criminal_military_police }
-				}
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			} }
+			owner = {
+				has_ascension_perk = ap_arcology_project
+				NOT = { has_policy_flag = criminal_military_police }
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -69,20 +59,17 @@ district_enforcer = {
 			exists = owner
 			owner = { has_policy_flag = criminal_military_police }
 		}
+		job_enforcer_add = -2
 		job_soldier_add = 2
 	}
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_city
 			exists = owner
-			owner = { OR = {
-				AND = {
-					has_ascension_perk = ap_arcology_project
-					has_policy_flag = criminal_military_police
-				}
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			} }
+			owner = {
+				has_ascension_perk = ap_arcology_project
+				has_policy_flag = criminal_military_police
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -140,11 +127,9 @@ district_soldier = {
 		potential = {
 			is_planet_class = pc_city
 			exists = owner
-			owner = { OR = {
+			owner = {
 				has_ascension_perk = ap_arcology_project
-				is_country_type = fallen_empire
-				is_country_type = awakened_fallen_empire
-			} }
+			}
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -205,10 +190,6 @@ district_custodian = {
 			exists = owner
 			owner = {
 				has_ascension_perk = ap_arcology_project
-				NOR = {
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
-				}
 			}
 		}
 		modifier = {
@@ -255,4 +236,61 @@ district_custodian = {
 			free_amenities > 900
 		}
 	}	
+}
+
+district_housing = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		always = yes
+	}
+
+	potential = {
+		always = yes
+	}
+	
+	allow = {
+		hidden_trigger = {
+			exists = owner
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					free_housing < 1
+					free_jobs > 0
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @city_cost
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			energy = @city_upkeep
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = {
+				has_ascension_perk = ap_arcology_project
+			}
+		}
+		modifier = {
+			planet_housing_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 1000
+	}
 }
