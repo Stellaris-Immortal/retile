@@ -20,7 +20,7 @@ district_resort = {
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			minerals = @base_cost
+			alloys = @base_cost
 		}
 		upkeep = {
 			trigger = { owner = { is_regular_empire = yes } }
@@ -33,7 +33,7 @@ district_resort = {
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 1
+		planet_housing_add = 2
 		job_clerk_add = 1
 	}
 	
@@ -57,6 +57,17 @@ district_resort = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
+			owner = { has_civic = civic_capitalist }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_investor_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
 			owner = { 
 				has_civic = civic_feudal_realm
 				has_ascension_perk = ap_mega_specialization
@@ -65,6 +76,20 @@ district_resort = {
 		modifier = {
 			job_clerk_add = -1
 			job_tax_collector_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				has_civic = civic_capitalist
+				has_ascension_perk = ap_mega_specialization
+			}
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_investor_add = 1
 		}
 	}
 	
@@ -111,7 +136,7 @@ district_prison = {
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			minerals = @base_cost
+			alloys = @base_cost
 		}
 		upkeep = {
 			trigger = { owner = { is_regular_empire = yes } }

@@ -1,0 +1,519 @@
+district_clerks = {
+	base_buildtime = @retile_city_build_time
+	icon = district_arcology_housing
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_fallen_empire = no }
+		#NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+		#}
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_fallen_empire = no }
+		NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			retile_ready_city = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+		}
+	}
+	
+	triggered_planet_modifier = {						# Basic Jobs
+		potential = {
+			exists = owner
+			NOR = {
+				owner = { has_civic = civic_feudal_realm }
+				owner = { has_civic = civic_capitalist }
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_clerk_add = 1
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_feudal_realm }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_tax_collector_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_capitalist }
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_investor_add = 1
+		}
+	}
+
+}
+
+district_engineers = {
+	base_buildtime = @retile_city_build_time
+	icon = district_engineering_arcology
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_fallen_empire = no }
+		#NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+		#}
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_fallen_empire = no }
+		NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			retile_ready_city = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+		}
+	}
+	
+	triggered_planet_modifier = {						# Basic Jobs
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_foundry_add = 1
+		}
+	}
+}
+
+district_scholars = {
+	base_buildtime = @retile_city_build_time
+	icon = district_research_arcology
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_fallen_empire = no }
+		#NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+		#}
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_fallen_empire = no }
+		NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			retile_ready_city = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+		}
+	}
+	
+	triggered_planet_modifier = {						# Basic Jobs
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_researcher_add = 1
+		}
+	}
+}
+
+district_diplomats = {
+	base_buildtime = @retile_city_build_time
+	icon = district_embassy_arcology
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_fallen_empire = no }
+		#NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+		#}
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_fallen_empire = no }
+		NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			retile_ready_city = yes
+		}
+		owner = { has_technology = tech_xenodiplomacy }
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+		}
+		planet_housing_add = 2
+	}
+	
+	triggered_planet_modifier = {			### Diplomat Jobs
+		potential = {
+			exists = owner
+			NOR = {
+				owner = { has_policy_flag = xenodiplomacy_embassy }
+				owner = { has_policy_flag = xenodiplomacy_gunboat }
+			}
+		}
+		modifier = {
+			job_bureaucrat_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_embassy }
+		}
+		modifier = {
+			job_diplomat_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_gunboat }
+		}
+		modifier = {
+			job_strategos_add = 1
+		}
+	}
+}
+
+district_soldiers = {
+	base_buildtime = @retile_city_build_time
+	icon = district_prison
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_fallen_empire = no }
+		#NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+		#}
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_fallen_empire = no }
+		NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			retile_ready_city = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+		}
+	}
+	
+	triggered_planet_modifier = {			### Soldier Jobs
+		potential = {
+			exists = owner
+		}
+		planet_housing_add = 2
+		job_soldier_add = 1
+	}
+}
+
+district_enforcers = {
+	base_buildtime = @retile_city_build_time
+	icon = district_rw_nexus
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_fallen_empire = no }
+		#NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+		#}
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_fallen_empire = no }
+		NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			retile_ready_city = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+		}
+		planet_housing_add = 2
+	}
+	
+	triggered_planet_modifier = {			### Enforcer Jobs
+		potential = {
+			exists = owner
+			owner = { NOT = { has_policy_flag = criminal_military_police } }
+		}
+		job_enforcer_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		job_soldier_add = 1
+	}
+	
+}
+
+district_custodians = {
+	base_buildtime = @retile_city_build_time
+	icon = default
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_fallen_empire = no }
+		#NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+		#}
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_fallen_empire = no }
+		NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			retile_ready_city = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+		}
+	}
+	
+	triggered_planet_modifier = {						# Basic Jobs
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+				is_fallen_empire = no
+			}
+		}
+		modifier = {
+			planet_housing_add = 2
+			job_custodian_add = 1
+		}
+	}
+}
+
+district_housing = {
+	base_buildtime = @retile_city_build_time
+	icon = district_rw_city
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_fallen_empire = no }
+		#NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+		#}
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_fallen_empire = no }
+		NOR = {
+		#	is_planet_class = pc_habitat
+		#	is_planet_class = pc_city
+		#	is_planet_class = pc_ringworld_habitable
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		hidden_trigger = {
+			retile_ready_city = yes
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+		}
+		modifier = {
+			planet_housing_add = 3
+		}
+	}
+}

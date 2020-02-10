@@ -824,7 +824,8 @@ generate_earth_deposits_and_blockers = {
 	}
 }
 
-generate_start_buildings_and_districts = {		
+generate_start_buildings_and_districts = {
+	
 	if = {
 		limit = {
 			owner = {
@@ -837,6 +838,11 @@ generate_start_buildings_and_districts = {
 		}
 
 		if = {
+			limit = { owner = { last_created_species = { is_biological = yes } } }
+			owner = { set_country_flag = biological_subspecies }
+		}
+		
+		if = {
 			limit = { owner = { last_created_species = { is_lithoid = yes } } }
 			owner = { set_country_flag = lithoid_subspecies }
 		} else = {
@@ -848,6 +854,98 @@ generate_start_buildings_and_districts = {
 			owner = { set_country_flag = plantoid_subspecies }
 		} else = {
 			owner = { set_country_flag = non_plantoid_subspecies }
+		}
+	}
+
+	### Set up starting active deposits
+	if = {	# robots
+		limit = {
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		if = {
+			limit = { owner = { OR = {
+				has_country_flag = biological_subspecies
+				has_country_flag = plantoid_subspecies
+			} } }
+			random_deposit = { # energy 1
+				limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
+				clear_blocker = yes
+			}
+			random_deposit = { # minerals 1
+				limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
+				clear_blocker = yes
+			}
+			random_deposit = { # food 1
+				limit = { is_food_deposit_low = yes has_deposit_category = deposit_cat_food }
+				clear_blocker = yes
+			}
+		} else = {
+			random_deposit = { # energy 2
+				limit = { is_energy_deposit_med = yes has_deposit_category = deposit_cat_energy }
+				clear_blocker = yes
+			}
+			random_deposit = { # minerals 1
+				limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
+				clear_blocker = yes
+			}
+		}
+	}
+	
+	if = { # Lithoids
+		limit = {
+			owner = {
+				is_lithoid_empire = yes
+			}
+		}
+		if = {
+			limit = { owner = { OR = {
+				has_country_flag = biological_subspecies
+				has_country_flag = plantoid_subspecies
+			} } }
+			random_deposit = { # energy 1
+				limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
+				clear_blocker = yes
+			}
+			random_deposit = { # minerals 1
+				limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
+				clear_blocker = yes
+			}
+			random_deposit = { # food 1
+				limit = { is_food_deposit_low = yes has_deposit_category = deposit_cat_food }
+				clear_blocker = yes
+			}
+		} else = {
+			random_deposit = { # energy 1
+				limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
+				clear_blocker = yes
+			}
+			random_deposit = { # minerals 2
+				limit = { is_minerals_deposit_med = yes has_deposit_category = deposit_cat_minerals }
+				clear_blocker = yes
+			}
+		}
+	}
+	
+	if = { # Biologicals/Plants
+		limit = {
+			owner = {
+				is_lithoid_empire = no
+				is_machine_empire = no
+			}
+		}
+		random_deposit = { # energy 1
+			limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
+			clear_blocker = yes
+		}
+		random_deposit = { # minerals 1
+			limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
+			clear_blocker = yes
+		}
+		random_deposit = { # food 1
+			limit = { is_food_deposit_low = yes has_deposit_category = deposit_cat_food }
+			clear_blocker = yes
 		}
 	}
 	
