@@ -1140,3 +1140,36 @@ d_saharan_irrigation_project = {
 	}
 }
 
+#######################
+### Retile Deposits ###
+#######################
+
+retile_mastery_of_nature_food = {
+	time = @retile_rural_exploit_time_high
+	icon = retile_mastery_of_nature
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		retile_mastery_of_nature_food_active
+	}
+}

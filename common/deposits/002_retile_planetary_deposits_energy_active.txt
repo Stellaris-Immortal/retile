@@ -482,16 +482,9 @@ d_underground_contact_zone_active = {
 	
 	planet_modifier = {
 		job_technician_add = 2
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_regular_empire = yes }
-		}
-		modifier = {
-			job_underground_trade_worker_add = 1
-		}
+		planet_max_districts_add = 1
+		planet_housing_add = 1
+		job_underground_trade_worker_add = 1
 	}
 	
 	triggered_planet_modifier = {
@@ -500,6 +493,7 @@ d_underground_contact_zone_active = {
 			owner = { is_gestalt = yes }
 		}
 		modifier = {
+			job_underground_trade_worker_add = -1
 			job_underground_contact_drone_add = 1
 		}
 	}
@@ -610,5 +604,32 @@ d_pearl_river_agglomerate_active = {
 	
 	blocker_swap_types = {
 		d_pearl_river_agglomerate
+	}
+}
+
+#######################
+### Retile Deposits ###
+#######################
+
+retile_mastery_of_nature_energy_active = {
+	time = @retile_rural_restore_time_high
+	icon = d_energy_exploited_3
+	category = deposit_cat_energy_active
+	is_for_colonizeable = yes
+	
+	planet_modifier = {
+		job_technician_add = 3
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		retile_mastery_of_nature_energy
 	}
 }

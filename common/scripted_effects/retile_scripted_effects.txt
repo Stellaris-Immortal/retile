@@ -17,3 +17,14 @@ clear_non_district_deposits = { # planet scope
 		}
 	}
 }
+
+# planet scope, replaces "clear_blockers = yes" everywhere in the game...
+retile_clear_blockers = {
+	every_deposit = {
+		limit = { OR = {
+			has_deposit_category = deposit_cat_blockers
+			has_deposit_category = deposit_cat_rare_blocker
+		} }
+		clear_blocker = this
+	}
+}

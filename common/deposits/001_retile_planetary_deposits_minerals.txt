@@ -736,3 +736,36 @@ d_great_albertan_crater = {
 	}
 }
 
+#######################
+### Retile Deposits ###
+#######################
+
+retile_mastery_of_nature_minerals = {
+	time = @retile_rural_exploit_time_high
+	icon = retile_mastery_of_nature
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		retile_mastery_of_nature_minerals_active
+	}
+}
