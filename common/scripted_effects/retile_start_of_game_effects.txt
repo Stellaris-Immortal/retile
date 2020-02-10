@@ -857,7 +857,9 @@ generate_start_buildings_and_districts = {
 		}
 	}
 
-	### Set up starting active deposits
+	######################################## Set up starting active deposits
+	# Always 3 jobs
+
 	if = {	# robots
 		limit = {
 			owner = {
@@ -948,55 +950,22 @@ generate_start_buildings_and_districts = {
 			clear_blocker = yes
 		}
 	}
-	
+
+	######################################## Set up starting districts
 	if = {
 		limit = { owner = { is_regular_empire = yes } }
 		
 		# total - 10 jobs
 		
-		# 2 jobs
-		add_district = district_city
-		
-		# 1 job
-		add_district = district_mining
-		
-		# 1 jobs
-		if = {
-			limit = { owner = { OR = {
-				is_lithoid_empire = no
-				has_country_flag = non_lithoid_subspecies
-			} } }
-			add_district = district_farming
-		} else = {
-			add_district = district_mining
-		}
-		
-		# 1 jobs
-		add_district = district_generator
-		
 		# 4 jobs
 		add_building = building_system_capital
-
-		# 1 jobs
-		#add_building = building_research_lab_1
-		add_building = building_foundry_1
-		#add_building = building_factory_1
-
-		if = { limit = { owner = { is_megacorp = yes } }
-			add_building = building_commercial_zone
-			remove_district = district_generator
-		}
 		
-		# One extra district for Mining Guilds
-		if = {
-			limit = { owner = { has_valid_civic = civic_mining_guilds } }
-			add_district = district_mining
-		}
-		# One extra district for Agrarian Idyll
-		if = {
-			limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
-			add_district = district_farming
-		}
+		# 3 jobs
+		add_district = district_clerks
+		add_district = district_engineers
+		add_district = district_scholars
+		add_district = district_housing
+		add_district = district_housing
 	}
 	
 	if = {
@@ -1004,35 +973,31 @@ generate_start_buildings_and_districts = {
 		
 		# total - 10 jobs
 		
-		# 2 jobs
-		add_district = district_city
+		# 4 jobs
+		add_building = building_hive_system_capital
+
+		# 3 jobs
+		add_district = district_engineers
+		add_district = district_engineers
+		add_district = district_scholars
+		add_district = district_housing
+		add_district = district_housing
+	}
+	
+	if = {
+		limit = { owner = { is_machine_empire = yes } }
 		
-		# 1 job
-		add_district = district_mining
-		
-		# 1 jobs
-		if = {
-			limit = { owner = { OR = {
-				is_lithoid_empire = no
-				has_country_flag = non_lithoid_subspecies
-			} } }
-			add_district = district_farming
-			add_district = district_farming
-		} else = {
-			add_district = district_mining
-			add_district = district_mining
-		}
-		
-		# 1 jobs
-		add_district = district_generator
+		# total - 10 jobs
 		
 		# 4 jobs
 		add_building = building_hive_system_capital
 
-		# 2 jobs
-		#add_building = building_research_lab_1
-		add_building = building_foundry_1
-		#add_building = building_factory_1
+		# 3 jobs
+		add_district = district_engineers
+		add_district = district_scholars
+		add_district = district_scholars
+		add_district = district_housing
+		add_district = district_housing
 	}
 	
 	# Additional resources based on empire type and possible subspecies

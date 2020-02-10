@@ -11,7 +11,22 @@ retile_ready = {	# Planet scope
 	}
 }
 
-retile_ready_labor = {
+# Is this planet ready to upgrade it's capital?
+retile_ready_capital = {
+	OR = {
+		owner = { is_ai = no }
+		owner = { is_ai = yes
+			has_resource = { type = influence amount > 150 }
+			PREV = {
+				free_jobs < 1
+				#free_building_slots < 1
+			}
+		}
+	}
+}
+
+# Does this planet need more housing for it's labor jobs?
+retile_ready_housing = {
 	OR = {
 		NOT = { exists = owner }
 		owner = { is_ai = no }

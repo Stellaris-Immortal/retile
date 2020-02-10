@@ -42,41 +42,10 @@ district_clerks = {
 		}
 	}
 	
-	triggered_planet_modifier = {						# Basic Jobs
-		potential = {
-			exists = owner
-			NOR = {
-				owner = { has_civic = civic_feudal_realm }
-				owner = { has_civic = civic_capitalist }
-			}
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_clerk_add = 1
-		}
+	planet_modifier = {
+		planet_housing_add = 1
+		job_clerk_add = 1
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_feudal_realm }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_tax_collector_add = 1
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_capitalist }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_investor_add = 1
-		}
-	}
-
 }
 
 district_engineers = {
@@ -123,18 +92,9 @@ district_engineers = {
 		}
 	}
 	
-	triggered_planet_modifier = {						# Basic Jobs
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				is_fallen_empire = no
-			}
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_foundry_add = 1
-		}
+	planet_modifier = {
+		planet_housing_add = 1
+		job_foundry_add = 1
 	}
 }
 
@@ -182,18 +142,9 @@ district_scholars = {
 		}
 	}
 	
-	triggered_planet_modifier = {						# Basic Jobs
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				is_fallen_empire = no
-			}
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_researcher_add = 1
-		}
+	planet_modifier = {
+		planet_housing_add = 1
+		job_researcher_add = 1
 	}
 }
 
@@ -242,24 +193,9 @@ district_diplomats = {
 		}
 	}
 	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-		}
-		planet_housing_add = 2
-	}
-	
-	triggered_planet_modifier = {			### Diplomat Jobs
-		potential = {
-			exists = owner
-			NOR = {
-				owner = { has_policy_flag = xenodiplomacy_embassy }
-				owner = { has_policy_flag = xenodiplomacy_gunboat }
-			}
-		}
-		modifier = {
-			job_bureaucrat_add = 1
-		}
+	planet_modifier = {			### Diplomat Jobs
+		planet_housing_add = 1
+		job_bureaucrat_add = 1
 	}
 	
 	triggered_planet_modifier = {
@@ -268,6 +204,7 @@ district_diplomats = {
 			owner = { has_policy_flag = xenodiplomacy_embassy }
 		}
 		modifier = {
+			job_bureaucrat_add = -1
 			job_diplomat_add = 1
 		}
 	}
@@ -278,6 +215,7 @@ district_diplomats = {
 			owner = { has_policy_flag = xenodiplomacy_gunboat }
 		}
 		modifier = {
+			job_bureaucrat_add = -1
 			job_strategos_add = 1
 		}
 	}
@@ -327,11 +265,8 @@ district_soldiers = {
 		}
 	}
 	
-	triggered_planet_modifier = {			### Soldier Jobs
-		potential = {
-			exists = owner
-		}
-		planet_housing_add = 2
+	planet_modifier = {
+		planet_housing_add = 1
 		job_soldier_add = 1
 	}
 }
@@ -380,18 +315,8 @@ district_enforcers = {
 		}
 	}
 	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-		}
-		planet_housing_add = 2
-	}
-	
-	triggered_planet_modifier = {			### Enforcer Jobs
-		potential = {
-			exists = owner
-			owner = { NOT = { has_policy_flag = criminal_military_police } }
-		}
+	planet_modifier = {
+		planet_housing_add = 1
 		job_enforcer_add = 1
 	}
 	
@@ -400,6 +325,7 @@ district_enforcers = {
 			exists = owner
 			owner = { has_policy_flag = criminal_military_police }
 		}
+		job_enforcer_add = -1
 		job_soldier_add = 1
 	}
 	
@@ -449,18 +375,9 @@ district_custodians = {
 		}
 	}
 	
-	triggered_planet_modifier = {						# Basic Jobs
-		potential = {
-			exists = owner
-			owner = {
-				is_regular_empire = yes
-				is_fallen_empire = no
-			}
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 1
-		}
+	planet_modifier = {
+		planet_housing_add = 1
+		job_custodian_add = 1
 	}
 }
 
