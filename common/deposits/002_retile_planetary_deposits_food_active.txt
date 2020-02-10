@@ -1,0 +1,2100 @@
+## Possible Deposit Variables ##
+# resources, resource and amount
+# potential trigger (planet scope)
+# blocked_modifier - applied to planet
+# constant_modifier - applied to planet always
+# station = station class in orbit to gather
+# blocker_swap_types = {}
+# all_blocker_swap_types = yes/no
+# use_weights_for_blocker_swap_types = yes/no
+# terraforming_swap_types = { }
+# should_swap_deposit_on_terraforming = yes/no
+# all_terraforming_swap_types = yes/no
+# use_weights_for_terraforming_swap_types = yes/no
+
+##########################
+### Exploited Deposits ###
+##########################
+
+d_natural_farmland_active = {
+	time = @retile_rural_restore_time_low
+	icon = d_food_exploited_1
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_low
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_low }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		is_planet_class = pc_gaia	
+	}
+	
+	blocker_swap_types = {
+		d_natural_farmland
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields_active
+		d_bountiful_plains_active
+		d_rugged_woods_active
+		d_green_hills_active
+		d_forgiving_tundra_active
+		d_boggy_fens_active
+		d_nutritious_mudland_active
+	}
+}
+
+d_lichen_fields_active = {
+	time = @retile_rural_restore_time_low
+	icon = d_food_exploited_1
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_low
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_low }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_nuked
+			is_planet_class = pc_arctic
+		}	
+	}
+	
+	blocker_swap_types = {
+		d_lichen_fields
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_bountiful_plains_active
+		d_rugged_woods_active
+		d_green_hills_active
+		d_forgiving_tundra_active
+		d_boggy_fens_active
+		d_nutritious_mudland_active
+		d_natural_farmland_active # gaia
+	}	
+}
+
+d_bountiful_plains_active = {
+	time = @retile_rural_restore_time_low
+	icon = d_food_exploited_1
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_low
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_low }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_arid
+			is_planet_class = pc_savannah
+		}
+	}
+	
+	blocker_swap_types = {
+		d_bountiful_plains
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields_active
+		d_rugged_woods_active
+		d_green_hills_active
+		d_forgiving_tundra_active
+		d_boggy_fens_active
+		d_nutritious_mudland_active
+		d_natural_farmland_active # gaia
+	}
+}
+
+d_rugged_woods_active = {
+	time = @retile_rural_restore_time_low
+	icon = d_food_exploited_1
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_low
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_low }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		is_planet_class = pc_continental
+	}
+	
+	blocker_swap_types = {
+		d_rugged_woods
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_natural_farmland_active # gaia
+		d_lichen_fields_active
+		d_bountiful_plains_active
+		d_green_hills_active
+		d_forgiving_tundra_active
+		d_boggy_fens_active
+		d_nutritious_mudland_active
+	}
+}
+
+d_green_hills_active = {
+	time = @retile_rural_restore_time_low
+	icon = d_food_exploited_1
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_low
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_low }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_ocean
+			is_planet_class = pc_tropical
+		}
+	}
+	
+	blocker_swap_types = {
+		d_green_hills
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields_active
+		d_bountiful_plains_active
+		d_rugged_woods_active
+		d_forgiving_tundra_active
+		d_boggy_fens_active
+		d_nutritious_mudland_active
+		d_natural_farmland_active # gaia
+	}
+}
+
+d_forgiving_tundra_active = {
+	time = @retile_rural_restore_time_low
+	icon = d_food_exploited_1
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_low
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_low }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_alpine
+			is_planet_class = pc_tundra
+		}		
+	}
+	
+	blocker_swap_types = {
+		d_forgiving_tundra
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields_active
+		d_bountiful_plains_active
+		d_rugged_woods_active
+		d_green_hills_active
+		d_boggy_fens_active
+		d_nutritious_mudland_active
+		d_natural_farmland_active # gaia
+	}	
+}
+
+d_boggy_fens_active = {
+	time = @retile_rural_restore_time_low
+	icon = d_food_exploited_1
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_low
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_low }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		is_planet_class = pc_ocean	
+	}
+	
+	blocker_swap_types = {
+		d_boggy_fens
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields_active
+		d_bountiful_plains_active
+		d_rugged_woods_active
+		d_green_hills_active
+		d_forgiving_tundra_active
+		d_nutritious_mudland_active
+		d_natural_farmland_active # gaia
+	}	
+}
+
+d_nutritious_mudland_active = {
+	time = @retile_rural_restore_time_low
+	icon = d_food_exploited_1
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_low
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_low }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		is_planet_class = pc_desert
+	}
+	
+	blocker_swap_types = {
+		d_nutritious_mudland
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields_active
+		d_bountiful_plains_active
+		d_rugged_woods_active
+		d_green_hills_active
+		d_forgiving_tundra_active
+		d_boggy_fens_active
+		d_natural_farmland_active # gaia
+	}
+}
+
+d_fungal_caves_active = {
+	time = @retile_rural_restore_time_med
+	icon = d_food_exploited_2
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_med
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_med
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_med }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_med }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_med }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_nuked
+			is_cold = yes
+		}	
+	}
+	
+	blocker_swap_types = {
+		d_fungal_caves
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lush_jungle_active
+		d_fertile_lands_active
+		d_great_river_active
+	}
+}
+
+d_lush_jungle_active = {
+	time = @retile_rural_restore_time_med
+	icon = d_food_exploited_2
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_med
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_med
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_med }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_med }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_med }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_tropical
+			is_planet_class = pc_ocean
+		}
+	}
+	
+	blocker_swap_types = {
+		d_lush_jungle
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_fungal_caves_active
+		d_fertile_lands_active
+		d_great_river_active
+	}
+}
+
+d_fertile_lands_active = {
+	time = @retile_rural_restore_time_med
+	icon = d_food_exploited_2
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_med
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_med
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_med }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_med }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_med }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_savannah
+			is_planet_class = pc_continental
+			is_planet_class = pc_gaia
+			is_planet_class = pc_arid
+		}
+	}
+	
+	blocker_swap_types = {
+		d_fertile_lands
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_fungal_caves_active
+		d_lush_jungle_active
+		d_great_river_active
+	}
+}
+
+d_great_river_active = {
+	time = @retile_rural_restore_time_med
+	icon = d_food_exploited_2
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_med
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_med
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_med }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_med }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_med }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_arid
+			is_planet_class = pc_desert
+		}
+	}
+	
+	blocker_swap_types = {
+		d_great_river
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_fungal_caves_active
+		d_lush_jungle_active
+		d_fertile_lands_active
+	}
+}
+
+d_black_soil_active = {
+	time = @retile_rural_restore_time_high
+	icon = d_food_exploited_3
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_high
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_high
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_high }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_continental
+			is_planet_class = pc_savannah
+			is_planet_class = pc_gaia
+		}
+	}
+	
+	blocker_swap_types = {
+		d_black_soil
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_teeming_reef_active
+		d_marvelous_oasis_active
+		d_tropical_island_active
+		d_fungal_forest_active
+	}
+}
+
+d_teeming_reef_active = {
+	time = @retile_rural_restore_time_high
+	icon = d_food_exploited_3
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_high
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_high
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_high }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_ocean
+		}
+	}
+	
+	blocker_swap_types = {
+		d_teeming_reef
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_black_soil_active
+		d_marvelous_oasis_active
+		d_tropical_island_active
+		d_fungal_forest_active
+	}
+}
+
+d_marvelous_oasis_active = {
+	time = @retile_rural_restore_time_high
+	icon = d_food_exploited_3
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_high
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_high
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_high }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_arid
+			is_planet_class = pc_desert
+		}
+	}
+	
+	blocker_swap_types = {
+		d_marvelous_oasis
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_black_soil_active
+		d_teeming_reef_active
+		d_tropical_island_active
+		d_fungal_forest_active
+	}
+}
+
+d_tropical_island_active = {
+	time = @retile_rural_restore_time_high
+	icon = d_food_exploited_3
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_high
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_high
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_high }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_arid
+			is_planet_class = pc_desert
+			is_planet_class = pc_tropical
+		}
+	}
+	
+	blocker_swap_types = {
+		d_tropical_island
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_black_soil_active
+		d_teeming_reef_active
+		d_marvelous_oasis_active
+		d_fungal_forest_active
+	}
+}
+
+d_fungal_forest_active = {
+	time = @retile_rural_restore_time_high
+	icon = d_food_exploited_3
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_high
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_high
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_high }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		is_cold = yes
+	}
+	
+	blocker_swap_types = {
+		d_fungal_forest
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_black_soil_active
+		d_teeming_reef_active
+		d_marvelous_oasis_active
+		d_tropical_island_active
+	}
+}
+
+##########################
+##### Event Deposits #####
+##########################
+
+d_junk_canals_active = {
+	time = @retile_rural_restore_time_high
+	icon = d_food_exploited_3
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_high
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_bad_high
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_bad_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_bad_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_bad_high }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_junk_canals
+	}
+}
+
+d_abandoned_primitive_homesteads_active = {
+	time = @retile_rural_restore_time_med
+	icon = d_food_exploited_2
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_med
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_med
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_med
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_med
+		planet_jobs_society_research_produces_mult = 0.10
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_med }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_med }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_med }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_abandoned_primitive_homesteads
+	}
+}
+
+d_hyperfertile_valley_active = {
+	time = @retile_rural_restore_time_ultra2
+	icon = d_food_exploited_5
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_ultra2
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_ultra2
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_ultra2
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_ultra2
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_ultra2
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_ultra2
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_ultra2
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_ultra2
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_ultra2
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_ultra2 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_ultra2 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_ultra2 }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_hyperfertile_valley
+	}
+}
+
+d_harvester_fields_active = {
+	time = @retile_rural_restore_time_ultra3
+	icon = d_food_exploited_6
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_ultra3
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_ultra3
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_ultra3
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_ultra3
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_ultra3
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_ultra3
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_ultra3
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_ultra3
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_ultra3
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_ultra3 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_ultra3 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_ultra3 }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_harvester_fields
+	}
+}
+
+d_worm_farm_active = {
+	time = @retile_rural_restore_time_ultra
+	icon = d_food_exploited_4
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_ultra
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_ultra
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_ultra
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_ultra
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_ultra
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_ultra
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_ultra
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_ultra
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_ultra
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_ultra }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_ultra }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_ultra }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_worm_farm
+	}
+}
+
+d_underground_farm_active = {
+	time = @retile_rural_restore_time_high
+	icon = d_food_exploited_3
+	category = deposit_cat_food_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_high
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = 1
+		planet_amenities_add = @retile_rural_pollution_high
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_high }
+	}
+
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_underground_farm
+	}
+}
+
+#########################
+### Starting Deposits ###
+#########################
+
+d_scandinavian_reclamation_sector_active = {
+	time = @retile_rural_restore_time_low
+	icon = d_food_exploited_1
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_low
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_low
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_low
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_low }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_low }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_scandinavian_reclamation_sector
+	}
+}
+
+d_pacific_algae_tracts_active = {
+	time = @retile_rural_restore_time_high
+	icon = d_food_exploited_3
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_high
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_high
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_high
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_high }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_high }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_pacific_algae_tracts
+	}
+}
+
+d_saharan_irrigation_project_active = {
+	time = @retile_rural_restore_time_ultra
+	icon = d_food_exploited_4
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			food = @retile_rural_production_ultra
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			food = @retile_rural_production_ultra
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			food = @retile_rural_production2_ultra
+		}
+		produces = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			food = @retile_rural_production3_ultra
+		}
+		upkeep = {
+			energy = @retile_rural_upkeep_ultra
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_1 } }
+			energy = @retile_rural_upkeep_ultra
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_2 } }
+			energy = @retile_rural_upkeep2_ultra
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_food_buff_3 } }
+			energy = @retile_rural_upkeep3_ultra
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_ultra
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_1 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution_ultra }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_2 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution2_ultra }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_buff_3 } }
+		modifier = { planet_amenities_add = @retile_rural_pollution3_ultra }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+	
+	blocker_swap_types = {
+		d_saharan_irrigation_project
+	}
+}
+

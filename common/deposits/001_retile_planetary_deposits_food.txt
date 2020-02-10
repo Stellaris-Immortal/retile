@@ -1,0 +1,1142 @@
+## Possible Deposit Variables ##
+# resources, resource and amount
+# potential trigger (planet scope)
+# blocked_modifier - applied to planet
+# constant_modifier - applied to planet always
+# station = station class in orbit to gather
+# blocker_swap_types = {}
+# all_blocker_swap_types = yes/no
+# use_weights_for_blocker_swap_types = yes/no
+# terraforming_swap_types = { }
+# should_swap_deposit_on_terraforming = yes/no
+# all_terraforming_swap_types = yes/no
+# use_weights_for_terraforming_swap_types = yes/no
+
+########################
+### Natural Deposits ###
+########################
+
+d_natural_farmland = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+	
+	potential = {
+		is_planet_class = pc_gaia	
+	}
+	
+	blocker_swap_types = {
+		d_natural_farmland_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields
+		d_bountiful_plains
+		d_rugged_woods
+		d_green_hills
+		d_forgiving_tundra
+		d_boggy_fens
+		d_nutritious_mudland
+	}
+}
+
+d_lichen_fields = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high
+		modifier = {
+			factor = 0.33
+			is_planet_class = pc_nuked
+		}
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_nuked
+			is_planet_class = pc_arctic
+		}	
+	}
+	
+	blocker_swap_types = {
+		d_lichen_fields_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_bountiful_plains
+		d_rugged_woods
+		d_green_hills
+		d_forgiving_tundra
+		d_boggy_fens
+		d_nutritious_mudland
+		d_natural_farmland # gaia
+	}	
+}
+
+d_bountiful_plains = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_arid
+			is_planet_class = pc_savannah
+		}
+	}
+	
+	blocker_swap_types = {
+		d_bountiful_plains_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields
+		d_rugged_woods
+		d_green_hills
+		d_forgiving_tundra
+		d_boggy_fens
+		d_nutritious_mudland
+		d_natural_farmland # gaia
+	}
+}
+
+d_rugged_woods = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		is_planet_class = pc_continental
+	}
+	
+	blocker_swap_types = {
+		d_rugged_woods_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_natural_farmland # gaia
+		d_lichen_fields
+		d_bountiful_plains
+		d_green_hills
+		d_forgiving_tundra
+		d_boggy_fens
+		d_nutritious_mudland
+	}
+}
+
+d_green_hills = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_ocean
+			is_planet_class = pc_tropical
+		}
+	}
+	
+	blocker_swap_types = {
+		d_green_hills_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields
+		d_bountiful_plains
+		d_rugged_woods
+		d_forgiving_tundra
+		d_boggy_fens
+		d_nutritious_mudland
+		d_natural_farmland # gaia
+	}
+}
+
+d_forgiving_tundra = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_alpine
+			is_planet_class = pc_tundra
+		}		
+	}
+	
+	blocker_swap_types = {
+		d_forgiving_tundra_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields
+		d_bountiful_plains
+		d_rugged_woods
+		d_green_hills
+		d_boggy_fens
+		d_nutritious_mudland
+		d_natural_farmland # gaia
+	}	
+}
+
+d_boggy_fens = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		is_planet_class = pc_ocean	
+	}
+	
+	blocker_swap_types = {
+		d_boggy_fens_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields
+		d_bountiful_plains
+		d_rugged_woods
+		d_green_hills
+		d_forgiving_tundra
+		d_nutritious_mudland
+		d_natural_farmland # gaia
+	}	
+}
+
+d_nutritious_mudland = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		is_planet_class = pc_desert
+	}
+	
+	blocker_swap_types = {
+		d_nutritious_mudland_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lichen_fields
+		d_bountiful_plains
+		d_rugged_woods
+		d_green_hills
+		d_forgiving_tundra
+		d_boggy_fens
+		d_natural_farmland # gaia
+	}
+}
+
+d_fungal_caves = {
+	time = @retile_rural_exploit_time_med
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_med
+		modifier = {
+			factor = 0.33
+			is_planet_class = pc_nuked
+		}
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_nuked
+			is_cold = yes
+		}	
+	}
+	
+	blocker_swap_types = {
+		d_fungal_caves_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_lush_jungle
+		d_fertile_lands
+		d_great_river
+	}
+}
+
+d_lush_jungle = {
+	time = @retile_rural_exploit_time_med
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_med
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_tropical
+			is_planet_class = pc_ocean
+		}
+	}
+	
+	blocker_swap_types = {
+		d_lush_jungle_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_fungal_caves
+		d_fertile_lands
+		d_great_river
+	}
+}
+
+d_fertile_lands = {
+	time = @retile_rural_exploit_time_med
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_med
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_savannah
+			is_planet_class = pc_continental
+			is_planet_class = pc_gaia
+			is_planet_class = pc_arid
+		}
+	}
+	
+	blocker_swap_types = {
+		d_fertile_lands_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_fungal_caves
+		d_lush_jungle
+		d_great_river
+	}
+}
+
+d_great_river = {
+	time = @retile_rural_exploit_time_med
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_med
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_arid
+			is_planet_class = pc_desert
+		}
+	}
+	
+	blocker_swap_types = {
+		d_great_river_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_fungal_caves
+		d_lush_jungle
+		d_fertile_lands
+	}
+}
+
+d_black_soil = {
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_low
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_continental
+			is_planet_class = pc_savannah
+			is_planet_class = pc_gaia
+		}
+	}
+	
+	blocker_swap_types = {
+		d_black_soil_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_teeming_reef
+		d_marvelous_oasis
+		d_tropical_island
+		d_fungal_forest
+	}
+}
+
+d_teeming_reef = {
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_low
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_gaia
+			is_planet_class = pc_ocean
+		}
+	}
+	
+	blocker_swap_types = {
+		d_teeming_reef_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_black_soil
+		d_marvelous_oasis
+		d_tropical_island
+		d_fungal_forest
+	}
+}
+
+d_marvelous_oasis = {
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_low
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_arid
+			is_planet_class = pc_desert
+		}
+	}
+	
+	blocker_swap_types = {
+		d_marvelous_oasis_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_black_soil
+		d_teeming_reef
+		d_tropical_island
+		d_fungal_forest
+	}
+}
+
+d_tropical_island = {
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_low
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_arid
+			is_planet_class = pc_desert
+			is_planet_class = pc_tropical
+		}
+	}
+	
+	blocker_swap_types = {
+		d_tropical_island_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_black_soil
+		d_teeming_reef
+		d_marvelous_oasis
+		d_fungal_forest
+	}
+}
+
+d_fungal_forest = {
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_low
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_wet = yes
+		}		
+	}
+	
+	potential = {
+		is_cold = yes
+	}
+	
+	blocker_swap_types = {
+		d_fungal_forest_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_black_soil
+		d_teeming_reef
+		d_marvelous_oasis
+		d_tropical_island
+	}
+}
+
+##########################
+##### Event Deposits #####
+##########################
+
+d_junk_canals = {
+	time = @retile_rural_exploit_time_high
+	icon = d_organic_landfill
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			alloys = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_bad_high
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_junk_canals_active
+	}
+}
+
+d_abandoned_primitive_homesteads = {
+	time = @retile_rural_exploit_time_med
+	icon = d_tribal_settlement
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			alloys = @retile_rural_exploit_cost_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med
+		planet_jobs_society_research_produces_mult = 0.10
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_abandoned_primitive_homesteads_active
+	}
+}
+
+d_hyperfertile_valley = {
+	time = @retile_rural_exploit_time_ultra2
+	icon = d_alien_pets_deposit
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			alloys = @retile_rural_exploit_cost_ultra2
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_ultra2
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_hyperfertile_valley_active
+	}
+}
+
+d_harvester_fields = {
+	time = @retile_rural_exploit_time_ultra3
+	icon = d_fertile_lands
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			alloys = @retile_rural_exploit_cost_ultra3
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_ultra3
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_harvester_fields_active
+	}
+}
+
+d_worm_farm = {
+	time = @retile_rural_exploit_time_ultra
+	icon = d_fertile_lands
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			alloys = @retile_rural_exploit_cost_ultra
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_ultra
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_worm_farm_active
+	}
+}
+
+d_underground_farm = {
+	time = @retile_rural_exploit_time_high
+	icon = d_fungal_caves
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			alloys = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = 1
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_underground_farm_active
+	}
+}
+
+#########################
+### Starting Deposits ###
+#########################
+
+d_scandinavian_reclamation_sector = {
+	icon = d_radioactive_wasteland
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_scandinavian_reclamation_sector_active
+	}
+}
+
+d_pacific_algae_tracts = {
+	icon = d_toxic_kelp
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_pacific_algae_tracts_active
+	}
+}
+
+d_saharan_irrigation_project = {
+	icon = d_green_hills
+	time = @retile_rural_exploit_time_ultra
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			alloys = @retile_rural_exploit_cost_ultra
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_ultra
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_saharan_irrigation_project_active
+	}
+}
+
