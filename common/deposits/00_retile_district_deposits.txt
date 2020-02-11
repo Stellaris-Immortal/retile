@@ -16,11 +16,11 @@
 # Mastery of Nature
 retile_mastery_of_nature = {
 	is_for_colonizeable = yes
-	category = planet_deposits
+	category = deposit_cat_rare
 	
 	resources = {
 		category = planet_deposits
-	
+		
 		produces = {
 			energy = 3
 			minerals = 3
@@ -30,7 +30,22 @@ retile_mastery_of_nature = {
 	
 	planet_modifier = {
 		planet_amenities_add = -20
-		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
+# Spawning Pool
+retile_deposit_spawningpool = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_spawning_drone_add = 1
+	}
 	
 	drop_weight = {
 		weight = 0
@@ -40,7 +55,7 @@ retile_mastery_of_nature = {
 # Bio Reactors
 retile_deposit_bioreactor = {
 	is_for_colonizeable = yes
-	category = planet_deposits
+	category = deposit_cat_rare
 	
 	planet_modifier = {
 		planet_max_districts_add = -1
@@ -50,9 +65,33 @@ retile_deposit_bioreactor = {
 		weight = 0
 	}
 }
+
+retile_deposit_assembly = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	resources = {
+		category = planet_deposits
+		upkeep = {
+			energy = 5
+			#alloys = 1
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_roboticist_add = 1
+		planet_max_districts_add = -1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+
 retile_deposit_numistic = {
 	is_for_colonizeable = yes
-	category = planet_deposits
+	category = deposit_cat_rare
 	
 	resources = {
 		category = planet_deposits
@@ -77,7 +116,7 @@ retile_deposit_numistic = {
 
 retile_deposit_ministry = {
 	is_for_colonizeable = yes
-	category = planet_deposits
+	category = deposit_cat_rare
 	
 	resources = {
 		category = planet_deposits
@@ -101,7 +140,7 @@ retile_deposit_ministry = {
 
 retile_deposit_waste_reprocessing = {
 	is_for_colonizeable = yes
-	category = planet_deposits
+	category = deposit_cat_rare
 	
 	resources = {
 		category = planet_deposits
@@ -112,7 +151,8 @@ retile_deposit_waste_reprocessing = {
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 2
+		planet_housing_add = 1
+		job_custodian_add = 1
 		planet_max_districts_add = -1
 	}
 	
@@ -123,7 +163,7 @@ retile_deposit_waste_reprocessing = {
 
 retile_deposit_slave = {
 	is_for_colonizeable = yes
-	category = planet_deposits
+	category = deposit_cat_rare
 	
 	resources = {
 		category = planet_deposits
@@ -146,7 +186,7 @@ retile_deposit_slave = {
 
 retile_deposit_alignment = {	#building_akx_worm_3	# Omega Alignment
 	is_for_colonizeable = yes
-	category = planet_deposits
+	category = deposit_cat_rare
 	
 	resources = {
 		category = planet_deposits

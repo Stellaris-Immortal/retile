@@ -24,7 +24,7 @@ d_natural_farmland = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_low
+			minerals = @retile_rural_exploit_cost_low
 		}
 	}
 	
@@ -33,7 +33,20 @@ d_natural_farmland = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -70,7 +83,7 @@ d_lichen_fields = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_low
+			minerals = @retile_rural_exploit_cost_low
 		}
 	}
 	
@@ -79,7 +92,20 @@ d_lichen_fields = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -126,7 +152,7 @@ d_bountiful_plains = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_low
+			minerals = @retile_rural_exploit_cost_low
 		}
 	}
 	
@@ -135,7 +161,20 @@ d_bountiful_plains = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -178,7 +217,7 @@ d_rugged_woods = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_low
+			minerals = @retile_rural_exploit_cost_low
 		}
 	}
 	
@@ -187,7 +226,20 @@ d_rugged_woods = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -227,7 +279,7 @@ d_green_hills = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_low
+			minerals = @retile_rural_exploit_cost_low
 		}
 	}
 	
@@ -236,7 +288,20 @@ d_green_hills = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -279,7 +344,7 @@ d_forgiving_tundra = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_low
+			minerals = @retile_rural_exploit_cost_low
 		}
 	}
 	
@@ -288,7 +353,20 @@ d_forgiving_tundra = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -331,7 +409,7 @@ d_boggy_fens = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_low
+			minerals = @retile_rural_exploit_cost_low
 		}
 	}
 	
@@ -340,7 +418,20 @@ d_boggy_fens = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -380,7 +471,7 @@ d_nutritious_mudland = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_low
+			minerals = @retile_rural_exploit_cost_low
 		}
 	}
 	
@@ -389,7 +480,20 @@ d_nutritious_mudland = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -429,7 +533,7 @@ d_fungal_caves = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_med
+			minerals = @retile_rural_exploit_cost_med
 		}
 	}
 	
@@ -438,7 +542,20 @@ d_fungal_caves = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -481,7 +598,7 @@ d_lush_jungle = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_med
+			minerals = @retile_rural_exploit_cost_med
 		}
 	}
 	
@@ -490,7 +607,20 @@ d_lush_jungle = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -530,7 +660,7 @@ d_fertile_lands = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_med
+			minerals = @retile_rural_exploit_cost_med
 		}
 	}
 	
@@ -539,7 +669,20 @@ d_fertile_lands = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -580,7 +723,7 @@ d_great_river = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_med
+			minerals = @retile_rural_exploit_cost_med
 		}
 	}
 	
@@ -589,7 +732,20 @@ d_great_river = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -628,7 +784,7 @@ d_black_soil = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_high
+			minerals = @retile_rural_exploit_cost_high
 		}
 	}
 	
@@ -637,7 +793,20 @@ d_black_soil = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -678,7 +847,7 @@ d_teeming_reef = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_high
+			minerals = @retile_rural_exploit_cost_high
 		}
 	}
 	
@@ -687,7 +856,20 @@ d_teeming_reef = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -727,7 +909,7 @@ d_marvelous_oasis = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_high
+			minerals = @retile_rural_exploit_cost_high
 		}
 	}
 	
@@ -736,7 +918,20 @@ d_marvelous_oasis = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -776,7 +971,7 @@ d_tropical_island = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_high
+			minerals = @retile_rural_exploit_cost_high
 		}
 	}
 	
@@ -785,7 +980,20 @@ d_tropical_island = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -826,7 +1034,7 @@ d_fungal_forest = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_high
+			minerals = @retile_rural_exploit_cost_high
 		}
 	}
 	
@@ -835,7 +1043,20 @@ d_fungal_forest = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -877,7 +1098,7 @@ d_junk_canals = {
 	resources = {
 		category = deposit_blockers
 		cost = {
-			alloys = @retile_rural_exploit_cost_high
+			minerals = @retile_rural_exploit_cost_high
 		}
 	}
 	
@@ -886,7 +1107,20 @@ d_junk_canals = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -907,7 +1141,7 @@ d_abandoned_primitive_homesteads = {
 	resources = {
 		category = deposit_blockers
 		cost = {
-			alloys = @retile_rural_exploit_cost_med
+			minerals = @retile_rural_exploit_cost_med
 		}
 	}
 	
@@ -917,7 +1151,20 @@ d_abandoned_primitive_homesteads = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -938,7 +1185,7 @@ d_hyperfertile_valley = {
 	resources = {
 		category = deposit_blockers
 		cost = {
-			alloys = @retile_rural_exploit_cost_ultra2
+			minerals = @retile_rural_exploit_cost_ultra2
 		}
 	}
 	
@@ -947,7 +1194,20 @@ d_hyperfertile_valley = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -968,7 +1228,7 @@ d_harvester_fields = {
 	resources = {
 		category = deposit_blockers
 		cost = {
-			alloys = @retile_rural_exploit_cost_ultra3
+			minerals = @retile_rural_exploit_cost_ultra3
 		}
 	}
 	
@@ -977,7 +1237,20 @@ d_harvester_fields = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -998,7 +1271,7 @@ d_worm_farm = {
 	resources = {
 		category = deposit_blockers
 		cost = {
-			alloys = @retile_rural_exploit_cost_ultra
+			minerals = @retile_rural_exploit_cost_ultra
 		}
 	}
 	
@@ -1007,7 +1280,20 @@ d_worm_farm = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -1028,7 +1314,7 @@ d_underground_farm = {
 	resources = {
 		category = deposit_blockers
 		cost = {
-			alloys = @retile_rural_exploit_cost_high
+			minerals = @retile_rural_exploit_cost_high
 		}
 	}
 	
@@ -1038,7 +1324,20 @@ d_underground_farm = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -1063,7 +1362,7 @@ d_scandinavian_reclamation_sector = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_low
+			minerals = @retile_rural_exploit_cost_low
 		}
 	}
 	
@@ -1072,7 +1371,20 @@ d_scandinavian_reclamation_sector = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -1093,7 +1405,7 @@ d_pacific_algae_tracts = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_high
+			minerals = @retile_rural_exploit_cost_high
 		}
 	}
 	
@@ -1102,7 +1414,20 @@ d_pacific_algae_tracts = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -1123,7 +1448,7 @@ d_saharan_irrigation_project = {
 	resources = {
 		category = planet_deposits_active
 		cost = {
-			alloys = @retile_rural_exploit_cost_ultra
+			minerals = @retile_rural_exploit_cost_ultra
 		}
 	}
 	
@@ -1162,7 +1487,20 @@ retile_mastery_of_nature_food = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
 	}
 	
 	drop_weight = {
@@ -1171,5 +1509,43 @@ retile_mastery_of_nature_food = {
 	
 	blocker_swap_types = {
 		retile_mastery_of_nature_food_active
+	}
+}
+
+retile_module_farm = {
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_food
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_food = yes
+		}
+		modifier = {	# REALLY don't let food go negative
+			weight = 1000
+			owner = { has_monthly_income = { resource = food value < 0 } }
+		}
+		modifier = {	# Plantoid Fix Habitability
+			weight = 10000
+			owner = { is_plantoid_empire = yes }
+			habitability = { who = owner.owner_species value < 0.7 }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		retile_module_farm_active
 	}
 }

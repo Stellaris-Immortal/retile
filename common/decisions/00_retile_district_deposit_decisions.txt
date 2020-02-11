@@ -6,6 +6,265 @@
 @base_upkeep = 5
 @base_buildtime = 240
 
+##################################################### Mining Module
+decision_retile_module_mine = {
+	owned_planets_only = yes
+
+	#enactment_time = 1080
+	resources = {
+		category = planets
+		cost = {
+			energy = 500
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = retile_module_limit
+			OR = {
+				AND = { is_planet_class = pc_habitat
+					OR = {
+						check_variable = { which = module_count value < 4 }
+						AND = {
+							exists = owner
+							owner = { has_ascension_perk = ap_voidborn }
+							check_variable = { which = module_count value < 6 }
+						}
+					} 
+				}
+				AND = { is_planet_class = pc_ringworld_habitable
+					check_variable = { which = module_count value < 15 }
+				}
+				AND = {
+					OR = {
+						is_planet_class = pc_hive
+						is_planet_class = pc_machine
+					}
+					check_variable = { which = module_count value < 6 }
+				}
+			}
+		}
+	}
+	
+	effect = {
+		#custom_tooltip = decision_retile_module_mine_effects
+		add_deposit = retile_module_mine
+		hidden_effect = { change_variable = { which = module_count value = 1 } }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+}
+
+decision_retile_module_mine_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		OR = {
+			has_deposit = retile_module_mine
+			has_deposit = retile_module_mine_active
+		}
+	}
+	
+	effect = {
+		#custom_tooltip = decision_retile_module_mine_remove_effects
+		if = {
+			limit = { has_deposit = retile_module_mine }
+			remove_deposit = retile_module_mine
+		} else = {
+			remove_deposit = retile_module_mine_active
+		}
+		hidden_effect = { change_variable = { which = module_count value = -1 } }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+##################################################### Hydroponics Module
+decision_retile_module_farm = {
+	owned_planets_only = yes
+
+	#enactment_time = 1080
+	resources = {
+		category = planets
+		cost = {
+			energy = 500
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = retile_module_limit
+			OR = {
+				AND = { is_planet_class = pc_habitat
+					OR = {
+						check_variable = { which = module_count value < 4 }
+						AND = {
+							exists = owner
+							owner = { has_ascension_perk = ap_voidborn }
+							check_variable = { which = module_count value < 6 }
+						}
+					} 
+				}
+				AND = { is_planet_class = pc_ringworld_habitable
+					check_variable = { which = module_count value < 15 }
+				}
+				AND = {
+					OR = {
+						is_planet_class = pc_hive
+						is_planet_class = pc_machine
+					}
+					check_variable = { which = module_count value < 6 }
+				}
+			}
+		}
+	}
+	
+	
+	effect = {
+		#custom_tooltip = decision_retile_module_farm_effects
+		add_deposit = retile_module_farm
+		hidden_effect = { change_variable = { which = module_count value = 1 } }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+}
+
+decision_retile_module_farm_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		OR = {
+			has_deposit = retile_module_farm
+			has_deposit = retile_module_farm_active
+		}
+	}
+	
+	effect = {
+		#custom_tooltip = decision_retile_module_farm_remove_effects
+		if = {
+			limit = { has_deposit = retile_module_farm }
+			remove_deposit = retile_module_farm
+		} else = {
+			remove_deposit = retile_module_farm_active
+		}
+		hidden_effect = { change_variable = { which = module_count value = -1 } }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+##################################################### Generator Module
+decision_retile_module_generator = {
+	owned_planets_only = yes
+
+	#enactment_time = 1080
+	resources = {
+		category = planets
+		cost = {
+			energy = 500
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = retile_module_limit
+			OR = {
+				AND = { is_planet_class = pc_habitat
+					OR = {
+						check_variable = { which = module_count value < 4 }
+						AND = {
+							exists = owner
+							owner = { has_ascension_perk = ap_voidborn }
+							check_variable = { which = module_count value < 6 }
+						}
+					} 
+				}
+				AND = { is_planet_class = pc_ringworld_habitable
+					check_variable = { which = module_count value < 15 }
+				}
+				AND = {
+					OR = {
+						is_planet_class = pc_hive
+						is_planet_class = pc_machine
+					}
+					check_variable = { which = module_count value < 6 }
+				}
+			}
+		}
+	}
+		
+	effect = {
+		#custom_tooltip = decision_retile_module_generator_effects
+		add_deposit = retile_module_generator
+		hidden_effect = { change_variable = { which = module_count value = 1 } }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+}
+
+decision_retile_module_generator_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		OR = {
+			has_deposit = retile_module_generator
+			has_deposit = retile_module_generator_active
+		}
+	}
+	
+	effect = {
+		#custom_tooltip = decision_retile_module_generator_remove_effects
+		if = {
+			limit = { has_deposit = retile_module_generator }
+			remove_deposit = retile_module_generator
+		} else = {
+			remove_deposit = retile_module_generator_active
+		}
+		hidden_effect = { change_variable = { which = module_count value = -1 } }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
 ##################################################### Spawning Pool
 decision_retile_deposit_spawningpool = {
 	owned_planets_only = yes

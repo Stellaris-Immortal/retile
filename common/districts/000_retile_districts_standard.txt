@@ -6,6 +6,7 @@ district_clerks = {
 	show_on_uncolonized = {
 		exists = from
 		from = { is_fallen_empire = no }
+		from = { is_gestalt = no }
 		#NOR = {
 		#	is_planet_class = pc_habitat
 		#	is_planet_class = pc_city
@@ -16,6 +17,7 @@ district_clerks = {
 	potential = {
 		exists = owner
 		owner = { is_fallen_empire = no }
+		owner = { is_gestalt = no }
 		NOR = {
 		#	is_planet_class = pc_habitat
 		#	is_planet_class = pc_city
@@ -28,17 +30,18 @@ district_clerks = {
 	
 	allow = {
 		hidden_trigger = {
-			retile_ready_city = yes
+			retile_ready_clerks = yes
 		}
 	}
 
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			alloys = @retile_city_cost
+			minerals = @retile_city_cost
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
+			supplies = @retile_city_upkeep_supplies
 		}
 	}
 	
@@ -85,10 +88,11 @@ district_engineers = {
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			alloys = @retile_city_cost
+			minerals = @retile_city_cost
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
+			supplies = @retile_city_upkeep_supplies
 		}
 	}
 	
@@ -135,10 +139,11 @@ district_scholars = {
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			alloys = @retile_city_cost
+			minerals = @retile_city_cost
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
+			supplies = @retile_city_upkeep_supplies
 		}
 	}
 	
@@ -186,27 +191,62 @@ district_diplomats = {
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			alloys = @retile_city_cost
+			minerals = @retile_city_cost
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
+			supplies = @retile_city_upkeep_supplies
 		}
 	}
 	
 	planet_modifier = {			### Diplomat Jobs
 		planet_housing_add = 1
-		job_bureaucrat_add = 1
+		job_diplomat_add = 1
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_embassy }
+			owner = { has_policy_flag = xenodiplomacy_assembly }
 		}
-		modifier = {
-			job_bureaucrat_add = -1
-			job_diplomat_add = 1
+		job_diplomat_add = -1
+		job_representitive_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_magistrate }
 		}
+		job_diplomat_add = -1
+		job_magistrate_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_lr }
+		}
+		job_diplomat_add = -1
+		job_lr_manager_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_pr }
+		}
+		job_diplomat_add = -1
+		job_pr_manager_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_isolation }
+		}
+		job_diplomat_add = -1
+		job_bureaucrat_add = 1
 	}
 	
 	triggered_planet_modifier = {
@@ -214,11 +254,10 @@ district_diplomats = {
 			exists = owner
 			owner = { has_policy_flag = xenodiplomacy_gunboat }
 		}
-		modifier = {
-			job_bureaucrat_add = -1
-			job_strategos_add = 1
-		}
+		job_diplomat_add = -1
+		job_strategos_add = 1
 	}
+
 }
 
 district_soldiers = {
@@ -258,10 +297,11 @@ district_soldiers = {
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			alloys = @retile_city_cost
+			minerals = @retile_city_cost
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
+			supplies = @retile_city_upkeep_supplies
 		}
 	}
 	
@@ -308,10 +348,11 @@ district_enforcers = {
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			alloys = @retile_city_cost
+			minerals = @retile_city_cost
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
+			supplies = @retile_city_upkeep_supplies
 		}
 	}
 	
@@ -368,10 +409,11 @@ district_custodians = {
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			alloys = @retile_city_cost
+			minerals = @retile_city_cost
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
+			supplies = @retile_city_upkeep_supplies
 		}
 	}
 	
@@ -418,10 +460,11 @@ district_housing = {
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			alloys = @retile_city_cost
+			minerals = @retile_city_cost
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
+			supplies = @retile_city_upkeep_supplies
 		}
 	}
 	
@@ -430,7 +473,7 @@ district_housing = {
 			exists = owner
 		}
 		modifier = {
-			planet_housing_add = 3
+			planet_housing_add = 2
 		}
 	}
 }

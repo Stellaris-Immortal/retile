@@ -1173,49 +1173,57 @@ generate_start_pops = {
 	}
 	
 	while = {
-		limit = { num_pops < 12 }
+		limit = { num_pops < 10 }
 		create_pop = {
 			species = owner_main_species
 			ethos = random
 		}
 	}
 	
+	#if = {
+	#	limit = { owner = { is_hive_empire = yes } }
+	#	while = {
+	#		#limit = { num_pops < 10 }
+	#		count = 1
+	#		create_pop = {
+	#			species = owner_main_species
+	#			ethos = random
+	#		}
+	#	}
+	#}
+	
+	# One extra pop for Mechanists
 	if = {
-		limit = { owner = { is_hive_empire = yes } }
-		while = {
-			#limit = { num_pops < 12 }
-			count = 1
-			create_pop = {
-				species = owner_main_species
-				ethos = random
-			}
+		limit = { owner = { has_valid_civic = civic_mechanists } }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
 		}
 	}
-	
 	# One extra pop for Servitors
-	if = {
-		limit = { owner = { has_valid_civic = civic_machine_servitor } }
-		create_pop = {
-			species = owner_main_species
-			ethos = random
-		}
-	}
+	#if = {
+	#	limit = { owner = { has_valid_civic = civic_machine_servitor } }
+	#	create_pop = {
+	#		species = owner_main_species
+	#		ethos = random
+	#	}
+	#}
 	# One extra pop for Mining Guilds
-	if = {
-		limit = { owner = { has_valid_civic = civic_mining_guilds } }
-		create_pop = {
-			species = owner_main_species
-			ethos = random
-		}
-	}
+	#if = {
+	#	limit = { owner = { has_valid_civic = civic_mining_guilds } }
+	#	create_pop = {
+	#		species = owner_main_species
+	#		ethos = random
+	#	}
+	#}
 	# One extra pop for Agrarian Idyll
-	if = {
-		limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
-		create_pop = {
-			species = owner_main_species
-			ethos = random
-		}
-	}
+	#if = {
+	#	limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
+	#	create_pop = {
+	#		species = owner_main_species
+	#		ethos = random
+	#	}
+	#}
 }
 
 generate_home_planet_final_pass = {

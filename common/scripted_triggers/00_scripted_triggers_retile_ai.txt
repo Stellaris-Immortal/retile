@@ -114,7 +114,13 @@ retile_ready_city = {	# Planet scope
 }
 
 # Ready to build new energy districts
-retile_ready_energy = {	# Planet scope
+retile_ready_energy = {	# deposit scope
+	planet = {
+		owner = { has_monthly_income = { resource = energy value < 75 } }
+		free_jobs < 1
+	}
+}
+retile_ready_energy_old = {	# Planet scope
 	OR = {
 		NOT = { exists = owner }
 		owner = { is_ai = no }
@@ -122,14 +128,19 @@ retile_ready_energy = {	# Planet scope
 			has_monthly_income = { resource = energy value < 75 }
 			PREV = {
 				free_jobs < 1
-				has_planet_flag = ai_energy_development
 			}
 		}
 	}
 }
 
 # Ready to build new mining districts
-retile_ready_minerals = {	# Planet scope
+retile_ready_minerals = {	# deposit scope
+	planet = {
+		owner = { has_monthly_income = { resource = minerals value < 75 } }
+		free_jobs < 1
+	}
+}
+retile_ready_minerals_old = {	# Planet scope
 	OR = {
 		NOT = { exists = owner }
 		owner = { is_ai = no }
@@ -137,14 +148,30 @@ retile_ready_minerals = {	# Planet scope
 			has_monthly_income = { resource = minerals value < 75 }
 			PREV = {
 				free_jobs < 1
-				has_planet_flag = ai_minerals_development
 			}
 		}
 	}
 }
 
 # Ready to build new farming districts
-retile_ready_food = {	# Planet scope
+retile_ready_food = {	# deposit scope
+	planet = {
+		OR = {
+			AND = {
+				free_jobs < 1
+				owner = {
+					country_uses_food = yes
+					has_monthly_income = { resource = food value < 25 }
+				}
+			}
+			owner = {
+				is_plantoid_empire = yes
+				prev = { habitability = { who = owner.owner_species value <= 0.7 } }
+			}
+		}
+	}
+}
+retile_ready_food_old = {	# Planet scope
 	OR = {
 		NOT = { exists = owner }
 		owner = { is_ai = no }
@@ -155,7 +182,6 @@ retile_ready_food = {	# Planet scope
 					has_monthly_income = { resource = food value < 25 }
 					PREV = {
 						free_jobs < 1
-						has_planet_flag = ai_food_development
 					}
 				}
 				AND = {
@@ -173,7 +199,6 @@ retile_ready_food = {	# Planet scope
 		}
 	}
 }
-
 
 # try to save the last building slot for housing most of the time
 ### Not used!!!
@@ -205,16 +230,7 @@ retile_tech_weak = {	# Country scope
 retile_basic_economy = {	# planet scope
 	AND = {
 		owner = { has_monthly_income = { resource = energy value > 0 } }
-		OR = {
-			AND = {
-				owner = { country_uses_goods = yes }
-				owner = { has_monthly_income = { resource = minerals value > 0 } }
-			}
-			AND = {
-				owner = { country_uses_goods = no }
-				owner = { has_monthly_income = { resource = minerals value > 10 } }
-			}
-		}
+		owner = { has_monthly_income = { resource = minerals value > 0 } }
 		OR = {
 			owner = { has_monthly_income = { resource = food value > 0 } }
 			owner = { country_uses_food = no }
@@ -227,16 +243,7 @@ retile_basic_economy = {	# planet scope
 retile_advanced_economy = {
 	AND = {
 		retile_basic_economy = yes
-		OR = {
-			AND = {
-				owner = { country_uses_goods = yes }
-				owner = { has_monthly_income = { resource = consumer_goods value > 10 } }
-			}
-			AND = {
-				owner = { country_uses_goods = no }
-				owner = { has_monthly_income = { resource = minerals value > 30 } }
-			}
-		}
+		owner = { has_monthly_income = { resource = consumer_goods value > 15 } }
 		owner = { has_monthly_income = { resource = alloys value > 25 } }
 	}
 }
@@ -284,26 +291,11 @@ ai_good_food_world = {
 	NOT = { is_planet_class = pc_relic }
 	OR = {
 		check_variable = { which = rtd_farming value > 5 }
-		AND = {
-			OR = {
-				is_planet_class = pc_hive
-				is_planet_class = pc_machine
-			}
-			num_districts = { type = district_generator_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_city value < 1 }
-		}
-		AND = {
+		OR = {
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
 			is_planet_class = pc_habitat
-			num_districts = { type = district_hab_mining value < 1 }
-			num_districts = { type = district_hab_energy value < 1 }
-			num_districts = { type = district_hab_housing value < 1 }
-		}
-		AND = {
 			is_planet_class = pc_ringworld_habitable
-			num_districts = { type = district_rw_mining value < 1 }
-			num_districts = { type = district_rw_generator value < 1 }
-			num_districts = { type = district_rw_city value < 1 }
 		}
 	}
 	NOR = {
@@ -317,26 +309,11 @@ ai_good_energy_world = {
 	NOT = { is_planet_class = pc_relic }
 	OR = {
 		check_variable = { which = rtd_generator value > 5 }
-		AND = {
-			OR = {
-				is_planet_class = pc_hive
-				is_planet_class = pc_machine
-			}
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_mining_uncapped value < 1 }
-			num_districts = { type = district_city value < 1 }
-		}
-		AND = {
+		OR = {
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
 			is_planet_class = pc_habitat
-			num_districts = { type = district_hab_mining value < 1 }
-			num_districts = { type = district_hab_hydroponics value < 1 }
-			num_districts = { type = district_hab_housing value < 1 }
-		}
-		AND = {
 			is_planet_class = pc_ringworld_habitable
-			num_districts = { type = district_rw_mining value < 1 }
-			num_districts = { type = district_rw_farming value < 1 }
-			num_districts = { type = district_rw_city value < 1 }
 		}
 	}
 }
@@ -346,26 +323,11 @@ ai_good_minerals_world = {
 	NOT = { is_planet_class = pc_relic }
 	OR = {
 		check_variable = { which = rtd_mining value > 5 }
-		AND = {
-			OR = {
-				is_planet_class = pc_hive
-				is_planet_class = pc_machine
-			}
-			num_districts = { type = district_generator_uncapped value < 1 }
-			num_districts = { type = district_farming_uncapped value < 1 }
-			num_districts = { type = district_city value < 1 }
-		}
-		AND = {
+		OR = {
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
 			is_planet_class = pc_habitat
-			num_districts = { type = district_hab_hydroponics value < 1 }
-			num_districts = { type = district_hab_energy value < 1 }
-			num_districts = { type = district_hab_housing value < 1 }
-		}
-		AND = {
 			is_planet_class = pc_ringworld_habitable
-			num_districts = { type = district_rw_farming value < 1 }
-			num_districts = { type = district_rw_generator value < 1 }
-			num_districts = { type = district_rw_city value < 1 }
 		}
 	}
 	NOT = { has_modifier = mineral_poor }

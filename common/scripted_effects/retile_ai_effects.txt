@@ -162,12 +162,7 @@ retile_flag_ai_food_world = {
 				has_planet_flag = ai_energy_development_sticky
 				has_planet_flag = ai_city_development_sticky
 			}
-			OR = {
-				num_free_districts = { type = district_farming value > 0 }
-				num_free_districts = { type = district_farming_uncapped value > 0 }
-				num_free_districts = { type = district_hab_hydroponics value > 0 }
-				num_free_districts = { type = district_rw_farming value > 0 }
-			}
+			any_deposit = { has_deposit_category = deposit_cat_food }
 		} }
 		random_owned_planet = {	### Sticky energy world found!!! Designate it...
 			limit = {
@@ -185,12 +180,7 @@ retile_flag_ai_food_world = {
 					has_planet_flag = ai_energy_development_sticky
 					has_planet_flag = ai_city_development_sticky
 				}
-				OR = {
-					num_free_districts = { type = district_farming value > 0 }
-					num_free_districts = { type = district_farming_uncapped value > 0 }
-					num_free_districts = { type = district_hab_hydroponics value > 0 }
-					num_free_districts = { type = district_rw_farming value > 0 }
-				}
+				any_deposit = { has_deposit_category = deposit_cat_food }
 			}
 			remove_planet_flag = ai_food_development_former
 			set_planet_flag = ai_food_development
@@ -206,12 +196,7 @@ retile_flag_ai_food_world = {
 					is_planet_class = pc_city
 					is_planet_class = pc_machine
 				}
-				OR = {
-					num_free_districts = { type = district_farming value > 0 }
-					num_free_districts = { type = district_farming_uncapped value > 0 }
-					num_free_districts = { type = district_hab_hydroponics value > 0 }
-					num_free_districts = { type = district_rw_farming value > 0 }
-				}
+				any_deposit = { has_deposit_category = deposit_cat_food }
 			}
 			weights = {
 				base = 1
@@ -450,12 +435,7 @@ retile_flag_ai_energy_world = {
 				has_planet_flag = ai_food_development_sticky
 				has_planet_flag = ai_city_development_sticky
 			}
-			OR = {
-				num_free_districts = { type = district_generator value > 0 }
-				num_free_districts = { type = district_generator_uncapped value > 0 }
-				num_free_districts = { type = district_hab_energy value > 0 }
-				num_free_districts = { type = district_rw_generator value > 0 }
-			}
+			any_deposit = { has_deposit_category = deposit_cat_energy }
 		} }
 		random_owned_planet = {	### Sticky energy world found!!! Designate it...
 			limit = {
@@ -473,12 +453,7 @@ retile_flag_ai_energy_world = {
 					has_planet_flag = ai_food_development_sticky
 					has_planet_flag = ai_city_development_sticky
 				}
-				OR = {
-					num_free_districts = { type = district_generator value > 0 }
-					num_free_districts = { type = district_generator_uncapped value > 0 }
-					num_free_districts = { type = district_hab_energy value > 0 }
-					num_free_districts = { type = district_rw_generator value > 0 }
-				}
+				any_deposit = { has_deposit_category = deposit_cat_energy }
 			}
 			remove_planet_flag = ai_energy_development_former
 			set_planet_flag = ai_energy_development
@@ -491,12 +466,7 @@ retile_flag_ai_energy_world = {
 					has_modifier = resort_colony
 					is_under_colonization = yes
 				}
-				OR = {
-					num_free_districts = { type = district_generator value > 0 }
-					num_free_districts = { type = district_generator_uncapped value > 0 }
-					num_free_districts = { type = district_hab_energy value > 0 }
-					num_free_districts = { type = district_rw_generator value > 0 }
-				}
+				any_deposit = { has_deposit_category = deposit_cat_energy }
 			}
 			weights = {
 				base = 1
@@ -735,12 +705,7 @@ retile_flag_ai_minerals_world = {
 				has_planet_flag = ai_food_development_sticky
 				has_planet_flag = ai_city_development_sticky
 			}
-			OR = {
-				num_free_districts = { type = district_mining value > 0 }
-				num_free_districts = { type = district_mining_uncapped value > 0 }
-				num_free_districts = { type = district_hab_mining value > 0 }
-				num_free_districts = { type = district_rw_mining value > 0 }
-			}
+			any_deposit = { has_deposit_category = deposit_cat_minerals }
 		} }
 		random_owned_planet = {	### Sticky minerals world found!!! Designate it...
 			limit = {
@@ -758,12 +723,7 @@ retile_flag_ai_minerals_world = {
 					has_planet_flag = ai_food_development_sticky
 					has_planet_flag = ai_city_development_sticky
 				}
-				OR = {
-					num_free_districts = { type = district_mining value > 0 }
-					num_free_districts = { type = district_mining_uncapped value > 0 }
-					num_free_districts = { type = district_hab_mining value > 0 }
-					num_free_districts = { type = district_rw_mining value > 0 }
-				}
+				any_deposit = { has_deposit_category = deposit_cat_minerals }
 			}
 			remove_planet_flag = ai_minerals_development_former
 			set_planet_flag = ai_minerals_development
@@ -776,12 +736,7 @@ retile_flag_ai_minerals_world = {
 					has_modifier = resort_colony
 					is_under_colonization = yes
 				}
-				OR = {
-					num_free_districts = { type = district_mining value > 0 }
-					num_free_districts = { type = district_mining_uncapped value > 0 }
-					num_free_districts = { type = district_hab_mining value > 0 }
-					num_free_districts = { type = district_rw_mining value > 0 }
-				}
+				any_deposit = { has_deposit_category = deposit_cat_minerals }
 			}
 			weights = {
 				base = 1
