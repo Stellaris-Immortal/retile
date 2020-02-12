@@ -1,3 +1,91 @@
+# Hive Mind Policies
+violence_hive = {
+	potential = { has_authority = auth_hive_mind }
+	
+	option = {
+		name = "violence_hive_no"
+		
+		policy_flags = {
+			no_wars
+			orbital_bombardment_selective
+		}
+	}
+	
+	option = {
+		name = "violence_hive_yes"
+		
+		policy_flags = {
+			unrestricted_wars
+			orbital_bombardment_indiscriminate
+		}
+	}
+	
+	option = {
+		name = "violence_hive_extremely"
+		potential = { has_tradition = tr_supremacy_great_game }
+		
+		policy_flags = {
+			unrestricted_wars
+			orbital_bombardment_armageddon
+		}
+	}
+}
+
+leader_enhancement_hive = {
+	potential = { 
+		has_technology = tech_selected_lineages
+		has_authority = auth_hive_mind
+	}
+	
+	option = {
+		name = "leader_enhancement_natural_selection_hive"
+		
+		policy_flags = {
+			leader_enhancement_natural_selection
+		}
+		
+		modifier = {}
+		
+	}
+	
+	option = {
+		name = "leader_enhancement_selected_lineages_hive"
+		
+		policy_flags = {
+			leader_enhancement_selected_lineages
+		}
+		modifier = {
+			leader_skill_levels = 1
+			leader_age = 10
+			leaders_cost_mult = 0.5
+		}
+		
+		AI_weight = {
+			factor = 2
+		}
+		
+		prerequisites = { tech_selected_lineages }
+	}
+	
+	option = {
+		name = "leader_enhancement_capacity_boosters_hive"
+		
+		policy_flags = {
+			leader_enhancement_capacity_boosters
+		}
+		modifier = {
+			leader_skill_levels = 2
+			leader_age = 20
+			leaders_cost_mult = 1
+		}
+		
+		prerequisites = { tech_capacity_boosters }
+		
+		AI_weight = {
+			factor = 3
+		}
+	}
+}
 
 hive_ethics = {
 	potential = { has_authority = auth_hive_mind }
@@ -123,20 +211,128 @@ xenodiplomacy_hive = {
 	option = {
 		name = "xenodiplomacy_isolation_hive"
 		
-		policy_flags = { xenodiplomacy_isolation }
+		policy_flags = { 
+			xenodiplomacy_isolation
+			first_contact_attack_not_allowed
+			border_policy_closed
+		}
 	}
 	
 	option = {
 		name = "xenodiplomacy_diplomat_hive"
 		potential = { has_technology = tech_xenodiplomacy }
 		
-		policy_flags = { xenodiplomacy_embassy }
+		policy_flags = { 
+			xenodiplomacy_embassy
+			first_contact_attack_not_allowed
+			border_policy_open
+		}
 	}
 	
 	option = {
 		name = "xenodiplomacy_military_hive"
-		potential = { has_technology = tech_xenodiplomacy }
 		
-		policy_flags = { xenodiplomacy_gunboat }
+		policy_flags = {
+			xenodiplomacy_gunboat
+			first_contact_attack_allowed
+			border_policy_closed
+		}
+	}
+}
+
+alien_rights_hive = {
+	potential = {
+		has_encountered_other_species = yes
+		has_authority = auth_hive_mind
+	}
+	
+	option = {
+		name = "alien_rights_welcoming"
+		
+		policy_flags = {
+			alien_rights_welcoming
+			refugees_allowed
+		}
+	}
+	
+	option = {
+		name = "alien_rights_forbidden"
+		
+		policy_flags = {
+			alien_rights_forbidden
+			refugees_not_allowed
+		}
+	}
+	
+	option = {
+		name = "alien_rights_consume"
+		
+		policy_flags = {
+			alien_rights_consume
+			refugees_not_allowed
+		}
+	}
+}
+
+primitives_hive = {
+	potential = {
+		OR = {
+			has_country_flag = found_presapients
+			any_planet_within_border = {
+				any_pop = { is_sapient = no }
+			}
+			has_met_primitives = yes
+		}
+		has_authority = auth_hive_mind
+	}
+	
+	option = {
+		name = "primitives_care"
+		
+		policy_flags = {
+			interference_passive
+			enlightenment_allowed
+			pre_sapients_protect
+		}
+	}
+	
+	option = {
+		name = "primitives_study"
+		
+		policy_flags = {
+			interference_full
+			enlightenment_not_allowed
+			pre_sapients_allow
+		}
+	}
+	
+	option = {
+		name = "primitives_integrate"
+		
+		policy_flags = {
+			interference_active
+			enlightenment_allowed
+			pre_sapients_allow
+		}
+	}
+	
+	option = {
+		name = "primitives_eat"
+		
+		policy_flags = {
+			interference_full
+			enlightenment_not_allowed
+			pre_sapients_eat
+		}
+	}
+	
+	option = {
+		name = "primitives_exterminate"
+		
+		policy_flags = {
+			interference_full
+			enlightenment_not_allowed
+			pre_sapients_purge
+		}
 	}
 }

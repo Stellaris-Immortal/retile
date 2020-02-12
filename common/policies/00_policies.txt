@@ -107,7 +107,9 @@ piracy = {
 
 war_philosophy = {
 
-	potential = {  }
+	potential = { 
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+	}
 
 	allow = { is_at_war = no }
 	
@@ -323,6 +325,7 @@ orbital_bombardment = {
 			is_country_type = default
 			is_country_type = vol
 		}
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
 	}
 	
 	option = {
@@ -1227,7 +1230,10 @@ appropriation = {
 
 leader_enhancement = {
 
-	potential = { has_technology = tech_selected_lineages }
+	potential = { 
+		has_technology = tech_selected_lineages
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+	}
 	
 	option = {
 		name = "leader_enhancement_natural_selection"
@@ -1292,7 +1298,7 @@ leader_enhancement = {
 
 first_contact_protocol = {
 
-	potential = { always = yes }
+	potential = { NOT = { has_ethic = ethic_gestalt_consciousness } }
 	
 	option = {
 		name = "first_contact_attack_not_allowed"
@@ -1855,6 +1861,7 @@ pre_sapients = {
 				}
 			}			
 		}
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
 	}
 	
 	option = {
@@ -1987,7 +1994,10 @@ pre_sapients = {
 
 interference = {
 
-	potential = { has_met_primitives = yes }
+	potential = { 
+		has_met_primitives = yes
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+	}
 	
 	option = {
 		name = "interference_passive"
@@ -2109,7 +2119,7 @@ interference = {
 alien_rights = {
 	potential = {
 		has_encountered_other_species = yes
-		is_country_type = default
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
 	}
 	
 	option = {

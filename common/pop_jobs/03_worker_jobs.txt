@@ -343,7 +343,12 @@ technician = {
 			energy = 10
 		}
 		produces = {
-			trigger = { has_trait = trait_ingenious }
+			trigger = { 
+				OR = { 
+					has_trait = trait_ingenious
+					has_trait = trait_robot_superconductive
+				}
+			}
 			energy = 2
 		}
 		produces = {
@@ -555,7 +560,12 @@ miner = {
 			minerals = 10
 		}
 		produces = {
-			trigger = { has_trait = trait_industrious }
+			trigger = { 
+				OR = {
+					has_trait = trait_industrious
+					has_trait = trait_robot_power_drills
+				}
+			}
 			minerals = 2
 		}
 		produces = {
@@ -763,7 +773,12 @@ farmer = {
 			food = 2.5
 		}
 		produces = {
-			trigger = { has_trait = trait_agrarian }
+			trigger = { 
+				OR = {
+					has_trait = trait_agrarian 
+					has_trait = trait_robot_harvesters
+				}
+			}
 			food = 0.5
 		}
 		produces = {

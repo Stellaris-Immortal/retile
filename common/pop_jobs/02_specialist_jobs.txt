@@ -191,7 +191,12 @@ researcher = {	### Scholar
 			unity = 2.5
 		}
 		produces = {
-			trigger = { has_trait = trait_intelligent }
+			trigger = { 
+				OR = {
+					has_trait = trait_intelligent
+					has_trait = trait_robot_logic_engines
+				}
+			}
 			physics_research = 0.5
 			engineering_research = 0.5
 			society_research = 0.5
@@ -584,6 +589,16 @@ foundry = {	### Engineer
 			consumer_goods = 2.5
 			alloys = 2.5
 		}
+		produces = {
+			trigger = { 
+				OR = {
+					has_trait = trait_innovative
+					has_trait = trait_robot_industrial
+				}
+			}
+			consumer_goods = 0.5
+			alloys = 0.5
+		}
 		upkeep = {
 			minerals = 10
 		}
@@ -773,6 +788,8 @@ foundry = {	### Engineer
 			OR = {
 				has_trait = trait_robust
 				has_trait = trait_robot_efficient_processors
+				has_trait = trait_innovative
+				has_trait = trait_robot_industrial
 			}
 		}
 	}

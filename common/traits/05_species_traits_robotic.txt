@@ -1,27 +1,19 @@
 trait_robot_power_drills = {
 	cost = 2
-
 	allowed_archetypes = { ROBOT MACHINE }
-
-	modifier = {
-		planet_jobs_minerals_produces_mult = 0.15
-	}
+	custom_tooltip = trait_robot_power_drills_effect
 }
 
 trait_robot_harvesters = {
 	cost = 2
-
 	allowed_archetypes = { ROBOT }
-
-	modifier = {
-		planet_jobs_food_produces_mult = 0.15
-	}
+	custom_tooltip = trait_robot_harvesters_effect
 }
 
 trait_robot_superconductive = {
 	cost = 2
-
 	allowed_archetypes = { ROBOT MACHINE }
+	custom_tooltip = trait_robot_superconductive_effect
 	
 	# Droids and Machine only
 	species_potential_add = {
@@ -33,26 +25,18 @@ trait_robot_superconductive = {
 			}			
 		}
 	}
-
-	modifier = {
-		planet_jobs_energy_produces_mult = 0.15
-	}
 }
 
-trait_robot_efficient_processors = {
-	cost = 3
-
+trait_robot_industrial = {
+	cost = 2
 	allowed_archetypes = { ROBOT MACHINE }
-
-	modifier = {
-		planet_jobs_produces_mult = 0.05
-	}
+	custom_tooltip = trait_robot_industrial_effect
 }
 
 trait_robot_logic_engines = {
 	cost = 2
-
 	allowed_archetypes = { ROBOT MACHINE }
+	custom_tooltip = trait_robot_logic_engines_effect
 
 	# Synth and Machine only
 	species_potential_add = {
@@ -65,11 +49,15 @@ trait_robot_logic_engines = {
 			NOT = { has_policy_flag = ai_outlawed }
 		}
 	}
+}
+
+trait_robot_efficient_processors = {
+	cost = 3
+
+	allowed_archetypes = { ROBOT MACHINE }
 
 	modifier = {
-		planet_jobs_society_research_produces_mult = 0.10
-		planet_jobs_physics_research_produces_mult = 0.10
-		planet_jobs_engineering_research_produces_mult = 0.10
+		planet_jobs_produces_mult = 0.05
 	}
 }
 
@@ -346,5 +334,3 @@ trait_robot_propaganda_machines = {
 		planet_jobs_unity_produces_mult = 0.15
 	}
 }
-
-#TODO [MAW] add army damage traits
