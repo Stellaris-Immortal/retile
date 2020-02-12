@@ -1,3 +1,34 @@
+execution_model = {
+	potential = { has_authority = auth_machine_intelligence }
+	
+	option = {
+		name = "reflective_interpreters"
+		
+		policy_flags = {
+			no_wars
+			orbital_bombardment_selective
+		}
+	}
+	
+	option = {
+		name = "hardware_compilers"
+		
+		policy_flags = {
+			unrestricted_wars
+			orbital_bombardment_indiscriminate
+		}
+	}
+	
+	option = {
+		name = "parallel_execution"
+		potential = { has_tradition = tr_supremacy_great_game }
+		
+		policy_flags = {
+			unrestricted_wars
+			orbital_bombardment_armageddon
+		}
+	}
+}
 
 machine_ethics = {
 	potential = { has_authority = auth_machine_intelligence }
@@ -118,27 +149,104 @@ machine_ethics = {
 }
 
 xenodiplomacy_machine = {
-	potential = { 
-		has_authority = auth_machine_intelligence
-	}
+	potential = { has_authority = auth_machine_intelligence }
 	
 	option = {
 		name = "xenodiplomacy_isolation_machine"
 		
-		policy_flags = { xenodiplomacy_isolation }
+		policy_flags = { 
+			xenodiplomacy_isolation
+			first_contact_attack_not_allowed
+			border_policy_closed
+		}
 	}
 	
 	option = {
 		name = "xenodiplomacy_diplomat_machine"
 		potential = { has_technology = tech_xenodiplomacy }
 		
-		policy_flags = { xenodiplomacy_embassy }
+		policy_flags = { 
+			xenodiplomacy_embassy
+			first_contact_attack_not_allowed
+			border_policy_open
+		}
 	}
 	
 	option = {
 		name = "xenodiplomacy_military_machine"
-		potential = { has_technology = tech_xenodiplomacy }
 		
-		policy_flags = { xenodiplomacy_gunboat }
+		policy_flags = {
+			xenodiplomacy_gunboat
+			first_contact_attack_allowed
+			border_policy_closed
+		}
+	}
+}
+
+organics_machine = {
+	potential = {
+		OR = {
+			has_country_flag = found_presapients
+			any_planet_within_border = {
+				any_pop = { is_sapient = no }
+			}
+			has_met_primitives = yes
+		}
+		has_authority = auth_machine_intelligence
+	}
+	
+	option = {
+		name = "organics_care"
+		
+		policy_flags = {
+			interference_passive
+			enlightenment_allowed
+			pre_sapients_protect
+			refugees_allowed
+		}
+	}
+	
+	option = {
+		name = "organics_study"
+		
+		policy_flags = {
+			interference_full
+			enlightenment_not_allowed
+			pre_sapients_allow
+			refugees_not_allowed
+		}
+	}
+	
+	option = {
+		name = "organics_assimilate"
+		
+		policy_flags = {
+			interference_active
+			enlightenment_allowed
+			pre_sapients_allow
+			refugees_not_allowed
+		}
+	}
+	
+	option = {
+		name = "organics_harvest"
+		
+		policy_flags = {
+			interference_full
+			enlightenment_not_allowed
+			pre_sapients_allow
+			refugees_not_allowed
+		}
+	}
+	
+	option = {
+		name = "organics_terminate"
+		
+		policy_flags = {
+			interference_full
+			enlightenment_not_allowed
+			pre_sapients_purge
+			refugees_not_allowed
+		}
 	}
 }
