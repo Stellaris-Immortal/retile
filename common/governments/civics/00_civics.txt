@@ -35,6 +35,25 @@ civic_corvee_system = {
 	}
 }
 
+civic_feudal_realm = {
+	description = "civic_tooltip_feudal_realm_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		authority = { value = auth_imperial }
+		civics = {
+			NOT = { value = civic_mechanists }
+		}
+	}
+	modifier = { 
+		subject_tribute_mult = 0.10
+		country_subject_power_penalty_mult = -0.5
+	}
+	random_weight = { base = 5 }
+}
+
 civic_imperial_cult = {
 	description = "civic_tooltip_imperial_cult_effects"
 	potential = {
