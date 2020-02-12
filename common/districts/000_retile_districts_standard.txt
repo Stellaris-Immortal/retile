@@ -5,23 +5,13 @@ district_clerks = {
 	
 	show_on_uncolonized = {
 		exists = from
-		from = { is_fallen_empire = no }
 		from = { is_gestalt = no }
-		#NOR = {
-		#	is_planet_class = pc_habitat
-		#	is_planet_class = pc_city
-		#	is_planet_class = pc_ringworld_habitable
-		#}
 	}
 
 	potential = {
 		exists = owner
-		owner = { is_fallen_empire = no }
 		owner = { is_gestalt = no }
 		NOR = {
-		#	is_planet_class = pc_habitat
-		#	is_planet_class = pc_city
-		#	is_planet_class = pc_ringworld_habitable
 			has_modifier = resort_colony
 			has_modifier = penal_colony
 			has_modifier = slave_colony
@@ -41,13 +31,31 @@ district_clerks = {
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
-			supplies = @retile_city_upkeep_supplies
+			consumer_goods = @retile_city_upkeep_supplies
 		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 1
-		job_clerk_add = 1
+		job_clerk_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_clerk_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+
+		#modifier = {
+		#	weight = 1000
+		#	free_district_slots < 1
+		#}
 	}
 }
 
@@ -92,13 +100,31 @@ district_engineers = {
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
-			supplies = @retile_city_upkeep_supplies
+			consumer_goods = @retile_city_upkeep_supplies
 		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 1
-		job_foundry_add = 1
+		job_foundry_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_foundry_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+
+		#modifier = {
+		#	weight = 1000
+		#	free_district_slots < 1
+		#}
 	}
 }
 
@@ -143,13 +169,31 @@ district_scholars = {
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
-			supplies = @retile_city_upkeep_supplies
+			consumer_goods = @retile_city_upkeep_supplies
 		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 1
-		job_researcher_add = 1
+		job_researcher_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_researcher_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+
+		#modifier = {
+		#	weight = 1000
+		#	free_district_slots < 1
+		#}
 	}
 }
 
@@ -195,13 +239,30 @@ district_diplomats = {
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
-			supplies = @retile_city_upkeep_supplies
+			consumer_goods = @retile_city_upkeep_supplies
 		}
 	}
 	
 	planet_modifier = {			### Diplomat Jobs
-		planet_housing_add = 1
-		job_diplomat_add = 1
+		job_diplomat_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			owner = { NOR = {
+				has_policy_flag = xenodiplomacy_assembly
+				has_policy_flag = xenodiplomacy_magistrate
+				has_policy_flag = xenodiplomacy_lr
+				has_policy_flag = xenodiplomacy_pr
+				has_policy_flag = xenodiplomacy_isolation
+				has_policy_flag = xenodiplomacy_gunboat
+			} }
+		}
+		modifier = {
+			job_diplomat_add = 1
+		}
 	}
 	
 	triggered_planet_modifier = {
@@ -209,8 +270,19 @@ district_diplomats = {
 			exists = owner
 			owner = { has_policy_flag = xenodiplomacy_assembly }
 		}
-		job_diplomat_add = -1
-		job_representitive_add = 1
+		job_diplomat_add = -2
+		job_representitive_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			owner = { has_policy_flag = xenodiplomacy_assembly }
+		}
+		modifier = {
+			job_representitive_add = 1
+		}
 	}
 	
 	triggered_planet_modifier = {
@@ -218,8 +290,19 @@ district_diplomats = {
 			exists = owner
 			owner = { has_policy_flag = xenodiplomacy_magistrate }
 		}
-		job_diplomat_add = -1
-		job_magistrate_add = 1
+		job_diplomat_add = -2
+		job_magistrate_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			owner = { has_policy_flag = xenodiplomacy_magistrate }
+		}
+		modifier = {
+			job_magistrate_add = 1
+		}
 	}
 	
 	triggered_planet_modifier = {
@@ -227,8 +310,19 @@ district_diplomats = {
 			exists = owner
 			owner = { has_policy_flag = xenodiplomacy_lr }
 		}
-		job_diplomat_add = -1
-		job_lr_manager_add = 1
+		job_diplomat_add = -2
+		job_lr_manager_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			owner = { has_policy_flag = xenodiplomacy_lr }
+		}
+		modifier = {
+			job_lr_manager_add = 1
+		}
 	}
 	
 	triggered_planet_modifier = {
@@ -236,8 +330,19 @@ district_diplomats = {
 			exists = owner
 			owner = { has_policy_flag = xenodiplomacy_pr }
 		}
-		job_diplomat_add = -1
-		job_pr_manager_add = 1
+		job_diplomat_add = -2
+		job_pr_manager_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			owner = { has_policy_flag = xenodiplomacy_pr }
+		}
+		modifier = {
+			job_pr_manager_add = 1
+		}
 	}
 	
 	triggered_planet_modifier = {
@@ -245,8 +350,19 @@ district_diplomats = {
 			exists = owner
 			owner = { has_policy_flag = xenodiplomacy_isolation }
 		}
-		job_diplomat_add = -1
-		job_bureaucrat_add = 1
+		job_diplomat_add = -2
+		job_bureaucrat_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			owner = { has_policy_flag = xenodiplomacy_isolation }
+		}
+		modifier = {
+			job_bureaucrat_add = 1
+		}
 	}
 	
 	triggered_planet_modifier = {
@@ -254,10 +370,29 @@ district_diplomats = {
 			exists = owner
 			owner = { has_policy_flag = xenodiplomacy_gunboat }
 		}
-		job_diplomat_add = -1
-		job_strategos_add = 1
+		job_diplomat_add = -2
+		job_strategos_add = 2
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			owner = { has_policy_flag = xenodiplomacy_gunboat }
+		}
+		modifier = {
+			job_strategos_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
 
+		#modifier = {
+		#	weight = 1000
+		#	free_district_slots < 1
+		#}
+	}
 }
 
 district_soldiers = {
@@ -301,13 +436,31 @@ district_soldiers = {
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
-			supplies = @retile_city_upkeep_supplies
+			consumer_goods = @retile_city_upkeep_supplies
 		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 1
-		job_soldier_add = 1
+		job_soldier_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_soldier_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+
+		#modifier = {
+		#	weight = 1000
+		#	free_district_slots < 1
+		#}
 	}
 }
 
@@ -352,13 +505,23 @@ district_enforcers = {
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
-			supplies = @retile_city_upkeep_supplies
+			consumer_goods = @retile_city_upkeep_supplies
 		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 1
-		job_enforcer_add = 1
+		job_enforcer_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			NOT = { owner = { has_policy_flag = criminal_military_police } }
+		}
+		modifier = {
+			job_enforcer_add = 1
+		}
 	}
 	
 	triggered_planet_modifier = {
@@ -366,10 +529,29 @@ district_enforcers = {
 			exists = owner
 			owner = { has_policy_flag = criminal_military_police }
 		}
-		job_enforcer_add = -1
-		job_soldier_add = 1
+		job_enforcer_add = -2
+		job_soldier_add = 2
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		modifier = {
+			job_soldier_add = 1
+		}
+	}	
 	
+	ai_weight = {
+		weight = 100
+
+		#modifier = {
+		#	weight = 1000
+		#	free_district_slots < 1
+		#}
+	}
 }
 
 district_custodians = {
@@ -413,13 +595,31 @@ district_custodians = {
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
-			supplies = @retile_city_upkeep_supplies
+			consumer_goods = @retile_city_upkeep_supplies
 		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 1
-		job_custodian_add = 1
+		job_custodian_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_custodian_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 100
+
+		#modifier = {
+		#	weight = 1000
+		#	free_district_slots < 1
+		#}
 	}
 }
 
@@ -464,16 +664,30 @@ district_housing = {
 		}
 		upkeep = {
 			energy = @retile_city_upkeep
-			supplies = @retile_city_upkeep_supplies
+			consumer_goods = @retile_city_upkeep_supplies
 		}
 	}
 	
+	planet_modifier = {
+		planet_housing_add = 5
+	}
 	triggered_planet_modifier = {
 		potential = {
+			is_planet_class = pc_city
 			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
 		}
 		modifier = {
 			planet_housing_add = 2
 		}
+	}
+	
+	ai_weight = {
+		weight = 100
+
+		#modifier = {
+		#	weight = 1000
+		#	free_district_slots < 1
+		#}
 	}
 }

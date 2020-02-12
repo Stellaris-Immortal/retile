@@ -115,6 +115,7 @@ retile_ready_city = {	# Planet scope
 
 # Ready to build new energy districts
 retile_ready_energy = {	# deposit scope
+	exists = planet
 	planet = {
 		owner = { has_monthly_income = { resource = energy value < 75 } }
 		free_jobs < 1
@@ -135,6 +136,7 @@ retile_ready_energy_old = {	# Planet scope
 
 # Ready to build new mining districts
 retile_ready_minerals = {	# deposit scope
+	exists = planet
 	planet = {
 		owner = { has_monthly_income = { resource = minerals value < 75 } }
 		free_jobs < 1
@@ -155,6 +157,7 @@ retile_ready_minerals_old = {	# Planet scope
 
 # Ready to build new farming districts
 retile_ready_food = {	# deposit scope
+	exists = planet
 	planet = {
 		OR = {
 			AND = {

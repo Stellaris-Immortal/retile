@@ -362,12 +362,7 @@ decision_retile_deposit_bioreactor = {
 			weight = 10000
 			AND = {
 				owner = { country_uses_food = no }
-				OR = {
-					num_districts = { type = district_farming value > 0 }
-					num_districts = { type = district_farming_uncapped value > 0 }
-					num_districts = { type = district_hab_hydroponics value > 0 }
-					num_districts = { type = district_rw_farming value > 0 }
-				}
+				any_deposit = { has_deposit_category = deposit_cat_food_active }
 			}
 		}
 	}
@@ -391,12 +386,7 @@ decision_retile_deposit_bioreactor_remove = {
 			weight = 10000
 			OR = {
 				owner = { country_uses_food = yes }
-				NAND = {
-					num_districts = { type = district_farming value > 0 }
-					num_districts = { type = district_farming_uncapped value > 0 }
-					num_districts = { type = district_hab_hydroponics value > 0 }
-					num_districts = { type = district_rw_farming value > 0 }
-				}
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_food_active } }
 			}
 		}
 	}	
