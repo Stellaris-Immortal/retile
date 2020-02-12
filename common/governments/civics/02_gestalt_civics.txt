@@ -1,0 +1,314 @@
+#civic_example = {
+#	playable = {}								# AND trigger, no scope; use this to prevent the civic from being selectable by the player (UI)
+#	potential = {}								# requirements list, see ../readme_requirements.txt
+#	possible = {}								# requirements list, see ../readme_requirements.txt
+#	pickable_at_start = yes / no				# default: yes
+#	modification = yes / no						# default: yes, set to no to prevent adding or removing this after creation of the empire
+#
+#	random_weight = { base = 5 }				# scriptable weight for randomizing a civic; required, else the civic will not get assigned randomly
+#
+#	modifier = {}								# modifier added to the country if the civic is selected and valid
+#	can_build_ruler_ship = yes / no				# default: no
+#	traits = { trait = ... }					# default: empty; trait set to enforce on the primary species. They cannot be removed, but more can be added if points/picks permit
+#	has_secondary_species = {					# default: none; if present, will enable secondary species customization in empire designer and will create secondary species & pops at galaxy generation time (see empire_init_create_capital_secondary_pops)
+#		traits = { trait = ... }					# default: empty; trait set to enforce on the secondary species. They cannot be removed, but more can be added if points/picks permit
+#	}
+#}
+
+# Hive Mind
+
+civic_hive_subspace_ephapse = {
+	potential = { authority = { value = auth_hive_mind } }
+	random_weight = { base = 5 }
+	modifier = {
+		ship_speed_mult = 0.10
+		ship_fire_rate_mult = 0.10
+	}
+}
+
+civic_hive_natural_neural_network = {
+	potential = { authority = { value = auth_hive_mind } }
+	random_weight = { base = 5 }
+	modifier = {
+		science_ship_survey_speed = 0.25
+		num_tech_alternatives_add = 1
+	}
+}
+
+civic_hive_ascetic = {
+	potential = { authority = { value = auth_hive_mind } }
+	random_weight = { base = 5 }
+	modifier = {
+		planet_pops_upkeep_mult = -0.10
+	}
+}
+
+civic_hive_one_mind = {
+	potential = { authority = { value = auth_hive_mind } }
+	random_weight = { base = 5 }
+	modifier = {
+		country_unity_produces_mult = 0.10
+		planet_crime_no_happiness_add = -35
+	}
+}
+
+civic_hive_divided_attention = {
+	potential = { authority = { value = auth_hive_mind } }
+	random_weight = { base = 5 }
+	modifier = {
+		country_admin_cap_add = 10
+	}
+}
+
+civic_hive_strength_of_legions = {
+	potential = { authority = { value = auth_hive_mind } }
+	random_weight = { base = 5 }
+	modifier = {
+		army_damage_mult = 0.20
+		armies_upkeep_mult = -0.20
+	}
+}
+
+civic_hive_subsumed_will = {
+	potential = { authority = { value = auth_hive_mind } }
+	random_weight = { base = 5 }
+	modifier = {
+		edicts_cost_mult = -0.20
+		planet_decision_enact_speed_mult = 0.50
+	}
+}
+
+civic_hive_pooled_knowledge = {
+	potential = { authority = { value = auth_hive_mind } }
+	random_weight = { base = 5 }
+	modifier = {
+		leader_skill_levels = 1
+		species_leader_exp_gain = 0.50
+	}
+}
+
+civic_hive_devouring_swarm = {
+	modification = no
+	potential = { authority = { value = auth_hive_mind } }
+	random_weight = { base = 5 }
+
+	description = "civic_tooltip_devouring_swarm_effects"
+	modifier = {
+		country_starbase_influence_cost_mult = -0.5
+		ship_hull_mult = 0.25
+		ship_hull_regen_add_perc = 0.5
+		ship_armor_regen_add_perc = 0.5
+		army_damage_mult = 0.40
+		category_biology_research_speed_mult = 0.20
+		starbase_shipyard_build_cost_mult = -0.25
+		country_naval_cap_mult = 0.33
+	}
+
+	swap_type = {
+		name = civic_hive_devouring_swarm_lithoid
+		description = "civic_tooltip_devouring_swarm_lithoid_effects"
+
+		trigger = {
+			local_human_species_class = LITHOID
+		}
+	}
+}
+
+# Machine Empire
+
+civic_machine_servitor = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_terminator
+				value = civic_machine_assimilator
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = 5
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Synthetic Dawn Story Pack" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+	description = civic_tooltip_machine_servitor_effects
+	has_secondary_species = {	# see game_start.11
+		title = civic_machine_servitor_secondary_species
+	}
+}
+
+civic_machine_terminator = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	starting_colony = pc_nuked # Changes homeworld class regardless of what is picked for empire
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_servitor
+				value = civic_machine_assimilator
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = 5
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Synthetic Dawn Story Pack" }
+		}
+	}
+	description = civic_tooltip_machine_terminator_effects
+	modifier = {
+		country_starbase_influence_cost_mult = -0.3
+		ship_weapon_damage = 0.25
+		starbase_shipyard_build_cost_mult = -0.15
+		country_naval_cap_mult = 0.33
+	}
+}
+
+civic_machine_assimilator = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_machine_servitor
+				value = civic_machine_terminator
+			}
+		}
+	}
+	modification = no
+	random_weight = {
+		base = 5
+		modifier = {
+			factor = 0
+			NOT = { host_has_dlc = "Synthetic Dawn Story Pack" }
+		}
+		modifier = {
+			# civic has no effect after galaxy generation, disable for random generation
+			factor = 0
+			has_global_flag = game_started
+		}
+	}
+	description = civic_tooltip_machine_assimilator_effects
+	has_secondary_species = {	# see game_start.11
+		title = civic_machine_assimilator_secondary_species
+		traits = {
+			trait = trait_cybernetic
+		}
+	}
+}
+
+civic_machine_builder = {
+	description = "civic_tooltip_functional_architecture_effects"
+	potential = { authority = { value = auth_machine_intelligence } }
+	random_weight = { base = 5 }
+	modifier = {
+		planet_structures_cost_mult = -0.10
+		planet_structures_time_cost_mult = -0.10
+		planet_structures_upkeep_mult = -0.10
+		deposit_blockers_cost_mult = -0.10
+		deposit_blockers_time_cost_mult = -0.10
+	}
+}
+
+civic_machine_factory_overclock = {
+	icon = "gfx/interface/icons/governments/civics/civic_machine_factory_overclock.dds"
+    potential = { authority = { value = auth_machine_intelligence } }
+    random_weight = { base = 5 }
+    modifier = {
+        leader_skill_levels = 1
+		species_leader_exp_gain = 0.5
+    }
+}
+
+civic_machine_unitary_cohesion = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	random_weight = { base = 5 }
+	modifier = {
+		country_unity_produces_mult = 0.10
+		planet_crime_no_happiness_add = -35
+	}
+}
+
+civic_machine_rockbreakers = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	random_weight = { base = 5 }
+	modifier = {
+		planet_miners_minerals_produces_add = 1
+	}
+}
+
+civic_machine_zero_waste_protocols = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	random_weight = { base = 5 }
+	modifier = {
+		planet_pops_robotics_upkeep_mult = -0.10
+	}
+}
+
+civic_machine_built_to_last = {
+	potential = { always = no }
+	random_weight = { base = 5 }
+	modifier = {
+		planet_amenities_no_happiness_mult = -0.10
+	}
+}
+
+civic_machine_ota_updates = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	random_weight = { base = 5 }
+	modifier = {
+		edicts_cost_mult = -0.20
+		planet_decision_enact_speed_mult = 0.50
+	}
+}
+
+civic_machine_warbots = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	random_weight = { base = 5 }
+	modifier = {
+		army_damage_mult = 0.2
+		armies_upkeep_mult = -0.2
+	}
+}
+
+civic_machine_introspective = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	random_weight = { base = 5 }
+	modifier = {
+		country_engineering_tech_research_speed = 0.20
+	}
+}
+
+civic_machine_delegated_functions = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	random_weight = { base = 5 }
+	modifier = {
+		leaders_upkeep_mult = -0.25
+		country_leader_pool_size = 1
+	}
+}
+
+civic_machine_predictive_analysis = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	random_weight = { base = 5 }
+	modifier = {
+		science_ship_survey_speed = 0.25
+		num_tech_alternatives_add = 1
+	}
+}
+
+civic_machine_replication = {
+	potential = { authority = { value = auth_machine_intelligence } }
+	random_weight = { base = 5 }
+	modifier = {
+		planet_pop_assembly_mult = 0.20
+	}
+}
