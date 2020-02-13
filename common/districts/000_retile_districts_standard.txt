@@ -61,12 +61,11 @@ district_clerks = {
 	}
 	
 	ai_weight = {
-		weight = 100
-
-		#modifier = {
-		#	weight = 1000
-		#	free_district_slots < 1
-		#}
+		weight = 10
+		modifier = {
+			factor = 11
+			owner = { has_authority = auth_corporate }
+		}
 	}
 }
 
@@ -134,11 +133,14 @@ district_engineers = {
 	
 	ai_weight = {
 		weight = 100
-
-		#modifier = {
-		#	weight = 1000
-		#	free_district_slots < 1
-		#}
+		modifier = {
+			factor = 2
+			owner = { has_monthly_income = { resource = alloys value < 25 } }
+		}
+		modifier = {
+			factor = 0.25
+			owner = { has_monthly_income = { resource = alloys value > 100 } }
+		}
 	}
 }
 
@@ -207,10 +209,20 @@ district_scholars = {
 	ai_weight = {
 		weight = 100
 
-		#modifier = {
-		#	weight = 1000
-		#	free_district_slots < 1
-		#}
+		modifier = {
+			factor = 2
+			retile_tech_weak = yes
+		}
+		modifier = {	# TODO: replace with general trigger for tech advancement
+			factor = 2
+			owner = {
+				has_monthly_income = { resource = energy value > 75 }
+				has_monthly_income = { resource = minerals value > 75 }
+				has_monthly_income = { resource = food value > 25 }
+				has_monthly_income = { resource = alloys value > 25 }
+				has_monthly_income = { resource = consumer_goods value > 25 }
+			}
+		}
 	}
 }
 
@@ -406,12 +418,9 @@ district_diplomats = {
 	}
 	
 	ai_weight = {
-		weight = 100
+		weight = 10
 
-		#modifier = {
-		#	weight = 1000
-		#	free_district_slots < 1
-		#}
+		# TODO: modifiers???
 	}
 }
 
@@ -491,12 +500,20 @@ district_soldiers = {
 	}
 	
 	ai_weight = {
-		weight = 100
+		weight = 10
 
-		#modifier = {
-		#	weight = 1000
-		#	free_district_slots < 1
-		#}
+		modifier = {
+			factor = 11
+			OR = {
+				has_planet_flag = ai_soldiers
+				num_districts = { type = district_soldiers value < 1 }
+			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_planet_flag = ai_soldiers }
+			num_districts = { type = district_soldiers value > 1 }
+		}
 	}
 }
 
@@ -583,10 +600,14 @@ district_enforcers = {
 	ai_weight = {
 		weight = 100
 
-		#modifier = {
-		#	weight = 1000
-		#	free_district_slots < 1
-		#}
+		modifier = {
+			factor = 2
+			num_districts = { type = district_enforcers value < 1 }
+		}
+		modifier = {
+			factor = 0.1
+			num_districts = { type = district_enforcers value > 1 }
+		}
 	}
 }
 
