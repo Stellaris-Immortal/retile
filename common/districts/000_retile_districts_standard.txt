@@ -19,8 +19,19 @@ district_clerks = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_clerks = yes
+		hidden_trigger = { # Should AI build clerk jobs?
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				AND = {
+					OR = {
+						has_planet_flag = ai_urban
+						has_planet_flag = ai_clerks
+						retile_basic_economy = no
+					}
+					free_jobs < 1
+				}				
+			}
 		}
 	}
 
@@ -80,8 +91,19 @@ district_engineers = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_engineers = yes
+		hidden_trigger = { # Should AI build engineer jobs?
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				AND = {
+					OR = {
+						has_planet_flag = ai_urban
+						has_planet_flag = ai_engineers
+					}
+					retile_basic_economy = yes
+					free_jobs < 1
+				}
+			}
 		}
 	}
 
@@ -141,8 +163,19 @@ district_scholars = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_scholars = yes
+		hidden_trigger = { # Should AI build scholar jobs?
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				AND = {
+					OR = {
+						has_planet_flag = ai_urban
+						has_planet_flag = ai_scholars
+					}
+					retile_advanced_economy = yes
+					free_jobs < 1
+				}				
+			}
 		}
 	}
 
@@ -202,10 +235,21 @@ district_diplomats = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_diplomats = yes
-		}
 		owner = { has_technology = tech_xenodiplomacy }
+		hidden_trigger = { # Should AI build diplomat jobs?
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				AND = {
+					OR = {
+						has_planet_flag = ai_urban
+						has_planet_flag = ai_diplomats
+					}
+					retile_basic_economy = yes
+					free_jobs < 1
+				}				
+			}
+		}
 	}
 
 	resources = {
@@ -392,8 +436,32 @@ district_soldiers = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_soldiers = yes
+		hidden_trigger = { # Should AI build soldier jobs?
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				AND = {
+					free_jobs < 1
+					num_pops > 10
+					AND = { owner = {
+						has_monthly_income = { resource = alloys value > 25 }
+						OR = {
+							country_uses_goods = no
+							has_monthly_income = { resource = consumer_goods value > 10 }
+						}
+						OR = {
+							country_uses_food = no
+							has_monthly_income = { resource = food value > 10 }
+						}
+						has_monthly_income = { resource = minerals value > 50 }
+						has_monthly_income = { resource = energy value > 50 }
+						OR = {
+							is_plantoid_empire = no
+							prev = { habitability = { who = owner.owner_species value > 0.7 } }
+						}
+					} }
+				}				
+			}
 		}
 	}
 
@@ -453,8 +521,16 @@ district_enforcers = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_enforcers = yes
+		hidden_trigger = { # Should AI build enforcer jobs?
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				AND = {
+					free_jobs < 1
+					planet_crime > 33
+					retile_basic_economy = yes
+				}				
+			}
 		}
 	}
 
@@ -535,8 +611,24 @@ district_custodians = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_custodians = yes
+		hidden_trigger = { # Should AI build custodian jobs?
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				AND = {
+					free_jobs < 1
+					OR = {
+						AND = {
+							free_amenities > 300
+							retile_basic_economy = yes
+						}
+						OR = {
+							retile_basic_economy = no
+							has_planet_flag = ai_custodians
+						}
+					}
+				}				
+			}
 		}
 	}
 
@@ -596,8 +688,15 @@ district_housing = {
 	}
 	
 	allow = {
-		hidden_trigger = {
-			retile_ready_housing = yes
+		hidden_trigger = { # Should AI build housing?
+			OR = {
+				NOT = { exists = owner }
+				owner = { is_ai = no }
+				AND = {
+					free_jobs > 0
+					free_housing < 1
+				}				
+			}
 		}
 	}
 
