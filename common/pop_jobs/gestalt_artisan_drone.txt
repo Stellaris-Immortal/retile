@@ -1,0 +1,131 @@
+artisan_drone = {
+	category = complex_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_organic_sanctuary
+	
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		drone_job_check_trigger = yes
+		or = {
+			has_job = artisan_drone
+			retile_job_seeking = yes
+		}
+		owner = { is_hive_empire = yes }
+	}
+	
+	############################################################ Factory Drone Production/Upkeep
+	
+	resources = {
+		category = planet_metallurgists
+		produces = {
+			consumer_goods = 2.5
+			alloys = 2.5
+		}
+		upkeep = {
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_factory_1 } }
+			consumer_goods = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_factory_1 } }
+			minerals = 5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_factory_2 } }
+			consumer_goods = 5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_factory_2 } }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_factory_3 } }
+			consumer_goods = 7.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_factory_3 } }
+			minerals = 15
+		}
+		produces = {
+			trigger = { planet = { has_building = building_foundry_1 } }
+			alloys = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_foundry_1 } }
+			minerals = 5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_foundry_2 } }
+			alloys = 5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_foundry_2 } }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_foundry_3 } }
+			alloys = 7.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_foundry_3 } }
+			minerals = 15
+		}
+		produces = {
+			trigger = { planet = { has_building = building_ministry_production } }
+			alloys = 2.5
+			consumer_goods = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_ministry_production } }
+			minerals = 10
+		}
+	}
+
+	############################################################ Engineer Pollution
+	
+	planet_modifier = {
+		planet_amenities_no_happiness_add = 30
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_factory_1 } }
+		modifier = { planet_amenities_no_happiness_add = 15 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_factory_2 } }
+		modifier = { planet_amenities_no_happiness_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_factory_3 } }
+		modifier = { planet_amenities_no_happiness_add = 45 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_foundry_1 } }
+		modifier = { planet_amenities_no_happiness_add = 15 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_foundry_2 } }
+		modifier = { planet_amenities_no_happiness_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_foundry_3 } }
+		modifier = { planet_amenities_no_happiness_add = 45 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_ministry_production } }
+		modifier = { planet_amenities_no_happiness_add = 30 }
+	}
+
+	############################################################ Engineer Job Weight
+
+	weight = {
+		weight = 20
+	}
+}

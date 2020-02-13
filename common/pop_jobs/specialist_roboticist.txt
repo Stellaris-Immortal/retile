@@ -1,0 +1,152 @@
+roboticist = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER
+	building_icon = building_robot_assembly_plant
+	clothes_texture_index = 3
+		
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = roboticist
+			retile_job_seeking = yes
+		}
+		specialist_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_pop_assemblers
+		upkeep = {
+			trigger = {  planet = { free_housing >= 0 } }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = {
+				free_housing < 0
+				has_building = building_solar_panels
+			} }
+			energy = 10
+		}
+		produces = {
+			trigger = { planet = {
+				free_housing < 0
+				has_building = building_recycling_center
+			} }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = {
+				free_housing < 0
+				has_building = building_hydroponics_farm
+			} }
+			food = 2.5
+		}
+		produces = {
+			trigger = { 
+				planet = {
+					free_housing < 0
+					has_building = building_hydroponics_farm
+				}
+				has_trait = trait_plantoid_fruiting
+			}
+			food = 1
+		}
+		produces = {
+			trigger = { planet = {
+				free_housing < 0
+				has_building = building_solar_panels
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			energy = 10
+		}
+		produces = {
+			trigger = { planet = {
+				free_housing < 0
+				has_building = building_recycling_center
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = {
+				free_housing < 0
+				has_building = building_hydroponics_farm
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			food = 2.5
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = { planet = { free_housing >= 0 } }
+		modifier = {
+			planet_amenities_add = 30
+			planet_pop_assembly_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = { planet = { free_housing < 0 } }
+		modifier = { planet_amenities_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			free_housing < 0
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			free_housing < 0
+			has_building = building_solar_panels
+		} }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			free_housing < 0
+			has_building = building_recycling_center
+		} }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			free_housing < 0
+			has_building = building_hydroponics_farm
+		} }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			free_housing < 0
+			has_building = building_solar_panels
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			free_housing < 0
+			has_building = building_recycling_center
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			free_housing < 0
+			has_building = building_hydroponics_farm
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_add = 30 }
+	}
+
+	weight = {
+		weight = 500
+	}
+}

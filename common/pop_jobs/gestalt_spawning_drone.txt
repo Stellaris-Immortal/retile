@@ -1,0 +1,47 @@
+spawning_drone = {
+	category = breeding_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_spawning_pool
+		
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = spawning_drone
+			retile_job_seeking = yes
+		}
+		drone_job_check_trigger = yes
+		owner = { is_hive_empire = yes }
+	}
+	
+	planet_modifier = {
+		planet_amenities_no_happiness_add = 50
+		pop_growth_speed = 0.50
+		planet_stability_add = 5
+	}
+	
+	resources = {
+		category = planet_jobs
+		upkeep = {
+			trigger = {
+				is_lithoid = no
+			}
+			food = 4
+		}
+		upkeep = {
+			trigger = {
+				is_lithoid = yes
+			}
+			minerals = 10
+		}
+	}
+	
+	weight = {
+		weight = 50000
+	}
+}

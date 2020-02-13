@@ -1,0 +1,126 @@
+head_researcher = {
+	category = ruler
+	condition_string = RULER_JOB_TRIGGER
+	building_icon = building_institute
+	clothes_texture_index = 1
+	icon = researcher
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		ruler_job_check_trigger = yes
+		or = {
+			has_job = head_researcher
+			retile_job_seeking = yes
+		}
+	}
+	
+	resources = {
+		category = planet_researchers
+		produces = {
+			physics_research = 5
+			engineering_research = 5
+			society_research = 5
+		}
+	}
+	
+	planet_modifier = {
+		planet_jobs_engineering_research_produces_mult = 0.15
+		planet_jobs_physics_research_produces_mult = 0.15
+		planet_jobs_society_research_produces_mult = 0.15
+		planet_amenities_add = 30
+	}
+
+	#triggered_country_modifier = {							# For later...
+    #    potential = { planet = { has_designation = col_administrative_efficiency } }
+    #    country_admin_cap_add = 5
+    #}
+
+	weight = {
+		weight = @ruler_job_weight
+		modifier = {
+			factor = 5
+			has_job = head_researcher
+		}
+		modifier = {
+			factor = 0.5
+			has_living_standard = { type = living_standard_subsistence }
+		}
+		modifier = {
+			factor = 0.1
+			has_citizenship_rights = no	
+			NOT = { has_trait = trait_mechanical }
+		}
+		modifier = {
+			factor = 2
+			has_living_standard = { type = living_standard_academic_privilege }
+		}
+		modifier = {
+			factor = 3
+			has_trait = trait_erudite
+		}		
+		modifier = {
+			factor = 2
+			OR = {
+				has_trait = trait_robot_logic_engines
+				has_trait = trait_intelligent
+			}
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_trait = trait_natural_engineers
+				has_trait = trait_natural_physicists
+				has_trait = trait_natural_sociologists
+			}
+		}
+		modifier = {
+			factor = 0.65
+			has_trait = trait_presapient_proles	
+		}
+		modifier = {
+			factor = 1.5
+			has_trait = trait_latent_psionic
+		}	
+		modifier = {
+			factor = 2
+			has_trait = trait_psionic
+		}	
+		modifier = {
+			factor = 0.1
+			has_trait = trait_enigmatic_intelligence_failed
+		}	
+		modifier = {
+			factor = 2
+			OR = {
+				has_trait = trait_enigmatic_intelligence
+				has_trait = trait_enigmatic_intelligence_poor
+			}
+		}
+		modifier = {
+			factor = 2
+				has_trait = trait_presapient_natural_intellectuals
+		}
+		modifier = {
+			factor = 2
+				has_trait = trait_brainslug
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_robust
+		}
+		modifier = {
+			factor = 0.01
+			planet.controller = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+				}
+			}
+		}
+	}
+}

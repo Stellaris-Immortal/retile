@@ -1,0 +1,39 @@
+livestock = {
+	category = worker
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	
+	pop_modifier = {
+		pop_housing_usage_add = -1
+	}
+
+	possible_pre_triggers = {
+		is_enslaved = yes
+	}
+
+	possible = {
+		has_citizenship_type = { type = citizenship_slavery }
+		has_slavery_type = { type = slavery_livestock }
+	}
+	
+	resources = {
+		category = planet_livestock
+		produces = {
+			trigger = { 
+				is_organic_species = yes
+				is_lithoid = no
+			}
+			food = 4
+		}
+		produces = {
+			trigger = { 
+				is_lithoid = yes
+			}
+			minerals = 2
+		}
+	}
+		
+	weight = {
+		weight = @special_job_weight
+	}
+}

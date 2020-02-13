@@ -1,0 +1,97 @@
+purge = {
+	category = purge
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+		
+	possible = {
+		OR = {
+			has_citizenship_type = { type = citizenship_purge_machine }
+			has_citizenship_type = { type = citizenship_purge }
+			has_pop_flag = event_purge
+		}
+	}	
+
+	resources = {
+		category = planet_jobs
+		produces = {
+			trigger = { 
+				owner = { has_valid_civic = civic_fanatic_purifiers } 
+			}
+			unity = 10
+		}
+		produces = {
+			trigger = { 	
+				owner = { has_valid_civic = civic_hive_devouring_swarm } 
+			}
+			society_research = 10
+		}
+		produces = { # regular processing
+			trigger = {
+				has_purge_type = { type = purge_processing }
+				is_robotic_species = no
+				is_lithoid = no
+			}
+			food = 30
+		}
+		produces = { # regular processing
+			trigger = {
+				has_purge_type = { type = purge_processing }
+				is_lithoid = yes
+			}
+			minerals = 20
+		}
+		produces = { # processing robots (devouring swarm)
+			trigger = {
+				has_purge_type = { type = purge_processing }
+				is_robotic_species = yes
+			}
+			alloys = 15
+		}
+		produces = {
+			trigger = {
+				has_purge_type = { type = purge_matrix }
+			}		
+			energy = 30
+		}
+		produces = {
+			trigger = {
+				has_purge_type = { type = purge_labor_camps }
+			}		
+			food = 15
+			minerals = 15
+		}		
+	}	
+		
+	weight = {
+		weight = @special_job_weight
+
+		modifier = {
+			factor = 200 # brings @special_job_weight up to 2
+			OR = {
+				has_pop_flag = event_purge
+				planet.controller = {
+					OR = {
+						is_country_type = swarm
+						is_country_type = ai_empire
+					}
+				}
+			}
+		}
+
+		modifier = {
+			factor = 9999 # u die when flagged
+			has_pop_flag = event_purge
+		}
+
+		modifier = {
+			factor = 9999 # u die when crisis'd
+			planet.controller = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+					# extradimensionals just bombard you
+				}
+			}
+		}
+	}
+}

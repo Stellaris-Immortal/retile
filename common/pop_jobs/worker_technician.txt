@@ -1,0 +1,216 @@
+technician = {
+	category = worker
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_power_plant
+	clothes_texture_index = 2
+	
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = technician
+			retile_job_seeking = yes
+		}
+		hidden_trigger = { exists = owner }
+		worker_job_check_trigger = yes
+		owner = { 
+			is_gestalt = no
+		}
+	}
+
+	resources = {
+		category = planet_technician
+		produces = {
+			energy = 10
+		}
+		produces = {
+			trigger = { 
+				OR = { 
+					has_trait = trait_ingenious
+					has_trait = trait_robot_superconductive
+				}
+			}
+			energy = 2
+		}
+		produces = {
+			trigger = { planet = { has_building = building_energy_grid } }
+			energy = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_energy_nexus } }
+			energy = 20
+		}
+	}
+
+	planet_modifier = {
+		planet_researchers_produces_mult = 0.05
+		planet_amenities_add = 30
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_grid } }
+		modifier = { planet_amenities_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_nexus } }
+		modifier = { planet_amenities_add = 60 }
+	}
+	
+	# Technician Technology
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_power_plant_2 } }
+		modifier = { planet_researchers_produces_mult = 0.05 }
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_power_plant_3 } }
+		modifier = { planet_researchers_produces_mult = 0.05 }
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_technology = tech_power_plant_4 } }
+		modifier = { planet_researchers_produces_mult = 0.05 }
+	}
+
+	############################################################ Commerce Buildings
+
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_commercial_zone } }
+		modifier = {
+			trade_value_add = 5
+			planet_amenities_add = 15
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_commercial_zone }
+			has_trait = trait_thrifty
+		}
+		modifier = { trade_value_add = 1.25 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_commercial_zone }
+			has_trait = trait_nuumismatic_administration
+		}
+		modifier = { trade_value_add = 1.25 }
+	}
+
+	triggered_planet_modifier = {
+		potential = { 
+			OR = {
+				planet = { has_building = building_commercial_megaplex }
+				planet = { has_building = building_galactic_stock_exchange }
+			}
+		}
+		modifier = {
+			trade_value_add = 10
+			planet_amenities_add = 30
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				planet = { has_building = building_commercial_megaplex }
+				planet = { has_building = building_galactic_stock_exchange }
+			}
+			has_trait = trait_thrifty
+		}
+		modifier = { trade_value_add = 2.5 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			OR = {
+				planet = { has_building = building_commercial_megaplex }
+				planet = { has_building = building_galactic_stock_exchange }
+			}
+			has_trait = trait_nuumismatic_administration
+		}
+		modifier = { trade_value_add = 2.5 }
+	}
+
+	weight = {
+		weight = @worker_job_weight_important
+		modifier = {
+			factor = 5
+			has_job = technician
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_trait = trait_robot_superconductive
+				has_trait = trait_ingenious
+				has_trait = trait_nuumismatic_administration
+			}
+		}
+		modifier = {
+			factor = 8
+			is_enslaved = yes
+			can_take_servant_job = no
+			NOR = { 
+				has_trait = trait_syncretic_proles 
+				has_trait = trait_nuumismatic_administration
+				has_trait = trait_robot_superconductive
+				has_trait = trait_ingenious
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {	
+				is_non_sapient_robot = yes
+				is_shackled_robot = yes
+			}		
+			can_take_servant_job = no
+		}
+		modifier = {
+			factor = 0.25
+			can_take_servant_job = yes
+		}
+		modifier = {
+			factor = 1.5
+			has_trait = trait_syncretic_proles
+		}
+		modifier = {
+			factor = 4
+			species = {
+				has_species_flag = racket_species_flag
+			}
+		}	
+		modifier = {
+			factor = 1.2
+			has_trait = trait_very_strong
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_strong
+		}	
+		modifier = {
+			factor = 0.9
+			has_trait = trait_weak
+		}			
+		modifier = {
+			factor = 1.3
+			has_trait = trait_psionic
+		}
+		modifier = {
+			factor = 1.2
+			has_trait = trait_latent_psionic
+		}
+		modifier = {
+			factor = 1.5
+			has_trait = trait_presapient_earthbound
+		}
+		modifier = {
+			factor = 1.1
+			OR = {
+				has_trait = trait_robust
+				has_trait = trait_robot_efficient_processors
+			}
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_nerve_stapled
+		}
+	}
+}

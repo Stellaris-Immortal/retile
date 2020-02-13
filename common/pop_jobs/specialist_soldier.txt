@@ -1,0 +1,225 @@
+soldier = {
+	category = specialist
+	condition_string = SPECIALIST_JOB_TRIGGER	
+	building_icon = building_stronghold
+	clothes_texture_index = 4
+	
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = soldier
+			retile_job_seeking = yes
+		}
+		specialist_job_check_trigger = yes
+		owner = { is_gestalt = no }
+	}
+
+	pop_modifier = {
+		pop_defense_armies_add = 4
+	}
+	
+	country_modifier = {
+		country_naval_cap_add = 10
+	}
+	planet_modifier = {
+		planet_amenities_add = 20
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			planet = {
+				has_modifier = retile_martial_law
+			}
+		}
+		modifier = {
+			planet_crime_add = -25
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_citizen_service }
+		}
+		modifier = {
+			planet_jobs_produces_mult = 0.05
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		planet_crime_add = -25
+		planet_amenities_add = 25
+	}
+
+	triggered_country_modifier = {
+		potential = {
+			exists = owner 
+			owner = { has_technology = "tech_space_force_command" }
+		}
+		modifier = {
+			country_naval_cap_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = "tech_space_force_command" }
+		}
+		modifier = {
+			planet_amenities_add = 10
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_ground_defense_planning }
+		}
+		pop_defense_armies_add = 2
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner 
+			owner = { has_technology = "tech_wargame_simulations" }
+		}
+		modifier = {
+			country_naval_cap_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = "tech_wargame_simulations" }
+		}
+		modifier = {
+			planet_amenities_add = 10
+		}
+	}
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_global_defense_grid }
+		}
+		pop_defense_armies_add = 2
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_mind_over_matter }
+		}
+		modifier = {
+			country_naval_cap_add = 5
+		}		
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_mind_over_matter }
+		}
+		modifier = {
+			planet_amenities_add = 10
+			planet_stability_add = 2
+		}		
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_planetary_shield_generator }
+		}
+		planet_orbital_bombardment_damage = -0.05
+	}
+	
+	triggered_planet_modifier = {
+		potential = { owner = { has_valid_civic = civic_private_military_companies } }
+		modifier = {
+			trade_value_add = 5
+			planet_amenities_add = 15
+		}
+	}
+
+	weight = {
+		weight = @soldier_job_weight
+		modifier = {
+			factor = 5
+			has_job = soldier
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_resilient
+		}			
+		modifier = {
+			factor = 2
+			has_trait = trait_very_strong
+		}	
+		modifier = {
+			factor = 1.5
+			has_trait = trait_strong
+		}	
+		modifier = {
+			factor = 0.5	
+			has_trait = trait_weak
+		}	
+		modifier = {
+			factor = 0.01
+			is_enslaved = yes
+			NOT = { has_slavery_type = { type = slavery_military } }
+		}	
+		modifier = {
+			factor = 10
+			is_enslaved = yes
+			has_slavery_type = { type = slavery_military }
+		}	
+		modifier = {
+			factor = 0.01
+			can_take_servant_job = yes
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_cybernetic
+		}
+		modifier = {
+			factor = 2
+			has_trait = trait_presapient_earthbound
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_limited_regeneration
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_presapient_proles
+		}
+		modifier = {
+			factor = 1.1
+			has_trait = trait_brainslug
+		}	
+		modifier = {
+			factor = 1.05
+			has_trait = trait_presapient_natural_intellectuals
+		}	
+		modifier = {
+			factor = 1.05
+			OR = {
+				has_trait = trait_robust
+				has_trait = trait_robot_efficient_processors
+			}
+		}
+		modifier = {
+			factor = 1.05
+			has_trait = trait_nerve_stapled
+		}
+		modifier = {
+			factor = 0
+			can_be_soldier = no
+		}
+	}
+}

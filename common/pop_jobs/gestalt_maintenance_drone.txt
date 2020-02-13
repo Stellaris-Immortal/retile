@@ -1,0 +1,162 @@
+maintenance_drone = {
+	category = simple_drone
+	condition_string = DRONE_JOB_TRIGGER
+	building_icon = building_maintenance_depot
+	
+	possible_pre_triggers = {
+		has_owner = yes
+		is_enslaved = no
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		drone_job_check_trigger = yes
+		or = {
+			has_job = maintenance_drone
+			retile_job_seeking = yes
+		}
+		owner = { is_hive_empire = yes }
+	}
+	
+	planet_modifier = {
+		planet_amenities_no_happiness_add = -50
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_deposit = retile_deposit_waste_reprocessing } }
+		modifier = { planet_amenities_no_happiness_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_maintenance_depot } }
+		modifier = { planet_amenities_no_happiness_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_maintenance_depot
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_no_happiness_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_maintenance_depot_2 } }
+		modifier = { planet_amenities_no_happiness_add = -100 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_maintenance_depot_2
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_no_happiness_add = -100 }
+	}
+	
+	resources = {
+		category = planet_custodians
+		produces = {
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_maintenance_depot } }
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_maintenance_depot
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_maintenance_depot_2 } }
+			society_research = 5
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_maintenance_depot_2
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			society_research = 2.5
+		}
+		produces = {
+			trigger = { planet = { has_building = building_solar_panels } }
+			energy = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_recycling_center } }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_hydroponics_farm } }
+			food = 4
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_solar_panels
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			energy = 10
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_recycling_center
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			minerals = 10
+		}
+		produces = {
+			trigger = { planet = {
+				has_building = building_hydroponics_farm
+				has_deposit = retile_deposit_waste_reprocessing
+			} }
+			food = 4
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_solar_panels } }
+		modifier = { planet_amenities_no_happiness_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_recycling_center } }
+		modifier = { planet_amenities_no_happiness_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_hydroponics_farm } }
+		modifier = { planet_amenities_no_happiness_add = 30 }
+	}
+
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_solar_panels
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_no_happiness_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_recycling_center
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_no_happiness_add = 30 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = {
+			has_building = building_hydroponics_farm
+			has_deposit = retile_deposit_waste_reprocessing
+		} }
+		modifier = { planet_amenities_no_happiness_add = 30 }
+	}
+
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		modifier = {
+			pop_defense_armies_add = 2
+		}
+	}
+
+	weight = {
+		weight = 10	
+	}
+}

@@ -1,0 +1,29 @@
+organic_battery = {
+	category = worker
+	is_capped_by_modifier = no
+	clothes_texture_index = 2
+	
+	pop_modifier = {
+		pop_housing_usage_add = -1
+	}
+	
+	possible_pre_triggers = {
+		is_enslaved = yes
+	}
+
+	possible = {
+		has_citizenship_type = { type = citizenship_slavery }
+		has_slavery_type = { type = slavery_matrix }
+	}
+	
+	resources = {
+		category = planet_jobs
+		produces = {
+			energy = 4
+		}
+	}
+	
+	weight = {
+		weight = @special_job_weight
+	}
+}

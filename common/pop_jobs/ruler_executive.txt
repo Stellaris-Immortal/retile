@@ -1,0 +1,106 @@
+executive = {
+	category = ruler
+	condition_string = RULER_JOB_TRIGGER
+	building_icon = building_capital
+	clothes_texture_index = 1
+		
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		ruler_job_check_trigger = yes
+		or = {
+			has_job = executive
+			retile_job_seeking = yes
+		}
+	}
+	
+	resources = {
+		category = planet_executives
+		produces = {
+			unity = 5
+		}
+	}	
+	
+	planet_modifier = {
+		trade_value_add = 15
+		planet_jobs_specialist_produces_mult = 0.05
+		planet_amenities_add = 30
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_thrifty
+		}
+		modifier = {
+			trade_value_add = 3.75
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_nuumismatic_administration
+		}
+		modifier = {
+			trade_value_add = 3.75
+		}
+	}
+	
+	weight = {
+		weight = @ruler_job_weight
+		modifier = {
+			factor = 5
+			has_job = executive
+		}
+		modifier = {
+			factor = 0.5
+			has_living_standard = { type = living_standard_subsistence }
+		}
+		modifier = {
+			factor = 2.0
+			OR = {
+			has_trait = trait_thrifty
+			has_trait = trait_nuumismatic_administration
+		}
+		}
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_trait = trait_robot_domestic_protocols
+				has_trait = trait_charismatic
+			}
+		}
+		modifier = {
+			factor = 1.25
+			has_trait = trait_brainslug
+		}
+		modifier = {
+			factor = 1.2
+			has_trait = trait_presapient_natural_intellectuals
+		}
+		modifier = {
+			factor = 0.5
+			has_trait = trait_repugnant
+		}
+		# crisis purge
+		modifier = {
+			factor = 0.01
+			planet.controller = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+				}
+			}
+			OR = { # contingency won't purge itself
+				NOT = { exists = event_target:custodian_bot }
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = { species = { is_same_value = event_target:custodian_bot } }
+				}
+			}
+		}
+	}
+}
