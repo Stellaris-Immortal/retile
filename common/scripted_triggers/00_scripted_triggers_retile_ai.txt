@@ -2,12 +2,10 @@
 retile_ready_capital = {
 	OR = {
 		owner = { is_ai = no }
-		owner = { is_ai = yes
-			has_resource = { type = influence amount > 150 }
-			PREV = {
-				free_jobs < 1
-				#free_building_slots < 1
-			}
+		AND = {
+			owner = { has_resource = { type = influence amount > 150 } }
+			free_jobs < 1
+			free_building_slots < 1
 		}
 	}
 }
