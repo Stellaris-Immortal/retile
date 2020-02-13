@@ -243,6 +243,7 @@ purge = {
 			has_citizenship_type = { type = citizenship_purge }
 			has_pop_flag = event_purge
 		}
+		NOT = { has_purge_type = { type = purge_neutering } }
 	}	
 
 	resources = {
@@ -326,10 +327,6 @@ purge = {
 					# extradimensionals just bombard you
 				}
 			}
-		}
-		modifier = {
-			factor = 0
-			has_purge_type = { type = purge_neutering }
 		}
 	}
 }
