@@ -123,7 +123,10 @@ worker_job_check_trigger = {
 	custom_tooltip = WORKER_JOB_TRIGGER
 	hidden_trigger = {
 		exists = owner
-		is_being_purged = no
+		OR = {
+			is_being_purged = no
+			has_purge_type = { type = purge_neutering }
+		}
 		is_being_assimilated = no
 		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
 		NAND = {
@@ -202,15 +205,26 @@ is_plantoid = {
 	}
 }
 
+is_biological = {
+	species = {
+		OR = {
+			is_archetype = BIOLOGICAL
+			is_archetype = ARTHROPOID
+		}
+	}
+}
+
 is_organic_species = {
 	species = {
 		OR = {
 			is_archetype = BIOLOGICAL # original trigger did not include pre-sapient classes
 			is_archetype = LITHOID
 			is_archetype = PLANTOID
+			is_archetype = ARTHROPOID
 		}
 	}
 }
+
 is_robotic_species = {
 	species = {
 		OR = {

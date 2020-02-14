@@ -10,7 +10,7 @@ custodian = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
+		#is_being_purged = no
 		is_being_assimilated = no
 	}
 
@@ -196,6 +196,15 @@ custodian = {
 	}
 	
 	triggered_planet_modifier = {
+		potential = { owner = { has_valid_civic = civic_environmentalist } }
+		modifier = { planet_amenities_add = -6 }
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_valid_civic = civic_functional_architecture } }
+		modifier = { planet_amenities_add = 6 }
+	}
+	
+	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_solar_panels } }
 		modifier = { planet_amenities_add = 30 }
 	}
@@ -321,7 +330,7 @@ technician = {
 	
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
+		#is_being_purged = no
 		is_being_assimilated = no
 	}
 
@@ -341,10 +350,6 @@ technician = {
 		category = planet_technician
 		produces = {
 			energy = 10
-		}
-		produces = {
-			trigger = { has_trait = trait_ingenious }
-			energy = 2
 		}
 		produces = {
 			trigger = { planet = { has_building = building_energy_grid } }
@@ -533,7 +538,7 @@ miner = {
 
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
+		#is_being_purged = no
 		is_being_assimilated = no
 	}
 
@@ -553,10 +558,6 @@ miner = {
 		category = planet_miners
 		produces = {
 			minerals = 10
-		}
-		produces = {
-			trigger = { has_trait = trait_industrious }
-			minerals = 2
 		}
 		produces = {
 			trigger = { planet = { has_building = building_mineral_purification_plant } }
@@ -740,7 +741,7 @@ farmer = {
 	
 	possible_pre_triggers = {
 		has_owner = yes
-		is_being_purged = no
+		#is_being_purged = no
 		is_being_assimilated = no
 	}
 
@@ -763,20 +764,16 @@ farmer = {
 			food = 2.5
 		}
 		produces = {
-			trigger = { has_trait = trait_agrarian }
-			food = 0.5
-		}
-		produces = {
 			trigger = { 
 				planet = { has_building = building_food_processing_facility } 
-				not = { has_trait = trait_plantoid }
+				NOT = { has_trait = trait_plantoid }
 			}
 			food = 2.5
 		}
 		produces = {
 			trigger = { 
 				planet = { has_building = building_food_processing_center }
-				not = { has_trait = trait_plantoid }
+				NOT = { has_trait = trait_plantoid }
 			}
 			food = 5
 		}

@@ -10,10 +10,6 @@ tech_repeatable_improved_tile_energy_output = {
 	
 	weight_modifier = {
 		factor = @repatableTechFactor
-		modifier = {
-			factor = 1.5
-			has_policy_flag = research_economic_development		
-		}
 	}
 	
 	ai_weight = {
@@ -28,7 +24,7 @@ tech_repeatable_improved_tile_energy_output = {
 	}
 	
 	modifier = {
-		planet_jobs_energy_produces_mult = 0.05
+		planet_technician_energy_produces_add = 1
 	}
 }
 
@@ -171,3 +167,33 @@ tech_repeatable_reduced_building_cost = {
 	}
 }
 
+tech_repeatable_improved_space_economy = {
+	area = physics
+	cost = @repeatableTechBaseCost
+	cost_per_level = @repeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { computing }
+	levels = 5
+	prerequisites = { "tech_physics_3" }
+	weight = @repeatableTechWeight
+	
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+	
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		station_gatherers_produces_mult = 0.05
+		station_researchers_produces_mult = 0.05
+	}
+}

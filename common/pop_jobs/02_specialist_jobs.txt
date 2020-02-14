@@ -190,20 +190,6 @@ researcher = {	### Scholar
 			society_research = 2.5
 			unity = 2.5
 		}
-		produces = {
-			trigger = { has_trait = trait_intelligent }
-			physics_research = 0.5
-			engineering_research = 0.5
-			society_research = 0.5
-			unity = 0.5
-		}
-		produces = {
-			trigger = { has_trait = trait_erudite }
-			physics_research = 1
-			engineering_research = 1
-			society_research = 1
-			unity = 1
-		}
 		upkeep = {
 			consumer_goods = 2.5
 		}
@@ -773,6 +759,8 @@ foundry = {	### Engineer
 			OR = {
 				has_trait = trait_robust
 				has_trait = trait_robot_efficient_processors
+				has_trait = trait_innovative
+				has_trait = trait_robot_industrial
 			}
 		}
 	}
@@ -1044,6 +1032,14 @@ soldier = {
 			owner = { has_technology = tech_planetary_shield_generator }
 		}
 		planet_orbital_bombardment_damage = -0.05
+	}
+	
+	triggered_planet_modifier = {
+		potential = { owner = { has_valid_civic = civic_private_military_companies } }
+		modifier = {
+			trade_value_add = 5
+			planet_amenities_add = 15
+		}
 	}
 
 	weight = {
@@ -1332,19 +1328,16 @@ colonist = {
 		produces = {
 			energy = 4
 			minerals = 4
-		}
-		produces = {
-			trigger = { 
-				NOR = { 
-					has_trait = trait_lithoid
-					has_trait = trait_plantoid
-				}
-			}
 			food = 1
 		}
 		produces = {
 			trigger = { has_trait = trait_lithoid }
+			food = -1
 			minerals = 4
+		}
+		produces = {
+			trigger = { has_trait = trait_plantoid }
+			food = -1
 		}
 		produces = {
 			trigger = { owner = { has_technology = tech_frontier_health } }
@@ -1374,21 +1367,23 @@ colonist = {
 			minerals = 3
 		}
 		produces = {
-			trigger = { 
-				owner = { has_technology = tech_frontier_hospital }
-				NOR = { 
-					has_trait = trait_lithoid
-					has_trait = trait_plantoid
-				}
-			}
+			trigger = { owner = { has_technology = tech_frontier_hospital } }
 			food = 1
 		}
 		produces = {
-			trigger = {
+			trigger = { 
 				owner = { has_technology = tech_frontier_hospital }
 				has_trait = trait_lithoid
 			}
+			food = -1
 			minerals = 3
+		}
+		produces = {
+			trigger = { 
+				owner = { has_technology = tech_frontier_hospital }
+				has_trait = trait_plantoid
+			}
+			food = -1
 		}
 		upkeep = {
 			consumer_goods = 1
