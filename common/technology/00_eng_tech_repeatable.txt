@@ -31,7 +31,7 @@ tech_repeatable_improved_tile_mineral_output = {
 	}
 	
 	modifier = {
-		planet_jobs_minerals_produces_mult = 0.05
+		planet_miners_minerals_produces_add = 1
 	}
 }
 
@@ -410,5 +410,35 @@ tech_repeatable_reduced_building_time = {
 	
 	modifier = {
 		planet_building_build_speed_mult = 0.10
+	}
+}
+
+tech_repeatable_increased_megastructure_build_speed = {
+	area = physics
+	cost = @repeatableTechBaseCost
+	cost_per_level = @repeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { industry }
+	levels = 5
+	prerequisites = { "tech_physics_2" }
+	weight = @repeatableTechWeight
+	
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+	
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		megastructure_build_speed_mult = 0.10
 	}
 }

@@ -23,7 +23,6 @@
  trait_very_weak:0 "Very Weak"
  trait_very_weak_desc:0 "§LMembers of this species are so physically fragile they are utterly unfit for combat or hard labor.§!\n"
  trait_innovative:0 "Innovative"
- trait_innovative_effect:0 "Engineers produce §G+0.5§! £alloys£ Alloys and §G+0.5§! £consumer_goods£ Supplies"
  trait_innovative_desc:0 "§LMembers of this species are gifted at producing goods from raw materials.§!\n"
  trait_inventive:0 "Inventive"
  trait_inventive_effect:0 "Engineers produce §G+1§! £alloys£ Alloys and §G+1§! £consumer_goods£ Supplies\nLeader Experience Gain: §G+25%§!"
@@ -44,9 +43,6 @@
  trait_arthropoid_metamorphosis:0 "Metamorphosis"
  trait_arthropoid_metamorphosis_desc:0 "§LThis species begins its life in a larval state and must go through a taxing metamorphosis to aquire its adult form.§!"
 # Robot Traits
- trait_robot_power_drills_effect:0 "Miners produce §G+2§! £minerals£ Minerals"
- trait_robot_harvesters_effect:0 "Farmers produce §G+0.5§! £food£ Food"
- trait_robot_superconductive_effect:0 "Technicians produce §G+2§! £energy£ Energy"
  trait_robot_logic_engines_effect:0 "Scholars produce §G+0.5§! £science£ Research and §G+0.5§! £unity£ Unity"
  trait_robot_industrial:0 "Industrial"
  trait_robot_industrial_effect:0 "Engineers produce §G+0.5§! £alloys£ Alloys and §G+0.5§! £consumer_goods£ Supplies"
@@ -573,7 +569,7 @@
  retile_empyrean_shrine_effect:0 "Scholars and Precursors produce §G+10§! £unity §YUnity§!\nCustodians produce §G+10§! £energy£ §YEnergy§!, §G+10§! £minerals£ §YMinerals§!, and §G+4§! §YFood§!."
  retile_master_archive_effect:0 "Precursors produce §G+10§! £unity §YUnity§!\nCustodians produce §G+10§! £energy£ §YEnergy§!, §G+10§! £minerals£ §YMinerals§!, and §G+4§! §YFood§!."
  retile_fe_xeno_zoo_effect:0 "Precursors produce §G+10§! £unity §YUnity§!\nCustodians produce §G+10§! £energy£ §YEnergy§!, §G+10§! £minerals£ §YMinerals§!, and §G+4§! §YFood§!."
- retile_fe_dome_effect:0 "Custodians produce §G+10§! £energy£ §YEnergy§!, §G+10§! £minerals£ §YMinerals§!, and §G+4§! £food£ §YFood§!."
+ retile_fe_dome_effect:0 "Custodians produce §G+10§! £energy£ §YEnergy§!, §G+10§! £minerals£ §YMinerals§!, and §G+4§! £food£ §YFood§!.\nLimit §Y1§!"
 # Syndicate Criminal Bonuses
  retile_wildcat_miners_effect:0 "Criminals produce §G+10§! £minerals£ §YMinerals§!, and §R+30§! £amenities£ §YPollution§!."
  retile_bio_reprocessing_facilities_effect:0 "Criminals produce §G+4§! £food£ §YFood§!, and §R+30§! £amenities£ §YPollution§!."
@@ -983,6 +979,14 @@
  tech_space_force_command_desc:0 "Develop a military branch dedicated to the aquisition and security of territories in space."
  tech_wargame_simulations:0 "Wargame Simulations"
  tech_wargame_simulations_desc:0 "Training programs designed to simulate (or immitate) combat situations to prepare students for military service."
+ tech_repeatable_increased_megastructure_build_speed:0 "Megastructure Construction Optimizations"
+ tech_repeatable_increased_megastructure_build_speed_desc:0 "Theres always another problem behind the one you just solved. Does that mean that you should stop solving problems?"
+ tech_repeatable_improved_space_economy:0 "Optimized Stellar Economics"
+ tech_repeatable_improved_space_economy_desc:0 "Space can be mapped and crossed and occupied without definable limit; but it can never be conquered."
+ tech_repeatable_ecological_synthesis:0 "Ecological Sythesis"
+ tech_repeatable_ecological_synthesis_desc:0 "We do not have to adapt to the environment. We will change the environment to suit us."
+ tech_fe_sky_dome:0 "Antigravity Sky Paradise"
+ tech_fe_sky_dome_desc:0 "Everything starts as somebodys daydream."
 # Events
  pirate.100.name:0 "Parlay Broken"
  pirate.100.desc:0 "This act of aggression has sent a clear message to any remaining pirates that the parlay has been broken and hostilities have returned."
@@ -1057,6 +1061,11 @@
 # Branch Offices
  requires_recipient_not_self:0 "$TRIGGER_FAIL$§RCan't establish §YBranch Offices§R on our own planets!§!"
 # Misc
+mod_country_base_minor_artifacts_produces_add:0 "£minor_artifacts£ Minor Artifact Discovery"
+mod_planet_technician_energy_produces_add:0 "$mod_planet_technician_energy_produces_mult$"
+mod_planet_farmers_food_produces_add:0 "$mod_planet_farmers_food_produces_mult$"
+mod_planet_metallurgists_consumer_goods_produces_mult:0 "£consumer_goods£ $consumer_goods$ from £job_foundry£ $job_foundry_plural$"
+mod_planet_metallurgists_consumer_goods_produces_add:0 "$mod_planet_metallurgists_consumer_goods_produces_mult$"
 district_mining_max:0 "Maximum Mining Districts"
 district_farming_max:0 "Maximum Farming Districts"
 SOLAR_SYSTEM:0 "Local System"
