@@ -30,7 +30,8 @@ decision_retile_abandon_planet = {
 			random_pop = { pop_event = { id = retile_pop.1001 } }	# become refugee
 			while = {
 				limit = { num_pops > 0 }
-				random_pop = { pop_event = { id = retile_pop.1000 } }	# migrate inside border, or become refugee
+				#random_pop = { pop_event = { id = retile_pop.1000 } }	# migrate inside border, or become refugee
+				planet_event = { id = retile_pop.1002 }
 			}
 			retile_abandon_infrastructure = yes
 		}

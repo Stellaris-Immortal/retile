@@ -79,12 +79,12 @@ can_build_branch_office_on_planet = {
 			# allow branch offices in subsidiaries and vice versa
 			root = {
 				is_subject = yes
-				is_subject_type = subsidiary
-				overlord = { is_same_value = owner }
+				#is_subject_type = subsidiary
+				overlord = { is_same_value = prev.owner }
 			}
 			owner = {
 				is_subject = yes
-				is_subject_type = subsidiary
+				#is_subject_type = subsidiary
 				overlord = { is_same_value = root }
 			}
 		}

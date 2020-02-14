@@ -301,6 +301,99 @@ country_event = {
 ############################################
 ### Planet Abandonment
 
+planet_event = { # retile_abandon_migrate
+	id = retile_pop.1002
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		always = yes
+	}
+	
+	immediate = {
+		random_owned_pop = {
+			weights = {
+				base = 1
+				modifier = {
+					add = 30
+					is_same_species = owner.owner_species
+				}
+				modifier = {
+					add = 20
+					is_pop_category = ruler
+				}
+				modifier = {
+					add = 10
+					is_pop_category = specialist
+				}
+			}
+			random_list = {
+				0 = { # refugee event
+					modifier = {
+						add = 10
+						is_valid_refugee_pop = yes
+					}
+					modifier = {
+						mult = 7
+						NOR = {
+							is_pop_category = ruler
+							is_pop_category = specialist
+							is_same_species = owner.owner_species
+						}
+					}
+					modifier = {
+						mult = 3
+						is_pop_category = specialist
+					}
+					save_event_target_as = refugee_pop #Must be saved for refugee_pop_effect to work
+					refugee_pop_effect = yes					
+				}
+				0 = { # resettle inside border
+					modifier = {
+						add = 10
+						owner = { any_planet_within_border = {
+							NOT = { is_same_value = root }
+							is_under_colonization = no
+							free_housing > 0
+						} }
+					}
+					modifier = {
+						mult = 7
+						OR = {
+							is_pop_category = ruler
+							is_same_species = owner.owner_species
+						}
+					}
+					modifier = {
+						mult = 3
+						is_pop_category = specialist
+					}
+					owner = { random_owned_planet = {
+						limit = {
+							free_housing > 0
+							is_under_colonization = no
+							NOT = { is_same_value = root }
+						}
+						resettle_pop = { pop = prevprev planet = this }
+					} }
+				}
+				0 = {
+					modifier = {
+						add = 50
+						is_valid_refugee_pop = no
+						NOT = { owner = { any_planet_within_border = {
+								NOT = { is_same_value = root.planet }
+								is_under_colonization = no
+								free_housing > 0
+						} } }
+					}
+					kill_pop = yes
+				}
+			}
+		}
+	}
+}
+
 pop_event = { # retile_abandon_migrate
 	id = retile_pop.1000
 	hide_window = yes

@@ -41,7 +41,20 @@ building_private_mining_consortium = {
 	}
 	
 	ai_weight = {
-		factor = 0
+		weight = 0
+		
+		modifier = {
+			weight = 25
+			branch_office_owner = { 
+				has_monthly_income = { resource = minerals value < 75 }
+			}
+		}
+		modifier = {
+			weight = -500
+			branch_office_owner = { 
+				has_monthly_income = { resource = minerals value > 225 }
+			}
+		}
 	}
 }
 
@@ -82,8 +95,21 @@ building_food_conglomerate = {
 	}
 	
 	ai_weight = {
-		factor = 0
-	}#AI has many other sources for this resource
+		weight = 0
+		
+		modifier = {
+			weight = 25
+			branch_office_owner = { 
+				has_monthly_income = { resource = food value < 25 }
+			}
+		}
+		modifier = {
+			weight = -500
+			branch_office_owner = { 
+				has_monthly_income = { resource = food value > 75 }
+			}
+		}
+	}
 }
 
 building_virtual_entertainment_studios = {
@@ -116,15 +142,17 @@ building_virtual_entertainment_studios = {
 	
 	ai_weight = {
 		weight = 0
-
-		modifier = 
-		{
-			factor = 5
+		
+		modifier = {
+			weight = 25
 			branch_office_owner = { 
-				has_monthly_income = {
-					resource = consumer_goods
-					value < 10
-				}
+				has_monthly_income = { resource = consumer_goods value < 25 }
+			}
+		}
+		modifier = {
+			weight = -500
+			branch_office_owner = { 
+				has_monthly_income = { resource = consumer_goods value > 75 }
 			}
 		}
 	}
@@ -145,7 +173,7 @@ building_private_shipyards = {
 	
 	planet_modifier = {
 		planet_housing_add = 1
-		job_clerk_add = 1
+		job_foundry_add = 1
 	}
 
 	resources = {
@@ -163,7 +191,20 @@ building_private_shipyards = {
 	
 	ai_weight = {
 		weight = 0
-	}#Check resource income for a need
+		
+		modifier = {
+			weight = 25
+			branch_office_owner = { 
+				has_monthly_income = { resource = alloys value < 25 }
+			}
+		}
+		modifier = {
+			weight = -500
+			branch_office_owner = { 
+				has_monthly_income = { resource = alloys value > 75 }
+			}
+		}
+	}
 }
 
 building_military_contractors = {
@@ -203,8 +244,21 @@ building_military_contractors = {
 	}
 	
 	ai_weight = {
-		factor = 0
-	}#Not really useful given the changes to strongholds
+		weight = 0
+		
+		modifier = {
+			weight = 25
+			branch_office_owner = { 
+				used_naval_capacity_percent >= 1.0
+			}
+		}
+		modifier = {
+			weight = -500
+			branch_office_owner = { 
+				used_naval_capacity_percent < 0.5
+			}
+		}
+	}
 }
 
 building_public_relations_office = {
@@ -237,7 +291,7 @@ building_public_relations_office = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 5
 	}
 }
 
@@ -254,7 +308,7 @@ building_private_research_initiative = {
 	
 	planet_modifier = {
 		planet_housing_add = 1
-		job_clerk_add = 1
+		job_scholar_add = 1
 	}
 
 	resources = {
@@ -273,7 +327,14 @@ building_private_research_initiative = {
 	}
 	
 	ai_weight = {
-		weight = 300
+		weight = 25
+		
+		modifier = {
+			factor = 5
+			branch_office_owner = { 
+				retile_tech_weak = yes
+			}
+		}
 	}
 }
 
@@ -290,7 +351,7 @@ building_commercial_forum = {
 	
 	planet_modifier = {
 		branch_office_value_mult = 0.25
-		job_merchant_add = 1
+		job_clerk_add = 1
 		planet_housing_add = 1
 	}	
 	
@@ -305,7 +366,7 @@ building_commercial_forum = {
 	}
 	
 	ai_weight = {
-		weight = 3
+		weight = 10
 	}
 }
 
@@ -357,7 +418,20 @@ building_wildcat_miners = {
 	}
 	
 	ai_weight = {
-		factor = 0
+		weight = 0
+		
+		modifier = {
+			weight = 25
+			branch_office_owner = { 
+				has_monthly_income = { resource = minerals value < 75 }
+			}
+		}
+		modifier = {
+			weight = -500
+			branch_office_owner = { 
+				has_monthly_income = { resource = minerals value > 225 }
+			}
+		}
 	}
 }
 
@@ -407,7 +481,20 @@ building_bio_reprocessing_facilities = {
 	}
 	
 	ai_weight = {
-		factor = 0
+		weight = 0
+		
+		modifier = {
+			weight = 25
+			branch_office_owner = { 
+				has_monthly_income = { resource = food value < 25 }
+			}
+		}
+		modifier = {
+			weight = -500
+			branch_office_owner = { 
+				has_monthly_income = { resource = food value > 75 }
+			}
+		}
 	}
 }
 
@@ -449,23 +536,18 @@ building_underground_chemists = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 0
+		
 		modifier = {
-			weight = 5
+			weight = 25
 			branch_office_owner = { 
-				has_monthly_income = {
-					resource = consumer_goods
-					value < 0
-				}
+				has_monthly_income = { resource = consumer_goods value < 25 }
 			}
 		}
 		modifier = {
-			factor = 0
+			weight = -500
 			branch_office_owner = { 
-				has_monthly_income = {
-					resource = consumer_goods
-					value >= 10
-				}
+				has_monthly_income = { resource = consumer_goods value > 75 }
 			}
 		}
 	}
@@ -512,7 +594,20 @@ building_wrecking_yards = {
 	}
 	
 	ai_weight = {
-		factor = 0
+		weight = 0
+		
+		modifier = {
+			weight = 25
+			branch_office_owner = { 
+				has_monthly_income = { resource = alloys value < 25 }
+			}
+		}
+		modifier = {
+			weight = -500
+			branch_office_owner = { 
+				has_monthly_income = { resource = alloys value > 75 }
+			}
+		}
 	}
 }
 
@@ -561,7 +656,20 @@ building_pirate_haven = {
 	}
 	
 	ai_weight = {
-		factor = 0
+		weight = 0
+		
+		modifier = {
+			weight = 25
+			branch_office_owner = { 
+				used_naval_capacity_percent >= 1.0
+			}
+		}
+		modifier = {
+			weight = -500
+			branch_office_owner = { 
+				used_naval_capacity_percent < 0.5
+			}
+		}
 	}
 }
 
@@ -604,7 +712,7 @@ building_syndicate_outreach_office = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 5
 	}
 }
 
@@ -651,7 +759,14 @@ building_illicit_research_labs = {
 	}
 	
 	ai_weight = {
-		weight = 3
+		weight = 25
+		
+		modifier = {
+			factor = 5
+			branch_office_owner = { 
+				retile_tech_weak = yes
+			}
+		}
 	}
 }
 
@@ -691,7 +806,7 @@ building_smuggling_rings = {
 	}
 	
 	ai_weight = {
-		weight = 2
+		weight = 10
 	}
 }
 
@@ -712,6 +827,15 @@ building_temple_of_prosperity = {
 		planet_housing_add = 1
 		job_priest_add = 1
 		pop_ethic_spiritualist_attraction_mult = 0.5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			branch_office_owner = { is_criminal_syndicate = yes }	
+		}
+		job_priest_add = -1
+		job_criminal_add = 1
+		planet_crime_add = 5
 	}
 
 	resources = {
@@ -770,7 +894,7 @@ building_executive_retreat = {
 	}
 	
 	ai_weight = {
-		factor = 0
+		weight = 15
 	}
 }
 
@@ -813,7 +937,7 @@ building_xeno_tourism_agency = {
 	}
 	
 	ai_weight = {
-		weight = 0
+		weight = 15
 	}
 }
 
