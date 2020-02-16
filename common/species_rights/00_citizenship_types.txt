@@ -484,6 +484,8 @@ citizenship_slavery = {
 				has_valid_civic = civic_machine_assimilator
 				has_valid_civic = civic_machine_terminator
 				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_shared_burden
+				has_valid_civic = civic_anarchist
 			}
 		}
 		custom_tooltip = {
@@ -571,11 +573,10 @@ citizenship_purge = {
 		exists = from
 		NOT = { from = { has_authority = auth_machine_intelligence } }
 		OR = {
-			NOT = { has_trait = trait_mechanical }
-			from = { has_policy_flag = robots_outlawed }
+			is_archetype = ROBOT
 			AND = {
-				from = { has_authority = auth_hive_mind }
-				is_robotic_species = yes
+				NOT = { from = { has_policy_flag = ai_full_rights } }
+				is_archetype = MACHINE
 			}
 		}
 	}
@@ -594,25 +595,24 @@ citizenship_purge = {
 			always = yes
 		}
 		else = {
-			custom_tooltip = {
-				fail_text = species_is_majority
-				from = {
-					any_owned_pop = { 
-						is_exact_same_species = from
-						is_majority_species = yes
+			OR = {
+				custom_tooltip = {
+					fail_text = species_is_majority
+					from = {
+						any_owned_pop = { 
+							is_exact_same_species = from
+							is_majority_species = yes
+						}
 					}
 				}
-			}
-			custom_tooltip = {
-				fail_text = has_full_rights
-				NOT = { from = { has_policy_flag = alien_full_rights } }
-			}
-			custom_tooltip = {
-				fail_text = has_limited_rights
-				NOT = { from = { has_policy_flag = alien_limited_rights } }
-			}
-
-			OR = {
+				custom_tooltip = {
+					fail_text = has_full_rights
+					NOT = { from = { has_policy_flag = alien_full_rights } }
+				}
+				custom_tooltip = {
+					fail_text = has_limited_rights
+					NOT = { from = { has_policy_flag = alien_limited_rights } }
+				}
 				custom_tooltip = {
 					#fail_text = default
 					AND = {

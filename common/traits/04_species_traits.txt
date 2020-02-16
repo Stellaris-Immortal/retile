@@ -131,7 +131,6 @@ trait_extremely_adaptive = {
 trait_arthropoid_antennae = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_nonadaptive" }
 	allowed_archetypes = { ARTHROPOID }
 	modifier = {
 		pop_environment_tolerance = 0.10
@@ -145,7 +144,6 @@ trait_arthropoid_antennae = {
 trait_arthropoid_exoskeleton = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_nonadaptive" }
 	allowed_archetypes = { ARTHROPOID }
 	modifier = {
 		pop_environment_tolerance = 0.10
@@ -355,14 +353,15 @@ trait_very_weak = {
 }
 
 trait_arthropoid_metamorphosis = {
-	cost = -2
+	cost = -3
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_quick_learners" "trait_talented" }
 	allowed_archetypes = { ARTHROPOID }
 	modifier = {
-		planet_jobs_worker_produces_mult = -0.10
 		leader_skill_levels = -1
 		species_leader_exp_gain = -0.25
+		army_experience_gain_mult = -0.25
+		planet_pops_upkeep_mult = 0.10
 	}
 	slave_cost = {
 		energy = 100

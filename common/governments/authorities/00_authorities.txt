@@ -38,6 +38,10 @@ auth_democratic = {
 			}
 		}
 	}
+	
+	country_modifier = {
+		pop_factions_produces_mult = 1
+	}
 
 	tags = {
 		AUTHORITY_ELECTION_DEMOCRATIC
@@ -62,6 +66,11 @@ auth_oligarchic = {
 			}
 		}
 	}
+	
+	country_modifier = {
+		pop_factions_produces_mult = 0.50
+		country_election_influence_cost_mult = -0.25
+	}
 
 	tags = {
 		AUTHORITY_ELECTION_OLIGARCHIC
@@ -83,6 +92,11 @@ auth_dictatorial = {
 			}
 		}
 	}
+	
+	country_modifier = {
+		country_influence_produces_mult = 0.10
+		country_election_influence_cost_mult = -0.50
+	}
 
 	tags = {
 		AUTHORITY_ELECTION_ON_RULER_DEATH
@@ -102,6 +116,10 @@ auth_imperial = {
 				value = ethic_fanatic_egalitarian
 			}
 		}
+	}
+	
+	country_modifier = {
+		country_influence_produces_mult = 0.20
 	}
 
 	tags = {
@@ -226,6 +244,7 @@ auth_corporate = {
 	country_modifier = {
 		country_admin_cap_add = 10
 		empire_size_penalty_mult = 0.5
+		country_election_influence_cost_mult = -0.5
 	}
 
 	possible = {

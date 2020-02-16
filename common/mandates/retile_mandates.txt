@@ -402,7 +402,10 @@ mandate_unrestricted_wars = {
 		exists = owner
 		owner = { 
 			NOT = { has_policy_flag = unrestricted_wars }
-			NOT = { has_valid_civic = civic_anarchist }
+			NOR = { 
+				has_valid_civic = civic_anarchist
+				has_valid_civic = civic_pacifist
+			}
 			NOR = {
 				has_ethic = ethic_pacifist
 				has_ethic = ethic_fanatic_pacifist
