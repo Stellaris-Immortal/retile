@@ -2440,7 +2440,9 @@ tech_mining_1 = {
 	weight = @tier1weight1
 	
 	modifier = {
-		description = tech_mining_1_effect
+		#description = tech_mining_1_effect
+		planet_miner_energy_upkeep_mult = -0.1
+		planet_miner_consumer_goods_upkeep_mult = -0.1
 	}
 	
 	weight_modifier = {
@@ -2478,7 +2480,9 @@ tech_mining_2 = {
 	weight = @tier2weight1
 	
 	modifier = {
-		description = tech_mining_2_effect
+		#description = tech_mining_2_effect
+		planet_miner_energy_upkeep_mult = -0.1
+		planet_miner_consumer_goods_upkeep_mult = -0.1
 	}
 	
 	weight_modifier = {
@@ -2516,7 +2520,9 @@ tech_mining_3 = {
 	weight = @tier3weight1
 	
 	modifier = {
-		description = tech_mining_2_effect
+		#description = tech_mining_2_effect
+		planet_miner_energy_upkeep_mult = -0.1
+		planet_miner_consumer_goods_upkeep_mult = -0.1
 	}
 	
 	weight_modifier = {
@@ -2721,14 +2727,6 @@ tech_luxuries_1 = {
 	}	
 	
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_exotic_gases
-				has_technology = tech_exotic_gases
-				has_country_flag = has_market_access
-			}
-		}
 		modifier = {
 			factor = 1.25
 			research_leader = {

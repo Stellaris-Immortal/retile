@@ -18,25 +18,9 @@ building_hydroponics_farm = {
 		NOT = { has_modifier = slave_colony }
 	}
 	
-	allow = {
-		#hidden_trigger = { OR = { owner = { is_ai = no } owner = { is_ai = yes
-		#	
-		#} } }
-		retile_ready_food = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_custodian_arcology
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
 			has_modifier = slave_colony
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_custodian_arcology }
-			}
 		}
 	}
 
@@ -50,38 +34,12 @@ building_hydroponics_farm = {
 			minerals = @cost_med
 		}
 		upkeep = {
-			minerals = 0
-			energy = 25
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -15
-			consumer_goods = 2
+			energy = 2
 		}
 	}	
 	
 	country_modifier = {
 		country_resource_max_add = 2000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			#job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
 	}
 	
 	triggered_desc = {
@@ -111,32 +69,7 @@ building_hydroponics_farm = {
 	}
 	
 	ai_weight = {
-		weight = 10
-		
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			habitability = { who = owner.owner_species value < 0.7 }
-			num_districts = { type = district_farming value < 1 }
-		}
-		modifier = {	# Free building slots when food is good
-			weight = -1000
-			owner = {
-				has_monthly_income = { resource = food value > 100 }
-				is_plantoid_empire = no
-			}
-		}
-	}
-
-	ai_resource_production = {
-		food = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
@@ -150,23 +83,9 @@ building_recycling_center = {
 		NOT = { has_modifier = slave_colony }
 	}
 
-	allow = {
-		always = yes
-		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_custodian_arcology
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
 			has_modifier = slave_colony
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_custodian_arcology }
-			}
 		}
 	}
 
@@ -180,38 +99,12 @@ building_recycling_center = {
 			minerals = @cost_med
 		}
 		upkeep = {
-			minerals = 0
-			energy = 25
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -15
-			consumer_goods = 2
+			energy = 2
 		}
 	}	
 	
 	country_modifier = {
 		country_resource_max_add = 2000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			#job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
 	}
 	
 	triggered_desc = {
@@ -231,23 +124,7 @@ building_recycling_center = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# impending minerals crisis...
-			weight = 1000
-			owner = { has_monthly_income = { resource = minerals value < 0 } }
-		}
-		modifier = {	# Free building slots when food is good
-			weight = -1000
-			owner = { has_monthly_income = { resource = minerals value > 100 } }
-		}
-	}
-	
-	ai_resource_production = {
-		minerals = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
@@ -261,23 +138,9 @@ building_solar_panels = {
 		NOT = { has_modifier = slave_colony }
 	}
 
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_custodian_arcology
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
 			has_modifier = slave_colony
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_custodian_arcology }
-			}
 		}
 	}
 
@@ -291,38 +154,12 @@ building_solar_panels = {
 			minerals = @cost_med
 		}
 		upkeep = {
-			minerals = 0
-			#energy = 0	# upkeep removed because it costs MORE than it produces without other buildings on the planet...
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			#energy = -15
-			consumer_goods = 2
+			energy = 2
 		}
 	}	
 	
 	country_modifier = {
 		country_resource_max_add = 2000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			#job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
 	}
 	
 	triggered_desc = {
@@ -342,27 +179,11 @@ building_solar_panels = {
 	}
 
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# impending energy crisis...
-			weight = 1000
-			owner = { has_monthly_income = { resource = energy value < 25 } }
-		}
-		modifier = {	# Free building slots when food is good
-			weight = -1000
-			owner = { has_monthly_income = { resource = food value > 500 } }
-		}
-	}
-	
-	ai_resource_production = {
-		energy = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
-building_food_2 = {
+building_food_1 = {
 	base_buildtime = 360
 	base_cap_amount = 1
 	category = resource
@@ -377,31 +198,18 @@ building_food_2 = {
 		}
 	}
 	
-	allow = {
-		#retile_ready = yes
-		retile_food = yes
-		OR = {
-			owner = { is_ai = no }
-			has_planet_flag = ai_food_development_sticky
-		}
-	}
-	
 	destroy_trigger = {
 		OR = {
 			owner = { country_uses_food = no }
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			retile_food = no
+			#retile_food = no
 		}
 	}
 		
 	upgrades = {
-		building_food_3
-	}
-	
-	prerequisites = {
-		"tech_food_processing_1"
+		building_food_2
 	}
 	
 	resources = {
@@ -410,38 +218,12 @@ building_food_2 = {
 			minerals = @cost_low
 		}
 		upkeep = {
-			minerals = 0
-			energy = 10
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -5
-			consumer_goods = 1
+			energy = 1
 		}
 	}
 	
 	country_modifier = {
 		country_resource_max_add = 1000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 1
-			#job_custodian_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 1
-			job_maintenance_drone_add = 1
-		}
 	}
 	
 	triggered_desc = {
@@ -461,19 +243,71 @@ building_food_2 = {
 	}
 	
 	ai_weight = {
-		weight = 10000
+		weight = 1
+	}
+}
+
+building_food_2 = {
+	base_buildtime = 480
+	can_build = no
+	category = resource
+	can_be_disabled = no
+	
+	destroy_trigger = {
+		OR = {
+			owner = { country_uses_food = no }
+			is_planet_class = pc_machine
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+			#retile_food = no
+		}
+	}
+		
+	upgrades = {
+		building_food_3
+	}
+	
+	prerequisites = {
+		"tech_food_processing_1"
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = retile_food_buff_1_effect
 	}
 
-	ai_resource_production = {
-		food = 1
+	triggered_desc = {
 		trigger = {
-			always = yes
+			exists = owner
+			owner = { is_gestalt = yes }
 		}
+		text = retile_food_buff_1_gestalt_effect
+	}
+	
+	ai_weight = {
+		weight = 1
 	}
 }
 
 building_food_3 = {
-	base_buildtime = 480
+	base_buildtime = 600
 	can_build = no
 	category = resource
 	can_be_disabled = no
@@ -484,17 +318,8 @@ building_food_3 = {
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			retile_food = no
+			#retile_food = no
 		}
-	}
-	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = volatile_motes amount > @cost_med }
-		} } }
 	}
 	
 	prerequisites = {
@@ -504,42 +329,15 @@ building_food_3 = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = @cost_med
-			volatile_motes = @cost_med
+			minerals = @cost_high
 		}
 		upkeep = {
-			minerals = 0
-			energy = 25
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -15
-			consumer_goods = 2
+			energy = 3
 		}
 	}	
 	
 	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			#job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
+		country_resource_max_add = 3000
 	}
 	
 	triggered_desc = {
@@ -558,23 +356,12 @@ building_food_3 = {
 		text = retile_food_buff_2_gestalt_effect
 	}
 	
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {
-			factor = -1
-			has_planet_flag = ai_arcology_development
-		}
-	}
-
-	ai_resource_production = {
-		food = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
-building_mineral_2 = {
+building_mineral_1 = {
 	base_buildtime = 360
 	base_cap_amount = 1
 	category = resource
@@ -587,29 +374,16 @@ building_mineral_2 = {
 		}
 	}
 
-	allow = {
-		#retile_ready = yes
-		retile_minerals = yes
-		OR = {
-			owner = { is_ai = no }
-			has_planet_flag = ai_minerals_development_sticky
-		}
-	}
-	
 	destroy_trigger = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			retile_minerals = no
+			#retile_minerals = no
 		}
 	}
 		
-	prerequisites = {
-		tech_mineral_purification_1
-	}
-	
 	upgrades = {
-		building_mineral_3
+		building_mineral_2
 	}
 	
 	resources = {
@@ -618,38 +392,12 @@ building_mineral_2 = {
 			minerals = @cost_low
 		}
 		upkeep = {
-			minerals = 0
-			energy = 10
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -5
-			consumer_goods = 1
+			energy = 1
 		}
 	}
 	
 	country_modifier = {
 		country_resource_max_add = 1000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 1
-			#job_custodian_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 1
-			job_maintenance_drone_add = 1
-		}
 	}
 	
 	triggered_desc = {
@@ -669,18 +417,11 @@ building_mineral_2 = {
 	}
 	
 	ai_weight = {
-		weight = 10000
-	}
-
-	ai_resource_production = {
-		minerals = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
-building_mineral_3 = {
+building_mineral_2 = {
 	base_buildtime = 480
 	can_build = no
 	category = resource
@@ -690,33 +431,74 @@ building_mineral_3 = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			retile_minerals = no
+			#retile_minerals = no
 		}
 	}
-	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = exotic_gases amount > @cost_med }
-		} } }
-	}
 		
+	prerequisites = {
+		tech_mineral_purification_1
+	}
+	
+	upgrades = {
+		building_mineral_3
+	}
+	
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_med
-			exotic_gases = @cost_med
 		}
 		upkeep = {
-			minerals = 0
-			energy = 25
+			energy = 2
+		}
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = retile_minerals_buff_1_effect
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_minerals_buff_1_gestalt_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_mineral_3 = {
+	base_buildtime = 600
+	can_build = no
+	category = resource
+	can_be_disabled = no
+	
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+			#retile_minerals = no
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
 		}
 		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -15
-			consumer_goods = 2
+			energy = 3
 		}
 	}
 	
@@ -725,27 +507,7 @@ building_mineral_3 = {
 	}
 	
 	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			#job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
+		country_resource_max_add = 3000
 	}
 	
 	triggered_desc = {
@@ -764,23 +526,12 @@ building_mineral_3 = {
 		text = retile_minerals_buff_2_gestalt_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {
-			factor = -1
-			has_planet_flag = ai_arcology_development
-		}
-	}
-
-	ai_resource_production = {
-		minerals = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
-building_energy_2 = {
+building_energy_1 = {
 	base_buildtime = 360
 	base_cap_amount = 1
 	category = resource
@@ -793,20 +544,11 @@ building_energy_2 = {
 		}
 	}
 	
-	allow = {
-		#retile_ready = yes
-		retile_energy = yes
-		OR = {
-			owner = { is_ai = no }
-			has_planet_flag = ai_energy_development_sticky
-		}
-	}
-	
 	destroy_trigger = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			retile_energy = no
+			#retile_energy = no
 		}
 	}
 	
@@ -816,46 +558,16 @@ building_energy_2 = {
 			minerals = @cost_low
 		}
 		upkeep = {
-			minerals = 0
-			energy = 0
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			#energy = -15
-			consumer_goods = 1
+			energy = 1
 		}
 	}	
 	
-	prerequisites = {
-		tech_power_hub_1
-	}
-	
 	upgrades = {
-		building_energy_3
+		building_energy_2
 	}
 	
 	country_modifier = {
 		country_resource_max_add = 1000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 1
-			#job_custodian_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 1
-			job_maintenance_drone_add = 1
-		}
 	}
 	
 	triggered_desc = {
@@ -875,18 +587,11 @@ building_energy_2 = {
 	}
 	
 	ai_weight = {
-		weight = 10000
-	}
-	
-	ai_resource_production = {
-		energy = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
-building_energy_3 = {
+building_energy_2 = {
 	base_buildtime = 480
 	can_build = no
 	category = resource
@@ -896,33 +601,74 @@ building_energy_3 = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			retile_energy = no
+			#retile_energy = no
 		}
 	}
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_med }
-		} } }
-	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_med
-			rare_crystals = @cost_med
 		}
 		upkeep = {
-			minerals = 0
-			energy = 0
+			energy = 2
+		}
+	}	
+	
+	prerequisites = {
+		tech_power_hub_1
+	}
+	
+	upgrades = {
+		building_energy_3
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = retile_energy_buff_1_effect
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_energy_buff_1_gestalt_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_energy_3 = {
+	base_buildtime = 600
+	can_build = no
+	category = resource
+	can_be_disabled = no
+	
+	destroy_trigger = {
+		OR = {
+			is_planet_class = pc_city
+			has_modifier = resort_colony
+			#retile_energy = no
+		}
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
 		}
 		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			#energy = -15
-			consumer_goods = 2
+			energy = 3
 		}
 	}	
 	
@@ -931,38 +677,9 @@ building_energy_3 = {
 	}
 	
 	country_modifier = {
-		country_resource_max_add = 2000
+		country_resource_max_add = 3000
 	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			#job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
-	}
-	
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {
-			factor = -1
-			has_planet_flag = ai_arcology_development
-		}
-	}
-
+		
 	triggered_desc = {
 		trigger = {
 			exists = owner
@@ -979,11 +696,8 @@ building_energy_3 = {
 		text = retile_energy_buff_2_gestalt_effect
 	}
 	
-	ai_resource_production = {
-		energy = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -993,56 +707,22 @@ building_maintenance_depot = {
 	category = resource
 	base_cap_amount = 1
 	
-	potential = {
-		always = yes
-	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_low
 		}
 		upkeep = {
-			minerals = 0
-			energy = 5
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -5
-			consumer_goods = 1
+			energy = 1
 		}
 	}	
-	
-	prerequisites = {
-		"tech_industrial_metabolism"
-	}
 	
 	upgrades = {
 		building_maintenance_depot_2
 	}
 
 	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			#job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
+		country_resource_max_add = 1000
 	}
 	
 	triggered_desc = {
@@ -1062,11 +742,7 @@ building_maintenance_depot = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		modifier = {
-			weight = 500
-			free_amenities > 400
-		}
+		weight = 1
 	}
 }
 
@@ -1076,52 +752,22 @@ building_maintenance_depot_2 = {
 	category = resource
 	can_be_disabled = no
 	
-	potential = {
-		always = yes
-	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_med
 		}
 		upkeep = {
-			minerals = 0
-			energy = 10
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -5
-			consumer_goods = 2
+			energy = 2
 		}
 	}	
 	
 	prerequisites = {
-		"tech_industrial_symbiosis"
+		"tech_industrial_metabolism"
 	}
 	
 	country_modifier = {
-		country_resource_max_add = 3000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			#planet_housing_add = 3
-			#job_custodian_add = 3
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			#planet_housing_add = 3
-			job_maintenance_drone_add = 3
-		}
+		country_resource_max_add = 2000
 	}
 	
 	triggered_desc = {
@@ -1141,9 +787,51 @@ building_maintenance_depot_2 = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		modifier = {
-			weight = 100000
+		weight = 1
+	}
+}
+
+building_maintenance_depot_3 = {
+	base_buildtime = 600
+	can_build = no
+	category = resource
+	can_be_disabled = no
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
 		}
+		upkeep = {
+			energy = 3
+		}
+	}	
+	
+	prerequisites = {
+		"tech_industrial_symbiosis"
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = no }
+		}
+		text = retile_custodian_buff_2_effect
+	}
+
+	triggered_desc = {
+		trigger = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		text = retile_custodian_buff_2_gestalt_effect
+	}
+	
+	ai_weight = {
+		weight = 1
 	}
 }

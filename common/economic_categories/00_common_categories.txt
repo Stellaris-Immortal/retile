@@ -592,6 +592,7 @@ planet_bio_trophies = {
 	}
 	generate_mult_modifiers = {
 		produces
+		upkeep
 	}
 }
 
@@ -620,10 +621,12 @@ planet_farmers = {
 	}
 	generate_mult_modifiers = {
 		produces
+		upkeep
 	}
 	
 	generate_add_modifiers = {
 		produces
+		upkeep
 	}
 }
 
@@ -638,10 +641,12 @@ planet_miners = {
 	}
 	generate_mult_modifiers = {
 		produces
+		upkeep
 	}
 
 	generate_add_modifiers = {
 		produces
+		upkeep
 	}
 }
 
@@ -670,10 +675,12 @@ planet_technician = {
 	}
 	generate_mult_modifiers = {
 		produces
+		upkeep
 	}
 	
 	generate_add_modifiers = {
 		produces
+		upkeep
 	}
 }
 
@@ -688,6 +695,11 @@ planet_executives = {
 	}
 	generate_mult_modifiers = {
 		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
 	}
 }
 
@@ -702,6 +714,11 @@ planet_managers = {
 	}
 	generate_mult_modifiers = {
 		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
 	}
 }
 
@@ -713,6 +730,14 @@ planet_administrators = {
 		alloys
 		minerals
 		food
+	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
 	}
 }
 
@@ -732,6 +757,7 @@ planet_researchers = {
 	}
 	generate_add_modifiers = {
 		produces
+		upkeep
 	}
 }
 
@@ -751,6 +777,7 @@ planet_metallurgists = {
 	}
 	generate_add_modifiers = {
 		produces
+		upkeep
 	}
 }
 
@@ -765,6 +792,11 @@ planet_culture_workers = {
 	}
 	generate_mult_modifiers = {
 		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
 	}
 }
 
@@ -777,6 +809,14 @@ planet_nobles = {
 		minerals
 		food
 	}
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
 }
 
 planet_merchants = {
@@ -788,16 +828,13 @@ planet_merchants = {
 		minerals
 		food
 	}
-}
-
-planet_entertainers = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
 	}
 }
 
@@ -810,16 +847,13 @@ planet_soldiers = {
 		minerals
 		food
 	}
-}
-
-planet_priests = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
 	}
 }
 
@@ -832,83 +866,11 @@ planet_enforcers = {
 		minerals
 		food
 	}
-}
-
-planet_telepaths = {
-	parent = planet_enforcers
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-}
-
-planet_doctors = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-}
-
-planet_refiners = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
 	generate_mult_modifiers = {
+		produces
 		upkeep
 	}
-}
-
-planet_translucers = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-	generate_mult_modifiers = {
-		upkeep
-	}
-}
-
-planet_chemists = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-	generate_mult_modifiers = {
-		upkeep
-	}
-}
-
-planet_artisans = {
-	icon = "job_artisan"
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-	parent = planet_jobs
-	generate_mult_modifiers = {
+	generate_add_modifiers = {
 		produces
 		upkeep
 	}

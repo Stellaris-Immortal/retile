@@ -23,15 +23,28 @@ clerk = {
 
 	planet_modifier = {
 		trade_value_add = 10
-		planet_amenities_add = 30
+		planet_amenities_add = 25
 	}
 	triggered_planet_modifier = {
-		potential = { has_trait = trait_thrifty }
-		modifier = { trade_value_add = 2.5 }
+		potential = { planet = { has_building = building_trade_1 } }
+		modifier = {
+			trade_value_add = 10
+			planet_amenities_add = 50
+		}
 	}
 	triggered_planet_modifier = {
-		potential = { has_trait = trait_nuumismatic_administration }
-		modifier = { trade_value_add = 2.5 }
+		potential = { planet = { has_building = building_trade_2 } }
+		modifier = {
+			trade_value_add = 20
+			planet_amenities_add = 125
+		}
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_trade_3 } }
+		modifier = {
+			trade_value_add = 30
+			planet_amenities_add = 225
+		}
 	}
 	
 	resources = {
@@ -50,65 +63,6 @@ clerk = {
 		}
 	}
 
-	############################################################ Commerce Buildings
-
-	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_commercial_zone } }
-		modifier = {
-			trade_value_add = 10
-			planet_amenities_add = 30
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_commercial_zone }
-			has_trait = trait_thrifty
-		}
-		modifier = { trade_value_add = 2.5 }
-	}
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_commercial_zone }
-			has_trait = trait_nuumismatic_administration
-		}
-		modifier = { trade_value_add = 2.5 }
-	}
-
-	triggered_planet_modifier = {
-		potential = { 
-			OR = {
-				planet = { has_building = building_commercial_megaplex }
-				planet = { has_building = building_galactic_stock_exchange }
-			}
-		}
-		modifier = {
-			trade_value_add = 10
-			planet_amenities_add = 30
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			OR = {
-				planet = { has_building = building_commercial_megaplex }
-				planet = { has_building = building_galactic_stock_exchange }
-			}
-			has_trait = trait_thrifty
-		}
-		modifier = { trade_value_add = 2.5 }
-	}
-	triggered_planet_modifier = {
-		potential = {
-			OR = {
-				planet = { has_building = building_commercial_megaplex }
-				planet = { has_building = building_galactic_stock_exchange }
-			}
-			has_trait = trait_nuumismatic_administration
-		}
-		modifier = { trade_value_add = 2.5 }
-	}
-	
-	############################################################ Prosperity Buildings
-	
 	triggered_planet_modifier = {
 		potential = {
 			planet = { has_building = building_restaurant_megachain }
@@ -191,7 +145,8 @@ researcher = {	### Scholar
 			unity = 2.5
 		}
 		upkeep = {
-			consumer_goods = 2.5
+			energy = 2
+			consumer_goods = 2
 		}
 		produces = {
 			trigger = { planet = { has_building = building_metascience_lab_1 } }
@@ -223,7 +178,8 @@ researcher = {	### Scholar
 					planet = { has_building = building_metascience_lab_1 }
 				}
 			}
-			consumer_goods = 1.25
+			energy = 2
+			consumer_goods = 2
 		}		
 		produces = {
 			trigger = { 
@@ -243,7 +199,8 @@ researcher = {	### Scholar
 					planet = { has_building = building_metascience_lab_2 }
 				}
 			}
-			consumer_goods = 2.5
+			energy = 4
+			consumer_goods = 4
 		}		
 		produces = {
 			trigger = { 
@@ -263,18 +220,9 @@ researcher = {	### Scholar
 					planet = { has_building = building_metascience_lab_3 }
 				}
 			}
-			consumer_goods = 3.75
+			energy = 6
+			consumer_goods = 6
 		}		
-		produces = {
-			trigger = { planet = { has_building = building_institute } }
-			physics_research = 2.5
-			engineering_research = 2.5
-			society_research = 2.5
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_institute } }
-			consumer_goods = 1.25
-		}
 		produces = {
 			trigger = { planet = { OR = {
 				has_building = building_temple
@@ -289,7 +237,8 @@ researcher = {	### Scholar
 				has_building = building_autochthon_monument
 				has_building = building_corporate_monument
 			} } }
-			consumer_goods = 1.25
+			energy = 2
+			consumer_goods = 2
 		}		
 		produces = {
 			trigger = { planet = { OR = {
@@ -305,7 +254,8 @@ researcher = {	### Scholar
 				has_building = building_heritage_site
 				has_building = building_corporate_site
 			} } }
-			consumer_goods = 2.5
+			energy = 4
+			consumer_goods = 4
 		}		
 		produces = {
 			trigger = { planet = { OR = {
@@ -321,7 +271,8 @@ researcher = {	### Scholar
 				has_building = building_hypercomms_forum
 				has_building = building_corporate_forum
 			} } }
-			consumer_goods = 3.75
+			energy = 6
+			consumer_goods = 6
 		}
 		produces = { ### Fallen Empire
 			trigger = { planet = { has_building = building_class_4_singularity } }
@@ -342,7 +293,7 @@ researcher = {	### Scholar
 	############################################################ Scholar Pollution
 	
 	planet_modifier = {
-		planet_amenities_add = 15
+		planet_amenities_add = 20
 	}
 	triggered_planet_modifier = {
 		potential = { 
@@ -351,7 +302,7 @@ researcher = {	### Scholar
 				planet = { has_building = building_metascience_lab_1 }
 			}
 		}
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_add = 20 }
 	}
 	triggered_planet_modifier = {
 		potential = { 
@@ -360,7 +311,7 @@ researcher = {	### Scholar
 				planet = { has_building = building_metascience_lab_2 }
 			}
 		}
-		modifier = { planet_amenities_add = 15 }
+		modifier = { planet_amenities_add = 50 }
 	}
 	triggered_planet_modifier = {
 		potential = { 
@@ -369,11 +320,7 @@ researcher = {	### Scholar
 				planet = { has_building = building_metascience_lab_3 }
 			}
 		}
-		modifier = { planet_amenities_add = 22.5 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_institute } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_add = 90 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
@@ -381,7 +328,7 @@ researcher = {	### Scholar
 			has_building = building_autochthon_monument
 			has_building = building_corporate_monument
 		} } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_add = 20 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
@@ -389,7 +336,7 @@ researcher = {	### Scholar
 			has_building = building_heritage_site
 			has_building = building_corporate_site
 		} } }
-		modifier = { planet_amenities_add = 15 }
+		modifier = { planet_amenities_add = 50 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
@@ -397,67 +344,8 @@ researcher = {	### Scholar
 			has_building = building_hypercomms_forum
 			has_building = building_corporate_forum
 		} } }
-		modifier = { planet_amenities_add = 22.5 }
+		modifier = { planet_amenities_add = 90 }
 	}
-
-	############################################################ Commerce Buildings
-
-	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_commercial_zone } }
-		modifier = {
-			trade_value_add = 2.5
-			planet_amenities_add = 7.5
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_commercial_zone }
-			has_trait = trait_thrifty
-		}
-		modifier = { trade_value_add = 0.625 }
-	}
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_commercial_zone }
-			has_trait = trait_nuumismatic_administration
-		}
-		modifier = { trade_value_add = 0.625 }
-	}
-
-	triggered_planet_modifier = {
-		potential = { 
-			OR = {
-				planet = { has_building = building_commercial_megaplex }
-				planet = { has_building = building_galactic_stock_exchange }
-			}
-		}
-		modifier = {
-			trade_value_add = 5
-			planet_amenities_add = 15
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			OR = {
-				planet = { has_building = building_commercial_megaplex }
-				planet = { has_building = building_galactic_stock_exchange }
-			}
-			has_trait = trait_thrifty
-		}
-		modifier = { trade_value_add = 1.25 }
-	}
-	triggered_planet_modifier = {
-		potential = {
-			OR = {
-				planet = { has_building = building_commercial_megaplex }
-				planet = { has_building = building_galactic_stock_exchange }
-			}
-			has_trait = trait_nuumismatic_administration
-		}
-		modifier = { trade_value_add = 1.25 }
-	}
-
-	############################################################ Scholar Job Weight
 
 	weight = {	### TODO: Mix in weights from culture worker
 		weight = @specialist_job_weight
@@ -571,7 +459,9 @@ foundry = {	### Engineer
 			alloys = 2.5
 		}
 		upkeep = {
-			minerals = 10
+			minerals = 20
+			energy = 5
+			consumer_goods = 1
 		}
 		produces = {
 			trigger = { planet = { has_building = building_factory_1 } }
@@ -579,7 +469,8 @@ foundry = {	### Engineer
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_factory_1 } }
-			minerals = 5
+			minerals = 10
+			energy = 3
 		}
 		produces = {
 			trigger = { planet = { has_building = building_factory_2 } }
@@ -587,7 +478,8 @@ foundry = {	### Engineer
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_factory_2 } }
-			minerals = 10
+			minerals = 20
+			energy = 6
 		}
 		produces = {
 			trigger = { planet = { has_building = building_factory_3 } }
@@ -595,7 +487,8 @@ foundry = {	### Engineer
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_factory_3 } }
-			minerals = 15
+			minerals = 30
+			energy = 9
 		}
 		produces = {
 			trigger = { planet = { has_building = building_foundry_1 } }
@@ -603,7 +496,9 @@ foundry = {	### Engineer
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_foundry_1 } }
-			minerals = 5
+			minerals = 10
+			energy = 2
+			consumer_goods = 1
 		}
 		produces = {
 			trigger = { planet = { has_building = building_foundry_2 } }
@@ -611,7 +506,9 @@ foundry = {	### Engineer
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_foundry_2 } }
-			minerals = 10
+			minerals = 20
+			energy = 4
+			consumer_goods = 2
 		}
 		produces = {
 			trigger = { planet = { has_building = building_foundry_3 } }
@@ -619,16 +516,9 @@ foundry = {	### Engineer
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_foundry_3 } }
-			minerals = 15
-		}
-		produces = {
-			trigger = { planet = { has_building = building_ministry_production } }
-			alloys = 2.5
-			consumer_goods = 2.5
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_ministry_production } }
-			minerals = 10
+			minerals = 30
+			energy = 6
+			consumer_goods = 3
 		}
 		produces = { ### Fallen Empire
 			trigger = { planet = { has_building = building_dimensional_fabricator } }
@@ -643,95 +533,32 @@ foundry = {	### Engineer
 	############################################################ Engineer Pollution
 	
 	planet_modifier = {
-		planet_amenities_add = 30
+		planet_amenities_add = 20
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_1 } }
-		modifier = { planet_amenities_add = 15 }
+		modifier = { planet_amenities_add = 20 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_2 } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_add = 50 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_3 } }
-		modifier = { planet_amenities_add = 45 }
+		modifier = { planet_amenities_add = 90 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_1 } }
-		modifier = { planet_amenities_add = 15 }
+		modifier = { planet_amenities_add = 20 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_2 } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_add = 50 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_3 } }
-		modifier = { planet_amenities_add = 45 }
+		modifier = { planet_amenities_add = 90 }
 	}
-	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_ministry_production } }
-		modifier = { planet_amenities_add = 30 }
-	}
-
-	############################################################ Commerce Buildings
-
-	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_commercial_zone } }
-		modifier = {
-			trade_value_add = 2.5
-			planet_amenities_add = 7.5
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_commercial_zone }
-			has_trait = trait_thrifty
-		}
-		modifier = { trade_value_add = 0.625 }
-	}
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_commercial_zone }
-			has_trait = trait_nuumismatic_administration
-		}
-		modifier = { trade_value_add = 0.625 }
-	}
-
-	triggered_planet_modifier = {
-		potential = { 
-			OR = {
-				planet = { has_building = building_commercial_megaplex }
-				planet = { has_building = building_galactic_stock_exchange }
-			}
-		}
-		modifier = {
-			trade_value_add = 5
-			planet_amenities_add = 15
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			OR = {
-				planet = { has_building = building_commercial_megaplex }
-				planet = { has_building = building_galactic_stock_exchange }
-			}
-			has_trait = trait_thrifty
-		}
-		modifier = { trade_value_add = 1.25 }
-	}
-	triggered_planet_modifier = {
-		potential = {
-			OR = {
-				planet = { has_building = building_commercial_megaplex }
-				planet = { has_building = building_galactic_stock_exchange }
-			}
-			has_trait = trait_nuumismatic_administration
-		}
-		modifier = { trade_value_add = 1.25 }
-	}
-
-	############################################################ Engineer Job Weight
 
 	weight = {  ### TODO: Mix in weights from Artisan
 		weight = @specialist_job_weight

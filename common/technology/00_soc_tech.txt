@@ -95,14 +95,6 @@ tech_interstellar_economics = {
 	weight_modifier = {
 		factor = 2
 		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_rare_crystals
-				has_technology = tech_rare_crystals
-				has_country_flag = has_market_access
-			}
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
@@ -240,7 +232,9 @@ tech_eco_simulation = {
 	weight = @tier1weight1
 	
 	modifier = {
-		description = tech_eco_simulation_effect
+		#description = tech_eco_simulation_effect
+		planet_farmer_energy_upkeep_mult = -0.1
+		planet_farmer_consumer_goods_upkeep_mult = -0.1
 	}
 	
 	weight_modifier = {
@@ -304,7 +298,9 @@ tech_gene_crops = {
 	weight = @tier2weight1
 	
 	modifier = {
-		description = tech_gene_crops_effect
+		#description = tech_gene_crops_effect
+		planet_farmer_energy_upkeep_mult = -0.1
+		planet_farmer_consumer_goods_upkeep_mult = -0.1
 	}
 	
 	weight_modifier = {
@@ -368,7 +364,9 @@ tech_nano_vitality_crops = {
 	weight = @tier3weight1
 	
 	modifier = {
-		description = tech_nano_vitality_crops_effect
+		#description = tech_nano_vitality_crops_effect
+		planet_farmer_energy_upkeep_mult = -0.1
+		planet_farmer_consumer_goods_upkeep_mult = -0.1
 	}
 	
 	weight_modifier = {
@@ -432,7 +430,8 @@ tech_nutrient_replication = {
 	weight = @tier4weight3
 		
 	modifier = {
-		description = tech_nutrient_replication_effect
+		#description = tech_nutrient_replication_effect
+		planet_farmer_food_produces_mult = 0.15
 	}
 	
 	potential = {
@@ -1337,14 +1336,6 @@ tech_frontier_hospital = {
 	}
 	
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_exotic_gases
-				has_technology = tech_exotic_gases
-				has_country_flag = has_market_access
-			}
-		}
 		modifier = {
 			factor = 1.25
 			has_tradition = tr_harmony_adopt
@@ -5432,14 +5423,6 @@ tech_heritage_site = {
 			}
 		}
 		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_rare_crystals
-				has_technology = tech_rare_crystals
-				has_country_flag = has_market_access
-			}
-		}
-		modifier = {
 			factor = 1.5
 			has_policy_flag = research_economic_development		
 		}
@@ -5558,14 +5541,6 @@ tech_holographic_rituals = {
 	}
 	
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_rare_crystals
-				has_technology = tech_rare_crystals
-				has_country_flag = has_market_access
-			}
-		}
 		modifier = {
 			factor = 1.25
 			research_leader = {
