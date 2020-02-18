@@ -1,32 +1,32 @@
-#tech_repeatable_improved_tile_food_output = {
-#	area = society
-#	cost = @repeatableTechBaseCost
-#	cost_per_level = @repeatableTechLevelCost
-#	tier = @repeatableTechTier
-#	category = { biology }
-#	levels = -1
-#	prerequisites = { "tech_gene_crops" }
-#	weight = @repeatableTechWeight
-#	
-#	weight_modifier = {
-#		factor = @repatableTechFactor
-#	}
-#	
-#	ai_weight = {
-#		factor = 1.0
-#	}
-#	
-#	weight_groups = {
-#		repeatable
-#	}
-#	mod_weight_if_group_picked = {
-#		repeatable = 0.01
-#	}
-#	
-#	modifier = {
-#		planet_jobs_food_produces_mult = 0.05
-#	}
-#}
+tech_repeatable_improved_tile_food_output = {
+	area = society
+	cost = @repeatableTechBaseCost
+	cost_per_level = @repeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { biology }
+	levels = -1
+	prerequisites = { "tech_gene_crops" }
+	weight = @repeatableTechWeight
+	
+	weight_modifier = {
+		factor = @repatableTechFactor
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+	
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		planet_farmers_food_produces_add = 0.25
+	}
+}
 
 #tech_repeatable_improved_sector_cap = {
 #	area = society
@@ -320,10 +320,9 @@ tech_repeatable_command_limit = {
 	}
 	
 	modifier = {
-		country_command_limit_add = 10		
+		country_command_limit_add = 5		
 	}
 }
-
 
 tech_repeatable_improved_starbase_capacity = {
 	area = society
@@ -356,5 +355,39 @@ tech_repeatable_improved_starbase_capacity = {
 	
 	modifier = {
 		country_starbase_capacity_add = 1
+	}
+}
+
+tech_repeatable_ecological_synthesis = {
+	area = society
+	cost = @repeatableTechBaseCost
+	cost_per_level = @repeatableTechLevelCost
+	tier = @repeatableTechTier
+	category = { biology }
+	levels = 5
+	prerequisites = { "tech_industrial_ecology" }
+	weight = @repeatableTechWeight
+	
+	weight_modifier = {
+		factor = @repatableTechFactor
+		modifier = {
+			factor = 1.5
+			has_policy_flag = research_space_exploration		
+		}
+	}
+	
+	ai_weight = {
+		factor = 1.0
+	}
+	
+	weight_groups = {
+		repeatable
+	}
+	mod_weight_if_group_picked = {
+		repeatable = 0.01
+	}
+	
+	modifier = {
+		planet_amenities_add = -20
 	}
 }

@@ -7,9 +7,7 @@
 ap_enigmatic_engineering = {
 	potential = {
 		host_has_dlc = "Apocalypse"
-		NOT = {
-			has_ascension_perk = ap_enigmatic_engineering
-		}
+		NOT = { has_ascension_perk = ap_enigmatic_engineering }
 	}
 	
 	possible = {
@@ -21,11 +19,9 @@ ap_enigmatic_engineering = {
 	
 	on_enabled = {
 		custom_tooltip = "no_rev_engineering"
-	}
-	
-	modifier = {		
-		ship_sensor_range_add = 2
-		ship_hyperlane_range_add = 4
+		hidden_effect ={
+			country_event = { id = retile_generate.8 }
+		}
 	}
 	
 	ai_weight = {
@@ -175,6 +171,9 @@ ap_engineered_evolution = {
 		}
 
 		BIOLOGICAL_species_trait_points_add = @ap_engineered_evolution_POINTS
+		LITHOID_species_trait_points_add = @ap_engineered_evolution_POINTS
+		PLANTOID_species_trait_points_add = @ap_engineered_evolution_POINTS
+		ARTHROPOID_species_trait_points_add = @ap_engineered_evolution_POINTS
 
 		modify_species_cost_mult = @ap_engineered_evolution_COST_MULT
 		pop_growth_speed = 0.5
@@ -250,6 +249,9 @@ ap_evolutionary_mastery = {
 		}
 
 		BIOLOGICAL_species_trait_points_add = @ap_evolutionary_mastery_POINTS
+		LITHOID_species_trait_points_add = @ap_evolutionary_mastery_POINTS
+		PLANTOID_species_trait_points_add = @ap_evolutionary_mastery_POINTS
+		ARTHROPOID_species_trait_points_add = @ap_evolutionary_mastery_POINTS
 
 		modify_species_cost_mult = @ap_evolutionary_mastery_COST_MULT
 	}

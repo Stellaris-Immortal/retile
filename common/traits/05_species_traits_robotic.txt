@@ -1,19 +1,19 @@
 trait_robot_power_drills = {
 	cost = 2
 	allowed_archetypes = { ROBOT MACHINE }
-	custom_tooltip = trait_robot_power_drills_effect
+	modifier = { planet_miners_minerals_produces_add = 2 }
 }
 
 trait_robot_harvesters = {
 	cost = 2
 	allowed_archetypes = { ROBOT }
-	custom_tooltip = trait_robot_harvesters_effect
+	modifier = { planet_farmers_food_produces_add = 0.5 }
 }
 
 trait_robot_superconductive = {
 	cost = 2
 	allowed_archetypes = { ROBOT MACHINE }
-	custom_tooltip = trait_robot_superconductive_effect
+	modifier = { planet_technician_energy_produces_add = 2 }
 	
 	# Droids and Machine only
 	species_potential_add = {
@@ -30,13 +30,20 @@ trait_robot_superconductive = {
 trait_robot_industrial = {
 	cost = 2
 	allowed_archetypes = { ROBOT MACHINE }
-	custom_tooltip = trait_robot_industrial_effect
+	modifier = { 
+		planet_metallurgists_alloys_produces_add = 0.5
+		planet_metallurgists_consumer_goods_produces_add = 0.5
+	}
 }
 
 trait_robot_logic_engines = {
 	cost = 2
 	allowed_archetypes = { ROBOT MACHINE }
-	custom_tooltip = trait_robot_logic_engines_effect
+	modifier = { 
+		planet_researchers_physics_research_produces_add = 0.5
+		planet_researchers_society_research_produces_add = 0.5
+		planet_researchers_engineering_research_produces_add = 0.5
+	}
 
 	# Synth and Machine only
 	species_potential_add = {

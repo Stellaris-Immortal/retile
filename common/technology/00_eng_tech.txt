@@ -3578,3 +3578,35 @@ tech_housing_2 = {
 		}
 	}
 }
+
+# ##################
+# Fallen Empire
+# ##################
+
+tech_fe_sky_dome = {
+	cost = @fallentechcost
+	area = engineering
+	tier = @fallentechtier
+	category = { industry }
+	prerequisites = { "tech_housing_3" }
+	ai_update_type = all
+	weight = 1
+	is_rare = yes
+
+	# Unlocks Skydome
+
+	weight_modifier = {
+		modifier = {
+			factor = 0
+			NOR = {
+				is_country_type = fallen_empire 
+				is_country_type = awakened_fallen_empire
+				has_ascension_perk = ap_enigmatic_engineering
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 100
+	}
+}

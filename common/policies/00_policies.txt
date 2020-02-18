@@ -1308,10 +1308,6 @@ first_contact_protocol = {
 			border_policy_open
 		}
 		
-		on_enabled = {
-			# custom_tooltip = "policy_allow_slavery_effect_disable"
-		}
-		
 		potential = {
 			NOR = {
 				has_valid_civic = "civic_fanatic_purifiers"
@@ -1354,6 +1350,46 @@ first_contact_protocol = {
 	}
 	
 	option = {
+		name = "first_contact_isolation"
+		
+		policy_flags = {
+			first_contact_attack_not_allowed
+			border_policy_closed
+		}
+		
+		potential = {
+			NOR = {
+				has_valid_civic = "civic_fanatic_purifiers"
+				has_valid_civic = "civic_hive_devouring_swarm"
+				has_valid_civic = "civic_machine_terminator"
+			}
+		}
+		
+		AI_weight = {
+			factor = 1
+			modifier = {
+				factor = 2
+				OR = {
+					has_ethic = ethic_xenophobe
+					has_ethic = ethic_fanatic_xenophobe
+				}				
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_xenophile
+					has_ethic = ethic_fanatic_xenophile
+				}				
+			}
+			modifier = {
+				factor = 2
+				has_valid_ai_personality = yes
+				has_ai_personality_behaviour = isolationist
+			}
+		}
+	}
+	
+	option = {
 		name = "first_contact_attack_allowed"
 		
 		policy_flags = {
@@ -1363,7 +1399,6 @@ first_contact_protocol = {
 		modifier = {}
 		
 		potential = { NOT = { has_valid_civic = civic_pacifist } }
-		
 		
 		AI_weight = {
 			factor = 0
@@ -1384,25 +1419,7 @@ first_contact_protocol = {
 			modifier = {
 				factor = 2
 				has_valid_ai_personality = yes
-				OR = { 
-					has_ai_personality_behaviour = isolationist 
-					has_ai_personality_behaviour = attack_neutrals
-				}
-			}
-			modifier = {
-				factor = 2
-				OR = {
-					has_ethic = ethic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-					has_ethic = ethic_fanatic_xenophobe
-				}				
-			}
-			modifier = {
-				factor = 0
-				OR = {
-					has_ethic = ethic_xenophile
-					has_ethic = ethic_fanatic_xenophile
-				}				
+				has_ai_personality_behaviour = attack_neutrals
 			}
 		}
 	}

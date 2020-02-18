@@ -623,12 +623,15 @@ building_fe_dome = {
 	
 	potential = {
 		exists = owner
-		owner = { OR = {
-			is_fallen_empire = yes
-			#has_technology = retile_new_fe_tech
-			check_variable = { which = skydome_build_count value > 0 }
-		} }
+		owner = { 
+			OR = {
+				is_fallen_empire = yes
+				check_variable = { which = skydome_build_count value > 0 }
+			} 
+		}
 	}
+	
+	prerequisites = { "tech_fe_sky_dome" }
 	
 	allow = {
 		exists = owner
@@ -680,7 +683,7 @@ building_fe_dome = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 4000
+			minerals = 5000
 			sr_dark_matter = 500
 		}
 		upkeep = {
@@ -695,6 +698,12 @@ building_fe_dome = {
 	}
 
 	on_unqueued = {
+		owner = {
+			change_variable = { which = skydome_build_count value = 1 }
+		}
+	}
+	
+	on_destroy = {
 		owner = {
 			change_variable = { which = skydome_build_count value = 1 }
 		}

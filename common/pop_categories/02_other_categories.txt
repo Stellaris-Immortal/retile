@@ -6,7 +6,10 @@ purge = {
 	
 	assign_to_pop = {
 		OR = {
-			is_being_purged = yes
+			AND = {
+				is_being_purged = yes
+				NOT = { has_purge_type = { type = purge_neutering } }
+			}
 			has_pop_flag = event_purge
 			AND = { # controlled by crisis
 				exists = planet
@@ -181,7 +184,13 @@ slave = {
 	display_category = worker
 	
 	assign_to_pop = {
-		is_enslaved = yes
+		OR = {
+			is_enslaved = yes
+			AND = {
+				is_being_purged = yes
+				has_purge_type = { type = purge_neutering }
+			}
+		}
 	}
 	weight = {
 		weight = 10

@@ -22,7 +22,7 @@ trait_hive_mind = {
 	leader_age_min = 10
 	leader_age_max = 20
 
-	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID}
 	ai_weight = {
 		weight = 0
 	}
@@ -130,5 +130,30 @@ trait_plantoid = {
 	modifier = { 
 		pop_environment_tolerance = -0.40
 		leader_age = -20
+	}
+}
+
+trait_arthropoid = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+
+	sorting_priority = 20
+
+	initial = yes
+	randomized = no
+	modification = no
+	forced_happiness = no
+	immortal_leaders = no
+	allowed_archetypes = { ARTHROPOID }
+	
+	leader_age_min = 10
+	leader_age_max = 30
+	
+	icon = "gfx/interface/icons/traits/trait_arthropoid.dds"
+	custom_tooltip = TRAIT_ARTHROPOID_EFFECT
+	
+	modifier = { 
+		leader_age = -30
+		army_health = -0.20
 	}
 }

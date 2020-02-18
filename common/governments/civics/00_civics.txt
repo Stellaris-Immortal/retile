@@ -275,9 +275,7 @@ civic_idealistic_foundation = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	random_weight = { base = 5 }
-	modifier = {
-		faction_approval = 0.10
-	}
+	modifier = { faction_approval = 0.10 }
 }
 
 civic_environmentalist = {
@@ -292,8 +290,8 @@ civic_environmentalist = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		planet_max_districts_mult = -0.20
-		planet_amenities_mult = -0.20
+		planet_max_districts_mult = -0.10
+		planet_amenities_add = -200
 		planet_custodians_produces_mult = 0.20
 	}
 }
@@ -309,8 +307,8 @@ civic_functional_architecture = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		planet_max_districts_mult = 0.20
-		planet_amenities_mult = 0.20
+		planet_max_districts_mult = 0.10
+		planet_amenities_add = 200
 		planet_custodians_produces_mult = -0.20
 	}
 }
@@ -530,7 +528,8 @@ civic_shadow_council = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		country_election_influence_cost_mult = -1
+		country_influence_produces_mult = 0.10
+		country_election_influence_cost_mult = -0.25
 	}
 }
 
@@ -539,14 +538,11 @@ civic_parliamentary_system = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
 	}
-	possible = {
-		authority = {
-			value = auth_democratic
-		}
-	}
+	possible = { authority = { value = auth_democratic } }
 	random_weight = { base = 5 }
-	modifier = {
-		pop_factions_produces_mult = 0.25
+	modifier = { 
+		pop_factions_produces_mult = 0.50
+		country_election_influence_cost_mult = 0.50
 	}
 }
 
@@ -556,9 +552,7 @@ civic_efficient_bureaucracy = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	random_weight = { base = 5 }
-	modifier = {
-		country_admin_cap_add = 10
-	}
+	modifier = { country_admin_cap_add = 10 }
 }
 
 civic_nationalistic_zeal = {
