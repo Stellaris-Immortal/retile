@@ -265,62 +265,6 @@ decision_retile_module_generator_remove = {
 	}	
 }
 
-##################################################### Spawning Pool
-decision_retile_deposit_spawningpool = {
-	owned_planets_only = yes
-
-	enactment_time = @base_buildtime
-	resources = {
-		category = planets
-		cost = {
-			minerals = @base_cost
-		}
-	}
-	
-	potential = {
-		owner = {
-			is_hive_empire = yes
-		}
-		NOT = { has_deposit = retile_deposit_spawningpool }
-	}
-
-	allow = {
-		free_district_slots > 0
-		#hidden_trigger = {
-		#	retile_ready = yes
-		#}
-	}
-	
-	effect = {
-		custom_tooltip = decision_retile_deposit_spawningpool_effects
-		if = {
-			limit = { NOT = { has_deposit = retile_deposit_spawningpool } }
-			add_deposit = retile_deposit_spawningpool
-		}
-	}
-	
-	ai_weight = {
-		weight = 10000
-	}
-}
-
-decision_retile_deposit_spawningpool_remove = {
-	owned_planets_only = yes
-
-	potential = {
-		has_deposit = retile_deposit_spawningpool
-	}
-	
-	effect = {
-		custom_tooltip = decision_retile_deposit_spawningpool_remove_effects
-		remove_deposit = retile_deposit_spawningpool
-	}
-	
-	ai_weight = {
-		weight = 0
-	}	
-}
-
 ##################################################### Bio Reactor
 decision_retile_deposit_bioreactor = {
 	owned_planets_only = yes
