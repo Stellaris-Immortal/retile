@@ -25,7 +25,6 @@ building_research_lab_1 = {
 
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			has_modifier = penal_colony
@@ -75,7 +74,6 @@ building_research_lab_2 = {
 
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			has_modifier = penal_colony
@@ -129,7 +127,6 @@ building_research_lab_3 = {
 	
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			has_modifier = penal_colony
@@ -164,6 +161,190 @@ building_research_lab_3 = {
 			exists = owner
 		}
 		text = retile_lab_3_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+# Metascience
+building_metascience_lab_1 = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = research
+	can_be_disabled = no
+	
+	potential = {
+		NOT = { has_modifier = resort_colony }	
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = penal_colony }
+		owner = { has_tradition = tr_harmony_bulwark_of_harmony }
+	}
+	
+	convert_to = {
+		building_research_lab_1
+	}
+
+	destroy_trigger = {
+		OR = {
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			NOT = { owner = { has_tradition = tr_harmony_bulwark_of_harmony } }
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_low
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	upgrades = {
+		"building_metascience_lab_2"
+	}
+	
+	prerequisites = {
+		"tech_basic_science_lab_1"
+	}
+	
+	show_tech_unlock_if = {
+		has_tradition = tr_harmony_bulwark_of_harmony
+	}
+	
+	planet_modifier = {
+		pop_government_ethic_attraction = 0.15
+	}
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_metascience_lab_1_effect
+	}
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_metascience_lab_2 = {
+	base_buildtime = 480
+	can_build = no
+	category = research
+	can_be_disabled = no
+
+	destroy_trigger = {
+		OR = {
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			NOT = { owner = { has_tradition = tr_harmony_bulwark_of_harmony } }
+		}
+	}
+	
+	convert_to = {
+		building_research_lab_2
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	upgrades = {
+		"building_metascience_lab_3"
+	}
+	
+	prerequisites = {
+		"tech_basic_science_lab_2"
+	}
+	
+	show_tech_unlock_if = {
+		has_tradition = tr_harmony_bulwark_of_harmony
+	}
+	
+	planet_modifier = {
+		pop_government_ethic_attraction = 0.15
+	}
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_metascience_lab_2_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_metascience_lab_3 = {
+	base_buildtime = 600
+	can_build = no
+	category = research
+	can_be_disabled = no
+	
+	destroy_trigger = {
+		OR = {
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			NOT = { owner = { has_tradition = tr_harmony_bulwark_of_harmony } }
+		}
+	}
+	
+	convert_to = {
+		building_research_lab_3
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	prerequisites = {
+		"tech_basic_science_lab_3"
+	}
+	
+	show_tech_unlock_if = {
+		has_tradition = tr_harmony_bulwark_of_harmony
+	}
+	
+	planet_modifier = {
+		pop_government_ethic_attraction = 0.15
+	}
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_metascience_lab_3_effect
 	}
 	
 	ai_weight = {
