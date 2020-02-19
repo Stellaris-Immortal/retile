@@ -131,6 +131,39 @@ col_urban_world = {
 		}
 		modifier = {
 			add = 1
+			count_pops = {
+				limit = { OR = {
+					has_job = clerk
+					has_job = researcher
+					has_job = foundry
+				} }
+				count > 0
+			}
+		}
+		modifier = {
+			add = 2
+			count_pops = {
+				limit = { OR = {
+					has_job = clerk
+					has_job = researcher
+					has_job = foundry
+				} }
+				count > 2
+			}
+		}
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { OR = {
+					has_job = clerk
+					has_job = researcher
+					has_job = foundry
+				} }
+				count > 4
+			}
+		}
+		modifier = {
+			add = 1
 			num_districts = { type = district_city value > 0 }
 		}
 		modifier = {
@@ -205,11 +238,32 @@ col_commerce_world = {
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_city value > 0 }
+			count_pops = {
+				limit = { has_job = clerk }
+				count > 0
+			}
 		}
 		modifier = {
 			add = 2
-			num_districts = { type = district_city value > 1 }
+			count_pops = {
+				limit = { has_job = clerk }
+				count > 2
+			}
+		}
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { has_job = clerk }
+				count > 4
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_trade_1
+				has_building = building_trade_2
+				has_building = building_trade_3
+			}
 		}
 	}
 }
@@ -249,12 +303,41 @@ col_engineering_world = {
 			has_designation = col_engineering_world
 		}
 		modifier = {
-			add = 1
-			num_districts = { type = district_city value > 0 }
+			add = 2
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 0
+			}
 		}
 		modifier = {
-			add = 2
-			num_districts = { type = district_city value > 1 }
+			add = 4
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 2
+			}
+		}
+		modifier = {
+			add = 6
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 4
+			}
+		}
+		modifier = {
+			add = 4
+			OR = {
+				has_building = building_factory_1
+				has_building = building_factory_2
+				has_building = building_factory_3
+			}
+		}
+		modifier = {
+			add = 4
+			OR = {
+				has_building = building_foundry_1
+				has_building = building_foundry_2
+				has_building = building_foundry_3
+			}
 		}
 	}
 }
@@ -294,12 +377,50 @@ col_scholar_world = {
 			has_designation = col_scholar_world
 		}
 		modifier = {
-			add = 1
-			num_districts = { type = district_city value > 0 }
+			add = 2
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 0
+			}
 		}
 		modifier = {
-			add = 2
-			num_districts = { type = district_city value > 1 }
+			add = 4
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 2
+			}
+		}
+		modifier = {
+			add = 6
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 4
+			}
+		}
+		modifier = {
+			add = 4
+			OR = {
+				has_building = building_research_lab_1
+				has_building = building_research_lab_2
+				has_building = building_research_lab_3
+				has_building = building_metascience_lab_1
+				has_building = building_metascience_lab_2
+				has_building = building_metascience_lab_3
+			}
+		}
+		modifier = {
+			add = 4
+			OR = {
+				has_building = building_autochthon_monument
+				has_building = building_temple
+				has_building = building_corporate_monument
+				has_building = building_heritage_site
+				has_building = building_holotemple
+				has_building = building_corporate_site
+				has_building = building_hypercomms_forum
+				has_building = building_sacred_nexus
+				has_building = building_corporate_forum
+			}
 		}
 	}
 }
@@ -340,6 +461,63 @@ col_rural_world_galactic = {
 			add = 2
 			has_designation = col_rural_world_galactic
 		}
+		modifier = {
+			add = 2
+			count_pops = {
+				limit = { OR = {
+					has_job = technician
+					has_job = miner
+					has_job = farmer
+				} }
+				count > 0
+			}
+		}
+		modifier = {
+			add = 4
+			count_pops = {
+				limit = { OR = {
+					has_job = technician
+					has_job = miner
+					has_job = farmer
+				} }
+				count > 2
+			}
+		}
+		modifier = {
+			add = 6
+			count_pops = {
+				limit = { OR = {
+					has_job = technician
+					has_job = miner
+					has_job = farmer
+				} }
+				count > 4
+			}
+		}
+		modifier = {
+			add = 4
+			OR = {
+				has_building = building_food_1
+				has_building = building_food_2
+				has_building = building_food_3
+			}
+		}
+		modifier = {
+			add = 4
+			OR = {
+				has_building = building_mineral_1
+				has_building = building_mineral_2
+				has_building = building_mineral_3
+			}
+		}
+		modifier = {
+			add = 4
+			OR = {
+				has_building = building_energy_1
+				has_building = building_energy_2
+				has_building = building_energy_3
+			}
+		}
 	}
 }
 
@@ -377,19 +555,32 @@ col_manufacturing_world = {
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_city value > 0 }
-		}
-		modifier = {
-			add = 1
-			has_building = building_factory_1
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 0
+			}
 		}
 		modifier = {
 			add = 2
-			has_building = building_factory_2
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 2
+			}
 		}
 		modifier = {
 			add = 3
-			has_building = building_factory_3
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 4
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_factory_1
+				has_building = building_factory_2
+				has_building = building_factory_3
+			}
 		}
 	}
 }
@@ -428,19 +619,32 @@ col_refining_world = {
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_city value > 0 }
-		}
-		modifier = {
-			add = 1
-			has_building = building_foundry_1
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 0
+			}
 		}
 		modifier = {
 			add = 2
-			has_building = building_foundry_2
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 2
+			}
 		}
 		modifier = {
 			add = 3
-			has_building = building_foundry_3
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 4
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_foundry_1
+				has_building = building_foundry_2
+				has_building = building_foundry_3
+			}
 		}
 	}
 }
@@ -481,27 +685,34 @@ col_research_world = {
 		}
 		modifier = {
 			add = 1
-			OR = {
-				num_districts = { type = district_city value > 0 }
-				num_districts = { type = district_digsite value > 0 }
-			}
-		}
-		modifier = {
-			add = 1
-			OR = {
-				has_building = building_research_lab_1
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 0
 			}
 		}
 		modifier = {
 			add = 2
-			OR = {
-				has_building = building_research_lab_2
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 2
+			}
+		}
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 4
 			}
 		}
 		modifier = {
 			add = 3
 			OR = {
+				has_building = building_research_lab_1
+				has_building = building_research_lab_2
 				has_building = building_research_lab_3
+				has_building = building_metascience_lab_1
+				has_building = building_metascience_lab_2
+				has_building = building_metascience_lab_3
 			}
 		}
 	}
@@ -541,23 +752,34 @@ col_cultural_world = {
 		}
 		modifier = {
 			add = 1
-			OR = {
-				has_building = building_autochthon_monument
-				has_building = building_temple
-				has_building = building_corporate_monument
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 0
 			}
 		}
 		modifier = {
 			add = 2
-			OR = {
-				has_building = building_heritage_site
-				has_building = building_holotemple
-				has_building = building_corporate_site
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 2
+			}
+		}
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 4
 			}
 		}
 		modifier = {
 			add = 3
 			OR = {
+				has_building = building_autochthon_monument
+				has_building = building_temple
+				has_building = building_corporate_monument
+				has_building = building_heritage_site
+				has_building = building_holotemple
+				has_building = building_corporate_site
 				has_building = building_hypercomms_forum
 				has_building = building_sacred_nexus
 				has_building = building_corporate_forum
@@ -599,31 +821,31 @@ col_generator_world = {
 		modifier = {
 			add = 1
 			count_pops = {
-				limit = { has_job = job_technician }
+				limit = { has_job = technician }
 				count > 0
 			}
 		}
 		modifier = {
-			add = 1
+			add = 2
 			count_pops = {
-				limit = { has_job = job_technician }
-				count > 1
-			}
-		}
-		modifier = {
-			add = 1
-			count_pops = {
-				limit = { has_job = job_technician }
+				limit = { has_job = technician }
 				count > 2
 			}
 		}
 		modifier = {
-			add = 1
-			has_building = building_energy_2
+			add = 3
+			count_pops = {
+				limit = { has_job = technician }
+				count > 4
+			}
 		}
 		modifier = {
-			add = 2
-			has_building = building_energy_3
+			add = 3
+			OR = {
+				has_building = building_energy_1
+				has_building = building_energy_2
+				has_building = building_energy_3
+			}
 		}
 	}
 }
@@ -661,31 +883,31 @@ col_mining_world = {
 		modifier = {
 			add = 1
 			count_pops = {
-				limit = { has_job = job_miner }
+				limit = { has_job = miner }
 				count > 0
 			}
 		}
 		modifier = {
-			add = 1
+			add = 2
 			count_pops = {
-				limit = { has_job = job_miner }
-				count > 1
-			}
-		}
-		modifier = {
-			add = 1
-			count_pops = {
-				limit = { has_job = job_miner }
+				limit = { has_job = miner }
 				count > 2
 			}
 		}
 		modifier = {
-			add = 1
-			has_building = building_mineral_2
+			add = 3
+			count_pops = {
+				limit = { has_job = miner }
+				count > 4
+			}
 		}
 		modifier = {
-			add = 2
-			has_building = building_mineral_3
+			add = 3
+			OR = {
+				has_building = building_mineral_1
+				has_building = building_mineral_2
+				has_building = building_mineral_3
+			}
 		}
 	}
 }
@@ -726,31 +948,31 @@ col_farming_world = {
 		modifier = {
 			add = 1
 			count_pops = {
-				limit = { has_job = job_farmer }
+				limit = { has_job = farmer }
 				count > 0
 			}
 		}
 		modifier = {
-			add = 1
+			add = 2
 			count_pops = {
-				limit = { has_job = job_farmer }
-				count > 1
-			}
-		}
-		modifier = {
-			add = 1
-			count_pops = {
-				limit = { has_job = job_farmer }
+				limit = { has_job = farmer }
 				count > 2
 			}
 		}
 		modifier = {
-			add = 1
-			has_building = building_food_2
+			add = 3
+			count_pops = {
+				limit = { has_job = farmer }
+				count > 4
+			}
 		}
 		modifier = {
-			add = 2
-			has_building = building_food_3
+			add = 3
+			OR = {
+				has_building = building_food_1
+				has_building = building_food_2
+				has_building = building_food_3
+			}
 		}
 	}
 }
@@ -784,7 +1006,24 @@ col_fortress_world = {
 		base = 0
 		modifier = {
 			add = 2
-			num_districts = { type = district_soldier value > 0 }
+			count_pops = {
+				limit = { has_job = soldier }
+				count > 0
+			}
+		}
+		modifier = {
+			add = 2
+			count_pops = {
+				limit = { has_job = soldier }
+				count > 2
+			}
+		}
+		modifier = {
+			add = 2
+			count_pops = {
+				limit = { has_job = soldier }
+				count > 4
+			}
 		}
 	}
 }
@@ -814,22 +1053,47 @@ col_recycling_world = {
 		planet_custodians_produces_mult = 0.10
 	}
 
-	weight_modifier = {
+	weight_modifier = {	# lower than other job modifiers, since custodians will be a lot of places.
 		base = 0
 		modifier = {
 			add = 1
-			num_districts = { type = district_custodian value > 0 }
+			count_pops = {
+				limit = { has_job = custodian }
+				count > 0
+			}
 		}
 		modifier = {
-			add = 2
+			add = 1
+			count_pops = {
+				limit = { has_job = custodian }
+				count > 4
+			}
+		}
+		modifier = {
+			add = 1
+			count_pops = {
+				limit = { has_job = custodian }
+				count > 6
+			}
+		}
+		modifier = {
+			add = 1
+			OR = {
+				has_building = building_maintenance_depot
+				has_building = building_maintenance_depot_2
+				has_building = building_maintenance_depot_3
+			}
+		}
+		modifier = {
+			add = 3
 			has_building = building_hydroponics_farm
 		}
 		modifier = {
-			add = 2
+			add = 3
 			has_building = building_recycling_center
 		}
 		modifier = {
-			add = 2
+			add = 3
 			has_building = building_solar_panels
 		}
 	}
