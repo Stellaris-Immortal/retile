@@ -436,7 +436,6 @@ criminal = {
 	}
 
 	possible = {
-		always = yes
 		or = {
 			has_job = criminal
 			retile_job_seeking = yes
@@ -449,25 +448,18 @@ criminal = {
 		pop_government_ethic_attraction = -0.25
 		pop_happiness = -0.05
 	}
+	
 	pop_modifier = {
-		pop_defense_armies_add = 2
+		pop_defense_armies_add = 1
 	}
-	triggered_pop_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_warrior_culture }
-		}
-		modifier = {
-			pop_defense_armies_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_temple_of_prosperity }
-			branch_office_owner = { is_criminal_syndicate = yes }
-		}
-		# pop_ethic_spiritualist_attraction_mult = 0.02
-	}
+
+#	triggered_planet_modifier = {
+#		potential = {
+#			planet = { has_building = building_temple_of_prosperity }
+#			branch_office_owner = { is_criminal_syndicate = yes }
+#		}
+#		modifier = { pop_ethic_spiritualist_attraction_mult = 0.02 }	# doesn't work...
+#	}
 
 	resources = {
 		category = planet_criminals
@@ -480,7 +472,8 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_illicit_research_labs } }
-			consumer_goods = 1.25
+			energy = 2
+			consumer_goods = 2
 		}
 		produces = {
 			trigger = { planet = { has_building = building_syndicate_outreach_office } }
@@ -488,7 +481,8 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_syndicate_outreach_office } }
-			consumer_goods = 1.25
+			energy = 2
+			consumer_goods = 2
 		}
 		produces = {
 			trigger = { planet = { has_building = building_underground_chemists } }
@@ -496,7 +490,9 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_underground_chemists } }
-			minerals = 5
+			minerals = 10
+			energy = 2
+			consumer_goods = 1
 		}
 		produces = {
 			trigger = { planet = { has_building = building_wrecking_yards } }
@@ -504,15 +500,27 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_wrecking_yards } }
-			minerals = 5
+			minerals = 10
+			energy = 2
+			consumer_goods = 1
 		}
 		produces = {
 			trigger = { planet = { has_building = building_wildcat_miners } }
 			minerals = 10
 		}
+		upkeep = {
+			trigger = { planet = { has_building = building_wildcat_miners } }
+			energy = 2
+			consumer_goods = 1
+		}
 		produces = {
 			trigger = { planet = { has_building = building_bio_reprocessing_facilities } }
-			food = 4
+			food = 2.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_bio_reprocessing_facilities } }
+			energy = 2
+			consumer_goods = 1
 		}
 		############################################################ Research Production
 		produces = {
@@ -523,7 +531,8 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_research_lab_1 } }
-			consumer_goods = 0.625
+			energy = 1
+			consumer_goods = 1
 		}		
 		produces = {
 			trigger = { planet = { has_building = building_research_lab_2 } }
@@ -533,7 +542,8 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_research_lab_2 } }
-			consumer_goods = 1.25
+			energy = 2
+			consumer_goods = 2
 		}		
 		produces = {
 			trigger = { planet = { has_building = building_research_lab_3 } }
@@ -543,17 +553,8 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_research_lab_3 } }
-			consumer_goods = 1.875
-		}		
-		produces = {
-			trigger = { planet = { has_building = building_institute } }
-			physics_research = 1.25
-			engineering_research = 1.25
-			society_research = 1.25
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_institute } }
-			consumer_goods = 0.625
+			energy = 3
+			consumer_goods = 3
 		}		
 		############################################################ Unity Production
 		produces = {
@@ -570,7 +571,8 @@ criminal = {
 				has_building = building_autochthon_monument
 				has_building = building_corporate_monument
 			} } }
-			consumer_goods = 0.625
+			energy = 1
+			consumer_goods = 1
 		}		
 		produces = {
 			trigger = { planet = { OR = {
@@ -586,7 +588,8 @@ criminal = {
 				has_building = building_heritage_site
 				has_building = building_corporate_site
 			} } }
-			consumer_goods = 1.25
+			energy = 2
+			consumer_goods = 2
 		}		
 		produces = {
 			trigger = { planet = { OR = {
@@ -602,7 +605,8 @@ criminal = {
 				has_building = building_hypercomms_forum
 				has_building = building_corporate_forum
 			} } }
-			consumer_goods = 1.875
+			energy = 3
+			consumer_goods = 3
 		}
 		############################################################ Consumer Goods Production
 		produces = {
@@ -611,7 +615,8 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_factory_1 } }
-			minerals = 2.5
+			minerals = 5
+			energy = 1.5
 		}
 		produces = {
 			trigger = { planet = { has_building = building_factory_2 } }
@@ -619,7 +624,8 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_factory_2 } }
-			minerals = 5
+			minerals = 10
+			energy = 3
 		}
 		produces = {
 			trigger = { planet = { has_building = building_factory_3 } }
@@ -627,7 +633,8 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_factory_3 } }
-			minerals = 7.5
+			minerals = 15
+			energy = 4.5
 		}
 		############################################################ Alloys Production
 		produces = {
@@ -636,7 +643,9 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_foundry_1 } }
-			minerals = 2.5
+			minerals = 5
+			energy = 1
+			consumer_goods = 0.5
 		}
 		produces = {
 			trigger = { planet = { has_building = building_foundry_2 } }
@@ -644,7 +653,9 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_foundry_2 } }
-			minerals = 5
+			minerals = 10
+			energy = 2
+			consumer_goods = 1
 		}
 		produces = {
 			trigger = { planet = { has_building = building_foundry_3 } }
@@ -652,17 +663,9 @@ criminal = {
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_foundry_3 } }
-			minerals = 7.5
-		}
-		############################################################ Ministry of Production
-		produces = {
-			trigger = { planet = { has_building = building_ministry_production } }
-			alloys = 1.25
-			consumer_goods = 1.25
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_ministry_production } }
-			minerals = 5
+			minerals = 15
+			energy = 3
+			consumer_goods = 1.5
 		}
 		############################################################ Custodian Production
 		produces = {
@@ -674,6 +677,10 @@ criminal = {
 			society_research = 2.5
 		}
 		produces = {
+			trigger = { planet = { has_building = building_maintenance_depot_3 } }
+			society_research = 3.75
+		}
+		produces = {
 			trigger = { planet = { has_building = building_solar_panels } }
 			energy = 5
 		}
@@ -682,46 +689,177 @@ criminal = {
 			minerals = 5
 		}
 		produces = {
-			trigger = { planet = { has_building = building_hydroponics_farm } }
-			food = 2
+			trigger = { 
+				planet = { has_building = building_hydroponics_farm }
+				NOT = { has_trait = trait_plantoid }
+			}
+			food = 1.25
+		}
+		produces = {
+			trigger = { 
+				planet = { has_building = building_hydroponics_farm }
+				has_trait = trait_plantoid_fruiting
+			}
+			food = 0.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_maintenance_depot } }
+			energy = 1
+			consumer_goods = 0.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_maintenance_depot_2 } }
+			energy = 2
+			consumer_goods = 1
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_maintenance_depot_3 } }
+			energy = 3
+			consumer_goods = 1.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_solar_panels } }
+			consumer_goods = 0.75
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_recycling_center } }
+			energy = 1
+			consumer_goods = 0.5
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_hydroponics_farm }
+			}
+			energy = 1
+			consumer_goods = 0.5
 		}
 		############################################################ Technician Production
 		produces = {
-			trigger = { planet = { has_building = building_energy_2 } }
+			trigger = { planet = { has_building = building_energy_1 } }
 			energy = 5
 		}
 		produces = {
-			trigger = { planet = { has_building = building_energy_3 } }
+			trigger = { planet = { has_building = building_energy_2 } }
 			energy = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_energy_3 } }
+			energy = 15
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_energy_1 } }
+			consumer_goods = 0.75
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_energy_2 } }
+			consumer_goods = 1.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_energy_3 } }
+			consumer_goods = 2.25
 		}
 		############################################################ Miner Production
 		produces = {
-			trigger = { planet = { has_building = building_mineral_2 } }
+			trigger = { planet = { has_building = building_mineral_1 } }
 			minerals = 5
 		}
 		produces = {
-			trigger = { planet = { has_building = building_mineral_3 } }
+			trigger = { planet = { has_building = building_mineral_2 } }
 			minerals = 10
+		}
+		produces = {
+			trigger = { planet = { has_building = building_mineral_3 } }
+			minerals = 15
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_mineral_1 } }
+			energy = 1
+			consumer_goods = 0.5
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_mineral_2 } }
+			energy = 2
+			consumer_goods = 1
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_mineral_3 } }
+			energy = 3
+			consumer_goods = 1.5
 		}
 		############################################################ Farmer Production
 		produces = {
-			trigger = { planet = { has_building = building_food_2 } }
-			food = 2
+			trigger = { 
+				planet = { has_building = building_food_1 } 
+				NOT = { has_trait = trait_plantoid }
+			}
+			food = 1.25
 		}
 		produces = {
-			trigger = { planet = { has_building = building_food_3 } }
-			food = 4
+			trigger = { 
+				planet = { has_building = building_food_2 } 
+				NOT = { has_trait = trait_plantoid }
+			}
+			food = 2.5
+		}
+		produces = {
+			trigger = { 
+				planet = { has_building = building_food_3 }
+				NOT = { has_trait = trait_plantoid }
+			}
+			food = 3.75
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_food_1 } 
+			}
+			energy = 1
+			consumer_goods = 0.5
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_food_2 } 
+			}
+			energy = 2
+			consumer_goods = 1
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_food_3 }
+			}
+			energy = 3
+			consumer_goods = 1.5
+		}
+		produces = {
+			trigger = { 
+				planet = { has_building = building_food_1 } 
+				has_trait = trait_plantoid_fruiting
+			}
+			food = 0.5
+		}
+		produces = {
+			trigger = { 
+				planet = { has_building = building_food_2 } 
+				has_trait = trait_plantoid_fruiting
+			}
+			food = 1
+		}
+		produces = {
+			trigger = { 
+				planet = { has_building = building_food_3 }
+				has_trait = trait_plantoid_fruiting
+			}
+			food = 1.5
 		}
 	}
 	
 	############################################################ Syndicate Pollution
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_wildcat_miners } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_add = 25 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_bio_reprocessing_facilities } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_add = 25 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_underground_chemists } }
@@ -733,7 +871,7 @@ criminal = {
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_pirate_haven } }
-		modifier = { planet_amenities_add = 20 }
+		modifier = { planet_amenities_add = 25 }
 	}
 	triggered_pop_modifier = {
 		potential = { planet = { has_building = building_pirate_haven } }
@@ -745,33 +883,29 @@ criminal = {
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_syndicate_outreach_office } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_add = 10 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_illicit_research_labs } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_add = 10 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_smuggling_rings } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_add = 25 }
 		trade_value_add = 10
 	}
 	############################################################ Research Pollution
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_research_lab_1 } }
-		modifier = { planet_amenities_add = 3.75 }
+		modifier = { planet_amenities_add = 10 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_research_lab_2 } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_research_lab_3 } }
-		modifier = { planet_amenities_add = 11.25 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_institute } }
-		modifier = { planet_amenities_add = 3.75 }
+		modifier = { planet_amenities_add = 60 }
 	}
 	############################################################ Unity Pollution
 	triggered_planet_modifier = {
@@ -780,7 +914,7 @@ criminal = {
 			has_building = building_autochthon_monument
 			has_building = building_corporate_monument
 		} } }
-		modifier = { planet_amenities_add = 3.75 }
+		modifier = { planet_amenities_add = 10 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
@@ -788,7 +922,7 @@ criminal = {
 			has_building = building_heritage_site
 			has_building = building_corporate_site
 		} } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
@@ -796,58 +930,40 @@ criminal = {
 			has_building = building_hypercomms_forum
 			has_building = building_corporate_forum
 		} } }
-		modifier = { planet_amenities_add = 11.25 }
+		modifier = { planet_amenities_add = 60 }
 	}
 	############################################################ Engineer Pollution
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_1 } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_add = 10 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_2 } }
-		modifier = { planet_amenities_add = 15 }
+		modifier = { planet_amenities_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_3 } }
-		modifier = { planet_amenities_add = 22.5 }
+		modifier = { planet_amenities_add = 60 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_1 } }
-		modifier = { planet_amenities_add = 7.5 }
+		modifier = { planet_amenities_add = 10 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_2 } }
-		modifier = { planet_amenities_add = 15 }
+		modifier = { planet_amenities_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_3 } }
-		modifier = { planet_amenities_add = 22.5 }
+		modifier = { planet_amenities_add = 60 }
 	}
-	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_ministry_production } }
-		modifier = { planet_amenities_add = 15 }
-	}
-	############################################################ Commerce Buildings
+	############################################################ Trade Pollution
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_trade_1 } }
 		modifier = {
 			trade_value_add = 5
-			planet_amenities_add = 15
+			planet_amenities_add = 10
 		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_trade_1 }
-			has_trait = trait_thrifty
-		}
-		modifier = { trade_value_add = 1.25 }
-	}
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_trade_1 }
-			has_trait = trait_nuumismatic_administration
-		}
-		modifier = { trade_value_add = 1.25 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_trade_2 } }
@@ -857,18 +973,11 @@ criminal = {
 		}
 	}
 	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_trade_2 }
-			has_trait = trait_thrifty
+		potential = { planet = { has_building = building_trade_3 } }
+		modifier = {
+			trade_value_add = 15
+			planet_amenities_add = 60
 		}
-		modifier = { trade_value_add = 2.5 }
-	}
-	triggered_planet_modifier = {
-		potential = {
-			planet = { has_building = building_trade_2 }
-			has_trait = trait_nuumismatic_administration
-		}
-		modifier = { trade_value_add = 2.5 }
 	}
 	############################################################ Custodian Pollution
 	triggered_planet_modifier = {
@@ -878,6 +987,10 @@ criminal = {
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_maintenance_depot_2 } }
 		modifier = { planet_amenities_add = -50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_maintenance_depot_3 } }
+		modifier = { planet_amenities_add = -75 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_solar_panels } }
@@ -893,30 +1006,42 @@ criminal = {
 	}
 	############################################################ Technician Pollution
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_energy_2 } }
+		potential = { planet = { has_building = building_energy_1 } }
 		modifier = { planet_amenities_add = 15 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		modifier = { planet_amenities_add = 45 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_3 } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_add = 90 }
 	}
 	############################################################ Miner Pollution
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_mineral_2 } }
+		potential = { planet = { has_building = building_mineral_1 } }
 		modifier = { planet_amenities_add = 15 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_mineral_2 } }
+		modifier = { planet_amenities_add = 45 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_3 } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_add = 90 }
 	}
 	############################################################ Farmer Pollution
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_food_2 } }
+		potential = { planet = { has_building = building_food_1 } }
 		modifier = { planet_amenities_add = 15 }
 	}
 	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		modifier = { planet_amenities_add = 45 }
+	}
+	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_food_3 } }
-		modifier = { planet_amenities_add = 30 }
+		modifier = { planet_amenities_add = 90 }
 	}
 	
 	############################################################ Criminal Job Weight

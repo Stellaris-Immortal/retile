@@ -111,16 +111,6 @@ brain_drone = {
 			consumer_goods = 3.75
 		}		
 		produces = {
-			trigger = { planet = { has_building = building_institute } }
-			physics_research = 2.5
-			engineering_research = 2.5
-			society_research = 2.5
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_institute } }
-			consumer_goods = 1.25
-		}		
-		produces = {
 			trigger = { planet = { OR = {
 				has_building = building_hive_node
 				has_building = building_uplink_node
@@ -180,10 +170,6 @@ brain_drone = {
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_research_lab_3 } }
 		modifier = { planet_amenities_no_happiness_add = 22.5 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_institute } }
-		modifier = { planet_amenities_no_happiness_add = 7.5 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
@@ -294,15 +280,6 @@ artisan_drone = {
 			trigger = { planet = { has_building = building_foundry_3 } }
 			minerals = 15
 		}
-		produces = {
-			trigger = { planet = { has_building = building_ministry_production } }
-			alloys = 2.5
-			consumer_goods = 2.5
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_ministry_production } }
-			minerals = 10
-		}
 	}
 
 	############################################################ Engineer Pollution
@@ -334,11 +311,7 @@ artisan_drone = {
 		potential = { planet = { has_building = building_foundry_3 } }
 		modifier = { planet_amenities_no_happiness_add = 45 }
 	}
-	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_ministry_production } }
-		modifier = { planet_amenities_no_happiness_add = 30 }
-	}
-
+	
 	############################################################ Engineer Job Weight
 
 	weight = {
