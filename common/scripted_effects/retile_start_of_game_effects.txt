@@ -824,7 +824,8 @@ generate_earth_deposits_and_blockers = {
 	}
 }
 
-generate_start_buildings_and_districts = {		
+generate_start_buildings_and_districts = {
+	
 	if = {
 		limit = {
 			owner = {
@@ -836,6 +837,11 @@ generate_start_buildings_and_districts = {
 			}
 		}
 
+		if = {
+			limit = { owner = { last_created_species = { is_biological = yes } } }
+			owner = { set_country_flag = biological_subspecies }
+		}
+		
 		if = {
 			limit = { owner = { last_created_species = { is_lithoid = yes } } }
 			owner = { set_country_flag = lithoid_subspecies }
@@ -850,55 +856,116 @@ generate_start_buildings_and_districts = {
 			owner = { set_country_flag = non_plantoid_subspecies }
 		}
 	}
+
+	######################################## Set up starting active deposits
+	# Always 3 jobs
+
+	if = {	# robots
+		limit = {
+			owner = {
+				is_machine_empire = yes
+			}
+		}
+		if = {
+			limit = { owner = { OR = {
+				has_country_flag = biological_subspecies
+				has_country_flag = plantoid_subspecies
+			} } }
+			random_deposit = { # energy 1
+				limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
+				clear_blocker = yes
+			}
+			random_deposit = { # minerals 1
+				limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
+				clear_blocker = yes
+			}
+			random_deposit = { # food 1
+				limit = { is_food_deposit_low = yes has_deposit_category = deposit_cat_food }
+				clear_blocker = yes
+			}
+		} else = {
+			random_deposit = { # energy 2
+				limit = { is_energy_deposit_med = yes has_deposit_category = deposit_cat_energy }
+				clear_blocker = yes
+			}
+			random_deposit = { # minerals 1
+				limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
+				clear_blocker = yes
+			}
+		}
+	}
 	
+	if = { # Lithoids
+		limit = {
+			owner = {
+				is_lithoid_empire = yes
+			}
+		}
+		if = {
+			limit = { owner = { OR = {
+				has_country_flag = biological_subspecies
+				has_country_flag = plantoid_subspecies
+			} } }
+			random_deposit = { # energy 1
+				limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
+				clear_blocker = yes
+			}
+			random_deposit = { # minerals 1
+				limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
+				clear_blocker = yes
+			}
+			random_deposit = { # food 1
+				limit = { is_food_deposit_low = yes has_deposit_category = deposit_cat_food }
+				clear_blocker = yes
+			}
+		} else = {
+			random_deposit = { # energy 1
+				limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
+				clear_blocker = yes
+			}
+			random_deposit = { # minerals 2
+				limit = { is_minerals_deposit_med = yes has_deposit_category = deposit_cat_minerals }
+				clear_blocker = yes
+			}
+		}
+	}
+	
+	if = { # Biologicals/Plants
+		limit = {
+			owner = {
+				is_lithoid_empire = no
+				is_machine_empire = no
+			}
+		}
+		random_deposit = { # energy 1
+			limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
+			clear_blocker = yes
+		}
+		random_deposit = { # minerals 1
+			limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
+			clear_blocker = yes
+		}
+		random_deposit = { # food 1
+			limit = { is_food_deposit_low = yes has_deposit_category = deposit_cat_food }
+			clear_blocker = yes
+		}
+	}
+
+	######################################## Set up starting districts
 	if = {
 		limit = { owner = { is_regular_empire = yes } }
 		
 		# total - 10 jobs
 		
-		# 2 jobs
-		add_district = district_city
-		
-		# 1 job
-		add_district = district_mining
-		
-		# 1 jobs
-		if = {
-			limit = { owner = { OR = {
-				is_lithoid_empire = no
-				has_country_flag = non_lithoid_subspecies
-			} } }
-			add_district = district_farming
-		} else = {
-			add_district = district_mining
-		}
-		
-		# 1 jobs
-		add_district = district_generator
-		
 		# 4 jobs
 		add_building = building_system_capital
-
-		# 1 jobs
-		#add_building = building_research_lab_1
-		add_building = building_foundry_1
-		#add_building = building_factory_1
-
-		if = { limit = { owner = { is_megacorp = yes } }
-			add_building = building_commercial_zone
-			remove_district = district_generator
-		}
 		
-		# One extra district for Mining Guilds
-		if = {
-			limit = { owner = { has_valid_civic = civic_mining_guilds } }
-			add_district = district_mining
-		}
-		# One extra district for Agrarian Idyll
-		if = {
-			limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
-			add_district = district_farming
-		}
+		# 3 jobs
+		add_district = district_clerks
+		add_district = district_engineers
+		add_district = district_scholars
+		add_district = district_housing
+		add_district = district_housing
 	}
 	
 	if = {
@@ -906,35 +973,31 @@ generate_start_buildings_and_districts = {
 		
 		# total - 10 jobs
 		
-		# 2 jobs
-		add_district = district_city
+		# 4 jobs
+		add_building = building_hive_system_capital
+
+		# 3 jobs
+		add_district = district_engineers
+		add_district = district_engineers
+		add_district = district_scholars
+		add_district = district_housing
+		add_district = district_housing
+	}
+	
+	if = {
+		limit = { owner = { is_machine_empire = yes } }
 		
-		# 1 job
-		add_district = district_mining
-		
-		# 1 jobs
-		if = {
-			limit = { owner = { OR = {
-				is_lithoid_empire = no
-				has_country_flag = non_lithoid_subspecies
-			} } }
-			add_district = district_farming
-			add_district = district_farming
-		} else = {
-			add_district = district_mining
-			add_district = district_mining
-		}
-		
-		# 1 jobs
-		add_district = district_generator
+		# total - 10 jobs
 		
 		# 4 jobs
 		add_building = building_hive_system_capital
 
-		# 2 jobs
-		#add_building = building_research_lab_1
-		add_building = building_foundry_1
-		#add_building = building_factory_1
+		# 3 jobs
+		add_district = district_engineers
+		add_district = district_scholars
+		add_district = district_scholars
+		add_district = district_housing
+		add_district = district_housing
 	}
 	
 	# Additional resources based on empire type and possible subspecies
@@ -1110,49 +1173,57 @@ generate_start_pops = {
 	}
 	
 	while = {
-		limit = { num_pops < 12 }
+		limit = { num_pops < 10 }
 		create_pop = {
 			species = owner_main_species
 			ethos = random
 		}
 	}
 	
+	#if = {
+	#	limit = { owner = { is_hive_empire = yes } }
+	#	while = {
+	#		#limit = { num_pops < 10 }
+	#		count = 1
+	#		create_pop = {
+	#			species = owner_main_species
+	#			ethos = random
+	#		}
+	#	}
+	#}
+	
+	# One extra pop for Mechanists
 	if = {
-		limit = { owner = { is_hive_empire = yes } }
-		while = {
-			#limit = { num_pops < 12 }
-			count = 1
-			create_pop = {
-				species = owner_main_species
-				ethos = random
-			}
+		limit = { owner = { has_valid_civic = civic_mechanists } }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
 		}
 	}
-	
 	# One extra pop for Servitors
-	if = {
-		limit = { owner = { has_valid_civic = civic_machine_servitor } }
-		create_pop = {
-			species = owner_main_species
-			ethos = random
-		}
-	}
+	#if = {
+	#	limit = { owner = { has_valid_civic = civic_machine_servitor } }
+	#	create_pop = {
+	#		species = owner_main_species
+	#		ethos = random
+	#	}
+	#}
 	# One extra pop for Mining Guilds
-	if = {
-		limit = { owner = { has_valid_civic = civic_mining_guilds } }
-		create_pop = {
-			species = owner_main_species
-			ethos = random
-		}
-	}
+	#if = {
+	#	limit = { owner = { has_valid_civic = civic_mining_guilds } }
+	#	create_pop = {
+	#		species = owner_main_species
+	#		ethos = random
+	#	}
+	#}
 	# One extra pop for Agrarian Idyll
-	if = {
-		limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
-		create_pop = {
-			species = owner_main_species
-			ethos = random
-		}
-	}
+	#if = {
+	#	limit = { owner = { has_valid_civic = civic_agrarian_idyll } }
+	#	create_pop = {
+	#		species = owner_main_species
+	#		ethos = random
+	#	}
+	#}
 }
 
 generate_home_planet_final_pass = {

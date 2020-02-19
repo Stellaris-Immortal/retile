@@ -278,10 +278,14 @@ decision_mastery_of_nature = {
 			is_planet_class = pc_machine
 		}
 		owner = { has_ascension_perk = ap_mastery_of_nature }
-		NOT = { has_deposit = retile_mastery_of_nature }
+		NOT = { has_deposit = retile_mastery_of_nature_energy }
 	}
 	
-	effect = { add_deposit = retile_mastery_of_nature }
+	effect = {
+		add_deposit = retile_mastery_of_nature_energy
+		add_deposit = retile_mastery_of_nature_minerals
+		add_deposit = retile_mastery_of_nature_food
+	}
 	
 	ai_weight = {
 		weight = 5
@@ -729,7 +733,7 @@ decision_arcology_project = {
 		category = decisions
 		cost = {
 			influence = 200
-			minerals = 5000
+			energy = 2000
 		}
 	}
 	
@@ -746,109 +750,95 @@ decision_arcology_project = {
 		owner = { 
 			host_has_dlc = "Megacorp"
 			has_technology = tech_housing_3
-			is_regular_empire = yes
+			is_regular_empire = yes 
 		}
 	}
 	
 	allow = {
 		custom_tooltip = {
-			fail_text = decision_arcology_project_requirements
-			#free_district_slots < 1
-			num_districts = { type = district_city value >= 4 }
-			num_districts = { type = district_farming value < 1 }
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
-		}
-		num_uncleared_blockers < 1
-		hidden_trigger = {
-			OR = {
-				owner = { is_ai = no }
-				NOR = {
-					has_planet_flag = ai_food_development
-					has_planet_flag = ai_minerals_development
-					has_planet_flag = ai_energy_development
-					has_planet_flag = ai_food_development_former
-					has_planet_flag = ai_minerals_development_former
-					has_planet_flag = ai_energy_development_former
-				}
-			}
+			fail_text = decision_retile_arcology_project_deposits
+			NOT = { any_deposit = { OR = {
+				has_deposit_category = deposit_cat_blockers
+				has_deposit_category = deposit_cat_rare_blocker
+			} } }
 		}
 	}
 	
 	effect = {
 		# Make city-planet
-		custom_tooltip = decision_arcology_project_effects
+		custom_tooltip = decision_retile_arcology_project_effects
 		remove_planet_flag = ai_arcology_development
 		hidden_effect = {
-			
-			# figure out how many engineering districts we need...
-			if = {
-				limit = {
-					num_districts = { type = district_city value < 2 }
+			#clear_non_district_deposits = yes
+			every_deposit = {
+				if = {
+					limit = { is_energy_deposit_low = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_energy_arcology_1a } }
+						10 = { prev = { add_deposit = d_energy_arcology_1b } }
+					}
+				} else_if = {
+					limit = { is_energy_deposit_med = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_energy_arcology_2a } }
+						10 = { prev = { add_deposit = d_energy_arcology_2b } }
+					}
+				} else_if = {
+					limit = { is_energy_deposit_high = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_energy_arcology_3a } }
+						10 = { prev = { add_deposit = d_energy_arcology_3b } }
+					}
+				} else_if = {
+					limit = { is_food_deposit_low = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_food_arcology_1a } }
+						10 = { prev = { add_deposit = d_food_arcology_1b } }
+					}
+				} else_if = {
+					limit = { is_food_deposit_med = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_food_arcology_2a } }
+						10 = { prev = { add_deposit = d_food_arcology_2b } }
+					}
+				} else_if = {
+					limit = { is_food_deposit_high = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_food_arcology_3a } }
+						10 = { prev = { add_deposit = d_food_arcology_3b } }
+					}
+				} else_if = {
+					limit = { is_minerals_deposit_low = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_minerals_arcology_1a } }
+						10 = { prev = { add_deposit = d_minerals_arcology_1b } }
+					}
+				} else_if = {
+					limit = { is_minerals_deposit_med = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_minerals_arcology_2a } }
+						10 = { prev = { add_deposit = d_minerals_arcology_2b } }
+					}
+				} else_if = {
+					limit = { is_minerals_deposit_high = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_minerals_arcology_3a } }
+						10 = { prev = { add_deposit = d_minerals_arcology_3b } }
+					}
+				} else = {
+					### Do nothing
+					### The decision just razes natural resource deposits and converts them into spire locations.
 				}
-				set_variable = { which = arc_count value = 0 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 2 }
-					num_districts = { type = district_city value = 3 }
-				} }
-				set_variable = { which = arc_count value = 1 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 4 }
-					num_districts = { type = district_city value = 5 }
-				} }
-				set_variable = { which = arc_count value = 2 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 6 }
-					num_districts = { type = district_city value = 7 }
-				} }
-				set_variable = { which = arc_count value = 3 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 8 }
-					num_districts = { type = district_city value = 9 }
-				} }
-				set_variable = { which = arc_count value = 4 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 10 }
-					num_districts = { type = district_city value = 11 }
-				} }
-				set_variable = { which = arc_count value = 5 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 12 }
-					num_districts = { type = district_city value = 13 }
-				} }
-				set_variable = { which = arc_count value = 6 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 14 }
-					num_districts = { type = district_city value = 15 }
-				} }
-				set_variable = { which = arc_count value = 7 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 16 }
-					num_districts = { type = district_city value = 17 }
-				} }
-				set_variable = { which = arc_count value = 8 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 18 }
-					num_districts = { type = district_city value = 19 }
-				} }
-				set_variable = { which = arc_count value = 9 }
-			} else_if = {
-				limit = {
-					num_districts = { type = district_city value >= 20 }
-				}
-				set_variable = { which = arc_count value = 10 }
 			}
-		
-			clear_non_district_deposits = yes
 			change_pc = pc_city
 			set_planet_entity = {
 				entity = "city_planet_entity"
@@ -858,67 +848,6 @@ decision_arcology_project = {
 				country_event = { id = distar.201 } # port for living planet distar.197, triggers in event
 			}
 			planet_event = { id = mega.200 }
-			
-			if = {
-				limit = { check_variable = { which = arc_count value = 1 } }
-				add_district = district_engineering_arcology
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 2 } }
-				while = {
-					count = 2
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 3 } }
-				while = {
-					count = 3
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 4 } }
-				while = {
-					count = 4
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 5 } }
-				while = {
-					count = 5
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 6 } }
-				while = {
-					count = 6
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 7 } }
-				while = {
-					count = 7
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 8 } }
-				while = {
-					count = 8
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 9 } }
-				while = {
-					count = 9
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 10 } }
-				while = {
-					count = 10
-					add_district = district_engineering_arcology
-				}
-			}
-			
-			retile_set_arcology_focus = yes
 		}
 	}
 	
@@ -954,114 +883,24 @@ decision_arcology_project_relic = {
 	
 	allow = {
 		custom_tooltip = {
-			fail_text = decision_arcology_project_requirements_relic
-			#free_district_slots < 1
-			OR = {
-				num_districts = { type = district_city value >= 4 }
-				AND = {
-					num_districts = { type = district_city value >= 3 }
-					num_districts = { type = district_digsite value >= 1 }
-				}
-				AND = {
-					num_districts = { type = district_city value >= 2 }
-					num_districts = { type = district_digsite value >= 2 }
-				}
-				AND = {
-					num_districts = { type = district_city value >= 1 }
-					num_districts = { type = district_digsite value >= 3 }
-				}
-				num_districts = { type = district_digsite value >= 4 }
-			}
-			num_districts = { type = district_mining value < 1 }
-			num_districts = { type = district_generator value < 1 }
+			fail_text = decision_retile_arcology_project_deposits
+			NOT = { any_deposit = { OR = {
+				has_deposit_category = deposit_cat_blockers
+				has_deposit_category = deposit_cat_rare_blocker
+			} } }
 		}
-		num_uncleared_blockers < 1
 		owner = { has_technology = tech_housing_2 }
-		OR = {
-			owner = { is_ai = no }
-			NOR = {
-				has_planet_flag = ai_minerals_development
-				has_planet_flag = ai_energy_development
-				has_planet_flag = ai_minerals_development_former
-				has_planet_flag = ai_energy_development_former
-			}
-		}
 	}
 	
 	effect = {
 		# Make city-planet
-		custom_tooltip = decision_arcology_project_effects
+		custom_tooltip = decision_retile_arcology_project_effects
 		hidden_effect = {
 
-			# figure out how many engineering districts we need...
-			if = {
-				limit = {
-					num_districts = { type = district_city value < 2 }
-				}
-				set_variable = { which = arc_count value = 0 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 2 }
-					num_districts = { type = district_city value = 3 }
-				} }
-				set_variable = { which = arc_count value = 1 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 4 }
-					num_districts = { type = district_city value = 5 }
-				} }
-				set_variable = { which = arc_count value = 2 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 6 }
-					num_districts = { type = district_city value = 7 }
-				} }
-				set_variable = { which = arc_count value = 3 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 8 }
-					num_districts = { type = district_city value = 9 }
-				} }
-				set_variable = { which = arc_count value = 4 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 10 }
-					num_districts = { type = district_city value = 11 }
-				} }
-				set_variable = { which = arc_count value = 5 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 12 }
-					num_districts = { type = district_city value = 13 }
-				} }
-				set_variable = { which = arc_count value = 6 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 14 }
-					num_districts = { type = district_city value = 15 }
-				} }
-				set_variable = { which = arc_count value = 7 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 16 }
-					num_districts = { type = district_city value = 17 }
-				} }
-				set_variable = { which = arc_count value = 8 }
-			} else_if = {
-				limit = { OR = {
-					num_districts = { type = district_city value = 18 }
-					num_districts = { type = district_city value = 19 }
-				} }
-				set_variable = { which = arc_count value = 9 }
-			} else_if = {
-				limit = {
-					num_districts = { type = district_city value >= 20 }
-				}
-				set_variable = { which = arc_count value = 10 }
-			}
-
+			### TODO: Make restoring relic worlds actually do something appropriate.
 			clear_non_district_deposits = yes
 			add_deposit = d_former_relic_world
+			
 			change_pc = pc_city
 			set_planet_entity = {
 				entity = "city_planet_entity"
@@ -1075,65 +914,6 @@ decision_arcology_project_relic = {
 						limit = { has_ambient_object_flag = relic_world_debris }
 						destroy_ambient_object = this
 					}
-				}
-			}
-			
-			if = {
-				limit = { check_variable = { which = arc_count value = 1 } }
-				add_district = district_engineering_arcology
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 2 } }
-				while = {
-					count = 2
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 3 } }
-				while = {
-					count = 3
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 4 } }
-				while = {
-					count = 4
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 5 } }
-				while = {
-					count = 5
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 6 } }
-				while = {
-					count = 6
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 7 } }
-				while = {
-					count = 7
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 8 } }
-				while = {
-					count = 8
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 9 } }
-				while = {
-					count = 9
-					add_district = district_engineering_arcology
-				}
-			} else_if = {
-				limit = { check_variable = { which = arc_count value = 10 } }
-				while = {
-					count = 10
-					add_district = district_engineering_arcology
 				}
 			}
 		}

@@ -1,0 +1,964 @@
+# Use weight 0.01 for deposits that don't naturally occur
+# 	- otherwise terraforming problems
+
+## Possible Deposit Variables ##
+# resources, resource and amount
+# potential trigger (planet scope)
+# blocked_modifier - applied to planet
+# constant_modifier - applied to planet always
+# station = station class in orbit to gather
+# blocker_swap_types = {}
+# all_blocker_swap_types = yes/no
+# use_weights_for_blocker_swap_types = yes/no
+# terraforming_swap_types = { }
+# should_swap_deposit_on_terraforming = yes/no
+# all_terraforming_swap_types = yes/no
+# use_weights_for_terraforming_swap_types = yes/no
+
+########################
+### Natural Deposits ###
+########################
+
+d_mineral_striations = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}	
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+	}
+	
+	potential = {
+		is_planet_class = pc_gaia
+	}
+	
+	blocker_swap_types = {
+		d_mineral_striations_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_mineral_fields_active
+		d_veiny_cliffs_active
+		d_mineral_striations_active
+	}
+}
+
+d_veiny_cliffs = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_cold = yes
+		}		
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_alpine
+			is_planet_class = pc_arctic
+			is_planet_class = pc_arid
+			is_planet_class = pc_continental
+			is_planet_class = pc_nuked
+		}
+	}
+	
+	blocker_swap_types = {
+		d_veiny_cliffs_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_mineral_fields_active
+		d_veiny_cliffs_active
+		d_mineral_striations_active
+	}
+}
+
+d_mineral_fields = {
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high	
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_cold = yes
+		}			
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_tropical
+			is_planet_class = pc_savannah
+			is_planet_class = pc_desert
+			is_planet_class = pc_ocean
+			is_planet_class = pc_tundra
+		}
+	}
+	
+	blocker_swap_types = {
+		d_mineral_fields_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_mineral_fields_active
+		d_veiny_cliffs_active
+		d_mineral_striations_active
+	}
+}
+
+d_prosperous_mesa = {
+	time = @retile_rural_exploit_time_med
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_med
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_cold = yes
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_continental
+			is_planet_class = pc_tropical
+			is_planet_class = pc_savannah
+			is_planet_class = pc_desert
+			is_planet_class = pc_gaia
+			is_planet_class = pc_relic
+		}
+	}
+	
+	blocker_swap_types = {
+		d_prosperous_mesa_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_ore_rich_caverns_active
+		d_prosperous_mesa_active
+	}
+}
+
+d_ore_rich_caverns = {
+	time = @retile_rural_exploit_time_med
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_med
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_cold = yes
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_ocean
+			is_planet_class = pc_alpine
+			is_planet_class = pc_arctic
+			is_planet_class = pc_arid
+			is_planet_class = pc_tundra
+			is_planet_class = pc_nuked
+			is_planet_class = pc_gaia
+			is_planet_class = pc_relic
+		}
+	}
+	
+	blocker_swap_types = {
+		d_ore_rich_caverns_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_ore_rich_caverns_active
+		d_prosperous_mesa_active
+	}
+}
+ 
+d_rich_mountain = {
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_low
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_cold = yes
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_continental
+			is_planet_class = pc_desert
+			is_planet_class = pc_alpine
+			is_planet_class = pc_arctic
+			is_planet_class = pc_arid
+			is_planet_class = pc_tundra
+			is_planet_class = pc_gaia
+			is_planet_class = pc_relic
+		}
+	}
+	
+	blocker_swap_types = {
+		d_rich_mountain_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_submerged_ore_veins_active
+		d_rich_mountain_active
+	}
+}
+
+d_submerged_ore_veins = {
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_low
+		modifier = {
+			factor = @retile_planet_type_bonus
+			is_cold = yes
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_ocean
+			is_planet_class = pc_tropical
+			is_planet_class = pc_savannah
+			is_planet_class = pc_nuked
+			is_planet_class = pc_gaia
+			is_planet_class = pc_relic
+		}
+	}
+	
+	blocker_swap_types = {
+		d_submerged_ore_veins_active
+	}
+	
+	use_weights_for_terraforming_swap_types = yes
+	should_swap_deposit_on_terraforming = yes
+	terraforming_swap_types = {
+		d_submerged_ore_veins
+		d_rich_mountain
+	}
+}
+
+##########################
+##### Event Deposits #####
+##########################
+
+d_metal_boneyard = {
+	time = @retile_rural_exploit_time_ultra
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_ultra
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_bad_ultra
+		planet_jobs_society_research_produces_mult = 0.10
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_metal_boneyard_active
+	}
+}
+
+d_junk_wastes = {
+	time = @retile_rural_exploit_time_high
+	icon = d_organic_landfill
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_bad_high
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_junk_wastes_active
+	}
+}
+
+d_ancient_mining_site = {
+	time = @retile_rural_exploit_time_ultra2
+	icon = d_building_complex
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_ultra2
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_bad_high
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_ancient_mining_site_active
+	}
+}
+
+d_impact_crater = {
+	time = @retile_rural_exploit_time_high
+	icon = d_crater
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_bad_high
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_impact_crater_active
+	}
+}
+
+d_odd_factory_wreckage_2 = {
+	time = @retile_rural_exploit_time_med
+	icon = d_city_ruins
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_bad_med
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_odd_factory_wreckage_2_active
+	}
+}
+
+d_underground_vault_2 = {
+	time = @retile_rural_exploit_time_med
+	icon = d_bunker_door
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_med
+		}
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_underground_vault_2_active
+	}
+}
+
+d_worm_mine = {
+	time = @retile_rural_exploit_time_ultra
+	icon = d_crystalline_caverns
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_ultra
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_ultra
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_worm_mine_active
+	}
+}
+
+d_underground_mine = {
+	time = @retile_rural_exploit_time_high
+	icon = d_crystalline_caverns
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = 1
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_underground_mine_active
+	}
+}
+
+d_nanosands = {
+	time = @retile_rural_exploit_time_med
+	icon = d_dust_desert
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_med
+		}
+	}
+	
+	planet_modifier = {
+		planet_max_districts_add = 1
+		planet_amenities_add = @retile_rural_eco_clean_med
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_nanosands_active
+	}
+}
+
+#########################
+### Starting Deposits ###
+#########################
+
+d_mauritanian_security_zone = {
+	icon = d_quarantine_zone
+	time = @retile_rural_exploit_time_low
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_low
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low
+	}	
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_mauritanian_security_zone_active
+	}
+}
+
+d_mesopotamian_urban_corridor = {
+	icon = d_marvelous_oasis
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}	
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_mesopotamian_urban_corridor_active
+	}
+}
+
+d_great_albertan_crater = {
+	icon = d_crater
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}	
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_great_albertan_crater_active
+	}
+}
+
+#######################
+### Retile Deposits ###
+#######################
+
+retile_mastery_of_nature_minerals = {
+	time = @retile_rural_exploit_time_high
+	icon = retile_mastery_of_nature
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		retile_mastery_of_nature_minerals_active
+	}
+}
+
+retile_module_mine = {
+	time = @retile_rural_exploit_time_high
+	category = deposit_cat_minerals
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			minerals = @retile_rural_exploit_cost_high
+		}
+	}
+	
+	ai_weight = {
+		weight = -1
+		modifier = {
+			weight = 100
+			retile_ready_minerals = yes
+		}
+		modifier = {	# minerals emergency!
+			weight = 1000
+			owner = { has_monthly_income = { resource = minerals value < 25 } }
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+	
+	blocker_swap_types = {
+		retile_module_mine_active
+	}
+}

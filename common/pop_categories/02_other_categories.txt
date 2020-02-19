@@ -46,6 +46,29 @@ purge = {
 		influence = 10
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.01
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -75,6 +98,29 @@ robot_servant = {
 	rank = 0
 	display_category = worker
 	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.01
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -150,6 +196,29 @@ slave = {
 		weight = 10
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.01
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -396,6 +465,11 @@ bio_trophy = {
 		influence = 5
 	}
 	
+	triggered_planet_modifier = {
+		potential = { is_organic_species = yes }
+		pop_growth_speed_reduction = 0.05
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -481,6 +555,20 @@ criminal = {
 	triggered_planet_modifier = {
 		potential = {
 			can_generate_trade_value = yes
+			has_trait = trait_thrifty
+		}
+		trade_value_add = @trade_value_thrifty
+	}
+	triggered_planet_modifier = {
+		potential = {
+			can_generate_trade_value = yes
+			has_trait = trait_nuumismatic_administration
+		}
+		trade_value_add = @trade_value_nuumismatic_administration
+	}
+	triggered_planet_modifier = {
+		potential = {
+			can_generate_trade_value = yes
 			prosperity_gospel_check_trigger = yes
 		}
 		trade_value_add = @trade_value_prosperity_gospel
@@ -538,6 +626,29 @@ criminal = {
 		}
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.01
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -861,6 +972,29 @@ assimilation = {
 		influence = 10
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.01
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -946,6 +1080,29 @@ deviant_drone = {
 		}
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.01
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -1272,6 +1429,29 @@ corrupt_drone = {
 		}
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.01
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -1569,6 +1749,29 @@ precursor = {
 		}
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.01
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -1728,6 +1931,29 @@ xeno_ward = {
 	rank = 0
 	clothes_texture_index = 3
 	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.01
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -1808,6 +2034,29 @@ pre_sapients = {
 	}
 	weight = {
 		weight = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.015
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { OR = {
+				is_planet_class = pc_city
+				is_planet_class = pc_ringworld_habitable
+			} }
+		}
+		pop_growth_speed_reduction = 0.01
 	}
 
 	triggered_planet_modifier = {	# Dirty Pop!
