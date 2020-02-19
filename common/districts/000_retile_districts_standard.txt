@@ -1,3 +1,53 @@
+district_housing = {
+	base_buildtime = @retile_city_build_time
+	icon = district_housing
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			planet_housing_add = 2
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
 district_clerks = {
 	base_buildtime = @retile_city_build_time
 	icon = district_clerk
@@ -493,56 +543,6 @@ district_custodians = {
 		}
 		modifier = {
 			job_custodian_add = 1
-		}
-	}
-	
-	ai_weight = {
-		weight = 1
-	}
-}
-
-district_housing = {
-	base_buildtime = @retile_city_build_time
-	icon = district_housing
-	is_capped_by_modifier = no
-	
-	show_on_uncolonized = {
-		exists = from
-		from = { is_gestalt = no }
-	}
-
-	potential = {
-		exists = owner
-		owner = { is_gestalt = no }
-		NOR = {
-			has_modifier = resort_colony
-			has_modifier = penal_colony
-			has_modifier = slave_colony
-		}
-	}
-	
-	resources = {
-		category = planet_districts_cities
-		cost = {
-			minerals = @retile_city_cost
-		}
-		upkeep = {
-			energy = @retile_city_upkeep
-			consumer_goods = @retile_city_upkeep_supplies
-		}
-	}
-	
-	planet_modifier = {
-		planet_housing_add = 5
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_planet_class = pc_city
-			exists = owner
-			owner = { has_ascension_perk = ap_arcology_project }
-		}
-		modifier = {
-			planet_housing_add = 2
 		}
 	}
 	
