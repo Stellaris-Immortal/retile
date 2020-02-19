@@ -20,8 +20,11 @@ building_autochthon_monument = {
 		NOT = { has_modifier = penal_colony }
 		owner = { 
 			is_gestalt = no
-			is_spiritualist = no
 			is_megacorp = no
+			NOR = {
+				has_valid_civic = civic_exalted_priesthood
+				has_valid_civic = civic_gospel_of_the_masses
+			}
 		}					
 	}
 	
@@ -33,8 +36,9 @@ building_autochthon_monument = {
 			owner = { 
 				OR = {
 					is_gestalt = yes
-					is_spiritualist = yes
 					is_megacorp = yes
+					has_valid_civic = civic_exalted_priesthood
+					has_valid_civic = civic_gospel_of_the_masses
 				}
 			}
 		}
@@ -67,8 +71,11 @@ building_autochthon_monument = {
 	
 	show_tech_unlock_if = {
 		is_gestalt = no
-		is_spiritualist = no
 		is_megacorp = no
+		NOR = {
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
+		}
 	}
 	
 	country_modifier = {
@@ -101,8 +108,9 @@ building_heritage_site = {
 			owner = { 
 				OR = {
 					is_gestalt = yes
-					is_spiritualist = yes
 					is_megacorp = yes
+					has_valid_civic = civic_exalted_priesthood
+					has_valid_civic = civic_gospel_of_the_masses
 				}
 			}
 		}
@@ -131,8 +139,11 @@ building_heritage_site = {
 	
 	show_tech_unlock_if = {
 		is_gestalt = no
-		is_spiritualist = no
 		is_megacorp = no
+		NOR = {
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
+		}
 	}
 	
 	upgrades = {
@@ -169,8 +180,9 @@ building_hypercomms_forum = {
 			owner = { 
 				OR = {
 					is_gestalt = yes
-					is_spiritualist = yes
 					is_megacorp = yes
+					has_valid_civic = civic_exalted_priesthood
+					has_valid_civic = civic_gospel_of_the_masses
 				}
 			}
 		}
@@ -199,8 +211,11 @@ building_hypercomms_forum = {
 	
 	show_tech_unlock_if = {
 		is_gestalt = no
-		is_spiritualist = no
 		is_megacorp = no
+		NOR = {
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
+		}
 	}
 	
 	country_modifier = {
@@ -230,7 +245,12 @@ building_temple = {
 		exists = owner
 		NOT = { has_modifier = slave_colony }
 		NOT = { has_modifier = penal_colony }
-		owner = { is_spiritualist = yes }
+		owner = {
+			OR = {
+				has_valid_civic = civic_exalted_priesthood
+				has_valid_civic = civic_gospel_of_the_masses
+			}
+		}
 	}
 	
 	destroy_trigger = {
@@ -238,7 +258,12 @@ building_temple = {
 			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
-			owner = { is_spiritualist = no }
+			owner = {
+				NOR = {
+					has_valid_civic = civic_exalted_priesthood
+					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
 		}
 	}
 	
@@ -268,13 +293,24 @@ building_temple = {
 	}
 	
 	show_tech_unlock_if = {
-		is_spiritualist = yes
+		OR = {
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
+		}
 	}
 	
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.15
-		pop_ethic_spiritualist_attraction_mult = 0.15
 	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_valid_civic = civic_exalted_priesthood } }
+		pop_government_ethic_attraction = 0.15
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_valid_civic = civic_gospel_of_the_masses } }
+		pop_ethic_materialist_attraction_mult = 0.15
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 1000
 	}
@@ -302,7 +338,12 @@ building_holotemple = {
 			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
-			owner = { is_spiritualist = no }
+			owner = {
+				NOR = {
+					has_valid_civic = civic_exalted_priesthood
+					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
 		}
 	}
 	
@@ -328,7 +369,10 @@ building_holotemple = {
 	}
 	
 	show_tech_unlock_if = {
-		is_spiritualist = yes
+		OR = {
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
+		}
 	}
 	
 	upgrades = {
@@ -337,8 +381,16 @@ building_holotemple = {
 	
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.15
-		pop_ethic_spiritualist_attraction_mult = 0.15
 	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_valid_civic = civic_exalted_priesthood } }
+		pop_government_ethic_attraction = 0.15
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_valid_civic = civic_gospel_of_the_masses } }
+		pop_ethic_materialist_attraction_mult = 0.15
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
@@ -366,7 +418,12 @@ building_sacred_nexus = {
 			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
-			owner = { is_spiritualist = no }
+			owner = {
+				NOR = {
+					has_valid_civic = civic_exalted_priesthood
+					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
 		}
 	}
 	
@@ -392,13 +449,24 @@ building_sacred_nexus = {
 	}
 	
 	show_tech_unlock_if = {
-		is_spiritualist = yes
+		OR = {
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
+		}
 	}
 	
 	planet_modifier = {
 		planet_jobs_unity_produces_mult = 0.15
-		pop_ethic_spiritualist_attraction_mult = 0.15
 	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_valid_civic = civic_exalted_priesthood } }
+		pop_government_ethic_attraction = 0.15
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_valid_civic = civic_gospel_of_the_masses } }
+		pop_ethic_materialist_attraction_mult = 0.15
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
@@ -1113,8 +1181,11 @@ building_corporate_monument = {
 		NOT = { has_modifier = slave_colony }
 		NOT = { has_modifier = penal_colony }
 		owner = {
-			is_spiritualist = no
 			is_megacorp = yes
+			NOR = {
+				has_valid_civic = civic_exalted_priesthood
+				has_valid_civic = civic_gospel_of_the_masses
+			}
 		}					
 	}
 	
@@ -1125,8 +1196,9 @@ building_corporate_monument = {
 			has_modifier = penal_colony
 			owner = { 
 				OR = {
-					is_spiritualist = yes
 					is_megacorp = no
+					has_valid_civic = civic_exalted_priesthood
+					has_valid_civic = civic_gospel_of_the_masses
 				}
 			}
 		}
@@ -1158,8 +1230,11 @@ building_corporate_monument = {
 	}
 	
 	show_tech_unlock_if = {
-		is_spiritualist = no
 		is_megacorp = yes
+		NOR = {
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
+		}
 	}
 	
 	country_modifier = {
@@ -1192,8 +1267,9 @@ building_corporate_site = {
 			has_modifier = penal_colony
 			owner = { 
 				OR = {
-					is_spiritualist = yes
 					is_megacorp = no
+					has_valid_civic = civic_exalted_priesthood
+					has_valid_civic = civic_gospel_of_the_masses
 				}
 			}
 		}
@@ -1221,8 +1297,11 @@ building_corporate_site = {
 	}
 	
 	show_tech_unlock_if = {
-		is_spiritualist = no
 		is_megacorp = yes
+		NOR = {
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
+		}
 	}
 	
 	upgrades = {
@@ -1259,8 +1338,9 @@ building_corporate_forum = {
 			has_modifier = penal_colony
 			owner = { 
 				OR = {
-					is_spiritualist = yes
 					is_megacorp = no
+					has_valid_civic = civic_exalted_priesthood
+					has_valid_civic = civic_gospel_of_the_masses
 				}
 			}
 		}
@@ -1288,8 +1368,11 @@ building_corporate_forum = {
 	}
 	
 	show_tech_unlock_if = {
-		is_spiritualist = no
 		is_megacorp = yes
+		NOR = {
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
+		}
 	}
 	
 	country_modifier = {
