@@ -9,9 +9,8 @@
 
 ##### Regular empire
 building_autochthon_monument = {
-	base_buildtime = 240
+	base_buildtime = 360
 	base_cap_amount = 1
-
 	category = unity
 	can_be_disabled = no
 	
@@ -26,21 +25,9 @@ building_autochthon_monument = {
 		}					
 	}
 	
-	allow = {
-		retile_urban = yes
-		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } AND = {
-			years_passed > 5
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				has_planet_flag = ai_research_arcology
-			}
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
+			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -49,11 +36,6 @@ building_autochthon_monument = {
 					is_spiritualist = yes
 					is_megacorp = yes
 				}
-			}
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -71,8 +53,7 @@ building_autochthon_monument = {
 			minerals = @cost_low
 		}
 		upkeep = {
-			minerals = 0
-			energy = 10
+			energy = 1
 		}
 	}
 	
@@ -93,26 +74,6 @@ building_autochthon_monument = {
 	country_modifier = {
 		country_resource_max_add = 1000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_custodian_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_maintenance_drone_add = 1
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -122,49 +83,19 @@ building_autochthon_monument = {
 	}
 
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# Safe to advance our empire?
-			weight = 100
-			retile_advanced_economy = yes
-		}
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
 building_heritage_site = {
-	base_buildtime = 360
+	base_buildtime = 480
 	can_build = no
-
 	category = unity
 	can_be_disabled = no
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_med }
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
+			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -173,11 +104,6 @@ building_heritage_site = {
 					is_spiritualist = yes
 					is_megacorp = yes
 				}
-			}
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -193,11 +119,9 @@ building_heritage_site = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_med
-			rare_crystals = @cost_med
 		}
 		upkeep = {
-			minerals = 0
-			energy = 25
+			energy = 2
 		}
 	}
 	
@@ -218,26 +142,6 @@ building_heritage_site = {
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -246,45 +150,20 @@ building_heritage_site = {
 		text = retile_unity_2_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
 building_hypercomms_forum = {
-	base_buildtime = 480
+	base_buildtime = 600
 	can_build = no
-
 	category = unity
 	can_be_disabled = no
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_high }
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
+			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -293,11 +172,6 @@ building_hypercomms_forum = {
 					is_spiritualist = yes
 					is_megacorp = yes
 				}
-			}
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -313,11 +187,9 @@ building_hypercomms_forum = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_high
-			rare_crystals = @cost_high
 		}
 		upkeep = {
-			minerals = 0
-			energy = 50
+			energy = 3
 		}
 	}
 	
@@ -334,26 +206,6 @@ building_hypercomms_forum = {
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 3
-			job_custodian_add = 3
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 3
-			job_maintenance_drone_add = 3
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -362,31 +214,15 @@ building_hypercomms_forum = {
 		text = retile_unity_3_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
 ##### Spiritualists
 building_temple = {
-	base_buildtime = 240
+	base_buildtime = 360
 	base_cap_amount = 1
-
 	category = unity
 	can_be_disabled = no
 	
@@ -397,26 +233,12 @@ building_temple = {
 		owner = { is_spiritualist = yes }
 	}
 	
-	allow = {
-		retile_urban = yes
-		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_research_arcology
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
+			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { is_spiritualist = no }
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
 	}
 	
@@ -433,8 +255,7 @@ building_temple = {
 			minerals = @cost_low
 		}
 		upkeep = {
-			minerals = 0
-			energy = 10
+			energy = 1
 		}
 	}
 	
@@ -457,26 +278,6 @@ building_temple = {
 	country_modifier = {
 		country_resource_max_add = 1000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_custodian_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_maintenance_drone_add = 1
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -486,61 +287,22 @@ building_temple = {
 	}
 
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# Safe to advance our empire?
-			weight = 200	# spiritualists like unity more...
-			retile_advanced_economy = yes
-		}
-		modifier = {
-			weight = 0.5
-			owner = { retile_tech_weak = yes }
-		}
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
 building_holotemple = {
-	base_buildtime = 360
+	base_buildtime = 480
 	can_build = no
-
 	category = unity
 	can_be_disabled = no
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_med }
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
+			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { is_spiritualist = no }
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
 	}
 	
@@ -555,11 +317,9 @@ building_holotemple = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_med
-			rare_crystals = @cost_med
 		}
 		upkeep = {
-			minerals = 0
-			energy = 25
+			energy = 2
 		}
 	}
 	
@@ -582,26 +342,6 @@ building_holotemple = {
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -610,53 +350,23 @@ building_holotemple = {
 		text = retile_unity_2_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
 building_sacred_nexus = {
-	base_buildtime = 480
+	base_buildtime = 600
 	can_build = no
-
 	category = unity
 	can_be_disabled = no
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_high }
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
+			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { is_spiritualist = no }
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
 	}
 	
@@ -671,11 +381,9 @@ building_sacred_nexus = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_high
-			rare_crystals = @cost_high
 		}
 		upkeep = {
-			minerals = 0
-			energy = 50
+			energy = 3
 		}
 	}
 	
@@ -694,26 +402,6 @@ building_sacred_nexus = {
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 3
-			job_custodian_add = 3
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 3
-			job_maintenance_drone_add = 3
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -722,23 +410,8 @@ building_sacred_nexus = {
 		text = retile_unity_3_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -767,7 +440,7 @@ building_hive_node = {
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			retile_urban = no
+			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
 				is_planet_class = pc_city
@@ -815,8 +488,8 @@ building_hive_node = {
 			owner = { is_gestalt = no }
 		}
 		modifier = {
-			planet_housing_add = 1
-			job_custodian_add = 1
+			#planet_housing_add = 1
+			#job_custodian_add = 1
 		}
 	}
 	triggered_planet_modifier = {
@@ -825,7 +498,7 @@ building_hive_node = {
 			owner = { is_gestalt = yes }
 		}
 		modifier = {
-			planet_housing_add = 1
+			#planet_housing_add = 1
 			job_maintenance_drone_add = 1
 		}
 	}
@@ -881,7 +554,7 @@ building_hive_cluster = {
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			retile_urban = no
+			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
 				is_planet_class = pc_city
@@ -930,8 +603,8 @@ building_hive_cluster = {
 			owner = { is_gestalt = no }
 		}
 		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 2
+			#planet_housing_add = 2
+			#job_custodian_add = 2
 		}
 	}
 	triggered_planet_modifier = {
@@ -940,7 +613,7 @@ building_hive_cluster = {
 			owner = { is_gestalt = yes }
 		}
 		modifier = {
-			planet_housing_add = 2
+			#planet_housing_add = 2
 			job_maintenance_drone_add = 2
 		}
 	}
@@ -991,7 +664,7 @@ building_hive_confluence = {
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			retile_urban = no
+			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
 				is_planet_class = pc_city
@@ -1036,8 +709,8 @@ building_hive_confluence = {
 			owner = { is_gestalt = no }
 		}
 		modifier = {
-			planet_housing_add = 3
-			job_custodian_add = 3
+			#planet_housing_add = 3
+			#job_custodian_add = 3
 		}
 	}
 	triggered_planet_modifier = {
@@ -1046,7 +719,7 @@ building_hive_confluence = {
 			owner = { is_gestalt = yes }
 		}
 		modifier = {
-			planet_housing_add = 3
+			#planet_housing_add = 3
 			job_maintenance_drone_add = 3
 		}
 	}
@@ -1110,7 +783,7 @@ building_uplink_node = {
 				is_machine_empire = no
 				has_valid_civic = civic_machine_servitor
 			} }
-			retile_urban = no
+			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
 				is_planet_class = pc_city
@@ -1158,8 +831,8 @@ building_uplink_node = {
 			owner = { is_gestalt = no }
 		}
 		modifier = {
-			planet_housing_add = 1
-			job_custodian_add = 1
+			#planet_housing_add = 1
+			#job_custodian_add = 1
 		}
 	}
 	triggered_planet_modifier = {
@@ -1168,7 +841,7 @@ building_uplink_node = {
 			owner = { is_gestalt = yes }
 		}
 		modifier = {
-			planet_housing_add = 1
+			#planet_housing_add = 1
 			job_maintenance_drone_add = 1
 		}
 	}
@@ -1228,7 +901,7 @@ building_network_junction = {
 				is_machine_empire = no
 				has_valid_civic = civic_machine_servitor
 			} }
-			retile_urban = no
+			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
 				is_planet_class = pc_city
@@ -1276,8 +949,8 @@ building_network_junction = {
 			owner = { is_gestalt = no }
 		}
 		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 2
+			#planet_housing_add = 2
+			#job_custodian_add = 2
 		}
 	}
 	triggered_planet_modifier = {
@@ -1286,7 +959,7 @@ building_network_junction = {
 			owner = { is_gestalt = yes }
 		}
 		modifier = {
-			planet_housing_add = 2
+			#planet_housing_add = 2
 			job_maintenance_drone_add = 2
 		}
 	}
@@ -1341,7 +1014,7 @@ building_system_conflux = {
 				is_machine_empire = no
 				has_valid_civic = civic_machine_servitor
 			} }
-			retile_urban = no
+			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
 				is_planet_class = pc_city
@@ -1385,8 +1058,8 @@ building_system_conflux = {
 			owner = { is_gestalt = no }
 		}
 		modifier = {
-			planet_housing_add = 3
-			job_custodian_add = 3
+			#planet_housing_add = 3
+			#job_custodian_add = 3
 		}
 	}
 	triggered_planet_modifier = {
@@ -1395,7 +1068,7 @@ building_system_conflux = {
 			owner = { is_gestalt = yes }
 		}
 		modifier = {
-			planet_housing_add = 3
+			#planet_housing_add = 3
 			job_maintenance_drone_add = 3
 		}
 	}
@@ -1429,10 +1102,9 @@ building_system_conflux = {
 
 ##### Megacorps
 building_corporate_monument = {
-	base_buildtime = 240
+	base_buildtime = 360
 	base_cap_amount = 1
 	icon = building_autochthon_monument
-
 	category = unity
 	can_be_disabled = no
 
@@ -1446,21 +1118,9 @@ building_corporate_monument = {
 		}					
 	}
 	
-	allow = {
-		retile_urban = yes
-		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } AND = {
-			years_passed > 5
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				has_planet_flag = ai_research_arcology
-			}
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
+			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -1468,11 +1128,6 @@ building_corporate_monument = {
 					is_spiritualist = yes
 					is_megacorp = no
 				}
-			}
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -1490,8 +1145,7 @@ building_corporate_monument = {
 			minerals = @cost_low
 		}
 		upkeep = {
-			minerals = 0
-			energy = 10
+			energy = 1
 		}
 	}
 	
@@ -1511,26 +1165,6 @@ building_corporate_monument = {
 	country_modifier = {
 		country_resource_max_add = 1000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_custodian_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_maintenance_drone_add = 1
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -1540,50 +1174,20 @@ building_corporate_monument = {
 	}
 
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# Safe to advance our empire?
-			weight = 100
-			retile_advanced_economy = yes
-		}
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
 building_corporate_site = {
-	base_buildtime = 360
+	base_buildtime = 480
 	can_build = no
 	icon = building_heritage_site
-
 	category = unity
 	can_be_disabled = no
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_med }
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
+			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -1591,11 +1195,6 @@ building_corporate_site = {
 					is_spiritualist = yes
 					is_megacorp = no
 				}
-			}
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -1611,11 +1210,9 @@ building_corporate_site = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_med
-			rare_crystals = @cost_med
 		}
 		upkeep = {
-			minerals = 0
-			energy = 25
+			energy = 2
 		}
 	}
 	
@@ -1635,26 +1232,6 @@ building_corporate_site = {
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -1663,46 +1240,21 @@ building_corporate_site = {
 		text = retile_unity_2_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
 building_corporate_forum = {
-	base_buildtime = 480
+	base_buildtime = 600
 	can_build = no
 	icon = building_hypercomms_forum
-
 	category = unity
 	can_be_disabled = no
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_high }
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
+			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -1710,11 +1262,6 @@ building_corporate_forum = {
 					is_spiritualist = yes
 					is_megacorp = no
 				}
-			}
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
 			}
 		}
 	}
@@ -1730,11 +1277,9 @@ building_corporate_forum = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_high
-			rare_crystals = @cost_high
 		}
 		upkeep = {
-			minerals = 0
-			energy = 50
+			energy = 3
 		}
 	}
 	
@@ -1750,26 +1295,6 @@ building_corporate_forum = {
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 3
-			job_custodian_add = 3
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 3
-			job_maintenance_drone_add = 3
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -1778,22 +1303,7 @@ building_corporate_forum = {
 		text = retile_unity_3_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }

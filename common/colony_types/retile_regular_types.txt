@@ -621,23 +621,32 @@ col_generator_world = {
 	weight_modifier = {
 		modifier = {
 			add = 1
-			num_districts = { type = district_generator value > 0 }
+			count_pops = {
+				limit = { has_job = job_technician }
+				count > 0
+			}
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_generator value > 1 }
+			count_pops = {
+				limit = { has_job = job_technician }
+				count > 1
+			}
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_generator value > 2 }
+			count_pops = {
+				limit = { has_job = job_technician }
+				count > 2
+			}
 		}
 		modifier = {
 			add = 1
-			has_building = building_energy_grid
+			has_building = building_energy_2
 		}
 		modifier = {
 			add = 2
-			has_building = building_energy_nexus
+			has_building = building_energy_3
 		}
 	}
 }
@@ -674,23 +683,32 @@ col_mining_world = {
 	weight_modifier = {
 		modifier = {
 			add = 1
-			num_districts = { type = district_mining value > 0 }
+			count_pops = {
+				limit = { has_job = job_miner }
+				count > 0
+			}
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_mining value > 1 }
+			count_pops = {
+				limit = { has_job = job_miner }
+				count > 1
+			}
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_mining value > 2 }
+			count_pops = {
+				limit = { has_job = job_miner }
+				count > 2
+			}
 		}
 		modifier = {
 			add = 1
-			has_building = building_mineral_purification_plant
+			has_building = building_mineral_2
 		}
 		modifier = {
 			add = 2
-			has_building = building_mineral_purification_hub
+			has_building = building_mineral_3
 		}
 	}
 }
@@ -730,23 +748,32 @@ col_farming_world = {
 	weight_modifier = {
 		modifier = {
 			add = 1
-			num_districts = { type = district_farming value > 0 }
+			count_pops = {
+				limit = { has_job = job_farmer }
+				count > 0
+			}
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_farming value > 1 }
+			count_pops = {
+				limit = { has_job = job_farmer }
+				count > 1
+			}
 		}
 		modifier = {
 			add = 1
-			num_districts = { type = district_farming value > 2 }
+			count_pops = {
+				limit = { has_job = job_farmer }
+				count > 2
+			}
 		}
 		modifier = {
 			add = 1
-			has_building = building_food_processing_facility
+			has_building = building_food_2
 		}
 		modifier = {
 			add = 2
-			has_building = building_food_processing_center
+			has_building = building_food_3
 		}
 	}
 }

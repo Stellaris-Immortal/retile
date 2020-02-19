@@ -1,19 +1,7 @@
 ### Seems to be here to allow AI to only build certain buildings
 ### if the world doesn't have any REMAINING rural district deposits.
 buildings_simple_allow = {
-	planet = {
-		OR = {
-			AND = {
-				num_free_districts = { type = district_mining value = 0 }
-				num_free_districts = { type = district_generator value = 0 }
-				num_free_districts = { type = district_farming value = 0 }
-			}
-			AND = {
-				exists = owner
-				owner = { is_ai = no }
-			}
-		}
-	}
+	always = yes
 }
 
 ### Don't build things if the planet is in turmoil...???
@@ -63,9 +51,8 @@ country_uses_food_old = {
 					is_lithoid = no
 				}
 				any_owned_planet = {
-					OR = {
-						num_districts = { type = district_farming value > 0 }
-						num_districts = { type = district_rw_farming value > 0 }
+					any_deposit = {
+						has_deposit_category = deposit_cat_food_active
 					}
 				}
 			}
