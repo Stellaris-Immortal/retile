@@ -140,7 +140,7 @@ building_capital = {
 			job_roboticist_add = 1
 		}
 	}
-
+  
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -149,17 +149,6 @@ building_capital = {
 		modifier = {
 			planet_housing_add = 1
 			job_roboticist_add = 1
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_ascension_perk = ap_land_ethic }
-		}
-		modifier = {
-			job_soldier_add = -1
-			job_ranger_add = 1
 		}
 	}
 
@@ -308,7 +297,7 @@ building_major_capital = {
 	
 	triggered_planet_modifier = {
 		potential = {
-			exists = owner
+			exists = 
 			owner = { is_mechanical_empire = yes }
 		}
 		modifier = {
@@ -332,6 +321,14 @@ building_major_capital = {
 		potential = {
 			exists = owner
 			owner = { has_policy_flag = criminal_military_police }
+			owner = { OR = {
+				has_civic = civic_mechanists
+				is_mechanical_empire = yes
+			} }
+		}
+		modifier = {
+			job_clerk_add = -1
+			job_roboticist_add = 1
 		}
 		job_enforcer_add = -1
 		job_soldier_add = 1
@@ -520,22 +517,11 @@ building_system_capital = {
 		job_enforcer_add = -1
 		job_soldier_add = 1
 	}
-	
+  
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_ascension_perk = ap_land_ethic }
-		}
-		modifier = {
-			job_soldier_add = -1
-			job_ranger_add = 1
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_byzantine_bureaucracy }					
+			owner = { has_civic = civic_byzantine_bureaucracy }
 		}
 		modifier = {
 			job_administrator_add = -1
@@ -761,17 +747,6 @@ building_galactic_capital = {
 		}
 		job_enforcer_add = -1
 		job_soldier_add = 1
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_ascension_perk = ap_land_ethic }
-		}
-		modifier = {
-			job_soldier_add = -1
-			job_ranger_add = 1
-		}
 	}
 
 	triggered_planet_modifier = {
