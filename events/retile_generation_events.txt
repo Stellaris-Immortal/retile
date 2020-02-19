@@ -1015,3 +1015,31 @@ country_event = {
 		}
 	}
 }
+
+# Terraforming complete
+planet_event = {
+	id = retile_generate.100
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		limit = { OR = {
+			is_planet_class = pc_desert
+			is_planet_class = pc_arid
+			is_planet_class = pc_savannah
+			is_planet_class = pc_ocean
+			is_planet_class = pc_tropical
+			is_planet_class = pc_continental
+			is_planet_class = pc_arctic
+			is_planet_class = pc_tundra
+			is_planet_class = pc_alpine
+			is_planet_class = pc_gaia
+			is_planet_class = pc_nuked
+		}
+	}
+
+	immediate = {
+		reroll_deposits = yes
+	}
+}
