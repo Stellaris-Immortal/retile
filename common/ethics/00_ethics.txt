@@ -1860,12 +1860,247 @@ ethic_pacifist = {
 	}
 }
 
-ethic_fanatic_spiritualist = {
-	cost = 2 
+ethic_fanatic_materialist = {
+	cost = 2
 	category = "spi"
 	category_value = 0
 	
+	regular_variant = ethic_materialist
+	
+	use_for_pops = no
+	
+	tags = {
+		
+	}	
+	
+	country_modifier = {
+		planet_jobs_upkeep_mult = -0.20
+		country_physics_tech_research_speed = 0.20
+	}
+	
+	random_weight = {
+		value = 150
+	}
+}
+
+ethic_materialist = {
+	cost = 1
+	category = "spi"
+	category_value = 1
+	
+	fanatic_variant = ethic_fanatic_materialist
+	
+	tags = {
+		
+	}			
+	
+	country_modifier = {
+		planet_jobs_upkeep_mult = -0.10
+		country_physics_tech_research_speed = 0.10
+	}	
+	
+	random_weight = {
+		value = 100
+	}
+	
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_MATERIALIST_POS
+		trigger = {
+			OR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
+		}
+	}
+	
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_FACTION_POS
+		trigger = {
+			NOR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
+			has_faction = technologist
+		}		
+	}	
+	
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_MECHANIST_POS
+		trigger = {
+			has_valid_civic = civic_mechanists
+		}
+	}
+	
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_RULER_FACTION_POS
+		trigger = {
+			exists = ruler
+			ruler = { leader_of_faction = technologist }
+		}		
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_CYBORGS_POS
+		trigger = {
+			any_owned_planet = {
+				any_owned_pop = {
+					has_trait = trait_cybernetic
+				}
+			}
+		}
+	}	
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_MATERIALIST_RESEARCH_POS
+		trigger = {
+			any_relation = {
+				root = { has_research_agreement = prev }
+				OR = {
+					has_ethic = ethic_materialist
+					has_ethic = ethic_fanatic_materialist
+				}				
+			}
+		}
+	}	
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_NATURAL_SCIENTISTS_POS
+		trigger = {
+			any_owned_planet = {
+				any_owned_pop = {
+					OR = {
+						has_trait = "trait_natural_sociologists"
+						has_trait = "trait_natural_engineers"
+						has_trait = "trait_natural_physicists"		
+					}
+				}
+			}
+		}
+	}		
+
+	country_attraction = {
+		value = 1
+		modifier = {
+			factor = 0
+			NOR = {
+				is_country_type = default
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+				AND = {
+					is_country_type = primitive
+					capital_scope = {
+						has_observation_outpost = yes
+						observation_outpost = {
+							has_mission = native_indoctrination		
+						}
+						observation_outpost_owner = { 
+							OR = {
+								has_ethic = ethic_fanatic_materialist
+								has_ethic = ethic_materialist
+							}							
+						}				
+					}
+				}
+			}
+		}
+		# Effects of indoctrination mission
+		modifier = {
+			factor = 20
+			is_country_type = primitive
+			capital_scope = {
+				has_observation_outpost = yes
+				observation_outpost = {
+					has_mission = native_indoctrination		
+				}
+				observation_outpost_owner = { has_ethic = ethic_fanatic_materialist }
+			}
+		}
+		modifier = {
+			factor = 10
+			is_country_type = primitive
+			capital_scope = {
+				has_observation_outpost = yes
+				observation_outpost = {
+					has_mission = native_indoctrination		
+				}
+				observation_outpost_owner = { has_ethic = ethic_materialist }
+			}
+		}			
+		modifier = {
+			factor = 2
+			NOR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
+			has_faction = technologist
+		}
+		modifier = {
+			factor = 1.5
+			is_country_type = default
+			exists = ruler
+			ruler = { leader_of_faction = technologist }				
+		}		
+		modifier = {
+			factor = 2
+			has_ethic = ethic_materialist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_materialist
+		}
+		modifier = {
+			factor = 1.25
+			has_valid_civic = civic_mechanists
+		}				
+		modifier = {
+			factor = 1.33
+			any_relation = {
+				root = { has_research_agreement = prev }
+				OR = {
+					has_ethic = ethic_materialist
+					has_ethic = ethic_fanatic_materialist
+				}				
+			}
+		}		
+	}
+	
+	# from = planet
+	pop_attraction = {
+		value = 1	
+		modifier = {
+			factor = 0
+			has_trait = trait_hive_mind
+		}	
+		modifier = {
+			factor = 0
+			OR = {
+				#has_job = priest
+				has_job = high_priest
+			}			
+		}
+		modifier = {
+			factor = 1.25
+			has_trait = "trait_natural_engineers"
+		}
+		modifier = {
+			factor = 1.25
+			has_trait = "trait_natural_sociologists"
+		}
+		modifier = {
+			factor = 1.25
+			has_trait = "trait_natural_physicists"
+		}	
+	}	
+}
+
+ethic_fanatic_spiritualist = {
+	cost = 2 
+	category = "spi"
+	category_value = 4
+	
 	regular_variant = ethic_spiritualist
+	
+	category_opposite = yes
 	
 	use_for_pops = no
 
@@ -1886,9 +2121,11 @@ ethic_fanatic_spiritualist = {
 ethic_spiritualist = {
 	cost = 1
 	category = "spi"
-	category_value = 1
+	category_value = 3
 	
 	fanatic_variant = ethic_fanatic_spiritualist
+	
+	category_opposite = yes
 	
 	tags = {
 		ETHIC_ALLOWS_TEMPLE
@@ -2122,243 +2359,6 @@ ethic_spiritualist = {
 			has_trait = trait_repugnant
 		}			
 	}		
-}
-
-ethic_fanatic_materialist = {
-	cost = 2
-	category = "spi"
-	category_value = 4
-	
-	regular_variant = ethic_materialist
-	
-	category_opposite = yes
-	
-	use_for_pops = no
-	
-	tags = {
-		
-	}	
-	
-	country_modifier = {
-		planet_jobs_upkeep_mult = -0.20
-		country_physics_tech_research_speed = 0.20
-	}
-	
-	random_weight = {
-		value = 150
-	}
-}
-
-ethic_materialist = {
-	cost = 1
-	category = "spi"
-	category_value = 3
-	
-	fanatic_variant = ethic_fanatic_materialist
-	
-	category_opposite = yes
-	
-	tags = {
-		
-	}			
-	
-	country_modifier = {
-		planet_jobs_upkeep_mult = -0.10
-		country_physics_tech_research_speed = 0.10
-	}	
-	
-	random_weight = {
-		value = 100
-	}
-	
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_MATERIALIST_POS
-		trigger = {
-			OR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-			}
-		}
-	}
-	
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_FACTION_POS
-		trigger = {
-			NOR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-			}
-			has_faction = technologist
-		}		
-	}	
-	
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_MECHANIST_POS
-		trigger = {
-			has_valid_civic = civic_mechanists
-		}
-	}
-	
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_RULER_FACTION_POS
-		trigger = {
-			exists = ruler
-			ruler = { leader_of_faction = technologist }
-		}		
-	}
-
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_CYBORGS_POS
-		trigger = {
-			any_owned_planet = {
-				any_owned_pop = {
-					has_trait = trait_cybernetic
-				}
-			}
-		}
-	}	
-
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_MATERIALIST_RESEARCH_POS
-		trigger = {
-			any_relation = {
-				root = { has_research_agreement = prev }
-				OR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
-				}				
-			}
-		}
-	}	
-
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_NATURAL_SCIENTISTS_POS
-		trigger = {
-			any_owned_planet = {
-				any_owned_pop = {
-					OR = {
-						has_trait = "trait_natural_sociologists"
-						has_trait = "trait_natural_engineers"
-						has_trait = "trait_natural_physicists"		
-					}
-				}
-			}
-		}
-	}		
-
-	country_attraction = {
-		value = 1
-		modifier = {
-			factor = 0
-			NOR = {
-				is_country_type = default
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-				AND = {
-					is_country_type = primitive
-					capital_scope = {
-						has_observation_outpost = yes
-						observation_outpost = {
-							has_mission = native_indoctrination		
-						}
-						observation_outpost_owner = { 
-							OR = {
-								has_ethic = ethic_fanatic_materialist
-								has_ethic = ethic_materialist
-							}							
-						}				
-					}
-				}
-			}
-		}
-		# Effects of indoctrination mission
-		modifier = {
-			factor = 20
-			is_country_type = primitive
-			capital_scope = {
-				has_observation_outpost = yes
-				observation_outpost = {
-					has_mission = native_indoctrination		
-				}
-				observation_outpost_owner = { has_ethic = ethic_fanatic_materialist }
-			}
-		}
-		modifier = {
-			factor = 10
-			is_country_type = primitive
-			capital_scope = {
-				has_observation_outpost = yes
-				observation_outpost = {
-					has_mission = native_indoctrination		
-				}
-				observation_outpost_owner = { has_ethic = ethic_materialist }
-			}
-		}			
-		modifier = {
-			factor = 2
-			NOR = {
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
-			}
-			has_faction = technologist
-		}
-		modifier = {
-			factor = 1.5
-			is_country_type = default
-			exists = ruler
-			ruler = { leader_of_faction = technologist }				
-		}		
-		modifier = {
-			factor = 2
-			has_ethic = ethic_materialist
-		}
-		modifier = {
-			factor = 3
-			has_ethic = ethic_fanatic_materialist
-		}
-		modifier = {
-			factor = 1.25
-			has_valid_civic = civic_mechanists
-		}				
-		modifier = {
-			factor = 1.33
-			any_relation = {
-				root = { has_research_agreement = prev }
-				OR = {
-					has_ethic = ethic_materialist
-					has_ethic = ethic_fanatic_materialist
-				}				
-			}
-		}		
-	}
-	
-	# from = planet
-	pop_attraction = {
-		value = 1	
-		modifier = {
-			factor = 0
-			has_trait = trait_hive_mind
-		}	
-		modifier = {
-			factor = 0
-			OR = {
-				#has_job = priest
-				has_job = high_priest
-			}			
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = "trait_natural_engineers"
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = "trait_natural_sociologists"
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = "trait_natural_physicists"
-		}	
-	}	
 }
 
 ethic_gestalt_consciousness = {
