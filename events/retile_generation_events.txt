@@ -1023,23 +1023,17 @@ planet_event = {
 	
 	is_triggered_only = yes
 	
-	trigger = {
-		limit = { OR = {
-			is_planet_class = pc_desert
-			is_planet_class = pc_arid
-			is_planet_class = pc_savannah
-			is_planet_class = pc_ocean
-			is_planet_class = pc_tropical
-			is_planet_class = pc_continental
-			is_planet_class = pc_arctic
-			is_planet_class = pc_tundra
-			is_planet_class = pc_alpine
-			is_planet_class = pc_gaia
-			is_planet_class = pc_nuked
-		}
-	}
-
 	immediate = {
-		reroll_deposits = yes
+		every_deposit = {
+			limit = { OR = {
+				has_deposit_category = deposit_cat_food_active
+				has_deposit_category = deposit_cat_energy_active
+				has_deposit_category = deposit_cat_minerals_active
+				has_deposit_category = deposit_cat_rare_active
+			} }
+			clear_blocker = yes
+			retile_clear_blockers = yes
+			retile_clear_blockers = yes	# duplicate on purpose...
+		}
 	}
 }
