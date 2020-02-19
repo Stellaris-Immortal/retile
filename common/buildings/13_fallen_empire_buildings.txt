@@ -11,6 +11,10 @@ building_ancient_palace = {
 		owner = { is_fallen_empire = yes }
 	}	
 	
+	destroy_trigger = {
+		owner = { is_fallen_empire = no }
+	}
+	
 	convert_to = {
 		building_hive_major_capital
 		#building_machine_major_capital
@@ -18,9 +22,12 @@ building_ancient_palace = {
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 10
 		planet_max_buildings_add = 3
 		planet_max_branch_office_buildings_add = 3
+		planet_amenities_add = -5000
+		pop_environment_tolerance = 2
+		pop_defense_armies_add = 1
+		planet_crime_add = -500
 	}
 
 	triggered_planet_modifier = {
@@ -30,7 +37,6 @@ building_ancient_palace = {
 		}
 		modifier = {
 			job_head_researcher_add = 1
-			job_custodian_add = 4
 		}
 	}
 
@@ -41,7 +47,6 @@ building_ancient_palace = {
 		}
 		modifier = {
 			job_high_priest_add = 1
-			job_fe_custodian_add = 4
 		}
 	}
 
@@ -52,7 +57,6 @@ building_ancient_palace = {
 		}
 		modifier = {
 			job_diplomat_add = 1
-			job_custodian_add = 4
 		}
 	}
 
@@ -63,15 +67,11 @@ building_ancient_palace = {
 		}
 		modifier = {
 			job_strategos_add = 1
-			job_custodian_add = 4
 		}
 	}
 
 	resources = {
 		category = planet_buildings
-		upkeep = {
-			energy = 10
-		}
 	}
 		
 	ai_weight = {
@@ -79,8 +79,9 @@ building_ancient_palace = {
 	}	
 }
 
-# Gives Custodians rural production (+4/+10/+10)
+# Gives Custodians rural production (+2.5/+10/+10)
 # Gives Engineers Consumer Goods production (+10)
+# Give exotic resource production, more for FEs
 building_dimensional_fabricator = {
 	base_buildtime = 960
 	can_build = yes
@@ -115,18 +116,6 @@ building_dimensional_fabricator = {
 				}
 			}
 		}
-		custom_tooltip = {
-			fail_text = retile_fe_building_limit_fab
-			exists = owner
-			NOT = {
-				owner = {
-					is_fallen_empire = yes
-					any_owned_planet = {
-						has_building = building_dimensional_fabricator
-					}
-				}
-			}
-		}
 		hidden_trigger = { owner = { OR = {
 			is_ai = no
 			has_resource = { type = sr_dark_matter amount > 500 }
@@ -136,22 +125,11 @@ building_dimensional_fabricator = {
 	country_modifier = {
 		country_resource_max_add = 10000
 	}
+
 	planet_modifier = {
-		planet_housing_add = 4
-		job_custodian_add = 4
+		planet_jobs_consumer_goods_produces_add = 10
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
-		}
-		modifier = {
-			job_custodian_add = -4
-			job_fe_custodian_add = 4
-		}
-	}
-	
 	triggered_desc = {
 		trigger = { 
 			exists = owner
@@ -175,13 +153,24 @@ building_dimensional_fabricator = {
 				exists = owner
 				owner = { is_fallen_empire = yes }
 			}
-			sr_zro = 5
-			sr_dark_matter = 5
-			sr_living_metal = 5
+			rare_crystals = 20
+			exotic_gases = 20
+			volatile_motes = 20
+			sr_zro = 10
+			sr_dark_matter = 10
+			sr_living_metal = 10
 		}
 		upkeep = {
 			energy = 500
 			minerals = 500
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			energy = -500
+			minerals = -500
 		}
 	}
 
@@ -196,10 +185,17 @@ building_dimensional_fabricator = {
 			change_variable = { which = dimensional_fabricator_build_count value = 1 }
 		}
 	}
+	
+	on_destroy = {
+		owner = {
+			change_variable = { which = dimensional_fabricator_build_count value = 1 }
+		}
+	}
 }
 
-# Gives Custodians rural production (+4/+10/+10)
+# Gives Custodians rural production (+2.5/+10/+10)
 # Gives Engineers Alloys production (+10)
+# Gives FEs alloy production (+1000)
 building_nano_forge = {
 	base_buildtime = 960
 	can_build = yes
@@ -239,22 +235,11 @@ building_nano_forge = {
 	country_modifier = {
 		country_resource_max_add = 10000
 	}
+
 	planet_modifier = {
-		planet_housing_add = 4
-		job_custodian_add = 4
+		planet_jobs_alloys_produces_add = 10
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
-		}
-		modifier = {
-			job_custodian_add = -4
-			job_fe_custodian_add = 4
-		}
-	}
-	
 	triggered_desc = {
 		trigger = { 
 			exists = owner
@@ -268,8 +253,23 @@ building_nano_forge = {
 			minerals = 4000
 			sr_dark_matter = 500
 		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			alloys = 2500
+			consumer_goods = 2500
+		}
 		upkeep = {
 			energy = 50
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			energy = -50
 		}
 	}
 	
@@ -284,10 +284,16 @@ building_nano_forge = {
 			change_variable = { which = nano_forge_build_count value = 1 }
 		}
 	}
+	
+	on_destroy = {
+		owner = {
+			change_variable = { which = nano_forge_build_count value = 1 }
+		}
+	}
 }
 
-# Gives Custodians rural production (+4/+10/+10)
-# Gives Scholars Research production (+10)
+# Gives Custodians rural production (+2.5/+10/+10)
+# Gives Research production (+10)
 building_class_4_singularity = {
 	base_buildtime = 960
 	can_build = yes
@@ -327,22 +333,13 @@ building_class_4_singularity = {
 	country_modifier = {
 		country_resource_max_add = 10000
 	}
+	
 	planet_modifier = {
-		planet_housing_add = 4
-		job_custodian_add = 4
+		planet_jobs_physics_research_produces_add = 10
+		planet_jobs_society_research_produces_add = 10
+		planet_jobs_engineering_research_produces_add = 10
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
-		}
-		modifier = {
-			job_custodian_add = -4
-			job_fe_custodian_add = 4
-		}
-	}
-	
 	triggered_desc = {
 		trigger = { 
 			exists = owner
@@ -356,8 +353,24 @@ building_class_4_singularity = {
 			minerals = 4000
 			sr_dark_matter = 500
 		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			energy = 10000
+			minerals = 10000
+			food = 2500
+		}
 		upkeep = {
 			energy = 50
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			energy = -50
 		}
 	}
 	
@@ -372,9 +385,15 @@ building_class_4_singularity = {
 			change_variable = { which = class_4_singularity_build_count value = 1 }
 		}
 	}
+	
+	on_destroy = {
+		owner = {
+			change_variable = { which = class_4_singularity_build_count value = 1 }
+		}
+	}
 }
 
-# Gives Custodians rural production (+4/+10/+10)
+# Gives Custodians rural production (+2.5/+10/+10)
 # Gives Scholars Unity production (+10)
 building_empyrean_shrine = { # Spiritualist
 	base_buildtime = 960
@@ -416,22 +435,11 @@ building_empyrean_shrine = { # Spiritualist
 	country_modifier = {
 		country_resource_max_add = 10000
 	}
+	
 	planet_modifier = {
-		planet_housing_add = 4
-		job_custodian_add = 4
+		planet_jobs_unity_produces_add = 10
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
-		}
-		modifier = {
-			job_custodian_add = -4
-			job_fe_custodian_add = 4
-		}
-	}
-	
 	triggered_desc = {
 		trigger = { 
 			exists = owner
@@ -445,8 +453,25 @@ building_empyrean_shrine = { # Spiritualist
 			minerals = 4000
 			sr_dark_matter = 500
 		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			unity = 2500
+			society_research = 2500
+			physics_research = 2500
+			engineering_research = 2500
+		}
 		upkeep = {
 			energy = 50
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			energy = -50
 		}
 	}
 	on_queued = {
@@ -460,9 +485,15 @@ building_empyrean_shrine = { # Spiritualist
 			change_variable = { which = empyrean_shrine_build_count value = 1 }
 		}
 	}
+	
+	on_destroy = {
+		owner = {
+			change_variable = { which = empyrean_shrine_build_count value = 1 }
+		}
+	}
 }
 
-# Gives Custodians rural production (+4/+10/+10)
+# Gives Custodians rural production (+2.5/+10/+10)
 # Gives Scholars Unity production (+10)
 building_master_archive = { # Materialist
 	base_buildtime = 960
@@ -502,22 +533,11 @@ building_master_archive = { # Materialist
 	country_modifier = {
 		country_resource_max_add = 10000
 	}
+	
 	planet_modifier = {
-		planet_housing_add = 4
-		job_custodian_add = 4
+		planet_jobs_unity_produces_add = 10
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
-		}
-		modifier = {
-			job_custodian_add = -4
-			job_fe_custodian_add = 4
-		}
-	}
-	
 	triggered_desc = {
 		trigger = { 
 			exists = owner
@@ -531,13 +551,30 @@ building_master_archive = { # Materialist
 			minerals = 4000
 			sr_dark_matter = 500
 		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			unity = 2500
+			society_research = 2500
+			physics_research = 2500
+			engineering_research = 2500
+		}
 		upkeep = {
 			energy = 50
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			energy = -50
 		}
 	}
 }
 
-# Gives Custodians rural production (+4/+10/+10)
+# Gives Custodians rural production (+2.5/+10/+10)
 # Gives Scholars Unity production (+10)
 building_fe_xeno_zoo = { # Xenophile
 	base_buildtime = 960
@@ -577,20 +614,9 @@ building_fe_xeno_zoo = { # Xenophile
 	country_modifier = {
 		country_resource_max_add = 10000
 	}
+	
 	planet_modifier = {
-		planet_housing_add = 4
-		job_custodian_add = 4
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
-		}
-		modifier = {
-			job_custodian_add = -4
-			job_fe_custodian_add = 4
-		}
+		planet_jobs_unity_produces_add = 10
 	}
 	
 	triggered_desc = {
@@ -606,13 +632,30 @@ building_fe_xeno_zoo = { # Xenophile
 			minerals = 4000
 			sr_dark_matter = 500
 		}
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			unity = 2500
+			society_research = 2500
+			physics_research = 2500
+			engineering_research = 2500
+		}
 		upkeep = {
 			energy = 50
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			energy = -50
 		}
 	}
 }
 
-# Gives Custodians rural production (+4/+10/+10)
+# Gives Custodians rural production (+2.5/+10/+10)
 # Gives planet size bonus
 building_fe_dome = {
 	base_buildtime = 960
@@ -656,23 +699,11 @@ building_fe_dome = {
 	country_modifier = {
 		country_resource_max_add = 10000
 	}
+	
 	planet_modifier = {
-		planet_housing_add = 4
-		job_custodian_add = 4
-		planet_max_districts_add = 4
+		planet_max_districts_add = 5
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_fallen_empire_spiritualist = yes }
-		}
-		modifier = {
-			job_custodian_add = -4
-			job_fe_custodian_add = 4
-		}
-	}
-	
 	triggered_desc = {
 		trigger = { 
 			exists = owner
@@ -688,6 +719,13 @@ building_fe_dome = {
 		}
 		upkeep = {
 			energy = 50
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { is_fallen_empire = yes }
+			}
+			energy = -50
 		}
 	}
 	

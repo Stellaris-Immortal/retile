@@ -100,3 +100,84 @@ create_fe_spiritualist_fringe_colony = {
 		}
 	}
 }
+
+create_fallen_empire_starting_navy = {
+	create_fallen_empire_fleet = yes
+	create_fallen_empire_fleet = yes
+	create_fallen_empire_fleet = yes
+	create_fallen_empire_fleet = yes
+	random = {
+		chance = 33			
+		create_fallen_empire_fleet = yes
+	}
+	random = {
+		chance = 33			
+		create_fallen_empire_fleet = yes
+	}
+	if = {
+		limit = { 
+			host_has_dlc = "Apocalypse"
+		}
+		random = {
+			chance = 10
+			create_fleet = {
+				effect = {
+					set_owner = prev.owner
+					create_fallen_empire_colossus = yes
+					set_location = {
+						target = prev
+						distance = 30
+						angle = random 
+					}					
+				}
+			}
+		}			
+	}
+	random = {
+		chance = 25
+		create_fleet = {
+			effect = {
+				set_owner = prev.owner
+				create_fallen_empire_titan = yes
+				set_location = {
+					target = prev
+					distance = 20
+					angle = random 
+				}					
+			}
+		}
+	}
+	create_fleet = {
+		effect = {
+			set_owner = prev.owner
+			create_fallen_empire_construction_ship = yes
+			set_location = {
+				target = prev
+				distance = 60
+				angle = random 
+			}				
+		}
+	}
+	create_fleet = {
+		effect = {
+			set_owner = prev.owner
+			create_fallen_empire_construction_ship = yes
+			set_location = {
+				target = prev
+				distance = 80
+				angle = random 
+			}				
+		}
+	}				
+	create_fleet = {
+		effect = {
+			set_owner = prev.owner
+			create_fallen_empire_construction_ship = yes
+			set_location = {
+				target = prev
+				distance = 100
+				angle = random 
+			}				
+		}
+	}
+}

@@ -10,10 +10,6 @@ district_resort = {
 
 	potential = { has_modifier = resort_colony }
 	
-	allow = {
-		hidden_trigger = { retile_ready = yes }
-	}
-
 	conversion_ratio = 1
 	convert_to = { district_city }
 	
@@ -44,28 +40,7 @@ district_resort = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# Safe to develop our empire?
-			weight = 10
-			retile_basic_economy = yes
-		}
-		modifier = {	# extra weight if safe and we don't have at least 3 cities here yet...
-			weight = 50
-			AND = {
-				retile_basic_economy = yes
-				num_districts = { type = district_city value < 2 }
-			}
-		}
-		modifier = {	# Already has basic urban buildings?
-			factor = 10
-			retile_urban_development = yes
-		}
-		modifier = {	# Already has advanced urban buildings?
-			factor = 10
-			retile_urban_advanced = yes
-		}
-	}
+		weight = 1
 }
 
 district_prison = {
@@ -76,10 +51,6 @@ district_prison = {
 
 	potential = { has_modifier = penal_colony }
 	
-	allow = {
-		hidden_trigger = { retile_ready = yes }
-	}
-
 	conversion_ratio = 1
 	convert_to = { district_city }
 	
@@ -110,25 +81,6 @@ district_prison = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		modifier = {	# Safe to develop our empire?
-			weight = 10
-			retile_basic_economy = yes
-		}
-		modifier = {	# extra weight if safe and we don't have at least 3 cities here yet...
-			weight = 50
-			AND = {
-				retile_basic_economy = yes
-				num_districts = { type = district_city value < 2 }
-			}
-		}
-		modifier = {	# Already has basic urban buildings?
-			factor = 10
-			retile_urban_development = yes
-		}
-		modifier = {	# Already has advanced urban buildings?
-			factor = 10
-			retile_urban_advanced = yes
-		}
+		weight = 1
 	}
 }

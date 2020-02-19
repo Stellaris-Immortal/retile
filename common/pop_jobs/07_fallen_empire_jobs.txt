@@ -23,40 +23,6 @@ fe_hedonist = {
 	
 	resources = {
 		category = planet_jobs
-		produces = {
-			unity = 5
-			physics_research = 5
-			engineering_research = 5
-			society_research = 5
-			consumer_goods = 5
-			alloys = 5
-		}
-		produces = { ### Fallen Empire
-			trigger = { planet = { has_building = building_class_4_singularity } }
-			physics_research = 10
-			engineering_research = 10
-			society_research = 10
-		}
-		produces = { ### Fallen Empire
-			trigger = { planet = { OR = {
-				has_building = building_empyrean_shrine
-				has_building = building_master_archive
-				has_building = building_fe_xeno_zoo
-			} } }
-			unity = 10
-		}
-		produces = { ### Fallen Empire
-			trigger = { planet = { has_building = building_dimensional_fabricator } }
-			consumer_goods = 10
-		}
-		produces = { ### Fallen Empire
-			trigger = { planet = { has_building = building_nano_forge } }
-			alloys = 10
-		}
-	}
-	planet_modifier = {
-		planet_amenities_add = 25
-		planet_crime_add = -10
 	}
 	
 	weight = {
@@ -197,7 +163,8 @@ fe_xeno_ward = {
 
 fe_custodian = {
 	icon = custodian
-	category = precursor
+	category = worker
+	is_capped_by_modifier = no
 	condition_string = WORKER_JOB_TRIGGER
 	building_icon = building_residence
 	clothes_texture_index = 2
@@ -220,94 +187,7 @@ fe_custodian = {
 		planet_amenities_add = -50
 	}
 
-	resources = {
-		category = planet_custodians
-		produces = {	### Fallen Empire buildings
-			trigger = { 
-				planet = {
-					has_building = building_dimensional_fabricator
-				} 
-			}
-			food = 4
-			energy = 10
-			minerals = 10
-		}
-		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_nano_forge
-				} 
-			}
-			food = 4
-			energy = 10
-			minerals = 10
-		}
-		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_class_4_singularity
-				} 
-			}
-			food = 4
-			energy = 10
-			minerals = 10
-		}
-		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_empyrean_shrine
-				} 
-			}
-			food = 4
-			energy = 10
-			minerals = 10
-		}
-		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_master_archive
-				} 
-			}
-			food = 4
-			energy = 10
-			minerals = 10
-		}
-		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_fe_xeno_zoo
-				} 
-			}
-			food = 4
-			energy = 10
-			minerals = 10
-		}
-		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_fe_dome
-				} 
-			}
-			food = 4
-			energy = 10
-			minerals = 10
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			owner = {
-				is_fallen_empire = yes
-				is_plantoid_empire = yes
-			}
-		}
-		modifier = {
-			pop_environment_tolerance = 0.10
-			#pop_growth_speed = 0.10
-		}
-	}
-
 	weight = {
-		weight = 10000
+		weight = 100000
 	}
 }
