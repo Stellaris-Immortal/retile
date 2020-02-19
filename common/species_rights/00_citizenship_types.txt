@@ -573,7 +573,7 @@ citizenship_purge = {
 		exists = from
 		NOT = { from = { has_authority = auth_machine_intelligence } }
 		OR = {
-			is_archetype = ROBOT
+			NOT = { is_archetype = ROBOT }
 			AND = {
 				NOT = { from = { has_policy_flag = ai_full_rights } }
 				is_archetype = MACHINE
