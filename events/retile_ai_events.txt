@@ -122,3 +122,464 @@ ship_event = {
 	}
 }
 
+
+# Trade away energy at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2000
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_resource = { type = energy amount > 25000 }
+		has_monthly_income = { resource = energy value > 90 }
+		OR = {
+			has_resource = { type = minerals amount < 10000}
+			has_resource = { type = food amount < 10000}
+			has_resource = { type = alloys amount < 10000}
+			has_resource = { type = consumer_goods amount < 10000}
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		while = { # Resource Surplus Management
+			limit = {
+				has_resource = { type = energy amount > 25000 }
+				OR = {
+					has_resource = { type = minerals amount < 10000}
+					has_resource = { type = food amount < 10000}
+					has_resource = { type = alloys amount < 10000}
+					has_resource = { type = consumer_goods amount < 10000}
+				}
+			}
+			random_list = {
+				10 = {	# Mineral Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = minerals amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = minerals amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = minerals amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = minerals value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = minerals value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { minerals = 500 }
+				}
+				10 = {	# Food Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = food amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = food amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = food amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = food value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = food value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { food = 125 }
+				}
+				10 = {	# Alloys Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = alloys amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = alloys amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = alloys amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = alloys value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = alloys value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { alloys = 125 }
+				}
+				10 = {	# Supplies Trades
+					modifier = {
+						factor = 0
+						has_resource = { type = consumer_goods amount >= 10000}
+					}
+					modifier = {
+						factor = 2
+						has_resource = { type = consumer_goods amount < 5000 }
+					}
+					modifier = {
+						factor = 5
+						has_resource = { type = consumer_goods amount < 1000 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = consumer_goods value < 25 }
+					}
+					modifier = {
+						factor = 10
+						has_monthly_income = { resource = consumer_goods value < 0 }
+					}
+					add_resource = { energy = -1000 }
+					add_resource = { consumer_goods = 125 }
+				}
+			}
+		}
+		while = { # Emergency Resource Purchases
+			limit = {
+				has_resource = { type = energy amount > 500 }
+				has_monthly_income = { resource = energy value > 0 }
+				OR = {
+					AND = {
+						has_resource = { type = minerals amount < 100 }
+						has_monthly_income = { resource = minerals value < 0 }
+					}
+					AND = {
+						has_resource = { type = food amount < 25 }
+						has_monthly_income = { resource = food value < 0 }
+					}
+					AND = {
+						has_resource = { type = consumer_goods amount < 25 }
+						has_monthly_income = { resource = consumer_goods value < 0 }
+					}
+					AND = {
+						has_resource = { type = alloys amount < 25 }
+						has_monthly_income = { resource = alloys value < 0 }
+					}
+				}
+			}
+			random_list = {
+				10 = {	# Mineral Trades
+					modifier = {
+						factor = 0
+						OR = {
+							has_resource = { type = minerals amount > 100 }
+							has_monthly_income = { resource = minerals value > 0 }
+						}
+					}
+					modifier = {
+						factor = 2
+						has_monthly_income = { resource = minerals value < -25 }
+					}
+					modifier = {
+						factor = 2
+						has_monthly_income = { resource = minerals value < -50 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = minerals value < -100 }
+					}
+					add_resource = { energy = -200 }
+					add_resource = { minerals = 100 }
+				}
+				10 = {	# Food Trades
+					modifier = {
+						factor = 0
+						OR = {
+							has_resource = { type = food amount > 25 }
+							has_monthly_income = { resource = food value > 0 }
+						}
+					}
+					modifier = {
+						factor = 2
+						has_monthly_income = { resource = food value < -5 }
+					}
+					modifier = {
+						factor = 2
+						has_monthly_income = { resource = food value < -10 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = food value < -25 }
+					}
+					add_resource = { energy = -200 }
+					add_resource = { food = 25 }
+				}
+				3 = {	# Supplies Trades
+					modifier = {
+						factor = 0
+						OR = {
+							has_resource = { type = consumer_goods amount > 25 }
+							has_monthly_income = { resource = consumer_goods value > 0 }
+						}
+					}
+					modifier = {
+						factor = 2
+						has_monthly_income = { resource = consumer_goods value < -5 }
+					}
+					modifier = {
+						factor = 2
+						has_monthly_income = { resource = consumer_goods value < -10 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = consumer_goods value < -25 }
+					}
+					add_resource = { energy = -200 }
+					add_resource = { consumer_goods = 25 }
+				}
+				3 = {	# Alloys Trades
+					modifier = {
+						factor = 0
+						OR = {
+							has_resource = { type = alloys amount > 25 }
+							has_monthly_income = { resource = alloys value > 0 }
+						}
+					}
+					modifier = {
+						factor = 2
+						has_monthly_income = { resource = alloys value < -5 }
+					}
+					modifier = {
+						factor = 2
+						has_monthly_income = { resource = alloys value < -10 }
+					}
+					modifier = {
+						factor = 5
+						has_monthly_income = { resource = alloys value < -25 }
+					}
+					add_resource = { energy = -200 }
+					add_resource = { alloys = 25 }
+				}
+			}
+		}
+	}
+}
+
+# Trade away minerals at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2001
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_resource = { type = minerals amount > 15000 }
+		has_resource = { type = energy amount < 50000 }
+		has_monthly_income = { resource = minerals value > 90 }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		while = {	# Resource Surplus Management
+			limit = {
+				has_resource = { type = minerals amount > 15000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { minerals = -1000 }
+			add_resource = { energy = 500 }
+		}
+		while = {	# Emergency Resource Trades
+			limit = {
+				has_resource = { type = minerals amount > 500 }
+				has_resource = { type = energy amount < 1000 }
+				has_monthly_income = { resource = minerals value > 0 }
+				OR = {
+					AND = {
+						has_resource = { type = food amount < 25 }
+						has_monthly_income = { resource = food value < 0 }
+					}
+					AND = {
+						has_resource = { type = consumer_goods amount < 25 }
+						has_monthly_income = { resource = consumer_goods value < 0 }
+					}
+					AND = {
+						has_resource = { type = alloys amount < 25 }
+						has_monthly_income = { resource = alloys value < 0 }
+					}
+				}
+			}
+			add_resource = { minerals = -200 }
+			add_resource = { energy = 100 }
+		}
+	}
+}
+
+# Trade away food at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2002
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_resource = { type = food amount > 15000 }
+		has_resource = { type = energy amount < 50000 }
+		has_monthly_income = { resource = food value > 20 }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		while = {	# Resource Surplus Management
+			limit = {
+				has_resource = { type = food amount > 15000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { food = -250 }
+			add_resource = { energy = 500 }
+		}
+		while = {	# Emergency Resource Trades
+			limit = {
+				has_resource = { type = food amount > 100 }
+				has_resource = { type = energy amount < 1000 }
+				has_monthly_income = { resource = food value > 0 }
+				OR = {
+					AND = {
+						has_resource = { type = minerals amount < 100 }
+						has_monthly_income = { resource = minerals value < 0 }
+					}
+					AND = {
+						has_resource = { type = consumer_goods amount < 25 }
+						has_monthly_income = { resource = consumer_goods value < 0 }
+					}
+					AND = {
+						has_resource = { type = alloys amount < 25 }
+						has_monthly_income = { resource = alloys value < 0 }
+					}
+				}
+			}
+			add_resource = { minerals = -50 }
+			add_resource = { energy = 100 }
+		}
+	}
+}
+
+# Trade away supplies at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2003
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_resource = { type = consumer_goods amount > 15000 }
+		has_resource = { type = energy amount < 50000 }
+		has_monthly_income = { resource = consumer_goods value > 20 }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		while = {	# Resource Surplus Management
+			limit = {
+				has_resource = { type = consumer_goods amount > 15000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { consumer_goods = -250 }
+			add_resource = { energy = 500 }
+		}
+		while = {	# Emergency Resource Trades
+			limit = {
+				has_resource = { type = consumer_goods amount > 100 }
+				has_resource = { type = energy amount < 1000 }
+				has_monthly_income = { resource = consumer_goods value > 0 }
+				OR = {
+					AND = {
+						has_resource = { type = minerals amount < 100 }
+						has_monthly_income = { resource = minerals value < 0 }
+					}
+					AND = {
+						has_resource = { type = food amount < 25 }
+						has_monthly_income = { resource = food value < 0 }
+					}
+					AND = {
+						has_resource = { type = alloys amount < 25 }
+						has_monthly_income = { resource = alloys value < 0 }
+					}
+				}
+			}
+			add_resource = { consumer_goods = -50 }
+			add_resource = { energy = 100 }
+		}
+	}
+}
+
+# Trade away alloys at bad exchange rates, as needed.
+country_event = {
+	id = retile_ai.2004
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_resource = { type = alloys amount > 25000 }
+		has_resource = { type = energy amount < 50000 }
+		has_monthly_income = { resource = alloys value > 20 }
+	}
+	
+	mean_time_to_happen = {
+		days = 30
+	}
+
+	after = {
+		while = {	# Resource Surplus Management
+			limit = {
+				has_resource = { type = alloys amount > 25000 }
+				has_resource = { type = energy amount < 50000 }
+			}
+			add_resource = { alloys = -250 }
+			add_resource = { energy = 500 }
+		}
+		while = {	# Emergency Resource Trades
+			limit = {
+				has_resource = { type = alloys amount > 100 }
+				has_resource = { type = energy amount < 1000 }
+				has_monthly_income = { resource = alloys value > 0 }
+				OR = {
+					AND = {
+						has_resource = { type = minerals amount < 100 }
+						has_monthly_income = { resource = minerals value < 0 }
+					}
+					AND = {
+						has_resource = { type = food amount < 25 }
+						has_monthly_income = { resource = food value < 0 }
+					}
+					AND = {
+						has_resource = { type = consumer_goods amount < 25 }
+						has_monthly_income = { resource = consumer_goods value < 0 }
+					}
+				}
+			}
+			add_resource = { alloys = -50 }
+			add_resource = { energy = 100 }
+		}
+	}
+}
