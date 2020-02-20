@@ -157,3 +157,28 @@ retile_exploit_food = {
 	}
 }
 
+# planet scope
+retile_exploit_all = {
+	every_deposit = {
+		limit = {
+			has_deposit_category = deposit_cat_energy
+			has_deposit_category = deposit_cat_food
+			has_deposit_category = deposit_cat_minerals
+			has_deposit_category = deposit_cat_rare
+		}
+		clear_blocker = yes
+	}
+}
+
+# planet scope
+retile_restore_all = {
+	every_deposit = {
+		limit = {
+			has_deposit_category = deposit_cat_energy_active
+			has_deposit_category = deposit_cat_food_active
+			has_deposit_category = deposit_cat_minerals_active
+			has_deposit_category = deposit_cat_rare_active
+		}
+		clear_blocker = yes
+	}
+}

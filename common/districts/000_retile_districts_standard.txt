@@ -18,6 +18,15 @@ district_housing = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_housing < 2
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -68,6 +77,19 @@ district_clerks = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_authority = auth_corporate }
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -118,6 +140,19 @@ district_engineers = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_alloys }
+					owner = { has_country_flag = retile_ai_needs_consumer_goods }
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -168,6 +203,18 @@ district_scholars = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_science }
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -219,6 +266,7 @@ district_diplomats = {
 	}
 	
 	allow = {
+		owner = { is_ai = no }
 		owner = { has_technology = tech_xenodiplomacy }
 	}
 
@@ -400,6 +448,28 @@ district_soldiers = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					#has_planet_flag = retile_ai_fortress
+					AND = {
+						num_districts = { type = district_soldiers value < 3 }
+						NOR = {
+							owner = { has_country_flag = retile_ai_needs_energy }
+							owner = { has_country_flag = retile_ai_needs_minerals }
+							owner = { has_country_flag = retile_ai_needs_food }
+							owner = { has_country_flag = retile_ai_needs_alloys }
+							owner = { has_country_flag = retile_ai_needs_consumer_goods }
+						}
+					}
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -450,6 +520,26 @@ district_enforcers = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				planet_crime > 33
+				OR = {
+					free_jobs < 1
+					num_districts = { type = district_enforcers value < 1 }
+				}
+				NOR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_country_flag = retile_ai_needs_minerals }
+					owner = { has_country_flag = retile_ai_needs_food }
+					owner = { has_country_flag = retile_ai_needs_alloys }
+					owner = { has_country_flag = retile_ai_needs_consumer_goods }
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -521,6 +611,23 @@ district_custodians = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				free_amenities > 300
+				NOR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_country_flag = retile_ai_needs_minerals }
+					owner = { has_country_flag = retile_ai_needs_food }
+					owner = { has_country_flag = retile_ai_needs_alloys }
+					owner = { has_country_flag = retile_ai_needs_consumer_goods }
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {

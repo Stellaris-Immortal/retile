@@ -18,9 +18,14 @@ building_hydroponics_farm = {
 		NOT = { has_modifier = slave_colony }
 	}
 	
+	allow = {
+		owner = { is_ai = no }
+	}
+
 	destroy_trigger = {
 		OR = {
 			has_modifier = slave_colony
+			owner = { is_ai = yes }
 		}
 	}
 
@@ -83,9 +88,14 @@ building_recycling_center = {
 		NOT = { has_modifier = slave_colony }
 	}
 
+	allow = {
+		owner = { is_ai = no }
+	}
+
 	destroy_trigger = {
 		OR = {
 			has_modifier = slave_colony
+			owner = { is_ai = yes }
 		}
 	}
 
@@ -138,9 +148,14 @@ building_solar_panels = {
 		NOT = { has_modifier = slave_colony }
 	}
 
+	allow = {
+		owner = { is_ai = no }
+	}
+
 	destroy_trigger = {
 		OR = {
 			has_modifier = slave_colony
+			owner = { is_ai = yes }
 		}
 	}
 
@@ -198,13 +213,22 @@ building_food_1 = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_food }
+				any_owned_pop = { has_job = farmer }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			owner = { country_uses_food = no }
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			#retile_food = no
 		}
 	}
 		
@@ -253,13 +277,22 @@ building_food_2 = {
 	category = resource
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_food }
+				any_owned_pop = { has_job = farmer }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			owner = { country_uses_food = no }
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			#retile_food = no
 		}
 	}
 		
@@ -312,13 +345,22 @@ building_food_3 = {
 	category = resource
 	can_be_disabled = no
 		
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_food }
+				any_owned_pop = { has_job = farmer }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			owner = { country_uses_food = no }
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			#retile_food = no
 		}
 	}
 	
@@ -374,11 +416,20 @@ building_mineral_1 = {
 		}
 	}
 
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_minerals }
+				any_owned_pop = { has_job = miner }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			#retile_minerals = no
 		}
 	}
 		
@@ -427,11 +478,20 @@ building_mineral_2 = {
 	category = resource
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_minerals }
+				any_owned_pop = { has_job = miner }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			#retile_minerals = no
 		}
 	}
 		
@@ -484,11 +544,20 @@ building_mineral_3 = {
 	category = resource
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_minerals }
+				any_owned_pop = { has_job = miner }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			#retile_minerals = no
 		}
 	}
 	
@@ -544,11 +613,20 @@ building_energy_1 = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_minerals }
+				any_owned_pop = { has_job = technician }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			#retile_energy = no
 		}
 	}
 	
@@ -597,11 +675,20 @@ building_energy_2 = {
 	category = resource
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_minerals }
+				any_owned_pop = { has_job = technician }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			#retile_energy = no
 		}
 	}
 	
@@ -654,11 +741,20 @@ building_energy_3 = {
 	category = resource
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_minerals }
+				any_owned_pop = { has_job = technician }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			is_planet_class = pc_city
 			has_modifier = resort_colony
-			#retile_energy = no
 		}
 	}
 	
@@ -707,6 +803,15 @@ building_maintenance_depot = {
 	category = resource
 	base_cap_amount = 1
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_amenities > 1000
+			}
+		}
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -715,7 +820,7 @@ building_maintenance_depot = {
 		upkeep = {
 			energy = 1
 		}
-	}	
+	}
 	
 	upgrades = {
 		building_maintenance_depot_2

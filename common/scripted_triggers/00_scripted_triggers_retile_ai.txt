@@ -1,8 +1,3 @@
-### DEPRECATED
-retile_ready = {
-	always = yes
-}
-
 # Is this planet ready to upgrade it's capital?
 retile_ready_capital = {
 	OR = {
@@ -18,15 +13,17 @@ retile_ready_capital = {
 retile_ready_energy = {	# deposit scope
 	exists = planet
 	planet = {
-		owner = { has_monthly_income = { resource = energy value < 75 } }
+		owner = { has_country_flag = retile_ai_needs_energy }
 		free_jobs < 1
+		has_building_construction = no
 	}
 }
 retile_ready_minerals = {	# deposit scope
 	exists = planet
 	planet = {
-		owner = { has_monthly_income = { resource = minerals value < 75 } }
+		owner = { has_country_flag = retile_ai_needs_minerals }
 		free_jobs < 1
+		has_building_construction = no
 	}
 }
 retile_ready_food = {	# deposit scope
@@ -37,158 +34,16 @@ retile_ready_food = {	# deposit scope
 				free_jobs < 1
 				owner = {
 					country_uses_food = yes
-					has_monthly_income = { resource = food value < 25 }
+					has_country_flag = retile_ai_needs_food
 				}
+				has_building_construction = no
 			}
 			owner = {
 				is_plantoid_empire = yes
 				prev = { habitability = { who = owner.owner_species value <= 0.7 } }
+				has_building_construction = no
 			}
 		}
 	}
 }
 
-# Are we behind in tech?
-retile_tech_weak = {	# Country scope
-	any_neighbor_country = { 
-		count >= 1
-		is_country_type = default
-		prev = {
-			relative_power = { 
-				who = prev
-				category = technology 
-				value > inferior
-			}
-			relative_power = { 
-				who = prev 
-				category = all
-				value < overwhelming
-			}
-		}
-	}
-}
-
-# Does the owning country have positive incomes in all basic resources?
-retile_basic_economy = {	# planet scope
-	AND = {
-		owner = { has_monthly_income = { resource = energy value > 0 } }
-		owner = { has_monthly_income = { resource = minerals value > 0 } }
-		OR = {
-			owner = { has_monthly_income = { resource = food value > 0 } }
-			owner = { country_uses_food = no }
-		}
-	}
-}
-
-# Does the owning country have sufficient resources to focus on advancement?
-# used for research/unity
-retile_advanced_economy = {
-	AND = {
-		retile_basic_economy = yes
-		owner = { has_monthly_income = { resource = consumer_goods value > 15 } }
-		owner = { has_monthly_income = { resource = alloys value > 25 } }
-	}
-}
-
-# Is this planet already developed for urban things?
-retile_urban_development = {	# planet scope
-	OR = {
-		has_building = building_foundry_1
-		has_building = building_foundry_2
-		has_building = building_foundry_3
-		has_building = building_factory_1
-		has_building = building_factory_2
-		has_building = building_factory_3
-		has_building = building_research_lab_1
-		has_building = building_research_lab_2
-		has_building = building_research_lab_3
-		has_building = building_trade_1
-		has_building = building_trade_2
-	}
-}
-
-# Is this planet already developed for rural things?
-retile_rural_development = {	# planet scope
-	OR = {
-		has_building = building_food_2
-		has_building = building_food_3
-		has_building = building_mineral_2
-		has_building = building_mineral_3
-		has_building = building_energy_2
-		has_building = building_energy_3
-	}
-}
-
-# Is this a good world to build food on?
-ai_good_food_world = {
-	NOT = { is_planet_class = pc_relic }
-	OR = {
-		check_variable = { which = rtd_farming value > 5 }
-		OR = {
-			is_planet_class = pc_hive
-			is_planet_class = pc_machine
-			is_planet_class = pc_habitat
-			is_planet_class = pc_ringworld_habitable
-		}
-	}
-	NOR = {
-		has_modifier = irradiated_planet
-		has_modifier = abandoned_terraforming
-	}
-}
-
-# Is this a good world to build energy on?
-ai_good_energy_world = {
-	NOT = { is_planet_class = pc_relic }
-	OR = {
-		check_variable = { which = rtd_generator value > 5 }
-		OR = {
-			is_planet_class = pc_hive
-			is_planet_class = pc_machine
-			is_planet_class = pc_habitat
-			is_planet_class = pc_ringworld_habitable
-		}
-	}
-}
-
-# Is this a good world to build minerals on?
-ai_good_minerals_world = {
-	NOT = { is_planet_class = pc_relic }
-	OR = {
-		check_variable = { which = rtd_mining value > 5 }
-		OR = {
-			is_planet_class = pc_hive
-			is_planet_class = pc_machine
-			is_planet_class = pc_habitat
-			is_planet_class = pc_ringworld_habitable
-		}
-	}
-	NOT = { has_modifier = mineral_poor }
-}
-
-# Is this a world we should only build food on if absolutely necessary?
-ai_bad_food_world = {
-	OR = {
-		has_planet_flag = ai_arcology_development
-		has_planet_flag = ai_energy_development_sticky
-		has_planet_flag = ai_minerals_development_sticky
-	}
-}
-
-# Is this a world we should only build energy on if absolutely necessary?
-ai_bad_energy_world = {
-	OR = {
-		has_planet_flag = ai_arcology_development
-		has_planet_flag = ai_food_development_sticky
-		has_planet_flag = ai_minerals_development_sticky
-	}
-}
-
-# Is this a world we should only build minerals on if absolutely necessary?
-ai_bad_minerals_world = {
-	OR = {
-		has_planet_flag = ai_arcology_development
-		has_planet_flag = ai_food_development_sticky
-		has_planet_flag = ai_energy_development_sticky
-	}
-}

@@ -17,6 +17,16 @@ building_foundry_1 = {
 		NOT = { has_modifier = slave_colony }
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_alloys }
+				any_owned_pop = { has_job = foundry }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -64,6 +74,16 @@ building_foundry_2 = {
 	category = manufacturing
 	can_be_disabled = no
 
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_alloys }
+				any_owned_pop = { has_job = foundry }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			has_modifier = resort_colony
@@ -110,6 +130,16 @@ building_foundry_3 = {
 	can_build = no
 	category = manufacturing
 	can_be_disabled = no
+
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_alloys }
+				any_owned_pop = { has_job = foundry }
+			}
+		}
+	}
 
 	destroy_trigger = {
 		OR = {
@@ -159,6 +189,16 @@ building_factory_1 = {
 		owner = { country_uses_goods = yes }
 	}
 
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_consumer_goods }
+				any_owned_pop = { has_job = foundry }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		owner = { country_uses_goods = no }
 	}
@@ -203,6 +243,16 @@ building_factory_2 = {
 	category = manufacturing
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_consumer_goods }
+				any_owned_pop = { has_job = foundry }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		owner = { country_uses_goods = no }
 	}
@@ -247,6 +297,16 @@ building_factory_3 = {
 	category = manufacturing
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_consumer_goods }
+				any_owned_pop = { has_job = foundry }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		owner = { country_uses_goods = no }
 	}
