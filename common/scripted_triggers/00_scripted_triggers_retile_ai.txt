@@ -46,3 +46,14 @@ retile_ready_food = {	# deposit scope
 		}
 	}
 }
+
+retile_ai_has_resource_crisis = {
+	OR = {
+		has_country_flag = retile_ai_needs_energy_crisis
+		has_country_flag = retile_ai_needs_minerals_crisis
+		has_country_flag = retile_ai_needs_food_crisis
+		has_country_flag = retile_ai_needs_alloys_crisis
+		has_country_flag = retile_ai_needs_consumer_goods_crisis
+		has_country_flag = retile_ai_needs_science_crisis
+	}
+}

@@ -32,6 +32,12 @@ country_event = {
 		remove_country_flag = retile_ai_needs_alloys
 		remove_country_flag = retile_ai_needs_consumer_goods
 		remove_country_flag = retile_ai_needs_science
+		remove_country_flag = retile_ai_needs_energy_crisis
+		remove_country_flag = retile_ai_needs_minerals_crisis
+		remove_country_flag = retile_ai_needs_food_crisis
+		remove_country_flag = retile_ai_needs_alloys_crisis
+		remove_country_flag = retile_ai_needs_consumer_goods_crisis
+		remove_country_flag = retile_ai_needs_science_crisis
 		
 		if = {
 			limit = {
@@ -41,9 +47,21 @@ country_event = {
 		}
 		if = {
 			limit = {
+				has_monthly_income = { resource = energy value < @retile_ai_energy_income_low }
+			}
+			set_country_flag = retile_ai_needs_energy_crisis
+		}
+		if = {
+			limit = {
 				has_monthly_income = { resource = minerals value < @retile_ai_minerals_income_high }
 			}
 			set_country_flag = retile_ai_needs_minerals
+		}
+		if = {
+			limit = {
+				has_monthly_income = { resource = minerals value < @retile_ai_minerals_income_low }
+			}
+			set_country_flag = retile_ai_needs_minerals_crisis
 		}
 		if = {
 			limit = {
@@ -53,9 +71,21 @@ country_event = {
 		}
 		if = {
 			limit = {
+				has_monthly_income = { resource = food value < @retile_ai_food_income_low }
+			}
+			set_country_flag = retile_ai_needs_food_crisis
+		}
+		if = {
+			limit = {
 				has_monthly_income = { resource = alloys value < @retile_ai_alloys_income_high }
 			}
 			set_country_flag = retile_ai_needs_alloys
+		}
+		if = {
+			limit = {
+				has_monthly_income = { resource = alloys value < @retile_ai_alloys_income_low }
+			}
+			set_country_flag = retile_ai_needs_alloys_crisis
 		}
 		if = {
 			limit = {
@@ -65,12 +95,12 @@ country_event = {
 		}
 		if = {
 			limit = {
-				has_monthly_income = { resource = energy value > @retile_ai_energy_income_low }
-				has_monthly_income = { resource = minerals value > @retile_ai_minerals_income_low }
-				has_monthly_income = { resource = food value > @retile_ai_food_income_low }
-				has_monthly_income = { resource = alloys value > @retile_ai_alloys_income_low }
-				has_monthly_income = { resource = consumer_goods value > @retile_ai_consumer_goods_income_low }
+				has_monthly_income = { resource = consumer_goods value < @retile_ai_consumer_goods_income_low }
 			}
+			set_country_flag = retile_ai_needs_consumer_goods_crisis
+		}
+		if = {
+			limit = { retile_ai_has_resource_crisis = no }
 			set_country_flag = retile_ai_needs_science
 		}
 	}
