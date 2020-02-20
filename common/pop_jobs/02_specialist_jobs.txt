@@ -26,21 +26,30 @@ clerk = {
 		planet_amenities_add = 25
 	}
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_trade_1 } }
+		potential = { planet = { OR = {
+			has_building = building_trade_1
+			has_building = building_bourse_1
+		} }
 		modifier = {
 			trade_value_add = 10
 			planet_amenities_add = 50
 		}
 	}
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_trade_2 } }
+		potential = { planet = { OR = {
+			has_building = building_trade_2
+			has_building = building_bourse_2
+		} }
 		modifier = {
 			trade_value_add = 20
 			planet_amenities_add = 125
 		}
 	}
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_trade_3 } }
+		potential = { planet = { OR = {
+			has_building = building_trade_3
+			has_building = building_bourse_3
+		} }
 		modifier = {
 			trade_value_add = 30
 			planet_amenities_add = 225
