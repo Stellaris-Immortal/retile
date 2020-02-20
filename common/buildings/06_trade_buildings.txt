@@ -14,7 +14,10 @@ building_trade_1 = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
+		owner = { 
+			is_regular_empire = yes 
+			NOT = { has_tradition = tr_prosperity_public_works }
+		}
 		NOT = { has_modifier = slave_colony }
 	}
 	
@@ -33,7 +36,12 @@ building_trade_1 = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
+			owner = { has_tradition = tr_prosperity_public_works }
 		}
+	}
+	
+	convert_to = {
+		building_bourse_1
 	}
 	
 	resources = {
@@ -52,6 +60,7 @@ building_trade_1 = {
 	
 	show_tech_unlock_if = { 
 		is_regular_empire = yes
+		NOT = { has_tradition = tr_prosperity_public_works }
 	}
 	
 	country_modifier = {
@@ -93,7 +102,12 @@ building_trade_2 = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
+			owner = { has_tradition = tr_prosperity_public_works }
 		}
+	}
+	
+	convert_to = {
+		building_bourse_2
 	}
 	
 	resources = {
@@ -112,6 +126,7 @@ building_trade_2 = {
 	
 	show_tech_unlock_if = { 
 		is_regular_empire = yes
+		NOT = { has_tradition = tr_prosperity_public_works }
 	}
 	
 	upgrades = {
@@ -153,12 +168,206 @@ building_trade_3 = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
+			owner = { has_tradition = tr_prosperity_public_works }
 		}
 	}
 	
-	#planet_modifier = {
-	#	trade_value_mult = 0.25
-	#}
+	convert_to = {
+		building_bourse_3
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
+		}	
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	prerequisites = {
+		"tech_galactic_markets"
+	}
+	
+	show_tech_unlock_if = { 
+		is_regular_empire = yes
+		NOT = { has_tradition = tr_prosperity_public_works }
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_stock_exchange_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+#############
+# Prosperity Trade buildings
+#############
+building_bourse_1 = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = trade
+	can_be_disabled = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			has_tradition = tr_prosperity_public_works
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	destroy_trigger = {
+		OR = {
+			owner = { 
+				is_regular_empire = no
+				NOT = { has_tradition = tr_prosperity_public_works }
+			}
+			has_modifier = slave_colony
+		}
+	}
+	
+	convert_to = {
+		building_trade_1
+	}
+	
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		has_tradition = tr_prosperity_public_works
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_low
+		}	
+		upkeep = {
+			energy = 1
+		}		
+	}
+	
+	prerequisites = {
+		"tech_interplanetary_commerce"
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.10
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_bourse_1_effect
+	}
+	
+	upgrades = {
+		"building_bourse_2"
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_bourse_2 = {
+	base_buildtime = 480
+	can_build = no
+	category = trade
+	can_be_disabled = no
+	
+	destroy_trigger = {
+		OR = {
+			owner = { 
+				is_regular_empire = no
+				NOT = { has_tradition = tr_prosperity_public_works }
+			}
+			has_modifier = slave_colony
+		}
+	}
+	
+	convert_to = {
+		building_trade_2
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
+		}	
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	prerequisites = {
+		"tech_interstellar_economics"
+	}
+	
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		has_tradition = tr_prosperity_public_works
+	}
+	
+	upgrades = {
+		"building_bourse_3"
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.05
+	}
+	
+	country_modifier = {
+		trade_value_mult = 0.05
+		country_resource_max_add = 2000
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_bourse_2_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_bourse_3 = {
+	base_buildtime = 600	
+	can_build = no
+	category = trade
+	can_be_disabled = no
+	
+	destroy_trigger = {
+		OR = {
+			owner = { 
+				is_regular_empire = no
+				NOT = { has_tradition = tr_prosperity_public_works }
+			}
+			has_modifier = slave_colony
+		}
+	}
+	
+	convert_to = {
+		building_trade_3
+	}
+	
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		has_tradition = tr_prosperity_public_works
+	}
 
 	resources = {
 		category = planet_buildings
@@ -175,12 +384,14 @@ building_trade_3 = {
 	}
 	
 	country_modifier = {
+		trade_value_mult = 0.10
+		country_trade_fee = -0.05
 		country_resource_max_add = 3000
 	}
 	
 	triggered_desc = {
 		trigger = { exists = owner }
-		text = retile_stock_exchange_effect
+		text = retile_bourse_3_effect
 	}
 	
 	ai_weight = {
