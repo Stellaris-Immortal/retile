@@ -30,7 +30,6 @@ building_autochthon_monument = {
 	
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -102,7 +101,6 @@ building_heritage_site = {
 	
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -174,7 +172,6 @@ building_hypercomms_forum = {
 	
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -255,7 +252,6 @@ building_temple = {
 	
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = {
@@ -335,7 +331,6 @@ building_holotemple = {
 	
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = {
@@ -415,7 +410,6 @@ building_sacred_nexus = {
 	
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = {
@@ -496,24 +490,9 @@ building_hive_node = {
 		owner = { is_hive_empire = yes }
 	}
 
-	allow = {
-		retile_urban = yes
-		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_research_arcology
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			#retile_urban = no
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
 	}
 	
@@ -579,27 +558,7 @@ building_hive_node = {
 	}
 
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# Safe to advance our empire?
-			weight = 100
-			retile_advanced_economy = yes
-		}
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
@@ -610,24 +569,9 @@ building_hive_cluster = {
 	category = unity
 	can_be_disabled = no
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_med }
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			#retile_urban = no
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
 	}
 	
@@ -693,23 +637,8 @@ building_hive_cluster = {
 		text = retile_unity_2_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -720,24 +649,9 @@ building_hive_confluence = {
 	category = unity
 	can_be_disabled = no
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_high }
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			#retile_urban = no
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
 	}
 	
@@ -799,23 +713,8 @@ building_hive_confluence = {
 		text = retile_unity_3_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -836,27 +735,12 @@ building_uplink_node = {
 		}
 	}
 
-	allow = {
-		retile_urban = yes
-		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_research_arcology
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
 			owner = { OR = {
 				is_machine_empire = no
 				has_valid_civic = civic_machine_servitor
 			} }
-			#retile_urban = no
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
 	}
 	
@@ -922,27 +806,7 @@ building_uplink_node = {
 	}
 
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# Safe to advance our empire?
-			weight = 100
-			retile_advanced_economy = yes
-		}
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
@@ -954,27 +818,12 @@ building_network_junction = {
 	category = unity
 	can_be_disabled = no
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_med }
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
 			owner = { OR = {
 				is_machine_empire = no
 				has_valid_civic = civic_machine_servitor
 			} }
-			#retile_urban = no
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
 	}
 	
@@ -1039,23 +888,8 @@ building_network_junction = {
 		text = retile_unity_2_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -1067,27 +901,12 @@ building_system_conflux = {
 	category = unity
 	can_be_disabled = no
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_high }
-		} } }
-	}
-	
 	destroy_trigger = {
 		OR = {
 			owner = { OR = {
 				is_machine_empire = no
 				has_valid_civic = civic_machine_servitor
 			} }
-			#retile_urban = no
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
 	}
 	
@@ -1148,23 +967,8 @@ building_system_conflux = {
 		text = retile_unity_3_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -1191,7 +995,6 @@ building_corporate_monument = {
 	
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -1262,7 +1065,6 @@ building_corporate_site = {
 	
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -1333,7 +1135,6 @@ building_corporate_forum = {
 	
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
