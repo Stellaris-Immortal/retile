@@ -28,9 +28,26 @@ building_autochthon_monument = {
 		}					
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+				OR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -39,6 +56,17 @@ building_autochthon_monument = {
 					is_megacorp = yes
 					has_valid_civic = civic_exalted_priesthood
 					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
 				}
 			}
 		}
@@ -100,9 +128,18 @@ building_heritage_site = {
 	category = unity
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -111,6 +148,17 @@ building_heritage_site = {
 					is_megacorp = yes
 					has_valid_civic = civic_exalted_priesthood
 					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
 				}
 			}
 		}
@@ -172,9 +220,18 @@ building_hypercomms_forum = {
 	category = unity
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -183,6 +240,17 @@ building_hypercomms_forum = {
 					is_megacorp = yes
 					has_valid_civic = civic_exalted_priesthood
 					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
 				}
 			}
 		}
@@ -253,15 +321,43 @@ building_temple = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+				OR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = {
 				NOR = {
 					has_valid_civic = civic_exalted_priesthood
 					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
 				}
 			}
 		}
@@ -333,15 +429,35 @@ building_holotemple = {
 	category = unity
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = {
 				NOR = {
 					has_valid_civic = civic_exalted_priesthood
 					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
 				}
 			}
 		}
@@ -413,15 +529,35 @@ building_sacred_nexus = {
 	category = unity
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = {
 				NOR = {
 					has_valid_civic = civic_exalted_priesthood
 					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
 				}
 			}
 		}
@@ -497,22 +633,36 @@ building_hive_node = {
 	}
 
 	allow = {
-		retile_urban = yes
-		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_research_arcology
-		} } }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+				OR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
+			}
+		}
 	}
-	
+
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
 			}
 		}
 	}
@@ -579,27 +729,7 @@ building_hive_node = {
 	}
 
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# Safe to advance our empire?
-			weight = 100
-			retile_advanced_economy = yes
-		}
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
@@ -611,22 +741,28 @@ building_hive_cluster = {
 	can_be_disabled = no
 	
 	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_med }
-		} } }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
 	}
-	
+
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
 			}
 		}
 	}
@@ -693,23 +829,8 @@ building_hive_cluster = {
 		text = retile_unity_2_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -721,22 +842,28 @@ building_hive_confluence = {
 	can_be_disabled = no
 	
 	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_high }
-		} } }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
 	}
-	
+
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
 			}
 		}
 	}
@@ -799,23 +926,8 @@ building_hive_confluence = {
 		text = retile_unity_3_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -837,25 +949,39 @@ building_uplink_node = {
 	}
 
 	allow = {
-		retile_urban = yes
-		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_research_arcology
-		} } }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+				OR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
+			}
+		}
 	}
-	
+
 	destroy_trigger = {
 		OR = {
 			owner = { OR = {
 				is_machine_empire = no
 				has_valid_civic = civic_machine_servitor
 			} }
-			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
 			}
 		}
 	}
@@ -922,27 +1048,7 @@ building_uplink_node = {
 	}
 
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# Safe to advance our empire?
-			weight = 100
-			retile_advanced_economy = yes
-		}
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
@@ -955,25 +1061,31 @@ building_network_junction = {
 	can_be_disabled = no
 	
 	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_med }
-		} } }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
 	}
-	
+
 	destroy_trigger = {
 		OR = {
 			owner = { OR = {
 				is_machine_empire = no
 				has_valid_civic = civic_machine_servitor
 			} }
-			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
 			}
 		}
 	}
@@ -1039,23 +1151,8 @@ building_network_junction = {
 		text = retile_unity_2_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -1068,25 +1165,31 @@ building_system_conflux = {
 	can_be_disabled = no
 	
 	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_high }
-		} } }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
 	}
-	
+
 	destroy_trigger = {
 		OR = {
 			owner = { OR = {
 				is_machine_empire = no
 				has_valid_civic = civic_machine_servitor
 			} }
-			#retile_urban = no
 			AND = {
 				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
 			}
 		}
 	}
@@ -1148,23 +1251,8 @@ building_system_conflux = {
 		text = retile_unity_3_effect
 	}
 
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-
-	ai_resource_production = {
-		unity = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -1189,9 +1277,26 @@ building_corporate_monument = {
 		}					
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+				OR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
+				}
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -1199,6 +1304,17 @@ building_corporate_monument = {
 					is_megacorp = no
 					has_valid_civic = civic_exalted_priesthood
 					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
 				}
 			}
 		}
@@ -1260,9 +1376,18 @@ building_corporate_site = {
 	category = unity
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -1270,6 +1395,17 @@ building_corporate_site = {
 					is_megacorp = no
 					has_valid_civic = civic_exalted_priesthood
 					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
 				}
 			}
 		}
@@ -1331,9 +1467,18 @@ building_corporate_forum = {
 	category = unity
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			#retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = penal_colony
 			owner = { 
@@ -1341,6 +1486,17 @@ building_corporate_forum = {
 					is_megacorp = no
 					has_valid_civic = civic_exalted_priesthood
 					has_valid_civic = civic_gospel_of_the_masses
+				}
+			}
+			AND = {
+				owner = { is_ai = yes }
+				NOR = {
+					has_building = building_research_lab_1
+					has_building = building_research_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_1
+					has_building = building_metascience_lab_2
+					has_building = building_metascience_lab_3
 				}
 			}
 		}

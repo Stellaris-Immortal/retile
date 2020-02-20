@@ -858,7 +858,6 @@ generate_start_buildings_and_districts = {
 	}
 
 	######################################## Set up starting active deposits
-	# Always 3 jobs
 
 	if = {	# robots
 		limit = {
@@ -871,27 +870,13 @@ generate_start_buildings_and_districts = {
 				has_country_flag = biological_subspecies
 				has_country_flag = plantoid_subspecies
 			} } }
-			random_deposit = { # energy 1
-				limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
-				clear_blocker = yes
-			}
-			random_deposit = { # minerals 1
-				limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
-				clear_blocker = yes
-			}
-			random_deposit = { # food 1
-				limit = { is_food_deposit_low = yes has_deposit_category = deposit_cat_food }
-				clear_blocker = yes
-			}
+			retile_exploit_energy = yes
+			retile_exploit_minerals = yes
+			retile_exploit_food = yes
 		} else = {
-			random_deposit = { # energy 2
-				limit = { is_energy_deposit_med = yes has_deposit_category = deposit_cat_energy }
-				clear_blocker = yes
-			}
-			random_deposit = { # minerals 1
-				limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
-				clear_blocker = yes
-			}
+			retile_exploit_energy = yes
+			retile_exploit_energy = yes
+			retile_exploit_minerals = yes
 		}
 	}
 	
@@ -906,27 +891,13 @@ generate_start_buildings_and_districts = {
 				has_country_flag = biological_subspecies
 				has_country_flag = plantoid_subspecies
 			} } }
-			random_deposit = { # energy 1
-				limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
-				clear_blocker = yes
-			}
-			random_deposit = { # minerals 1
-				limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
-				clear_blocker = yes
-			}
-			random_deposit = { # food 1
-				limit = { is_food_deposit_low = yes has_deposit_category = deposit_cat_food }
-				clear_blocker = yes
-			}
+			retile_exploit_energy = yes
+			retile_exploit_minerals = yes
+			retile_exploit_food = yes
 		} else = {
-			random_deposit = { # energy 1
-				limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
-				clear_blocker = yes
-			}
-			random_deposit = { # minerals 2
-				limit = { is_minerals_deposit_med = yes has_deposit_category = deposit_cat_minerals }
-				clear_blocker = yes
-			}
+			retile_exploit_energy = yes
+			retile_exploit_minerals = yes
+			retile_exploit_minerals = yes
 		}
 	}
 	
@@ -937,19 +908,12 @@ generate_start_buildings_and_districts = {
 				is_machine_empire = no
 			}
 		}
-		random_deposit = { # energy 1
-			limit = { is_energy_deposit_low = yes has_deposit_category = deposit_cat_energy }
-			clear_blocker = yes
-		}
-		random_deposit = { # minerals 1
-			limit = { is_minerals_deposit_low = yes has_deposit_category = deposit_cat_minerals }
-			clear_blocker = yes
-		}
-		random_deposit = { # food 1
-			limit = { is_food_deposit_low = yes has_deposit_category = deposit_cat_food }
-			clear_blocker = yes
-		}
+			retile_exploit_energy = yes
+			retile_exploit_minerals = yes
+			retile_exploit_food = yes
 	}
+	
+	retile_exploit_minerals = yes		# Because we keep not having enough...
 
 	######################################## Set up starting districts
 	if = {
@@ -1067,11 +1031,11 @@ generate_start_buildings_and_districts = {
 	# capital world planet flags
 	if = {
 		limit = { owner = { is_country_type = default } }
-		set_planet_flag = ai_energy_development
-		set_planet_flag = ai_minerals_development
-		set_planet_flag = ai_food_development
-		set_planet_flag = ai_arcology_development
-		set_planet_flag = ai_city_development
+#		set_planet_flag = ai_energy_development
+#		set_planet_flag = ai_minerals_development
+#		set_planet_flag = ai_food_development
+#		set_planet_flag = ai_arcology_development
+#		set_planet_flag = ai_city_development
 	}
 }
 
@@ -1149,7 +1113,7 @@ generate_start_pops = {
 				}
 			}
 			while = {
-				count = 3
+				count = 4
 				create_pop = {
 					species = last_created_species
 					ethos = random
@@ -1165,7 +1129,7 @@ generate_start_pops = {
 		limit = { owner = { has_valid_civic = civic_mechanists } }
 		owner = { create_built_robot_species = yes }
 		while = {
-			count = 3
+			count = 4
 			create_pop = {
 				species = last_created_species
 			}
@@ -1173,7 +1137,7 @@ generate_start_pops = {
 	}
 	
 	while = {
-		limit = { num_pops < 10 }
+		limit = { num_pops < 14 }
 		create_pop = {
 			species = owner_main_species
 			ethos = random

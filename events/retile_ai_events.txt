@@ -7,597 +7,134 @@
 
 namespace = retile_ai
 
-# Initialize galaxy with rural district counts
-event = {
+# Flag AI countries based on their needs
+country_event = {
 	id = retile_ai.1
 	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		always = yes
-	}
-
-	immediate = {
-		every_planet = {
-			limit = { habitable_planet = yes }
-			retile_count_districts_generator = yes
-			retile_count_districts_mining = yes
-			retile_count_districts_farming = yes
-		}
-	}
-}
-
-# count districts on a planet when blockers are cleared
-planet_event = {
-	id = retile_ai.2
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		always = yes
-	}
-
-	immediate = {
-		retile_count_districts_generator = yes
-		retile_count_districts_mining = yes
-		retile_count_districts_farming = yes
-	}
-}
-
-
-# Flag AI planets for food focus
-country_event = {
-	id = retile_ai.51
-	hide_window = yes
 
 	trigger = {
 		is_ai = yes
-		is_country_type = default
-	}
-	
-	mean_time_to_happen = {
-		months = 12
-	}
-
-	after = {
-		retile_flag_ai_food_world = yes
-	}
-}
-
-# Flag AI planets for energy focus
-country_event = {
-	id = retile_ai.52
-	hide_window = yes
-
-	trigger = {
-		is_ai = yes
-		is_country_type = default
-	}
-	
-	mean_time_to_happen = {
-		months = 12
-	}
-
-	after = {
-		retile_flag_ai_energy_world = yes
-	}
-}
-
-# Flag AI planets for minerals focus
-country_event = {
-	id = retile_ai.53
-	hide_window = yes
-
-	trigger = {
-		is_ai = yes
-		is_country_type = default
-	}
-	
-	mean_time_to_happen = {
-		months = 12
-	}
-
-	after = {
-		retile_flag_ai_minerals_world = yes
-	}
-}
-
-# Flag AI planets for arcology focus
-country_event = {
-	id = retile_ai.54
-	hide_window = yes
-
-	trigger = {
-		is_ai = yes
-		is_country_type = default
-	}
-	
-	mean_time_to_happen = {
-		months = 12
-	}
-
-	after = {
-		retile_flag_ai_arcology_world = yes
-	}
-}
-
-# Flag AI planets for city focus
-country_event = {
-	id = retile_ai.55
-	hide_window = yes
-
-	trigger = {
-		is_ai = yes
-		is_country_type = default
-	}
-	
-	mean_time_to_happen = {
-		months = 36
-	}
-
-	after = {
-		retile_flag_ai_city_world = yes
-	}
-}
-
-# Check AI planets and remove wasteful misc. districts
-planet_event = {
-	id = retile_ai.101
-	hide_window = yes
-
-	pre_triggers = {
-		has_owner = yes
-	}
-	
-	trigger = {
-		owner = {
-			is_ai = yes
+		OR = {
 			is_country_type = default
+			is_country_type = awakened_marauders
+			is_country_type = awakened_fallen_empire
 		}
 	}
 	
 	mean_time_to_happen = {
-		months = 18
+		days = 30
 	}
 
-	after = {
+	immediate = {
+		remove_country_flag = retile_ai_needs_energy
+		remove_country_flag = retile_ai_needs_minerals
+		remove_country_flag = retile_ai_needs_food
+		remove_country_flag = retile_ai_needs_alloys
+		remove_country_flag = retile_ai_needs_consumer_goods
+		remove_country_flag = retile_ai_needs_science
+		remove_country_flag = retile_ai_needs_energy_crisis
+		remove_country_flag = retile_ai_needs_minerals_crisis
+		remove_country_flag = retile_ai_needs_food_crisis
+		remove_country_flag = retile_ai_needs_alloys_crisis
+		remove_country_flag = retile_ai_needs_consumer_goods_crisis
+		remove_country_flag = retile_ai_needs_science_crisis
+		
 		if = {
 			limit = {
-				num_districts = { type = district_enforcer value > 0 }
-				planet_crime < 1
+				has_monthly_income = { resource = energy value < @retile_ai_energy_income_high }
 			}
-			remove_district = district_enforcer
+			set_country_flag = retile_ai_needs_energy
 		}
 		if = {
 			limit = {
-				num_districts = { type = district_soldier value > 1 }
-				owner = { OR = {
-					used_naval_capacity_percent < 0.5
-					has_monthly_income = { resource = alloys value < 10 }
-					has_monthly_income = { resource = consumer_goods value < 0 }
-					has_monthly_income = { resource = food value < 0 }
-					has_monthly_income = { resource = minerals value < 0 }
-					has_monthly_income = { resource = energy value < 25 }
-				} }
+				has_monthly_income = { resource = energy value < @retile_ai_energy_income_low }
 			}
-			remove_district = district_soldier
+			set_country_flag = retile_ai_needs_energy_crisis
 		}
 		if = {
 			limit = {
-				num_districts = { type = district_custodian value > 0 }
-				free_amenities < -50
+				has_monthly_income = { resource = minerals value < @retile_ai_minerals_income_high }
 			}
-			remove_district = district_custodian
+			set_country_flag = retile_ai_needs_minerals
+		}
+		if = {
+			limit = {
+				has_monthly_income = { resource = minerals value < @retile_ai_minerals_income_low }
+			}
+			set_country_flag = retile_ai_needs_minerals_crisis
+		}
+		if = {
+			limit = {
+				has_monthly_income = { resource = food value < @retile_ai_food_income_high }
+			}
+			set_country_flag = retile_ai_needs_food
+		}
+		if = {
+			limit = {
+				has_monthly_income = { resource = food value < @retile_ai_food_income_low }
+			}
+			set_country_flag = retile_ai_needs_food_crisis
+		}
+		if = {
+			limit = {
+				has_monthly_income = { resource = alloys value < @retile_ai_alloys_income_high }
+			}
+			set_country_flag = retile_ai_needs_alloys
+		}
+		if = {
+			limit = {
+				has_monthly_income = { resource = alloys value < @retile_ai_alloys_income_low }
+			}
+			set_country_flag = retile_ai_needs_alloys_crisis
+		}
+		if = {
+			limit = {
+				has_monthly_income = { resource = consumer_goods value < @retile_ai_consumer_goods_income_high }
+			}
+			set_country_flag = retile_ai_needs_consumer_goods
+		}
+		if = {
+			limit = {
+				has_monthly_income = { resource = consumer_goods value < @retile_ai_consumer_goods_income_low }
+			}
+			set_country_flag = retile_ai_needs_consumer_goods_crisis
+		}
+		if = {
+			limit = { retile_ai_has_resource_crisis = no }
+			set_country_flag = retile_ai_needs_science
 		}
 	}
 }
 
-# Check AI countries and remove wasteful energy districts
+# Flag AI planets for specific kinds of urban development
 country_event = {
-	id = retile_ai.102
+	id = retile_ai.100
 	hide_window = yes
 
 	trigger = {
-		is_ai = yes
-		is_country_type = default
+		always = no
+	#	is_ai = yes
+	#	OR = {
+	#		is_country_type = default
+	#		is_country_type = awakened_marauders
+	#		is_country_type = awakened_fallen_empire
+	#	}
 	}
 	
 	mean_time_to_happen = {
-		months = 18
+		months = 12
 	}
 
-	after = {
-		if = {
-			limit = {
-				has_monthly_income = { resource = energy value > 225 }
-			}
-			random_owned_planet = {
-				limit = {
-					OR = {
-						num_districts = { type = district_generator value > 0 }
-						num_districts = { type = district_generator_uncapped value > 0 }
-						num_districts = { type = district_hab_energy value > 0 }
-						num_districts = { type = district_rw_generator value > 0 }
-					}
-				}
-				weights = {
-					base = 1
-					modifier = {
-						mult = 1000
-						OR = {
-							has_planet_flag = ai_arcology_development
-							is_planet_class = pc_relic
-						}
-						NOT = { has_planet_flag = ai_energy_development }
-					}
-					modifier = {
-						add = 50
-						has_planet_flag = ai_energy_development_former
-						NOT = { has_planet_flag = ai_energy_development }
-					}
-					modifier = {
-						add = 500
-						NOT = { has_planet_flag = ai_energy_development }
-						NOT = { has_planet_flag = ai_energy_development_former }
-					}
-					modifier = {
-						mult = 1000
-						NOT = { has_planet_flag = ai_energy_development_sticky }
-					}
-				}
-				if = { limit = { num_districts = { type = district_generator value > 0 } }
-					remove_district = district_generator
-					if = { limit = { num_districts = { type = district_generator value < 1 } }
-						remove_planet_flag = ai_energy_development
-						remove_planet_flag = ai_energy_development_former
-						remove_planet_flag = ai_energy_development_sticky
-						#owner = { retile_flag_ai_energy_world = yes }
-					}
-				}
-				if = { limit = { num_districts = { type = district_generator_uncapped value > 0 } }
-					remove_district = district_generator_uncapped
-					if = { limit = { num_districts = { type = district_generator_uncapped value < 1 } }
-						remove_planet_flag = ai_energy_development
-						remove_planet_flag = ai_energy_development_former
-						remove_planet_flag = ai_energy_development_sticky
-						#owner = { retile_flag_ai_energy_world = yes }
-					}
-				}
-				if = { limit = { num_districts = { type = district_hab_energy value > 0 } }
-					remove_district = district_hab_energy
-					if = { limit = { num_districts = { type = district_hab_energy value < 1 } }
-						remove_planet_flag = ai_energy_development
-						remove_planet_flag = ai_energy_development_former
-						remove_planet_flag = ai_energy_development_sticky
-						#owner = { retile_flag_ai_energy_world = yes }
-					}
-				}
-				if = { limit = { num_districts = { type = district_rw_generator value > 0 } }
-					remove_district = district_rw_generator
-					if = { limit = { num_districts = { type = district_rw_generator value < 1 } }
-						remove_planet_flag = ai_energy_development
-						remove_planet_flag = ai_energy_development_former
-						remove_planet_flag = ai_energy_development_sticky
-						#owner = { retile_flag_ai_energy_world = yes }
-					}
-				}
-			}
-		} else_if = {	# more aggressively clean up arcology worlds.
-			limit = {
-				has_monthly_income = { resource = energy value > 30 }
-			}
-			random_owned_planet = {
-				limit = {
-					NOT = { has_planet_flag = ai_energy_development }
-					has_planet_flag = ai_arcology_development
-					num_districts = { type = district_generator value > 0 }
-				}
-				remove_district = district_generator
-			}
-		}
+	immediate = {
 	}
 }
 
-# Check AI countries and remove wasteful mining districts
-country_event = {
-	id = retile_ai.103
-	hide_window = yes
 
-	trigger = {
-		is_ai = yes
-		is_country_type = default
-	}
-	
-	mean_time_to_happen = {
-		months = 18
-	}
+# Scrub resource buildings if the planet has no jobs of the appropriate type
 
-	after = {
-		if = {
-			limit = {
-				has_monthly_income = { resource = minerals value > 225 }
-			}
-			random_owned_planet = {
-				limit = {
-					OR = {
-						num_districts = { type = district_mining value > 0 }
-						num_districts = { type = district_mining_uncapped value > 0 }
-						num_districts = { type = district_hab_mining value > 0 }
-						num_districts = { type = district_rw_mining value > 0 }
-					}
-				}
-				weights = {
-					base = 1
-					modifier = {
-						mult = 1000
-						OR = {
-							has_planet_flag = ai_arcology_development
-							is_planet_class = pc_relic
-						}
-						NOT = { has_planet_flag = ai_minerals_development }
-					}
-					modifier = {
-						add = 50
-						has_planet_flag = ai_minerals_development_former
-						NOT = { has_planet_flag = ai_minerals_development }
-					}
-					modifier = {
-						add = 500
-						NOT = { has_planet_flag = ai_minerals_development }
-						NOT = { has_planet_flag = ai_minerals_development_former }
-					}
-					modifier = {
-						mult = 1000
-						NOT = { has_planet_flag = ai_minerals_development_sticky }
-					}
-				}
-				if = { limit = { num_districts = { type = district_mining value > 0 } }
-					remove_district = district_mining
-					if = { limit = { num_districts = { type = district_mining value < 1 } }
-						remove_planet_flag = ai_minerals_development
-						remove_planet_flag = ai_minerals_development_former
-						remove_planet_flag = ai_minerals_development_sticky
-						#owner = { retile_flag_ai_minerals_world = yes }
-					}
-				}
-				if = { limit = { num_districts = { type = district_mining_uncapped value > 0 } }
-					remove_district = district_mining_uncapped
-					if = { limit = { num_districts = { type = district_mining_uncapped value < 1 } }
-						remove_planet_flag = ai_minerals_development
-						remove_planet_flag = ai_minerals_development_former
-						remove_planet_flag = ai_minerals_development_sticky
-						#owner = { retile_flag_ai_minerals_world = yes }
-					}
-				}
-				if = { limit = { num_districts = { type = district_hab_mining value > 0 } }
-					remove_district = district_hab_mining
-					if = { limit = { num_districts = { type = district_hab_mining value < 1 } }
-						remove_planet_flag = ai_minerals_development
-						remove_planet_flag = ai_minerals_development_former
-						remove_planet_flag = ai_minerals_development_sticky
-						#owner = { retile_flag_ai_minerals_world = yes }
-					}
-				}
-				if = { limit = { num_districts = { type = district_rw_mining value > 0 } }
-					remove_district = district_rw_mining
-					if = { limit = { num_districts = { type = district_rw_mining value < 1 } }
-						remove_planet_flag = ai_minerals_development
-						remove_planet_flag = ai_minerals_development_former
-						remove_planet_flag = ai_minerals_development_sticky
-						#owner = { retile_flag_ai_minerals_world = yes }
-					}
-				}
-			}
-		} else_if = {	# more aggressively clean up arcology worlds.
-			limit = {
-				has_monthly_income = { resource = minerals value > 30 }
-			}
-			random_owned_planet = {
-				limit = {
-					NOT = { has_planet_flag = ai_minerals_development }
-					has_planet_flag = ai_arcology_development
-					num_districts = { type = district_mining value > 0 }
-				}
-				remove_district = district_mining
-			}
-		}
-	}
-}
 
-# Check AI countries and remove wasteful farming districts
-country_event = {
-	id = retile_ai.104
-	hide_window = yes
 
-	trigger = {
-		is_ai = yes
-		is_country_type = default
-	}
-	
-	mean_time_to_happen = {
-		months = 18
-	}
-
-	after = {
-		if = {
-			limit = {
-				OR = {
-					has_monthly_income = { resource = food value > 75 }
-					is_plantoid_empire = yes
-				}
-			}
-			random_owned_planet = {
-				limit = {
-					OR = {
-						num_districts = { type = district_farming value > 0 }
-						num_districts = { type = district_farming_uncapped value > 0 }
-						num_districts = { type = district_hab_hydroponics value > 0 }
-						num_districts = { type = district_rw_farming value > 0 }
-					}
-					OR = {
-						owner = { is_plantoid_empire = no }
-						habitability = { who = owner.owner_species value > 0.99 }
-						AND = {
-							owner = { has_technology = tech_housing_3 }
-							has_planet_flag = ai_arcology_development
-							NOT = { has_planet_flag = ai_food_development }
-						}
-					}
-				}
-				weights = {
-					base = 1
-					modifier = {
-						mult = 10000
-						OR = {
-							has_planet_flag = ai_arcology_development
-							is_planet_class = pc_relic
-						}
-						NOT = { has_planet_flag = ai_food_development }
-					}
-					modifier = {
-						add = 50
-						has_planet_flag = ai_food_development_former
-						NOT = { has_planet_flag = ai_food_development }
-					}
-					modifier = {
-						add = 500
-						NOT = { has_planet_flag = ai_food_development }
-						NOT = { has_planet_flag = ai_food_development_former }
-					}
-					modifier = {
-						mult = 1000
-						NOT = { has_planet_flag = ai_food_development_sticky }
-					}
-				}
-				if = { limit = { num_districts = { type = district_farming value > 0 } }
-					remove_district = district_farming
-					if = { limit = { num_districts = { type = district_farming value < 1 } }
-						remove_planet_flag = ai_food_development
-						remove_planet_flag = ai_food_development_former
-						remove_planet_flag = ai_food_development_sticky
-						#owner = { retile_flag_ai_food_world = yes }
-					}
-				}
-				if = { limit = { num_districts = { type = district_farming_uncapped value > 0 } }
-					remove_district = district_farming_uncapped
-					if = { limit = { num_districts = { type = district_farming_uncapped value < 1 } }
-						remove_planet_flag = ai_food_development
-						remove_planet_flag = ai_food_development_former
-						remove_planet_flag = ai_food_development_sticky
-						#owner = { retile_flag_ai_food_world = yes }
-					}
-				}
-				if = { limit = { num_districts = { type = district_hab_hydroponics value > 0 } }
-					remove_district = district_hab_hydroponics
-					if = { limit = { num_districts = { type = district_hab_hydroponics value < 1 } }
-						remove_planet_flag = ai_food_development
-						remove_planet_flag = ai_food_development_former
-						remove_planet_flag = ai_food_development_sticky
-						#owner = { retile_flag_ai_food_world = yes }
-					}
-				}
-				if = { limit = { num_districts = { type = district_rw_farming value > 0 } }
-					remove_district = district_rw_farming
-					if = { limit = { num_districts = { type = district_rw_farming value < 1 } }
-						remove_planet_flag = ai_food_development
-						remove_planet_flag = ai_food_development_former
-						remove_planet_flag = ai_food_development_sticky
-						#owner = { retile_flag_ai_food_world = yes }
-					}
-				}
-			}
-		} else_if = {	# more aggressively clean up arcology worlds.
-			limit = {
-				has_monthly_income = { resource = food value > 10 }
-			}
-			random_owned_planet = {
-				limit = {
-					NOT = { has_planet_flag = ai_food_development }
-					has_planet_flag = ai_arcology_development
-					num_districts = { type = district_farming value > 0 }
-				}
-				remove_district = district_farming
-			}
-		}
-	}
-}
-
-# Check AI countries and clean up mixed arcology districts
-country_event = {
-	id = retile_ai.105
-	hide_window = yes
-
-	trigger = {
-		is_ai = yes
-		is_country_type = default
-	}
-	
-	mean_time_to_happen = {
-		months = 18
-	}
-
-	after = {
-		every_owned_planet = {	### Specialize any un-flagged arcologies
-			limit = {
-				is_planet_class = pc_city
-				NOR = {
-					has_planet_flag = ai_research_arcology
-					has_planet_flag = ai_foundry_arcology
-				}
-			}
-			retile_set_arcology_focus = yes
-		}
-		if = {	# Got enough alloys, try to remove an engineering district from a research arcology
-			limit = {
-				has_monthly_income = { resource = alloys value > 50 }
-				any_owned_planet = {
-					is_planet_class = pc_city
-					has_planet_flag = ai_research_arcology
-					num_districts = { type = district_engineering_arcology value > 0 }
-				}
-			}
-			random_owned_planet = {
-				limit = {
-					is_planet_class = pc_city
-					has_planet_flag = ai_research_arcology
-					num_districts = { type = district_engineering_arcology value > 0 }
-				}
-				remove_district = district_engineering_arcology
-			}
-		} else_if = {	# Not enough alloys, try to remove a research district from an engineering arcology
-			limit = {
-				has_monthly_income = { resource = alloys value < 25 }
-				any_owned_planet = {
-					is_planet_class = pc_city
-					has_planet_flag = ai_foundry_arcology
-					OR = {
-						num_districts = { type = district_research_arcology value > 0 }
-						num_districts = { type = district_digsite_arcology value > 0 }
-					}
-				}
-			}
-			random_owned_planet = {
-				limit = {
-					is_planet_class = pc_city
-					has_planet_flag = ai_foundry_arcology
-					OR = {
-						num_districts = { type = district_research_arcology value > 0 }
-						num_districts = { type = district_digsite_arcology value > 0 }
-					}
-				}
-				if = {
-					limit = { num_districts = { type = district_research_arcology value > 0 } }
-					remove_district = district_research_arcology
-				}
-				if = {
-					limit = { num_districts = { type = district_digsite_arcology value > 0 } }
-					remove_district = district_digsite_arcology
-				}
-			}
-		}
-	}
-}
-
+# slow down AI colonizer build
 ship_event = {
 	id = retile_ai.1000
 	hide_window = yes
@@ -614,6 +151,7 @@ ship_event = {
 		owner = { set_timed_country_flag = { flag = colony_ship_built days = 720 } }
 	}
 }
+
 
 # Trade away energy at bad exchange rates, as needed.
 country_event = {

@@ -1,3 +1,62 @@
+district_housing = {
+	base_buildtime = @retile_city_build_time
+	icon = district_housing
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_housing < 2
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			planet_housing_add = 2
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
 district_clerks = {
 	base_buildtime = @retile_city_build_time
 	icon = district_clerk
@@ -18,6 +77,19 @@ district_clerks = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_authority = auth_corporate }
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -68,6 +140,19 @@ district_engineers = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_alloys }
+					owner = { has_country_flag = retile_ai_needs_consumer_goods }
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -118,6 +203,18 @@ district_scholars = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_science }
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -166,6 +263,10 @@ district_diplomats = {
 			has_modifier = penal_colony
 			has_modifier = slave_colony
 		}
+	}
+	
+	allow = {
+		owner = { is_ai = no }
 	}
 
 	resources = {
@@ -219,6 +320,22 @@ district_soldiers = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					#has_planet_flag = retile_ai_fortress
+					AND = {
+						num_districts = { type = district_soldiers value < 3 }
+						owner = { retile_ai_has_resource_crisis = no }
+					}
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -269,6 +386,20 @@ district_enforcers = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				planet_crime > 33
+				OR = {
+					free_jobs < 1
+					num_districts = { type = district_enforcers value < 1 }
+				}
+				owner = { retile_ai_has_resource_crisis = no }
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -340,6 +471,17 @@ district_custodians = {
 		}
 	}
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				free_amenities > 300
+				owner = { retile_ai_has_resource_crisis = no }
+			}
+		}
+	}
+
 	resources = {
 		category = planet_districts_cities
 		cost = {
@@ -362,56 +504,6 @@ district_custodians = {
 		}
 		modifier = {
 			job_custodian_add = 1
-		}
-	}
-	
-	ai_weight = {
-		weight = 1
-	}
-}
-
-district_housing = {
-	base_buildtime = @retile_city_build_time
-	icon = district_housing
-	is_capped_by_modifier = no
-	
-	show_on_uncolonized = {
-		exists = from
-		from = { is_gestalt = no }
-	}
-
-	potential = {
-		exists = owner
-		owner = { is_gestalt = no }
-		NOR = {
-			has_modifier = resort_colony
-			has_modifier = penal_colony
-			has_modifier = slave_colony
-		}
-	}
-	
-	resources = {
-		category = planet_districts_cities
-		cost = {
-			minerals = @retile_city_cost
-		}
-		upkeep = {
-			energy = @retile_city_upkeep
-			consumer_goods = @retile_city_upkeep_supplies
-		}
-	}
-	
-	planet_modifier = {
-		planet_housing_add = 5
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_planet_class = pc_city
-			exists = owner
-			owner = { has_ascension_perk = ap_arcology_project }
-		}
-		modifier = {
-			planet_housing_add = 2
 		}
 	}
 	
