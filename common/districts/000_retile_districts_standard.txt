@@ -267,7 +267,6 @@ district_diplomats = {
 	
 	allow = {
 		owner = { is_ai = no }
-		owner = { has_technology = tech_xenodiplomacy }
 	}
 
 	resources = {
@@ -281,145 +280,18 @@ district_diplomats = {
 		}
 	}
 	
-	planet_modifier = {			### Diplomat Jobs
-		job_diplomat_add = 2
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_planet_class = pc_city
-			exists = owner
-			owner = { has_ascension_perk = ap_arcology_project }
-			owner = { NOR = {
-				has_policy_flag = xenodiplomacy_assembly
-				has_policy_flag = xenodiplomacy_magistrate
-				has_policy_flag = xenodiplomacy_lr
-				has_policy_flag = xenodiplomacy_pr
-				has_policy_flag = xenodiplomacy_isolation
-				has_policy_flag = xenodiplomacy_gunboat
-			} }
-		}
-		modifier = {
-			job_diplomat_add = 1
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_assembly }
-		}
-		job_diplomat_add = -2
-		job_representative_add = 2
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_planet_class = pc_city
-			exists = owner
-			owner = { has_ascension_perk = ap_arcology_project }
-			owner = { has_policy_flag = xenodiplomacy_assembly }
-		}
-		modifier = {
-			job_representative_add = 1
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_magistrate }
-		}
-		job_diplomat_add = -2
-		job_magistrate_add = 2
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_planet_class = pc_city
-			exists = owner
-			owner = { has_ascension_perk = ap_arcology_project }
-			owner = { has_policy_flag = xenodiplomacy_magistrate }
-		}
-		modifier = {
-			job_magistrate_add = 1
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_lr }
-		}
-		job_diplomat_add = -2
-		job_lr_manager_add = 2
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_planet_class = pc_city
-			exists = owner
-			owner = { has_ascension_perk = ap_arcology_project }
-			owner = { has_policy_flag = xenodiplomacy_lr }
-		}
-		modifier = {
-			job_lr_manager_add = 1
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_pr }
-		}
-		job_diplomat_add = -2
-		job_pr_manager_add = 2
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_planet_class = pc_city
-			exists = owner
-			owner = { has_ascension_perk = ap_arcology_project }
-			owner = { has_policy_flag = xenodiplomacy_pr }
-		}
-		modifier = {
-			job_pr_manager_add = 1
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_isolation }
-		}
-		job_diplomat_add = -2
+	planet_modifier = {			### Bureaucrat Jobs
 		job_bureaucrat_add = 2
 	}
+	
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_city
 			exists = owner
 			owner = { has_ascension_perk = ap_arcology_project }
-			owner = { has_policy_flag = xenodiplomacy_isolation }
 		}
 		modifier = {
 			job_bureaucrat_add = 1
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_gunboat }
-		}
-		job_diplomat_add = -2
-		job_strategos_add = 2
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_planet_class = pc_city
-			exists = owner
-			owner = { has_ascension_perk = ap_arcology_project }
-			owner = { has_policy_flag = xenodiplomacy_gunboat }
-		}
-		modifier = {
-			job_strategos_add = 1
 		}
 	}
 	
