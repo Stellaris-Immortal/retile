@@ -101,3 +101,24 @@ country_event = {
 
 
 # Scrub resource buildings if the planet has no jobs of the appropriate type
+
+
+
+# slow down AI colonizer build
+ship_event = {
+	id = retile_ai.1000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			is_ship_class = shipclass_colonizer
+			is_ship_class = shipclass_sponsored_colonizer
+		}
+	}
+
+	immediate = {
+		owner = { set_timed_country_flag = { flag = colony_ship_built days = 720 } }
+	}
+}
+

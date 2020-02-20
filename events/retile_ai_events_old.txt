@@ -598,23 +598,6 @@ country_event = {
 	}
 }
 
-ship_event = {
-	id = retile_ai_old.1000
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		OR = {
-			is_ship_class = shipclass_colonizer
-			is_ship_class = shipclass_sponsored_colonizer
-		}
-	}
-
-	immediate = {
-		owner = { set_timed_country_flag = { flag = colony_ship_built days = 720 } }
-	}
-}
-
 # Trade away energy at bad exchange rates, as needed.
 country_event = {
 	id = retile_ai_old.2000
