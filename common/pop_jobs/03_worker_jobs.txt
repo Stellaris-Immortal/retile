@@ -84,14 +84,14 @@ custodian = {
 				planet = { has_building = building_hydroponics_farm }
 				NOT = { has_trait = trait_plantoid }
 			}
-			food = 2.5
+			food = 10
 		}
 		produces = {
 			trigger = { 
 				planet = { has_building = building_hydroponics_farm }
 				has_trait = trait_plantoid_fruiting
 			}
-			food = 1
+			food = 4
 		}
 		#################################### Upkeep
 		upkeep = {
@@ -123,84 +123,53 @@ custodian = {
 			consumer_goods = 1
 		}
 		upkeep = {
-			trigger = { 
-				planet = { has_building = building_hydroponics_farm }
-			}
+			trigger = { planet = { has_building = building_hydroponics_farm } }
 			energy = 2
 			consumer_goods = 1
 		}
 		produces = {	### Fallen Empire buildings
-			trigger = { 
-				planet = {
-					has_building = building_dimensional_fabricator
-				} 
-			}
-			food = 2.5
+			trigger = { planet = { has_building = building_dimensional_fabricator } }
+			food = 10
 			energy = 10
 			minerals = 10
 		}
 		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_nano_forge
-				} 
-			}
-			food = 2.5
+			trigger = { planet = { has_building = building_nano_forge } }
+			food = 10
 			energy = 10
 			minerals = 10
 		}
 		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_class_4_singularity
-				} 
-			}
-			food = 2.5
+			trigger = { planet = { has_building = building_class_4_singularity } }
+			food = 10
 			energy = 10
 			minerals = 10
 		}
 		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_empyrean_shrine
-				} 
-			}
-			food = 2.5
+			trigger = { planet = { has_building = building_empyrean_shrine } }
+			food = 10
 			energy = 10
 			minerals = 10
 		}
 		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_master_archive
-				} 
-			}
-			food = 2.5
+			trigger = { planet = { has_building = building_master_archive } }
+			food = 10
 			energy = 10
 			minerals = 10
 		}
 		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_fe_xeno_zoo
-				} 
-			}
-			food = 2.5
+			trigger = { planet = { has_building = building_fe_xeno_zoo } }
+			food = 10
 			energy = 10
 			minerals = 10
 		}
 		produces = {
-			trigger = { 
-				planet = {
-					has_building = building_fe_dome
-				} 
-			}
-			food = 2.5
+			trigger = { planet = { has_building = building_fe_dome } }
+			food = 10
 			energy = 10
 			minerals = 10
 		}
 	}
-	
 	triggered_planet_modifier = {
 		potential = { owner = { has_valid_civic = civic_environmentalist } }
 		modifier = { planet_amenities_add = -6 }
@@ -363,7 +332,7 @@ technician = {
 			consumer_goods = 4.5
 		}
 	}
-
+	
 	planet_modifier = {
 		planet_amenities_add = 25
 	}
@@ -651,28 +620,28 @@ farmer = {
 		category = planet_farmers
 		produces = {
 			trigger = { not = { has_trait = trait_plantoid } }
-			food = 2.5
+			food = 10
 		}
 		produces = {
 			trigger = { 
 				planet = { has_building = building_food_1 } 
 				NOT = { has_trait = trait_plantoid }
 			}
-			food = 2.5
+			food = 10
 		}
 		produces = {
 			trigger = { 
 				planet = { has_building = building_food_2 } 
 				NOT = { has_trait = trait_plantoid }
 			}
-			food = 5
+			food = 20
 		}
 		produces = {
 			trigger = { 
 				planet = { has_building = building_food_3 }
 				NOT = { has_trait = trait_plantoid }
 			}
-			food = 7.5
+			food = 30
 		}
 		upkeep = {
 			energy = 2
@@ -701,31 +670,31 @@ farmer = {
 		}
 		produces = {
 			trigger = { has_trait = trait_plantoid_fruiting }
-			food = 1
+			food = 4
 		}
 		produces = {
 			trigger = { 
 				planet = { has_building = building_food_1 } 
 				has_trait = trait_plantoid_fruiting
 			}
-			food = 1
+			food = 4
 		}
 		produces = {
 			trigger = { 
 				planet = { has_building = building_food_2 } 
 				has_trait = trait_plantoid_fruiting
 			}
-			food = 2
+			food = 8
 		}
 		produces = {
 			trigger = { 
 				planet = { has_building = building_food_3 }
 				has_trait = trait_plantoid_fruiting
 			}
-			food = 3
+			food = 12
 		}
 	}	
-	
+
 	planet_modifier = {
 		planet_amenities_add = 25
 	}
