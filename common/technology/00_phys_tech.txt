@@ -465,7 +465,8 @@ tech_physics_1 = {
 	weight = @tier1weight1
 	
 	modifier = {
-		planet_researchers_produces_mult = 0.16
+		planet_researchers_energy_upkeep_mult = -0.1
+		planet_researchers_consumer_goods_upkeep_mult = -0.1
 	}
 	
 	weight_modifier = {
@@ -523,7 +524,8 @@ tech_physics_2 = {
 	weight = @tier2weight3
 	
 	modifier = {
-		planet_researchers_produces_mult = 0.17
+		planet_researchers_energy_upkeep_mult = -0.1
+		planet_researchers_consumer_goods_upkeep_mult = -0.1
 	}
 	
 	weight_modifier = {
@@ -577,7 +579,8 @@ tech_physics_3 = {
 	weight = @tier4weight2
 	
 	modifier = {
-		planet_researchers_produces_mult = 0.17
+		planet_researchers_energy_upkeep_mult = -0.1
+		planet_researchers_consumer_goods_upkeep_mult = -0.1
 	}
 	
 	weight_modifier = {
@@ -629,6 +632,10 @@ tech_global_research_initiative = {
 	category = { computing }
 	prerequisites = { "tech_physics_1" "tech_colonial_centralization" }
 	weight = @tier3weight1
+	
+	potential = {
+		always = no
+	}
 	
 	weight_modifier = {
 		factor = 1.5
@@ -2068,6 +2075,10 @@ tech_power_plant_1 = {
 	tier = 0
 	category = { field_manipulation }
 	start_tech = yes
+	
+	modifier = {
+		description = tech_power_plant_1_effect
+	}
 		
 	## unlock power plant lvl 1
 }
@@ -2083,8 +2094,7 @@ tech_power_plant_2 = {
 		
 	modifier = {
 		#description = tech_power_plant_2_effect
-		planet_technician_energy_upkeep_mult = -0.1
-		planet_technician_consumer_goods_upkeep_mult = -0.1
+		planet_technician_consumer_goods_upkeep_mult = -0.15
 	}
 	
 	weight_modifier = {
@@ -2124,8 +2134,7 @@ tech_power_plant_3 = {
 		
 	modifier = {
 		#description = tech_power_plant_3_effect
-		planet_technician_energy_upkeep_mult = -0.1
-		planet_technician_consumer_goods_upkeep_mult = -0.1
+		planet_technician_consumer_goods_upkeep_mult = -0.15
 	}
 	
 	weight_modifier = {
@@ -2165,8 +2174,7 @@ tech_power_plant_4 = {
 		
 	modifier = {
 		#description = tech_power_plant_4_effect
-		planet_technician_energy_upkeep_mult = -0.1
-		planet_technician_consumer_goods_upkeep_mult = -0.1
+		planet_technician_consumer_goods_upkeep_mult = -0.15
 	}
 	
 	weight_modifier = {
