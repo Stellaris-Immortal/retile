@@ -278,20 +278,21 @@ decision_mastery_of_nature = {
 			is_planet_class = pc_machine
 		}
 		owner = { has_ascension_perk = ap_mastery_of_nature }
-		NOT = { has_deposit = retile_mastery_of_nature_energy }
+		NOT = { has_planet_flag = retile_mastery_of_nature }
 	}
 	
 	effect = {
 		add_deposit = retile_mastery_of_nature_energy
 		add_deposit = retile_mastery_of_nature_minerals
 		add_deposit = retile_mastery_of_nature_food
+		set_planet_flag = retile_mastery_of_nature
 	}
 	
 	ai_weight = {
 		weight = 5
 		modifier = {
 			factor = 0
-			free_district_slots > 0
+			owner = { has_resource = { resource = influence value < 150 }
 		}
 	}
 }

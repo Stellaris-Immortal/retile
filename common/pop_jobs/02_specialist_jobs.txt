@@ -502,7 +502,7 @@ foundry = {	### Engineer
 			alloys = 10
 		}
 	}
-
+	
 	############################################################ Engineer Pollution
 	
 	planet_modifier = {
@@ -943,131 +943,19 @@ roboticist = {
 	resources = {
 		category = planet_pop_assemblers
 		upkeep = {
-			trigger = {  planet = { free_housing >= 0 } }
 			minerals = 10
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_solar_panels
-			} }
-			energy = 10
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_recycling_center
-			} }
-			minerals = 10
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_hydroponics_farm
-			} }
-			food = 2.5
-		}
-		produces = {
-			trigger = { 
-				planet = {
-					free_housing < 0
-					has_building = building_hydroponics_farm
-				}
-				has_trait = trait_plantoid_fruiting
-			}
-			food = 1
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_solar_panels
-				has_deposit = retile_deposit_waste_reprocessing
-			} }
-			energy = 10
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_recycling_center
-				has_deposit = retile_deposit_waste_reprocessing
-			} }
-			minerals = 10
-		}
-		produces = {
-			trigger = { planet = {
-				free_housing < 0
-				has_building = building_hydroponics_farm
-				has_deposit = retile_deposit_waste_reprocessing
-			} }
-			food = 2.5
+			energy = 2
+			consumer_goods = 1
 		}
 	}
 
 	triggered_planet_modifier = {
-		potential = { planet = { free_housing >= 0 } }
 		modifier = {
 			planet_amenities_add = 30
 			planet_pop_assembly_add = 2
 		}
 	}
 	
-	triggered_planet_modifier = {
-		potential = { planet = { free_housing < 0 } }
-		modifier = { planet_amenities_add = -50 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = {
-			free_housing < 0
-			has_deposit = retile_deposit_waste_reprocessing
-		} }
-		modifier = { planet_amenities_add = -50 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = {
-			free_housing < 0
-			has_building = building_solar_panels
-		} }
-		modifier = { planet_amenities_add = 30 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = {
-			free_housing < 0
-			has_building = building_recycling_center
-		} }
-		modifier = { planet_amenities_add = 30 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = {
-			free_housing < 0
-			has_building = building_hydroponics_farm
-		} }
-		modifier = { planet_amenities_add = 30 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = {
-			free_housing < 0
-			has_building = building_solar_panels
-			has_deposit = retile_deposit_waste_reprocessing
-		} }
-		modifier = { planet_amenities_add = 30 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = {
-			free_housing < 0
-			has_building = building_recycling_center
-			has_deposit = retile_deposit_waste_reprocessing
-		} }
-		modifier = { planet_amenities_add = 30 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = {
-			free_housing < 0
-			has_building = building_hydroponics_farm
-			has_deposit = retile_deposit_waste_reprocessing
-		} }
-		modifier = { planet_amenities_add = 30 }
-	}
-
 	weight = {
 		weight = 500
 	}
@@ -1128,54 +1016,50 @@ colonist = {
 		produces = {
 			energy = 4
 			minerals = 4
-			food = 1
+			food = 4
 		}
 		produces = {
 			trigger = { has_trait = trait_lithoid }
-			food = -1
+			food = -4
 			minerals = 4
 		}
 		produces = {
 			trigger = { has_trait = trait_plantoid }
-			food = -1
+			food = -4
 		}
 		produces = {
 			trigger = { owner = { has_technology = tech_frontier_health } }
 			energy = 3
 			minerals = 3
-		}
-		produces = {
-			trigger = { 
-				owner = { has_technology = tech_frontier_health }
-				NOR = { 
-					has_trait = trait_lithoid
-					has_trait = trait_plantoid
-				}
-			}
-			food = 1
+			food = 3
 		}
 		produces = {
 			trigger = {
 				owner = { has_technology = tech_frontier_health }
 				has_trait = trait_lithoid
 			}
+			food = -3
 			minerals = 3
+		}
+		produces = {
+			trigger = { 
+				owner = { has_technology = tech_frontier_health }
+				has_trait = trait_plantoid
+			}
+			food = -3
 		}
 		produces = {
 			trigger = { owner = { has_technology = tech_frontier_hospital } }
 			energy = 3
 			minerals = 3
-		}
-		produces = {
-			trigger = { owner = { has_technology = tech_frontier_hospital } }
-			food = 1
+			food = 3
 		}
 		produces = {
 			trigger = { 
 				owner = { has_technology = tech_frontier_hospital }
 				has_trait = trait_lithoid
 			}
-			food = -1
+			food = -3
 			minerals = 3
 		}
 		produces = {
@@ -1183,30 +1067,17 @@ colonist = {
 				owner = { has_technology = tech_frontier_hospital }
 				has_trait = trait_plantoid
 			}
-			food = -1
+			food = -3
 		}
 		upkeep = {
+			energy = 2
 			consumer_goods = 1
 		}
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
-			planet = { free_housing >= 0 }
-			has_trait = trait_plantoid
-		}
-		modifier = {
-			pop_environment_tolerance = 0.05
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			planet = { free_housing >= 0 }
-			owner = { NOR = {
-				has_civic = civic_mechanists
-				is_mechanical_empire = yes
-			} }
+			is_robotic_species = no
 		}
 		modifier = {
 			pop_environment_tolerance = 0.10
@@ -1216,62 +1087,87 @@ colonist = {
 	
 	triggered_planet_modifier = {
 		potential = {
-			planet = { free_housing >= 0 }
-			owner = { has_technology = tech_frontier_health }
 			has_trait = trait_plantoid
 		}
 		modifier = {
 			pop_environment_tolerance = 0.05
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			planet = { free_housing >= 0 }
-			owner = { has_technology = tech_frontier_health }
-		}
-		modifier = {
-			pop_environment_tolerance = 0.05
-			planet_amenities_add = 15
 		}
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
-			planet = { free_housing >= 0 }
-			owner = { has_technology = tech_frontier_hospital }
-			has_trait = trait_plantoid
+			is_robotic_species = yes
 		}
 		modifier = {
-			pop_environment_tolerance = 0.05
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			planet = { free_housing >= 0 }
-			owner = { has_technology = tech_frontier_hospital }
-		}
-		modifier = {
-			pop_environment_tolerance = 0.05
-			planet_amenities_add = 15
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			planet = { free_housing >= 0 }
-			owner = { OR = {
-				has_civic = civic_mechanists
-				is_mechanical_empire = yes
-			} }
-		}
-		modifier = {
-			planet_pop_assembly_add = 1
+			planet_pop_assembly_add = 0.2
 			planet_amenities_add = 15
 		}
 	}	
 	
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_technology = tech_frontier_health }
+			is_robotic_species = no
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+			planet_amenities_add = 15
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_technology = tech_frontier_health }
+			has_trait = trait_plantoid
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_technology = tech_frontier_health }
+			is_robotic_species = yes
+		}
+		modifier = {
+			planet_pop_assembly_add = 0.1
+			planet_amenities_add = 15
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_technology = tech_frontier_hospital }
+			is_robotic_species = no
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+			planet_amenities_add = 15
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_technology = tech_frontier_hospital }
+			has_trait = trait_plantoid
+		}
+		modifier = {
+			pop_environment_tolerance = 0.05
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_technology = tech_frontier_hospital }
+			is_robotic_species = yes
+		}
+		modifier = {
+			planet_pop_assembly_add = 0.1
+			planet_amenities_add = 15
+		}
+	}
+
 	weight = {
 		weight = @specialist_job_weight
 		modifier = {
