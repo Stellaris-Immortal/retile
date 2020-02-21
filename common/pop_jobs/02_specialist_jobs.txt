@@ -23,8 +23,46 @@ clerk = {
 	
 	resources = {
 		category = planet_clerks
+		produces = {
+			trigger = { owner = { has_authority = auth_corporate } }
+			unity = 3
+		}
+		upkeep = {
+			energy = 2
+			consumer_goods = 1
+		}
+		upkeep = {
+			trigger = { 
+				OR = {
+					planet = { has_building = building_trade_1 }
+					planet = { has_building = building_bourse_1 }
+				}
+			}
+			energy = 2
+			consumer_goods = 1
+		}
+		upkeep = {
+			trigger = { 
+				OR = {
+					planet = { has_building = building_trade_2 }
+					planet = { has_building = building_bourse_2 }
+				}
+			}
+			energy = 4
+			consumer_goods = 2
+		}
+		upkeep = {
+			trigger = { 
+				OR = {
+					planet = { has_building = building_trade_3 }
+					planet = { has_building = building_bourse_3 }
+				}
+			}
+			energy = 6
+			consumer_goods = 3
+		}
 	}
-
+	
 	planet_modifier = {
 		trade_value_add = 10
 		planet_amenities_add = 25
@@ -57,14 +95,6 @@ clerk = {
 		modifier = {
 			trade_value_add = 30
 			planet_amenities_add = 225
-		}
-	}
-	
-	resources = {
-		category = planet_jobs
-		produces = {
-			trigger = { owner = { has_authority = auth_corporate } }
-			unity = 3
 		}
 	}
 
@@ -270,7 +300,7 @@ researcher = {	### Scholar
 	############################################################ Scholar Pollution
 	
 	planet_modifier = {
-		planet_amenities_add = 20
+		planet_amenities_add = 30
 	}
 	triggered_planet_modifier = {
 		potential = { 
@@ -279,7 +309,7 @@ researcher = {	### Scholar
 				planet = { has_building = building_metascience_lab_1 }
 			}
 		}
-		modifier = { planet_amenities_add = 20 }
+		modifier = { planet_amenities_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { 
@@ -288,7 +318,7 @@ researcher = {	### Scholar
 				planet = { has_building = building_metascience_lab_2 }
 			}
 		}
-		modifier = { planet_amenities_add = 50 }
+		modifier = { planet_amenities_add = 75 }
 	}
 	triggered_planet_modifier = {
 		potential = { 
@@ -297,7 +327,7 @@ researcher = {	### Scholar
 				planet = { has_building = building_metascience_lab_3 }
 			}
 		}
-		modifier = { planet_amenities_add = 90 }
+		modifier = { planet_amenities_add = 135 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
@@ -305,7 +335,7 @@ researcher = {	### Scholar
 			has_building = building_autochthon_monument
 			has_building = building_corporate_monument
 		} } }
-		modifier = { planet_amenities_add = 20 }
+		modifier = { planet_amenities_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
@@ -313,7 +343,7 @@ researcher = {	### Scholar
 			has_building = building_heritage_site
 			has_building = building_corporate_site
 		} } }
-		modifier = { planet_amenities_add = 50 }
+		modifier = { planet_amenities_add = 75 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { OR = {
@@ -321,7 +351,7 @@ researcher = {	### Scholar
 			has_building = building_hypercomms_forum
 			has_building = building_corporate_forum
 		} } }
-		modifier = { planet_amenities_add = 90 }
+		modifier = { planet_amenities_add = 135 }
 	}
 
 	weight = {	### TODO: Mix in weights from culture worker
@@ -510,31 +540,31 @@ foundry = {	### Engineer
 	############################################################ Engineer Pollution
 	
 	planet_modifier = {
-		planet_amenities_add = 20
+		planet_amenities_add = 30
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_1 } }
-		modifier = { planet_amenities_add = 20 }
+		modifier = { planet_amenities_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_2 } }
-		modifier = { planet_amenities_add = 50 }
+		modifier = { planet_amenities_add = 75 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_factory_3 } }
-		modifier = { planet_amenities_add = 90 }
+		modifier = { planet_amenities_add = 135 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_1 } }
-		modifier = { planet_amenities_add = 20 }
+		modifier = { planet_amenities_add = 30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_2 } }
-		modifier = { planet_amenities_add = 50 }
+		modifier = { planet_amenities_add = 75 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_foundry_3 } }
-		modifier = { planet_amenities_add = 90 }
+		modifier = { planet_amenities_add = 135 }
 	}
 
 	weight = {  ### TODO: Mix in weights from Artisan
