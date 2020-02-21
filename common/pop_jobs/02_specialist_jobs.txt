@@ -4,7 +4,7 @@
 clerk = {
 	category = specialist
 	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_residence
+	building_icon = building_trade_1
 	clothes_texture_index = 2
 
 	possible_pre_triggers = {
@@ -19,6 +19,10 @@ clerk = {
 			retile_job_seeking = yes
 		}
 		complex_specialist_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_clerks
 	}
 
 	planet_modifier = {
@@ -90,7 +94,7 @@ clerk = {
 researcher = {	### Scholar
 	category = specialist
 	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_temple
+	building_icon = building_research_lab_1
 	clothes_texture_index = 3
 
 	possible_pre_triggers = {
@@ -1106,7 +1110,7 @@ overseer = {
 colonist = {
 	category = specialist
 	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_residence
+	building_icon = building_colony_shelter
 	clothes_texture_index = 2
 	
 	possible_pre_triggers = {
@@ -1282,5 +1286,41 @@ colonist = {
 			factor = 5
 			has_job = colonist
 		}
+	}
+}
+
+medic = {
+	category = specialist
+	building_icon = building_clinic_1
+	clothes_texture_index = 3
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = medic
+			retile_job_seeking = yes
+		}
+		specialist_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_medics
+		upkeep = {
+			consumer_goods = 1
+		}
+	}
+	
+	planet_modifier = {
+		pop_growth_speed = 0.10
+		planet_amenities_add = 25
+	}
+	
+	weight = {
+		weight = @specialist_job_weight
 	}
 }
