@@ -1,6 +1,209 @@
+@cost_low = 500
+@cost_med = 1000
+@cost_high = 1500
+@cost_ultra = 2000
+
 #####################
 # Event buildings
 #####################
+
+building_artist_patron = {
+	base_buildtime = 480
+	can_demolish = yes
+	base_cap_amount = 1
+	
+	potential = {
+		custom_tooltip = {
+			text = EMPIRE_UNIQUE_BUILDING
+			owner = {
+				has_country_flag = artist_building_patron
+				NOT = {
+					has_country_flag = built_one_ministry
+				}
+			}
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+
+	country_modifier = {
+		country_unity_produces_mult = 0.05
+	}
+	
+	planet_modifier = {
+		planet_researchers_unity_produces_add = 1
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_low
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	on_queued = {
+		owner = { remove_country_flag = artist_building_patron }
+	}
+
+	on_unqueued = {
+		owner = { set_country_flag = artist_building_patron }
+	}
+
+	on_built = {
+		owner = { set_country_flag = built_one_ministry }
+	}
+
+	on_destroy = {
+		owner = { remove_country_flag = built_one_ministry }
+	}
+	
+	ai_weight = {
+		weight = 2
+		modifier = {
+			factor = 0
+			is_planet_class = pc_habitat
+		}
+	}
+}
+
+building_nuumismatic_shrine = {
+	base_buildtime = 180
+	can_demolish = yes
+	base_cap_amount = 1
+	
+	potential = {
+		owner = { has_country_flag = nuumismatic_shrine }
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	destroy_trigger = {
+		owner = {
+			is_regular_empire = no
+		}
+	}
+	
+	country_modifier = {
+		trade_value_mult = 0.05
+	}
+	
+	planet_modifier = {
+		planet_clerks_unity_produces_add = 1
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_low
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	ai_weight = {
+		weight = 2
+		modifier = {
+			factor = 0
+			is_planet_class = pc_habitat
+		}
+	}
+}
+
+building_waste_reprocessing_center = {
+	icon = building_waste_reprocessing_center
+	base_buildtime = 480
+	base_cap_amount = 1
+	can_build = yes
+	can_demolish = yes
+	
+	potential = {
+		owner = { has_country_flag = bought_waste_reprocessing_center }
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	destroy_trigger = {
+		owner = {
+			is_gestalt = no
+		}
+	}
+	
+	country_modifier = {
+		planet_amenities_mult = -0.05
+	}
+
+	planet_modifier = {
+		planet_custodians_energy_produces_add = 1
+		planet_custodians_minerals_produces_add = 1
+		planet_custodians_food_produces_add = 1
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_low
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	ai_weight = {
+		weight = 200000
+		modifier = {
+			factor = 0
+			is_planet_class = pc_habitat
+		}
+	}
+}
+
+building_akx_worm_3 = {
+	base_buildtime = 900
+	base_cap_amount = 1	
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+	
+	potential = {
+		exists = planet
+		planet = { is_capital = yes }
+		NOT = { has_modifier = slave_colony }
+	}	
+	
+	allow = {	
+	}
+
+	planet_modifier  = {
+	}
+	
+	prerequisites = {
+		"tech_akx_worm_3"
+	}
+	
+	country_modifier = {
+		country_physics_tech_research_speed = 0.05
+	}
+	
+	planet_modifier = {
+		planet_researchers_physics_research_produces_add = 1
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
+		}
+		upkeep = {
+			energy = 2
+		}	
+	}
+	
+	ai_weight = {
+		factor = 2
+	}
+}
+
 
 building_junkheap = {
 	capital = yes

@@ -2,7 +2,7 @@
 bureaucrat = {
 	category = specialist
 	condition_string = RULER_SPECIALIST_TRIGGER
-	building_icon = building_residence
+	building_icon = building_bureaucratic_complex
 	clothes_texture_index = 2
 		
 	possible_pre_triggers = {
@@ -20,7 +20,7 @@ bureaucrat = {
 	}
 	
 	resources = {
-		category = planet_diplomats
+		category = planet_bureaucrats
 		upkeep = {
 			energy = 2
 			consumer_goods = 1
@@ -32,45 +32,83 @@ bureaucrat = {
 	}
 	
 	country_modifier = {
-		country_admin_cap_add = 2
-	}
-	
-	triggered_country_modifier = {
-		potential = { owner = { has_policy_flag = xenodiplomacy_isolation } }
-		country_admin_cap_add = 2
+		country_admin_cap_add = 4
 	}
 	
 	triggered_country_modifier = {
 		potential = { owner = { has_policy_flag = xenodiplomacy_assembly } }
-		pop_factions_produces_mult = 0.10
+		modifier = { 
+			country_admin_cap_add = -2
+			pop_factions_produces_mult = 0.10
+		}
 	}
 	
 	triggered_country_modifier = {
-		potential = { owner = { has_policy_flag = xenodiplomacy_magistrate } }
-		pop_government_ethic_attraction = 0.10
+		potential = { 
+			planet = {
+				exists = owner
+				owner = { has_policy_flag = xenodiplomacy_magistrate }
+			}
+		}
+		modifier = { 
+			country_admin_cap_add = -2
+			pop_government_ethic_attraction = 0.10
+		}
 	}
 	
 	triggered_country_modifier = {
-		potential = { owner = { has_policy_flag = xenodiplomacy_gunboat } }
-		country_war_exhaustion_mult = -0.02
-		country_occupation_armies_add = 1
+		potential = {
+			planet = {
+				exists = owner
+				owner = { has_policy_flag = xenodiplomacy_gunboat } 
+			}
+		}
+		modifier = { 
+			country_admin_cap_add = -2
+			country_war_exhaustion_mult = -0.02
+			country_occupation_armies_add = 1
+		}
 	}
 	
 	triggered_country_modifier = {
-		potential = { owner = { has_policy_flag = xenodiplomacy_embassy } }
-		country_trust_growth = 0.05
-		country_trust_cap_add = 5
+		potential = {
+			planet = {
+				exists = owner
+				owner = { has_policy_flag = xenodiplomacy_embassy }
+			}
+		}
+		modifier = { 
+			country_admin_cap_add = -2
+			country_trust_growth = 0.05
+			country_trust_cap_add = 5
+		}
 	}
 	
 	triggered_country_modifier = {
-		potential = { owner = { has_policy_flag = xenodiplomacy_pr } }
-		country_trust_growth = 0.05
-		country_trust_cap_add = 5
+		potential = { 
+			planet = {
+				exists = owner
+				owner = { has_policy_flag = xenodiplomacy_pr }
+			}
+		}
+		modifier = { 
+			country_admin_cap_add = -2
+			country_trust_growth = 0.05
+			country_trust_cap_add = 5
+		}
 	}
 	
 	triggered_country_modifier = {
-		potential = { owner = { has_policy_flag = xenodiplomacy_lr } }
-		pop_factions_produces_mult = 0.10
+		potential = { 
+			planet = {
+				exists = owner
+				owner = { has_policy_flag = xenodiplomacy_lr }
+			}
+		}
+		modifier = { 
+			country_admin_cap_add = -2
+			pop_factions_produces_mult = 0.10
+		}
 	}
 	
 	weight = {
