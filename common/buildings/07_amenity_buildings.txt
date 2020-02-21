@@ -77,62 +77,104 @@ building_communal_housing = {
 	}
 }
 
-building_slave_huts = {
+building_clinic_1 = {
 	base_buildtime = 360
-	icon = building_pirate_haven
 	base_cap_amount = 1
 	category = amenity
 	can_be_disabled = no
 	
 	potential = {
-		has_modifier = slave_colony
 		exists = owner
 		owner = { is_regular_empire = yes }
 	}
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-		}
+		owner = { is_ai = no }
 	}
 
 	destroy_trigger = {
 		OR = {
-			NOT = { has_modifier = slave_colony }
 			owner = { is_regular_empire = no }
 			owner = { is_ai = yes }
 		}
 	}
 
-	convert_to = {
-		building_drone_storage
-		building_hive_warren
-		building_paradise_dome
-		building_communal_housing
-		building_prison_cells
-	}
-		
-	planet_modifier = {
-		planet_max_districts_add = 3
-	}
-
-	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = @cost_ultra
+			minerals = @cost_low
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	planet_modifier = {
+		job_medic_add = 1
+	}
+	
+	upgrades = {
+		building_clinic_2
+	}
+
+	prerequisites = {
+		tech_planetary_government
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_clinic_1_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_clinic_2 = {
+	base_buildtime = 480
+	can_build = no
+	category = amenity
+	can_be_disabled = no
+
+	allow = {
+		owner = { is_ai = no }
+	}
+
+	destroy_trigger = {
+		OR = {
+			owner = { is_regular_empire = no }
+			owner = { is_ai = yes }
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
 		}
 		upkeep = {
 			energy = 2
 		}
-	}	
+	}
+	
+	planet_modifier = {
+		job_medic_add = 2
+	}
+	
+	upgrades = {
+		building_clinic_3
+	}
+
+	prerequisites = {
+		tech_genome_mapping
+	}
 	
 	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_housing_effect
+		trigger = { 
+			exists = owner
+		}
+		text = retile_clinic_2_effect
 	}
 
 	ai_weight = {
@@ -140,127 +182,48 @@ building_slave_huts = {
 	}
 }
 
-building_prison_cells = {
-	base_buildtime = 360
-	icon = building_military_academy
-	base_cap_amount = 1
-	category = amenity
+building_clinic_3 = {
+	base_buildtime = 600
+	can_build = no
+	category = manufacturing
 	can_be_disabled = no
-	
-	potential = {
-		has_modifier = penal_colony
-		exists = owner
-		owner = { is_regular_empire = yes }
-	}
-	
+
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-		}
+		owner = { is_ai = no }
 	}
 
 	destroy_trigger = {
 		OR = {
-			NOT = { has_modifier = penal_colony }
 			owner = { is_regular_empire = no }
 			owner = { is_ai = yes }
 		}
 	}
 
-	convert_to = {
-		building_drone_storage
-		building_hive_warren
-		building_paradise_dome
-		building_communal_housing
-		building_slave_huts
-	}
-		
-	planet_modifier = {
-		planet_max_districts_add = 3
-	}
-
-	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = @cost_ultra
+			minerals = @cost_high
 		}
 		upkeep = {
-			energy = 2
-		}
-	}	
-	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_housing_effect
-	}
-
-	ai_weight = {
-		weight = 1
-	}
-}
-
-building_paradise_dome = {
-	base_buildtime = 360
-	icon = building_paradise_dome
-	base_cap_amount = 1
-	category = amenity
-	can_be_disabled = no
-	
-	potential = {
-		has_modifier = resort_colony
-		exists = owner
-		owner = { is_regular_empire = yes }
-	}
-	
-	allow = {
-		OR = {
-			owner = { is_ai = no }
+			energy = 3
 		}
 	}
-
-	destroy_trigger = {
-		OR = {
-			NOT = { has_modifier = resort_colony }
-			owner = { is_regular_empire = no }
-			owner = { is_ai = yes }
-		}
-	}
-
-	convert_to = {
-		building_drone_storage
-		building_hive_warren
-		building_prison_cells
-		building_communal_housing
-		building_slave_huts
-	}
-		
+	
 	planet_modifier = {
-		planet_max_districts_add = 3
+		job_medic_add = 3
 	}
 
-	country_modifier = {
-		country_resource_max_add = 2000
+	prerequisites = {
+		tech_cloning
 	}
-	
-	resources = {
-		category = planet_buildings
-		cost = {
-			minerals = @cost_ultra
-		}
-		upkeep = {
-			energy = 2
-		}
-	}	
 	
 	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_housing_effect
+		trigger = { 
+			exists = owner
+		}
+		text = retile_clinic_3_effect
 	}
-
+	
 	ai_weight = {
 		weight = 1
 	}

@@ -219,6 +219,10 @@ tech_industrial_farming = {
 	category = { biology }
 	start_tech = yes
 	
+	modifier = {
+		description = tech_industrial_farming_effect
+	}
+	
 	# unlocks farming districts
 }
 
@@ -689,7 +693,7 @@ tech_society_1 = {
 	weight = @tier1weight1
 	
 	modifier = {
-		trade_value_mult = 0.16
+		planet_amenities_add = -25
 	}
 	
 	weight_modifier = {
@@ -748,7 +752,7 @@ tech_society_2 = {
 	weight = @tier2weight3
 	
 	modifier = {
-		trade_value_mult = 0.17
+		planet_amenities_add = -25
 	}
 	
 	weight_modifier = {
@@ -803,7 +807,7 @@ tech_society_3 = {
 	weight = @tier4weight2
 	
 	modifier = {
-		trade_value_mult = 0.17
+		planet_amenities_add = -25
 	}
 	
 	weight_modifier = {
@@ -858,10 +862,6 @@ tech_alien_life_studies = {
 	
 	potential = {
 		is_regular_empire = yes
-	}
-	
-	modifier = {
-		description = tech_alien_life_studies_effect
 	}
 	
 	weight_modifier = {
@@ -2135,10 +2135,6 @@ tech_genome_mapping = {
 	
 	gateway = biological
 	
-	modifier = {
-		pop_growth_speed = 0.20
-	}
-	
 	potential = {
 		OR = {
 			NOT = { has_authority = auth_machine_intelligence }
@@ -2313,10 +2309,6 @@ tech_cloning = {
 	category = { biology }	
 	prerequisites = { "tech_genome_mapping" }
 	weight = @tier2weight2
-	
-	modifier = {
-		pop_growth_speed = 0.20
-	}
 
 	potential = {
 		OR = {
@@ -4578,6 +4570,10 @@ tech_global_production_strategy = {
 	prerequisites = { "tech_alloys_1" "tech_luxuries_1" "tech_colonial_centralization" }
 	weight = @tier3weight1
 	
+	potential = {
+		always = no
+	}
+	
 	# unlocks Ministry of Production
 	
 	weight_modifier = {
@@ -5321,6 +5317,7 @@ tech_holo_entertainment = {
 	tier = 0
 	
 	potential = {
+		always = no
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	
@@ -5332,7 +5329,7 @@ tech_hyper_entertainment_forum = {
 	area = society
 	category = { statecraft }
 	tier = 3
-	prerequisites = { "tech_holo_entertainment" }
+	prerequisites = { }
 	weight = @tier3weight1
 	
 	potential = {
@@ -6002,6 +5999,7 @@ tech_slave_colonies = {
 	category = { statecraft }
 	prerequisites = { "tech_neural_implants" }
 	weight = @tier3weight1
+	is_rare = yes
 
 	potential = {
 		is_gestalt = no
