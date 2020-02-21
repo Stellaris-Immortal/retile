@@ -23,8 +23,46 @@ clerk = {
 	
 	resources = {
 		category = planet_clerks
+		produces = {
+			trigger = { owner = { has_authority = auth_corporate } }
+			unity = 3
+		}
+		upkeep = {
+			energy = 2
+			consumer_goods = 1
+		}
+		upkeep = {
+			trigger = { 
+				OR = {
+					planet = { has_building = building_trade_1 }
+					planet = { has_building = building_bourse_1 }
+				}
+			}
+			energy = 2
+			consumer_goods = 1
+		}
+		upkeep = {
+			trigger = { 
+				OR = {
+					planet = { has_building = building_trade_2 }
+					planet = { has_building = building_bourse_2 }
+				}
+			}
+			energy = 4
+			consumer_goods = 2
+		}
+		upkeep = {
+			trigger = { 
+				OR = {
+					planet = { has_building = building_trade_3 }
+					planet = { has_building = building_bourse_3 }
+				}
+			}
+			energy = 6
+			consumer_goods = 3
+		}
 	}
-
+	
 	planet_modifier = {
 		trade_value_add = 10
 		planet_amenities_add = 25
@@ -57,14 +95,6 @@ clerk = {
 		modifier = {
 			trade_value_add = 30
 			planet_amenities_add = 225
-		}
-	}
-	
-	resources = {
-		category = planet_jobs
-		produces = {
-			trigger = { owner = { has_authority = auth_corporate } }
-			unity = 3
 		}
 	}
 
