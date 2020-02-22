@@ -1,0 +1,38 @@
+#########################################
+#
+# Retile Utility Events
+# Author: Gebnar
+#
+#########################################
+
+# Terraforming complete
+planet_event = {
+	id = retile_utility.100
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		every_deposit = {
+			limit = { OR = {
+				has_deposit_category = deposit_cat_food_active
+				has_deposit_category = deposit_cat_energy_active
+				has_deposit_category = deposit_cat_minerals_active
+				has_deposit_category = deposit_cat_rare_active
+			} }
+			clear_blocker = yes
+		}
+		retile_clear_blockers = yes
+	}
+}
+
+# Add country excess production modifiers
+country_event = {
+	id = retile_utility.500
+	hide_window = yes
+	
+	mean_time_to_happen = { days = 30 }
+	
+	immediate = {
+	}
+}
