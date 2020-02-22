@@ -26,13 +26,314 @@ planet_event = {
 	}
 }
 
-# Add country excess production modifiers
+# Add country excess mineral production modifiers
 country_event = {
 	id = retile_utility.500
 	hide_window = yes
+	#is_triggered_only = yes
 	
 	mean_time_to_happen = { days = 30 }
 	
 	immediate = {
+		# remove previous excess minerals modifier
+		remove_modifier = retile_excess_minerals_1
+		remove_modifier = retile_excess_minerals_2
+		remove_modifier = retile_excess_minerals_3
+		remove_modifier = retile_excess_minerals_4
+		remove_modifier = retile_excess_minerals_5
+		remove_modifier = retile_excess_minerals_6
+		remove_modifier = retile_excess_minerals_7
+		remove_modifier = retile_excess_minerals_8
+		remove_modifier = retile_excess_minerals_9
+		remove_modifier = retile_excess_minerals_10
+		remove_modifier = retile_excess_minerals_11
+		remove_modifier = retile_excess_minerals_12
+		remove_modifier = retile_excess_minerals_13
+		remove_modifier = retile_excess_minerals_14
+		remove_modifier = retile_excess_minerals_15
+		remove_modifier = retile_excess_minerals_16
+		remove_modifier = retile_excess_minerals_17
+		remove_modifier = retile_excess_minerals_18
+		remove_modifier = retile_excess_minerals_19
+		remove_modifier = retile_excess_minerals_20
+		
+		# Apply excess minerals modifier
+		if = {
+			limit = { has_monthly_income = { resource = minerals value < 1600 } }
+			if = {
+				limit = { has_monthly_income = { resource = minerals value < 800 } }
+				if = {
+					limit = { has_monthly_income = { resource = minerals value < 400 } }
+					if = {
+						limit = { has_monthly_income = { resource = minerals value < 200 } }
+						if = {
+							limit = { has_monthly_income = { resource = minerals value < 100 } }
+							# do nothing
+						} else = { # > 100
+							# set modifier 1
+							add_modifier = { modifier = retile_excess_minerals_1 days = -1 }
+						}
+					} else = { # > 200
+						if = {
+							limit = { has_monthly_income = { resource = minerals value < 300 } }
+							# set modifier 2
+							add_modifier = { modifier = retile_excess_minerals_2 days = -1 }
+						} else = { # > 300
+							# set modifier 3
+							add_modifier = { modifier = retile_excess_minerals_3 days = -1 }
+						}
+					}
+				} else = { # > 400
+					if = {
+						limit = { has_monthly_income = { resource = minerals value < 600 } }
+						if = {
+							limit = { has_monthly_income = { resource = minerals value < 500 } }
+							# set modifier 4
+							add_modifier = { modifier = retile_excess_minerals_4 days = -1 }
+						} else = { # > 500
+							# set modifier 5
+							add_modifier = { modifier = retile_excess_minerals_5 days = -1 }
+						}
+					} else = { # > 600
+						if = {
+							limit = { has_monthly_income = { resource = minerals value < 700 } }
+							# set modifier 6
+							add_modifier = { modifier = retile_excess_minerals_6 days = -1 }
+						} else = { # > 700
+							# set modifier 7
+							add_modifier = { modifier = retile_excess_minerals_7 days = -1 }
+						}
+					}
+				}
+			} else = { # > 800
+				if = {
+					limit = { has_monthly_income = { resource = minerals value < 1200 } }
+					if = {
+						limit = { has_monthly_income = { resource = minerals value < 1000 } }
+						if = {
+							limit = { has_monthly_income = { resource = minerals value < 900 } }
+							# set modifier 8
+							add_modifier = { modifier = retile_excess_minerals_8 days = -1 }
+						} else = { # > 900
+							# set modifier 9
+							add_modifier = { modifier = retile_excess_minerals_9 days = -1 }
+						}
+					} else = { # > 1000
+						if = {
+							limit = { has_monthly_income = { resource = minerals value < 1100 } }
+							# set modifier 10
+							add_modifier = { modifier = retile_excess_minerals_10 days = -1 }
+						} else = { # > 1100
+							# set modifier 11
+							add_modifier = { modifier = retile_excess_minerals_11 days = -1 }
+						}
+					}
+				} else = { # > 1200
+					if = {
+						limit = { has_monthly_income = { resource = minerals value < 1400 } }
+						if = {
+							limit = { has_monthly_income = { resource = minerals value < 1300 } }
+							# set modifier 12
+							add_modifier = { modifier = retile_excess_minerals_12 days = -1 }
+						} else = { # > 1300
+							# set modifier 13
+							add_modifier = { modifier = retile_excess_minerals_13 days = -1 }
+						}
+					} else = { # > 1400
+						if = {
+							limit = { has_monthly_income = { resource = minerals value < 1500 } }
+							# set modifier 14
+							add_modifier = { modifier = retile_excess_minerals_14 days = -1 }
+						} else = { # > 1500
+							# set modifier 15
+							add_modifier = { modifier = retile_excess_minerals_15 days = -1 }
+						}
+					}
+				}
+			}
+		} else = { # > 1600
+			if = {
+				limit = { has_monthly_income = { resource = minerals value < 1800 } }
+				if = {
+					limit = { has_monthly_income = { resource = minerals value < 1700 } }
+					# set modifier 16
+					add_modifier = { modifier = retile_excess_minerals_16 days = -1 }
+				} else = { # > 1700
+					# set modifier 17
+					add_modifier = { modifier = retile_excess_minerals_17 days = -1 }
+				}
+			} else = { # > 1800
+				if = {
+					limit = { has_monthly_income = { resource = minerals value < 1900 } }
+					# set modifier 18
+					add_modifier = { modifier = retile_excess_minerals_18 days = -1 }
+				} else = { # > 1900
+					if = {
+						limit = { has_monthly_income = { resource = minerals value < 2000 } }
+						# set modifier 19
+						add_modifier = { modifier = retile_excess_minerals_19 days = -1 }
+					} else = { # > 2000
+						# set modifier 20
+						add_modifier = { modifier = retile_excess_minerals_20 days = -1 }
+					}
+				}
+			}
+		}
+	}
+}
+
+# Add country excess mineral production modifiers
+country_event = {
+	id = retile_utility.500
+	hide_window = yes
+	#is_triggered_only = yes
+	
+	mean_time_to_happen = { days = 30 }
+	
+	immediate = {
+		# remove previous excess food modifier
+		remove_modifier = retile_excess_food_1
+		remove_modifier = retile_excess_food_2
+		remove_modifier = retile_excess_food_3
+		remove_modifier = retile_excess_food_4
+		remove_modifier = retile_excess_food_5
+		remove_modifier = retile_excess_food_6
+		remove_modifier = retile_excess_food_7
+		remove_modifier = retile_excess_food_8
+		remove_modifier = retile_excess_food_9
+		remove_modifier = retile_excess_food_10
+		remove_modifier = retile_excess_food_11
+		remove_modifier = retile_excess_food_12
+		remove_modifier = retile_excess_food_13
+		remove_modifier = retile_excess_food_14
+		remove_modifier = retile_excess_food_15
+		remove_modifier = retile_excess_food_16
+		remove_modifier = retile_excess_food_17
+		remove_modifier = retile_excess_food_18
+		remove_modifier = retile_excess_food_19
+		remove_modifier = retile_excess_food_20
+		
+		# Apply excess food modifier
+		if = {
+			limit = { has_monthly_income = { resource = food value < 1600 } }
+			if = {
+				limit = { has_monthly_income = { resource = food value < 800 } }
+				if = {
+					limit = { has_monthly_income = { resource = food value < 400 } }
+					if = {
+						limit = { has_monthly_income = { resource = food value < 200 } }
+						if = {
+							limit = { has_monthly_income = { resource = food value < 100 } }
+							# do nothing
+						} else = { # > 100
+							# set modifier 1
+							add_modifier = { modifier = retile_excess_food_1 days = -1 }
+						}
+					} else = { # > 200
+						if = {
+							limit = { has_monthly_income = { resource = food value < 300 } }
+							# set modifier 2
+							add_modifier = { modifier = retile_excess_food_2 days = -1 }
+						} else = { # > 300
+							# set modifier 3
+							add_modifier = { modifier = retile_excess_food_3 days = -1 }
+						}
+					}
+				} else = { # > 400
+					if = {
+						limit = { has_monthly_income = { resource = food value < 600 } }
+						if = {
+							limit = { has_monthly_income = { resource = food value < 500 } }
+							# set modifier 4
+							add_modifier = { modifier = retile_excess_food_4 days = -1 }
+						} else = { # > 500
+							# set modifier 5
+							add_modifier = { modifier = retile_excess_food_5 days = -1 }
+						}
+					} else = { # > 600
+						if = {
+							limit = { has_monthly_income = { resource = food value < 700 } }
+							# set modifier 6
+							add_modifier = { modifier = retile_excess_food_6 days = -1 }
+						} else = { # > 700
+							# set modifier 7
+							add_modifier = { modifier = retile_excess_food_7 days = -1 }
+						}
+					}
+				}
+			} else = { # > 800
+				if = {
+					limit = { has_monthly_income = { resource = food value < 1200 } }
+					if = {
+						limit = { has_monthly_income = { resource = food value < 1000 } }
+						if = {
+							limit = { has_monthly_income = { resource = food value < 900 } }
+							# set modifier 8
+							add_modifier = { modifier = retile_excess_food_8 days = -1 }
+						} else = { # > 900
+							# set modifier 9
+							add_modifier = { modifier = retile_excess_food_9 days = -1 }
+						}
+					} else = { # > 1000
+						if = {
+							limit = { has_monthly_income = { resource = food value < 1100 } }
+							# set modifier 10
+							add_modifier = { modifier = retile_excess_food_10 days = -1 }
+						} else = { # > 1100
+							# set modifier 11
+							add_modifier = { modifier = retile_excess_food_11 days = -1 }
+						}
+					}
+				} else = { # > 1200
+					if = {
+						limit = { has_monthly_income = { resource = food value < 1400 } }
+						if = {
+							limit = { has_monthly_income = { resource = food value < 1300 } }
+							# set modifier 12
+							add_modifier = { modifier = retile_excess_food_12 days = -1 }
+						} else = { # > 1300
+							# set modifier 13
+							add_modifier = { modifier = retile_excess_food_13 days = -1 }
+						}
+					} else = { # > 1400
+						if = {
+							limit = { has_monthly_income = { resource = food value < 1500 } }
+							# set modifier 14
+							add_modifier = { modifier = retile_excess_food_14 days = -1 }
+						} else = { # > 1500
+							# set modifier 15
+							add_modifier = { modifier = retile_excess_food_15 days = -1 }
+						}
+					}
+				}
+			}
+		} else = { # > 1600
+			if = {
+				limit = { has_monthly_income = { resource = food value < 1800 } }
+				if = {
+					limit = { has_monthly_income = { resource = food value < 1700 } }
+					# set modifier 16
+					add_modifier = { modifier = retile_excess_food_16 days = -1 }
+				} else = { # > 1700
+					# set modifier 17
+					add_modifier = { modifier = retile_excess_food_17 days = -1 }
+				}
+			} else = { # > 1800
+				if = {
+					limit = { has_monthly_income = { resource = food value < 1900 } }
+					# set modifier 18
+					add_modifier = { modifier = retile_excess_food_18 days = -1 }
+				} else = { # > 1900
+					if = {
+						limit = { has_monthly_income = { resource = food value < 2000 } }
+						# set modifier 19
+						add_modifier = { modifier = retile_excess_food_19 days = -1 }
+					} else = { # > 2000
+						# set modifier 20
+						add_modifier = { modifier = retile_excess_food_20 days = -1 }
+					}
+				}
+			}
+		}
 	}
 }
