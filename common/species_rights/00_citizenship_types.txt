@@ -572,13 +572,6 @@ citizenship_purge = {
 	potential = {
 		exists = from
 		NOT = { from = { has_authority = auth_machine_intelligence } }
-		OR = {
-			NOT = { is_archetype = ROBOT }
-			AND = {
-				NOT = { from = { has_policy_flag = ai_full_rights } }
-				is_archetype = MACHINE
-			}
-		}
 	}
 
 	allow = {
@@ -591,16 +584,28 @@ citizenship_purge = {
 			}
 		}
 		if = {
-			limit = { is_lonely_hive_mind_pop = yes }
+			limit = { 
+				OR = {
+					is_lonely_hive_mind_pop = yes
+					is_archetype = ROBOT
+				}
+			}
 			always = yes
+		} else_if = {
+			limit = { is_archetype = MACHINE }
+			NOT = { from = { has_policy_flag = ai_full_rights } }
 		} else = {
-			NOR = {
+			AND = {
 				custom_tooltip = {
 					fail_text = species_is_majority
-					NOT = { from = { any_owned_pop = { 
-						is_exact_same_species = from
-						is_majority_species = yes
-					} } }
+					NOT = { 
+						from = { 
+							any_owned_pop = { 
+								is_exact_same_species = from
+								is_majority_species = yes
+							}
+						}
+					}
 				}
 				custom_tooltip = {
 					fail_text = has_full_rights
@@ -622,14 +627,6 @@ citizenship_purge = {
 					AND = {
 						from = { has_valid_civic = civic_fanatic_purifiers }
 						NOT = { is_same_species = from }
-					}
-				}
-				AND = {
-					NOT = { is_same_species = from }
-					OR = {
-						from = { allows_purge = yes }
-						root = { has_trait = trait_machine_unit }
-						root = { has_trait = trait_mechanical }
 					}
 				}
 			}
