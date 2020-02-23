@@ -115,6 +115,19 @@ clerk = {
 			}	
 		}
 		modifier = {
+			factor = 2
+			planet = {
+				OR = {
+					has_building = building_trade_1
+					has_building = building_bourse_1
+					has_building = building_trade_2
+					has_building = building_bourse_2
+					has_building = building_trade_3
+					has_building = building_bourse_3
+				}
+			}
+		}
+		modifier = {
 			factor = 0.01
 			can_take_servant_job = yes
 		}	
@@ -430,6 +443,28 @@ researcher = {	### Scholar
 				has_trait = trait_robot_efficient_processors
 			}
 		}
+		modifier = {
+			factor = 2
+			planet = {
+				OR = {
+					has_building = building_research_lab_1
+					has_building = building_metascience_lab_1
+					has_building = building_research_lab_2
+					has_building = building_metascience_lab_2
+					has_building = building_research_lab_3
+					has_building = building_metascience_lab_3
+					has_building = building_temple
+					has_building = building_autochthon_monument
+					has_building = building_corporate_monument
+					has_building = building_holotemple
+					has_building = building_heritage_site
+					has_building = building_corporate_site
+					has_building = building_holotemple
+					has_building = building_heritage_site
+					has_building = building_corporate_site
+				}
+			}
+		}
 		#modifier = {
 		#	factor = 0
 		#	jobs_save_goods = yes
@@ -595,6 +630,19 @@ foundry = {	### Engineer
 				has_trait = trait_robot_efficient_processors
 				has_trait = trait_innovative
 				has_trait = trait_robot_industrial
+			}
+		}
+		modifier = {
+			factor = 2
+			planet = {
+				OR = {
+					has_building = building_factory_1
+					has_building = building_foundry_1
+					has_building = building_factory_2
+					has_building = building_foundry_2
+					has_building = building_factory_3
+					has_building = building_foundry_3
+				}
 			}
 		}
 	}
@@ -1209,6 +1257,10 @@ colonist = {
 			can_take_servant_job = yes
 		}
 		modifier = {
+			factor = 2
+			num_pops < 5
+		}
+		modifier = {
 			factor = 5
 			has_job = colonist
 		}
@@ -1248,5 +1300,17 @@ medic = {
 	
 	weight = {
 		weight = @specialist_job_weight
+		modifier = {
+			factor = 2
+			planet = {
+				has_building = building_clinic_1
+				has_building = building_clinic_2
+				has_building = building_clinic_3
+			}
+		}
+		modifier = {
+			factor = 5
+			has_job = medic
+		}
 	}
 }
