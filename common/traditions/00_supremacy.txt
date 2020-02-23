@@ -1,15 +1,12 @@
 tr_supremacy_adopt = {
 
 	possible = {
-		NOR = { 
-			has_tradition = tr_diplomacy_adopt
-			has_valid_civic = civic_pacifist
-		}
+		NOT = { has_tradition = tr_diplomacy_adopt }
 	}
 
 	modifier = {
-		ships_upkeep_mult = -0.20
-		starbase_shipyard_build_cost_mult = -0.20
+		army_experience_gain_mult = 0.25
+		ship_experience_gain_mult = 0.25
 	}
 	
 	ai_weight = {
@@ -74,6 +71,7 @@ tr_supremacy_finish = {
 
 tr_supremacy_fleet_logistical_corps = {
 	modifier = {
+		starbase_shipyard_build_cost_mult = -0.20
 		country_ship_upgrade_cost_mult = -0.20
 	}
 	
@@ -84,7 +82,8 @@ tr_supremacy_fleet_logistical_corps = {
 
 tr_supremacy_master_shipwrights = {
 	modifier = {
-		starbase_shipyard_build_speed_mult = 0.25
+		starbase_shipyard_build_speed_mult = 0.20
+		ships_upkeep_mult = -0.20
 	}
 	
 	ai_weight = {
