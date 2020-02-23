@@ -242,14 +242,8 @@ tech_eco_simulation = {
 	weight_modifier = {
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
 					any_deposit = {
 						has_deposit_category = deposit_cat_food_active
@@ -306,14 +300,8 @@ tech_gene_crops = {
 	weight_modifier = {
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
 					any_deposit = {
 						has_deposit_category = deposit_cat_food_active
@@ -370,14 +358,8 @@ tech_nano_vitality_crops = {
 	weight_modifier = {
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
 					any_deposit = {
 						has_deposit_category = deposit_cat_food_active
@@ -438,14 +420,8 @@ tech_nutrient_replication = {
 	weight_modifier = {
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
 					any_deposit = {
 						has_deposit_category = deposit_cat_food_active
@@ -517,20 +493,7 @@ tech_hydroponics = {
 		factor = 2
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
-				any_owned_planet = {
-					any_deposit = {
-						has_deposit_category = deposit_cat_food_active
-					}
-				}
-			}
+			country_uses_food = no
 		}
 		modifier = {
 			factor = 1.25
@@ -570,16 +533,8 @@ tech_food_processing_1 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-				is_plantoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_country_flag = non_plantoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
 					any_deposit = {
 						has_deposit_category = deposit_cat_food_active
@@ -624,16 +579,8 @@ tech_food_processing_2 = {
 		factor = 2
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-				is_plantoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_country_flag = non_plantoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
 					any_deposit = {
 						has_deposit_category = deposit_cat_food_active
@@ -646,14 +593,6 @@ tech_food_processing_2 = {
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
-			}
-		}
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_volatile_motes
-				has_technology = tech_volatile_motes
-				has_country_flag = has_market_access
 			}
 		}
 		modifier = {
@@ -5398,8 +5337,8 @@ tech_heritage_site = {
 	
 	potential = {
 		NOR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 			has_valid_civic = civic_machine_servitor
 		}
 	}
@@ -5439,8 +5378,8 @@ tech_hypercomms_forum = {
 		
 	potential = {
 		NOR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 			has_valid_civic = civic_machine_servitor
 		}
 	}
@@ -5480,8 +5419,8 @@ tech_autocurating_vault = {
 	
 	potential = {
 		NOR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 			has_valid_civic = civic_machine_servitor
 		}
 	}
@@ -5525,8 +5464,8 @@ tech_holographic_rituals = {
 	
 	potential = {
 		OR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 		}
 	}
 	
@@ -5565,8 +5504,8 @@ tech_consecration_fields = {
 	
 	potential = {
 		OR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 		}
 	}
 	
@@ -5605,8 +5544,8 @@ tech_transcendent_faith = {
 	
 	potential = {
 		OR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 		}
 	}
 	
