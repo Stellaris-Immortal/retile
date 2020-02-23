@@ -593,17 +593,14 @@ citizenship_purge = {
 		if = {
 			limit = { is_lonely_hive_mind_pop = yes }
 			always = yes
-		}
-		else = {
-			OR = {
+		} else = {
+			NOR = {
 				custom_tooltip = {
 					fail_text = species_is_majority
-					from = {
-						any_owned_pop = { 
-							is_exact_same_species = from
-							is_majority_species = yes
-						}
-					}
+					NOT = { from = { any_owned_pop = { 
+						is_exact_same_species = from
+						is_majority_species = yes
+					} } }
 				}
 				custom_tooltip = {
 					fail_text = has_full_rights
