@@ -28,8 +28,8 @@ clerk = {
 			unity = 3
 		}
 		upkeep = {
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 		upkeep = {
 			trigger = { 
@@ -38,8 +38,8 @@ clerk = {
 					planet = { has_building = building_bourse_1 }
 				}
 			}
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 		upkeep = {
 			trigger = { 
@@ -48,8 +48,8 @@ clerk = {
 					planet = { has_building = building_bourse_2 }
 				}
 			}
-			energy = 4
-			consumer_goods = 2
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_normal2
 		}
 		upkeep = {
 			trigger = { 
@@ -58,8 +58,8 @@ clerk = {
 					planet = { has_building = building_bourse_3 }
 				}
 			}
-			energy = 6
-			consumer_goods = 3
+			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_normal3
 		}
 	}
 	
@@ -164,10 +164,6 @@ researcher = {	### Scholar
 			society_research = 2.5
 			unity = 2.5
 		}
-		upkeep = {
-			energy = 2
-			consumer_goods = 2
-		}
 		produces = {
 			trigger = { planet = { has_building = building_metascience_lab_1 } }
 			unity = 2
@@ -191,16 +187,6 @@ researcher = {	### Scholar
 			engineering_research = 2.5
 			society_research = 2.5
 		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_1 }
-					planet = { has_building = building_metascience_lab_1 }
-				}
-			}
-			energy = 2
-			consumer_goods = 2
-		}		
 		produces = {
 			trigger = { 
 				OR = {
@@ -212,16 +198,6 @@ researcher = {	### Scholar
 			engineering_research = 5
 			society_research = 5
 		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_2 }
-					planet = { has_building = building_metascience_lab_2 }
-				}
-			}
-			energy = 4
-			consumer_goods = 4
-		}		
 		produces = {
 			trigger = { 
 				OR = {
@@ -233,16 +209,6 @@ researcher = {	### Scholar
 			engineering_research = 7.5
 			society_research = 7.5
 		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_3 }
-					planet = { has_building = building_metascience_lab_3 }
-				}
-			}
-			energy = 6
-			consumer_goods = 6
-		}		
 		produces = {
 			trigger = { planet = { OR = {
 				has_building = building_temple
@@ -251,15 +217,6 @@ researcher = {	### Scholar
 			} } }
 			unity = 2.5
 		}
-		upkeep = {
-			trigger = { planet = { OR = {
-				has_building = building_temple
-				has_building = building_autochthon_monument
-				has_building = building_corporate_monument
-			} } }
-			energy = 2
-			consumer_goods = 2
-		}		
 		produces = {
 			trigger = { planet = { OR = {
 				has_building = building_holotemple
@@ -268,15 +225,6 @@ researcher = {	### Scholar
 			} } }
 			unity = 5
 		}
-		upkeep = {
-			trigger = { planet = { OR = {
-				has_building = building_holotemple
-				has_building = building_heritage_site
-				has_building = building_corporate_site
-			} } }
-			energy = 4
-			consumer_goods = 4
-		}		
 		produces = {
 			trigger = { planet = { OR = {
 				has_building = building_sacred_nexus
@@ -286,13 +234,66 @@ researcher = {	### Scholar
 			unity = 7.5
 		}
 		upkeep = {
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_high
+			consumer_goods = @job_supplies_high
+		}
+		upkeep = {
+			trigger = { 
+				OR = {
+					planet = { has_building = building_research_lab_1 }
+					planet = { has_building = building_metascience_lab_1 }
+				}
+			}
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_high
+		}		
+		upkeep = {
+			trigger = { 
+				OR = {
+					planet = { has_building = building_research_lab_2 }
+					planet = { has_building = building_metascience_lab_2 }
+				}
+			}
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_high2
+		}		
+		upkeep = {
+			trigger = { 
+				OR = {
+					planet = { has_building = building_research_lab_3 }
+					planet = { has_building = building_metascience_lab_3 }
+				}
+			}
+			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_high3
+		}		
+		upkeep = {
+			trigger = { planet = { OR = {
+				has_building = building_temple
+				has_building = building_autochthon_monument
+				has_building = building_corporate_monument
+			} } }
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_high
+		}		
+		upkeep = {
+			trigger = { planet = { OR = {
+				has_building = building_holotemple
+				has_building = building_heritage_site
+				has_building = building_corporate_site
+			} } }
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_high2
+		}		
+		upkeep = {
 			trigger = { planet = { OR = {
 				has_building = building_sacred_nexus
 				has_building = building_hypercomms_forum
 				has_building = building_corporate_forum
 			} } }
-			energy = 6
-			consumer_goods = 6
+			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_high3
 		}
 		produces = { ### Fallen Empire
 			trigger = { planet = { has_building = building_class_4_singularity } }
@@ -500,67 +501,68 @@ foundry = {	### Engineer
 			consumer_goods = 2.5
 			alloys = 2.5
 		}
-		upkeep = {
-			minerals = 10
-			energy = 5
-			consumer_goods = 1
-		}
 		produces = {
 			trigger = { planet = { has_building = building_factory_1 } }
 			consumer_goods = 2.5
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_factory_1 } }
-			minerals = 5
-			energy = 3
 		}
 		produces = {
 			trigger = { planet = { has_building = building_factory_2 } }
 			consumer_goods = 5
 		}
-		upkeep = {
-			trigger = { planet = { has_building = building_factory_2 } }
-			minerals = 10
-			energy = 6
-		}
 		produces = {
 			trigger = { planet = { has_building = building_factory_3 } }
 			consumer_goods = 7.5
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_factory_3 } }
-			minerals = 15
-			energy = 9
 		}
 		produces = {
 			trigger = { planet = { has_building = building_foundry_1 } }
 			alloys = 2.5
 		}
-		upkeep = {
-			trigger = { planet = { has_building = building_foundry_1 } }
-			minerals = 5
-			energy = 2
-			consumer_goods = 1
-		}
 		produces = {
 			trigger = { planet = { has_building = building_foundry_2 } }
 			alloys = 5
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_foundry_2 } }
-			minerals = 10
-			energy = 4
-			consumer_goods = 2
 		}
 		produces = {
 			trigger = { planet = { has_building = building_foundry_3 } }
 			alloys = 7.5
 		}
 		upkeep = {
+			minerals = 10
+			energy = @job_energy_high
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_factory_1 } }
+			minerals = 5
+			energy = @job_energy_high
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_factory_2 } }
+			minerals = 10
+			energy = @job_energy_high2
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_factory_3 } }
+			minerals = 15
+			energy = @job_energy_high3
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_foundry_1 } }
+			minerals = 5
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_foundry_2 } }
+			minerals = 10
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_normal2
+		}
+		upkeep = {
 			trigger = { planet = { has_building = building_foundry_3 } }
 			minerals = 15
-			energy = 6
-			consumer_goods = 3
+			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_normal3
 		}
 		produces = { ### Fallen Empire
 			trigger = { planet = { has_building = building_dimensional_fabricator } }
@@ -668,6 +670,14 @@ enforcer = {
 		battle_thrall_job_check_trigger = yes
 	}
 	
+	resources = {
+		category = planet_enforcers
+		upkeep = {
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
+	}
+	
 	pop_modifier = {
 		pop_defense_armies_add = 6
 	}
@@ -773,6 +783,14 @@ soldier = {
 		owner = { is_gestalt = no }
 	}
 
+	resources = {
+		category = planet_soldiers
+		upkeep = {
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
+	}
+	
 	pop_modifier = {
 		pop_defense_armies_add = 4
 	}
@@ -1002,8 +1020,8 @@ roboticist = {
 		category = planet_pop_assemblers
 		upkeep = {
 			minerals = 10
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 	}
 
@@ -1037,6 +1055,14 @@ overseer = {
 			retile_job_seeking = yes
 		}
 		specialist_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_overseers
+		upkeep = {
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
 	}
 	
 	planet_modifier = {
@@ -1128,8 +1154,8 @@ colonist = {
 			food = -3
 		}
 		upkeep = {
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 	}
 	
@@ -1265,7 +1291,8 @@ medic = {
 	resources = {
 		category = planet_medics
 		upkeep = {
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 	}
 	

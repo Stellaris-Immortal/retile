@@ -95,37 +95,37 @@ custodian = {
 		}
 		#################################### Upkeep
 		upkeep = {
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_maintenance_depot } }
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_maintenance_depot_2 } }
-			energy = 4
-			consumer_goods = 2
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_normal2
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_maintenance_depot_3 } }
-			energy = 6
-			consumer_goods = 3
+			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_normal3
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_solar_panels } }
-			consumer_goods = 1.5
+			consumer_goods = @job_supplies_high
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_recycling_center } }
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_hydroponics_farm } }
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 		produces = {	### Fallen Empire buildings
 			trigger = { planet = { has_building = building_dimensional_fabricator } }
@@ -315,9 +315,6 @@ technician = {
 		produces = {
 			energy = 10
 		}
-		upkeep = {
-			consumer_goods = 1.5
-		}
 		produces = {
 			trigger = { planet = { has_building = building_energy_1 } }
 			energy = 10
@@ -331,16 +328,19 @@ technician = {
 			energy = 30
 		}
 		upkeep = {
+			consumer_goods = @job_supplies_high
+		}
+		upkeep = {
 			trigger = { planet = { has_building = building_energy_1 } }
-			consumer_goods = 1.5
+			consumer_goods = @job_supplies_high
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_energy_2 } }
-			consumer_goods = 3
+			consumer_goods = @job_supplies_high2
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_energy_3 } }
-			consumer_goods = 4.5
+			consumer_goods = @job_supplies_high3
 		}
 	}
 	
@@ -474,10 +474,6 @@ miner = {
 		produces = {
 			minerals = 10
 		}
-		upkeep = {
-			energy = 2
-			consumer_goods = 1
-		}
 		produces = {
 			trigger = { planet = { has_building = building_mineral_1 } }
 			minerals = 10
@@ -491,19 +487,23 @@ miner = {
 			minerals = 30
 		}
 		upkeep = {
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
+		upkeep = {
 			trigger = { planet = { has_building = building_mineral_1 } }
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_mineral_2 } }
-			energy = 4
-			consumer_goods = 2
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_normal2
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_mineral_3 } }
-			energy = 6
-			consumer_goods = 3
+			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_normal3
 		}
 	}	
 	
@@ -663,29 +663,29 @@ farmer = {
 			food = 30
 		}
 		upkeep = {
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 		upkeep = {
 			trigger = { 
 				planet = { has_building = building_food_1 } 
 			}
-			energy = 2
-			consumer_goods = 1
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 		upkeep = {
 			trigger = { 
 				planet = { has_building = building_food_2 } 
 			}
-			energy = 4
-			consumer_goods = 2
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_normal2
 		}
 		upkeep = {
 			trigger = { 
 				planet = { has_building = building_food_3 }
 			}
-			energy = 6
-			consumer_goods = 3
+			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_normal3
 		}
 		produces = {
 			trigger = { has_trait = trait_plantoid_fruiting }
