@@ -58,7 +58,7 @@ head_researcher = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
 		}
 		modifier = {
@@ -119,12 +119,20 @@ head_researcher = {
 			factor = 1.1
 			has_trait = trait_robust
 		}
+		# crisis purge
 		modifier = {
 			factor = 0.01
 			planet.controller = {
 				OR = {
 					is_country_type = swarm
 					is_country_type = ai_empire
+				}
+			}
+			OR = { # contingency won't purge itself
+				NOT = { exists = event_target:custodian_bot }
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = { species = { is_same_value = event_target:custodian_bot } }
 				}
 			}
 		}
@@ -179,21 +187,12 @@ high_priest = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
 		}
 		modifier = {
 			factor = 1.5
 			has_trait = trait_robot_propaganda_machines		
-		}
-		modifier = {
-			factor = 1.2
-			has_ethic = ethic_spiritualist
-		}	
-		modifier = {
-			factor = 0.1
-			has_ethic = ethic_materialist
-			NOT = { has_job = high_priest }
 		}
 		modifier = {
 			factor = 1.5
@@ -214,6 +213,13 @@ high_priest = {
 				OR = {
 					is_country_type = swarm
 					is_country_type = ai_empire
+				}
+			}
+			OR = { # contingency won't purge itself
+				NOT = { exists = event_target:custodian_bot }
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = { species = { is_same_value = event_target:custodian_bot } }
 				}
 			}
 		}
@@ -267,7 +273,7 @@ administrator = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
 		}
 		modifier = {
@@ -295,7 +301,14 @@ administrator = {
 					is_country_type = ai_empire
 				}
 			}
-		}	
+			OR = { # contingency won't purge itself
+				NOT = { exists = event_target:custodian_bot }
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = { species = { is_same_value = event_target:custodian_bot } }
+				}
+			}
+		}
 	}
 }
 
@@ -346,7 +359,7 @@ bureaucrat_head = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
 		}
 		modifier = {
@@ -374,7 +387,14 @@ bureaucrat_head = {
 					is_country_type = ai_empire
 				}
 			}
-		}	
+			OR = { # contingency won't purge itself
+				NOT = { exists = event_target:custodian_bot }
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = { species = { is_same_value = event_target:custodian_bot } }
+				}
+			}
+		}
 	}
 }
 
@@ -423,7 +443,7 @@ noble = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
 		}
 		modifier = {
@@ -514,7 +534,7 @@ merchant = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
 		}
 		modifier = {
@@ -626,7 +646,7 @@ executive = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
 		}
 		modifier = {

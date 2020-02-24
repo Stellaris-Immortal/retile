@@ -228,22 +228,6 @@ custodian = {
 			has_job = custodian
 		}
 		modifier = {
-			factor = 20
-			has_trait = trait_nerve_stapled
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				is_non_sapient_robot = yes
-				is_shackled_robot = yes
-			}
-			can_take_servant_job = no
-		}	
-		modifier = {
-			factor = 0.25
-			can_take_servant_job = yes
-		}
-		modifier = {
 			factor = 2
 			planet = { free_amenities > 200 }
 		}
@@ -274,10 +258,6 @@ custodian = {
 				has_building = building_maintenance_depot_3
 			}
 		}
-		#modifier = {	# AI loses pop growth a lot to pollution. This should help...
-		#	weight = 100
-		#	owner = { is_ai = yes }
-		#}
 	}
 }
 
@@ -370,38 +350,9 @@ technician = {
 			}
 		}
 		modifier = {
-			factor = 8
-			is_enslaved = yes
-			can_take_servant_job = no
-			NOR = { 
-				has_trait = trait_syncretic_proles 
-				has_trait = trait_nuumismatic_administration
-				has_trait = trait_robot_superconductive
-				has_trait = trait_ingenious
-			}
-		}
-		modifier = {
-			factor = 2
-			OR = {	
-				is_non_sapient_robot = yes
-				is_shackled_robot = yes
-			}		
-			can_take_servant_job = no
-		}
-		modifier = {
-			factor = 0.25
-			can_take_servant_job = yes
-		}
-		modifier = {
 			factor = 1.5
 			has_trait = trait_syncretic_proles
 		}
-		modifier = {
-			factor = 4
-			species = {
-				has_species_flag = racket_species_flag
-			}
-		}	
 		modifier = {
 			factor = 1.2
 			has_trait = trait_very_strong
@@ -424,10 +375,6 @@ technician = {
 				has_trait = trait_robust
 				has_trait = trait_robot_efficient_processors
 			}
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_nerve_stapled
 		}
 		modifier = {
 			factor = 2
@@ -531,39 +478,6 @@ miner = {
 				has_trait = trait_robot_power_drills
 			}		
 		}
-		modifier = {
-			factor = 10
-			is_enslaved = yes
-			can_take_servant_job = no
-		}	
-		modifier = {
-			factor = 2
-			OR = {	
-				is_non_sapient_robot = yes
-				is_shackled_robot = yes
-			}
-			can_take_servant_job = no
-			owner = { has_technology = tech_droid_workers }
-		}	
-		modifier = {
-			factor = 200
-			OR = {	
-				is_non_sapient_robot = yes
-				is_shackled_robot = yes
-			}
-			can_take_servant_job = no
-			owner = { NOT = { has_technology = tech_droid_workers } }
-		}		
-		modifier = {
-			factor = 0.25
-			can_take_servant_job = yes
-		}		
-		modifier = {
-			factor = 2
-			species = {
-				has_species_flag = racket_species_flag
-			}
-		}		
 		modifier = {
 			factor = 1.2
 			has_trait = trait_very_strong
@@ -782,33 +696,6 @@ farmer = {
 			factor = 2
 			has_trait = trait_plantoid_fruiting
 		}
-		modifier = {
-			factor = 10
-			is_enslaved = yes
-			can_take_servant_job = no
-		}	
-		modifier = {
-			factor = 2
-			OR = {	
-				is_non_sapient_robot = yes
-				is_shackled_robot = yes
-			}
-			can_take_servant_job = no
-			owner = { has_technology = tech_droid_workers }
-		}	
-		modifier = {
-			factor = 20
-			OR = {	
-				is_non_sapient_robot = yes
-				is_shackled_robot = yes
-			}
-			can_take_servant_job = no
-			owner = { NOT = { has_technology = tech_droid_workers } }
-		}
-		modifier = {
-			factor = 0.25
-			can_take_servant_job = yes
-		}	
 		modifier = {
 			factor = 2
 			has_trait = trait_syncretic_proles
