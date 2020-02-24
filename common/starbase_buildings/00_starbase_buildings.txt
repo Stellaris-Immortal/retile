@@ -874,7 +874,7 @@ listening_post = {
 	}
 	
 	country_modifier = {
-		starbase_trade_protection_add = 10
+		local_trade_protection_add = 10
 	}
 	
 	station_modifier = {
@@ -1311,7 +1311,7 @@ target_uplink_computer = {
 	}
 
 	station_modifier = {
-		ship_weapon_range_mult = 0.50
+		ship_weapon_range_mult = 1
 	}
 
 	ai_build_at_chokepoint = yes
@@ -1322,7 +1322,7 @@ target_uplink_computer = {
 }
 
 disruption_field = {
-	icon = "GFX_spaceport_module_orbital_mind_control_lazer"
+	icon = "GFX_starbase_disruption_field"
 	construction_days = 180
 	
 	potential = {
@@ -1346,6 +1346,10 @@ disruption_field = {
 		upkeep = {
 			energy = 2
 		}
+	}
+	
+	station_modifier = {
+		ship_hull_mult = 0.10
 	}
 
 	equipped_component = "STARBASE_AURA_DISRUPTION_FIELD"
@@ -1373,6 +1377,10 @@ communications_jammer = {
 		}
 		has_starbase_size >= starbase_starport
 	}
+	
+	station_modifier = {
+		ship_hull_mult = 0.10
+	}
 
 	resources = {
 		category = starbase_buildings
@@ -1396,7 +1404,7 @@ communications_jammer = {
 }
 
 warp_fluctuator = {
-	icon = "GFX_spaceport_module_atmospheric_manipulator"
+	icon = "GFX_starbase_warp_fluctuator"
 	construction_days = 180
 	
 	potential = {
@@ -1449,7 +1457,7 @@ command_center = {
 			has_starbase_building = patrol_network
 		}
 		has_starbase_size >= starbase_starport
-	}	
+	}
 
 	possible = {
 		custom_tooltip = {
@@ -1467,6 +1475,10 @@ command_center = {
 		upkeep = {
 			energy = 5
 		}
+	}
+	
+	station_modifier = {
+		ship_hull_mult = 0.10
 	}
 
 	equipped_component = "STARBASE_AURA_COMMAND_CENTER"
@@ -1507,6 +1519,7 @@ defense_grid = {
 	}
 
 	station_modifier = {
+		ship_hull_mult = 0.10
 		starbase_defense_platform_capacity_add = 8
 	}
 
