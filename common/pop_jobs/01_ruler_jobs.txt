@@ -60,7 +60,6 @@ head_researcher = {
 		modifier = {
 			factor = 0.1
 			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }
 		}
 		modifier = {
 			factor = 2
@@ -182,7 +181,6 @@ high_priest = {
 		modifier = {
 			factor = 0.1
 			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
 		}
 		modifier = {
 			factor = 1.5
@@ -271,8 +269,7 @@ administrator = {
 		modifier = {
 			factor = 0.1
 			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}		
+		}
 		modifier = {
 			factor = 1.25
 			has_trait = trait_robot_propaganda_machines	
@@ -351,8 +348,7 @@ bureaucrat_head = {
 		modifier = {
 			factor = 0.1
 			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}		
+		}
 		modifier = {
 			factor = 1.25
 			has_trait = trait_robot_propaganda_machines		
@@ -429,8 +425,7 @@ noble = {
 		modifier = {
 			factor = 0.1
 			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}		
+		}
 		modifier = {
 			factor = 0.1
 			is_egalitarian = yes
@@ -517,6 +512,10 @@ merchant = {
 		modifier = {
 			factor = 0.5
 			has_living_standard = { type = living_standard_subsistence }
+		}
+		modifier = {
+			factor = 0.1
+			has_citizenship_rights = no	
 		}
 		modifier = {
 			factor = 2.0
@@ -627,11 +626,15 @@ executive = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
+			factor = 0.1
+			has_citizenship_rights = no	
+		}
+		modifier = {
 			factor = 2.0
 			OR = {
-			has_trait = trait_thrifty
-			has_trait = trait_nuumismatic_administration
-		}
+				has_trait = trait_thrifty
+				has_trait = trait_nuumismatic_administration
+			}
 		}
 		modifier = {
 			factor = 1.5
