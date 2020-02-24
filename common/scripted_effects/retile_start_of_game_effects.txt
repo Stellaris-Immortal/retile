@@ -913,7 +913,7 @@ generate_start_buildings_and_districts = {
 			retile_exploit_food = yes
 	}
 	
-	retile_exploit_minerals = yes		# Because we keep not having enough...
+	#retile_exploit_minerals = yes		# Because we keep not having enough...
 
 	######################################## Set up starting districts
 	if = {
@@ -965,65 +965,70 @@ generate_start_buildings_and_districts = {
 	}
 	
 	# Additional resources based on empire type and possible subspecies
-	owner = {
-		if = {
-			limit = { 
-				is_lithoid_empire = no
-				is_plantoid_empire = no
-			}
+	# New retile version below start pops generation.
+	# Old Vanilla Version:
+	if = {
+		limit = {always = no}
+		owner = {
 			if = {
 				limit = { 
-					OR = { 
-						has_country_flag = lithoid_subspecies
+					is_lithoid_empire = no
+					is_plantoid_empire = no
+				}
+				if = {
+					limit = { 
+						OR = { 
+							has_country_flag = lithoid_subspecies
+							has_country_flag = plantoid_subspecies
+						}
+					}
+					add_resource = { food = 100	}
+					add_resource = { minerals = 100 }
+				}
+				else = {
+					add_resource = { food = 200 }
+				}
+			}
+			else_if = {
+				limit = { is_lithoid_empire = yes }
+				if = {
+					limit = { 
+						has_country_flag = non_lithoid_subspecies
 						has_country_flag = plantoid_subspecies
 					}
+					add_resource = { minerals = 100 }
 				}
-				add_resource = { food = 100	}
-				add_resource = { minerals = 100 }
-			}
-			else = {
-				add_resource = { food = 200 }
-			}
-		}
-		else_if = {
-			limit = { is_lithoid_empire = yes }
-			if = {
-				limit = { 
-					has_country_flag = non_lithoid_subspecies
-					has_country_flag = plantoid_subspecies
+				else_if = {
+					limit = { 
+						has_country_flag = non_lithoid_subspecies
+						has_country_flag = non_plantoid_subspecies
+					}
+					add_resource = { food = 100	}
+					add_resource = { minerals = 100 }
 				}
-				add_resource = { minerals = 100 }
+				else = {
+					add_resource = { minerals = 200 }
+				}
 			}
 			else_if = {
-				limit = { 
-					has_country_flag = non_lithoid_subspecies
-					has_country_flag = non_plantoid_subspecies
+				limit = { is_plantoid_empire = yes }
+				if = {
+					limit = { 
+						has_country_flag = non_plantoid_subspecies
+						has_country_flag = lithoid_subspecies
+					}
+					add_resource = { minerals = 100 }
 				}
-				add_resource = { food = 100	}
-				add_resource = { minerals = 100 }
-			}
-			else = {
-				add_resource = { minerals = 200 }
-			}
-		}
-		else_if = {
-			limit = { is_plantoid_empire = yes }
-			if = {
-				limit = { 
-					has_country_flag = non_plantoid_subspecies
-					has_country_flag = lithoid_subspecies
+				else_if = {
+					limit = { 
+						has_country_flag = non_lithoid_subspecies
+						has_country_flag = non_plantoid_subspecies
+					}
+					add_resource = { food = 100	}
 				}
-				add_resource = { minerals = 100 }
-			}
-			else_if = {
-				limit = { 
-					has_country_flag = non_lithoid_subspecies
-					has_country_flag = non_plantoid_subspecies
+				else = {
+					add_resource = { food = 0 }
 				}
-				add_resource = { food = 100	}
-			}
-			else = {
-				add_resource = { food = 0 }
 			}
 		}
 	}
@@ -1137,7 +1142,7 @@ generate_start_pops = {
 	}
 	
 	while = {
-		limit = { num_pops < 14 }
+		limit = { num_pops < 11 }
 		create_pop = {
 			species = owner_main_species
 			ethos = random
@@ -1188,6 +1193,21 @@ generate_start_pops = {
 	#		ethos = random
 	#	}
 	#}
+
+	# Starting bonus resources:
+	owner = {
+		add_resource = { minerals = 200 }
+		if = {
+			limit = { country_uses_food = yes }
+			add_resource = { food = 100 }
+		} else_if = {
+			limit = { is_lithoid_empire = yes }
+			add_resource = { minerals = 100 }
+		} else = {
+			add_resource = { energy = 100 }
+		}
+	}
+
 }
 
 generate_home_planet_final_pass = {
