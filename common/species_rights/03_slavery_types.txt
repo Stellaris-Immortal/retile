@@ -47,10 +47,12 @@ slavery_normal = {
 	allow = {
 		custom_tooltip = {
 			fail_text = species_is_majority
-			from = {
-				any_owned_pop = { 
-					is_exact_same_species = from
-					is_majority_species = yes
+			NOT = {
+				from = {
+					any_owned_pop = { 
+						is_exact_same_species = from
+						is_majority_species = yes
+					}
 				}
 			}
 		}
@@ -85,10 +87,12 @@ slavery_military = {
 		hidden_trigger = { exists = from }
 		custom_tooltip = {
 			fail_text = species_is_majority
-			from = {
-				any_owned_pop = { 
-					is_exact_same_species = from
-					is_majority_species = yes
+			NOT = {
+				from = {
+					any_owned_pop = { 
+						is_exact_same_species = from
+						is_majority_species = yes
+					}
 				}
 			}
 		}
@@ -162,10 +166,12 @@ slavery_livestock = {
 	allow = {
 		custom_tooltip = {
 			fail_text = species_is_majority
-			from = {
-				any_owned_pop = { 
-					is_exact_same_species = from
-					is_majority_species = yes
+			NOT = {
+				from = {
+					any_owned_pop = { 
+						is_exact_same_species = from
+						is_majority_species = yes
+					}
 				}
 			}
 		}
