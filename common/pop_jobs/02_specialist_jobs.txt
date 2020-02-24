@@ -739,8 +739,10 @@ enforcer = {
 		}
 		modifier = {
 			factor = 0.02
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }
+			AND = {
+				has_citizenship_rights = no
+				NOT = { species = { has_slavery_type = slavery_domestic } }
+			}
 		}
 		modifier = {
 			factor = 10
