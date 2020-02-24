@@ -11,11 +11,6 @@ district_housing = {
 	potential = {
 		exists = owner
 		owner = { is_gestalt = no }
-		NOR = {
-			has_modifier = resort_colony
-			has_modifier = penal_colony
-			has_modifier = slave_colony
-		}
 	}
 	
 	allow = {
@@ -42,6 +37,31 @@ district_housing = {
 	planet_modifier = {
 		planet_housing_add = 5
 	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_environmentalist }
+		}
+		planet_housing_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_housing_1 }
+		}
+		planet_housing_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_housing_2 }
+		}
+		planet_housing_add = 1
+	}
+	
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_city

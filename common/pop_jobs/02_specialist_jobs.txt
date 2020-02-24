@@ -810,8 +810,7 @@ soldier = {
 			exists = owner
 			owner = { has_policy_flag = criminal_military_police }
 		}
-		planet_crime_add = -25
-		planet_amenities_add = 25
+		planet_crime_add = -35
 	}
 
 	triggered_country_modifier = {
@@ -838,6 +837,15 @@ soldier = {
 			owner = { has_technology = tech_ground_defense_planning }
 		}
 		pop_defense_armies_add = 2
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner 
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		modifier = {
+			country_naval_cap_add = -5
+		}
 	}
 	triggered_country_modifier = {
 		potential = {
