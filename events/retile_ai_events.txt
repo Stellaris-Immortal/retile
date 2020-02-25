@@ -16,8 +16,8 @@ country_event = {
 		is_ai = yes
 		OR = {
 			is_country_type = default
-			is_country_type = awakened_marauders
-			is_country_type = awakened_fallen_empire
+			#is_country_type = awakened_marauders
+			#is_country_type = awakened_fallen_empire
 		}
 	}
 	
@@ -42,136 +42,139 @@ country_event = {
 		remove_country_flag = retile_ai_needs_admin_crisis
 		remove_country_flag = retile_ai_needs_admin_excess
 		
-		### Set sprawl flags
-		set_variable = { which = retile_admin_size value = 0 }	# Count empire size
-		every_owned_starbase = {				# sprawl from systems
-			prev = {
-				change_variable = { which = retile_admin_size value = 2 }
-			}
-		}
-		every_owned_planet = {				# sprawl from colonies
-			prev = {
-				change_variable = { which = retile_admin_size value = 10 }
-			}
-		}
-		if = {								# sprawl from branch offices
-			limit = { has_authority = auth_corporate }
-			set_variable = { which = retile_admin_size_branch value = 0 }
-			every_country = {
-				limit = {
-					is_country_type = default
-					NOT = { is_same_value = prev }
+		if = {
+			limit = { is_country_type = default }
+			### Set sprawl flags
+			set_variable = { which = retile_admin_size value = 0 }	# Count empire size
+			every_owned_starbase = {				# sprawl from systems
+				root = {
+					change_variable = { which = retile_admin_size value = 2 }
 				}
-				every_owned_planet = {
+			}
+			every_owned_planet = {				# sprawl from colonies
+				root = {
+					change_variable = { which = retile_admin_size value = 10 }
+				}
+			}
+			if = {								# sprawl from branch offices
+				limit = { has_authority = auth_corporate }
+				set_variable = { which = retile_admin_size_branch value = 0 }
+				every_country = {
 					limit = {
-						has_branch_office = yes
-						branch_office_owner = { is_same_value = prevprevprev }
+						is_country_type = default
+						NOT = { is_same_value = root }
 					}
-					branch_office_owner = {
-						change_variable = { which = retile_admin_size_branch value = 1 }
-					}
-				}
-			}
-			if = {
-				limit = { has_civic = civic_franchising }
-				multiply_variable = { which = retile_admin_size_branch value = 0.5 }
-			}
-			change_variable = { which = retile_admin_size value = retile_admin_size_branch }
-		}
-
-		set_variable = { which = retile_admin_cap value = 15 }	# Count admin cap		
-		if = {
-			limit = { has_ascension_perk = ap_interstellar_dominion }
-			change_variable = { which = retile_admin_cap value = 15 }
-		}
-		if = {
-			limit = { has_ascension_perk = ap_imperial_prerogative }
-			change_variable = { which = retile_admin_cap value = 15 }
-		}
-		if = {
-			limit = { has_ethic = ethic_xenophobe }
-			change_variable = { which = retile_admin_cap value = 5 }
-		}
-		if = {
-			limit = { has_ethic = ethic_fanatic_xenophobe }
-			change_variable = { which = retile_admin_cap value = 10 }
-		}
-		if = {
-			limit = { has_authority = auth_corporate }
-			change_variable = { which = retile_admin_cap value = 10 }
-		}
-		if = {
-			limit = { has_civic = civic_efficient_bureaucracy }
-			change_variable = { which = retile_admin_cap value = 15 }
-		}
-		if = {
-			limit = { has_civic = civic_hive_divided_attention }
-			change_variable = { which = retile_admin_cap value = 10 }
-		}
-		if = {
-			limit = { has_civic = civic_private_prospectors }
-			change_variable = { which = retile_admin_cap value = 5 }
-		}
-		if = {
-			limit = { has_modifier = oracle_administration }
-			change_variable = { which = retile_admin_cap value = 10 }
-		}
-		if = {
-			limit = { has_technology = tech_adaptive_bureaucracy }
-			change_variable = { which = retile_admin_cap value = 5 }
-		}
-		if = {
-			limit = { has_technology = tech_colonial_bureaucracy }
-			change_variable = { which = retile_admin_cap value = 5 }
-		}
-		if = {
-			limit = { has_technology = tech_galactic_bureaucracy }
-			change_variable = { which = retile_admin_cap value = 5 }
-		}
-		every_owned_pop = {
-			limit = { has_job = bureaucrat }
-			prev = {
-				change_variable = { which = retile_admin_cap value = 4 }
-				if = {
-					limit = { has_valid_civic = civic_efficient_bureaucracy }
-					change_variable = { which = retile_admin_cap value = 2 }
-				}
-				if = {
-					limit = {
-						OR = {
-							has_policy_flag = xenodiplomacy_assembly
-							has_policy_flag = xenodiplomacy_magistrate
-							has_policy_flag = xenodiplomacy_gunboat
-							has_policy_flag = xenodiplomacy_embassy
-							has_policy_flag = xenodiplomacy_pr
-							has_policy_flag = xenodiplomacy_lr
+					every_owned_planet = {
+						limit = {
+							has_branch_office = yes
+							branch_office_owner = { is_same_value = root }
+						}
+						root = {
+							change_variable = { which = retile_admin_size_branch value = 1 }
 						}
 					}
-					change_variable = { which = retile_admin_cap value = -2 }
+				}
+				if = {
+					limit = { has_civic = civic_franchising }
+					multiply_variable = { which = retile_admin_size_branch value = 0.5 }
+				}
+				change_variable = { which = retile_admin_size value = retile_admin_size_branch }
+			}
+
+			set_variable = { which = retile_admin_cap value = 15 }	# Count admin cap		
+			if = {
+				limit = { has_ascension_perk = ap_interstellar_dominion }
+				change_variable = { which = retile_admin_cap value = 15 }
+			}
+			if = {
+				limit = { has_ascension_perk = ap_imperial_prerogative }
+				change_variable = { which = retile_admin_cap value = 15 }
+			}
+			if = {
+				limit = { has_ethic = ethic_xenophobe }
+				change_variable = { which = retile_admin_cap value = 5 }
+			}
+			if = {
+				limit = { has_ethic = ethic_fanatic_xenophobe }
+				change_variable = { which = retile_admin_cap value = 10 }
+			}
+			if = {
+				limit = { has_authority = auth_corporate }
+				change_variable = { which = retile_admin_cap value = 10 }
+			}
+			if = {
+				limit = { has_civic = civic_efficient_bureaucracy }
+				change_variable = { which = retile_admin_cap value = 15 }
+			}
+			if = {
+				limit = { has_civic = civic_hive_divided_attention }
+				change_variable = { which = retile_admin_cap value = 10 }
+			}
+			if = {
+				limit = { has_civic = civic_private_prospectors }
+				change_variable = { which = retile_admin_cap value = 5 }
+			}
+			if = {
+				limit = { has_modifier = oracle_administration }
+				change_variable = { which = retile_admin_cap value = 10 }
+			}
+			if = {
+				limit = { has_technology = tech_adaptive_bureaucracy }
+				change_variable = { which = retile_admin_cap value = 5 }
+			}
+			if = {
+				limit = { has_technology = tech_colonial_bureaucracy }
+				change_variable = { which = retile_admin_cap value = 5 }
+			}
+			if = {
+				limit = { has_technology = tech_galactic_bureaucracy }
+				change_variable = { which = retile_admin_cap value = 5 }
+			}
+			every_owned_pop = {
+				limit = { has_job = bureaucrat }
+				root = {
+					change_variable = { which = retile_admin_cap value = 4 }
+					if = {
+						limit = { has_valid_civic = civic_efficient_bureaucracy }
+						change_variable = { which = retile_admin_cap value = 2 }
+					}
+					if = {
+						limit = {
+							OR = {
+								has_policy_flag = xenodiplomacy_assembly
+								has_policy_flag = xenodiplomacy_magistrate
+								has_policy_flag = xenodiplomacy_gunboat
+								has_policy_flag = xenodiplomacy_embassy
+								has_policy_flag = xenodiplomacy_pr
+								has_policy_flag = xenodiplomacy_lr
+							}
+						}
+						change_variable = { which = retile_admin_cap value = -2 }
+					}
 				}
 			}
-		}
-		
-		# do math, set flags
-		subtract_variable = { which = retile_admin_cap value = retile_admin_size }
-		
-		if = {
-			limit = {
-				check_variable = { which = retile_admin_cap value < 0 }
+			
+			# do math, set flags
+			subtract_variable = { which = retile_admin_cap value = retile_admin_size }
+			
+			if = {
+				limit = {
+					check_variable = { which = retile_admin_cap value < 0 }
+				}
+				set_country_flag = retile_ai_needs_admin
 			}
-			set_country_flag = retile_ai_needs_admin
-		}
-		if = {
-			limit = {
-				check_variable = { which = retile_admin_cap value < -50 }
+			if = {
+				limit = {
+					check_variable = { which = retile_admin_cap value < -50 }
+				}
+				set_country_flag = retile_ai_needs_admin_crisis
 			}
-			set_country_flag = retile_ai_needs_admin_crisis
-		}
-		if = {
-			limit = {
-				check_variable = { which = retile_admin_cap value > 50 }
+			if = {
+				limit = {
+					check_variable = { which = retile_admin_cap value > 50 }
+				}
+				set_country_flag = retile_ai_needs_admin_excess
 			}
-			set_country_flag = retile_ai_needs_admin_excess
 		}
 		
 		### Set resource flags

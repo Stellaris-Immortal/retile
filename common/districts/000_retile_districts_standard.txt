@@ -14,8 +14,8 @@ district_housing = {
 	}
 	
 	allow = {
+		exists = owner
 		OR = {
-			exists = owner
 			owner = { is_ai = no }
 			AND = {
 				free_housing < 2
@@ -92,8 +92,8 @@ district_clerks = {
 	}
 	
 	allow = {
+		exists = owner
 		OR = {
-			exists = owner
 			owner = { is_ai = no }
 			AND = {
 				free_jobs < 1
@@ -156,8 +156,8 @@ district_engineers = {
 	}
 	
 	allow = {
+		exists = owner
 		OR = {
-			exists = owner
 			owner = { is_ai = no }
 			AND = {
 				free_jobs < 1
@@ -220,8 +220,8 @@ district_scholars = {
 	}
 	
 	allow = {
+		exists = owner
 		OR = {
-			exists = owner
 			owner = { is_ai = no }
 			AND = {
 				free_jobs < 1
@@ -286,7 +286,10 @@ district_bureaucrats = {
 		exists = owner
 		OR = {
 			owner = { is_ai = no }
-			owner = { has_country_flag = retile_ai_needs_admin }
+			AND = {
+				free_jobs < 1
+				owner = { has_country_flag = retile_ai_needs_admin }
+			}
 		}
 	}
 
@@ -346,8 +349,8 @@ district_soldiers = {
 	}
 	
 	allow = {
+		exists = owner
 		OR = {
-			exists = owner
 			owner = { is_ai = no }
 			AND = {
 				free_jobs < 1
@@ -418,8 +421,8 @@ district_enforcers = {
 	}
 	
 	allow = {
+		exists = owner
 		OR = {
-			exists = owner
 			owner = { is_ai = no }
 			AND = {
 				planet_crime > 33
@@ -512,8 +515,8 @@ district_custodians = {
 	}
 	
 	allow = {
+		exists = owner
 		OR = {
-			exists = owner
 			owner = { is_ai = no }
 			AND = {
 				free_jobs < 1
