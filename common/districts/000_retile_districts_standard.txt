@@ -75,7 +75,7 @@ district_housing = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 50
 	}
 }
 
@@ -270,7 +270,7 @@ district_scholars = {
 	}
 }
 
-district_diplomats = {
+district_bureaucrats = {
 	base_buildtime = @retile_city_build_time
 	icon = district_government
 	is_capped_by_modifier = no
@@ -292,7 +292,10 @@ district_diplomats = {
 	
 	allow = {
 		exists = owner
-		owner = { is_ai = no }
+		OR = {
+			owner = { is_ai = no }
+			owner = { has_country_flag = retile_ai_needs_admin }
+		}
 	}
 
 	resources = {
@@ -323,6 +326,10 @@ district_diplomats = {
 	
 	ai_weight = {
 		weight = 1
+		modifier = {
+			weight = 2
+			owner = { has_country_flag = retile_ai_needs_admin_crisis }
+		}
 	}
 }
 
@@ -353,12 +360,10 @@ district_soldiers = {
 			AND = {
 				free_jobs < 1
 				OR = {
-					#has_planet_flag = retile_ai_fortress
-					AND = {
-						num_districts = { type = district_soldiers value < 3 }
-						owner = { retile_ai_has_resource_crisis = no }
-					}
+					num_districts = { type = district_soldiers value < 3 }
+					has_planet_flag = retile_ai_fortress
 				}
+				owner = { retile_ai_has_resource_crisis = no }
 			}
 		}
 	}
@@ -390,6 +395,13 @@ district_soldiers = {
 	
 	ai_weight = {
 		weight = 1
+		modifier = {
+			weight = 1
+			OR = {
+				owner = { used_naval_capacity_percent >= 1.0 }
+				num_districts = { type = district_soldier value < 1 }
+			}
+		}
 	}
 }
 
@@ -475,7 +487,15 @@ district_enforcers = {
 	}	
 	
 	ai_weight = {
-		weight = 1
+		weight = 2
+		modifier = {
+			weight = 4
+			planet_crime > 66
+		}
+		modifier = {
+			weight = 6
+			planet_crime > 99
+		}
 	}
 }
 
@@ -538,5 +558,29 @@ district_custodians = {
 	
 	ai_weight = {
 		weight = 1
+		modifier = {
+			weight = 2
+			free_amenities > 500
+		}
+		modifier = {
+			weight = 3
+			free_amenities > 700
+		}
+		modifier = {
+			weight = 4
+			free_amenities > 900
+		}
+		modifier = {
+			weight = 5
+			free_amenities > 1100
+		}
+		modifier = {
+			weight = 6
+			free_amenities > 1300
+		}
+		modifier = {
+			weight = 7
+			free_amenities > 1500
+		}
 	}
 }
