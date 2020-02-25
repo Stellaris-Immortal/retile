@@ -45,12 +45,12 @@ country_event = {
 		### Set sprawl flags
 		set_variable = { which = retile_admin_size value = 0 }	# Count empire size
 		every_owned_starbase = {				# sprawl from systems
-			prev = {
+			root = {
 				change_variable = { which = retile_admin_size value = 2 }
 			}
 		}
 		every_owned_planet = {				# sprawl from colonies
-			prev = {
+			root = {
 				change_variable = { which = retile_admin_size value = 10 }
 			}
 		}
@@ -60,14 +60,14 @@ country_event = {
 			every_country = {
 				limit = {
 					is_country_type = default
-					NOT = { is_same_value = prev }
+					NOT = { is_same_value = root }
 				}
 				every_owned_planet = {
 					limit = {
 						has_branch_office = yes
-						branch_office_owner = { is_same_value = prevprevprev }
+						branch_office_owner = { is_same_value = root }
 					}
-					branch_office_owner = {
+					root = {
 						change_variable = { which = retile_admin_size_branch value = 1 }
 					}
 				}
@@ -130,7 +130,7 @@ country_event = {
 		}
 		every_owned_pop = {
 			limit = { has_job = bureaucrat }
-			prev = {
+			root = {
 				change_variable = { which = retile_admin_cap value = 4 }
 				if = {
 					limit = { has_valid_civic = civic_efficient_bureaucracy }
