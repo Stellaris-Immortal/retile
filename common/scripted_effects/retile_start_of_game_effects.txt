@@ -928,6 +928,7 @@ generate_start_buildings_and_districts = {
 		add_district = district_clerks
 		add_district = district_engineers
 		add_district = district_scholars
+		add_district = district_custodians
 		add_district = district_housing
 		add_district = district_housing
 	}
@@ -944,6 +945,7 @@ generate_start_buildings_and_districts = {
 		add_district = district_engineers
 		add_district = district_engineers
 		add_district = district_scholars
+		add_district = district_custodians
 		add_district = district_housing
 		add_district = district_housing
 	}
@@ -960,6 +962,7 @@ generate_start_buildings_and_districts = {
 		add_district = district_engineers
 		add_district = district_scholars
 		add_district = district_scholars
+		add_district = district_custodians
 		add_district = district_housing
 		add_district = district_housing
 	}
@@ -1034,14 +1037,14 @@ generate_start_buildings_and_districts = {
 	}
 	
 	# capital world planet flags
-	if = {
-		limit = { owner = { is_country_type = default } }
+#	if = {
+#		limit = { owner = { is_country_type = default } }
 #		set_planet_flag = ai_energy_development
 #		set_planet_flag = ai_minerals_development
 #		set_planet_flag = ai_food_development
 #		set_planet_flag = ai_arcology_development
 #		set_planet_flag = ai_city_development
-	}
+#	}
 }
 
 generate_start_pops = {	
@@ -1142,7 +1145,7 @@ generate_start_pops = {
 	}
 	
 	while = {
-		limit = { num_pops < 11 }
+		limit = { num_pops < 12 }
 		create_pop = {
 			species = owner_main_species
 			ethos = random

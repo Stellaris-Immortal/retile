@@ -18,7 +18,7 @@ clerk = {
 			has_job = clerk
 			retile_job_seeking = yes
 		}
-		complex_specialist_job_check_trigger = yes
+		specialist_job_check_trigger = yes
 	}
 	
 	resources = {
@@ -375,15 +375,6 @@ researcher = {	### Scholar
 			has_job = researcher
 		}
 		modifier = {
-			factor = 0.2
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }
-		}
-		modifier = {
-			factor = 2
-			has_living_standard = { type = living_standard_academic_privilege }
-		}
-		modifier = {
 			factor = 3
 			has_trait = trait_erudite
 		}
@@ -405,10 +396,6 @@ researcher = {	### Scholar
 				has_trait = trait_natural_physicists
 				has_trait = trait_natural_sociologists
 			}
-		}
-		modifier = {
-			factor = 0.1
-			can_take_servant_job = yes
 		}
 		modifier = {
 			factor = 0.65
@@ -466,10 +453,6 @@ researcher = {	### Scholar
 				}
 			}
 		}
-		#modifier = {
-		#	factor = 0
-		#	jobs_save_goods = yes
-		#}
 	}
 }
 
@@ -611,21 +594,6 @@ foundry = {	### Engineer
 			has_job = foundry
 		}
 		modifier = {
-			factor = 0.2
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}		
-		modifier = {
-			factor = 0.1
-			can_take_servant_job = yes
-		}
-		modifier = {
-			factor = 2
-			species = {
-				has_species_flag = racket_species_flag
-			}
-		}
-		modifier = {
 			factor = 2
 			OR = {
 				has_trait = trait_robust
@@ -738,19 +706,10 @@ enforcer = {
 			has_job = enforcer
 		}
 		modifier = {
-			factor = 0.02
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }
-		}
-		modifier = {
 			factor = 10
 			is_enslaved = yes
 			has_slavery_type = { type = slavery_military }
 		}			
-		modifier = {
-			factor = 0.01
-			can_take_servant_job = yes
-		}
 		modifier = {
 			factor = 2
 			has_trait = trait_presapient_earthbound
@@ -949,18 +908,9 @@ soldier = {
 			has_trait = trait_weak
 		}	
 		modifier = {
-			factor = 0.01
-			is_enslaved = yes
-			NOT = { has_slavery_type = { type = slavery_military } }
-		}	
-		modifier = {
 			factor = 10
 			is_enslaved = yes
 			has_slavery_type = { type = slavery_military }
-		}	
-		modifier = {
-			factor = 0.01
-			can_take_servant_job = yes
 		}
 		modifier = {
 			factor = 1.1
@@ -1262,14 +1212,6 @@ colonist = {
 
 	weight = {
 		weight = @specialist_job_weight
-		modifier = {
-			factor = 0.01
-			can_take_servant_job = yes
-		}
-		modifier = {
-			factor = 2
-			planet = { num_pops < 5 }
-		}
 		modifier = {
 			factor = 5
 			has_job = colonist
