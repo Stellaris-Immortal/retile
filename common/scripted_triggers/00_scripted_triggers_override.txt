@@ -36,3 +36,40 @@ can_be_military_leader = {
 		}
 	}
 }
+
+has_met_primitives = {
+	OR = {
+		has_country_flag = encountered_first_primitive
+		any_relation = {
+			has_communications = prev
+			is_country_type = primitive
+		}
+	}
+}
+
+has_comms_with_alien_empire = {
+	any_relation = {
+		has_communications = prev
+		OR = {
+			is_country_type = default
+			is_country_type = fallen_empire
+			is_country_type = awakened_fallen_empire
+		}
+	}
+}
+
+has_comms_with_alien_civilization = {
+	any_relation = {
+		has_communications = prev
+		OR = {
+			is_country_type = default
+			is_country_type = fallen_empire
+			is_country_type = awakened_fallen_empire
+			is_country_type = enclave
+			is_country_type = nomad
+			is_country_type = dormant_marauders
+			is_country_type = awakened_marauders
+		}
+	}
+}
+
