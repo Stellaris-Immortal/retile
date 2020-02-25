@@ -58,7 +58,10 @@ country_event = {
 			limit = { has_authority = auth_corporate }
 			set_variable = { which = retile_admin_size_branch value = 0 }
 			every_country = {
-				limit = { NOT = { is_same_value = prev } }
+				limit = {
+					is_country_type = default
+					NOT = { is_same_value = prev }
+				}
 				every_owned_planet = {
 					limit = {
 						has_branch_office = yes
@@ -154,19 +157,19 @@ country_event = {
 		
 		if = {
 			limit = {
-				check_variable = { which = retile_admin_cap < 0 }
+				check_variable = { which = retile_admin_cap value < 0 }
 			}
 			set_country_flag = retile_ai_needs_admin
 		}
 		if = {
 			limit = {
-				check_variable = { which = retile_admin_cap < -50 }
+				check_variable = { which = retile_admin_cap value < -50 }
 			}
 			set_country_flag = retile_ai_needs_admin_crisis
 		}
 		if = {
 			limit = {
-				check_variable = { which = retile_admin_cap > 50 }
+				check_variable = { which = retile_admin_cap value > 50 }
 			}
 			set_country_flag = retile_ai_needs_admin_excess
 		}
