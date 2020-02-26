@@ -271,7 +271,274 @@ country_event = {
 
 # Scrub resource buildings if the planet has no jobs of the appropriate type
 
+# Scrub excess energy deposits
+country_event = {
+	id = retile_ai.201
+	hide_window = yes
 
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_monthly_income = { resource = energy value > @retile_ai_energy_income_excess }
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	immediate = {
+		random_owned_planet = {
+			limit = { any_deposit = { has_deposit_category = deposit_cat_energy_active } }
+			random_deposit = {
+				limit = { has_deposit_category = deposit_cat_energy_active }
+				clear_blocker = yes
+			}
+		}
+	}
+}
+
+# Scrub excess minerals deposits
+country_event = {
+	id = retile_ai.202
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_monthly_income = { resource = minerals value > @retile_ai_minerals_income_excess }
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	immediate = {
+		random_owned_planet = {
+			limit = { any_deposit = { has_deposit_category = deposit_cat_minerals_active } }
+			random_deposit = {
+				limit = { has_deposit_category = deposit_cat_minerals_active }
+				clear_blocker = yes
+			}
+		}
+	}
+}
+
+# Scrub excess food deposits
+country_event = {
+	id = retile_ai.203
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_monthly_income = { resource = food value > @retile_ai_food_income_excess }
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	immediate = {
+		random_owned_planet = {
+			limit = { any_deposit = { has_deposit_category = deposit_cat_food_active } }
+			random_deposit = {
+				limit = { has_deposit_category = deposit_cat_food_active }
+				clear_blocker = yes
+			}
+		}
+	}
+}
+
+# Scrub excess bureaucrat districts
+country_event = {
+	id = retile_ai.204
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		has_country_flag = retile_ai_needs_admin_excess
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	immediate = {
+		random_owned_planet = {
+			limit = { has_district = district_bureaucrats }
+			remove_district = district_bureaucrats
+		}
+	}
+}
+
+# Scrub excess engineer districts
+country_event = {
+	id = retile_ai.205
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		OR = {
+			has_monthly_income = { resource = energy value < -25 }
+			has_monthly_income = { resource = minerals value < -25 }
+			has_monthly_income = { resource = food value < -25 }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	immediate = {
+		random_owned_planet = {
+			limit = { has_district = district_engineers }
+			remove_district = district_engineers
+		}
+	}
+}
+
+# Scrub excess custodian districts
+planet_event = {
+	id = retile_ai.206
+	hide_window = yes
+
+	trigger = {
+		has_owner = yes
+		owner = {
+			is_ai = yes
+			is_country_type = default
+		}
+		OR = {
+			owner = { retile_ai_has_resource_crisis = yes }
+			free_amenities < -300
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	immediate = {
+		remove_district = district_custodians
+	}
+}
+
+# Scrub excess enforcer districts
+planet_event = {
+	id = retile_ai.207
+	hide_window = yes
+
+	trigger = {
+		has_owner = yes
+		owner = {
+			is_ai = yes
+			is_country_type = default
+		}
+		OR = {
+			owner = { retile_ai_has_resource_crisis = yes }
+			planet_crime < 1
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	immediate = {
+		remove_district = district_enforcers
+	}
+}
+
+# Scrub excess soldier districts
+planet_event = {
+	id = retile_ai.208
+	hide_window = yes
+
+	trigger = {
+		has_owner = yes
+		owner = {
+			is_ai = yes
+			is_country_type = default
+			OR = {
+				retile_ai_has_resource_crisis = yes
+				AND = {
+					used_naval_capacity_percent < 0.7
+					root = { num_districts = { type = district_soldier value > 1 } }
+				}
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	immediate = {
+		remove_district = district_soldiers
+	}
+}
+
+# Scrub excess scholar districts
+country_event = {
+	id = retile_ai.209
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		OR = {
+			has_monthly_income = { resource = energy value < -25 }
+			has_monthly_income = { resource = minerals value < -25 }
+			has_monthly_income = { resource = food value < -25 }
+			has_monthly_income = { resource = consumer_goods value < -25 }
+			has_monthly_income = { resource = alloys value < -25 }
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	immediate = {
+		random_owned_planet = {
+			limit = { has_district = district_scholars }
+			remove_district = district_scholars
+		}
+	}
+}
+
+# Scrub excess housing districts
+planet_event = {
+	id = retile_ai.210
+	hide_window = yes
+
+	trigger = {
+	has_owner = yes
+		owner = {
+			is_ai = yes
+			is_country_type = default
+		}
+		free_district_slots < 1
+		free_jobs < 1
+		OR = {
+			free_housing > 6
+			count_pops = {
+				limit = { is_unemployed = yes }
+				count > 6
+			}
+		}
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+
+	immediate = {
+		remove_district = district_housing
+	}
+}
 
 # slow down AI colonizer build
 ship_event = {
