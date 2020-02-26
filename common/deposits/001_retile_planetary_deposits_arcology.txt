@@ -1050,7 +1050,7 @@ d_food_arcology_3b_active = {
 d_ancient_reactor_pits = {
 	icon = d_reactor
 	time = @retile_rural_exploit_time_ultra3
-	category = deposit_cat_arcology
+	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
 	resources = {
@@ -1074,32 +1074,28 @@ d_ancient_reactor_pits = {
 }
 
 d_ancient_reactor_pits_active = {
-	icon = d_energy_exploited_4
-	category = deposit_cat_arcology_active
+	icon = producers/d_generator_district_4
+	time = @retile_rural_restore_time_ultra3
+	category = deposit_cat_energy_active
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		produces = {
-			energy = @retile_rural_production_ultra
-			energy = @retile_rural_production3_ultra
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_pollution_ultra
-		planet_amenities_add = @retile_rural_pollution3_ultra
+		job_technician_add = 4
 	}
 	
 	drop_weight = {
 		weight = 0
 	}
+	
+	blocker_swap_types = {
+		d_ancient_reactor_pits
+	}
 }
 
 d_immense_solar_array = {
-	icon = d_reactor
+	icon = d_solar_array
 	time = @retile_rural_exploit_time_high
-	category = deposit_cat_arcology
+	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
 	resources = {
@@ -1123,32 +1119,28 @@ d_immense_solar_array = {
 }
 
 d_immense_solar_array_active = {
-	icon = d_energy_exploited_2
-	category = deposit_cat_arcology
+	icon = producers/d_generator_district_2
+	time = @retile_rural_restore_time_high
+	category = deposit_cat_energy_active
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		produces = {
-			energy = @retile_rural_production_med
-			energy = @retile_rural_production3_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_pollution_med
-		planet_amenities_add = @retile_rural_pollution3_med
+		job_technician_add = 2
 	}
 	
 	drop_weight = {
 		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_immense_solar_array
 	}
 }
 
 d_abandoned_mining_tunnels = {
 	icon = d_mining_tunnels
 	time = @retile_rural_exploit_time_ultra3
-	category = deposit_cat_arcology
+	category = deposit_cat_minerals
 	is_for_colonizeable = yes
 	
 	resources = {
@@ -1172,32 +1164,28 @@ d_abandoned_mining_tunnels = {
 }
 
 d_abandoned_mining_tunnels_active = {
-	icon = d_minerals_exploited_4
-	category = deposit_cat_arcology_active
+	icon = producers/d_mining_district_4
+	time = @retile_rural_restore_time_ultra3
+	category = deposit_cat_minerals_active
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		produces = {
-			minerals = @retile_rural_production_ultra
-			minerals = @retile_rural_production3_ultra
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_pollution_ultra
-		planet_amenities_add = @retile_rural_pollution3_ultra
+		job_miner_add = 4
 	}
 	
 	drop_weight = {
 		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_abandoned_mining_tunnels
 	}
 }
 
 d_relic_metal_boneyard = {
 	icon = d_reactor
 	time = @retile_rural_exploit_time_high
-	category = deposit_cat_arcology
+	category = deposit_cat_minerals
 	is_for_colonizeable = yes
 	
 	resources = {
@@ -1221,25 +1209,21 @@ d_relic_metal_boneyard = {
 }
 
 d_relic_metal_boneyard_active = {
-	icon = d_minerals_exploited_2
-	category = deposit_cat_arcology
+	icon = producers/d_mining_district_2
+	time = @retile_rural_restore_time_high
+	category = deposit_cat_minerals_active
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		produces = {
-			minerals = @retile_rural_production_med
-			minerals = @retile_rural_production3_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_pollution_med
-		planet_amenities_add = @retile_rural_pollution3_med
+		job_miner_add = 2
 	}
 	
 	drop_weight = {
 		weight = 0
+	}
+	
+	blocker_swap_types = {
+		d_relic_metal_boneyard
 	}
 }
 
