@@ -67,7 +67,6 @@ d_massive_crevice = {
 }
 
 d_shattered_solar_array = {
-	icon = d_solar_array
 	time = 270
 	
 	is_for_colonizeable = yes
@@ -94,7 +93,6 @@ d_shattered_solar_array = {
 }
 
 d_flooded_reactor_pits = {
-	icon = d_reactor
 	time = 270
 	
 	is_for_colonizeable = yes
@@ -121,7 +119,6 @@ d_flooded_reactor_pits = {
 }
 
 d_crumbling_mining_tunnels = {
-	icon = d_mining_tunnels
 	time = 270
 	
 	is_for_colonizeable = yes
@@ -157,9 +154,6 @@ d_central_spire = {
 	potential = { always = no }
 	
 	planet_modifier = { 
-		planet_jobs_society_research_produces_mult = 0.15
-		planet_jobs_engineering_research_produces_mult = 0.15
-		planet_jobs_physics_research_produces_mult = 0.15
 	}
 
 	triggered_planet_modifier = {						# Basic Jobs
@@ -168,9 +162,8 @@ d_central_spire = {
 			owner = { is_regular_empire = yes }
 		}
 		modifier = {
-			planet_housing_add = 4
-			job_researcher_add = 1
-			job_foundry_add = 1
+			planet_housing_add = 2
+			job_researcher_add = 2
 		}
 	}
 	triggered_planet_modifier = {						# Hive Jobs
@@ -179,9 +172,9 @@ d_central_spire = {
 			owner = { is_hive_empire = yes }
 		}
 		modifier = {
-			planet_housing_add = 4
-			job_brain_drone_add = 1
-			job_artisan_drone_add = 1
+			planet_housing_add = 2
+			job_brain_drone_add = 2
+			job_artisan_drone_add = 2
 		}
 	}
 	
@@ -191,9 +184,9 @@ d_central_spire = {
 			owner = { is_machine_empire = yes }
 		}
 		modifier = {	
-			planet_housing_add = 4
-			#job_calculator_add = 1
-			#job_foundry_drone_add = 1
+			planet_housing_add = 2
+			#job_calculator_add = 2
+			#job_foundry_drone_add = 2
 		}
 	}
 }
@@ -207,33 +200,12 @@ d_industrial_sector = {
 	
 	resources = {
 		category = planet_deposits
-		produces = {
-			trigger = {
-				exists = owner
-				owner = { has_technology = tech_mine_volatile_motes }
-			}
-			volatile_motes = 2
-		}
-		produces = {
-			trigger = {
-				exists = owner
-				owner = { has_technology = tech_mine_exotic_gases }
-			}
-			exotic_gases = 2
-		}
-		produces = {
-			trigger = {
-				exists = owner
-				owner = { has_technology = tech_mine_rare_crystals }
-			}
-			rare_crystals = 2
-		}
 	}
-	#planet_modifier = { 
-	#	building_crystal_mines_max = 2
-	#	building_gas_extractors_max = 2
-	#	building_mote_harvesters_max = 2
-	#}
+	
+	planet_modifier = { 
+		planet_housing_add = 2
+		job_foundry_add = 2
+	}
 }
 
 d_relic_dense_ruins = {
@@ -245,23 +217,23 @@ d_relic_dense_ruins = {
 	
 	planet_modifier = {
 		planet_max_districts_add = -2
-		planet_jobs_society_research_produces_mult = 0.15
-		planet_jobs_engineering_research_produces_mult = 0.15
-		planet_jobs_physics_research_produces_mult = 0.15
+		planet_jobs_society_research_produces_mult = 0.20
+		planet_jobs_engineering_research_produces_mult = 0.20
+		planet_jobs_physics_research_produces_mult = 0.20
 	}
 }
 
 d_former_relic_world = {
 	is_for_colonizeable = yes
-	icon = d_central_spire
+	icon = d_ruins_large
 	category = deposit_cat_rare
 
 	potential = { always = no }
 	
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.1
-		planet_jobs_engineering_research_produces_mult = 0.1
-		planet_jobs_physics_research_produces_mult = 0.1
+		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_engineering_research_produces_mult = 0.10
+		planet_jobs_physics_research_produces_mult = 0.10
 	}
 }
 
