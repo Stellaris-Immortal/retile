@@ -2025,3 +2025,92 @@ d_mass_extinction = {
 		}
 	}
 }
+
+############################################ Earth Blockers
+
+# Blockers
+d_great_pacific_garbage_patch = {
+	icon = d_garbage
+	time = 120
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers	
+	
+	potential = { always = no }
+	
+	planet_modifier = { 
+		planet_max_districts_add = -1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = 100
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = 100
+	}
+	
+	use_weights_for_blocker_swap_types = no
+
+	blocker_swap_types = {
+		d_pacific_algae_tracts
+	}
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 300
+		}
+	}
+}
+
+d_failing_infrastructure_earth = {
+	icon = d_metal_boneyard
+	time = 120
+	
+	is_for_colonizeable = yes
+	category = deposit_cat_blockers	
+	
+	potential = { always = no }
+	
+	planet_modifier = { 
+		planet_max_districts_add = -1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_regular_empire = yes }
+		}
+		planet_amenities_add = 100
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_gestalt = yes }
+		}
+		planet_amenities_no_happiness_add = 100
+	}
+	
+	use_weights_for_blocker_swap_types = no
+
+	blocker_swap_types = {
+		d_delhi_sprawl
+	}
+	
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 300
+		}
+	}
+}
