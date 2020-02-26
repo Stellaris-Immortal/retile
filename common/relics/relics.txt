@@ -443,9 +443,17 @@ r_ancient_sword = {
 	
 	triggered_country_modifier = {
 		potential = {
-			always = yes
+			is_gestalt = no
 		}
 		army_morale = 0.25
+		planet_sensor_range_add = 2
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			is_gestalt = yes
+		}
+		army_damage_mult = 0.10
 		planet_sensor_range_add = 2
 	}
 
@@ -493,9 +501,18 @@ r_severed_head = {
 	
 	triggered_country_modifier = {
 		potential = {
-			always = yes
+			is_gestalt = no
 		}
-		pop_ethic_spiritualist_attraction_mult = 0.40
+		country_unity_produces_mult = 0.05
+		planet_crime_add = -5
+		pop_government_ethic_attraction = 0.05
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			is_gestalt = yes
+		}
+		country_unity_produces_mult = 0.10
 	}
 
 	score = 200
@@ -653,9 +670,18 @@ r_contingency_core = {
 	
 	triggered_country_modifier = {
 		potential = {
-			always = yes
+			is_gestalt = no
 		}
-		planet_pop_assembly_mult = 1.00
+		megastructure_build_speed_mult = 0.25
+		planet_pop_assembly_mult = 0.25
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			is_gestalt = yes
+		}
+		planet_crime_no_happiness_add = -10
+		planet_pop_assembly_mult = 0.25
 	}
 
 	score = 5000
@@ -826,7 +852,8 @@ r_the_defragmentor = {
 			is_machine_empire = no
 		}
 		modifier = {
-			planet_pops_robotics_upkeep_mult = -0.10
+			planet_structures_upkeep_mult = -0.10
+			planet_pops_robotics_upkeep_mult = -0.05
 		}
 	}
 
@@ -885,7 +912,7 @@ r_reality_perforator = {
 		potential = {
 			always = yes
 		}
-		planet_pops_consumer_goods_upkeep_mult = -0.10
+		planet_jobs_upkeep_mult = -0.10
 	}
 
 	score = 5000
@@ -930,9 +957,16 @@ r_pox_sample = {
 	
 	triggered_country_modifier = {
 		potential = {
-			always = yes
+			is_machine_empire = no
 		}
 		leader_age = 20
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			is_machine_empire = yes
+		}
+		leaders_upkeep_mult = -0.20
 	}
 
 	score = 5000
@@ -982,8 +1016,7 @@ r_cryo_core = {
 		potential = {
 			always = yes
 		}
-		colony_start_num_pops_add = 1
-		custom_tooltip = tr_expansion_colonization_fever_desc
+		planet_colony_development_speed_mult = 1
 	}
 
 	score = 5000
@@ -1032,7 +1065,7 @@ r_war_forge = {
 		potential = {
 			always = yes
 		}
-		planet_pops_robotics_upkeep_mult = -0.10
+		ships_upkeep_mult = -0.10
 	}
 
 	score = 5000
