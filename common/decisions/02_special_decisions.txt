@@ -734,7 +734,7 @@ decision_arcology_project = {
 		category = decisions
 		cost = {
 			influence = 200
-			energy = 2000
+			minerals = 2000
 		}
 	}
 	
@@ -853,11 +853,11 @@ decision_arcology_project = {
 	}
 	
 	ai_weight = {
-		weight = 0
-		modifier = {
-			weight = 1000000
-			has_planet_flag = ai_arcology_development
-		}
+		weight = -1
+		#modifier = {
+		#	weight = 1000000
+		#	has_planet_flag = ai_arcology_development
+		#}
 	}
 }
 
@@ -871,7 +871,7 @@ decision_arcology_project_relic = {
 		category = decisions
 		cost = {
 			influence = 200
-			minerals = 5000
+			minerals = 2000
 		}
 	}
 	
@@ -899,9 +899,79 @@ decision_arcology_project_relic = {
 		hidden_effect = {
 
 			### TODO: Make restoring relic worlds actually do something appropriate.
-			clear_non_district_deposits = yes
+			#clear_non_district_deposits = yes
+			remove_deposit = d_relic_dense_ruins
 			add_deposit = d_former_relic_world
 			
+			every_deposit = {
+				if = {
+					limit = { is_energy_deposit_low = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_energy_arcology_1a } }
+						10 = { prev = { add_deposit = d_energy_arcology_1b } }
+					}
+				} else_if = {
+					limit = { is_energy_deposit_med = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_energy_arcology_2a } }
+						10 = { prev = { add_deposit = d_energy_arcology_2b } }
+					}
+				} else_if = {
+					limit = { is_energy_deposit_high = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_energy_arcology_3a } }
+						10 = { prev = { add_deposit = d_energy_arcology_3b } }
+					}
+				} else_if = {
+					limit = { is_food_deposit_low = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_food_arcology_1a } }
+						10 = { prev = { add_deposit = d_food_arcology_1b } }
+					}
+				} else_if = {
+					limit = { is_food_deposit_med = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_food_arcology_2a } }
+						10 = { prev = { add_deposit = d_food_arcology_2b } }
+					}
+				} else_if = {
+					limit = { is_food_deposit_high = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_food_arcology_3a } }
+						10 = { prev = { add_deposit = d_food_arcology_3b } }
+					}
+				} else_if = {
+					limit = { is_minerals_deposit_low = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_minerals_arcology_1a } }
+						10 = { prev = { add_deposit = d_minerals_arcology_1b } }
+					}
+				} else_if = {
+					limit = { is_minerals_deposit_med = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_minerals_arcology_2a } }
+						10 = { prev = { add_deposit = d_minerals_arcology_2b } }
+					}
+				} else_if = {
+					limit = { is_minerals_deposit_high = yes }
+					remove_deposit = yes
+					random_list = {
+						10 = { prev = { add_deposit = d_minerals_arcology_3a } }
+						10 = { prev = { add_deposit = d_minerals_arcology_3b } }
+					}
+				} else = {
+					### Do nothing
+					### The decision just razes natural resource deposits and converts them into spire locations.
+				}
+			}
 			change_pc = pc_city
 			set_planet_entity = {
 				entity = "city_planet_entity"
@@ -921,7 +991,7 @@ decision_arcology_project_relic = {
 	}
 	
 	ai_weight = {
-		weight = 1000000
+		weight = -1
 	}
 }
 
