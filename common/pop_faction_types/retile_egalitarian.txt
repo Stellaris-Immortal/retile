@@ -30,7 +30,16 @@ progressive = {
 			has_ethic = ethic_fanatic_egalitarian
 			has_valid_civic = civic_pacifist
 		}
-		NOT = { has_authority = auth_hive_mind }
+		NOR = { 
+			has_ethic = ethic_gestalt_consciousness
+			AND = {
+				has_valid_civic = civic_inwards_perfection
+				NOR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
+		}
 	}
 	
 	parameters = {

@@ -264,7 +264,7 @@ custodian = {
 technician = {
 	category = worker
 	condition_string = WORKER_JOB_TRIGGER
-	building_icon = building_power_plant
+	building_icon = building_primitive_power_plant
 	clothes_texture_index = 2
 	
 	possible_pre_triggers = {
@@ -390,7 +390,7 @@ technician = {
 miner = {	
 	category = worker
 	condition_string = WORKER_JOB_TRIGGER
-	building_icon = building_crystal_mines
+	building_icon = building_primitive_mine
 	clothes_texture_index = 2
 
 	possible_pre_triggers = {
@@ -446,6 +446,35 @@ miner = {
 			trigger = { planet = { has_building = building_mineral_3 } }
 			energy = @job_energy_normal3
 			consumer_goods = @job_supplies_normal3
+		}
+		produces = {
+			trigger = { owner = { has_valid_civic = civic_mining_guilds } }
+			minerals = -4
+			alloys = 1
+		}
+		produces = {
+			trigger = { 
+				owner = { has_valid_civic = civic_mining_guilds }
+				planet = { has_building = building_mineral_1 }
+			}
+			minerals = -4
+			alloys = 1
+		}
+		produces = {
+			trigger = { 
+				owner = { has_valid_civic = civic_mining_guilds }
+				planet = { has_building = building_mineral_2 }
+			}
+			minerals = -8
+			alloys = 2
+		}
+		produces = {
+			trigger = { 
+				owner = { has_valid_civic = civic_mining_guilds }
+				planet = { has_building = building_mineral_3 }
+			}
+			minerals = -12
+			alloys = 3
 		}
 	}	
 	
@@ -523,7 +552,7 @@ miner = {
 farmer = {
 	category = worker
 	condition_string = WORKER_JOB_TRIGGER
-	building_icon = building_hydroponics_farm
+	building_icon = old_production/building_basic_farm
 	clothes_texture_index = 2
 	
 	possible_pre_triggers = {
