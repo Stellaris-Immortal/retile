@@ -1,0 +1,85 @@
+leader_trait_caravan_counter = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_caravan_counter.dds"
+	modifier = {
+		ship_emergency_ftl_mult = -0.10
+	}
+	leader_trait = { admiral }
+	leader_class = { admiral }
+	initial = no
+	randomized = no
+}
+
+leader_trait_enclave_trader = {
+	cost = 0
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_enclave_trader.dds"
+	modifier = {
+		trade_value_mult = 0.10
+	}
+	leader_trait = { governor }
+	leader_class = { governor }
+	initial = no
+	randomized = no
+}
+
+@primary = 0.80
+@secondary = 0.60
+@tertiary = 0.20
+
+trait_pc_city_preference = {
+	icon = "gfx/interface/icons/traits/trait_pc_ai_preference.dds"
+	modification = no
+	allowed_archetypes = { BIOLOGICAL PRESAPIENT LITHOID PLANTOID ARTHROPOID}
+	sorting_priority = 30
+	modifier = {
+		pc_city_habitability = @primary
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_nuumismatic_administration = {
+	cost = 1
+	modification = no	
+	initial = no
+	randomized = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_nuumismatic_administration.dds"
+	modifier = {
+		planet_jobs_energy_produces_mult = 0.10
+		planet_jobs_unity_produces_mult = 0.10
+	}
+}
+
+###################
+# Governor Traits #
+###################
+
+leader_trait_waste_management_specialist = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_waste_management_specialist.dds"
+	modifier = {
+		planet_amenities_mult = -0.10
+	}
+	leader_trait = { governor }
+	leader_class = { governor }
+	initial = no
+	randomized = no
+}
+
+leader_trait_nuumismatic_priest = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_nuumismatic_priest.dds"
+	modifier = {
+		trade_value_mult = 0.10
+		planet_jobs_unity_produces_mult = 0.10
+	}
+	leader_trait = { governor }
+	leader_class = { governor }
+	initial = no
+	randomized = no
+}
