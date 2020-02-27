@@ -29,5 +29,5 @@ You can also install by downloading this repository:
 
 Default Mod Folder Locations:
  
- - On Windows - C:/Users/<Your Username>/Documents/Paradox Interactive/Stellaris/mod
+ - On Windows - C:/Users/{YOUR_USER}/Documents/Paradox Interactive/Stellaris/mod
  - On Linux - /home/{YOUR_USER}/.local/share/Paradox Interactive/Stellaris/mod
