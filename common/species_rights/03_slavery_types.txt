@@ -13,6 +13,7 @@ slavery_domestic = {
 	potential = {
 		host_has_dlc = "Utopia"
 		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+		#is_same_species = from
 	}
 	
 	allow = {
@@ -21,14 +22,6 @@ slavery_domestic = {
 	
 	ai_will_do = {
 		factor = 1
-		modifier = {
-			factor = 10
-			is_same_species = owner_species
-			from = { any_owned_pop = {
-				is_same_species = owner_species
-				is_majority_species = yes
-			} }
-		}
 	}
 }
 
@@ -42,28 +35,15 @@ slavery_normal = {
 
 	potential = {
 		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+		NOT = { is_same_species = from }
 	}
 	
-	allow = {
-		custom_tooltip = {
-			fail_text = species_is_majority
-			NOT = {
-				from = {
-					any_owned_pop = { 
-						is_exact_same_species = from
-						is_majority_species = yes
-					}
-				}
-			}
-		}
-	}
+	#allow = {
+	#	always = yes
+	#}
 	
 	ai_will_do = {
 		factor = 1
-		modifier = {
-			factor = 0
-			is_same_species = from 
-		}
 	}
 }
 
@@ -81,21 +61,11 @@ slavery_military = {
 	potential = {
 		host_has_dlc = "Utopia"
 		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+		NOT = { is_same_species = from }
 	}
 	
 	allow = {
 		hidden_trigger = { exists = from }
-		custom_tooltip = {
-			fail_text = species_is_majority
-			NOT = {
-				from = {
-					any_owned_pop = { 
-						is_exact_same_species = from
-						is_majority_species = yes
-					}
-				}
-			}
-		}
 		custom_tooltip = {
 			has_citizenship_type = { country = from type = citizenship_slavery }
 			fail_text = species_is_not_enslaved
@@ -130,6 +100,7 @@ slavery_matrix = {
 	potential = {
 		host_has_dlc = "Synthetic Dawn Story Pack"
 		from = { has_authority = auth_machine_intelligence }
+		NOT = { is_same_species = from }
 	}
 
 	allow = {
@@ -161,20 +132,10 @@ slavery_livestock = {
 	potential = {
 		host_has_dlc = "Utopia"
 		from = { NOT = { has_authority = auth_machine_intelligence } }
+		NOT = { is_same_species = from }
 	}
 
 	allow = {
-		custom_tooltip = {
-			fail_text = species_is_majority
-			NOT = {
-				from = {
-					any_owned_pop = { 
-						is_exact_same_species = from
-						is_majority_species = yes
-					}
-				}
-			}
-		}
 		hidden_trigger = { exists = from }
 		custom_tooltip = {
 			has_citizenship_type = { country = from type = citizenship_slavery }

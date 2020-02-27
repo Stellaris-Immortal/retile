@@ -11,6 +11,14 @@ citizenship_full = {
 			has_trait = trait_machine_unit
 			is_shackled_robot_species_rights = yes
 		}
+		NAND = {	# fanatic purifiers exclusion
+			from = { has_valid_civic = civic_fanatic_purifiers }
+			NOR = {
+				is_same_species = from
+				is_archetype = MACHINE
+				is_archetype = ROBOT
+			}
+		}
 	}
 	
 	triggered_pop_modifier = {
@@ -320,6 +328,14 @@ citizenship_organic_trophy = {
 			has_authority = auth_machine_intelligence
 			has_civic = civic_machine_servitor
 		}
+		NAND = {	# fanatic purifiers exclusion
+			from = { has_valid_civic = civic_fanatic_purifiers }
+			NOR = {
+				is_same_species = from
+				is_archetype = MACHINE
+				is_archetype = ROBOT
+			}
+		}
 	}
 
 	allow = {
@@ -365,6 +381,14 @@ citizenship_limited = {
 		NOR = {
 			has_trait = trait_machine_unit
 			is_shackled_robot_species_rights = yes
+		}
+		NAND = {	# fanatic purifiers exclusion
+			from = { has_valid_civic = civic_fanatic_purifiers }
+			NOR = {
+				is_same_species = from
+				is_archetype = MACHINE
+				is_archetype = ROBOT
+			}
 		}
 	}
 
@@ -451,6 +475,14 @@ citizenship_slavery = {
 			OR = {
 				has_trait = trait_machine_unit
 				has_trait = trait_mechanical
+			}
+		}
+		NAND = {	# fanatic purifiers exclusion
+			from = { has_valid_civic = civic_fanatic_purifiers }
+			NOR = {
+				is_same_species = from
+				is_archetype = MACHINE
+				is_archetype = ROBOT
 			}
 		}
 	}
@@ -554,6 +586,14 @@ citizenship_robot_servitude = {
 		exists = from
 		from = { is_gestalt = no }
 		has_trait = trait_mechanical
+		NAND = {	# fanatic purifiers exclusion
+			from = { has_valid_civic = civic_fanatic_purifiers }
+			NOR = {
+				is_same_species = from
+				is_archetype = MACHINE
+				is_archetype = ROBOT
+			}
+		}
 	}
 
 	allow = {
@@ -572,64 +612,58 @@ citizenship_purge = {
 	potential = {
 		exists = from
 		NOT = { from = { has_authority = auth_machine_intelligence } }
+		NOT = { is_same_species = from }
 	}
 
 	allow = {
 		hidden_trigger = { exists = from }
-		custom_tooltip = {
-			fail_text = "HIVE_MIND_MAIN_SPECIES_ALWAYS_CITIZEN"
-			NAND = {
-				from = { has_authority = auth_hive_mind }
-				is_same_species = from
-			}
-		}
 		if = {
-			limit = { 
-				OR = {
-					is_lonely_hive_mind_pop = yes
+			limit = {
+				from = { has_valid_civic = civic_fanatic_purifiers }
+				NOR = {
+					is_archetype = MACHINE
 					is_archetype = ROBOT
 				}
 			}
-			always = yes
-		} else_if = {
-			limit = { is_archetype = MACHINE }
-			NOT = { from = { has_policy_flag = ai_full_rights } }
-		} else = {
-			AND = {
-				custom_tooltip = {
-					fail_text = species_is_majority
-					NOT = { 
-						from = { 
-							any_owned_pop = { 
-								is_exact_same_species = from
-								is_majority_species = yes
-							}
-						}
-					}
-				}
-				custom_tooltip = {
-					fail_text = has_full_rights
-					NOT = { from = { has_policy_flag = alien_full_rights } }
-				}
-				custom_tooltip = {
-					fail_text = has_limited_rights
-					NOT = { from = { has_policy_flag = alien_limited_rights } }
-				}
-				custom_tooltip = {
-					#fail_text = default
-					AND = {
-						from = { has_authority = auth_hive_mind }
-						NOT = { is_same_species = from }
-					}
-				}
-				custom_tooltip = {
-					#fail_text = default
-					AND = {
-						from = { has_valid_civic = civic_fanatic_purifiers }
-						NOT = { is_same_species = from }
-					}
-				}
+			custom_tooltip = {
+				text = yes_fanatic_purifiers
+				always = yes
 			}
+		} else_if = {
+			limit = {
+				from = { has_authority = auth_hive_mind }
+			}
+			custom_tooltip = {
+				text = yes_hive_mind
+				always = yes
+			}
+		} else_if = {
+			limit = {
+				is_lonely_hive_mind_pop = yes
+			}
+			custom_tooltip = {
+				text = yes_lonely_hive_pop
+				always = yes
+			}
+		} else_if = {
+			limit = {
+				is_archetype = ROBOT
+			}
+			custom_tooltip = {
+				text = yes_robot_always_purge
+				always = yes
+			}
+		} else_if = {
+			limit = {
+				is_archetype = MACHINE
+			}
+			custom_tooltip = {
+				fail_text = yes_ai_full_rights
+				success_text = no_ai_full_rights
+				NOT = { from = { has_policy_flag = ai_full_rights } }
+			}
+		} else = {
+			from = { has_policy_flag = alien_no_rights }
 			custom_tooltip = {
 				fail_text = yes_service_yes_citizenship
 				OR = {
@@ -639,6 +673,7 @@ citizenship_purge = {
 			}
 		}
 	}
+	
 	ai_will_do = {
 		factor = 20
 		modifier = {
