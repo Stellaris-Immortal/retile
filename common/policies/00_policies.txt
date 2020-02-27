@@ -55,7 +55,10 @@ piracy = {
 	option = {
 		name = "piracy_peaceful"
 		
-		potential = { has_technology = tech_adaptive_bureaucracy }
+		potential = { 
+			has_technology = tech_adaptive_bureaucracy
+			NOT = { has_valid_civic = civic_fanatic_purifiers }
+		}
 		
 		policy_flags = { piracy_peaceful }
 		
@@ -124,6 +127,7 @@ war_philosophy = {
 			NOR = { 
 				has_valid_civic = civic_anarchist
 				has_valid_civic = civic_pacifist
+				has_valid_civic = civic_inwards_perfection
 			}
 		}
 		
@@ -156,6 +160,8 @@ war_philosophy = {
 			NOR = { 
 				has_ethic = ethic_gestalt_consciousness
 				has_valid_civic = civic_pacifist
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_inwards_perfection
 			}
 		}
 
@@ -325,7 +331,10 @@ orbital_bombardment = {
 			is_country_type = default
 			is_country_type = vol
 		}
-		NOT = { has_ethic = "ethic_gestalt_consciousness" }
+		NOR = { 
+			has_ethic = "ethic_gestalt_consciousness"
+			has_valid_civic = civic_fanatic_purifiers
+		}
 	}
 	
 	option = {
@@ -1313,6 +1322,7 @@ first_contact_protocol = {
 				has_valid_civic = "civic_fanatic_purifiers"
 				has_valid_civic = "civic_hive_devouring_swarm"
 				has_valid_civic = "civic_machine_terminator"
+				has_valid_civic = civic_inwards_perfection
 			}
 		}
 		
@@ -1398,7 +1408,12 @@ first_contact_protocol = {
 		}
 		modifier = {}
 		
-		potential = { NOT = { has_valid_civic = civic_pacifist } }
+		potential = { 
+			NOR = { 
+				has_valid_civic = civic_pacifist
+				has_valid_civic = civic_inwards_perfection
+			}
+		}
 		
 		AI_weight = {
 			factor = 0
@@ -1552,6 +1567,7 @@ xenodiplomacy = {
 				has_valid_civic = civic_barbaric_despoilers
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_inwards_perfection
 				is_criminal_syndicate = yes
 			}
 		}
@@ -1612,6 +1628,7 @@ xenodiplomacy = {
 			NOR = { 
 				has_valid_civic = civic_anarchist
 				has_valid_civic = civic_pacifist
+				has_valid_civic = civic_inwards_perfection
 			}
 			NOT = { has_authority = auth_corporate }
 		}
@@ -2011,13 +2028,20 @@ pre_sapients = {
 
 interference = {
 
-	potential = { 
-		has_met_primitives = yes
+	potential = {
 		NOT = { has_ethic = "ethic_gestalt_consciousness" }
 	}
 	
 	option = {
 		name = "interference_passive"
+		
+		potential = {
+			NOR = {
+				is_subject_type = signatory				
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+			}
+		}
 		
 		policy_flags = {
 			interference_passive
@@ -2055,6 +2079,7 @@ interference = {
 				is_subject_type = signatory				
 				has_valid_civic = "civic_fanatic_purifiers"
 				has_valid_civic = "civic_hive_devouring_swarm"
+				has_valid_civic = civic_inwards_perfection
 			}
 		}
 		
@@ -2089,6 +2114,7 @@ interference = {
 		name = "interference_full"
 		
 		potential = {
+			NOT = { has_valid_civic = civic_inwards_perfection }
 		}
 		valid = {
 			NOT = { is_subject_type = signatory }
@@ -2142,6 +2168,13 @@ alien_rights = {
 	option = {
 		name = "alien_full_rights"
 		
+		potential = {
+			NOR = {		
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+			}
+		}
+		
 		policy_flags = {
 			alien_full_rights
 		}
@@ -2175,7 +2208,11 @@ alien_rights = {
 		name = "alien_limited_rights"
 		
 		potential = {
-			NOT = { has_valid_civic = civic_anarchist }
+			NOR = { 
+				has_valid_civic = civic_anarchist
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+			}
 		}
 		
 		policy_flags = {
@@ -2276,8 +2313,10 @@ refugees = {
 		}
 		
 		potential = {
-			NOT = { has_authority = auth_hive_mind }
-			NOT = { has_valid_civic = civic_anarchist }
+			NOR = { 
+				has_authority = auth_hive_mind
+				has_valid_civic = civic_anarchist
+			}
 		}
 		
 		valid = {
@@ -2297,6 +2336,14 @@ refugees = {
 	
 	option = {
 		name = "refugees_allowed"
+		
+		potential = {
+			NOR = {
+				has_valid_civic = civic_fanatic_purifiers
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_inwards_perfection
+			}
+		}
 		
 		policy_flags = {
 			refugees_allowed
@@ -2463,8 +2510,10 @@ purge = {
 		name = "purge_not_allowed"
 		
 		potential = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
-			NOT = { has_valid_civic = "civic_fanatic_purifiers" }		
+			NOR = { 
+				has_ethic = ethic_gestalt_consciousness
+				has_valid_civic = civic_fanatic_purifiers
+			}
 		}
 		
 		policy_flags = {
@@ -2499,8 +2548,10 @@ purge = {
 		modifier = {}
 		
 		potential = {
-			NOT = { has_ethic = ethic_gestalt_consciousness }
-			NOT = { has_valid_civic = "civic_fanatic_purifiers" }
+			NOR = { 
+				has_ethic = ethic_gestalt_consciousness
+				has_valid_civic = civic_fanatic_purifiers
+			}
 		}
 		
 		valid = {
@@ -2567,6 +2618,10 @@ population_controls = {
 	
 	option = {
 		name = "population_controls_not_allowed"
+		
+		potential = {
+			NOT = {	has_valid_civic = civic_fanatic_purifiers }
+		}
 		
 		modifier = {
 			pop_happiness = 0.05
