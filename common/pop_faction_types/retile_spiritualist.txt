@@ -33,7 +33,16 @@ traditionalist = {
 			has_ethic = ethic_fanatic_spiritualist
 			has_valid_civic = civic_pacifist
 		}
-		NOT = { has_ethic = ethic_gestalt_consciousness }
+		NOR = { 
+			has_ethic = ethic_gestalt_consciousness
+			AND = {
+				has_valid_civic = civic_inwards_perfection
+				NOR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+				}
+			}
+		}
 	}
 	
 	parameters = {

@@ -30,7 +30,16 @@ totalitarian = {
 			has_ethic = ethic_fanatic_authoritarian
 			has_valid_civic = civic_pacifist
 		}
-		NOT = { has_ethic = ethic_gestalt_consciousness }
+		NOR = { 
+			has_ethic = ethic_gestalt_consciousness
+			AND = {
+				has_valid_civic = civic_inwards_perfection
+				NOR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+		}
 	}
 	
 	parameters = {
