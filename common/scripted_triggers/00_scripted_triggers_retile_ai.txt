@@ -13,7 +13,10 @@ retile_ready_capital = {
 retile_ready_energy = {	# deposit scope
 	exists = planet
 	planet = {
-		owner = { has_country_flag = retile_ai_needs_energy }
+		owner = {
+			has_country_flag = retile_ai_needs_energy
+			NOT = { has_country_flag = ai_recently_built_energy }
+		}
 		free_jobs < 1
 		has_building_construction = no
 	}
@@ -21,7 +24,10 @@ retile_ready_energy = {	# deposit scope
 retile_ready_minerals = {	# deposit scope
 	exists = planet
 	planet = {
-		owner = { has_country_flag = retile_ai_needs_minerals }
+		owner = {
+			has_country_flag = retile_ai_needs_minerals
+			NOT = { has_country_flag = ai_recently_built_minerals }
+		}
 		free_jobs < 1
 		has_building_construction = no
 	}
@@ -33,8 +39,19 @@ retile_ready_food = {	# deposit scope
 			AND = {
 				free_jobs < 1
 				owner = {
-					country_uses_food = yes
-					has_country_flag = retile_ai_needs_food
+					OR = {
+						AND = {
+							prev = { NOT = { has_deposit = retile_deposit_bioreactor } }
+							country_uses_food = yes
+							has_country_flag = retile_ai_needs_food
+							NOT = { has_country_flag = ai_recently_built_food }
+						}
+						AND = {
+							prev = { has_deposit = retile_deposit_bioreactor }
+							has_country_flag = retile_ai_needs_energy
+							NOT = { has_country_flag = ai_recently_built_food }
+						}
+					}
 				}
 				has_building_construction = no
 			}
