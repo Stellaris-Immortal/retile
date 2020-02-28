@@ -300,7 +300,7 @@ planet_event = {
 					value >= 50
 				}
 			}
-			solar_system.starbase = {
+			solar_system.starbase = {	#TODO: Throws at least one error:	# [06:30:34][trigger_impl.cpp:799]: Script Error: Invalid context switch[solar_system], file: events/crime_events.txt line: 303, Scope: 
 				has_starbase_building = deep_space_black_site
 			}
 		}
@@ -1741,7 +1741,7 @@ event = {
 					planet_crime < 25
 				}
 				random_list = {
-					59 = {}
+					35 = {}
 					1 = {
 						branch_office_owner = { save_event_target_as = office_owner }
 						planet_event = { id = crime.1001 days = 360 random = 40 }
@@ -1764,7 +1764,7 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		planet_crime < 1
+		planet_crime < 25
 		has_branch_office = yes
 		branch_office_owner = { 
 			is_criminal_syndicate = yes
@@ -1783,11 +1783,9 @@ planet_event = {
 		name = crime.1001.a
 		close_branch_office = yes
 		hidden_effect = {
-			branch_office_owner = { 
-				set_timed_country_flag = { flag = criminal_branch_closed_cooldown days = 3600 }
-			}
 			set_timed_planet_flag = { flag = criminal_branch_closed_cooldown_planet@event_target:office_owner days = 3600 }
 			event_target:office_owner = {
+				set_timed_country_flag = { flag = criminal_branch_closed_cooldown days = 3600 }
 			 	country_event = { id = crime.1002 }
 			}
 		}
