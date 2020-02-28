@@ -114,19 +114,6 @@ civic_exalted_priesthood = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	possible = {
-		authority = {
-			OR = {
-				value = auth_oligarchic
-				value = auth_dictatorial
-			}			
-		}
-		ethics = {
-			OR = {
-				text = civic_tooltip_spiritualist
-				value = ethic_spiritualist
-				value = ethic_fanatic_spiritualist
-			}
-		}
 		civics = {
 			NOR = {
 				text = civic_government_incompatible
@@ -275,7 +262,10 @@ civic_idealistic_foundation = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	random_weight = { base = 5 }
-	modifier = { faction_approval = 0.10 }
+	modifier = {
+		#faction_approval = 0.10
+		pop_citizen_happiness = 0.1
+	}
 }
 
 civic_environmentalist = {
@@ -290,10 +280,9 @@ civic_environmentalist = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		planet_max_districts_mult = -0.10
-		planet_amenities_add = -200
-		planet_custodians_produces_mult = 0.20
+		planet_amenities_mult = -0.10
 	}
+	description = "civic_tooltip_civic_environmentalist_effects"
 }
 
 civic_functional_architecture = {
@@ -307,10 +296,9 @@ civic_functional_architecture = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		planet_max_districts_mult = 0.10
-		planet_amenities_add = 200
-		planet_custodians_produces_mult = -0.20
+		planet_max_districts_add = 3
 	}
+	description = "civic_tooltip_civic_functional_architecture_effects"
 }
 
 civic_slaver_guilds = {
@@ -349,12 +337,12 @@ civic_inwards_perfection = {
 				value = ethic_fanatic_xenophobe
 			}
 			NOR = {
-				text = civic_tooltip_no_militarist
+				text = civic_tooltip_not_mil
 				value = ethic_militarist
 				value = ethic_fanatic_militarist
 			}
 			NOR = {
-				text = civic_tooltip_no_pacifist
+				text = civic_tooltip_not_dip
 				value = ethic_pacifist
 				value = ethic_fanatic_pacifist
 			}
@@ -367,10 +355,8 @@ civic_inwards_perfection = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		planet_stability_add = 5
+		country_unity_produces_mult = 1
 		pop_government_ethic_attraction = 1
-		pop_growth_speed = 1
-		empire_size_penalty_mult = 0.50
 	}
 }
 
@@ -493,7 +479,7 @@ civic_agrarian_idyll = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	modifier = { 
-		district_farming_max = 3
+		planet_farmers_unity_produces_add = 2
 	}
 	random_weight = { base = 5 }
 }
@@ -504,7 +490,7 @@ civic_mining_guilds = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 	}
 	modifier = {
-		district_mining_max = 3
+		#district_mining_max = 3
 	}
 	random_weight = { base = 5 }
 }
@@ -550,7 +536,8 @@ civic_efficient_bureaucracy = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	random_weight = { base = 5 }
-	modifier = { country_admin_cap_add = 10 }
+	modifier = { country_admin_cap_add = 15 }
+	description = "civic_efficient_bureaucracy_effects"
 }
 
 civic_nationalistic_zeal = {
@@ -626,11 +613,7 @@ civic_mechanists = {
 			}
 		}
 		civics = {
-			NOR = {
-				value = civic_syncretic_evolution
-				value = civic_post_apocalyptic
-				value = civic_life_seeded
-			}
+			NOT = { value = civic_syncretic_evolution }
 		}
 	}
 	random_weight = {
@@ -662,8 +645,6 @@ civic_syncretic_evolution = {
 			NOR = {
 				value = civic_mechanists
 				value = civic_fanatic_purifiers
-				value = civic_post_apocalyptic
-				value = civic_life_seeded
 				value = civic_shared_burden
 			}
 		}
@@ -700,10 +681,12 @@ civic_fanatic_purifiers = {
 	possible = {
 		ethics = {
 			OR = {
+				text = civic_tooltip_fan_xeno_or_mil
 				value = ethic_fanatic_xenophobe
 				value = ethic_fanatic_militarist
 			}
 			OR = {
+				text = civic_tooltip_xeno_or_mil
 				value = ethic_militarist
 				value = ethic_xenophobe
 			}
@@ -725,10 +708,10 @@ civic_fanatic_purifiers = {
 
 	description = "civic_tooltip_fanatic_purifiers_effects"
 	modifier = {
-		ship_fire_rate_mult = 0.33
-		army_damage_mult = 0.33
-		starbase_shipyard_build_cost_mult = -0.15
-		country_naval_cap_mult = 0.33
+		country_war_exhaustion_mult = -0.50
+		ship_fire_rate_mult = 0.50
+		ship_orbital_bombardment_mult = 0.50
+		army_damage_mult = 0.50
 	}
 }
 
@@ -809,18 +792,11 @@ civic_barbaric_despoilers = {
 	possible = {
 		ethics = {
 			OR = {
-				text = civic_tooltip_mil_phobe
+				text = civic_tooltip_xeno_or_mil
 				value = ethic_fanatic_militarist
 				value = ethic_militarist
 				value = ethic_fanatic_xenophobe
 				value = ethic_xenophobe
-			}	
-			NOR = {
-				text = civic_tooltip_pac_phile
-				value = ethic_xenophile
-				value = ethic_fanatic_xenophile
-				value = ethic_pacifist
-				value = ethic_fanatic_pacifist
 			}
 		}
 		civics = {

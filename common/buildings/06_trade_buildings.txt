@@ -6,7 +6,7 @@
 #############
 # Trade buildings
 #############
-building_commercial_zone = {
+building_trade_1 = {
 	base_buildtime = 360
 	base_cap_amount = 1
 	category = trade
@@ -14,32 +14,36 @@ building_commercial_zone = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
+		owner = { 
+			is_regular_empire = yes 
+			NOT = { has_tradition = tr_prosperity_public_works }
+		}
 		NOT = { has_modifier = slave_colony }
 	}
 	
 	allow = {
-		#OR = { 
-		#	retile_urban = yes
-		#	has_modifier = resort_colony
-		#}
-		retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_trade_arcology
-		} } }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_authority = auth_corporate }
+				}
+				any_owned_pop = { has_job = clerk }
+			}
+		}
 	}
 
 	destroy_trigger = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_trade_arcology }
-			}
+			owner = { has_tradition = tr_prosperity_public_works }
 		}
+	}
+	
+	convert_to = {
+		building_bourse_1
 	}
 	
 	resources = {
@@ -48,8 +52,7 @@ building_commercial_zone = {
 			minerals = @cost_low
 		}	
 		upkeep = {
-			minerals = 0
-			energy = 10
+			energy = 1
 		}		
 	}
 	
@@ -59,30 +62,11 @@ building_commercial_zone = {
 	
 	show_tech_unlock_if = { 
 		is_regular_empire = yes
+		NOT = { has_tradition = tr_prosperity_public_works }
 	}
 	
 	country_modifier = {
 		country_resource_max_add = 1000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_custodian_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_maintenance_drone_add = 1
-		}
 	}
 	
 	triggered_desc = {
@@ -91,67 +75,52 @@ building_commercial_zone = {
 	}
 	
 	upgrades = {
-		"building_commercial_megaplex"
+		"building_trade_2"
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {	# Help solve energy problems!!!
-			weight = 200000
-			OR = {
-				is_capital = yes
-				owner = { has_monthly_income = { resource = energy value < 25 } }
-			}
-		}
-		modifier = {	# goods security
-			weight = 20000
-			owner = { has_monthly_income = { resource = consumer_goods value < 25 } }
-		}
-		modifier = {	# Stock Exchange!!! (rarely relevant - ai should only build this one first...
-			factor = 5
-			has_building = building_galactic_stock_exchange
-		}
+		weight = 1
 	}
 }
 
-building_commercial_megaplex = {
+building_trade_2 = {
 	base_buildtime = 480
 	can_build = no
-
 	category = trade
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_authority = auth_corporate }
+				}
+				any_owned_pop = { has_job = clerk }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_trade_arcology }
-			}
+			owner = { has_tradition = tr_prosperity_public_works }
 		}
 	}
 	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_med }
-		} } }
+	convert_to = {
+		building_bourse_2
 	}
 	
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_med
-			rare_crystals = @cost_med
 		}	
 		upkeep = {
-			minerals = 0
-			energy = 25
+			energy = 2
 		}
 	}
 	
@@ -161,34 +130,15 @@ building_commercial_megaplex = {
 	
 	show_tech_unlock_if = { 
 		is_regular_empire = yes
+		NOT = { has_tradition = tr_prosperity_public_works }
 	}
 	
 	upgrades = {
-		"building_galactic_stock_exchange"
+		"building_trade_3"
 	}
 	
 	country_modifier = {
 		country_resource_max_add = 2000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
 	}
 	
 	triggered_desc = {
@@ -196,60 +146,281 @@ building_commercial_megaplex = {
 		text = retile_commercial_megaplex_effect
 	}
 	
-	ai_weight = {	# always upgrade
-		weight = 100000
-	}
-	
-	ai_resource_production = {
-		energy = 1
-		consumer_goods = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
-building_galactic_stock_exchange = {
-	base_buildtime = 480	
+building_trade_3 = {
+	base_buildtime = 600	
 	can_build = no
-	
 	category = trade
 	can_be_disabled = no
 	
 	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_high }
-		} } }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_authority = auth_corporate }
+				}
+				any_owned_pop = { has_job = clerk }
+			}
+		}
 	}
-	
+
 	destroy_trigger = {
 		OR = {
 			owner = { is_regular_empire = no }
 			has_modifier = slave_colony
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_trade_arcology }
-			}
+			owner = { has_tradition = tr_prosperity_public_works }
 		}
 	}
 	
-	planet_modifier = {
-		trade_value_mult = 0.25
+	convert_to = {
+		building_bourse_3
 	}
 
 	resources = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_high
-			rare_crystals = @cost_high
 		}	
 		upkeep = {
-			minerals = 0
-			energy = 50
+			energy = 3
+		}
+	}
+	
+	prerequisites = {
+		"tech_galactic_markets"
+	}
+	
+	show_tech_unlock_if = { 
+		is_regular_empire = yes
+		NOT = { has_tradition = tr_prosperity_public_works }
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_stock_exchange_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+#############
+# Prosperity Trade buildings
+#############
+building_bourse_1 = {
+	base_buildtime = 360
+	base_cap_amount = 1
+	category = trade
+	can_be_disabled = no
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			has_tradition = tr_prosperity_public_works
+		}
+		NOT = { has_modifier = slave_colony }
+	}
+	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_authority = auth_corporate }
+				}
+				any_owned_pop = { has_job = clerk }
+			}
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			owner = { 
+				is_regular_empire = no
+				NOT = { has_tradition = tr_prosperity_public_works }
+			}
+			has_modifier = slave_colony
+		}
+	}
+	
+	convert_to = {
+		building_trade_1
+	}
+	
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		has_tradition = tr_prosperity_public_works
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_low
+		}	
+		upkeep = {
+			energy = 1
+		}		
+	}
+	
+	prerequisites = {
+		"tech_interplanetary_commerce"
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.10
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_bourse_1_effect
+	}
+	
+	upgrades = {
+		"building_bourse_2"
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_bourse_2 = {
+	base_buildtime = 480
+	can_build = no
+	category = trade
+	can_be_disabled = no
+	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_authority = auth_corporate }
+				}
+				any_owned_pop = { has_job = clerk }
+			}
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			owner = { 
+				is_regular_empire = no
+				NOT = { has_tradition = tr_prosperity_public_works }
+			}
+			has_modifier = slave_colony
+		}
+	}
+	
+	convert_to = {
+		building_trade_2
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
+		}	
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	prerequisites = {
+		"tech_interstellar_economics"
+	}
+	
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		has_tradition = tr_prosperity_public_works
+	}
+	
+	upgrades = {
+		"building_bourse_3"
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.05
+	}
+	
+	country_modifier = {
+		trade_value_mult = 0.05
+		country_resource_max_add = 2000
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_bourse_2_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_bourse_3 = {
+	base_buildtime = 600	
+	can_build = no
+	category = trade
+	can_be_disabled = no
+	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_authority = auth_corporate }
+				}
+				any_owned_pop = { has_job = clerk }
+			}
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			owner = { 
+				is_regular_empire = no
+				NOT = { has_tradition = tr_prosperity_public_works }
+			}
+			has_modifier = slave_colony
+		}
+	}
+	
+	convert_to = {
+		building_trade_3
+	}
+	
+	show_tech_unlock_if = {
+		is_regular_empire = yes
+		has_tradition = tr_prosperity_public_works
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
+		}	
+		upkeep = {
+			energy = 3
 		}
 	}
 	
@@ -258,34 +429,16 @@ building_galactic_stock_exchange = {
 	}
 	
 	country_modifier = {
+		trade_value_mult = 0.10
 		country_resource_max_add = 3000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 3
-			job_custodian_add = 2
-			job_merchant_add = 1
-		}
 	}
 	
 	triggered_desc = {
 		trigger = { exists = owner }
-		text = retile_stock_exchange_effect
+		text = retile_bourse_3_effect
 	}
 	
-	ai_weight = {	# always upgrade
-		weight = 100000
-	}
-	
-	ai_resource_production = {
-		energy = 1
-		consumer_goods = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }

@@ -85,7 +85,10 @@ col_hive_manufacturing = {
 	weight_modifier = {
 		modifier = {
 			add = 3
-			num_districts = { type = district_city value > 0 }
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 0
+			}
 		}
 		modifier = {
 			add = 3
@@ -115,7 +118,10 @@ col_hive_refining = {
 	weight_modifier = {
 		modifier = {
 			add = 3
-			num_districts = { type = district_city value > 0 }
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 0
+			}
 		}
 		modifier = {
 			add = 3
@@ -145,19 +151,17 @@ col_hive_farming = {
 	weight_modifier = {
 		modifier = {
 			add = 3
-			OR = {
-				num_districts = { type = district_farming value > 0 }
-				num_districts = { type = district_farming_uncapped value > 0 }
-				num_districts = { type = district_hab_hydroponics value > 0 }
-				num_districts = { type = district_rw_farming value > 0 }
+			count_pops = {
+				limit = { has_job = farmer }
+				count > 0
 			}
 		}
 		modifier = {
 			add = 3
-				num_districts = { type = district_farming value > 2 }
-				num_districts = { type = district_farming_uncapped value > 2 }
-				num_districts = { type = district_hab_hydroponics value > 2 }
-				num_districts = { type = district_rw_farming value > 2 }
+			count_pops = {
+				limit = { has_job = miner }
+				count > 2
+			}
 		}
 	}
 }
@@ -179,19 +183,17 @@ col_hive_mining = {
 	weight_modifier = {
 		modifier = {
 			add = 3
-			OR = {
-				num_districts = { type = district_mining value > 0 }
-				num_districts = { type = district_mining_uncapped value > 0 }
-				num_districts = { type = district_hab_mining value > 0 }
-				num_districts = { type = district_rw_mining value > 0 }
+			count_pops = {
+				limit = { has_job = miner }
+				count > 0
 			}
 		}
 		modifier = {
 			add = 3
-				num_districts = { type = district_mining value > 2 }
-				num_districts = { type = district_mining_uncapped value > 2 }
-				num_districts = { type = district_hab_mining value > 2 }
-				num_districts = { type = district_rw_mining value > 2 }
+			count_pops = {
+				limit = { has_job = miner }
+				count > 2
+			}
 		}
 	}
 }
@@ -213,19 +215,17 @@ col_hive_energy = {
 	weight_modifier = {
 		modifier = {
 			add = 3
-			OR = {
-				num_districts = { type = district_generator value > 0 }
-				num_districts = { type = district_generator_uncapped value > 0 }
-				num_districts = { type = district_hab_energy value > 0 }
-				num_districts = { type = district_rw_generator value > 0 }
+			count_pops = {
+				limit = { has_job = technician }
+				count > 0
 			}
 		}
 		modifier = {
 			add = 3
-				num_districts = { type = district_generator value > 2 }
-				num_districts = { type = district_generator_uncapped value > 2 }
-				num_districts = { type = district_hab_energy value > 2 }
-				num_districts = { type = district_rw_generator value > 2 }
+			count_pops = {
+				limit = { has_job = technician }
+				count > 2
+			}
 		}
 	}
 }
@@ -247,7 +247,10 @@ col_hive_unity = {
 	weight_modifier = {
 		modifier = {
 			add = 3
-			num_districts = { type = district_city value > 0 }
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 0
+			}
 		}
 		modifier = {
 			add = 3
@@ -279,7 +282,10 @@ col_hive_research = {
 	weight_modifier = {
 		modifier = {
 			add = 3
-			num_districts = { type = district_city value > 0 }
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 0
+			}
 		}
 		modifier = {
 			add = 3

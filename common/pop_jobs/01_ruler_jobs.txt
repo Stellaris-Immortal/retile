@@ -29,6 +29,10 @@ head_researcher = {
 			engineering_research = 5
 			society_research = 5
 		}
+		upkeep = {
+			energy = @job_energy_high
+			consumer_goods = @job_supplies_high
+		}
 	}
 	
 	planet_modifier = {
@@ -54,9 +58,8 @@ head_researcher = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }
 		}
 		modifier = {
 			factor = 2
@@ -116,12 +119,20 @@ head_researcher = {
 			factor = 1.1
 			has_trait = trait_robust
 		}
+		# crisis purge
 		modifier = {
 			factor = 0.01
 			planet.controller = {
 				OR = {
 					is_country_type = swarm
 					is_country_type = ai_empire
+				}
+			}
+			OR = { # contingency won't purge itself
+				NOT = { exists = event_target:custodian_bot }
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = { species = { is_same_value = event_target:custodian_bot } }
 				}
 			}
 		}
@@ -131,7 +142,7 @@ head_researcher = {
 high_priest = {	
 	category = ruler
 	condition_string = RULER_JOB_TRIGGER
-	building_icon = building_citadel_of_faith
+	building_icon = building_sacred_nexus
 	clothes_texture_index = 1
 	
 	possible_pre_triggers = {
@@ -154,6 +165,10 @@ high_priest = {
 		produces = {
 			unity = 10
 		}
+		upkeep = {
+			energy = @job_energy_high
+			consumer_goods = @job_supplies_high
+		}
 	}
 	
 	planet_modifier = {
@@ -172,22 +187,12 @@ high_priest = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
 		}
 		modifier = {
 			factor = 1.5
 			has_trait = trait_robot_propaganda_machines		
-		}
-		modifier = {
-			factor = 1.2
-			has_ethic = ethic_spiritualist
-		}	
-		modifier = {
-			factor = 0.1
-			has_ethic = ethic_materialist
-			NOT = { has_job = high_priest }
 		}
 		modifier = {
 			factor = 1.5
@@ -208,6 +213,13 @@ high_priest = {
 				OR = {
 					is_country_type = swarm
 					is_country_type = ai_empire
+				}
+			}
+			OR = { # contingency won't purge itself
+				NOT = { exists = event_target:custodian_bot }
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = { species = { is_same_value = event_target:custodian_bot } }
 				}
 			}
 		}
@@ -239,6 +251,10 @@ administrator = {
 		produces = {
 			unity = 5
 		}
+		upkeep = {
+			energy = @job_energy_high
+			consumer_goods = @job_supplies_high
+		}
 	}
 	
 	planet_modifier = {
@@ -257,10 +273,9 @@ administrator = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}		
+		}
 		modifier = {
 			factor = 1.25
 			has_trait = trait_robot_propaganda_machines	
@@ -286,14 +301,21 @@ administrator = {
 					is_country_type = ai_empire
 				}
 			}
-		}	
+			OR = { # contingency won't purge itself
+				NOT = { exists = event_target:custodian_bot }
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = { species = { is_same_value = event_target:custodian_bot } }
+				}
+			}
+		}
 	}
 }
 
 bureaucrat_head = {	
 	category = ruler
 	condition_string = RULER_JOB_TRIGGER
-	building_icon = building_capital
+	building_icon = building_bureaucratic_complex
 	clothes_texture_index = 1
 	
 	possible_pre_triggers = {
@@ -311,9 +333,13 @@ bureaucrat_head = {
 	}
 
 	resources = {
-		category = planet_beauracrats
+		category = planet_bureaucrats
 		produces = {
 			unity = 10
+		}
+		upkeep = {
+			energy = @job_energy_high
+			consumer_goods = @job_supplies_high
 		}
 	}
 	
@@ -333,10 +359,9 @@ bureaucrat_head = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}		
+		}
 		modifier = {
 			factor = 1.25
 			has_trait = trait_robot_propaganda_machines		
@@ -362,7 +387,14 @@ bureaucrat_head = {
 					is_country_type = ai_empire
 				}
 			}
-		}	
+			OR = { # contingency won't purge itself
+				NOT = { exists = event_target:custodian_bot }
+				AND = {
+					exists = event_target:custodian_bot
+					NOT = { species = { is_same_value = event_target:custodian_bot } }
+				}
+			}
+		}
 	}
 }
 
@@ -386,6 +418,14 @@ noble = {
 		}
 	}
 	
+	resources = {
+		category = planet_nobles
+		upkeep = {
+			energy = @job_energy_high
+			consumer_goods = @job_supplies_high
+		}
+	}
+	
 	planet_modifier = {
 		planet_stability_add = 10
 		planet_jobs_produces_mult = 0.05
@@ -403,10 +443,9 @@ noble = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.2
 			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}		
+		}
 		modifier = {
 			factor = 0.1
 			is_egalitarian = yes
@@ -435,7 +474,7 @@ noble = {
 merchant = {
 	category = ruler
 	condition_string = RULER_JOB_TRIGGER
-	building_icon = building_galactic_stock_exchange
+	building_icon = building_trade_3
 	clothes_texture_index = 1
 		
 	possible_pre_triggers = {
@@ -449,6 +488,14 @@ merchant = {
 		or = {
 			has_job = merchant
 			retile_job_seeking = yes
+		}
+	}
+	
+	resources = {
+		category = planet_merchants
+		upkeep = {
+			energy = @job_energy_high
+			consumer_goods = @job_supplies_high
 		}
 	}
 	
@@ -485,6 +532,10 @@ merchant = {
 		modifier = {
 			factor = 0.5
 			has_living_standard = { type = living_standard_subsistence }
+		}
+		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no	
 		}
 		modifier = {
 			factor = 2.0
@@ -532,7 +583,7 @@ merchant = {
 executive = {
 	category = ruler
 	condition_string = RULER_JOB_TRIGGER
-	building_icon = building_capital
+	building_icon = building_bourse_3
 	clothes_texture_index = 1
 		
 	possible_pre_triggers = {
@@ -553,6 +604,10 @@ executive = {
 		category = planet_executives
 		produces = {
 			unity = 5
+		}
+		upkeep = {
+			energy = @job_energy_high
+			consumer_goods = @job_supplies_high
 		}
 	}	
 	
@@ -591,11 +646,15 @@ executive = {
 			has_living_standard = { type = living_standard_subsistence }
 		}
 		modifier = {
+			factor = 0.2
+			has_citizenship_rights = no	
+		}
+		modifier = {
 			factor = 2.0
 			OR = {
-			has_trait = trait_thrifty
-			has_trait = trait_nuumismatic_administration
-		}
+				has_trait = trait_thrifty
+				has_trait = trait_nuumismatic_administration
+			}
 		}
 		modifier = {
 			factor = 1.5

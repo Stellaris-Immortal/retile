@@ -1,6 +1,7 @@
 #########################################
 #
 # Retile Pop Events
+# Author: Gebnar
 #
 #########################################
 
@@ -132,7 +133,7 @@ pop_event = {
 				modifier = { add = 18 habitability = { who = root value >= 0.90 } }
 				modifier = { add = 19 habitability = { who = root value >= 0.95 } }
 				modifier = { add = 20 habitability = { who = root value >= 1.00 } }
-				modifier = { mult = 5 free_jobs > 0 }
+				modifier = { mult = 20 free_jobs > 0 }
 			}
 			resettle_pop = { pop = root planet = this}
 		} }
@@ -153,7 +154,11 @@ planet_event = {
 		is_under_colonization = no
 		has_orbital_bombardment = no
 		is_occupied_flag = no
-		free_housing < 0
+		OR = {
+			free_housing < 0
+			free_jobs < 0
+			#any_owned_pop = { is_unemployed = yes }
+		}
 		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
 		NOT = { has_modifier = penal_colony }
 	}

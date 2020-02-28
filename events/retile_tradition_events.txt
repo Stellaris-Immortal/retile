@@ -31,7 +31,9 @@ ship_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	
-	immediate = { ship_event = { id = tradition.3  days = 1} }
+	immediate = {
+		ship_event = { id = tradition.3  days = 1 }
+	}
 }
 
 # Add Network to Outpost
@@ -89,7 +91,7 @@ ship_event = {
 	immediate = {
 		if = {
 			limit = { owner = { has_tradition = tr_expansion_courier_network } }
-			THIS = {
+			starbase = {
 				set_starbase_building = {
 					slot = 0
 					building = courier_network
@@ -97,14 +99,14 @@ ship_event = {
 			}
 		} else_if = {
 			limit = { owner = { has_tradition = tr_domination_workplace_motivators } }
-			THIS = {
+			starbase = {
 				set_starbase_building = {
 					slot = 0
 					building = patrol_network
 				}
 			}
 		} else = {
-			THIS = {
+			starbase = {
 				set_starbase_building = {
 					slot = 0
 					building = default_network

@@ -405,11 +405,14 @@ setup_primitive_planet = {
 				}
 				add_building = building_urban_dwellings # primitive_city
 				add_building = building_primitive_capital
+				add_district = district_housing
 				IF = {
-					limit = { is_planet_class = pc_ringworld_habitable }
-					add_district = district_rw_farming
+					limit = {
+						any_deposit = { has_deposit_category = deposit_cat_food }
+					}
+					retile_exploit_food = yes
 				} ELSE = {
-					add_district = district_farming
+					add_deposit = retile_module_farm_active
 				}
 				remove_building = building_colony_shelter
 			}
@@ -423,13 +426,22 @@ setup_primitive_planet = {
 				}
 				add_building = building_primitive_capital
 				add_building = building_urban_dwellings # primitive_city
+				add_district = district_housing
 				IF = {
-					limit = { is_planet_class = pc_ringworld_habitable }
-					add_district = district_rw_mining
-					add_district = district_rw_farming
+					limit = {
+						any_deposit = { has_deposit_category = deposit_cat_food }
+					}
+					retile_exploit_food = yes
 				} ELSE = {
-					add_district = district_mining
-					add_district = district_farming
+					add_deposit = retile_module_farm_active
+				}
+				IF = {
+					limit = {
+						any_deposit = { has_deposit_category = deposit_cat_minerals }
+					}
+					retile_exploit_minerals = yes
+				} ELSE = {
+					add_deposit = retile_module_mine_active
 				}
 				remove_building = building_colony_shelter
 			}
@@ -443,15 +455,30 @@ setup_primitive_planet = {
 				}
 				add_building = building_primitive_capital
 				add_building = building_urban_dwellings # primitive_city
+				add_district = district_housing
 				IF = {
-					limit = { is_planet_class = pc_ringworld_habitable }
-					add_district = district_rw_mining
-					add_district = district_rw_farming
-					add_district = district_rw_generator
+					limit = {
+						any_deposit = { has_deposit_category = deposit_cat_food }
+					}
+					retile_exploit_food = yes
 				} ELSE = {
-					add_district = district_mining
-					add_district = district_farming
-					add_district = district_generator
+					add_deposit = retile_module_farm_active
+				}
+				IF = {
+					limit = {
+						any_deposit = { has_deposit_category = deposit_cat_minerals }
+					}
+					retile_exploit_minerals = yes
+				} ELSE = {
+					add_deposit = retile_module_mine_active
+				}
+				IF = {
+					limit = {
+						any_deposit = { has_deposit_category = deposit_cat_energy }
+					}
+					retile_exploit_energy = yes
+				} ELSE = {
+					add_deposit = retile_module_generator_active
 				}
 				remove_building = building_colony_shelter
 			}
@@ -465,17 +492,33 @@ setup_primitive_planet = {
 				}
 				add_building = building_primitive_capital
 				add_building = building_primitive_factory
+				add_district = district_engineers
+				add_district = district_scholars
+				add_district = district_housing
+				add_district = district_housing
 				IF = {
-					limit = { is_planet_class = pc_ringworld_habitable }
-					add_district = district_rw_mining
-					add_district = district_rw_farming
-					add_district = district_rw_generator
-					add_district = district_rw_city
+					limit = {
+						any_deposit = { has_deposit_category = deposit_cat_food }
+					}
+					retile_exploit_food = yes
 				} ELSE = {
-					add_district = district_mining
-					add_district = district_farming
-					add_district = district_generator
-					add_district = district_city
+					add_deposit = retile_module_farm_active
+				}
+				IF = {
+					limit = {
+						any_deposit = { has_deposit_category = deposit_cat_minerals }
+					}
+					retile_exploit_minerals = yes
+				} ELSE = {
+					add_deposit = retile_module_mine_active
+				}
+				IF = {
+					limit = {
+						any_deposit = { has_deposit_category = deposit_cat_energy }
+					}
+					retile_exploit_energy = yes
+				} ELSE = {
+					add_deposit = retile_module_generator_active
 				}
 				remove_building = building_colony_shelter
 			}
@@ -552,17 +595,20 @@ industrial_age_planet_upgrade = {	# planet scope, primitive.28
 	remove_building = building_stone_palace
 	remove_building = building_primitive_farm
 	add_building = building_primitive_capital
+	add_district = district_housing
 	IF = {
-		limit = { is_planet_class = pc_ringworld_habitable }
-		add_district = district_rw_farming
+		limit = {
+			any_deposit = { has_deposit_category = deposit_cat_food }
+		}
+		retile_exploit_food = yes
 	} ELSE = {
-		add_district = district_farming
+		add_deposit = retile_module_farm_active
 	}
 	while = {
 		limit = { num_pops < 5 }
 		create_pop = { species = owner_main_species }
 	}
-	clear_blockers = yes
+	retile_clear_blockers = yes
 	add_deposit = d_decrepit_dwellings
 	add_deposit = d_failing_infrastructure
 }
@@ -570,16 +616,18 @@ industrial_age_planet_upgrade = {	# planet scope, primitive.28
 machine_age_planet_upgrade = {	# planet scope, primitive.10
 	unemploy_primitives = yes
 	IF = {
-		limit = { is_planet_class = pc_ringworld_habitable }
-		add_district = district_rw_mining
+		limit = {
+			any_deposit = { has_deposit_category = deposit_cat_minerals }
+		}
+		retile_exploit_minerals = yes
 	} ELSE = {
-		add_district = district_mining
+		add_deposit = retile_module_mine_active
 	}
 	while = {
 		limit = { num_pops < 5 } # should be 6, bug random bug?
 		create_pop = { species = owner_main_species }
 	}
-	clear_blockers = yes
+	retile_clear_blockers = yes
 	add_deposit = d_decrepit_dwellings
 	add_deposit = d_failing_infrastructure
 }
@@ -587,16 +635,18 @@ machine_age_planet_upgrade = {	# planet scope, primitive.10
 atomic_age_planet_upgrade = {	# planet scope, primitive.12
 	unemploy_primitives = yes
 	IF = {
-		limit = { is_planet_class = pc_ringworld_habitable }
-		add_district = district_rw_generator
+		limit = {
+			any_deposit = { has_deposit_category = deposit_cat_energy }
+		}
+		retile_exploit_energy = yes
 	} ELSE = {
-		add_district = district_generator
+		add_deposit = retile_module_generator_active
 	}
 	while = {
 		limit = { num_pops < 6 } # Should be 7, but random bug?
 		create_pop = { species = owner_main_species }
 	}
-	clear_blockers = yes
+	retile_clear_blockers = yes
 	add_deposit = d_decrepit_dwellings
 	add_deposit = d_failing_infrastructure
 }
@@ -605,17 +655,14 @@ space_age_planet_upgrade = {	# planet scope, primitive.14
 	unemploy_primitives = yes
 	remove_building = building_urban_dwellings
 	add_building = building_primitive_factory
-	IF = {
-		limit = { is_planet_class = pc_ringworld_habitable }
-		add_district = district_rw_city
-	} ELSE = {
-		add_district = district_city
-	}
+	add_district = district_housing
+	add_district = district_engineers
+	add_district = district_scholars
 	while = {
 		limit = { num_pops < 7 } # should be 8 but random bug?
 		create_pop = { species = owner_main_species }
 	}
-	clear_blockers = yes
+	retile_clear_blockers = yes
 	add_deposit = d_decrepit_dwellings
 	add_deposit = d_failing_infrastructure
 }
@@ -625,11 +672,11 @@ space_empire_planet_upgrade = {	# planet scope, primitive.16
 	remove_building = building_primitive_capital
 	remove_building = building_primitive_factory
 	add_building = building_system_capital
-	add_building = building_foundry_1
+	add_district = district_clerks
 	while = {
-		limit = { num_pops < 9 } # should be 10, but random bug?
+		limit = { num_pops < 12 } # should be 13, but random bug?
 		create_pop = { species = owner_main_species }
 	}
-	clear_blockers = yes
+	retile_clear_blockers = yes
 }
 

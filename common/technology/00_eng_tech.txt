@@ -1169,6 +1169,10 @@ tech_starbase_1 = {
 		}
 	}
 	
+	modifier = {
+		shipclass_starbase_hull_mult = 0.10
+	}
+	
 	# unlocks Outposts
 }
 
@@ -1188,6 +1192,10 @@ tech_starbase_2 = {
 		}
 	}
 	
+	modifier = {
+		shipclass_starbase_hull_mult = 0.10
+	}
+	
 	# unlocks Starport
 }
 
@@ -1198,6 +1206,10 @@ tech_starbase_3 = {
 	tier = 2
 	prerequisites = { "tech_starbase_2" }
 	weight = @tier2weight2
+	
+	modifier = {
+		shipclass_starbase_hull_mult = 0.10
+	}
 	
 	# unlocks Starhold
 	weight_modifier = {
@@ -1270,6 +1282,10 @@ tech_starbase_4 = {
 	prerequisites = { "tech_starbase_3" }
 	weight = @tier3weight2
 	
+	modifier = {
+		shipclass_starbase_hull_mult = 0.10
+	}
+	
 	# unlocks Star Fortress
 	weight_modifier = {
 		modifier = {
@@ -1340,6 +1356,10 @@ tech_starbase_5 = {
 	tier = 4
 	prerequisites = { "tech_starbase_4" }
 	weight = @tier4weight2
+	
+	modifier = {
+		shipclass_starbase_hull_mult = 0.10
+	}
 	
 	# unlocks Citadel
 	weight_modifier = {
@@ -2199,6 +2219,10 @@ tech_mechanized_mining = {
 	tier = 0
 	icon = "t_space_construction"
 	
+	modifier = {
+		description = tech_mechanized_mining_effect
+	}
+	
 	# unlocks mining districts
 }
 
@@ -2440,7 +2464,8 @@ tech_mining_1 = {
 	weight = @tier1weight1
 	
 	modifier = {
-		description = tech_mining_1_effect
+		country_base_minerals_produces_add = 5
+		planet_miners_upkeep_mult = -0.033
 	}
 	
 	weight_modifier = {
@@ -2478,7 +2503,8 @@ tech_mining_2 = {
 	weight = @tier2weight1
 	
 	modifier = {
-		description = tech_mining_2_effect
+		country_base_minerals_produces_add = 5
+		planet_miners_upkeep_mult = -0.033
 	}
 	
 	weight_modifier = {
@@ -2516,7 +2542,8 @@ tech_mining_3 = {
 	weight = @tier3weight1
 	
 	modifier = {
-		description = tech_mining_2_effect
+		country_base_minerals_produces_add = 5
+		planet_miners_upkeep_mult = -0.033
 	}
 	
 	weight_modifier = {
@@ -2597,14 +2624,6 @@ tech_mineral_purification_2 = {
 			}			
 		}
 		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_volatile_motes
-				has_technology = tech_volatile_motes
-				has_country_flag = has_market_access
-			}
-		}
-		modifier = {
 			factor = 1.5
 			has_policy_flag = research_economic_development		
 		}
@@ -2633,14 +2652,6 @@ tech_alloys_1 = {
 	# Unlock better alloy buildings
 	
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_volatile_motes
-				has_technology = tech_volatile_motes
-				has_country_flag = has_market_access
-			}
-		}
 		modifier = {
 			factor = 1.25
 			research_leader = {
@@ -2722,14 +2733,6 @@ tech_luxuries_1 = {
 	
 	weight_modifier = {
 		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_exotic_gases
-				has_technology = tech_exotic_gases
-				has_country_flag = has_market_access
-			}
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = engineering
@@ -2806,7 +2809,10 @@ tech_engineering_1 = {
 	weight = @tier1weight1
 
 	modifier = {
-		planet_metallurgists_produces_mult = 0.16
+		planet_metallurgists_upkeep_mult = -0.033
+		country_base_alloys_produces_add = 5
+		country_base_consumer_goods_produces_add = 5
+		description = tech_engineering_1_effect
 	}
 	
 	weight_modifier = {
@@ -2865,7 +2871,10 @@ tech_engineering_2 = {
 	weight = @tier2weight3
 	
 	modifier = {
-		planet_metallurgists_produces_mult = 0.17
+		planet_metallurgists_upkeep_mult = -0.033
+		country_base_alloys_produces_add = 5
+		country_base_consumer_goods_produces_add = 5
+		description = tech_engineering_2_effect
 	}
 	
 	weight_modifier = {
@@ -2920,7 +2929,10 @@ tech_engineering_3 = {
 	weight = @tier4weight2
 		
 	modifier = {
-		planet_metallurgists_produces_mult = 0.17
+		planet_metallurgists_upkeep_mult = -0.033
+		country_base_alloys_produces_add = 5
+		country_base_consumer_goods_produces_add = 5
+		description = tech_engineering_3_effect
 	}
 	
 	weight_modifier = {
@@ -3412,6 +3424,7 @@ tech_assembly_pattern  = {
 	weight = @tier1weight3
 	
 	modifier = {
+		planet_structures_upkeep_mult = -0.05
 		planet_building_build_speed_mult = 0.25
 		planet_building_refund_mult = 0.25
 	}
@@ -3451,6 +3464,7 @@ tech_construction_templates = {
 	weight = @tier3weight2
 	
 	modifier = {
+		planet_structures_upkeep_mult = -0.05
 		planet_building_build_speed_mult = 0.50
 		planet_building_refund_mult = 0.25
 	}
@@ -3510,7 +3524,7 @@ tech_housing_1 = {
 	weight = @tier2weight2
 	
 	modifier = {
-		planet_non_artificial_max_districts_add = 1
+		planet_max_districts_add = 1
 	}
 	
 	weight_modifier = {
@@ -3549,7 +3563,7 @@ tech_housing_2 = {
 	weight = @tier3weight1
 	
 	modifier = {
-		planet_non_artificial_max_districts_add = 1
+		planet_max_districts_add = 1
 	}
 	
 	weight_modifier = {

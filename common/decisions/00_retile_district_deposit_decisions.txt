@@ -6,55 +6,258 @@
 @base_upkeep = 5
 @base_buildtime = 240
 
-##################################################### Spawning Pool
-decision_retile_deposit_spawningpool = {
+##################################################### Mining Module
+decision_retile_module_mine = {
 	owned_planets_only = yes
 
-	enactment_time = @base_buildtime
+	#enactment_time = 1080
 	resources = {
 		category = planets
 		cost = {
-			minerals = @base_cost
+			energy = 500
 		}
 	}
 	
 	potential = {
-		owner = {
-			is_hive_empire = yes
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
 		}
-		NOT = { has_deposit = retile_deposit_spawningpool }
 	}
 
 	allow = {
-		free_district_slots > 0
-		#hidden_trigger = {
-		#	retile_ready = yes
-		#}
-	}
-	
-	effect = {
-		custom_tooltip = decision_retile_deposit_spawningpool_effects
-		if = {
-			limit = { NOT = { has_deposit = retile_deposit_spawningpool } }
-			add_deposit = retile_deposit_spawningpool
+		custom_tooltip = {
+			fail_text = retile_module_limit
+			OR = {
+				AND = { is_planet_class = pc_habitat
+					OR = {
+						check_variable = { which = module_count value < 4 }
+						AND = {
+							exists = owner
+							owner = { has_ascension_perk = ap_voidborn }
+							check_variable = { which = module_count value < 6 }
+						}
+					} 
+				}
+				AND = { is_planet_class = pc_ringworld_habitable
+					check_variable = { which = module_count value < 15 }
+				}
+				AND = {
+					OR = {
+						is_planet_class = pc_hive
+						is_planet_class = pc_machine
+					}
+					check_variable = { which = module_count value < 6 }
+				}
+			}
 		}
 	}
 	
+	effect = {
+		#custom_tooltip = decision_retile_module_mine_effects
+		add_deposit = retile_module_mine
+		hidden_effect = { change_variable = { which = module_count value = 1 } }
+	}
+	
 	ai_weight = {
-		weight = 10000
+		weight = -1
 	}
 }
 
-decision_retile_deposit_spawningpool_remove = {
+decision_retile_module_mine_remove = {
 	owned_planets_only = yes
 
 	potential = {
-		has_deposit = retile_deposit_spawningpool
+		OR = {
+			has_deposit = retile_module_mine
+			has_deposit = retile_module_mine_active
+		}
 	}
 	
 	effect = {
-		custom_tooltip = decision_retile_deposit_spawningpool_remove_effects
-		remove_deposit = retile_deposit_spawningpool
+		#custom_tooltip = decision_retile_module_mine_remove_effects
+		if = {
+			limit = { has_deposit = retile_module_mine }
+			remove_deposit = retile_module_mine
+		} else = {
+			remove_deposit = retile_module_mine_active
+		}
+		hidden_effect = { change_variable = { which = module_count value = -1 } }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+##################################################### Hydroponics Module
+decision_retile_module_farm = {
+	owned_planets_only = yes
+
+	#enactment_time = 1080
+	resources = {
+		category = planets
+		cost = {
+			energy = 500
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = retile_module_limit
+			OR = {
+				AND = { is_planet_class = pc_habitat
+					OR = {
+						check_variable = { which = module_count value < 4 }
+						AND = {
+							exists = owner
+							owner = { has_ascension_perk = ap_voidborn }
+							check_variable = { which = module_count value < 6 }
+						}
+					} 
+				}
+				AND = { is_planet_class = pc_ringworld_habitable
+					check_variable = { which = module_count value < 15 }
+				}
+				AND = {
+					OR = {
+						is_planet_class = pc_hive
+						is_planet_class = pc_machine
+					}
+					check_variable = { which = module_count value < 6 }
+				}
+			}
+		}
+	}
+	
+	
+	effect = {
+		#custom_tooltip = decision_retile_module_farm_effects
+		add_deposit = retile_module_farm
+		hidden_effect = { change_variable = { which = module_count value = 1 } }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+}
+
+decision_retile_module_farm_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		OR = {
+			has_deposit = retile_module_farm
+			has_deposit = retile_module_farm_active
+		}
+	}
+	
+	effect = {
+		#custom_tooltip = decision_retile_module_farm_remove_effects
+		if = {
+			limit = { has_deposit = retile_module_farm }
+			remove_deposit = retile_module_farm
+		} else = {
+			remove_deposit = retile_module_farm_active
+		}
+		hidden_effect = { change_variable = { which = module_count value = -1 } }
+	}
+	
+	ai_weight = {
+		weight = 0
+	}	
+}
+
+##################################################### Generator Module
+decision_retile_module_generator = {
+	owned_planets_only = yes
+
+	#enactment_time = 1080
+	resources = {
+		category = planets
+		cost = {
+			energy = 500
+		}
+	}
+	
+	potential = {
+		OR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_hive
+			is_planet_class = pc_machine
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = retile_module_limit
+			OR = {
+				AND = { is_planet_class = pc_habitat
+					OR = {
+						check_variable = { which = module_count value < 4 }
+						AND = {
+							exists = owner
+							owner = { has_ascension_perk = ap_voidborn }
+							check_variable = { which = module_count value < 6 }
+						}
+					} 
+				}
+				AND = { is_planet_class = pc_ringworld_habitable
+					check_variable = { which = module_count value < 15 }
+				}
+				AND = {
+					OR = {
+						is_planet_class = pc_hive
+						is_planet_class = pc_machine
+					}
+					check_variable = { which = module_count value < 6 }
+				}
+			}
+		}
+	}
+		
+	effect = {
+		#custom_tooltip = decision_retile_module_generator_effects
+		add_deposit = retile_module_generator
+		hidden_effect = { change_variable = { which = module_count value = 1 } }
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+}
+
+decision_retile_module_generator_remove = {
+	owned_planets_only = yes
+
+	potential = {
+		OR = {
+			has_deposit = retile_module_generator
+			has_deposit = retile_module_generator_active
+		}
+	}
+	
+	effect = {
+		#custom_tooltip = decision_retile_module_generator_remove_effects
+		if = {
+			limit = { has_deposit = retile_module_generator }
+			remove_deposit = retile_module_generator
+		} else = {
+			remove_deposit = retile_module_generator_active
+		}
+		hidden_effect = { change_variable = { which = module_count value = -1 } }
 	}
 	
 	ai_weight = {
@@ -85,7 +288,11 @@ decision_retile_deposit_bioreactor = {
 	allow = {
 		free_district_slots > 0
 		hidden_trigger = {
-			retile_ready = yes
+			exists = owner
+			OR = {
+				owner = { is_ai = no }
+				country_uses_food = no
+			}
 		}
 	}
 	
@@ -103,12 +310,7 @@ decision_retile_deposit_bioreactor = {
 			weight = 10000
 			AND = {
 				owner = { country_uses_food = no }
-				OR = {
-					num_districts = { type = district_farming value > 0 }
-					num_districts = { type = district_farming_uncapped value > 0 }
-					num_districts = { type = district_hab_hydroponics value > 0 }
-					num_districts = { type = district_rw_farming value > 0 }
-				}
+				any_deposit = { has_deposit_category = deposit_cat_food_active }
 			}
 		}
 	}
@@ -132,12 +334,7 @@ decision_retile_deposit_bioreactor_remove = {
 			weight = 10000
 			OR = {
 				owner = { country_uses_food = yes }
-				NAND = {
-					num_districts = { type = district_farming value > 0 }
-					num_districts = { type = district_farming_uncapped value > 0 }
-					num_districts = { type = district_hab_hydroponics value > 0 }
-					num_districts = { type = district_rw_farming value > 0 }
-				}
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_food_active } }
 			}
 		}
 	}	
@@ -165,9 +362,6 @@ decision_retile_deposit_assembly = {
 	
 	allow = {
 		free_district_slots > 0
-		hidden_trigger = {
-			retile_ready = yes
-		}
 	}
 
 	effect = {
@@ -200,185 +394,6 @@ decision_retile_deposit_assembly_remove = {
 	}	
 }
 
-##################################################### Nuumismatic/Numistic Shrine
-decision_retile_deposit_numistic = {
-	owned_planets_only = yes
-
-	enactment_time = @base_buildtime
-	resources = {
-		category = planets
-		cost = {
-			minerals = @base_cost_expensive
-		}
-	}
-	
-	potential = {
-		NOT = { has_deposit = retile_deposit_numistic }
-		owner = {
-			is_regular_empire = yes
-			has_country_flag = nuumismatic_shrine
-		}
-	}
-	
-	allow = {
-		free_district_slots > 0
-		hidden_trigger = {
-			retile_ready = yes
-		}
-	}
-
-	effect = {
-		custom_tooltip = decision_retile_deposit_numistic_effects
-		add_deposit = retile_deposit_numistic
-		if = {
-			limit = { NOT = { has_deposit = retile_deposit_numistic } }
-			add_deposit = retile_deposit_numistic
-		}
-	}
-	
-	ai_weight = {
-		weight = 10000
-	}	
-}
-
-decision_retile_deposit_numistic_remove = {
-	owned_planets_only = yes
-
-	potential = {
-		has_deposit = retile_deposit_numistic
-	}
-	
-	effect = {
-		custom_tooltip = decision_retile_deposit_numistic_remove_effects
-		remove_deposit = retile_deposit_numistic
-	}
-	
-	ai_weight = {
-		weight = -1
-	}	
-}
-
-##################################################### Ministry of Culture
-decision_retile_deposit_ministry = {
-	owned_planets_only = yes
-
-	enactment_time = @base_buildtime
-	resources = {
-		category = planets
-		cost = {
-			minerals = @base_cost_expensive
-		}
-	}
-	
-	potential = {
-		NOT = { owner = { any_owned_planet = {
-			has_deposit = retile_deposit_ministry
-		} } }
-		owner = {
-			is_regular_empire = yes
-			has_country_flag = artist_building_patron
-		}
-	}
-	
-	allow = {
-		free_district_slots > 0
-		hidden_trigger = {
-			retile_ready = yes
-		}
-	}
-
-	effect = {
-		custom_tooltip = decision_retile_deposit_ministry_effects
-		add_deposit = retile_deposit_ministry
-		if = {
-			limit = { NOT = { owner = { any_owned_planet = {
-				has_deposit = retile_deposit_ministry
-			} } } }
-			add_deposit = retile_deposit_ministry
-		}
-	}
-	
-	ai_weight = {
-		weight = 10000
-	}	
-}
-
-decision_retile_deposit_ministry_remove = {
-	owned_planets_only = yes
-
-	potential = {
-		has_deposit = retile_deposit_ministry
-	}
-	
-	effect = {
-		custom_tooltip = decision_retile_deposit_ministry_remove_effects
-		remove_deposit = retile_deposit_ministry
-	}
-	
-	ai_weight = {
-		weight = -1
-	}	
-}
-
-##################################################### Waste Reprocessing Center
-decision_retile_deposit_waste_reprocessing = {
-	owned_planets_only = yes
-
-	enactment_time = @base_buildtime
-	resources = {
-		category = planets
-		cost = {
-			minerals = @base_cost_expensive
-		}
-	}
-
-	potential = {
-		exists = owner
-		owner = { has_country_flag = bought_waste_reprocessing_center }
-		NOR = {
-			has_deposit = retile_deposit_waste_reprocessing
-			has_modifier = slave_colony
-		}
-	}
-	
-	allow = {
-		free_district_slots > 0
-		hidden_trigger = {
-			retile_ready = yes
-		}
-	}
-
-	effect = {
-		custom_tooltip = decision_retile_deposit_waste_reprocessing_effects
-		add_deposit = retile_deposit_waste_reprocessing
-		if = {
-			limit = { NOT = { has_deposit = retile_deposit_waste_reprocessing } }
-			add_deposit = retile_deposit_waste_reprocessing
-		}
-	}
-	
-	ai_weight = {
-		weight = 10000
-	}	
-}
-
-decision_retile_deposit_waste_reprocessing_remove = {
-	owned_planets_only = yes
-
-	potential = {
-		has_deposit = retile_deposit_waste_reprocessing
-	}
-	
-	effect = {
-		custom_tooltip = decision_retile_deposit_waste_reprocessing_remove_effects
-		remove_deposit = retile_deposit_waste_reprocessing
-	}
-	
-	ai_weight = {
-		weight = -1
-	}	
-}
-
 ##################################################### Slave Processing Facility
 decision_retile_deposit_slave = {
 	owned_planets_only = yes
@@ -404,7 +419,8 @@ decision_retile_deposit_slave = {
 		NOT = { has_modifier = resort_colony }
 		owner = { has_policy_flag = slavery_allowed }
 		hidden_trigger = {
-			retile_ready = yes
+			exists = owner
+			owner = { is_ai = no }
 		}
 	}
 
@@ -436,69 +452,5 @@ decision_retile_deposit_slave_remove = {
 	
 	ai_weight = {
 		weight = 0
-	}	
-}
-
-##################################################### Omega Alignment (building_akx_worm_3)
-decision_retile_deposit_alignment = {
-	owned_planets_only = yes
-
-	enactment_time = @base_buildtime
-	resources = {
-		category = planets
-		cost = {
-			minerals = @base_cost_expensive
-		}
-	}
-	
-	potential = {
-		is_capital = yes
-		NOT = { owner = { any_owned_planet = {
-			has_deposit = retile_deposit_alignment
-		} } }
-		owner = {
-			has_technology = tech_akx_worm_3
-		}
-	}
-	
-	allow = {
-		free_district_slots > 0
-		hidden_trigger = {
-			retile_ready = yes
-		}
-	}
-
-	effect = {
-		custom_tooltip = decision_retile_deposit_alignment_effects
-		if = {
-			limit = { NOT = { owner = { any_owned_planet = {
-				has_deposit = retile_deposit_alignment
-			} } } }
-			add_deposit = retile_deposit_alignment
-			hidden_effect = {
-				planet_event = { id = akx.10000 }
-			}
-		}
-	}
-	
-	ai_weight = {
-		weight = 10000
-	}	
-}
-
-decision_retile_deposit_alignment_remove = {
-	owned_planets_only = yes
-
-	potential = {
-		has_deposit = retile_deposit_alignment
-	}
-	
-	effect = {
-		custom_tooltip = decision_retile_deposit_alignment_remove_effects
-		remove_deposit = retile_deposit_alignment
-	}
-	
-	ai_weight = {
-		weight = -1
 	}	
 }

@@ -1,243 +1,8 @@
-# Ranger Job
-ranger = {
-	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
-	building_icon = building_stronghold
-	clothes_texture_index = 5
-
-	possible_pre_triggers = {
-		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		or = {
-			has_job = ranger
-			retile_job_seeking = yes
-		}
-		battle_thrall_job_check_trigger = yes
-	}
-	
-	resources = {
-		category = planet_custodians
-		produces = {
-			trigger = { owner = { has_civic = civic_environmentalist } }
-			unity = 3
-		}
-		produces = {
-			society_research = 2.5
-		}
-	}
-	
-	pop_modifier = {
-		pop_defense_armies_add = 6
-	}
-	
-	planet_modifier = {
-		planet_crime_add = -35
-		planet_amenities_add = -30
-	}
-	
-	country_modifier = {
-		country_naval_cap_add = 10
-	}
-	
-	# Enforcers
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_police_state }
-		}
-		planet_crime_mult = -0.25
-	}
-	
-	triggered_pop_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_common_law }
-		}
-		pop_defense_armies_add = -4
-	}
-	
-	triggered_pop_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_private_police }
-		}
-		pop_defense_armies_add = -4
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_private_police }
-		}
-		trade_value_add = 10
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_military_police }
-		}
-		planet_crime_add = -15
-		planet_amenities_add = 25
-	}
-
-	# Soldiers
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_citizen_service }
-		}
-		modifier = {
-			planet_jobs_produces_mult = 0.05
-		}
-	}
-	triggered_country_modifier = {
-		potential = {
-			exists = owner 
-			owner = { has_technology = "tech_space_force_command" }
-		}
-		modifier = {
-			country_naval_cap_add = 5
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_technology = "tech_space_force_command" }
-		}
-		modifier = {
-			planet_amenities_add = 10
-		}
-	}
-	triggered_country_modifier = {
-		potential = {
-			exists = owner 
-			owner = { has_technology = "tech_wargame_simulations" }
-		}
-		modifier = {
-			country_naval_cap_add = 5
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_technology = "tech_wargame_simulations" }
-		}
-		modifier = {
-			planet_amenities_add = 10
-		}
-	}
-	triggered_pop_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_technology = tech_global_defense_grid }
-		}
-		pop_defense_armies_add = 2
-	}
-	
-	triggered_country_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_ascension_perk = ap_mind_over_matter }
-		}
-		modifier = {
-			country_naval_cap_add = 5
-		}		
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_ascension_perk = ap_mind_over_matter }
-		}
-		modifier = {
-			planet_crime_add = -10
-			planet_stability_add = 2
-			planet_amenities_add = 10
-		}		
-	}
-	
-	# He Custodians
-	triggered_planet_modifier = {
-		potential = { owner = { has_technology = tech_industrial_metabolism } }
-		modifier = { planet_amenities_add = -10 }
-	}
-	triggered_planet_modifier = {
-		potential = { owner = { has_technology = tech_industrial_symbiosis } }
-		modifier = { planet_amenities_add = -10 }
-	}
-	triggered_planet_modifier = {
-		potential = { owner = { has_civic = civic_environmentalist } }
-		modifier = { planet_amenities_add = -10 }
-	}
-	triggered_planet_modifier = {
-		potential = { owner = { has_technology = tech_industrial_ecology } }
-		modifier = { planet_amenities_add = -5 }
-	}
-
-	weight = {
-		weight = @specialist_job_weight
-		modifier = {
-			factor = 5
-			has_job = ranger
-		}
-		modifier = {
-			factor = 0.02
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }
-		}
-		modifier = {
-			factor = 2
-			has_trait = trait_resilient
-		}			
-		modifier = {
-			factor = 2
-			has_trait = trait_very_strong
-		}	
-		modifier = {
-			factor = 1.5
-			has_trait = trait_strong
-		}
-		modifier = {
-			factor = 10
-			is_enslaved = yes
-			has_slavery_type = { type = slavery_military }
-		}			
-		modifier = {
-			factor = 0.50
-			has_trait = trait_weak
-		}
-		modifier = {
-			factor = 0.01
-			can_take_servant_job = yes
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_cybernetic
-		}
-		modifier = {
-			factor = 2
-			has_trait = trait_presapient_earthbound
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_limited_regeneration
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_presapient_proles
-		}
-	}
-}
-
 # Bureaucrat
 bureaucrat = {
 	category = specialist
 	condition_string = RULER_SPECIALIST_TRIGGER
-	building_icon = building_residence
+	building_icon = building_bureaucratic_complex
 	clothes_texture_index = 2
 		
 	possible_pre_triggers = {
@@ -255,14 +20,98 @@ bureaucrat = {
 	}
 	
 	resources = {
-		category = planet_diplomats
+		category = planet_bureaucrats
 		upkeep = {
-			consumer_goods = 5
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 	}
 	
+	planet_modifier = {
+		planet_stability_add = 1
+	}
+	
 	country_modifier = {
-		country_admin_cap_add = 5
+		country_admin_cap_add = 4
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_efficient_bureaucracy }
+		}
+		modifier = {
+			country_admin_cap_add = 2
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_assembly }
+		}
+		modifier = { 
+			country_admin_cap_add = -2
+			pop_factions_produces_mult = 0.10
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_magistrate }
+		}
+		modifier = { 
+			country_admin_cap_add = -2
+			pop_government_ethic_attraction = 0.10
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_gunboat } 
+		}
+		modifier = {
+			country_admin_cap_add = -2
+			country_war_exhaustion_mult = -0.02
+			country_occupation_armies_add = 1
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_embassy }
+		}
+		modifier = { 
+			country_admin_cap_add = -2
+			country_trust_growth = 0.05
+			country_trust_cap_add = 5
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_pr }
+		}
+		modifier = { 
+			country_admin_cap_add = -2
+			country_trust_growth = 0.05
+			country_trust_cap_add = 5
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_lr }
+		}
+		modifier = { 
+			country_admin_cap_add = -2
+			pop_factions_produces_mult = 0.10
+		}
 	}
 	
 	weight = {
@@ -295,483 +144,6 @@ bureaucrat = {
 		modifier = {
 			factor = 1.25
 			has_trait = trait_decadent
-		}
-		# crisis purge
-		modifier = {
-			factor = 0.01
-			planet.controller = {
-				OR = {
-					is_country_type = swarm
-					is_country_type = ai_empire
-				}
-			}
-		}	
-	}
-}
-
-# Representitive
-representitive = {
-	category = specialist
-	condition_string = RULER_SPECIALIST_TRIGGER
-	building_icon = building_residence
-	clothes_texture_index = 2
-		
-	possible_pre_triggers = {
-		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		complex_specialist_job_check_trigger = yes
-		or = {
-			has_job = representitive
-			retile_job_seeking = yes
-		}
-	}
-	
-	resources = {
-		category = planet_diplomats
-		upkeep = {
-			consumer_goods = 5
-		}
-	}
-	
-	country_modifier = {
-		pop_factions_produces_mult = 0.10
-		country_admin_cap_add = 2
-	}
-	
-	planet_modifier = {
-		planet_stability_add = 1
-	}
-	
-	weight = {
-		weight = @specialist_job_weight
-		modifier = {
-			factor = 5
-			has_job = representitive
-		}		
-		modifier = {
-			factor = 0.1
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_weak
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_very_weak
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_sedentary
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_solitary
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_decadent
-		}
-		# crisis purge
-		modifier = {
-			factor = 0.01
-			planet.controller = {
-				OR = {
-					is_country_type = swarm
-					is_country_type = ai_empire
-				}
-			}
-		}	
-	}
-}
-
-# Magistrate
-magistrate = {
-	category = specialist
-	condition_string = RULER_SPECIALIST_TRIGGER
-	building_icon = building_residence
-	clothes_texture_index = 2
-		
-	possible_pre_triggers = {
-		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		complex_specialist_job_check_trigger = yes
-		or = {
-			has_job = magistrate
-			retile_job_seeking = yes
-		}
-	}
-	
-	resources = {
-		category = planet_diplomats
-		upkeep = {
-			consumer_goods = 5
-		}
-	}
-	
-	country_modifier = {
-		country_admin_cap_add = 2
-	}
-	
-	planet_modifier = {
-		planet_stability_add = 1
-		pop_government_ethic_attraction = 0.20
-	}
-	
-	weight = {
-		weight = @specialist_job_weight
-		modifier = {
-			factor = 5
-			has_job = magistrate
-		}		
-		modifier = {
-			factor = 0.1
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_weak
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_very_weak
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_sedentary
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_solitary
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_decadent
-		}		
-		# crisis purge
-		modifier = {
-			factor = 0.01
-			planet.controller = {
-				OR = {
-					is_country_type = swarm
-					is_country_type = ai_empire
-				}
-			}
-		}	
-	}
-}
-
-# LR Manager
-lr_manager = {
-	category = specialist
-	condition_string = RULER_SPECIALIST_TRIGGER
-	building_icon = building_residence
-	clothes_texture_index = 2
-		
-	possible_pre_triggers = {
-		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		complex_specialist_job_check_trigger = yes
-		or = {
-			has_job = lr_manager
-			retile_job_seeking = yes
-		}
-	}
-	
-	resources = {
-		category = planet_diplomats
-		upkeep = {
-			consumer_goods = 5
-		}
-	}
-	
-	country_modifier = {
-		pop_factions_produces_mult = 0.10
-	}
-	
-	planet_modifier = {
-		planet_stability_add = 2
-	}
-	
-	weight = {
-		weight = @specialist_job_weight
-		modifier = {
-			factor = 5
-			has_job = lr_manager
-		}		
-		modifier = {
-			factor = 0.1
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}	
-		modifier = {
-			factor = 1.25
-			has_trait = trait_weak
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_very_weak
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_sedentary
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_solitary
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_decadent
-		}
-		# crisis purge
-		modifier = {
-			factor = 0.01
-			planet.controller = {
-				OR = {
-					is_country_type = swarm
-					is_country_type = ai_empire
-				}
-			}
-		}	
-	}
-}
-
-# Diplomat
-diplomat = {
-	category = specialist
-	condition_string = RULER_SPECIALIST_TRIGGER
-	building_icon = building_residence
-	clothes_texture_index = 2
-		
-	possible_pre_triggers = {
-		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		complex_specialist_job_check_trigger = yes
-		or = {
-			has_job = diplomat
-			retile_job_seeking = yes
-		}
-	}
-	
-	resources = {
-		category = planet_diplomats
-		upkeep = {
-			consumer_goods = 5
-		}
-	}	
-	
-	country_modifier = {
-		country_trust_growth = 0.10
-		country_trust_cap_add = 10
-		country_admin_cap_add = 2
-	}
-	
-	weight = {
-		weight = @specialist_job_weight
-		modifier = {
-			factor = 5
-			has_job = diplomat
-		}		
-		modifier = {
-			factor = 0.1
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}		
-		modifier = {
-			factor = 1.25
-			has_trait = trait_weak
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_very_weak
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_sedentary
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_solitary
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_decadent
-		}
-		# crisis purge
-		modifier = {
-			factor = 0.01
-			planet.controller = {
-				OR = {
-					is_country_type = swarm
-					is_country_type = ai_empire
-				}
-			}
-		}	
-	}
-}
-
-# PR Manager
-pr_manager = {
-	category = specialist
-	condition_string = RULER_SPECIALIST_TRIGGER
-	building_icon = building_residence
-	clothes_texture_index = 2
-		
-	possible_pre_triggers = {
-		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		complex_specialist_job_check_trigger = yes
-		or = {
-			has_job = pr_manager
-			retile_job_seeking = yes
-		}
-	}
-	
-	resources = {
-		category = planet_diplomats
-		upkeep = {
-			consumer_goods = 5
-		}
-	}
-	
-	country_modifier = {
-		country_trade_attractiveness = 0.10
-		country_admin_cap_add = 2
-	}
-	
-	weight = {
-		weight = @specialist_job_weight
-		modifier = {
-			factor = 5
-			has_job = pr_manager
-		}		
-		modifier = {
-			factor = 0.1
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}		
-		modifier = {
-			factor = 1.25
-			has_trait = trait_robot_propaganda_machines
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_brainslug
-		}
-		modifier = {
-			factor = 1.125
-			has_trait = trait_presapient_natural_intellectuals
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_robust
-		}
-		# crisis purge
-		modifier = {
-			factor = 0.01
-			planet.controller = {
-				OR = {
-					is_country_type = swarm
-					is_country_type = ai_empire
-				}
-			}
-		}	
-	}
-}
-
-# Strategos
-strategos = {
-	category = specialist
-	condition_string = RULER_SPECIALIST_TRIGGER
-	building_icon = building_residence
-	clothes_texture_index = 2
-		
-	possible_pre_triggers = {
-		has_owner = yes
-		is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		complex_specialist_job_check_trigger = yes
-		or = {
-			has_job = strategos
-			retile_job_seeking = yes
-		}
-	}
-	
-	resources = {
-		category = planet_strategos
-		upkeep = {
-			alloys = 5
-		}
-	}	
-	
-	pop_modifier = {
-		pop_defense_armies_add = 10
-	}
-	
-	country_modifier = {
-		country_admin_cap_add = 3
-		country_war_exhaustion_mult = -0.02
-		country_occupation_armies_add = 1
-	}
-	
-	planet_modifier = {
-		planet_amenities_add = 30
-	}
-	
-	weight = {
-		weight = @specialist_job_weight
-		modifier = {
-			factor = 5
-			has_job = diplomat
-		}		
-		modifier = {
-			factor = 0.1
-			has_citizenship_rights = no	
-			NOT = { has_trait = trait_mechanical }	
-		}		
-		modifier = {
-			factor = 1.25
-			OR = {
-				has_trait = trait_robot_propaganda_machines
-			}		
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_brainslug
-		}
-		modifier = {
-			factor = 1.125
-			has_trait = trait_presapient_natural_intellectuals
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_robust
 		}
 		# crisis purge
 		modifier = {

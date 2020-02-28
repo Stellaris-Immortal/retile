@@ -16,10 +16,26 @@
 # leader_class has to be set to include "ruler" for a ruler to be valid for a trait
 # modifiers granted to rulers are applied to the entire Empire
 
+trait_ruler_great_philosopher = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_great_philosopher.dds"
+	leader_potential_add = {
+		from = { has_valid_civic = civic_philosopher_king }
+	}
+	modifier = {
+		trade_value_mult = 0.10
+		country_unity_produces_mult = 0.10
+		all_technology_research_speed = 0.05
+	}
+	leader_trait = { ruler }
+	leader_class = { ruler }
+}
+
 trait_ruler_ship_focus = {
 	cost = 1
 	modification = no
-	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_cruiser_focus.dds"
+	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_corvette_focus.dds"
 	leader_potential_add = {
 		NOT = { from = { has_policy_flag = no_wars } }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
@@ -36,10 +52,7 @@ trait_ruler_corvette_focus = {
 	cost = 1
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_corvette_focus.dds"
-	leader_potential_add = {
-		NOT = { from = { has_policy_flag = no_wars } }
-		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
-	}
+	leader_potential_add = { always = no }
 	modifier = {
 		starbase_shipyard_build_cost_mult = -0.10
 		ship_corvette_cost_mult = -0.10
@@ -404,6 +417,7 @@ trait_ruler_investor = {
 		NOT = { from = { has_policy_flag = education_for_all } }
 		NOT = { from = { has_policy_flag = healthcare_universal } }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
+		NOT = { from = { has_valid_civic = civic_philosopher_king } }
 	}
 	modifier = {
 		trade_value_mult = 0.10
@@ -465,6 +479,7 @@ leader_trait_reformer = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_reformer.dds"
 	leader_potential_add = {
+		NOT = { from = { has_valid_civic = civic_philosopher_king } }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
 		NOT = { has_trait = trait_conformists }
 	}
@@ -479,6 +494,9 @@ leader_trait_ruler_erudite = {
 	cost = 0
 	modification = no
 	icon = "gfx/interface/icons/traits/trait_erudite.dds"
+	leader_potential_add = {
+		NOT = { from = { has_valid_civic = civic_philosopher_king } }
+	}
 	modifier = {
 		all_technology_research_speed = 0.05
 	}

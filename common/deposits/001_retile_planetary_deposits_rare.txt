@@ -1,0 +1,1626 @@
+####################
+#####   MOTES  #####
+####################
+
+d_dust_caverns = {
+	time = @retile_rural_exploit_time_low_rare
+	category = deposit_cat_rare_natural
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			minerals = @retile_rural_exploit_cost_low_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low_rare
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high_rare
+		modifier = {
+			factor = @retile_planet_type_bonus_rare
+			is_dry = yes
+		}			
+		modifier = {
+			factor = 2
+			is_planet_class = pc_gaia
+		}		
+		modifier = {
+			factor = 0
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+		}
+	}
+	
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_dust_caverns_active
+	}
+}
+
+d_dust_caverns_active = {
+	time = @retile_rural_restore_time_low_rare
+	icon = producers/d_motes_exploited
+	category = deposit_cat_rare_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			volatile_motes = @retile_rural_production_low_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low_rare
+		#planet_housing_add = @retile_rural_housing_low_rare
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_dust_caverns
+	}
+}
+
+d_dust_desert = {
+	time = @retile_rural_exploit_time_med_rare
+	category = deposit_cat_rare_natural
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			minerals = @retile_rural_exploit_cost_med_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med_rare
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high_rare
+		modifier = {
+			factor = @retile_planet_type_bonus_rare
+			is_dry = yes
+		}			
+		modifier = {
+			factor = 2
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+		}
+	}
+
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_dust_desert_active
+	}
+}
+
+d_dust_desert_active = {
+	time = @retile_rural_restore_time_med_rare
+	icon = producers/d_motes_exploited
+	category = deposit_cat_rare_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			volatile_motes = @retile_rural_production_med_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_med_rare
+		#planet_housing_add = @retile_rural_housing_med_rare
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_dust_desert
+	}
+}
+
+####################
+#####   GASES  #####
+####################
+
+d_bubbling_swamp = {
+	time = @retile_rural_exploit_time_low_rare
+	category = deposit_cat_rare_natural
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			minerals = @retile_rural_exploit_cost_low_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low_rare
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high_rare
+		modifier = {
+			factor = @retile_planet_type_bonus_rare
+			is_wet = yes
+		}			
+		modifier = {
+			factor = 2
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+		}
+	}
+
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_bubbling_swamp_active
+	}
+}
+
+d_bubbling_swamp_active = {
+	time = @retile_rural_restore_time_low_rare
+	icon = producers/d_gases_exploited
+	category = deposit_cat_rare_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			exotic_gases = @retile_rural_production_low_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low_rare
+		#planet_housing_add = @retile_rural_housing_low_rare
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_bubbling_swamp
+	}
+}
+
+d_fuming_bog = {
+	time = @retile_rural_exploit_time_med_rare
+	category = deposit_cat_rare_natural
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			minerals = @retile_rural_exploit_cost_med_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med_rare
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high_rare
+		modifier = {
+			factor = @retile_planet_type_bonus_rare
+			is_wet = yes
+		}			
+		modifier = {
+			factor = 2
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+		}
+	}
+
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_fuming_bog_active
+	}
+}
+
+d_fuming_bog_active = {
+	time = @retile_rural_restore_time_med_rare
+	icon = producers/d_gases_exploited
+	category = deposit_cat_rare_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			exotic_gases = @retile_rural_production_med_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_med_rare
+		#planet_housing_add = @retile_rural_housing_med_rare
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_fuming_bog
+	}
+}
+
+####################
+##### CRYSTALS #####
+####################
+
+d_crystalline_caverns = {
+	time = @retile_rural_exploit_time_low_rare
+	category = deposit_cat_rare_natural
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			minerals = @retile_rural_exploit_cost_low_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_low_rare
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high_rare
+		modifier = {
+			factor = @retile_planet_type_bonus_rare
+			is_cold = yes
+		}			
+		modifier = {
+			factor = 2
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+		}
+	}
+
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_crystalline_caverns_active
+	}
+}
+
+d_crystalline_caverns_active = {
+	time = @retile_rural_restore_time_low_rare
+	icon = producers/d_crystals_exploited
+	category = deposit_cat_rare_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			rare_crystals = @retile_rural_production_low_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_low_rare
+		#planet_housing_add = @retile_rural_housing_low_rare
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_crystalline_caverns
+	}
+}
+
+d_crystal_forest = {
+	time = @retile_rural_exploit_time_med_rare
+	category = deposit_cat_rare_natural
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			minerals = @retile_rural_exploit_cost_med_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med_rare
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high_rare
+		modifier = {
+			factor = @retile_planet_type_bonus_rare
+			is_cold = yes
+		}			
+		modifier = {
+			factor = 2
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+		}
+	}
+
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_crystal_forest_active
+	}
+}
+
+d_crystal_forest_active = {
+	time = @retile_rural_restore_time_med_rare
+	icon = producers/d_crystals_exploited
+	category = deposit_cat_rare_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			rare_crystals = @retile_rural_production_med_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_med_rare
+		#planet_housing_add = @retile_rural_housing_med_rare
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_crystal_forest
+	}
+}
+
+d_crystal_reef = {
+	time = @retile_rural_exploit_time_med_rare
+	category = deposit_cat_rare_natural
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			minerals = @retile_rural_exploit_cost_med_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_med_rare
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_high_rare
+		modifier = {
+			factor = @retile_planet_type_bonus_rare
+			is_cold = yes
+		}			
+		modifier = {
+			factor = 2
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+		}
+	}
+
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_crystal_reef_active
+	}
+}
+
+d_crystal_reef_active = {
+	time = @retile_rural_restore_time_med_rare
+	icon = producers/d_crystals_exploited
+	category = deposit_cat_rare_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			rare_crystals = @retile_rural_production_med_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_med_rare
+		#planet_housing_add = @retile_rural_housing_med_rare
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_crystal_reef
+	}
+}
+
+###################
+##### SPECIAL #####
+###################
+
+d_betharian_deposit = {
+	time = @retile_rural_exploit_time_high_rare
+	category = deposit_cat_rare_natural
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			minerals = @retile_rural_exploit_cost_high_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high_rare
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_med_rare
+		modifier = {
+			factor = 2
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+		}
+	}
+
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_betharian_planet_deposit_active
+	}
+	
+	prerequisites = { tech_mine_betharian } 
+}
+
+d_betharian_planet_deposit_active = {
+	time = @retile_rural_restore_time_high_rare
+	icon = producers/betherian_district
+	category = deposit_cat_rare_active
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		produces = {
+			energy = 50
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_pollution_high_rare
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_betharian_deposit
+	}
+}
+
+d_alien_pets_deposit = {
+	time = @retile_rural_exploit_time_high_rare
+	category = deposit_cat_rare_natural
+	is_for_colonizeable = yes
+	
+	resources = {
+		category = planet_deposits_active
+		cost = {
+			minerals = @retile_rural_exploit_cost_high_rare
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = @retile_rural_eco_clean_high_rare
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+	
+	drop_weight = {
+		weight = @retile_drop_med_rare
+		modifier = {
+			factor = 2
+			is_planet_class = pc_gaia
+		}
+		modifier = {
+			factor = 0
+			solar_system = {
+				OR = {
+					has_star_flag = empire_home_system
+					has_star_flag = sol_system
+					has_star_flag = deneb_system
+				}
+			}
+		}
+	}
+
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_alien_pets_planet_deposit_active
+	}
+	
+	prerequisites = { tech_alien_life_studies } 
+}
+
+d_alien_pets_planet_deposit_active = {
+	time = @retile_rural_restore_time_high_rare
+	icon = producers/zoo_district
+	category = deposit_cat_rare_active
+	is_for_colonizeable = yes
+	
+	planet_modifier = {
+		planet_amenities_add = -100
+		planet_stability_add = 5
+	}
+	
+	ai_weight = {
+		weight = -1
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+	
+	potential = {
+		can_have_habitable_deposits = yes
+	}
+	
+	blocker_swap_types = {
+		d_alien_pets_deposit
+	}
+}
+
+####################################
+##### HABITAT SPECIAL DEPOSITS #####
+####################################
+
+d_hab_gas_1 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	#planet_modifier = { 
+	#	building_gas_extractors_max = 1
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_exotic_gases }
+			}
+			exotic_gases = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_gas_2 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	#planet_modifier = { 
+	#	building_gas_extractors_max = 2
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_exotic_gases }
+			}
+			exotic_gases = 2
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_gas_3 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	#planet_modifier = { 
+	#	building_gas_extractors_max = 3
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_exotic_gases }
+			}
+			exotic_gases = 3
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_gas_4 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	#planet_modifier = { 
+	#	building_gas_extractors_max = 4
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_exotic_gases }
+			}
+			exotic_gases = 4
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_gas_5 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	#planet_modifier = { 
+	#	building_gas_extractors_max = 5
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_exotic_gases }
+			}
+			exotic_gases = 5
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_crystal_1 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	#planet_modifier = { 
+	#	building_crystal_mines_max = 1
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_rare_crystals }
+			}
+			rare_crystals = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_crystal_2 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	#planet_modifier = { 
+	#	building_crystal_mines_max = 2
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_rare_crystals }
+			}
+			rare_crystals = 2
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_crystal_3 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	#planet_modifier = { 
+	#	building_crystal_mines_max = 3
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_rare_crystals }
+			}
+			rare_crystals = 3
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_crystal_4 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	#planet_modifier = { 
+	#	building_crystal_mines_max = 4
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_rare_crystals }
+			}
+			rare_crystals = 4
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_crystal_5 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	#planet_modifier = { 
+	#	building_crystal_mines_max = 5
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_rare_crystals }
+			}
+			rare_crystals = 5
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_mote_1 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	#planet_modifier = { 
+	#	building_mote_harvesters_max = 1
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_volatile_motes }
+			}
+			volatile_motes = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_mote_2 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	#planet_modifier = { 
+	#	building_mote_harvesters_max = 2
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_volatile_motes }
+			}
+			volatile_motes = 2
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_mote_3 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	#planet_modifier = { 
+	#	building_mote_harvesters_max = 3
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_volatile_motes }
+			}
+			volatile_motes = 3
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_mote_4 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	#planet_modifier = { 
+	#	building_mote_harvesters_max = 4
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_volatile_motes }
+			}
+			volatile_motes = 4
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_mote_5 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	#planet_modifier = { 
+	#	building_mote_harvesters_max = 5
+	#}
+	
+	resources = {
+		produces = {
+			trigger = {
+				exists = owner
+				owner = { has_technology = tech_mine_volatile_motes }
+			}
+			volatile_motes = 5
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_zro_1 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			trigger = { 
+				exists = owner
+				owner = { has_technology = tech_mine_zro } 
+			}
+			sr_zro = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_zro_2 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			trigger = { 
+				exists = owner
+				owner = { has_technology = tech_mine_zro } 
+			}
+			sr_zro = 2
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_zro_3 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			trigger = { 
+				exists = owner
+				owner = { has_technology = tech_mine_zro } 
+			}
+			sr_zro = 3
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_dark_matter_1 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			trigger = { 
+				exists = owner
+				owner = { has_technology = tech_mine_dark_matter } 
+			}
+			sr_dark_matter = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_dark_matter_2 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			trigger = { 
+				exists = owner
+				owner = { has_technology = tech_mine_dark_matter } 
+			}
+			sr_dark_matter = 2
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_dark_matter_3 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			trigger = { 
+				exists = owner
+				owner = { has_technology = tech_mine_dark_matter } 
+			}
+			sr_dark_matter = 3
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_living_metal_1 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			trigger = { 
+				exists = owner
+				owner = { has_technology = tech_mine_living_metal } 
+			}
+			sr_living_metal = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_alloy_1 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			#alloys = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_alloy_2 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			alloys = 2
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_alloy_3 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			alloys = 3
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_alloy_4 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			alloys = 4
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+d_hab_alloy_5 = {
+	icon = "unused/d_space_walk"
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	potential = {
+		can_have_habitable_deposits = yes
+		is_planet_class = pc_habitat
+	}
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = {
+			alloys = 5
+		}
+	}
+	
+	drop_weight = {
+		weight = 0.01
+		#does not occur naturally, but needs a non-zero weight
+	}
+}
+
+################
+#### SCIENCE ###
+################
+
+d_fossil_record = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	resources = {
+		category = planet_deposits
+		produces = {
+			society_research = 8
+		}
+	}
+	
+	planet_modifier = {
+		planet_jobs_society_research_produces_mult = 0.10
+	}
+	
+	potential = {
+		OR = {
+			is_wet = yes
+			is_dry = yes
+			is_cold = yes
+		}
+		NOT = { is_planet_class = pc_relic }
+	}
+	
+	drop_weight = {
+		weight = @vanilla_drop_high_rare
+		modifier = {
+			factor = 2
+			OR = {
+				is_star_class = sc_m
+				is_star_class = sc_m_giant
+				is_star_class = sc_a
+				is_star_class = sc_b
+				is_star_class = sc_t
+			}
+		}
+		modifier = {
+			factor = 2
+			is_dry = yes
+		}
+	}
+}
+
+d_archaeological_record = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	resources = {
+		category = planet_deposits
+		produces = {
+			society_research = 8
+		}
+	}
+	
+	planet_modifier = {
+		planet_jobs_society_research_produces_mult = 0.10
+	}
+	
+	potential = {
+		OR = {
+			is_wet = yes
+			is_dry = yes
+			is_cold = yes
+			NOT = { is_planet_class = pc_relic }
+		}
+	}
+	
+	drop_weight = {
+		weight = @vanilla_drop_high_rare
+		modifier = {
+			factor = 2
+			OR = {
+				is_star_class = sc_g
+				is_star_class = sc_k
+				is_star_class = sc_f
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				is_planet_class = pc_nuked
+				is_wet = yes
+			}
+		}
+	}
+}

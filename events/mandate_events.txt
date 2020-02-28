@@ -43,7 +43,7 @@ country_event = {
 	id = mandate.2
 	title = mandate.2.title
 	desc = mandate.2.desc
-	picture = GFX_evt_political_event
+	picture = GFX_evt_political_2_event
 	show_sound = event_default
 
 	is_triggered_only = yes
@@ -663,129 +663,10 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		owner = {
-			OR = {
-				has_event_chain = mandate_district_city_chain
-				has_event_chain = mandate_district_generator_chain
-				has_event_chain = mandate_district_mining_chain
-				has_event_chain = mandate_district_farming_chain
-			}
-		}
+		always = no
 	}
 
 	immediate = {
-		switch = {
-			trigger = last_district_changed
-			district_city = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_resort = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_prison = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_enforcer = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_soldier = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_custodian = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_generator = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_generator_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_generator_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_mining = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_generator_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_mining_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_farming = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_generator_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_farming_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			default = {}
-		}
 	}
 }
 
@@ -796,129 +677,10 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		owner = {
-			OR = {
-				has_event_chain = mandate_district_city_chain
-				has_event_chain = mandate_district_generator_chain
-				has_event_chain = mandate_district_mining_chain
-				has_event_chain = mandate_district_farming_chain
-			}
-		}
+		always = no
 	}
 
 	immediate = {
-		switch = {
-			trigger = last_district_changed
-			district_city = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_resort = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_prison = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = 1
-						}
-					}
-				}
-			}
-			district_enforcer = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = -1
-						}
-					}
-				}
-			}
-			district_soldier = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = -1
-						}
-					}
-				}
-			}
-			district_custodian = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_city_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_city_chain" 
-							counter = "built_district"
-							amount = -1
-						}
-					}
-				}
-			}
-			district_generator = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_generator_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_generator_chain" 
-							counter = "built_district"
-							amount = -1
-						}
-					}
-				}
-			}
-			district_mining = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_generator_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_mining_chain" 
-							counter = "built_district"
-							amount = -1
-						}
-					}
-				}
-			}
-			district_farming = {
-				owner = {
-					if = {
-						limit = { has_event_chain = mandate_district_generator_chain }
-						add_event_chain_counter = { 
-							event_chain = "mandate_district_farming_chain" 
-							counter = "built_district"
-							amount = -1
-						}
-					}
-				}
-			}
-			default = {}
-		}
 	}
 }
 
@@ -926,84 +688,25 @@ country_event = {
 	id = mandate.185
 	hide_window = yes
 	is_triggered_only = yes
+	
+	trigger = {
+		always = no
+	}
 
 	immediate = {
-		if = {
-			limit = {
-				OR = {
-					AND = {
-						has_event_chain = mandate_district_city_chain
-						has_completed_event_chain_counter = {
-							event_chain = mandate_district_city_chain
-							counter = built_district
-						}
-					}
-					AND = {
-						has_event_chain = mandate_district_generator_chain
-						has_completed_event_chain_counter = {
-							event_chain = mandate_district_generator_chain
-							counter = built_district
-						}
-					}
-					AND = {
-						has_event_chain = mandate_district_mining_chain
-						has_completed_event_chain_counter = {
-							event_chain = mandate_district_mining_chain
-							counter = built_district
-						}
-					}
-					AND = {
-						has_event_chain = mandate_district_farming_chain
-						has_completed_event_chain_counter = {
-							event_chain = mandate_district_farming_chain
-							counter = built_district
-						}
-					}
-				}
-			}
-			country_event = { id = mandate.186 }
-		}
-		else = {
-			country_event = { id = mandate.2 }
-		}
 	}
 }
 
 # Mandate fulfilled
 country_event = {
 	id = mandate.186
-	title = mandate.186.title
-	desc = mandate.186.desc
-	picture = GFX_evt_throne_room
-	show_sound = event_default
-
+	hide_window = yes
 	is_triggered_only = yes
 
-	immediate = {
-		switch = {
-			trigger = has_event_chain
-			mandate_district_city_chain = {
-				end_event_chain = mandate_district_city_chain
-			}
-			mandate_district_generator_chain = {
-				end_event_chain = mandate_district_generator_chain
-			}
-			mandate_district_mining_chain = {
-				end_event_chain = mandate_district_mining_chain
-			}
-			mandate_district_farming_chain = {
-				end_event_chain = mandate_district_farming_chain
-			}
-		}
+	trigger = {
+		always = no
 	}
-
-	option = {
-		name = OK
-		add_monthly_resource_mult = {
-			resource = unity
-			value = @unityreward
-			min = @unitymin
-			max = @unitymax
-		}
+	
+	immediate = {
 	}
 }

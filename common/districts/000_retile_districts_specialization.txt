@@ -1,0 +1,87 @@
+@base_cost = 300
+@base_upkeep = 5
+@base_buildtime = 240
+
+district_resort = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = { has_modifier = resort_colony }
+
+	potential = { has_modifier = resort_colony }
+	
+	conversion_ratio = 1
+	convert_to = { district_clerks }
+	
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			energy = @base_upkeep
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			consumer_goods = 1
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_clerk_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = { owner = { has_ascension_perk = ap_mega_specialization } }
+		planet_housing_add = 1
+		job_clerk_add = 1
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+district_prison = {
+	base_buildtime = 240
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = { has_modifier = penal_colony }
+
+	potential = { has_modifier = penal_colony }
+	
+	conversion_ratio = 1
+	convert_to = { district_soldiers }
+	
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			alloys = @base_cost
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			energy = @base_upkeep
+		}
+		upkeep = {
+			trigger = { owner = { is_regular_empire = yes } }
+			consumer_goods = 1
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 1
+		job_criminal_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = { owner = { has_ascension_perk = ap_mega_specialization } }
+		planet_housing_add = 1
+		job_criminal_add = 1
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}

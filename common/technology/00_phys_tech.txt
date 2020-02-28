@@ -24,14 +24,6 @@ tech_basic_science_lab_2 = {
 		
 	weight_modifier = {
 		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_exotic_gases
-				has_technology = tech_exotic_gases
-				has_country_flag = has_market_access
-			}
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = physics
@@ -473,7 +465,12 @@ tech_physics_1 = {
 	weight = @tier1weight1
 	
 	modifier = {
-		planet_researchers_produces_mult = 0.16
+		planet_researchers_upkeep_mult = -0.033
+		country_base_physics_research_produces_add = 5
+		country_base_society_research_produces_add = 5
+		country_base_engineering_research_produces_add = 5
+		country_base_unity_produces_add = 5
+		description = tech_physics_1_effect
 	}
 	
 	weight_modifier = {
@@ -531,7 +528,12 @@ tech_physics_2 = {
 	weight = @tier2weight3
 	
 	modifier = {
-		planet_researchers_produces_mult = 0.17
+		planet_researchers_upkeep_mult = -0.033
+		country_base_physics_research_produces_add = 5
+		country_base_society_research_produces_add = 5
+		country_base_engineering_research_produces_add = 5
+		country_base_unity_produces_add = 5
+		description = tech_physics_2_effect
 	}
 	
 	weight_modifier = {
@@ -585,7 +587,12 @@ tech_physics_3 = {
 	weight = @tier4weight2
 	
 	modifier = {
-		planet_researchers_produces_mult = 0.17
+		planet_researchers_upkeep_mult = -0.033
+		country_base_physics_research_produces_add = 5
+		country_base_society_research_produces_add = 5
+		country_base_engineering_research_produces_add = 5
+		country_base_unity_produces_add = 5
+		description = tech_physics_3_effect
 	}
 	
 	weight_modifier = {
@@ -637,6 +644,10 @@ tech_global_research_initiative = {
 	category = { computing }
 	prerequisites = { "tech_physics_1" "tech_colonial_centralization" }
 	weight = @tier3weight1
+	
+	potential = {
+		always = no
+	}
 	
 	weight_modifier = {
 		factor = 1.5
@@ -2076,6 +2087,10 @@ tech_power_plant_1 = {
 	tier = 0
 	category = { field_manipulation }
 	start_tech = yes
+	
+	modifier = {
+		description = tech_power_plant_1_effect
+	}
 		
 	## unlock power plant lvl 1
 }
@@ -2090,7 +2105,8 @@ tech_power_plant_2 = {
 	weight = @tier1weight1
 		
 	modifier = {
-		description = tech_power_plant_2_effect
+		country_base_energy_produces_add = 5
+		planet_technician_upkeep_mult = -0.033
 	}
 	
 	weight_modifier = {
@@ -2129,7 +2145,8 @@ tech_power_plant_3 = {
 	weight = @tier2weight1
 		
 	modifier = {
-		description = tech_power_plant_3_effect
+		country_base_energy_produces_add = 5
+		planet_technician_upkeep_mult = -0.033
 	}
 	
 	weight_modifier = {
@@ -2168,7 +2185,8 @@ tech_power_plant_4 = {
 	weight = @tier3weight1
 		
 	modifier = {
-		description = tech_power_plant_4_effect
+		country_base_energy_produces_add = 5
+		planet_technician_upkeep_mult = -0.033
 	}
 	
 	weight_modifier = {
@@ -2242,14 +2260,6 @@ tech_power_hub_2 = {
 	weight = @tier2weight3
 		
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_exotic_gases
-				has_technology = tech_exotic_gases
-				has_country_flag = has_market_access
-			}
-		}
 		modifier = {
 			factor = 1.25
 			research_leader = {

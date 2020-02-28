@@ -36,6 +36,8 @@ empire_size_over_cap = {
 
 # Per empire size (ignores admin cap)
 empire_size = {
+	#building_time_mult = 1
+	#planet_clear_blocker_time_mult = 1
 	rare_edicts_cost_mult = 0.01
 }
 
@@ -71,6 +73,11 @@ defensive_war = {
 # High War Exhaustion
 ##########################################################################
 high_war_exhaustion = {
+	planet_amenities_mult = 0.25
+	trade_value_mult = -0.25
+	planet_jobs_produces_mult = -0.25
+	planet_jobs_upkeep_mult = 0.25
+	pop_growth_speed_reduction = -0.25
 }
 
 ##########################################################################
@@ -334,7 +341,7 @@ lost_owned_pop = {
 
 hazardous_weather = {
 	pop_environment_tolerance = -0.10
-	planet_jobs_energy_produces_mult = 0.10
+	job_technician_add = 1
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_hazardous_weather.dds"
 	icon_frame = 2
@@ -342,7 +349,7 @@ hazardous_weather = {
 
 dangerous_wildlife = {
 	pop_environment_tolerance = -0.10
-	planet_jobs_society_research_produces_mult = 0.20
+	job_researcher_add = 1
 
 	icon = "gfx/interface/icons/planet_modifiers/pm_dangerous_wildlife.dds"
 	icon_frame = 3
@@ -364,8 +371,7 @@ strong_magnetic_field = {
 
 unstable_tectonics = {
 	pop_environment_tolerance = -0.10
-	planet_amenities_add = 100
-	planet_jobs_engineering_research_produces_mult = 0.20
+	job_foundry_add = 1
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_unstable_tectonics.dds"
 	icon_frame = 3
@@ -384,22 +390,21 @@ chthonian_planet = {
 }
 
 asteroid_impacts = {
-	planet_jobs_minerals_produces_mult = 0.10
+	job_miner_add = 1
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_asteroid_impacts.dds"
 	icon_frame = 1
 }
 
 extensive_moon_system = {
-	planet_jobs_unity_produces_mult = 0.10
-	planet_jobs_minerals_produces_mult = 0.20
+	job_miner_add = 3
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_extensive_moon_system.dds"
 	icon_frame = 1
 }
 
 carbon_world = {
-	planet_jobs_minerals_produces_mult = 0.20
+	job_miner_add = 1
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_carbon_world.dds"
 	icon_frame = 1
@@ -407,23 +412,21 @@ carbon_world = {
 
 wild_storms = {
 	planet_max_districts_mult = -0.10
-	planet_jobs_physics_research_produces_mult = 0.20
-	planet_jobs_society_research_produces_mult = 0.20
+	job_researcher_add = 2
 
 	icon = "gfx/interface/icons/planet_modifiers/pm_storm.dds"
 	icon_frame = 2
 }
 
 mineral_rich = {
-	planet_jobs_minerals_produces_mult = 0.20
+	job_miner_add = 1
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_mineral_rich.dds"
 	icon_frame = 1
 }
 
 ultra_rich = {
-	planet_jobs_minerals_produces_mult = 0.30
-	district_mining_max = 4
+	job_miner_add = 2
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_ultra_rich.dds"
 	icon_frame = 1
@@ -431,30 +434,27 @@ ultra_rich = {
 
 mineral_poor = {
 	planet_jobs_minerals_produces_mult = -0.20
-	district_mining_max = -2
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_mineral_poor.dds"
 	icon_frame = 3
 }
 
 titanic_life = {
-	planet_jobs_society_research_produces_mult = 0.30
+	job_researcher_add = 2
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_titanic_life.dds"
 	icon_frame = 1
 }
 
 eat_the_titans = {
-	district_farming_max = 4
-	planet_jobs_food_produces_mult = 0.30
+	job_farmer_add = 2
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_titanic_life.dds"
 	icon_frame = 1
 }
 
 asteroid_belt = {
-	planet_jobs_minerals_produces_mult = 0.10
-	district_mining_max = 1
+	job_miner_add = 1
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_asteroid_belt.dds"
 	icon_frame = 1
@@ -495,16 +495,16 @@ atmospheric_hallucinogen_good = {
 }
 
 lush_planet = {
+	planet_amenities_mult = -0.10
 	pop_growth_speed = 0.10
-	planet_jobs_food_produces_mult = 0.10
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_lush.dds"
 	icon_frame = 1
 }
 
 bleak_planet = {
-	planet_amenities_mult = 0.25
-	planet_jobs_food_produces_mult = -0.10
+	planet_amenities_mult = 0.10
+	planet_jobs_food_produces_mult = -0.20
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_bleak.dds"
 	icon_frame = 3
@@ -512,7 +512,6 @@ bleak_planet = {
 
 irradiated_planet = {
 	pop_environment_tolerance = -0.10
-	planet_amenities_add = 100
 	planet_jobs_food_produces_mult = -0.50
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_irradiated.dds"
@@ -522,7 +521,7 @@ irradiated_planet = {
 low_gravity = {
 	planet_buildings_cost_mult = -0.10
 	planet_districts_cost_mult = -0.10
-	planet_pops_upkeep_mult = -0.10
+	planet_jobs_upkeep_mult = -0.10
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_low_gravity.dds"
 	icon_frame = 2
@@ -531,7 +530,7 @@ low_gravity = {
 high_gravity = {
 	planet_buildings_cost_mult = 0.10
 	planet_districts_cost_mult = 0.10
-	planet_pops_upkeep_mult = 0.10
+	planet_jobs_upkeep_mult = 0.10
 	
 	icon = "gfx/interface/icons/planet_modifiers/pm_high_gravity.dds"
 	icon_frame = 2
@@ -712,7 +711,7 @@ gas_giant_colony = {
 abandoned_terraforming = {
 	planet_amenities_mult = 0.3
 	planet_jobs_food_produces_mult = -0.20
-	district_farming_max = -3
+	#district_farming_max = -3
 	icon = "gfx/interface/icons/planet_modifiers/pm_asteroid_impacts.dds"
 	icon_frame = 3
 }
@@ -934,8 +933,8 @@ planet_amenities_no_happiness_low = {
 }
 
 planet_amenities_no_happiness_high = {
-	planet_stability_add = -50
-	pop_environment_tolerance = -1
+	planet_stability_add = -1250
+	pop_environment_tolerance = -25
 }
 
 planet_amenities_low = {
@@ -944,8 +943,8 @@ planet_amenities_low = {
 }
 
 planet_amenities_high = {
-	planet_stability_add = -50
-	pop_environment_tolerance = -1
+	planet_stability_add = -1250
+	pop_environment_tolerance = -25
 }
 
 # Housing ( 25% - 200% of required)
@@ -959,6 +958,7 @@ planet_housing_no_happiness_high = {
 
 planet_housing_low = {
 	#planet_stability_add = -20
+	#pop_growth_speed_reduction = -0.75
 }
 
 planet_housing_high = {
@@ -1065,7 +1065,6 @@ skill_scientist = {
 }
 
 skill_governor = {
-	planet_jobs_produces_mult = 0.02
 	planet_stability_add = 1
 }
 

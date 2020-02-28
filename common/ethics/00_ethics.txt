@@ -1860,278 +1860,12 @@ ethic_pacifist = {
 	}
 }
 
-ethic_fanatic_spiritualist = {
-	cost = 2 
-	category = "spi"
-	category_value = 0
-	
-	regular_variant = ethic_spiritualist
-	
-	use_for_pops = no
-
-	tags = {
-		ETHIC_ALLOWS_TEMPLE
-	}	
-	
-	country_modifier = {
-		planet_amenities_mult = -0.20
-		country_unity_produces_mult = 0.20
-	}
-	
-	random_weight = {
-		value = 150
-	}
-}
-
-ethic_spiritualist = {
-	cost = 1
-	category = "spi"
-	category_value = 1
-	
-	fanatic_variant = ethic_fanatic_spiritualist
-	
-	tags = {
-		ETHIC_ALLOWS_TEMPLE
-	}		
-	
-	country_modifier = {
-		planet_amenities_mult = -0.10
-		country_unity_produces_mult = 0.10
-	}
-	
-	random_weight = {
-		value = 100		
-	}
-	
-	pop_attraction_tag = {
-		desc = 	POP_ATTRACTION_SPIRITUALIST_POS
-		trigger = {
-			OR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
-		}
-	}
-	
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_FACTION_POS
-		trigger = {
-			NOR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
-			has_faction = traditionalist
-		}		
-	}	
-	
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_RULER_FACTION_POS
-		trigger = {
-			exists = ruler
-			ruler = { leader_of_faction = traditionalist }
-		}		
-	}	
-	
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_PSIONICS_POS
-		trigger = {
-			OR = {
-				has_technology = "tech_telepathy"
-				has_technology = "tech_psionic_theory"		
-			}		
-		}
-	}	
-
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_SPIRITUALIST_DIPLOMACY_POS
-		trigger = {
-			any_relation = {
-				OR = {
-					is_in_federation_with = root
-					has_defensive_pact = root
-					has_commercial_pact = root
-					AND = {
-						is_subject = no
-						has_migration_access = root
-					}
-				}
-				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-				}				
-			}
-		}
-	}
-
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_SPIRITUALIST_OVERLORD_POS
-		trigger = {
-			is_subject = yes
-			overlord = {
-				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-				}				
-			}
-		}
-	}
-
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_ROBOT_RIGHTS_NEG
-		trigger = {
-			has_policy_flag = ai_full_rights
-		}
-	}			
-	
-	country_attraction = {
-		value = 1
-		modifier = {
-			factor = 0
-			NOR = {
-				is_country_type = default
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-				AND = {
-					is_country_type = primitive
-					capital_scope = {
-						has_observation_outpost = yes
-						observation_outpost = {
-							has_mission = native_indoctrination		
-						}
-						observation_outpost_owner = { 
-							OR = {
-								has_ethic = ethic_fanatic_spiritualist
-								has_ethic = ethic_spiritualist
-							}							
-						}				
-					}
-				}
-			}
-		}
-		# Effects of indoctrination mission
-		modifier = {
-			factor = 20
-			is_country_type = primitive
-			capital_scope = {
-				has_observation_outpost = yes
-				observation_outpost = {
-					has_mission = native_indoctrination		
-				}
-				observation_outpost_owner = { has_ethic = ethic_fanatic_spiritualist }
-			}
-		}
-		modifier = {
-			factor = 10
-			is_country_type = primitive
-			capital_scope = {
-				has_observation_outpost = yes
-				observation_outpost = {
-					has_mission = native_indoctrination		
-				}
-				observation_outpost_owner = { has_ethic = ethic_spiritualist }
-			}
-		}	
-		modifier = {
-			factor = 2
-			NOR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
-			}
-			has_faction = traditionalist	
-		}	
-		modifier = {
-			factor = 1.5
-			is_country_type = default
-			exists = ruler
-			ruler = { leader_of_faction = traditionalist }				
-		}			
-		modifier = {
-			factor = 2
-			has_ethic = ethic_spiritualist
-		}
-		modifier = {
-			factor = 3
-			has_ethic = ethic_fanatic_spiritualist
-		}
-		modifier = {
-			factor = 1.25
-			is_country_type = default
-			has_technology = "tech_psionic_theory"
-		}
-		modifier = {
-			factor = 1.25
-			is_country_type = default
-			has_ascension_perk = ap_mind_over_matter
-		}
-		modifier = {
-			factor = 1.25
-			is_country_type = default
-			has_ascension_perk = ap_transcendence
-		}		
-		modifier = {
-			factor = 2.0
-			is_subject = yes
-			overlord = {
-				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-				}
-			}
-		}		
-		modifier = {
-			factor = 1.5
-			any_relation = {
-				OR = {
-					is_in_federation_with = root
-					has_defensive_pact = root
-					has_commercial_pact = root
-				}
-				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-				}				
-			}
-		}
-		modifier = {
-			factor = 2.0
-			any_relation = {
-				is_subject = no
-				has_migration_access = root
-				OR = {
-					has_ethic = ethic_spiritualist
-					has_ethic = ethic_fanatic_spiritualist
-				}
-			}
-		}	
-	}
-
-	# from = planet
-	pop_attraction = {
-		value = 1
-		
-		modifier = {
-			factor = 0
-			has_trait = trait_hive_mind
-		}		
-		modifier = {
-			factor = 1.25
-			has_trait = trait_charismatic
-		}
-		modifier = {
-			factor = 0.75
-			has_trait = trait_repugnant
-		}			
-	}		
-}
-
 ethic_fanatic_materialist = {
 	cost = 2
 	category = "spi"
-	category_value = 4
+	category_value = 0
 	
 	regular_variant = ethic_materialist
-	
-	category_opposite = yes
 	
 	use_for_pops = no
 	
@@ -2140,7 +1874,7 @@ ethic_fanatic_materialist = {
 	}	
 	
 	country_modifier = {
-		planet_jobs_upkeep_mult = -0.20
+		planet_jobs_upkeep_mult = -0.10
 		country_physics_tech_research_speed = 0.20
 	}
 	
@@ -2152,18 +1886,16 @@ ethic_fanatic_materialist = {
 ethic_materialist = {
 	cost = 1
 	category = "spi"
-	category_value = 3
+	category_value = 1
 	
 	fanatic_variant = ethic_fanatic_materialist
-	
-	category_opposite = yes
 	
 	tags = {
 		
 	}			
 	
 	country_modifier = {
-		planet_jobs_upkeep_mult = -0.10
+		planet_jobs_upkeep_mult = -0.05
 		country_physics_tech_research_speed = 0.10
 	}	
 	
@@ -2206,17 +1938,6 @@ ethic_materialist = {
 			ruler = { leader_of_faction = technologist }
 		}		
 	}
-
-	pop_attraction_tag = {
-		desc = POP_ATTRACTION_CYBORGS_POS
-		trigger = {
-			any_owned_planet = {
-				any_owned_pop = {
-					has_trait = trait_cybernetic
-				}
-			}
-		}
-	}	
 
 	pop_attraction_tag = {
 		desc = POP_ATTRACTION_MATERIALIST_RESEARCH_POS
@@ -2359,6 +2080,267 @@ ethic_materialist = {
 			has_trait = "trait_natural_physicists"
 		}	
 	}	
+}
+
+ethic_fanatic_spiritualist = {
+	cost = 2 
+	category = "spi"
+	category_value = 4
+	
+	regular_variant = ethic_spiritualist
+	
+	category_opposite = yes
+	
+	use_for_pops = no
+
+	tags = {
+		
+	}	
+	
+	country_modifier = {
+		planet_amenities_mult = -0.20
+		country_unity_produces_mult = 0.20
+	}
+	
+	random_weight = {
+		value = 150
+	}
+}
+
+ethic_spiritualist = {
+	cost = 1
+	category = "spi"
+	category_value = 3
+	
+	fanatic_variant = ethic_fanatic_spiritualist
+	
+	category_opposite = yes
+	
+	tags = {
+		
+	}		
+	
+	country_modifier = {
+		planet_amenities_mult = -0.10
+		country_unity_produces_mult = 0.10
+	}
+	
+	random_weight = {
+		value = 100		
+	}
+	
+	pop_attraction_tag = {
+		desc = 	POP_ATTRACTION_SPIRITUALIST_POS
+		trigger = {
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+	}
+	
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_FACTION_POS
+		trigger = {
+			NOR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+			has_faction = traditionalist
+		}		
+	}	
+	
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_RULER_FACTION_POS
+		trigger = {
+			exists = ruler
+			ruler = { leader_of_faction = traditionalist }
+		}		
+	}	
+	
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_PSIONICS_POS
+		trigger = {
+			OR = {
+				has_technology = "tech_telepathy"
+				has_technology = "tech_psionic_theory"		
+			}		
+		}
+	}	
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_SPIRITUALIST_DIPLOMACY_POS
+		trigger = {
+			any_relation = {
+				OR = {
+					is_in_federation_with = root
+					has_defensive_pact = root
+					has_commercial_pact = root
+					AND = {
+						is_subject = no
+						has_migration_access = root
+					}
+				}
+				OR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+				}				
+			}
+		}
+	}
+
+	pop_attraction_tag = {
+		desc = POP_ATTRACTION_SPIRITUALIST_OVERLORD_POS
+		trigger = {
+			is_subject = yes
+			overlord = {
+				OR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+				}				
+			}
+		}
+	}			
+	
+	country_attraction = {
+		value = 1
+		modifier = {
+			factor = 0
+			NOR = {
+				is_country_type = default
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+				AND = {
+					is_country_type = primitive
+					capital_scope = {
+						has_observation_outpost = yes
+						observation_outpost = {
+							has_mission = native_indoctrination		
+						}
+						observation_outpost_owner = { 
+							OR = {
+								has_ethic = ethic_fanatic_spiritualist
+								has_ethic = ethic_spiritualist
+							}							
+						}				
+					}
+				}
+			}
+		}
+		# Effects of indoctrination mission
+		modifier = {
+			factor = 20
+			is_country_type = primitive
+			capital_scope = {
+				has_observation_outpost = yes
+				observation_outpost = {
+					has_mission = native_indoctrination		
+				}
+				observation_outpost_owner = { has_ethic = ethic_fanatic_spiritualist }
+			}
+		}
+		modifier = {
+			factor = 10
+			is_country_type = primitive
+			capital_scope = {
+				has_observation_outpost = yes
+				observation_outpost = {
+					has_mission = native_indoctrination		
+				}
+				observation_outpost_owner = { has_ethic = ethic_spiritualist }
+			}
+		}	
+		modifier = {
+			factor = 2
+			NOR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+			has_faction = traditionalist	
+		}	
+		modifier = {
+			factor = 1.5
+			is_country_type = default
+			exists = ruler
+			ruler = { leader_of_faction = traditionalist }				
+		}			
+		modifier = {
+			factor = 2
+			has_ethic = ethic_spiritualist
+		}
+		modifier = {
+			factor = 3
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 1.25
+			is_country_type = default
+			has_technology = "tech_psionic_theory"
+		}
+		modifier = {
+			factor = 1.25
+			is_country_type = default
+			has_ascension_perk = ap_mind_over_matter
+		}
+		modifier = {
+			factor = 1.25
+			is_country_type = default
+			has_ascension_perk = ap_transcendence
+		}		
+		modifier = {
+			factor = 2.0
+			is_subject = yes
+			overlord = {
+				OR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+				}
+			}
+		}		
+		modifier = {
+			factor = 1.5
+			any_relation = {
+				OR = {
+					is_in_federation_with = root
+					has_defensive_pact = root
+					has_commercial_pact = root
+				}
+				OR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+				}				
+			}
+		}
+		modifier = {
+			factor = 2.0
+			any_relation = {
+				is_subject = no
+				has_migration_access = root
+				OR = {
+					has_ethic = ethic_spiritualist
+					has_ethic = ethic_fanatic_spiritualist
+				}
+			}
+		}	
+	}
+
+	# from = planet
+	pop_attraction = {
+		value = 1
+		
+		modifier = {
+			factor = 0
+			has_trait = trait_hive_mind
+		}		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_charismatic
+		}
+		modifier = {
+			factor = 0.75
+			has_trait = trait_repugnant
+		}			
+	}		
 }
 
 ethic_gestalt_consciousness = {

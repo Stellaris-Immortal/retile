@@ -69,8 +69,61 @@ ruler = {
 			owner = { has_valid_civic = civic_imperial_cult }
 		}
 		pop_government_ethic_attraction = 0.10
-	}	
+	}
 	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		modifier = {
+			pop_defense_armies_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				has_building = building_clinic_1
+				has_building = building_clinic_2
+				has_building = building_clinic_3
+			} }
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_full
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = {
+				has_building = building_clinic_1
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_high
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = {
+				has_building = building_clinic_2
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_med
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = {
+				has_building = building_clinic_3
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -97,6 +150,20 @@ ruler = {
 		influence = 10
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			can_generate_trade_value = yes
+			has_trait = trait_thrifty
+		}
+		trade_value_add = @trade_value_thrifty
+	}
+	triggered_planet_modifier = {
+		potential = {
+			can_generate_trade_value = yes
+			has_trait = trait_nuumismatic_administration
+		}
+		trade_value_add = @trade_value_nuumismatic_administration
+	}
 	triggered_planet_modifier = {
 		potential = {
 			can_generate_trade_value = yes
@@ -135,75 +202,35 @@ ruler = {
 	resources = {
 		category = pop_category_rulers
 		
-		# Organic Upkeep
+		#################################### Food Upkeep
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
-				has_shared_burden_living_standard_type = yes
-				owner = { is_primitive = no }
+				pop_eats_food = yes
 			}
-			food = @living_standard_food_normal
+			food = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}
+		
+		#################################### Supplies Upkeep
+		upkeep = {
+			trigger = {
+				has_shared_burden_living_standard_type = yes
+			}
 			consumer_goods = @living_standard_luxuries_shared_burden
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				has_shared_burden_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_shared_burden
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				has_shared_burden_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			consumer_goods = @living_standard_luxuries_shared_burden
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
-				owner = { is_primitive = no }
-				OR = {
-					has_academic_living_standard_type = yes
-					has_very_high_living_standard_type = yes
-					has_high_living_standard_type = yes
-					has_normal_living_standard_type = yes
-					has_stratified_living_standard_type = yes
-				}
-			}
-			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_very_high
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				owner = { is_primitive = no }
-				OR = {
-					has_academic_living_standard_type = yes
-					has_very_high_living_standard_type = yes
-					has_high_living_standard_type = yes
-					has_normal_living_standard_type = yes
-					has_stratified_living_standard_type = yes
-				}
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_very_high
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				owner = { is_primitive = no }
 				OR = {
 					has_academic_living_standard_type = yes
 					has_very_high_living_standard_type = yes
@@ -216,83 +243,20 @@ ruler = {
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
 				has_low_living_standard_type = yes
-				owner = { is_primitive = no }
 			}
-			food = @living_standard_food_normal
 			consumer_goods = @living_standard_luxuries_high
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				has_low_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_high
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				has_low_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			consumer_goods = @living_standard_luxuries_high
-		}
-		# Primitives
-		upkeep = {
-			trigger = {
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
-				owner = { is_primitive = yes }
-			}
-			food = @living_standard_food_normal
-		}
-		upkeep = {
-			trigger = {
-				is_lithoid = yes
-				owner = { is_primitive = yes }
-			}
-			minerals = @living_standard_food_normal
-		}
-
-		# Robotic Upkeep
-		upkeep = {
-			trigger = {
-				is_robotic_species = yes
-				has_shared_burden_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_shared_burden			
-		}		
-		upkeep = {
-			trigger = { 
-				is_robotic_species = yes
 				OR = {
-					has_academic_living_standard_type = yes
-					has_very_high_living_standard_type = yes
-					has_high_living_standard_type = yes
-					has_normal_living_standard_type = yes
-					has_stratified_living_standard_type = yes
+					has_low_living_standard_type = yes
 				}
 			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_very_high
-		}		
-		upkeep = {
-			trigger = { 
-				is_robotic_species = yes
-				has_low_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_high
+			consumer_goods = @living_standard_luxuries_normal
 		}
-
+		
+		#################################### Trait Production
 		produces = {
 			trigger = {
 				is_lithoid = yes
@@ -422,6 +386,59 @@ specialist = {
 		weight = 2
 	}	
 	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		modifier = {
+			pop_defense_armies_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				has_building = building_clinic_1
+				has_building = building_clinic_2
+				has_building = building_clinic_3
+			} }
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_full
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = {
+				has_building = building_clinic_1
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_high
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = {
+				has_building = building_clinic_2
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_med
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = {
+				has_building = building_clinic_3
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -453,6 +470,20 @@ specialist = {
 		influence = 10
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			can_generate_trade_value = yes
+			has_trait = trait_thrifty
+		}
+		trade_value_add = @trade_value_thrifty
+	}
+	triggered_planet_modifier = {
+		potential = {
+			can_generate_trade_value = yes
+			has_trait = trait_nuumismatic_administration
+		}
+		trade_value_add = @trade_value_nuumismatic_administration
+	}
 	triggered_planet_modifier = {
 		potential = {
 			can_generate_trade_value = yes
@@ -500,113 +531,44 @@ specialist = {
 	resources = {
 		category = pop_category_specialists
 		
-		# Organic Upkeep
+		#################################### Food Upkeep
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
-				has_shared_burden_living_standard_type = yes
-				owner = { is_primitive = no }
+				pop_eats_food = yes
 			}
 			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_shared_burden
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
 				is_lithoid = yes
-				has_shared_burden_living_standard_type = yes
-				owner = { is_primitive = no }
 			}
 			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_shared_burden
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		
+		#################################### Supplies Upkeep
+		upkeep = {
+			trigger = {
 				has_shared_burden_living_standard_type = yes
-				owner = { is_primitive = no }
 			}
 			consumer_goods = @living_standard_luxuries_shared_burden
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
-				owner = { is_primitive = no }
-				OR = {
-					has_academic_living_standard_type = yes
-					has_very_high_living_standard_type = yes
-				}
-			}
-			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_very_high
-
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				owner = { is_primitive = no }
-				OR = {
-					has_academic_living_standard_type = yes
-					has_very_high_living_standard_type = yes
-				}
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_very_high
-
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				owner = { is_primitive = no }
 				OR = {
 					has_academic_living_standard_type = yes
 					has_very_high_living_standard_type = yes
 				}
 			}
 			consumer_goods = @living_standard_luxuries_very_high
-
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
-				owner = { is_primitive = no }
-				OR = {
-					has_high_living_standard_type = yes
-					has_normal_living_standard_type = yes
-					has_stratified_living_standard_type = yes
-				}
-			}
-			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_high
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				owner = { is_primitive = no }
-				OR = {
-					has_high_living_standard_type = yes
-					has_normal_living_standard_type = yes
-					has_stratified_living_standard_type = yes
-				}
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_high
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				owner = { is_primitive = no }
 				OR = {
 					has_high_living_standard_type = yes
 					has_normal_living_standard_type = yes
@@ -617,103 +579,14 @@ specialist = {
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
-				has_low_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_normal
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				has_low_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_normal
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				has_low_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			consumer_goods = @living_standard_luxuries_normal
-		}
-		# Primitives
-		upkeep = {
-			trigger = {
-				is_lithoid = no
-				owner = { is_primitive = yes }
-			}
-			food = @living_standard_food_normal
-		}
-		upkeep = {
-			trigger = {
-				is_lithoid = yes
-				owner = { is_primitive = yes }
-			}
-			minerals = @living_standard_food_normal
-		}
-
-		# Robotic Upkeep
-		upkeep = {
-			trigger = {
-				is_robotic_species = yes
-				has_shared_burden_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_very_high
-		}				
-		upkeep = {
-			trigger = { 
-				is_robotic_species = yes
 				OR = {
-					has_academic_living_standard_type = yes
-					has_very_high_living_standard_type = yes
+					has_low_living_standard_type = yes
 				}
 			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_very_high
-		}		
-		upkeep = {
-			trigger = { 
-				is_robotic_species = yes
-				has_high_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_high
-		}		 
-		upkeep = {
-			trigger = { 
-				is_robotic_species = yes
-				has_normal_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_high
-		}		
-		upkeep = {
-			trigger = { 
-				is_robotic_species = yes
-				has_stratified_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_high
-		}	
-		upkeep = {
-			trigger = { 
-				is_robotic_species = yes
-				has_low_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
 			consumer_goods = @living_standard_luxuries_normal
 		}
-
+		
+		#################################### Trait Production
 		produces = {
 			trigger = {
 				is_lithoid = yes
@@ -774,6 +647,461 @@ specialist = {
 			}
 			unity = 1
 		}
+		
+		#################################### Clerk Upkeep
+		upkeep = {
+			trigger = { 
+				has_job = clerk
+				planet = { OR = {
+					has_building = building_trade_1
+					has_building = building_bourse_1
+				} }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				has_job = clerk
+				planet = { OR = {
+					has_building = building_trade_2
+					has_building = building_bourse_2
+				} }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = { 
+				has_job = clerk
+				planet = { OR = {
+					has_building = building_trade_3
+					has_building = building_bourse_3
+				} }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = { 
+				has_job = clerk
+				planet = { OR = {
+					has_building = building_trade_1
+					has_building = building_bourse_1
+				} }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				has_job = clerk
+				planet = { OR = {
+					has_building = building_trade_2
+					has_building = building_bourse_2
+				} }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = { 
+				has_job = clerk
+				planet = { OR = {
+					has_building = building_trade_3
+					has_building = building_bourse_3
+				} }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = { 
+				has_job = clerk
+				planet = { OR = {
+					has_building = building_trade_1
+					has_building = building_bourse_1
+				} }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				has_job = clerk
+				planet = { OR = {
+					has_building = building_trade_2
+					has_building = building_bourse_2
+				} }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = { 
+				has_job = clerk
+				planet = { OR = {
+					has_building = building_trade_3
+					has_building = building_bourse_3
+				} }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal3
+		}
+		
+		#################################### Scholar Upkeep
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				OR = {
+					planet = { has_building = building_research_lab_1 }
+					planet = { has_building = building_metascience_lab_1 }
+				}
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}		
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				OR = {
+					planet = { has_building = building_research_lab_2 }
+					planet = { has_building = building_metascience_lab_2 }
+				}
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal2
+		}		
+		upkeep = {
+			trigger = { 
+				has_job = researcher
+				OR = {
+					planet = { has_building = building_research_lab_3 }
+					planet = { has_building = building_metascience_lab_3 }
+				}
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal3
+		}		
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				planet = { OR = {
+					has_building = building_temple
+					has_building = building_autochthon_monument
+					has_building = building_corporate_monument
+				} }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}		
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				planet = { OR = {
+					has_building = building_holotemple
+					has_building = building_heritage_site
+					has_building = building_corporate_site
+				} }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal2
+		}		
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				planet = { OR = {
+					has_building = building_sacred_nexus
+					has_building = building_hypercomms_forum
+					has_building = building_corporate_forum
+				} }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = { 
+				has_job = researcher
+				OR = {
+					planet = { has_building = building_research_lab_1 }
+					planet = { has_building = building_metascience_lab_1 }
+				}
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}		
+		upkeep = {
+			trigger = { 
+				has_job = researcher
+				OR = {
+					planet = { has_building = building_research_lab_2 }
+					planet = { has_building = building_metascience_lab_2 }
+				}
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}		
+		upkeep = {
+			trigger = { 
+				has_job = researcher
+				OR = {
+					planet = { has_building = building_research_lab_3 }
+					planet = { has_building = building_metascience_lab_3 }
+				}
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal3
+		}		
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				planet = { OR = {
+					has_building = building_temple
+					has_building = building_autochthon_monument
+					has_building = building_corporate_monument
+				} }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}		
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				planet = { OR = {
+					has_building = building_holotemple
+					has_building = building_heritage_site
+					has_building = building_corporate_site
+				} }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}		
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				planet = { OR = {
+					has_building = building_sacred_nexus
+					has_building = building_hypercomms_forum
+					has_building = building_corporate_forum
+				} }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = { 
+				has_job = researcher
+				OR = {
+					planet = { has_building = building_research_lab_1 }
+					planet = { has_building = building_metascience_lab_1 }
+				}
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}		
+		upkeep = {
+			trigger = { 
+				has_job = researcher
+				OR = {
+					planet = { has_building = building_research_lab_2 }
+					planet = { has_building = building_metascience_lab_2 }
+				}
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}		
+		upkeep = {
+			trigger = { 
+				has_job = researcher
+				OR = {
+					planet = { has_building = building_research_lab_3 }
+					planet = { has_building = building_metascience_lab_3 }
+				}
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal3
+		}		
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				planet = { OR = {
+					has_building = building_temple
+					has_building = building_autochthon_monument
+					has_building = building_corporate_monument
+				} }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}		
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				planet = { OR = {
+					has_building = building_holotemple
+					has_building = building_heritage_site
+					has_building = building_corporate_site
+				} }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}		
+		upkeep = {
+			trigger = {
+				has_job = researcher
+				planet = { OR = {
+					has_building = building_sacred_nexus
+					has_building = building_hypercomms_forum
+					has_building = building_corporate_forum
+				} }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal3
+		}
+		#################################### Engineer Upkeep
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_factory_1 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_factory_2 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_factory_3 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_foundry_1 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_foundry_2 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_foundry_3 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_factory_1 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_factory_2 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_factory_3 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_foundry_1 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_foundry_2 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_foundry_3 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_factory_1 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_factory_2 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_factory_3 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_foundry_1 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_foundry_2 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = foundry
+				planet = { has_building = building_foundry_3 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal3
+		}
 	}
 }
 
@@ -784,6 +1112,59 @@ worker = {
 	change_job_threshold = 1.1
 	keep_from_former_job = yes
 	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_warrior_culture }
+		}
+		modifier = {
+			pop_defense_armies_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = { NOR = {
+				has_building = building_clinic_1
+				has_building = building_clinic_2
+				has_building = building_clinic_3
+			} }
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_full
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = {
+				has_building = building_clinic_1
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_high
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = {
+				has_building = building_clinic_2
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_med
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			exists = planet
+			planet = {
+				has_building = building_clinic_3
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -799,6 +1180,21 @@ worker = {
 	triggered_planet_modifier = {	# Conformist Pop!
 		potential = { has_trait = trait_conformists }
 		modifier = { planet_crime_add = -2 }
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			can_generate_trade_value = yes
+			has_trait = trait_thrifty
+		}
+		trade_value_add = @trade_value_thrifty
+	}
+	triggered_planet_modifier = {
+		potential = {
+			can_generate_trade_value = yes
+			has_trait = trait_nuumismatic_administration
+		}
+		trade_value_add = @trade_value_nuumismatic_administration
 	}
 	triggered_planet_modifier = {
 		potential = {
@@ -928,129 +1324,47 @@ worker = {
 	resources = {
 		category = pop_category_workers
 
-		# Organic Upkeep
+		#################################### Food Upkeep
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
-				has_shared_burden_living_standard_type = yes
-				owner = { is_primitive = no }
+				pop_eats_food = yes
 			}
 			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_shared_burden
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
 				is_lithoid = yes
-				has_shared_burden_living_standard_type = yes
-				owner = { is_primitive = no }
 			}
 			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_shared_burden
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		
+		#################################### Supplies Upkeep
+		upkeep = {
+			trigger = {
 				has_shared_burden_living_standard_type = yes
-				owner = { is_primitive = no }
 			}
 			consumer_goods = @living_standard_luxuries_shared_burden
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
 				has_very_high_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_very_high
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				has_very_high_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_very_high
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				has_very_high_living_standard_type = yes
-				owner = { is_primitive = no }
 			}
 			consumer_goods = @living_standard_luxuries_very_high
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
 				has_high_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_high
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				has_high_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_high
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				has_high_living_standard_type = yes
-				owner = { is_primitive = no }
 			}
 			consumer_goods = @living_standard_luxuries_high
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
-				owner = { is_primitive = no }
-				OR = {
-					has_normal_living_standard_type = yes
-					has_academic_living_standard_type = yes
-				}
-			}
-			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_normal
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				owner = { is_primitive = no }
-				OR = {
-					has_normal_living_standard_type = yes
-					has_academic_living_standard_type = yes
-				}
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_normal
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				owner = { is_primitive = no }
 				OR = {
 					has_normal_living_standard_type = yes
 					has_academic_living_standard_type = yes
@@ -1060,135 +1374,18 @@ worker = {
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
 				has_stratified_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_low
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				has_stratified_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_low
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				has_stratified_living_standard_type = yes
-				owner = { is_primitive = no }
 			}
 			consumer_goods = @living_standard_luxuries_low
 		}
 		upkeep = {
 			trigger = {
-				is_organic_species = yes
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
 				has_low_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			food = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_very_low
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				is_lithoid = yes
-				has_low_living_standard_type = yes
-				owner = { is_primitive = no }
-			}
-			minerals = @living_standard_food_normal
-			consumer_goods = @living_standard_luxuries_very_low
-		}
-		upkeep = {
-			trigger = {
-				is_organic_species = yes
-				has_trait = trait_plantoid
-				has_low_living_standard_type = yes
-				owner = { is_primitive = no }
 			}
 			consumer_goods = @living_standard_luxuries_very_low
 		}
-
-		# Primitives
-		upkeep = {
-			trigger = {
-				is_lithoid = no
-				NOT = { has_trait = trait_plantoid }
-				owner = { is_primitive = yes }
-			}
-			food = @living_standard_food_normal
-		}
-		upkeep = {
-			trigger = {
-				is_lithoid = yes
-				owner = { is_primitive = yes }
-			}
-			minerals = @living_standard_food_normal
-		}
-
-		# Robotic Upkeep
-		upkeep = {
-			trigger = {
-				is_robotic_species = yes
-				has_shared_burden_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_shared_burden
-		}
-		upkeep = {
-			trigger = {
-				is_robotic_species = yes
-				has_very_high_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_very_high
-		}
-		upkeep = {
-			trigger = {
-				is_robotic_species = yes
-				has_high_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_high
-		}
-		upkeep = {
-			trigger = {
-				is_robotic_species = yes
-				OR = {
-					has_normal_living_standard_type = yes
-					has_academic_living_standard_type = yes
-				}
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_normal
-		}
-		upkeep = {
-			trigger = {
-				is_robotic_species = yes
-				has_stratified_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_low
-		}
-		upkeep = {
-			trigger = {
-				is_robotic_species = yes
-				has_low_living_standard_type = yes
-			}
-			energy = @living_standard_energy_normal
-			consumer_goods = @living_standard_luxuries_very_low
-		}
-
+		
+		#################################### Trait Production
 		produces = {
 			trigger = {
 				is_lithoid = yes
@@ -1248,6 +1445,371 @@ worker = {
 				}
 			}
 			unity = 1
+		}
+		
+		#################################### Custodian Upkeep
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_maintenance_depot }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_maintenance_depot_2 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_maintenance_depot_3 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_solar_panels }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_recycling_center }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_hydroponics_farm }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_maintenance_depot }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_maintenance_depot_2 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_maintenance_depot_3 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_solar_panels }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_recycling_center }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_hydroponics_farm }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_maintenance_depot }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_maintenance_depot_2 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_maintenance_depot_3 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_solar_panels }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_recycling_center }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = custodian
+				planet = { has_building = building_hydroponics_farm }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		#################################### Technician Upkeep
+		upkeep = {
+			trigger = {
+				has_job = technician
+				planet = { has_building = building_energy_1 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = technician
+				planet = { has_building = building_energy_2 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = technician
+				planet = { has_building = building_energy_3 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = technician
+				planet = { has_building = building_energy_1 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = technician
+				planet = { has_building = building_energy_2 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = technician
+				planet = { has_building = building_energy_3 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = technician
+				planet = { has_building = building_energy_1 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = technician
+				planet = { has_building = building_energy_2 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = technician
+				planet = { has_building = building_energy_3 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal3
+		}
+		#################################### Miner Upkeep
+		upkeep = {
+			trigger = {
+				has_job = miner
+				planet = { has_building = building_mineral_1 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = miner
+				planet = { has_building = building_mineral_2 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = miner
+				planet = { has_building = building_mineral_3 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = miner
+				planet = { has_building = building_mineral_1 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = miner
+				planet = { has_building = building_mineral_2 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = miner
+				planet = { has_building = building_mineral_3 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = {
+				has_job = miner
+				planet = { has_building = building_mineral_1 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = {
+				has_job = miner
+				planet = { has_building = building_mineral_2 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = {
+				has_job = miner
+				planet = { has_building = building_mineral_3 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal3
+		}
+		#################################### Farmer Upkeep
+		upkeep = {
+			trigger = {
+				has_job = farmer
+				planet = { has_building = building_food_1 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				has_job = farmer
+				planet = { has_building = building_food_2 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = { 
+				has_job = farmer
+				planet = { has_building = building_food_3 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = { 
+				has_job = farmer
+				planet = { has_building = building_food_1 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				has_job = farmer
+				planet = { has_building = building_food_2 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = { 
+				has_job = farmer
+				planet = { has_building = building_food_3 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = { 
+				has_job = farmer
+				planet = { has_building = building_food_1 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				has_job = farmer
+				planet = { has_building = building_food_2 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = { 
+				has_job = farmer
+				planet = { has_building = building_food_3 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal3
 		}
 	}
 }

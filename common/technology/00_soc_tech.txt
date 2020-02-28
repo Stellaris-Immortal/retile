@@ -95,14 +95,6 @@ tech_interstellar_economics = {
 	weight_modifier = {
 		factor = 2
 		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_rare_crystals
-				has_technology = tech_rare_crystals
-				has_country_flag = has_market_access
-			}
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
@@ -135,9 +127,6 @@ tech_galactic_markets = {
 	category = { statecraft }
 	prerequisites = { "tech_colonial_centralization" "tech_interstellar_economics" }
 	weight = @tier4weight1
-	is_rare = yes
-	
-	# unlocks Galactic Stock Exchange empire wonder
 	
 	potential = {
 		is_gestalt = no
@@ -159,10 +148,6 @@ tech_galactic_markets = {
 			}
 		}
 		modifier = {
-			factor = @ap_technological_ascendancy_rare_tech
-			has_ascension_perk = ap_technological_ascendancy
-		}
-		modifier = {
 			factor = 1.25
 			research_leader = {
 				area = society
@@ -170,19 +155,8 @@ tech_galactic_markets = {
 			}
 		}
 		modifier = {
-			factor = 0
-			num_communications < 2
-		}
-		modifier = {
 			factor = 1.5
 			has_policy_flag = research_economic_development		
-		}
-		modifier = {
-			factor = 0
-			NOR = { 
-				has_tradition = tr_discovery_faith_in_science
-				has_ascension_perk = ap_technological_ascendancy
-			}	
 		}
 	}
 	
@@ -227,6 +201,10 @@ tech_industrial_farming = {
 	category = { biology }
 	start_tech = yes
 	
+	modifier = {
+		description = tech_industrial_farming_effect
+	}
+	
 	# unlocks farming districts
 }
 
@@ -240,24 +218,18 @@ tech_eco_simulation = {
 	weight = @tier1weight1
 	
 	modifier = {
-		description = tech_eco_simulation_effect
+		country_base_food_produces_add = 5
+		planet_farmers_upkeep_mult = -0.033
 	}
 	
 	weight_modifier = {
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
-					OR = {
-						num_districts = { type = district_farming value > 0 }
-						num_districts = { type = district_rw_farming value > 0 }
+					any_deposit = {
+						has_deposit_category = deposit_cat_food_active
 					}
 				}
 			}
@@ -305,24 +277,18 @@ tech_gene_crops = {
 	weight = @tier2weight1
 	
 	modifier = {
-		description = tech_gene_crops_effect
+		country_base_food_produces_add = 5
+		planet_farmers_upkeep_mult = -0.033
 	}
 	
 	weight_modifier = {
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
-					OR = {
-						num_districts = { type = district_farming value > 0 }
-						num_districts = { type = district_rw_farming value > 0 }
+					any_deposit = {
+						has_deposit_category = deposit_cat_food_active
 					}
 				}
 			}
@@ -370,24 +336,18 @@ tech_nano_vitality_crops = {
 	weight = @tier3weight1
 	
 	modifier = {
-		description = tech_nano_vitality_crops_effect
+		country_base_food_produces_add = 5
+		planet_farmers_upkeep_mult = -0.033
 	}
 	
 	weight_modifier = {
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
-					OR = {
-						num_districts = { type = district_farming value > 0 }
-						num_districts = { type = district_rw_farming value > 0 }
+					any_deposit = {
+						has_deposit_category = deposit_cat_food_active
 					}
 				}
 			}
@@ -435,7 +395,7 @@ tech_nutrient_replication = {
 	weight = @tier4weight3
 		
 	modifier = {
-		description = tech_nutrient_replication_effect
+		planet_farmers_food_produces_mult = 0.10
 	}
 	
 	potential = {
@@ -445,18 +405,11 @@ tech_nutrient_replication = {
 	weight_modifier = {
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
-					OR = {
-						num_districts = { type = district_farming value > 0 }
-						num_districts = { type = district_rw_farming value > 0 }
+					any_deposit = {
+						has_deposit_category = deposit_cat_food_active
 					}
 				}
 			}
@@ -525,21 +478,7 @@ tech_hydroponics = {
 		factor = 2
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
-				any_owned_planet = {
-					OR = {
-						num_districts = { type = district_farming value > 0 }
-						num_districts = { type = district_rw_farming value > 0 }
-					}
-				}
-			}
+			country_uses_food = no
 		}
 		modifier = {
 			factor = 1.25
@@ -579,20 +518,11 @@ tech_food_processing_1 = {
 	weight_modifier = {
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-				is_plantoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_country_flag = non_plantoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
-					OR = {
-						num_districts = { type = district_farming value > 0 }
-						num_districts = { type = district_rw_farming value > 0 }
+					any_deposit = {
+						has_deposit_category = deposit_cat_food_active
 					}
 				}
 			}
@@ -634,20 +564,11 @@ tech_food_processing_2 = {
 		factor = 2
 		modifier = {
 			factor = 0.01
-			OR = {
-				is_machine_empire = yes
-				is_lithoid_empire = yes
-				is_plantoid_empire = yes
-			}
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				has_country_flag = non_plantoid_subspecies
-				has_valid_civic = civic_machine_servitor
-				has_valid_civic = civic_machine_assimilator
+			country_uses_food = no
+			NOT = {
 				any_owned_planet = {
-					OR = {
-						num_districts = { type = district_farming value > 0 }
-						num_districts = { type = district_rw_farming value > 0 }
+					any_deposit = {
+						has_deposit_category = deposit_cat_food_active
 					}
 				}
 			}
@@ -657,14 +578,6 @@ tech_food_processing_2 = {
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_biology"
-			}
-		}
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_volatile_motes
-				has_technology = tech_volatile_motes
-				has_country_flag = has_market_access
 			}
 		}
 		modifier = {
@@ -697,9 +610,10 @@ tech_society_1 = {
 	weight = @tier1weight1
 	
 	modifier = {
-		trade_value_mult = 0.16
+		description = tech_society_1_effect
+		planet_clerks_upkeep_mult = -0.033
 	}
-	
+
 	weight_modifier = {
 		modifier = {
 			factor = 5
@@ -756,9 +670,10 @@ tech_society_2 = {
 	weight = @tier2weight3
 	
 	modifier = {
-		trade_value_mult = 0.17
+		description = tech_society_2_effect
+		planet_clerks_upkeep_mult = -0.033
 	}
-	
+
 	weight_modifier = {
 		modifier = {
 			factor = 2
@@ -811,9 +726,10 @@ tech_society_3 = {
 	weight = @tier4weight2
 	
 	modifier = {
-		trade_value_mult = 0.17
+		description = tech_society_3_effect
+		planet_clerks_upkeep_mult = -0.033
 	}
-	
+
 	weight_modifier = {
 		modifier = {
 			factor = 2
@@ -866,10 +782,6 @@ tech_alien_life_studies = {
 	
 	potential = {
 		is_regular_empire = yes
-	}
-	
-	modifier = {
-		description = tech_alien_life_studies_effect
 	}
 	
 	weight_modifier = {
@@ -1344,14 +1256,6 @@ tech_frontier_hospital = {
 	}
 	
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_exotic_gases
-				has_technology = tech_exotic_gases
-				has_country_flag = has_market_access
-			}
-		}
 		modifier = {
 			factor = 1.25
 			has_tradition = tr_harmony_adopt
@@ -2151,10 +2055,6 @@ tech_genome_mapping = {
 	
 	gateway = biological
 	
-	modifier = {
-		pop_growth_speed = 0.20
-	}
-	
 	potential = {
 		OR = {
 			NOT = { has_authority = auth_machine_intelligence }
@@ -2329,10 +2229,6 @@ tech_cloning = {
 	category = { biology }	
 	prerequisites = { "tech_genome_mapping" }
 	weight = @tier2weight2
-	
-	modifier = {
-		pop_growth_speed = 0.20
-	}
 
 	potential = {
 		OR = {
@@ -4594,6 +4490,10 @@ tech_global_production_strategy = {
 	prerequisites = { "tech_alloys_1" "tech_luxuries_1" "tech_colonial_centralization" }
 	weight = @tier3weight1
 	
+	potential = {
+		always = no
+	}
+	
 	# unlocks Ministry of Production
 	
 	weight_modifier = {
@@ -5337,6 +5237,7 @@ tech_holo_entertainment = {
 	tier = 0
 	
 	potential = {
+		always = no
 		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	
@@ -5348,7 +5249,7 @@ tech_hyper_entertainment_forum = {
 	area = society
 	category = { statecraft }
 	tier = 3
-	prerequisites = { "tech_holo_entertainment" }
+	prerequisites = { }
 	weight = @tier3weight1
 	
 	potential = {
@@ -5424,8 +5325,8 @@ tech_heritage_site = {
 	
 	potential = {
 		NOR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 			has_valid_civic = civic_machine_servitor
 		}
 	}
@@ -5436,14 +5337,6 @@ tech_heritage_site = {
 			research_leader = {
 				area = society
 				has_trait = "leader_trait_expertise_statecraft"
-			}
-		}
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_rare_crystals
-				has_technology = tech_rare_crystals
-				has_country_flag = has_market_access
 			}
 		}
 		modifier = {
@@ -5473,8 +5366,8 @@ tech_hypercomms_forum = {
 		
 	potential = {
 		NOR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 			has_valid_civic = civic_machine_servitor
 		}
 	}
@@ -5514,8 +5407,8 @@ tech_autocurating_vault = {
 	
 	potential = {
 		NOR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 			has_valid_civic = civic_machine_servitor
 		}
 	}
@@ -5559,20 +5452,12 @@ tech_holographic_rituals = {
 	
 	potential = {
 		OR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 		}
 	}
 	
 	weight_modifier = {
-		modifier = {
-			factor = 0
-			NOR = {
-				has_technology = tech_mine_rare_crystals
-				has_technology = tech_rare_crystals
-				has_country_flag = has_market_access
-			}
-		}
 		modifier = {
 			factor = 1.25
 			research_leader = {
@@ -5607,8 +5492,8 @@ tech_consecration_fields = {
 	
 	potential = {
 		OR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 		}
 	}
 	
@@ -5647,8 +5532,8 @@ tech_transcendent_faith = {
 	
 	potential = {
 		OR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist		
+			has_valid_civic = civic_exalted_priesthood
+			has_valid_civic = civic_gospel_of_the_masses
 		}
 	}
 	
@@ -6034,6 +5919,7 @@ tech_slave_colonies = {
 	category = { statecraft }
 	prerequisites = { "tech_neural_implants" }
 	weight = @tier3weight1
+	is_rare = yes
 
 	potential = {
 		is_gestalt = no

@@ -1,0 +1,581 @@
+district_housing = {
+	base_buildtime = @retile_city_build_time
+	icon = district_housing
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_housing < 2
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		planet_housing_add = 5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_environmentalist }
+		}
+		planet_housing_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_tradition = tr_domination_colonial_viceroys }
+		}
+		planet_housing_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			always = no
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			planet_housing_add = 2
+		}
+	}
+	
+	ai_weight = {
+		weight = 50
+	}
+}
+
+district_clerks = {
+	base_buildtime = @retile_city_build_time
+	icon = district_clerk
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					owner = { has_authority = auth_corporate }
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		job_clerk_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_clerk_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+district_engineers = {
+	base_buildtime = @retile_city_build_time
+	icon = district_engineer
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_alloys }
+					owner = { has_country_flag = retile_ai_needs_consumer_goods }
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		job_foundry_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_foundry_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+district_scholars = {
+	base_buildtime = @retile_city_build_time
+	icon = district_scholar
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					owner = { has_country_flag = retile_ai_needs_science }
+				}
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		job_researcher_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_researcher_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+district_bureaucrats = {
+	base_buildtime = @retile_city_build_time
+	icon = district_government
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				owner = { has_country_flag = retile_ai_needs_admin }
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {			### Bureaucrat Jobs
+		job_bureaucrat_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_bureaucrat_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			weight = 2
+			owner = { has_country_flag = retile_ai_needs_admin_crisis }
+		}
+	}
+}
+
+district_soldiers = {
+	base_buildtime = @retile_city_build_time
+	icon = district_soldier
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				OR = {
+					num_districts = { type = district_soldiers value < 3 }
+					has_planet_flag = retile_ai_fortress
+				}
+				owner = { retile_ai_has_resource_crisis = no }
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		job_soldier_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_soldier_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			weight = 1
+			OR = {
+				owner = { used_naval_capacity_percent >= 1.0 }
+				num_districts = { type = district_soldiers value < 1 }
+			}
+		}
+	}
+}
+
+district_enforcers = {
+	base_buildtime = @retile_city_build_time
+	icon = district_enforcer
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				planet_crime > 33
+				OR = {
+					free_jobs < 1
+					num_districts = { type = district_enforcers value < 1 }
+				}
+				owner = { retile_ai_has_resource_crisis = no }
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		job_enforcer_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			NOT = { owner = { has_policy_flag = criminal_military_police } }
+		}
+		modifier = {
+			job_enforcer_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		job_enforcer_add = -1
+		job_soldier_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		modifier = {
+			job_soldier_add = 1
+		}
+	}	
+	
+	ai_weight = {
+		weight = 2
+		modifier = {
+			weight = 4
+			planet_crime > 66
+		}
+		modifier = {
+			weight = 6
+			planet_crime > 99
+		}
+	}
+}
+
+district_custodians = {
+	base_buildtime = @retile_city_build_time
+	icon = district_custodian
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = {
+		exists = from
+		from = { is_gestalt = no }
+	}
+
+	potential = {
+		exists = owner
+		owner = { is_gestalt = no }
+		NOR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 1
+				free_amenities > 300
+				owner = { retile_ai_has_resource_crisis = no }
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		job_custodian_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_planet_class = pc_city
+			exists = owner
+			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_custodian_add = 1
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			weight = 2
+			free_amenities > 500
+		}
+		modifier = {
+			weight = 3
+			free_amenities > 700
+		}
+		modifier = {
+			weight = 4
+			free_amenities > 900
+		}
+		modifier = {
+			weight = 5
+			free_amenities > 1100
+		}
+		modifier = {
+			weight = 6
+			free_amenities > 1300
+		}
+		modifier = {
+			weight = 7
+			free_amenities > 1500
+		}
+	}
+}

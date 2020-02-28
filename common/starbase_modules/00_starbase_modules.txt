@@ -75,7 +75,10 @@ mining_terminal = {
 			solar_system = {
 				any_system_planet = {
 					has_mining_station = yes
-					has_resource = { type = minerals amount > 0 }
+					OR = {
+						has_resource = { type = minerals amount > 0 }
+						has_resource = { type = alloys amount > 0 }
+					}
 				}
 			}
 		}
@@ -104,50 +107,6 @@ mining_terminal = {
 				}
 			}
 		}
-	}
-}
-
-foundry_terminal = {
-	icon = "GFX_starbase_foundry_terminal"
-	section = "REFINERY_STARBASE_SECTION"
-	construction_days = 360
-	initial = no
-	
-	potential = {
-		OR = { 
-			has_starbase_building = default_network
-			has_starbase_building = courier_network
-			has_starbase_building = patrol_network
-		}
-	}
-	
-	possible = {
-		custom_tooltip = {
-			fail_text = "requires_alloy_station"
-			solar_system = {
-				any_system_planet = {
-					has_mining_station = yes
-					has_resource = { type = alloys amount > 0 }
-				}
-			}
-		}
-	}
-	
-	resources = {
-		category = starbase_modules
-		cost = {
-			alloys = 150
-		}
-		upkeep = {
-			energy = 2
-		}
-	}
-	
-	custom_tooltip = foundry_terminal_tooltip
-	
-	ai_build_at_chokepoint = no
-	ai_weight = {
-		weight = 15
 	}
 }
 
@@ -376,7 +335,7 @@ gun_battery = {
 	resources = {
 		category = starbase_modules
 		cost = {
-			alloys = 50
+			alloys = 150
 		}
 
 		upkeep = {
@@ -385,9 +344,10 @@ gun_battery = {
 	}
 
 	station_modifier = {
-		ship_hull_mult = 0.10
+		ship_armor_damage_mult = 0.10
+		ship_shield_damage_mult = 0.10
 		ship_armor_mult = 0.10
-		# starbase_trade_protection_range_add = 1
+		ship_shield_mult = 0.10
 		starbase_trade_protection_add = 4
 	}
 	
@@ -433,7 +393,7 @@ missile_battery = {
 	resources = {
 		category = starbase_modules
 		cost = {
-			alloys = 50
+			alloys = 150
 		}
 
 		upkeep = {
@@ -442,9 +402,10 @@ missile_battery = {
 	}
 
 	station_modifier = {
-		ship_hull_mult = 0.10
+		ship_hull_damage_mult = 0.10
+		ship_accuracy_mult = 0.10
 		ship_armor_mult = 0.10
-		# starbase_trade_protection_range_add = 1
+		ship_shield_mult = 0.10
 		starbase_trade_protection_add = 4
 	}
 
@@ -488,7 +449,7 @@ hangar_bay = {
 	resources = {
 		category = starbase_modules
 		cost = {
-			alloys = 50
+			alloys = 150
 		}
 
 		upkeep = {
@@ -497,9 +458,10 @@ hangar_bay = {
 	}
 
 	station_modifier = {
-		ship_hull_mult = 0.10
+		ship_weapon_range_mult = 0.10
+		ship_tracking_mult = 0.10
 		ship_armor_mult = 0.10
-		# starbase_trade_protection_range_add = 1
+		ship_shield_mult = 0.10
 		starbase_trade_protection_add = 8
 	}
 

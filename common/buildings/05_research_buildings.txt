@@ -19,31 +19,26 @@ building_research_lab_1 = {
 		NOT = { owner = { has_tradition = tr_harmony_bulwark_of_harmony } }
 	}
 	
-	allow = {
-		retile_urban = yes
-		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_research_arcology
-		} } }
-	}
-	
 	convert_to = {
 		building_metascience_lab_1
 	}
 
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			has_modifier = penal_colony
 			owner = { has_tradition = tr_harmony_bulwark_of_harmony }
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
 	}
 
@@ -53,13 +48,7 @@ building_research_lab_1 = {
 			minerals = @cost_low
 		}
 		upkeep = {
-			minerals = 0
-			energy = 10
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -5
-			consumer_goods = 1
+			energy = 1
 		}
 	}
 	
@@ -74,26 +63,6 @@ building_research_lab_1 = {
 	country_modifier = {
 		country_resource_max_add = 1000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_custodian_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_maintenance_drone_add = 1
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -103,71 +72,7 @@ building_research_lab_1 = {
 	}
 
 	ai_weight = {
-		weight = 200
-		
-		modifier = {	# Safe to advance our empire?
-			weight = 300
-			retile_advanced_economy = yes
-		}
-		modifier = {
-			weight = 150000
-			is_capital = yes
-			NAND = {
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-		modifier = {	# behind in tech!!!
-			weight = 100
-			owner = {
-				any_neighbor_country = {
-					is_country_type = default
-					prev = {
-						relative_power = {
-							who = prev
-							category = technology 
-							value > inferior
-						}
-						OR = {
-							NOT = { relative_power = {
-								who = prev 
-								category = all
-								value = overwhelming
-							} }
-							NOT = { relative_power = {
-								who = prev 
-								category = all
-								value < equivalent
-							} }
-						}
-					}
-				}
-			}
-		}
-		modifier = {	# Ministry!!!
-			factor = 5
-			OR = {
-				has_building = building_institute
-				#has_building = building_supercomputer
-			}
-		}
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-	
-	ai_resource_production = {
-		physics_research = 1
-		society_research = 1
-		engineering_research = 1
-		trigger = {
-			always = yes
-		}
+		weight = 1
 	}
 }
 
@@ -177,28 +82,23 @@ building_research_lab_2 = {
 	category = research
 	can_be_disabled = no
 
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			has_modifier = penal_colony
 			owner = { has_tradition = tr_harmony_bulwark_of_harmony }
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
-	}
-	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_med }
-		} } }
 	}
 	
 	convert_to = {
@@ -209,16 +109,9 @@ building_research_lab_2 = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_med
-			rare_crystals = @cost_med
 		}
 		upkeep = {
-			minerals = 0
-			energy = 25
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -15
-			consumer_goods = 2
+			energy = 2
 		}
 	}
 	
@@ -233,26 +126,6 @@ building_research_lab_2 = {
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 2
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_maintenance_drone_add = 2
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -261,25 +134,8 @@ building_research_lab_2 = {
 		text = retile_lab_2_effect
 	}
 	
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-	
-	ai_resource_production = {
-		physics_research = 1
-		society_research = 1
-		engineering_research = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
@@ -289,28 +145,23 @@ building_research_lab_3 = {
 	category = research
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
+	}
+
 	destroy_trigger = {
 		OR = {
-			retile_urban = no
 			has_modifier = slave_colony
 			has_modifier = resort_colony
 			has_modifier = penal_colony
 			owner = { has_tradition = tr_harmony_bulwark_of_harmony }
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
 		}
-	}
-	
-	allow = {
-		#retile_ready = yes
-		always = yes
-		hidden_trigger = { owner = { OR = {
-			is_ai = no
-			has_resource = { type = rare_crystals amount > @cost_high }
-		} } }
 	}
 	
 	convert_to = {
@@ -321,16 +172,9 @@ building_research_lab_3 = {
 		category = planet_buildings
 		cost = {
 			minerals = @cost_high
-			rare_crystals = @cost_high
 		}
 		upkeep = {
-			minerals = 0
-			energy = 50
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -25
-			consumer_goods = 3
+			energy = 3
 		}
 	}
 	
@@ -341,26 +185,6 @@ building_research_lab_3 = {
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 3
-			job_custodian_add = 3
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 3
-			job_maintenance_drone_add = 3
-		}
-	}
 	
 	triggered_desc = {
 		trigger = { 
@@ -369,65 +193,47 @@ building_research_lab_3 = {
 		text = retile_lab_3_effect
 	}
 	
-	ai_weight = {	# always upgrade
-		weight = 100000
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
-		}
-	}
-	
-	ai_resource_production = {
-		physics_research = 1
-		society_research = 1
-		engineering_research = 1
-		trigger = {
-			always = yes
-		}
+	ai_weight = {
+		weight = 1
 	}
 }
 
-building_institute = {
-	base_buildtime = 480
+# Metascience
+building_metascience_lab_1 = {
+	base_buildtime = 360
 	base_cap_amount = 1
 	category = research
 	can_be_disabled = no
-
+	
 	potential = {
 		NOT = { has_modifier = resort_colony }	
 		NOT = { has_modifier = slave_colony }
 		NOT = { has_modifier = penal_colony }
+		owner = { has_tradition = tr_harmony_bulwark_of_harmony }
+	}
+	
+	convert_to = {
+		building_research_lab_1
 	}
 
 	allow = {
-		retile_urban = yes
-		#retile_ready = yes
-		hidden_trigger = { OR = { owner = { is_ai = no } OR = {
-			NOT = { is_planet_class = pc_city }
-			has_planet_flag = ai_research_arcology
-		} } }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
 	}
 
 	destroy_trigger = {
 		OR = {
-			has_modifier = resort_colony
 			has_modifier = slave_colony
+			has_modifier = resort_colony
 			has_modifier = penal_colony
-			AND = {
-				owner = { is_ai = yes }
-				is_planet_class = pc_city
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
+			NOT = { owner = { has_tradition = tr_harmony_bulwark_of_harmony } }
 		}
 	}
-	
-	#convert_to = {
-	#	building_supercomputer
-	#}
 
 	resources = {
 		category = planet_buildings
@@ -435,82 +241,173 @@ building_institute = {
 			minerals = @cost_low
 		}
 		upkeep = {
-			minerals = 0
-			energy = 10
-		}
-		upkeep = {
-			trigger = { owner = { is_hive_empire = yes } }
-			energy = -5
-			consumer_goods = 1
+			energy = 1
 		}
 	}
 	
-	planet_modifier = {
-		planet_researchers_produces_mult = 0.25
+	upgrades = {
+		"building_metascience_lab_2"
 	}
 	
 	prerequisites = {
-		"tech_global_research_initiative"
+		"tech_basic_science_lab_1"
 	}
 	
+	show_tech_unlock_if = {
+		has_tradition = tr_harmony_bulwark_of_harmony
+	}
+	
+	planet_modifier = {
+		pop_government_ethic_attraction = 0.15
+	}
 	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_custodian_add = 2
-			#job_head_researcher_add = 1
-		}
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 2
-			job_maintenance_drone_add = 2
-			#job_head_researcher_add = 1
-		}
+		country_resource_max_add = 1000
 	}
 	
 	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_research_institute_effect
+		trigger = { 
+			exists = owner
+		}
+		text = retile_metascience_lab_1_effect
 	}
-	
-	ai_weight = {	# only built on goods or alloys worlds
-		weight = 0
-		
-		modifier = {	# really good, but only build if we are already doing this...
-			weight = 10000
-			OR = {
-				has_building = building_research_lab_1
-				has_building = building_research_lab_2
-				has_building = building_research_lab_3
+
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_metascience_lab_2 = {
+	base_buildtime = 480
+	can_build = no
+	category = research
+	can_be_disabled = no
+
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
 			}
 		}
-		modifier = {	# consumer goods collapse!!!
-			factor = -1
-			owner = { has_monthly_income = { resource = consumer_goods value < -25 } }
-			OR = {
-				NOT = { is_planet_class = pc_city }
-				NOT = { has_planet_flag = ai_research_arcology }
-			}
+	}
+
+	destroy_trigger = {
+		OR = {
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			NOT = { owner = { has_tradition = tr_harmony_bulwark_of_harmony } }
 		}
 	}
 	
-	ai_resource_production = {
-		physics_research = 1
-		society_research = 1
-		engineering_research = 1
-		trigger = {
-			always = yes
+	convert_to = {
+		building_research_lab_2
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
 		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	upgrades = {
+		"building_metascience_lab_3"
+	}
+	
+	prerequisites = {
+		"tech_basic_science_lab_2"
+	}
+	
+	show_tech_unlock_if = {
+		has_tradition = tr_harmony_bulwark_of_harmony
+	}
+	
+	planet_modifier = {
+		pop_government_ethic_attraction = 0.15
+	}
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_metascience_lab_2_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_metascience_lab_3 = {
+	base_buildtime = 600
+	can_build = no
+	category = research
+	can_be_disabled = no
+	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = { has_country_flag = retile_ai_needs_science }
+				any_owned_pop = { has_job = scholar }
+			}
+		}
+	}
+
+	destroy_trigger = {
+		OR = {
+			has_modifier = slave_colony
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+			NOT = { owner = { has_tradition = tr_harmony_bulwark_of_harmony } }
+		}
+	}
+	
+	convert_to = {
+		building_research_lab_3
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	prerequisites = {
+		"tech_basic_science_lab_3"
+	}
+	
+	show_tech_unlock_if = {
+		has_tradition = tr_harmony_bulwark_of_harmony
+	}
+	
+	planet_modifier = {
+		pop_government_ethic_attraction = 0.15
+	}
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+		}
+		text = retile_metascience_lab_3_effect
+	}
+	
+	ai_weight = {
+		weight = 1
 	}
 }

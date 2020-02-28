@@ -1,0 +1,106 @@
+#
+# This file is to store the upkeep / production of objects that are not otherwise scripted
+# right now it ignores the "cost" part of it
+# subjects upkeep/production is not stored here, but in the subject type
+#
+
+once = {
+	# this is applied only once per country
+	federation = {
+		trigger = {
+			has_federation = yes
+		}
+		resources = {
+			category = federation
+			upkeep = {
+				influence = 2
+			}
+		}
+	}
+}
+
+per_relation = {
+	# this is applied for each such relation with another country
+	# scope: this = current country, FROM : other country in the relation
+	rivalry = {
+		trigger = {
+			exists = FROM
+			has_rival = FROM
+		}
+		resources = {
+			category = rivalries
+			produces = {
+				influence = 0.5
+			}
+		}
+	}
+
+	non_aggression_pact = {
+		trigger = {
+			exists = FROM
+			has_non_aggression_pact = FROM
+		}
+		resources = {
+			category = non_aggression_pacts
+			upkeep = {
+				influence = 0.25
+			}
+		}
+	}
+	
+	research_agreement = {
+		trigger = {
+			exists = FROM
+			has_research_agreement = FROM
+		}
+
+		resources = {
+			category = research_agreements
+			upkeep = {
+				influence = 0.25
+			}
+		}
+	}	
+
+	commercial_pact = {
+		trigger = {
+			exists = FROM
+			has_commercial_pact = FROM
+			NOT = { has_ascension_perk = ap_universal_transactions }
+		}
+
+		resources = {
+			category = commercial_pacts
+			upkeep = {
+				influence = 0.25
+			}
+		}
+	}
+
+	defensive_pact = {
+		trigger = {
+			exists = FROM
+			has_defensive_pact = FROM
+		}
+
+		resources = {
+			category = defensive_pacts
+			upkeep = {
+				influence = 1
+			}
+		}
+	}
+
+	guarantee = {
+		trigger = {
+			exists = FROM
+			is_guaranteeing = FROM
+		}
+		resources = {
+			category = guarantees
+			upkeep = {
+				influence = 0.5
+			}
+		}
+	}
+}

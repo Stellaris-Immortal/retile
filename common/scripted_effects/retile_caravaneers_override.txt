@@ -170,8 +170,14 @@ cara_generate_deal2 = {
 				modifier = {
 					mult = 100
 					OR = {
-						NOT = { has_deposit = d_geothermal_vent }
-						NOT = { has_deposit = d_underwater_vent }
+						NOR = {
+							has_deposit = d_geothermal_vent
+							has_deposit = d_geothermal_vent_active
+						}
+						NOR = {
+							has_deposit = d_underwater_vent
+							has_deposit = d_underwater_vent_active
+						}
 						OR = {
 							is_planet_class = pc_arctic
 							is_planet_class = pc_tundra
@@ -179,7 +185,10 @@ cara_generate_deal2 = {
 							is_planet_class = pc_desert
 							is_planet_class = pc_arid
 						}
-						num_districts = { type = district_generator value < 3 }
+						count_pops = {
+							limit = { has_job = technician }
+							count < 3
+						}
 					}
 				}
 			}
@@ -778,14 +787,16 @@ cara_generate_deal3 = {
 		limit = { has_country_flag = fleet3deal8 }
 		random_owned_planet = {
 			limit = {
-				has_district = district_generator
+				any_deposit = {
+					has_deposit_category = deposit_cat_energy_active
+				}
 			}
 			weights = {
 				base = 1
 				modifier = { #Prio planets w many techies
 					mult = 100
 					count_pops = {
-						count > 5
+						count > 3
 						limit = {
 							has_job = technician_drone
 						}
