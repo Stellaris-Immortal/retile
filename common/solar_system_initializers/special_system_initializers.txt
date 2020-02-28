@@ -250,22 +250,45 @@ special_init_03 = {
 						}
 					}
 					while = {
-						count = 28
-						create_pop = {
-							species = last_created
-						}					
+						count = 8
+						create_pop = { species = owner_main_species }
 					}
-					add_building = building_primitive_farm
-					add_building = building_primitive_factory
-					add_building = building_primitive_mine
-					add_building = building_primitive_power_plant
 					add_building = building_primitive_capital
-					add_building = building_urban_dwellings
-	
-					last_created_country = {
-						capital_scope = { set_name = "Sol III" }
-					}			
-				}
+					add_building = building_primitive_factory
+					add_district = district_engineers
+					add_district = district_scholars
+					add_district = district_housing
+					add_district = district_housing
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_food }
+						}
+						retile_exploit_food = yes
+					} ELSE = {
+						add_deposit = retile_module_farm_active
+					}
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_minerals }
+						}
+						retile_exploit_minerals = yes
+					} ELSE = {
+						add_deposit = retile_module_mine_active
+					}
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_energy }
+						}
+						retile_exploit_energy = yes
+					} ELSE = {
+						add_deposit = retile_module_generator_active
+					}
+					remove_building = building_colony_shelter
+		
+						last_created_country = {
+							capital_scope = { set_name = "Sol III" }
+						}			
+					}
 				# Industrial Age
 				25 = {
 					create_species = {
@@ -322,17 +345,21 @@ special_init_03 = {
 					create_primitive_blockers = yes
 	
 					while = {
-						count = 24
-						create_pop = {
-							species = last_created
-						}					
+						count = 5
+						create_pop = { species = owner_main_species }
 					}
-					add_building = building_primitive_farm
-					add_building = building_primitive_factory
-					add_building = building_primitive_mine
-					add_building = building_primitive_power_plant
+					add_building = building_urban_dwellings # primitive_city
 					add_building = building_primitive_capital
-					add_building = building_urban_dwellings
+					add_district = district_housing
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_food }
+						}
+						retile_exploit_food = yes
+					} ELSE = {
+						add_deposit = retile_module_farm_active
+					}
+					remove_building = building_colony_shelter
 					
 					create_army = {
 						name = "NAME_German_Wehrmacht"
@@ -425,15 +452,14 @@ special_init_03 = {
 					set_owner = last_created_country		
 										
 					while = {
-						count = 10
-						create_pop = {
-							species = last_created
-						}					
+						count = 3
+						create_pop = { species = owner_main_species }
 					}
+					add_building = building_primitive_farm
 					add_building = building_primitive_dwellings
-					add_building = building_primitive_dwellings
-					add_building = building_stone_palace			
-					
+					add_building = building_stone_palace
+					remove_building = building_colony_shelter
+						
 					while = {
 						count = 3
 						create_army = {
@@ -1939,28 +1965,25 @@ com_sol_system = {
 				}
 			}
 			while = {
-				count = 26
+				count = 13
 				create_pop = {
 					species = event_target:human_species
 				}
 	    	}
 			set_owner = last_created_country
 			set_capital = yes
-			add_district = district_city
-			add_district = district_city
-			add_district = district_city
-			add_district = district_city
-			add_district = district_farming
-			add_district = district_farming
-			add_district = district_farming
-			add_district = district_mining
-			add_district = district_mining
-			add_district = district_generator
-			add_district = district_generator
-			add_building = building_capital
-			add_building = building_research_lab_1
-			add_building = building_foundry_1
-			add_building = building_factory_1
+			
+			add_district = district_housing
+			add_district = district_housing
+			add_district = district_engineers
+			add_district = district_scholars
+			add_district = district_clerks
+			
+			retile_exploit_energy = yes
+			retile_exploit_minerals = yes
+			retile_exploit_food = yes
+			
+			add_building = building_system_capital
 		}
 		
 		moon = {

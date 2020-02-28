@@ -648,61 +648,38 @@ planet_event = {
 	immediate = {
 		if = {
 			limit = { is_capital = yes }	# +6 jobs total
-			add_district = district_generator	# +1 = 1
+			retile_exploit_energy = yes
+			retile_exploit_minerals = yes
 			
-			if = {	# +2 = 3
-				limit = { owner = { has_authority = auth_machine_intelligence } }
-				#add_district = district_nexus
-			}
-			else_if = {
-				limit = { owner = { has_authority = auth_hive_mind } }
-				add_district = district_hive
-			}
-			else = {
-				add_district = district_city
-			}				
+			add_district = district_engineers
+			add_district = district_scholars
+			add_district = district_clerks
+			add_district = district_housing
+			add_district = district_housing
 			
 			if = {	# +1 = 4
 				limit = { 
 					owner = { country_uses_food = yes }
 				}
-				add_district = district_farming
-			}
-			if = {
-				limit = { 
-					owner = { country_uses_food = no }
-				}
-				add_district = district_generator
-			}
-			
-			
-			if = {	# +2 = 6
-				limit = { owner = { is_gestalt = no } }
-				add_building = building_research_lab_1
-				add_building = building_trade_1
-			}
-			else = {
-				#add_building = building_maintenance_depot
+				retile_exploit_food = yes
+			} else = {
+				retile_exploit_energy = yes
 			}
 		}
 		else = {	# +5 jobs total
-			add_district = district_generator # 1
-			add_district = district_mining	# +1 = 2
+			retile_exploit_energy = yes
+			retile_exploit_minerals = yes
 			
-			if = {	# +3 = 5
-				limit = { owner = { has_authority = auth_machine_intelligence } }
-				#add_district = district_nexus
-				add_district = district_generator			
+			add_district = district_housing
+			
+			if = {	# +1 = 4
+				limit = { 
+					owner = { country_uses_food = yes }
+				}
+				retile_exploit_food = yes
+			} else = {
+				retile_exploit_energy = yes
 			}
-			else_if = {
-				limit = { owner = { has_authority = auth_hive_mind } }
-				add_district = district_hive
-				add_district = district_farming
-			}
-			else = {
-				add_district = district_city
-				add_district = district_farming
-			}			
 		}
 	}
 }
