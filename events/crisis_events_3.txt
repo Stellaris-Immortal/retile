@@ -2695,9 +2695,8 @@ country_event = {
 			has_country_flag = machine_power_failure
 		}
 		any_owned_planet = {
-			num_districts = {
-				type = district_generator
-				value > 3
+			any_deposit = {
+				has_deposit_category = deposit_cat_energy_active
 			}
 		}
 	}
@@ -2708,9 +2707,8 @@ country_event = {
 			count = 3
 			random_owned_planet = {
 				limit = {
-					num_districts = {
-						type = district_generator
-						value > 3
+					any_deposit = {
+						has_deposit_category = deposit_cat_energy_active
 					}
 					NOT = { has_modifier = contingency_sabotage }
 				}
