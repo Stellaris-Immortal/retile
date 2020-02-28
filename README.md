@@ -17,8 +17,20 @@ Check out the issues page on [Github](https://github.com/gebnar/retile/issues) a
  
  ## Installation
 
- You can get SI from our [workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=1891758612).
+You can get SI from our [workshop page](https://steamcommunity.com/sharedfiles/filedetails/?id=1891758612).
  
- You can also install by cloning the repository into your mod folder (C:\Users\<Your Username>\Paradox Interactive\Stellaris\mods, by default on Windows). After cloning the repository, move the retile.mod file from the retile folder up into the mods folder.
+You can also install by downloading this repository:
+ 
+ - Choose the branch you want. We recommend you use the Staging branch, for the latest "stable" content.
+ - Clone the branch into your local mod folder (see below), or download a zip and extract it there.
+ - Rename the downloaded folder to "retile" if it is named anything else (such as "retile-staging")
+ - Move the "retile.mod" file from the "retile" folder out into the mod folder.
+ - When you're finished, you should see the following paths:
+   - /mod/retile/readme.md
+   - /mod/retile.mod
+ - The mod should appear in your launcher. You may also need to unsubscribe from the workshop version of the mod for this to work properly.
 
+Default Mod Folder Locations:
  
+ - On Windows - C:/Users/{YOUR_USER}/Documents/Paradox Interactive/Stellaris/mod
+ - On Linux - /home/{YOUR_USER}/.local/share/Paradox Interactive/Stellaris/mod

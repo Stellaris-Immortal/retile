@@ -288,7 +288,11 @@ decision_retile_deposit_bioreactor = {
 	allow = {
 		free_district_slots > 0
 		hidden_trigger = {
-			retile_ready = yes
+			exists = owner
+			OR = {
+				owner = { is_ai = no }
+				country_uses_food = no
+			}
 		}
 	}
 	
@@ -358,9 +362,6 @@ decision_retile_deposit_assembly = {
 	
 	allow = {
 		free_district_slots > 0
-		hidden_trigger = {
-			retile_ready = yes
-		}
 	}
 
 	effect = {
@@ -418,7 +419,8 @@ decision_retile_deposit_slave = {
 		NOT = { has_modifier = resort_colony }
 		owner = { has_policy_flag = slavery_allowed }
 		hidden_trigger = {
-			retile_ready = yes
+			exists = owner
+			owner = { is_ai = no }
 		}
 	}
 
