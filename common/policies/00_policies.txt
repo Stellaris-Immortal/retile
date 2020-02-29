@@ -339,7 +339,7 @@ orbital_bombardment = {
 	option = {
 		name = "orbital_bombardment_selective"
 		
-		potential = { has_valid_civic = civic_fanatic_purifiers }
+		potential = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
 		
 		policy_flags = { orbital_bombardment_selective }
 		
@@ -1454,7 +1454,10 @@ xenodiplomacy = {
 				has_authority = auth_democratic
 				has_authority = auth_oligarchic
 			}
-			NOT = { has_authority = auth_corporate }
+			NOT = { 
+				has_authority = auth_corporate
+				has_valid_civic = civic_byzantine_bureaucracy
+			}
 		}
 		
 		policy_flags = { xenodiplomacy_assembly }
@@ -1485,7 +1488,10 @@ xenodiplomacy = {
 				has_authority = auth_dictatorial
 				has_authority = auth_imperial
 			}
-			NOT = { has_authority = auth_corporate }
+			NOT = { 
+				has_authority = auth_corporate
+				has_valid_civic = civic_byzantine_bureaucracy
+			}
 		}
 		
 		policy_flags = { xenodiplomacy_magistrate }
@@ -1569,6 +1575,7 @@ xenodiplomacy = {
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_machine_terminator
 				has_valid_civic = civic_inwards_perfection
+				has_valid_civic = civic_byzantine_bureaucracy
 				is_criminal_syndicate = yes
 			}
 		}
@@ -1630,6 +1637,7 @@ xenodiplomacy = {
 				has_valid_civic = civic_anarchist
 				has_valid_civic = civic_pacifist
 				has_valid_civic = civic_inwards_perfection
+				has_valid_civic = civic_byzantine_bureaucracy
 			}
 			NOT = { has_authority = auth_corporate }
 		}
