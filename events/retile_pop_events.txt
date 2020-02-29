@@ -156,8 +156,8 @@ planet_event = {
 		is_occupied_flag = no
 		OR = {
 			free_housing < 0
-			free_jobs < 0
-			#any_owned_pop = { is_unemployed = yes }
+			#free_jobs < 0	# doesn't work... :(
+			any_owned_pop = { is_unemployed = yes }
 		}
 		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
 		NOT = { has_modifier = penal_colony }
@@ -190,7 +190,10 @@ planet_event = {
 			limit = {
 				exists = owner
 				owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
-				free_housing < 1
+				OR = {
+					free_housing < 1
+					free_jobs < 1
+				}
 				NOT = { has_modifier = penal_colony }
 				is_occupied_flag = no
 				has_orbital_bombardment = no
