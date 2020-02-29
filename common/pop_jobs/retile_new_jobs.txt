@@ -48,6 +48,20 @@ bureaucrat = {
 	triggered_country_modifier = {
 		potential = { 
 			exists = owner
+			planet = { has_building = building_ministry }
+		}
+		modifier = {
+			pop_factions_produces_mult = 0.02
+			pop_government_ethic_attraction = 0.02
+			country_war_exhaustion_mult = -0.01
+			country_trust_growth = 0.01
+			country_trust_cap_add = 1
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			exists = owner
 			owner = { has_policy_flag = xenodiplomacy_assembly }
 		}
 		modifier = { 
