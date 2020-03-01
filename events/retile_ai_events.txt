@@ -272,6 +272,7 @@ country_event = {
 # Scrub resource buildings if the planet has no jobs of the appropriate type
 
 # Scrub excess energy deposits
+# also exploits energy deposits if needed.
 country_event = {
 	id = retile_ai.201
 	hide_window = yes
@@ -279,7 +280,7 @@ country_event = {
 	trigger = {
 		is_ai = yes
 		is_country_type = default
-		has_monthly_income = { resource = energy value > @retile_ai_energy_income_excess }
+		#has_monthly_income = { resource = energy value > @retile_ai_energy_income_excess }
 	}
 	
 	mean_time_to_happen = {
@@ -287,17 +288,50 @@ country_event = {
 	}
 
 	immediate = {
-		random_owned_planet = {
-			limit = { any_deposit = { has_deposit_category = deposit_cat_energy_active } }
-			random_deposit = {
-				limit = { has_deposit_category = deposit_cat_energy_active }
-				clear_blocker = yes
+		if = {
+			limit = {
+				has_monthly_income = { resource = energy value > @retile_ai_energy_income_excess }
+			}
+			random_owned_planet = {
+				limit = { any_deposit = { has_deposit_category = deposit_cat_energy_active } }
+				random_deposit = {
+					limit = { has_deposit_category = deposit_cat_energy_active }
+					clear_blocker = yes
+				}
+			}
+		} else_if = {
+			limit = {
+				OR = {
+					has_monthly_income = { resource = energy value < @retile_ai_energy_income_low }
+					AND = {
+						always = no
+						has_monthly_income = { resource = energy value < @retile_ai_energy_income_high }
+						has_monthly_income = { resource = minerals value > @retile_ai_minerals_income_low }
+						OR = {
+							country_uses_food = no
+							has_monthly_income = { resource = food value > @retile_ai_food_income_low }
+						}
+						has_monthly_income = { resource = alloys value > @retile_ai_alloys_income_low }
+						has_monthly_income = { resource = consumer_goods value > @retile_ai_consumer_goods_income_low }
+					}
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					any_deposit = { has_deposit_category = deposit_cat_energy }
+					free_jobs < 4
+				}
+				random_deposit = {
+					limit = { has_deposit_category = deposit_cat_energy }
+					clear_blocker = yes
+				}
 			}
 		}
 	}
 }
 
 # Scrub excess minerals deposits
+# also exploits minerals deposits if needed.
 country_event = {
 	id = retile_ai.202
 	hide_window = yes
@@ -305,7 +339,7 @@ country_event = {
 	trigger = {
 		is_ai = yes
 		is_country_type = default
-		has_monthly_income = { resource = minerals value > @retile_ai_minerals_income_excess }
+		#has_monthly_income = { resource = minerals value > @retile_ai_minerals_income_excess }
 	}
 	
 	mean_time_to_happen = {
@@ -313,11 +347,43 @@ country_event = {
 	}
 
 	immediate = {
-		random_owned_planet = {
-			limit = { any_deposit = { has_deposit_category = deposit_cat_minerals_active } }
-			random_deposit = {
-				limit = { has_deposit_category = deposit_cat_minerals_active }
-				clear_blocker = yes
+		if = {
+			limit = {
+				has_monthly_income = { resource = minerals value > @retile_ai_minerals_income_excess }
+			}
+			random_owned_planet = {
+				limit = { any_deposit = { has_deposit_category = deposit_cat_minerals_active } }
+				random_deposit = {
+					limit = { has_deposit_category = deposit_cat_minerals_active }
+					clear_blocker = yes
+				}
+			}
+		} else_if = {
+			limit = {
+				OR = {
+					has_monthly_income = { resource = minerals value < @retile_ai_minerals_income_low }
+					AND = {
+						always = no
+						has_monthly_income = { resource = minerals value < @retile_ai_minerals_income_high }
+						has_monthly_income = { resource = energy value > @retile_ai_energy_income_low }
+						OR = {
+							country_uses_food = no
+							has_monthly_income = { resource = food value > @retile_ai_food_income_low }
+						}
+						has_monthly_income = { resource = alloys value > @retile_ai_alloys_income_low }
+						has_monthly_income = { resource = consumer_goods value > @retile_ai_consumer_goods_income_low }
+					}
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					any_deposit = { has_deposit_category = deposit_cat_minerals }
+					free_jobs < 4
+				}
+				random_deposit = {
+					limit = { has_deposit_category = deposit_cat_minerals }
+					clear_blocker = yes
+				}
 			}
 		}
 	}
@@ -331,7 +397,7 @@ country_event = {
 	trigger = {
 		is_ai = yes
 		is_country_type = default
-		has_monthly_income = { resource = food value > @retile_ai_food_income_excess }
+		#has_monthly_income = { resource = food value > @retile_ai_food_income_excess }
 	}
 	
 	mean_time_to_happen = {
@@ -339,11 +405,43 @@ country_event = {
 	}
 
 	immediate = {
-		random_owned_planet = {
-			limit = { any_deposit = { has_deposit_category = deposit_cat_food_active } }
-			random_deposit = {
-				limit = { has_deposit_category = deposit_cat_food_active }
-				clear_blocker = yes
+		if = {
+			limit = {
+				NOT = { is_plantoid_empire = yes }
+				has_monthly_income = { resource = food value > @retile_ai_food_income_excess }
+			}
+			random_owned_planet = {
+				limit = { any_deposit = { has_deposit_category = deposit_cat_food_active } }
+				random_deposit = {
+					limit = { has_deposit_category = deposit_cat_food_active }
+					clear_blocker = yes
+				}
+			}
+		} else_if = {
+			limit = {
+				OR = {
+					AND = {
+						has_monthly_income = { resource = food value < @retile_ai_food_income_low }
+					}
+					AND = {
+						always = no
+						has_monthly_income = { resource = food value < @retile_ai_food_income_high }
+						has_monthly_income = { resource = energy value > @retile_ai_energy_income_low }
+						has_monthly_income = { resource = minerals value > @retile_ai_minerals_income_low }
+						has_monthly_income = { resource = alloys value > @retile_ai_alloys_income_low }
+						has_monthly_income = { resource = consumer_goods value > @retile_ai_consumer_goods_income_low }
+					}
+				}
+			}
+			random_owned_planet = {
+				limit = {
+					any_deposit = { has_deposit_category = deposit_cat_food }
+					free_jobs < 4
+				}
+				random_deposit = {
+					limit = { has_deposit_category = deposit_cat_food }
+					clear_blocker = yes
+				}
 			}
 		}
 	}
