@@ -34,6 +34,18 @@ trait_robot_industrial = {
 		planet_metallurgists_alloys_produces_add = 0.5
 		planet_metallurgists_consumer_goods_produces_add = 0.5
 	}
+	
+	# Synth and Machine only
+	species_potential_add = {
+		exists = from
+		from = {
+			OR = {
+				has_authority = auth_machine_intelligence
+				has_technology = tech_synthetic_workers
+			}			
+			NOT = { has_policy_flag = ai_outlawed }
+		}
+	}
 }
 
 trait_robot_logic_engines = {
@@ -274,7 +286,7 @@ trait_robot_mass_produced = {
 	allowed_archetypes = { ROBOT MACHINE }
 
 	modifier = {
-		pop_assembly_speed = 0.15
+		pop_assembly_speed = 0.10
 	}
 }
 
@@ -285,7 +297,7 @@ trait_robot_custom_made = {
 	allowed_archetypes = { ROBOT MACHINE }
 
 	modifier = {
-		pop_assembly_speed = -0.15
+		pop_assembly_speed = -0.10
 	}
 	ai_weight = {
 		factor = 0
@@ -338,6 +350,6 @@ trait_robot_propaganda_machines = {
 	}
 
 	modifier = {
-		planet_jobs_unity_produces_mult = 0.15
+		planet_jobs_unity_produces_mult = 0.20
 	}
 }
