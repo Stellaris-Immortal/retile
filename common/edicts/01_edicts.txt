@@ -85,7 +85,37 @@ healthcare_campaign = {
 	resources = {
 		category = campaigns
 		cost = {
-			food = 500
+			food = 1000
+		}
+	}
+
+	modifier = {
+		pop_growth_speed = 0.25
+	}
+
+	potential = {
+		NOT = { 
+			has_ethic = ethic_gestalt_consciousness
+			is_plantoid_empire = yes
+			is_lithoid_empire = yes
+		}
+	}
+	
+	prerequisites = {
+		"tech_eco_simulation"		
+	}
+
+	ai_weight = {
+		weight = @EdictMedPrio
+	}
+}
+
+healthcare_campaign_lithoid = {
+	length = @EdictDuration
+	resources = {
+		category = campaigns
+		cost = {
+			minerals = 1000
 		}
 	}
 
@@ -95,6 +125,34 @@ healthcare_campaign = {
 
 	potential = {
 		NOT = { has_ethic = ethic_gestalt_consciousness }
+		is_lithoid_empire = yes
+	}
+	
+	prerequisites = {
+		"tech_eco_simulation"		
+	}
+
+	ai_weight = {
+		weight = @EdictMedPrio
+	}
+}
+
+healthcare_campaign_plantoid = {
+	length = @EdictDuration
+	resources = {
+		category = campaigns
+		cost = {
+			energy = 1000
+		}
+	}
+
+	modifier = {
+		pop_growth_speed = 0.25
+	}
+
+	potential = {
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		is_plantoid_empire = yes
 	}
 	
 	prerequisites = {
