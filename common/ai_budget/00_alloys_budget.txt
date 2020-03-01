@@ -157,7 +157,7 @@ alloys_expenditure_ship_upgrades = {
 	}
 }
 
-alloys_expenditure_starbases = {
+alloys_expenditure_starbases_essential = {
 	resource = alloys 
 	type = expenditure
 	category = starbases
@@ -169,7 +169,27 @@ alloys_expenditure_starbases = {
 	}
 	
 	fraction = {
-		weight = 0.5
+		weight = 0.25
+	}
+	static_max = {
+		base = 500
+	}
+}
+
+alloys_expenditure_starbases_upgrade = {
+	resource = alloys 
+	type = expenditure
+	category = starbases
+	
+	potential = {
+		NOT = {
+			is_country_type = fallen_empire
+		}
+		used_naval_capacity_percent > 0.9
+	}
+	
+	fraction = {
+		weight = 1
 	}
 	static_max = {
 		base = 5000
