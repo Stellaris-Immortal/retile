@@ -29,7 +29,7 @@ building_hive_colony = {
 	
 	convert_to = {
 		building_colony_shelter
-		#building_deployment_post
+		building_deployment_post
 	}
 	
 	upgrades = { 
@@ -44,35 +44,22 @@ building_hive_colony = {
 		is_hive_empire = yes
 	}
 	
-	
 	resources = {
 		category = planet_buildings
 		upkeep = {
-			energy = 2.5
-			consumer_goods = 1
-		}
+			energy = 5
+		}		
 	}
 	
 	planet_modifier = {
 		planet_housing_add = 1
 		job_spawning_drone_add = 1
 	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_tradition = tr_expansion_colonization_fever }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_spawning_drone_add = 1
-		}
-	}
 
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_swapped_tradition = tr_adaptability_adaptive_ecology }
+			owner = { has_tradition = tr_expansion_colonization_fever }
 		}
 		modifier = {
 			planet_max_buildings_add = 1
@@ -108,6 +95,10 @@ building_hive_capital = {
 			}
 		}
 	}
+	
+	allow = {
+		hidden_trigger = { retile_ready_capital = yes }
+	}
 
 	destroy_trigger = { # destroys and/or triggers conversion if true
 		exists = owner
@@ -115,12 +106,8 @@ building_hive_capital = {
 	}
 	
 	convert_to = {
-		#building_machine_capital
+		building_machine_capital
 		building_capital
-	}
-	
-	allow = {
-		num_pops >= 5
 	}
 	
 	upgrades = { 
@@ -138,13 +125,12 @@ building_hive_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = 125
-			consumer_goods = 125
-		}			
+			influence = 50
+			minerals = 500
+		}	
 		upkeep = {
-			energy = 5
-			consumer_goods = 2
-		}
+			energy = 10
+		}		
 	}
 	
 	planet_modifier = {
@@ -159,6 +145,11 @@ building_hive_capital = {
 	
 	ai_weight = {
 		weight = 1
+		
+		modifier = {
+			weight = 1000
+			num_pops >= 5
+		}
 	}
 }
 
@@ -183,13 +174,13 @@ building_hive_major_capital = {
 		}
 	}
 	
-	convert_to = {
-		#building_machine_major_capital
-		building_major_capital
-	}
-
 	allow = {
-		num_pops >= 10
+		hidden_trigger = { retile_ready_capital = yes }
+	}
+	
+	convert_to = {
+		building_machine_major_capital
+		building_major_capital
 	}
 	
 	upgrades = { 
@@ -204,17 +195,19 @@ building_hive_major_capital = {
 		is_hive_empire = yes
 	}
 	
+	upgrades = {
+		"building_hive_galactic_capital"
+	}
 
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = 250
-			consumer_goods = 250
-		}			
+			influence = 50
+			minerals = 1000
+		}	
 		upkeep = {
-			energy = 10
-			consumer_goods = 3
-		}
+			energy = 25
+		}		
 	}
 	
 	planet_modifier = {
@@ -230,10 +223,11 @@ building_hive_major_capital = {
 
 	ai_weight = {
 		weight = 1
+		
 		modifier = {
-			factor = 0
-			owner = { has_resource = { type = minerals amount < 1000 } }
-		}#This is here to prevent the AI from queuing up to buy this building when it could really do with another mineral district
+			weight = 1000
+			num_pops >= 10
+		}
 	}
 }
 
@@ -258,12 +252,13 @@ building_hive_system_capital = {
 		}
 	}
 	
+	allow = {
+		hidden_trigger = { retile_ready_capital = yes }
+	}
+	
 	convert_to = {
 		building_system_capital
-		#building_machine_system_capital
-	}	
-	allow = {
-		num_pops >= 15
+		building_machine_system_capital
 	}
 	
 	prerequisites = {
@@ -277,12 +272,11 @@ building_hive_system_capital = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			alloys = 500
-			consumer_goods = 500
-		}			
+			influence = 50
+			minerals = 2000
+		}		
 		upkeep = {
-			energy = 25
-			consumer_goods = 4
+			energy = 50
 		}
 	}
 	
@@ -300,9 +294,67 @@ building_hive_system_capital = {
 
 	ai_weight = {
 		weight = 1
+		
 		modifier = {
-			factor = 0
-			owner = { has_resource = { type = minerals amount < 2000 } }
-		}#This is here to prevent the AI from queuing up to buy this building when it could really do with another mineral district
+			weight = 1000
+			num_pops >= 15
+		}
+	}
+}
+
+# Galactic Capital
+building_hive_galactic_capital = {
+	base_buildtime = 900
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+	}
+
+	allow = {
+		hidden_trigger = { retile_ready_capital = yes }
+	}
+	
+	show_tech_unlock_if = { 
+		is_hive_empire = yes
+		has_tradition = tr_domination_grand_council
+	}
+	
+	convert_to = {
+		building_machine_galactic_capital
+		building_galactic_capital		
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			influence = 50
+			minerals = 5000
+		}		
+		upkeep = {
+			energy = 50
+		}
+	}
+	
+	planet_modifier = {
+	}
+
+	ai_weight = {
+		weight = 1
+		
+		modifier = {
+			weight = 1000
+			num_pops >= 20
+		}
 	}
 }
