@@ -28,6 +28,8 @@ building_deployment_post = {
 	}
 	
 	planet_modifier = {
+		planet_housing_add = 1
+		job_roboticist_add = 1
 	}
 	
 	resources = {
@@ -42,20 +44,8 @@ building_deployment_post = {
 	}
 	
 	triggered_desc = {
-		text = job_coordinator_effect_desc
-	}		
-	
-	triggered_desc = {
-		text = job_replicator_effect_desc
-	}
-	
-	triggered_desc = {
-		text = job_maintenance_drone_effect_desc
-	}
-
-	triggered_desc = {
-		text = job_patrol_drone_effect_desc
-	}
+		text = job_roboticist_effect_desc
+	}	
 	
 	ai_weight = {
 		weight = 1
@@ -120,20 +110,20 @@ building_machine_capital = {
 		is_machine_empire = yes
 	}
 	
-	planet_modifier = {
-	}
-	
 	upgrades = {
 		building_machine_major_capital
 	}
 	
-	triggered_desc = {
-		text = job_coordinator_effect_desc
-	}		
+	planet_modifier = {
+		planet_housing_add = 2
+		job_roboticist_add = 1
+		job_patrol_drone_add = 1
+		planet_max_buildings_add = 1
+	}
 	
 	triggered_desc = {
-		text = job_replicator_effect_desc
-	}	
+		text = job_roboticist_effect_desc
+	}
 	
 	triggered_desc = {
 		text = job_patrol_drone_effect_desc
@@ -187,7 +177,8 @@ building_machine_major_capital = {
 		is_machine_empire = yes
 	}
 	
-	planet_modifier = {
+	upgrades = {
+		"building_machine_system_capital"
 	}
 	
 	resources = {
@@ -201,20 +192,24 @@ building_machine_major_capital = {
 		}		
 	}
 	
-	triggered_desc = {
-		text = job_coordinator_effect_desc
-	}		
+	planet_modifier = {
+		planet_housing_add = 3
+		job_roboticist_add = 1
+		job_patrol_drone_add = 1
+		job_soldier_add = 1
+		planet_max_buildings_add = 2
+	}
 	
 	triggered_desc = {
-		text = job_replicator_effect_desc
-	}	
+		text = job_roboticist_effect_desc
+	}
 	
 	triggered_desc = {
 		text = job_patrol_drone_effect_desc
 	}
 	
-	upgrades = {
-		"building_machine_system_capital"
+	triggered_desc = {
+		text = job_soldier_effect_desc
 	}
 	
 	ai_weight = {
@@ -266,8 +261,8 @@ building_machine_system_capital = {
 		is_machine_empire = yes
 	}
 	
-	planet_modifier = {
-	
+	upgrades = {
+		"building_machine_galactic_capital"
 	}
 	
 	resources = {
@@ -281,16 +276,29 @@ building_machine_system_capital = {
 		}
 	}
 	
-	triggered_desc = {
-		text = job_coordinator_effect_desc
-	}		
+	planet_modifier = {
+		planet_housing_add = 4
+		job_roboticist_add = 1
+		job_patrol_drone_add = 1
+		job_soldier_add = 1
+		job_custodian_add = 1
+		planet_max_buildings_add = 3
+	}
 	
 	triggered_desc = {
-		text = job_replicator_effect_desc
-	}	
+		text = job_roboticist_effect_desc
+	}
 	
 	triggered_desc = {
 		text = job_patrol_drone_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_soldier_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_custodian_effect_desc
 	}
 	
 	ai_weight = {
@@ -348,6 +356,33 @@ building_machine_galactic_capital = {
 	}
 	
 	planet_modifier = {
+		planet_housing_add = 5
+		job_roboticist_add = 1
+		job_patrol_drone_add = 1
+		job_soldier_add = 1
+		job_custodian_add = 1
+		job_admin_drone_add = 1
+		planet_max_buildings_add = 3
+	}
+	
+	triggered_desc = {
+		text = job_roboticist_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_soldier_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_custodian_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_admin_drone_effect_desc
 	}
 
 	ai_weight = {

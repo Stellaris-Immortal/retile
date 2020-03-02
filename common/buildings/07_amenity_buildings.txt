@@ -22,16 +22,11 @@ building_communal_housing = {
 			has_modifier = penal_colony
 		}
 		exists = owner
-		owner = { 
-			is_regular_empire = yes
-			NOT = { has_valid_civic = civic_functional_architecture }
-		}
+		owner = { NOT = { has_valid_civic = civic_functional_architecture } }
 	}
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-		}
+		owner = { is_ai = no }
 	}
 
 	destroy_trigger = {
@@ -42,24 +37,14 @@ building_communal_housing = {
 			owner = {
 				OR = {
 					is_ai = yes
-					is_regular_empire = no
 					has_valid_civic = civic_functional_architecture
 				}
 			}
 		}
 	}
-	
-	convert_to = {
-		building_drone_storage
-		building_hive_warren
-	}
 		
 	planet_modifier = {
 		planet_max_districts_add = 3
-	}
-
-	country_modifier = {
-		country_resource_max_add = 2000
 	}
 	
 	resources = {
@@ -273,7 +258,7 @@ building_ministry = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = @cost_ultra
+			minerals = @cost_med
 		}
 		upkeep = {
 			energy = 2
@@ -290,48 +275,44 @@ building_ministry = {
 	}
 }
 
-building_drone_storage = {
+building_assembly = {
 	base_buildtime = 360
 	base_cap_amount = 1
 	category = amenity
 	can_be_disabled = no
 	
 	potential = {
-		habitable_structure = no
-		exists = owner
-		owner = { is_machine_empire = yes }
-	}
-
-	allow = {
-		OR = {
-			owner = { is_ai = no }
+		NOT = {
+			habitable_structure = yes
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
 		}
+	}
+	
+	allow = {
+		owner = { is_ai = no }
 	}
 
 	destroy_trigger = {
 		OR = {
-			owner = { is_machine_empire = no }
-			owner = { is_ai = yes }
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+			owner = {
+				is_ai = yes
+			}
 		}
-	}
-
-	convert_to = {
-		building_communal_housing
-		building_hive_warren
 	}
 		
 	planet_modifier = {
-		planet_max_districts_add = 3
-	}
-
-	country_modifier = {
-		country_resource_max_add = 2000
+		job_roboticist_add = 1
 	}
 	
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = @cost_ultra
+			minerals = @cost_med
 		}
 		upkeep = {
 			energy = 2
@@ -340,65 +321,7 @@ building_drone_storage = {
 	
 	triggered_desc = {
 		trigger = { exists = owner }
-		text = retile_housing_effect
-	}
-
-	ai_weight = {
-		weight = 1
-	}
-}
-
-building_hive_warren = {
-	base_buildtime = 360
-	base_cap_amount = 1
-	category = amenity
-	can_be_disabled = no
-	
-	potential = {
-		habitable_structure = no
-		exists = owner
-		owner = { is_hive_empire = yes }
-	}
-
-	allow = {
-		OR = {
-			owner = { is_ai = no }
-		}
-	}
-
-	destroy_trigger = {
-		OR = {
-			owner = { is_hive_empire = no }
-			owner = { is_ai = yes }
-		}
-	}
-
-	convert_to = {
-		building_communal_housing
-		building_drone_storage
-	}
-		
-	planet_modifier = {
-		planet_max_districts_add = 3
-	}
-
-	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	
-	resources = {
-		category = planet_buildings
-		cost = {
-			minerals = @cost_ultra
-		}
-		upkeep = {
-			energy = 2
-		}
-	}	
-	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_housing_effect
+		text = retile_assembly_effect
 	}
 
 	ai_weight = {
