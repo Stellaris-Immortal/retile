@@ -309,7 +309,7 @@ planet_event = {
 		} else_if = { # maybe we can free up some custodians?
 			limit = {
 				num_districts = { type = district_custodians value > 0 }
-				NOT = { planet_amenities > -100 }
+				NOT = { planet_amenities > 0 }
 			}
 			remove_district = district_custodians
 		} else_if = { # maybe we can free up some enforcers?

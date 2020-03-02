@@ -1,9 +1,15 @@
 # Is this planet having a local crisis that must be solved before we can worry about empire problems?
 retile_ai_has_planet_crisis = {
 	OR = {
-		free_amenities > 500 # pollution crisis
+		free_amenities > 1000 # pollution crisis
 		planet_crime > 50 # crime crisis
 	}
+}
+
+retile_ai_planet_healthy = {
+	free_jobs < 1
+	free_amenities < 300
+	planet_crime < 10
 }
 
 # Is this planet ready to upgrade it's capital?
