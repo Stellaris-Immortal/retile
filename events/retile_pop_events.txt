@@ -45,46 +45,26 @@ planet_event = {
 			limit = { NOT = { has_citizenship_type = { type = citizenship_organic_trophy } } }
 			weights = {
 				base = 1
-				modifier = { add = 20 root = { habitability = { who = prev value <= 0 } } }
-				modifier = { add = 19 root = { habitability = { who = prev value <= 0.05 } } }
-				modifier = { add = 18 root = { habitability = { who = prev value <= 0.10 } } }
-				modifier = { add = 17 root = { habitability = { who = prev value <= 0.15 } } }
-				modifier = { add = 16 root = { habitability = { who = prev value <= 0.20 } } }
-				modifier = { add = 15 root = { habitability = { who = prev value <= 0.25 } } }
-				modifier = { add = 14 root = { habitability = { who = prev value <= 0.30 } } }
-				modifier = { add = 13 root = { habitability = { who = prev value <= 0.35 } } }
-				modifier = { add = 12 root = { habitability = { who = prev value <= 0.40 } } }
-				modifier = { add = 11 root = { habitability = { who = prev value <= 0.45 } } }
-				modifier = { add = 10 root = { habitability = { who = prev value <= 0.50 } } }
-				modifier = { add = 9 root = { habitability = { who = prev value <= 0.55 } } }
-				modifier = { add = 8 root = { habitability = { who = prev value <= 0.60 } } }
-				modifier = { add = 7 root = { habitability = { who = prev value <= 0.65 } } }
-				modifier = { add = 6 root = { habitability = { who = prev value <= 0.70 } } }
-				modifier = { add = 5 root = { habitability = { who = prev value <= 0.75 } } }
-				modifier = { add = 4 root = { habitability = { who = prev value <= 0.80 } } }
-				modifier = { add = 3 root = { habitability = { who = prev value <= 0.85 } } }
-				modifier = { add = 2 root = { habitability = { who = prev value <= 0.90 } } }
-				modifier = { add = 1 root = { habitability = { who = prev value <= 0.95 } } }
-				#modifier = {
-				#	mult = 5
-				#	NOR = {
-				#		is_plantoid = yes
-				#		#is_lithoid = yes
-				#	}
-				#}
-				#modifier = {
-				#	mult = 20
-				#	NOT = { is_robotic_species = yes }
-				#}
-				#modifier = {
-				#	mult = 5
-				#	OR = {
-				#		has_job = no
-				#		has_job = servant
-				#		#has_job = laborer
-				#		#has_job = slave_toiler ### Not sure what to do here...
-				#	}
-				#}
+				modifier = { add = 20 is_plantoid = no root = { habitability = { who = prev value <= 0 } } }
+				modifier = { add = 19 is_plantoid = no root = { habitability = { who = prev value <= 0.05 } } }
+				modifier = { add = 18 is_plantoid = no root = { habitability = { who = prev value <= 0.10 } } }
+				modifier = { add = 17 is_plantoid = no root = { habitability = { who = prev value <= 0.15 } } }
+				modifier = { add = 16 is_plantoid = no root = { habitability = { who = prev value <= 0.20 } } }
+				modifier = { add = 15 is_plantoid = no root = { habitability = { who = prev value <= 0.25 } } }
+				modifier = { add = 14 is_plantoid = no root = { habitability = { who = prev value <= 0.30 } } }
+				modifier = { add = 13 is_plantoid = no root = { habitability = { who = prev value <= 0.35 } } }
+				modifier = { add = 12 is_plantoid = no root = { habitability = { who = prev value <= 0.40 } } }
+				modifier = { add = 11 is_plantoid = no root = { habitability = { who = prev value <= 0.45 } } }
+				modifier = { add = 10 is_plantoid = no root = { habitability = { who = prev value <= 0.50 } } }
+				modifier = { add = 9 is_plantoid = no root = { habitability = { who = prev value <= 0.55 } } }
+				modifier = { add = 8 is_plantoid = no root = { habitability = { who = prev value <= 0.60 } } }
+				modifier = { add = 7 is_plantoid = no root = { habitability = { who = prev value <= 0.65 } } }
+				modifier = { add = 6 is_plantoid = no root = { habitability = { who = prev value <= 0.70 } } }
+				modifier = { add = 5 is_plantoid = no root = { habitability = { who = prev value <= 0.75 } } }
+				modifier = { add = 4 is_plantoid = no root = { habitability = { who = prev value <= 0.80 } } }
+				modifier = { add = 3 is_plantoid = no root = { habitability = { who = prev value <= 0.85 } } }
+				modifier = { add = 2 is_plantoid = no root = { habitability = { who = prev value <= 0.90 } } }
+				modifier = { add = 1 is_plantoid = no root = { habitability = { who = prev value <= 0.95 } } }
 			}
 			pop_event = { id = retile_pop.91 }
 		}
@@ -215,6 +195,7 @@ pop_event = {
 	hide_window = yes
 	
 	trigger = {
+		is_plantoid = no
 		planet = {
 			habitability = { who = root value < 50 }
 		}
@@ -229,14 +210,6 @@ pop_event = {
 			limit = {
 				exists = owner
 				owner = { is_country_type = default }
-				NOT = { has_job = colonist }
-				NAND = {
-					is_plantoid = yes
-					OR = {
-						has_job = farmer
-						has_job = custodian
-					}
-				}
 				exists = planet
 				planet = {
 					NOT = { has_modifier = penal_colony }
@@ -250,14 +223,7 @@ pop_event = {
 				limit = {
 					exists = owner
 					owner = { is_country_type = default }
-					NOT = { has_job = colonist }
-					NAND = {
-						is_plantoid = yes
-						OR = {
-							has_job = farmer
-							has_job = custodian
-						}
-					}
+					is_plantoid = no
 					exists = planet
 					planet = {
 						NOT = { is_same_value = root.planet }
