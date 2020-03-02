@@ -104,17 +104,14 @@ battle_thrall_job_check_trigger = {
 	}
 }
 
-## NO LONGER USED
-## Used for preacher. (vanilla also includes clerk, technician)
-## Prevents basic robots from working these jobs. Droids are OK though.
-## This looks OK, except I personally think it should only apply to preachers...
+## Prevents basic robots from working these jobs. Advanced Robots are OK though.
 complex_worker_job_check_trigger = {
 	worker_job_check_trigger = yes
 	hidden_trigger = {	
 		exists = owner
 		OR = {
 			NOT = { has_trait = trait_mechanical }
-			owner = { has_technology = tech_droid_workers }
+			owner = { has_technology = tech_robotic_workers }
 		}
 	}
 }
