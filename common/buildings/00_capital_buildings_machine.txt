@@ -1,0 +1,361 @@
+#############
+# Machine buildings
+#############
+
+# Colony
+building_deployment_post = {
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+		}
+	}
+	
+	convert_to = {
+		building_hive_capital
+		building_colony_shelter
+	}
+	
+	planet_modifier = {
+	}
+	
+	resources = {
+		category = planet_buildings
+		upkeep = {
+			energy = 5
+		}		
+	}
+		
+	upgrades = {
+		building_machine_capital
+	}
+	
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}		
+	
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}
+	
+	triggered_desc = {
+		text = job_maintenance_drone_effect_desc
+	}
+
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 1
+	}	
+}
+
+# Administrative Array
+building_machine_capital = {
+	base_buildtime = 480
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+				AND = {
+					exists = event_target:mechanocalibrator_country
+					is_same_value = event_target:mechanocalibrator_country
+				}
+			}
+		}
+	}
+	
+	allow = {
+		hidden_trigger = { retile_ready_capital = yes }
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { is_machine_empire = no }
+	}
+	
+	convert_to = {
+		building_hive_capital
+		building_colony_shelter
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			influence = 50
+			minerals = 500
+		}	
+		upkeep = {
+			energy = 10
+		}		
+	}
+	
+	prerequisites = {
+		"tech_planetary_government"
+	}
+	
+	show_tech_unlock_if = { 
+		is_machine_empire = yes
+	}
+	
+	planet_modifier = {
+	}
+	
+	upgrades = {
+		building_machine_major_capital
+	}
+	
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}		
+	
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}	
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+
+	ai_weight = {
+		weight = 1
+		
+		modifier = {
+			weight = 1000
+			num_pops >= 5
+		}
+	}
+}
+
+# Planetary Processor
+building_machine_major_capital = {
+	base_buildtime = 600
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+		}
+	}
+	
+	allow = {
+		hidden_trigger = { retile_ready_capital = yes }
+	}
+	
+	convert_to = {
+		building_hive_major_capital
+		building_major_capital
+	}
+	
+	prerequisites = {
+		"tech_colonial_centralization"
+	}
+	
+	show_tech_unlock_if = { 
+		is_machine_empire = yes
+	}
+	
+	planet_modifier = {
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			influence = 50
+			minerals = 1000
+		}	
+		upkeep = {
+			energy = 25
+		}		
+	}
+	
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}		
+	
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}	
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	
+	upgrades = {
+		"building_machine_system_capital"
+	}
+	
+	ai_weight = {
+		weight = 1
+		
+		modifier = {
+			weight = 1000
+			num_pops >= 10
+		}
+	}
+}
+
+# Primary Nexus
+building_machine_system_capital = {
+	base_buildtime = 900
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = {
+			OR = {
+				is_machine_empire = yes
+				is_country_type = ai_empire
+			}
+		}
+	}
+	
+	convert_to = {
+		building_hive_major_capital
+		building_major_capital
+		building_machine_major_capital
+	}
+	
+	allow = {
+		hidden_trigger = { retile_ready_capital = yes }
+	}
+	
+	prerequisites = {
+		"tech_galactic_administration"
+	}
+	
+	show_tech_unlock_if = { 
+		is_machine_empire = yes
+	}
+	
+	planet_modifier = {
+	
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			influence = 50
+			minerals = 2000
+		}		
+		upkeep = {
+			energy = 50
+		}
+	}
+	
+	triggered_desc = {
+		text = job_coordinator_effect_desc
+	}		
+	
+	triggered_desc = {
+		text = job_replicator_effect_desc
+	}	
+	
+	triggered_desc = {
+		text = job_patrol_drone_effect_desc
+	}
+	
+	ai_weight = {
+		weight = 1
+		
+		modifier = {
+			weight = 1000
+			num_pops >= 15
+		}
+	}
+}
+
+# Galactic Capital
+building_machine_galactic_capital = {
+	base_buildtime = 900
+	capital = yes
+	can_build = no
+	can_demolish = no
+	can_be_ruined = no
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_machine_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+	}
+
+	allow = {
+		hidden_trigger = { retile_ready_capital = yes }
+	}
+	
+	show_tech_unlock_if = { 
+		is_machine_empire = yes
+		has_tradition = tr_domination_grand_council
+	}
+	
+	convert_to = {
+		building_galactic_capital
+		building_hive_galactic_capital		
+	}
+	
+	resources = {
+		category = planet_buildings
+		cost = {
+			influence = 50
+			minerals = 5000
+		}		
+		upkeep = {
+			energy = 50
+		}
+	}
+	
+	planet_modifier = {
+	}
+
+	ai_weight = {
+		weight = 1
+		
+		modifier = {
+			weight = 1000
+			num_pops >= 20
+		}
+	}
+}
