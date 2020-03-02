@@ -294,7 +294,7 @@ planet_event = {
 		} else_if = { # maybe we can free up some custodians?
 			limit = {
 				num_districts = { type = district_custodians value > 0 }
-				NOT = { planet_amenities > 0 }
+				NOT = { free_amenities > 0 }
 			}
 			remove_district = district_custodians
 		} else_if = { # maybe we can free up some enforcers?
@@ -517,7 +517,7 @@ country_event = {
 	}
 }
 
-# exploit energy deposits as needed/possible
+# exploit rural deposits as needed/possible
 planet_event = {
 	id = retile_ai.300
 	hide_window = yes
@@ -527,32 +527,101 @@ planet_event = {
 		owner = {
 			is_ai = yes
 			is_country_type = default
-			has_country_flag = retile_ai_needs_energy
-			NOT = { has_country_flag = retile_ai_recent_energy }
 		}
+		free_jobs < 1
+		retile_ai_has_planet_crisis = no
 		OR = {
-			retile_ai_planet_healthy_district = yes
 			AND = {
-				free_jobs < 1
-				owner = { has_country_flag = retile_ai_needs_energy_crisis }
-				retile_ai_has_planet_crisis = no
+				owner = {
+					has_country_flag = retile_ai_needs_energy
+					NOT = { has_country_flag = retile_ai_recent_energy }
+				}
+				any_deposit = { has_deposit_category = deposit_cat_energy }
+			}
+			AND = {
+				owner = {
+					has_country_flag = retile_ai_needs_minerals
+					NOT = { has_country_flag = retile_ai_recent_minerals }
+				}
+				any_deposit = { has_deposit_category = deposit_cat_minerals }
+			}
+			AND = {
+				owner = {
+					has_country_flag = retile_ai_needs_food
+					NOT = { has_country_flag = retile_ai_recent_food }
+				}
+				any_deposit = { has_deposit_category = deposit_cat_food }
 			}
 		}
-		any_deposit = { has_deposit_category = deposit_cat_energy }
 	}
 
 	immediate = {
-		random_deposit = {
-			limit = { has_deposit_category = deposit_cat_energy }
-			clear_blocker = yes
-		}
-		owner = {
-			set_timed_country_flag = { flag = retile_ai_recent_energy days = 90 }
+		random_list = {
+			10 = { # exploit energy
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = retile_ai_recent_energy }
+						owner = { NOT = { has_country_flag = retile_ai_needs_energy } }
+						NOT = { any_deposit = { has_deposit_category = deposit_cat_energy } }
+					}
+				}
+				modifier = {
+					factor = 5
+					owner = { has_country_flag = retile_ai_needs_energy_crisis }
+				}
+				random_deposit = {
+					limit = { has_deposit_category = deposit_cat_energy }
+					clear_blocker = yes
+				}
+				owner = { set_timed_country_flag = { flag = retile_ai_recent_energy days = 90 } }
+			}
+			10 = { # exploit minerals
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = retile_ai_recent_minerals }
+						owner = { NOT = { has_country_flag = retile_ai_needs_minerals } }
+						NOT = { any_deposit = { has_deposit_category = deposit_cat_minerals } }
+					}
+				}
+				modifier = {
+					factor = 5
+					owner = { has_country_flag = retile_ai_needs_minerals_crisis }
+				}
+				random_deposit = {
+					limit = { has_deposit_category = deposit_cat_minerals }
+					clear_blocker = yes
+				}
+				owner = { set_timed_country_flag = { flag = retile_ai_recent_minerals days = 90 } }
+			}
+			10 = { # exploit food
+				modifier = {
+					factor = 0
+					OR = {
+						owner = { has_country_flag = retile_ai_recent_food }
+						owner = { NOT = { has_country_flag = retile_ai_needs_food } }
+						NOT = { any_deposit = { has_deposit_category = deposit_cat_food } }
+					}
+				}
+				modifier = {
+					factor = 5
+					owner = { has_country_flag = retile_ai_needs_food_crisis }
+				}
+				if = {
+					limit = { country_uses_food = yes } # prevent checking this all the time for non-food countries
+					random_deposit = {
+						limit = { has_deposit_category = deposit_cat_food }
+						clear_blocker = yes
+					}
+				}
+				owner = { set_timed_country_flag = { flag = retile_ai_recent_food days = 90 } }
+			}
 		}
 	}
 }
 
-# exploit minerals deposits as needed/possible
+# exploit food deposits as needed/possible for plantoids
 planet_event = {
 	id = retile_ai.301
 	hide_window = yes
@@ -562,53 +631,13 @@ planet_event = {
 		owner = {
 			is_ai = yes
 			is_country_type = default
-			has_country_flag = retile_ai_needs_minerals
-			NOT = { has_country_flag = retile_ai_recent_minerals }
+			is_plantoid_empire = yes
 		}
-		OR = {
-			retile_ai_planet_healthy_district = yes
-			AND = {
-				free_jobs < 1
-				owner = { has_country_flag = retile_ai_needs_minerals_crisis }
-				retile_ai_has_planet_crisis = no
-			}
+		free_jobs < 1
+		count_pops = {
+			limit = { has_job = farmer }
+			count < 3
 		}
-		any_deposit = { has_deposit_category = deposit_cat_minerals }
-	}
-
-	immediate = {
-		random_deposit = {
-			limit = { has_deposit_category = deposit_cat_minerals }
-			clear_blocker = yes
-		}
-		owner = {
-			set_timed_country_flag = { flag = retile_ai_recent_minerals days = 90 }
-		}
-	}
-}
-
-# exploit food deposits as needed/possible
-planet_event = {
-	id = retile_ai.301
-	hide_window = yes
-
-	trigger = {
-		has_owner = yes
-		owner = {
-			is_ai = yes
-			is_country_type = default
-			has_country_flag = retile_ai_needs_food
-			NOT = { has_country_flag = retile_ai_recent_food }
-		}
-		OR = {
-			retile_ai_planet_healthy_district = yes
-			AND = {
-				free_jobs < 1
-				owner = { has_country_flag = retile_ai_needs_food_crisis }
-				retile_ai_has_planet_crisis = no
-			}
-		}
-		any_deposit = { has_deposit_category = deposit_cat_food }
 	}
 
 	immediate = {
@@ -616,9 +645,7 @@ planet_event = {
 			limit = { has_deposit_category = deposit_cat_food }
 			clear_blocker = yes
 		}
-		owner = {
-			set_timed_country_flag = { flag = retile_ai_recent_food days = 90 }
-		}
+		owner = { set_timed_country_flag = { flag = retile_ai_recent_food days = 90 } }
 	}
 }
 

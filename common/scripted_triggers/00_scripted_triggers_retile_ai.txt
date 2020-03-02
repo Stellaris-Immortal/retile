@@ -38,59 +38,12 @@ retile_ready_capital = {
 
 retile_ready_energy = {	# deposit scope
 	always = no
-	exists = planet
-	planet = {
-		owner = {
-			has_country_flag = retile_ai_needs_energy
-			NOT = { has_country_flag = ai_recently_built_energy }
-		}
-		free_jobs < 1
-		has_building_construction = no
-	}
 }
 retile_ready_minerals = {	# deposit scope
 	always = no
-	exists = planet
-	planet = {
-		owner = {
-			has_country_flag = retile_ai_needs_minerals
-			NOT = { has_country_flag = ai_recently_built_minerals }
-		}
-		free_jobs < 1
-		has_building_construction = no
-	}
 }
 retile_ready_food = {	# deposit scope
 	always = no
-	exists = planet
-	planet = {
-		OR = {
-			AND = {
-				free_jobs < 1
-				owner = {
-					OR = {
-						AND = {
-							prev = { NOT = { has_deposit = retile_deposit_bioreactor } }
-							country_uses_food = yes
-							has_country_flag = retile_ai_needs_food
-							NOT = { has_country_flag = ai_recently_built_food }
-						}
-						AND = {
-							prev = { has_deposit = retile_deposit_bioreactor }
-							has_country_flag = retile_ai_needs_energy
-							NOT = { has_country_flag = ai_recently_built_food }
-						}
-					}
-				}
-				has_building_construction = no
-			}
-			owner = {
-				is_plantoid_empire = yes
-				prev = { habitability = { who = owner.owner_species value <= 0.7 } }
-				prev = { has_building_construction = no }
-			}
-		}
-	}
 }
 
 retile_ai_has_resource_crisis = {
