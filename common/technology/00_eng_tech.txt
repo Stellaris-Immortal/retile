@@ -2235,11 +2235,9 @@ tech_powered_exoskeletons = {
 	prerequisites = { "tech_basic_industry" }
 	weight = @tier1weight1
 	
-	gateway = robotics
-	
 	modifier = {
 		army_damage_mult = 0.05
-		planet_jobs_minerals_produces_mult = 0.05
+		planet_jobs_worker_produces_mult = 0.05
 	}
 	
 	weight_modifier = {
@@ -2983,7 +2981,6 @@ tech_robotic_workers = {
 	area = engineering
 	tier = 1
 	category = { industry }	
-	prerequisites = { "tech_powered_exoskeletons" }
 	weight = @tier1weight3
 	
 	gateway = robotics
@@ -3128,10 +3125,6 @@ tech_synthetic_workers = {
 	
 	gateway = robotics
 	
-	modifier = {
-		planet_jobs_robotic_produces_mult = 0.25
-	}
-	
 	potential = {
 		NOT = { has_ethic = "ethic_gestalt_consciousness" }
 	}	
@@ -3228,8 +3221,6 @@ tech_synthetic_leaders = {
 	weight = @tier4weight3
 	
 	feature_flags = { robot_leaders }
-		
-	## unlocks robot-leaders
 	
 	potential = {
 		NOT = { has_ethic = "ethic_gestalt_consciousness" }
