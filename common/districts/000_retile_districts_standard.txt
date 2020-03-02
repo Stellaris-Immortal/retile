@@ -86,8 +86,7 @@ district_clerks = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				retile_ai_planet_healthy = yes
-				retile
+				retile_ai_planet_healthy_district = yes
 				OR = {
 					owner = { has_country_flag = retile_ai_needs_energy }
 					owner = { has_authority = auth_corporate }
@@ -182,7 +181,7 @@ district_engineers = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				retile_ai_planet_healthy = yes
+				retile_ai_planet_healthy_district = yes
 				OR = {
 					owner = { has_country_flag = retile_ai_needs_alloys }
 					owner = { has_country_flag = retile_ai_needs_consumer_goods }
@@ -239,7 +238,7 @@ district_scholars = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				retile_ai_planet_healthy = yes
+				retile_ai_planet_healthy_district = yes
 				owner = { has_country_flag = retile_ai_needs_science }
 			}
 		}
@@ -300,7 +299,7 @@ district_bureaucrats = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				retile_ai_planet_healthy = yes
+				retile_ai_planet_healthy_district = yes
 				owner = { has_country_flag = retile_ai_needs_admin }
 			}
 		}
@@ -401,7 +400,7 @@ district_soldiers = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				retile_ai_planet_healthy = yes
+				retile_ai_planet_healthy_district = yes
 				OR = {
 					num_districts = { type = district_soldiers value < 3 }
 					has_planet_flag = retile_ai_fortress

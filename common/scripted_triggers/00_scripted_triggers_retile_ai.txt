@@ -6,8 +6,19 @@ retile_ai_has_planet_crisis = {
 	}
 }
 
-retile_ai_planet_healthy = {
+retile_ai_planet_healthy_district = {
 	free_jobs < 1
+	free_amenities < 300
+	planet_crime < 10
+}
+
+retile_ai_planet_healthy_building = {
+	OR = {
+		num_buildings < 3
+		has_building = building_maintenance_depot
+		has_building = building_maintenance_depot_2
+		has_building = building_maintenance_depot_3
+	}
 	free_amenities < 300
 	planet_crime < 10
 }
@@ -18,6 +29,7 @@ retile_ready_capital = {
 		owner = { is_ai = no }
 		AND = {
 			owner = { has_resource = { type = influence amount > 150 } }
+			NOT = { owner = { has_country_flag = retile_ai_needs_energy_crisis } }
 			free_jobs < 1
 			free_building_slots < 1
 		}

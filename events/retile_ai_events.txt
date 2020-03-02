@@ -385,14 +385,57 @@ planet_event = {
 	}
 }
 
-
-
 # Scrub resource buildings if the planet has no jobs of the appropriate type
 
-# Scrub excess energy deposits
-# also exploits energy deposits if needed.
+# Scrub excess rural resource deposits
 country_event = {
 	id = retile_ai.201
+	hide_window = yes
+
+	trigger = {
+		is_ai = yes
+		is_country_type = default
+		#has_monthly_income = { resource = energy value > @retile_ai_energy_income_excess }
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				has_monthly_income = { resource = energy value > @retile_ai_energy_income_excess }
+			}
+			random_owned_planet = {
+				limit = { any_deposit = { has_deposit_category = deposit_cat_energy_active } }
+				weights = {
+					base = 1
+					modifier = {
+						add = 1000
+						NOR = {
+							has_building = building_energy_1
+							has_building = building_energy_2
+							has_building = building_energy_3
+						}
+					}
+					modifier = {
+						mult = 10
+						free_jobs < 2
+					}
+				}
+				random_deposit = {
+					limit = { has_deposit_category = deposit_cat_energy_active }
+					clear_blocker = yes
+				}
+			}
+		}
+	}
+}
+
+# also exploits energy deposits if needed.
+country_event = {
+	id = retile_ai.202
 	hide_window = yes
 
 	trigger = {
