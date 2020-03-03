@@ -104,6 +104,14 @@ healthcare_campaign = {
 	prerequisites = {
 		"tech_eco_simulation"		
 	}
+	
+	show_tech_unlock_if = { 
+		NOT = { 
+			has_ethic = ethic_gestalt_consciousness
+			is_plantoid_empire = yes
+			is_lithoid_empire = yes
+		}
+	}
 
 	ai_weight = {
 		weight = @EdictMedPrio
@@ -131,6 +139,11 @@ healthcare_campaign_lithoid = {
 	prerequisites = {
 		"tech_eco_simulation"		
 	}
+	
+	show_tech_unlock_if = { 
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		is_lithoid_empire = yes
+	}
 
 	ai_weight = {
 		weight = @EdictMedPrio
@@ -157,6 +170,11 @@ healthcare_campaign_plantoid = {
 	
 	prerequisites = {
 		"tech_eco_simulation"		
+	}
+	
+	show_tech_unlock_if = { 
+		NOT = { has_ethic = ethic_gestalt_consciousness }
+		is_plantoid_empire = yes
 	}
 
 	ai_weight = {

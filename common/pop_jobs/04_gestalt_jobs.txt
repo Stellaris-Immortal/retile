@@ -19,24 +19,61 @@ spawning_drone = {
 		owner = { is_hive_empire = yes }
 	}
 	
-	planet_modifier = {
-		pop_growth_speed = 0.10
-		planet_amenities_no_happiness_add = 10
-	}
-	
 	resources = {
-		category = planet_jobs
+		category = planet_spawning_drones
 		upkeep = {
-			trigger = {
-				is_lithoid = no
-			}
-			food = 4
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
 		}
 		upkeep = {
-			trigger = {
-				is_lithoid = yes
-			}
-			minerals = 10
+			trigger = { planet = { has_building = building_spawning_1 } }
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_spawning_2 } }
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_normal2
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_spawning_3 } }
+			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_normal3
+		}
+	}
+	
+	planet_modifier = {
+		pop_growth_speed = 0.10
+		planet_amenities_no_happiness_add = 25
+	}
+	
+	triggered_planet_modifier = {
+		potential = { 
+			planet = { has_building = building_spawning_1 } 
+		}
+		modifier = {
+			pop_growth_speed = 0.10
+			planet_amenities_no_happiness_add = 25
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = { 
+			planet = { has_building = building_spawning_2 } 
+		}
+		modifier = {
+			pop_growth_speed = 0.20
+			planet_amenities_no_happiness_add = 50
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = { 
+			planet = { has_building = building_spawning_3 } 
+		}
+		modifier = {
+			pop_growth_speed = 0.30
+			planet_amenities_no_happiness_add = 75
 		}
 	}
 	
