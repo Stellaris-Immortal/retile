@@ -5330,6 +5330,7 @@ tech_heritage_site = {
 	weight = @tier2weight1
 	
 	potential = {
+		is_hive_empire = no
 		NOR = {
 			has_valid_civic = civic_exalted_priesthood
 			has_valid_civic = civic_gospel_of_the_masses
@@ -5372,6 +5373,7 @@ tech_hypercomms_forum = {
 	weight = @tier3weight2
 		
 	potential = {
+		is_hive_empire = no
 		NOR = {
 			has_valid_civic = civic_exalted_priesthood
 			has_valid_civic = civic_gospel_of_the_masses
@@ -5414,6 +5416,7 @@ tech_autocurating_vault = {
 	weight = @tier4weight2	
 	
 	potential = {
+		is_hive_empire = no
 		NOR = {
 			has_valid_civic = civic_exalted_priesthood
 			has_valid_civic = civic_gospel_of_the_masses
@@ -5622,6 +5625,10 @@ tech_hive_cluster = {
 	tier = 2
 	prerequisites = { "tech_hive_node" }
 	weight = @tier2weight2
+	
+	potential = {
+		is_hive_empire = yes
+	}
 
 	weight_modifier = {		
 		modifier = {
@@ -5655,6 +5662,10 @@ tech_hive_confluence = {
 	tier = 3
 	prerequisites = { "tech_hive_cluster" "tech_colonial_centralization" }
 	weight = @tier3weight2
+	
+	potential = {
+		is_hive_empire = yes
+	}
 	
 	weight_modifier = {	
 		modifier = {

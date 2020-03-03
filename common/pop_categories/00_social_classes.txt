@@ -89,6 +89,9 @@ ruler = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -98,7 +101,10 @@ ruler = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -108,7 +114,10 @@ ruler = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -118,7 +127,10 @@ ruler = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
@@ -404,6 +416,9 @@ specialist = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -413,7 +428,10 @@ specialist = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -423,7 +441,10 @@ specialist = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -433,7 +454,10 @@ specialist = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
@@ -1130,6 +1154,9 @@ worker = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -1139,7 +1166,10 @@ worker = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -1149,7 +1179,10 @@ worker = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -1159,7 +1192,10 @@ worker = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
@@ -1806,6 +1842,79 @@ worker = {
 			trigger = { 
 				has_job = farmer
 				planet = { has_building = building_food_3 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal3
+		}
+		#################################### Breeder Upkeep
+		upkeep = {
+			trigger = {
+				has_job = spawning_drone
+				planet = { has_building = building_spawning_1 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				has_job = spawning_drone
+				planet = { has_building = building_spawning_2 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = { 
+				has_job = spawning_drone
+				planet = { has_building = building_spawning_3 }
+				pop_eats_food = yes
+			}
+			food = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = { 
+				has_job = spawning_drone
+				planet = { has_building = building_spawning_1 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				has_job = spawning_drone
+				planet = { has_building = building_spawning_2 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = { 
+				has_job = spawning_drone
+				planet = { has_building = building_spawning_3 }
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal3
+		}
+		upkeep = {
+			trigger = { 
+				has_job = spawning_drone
+				planet = { has_building = building_spawning_1 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				has_job = spawning_drone
+				planet = { has_building = building_spawning_2 }
+				is_robotic_species = yes
+			}
+			energy = @living_standard_food_normal2
+		}
+		upkeep = {
+			trigger = { 
+				has_job = spawning_drone
+				planet = { has_building = building_spawning_3 }
 				is_robotic_species = yes
 			}
 			energy = @living_standard_food_normal3
