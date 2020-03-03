@@ -972,21 +972,62 @@ roboticist = {
 			retile_job_seeking = yes
 		}
 		specialist_job_check_trigger = yes
+		NOT = { planet = { free_housing < 0 } }
 	}
 	
 	resources = {
 		category = planet_pop_assemblers
 		upkeep = {
 			minerals = 10
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
+			energy = @job_energy_low2
+			consumer_goods = @job_supplies_low2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { has_civic = civic_mechanists }
+			}
+			minerals = 5
+			energy = @job_energy_low
+			consumer_goods = @job_supplies_low
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { has_ascension_perk = ap_the_flesh_is_weak }
+			}
+			minerals = 5
+			energy = @job_energy_low
+			consumer_goods = @job_supplies_low
 		}
 	}
 
-	triggered_planet_modifier = {
+	planet_modifier = {
 		modifier = {
 			planet_amenities_add = 30
 			planet_pop_assembly_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_mechanists }
+		}
+		modifier = {
+			planet_amenities_add = 30
+			planet_pop_assembly_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_the_flesh_is_weak }
+		}
+		modifier = {
+			planet_amenities_add = 30
+			planet_pop_assembly_add = 1
 		}
 	}
 	
