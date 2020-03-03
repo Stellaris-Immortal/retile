@@ -22,22 +22,104 @@ spawning_drone = {
 	resources = {
 		category = planet_spawning_drones
 		upkeep = {
+			trigger = { 
+				is_lithoid = no
+				is_plantoid = no
+			}
 			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
+			consumer_goods = @job_supplies_normal 
+			food = 5
 		}
 		upkeep = {
-			trigger = { planet = { has_building = building_spawning_1 } }
+			trigger = { is_lithoid = yes }
 			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
+			consumer_goods = @job_supplies_normal 
+			minerals = 5
 		}
 		upkeep = {
-			trigger = { planet = { has_building = building_spawning_2 } }
+			trigger = { is_plantoid = yes }
+			energy = 6.5
+			consumer_goods = @job_supplies_normal 
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_spawning_1 }
+				is_lithoid = no
+				is_plantoid = no
+			}
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal 
+			food = 5
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_spawning_1 }
+				is_lithoid = yes
+			}
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal 
+			minerals = 5
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_spawning_1 }
+				is_plantoid = yes
+			}
+			energy = 6.5
+			consumer_goods = @job_supplies_normal 
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_spawning_2 }
+				is_lithoid = no
+				is_plantoid = no
+			}
 			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_normal2
+			food = 10
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_spawning_2 }
+				is_lithoid = yes
+			}
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_normal2
+			minerals = 10
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_spawning_2 }
+				is_plantoid = yes
+			}
+			energy = 13
 			consumer_goods = @job_supplies_normal2
 		}
 		upkeep = {
-			trigger = { planet = { has_building = building_spawning_3 } }
+			trigger = { 
+				planet = { has_building = building_spawning_3 }
+				is_lithoid = no
+				is_plantoid = no
+			}
 			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_normal3
+			food = 15
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_spawning_3 }
+				is_lithoid = yes
+			}
+			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_normal3
+			minerals = 15
+		}
+		upkeep = {
+			trigger = { 
+				planet = { has_building = building_spawning_3 }
+				is_plantoid = yes
+			}
+			energy = 19.5
 			consumer_goods = @job_supplies_normal3
 		}
 	}
