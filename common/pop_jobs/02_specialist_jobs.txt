@@ -1306,3 +1306,46 @@ medic = {
 		}
 	}
 }
+
+warden = {
+	category = specialist
+	building_icon = building_precinct_house
+	clothes_texture_index = 3
+	icon = enforcer
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = warden
+			retile_job_seeking = yes
+		}
+		complex_specialist_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_wardens
+		upkeep = {
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
+	}
+	
+	planet_modifier = {
+		#planet_jobs_criminal_produces_mult = 0.05
+		planet_stability_add = 25
+		planet_crime_add = -50
+	}
+	
+	weight = {
+		weight = @ruler_job_weight
+		modifier = {
+			weight = -1
+			always = yes
+		}
+	}
+}

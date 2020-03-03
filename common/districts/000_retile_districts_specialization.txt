@@ -1,9 +1,9 @@
 @base_cost = 300
-@base_upkeep = 5
+@base_upkeep = 1
 @base_buildtime = 240
 
 district_resort = {
-	base_buildtime = 240
+	base_buildtime = @base_buildtime
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = { has_modifier = resort_colony }
@@ -16,26 +16,19 @@ district_resort = {
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 		upkeep = {
-			trigger = { owner = { is_regular_empire = yes } }
 			energy = @base_upkeep
-		}
-		upkeep = {
-			trigger = { owner = { is_regular_empire = yes } }
-			consumer_goods = 1
 		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 1
 		job_clerk_add = 1
 	}
 	
 	triggered_planet_modifier = {
 		potential = { owner = { has_ascension_perk = ap_mega_specialization } }
-		planet_housing_add = 1
 		job_clerk_add = 1
 	}
 	
@@ -44,8 +37,9 @@ district_resort = {
 	}
 }
 
-district_prison = {
-	base_buildtime = 240
+district_wardens = {
+	icon = district_enforcer
+	base_buildtime = @base_buildtime
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = { has_modifier = penal_colony }
@@ -53,31 +47,59 @@ district_prison = {
 	potential = { has_modifier = penal_colony }
 	
 	conversion_ratio = 1
-	convert_to = { district_soldiers }
+	convert_to = { district_enforcers }
 	
 	resources = {
 		category = planet_districts_cities
 		cost = {
-			alloys = @base_cost
+			minerals = @base_cost
 		}
 		upkeep = {
-			trigger = { owner = { is_regular_empire = yes } }
 			energy = @base_upkeep
-		}
-		upkeep = {
-			trigger = { owner = { is_regular_empire = yes } }
-			consumer_goods = 1
 		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 1
+		job_warden_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = { owner = { has_ascension_perk = ap_mega_specialization } }
+		job_warden_add = 1
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+district_prison = {
+	base_buildtime = @base_buildtime
+	is_capped_by_modifier = no
+	
+	show_on_uncolonized = { has_modifier = penal_colony }
+
+	potential = { has_modifier = penal_colony }
+	
+	conversion_ratio = 1
+	convert_to = { district_housing }
+	
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @base_cost
+		}
+		upkeep = {
+			energy = @base_upkeep
+		}
+	}
+	
+	planet_modifier = {
 		job_criminal_add = 1
 	}
 	
 	triggered_planet_modifier = {
 		potential = { owner = { has_ascension_perk = ap_mega_specialization } }
-		planet_housing_add = 1
 		job_criminal_add = 1
 	}
 	
