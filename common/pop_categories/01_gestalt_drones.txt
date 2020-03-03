@@ -14,6 +14,9 @@ breeding_drone = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -23,7 +26,10 @@ breeding_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -33,7 +39,10 @@ breeding_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -43,8 +52,18 @@ breeding_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
@@ -179,6 +198,9 @@ complex_drone = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -188,7 +210,10 @@ complex_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -198,7 +223,10 @@ complex_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -208,8 +236,18 @@ complex_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
@@ -349,6 +387,9 @@ simple_drone = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -358,7 +399,10 @@ simple_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -368,7 +412,10 @@ simple_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -378,8 +425,18 @@ simple_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}

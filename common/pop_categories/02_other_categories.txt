@@ -101,6 +101,13 @@ purge = {
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -138,6 +145,9 @@ robot_servant = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -147,7 +157,10 @@ robot_servant = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -157,7 +170,10 @@ robot_servant = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -167,8 +183,18 @@ robot_servant = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
@@ -673,6 +699,13 @@ slave = {
 					has_building = building_spawning_3
 				}
 			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
@@ -1801,6 +1834,9 @@ criminal = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -1810,7 +1846,10 @@ criminal = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -1820,7 +1859,10 @@ criminal = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -1830,8 +1872,18 @@ criminal = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
@@ -2049,6 +2101,13 @@ assimilation = {
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -2185,6 +2244,13 @@ deviant_drone = {
 					has_building = building_spawning_3
 				}
 			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
@@ -2404,6 +2470,13 @@ corrupt_drone = {
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
 
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
 		modifier = { planet_amenities_add = 10 }
@@ -2553,6 +2626,9 @@ precursor = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -2562,7 +2638,10 @@ precursor = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -2572,7 +2651,10 @@ precursor = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -2582,8 +2664,18 @@ precursor = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
@@ -2716,6 +2808,9 @@ xeno_ward = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -2725,7 +2820,10 @@ xeno_ward = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -2735,7 +2833,10 @@ xeno_ward = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -2745,8 +2846,18 @@ xeno_ward = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
@@ -2838,6 +2949,9 @@ pre_sapients = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -2847,7 +2961,10 @@ pre_sapients = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -2857,7 +2974,10 @@ pre_sapients = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -2867,8 +2987,18 @@ pre_sapients = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
