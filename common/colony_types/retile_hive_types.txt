@@ -7,12 +7,39 @@ col_hive_capital = {
 		owner = { 
 			is_hive_empire = yes 
 			is_plantoid = no
+			NOT = { has_tradition = tr_domination_adopt }
 		}
 		is_capital = yes
 	}
 	
 	planet_modifier = {
 		planet_stability_add = 5
+		planet_crime_no_happiness_add = -30
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+col_hive_galactic_capital = {
+	icon = 12
+
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes 
+			is_plantoid = no
+			has_tradition = tr_domination_adopt
+		}
+		is_capital = yes
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 5
+		pop_government_ethic_attraction = 0.50
+		pop_growth_speed = 1
+		planet_jobs_produces_mult = 0.20
 		planet_crime_no_happiness_add = -30
 	}
 
@@ -30,6 +57,7 @@ col_hive_capital_plantoid = {
 		owner = { 
 			is_hive_empire = yes 
 			is_plantoid = yes
+			NOT = { has_tradition = tr_domination_adopt }
 		}
 		is_capital = yes
 	}
@@ -45,18 +73,48 @@ col_hive_capital_plantoid = {
 	}
 }
 
-# Breeding
-col_hive_breeding = {
-	icon = 11
+col_hive_galactic_capital_plantoid = {
+	icon = 12
 
 	potential = {
 		exists = owner
-		owner = { is_hive_empire = yes}
+		owner = { 
+			is_hive_empire = yes 
+			is_plantoid = yes
+			has_tradition = tr_domination_adopt
+		}
+		is_capital = yes
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 5
+		pop_environment_tolerance = 0.40
+		pop_government_ethic_attraction = 0.50
+		pop_growth_speed = 1
+		planet_jobs_produces_mult = 0.20
+		planet_crime_no_happiness_add = -30
+	}
+
+	weight_modifier = {
+		base = 1000
+	}
+}
+
+# Breeding
+col_hive_breeding = {
+	icon = 19
+
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
 		is_capital = no
 	}
 
 	planet_modifier = {
-		pop_growth_speed = 0.5
+		pop_growth_speed = 0.50
 	}
 
 	weight_modifier = {
@@ -68,215 +126,30 @@ col_hive_breeding = {
 	}
 }
 
-# Manufacturing
-col_hive_manufacturing = {
-	icon = 1
+# Examination
+col_hive_examination = {
+	icon = 8
 	
 	potential = {
 		exists = owner
-		owner = { is_hive_empire = yes}
+		owner = { 
+			is_hive_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
 		is_capital = no
+		OR = {
+			has_building = building_hive_capital
+			has_building = building_hive_major_capital
+			has_building = building_hive_system_capital
+			has_building = building_hive_galactic_capital
+		}
 	}
 	
 	planet_modifier = {
-		planet_jobs_consumer_goods_produces_mult = 0.15
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_factory_1
-				has_building = building_factory_2
-				has_building = building_factory_3
-			}
-		}
-	}
-}
-
-# Refining
-col_hive_refining = {
-	icon = 1
-	
-	potential = {
-		exists = owner
-		owner = { is_hive_empire = yes}
-		is_capital = no
-	}
-	
-	planet_modifier = {
-		planet_jobs_alloys_produces_mult = 0.15
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_foundry_1
-				has_building = building_foundry_2
-				has_building = building_foundry_3
-			}
-		}
-	}
-}
-
-# Farming
-col_hive_farming = {
-	icon = 1
-	
-	potential = {
-		exists = owner
-		owner = { is_hive_empire = yes}
-		is_capital = no
-	}
-	
-	planet_modifier = {
-		planet_jobs_food_produces_mult = 0.25
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = farmer }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = miner }
-				count > 2
-			}
-		}
-	}
-}
-
-# mining
-col_hive_mining = {
-	icon = 1
-	
-	potential = {
-		exists = owner
-		owner = { is_hive_empire = yes}
-		is_capital = no
-	}
-	
-	planet_modifier = {
-		planet_jobs_minerals_produces_mult = 0.25
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = miner }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = miner }
-				count > 2
-			}
-		}
-	}
-}
-
-# energy
-col_hive_energy = {
-	icon = 1
-	
-	potential = {
-		exists = owner
-		owner = { is_hive_empire = yes}
-		is_capital = no
-	}
-	
-	planet_modifier = {
-		planet_jobs_energy_produces_mult = 0.25
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = technician }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = technician }
-				count > 2
-			}
-		}
-	}
-}
-
-# unity
-col_hive_unity = {
-	icon = 1
-	
-	potential = {
-		exists = owner
-		owner = { is_hive_empire = yes}
-		is_capital = no
-	}
-	
-	planet_modifier = {
-		planet_jobs_unity_produces_mult = 0.1
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_hive_node
-				has_building = building_hive_cluster
-				has_building = building_hive_confluence
-			}
-		}
-	}
-}
-
-# research
-col_hive_research = {
-	icon = 1
-	
-	potential = {
-		exists = owner
-		owner = { is_hive_empire = yes}
-		is_capital = no
-	}
-	
-	planet_modifier = {
-		planet_jobs_physics_research_produces_mult = 0.1
-		planet_jobs_society_research_produces_mult = 0.1
-		planet_jobs_engineering_research_produces_mult = 0.1
+		planet_jobs_unity_produces_mult = 0.10
+		planet_jobs_physics_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_engineering_research_produces_mult = 0.10
 	}
 
 	weight_modifier = {
@@ -298,3 +171,204 @@ col_hive_research = {
 	}
 }
 
+# Galactic Examination
+col_hive_galactic_examination = {
+	icon = 8
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		pop_growth_speed = 0.50
+		planet_jobs_unity_produces_mult = 0.10
+		planet_jobs_physics_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_engineering_research_produces_mult = 0.10
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { has_job = researcher }
+				count > 0
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_research_lab_1
+				has_building = building_research_lab_2
+				has_building = building_research_lab_3
+			}
+		}
+	}
+}
+
+# Production
+col_hive_production = {
+	icon = 7
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
+		is_capital = no
+		OR = {
+			has_building = building_hive_capital
+			has_building = building_hive_major_capital
+			has_building = building_hive_system_capital
+			has_building = building_hive_galactic_capital
+		}
+	}
+	
+	planet_modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.20
+		planet_jobs_alloys_produces_mult = 0.20
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 0
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_factory_1
+				has_building = building_factory_2
+				has_building = building_factory_3
+			}
+		}
+	}
+}
+
+# Galactic Production
+col_hive_galactic_production = {
+	icon = 7
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		pop_growth_speed = 0.50
+		planet_jobs_consumer_goods_produces_mult = 0.20
+		planet_jobs_alloys_produces_mult = 0.20
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { has_job = foundry }
+				count > 0
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_factory_1
+				has_building = building_factory_2
+				has_building = building_factory_3
+			}
+		}
+	}
+}
+
+# Extraction
+col_hive_extraction = {
+	icon = 2
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
+		is_capital = no
+		OR = {
+			has_building = building_hive_capital
+			has_building = building_hive_major_capital
+			has_building = building_hive_system_capital
+			has_building = building_hive_galactic_capital
+		}
+	}
+	
+	planet_modifier = {
+		planet_jobs_food_produces_mult = 0.20
+		planet_jobs_minerals_produces_mult = 0.20
+		planet_jobs_energy_produces_mult = 0.20
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { has_job = farmer }
+				count > 0
+			}
+		}
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { has_job = miner }
+				count > 2
+			}
+		}
+	}
+}
+
+# Galactic Extraction
+col_hive_galactic_extraction = {
+	icon = 2
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		pop_growth_speed = 0.50
+		planet_jobs_food_produces_mult = 0.20
+		planet_jobs_minerals_produces_mult = 0.20
+		planet_jobs_energy_produces_mult = 0.20
+	}
+
+	weight_modifier = {
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { has_job = farmer }
+				count > 0
+			}
+		}
+		modifier = {
+			add = 3
+			count_pops = {
+				limit = { has_job = miner }
+				count > 2
+			}
+		}
+	}
+}
