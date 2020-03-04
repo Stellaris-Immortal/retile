@@ -44,6 +44,37 @@ trait_machine_unit = {
 	modifier = { pop_environment_tolerance = 2.0 }
 }
 
+trait_synthetic = {
+	cost = 0
+	sorting_priority = 20
+
+	initial = no
+	randomized = no
+	modification = no
+	immortal_leaders = yes
+	icon = "gfx/interface/icons/traits/trait_robotic_3.dds"
+	allowed_archetypes = { ROBOT }
+
+	modifier = { pop_environment_tolerance = 2.0 }
+}
+
+trait_droid = {
+	cost = 0
+	sorting_priority = 20
+
+	initial = no
+	randomized = no
+	modification = no
+	immortal_leaders = yes
+	icon = "gfx/interface/icons/traits/trait_robotic_2.dds"
+	allowed_archetypes = { ROBOT }
+
+	modifier = { 
+		planet_jobs_specialist_produces_mult = -0.25
+		pop_environment_tolerance = 2.0
+	}
+}
+
 trait_mechanical = {
 	cost = 0
 	sorting_priority = 20
@@ -52,7 +83,7 @@ trait_mechanical = {
 	randomized = no
 	modification = no
 	immortal_leaders = yes
-
+	icon = "gfx/interface/icons/traits/trait_robotic_1.dds"
 	allowed_archetypes = { ROBOT }
 
 	modifier = { 

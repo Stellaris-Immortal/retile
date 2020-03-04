@@ -6317,13 +6317,9 @@ country_event = {
 	hide_window = yes
 	is_triggered_only = yes
 	
-	trigger = {
-		has_built_species = no
-	}
+	trigger = { has_built_species = no }
 
-	immediate = {
-		create_built_robot_species = yes
-	}
+	immediate = { create_built_robot_species = yes }
 }
 
 # Country Destroyed Notification Gatekeeper
@@ -8676,5 +8672,53 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		run_ai_strategic_war_data = yes
+	}
+}
+
+# Advanced Robots
+country_event = {
+	id = action.560
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_country_flag = has_built_advancedrobot }
+		has_technology = tech_robotic_workers	
+	}
+
+	immediate = {
+		create_built_advancedrobot_species = yes
+	}
+}
+
+# Upgrade to Droids
+country_event = {
+	id = action.5600
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_country_flag = has_built_droid }
+		has_technology = tech_droid_workers	
+	}
+
+	immediate = {
+		create_built_droid_species = yes
+	}
+}
+
+# Upgrade to Synths
+country_event = {
+	id = action.56000
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		NOT = { has_country_flag = has_built_synth }
+		has_technology = tech_synthetic_workers	
+	}
+
+	immediate = {
+		create_built_synth_species = yes
 	}
 }

@@ -539,3 +539,46 @@ retile_restore_all = {
 		clear_blocker = yes
 	}
 }
+
+# Create Advanced Robot
+create_built_advancedrobot_species = {
+	set_country_flag = has_built_advancedrobot
+	owner = {
+		capital_scope = {
+			create_pop = { species = root.built_species }
+		}
+	}
+}
+
+# Create Droid
+create_built_droid_species = {
+	modify_species = {
+			species = root.built_species
+			add_traits_at_start_of_list = yes
+			remove_trait = trait_mechanical
+			add_trait = trait_droid
+	}
+	set_country_flag = has_built_droid
+	owner = {
+		capital_scope = {
+			create_pop = { species = root.built_species }
+		}
+	}
+}
+
+# Create Synthetic
+create_built_synth_species = {
+	modify_species = {
+			species = root.built_species
+			add_traits_at_start_of_list = yes
+			remove_trait = trait_droid
+			remove_trait = trait_mechanical
+			add_trait = trait_synthetic
+	}
+	set_country_flag = has_built_synth
+	owner = {
+		capital_scope = {
+			create_pop = { species = root.built_species }
+		}
+	}
+}
