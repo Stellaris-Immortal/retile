@@ -567,6 +567,11 @@ farmer = {
 		}
 		hidden_trigger = { exists = owner }
 		worker_job_check_trigger = yes
+		or = {
+			owner = { is_ai = no }
+			owner = { country_uses_food = yes }
+			owner = { is_plantoid_empire = yes }
+		}
 	}
 
 	resources = {

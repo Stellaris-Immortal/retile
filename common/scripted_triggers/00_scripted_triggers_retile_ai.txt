@@ -7,7 +7,7 @@ retile_ai_has_planet_crisis = {
 }
 
 retile_ai_planet_healthy_district = {
-	free_jobs < 1
+	any_pop = { is_unemployed = yes }
 	free_amenities < 300
 	planet_crime < 10
 }
@@ -37,13 +37,44 @@ retile_ready_capital = {
 }
 
 retile_ready_energy = {	# deposit scope
-	always = no
+	exists = owner
+	OR = {
+		owner = { is_ai = no }
+		AND = {
+			owner = { has_country_flag = retile_ai_needs_energy }
+			planet = { any_pop = { is_unemployed = yes } }
+		}
+	}
 }
 retile_ready_minerals = {	# deposit scope
-	always = no
+	exists = owner
+	OR = {
+		owner = { is_ai = no }
+		AND = {
+			owner = { has_country_flag = retile_ai_needs_minerals }
+			planet = { any_pop = { is_unemployed = yes } }
+		}
+	}
 }
 retile_ready_food = {	# deposit scope
-	always = no
+	exists = owner
+	OR = {
+		owner = { is_ai = no }
+		AND = {
+			OR = {
+				owner = { has_country_flag = retile_ai_needs_food }
+				AND = {
+					owner = { is_plantoid_empire = yes }
+					count_pops = { limit = { has_job = farmer } count < 3 }
+				}
+			}
+			planet = { any_pop = { is_unemployed = yes } }
+		}
+	}
+}
+retile_ready_restore = {	# deposit scope
+	exists = owner
+	owner = { is_ai = no }
 }
 
 retile_ai_has_resource_crisis = {
