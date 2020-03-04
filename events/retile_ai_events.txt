@@ -212,12 +212,14 @@ country_event = {
 		}
 		if = {
 			limit = {
+				country_uses_food = yes
 				has_monthly_income = { resource = food value < @retile_ai_food_income_high }
 			}
 			set_country_flag = retile_ai_needs_food
 		}
 		if = {
 			limit = {
+				country_uses_food = yes
 				has_monthly_income = { resource = food value < @retile_ai_food_income_low }
 			}
 			set_country_flag = retile_ai_needs_food_crisis
@@ -293,17 +295,17 @@ planet_event = {
 			remove_district = district_soldiers
 		} else_if = { # maybe we can free up some custodians?
 			limit = {
-				num_districts = { type = district_custodians value > 0 }
+				num_districts = { type = district_custodians value > 1 }	# because we're always allowed to build 1 of these...
 				NOT = { free_amenities > 0 }
 			}
 			remove_district = district_custodians
 		} else_if = { # maybe we can free up some enforcers?
 			limit = {
-				num_districts = { type = district_enforcers value > 0 }
+				num_districts = { type = district_enforcers value > 1 }		# because we're always allowed to build 1 of these...
 				NOT = { planet_crime > 0 }
 			}
 			remove_district = district_enforcers
-		} else_if = { # any other excess trades for energy at 2-1, so try to remove energy first...
+		} else_if = { # any other excess trades for energy at 2-1, so try to remove energy first... ??? Maybe this logic is backwards... it might not matter... ???
 			limit = {
 				any_deposit = { has_deposit_category = deposit_cat_energy_active }
 				owner = { NOT = { has_country_flag = retile_ai_needs_energy_crisis } }
@@ -523,12 +525,13 @@ planet_event = {
 	hide_window = yes
 
 	trigger = {
+		always = no
 		has_owner = yes
 		owner = {
 			is_ai = yes
 			is_country_type = default
 		}
-		free_jobs < 1
+		any_pop = { is_unemployed = yes }
 		retile_ai_has_planet_crisis = no
 		OR = {
 			AND = {
@@ -627,13 +630,14 @@ planet_event = {
 	hide_window = yes
 
 	trigger = {
+		always = no
 		has_owner = yes
 		owner = {
 			is_ai = yes
 			is_country_type = default
 			is_plantoid_empire = yes
 		}
-		free_jobs < 1
+		free_jobs < 0
 		count_pops = {
 			limit = { has_job = farmer }
 			count < 3
@@ -710,6 +714,7 @@ planet_event = {
 			is_ai = yes
 			is_country_type = default
 		}
+		num_districts = { type = district_custodians value > 1 }	# because we're always allowed to build 1 of these...
 		OR = {
 			owner = { retile_ai_has_resource_crisis = yes }
 			free_amenities < -300
@@ -736,6 +741,7 @@ planet_event = {
 			is_ai = yes
 			is_country_type = default
 		}
+		num_districts = { type = district_enforcers value > 1 }	# because we're always allowed to build 1 of these...
 		OR = {
 			owner = { retile_ai_has_resource_crisis = yes }
 			planet_crime < 1
@@ -974,8 +980,13 @@ country_event = {
 		}
 		while = { # Emergency Resource Purchases
 			limit = {
-				has_resource = { type = energy amount > 500 }
-				has_monthly_income = { resource = energy value > 0 }
+				OR = {
+					has_resource = { type = energy amount > 1000 }
+					AND = {
+						has_resource = { type = energy amount > 500 }
+						has_monthly_income = { resource = energy value > 0 }
+					}
+				}
 				OR = {
 					AND = {
 						has_resource = { type = minerals amount < 100 }

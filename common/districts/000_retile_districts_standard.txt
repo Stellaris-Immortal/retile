@@ -386,7 +386,10 @@ district_admin = {
 		exists = owner
 		OR = {
 			owner = { is_ai = no }
-			# TODO
+			AND = {
+				retile_ai_planet_healthy_district = yes
+				owner = { has_country_flag = retile_ai_needs_admin }
+			}
 		}
 	}
 	
@@ -419,7 +422,7 @@ district_soldiers = {
 			AND = {
 				retile_ai_planet_healthy_district = yes
 				OR = {
-					num_districts = { type = district_soldiers value < 3 }
+					num_districts = { type = district_soldiers value < 2 }
 					has_planet_flag = retile_ai_fortress
 				}
 				owner = { retile_ai_has_resource_crisis = no }
@@ -491,8 +494,11 @@ district_enforcers = {
 			AND = {
 				planet_crime > 33
 				OR = {
-					free_jobs < 1
-					num_districts = { type = district_enforcers value < 1 }
+					any_pop = { is_unemployed = yes }
+					AND = {
+						num_pops > 2
+						num_districts = { type = district_enforcers value < 1 }
+					}
 				}
 			}
 		}
@@ -590,7 +596,16 @@ district_sentinel = {
 		exists = owner
 		OR = {
 			owner = { is_ai = no }
-			# TODO
+			AND = {
+				planet_crime > 33
+				OR = {
+					any_pop = { is_unemployed = yes }
+					AND = {
+						num_pops > 2
+						num_districts = { type = district_sentinel value < 1 }
+					}
+				}
+			}
 		}
 	}
 	
@@ -625,10 +640,13 @@ district_custodians = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				free_amenities > 0
+				free_amenities > 300
 				OR = {
-					free_jobs < 1
-					num_districts = { type = district_custodians value < 1 }
+					any_pop = { is_unemployed = yes }
+					AND = {
+						num_pops > 2
+						num_districts = { type = district_custodians value < 1 }
+					}
 				}
 			}
 		}

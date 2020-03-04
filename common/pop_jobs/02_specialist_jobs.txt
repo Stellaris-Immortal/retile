@@ -978,6 +978,17 @@ roboticist = {
 		category = planet_pop_assemblers
 		upkeep = {
 			minerals = 10
+			alloys = 2
+			energy = @job_energy_low2
+			consumer_goods = @job_supplies_low2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { has_authority = auth_machine_intelligence }
+			}
+			minerals = 10
+			alloys = 2
 			energy = @job_energy_low2
 			consumer_goods = @job_supplies_low2
 		}
@@ -987,6 +998,7 @@ roboticist = {
 				owner = { has_civic = civic_mechanists }
 			}
 			minerals = 5
+			alloys = 1
 			energy = @job_energy_low
 			consumer_goods = @job_supplies_low
 		}
@@ -996,6 +1008,7 @@ roboticist = {
 				owner = { has_ascension_perk = ap_the_flesh_is_weak }
 			}
 			minerals = 5
+			alloys = 1
 			energy = @job_energy_low
 			consumer_goods = @job_supplies_low
 		}
@@ -1004,6 +1017,17 @@ roboticist = {
 	planet_modifier = {
 		planet_amenities_add = 30
 		planet_pop_assembly_add = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_authority = auth_machine_intelligence }
+		}
+		modifier = {
+			planet_amenities_add = 60
+			planet_pop_assembly_add = 2
+		}
 	}
 	
 	triggered_planet_modifier = {
