@@ -76,6 +76,13 @@ retile_ready_restore = {	# deposit scope
 	exists = owner
 	owner = { is_ai = no }
 }
+retile_ready_arcology_exploit = {
+	exists = owner
+	OR = {
+		owner = { is_ai = no }
+		planet = { free_district_slots < 2 }
+	}
+}
 
 retile_ai_has_resource_crisis = {
 	OR = {
