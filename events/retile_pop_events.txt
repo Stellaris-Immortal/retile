@@ -138,7 +138,10 @@ planet_event = {
 		OR = {
 			free_housing < 0
 			#free_jobs < 0	# doesn't work... :(
-			any_owned_pop = { is_unemployed = yes }
+			AND = {
+				owner = { is_ai = no }
+				any_owned_pop = { is_unemployed = yes }
+			}
 		}
 		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
 		NOT = { has_modifier = penal_colony }
