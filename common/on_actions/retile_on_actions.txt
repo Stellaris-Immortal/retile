@@ -12,6 +12,12 @@ on_press_begin = {
 	}
 }
 
+on_building_complete = {
+    events = {
+        action.56 # Give robot species, if robot factory
+    }
+}
+
 on_terraforming_complete = {
 	events = {
 		retile_generate.5		# Terraforming Results
@@ -74,11 +80,5 @@ on_tech_increased = {
 		action.560		# Advanced Robots
 		action.5600		# Upgrade to Droids
 		action.56000	# Upgrade to Synths
-	}
-}
-
-on_building_complete = {
-	events = {
-		action.55 # Give robot species, if robot factory
 	}
 }

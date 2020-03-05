@@ -8,15 +8,15 @@ tr_prosperity_adopt = {
 	}
 
 	tradition_swap = {
-		name = tr_prosperity_adopt_machine
+		name = tr_prosperity_adopt_hive
 		inherit_effects = no
 		inherit_icon = yes
 		inherit_name = yes
 		trigger = {
-			is_gestalt = yes
+			is_hive_empire = yes
 		}
 		modifier = {
-			# Something Else
+			planet_jobs_worker_produces_mult = 0.10
 		}
 		weight = {
 			factor = 1
@@ -70,6 +70,22 @@ tr_prosperity_finish = {
 		ascension_perks_add = 1		
 		# Improved Trade Policies
 	}
+	
+	tradition_swap = {
+		name = tr_prosperity_finish_hive
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = yes
+		trigger = {
+			is_hive_empire = yes
+		}
+		modifier = {
+			ascension_perks_add = 1	
+		}
+		weight = {
+			factor = 1
+		}
+	}
 }
 
 tr_prosperity_sct = {
@@ -80,15 +96,21 @@ tr_prosperity_sct = {
 	ai_weight = {
 		factor = 1000
 	}
-}
-
-tr_prosperity_administrative_operations = {
-	modifier = {
-		starbase_module_capacity_add = 1
-	}
 	
-	ai_weight = {
-		factor = 5000
+	tradition_swap = {
+		name = tr_prosperity_sct_hive
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_hive_empire = yes
+		}
+		modifier = {
+			# Consume Deposit Decision
+		}
+		weight = {
+			factor = 1
+		}
 	}
 }
 
@@ -99,6 +121,32 @@ tr_prosperity_public_works = {
 	
 	modifier = {
 		# Stock Exchange
+	}
+	
+	tradition_swap = {
+		name = tr_prosperity_public_works_hive
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			is_hive_empire = yes
+		}
+		modifier = {
+			# Hive World Decision
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	ai_weight = {
+		factor = 5000
+	}
+}
+
+tr_prosperity_administrative_operations = {
+	modifier = {
+		starbase_module_capacity_add = 1
 	}
 	
 	ai_weight = {
