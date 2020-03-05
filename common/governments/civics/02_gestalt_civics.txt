@@ -23,6 +23,7 @@ civic_hive_subspace_ephapse = {
 	modifier = {
 		ship_speed_mult = 0.10
 		ship_fire_rate_mult = 0.10
+		country_naval_cap_mult = 0.10
 	}
 }
 
@@ -30,7 +31,7 @@ civic_hive_natural_neural_network = {
 	potential = { authority = { value = auth_hive_mind } }
 	random_weight = { base = 5 }
 	modifier = {
-		science_ship_survey_speed = 0.25
+		planet_researchers_produces_mult = 0.10
 		num_tech_alternatives_add = 1
 	}
 }
@@ -39,7 +40,9 @@ civic_hive_ascetic = {
 	potential = { authority = { value = auth_hive_mind } }
 	random_weight = { base = 5 }
 	modifier = {
+		planet_amenities_mult = -0.10
 		planet_pops_upkeep_mult = -0.10
+		planet_jobs_upkeep_mult = -0.10
 	}
 }
 
@@ -57,6 +60,7 @@ civic_hive_divided_attention = {
 	random_weight = { base = 5 }
 	modifier = {
 		country_admin_cap_add = 10
+		empire_size_penalty_mult = -0.10
 	}
 }
 
@@ -66,6 +70,7 @@ civic_hive_strength_of_legions = {
 	modifier = {
 		army_damage_mult = 0.20
 		armies_upkeep_mult = -0.20
+		country_occupation_armies_add = 1
 	}
 }
 
@@ -73,8 +78,8 @@ civic_hive_subsumed_will = {
 	potential = { authority = { value = auth_hive_mind } }
 	random_weight = { base = 5 }
 	modifier = {
-		edicts_cost_mult = -0.20
-		planet_decision_enact_speed_mult = 0.50
+		planet_stability_add = 5
+		pop_resettlement_cost_mult = -0.50
 	}
 }
 
@@ -82,8 +87,10 @@ civic_hive_pooled_knowledge = {
 	potential = { authority = { value = auth_hive_mind } }
 	random_weight = { base = 5 }
 	modifier = {
-		leader_skill_levels = 1
 		species_leader_exp_gain = 0.50
+		science_ship_survey_speed = 0.25
+		ship_anomaly_research_speed_mult = 0.25
+		ship_archaeological_site_excavation_speed_mult = 0.25
 	}
 }
 
