@@ -409,27 +409,31 @@ trait_plantoid_flowering = {
 }
 
 trait_communal = {
-	cost = 1
+	cost = 2
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_solitary" "trait_hive_mind" "trait_machine_unit" }
 
 	allowed_archetypes = { BIOLOGICAL LITHOID ARTHROPOID }
 	
-	modifier = {
-		pop_happiness = 0.05
-	}
+	custom_tooltip = TRAIT_COMMUNAL_EFFECT
+	#modifier = {
+		#per-pop growth reduction -0.005 or something...
+		#pop_happiness = 0.05
+	#}
 }
 
 trait_solitary = {
-	cost = -1
+	cost = -2
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_communal" "trait_hive_mind" "trait_machine_unit" }
 
 	allowed_archetypes = { BIOLOGICAL LITHOID ARTHROPOID }
 	
-	modifier = {
-		pop_happiness = -0.05
-	}
+	custom_tooltip = TRAIT_SOLITARY_EFFECT
+	#modifier = {
+		#per-pop growth reduction +0.005 or something...
+		#pop_happiness = -0.05
+	#}
 
 	ai_weight = {
 		weight = 0
