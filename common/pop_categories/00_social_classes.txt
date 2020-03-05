@@ -84,7 +84,10 @@ ruler = {
 	########################################	START Pop Sprawl
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { has_trait = trait_communal }
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_base
 	}
@@ -431,7 +434,10 @@ specialist = {
 	########################################	START Pop Sprawl
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { has_trait = trait_communal }
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_base
 	}
@@ -1189,7 +1195,10 @@ worker = {
 	########################################	START Pop Sprawl
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { has_trait = trait_communal }
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_base
 	}
