@@ -585,7 +585,11 @@ citizenship_robot_servitude = {
 	potential = {
 		exists = from
 		from = { is_gestalt = no }
-		has_trait = trait_mechanical
+		OR = {
+			has_trait = trait_mechanical
+			has_trait = trait_droid
+			has_trait = trait_synthetic
+		}
 		NAND = {	# fanatic purifiers exclusion
 			from = { has_valid_civic = civic_fanatic_purifiers }
 			NOR = {
@@ -598,10 +602,14 @@ citizenship_robot_servitude = {
 
 	allow = {
 		hidden_trigger = { exists = from }
-		from = { NOT = { has_policy_flag = ai_full_rights } }
+		OR = {
+			from = { NOT = { has_policy_flag = ai_full_rights } }
+			has_trait = trait_mechanical
+			has_trait = trait_droid
+		}
 	}
 	ai_will_do = {
-		factor = 1
+		factor = 2
 	}
 }
 
@@ -647,7 +655,10 @@ citizenship_purge = {
 			}
 		} else_if = {
 			limit = {
-				is_archetype = ROBOT
+				OR = {
+					has_trait = trait_mechanical
+					has_trait = trait_droid
+				}
 			}
 			custom_tooltip = {
 				text = yes_robot_always_purge
@@ -655,7 +666,10 @@ citizenship_purge = {
 			}
 		} else_if = {
 			limit = {
-				is_archetype = MACHINE
+				OR = {
+					is_archetype = MACHINE
+					has_trait = trait_synthetic
+				}
 			}
 			custom_tooltip = {
 				fail_text = yes_ai_full_rights
@@ -675,7 +689,7 @@ citizenship_purge = {
 	}
 	
 	ai_will_do = {
-		factor = 20
+		factor = 1
 		modifier = {
 			factor = 0
 			from = {
