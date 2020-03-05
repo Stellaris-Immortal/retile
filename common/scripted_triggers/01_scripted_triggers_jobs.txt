@@ -1,4 +1,3 @@
-
 ## This looks pretty solid...
 ruler_job_check_trigger = {
 	custom_tooltip = RULER_JOB_TRIGGER
@@ -10,39 +9,29 @@ ruler_job_check_trigger = {
 		}
 		is_being_purged = no
 		is_being_assimilated = no
-		NOT = { has_trait = trait_syncretic_proles }		## Syncretic pops can't be rulers
-		NOT = { has_trait = trait_nerve_stapled }			## Nerve stapled pops can't be rulers
+		NOR = {
+			has_trait = trait_syncretic_proles		## Syncretic pops can't be rulers
+			has_trait = trait_nerve_stapled			## Nerve stapled pops can't be rulers
+			has_trait = trait_mechanical			## Robots can't be rulers
+			has_trait = trait_droid					## Droids can't be rulers
+		}
 		OR = {
-			NOT = { has_trait = trait_mechanical }			## Machines can't be rulers...
-			AND = {
-				owner = { has_technology = tech_synthetic_workers }	##...unless they're smart enough...
-				owner = { has_policy_flag = ai_full_rights }		##...and have sufficient species rights
-			}
+			NOT = { has_trait = trait_synthetic } 			## Synths can't be rulers...
+			owner = { has_policy_flag = ai_full_rights }	## ... unless they have rights
 		}
 		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } } ## Bio-trophys can't be rulers
-	}
-}
-
-## used for: colonist, researcher, priest, culture_worker, dimensional_portal_researcher, dimensional_portal_researcher_gestalt
-## Forbids synthetics from working these jobs if AI is outlawed		## Concerns: Why is a gestalt job evaluated here?
-##																	## Otherwise... looks OK
-complex_specialist_job_check_trigger = {
-	specialist_job_check_trigger = yes
-	hidden_trigger = {
-		exists = owner
-		OR = {
-			NOT = { has_trait = trait_mechanical }		## Non-machines are OK
-			AND = {										## Synthetics are OK if AI is NOT outlawed
-				owner = { has_technology = tech_synthetic_workers }
-				owner = { NOT = { has_policy_flag = ai_outlawed } }			
-			}
+		NOR = {
+			has_trait = trait_machine_unit			## gestalt pops can't be rulers
+			has_trait = trait_hive_mind
 		}
 	}
 }
 
 ## This is the same list of exclusions from ruler_job_check_trigger... It still looks pretty solid...
-specialist_job_check_trigger = {
-	custom_tooltip = SPECIALIST_JOB_TRIGGER
+# robots and droids can't work these jobs
+#  - currently only researcher uses this -
+synth_specialist_job_check_trigger = {
+	custom_tooltip = SYNTH_SPECIALIST_JOB_TRIGGER
 	hidden_trigger = {
 		exists = owner				
 		OR = { 
@@ -51,68 +40,82 @@ specialist_job_check_trigger = {
 		}
 		is_being_purged = no
 		is_being_assimilated = no
-		NOT = { has_trait = trait_syncretic_proles }
-		NOT = { has_trait = trait_nerve_stapled }
-		OR = {
-			NOT = { has_trait = trait_mechanical }
-			owner = { has_technology = tech_droid_workers }
+		NOR = {
+			has_trait = trait_syncretic_proles
+			has_trait = trait_nerve_stapled
+			has_trait = trait_mechanical
+			has_trait = trait_droid
 		}
 		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
 	}
 }
 
-## THIS SHOULDN'T BE USED
-## This is the same as the ruler/specialist exclusions, except domestic servants are allowed. Looks OK
-entertainer_job_check_trigger = {
-	custom_tooltip = SPECIALIST_JOB_TRIGGER
+## This is the same list of exclusions from ruler_job_check_trigger... It still looks pretty solid...
+# robots can't work these jobs, droids are allowed
+droid_specialist_job_check_trigger = {
+	custom_tooltip = DROID_SPECIALIST_JOB_TRIGGER
 	hidden_trigger = {
-		exists = owner
-		OR = {
+		exists = owner				
+		OR = { 
 			is_enslaved = no
 			has_slavery_type = { type = slavery_domestic }
-		}		
+		}
 		is_being_purged = no
 		is_being_assimilated = no
-		NOT = { has_trait = trait_syncretic_proles }
-		NOT = { has_trait = trait_nerve_stapled }
-		OR = {
-			NOT = { has_trait = trait_mechanical }
-			owner = { has_technology = tech_droid_workers }
+		NOR = {
+			has_trait = trait_syncretic_proles
+			has_trait = trait_nerve_stapled
+			has_trait = trait_mechanical
 		}
-		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }	
+		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
 	}
 }
 
-## This is the same as the ruler/specialist exclusions, except battle slaves are allowed. Looks OK
-battle_thrall_job_check_trigger = {
-	custom_tooltip = SPECIALIST_JOB_TRIGGER
+## This is the same list of exclusions from ruler_job_check_trigger... It still looks pretty solid...
+# basic robots can't work these jobs
+robot_specialist_job_check_trigger = {
+	custom_tooltip = ROBOT_SPECIALIST_JOB_TRIGGER
 	hidden_trigger = {
-		exists = owner
+		exists = owner				
+		OR = { 
+			is_enslaved = no
+			has_slavery_type = { type = slavery_domestic }
+		}
+		is_being_purged = no
+		is_being_assimilated = no
+		NOR = {
+			has_trait = trait_syncretic_proles
+			has_trait = trait_nerve_stapled
+		}
 		OR = {
+			NOT = { has_trait = trait_mechanical } # robot
+			owner = { has_technology = tech_robotic_workers }	# advanced robotics
+		}
+		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+	}
+}
+
+## This is the same list of exclusions from ruler_job_check_trigger... It still looks pretty solid...
+# basic robots can't work these jobs
+combat_specialist_job_check_trigger = {
+	custom_tooltip = COMBAT_SPECIALIST_JOB_TRIGGER
+	hidden_trigger = {
+		exists = owner				
+		OR = { 
 			is_enslaved = no
 			has_slavery_type = { type = slavery_military }
 			has_slavery_type = { type = slavery_domestic }
-		}		
+		}
 		is_being_purged = no
 		is_being_assimilated = no
-		NOT = { has_trait = trait_nerve_stapled }
-		OR = {
-			NOT = { has_trait = trait_mechanical }
-			owner = { has_technology = tech_droid_workers }
+		NOR = {
+			has_trait = trait_nerve_stapled
 		}
-		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }	
-	}
-}
-
-## Prevents basic robots from working these jobs. Advanced Robots are OK though.
-complex_worker_job_check_trigger = {
-	worker_job_check_trigger = yes
-	hidden_trigger = {	
-		exists = owner
 		OR = {
-			NOT = { has_trait = trait_mechanical }
-			owner = { has_technology = tech_robotic_workers }
+			NOT = { has_trait = trait_mechanical } # robot
+			owner = { has_technology = tech_robotic_workers }	# advanced robotics
 		}
+		NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
 	}
 }
 
@@ -123,7 +126,7 @@ worker_job_check_trigger = {
 	hidden_trigger = {
 		exists = owner
 		OR = {
-		is_being_purged = no
+			is_being_purged = no
 			has_purge_type = { type = purge_neutering }
 		}
 		is_being_assimilated = no
@@ -135,6 +138,7 @@ worker_job_check_trigger = {
 				has_slavery_type = { type = slavery_matrix }
 			}
 		}
+		# all robots allowed...
 	}
 }
 
