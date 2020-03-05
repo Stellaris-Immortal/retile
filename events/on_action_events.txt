@@ -6311,9 +6311,9 @@ country_event = {
 	}
 }
 
-# If robots are unlocked, create built species
+# Create built species when building robot assembly plant
 planet_event = {
-	id = action.56
+	id = action.55
 	hide_window = yes
 	is_triggered_only = yes
 	
@@ -6323,6 +6323,19 @@ planet_event = {
 	}
 
 	immediate = { owner = { create_built_robot_species = yes } }
+}
+
+# If robots are unlocked, create built species
+country_event = {
+	id = action.56
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = {
+		has_built_species = no
+	}
+
+	immediate = { create_built_robot_species = yes }
 }
 
 # Country Destroyed Notification Gatekeeper
