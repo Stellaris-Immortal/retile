@@ -111,7 +111,7 @@ hive_ethics = {
 		policy_flags = { hive_ethics_egalitarian }
 		
 		modifier = { 
-			# Reduces Deviancy
+			planet_crime_no_happiness_add = -35
 		}
 		
 		AI_weight = {
@@ -181,7 +181,7 @@ hive_ethics = {
 	option = {
 		name = "hive_ethics_xenophobe"
 		
-		policy_flags = { hive_ethics_materialist }
+		policy_flags = { hive_ethics_xenophobe }
 		
 		modifier = { 
 			# Increase Purge / Assimilate Speed
@@ -195,7 +195,7 @@ hive_ethics = {
 	option = {
 		name = "hive_ethics_xenophile"
 		
-		policy_flags = { hive_ethics_materialist }
+		policy_flags = { hive_ethics_xenophile }
 		
 		modifier = { 
 			pop_growth_speed = 0.25
@@ -223,8 +223,8 @@ xenodiplomacy_hive = {
 	
 	option = {
 		name = "xenodiplomacy_diplomat_hive"
-		potential = { has_technology = tech_xenodiplomacy }
-		valid = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
+		potential = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
+		valid = { has_technology = tech_xenodiplomacy }
 		
 		policy_flags = { 
 			xenodiplomacy_embassy
