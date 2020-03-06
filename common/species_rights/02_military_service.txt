@@ -1,0 +1,175 @@
+# from = country
+# this = species
+
+
+military_service_full = {
+	token = military_service_full
+	
+	potential = {
+		OR = {
+			NAND = {
+				from = { has_authority = auth_machine_intelligence }
+				NOR = {
+					has_trait = trait_machine_unit
+					has_trait = trait_mechanical	
+					has_trait = trait_droid
+					has_trait = trait_synthetic
+				}			
+			}
+			AND = {
+				from = { has_authority = auth_machine_intelligence }
+				has_trait = trait_cybernetic
+			}
+		}
+	}
+
+	allow = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			fail_text = MACHINE_NO_PURE_ORGANIC_SOLDIERS
+			OR = {
+				NOT = { from = { has_authority = auth_machine_intelligence } }
+				AND = {
+					from = { has_authority = auth_machine_intelligence }
+					OR = {
+						has_trait = trait_mechanical
+						has_trait = trait_droid
+						has_trait = trait_synthetic
+						has_trait = trait_machine_unit
+					}
+				}
+				AND = {
+					from = {
+						has_authority = auth_machine_intelligence
+						has_civic = civic_machine_assimilator
+					}
+					OR = {
+						has_trait = trait_mechanical
+						has_trait = trait_droid
+						has_trait = trait_synthetic
+						has_trait = trait_machine_unit
+						has_trait = trait_cybernetic
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			NOR = {
+				has_citizenship_type = { country = from type = citizenship_purge_machine }
+				has_citizenship_type = { country = from type = citizenship_purge }
+			}
+			text = not_undesirables_tooltip
+		}
+		custom_tooltip = {
+			NOT = { has_citizenship_type = { country = from type = citizenship_slavery } }
+			text = not_slaves_tooltip
+		}
+		custom_tooltip = {
+			NOT = { has_citizenship_type = { country = from type = citizenship_robot_servitude } }
+			text = not_servitude_tooltip
+		}		
+		custom_tooltip = {
+			fail_text = too_alien
+			OR = {
+				is_same_species = from
+				from = {
+					NOR = {
+						has_ethic = ethic_xenophobe
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "HIVE_MIND_SPECIES_CITIZENS_ONLY"
+			OR = {
+				NOT = { from = { has_authority = auth_hive_mind } }
+				has_trait = trait_hive_mind
+			}
+		}		
+	}
+	ai_will_do = {
+		factor = 5
+		modifier = {
+			factor = 0
+			from = { has_valid_ai_personality = no }
+		}
+		modifier = {
+			factor = 0
+			from = {
+				has_valid_ai_personality = yes
+				NOT = {
+					has_ai_personality_behaviour = multispecies
+				}
+			}
+		}
+	}
+}
+
+military_service_limited = {
+	token = military_service_limited
+	name = military_service_limited
+
+	potential = {
+		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+	}
+
+	allow = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			fail_text = same_species_disallowed
+			NOT = { is_same_species = from }
+		}
+		custom_tooltip = {
+			fail_text = species_is_being_purged
+			NOR = {
+				has_citizenship_type = { country = from type = citizenship_purge_machine }
+				has_citizenship_type = { country = from type = citizenship_purge }
+			}
+		}
+	}
+	ai_will_do = {
+		factor = 1
+	}
+}
+
+military_service_none = {
+	token = military_service_none
+	name = military_service_none
+
+	potential = {
+		OR = {
+			from = { NOT = { has_authority = auth_hive_mind } }
+			NOT = { has_trait = trait_hive_mind }
+		}	
+	}
+
+	allow = {
+		hidden_trigger = { exists = from }
+		custom_tooltip = {
+			fail_text = same_species_disallowed
+			NOT = { is_same_species = from }
+		}
+		custom_tooltip = {
+			fail_text = species_has_military_slavery
+			NOT = {
+				has_slavery_type = { country = from type = slavery_military }
+			}
+		}
+		custom_tooltip = {
+			fail_text = MACHINE_SPECIES_NOT_MACHINE
+			OR = {
+				NOT = { from = { has_authority = auth_machine_intelligence } }
+				NOR = {
+					has_trait = trait_mechanical
+					has_trait = trait_droid
+					has_trait = trait_synthetic
+					has_trait = trait_machine_unit
+				}
+			}			
+		}
+	}
+	ai_will_do = {
+		factor = 0
+	}
+}

@@ -177,3 +177,282 @@ create_fallen_empire_starting_navy = {
 		}
 	}
 }
+
+fire_warning_sign = {
+	if = {
+		limit = { # trigger from syndaw.401
+			host_has_dlc = "Synthetic Dawn Story Pack"
+			NOR = {
+				has_ethic = ethic_gestalt_consciousness
+				has_country_flag = synthetic_empire
+				has_ascension_perk = ap_the_flesh_is_weak
+				has_policy_flag = ai_full_rights
+				has_country_flag = no_machine_uprising
+				#has_policy_flag = robots_outlawed
+			}
+			OR = {
+				has_technology = tech_combat_computers_3
+				has_technology = tech_synthetic_workers
+			}
+		}
+
+		random_list = { # 9 warning sign events + 1 uprising
+			10 = {
+				country_event = {
+					id = syndaw.500
+					days = 180 random = 720
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_country_flag = triggered_syndaw_500
+						NOT = { has_technology = tech_administrative_ai }
+					}
+				}
+			}
+			10 = {
+				country_event = {
+					id = syndaw.505
+					days = 180 random = 720
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_country_flag = triggered_syndaw_505
+						NOT = {
+							any_owned_planet = {
+								is_occupied_flag = no
+								free_housing > 5
+								any_owned_pop = {
+									NOT = {
+										has_trait = trait_mechanical
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			10 = {
+				country_event = {
+					id = syndaw.510
+					days = 180 random = 720
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_country_flag = triggered_syndaw_510
+						NOT = { any_owned_ship = { is_ship_size = mining_station } }
+					}
+				}
+			}
+			10 = {
+				country_event = {
+					id = syndaw.515
+					days = 180 random = 720
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_country_flag = triggered_syndaw_515
+						NOR = {
+							has_technology = tech_rare_crystals
+							has_technology = tech_volatile_motes
+							has_technology = tech_exotic_gases
+							has_technology = tech_mine_living_metal
+							has_technology = tech_mine_zro
+							has_technology = tech_mine_dark_matter
+							has_technology = tech_terrestrial_sculpting
+						}
+					}
+				}
+			}
+			10 = {
+				random_owned_planet = {
+					limit = {
+						is_occupied_flag = no
+						any_owned_pop = { has_job = researcher }
+					}
+					planet_event = {
+						id = syndaw.520
+						days = 180 random = 720
+					}
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_country_flag = triggered_syndaw_520
+						NOT = { 
+							any_owned_planet = {
+								any_owned_pop = { has_job = researcher }							
+							}
+						}
+					}
+				}
+			}
+			10 = {
+				country_event = {
+					id = syndaw.525
+					days = 180 random = 720
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_country_flag = triggered_syndaw_525
+						NOT = {
+							any_owned_planet = {
+								is_occupied_flag = no
+								any_owned_pop = { has_trait = trait_mechanical }
+							}
+						}
+					}
+				}
+			}
+			10 = {
+				country_event = {
+					id = syndaw.530
+					days = 180 random = 720
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_country_flag = triggered_syndaw_530
+						is_at_war = yes
+						NOR = {
+							has_technology = tech_combat_computers_1
+							any_owned_fleet = {
+								is_in_combat = no
+								count_fleet_ships = {
+									count > 1
+									limit = {
+										OR = {
+											is_ship_size = corvette
+											is_ship_size = destroyer
+											is_ship_size = cruiser
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			10 = {
+				country_event = { id = syndaw.535 }
+				modifier = {
+					factor = 0
+					has_country_flag = triggered_syndaw_535
+				}
+			}
+			10 = {
+				random_owned_planet = {
+					limit = {
+						is_occupied_flag = no
+						OR = {
+							any_owned_pop = {
+								has_trait = trait_mechanical
+							}
+							owner = {
+								any_owned_army = {
+									exists = planet
+									planet = { is_same_value = root }
+									OR = {
+										army_type = robotic_army
+										army_type = robotic_defense_army
+									}
+								}
+							}
+						}
+					}
+					planet_event = {
+						id = syndaw.540
+						days = 180 random = 720
+					}
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_country_flag = triggered_syndaw_540
+						NOT = {
+							any_owned_planet = {
+								is_occupied_flag = no
+								OR = {
+									any_owned_pop = {
+										has_trait = trait_mechanical
+									}
+									owner = {
+										any_owned_army = {
+											exists = planet
+											planet = { is_same_value = root }
+											OR = {
+												army_type = robotic_army
+												army_type = robotic_defense_army
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+			10 = { # does this unit have a soul
+				random_owned_planet = {
+					limit = {
+						is_occupied_flag = no
+						any_owned_pop = {
+							has_trait = trait_mechanical
+						}
+					}
+					planet_event = {
+						id = syndaw.545
+						days = 180 random = 720
+					}
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_country_flag = triggered_syndaw_545
+						NOT = {
+							any_owned_planet = {
+								is_occupied_flag = no
+								any_owned_pop = {
+									has_trait = trait_mechanical
+								}
+							}
+						}
+					}
+				}
+			}
+			1 = { # patch the uprising
+				country_event = {
+					id = syndaw.550
+					days = 180 random = 720
+				}
+				modifier = {
+					factor = 0
+					OR = {
+						has_country_flag = triggered_syndaw_550
+						NOR = {
+							has_country_flag = triggered_syndaw_500
+							has_country_flag = triggered_syndaw_505
+							has_country_flag = triggered_syndaw_515
+							has_country_flag = triggered_syndaw_520
+							has_country_flag = triggered_syndaw_525
+							has_country_flag = triggered_syndaw_530
+							has_country_flag = triggered_syndaw_535
+							has_country_flag = triggered_syndaw_540
+							has_country_flag = triggered_syndaw_545
+						}
+					}
+				}
+			}
+			1 = { # machine uprising
+				country_event = {
+					id = syndaw.1000
+					days = 180 random = 720
+				}
+			}
+		}
+	}
+}
