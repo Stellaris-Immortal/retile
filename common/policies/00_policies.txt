@@ -2728,3 +2728,71 @@ population_controls = {
 		}
 	}
 }
+
+internal_migration = {
+	potential = {
+		always = yes
+	}
+	
+	option = {
+		name = "migration_allowed"
+		
+		valid = { NOT = { has_valid_civic = civic_corvee_system } }
+		
+		policy_flags = { migration_allowed }
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	option = {
+		name = "migration_limited"
+		
+		valid = { NOT = { has_valid_civic = civic_corvee_system } }
+		
+		policy_flags = { migration_limited }
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+	option = {
+		name = "migration_forbidden"
+		
+		valid = { has_valid_civic = civic_corvee_system }
+		
+		policy_flags = { migration_forbidden }
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+}
+
+foreign_migration = {
+	potential = {
+		OR = {
+			has_federation = yes
+			any_relation = { has_diplo_migration_treaty = root }
+		}
+	}
+	
+	option = {
+		name = "foreign_migration_all"
+		
+		policy_flags = { foreign_migration_all }
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+	option = {
+		name = "foreign_migration_ethics"
+		
+		policy_flags = { foreign_migration_ethics }
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+}

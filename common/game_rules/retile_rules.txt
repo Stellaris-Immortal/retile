@@ -46,19 +46,18 @@ can_support_branch_offices = {
 
 # This = pop
 can_resettle_pop = {
-	#always = yes
-	#IF = { #Done as an IF/ELSE so the tooltip isn't hideous and unreadable
-	#	limit = { is_shackled_robot = yes }
-	#	is_shackled_robot = yes
-	#}
-	#ELSE = {
-	#	owner = {
-	#		OR = {
-	#			has_policy_flag = resettlement_allowed
-	#			is_gestalt = yes
-	#		}
-	#	}
-	#}
+	always = yes
+	IF = { #Done as an IF/ELSE so the tooltip isn't hideous and unreadable
+		limit = { is_shackled_robot = yes }
+		is_shackled_robot = yes
+	} ELSE = {
+		owner = {
+			OR = {
+				has_policy_flag = resettlement_allowed
+				is_gestalt = yes
+			}
+		}
+	}
 	planet = {
 		num_pops > 1
 	}
@@ -68,10 +67,10 @@ can_resettle_pop = {
 can_resettle_planet = {
 	#always = yes
 	#num_pops > 1
-	#is_controlled_by = owner
-	#has_ground_combat = no
-	#has_orbital_bombardment = no
-	#owner = {
+	is_controlled_by = owner
+	has_ground_combat = no
+	has_orbital_bombardment = no
+	#owner = { # these triggeres handled on a per-pop basis, see above
 	#	OR = {
 	#		has_policy_flag = resettlement_allowed
 	#		is_gestalt = yes
