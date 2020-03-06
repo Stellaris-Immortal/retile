@@ -190,7 +190,7 @@ trait_arthropoid_wing = {
 	allowed_archetypes = { ARTHROPOID }
 	modifier = {
 		pop_growth_speed = 0.10
-		pop_growth_from_immigration = 0.50
+		#pop_growth_from_immigration = 0.50
 		pop_resettlement_cost_mult = -0.50
 		army_attack_morale_mult = 0.10
 	}
@@ -373,8 +373,9 @@ trait_nomadic = {
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_sedentary" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
+	custom_tooltip = trait_nomadic_effect
 	modifier = {
-		pop_growth_from_immigration = 0.50
+	#	pop_growth_from_immigration = 0.50
 		pop_resettlement_cost_mult = -0.50
 	}
 }
@@ -384,13 +385,14 @@ trait_sedentary = {
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_nomadic" "trait_arthropoid_wing" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID }
+	custom_tooltip = trait_sedentary_effect
 	modifier = {
-		pop_growth_from_immigration = -0.50
+	#	pop_growth_from_immigration = -0.50
 		pop_resettlement_cost_mult = 0.50
 	}
-	ai_weight = {
-		weight = 0
-	}
+	#ai_weight = {
+	#	weight = 0
+	#}
 }
 
 trait_plantoid_flowering = {
@@ -727,7 +729,7 @@ trait_fertile = {
 		pop_growth_speed = 0.5
 		pop_happiness = 0.05
 	}
-	custom_tooltip = TRAIT_COMMUNAL_EFFECT
+	custom_tooltip = TRAIT_FERTILE_EFFECT
 	slave_cost = {
 		energy = 200
 	}

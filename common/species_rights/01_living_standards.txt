@@ -885,7 +885,11 @@ living_standard_servitude = {
 	potential = {
 		exists = from
 		from = { is_gestalt = no }
-		has_trait = trait_mechanical
+		OR = {
+			has_trait = trait_mechanical
+			has_trait = trait_droid
+			has_trait = trait_synthetic
+		}
 	}		
 	
 	allow = {
@@ -927,6 +931,8 @@ living_standard_hive_mind = {
 					OR = {
 						has_trait = trait_machine_unit
 						has_trait = trait_mechanical
+						has_trait = trait_droid
+						has_trait = trait_synthetic
 						AND = {
 							from = { has_civic = civic_machine_assimilator }
 							has_trait = trait_cybernetic

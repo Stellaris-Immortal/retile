@@ -85,8 +85,8 @@ odd_factory_worker = {
 			has_job = odd_factory_worker
 			retile_job_seeking = yes
 		}
-		worker_job_check_trigger = yes
 		NOT = { owner = { has_country_flag = odd_factory_pause } }
+		worker_job_check_trigger = yes
 	}
 	
 	resources = {
@@ -121,7 +121,7 @@ odd_factory_worker = {
 odd_factory_drone = {
 	category = simple_drone
 	is_capped_by_modifier = yes
-	condition_string = DRONE_JOB_TRIGGER
+	condition_string = WORKER_JOB_TRIGGER
 	building_icon = building_primitive_factory
 
 	possible_pre_triggers = {
@@ -135,7 +135,7 @@ odd_factory_drone = {
 			has_job = odd_factory_drone
 			retile_job_seeking = yes
 		}
-		drone_job_check_trigger = yes
+		worker_job_check_trigger = yes
 	}
 	
 	resources = {
@@ -156,7 +156,7 @@ odd_factory_drone = {
 
 underground_trade_worker = {	
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
+	condition_string = DROID_SPECIALIST_JOB_TRIGGER
 	building_icon = building_holo_theatres
 	clothes_texture_index = 3
 
@@ -171,7 +171,7 @@ underground_trade_worker = {
 			has_job = underground_trade_worker
 			retile_job_seeking = yes
 		}
-		specialist_job_check_trigger = yes
+		droid_specialist_job_check_trigger = yes
 	}
 	
 	planet_modifier = {
@@ -216,7 +216,7 @@ underground_trade_worker = {
 
 underground_contact_drone = {	
 	category = simple_drone
-	condition_string = DRONE_JOB_TRIGGER
+	condition_string = WORKER_JOB_TRIGGER
 	building_icon = building_holo_theatres
 	clothes_texture_index = 3
 	icon = spawning_drone
@@ -232,7 +232,7 @@ underground_contact_drone = {
 			has_job = underground_contact_drone
 			retile_job_seeking = yes
 		}
-		drone_job_check_trigger = yes
+		worker_job_check_trigger = yes
 	}
 	
 	planet_modifier = {
@@ -284,7 +284,7 @@ underground_contact_drone = {
 
 dimensional_portal_researcher = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
+	condition_string = SYNTH_SPECIALIST_JOB_TRIGGER
 	building_icon = building_research_lab_1
 	clothes_texture_index = 3
 	icon = researcher
@@ -300,7 +300,7 @@ dimensional_portal_researcher = {
 			has_job = dimensional_portal_researcher
 			retile_job_seeking = yes
 		}
-		complex_specialist_job_check_trigger = yes
+		synth_specialist_job_check_trigger = yes
 	}
 	
 	triggered_planet_modifier = {
@@ -467,7 +467,7 @@ dimensional_portal_researcher = {
 
 dimensional_portal_researcher_gestalt = {
 	category = complex_drone
-	condition_string = DRONE_JOB_TRIGGER
+	condition_string = SYNTH_SPECIALIST_JOB_TRIGGER
 	building_icon = building_research_lab_1
 	clothes_texture_index = 3
 	icon = researcher
@@ -483,7 +483,7 @@ dimensional_portal_researcher_gestalt = {
 			has_job = dimensional_portal_researcher_gestalt
 			retile_job_seeking = yes
 		}
-		complex_specialist_job_check_trigger = yes
+		synth_specialist_job_check_trigger = yes
 	}
 	
 	triggered_planet_modifier = {

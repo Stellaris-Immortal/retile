@@ -90,6 +90,7 @@ pop_event = {
 				NOT = { is_same_value = FROM }
 				is_occupied_flag = no
 				has_orbital_bombardment = no
+				is_controlled_by = owner
 			}
 			weights = {
 				base = 1
@@ -129,13 +130,15 @@ planet_event = {
 	pre_triggers = { has_owner = yes }
 	
 	trigger = {
+		owner = { NOT = { has_policy_flag = migration_forbidden } }
 		num_pops > 1
 		is_under_colonization = no
 		has_orbital_bombardment = no
 		is_occupied_flag = no
+		is_controlled_by = owner
 		OR = {
 			free_housing < 0
-			#free_jobs < 0	# doesn't work... :(
+			#free_jobs < 0	# doesn't work... :(	# based on housing now anyway
 			AND = {
 				owner = { is_ai = no }
 				any_owned_pop = { is_unemployed = yes }
@@ -146,7 +149,7 @@ planet_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 90
+		days = 60
 	}
 
 	immediate = {
@@ -163,7 +166,9 @@ planet_event = {
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { always = yes }
+	trigger = {
+		owner = { NOT = { has_policy_flag = migration_forbidden } }
+	}
 
 	immediate = {
 		if = {
@@ -178,6 +183,7 @@ planet_event = {
 				NOT = { has_modifier = penal_colony }
 				is_occupied_flag = no
 				has_orbital_bombardment = no
+				is_controlled_by = owner
 			}
 			planet_event = { id = retile_pop.90 }
 		}
@@ -193,169 +199,175 @@ pop_event = {
 	hide_window = yes
 
 	trigger = {
-		exists = planet
-		planet = {
-			NOT = { has_planet_flag = retile_recent_shuffling }
-			num_pops > 1
-		}
 		exists = owner
-		owner = { num_owned_planets > 1 }
+		exists = planet
 	}
 	
 	mean_time_to_happen = { days = 360 } # check about once/year
 	
 	immediate = {
-		random_list = {
-			50 = { # wait about 5 years under normal circumstances
-				modifier = {	# plantoids think about it more like every 20 years...
-					add = 150
-					is_plantoid = yes
-				}
-				modifier = {	# high habitability - check less often
-					factor = 2
-					is_plantoid = no
-					planet = { habitability = { who = root value > 0.90 } }
-				}
-				modifier = {
-					factor = 2
-					is_plantoid = no
-					planet = { habitability = { who = root value > 0.70 } }
-				}
-				modifier = {	# low habitability - check more often
-					factor = 0.5
-					is_plantoid = no
-					planet = { habitability = { who = root value < 0.50 } }
-				}
-				modifier = {
-					factor = 0.5
-					is_plantoid = no
-					planet = { habitability = { who = root value < 0.25 } }
-				}
-				modifier = {
-					factor = 0.5
-					is_plantoid = no
-					planet = { habitability = { who = root value < 0.10 } }
-				}
-			}
-			10 = {
-				modifier = {
-					factor = 0
-					OR = {
-						planet = { OR = {	# regular migration conditions
-							has_modifier = penal_colony
-							is_under_colonization = yes
-							is_occupied_flag = yes
-							has_orbital_bombardment = yes
-						} }
-						AND = { # farming plantoids NEVER migrate this way...
-							is_plantoid = yes
-							has_job = farmer
-						}
-					}
-				}
-				planet = {	# planet can only give up 1 pop per year to shuffling.
-					set_timed_planet_flag = { flag = retile_recent_shuffling days = 360 }
-				}
-				owner = { random_owned_planet = {
-					limit = {
-						free_housing >= 0	# care less about housing with this - we're going to fire the migrate event afterward if housing is low...
-						NOT = { has_modifier = penal_colony }
-						is_under_colonization = no
-						NOT = { is_same_value = FROM }
-						is_occupied_flag = no
-						has_orbital_bombardment = no
-					}
-					weights = {
-						base = 1
-						modifier = { add = 1 habitability = { who = root value >= 0.05 } }
-						modifier = { add = 2 habitability = { who = root value >= 0.10 } }
-						modifier = { add = 3 habitability = { who = root value >= 0.15 } }
-						modifier = { add = 4 habitability = { who = root value >= 0.20 } }
-						modifier = { add = 5 habitability = { who = root value >= 0.25 } }
-						modifier = { add = 6 habitability = { who = root value >= 0.30 } }
-						modifier = { add = 7 habitability = { who = root value >= 0.35 } }
-						modifier = { add = 8 habitability = { who = root value >= 0.40 } }
-						modifier = { add = 9 habitability = { who = root value >= 0.45 } }
-						modifier = { add = 10 habitability = { who = root value >= 0.50 } }
-						modifier = { add = 11 habitability = { who = root value >= 0.55 } }
-						modifier = { add = 12 habitability = { who = root value >= 0.60 } }
-						modifier = { add = 13 habitability = { who = root value >= 0.65 } }
-						modifier = { add = 14 habitability = { who = root value >= 0.70 } }
-						modifier = { add = 15 habitability = { who = root value >= 0.75 } }
-						modifier = { add = 16 habitability = { who = root value >= 0.80 } }
-						modifier = { add = 17 habitability = { who = root value >= 0.85 } }
-						modifier = { add = 18 habitability = { who = root value >= 0.90 } }
-						modifier = { add = 19 habitability = { who = root value >= 0.95 } }
-						modifier = { add = 20 habitability = { who = root value >= 1.00 } }
-						modifier = { mult = 2 free_jobs > 0 }
-						modifier = { mult = 2 free_housing > 0 }
-					}
-					resettle_pop = { pop = root planet = this}
-					
-					# immediately fire the periodic migration script, in case we're now over housing or something...
-					planet_event = { id = retile_pop.100 }
-				} }
-			}
-		}
-	}
-}
-
-# Swap-migrate eligible pops to improve overall habitability.
-# OLD VERSION - NO LONGER ENABLED
-# THIS = pop
-pop_event = {
-	id = retile_pop.111
-	hide_window = yes
-	
-	trigger = {
-		always = no
-		is_plantoid = no
-		planet = {
-			habitability = { who = root value < 50 }
-		}
-	}
-
-	mean_time_to_happen = {
-		days = 1800
-	}
-	
-	after = {
 		if = {
 			limit = {
-				exists = owner
-				owner = { is_country_type = default }
-				exists = planet
-				planet = {
+				owner = {
+					is_country_type = default
+					has_policy_flag = migration_allowed
+					num_owned_planets > 1
+				}
+				planet = { # regular migration conditions
+					NOT = { has_planet_flag = retile_recent_shuffling }
+					num_pops > 1
 					NOT = { has_modifier = penal_colony }
 					is_under_colonization = no
 					is_occupied_flag = no
 					has_orbital_bombardment = no
-					habitability = { who = root value < 50 }
+					is_controlled_by = owner
+				}
+				NOR = {	# non-sentient robots don't care where they live...
+					has_trait = trait_mechanical
+					has_trait = trait_droid
+				}
+				NAND = { # farming plantoids NEVER migrate this way...
+					is_plantoid = yes
+					has_job = farmer
 				}
 			}
-			owner = { random_owned_pop = {
-				limit = {
-					exists = owner
-					owner = { is_country_type = default }
-					is_plantoid = no
-					exists = planet
-					planet = {
-						NOT = { is_same_value = root.planet }
-						NOT = { has_modifier = penal_colony }
-						is_under_colonization = no
-						is_occupied_flag = no
-						has_orbital_bombardment = no
-						habitability = { who = prev value < 50 }
-						habitability = { who = root value >= 70 }
+			random_list = {
+				50 = { # wait about 5 years under normal circumstances
+					modifier = {	# plantoids think about it more like every 20 years...
+						add = 150
+						is_plantoid = yes
 					}
-					root.planet = {
-						habitability = { who = prev value >= 70 }
+					modifier = {	# high habitability - move less often
+						factor = 2
+						is_plantoid = no
+						planet = { habitability = { who = root value > 0.90 } }
+					}
+					modifier = {
+						factor = 2
+						is_plantoid = no
+						planet = { habitability = { who = root value > 0.70 } }
+					}
+					modifier = {	# low habitability - move more often
+						factor = 0.5
+						is_plantoid = no
+						planet = { habitability = { who = root value < 0.50 } }
+					}
+					modifier = {
+						factor = 0.5
+						is_plantoid = no
+						planet = { habitability = { who = root value < 0.25 } }
+					}
+					modifier = {
+						factor = 0.5
+						is_plantoid = no
+						planet = { habitability = { who = root value < 0.10 } }
+					}
+					modifier = {	# high stability - move less often
+						factor = 2
+						planet = { planet_stability > 80 }
+					}
+					modifier = {
+						factor = 2
+						planet = { planet_stability > 60 }
+					}
+					modifier = {	# low stability - move more often
+						factor = 0.5
+						planet = { planet_stability < 40 }
+					}
+					modifier = {
+						factor = 0.5
+						planet = { planet_stability < 20 }
+					}
+					modifier = {	# high crime - move more often
+						factor = 0.5
+						planet = { planet_crime > 33 }
+					}
+					modifier = {
+						factor = 0.5
+						planet = { planet_crime > 66 }
+					}
+					modifier = {
+						factor = 0.5
+						planet = { planet_crime > 99 }
+					}
+					modifier = {	# low pollution - move less often
+						factor = 2
+						planet = { free_amenities < 0 }
+					}
+					modifier = {	# high pollution - move more often
+						factor = 0.5
+						planet = { free_amenities > 500 }
+					}
+					modifier = {
+						factor = 0.5
+						planet = { free_amenities > 1000 }
+					}
+					modifier = {
+						factor = 0.5
+						planet = { free_amenities > 1500 }
 					}
 				}
-				root.planet = { save_event_target_as = RootPlanet }
-				resettle_pop = { pop = root planet = this.planet }
-				resettle_pop = { pop = this planet = EventTarget:RootPlanet }
-			} }
+				10 = {
+					modifier = {	# traits modify internal migration frequency
+						factor = 2
+						OR = {
+							has_trait = trait_nomadic
+							has_trait = trait_arthropoid_wing
+						}
+					}
+					modifier = {
+						factor = 0.5
+						has_trait = trait_sedentary
+					}
+					owner = { random_owned_planet = {
+						limit = {
+							free_housing >= 0	# care less about housing with this - we're going to fire the migrate event afterward if housing is low...
+							NOT = { has_modifier = penal_colony }
+							is_under_colonization = no
+							NOT = { is_same_value = FROM }
+							is_occupied_flag = no
+							has_orbital_bombardment = no
+							is_controlled_by = owner
+						}
+						weights = {
+							base = 1
+							modifier = { add = 1 		habitability = { who = root value >= 0.05 } }
+							modifier = { add = 2 		habitability = { who = root value >= 0.10 } }
+							modifier = { add = 3 		habitability = { who = root value >= 0.15 } }
+							modifier = { add = 4 		habitability = { who = root value >= 0.20 } }
+							modifier = { add = 5 		habitability = { who = root value >= 0.25 } }
+							modifier = { add = 6 		habitability = { who = root value >= 0.30 } }
+							modifier = { add = 7 		habitability = { who = root value >= 0.35 } }
+							modifier = { add = 8 		habitability = { who = root value >= 0.40 } }
+							modifier = { add = 9 		habitability = { who = root value >= 0.45 } }
+							modifier = { add = 10		habitability = { who = root value >= 0.50 } }
+							modifier = { add = 11 		habitability = { who = root value >= 0.55 } }
+							modifier = { add = 12 		habitability = { who = root value >= 0.60 } }
+							modifier = { add = 13 		habitability = { who = root value >= 0.65 } }
+							modifier = { add = 14 		habitability = { who = root value >= 0.70 } }
+							modifier = { add = 15 		habitability = { who = root value >= 0.75 } }
+							modifier = { add = 16 		habitability = { who = root value >= 0.80 } }
+							modifier = { add = 17 		habitability = { who = root value >= 0.85 } }
+							modifier = { add = 18 		habitability = { who = root value >= 0.90 } }
+							modifier = { add = 19 		habitability = { who = root value >= 0.95 } }
+							modifier = { add = 20 		habitability = { who = root value >= 1.00 } }
+							modifier = { mult = 2 		free_jobs > 0 }
+							modifier = { mult = 2 		free_housing > 0 }
+							modifier = { mult = 1.5		planet_stability > 50 }
+							modifier = { mult = 1.5		planet_crime < 1 }
+							modifier = { mult = 1.5		is_planet_class = pc_city }
+						}
+						
+						# We successfully found a destination planet. Set this flag before resettling the pop...
+						root.planet = { set_timed_planet_flag = { flag = retile_recent_shuffling days = 360 } }
+						
+						resettle_pop = { pop = root planet = this}
+						
+						# immediately fire the periodic migration script, in case the new planet is now over housing or something...
+						planet_event = { id = retile_pop.100 }
+					} }
+				}
+			}
 		}
 	}
 }
