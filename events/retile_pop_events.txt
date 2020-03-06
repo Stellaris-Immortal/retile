@@ -199,6 +199,10 @@ pop_event = {
 	hide_window = yes
 
 	trigger = {
+		NOR = {	# non-sentient robots don't care where they live...
+			has_trait = trait_mechanical
+			has_trait = trait_droid
+		}
 		owner = { has_policy_flag = migration_allowed }
 		exists = planet
 		planet = {

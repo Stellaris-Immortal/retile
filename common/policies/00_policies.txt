@@ -2731,7 +2731,7 @@ population_controls = {
 
 internal_migration = {
 	potential = {
-		always = yes
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
 	}
 	
 	option = {
@@ -2771,6 +2771,7 @@ internal_migration = {
 
 foreign_migration = {
 	potential = {
+		NOT = { has_ethic = "ethic_gestalt_consciousness" }
 		OR = {
 			has_federation = yes
 			any_relation = { has_diplo_migration_treaty = root }
