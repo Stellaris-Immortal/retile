@@ -36,6 +36,8 @@ migration_control_no = {
 		NOR = {
 			has_trait = trait_machine_unit
 			has_trait = trait_mechanical
+			has_trait = trait_droid
+			has_trait = trait_synthetic
 		}
 	}
 	
@@ -140,6 +142,8 @@ colonization_control_yes = {
 			OR = {
 				has_trait = trait_machine_unit
 				has_trait = trait_mechanical
+				has_trait = trait_droid
+				has_trait = trait_synthetic
 			}
 		}
 	}
@@ -174,7 +178,7 @@ colonization_control_yes = {
 		factor = 1
 		modifier = {
 			factor = 0
-			from = { 
+			from = {
 				NOR = {
 					has_ethic = ethic_xenophobe
 					has_ethic = ethic_fanatic_xenophobe
@@ -199,7 +203,9 @@ colonization_control_no = {
 			from = { has_authority = auth_machine_intelligence }
 			NOR = {
 				has_trait = trait_machine_unit
-				has_trait = trait_mechanical	
+				has_trait = trait_mechanical
+				has_trait = trait_droid
+				has_trait = trait_synthetic
 				AND = {
 					has_trait = trait_cybernetic
 					from = { has_valid_civic = civic_machine_assimilator }		
@@ -229,7 +235,7 @@ colonization_control_no = {
 			fail_text = "ROBOTS_CANNOT_COLONIZE"		
 			OR = {
 				NOT = { has_trait = trait_mechanical }
-				from = { has_technology = tech_droid_workers }
+				#from = { has_technology = tech_droid_workers }
 				from = { has_authority = auth_machine_intelligence }
 			}
 		}
@@ -256,6 +262,8 @@ colonization_control_no = {
 			NOR = {
 				has_trait = trait_machine_unit
 				has_trait = trait_mechanical
+				has_trait = trait_droid
+				has_trait = trait_synthetic
 			}
 		}
 	}

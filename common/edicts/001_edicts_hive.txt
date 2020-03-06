@@ -1,0 +1,133 @@
+##########################################################################
+# Empire edicts
+##########################################################################
+
+@Edict1Cost = 100
+@Edict2Cost = 200
+@Edict3Cost = 300
+
+@EdictDuration = 3600
+
+####################
+#   Hive Edicts    #
+####################
+
+production_focus_hive = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = { influence = @Edict1Cost }
+	}
+
+	modifier = {
+		planet_jobs_produces_mult = 0.10
+	}
+
+	potential = {
+		has_ethic = ethic_gestalt_consciousness
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+military_focus_hive = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = { influence = @Edict2Cost }
+	}
+
+	modifier = {
+		starbase_shipyard_build_speed_mult = 0.10
+		ship_fire_rate_mult = 0.10
+		ship_weapon_range_mult = 0.10
+	}
+
+	potential = {
+		has_ethic = ethic_gestalt_consciousness
+		has_technology = tech_planetary_unification
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+upkeep_focus_hive = {
+	length = @EdictDuration
+	resources = {
+		category = edicts
+		cost = { influence = @Edict3Cost }
+	}
+
+	modifier = {
+		leaders_upkeep_mult = -0.25
+		planet_structures_upkeep_mult = -0.25
+		starbases_upkeep_mult = -0.25
+	}
+
+	potential = {
+		has_ethic = ethic_gestalt_consciousness
+		has_technology = tech_colonial_centralization
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+research_focus_hive = {
+	length = @EdictDuration
+	potential = { has_ethic = ethic_gestalt_consciousness }
+	
+	resources = {
+		category = campaigns
+		cost = { consumer_goods = 500 }
+	}
+
+	modifier = {
+		planet_jobs_physics_research_produces_mult = 0.20
+		planet_jobs_society_research_produces_mult = 0.20
+		planet_jobs_engineering_research_produces_mult = 0.20
+	}
+		
+	prerequisites = {
+		"tech_administrative_ai"		
+	}
+	
+	show_tech_unlock_if = { 
+		has_ethic = ethic_gestalt_consciousness
+	}
+	
+	ai_weight = {
+		weight = @EdictMedPrio
+	}
+}
+
+philosophy_focus_hive = {
+	length = @EdictDuration
+	potential = { has_ethic = ethic_gestalt_consciousness }
+	
+	resources = {
+		category = campaigns
+		cost = { consumer_goods = 500 }
+	}
+
+	modifier = {
+		country_unity_produces_mult = 0.20
+	}
+	
+	prerequisites = {
+		"tech_hive_cluster"		
+	}
+	
+	show_tech_unlock_if = { 
+		has_ethic = ethic_gestalt_consciousness
+	}
+	
+	ai_weight = {
+		weight = @EdictMedPrio
+	}
+}

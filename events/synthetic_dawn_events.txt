@@ -593,7 +593,7 @@ event = { # unscoped gatekeeper
 					has_ascension_perk = ap_the_flesh_is_weak
 					has_policy_flag = ai_full_rights
 					has_country_flag = no_machine_uprising
-					has_policy_flag = robots_outlawed
+					#has_policy_flag = robots_outlawed
 				}
 				OR = {
 					has_technology = tech_combat_computers_3
@@ -619,7 +619,7 @@ country_event = { # per-country gatekeeper
 			has_ascension_perk = ap_the_flesh_is_weak
 			has_policy_flag = ai_full_rights
 			has_country_flag = no_machine_uprising
-			has_policy_flag = robots_outlawed
+			#has_policy_flag = robots_outlawed
 		}
 		OR = {
 			has_technology = tech_combat_computers_3
@@ -3028,10 +3028,10 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		#always = no ## RETILE TODO
+		always = no ## RETILE TODO - robots can't be banned, so this needs different setup...
 		host_has_dlc = "Synthetic Dawn Story Pack"
-		last_changed_policy = robot_pop_policy
-		has_policy_flag = robots_outlawed
+		#last_changed_policy = robot_pop_policy
+		#has_policy_flag = robots_outlawed
 		OR = {
 			has_country_flag = triggered_syndaw_500
 			has_country_flag = triggered_syndaw_505

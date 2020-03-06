@@ -3,7 +3,7 @@
 ###################
 clerk = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
+	condition_string = ROBOT_SPECIALIST_JOB_TRIGGER
 	building_icon = building_trade_1
 	clothes_texture_index = 2
 
@@ -18,7 +18,8 @@ clerk = {
 			has_job = clerk
 			retile_job_seeking = yes
 		}
-		specialist_job_check_trigger = yes
+		robot_specialist_job_check_trigger = yes
+		owner = { is_gestalt = no }
 	}
 	
 	resources = {
@@ -136,7 +137,7 @@ clerk = {
 
 researcher = {	### Scholar
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
+	condition_string = SYNTH_SPECIALIST_JOB_TRIGGER
 	building_icon = building_research_lab_1
 	clothes_texture_index = 3
 
@@ -151,7 +152,7 @@ researcher = {	### Scholar
 			has_job = researcher
 			retile_job_seeking = yes
 		}
-		complex_specialist_job_check_trigger = yes
+		synth_specialist_job_check_trigger = yes
 	}
 	
 	############################################################ Scholar Production/Upkeep
@@ -458,7 +459,7 @@ researcher = {	### Scholar
 
 foundry = {	### Engineer
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
+	condition_string = ROBOT_SPECIALIST_JOB_TRIGGER
 	building_icon = building_foundry_1
 	clothes_texture_index = 3
 
@@ -473,7 +474,7 @@ foundry = {	### Engineer
 			has_job = foundry
 			retile_job_seeking = yes
 		}
-		specialist_job_check_trigger = yes
+		robot_specialist_job_check_trigger = yes
 	}
 	
 	############################################################ Engineer Production/Upkeep
@@ -620,7 +621,7 @@ foundry = {	### Engineer
 
 enforcer = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
+	condition_string = DROID_SPECIALIST_JOB_TRIGGER
 	building_icon = building_precinct_house
 	clothes_texture_index = 5
 
@@ -635,7 +636,7 @@ enforcer = {
 			has_job = enforcer
 			retile_job_seeking = yes
 		}
-		battle_thrall_job_check_trigger = yes
+		droid_specialist_job_check_trigger = yes
 	}
 	
 	resources = {
@@ -694,7 +695,6 @@ enforcer = {
 		}
 		modifier = {
 			planet_crime_add = -10
-			planet_amenities_add = 10
 			planet_stability_add = 2
 		}		
 	}
@@ -723,7 +723,7 @@ enforcer = {
 
 soldier = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER	
+	condition_string = COMBAT_SPECIALIST_JOB_TRIGGER	
 	building_icon = building_stronghold
 	clothes_texture_index = 4
 	
@@ -738,8 +738,7 @@ soldier = {
 			has_job = soldier
 			retile_job_seeking = yes
 		}
-		specialist_job_check_trigger = yes
-		owner = { is_gestalt = no }
+		combat_specialist_job_check_trigger = yes
 	}
 
 	resources = {
@@ -956,7 +955,7 @@ soldier = {
 
 roboticist = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
+	condition_string = DROID_SPECIALIST_JOB_TRIGGER
 	building_icon = building_robot_assembly_plant
 	clothes_texture_index = 3
 		
@@ -971,22 +970,85 @@ roboticist = {
 			has_job = roboticist
 			retile_job_seeking = yes
 		}
-		specialist_job_check_trigger = yes
+		droid_specialist_job_check_trigger = yes
+		NOT = { planet = { free_housing < 0 } }
 	}
 	
 	resources = {
 		category = planet_pop_assemblers
 		upkeep = {
 			minerals = 10
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
+			alloys = 2
+			energy = @job_energy_low2
+			consumer_goods = @job_supplies_low2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { has_authority = auth_machine_intelligence }
+			}
+			minerals = 10
+			alloys = 2
+			energy = @job_energy_low2
+			consumer_goods = @job_supplies_low2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { has_civic = civic_mechanists }
+			}
+			minerals = 5
+			alloys = 1
+			energy = @job_energy_low
+			consumer_goods = @job_supplies_low
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = { has_ascension_perk = ap_the_flesh_is_weak }
+			}
+			minerals = 5
+			alloys = 1
+			energy = @job_energy_low
+			consumer_goods = @job_supplies_low
 		}
 	}
 
+	planet_modifier = {
+		planet_amenities_add = 30
+		planet_pop_assembly_add = 2
+	}
+	
 	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_authority = auth_machine_intelligence }
+		}
+		modifier = {
+			planet_amenities_add = 60
+			planet_pop_assembly_add = 2
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_civic = civic_mechanists }
+		}
 		modifier = {
 			planet_amenities_add = 30
-			planet_pop_assembly_add = 2
+			planet_pop_assembly_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_the_flesh_is_weak }
+		}
+		modifier = {
+			planet_amenities_add = 30
+			planet_pop_assembly_add = 1
 		}
 	}
 	
@@ -997,6 +1059,7 @@ roboticist = {
 
 overseer = {
 	category = specialist
+	condition_string = DROID_SPECIALIST_JOB_TRIGGER
 	building_icon = building_crude_huts
 	clothes_texture_index = 3
 	icon = enforcer
@@ -1012,7 +1075,7 @@ overseer = {
 			has_job = overseer
 			retile_job_seeking = yes
 		}
-		specialist_job_check_trigger = yes
+		droid_specialist_job_check_trigger = yes
 	}
 	
 	resources = {
@@ -1035,7 +1098,7 @@ overseer = {
 
 colonist = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
+	condition_string = DROID_SPECIALIST_JOB_TRIGGER
 	building_icon = building_colony_shelter
 	clothes_texture_index = 2
 	
@@ -1046,11 +1109,11 @@ colonist = {
 	}
 
 	possible = {
-		complex_specialist_job_check_trigger = yes
 		or = {
 			has_job = colonist
 			retile_job_seeking = yes
 		}
+		droid_specialist_job_check_trigger = yes
 	}
 
 	resources = {
@@ -1221,6 +1284,7 @@ colonist = {
 
 medic = {
 	category = specialist
+	condition_string = DROID_SPECIALIST_JOB_TRIGGER
 	building_icon = building_clinic_1
 	clothes_texture_index = 3
 
@@ -1235,7 +1299,7 @@ medic = {
 			has_job = medic
 			retile_job_seeking = yes
 		}
-		specialist_job_check_trigger = yes
+		droid_specialist_job_check_trigger = yes
 	}
 	
 	resources = {
@@ -1265,5 +1329,222 @@ medic = {
 			factor = 5
 			has_job = medic
 		}
+	}
+}
+
+warden = {
+	category = specialist
+	condition_string = DROID_SPECIALIST_JOB_TRIGGER
+	building_icon = building_precinct_house
+	clothes_texture_index = 3
+	icon = enforcer
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = warden
+			retile_job_seeking = yes
+		}
+		droid_specialist_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_wardens
+		upkeep = {
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
+	}
+	
+	planet_modifier = {
+		#planet_jobs_criminal_produces_mult = 0.05
+		planet_stability_add = 25
+		planet_crime_add = -50
+	}
+	
+	pop_modifier = {
+		pop_defense_armies_add = 1
+	}
+	
+	weight = {
+		weight = @ruler_job_weight
+		modifier = {
+			weight = -1
+			always = yes
+		}
+	}
+}
+
+# Bureaucrat
+bureaucrat = {
+	category = specialist
+	condition_string = ROBOT_SPECIALIST_JOB_TRIGGER
+	building_icon = building_bureaucratic_complex
+	clothes_texture_index = 2
+		
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		or = {
+			has_job = bureaucrat
+			retile_job_seeking = yes
+		}
+		owner = { is_gestalt = no }
+		robot_specialist_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_bureaucrats
+		upkeep = {
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 1
+	}
+	
+	country_modifier = {
+		country_admin_cap_add = 3
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_valid_civic = civic_efficient_bureaucracy }
+		}
+		modifier = {
+			country_admin_cap_add = 1
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			exists = owner
+			planet = { has_building = building_ministry }
+		}
+		modifier = {
+			pop_factions_produces_mult = 0.02
+			pop_government_ethic_attraction = 0.02
+			country_naval_cap_mult = 0.01
+			country_trust_growth = 0.01
+			country_trust_cap_add = 1
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_assembly }
+		}
+		modifier = { 
+			pop_factions_produces_mult = 0.10
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_magistrate }
+		}
+		modifier = { 
+			pop_government_ethic_attraction = 0.10
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_gunboat } 
+		}
+		modifier = {
+			country_naval_cap_mult = 0.02
+			country_occupation_armies_add = 1
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_embassy }
+		}
+		modifier = { 
+			country_trust_growth = 0.05
+			country_trust_cap_add = 5
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_pr }
+		}
+		modifier = { 
+			country_trust_growth = 0.05
+			country_trust_cap_add = 5
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_lr }
+		}
+		modifier = { 
+			pop_factions_produces_mult = 0.10
+		}
+	}
+	
+	weight = {
+		weight = @specialist_job_weight
+		modifier = {
+			factor = 5
+			has_job = bureaucrat
+		}		
+		modifier = {
+			factor = 0.1
+			has_citizenship_rights = no	
+			NOT = { has_trait = trait_mechanical }	
+		}		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_weak
+		}
+		modifier = {
+			factor = 1.25
+			has_trait = trait_very_weak
+		}
+		modifier = {
+			factor = 1.25
+			has_trait = trait_sedentary
+		}
+		modifier = {
+			factor = 1.25
+			has_trait = trait_solitary
+		}
+		modifier = {
+			factor = 1.25
+			has_trait = trait_decadent
+		}
+		# crisis purge
+		modifier = {
+			factor = 0.01
+			planet.controller = {
+				OR = {
+					is_country_type = swarm
+					is_country_type = ai_empire
+				}
+			}
+		}	
 	}
 }

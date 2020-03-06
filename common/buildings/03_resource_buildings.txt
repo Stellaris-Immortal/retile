@@ -286,7 +286,11 @@ building_food_1 = {
 			owner = { is_ai = no }
 			AND = {
 				owner = { has_country_flag = retile_ai_needs_food }
-				any_owned_pop = { has_job = farmer }
+				retile_ai_planet_healthy_building = yes
+				count_pops = {
+					limit = { has_job = farmer }
+					count > 2
+				}
 			}
 		}
 	}
@@ -350,7 +354,11 @@ building_food_2 = {
 			owner = { is_ai = no }
 			AND = {
 				owner = { has_country_flag = retile_ai_needs_food }
-				any_owned_pop = { has_job = farmer }
+				retile_ai_planet_healthy_building = yes
+				count_pops = {
+					limit = { has_job = farmer }
+					count > 2
+				}
 			}
 		}
 	}
@@ -418,7 +426,11 @@ building_food_3 = {
 			owner = { is_ai = no }
 			AND = {
 				owner = { has_country_flag = retile_ai_needs_food }
-				any_owned_pop = { has_job = farmer }
+				retile_ai_planet_healthy_building = yes
+				count_pops = {
+					limit = { has_job = farmer }
+					count > 2
+				}
 			}
 		}
 	}
@@ -489,7 +501,11 @@ building_mineral_1 = {
 			owner = { is_ai = no }
 			AND = {
 				owner = { has_country_flag = retile_ai_needs_minerals }
-				any_owned_pop = { has_job = miner }
+				retile_ai_planet_healthy_building = yes
+				count_pops = {
+					limit = { has_job = miner }
+					count > 2
+				}
 			}
 		}
 	}
@@ -551,7 +567,11 @@ building_mineral_2 = {
 			owner = { is_ai = no }
 			AND = {
 				owner = { has_country_flag = retile_ai_needs_minerals }
-				any_owned_pop = { has_job = miner }
+				retile_ai_planet_healthy_building = yes
+				count_pops = {
+					limit = { has_job = miner }
+					count > 2
+				}
 			}
 		}
 	}
@@ -617,7 +637,11 @@ building_mineral_3 = {
 			owner = { is_ai = no }
 			AND = {
 				owner = { has_country_flag = retile_ai_needs_minerals }
-				any_owned_pop = { has_job = miner }
+				retile_ai_planet_healthy_building = yes
+				count_pops = {
+					limit = { has_job = miner }
+					count > 2
+				}
 			}
 		}
 	}
@@ -686,7 +710,11 @@ building_energy_1 = {
 			owner = { is_ai = no }
 			AND = {
 				owner = { has_country_flag = retile_ai_needs_minerals }
-				any_owned_pop = { has_job = technician }
+				retile_ai_planet_healthy_building = yes
+				count_pops = {
+					limit = { has_job = technician }
+					count > 2
+				}
 			}
 		}
 	}
@@ -748,7 +776,11 @@ building_energy_2 = {
 			owner = { is_ai = no }
 			AND = {
 				owner = { has_country_flag = retile_ai_needs_minerals }
-				any_owned_pop = { has_job = technician }
+				retile_ai_planet_healthy_building = yes
+				count_pops = {
+					limit = { has_job = technician }
+					count > 2
+				}
 			}
 		}
 	}
@@ -814,7 +846,11 @@ building_energy_3 = {
 			owner = { is_ai = no }
 			AND = {
 				owner = { has_country_flag = retile_ai_needs_minerals }
-				any_owned_pop = { has_job = technician }
+				retile_ai_planet_healthy_building = yes
+				count_pops = {
+					limit = { has_job = technician }
+					count > 2
+				}
 			}
 		}
 	}
@@ -875,7 +911,14 @@ building_maintenance_depot = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				free_amenities > 1000
+				OR = {
+					free_amenities > 300
+					num_buildings = { type = any value > 2 }
+				}
+				count_pops = {
+					limit = { has_job = custodian }
+					count > 0
+				}
 			}
 		}
 	}
@@ -925,6 +968,22 @@ building_maintenance_depot_2 = {
 	category = resource
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				OR = {
+					free_amenities > 300
+					num_buildings = { type = any value > 2 }
+				}
+				count_pops = {
+					limit = { has_job = custodian }
+					count > 0
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -974,6 +1033,22 @@ building_maintenance_depot_3 = {
 	category = resource
 	can_be_disabled = no
 	
+	allow = {
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				OR = {
+					free_amenities > 300
+					num_buildings = { type = any value > 2 }
+				}
+				count_pops = {
+					limit = { has_job = custodian }
+					count > 0
+				}
+			}
+		}
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {

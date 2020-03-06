@@ -8,7 +8,15 @@ purge_normal = {
 	pop_modifier = {
 		pop_decline_speed = 6
 		pop_happiness = -10
-	}	
+	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = hive_ethics_xenophobe }
+		}
+		pop_decline_speed = 3
+	}
 	
 	potential = {
 		exists = from
@@ -33,6 +41,8 @@ purge_normal = {
 							OR = { 
 								has_trait = trait_machine_unit 
 								has_trait = trait_mechanical
+								has_trait = trait_droid
+								has_trait = trait_synthetic
 							}
 						}
 					}			
@@ -121,6 +131,14 @@ purge_displacement = {
 		pop_decline_speed = 1
 	}
 	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = hive_ethics_xenophobe }
+		}
+		pop_decline_speed = 0.50
+	}
+	
 	potential = {
 		exists = from
 		from = {
@@ -138,6 +156,8 @@ purge_displacement = {
 			OR = {
 				has_trait = trait_machine_unit
 				has_trait = trait_mechanical	
+				has_trait = trait_droid
+				has_trait = trait_synthetic
 			}			
 		}		
 	}
@@ -185,6 +205,14 @@ purge_labor_camps = {
 	pop_modifier = {
 		pop_decline_speed = 2
 		pop_happiness = -10
+	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = hive_ethics_xenophobe }
+		}
+		pop_decline_speed = 1
 	}
 
 	potential = {	
@@ -240,6 +268,14 @@ purge_matrix = {
 		pop_decline_speed = 3
 		pop_happiness = -10
 	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = hive_ethics_xenophobe }
+		}
+		pop_decline_speed = 1.50
+	}
 
 	potential = {
 		host_has_dlc = "Synthetic Dawn Story Pack"
@@ -252,6 +288,8 @@ purge_matrix = {
 			fail_text = CANNOT_LIVESTOCK_MATRIX_MACHINES
 			NOR = {
 				has_trait = trait_mechanical
+				has_trait = trait_droid
+				has_trait = trait_synthetic
 				has_trait = trait_machine_unit
 			}
 		}
@@ -284,6 +322,14 @@ purge_processing = {
 		pop_decline_speed = 3
 		pop_happiness = -10
 	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = hive_ethics_xenophobe }
+		}
+		pop_decline_speed = 1.50
+	}
 
 	potential = {
 		host_has_dlc = "Utopia"
@@ -298,6 +344,8 @@ purge_processing = {
 			OR = {
 				NOR = {
 					has_trait = trait_mechanical
+					has_trait = trait_droid
+					has_trait = trait_synthetic
 					has_trait = trait_machine_unit
 				}
 				from = { has_valid_civic = civic_hive_devouring_swarm }

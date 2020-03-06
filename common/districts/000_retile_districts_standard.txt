@@ -3,16 +3,6 @@ district_housing = {
 	icon = district_housing
 	is_capped_by_modifier = no
 	
-	show_on_uncolonized = {
-		exists = from
-		from = { is_gestalt = no }
-	}
-
-	potential = {
-		exists = owner
-		owner = { is_gestalt = no }
-	}
-	
 	allow = {
 		exists = owner
 		OR = {
@@ -36,6 +26,14 @@ district_housing = {
 	
 	planet_modifier = {
 		planet_housing_add = 5
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_hive_empire = yes }
+		}
+		planet_housing_add = 1
 	}
 	
 	triggered_planet_modifier = {
@@ -96,7 +94,7 @@ district_clerks = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				free_jobs < 1
+				retile_ai_planet_healthy_district = yes
 				OR = {
 					owner = { has_country_flag = retile_ai_needs_energy }
 					owner = { has_authority = auth_corporate }
@@ -119,6 +117,7 @@ district_clerks = {
 	planet_modifier = {
 		job_clerk_add = 1
 	}
+	
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_city
@@ -135,19 +134,54 @@ district_clerks = {
 	}
 }
 
-district_engineers = {
+district_spawning = {
 	base_buildtime = @retile_city_build_time
-	icon = district_engineer
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = {
 		exists = from
-		from = { is_gestalt = no }
+		from = { is_hive_empire = yes }
 	}
 
 	potential = {
 		exists = owner
-		owner = { is_gestalt = no }
+		owner = { is_hive_empire = yes }
+	}
+	
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		job_spawning_drone_add = 1
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			# TODO
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+district_engineers = {
+	base_buildtime = @retile_city_build_time
+	icon = district_engineer
+	is_capped_by_modifier = no
+
+	potential = {
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = penal_colony
@@ -160,7 +194,7 @@ district_engineers = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				free_jobs < 1
+				retile_ai_planet_healthy_district = yes
 				OR = {
 					owner = { has_country_flag = retile_ai_needs_alloys }
 					owner = { has_country_flag = retile_ai_needs_consumer_goods }
@@ -203,15 +237,8 @@ district_scholars = {
 	base_buildtime = @retile_city_build_time
 	icon = district_scholar
 	is_capped_by_modifier = no
-	
-	show_on_uncolonized = {
-		exists = from
-		from = { is_gestalt = no }
-	}
 
 	potential = {
-		exists = owner
-		owner = { is_gestalt = no }
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = penal_colony
@@ -224,10 +251,8 @@ district_scholars = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				free_jobs < 1
-				OR = {
-					owner = { has_country_flag = retile_ai_needs_science }
-				}
+				retile_ai_planet_healthy_district = yes
+				owner = { has_country_flag = retile_ai_needs_science }
 			}
 		}
 	}
@@ -271,7 +296,7 @@ district_bureaucrats = {
 		exists = from
 		from = { is_gestalt = no }
 	}
-
+	
 	potential = {
 		exists = owner
 		owner = { is_gestalt = no }
@@ -287,7 +312,7 @@ district_bureaucrats = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				free_jobs < 1
+				retile_ai_planet_healthy_district = yes
 				owner = { has_country_flag = retile_ai_needs_admin }
 			}
 		}
@@ -328,19 +353,61 @@ district_bureaucrats = {
 	}
 }
 
-district_soldiers = {
+district_admin = {
 	base_buildtime = @retile_city_build_time
-	icon = district_soldier
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = {
 		exists = from
-		from = { is_gestalt = no }
+		from = { is_gestalt = yes }
 	}
 
 	potential = {
 		exists = owner
-		owner = { is_gestalt = no }
+		owner = { is_gestalt = yes }
+	}
+	
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		job_admin_drone_add = 1
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				retile_ai_planet_healthy_district = yes
+				owner = { has_country_flag = retile_ai_needs_admin }
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 1
+		modifier = {
+			weight = 2
+			owner = { has_country_flag = retile_ai_needs_admin_crisis }
+		}
+	}
+}
+
+district_soldiers = {
+	base_buildtime = @retile_city_build_time
+	icon = district_soldier
+	is_capped_by_modifier = no
+
+	potential = {
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = penal_colony
@@ -353,9 +420,9 @@ district_soldiers = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				free_jobs < 1
+				retile_ai_planet_healthy_district = yes
 				OR = {
-					num_districts = { type = district_soldiers value < 3 }
+					num_districts = { type = district_soldiers value < 2 }
 					has_planet_flag = retile_ai_fortress
 				}
 				owner = { retile_ai_has_resource_crisis = no }
@@ -427,10 +494,12 @@ district_enforcers = {
 			AND = {
 				planet_crime > 33
 				OR = {
-					free_jobs < 1
-					num_districts = { type = district_enforcers value < 1 }
+					any_pop = { is_unemployed = yes }
+					AND = {
+						num_pops > 2
+						num_districts = { type = district_enforcers value < 1 }
+					}
 				}
-				owner = { retile_ai_has_resource_crisis = no }
 			}
 		}
 	}
@@ -494,19 +563,71 @@ district_enforcers = {
 	}
 }
 
-district_custodians = {
+district_sentinel = {
 	base_buildtime = @retile_city_build_time
-	icon = district_custodian
 	is_capped_by_modifier = no
 	
 	show_on_uncolonized = {
 		exists = from
-		from = { is_gestalt = no }
+		from = { is_gestalt = yes }
 	}
 
 	potential = {
 		exists = owner
-		owner = { is_gestalt = no }
+		owner = { is_gestalt = yes }
+	}
+	
+	resources = {
+		category = planet_districts_cities
+		cost = {
+			minerals = @retile_city_cost
+		}
+		upkeep = {
+			energy = @retile_city_upkeep
+			consumer_goods = @retile_city_upkeep_supplies
+		}
+	}
+	
+	planet_modifier = {
+		job_patrol_drone_add = 1
+	}
+	
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				planet_crime > 33
+				OR = {
+					any_pop = { is_unemployed = yes }
+					AND = {
+						num_pops > 2
+						num_districts = { type = district_sentinel value < 1 }
+					}
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 2
+		modifier = {
+			weight = 4
+			planet_crime > 66
+		}
+		modifier = {
+			weight = 6
+			planet_crime > 99
+		}
+	}
+}
+
+district_custodians = {
+	base_buildtime = @retile_city_build_time
+	icon = district_custodian
+	is_capped_by_modifier = no
+
+	potential = {
 		NOR = {
 			has_modifier = resort_colony
 			has_modifier = penal_colony
@@ -519,9 +640,14 @@ district_custodians = {
 		OR = {
 			owner = { is_ai = no }
 			AND = {
-				free_jobs < 1
 				free_amenities > 300
-				owner = { retile_ai_has_resource_crisis = no }
+				OR = {
+					any_pop = { is_unemployed = yes }
+					AND = {
+						num_pops > 2
+						num_districts = { type = district_custodians value < 1 }
+					}
+				}
 			}
 		}
 	}

@@ -22,16 +22,11 @@ building_communal_housing = {
 			has_modifier = penal_colony
 		}
 		exists = owner
-		owner = { 
-			is_regular_empire = yes
-			NOT = { has_valid_civic = civic_functional_architecture }
-		}
+		owner = { NOT = { has_valid_civic = civic_functional_architecture } }
 	}
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-		}
+		owner = { is_ai = no }
 	}
 
 	destroy_trigger = {
@@ -42,24 +37,14 @@ building_communal_housing = {
 			owner = {
 				OR = {
 					is_ai = yes
-					is_regular_empire = no
 					has_valid_civic = civic_functional_architecture
 				}
 			}
 		}
 	}
-	
-	convert_to = {
-		building_drone_storage
-		building_hive_warren
-	}
 		
 	planet_modifier = {
 		planet_max_districts_add = 3
-	}
-
-	country_modifier = {
-		country_resource_max_add = 2000
 	}
 	
 	resources = {
@@ -77,158 +62,6 @@ building_communal_housing = {
 		text = retile_housing_effect
 	}
 
-	ai_weight = {
-		weight = 1
-	}
-}
-
-building_clinic_1 = {
-	base_buildtime = 360
-	base_cap_amount = 1
-	category = amenity
-	can_be_disabled = no
-	
-	potential = {
-		exists = owner
-		owner = { is_regular_empire = yes }
-	}
-	
-	allow = {
-		owner = { is_ai = no }
-	}
-
-	destroy_trigger = {
-		OR = {
-			owner = { is_regular_empire = no }
-			owner = { is_ai = yes }
-		}
-	}
-
-	resources = {
-		category = planet_buildings
-		cost = {
-			minerals = @cost_low
-		}
-		upkeep = {
-			energy = 1
-		}
-	}
-	
-	planet_modifier = {
-		job_medic_add = 1
-	}
-	
-	upgrades = {
-		building_clinic_2
-	}
-
-	prerequisites = {
-		tech_planetary_government
-	}
-	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_clinic_1_effect
-	}
-	
-	ai_weight = {
-		weight = 1
-	}
-}
-
-building_clinic_2 = {
-	base_buildtime = 480
-	can_build = no
-	category = amenity
-	can_be_disabled = no
-
-	allow = {
-		owner = { is_ai = no }
-	}
-
-	destroy_trigger = {
-		OR = {
-			owner = { is_regular_empire = no }
-			owner = { is_ai = yes }
-		}
-	}
-
-	resources = {
-		category = planet_buildings
-		cost = {
-			minerals = @cost_med
-		}
-		upkeep = {
-			energy = 2
-		}
-	}
-	
-	planet_modifier = {
-		job_medic_add = 2
-	}
-	
-	upgrades = {
-		building_clinic_3
-	}
-
-	prerequisites = {
-		tech_genome_mapping
-	}
-	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_clinic_2_effect
-	}
-
-	ai_weight = {
-		weight = 1
-	}
-}
-
-building_clinic_3 = {
-	base_buildtime = 600
-	can_build = no
-	category = manufacturing
-	can_be_disabled = no
-
-	allow = {
-		owner = { is_ai = no }
-	}
-
-	destroy_trigger = {
-		OR = {
-			owner = { is_regular_empire = no }
-			owner = { is_ai = yes }
-		}
-	}
-
-	resources = {
-		category = planet_buildings
-		cost = {
-			minerals = @cost_high
-		}
-		upkeep = {
-			energy = 3
-		}
-	}
-	
-	planet_modifier = {
-		job_medic_add = 3
-	}
-
-	prerequisites = {
-		tech_cloning
-	}
-	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_clinic_3_effect
-	}
-	
 	ai_weight = {
 		weight = 1
 	}
@@ -273,7 +106,7 @@ building_ministry = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = @cost_ultra
+			minerals = @cost_med
 		}
 		upkeep = {
 			energy = 2
@@ -283,122 +116,6 @@ building_ministry = {
 	triggered_desc = {
 		trigger = { exists = owner }
 		text = retile_ministry_effect
-	}
-
-	ai_weight = {
-		weight = 1
-	}
-}
-
-building_drone_storage = {
-	base_buildtime = 360
-	base_cap_amount = 1
-	category = amenity
-	can_be_disabled = no
-	
-	potential = {
-		habitable_structure = no
-		exists = owner
-		owner = { is_machine_empire = yes }
-	}
-
-	allow = {
-		OR = {
-			owner = { is_ai = no }
-		}
-	}
-
-	destroy_trigger = {
-		OR = {
-			owner = { is_machine_empire = no }
-			owner = { is_ai = yes }
-		}
-	}
-
-	convert_to = {
-		building_communal_housing
-		building_hive_warren
-	}
-		
-	planet_modifier = {
-		planet_max_districts_add = 3
-	}
-
-	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	
-	resources = {
-		category = planet_buildings
-		cost = {
-			minerals = @cost_ultra
-		}
-		upkeep = {
-			energy = 2
-		}
-	}	
-	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_housing_effect
-	}
-
-	ai_weight = {
-		weight = 1
-	}
-}
-
-building_hive_warren = {
-	base_buildtime = 360
-	base_cap_amount = 1
-	category = amenity
-	can_be_disabled = no
-	
-	potential = {
-		habitable_structure = no
-		exists = owner
-		owner = { is_hive_empire = yes }
-	}
-
-	allow = {
-		OR = {
-			owner = { is_ai = no }
-		}
-	}
-
-	destroy_trigger = {
-		OR = {
-			owner = { is_hive_empire = no }
-			owner = { is_ai = yes }
-		}
-	}
-
-	convert_to = {
-		building_communal_housing
-		building_drone_storage
-	}
-		
-	planet_modifier = {
-		planet_max_districts_add = 3
-	}
-
-	country_modifier = {
-		country_resource_max_add = 2000
-	}
-	
-	resources = {
-		category = planet_buildings
-		cost = {
-			minerals = @cost_ultra
-		}
-		upkeep = {
-			energy = 2
-		}
-	}	
-	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_housing_effect
 	}
 
 	ai_weight = {

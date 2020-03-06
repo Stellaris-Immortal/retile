@@ -19,7 +19,7 @@ building_colony_shelter = {
 	
 	convert_to = {
 		building_hive_colony
-		#building_deployment_post
+		building_deployment_post
 	}
 
 	upgrades = {
@@ -49,17 +49,6 @@ building_colony_shelter = {
 		}
 	}
 
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_mechanists }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_roboticist_add = 1
-		}
-	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -137,7 +126,7 @@ building_capital = {
 	}
 	
 	prerequisites = {
-		"tech_planetary_government"
+		"tech_planetary_unification"
 	}
 	show_tech_unlock_if = { 
 		is_regular_empire = yes
@@ -149,7 +138,7 @@ building_capital = {
 	
 	convert_to = {
 		building_hive_capital
-		#building_machine_capital
+		building_machine_capital
 	}
 	
 	resources = {
@@ -182,17 +171,6 @@ building_capital = {
 		}
 	}
   
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_mechanists }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_roboticist_add = 1
-		}
-	}
-	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
@@ -343,7 +321,7 @@ building_major_capital = {
 	
 	convert_to = {
 		building_hive_major_capital
-		#building_machine_major_capital	
+		building_machine_major_capital	
 	}
 	
 	resources = {
@@ -380,29 +358,12 @@ building_major_capital = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_mechanists }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_roboticist_add = 1
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
 			owner = { has_policy_flag = criminal_military_police }
-			owner = { OR = {
-				has_civic = civic_mechanists
-				is_mechanical_empire = yes
-			} }
 		}
 		modifier = {
-			job_clerk_add = -1
-			job_roboticist_add = 1
+			job_enforcer_add = -1
+			job_soldier_add = 1
 		}
-		job_enforcer_add = -1
-		job_soldier_add = 1
 	}
 	
 	triggered_planet_modifier = {
@@ -544,6 +505,7 @@ building_system_capital = {
 	prerequisites = {
 		"tech_galactic_administration"
 	}
+	
 	show_tech_unlock_if = { 
 		is_regular_empire = yes
 	}
@@ -553,7 +515,7 @@ building_system_capital = {
 	}
 	
 	convert_to = {
-		#building_machine_system_capital
+		building_machine_system_capital
 		building_hive_system_capital		
 	}
 	
@@ -582,17 +544,6 @@ building_system_capital = {
 		potential = {
 			exists = owner
 			owner = { is_mechanical_empire = yes }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_roboticist_add = 1
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_mechanists }
 		}
 		modifier = {
 			planet_housing_add = 1
@@ -755,8 +706,8 @@ building_galactic_capital = {
 	}
 	
 	convert_to = {
-		#building_machine_system_capital
-		#building_hive_system_capital		
+		building_machine_galactic_capital
+		building_hive_galactic_capital		
 	}
 	
 	resources = {
@@ -784,17 +735,6 @@ building_galactic_capital = {
 		potential = {
 			exists = owner
 			owner = { is_mechanical_empire = yes }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_roboticist_add = 1
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_civic = civic_mechanists }
 		}
 		modifier = {
 			planet_housing_add = 1

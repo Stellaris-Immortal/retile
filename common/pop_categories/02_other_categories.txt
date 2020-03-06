@@ -46,6 +46,22 @@ purge = {
 		influence = 10
 	}
 	
+	########################################	START Pop Sprawl
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_solitary
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
@@ -54,6 +70,9 @@ purge = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -63,7 +82,10 @@ purge = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -73,7 +95,10 @@ purge = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -83,11 +108,21 @@ purge = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	########################################	END Pop Sprawl
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
@@ -118,6 +153,22 @@ robot_servant = {
 	rank = 0
 	display_category = worker
 	
+	########################################	START Pop Sprawl
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_solitary
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
@@ -126,6 +177,9 @@ robot_servant = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -135,7 +189,10 @@ robot_servant = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -145,7 +202,10 @@ robot_servant = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -155,11 +215,21 @@ robot_servant = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	########################################	END Pop Sprawl
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
@@ -610,6 +680,22 @@ slave = {
 		}
 	}
 	
+	########################################	START Pop Sprawl
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_solitary
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
@@ -618,6 +704,9 @@ slave = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -627,7 +716,10 @@ slave = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -637,7 +729,10 @@ slave = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -647,11 +742,21 @@ slave = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	########################################	END Pop Sprawl
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
@@ -1769,6 +1874,22 @@ criminal = {
 		}
 	}
 	
+	########################################	START Pop Sprawl
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_solitary
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
@@ -1777,6 +1898,9 @@ criminal = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -1786,7 +1910,10 @@ criminal = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -1796,7 +1923,10 @@ criminal = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -1806,11 +1936,21 @@ criminal = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	########################################	END Pop Sprawl
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
@@ -1970,6 +2110,22 @@ assimilation = {
 		influence = 10
 	}
 	
+	########################################	START Pop Sprawl
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_solitary
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
@@ -1978,6 +2134,9 @@ assimilation = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -1987,7 +2146,10 @@ assimilation = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -1997,7 +2159,10 @@ assimilation = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -2007,11 +2172,21 @@ assimilation = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	########################################	END Pop Sprawl
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
@@ -2098,6 +2273,22 @@ deviant_drone = {
 		}
 	}
 	
+	########################################	START Pop Sprawl
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_solitary
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
@@ -2106,6 +2297,9 @@ deviant_drone = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -2115,7 +2309,10 @@ deviant_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -2125,7 +2322,10 @@ deviant_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -2135,11 +2335,21 @@ deviant_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	########################################	END Pop Sprawl
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
@@ -2301,6 +2511,22 @@ corrupt_drone = {
 		}
 	}
 	
+	########################################	START Pop Sprawl
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_solitary
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
@@ -2309,6 +2535,9 @@ corrupt_drone = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -2318,7 +2547,10 @@ corrupt_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -2328,7 +2560,10 @@ corrupt_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -2338,11 +2573,21 @@ corrupt_drone = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	########################################	END Pop Sprawl
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
@@ -2485,6 +2730,22 @@ precursor = {
 		}
 	}
 	
+	########################################	START Pop Sprawl
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_solitary
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
@@ -2493,6 +2754,9 @@ precursor = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -2502,7 +2766,10 @@ precursor = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -2512,7 +2779,10 @@ precursor = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -2522,11 +2792,21 @@ precursor = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	########################################	END Pop Sprawl
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
@@ -2648,6 +2928,22 @@ xeno_ward = {
 	rank = 0
 	clothes_texture_index = 3
 	
+	########################################	START Pop Sprawl
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_solitary
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
@@ -2656,6 +2952,9 @@ xeno_ward = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -2665,7 +2964,10 @@ xeno_ward = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -2675,7 +2977,10 @@ xeno_ward = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -2685,11 +2990,21 @@ xeno_ward = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	########################################	END Pop Sprawl
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }
@@ -2770,6 +3085,22 @@ pre_sapients = {
 		weight = 1
 	}
 
+	########################################	START Pop Sprawl
+	triggered_planet_modifier = {
+		potential = {
+			NOR = {
+				has_trait = trait_communal
+				has_trait = trait_fertile
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_solitary
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_base
+	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
@@ -2778,6 +3109,9 @@ pre_sapients = {
 				has_building = building_clinic_1
 				has_building = building_clinic_2
 				has_building = building_clinic_3
+				has_building = building_spawning_1
+				has_building = building_spawning_2
+				has_building = building_spawning_3
 			} }
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_full
@@ -2787,7 +3121,10 @@ pre_sapients = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_1
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
@@ -2797,7 +3134,10 @@ pre_sapients = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_2
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
@@ -2807,11 +3147,21 @@ pre_sapients = {
 			is_organic_species = yes
 			exists = planet
 			planet = {
-				has_building = building_clinic_3
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
 			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	########################################	END Pop Sprawl
 
 	triggered_planet_modifier = {	# Dirty Pop!
 		potential = { has_trait = trait_repugnant }

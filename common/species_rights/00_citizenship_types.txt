@@ -15,7 +15,6 @@ citizenship_full = {
 			from = { has_valid_civic = civic_fanatic_purifiers }
 			NOR = {
 				is_same_species = from
-				is_archetype = MACHINE
 				is_archetype = ROBOT
 			}
 		}
@@ -82,6 +81,8 @@ citizenship_full_machine = {
 			fail_text = MACHINE_SPECIES_NOT_MACHINE
 			OR = {
 				has_trait = trait_mechanical
+				has_trait = trait_droid
+				has_trait = trait_synthetic
 				has_trait = trait_machine_unit
 				from = { has_valid_civic = civic_machine_assimilator }
 			}
@@ -95,6 +96,8 @@ citizenship_full_machine = {
 						has_trait = trait_cybernetic
 						has_trait = trait_machine_unit
 						has_trait = trait_mechanical
+						has_trait = trait_droid
+						has_trait = trait_synthetic
 					}
 					from = { has_valid_civic = civic_machine_assimilator }
 				}
@@ -179,6 +182,8 @@ citizenship_assimilation = {
 					}
 					NOR = {
 						has_trait = trait_mechanical
+						has_trait = trait_droid
+						has_trait = trait_synthetic
 						has_trait = trait_machine_unit
 						has_trait = trait_cybernetic
 					}
@@ -198,6 +203,8 @@ citizenship_assimilation = {
 					NOR = {
 						has_trait = trait_hive_mind
 						has_trait = trait_mechanical
+						has_trait = trait_droid
+						has_trait = trait_synthetic
 						has_trait = trait_machine_unit
 					}
 				}
@@ -213,6 +220,8 @@ citizenship_assimilation = {
 					}
 					NOR = {
 						has_trait = trait_mechanical
+						has_trait = trait_droid
+						has_trait = trait_synthetic
 						has_trait = trait_machine_unit
 					}
 				}
@@ -228,7 +237,8 @@ citizenship_assimilation = {
 					}
 					NOR = {
 						has_trait = trait_mechanical
-						has_trait = trait_mechanical
+						has_trait = trait_droid
+						has_trait = trait_synthetic
 						AND = {
 							has_trait = trait_cybernetic
 							from = { NOT = { has_country_flag = synthetic_empire } }
@@ -270,6 +280,8 @@ citizenship_assimilation = {
 					from = { has_ascension_perk = ap_transcendence }
 					NOR = {
 						has_trait = trait_mechanical
+						has_trait = trait_droid
+						has_trait = trait_synthetic
 						has_trait = trait_cybernetic
 						has_trait = trait_machine_unit
 					}
@@ -351,6 +363,8 @@ citizenship_organic_trophy = {
 			fail_text = not_organic
 			NOR = {
 				has_trait = trait_mechanical
+				has_trait = trait_droid
+				has_trait = trait_synthetic
 				has_trait = trait_machine_unit
 			}
 		}
@@ -475,6 +489,8 @@ citizenship_slavery = {
 			OR = {
 				has_trait = trait_machine_unit
 				has_trait = trait_mechanical
+				has_trait = trait_droid
+				has_trait = trait_synthetic
 			}
 		}
 		NAND = {	# fanatic purifiers exclusion
@@ -585,7 +601,11 @@ citizenship_robot_servitude = {
 	potential = {
 		exists = from
 		from = { is_gestalt = no }
-		has_trait = trait_mechanical
+		OR = {
+			has_trait = trait_mechanical
+			has_trait = trait_droid
+			has_trait = trait_synthetic
+		}
 		NAND = {	# fanatic purifiers exclusion
 			from = { has_valid_civic = civic_fanatic_purifiers }
 			NOR = {
@@ -598,10 +618,15 @@ citizenship_robot_servitude = {
 
 	allow = {
 		hidden_trigger = { exists = from }
-		from = { NOT = { has_policy_flag = ai_full_rights } }
+		OR = {
+			from = { NOT = { has_policy_flag = ai_full_rights } }
+			has_trait = trait_mechanical
+			has_trait = trait_droid
+			has_trait = trait_synthetic
+		}
 	}
 	ai_will_do = {
-		factor = 1
+		factor = 2
 	}
 }
 
@@ -647,7 +672,10 @@ citizenship_purge = {
 			}
 		} else_if = {
 			limit = {
-				is_archetype = ROBOT
+				OR = {
+					has_trait = trait_mechanical
+					has_trait = trait_droid
+				}
 			}
 			custom_tooltip = {
 				text = yes_robot_always_purge
@@ -655,7 +683,10 @@ citizenship_purge = {
 			}
 		} else_if = {
 			limit = {
-				is_archetype = MACHINE
+				OR = {
+					is_archetype = MACHINE
+					has_trait = trait_synthetic
+				}
 			}
 			custom_tooltip = {
 				fail_text = yes_ai_full_rights
@@ -675,7 +706,7 @@ citizenship_purge = {
 	}
 	
 	ai_will_do = {
-		factor = 20
+		factor = 1
 		modifier = {
 			factor = 0
 			from = {
@@ -734,6 +765,8 @@ citizenship_purge_machine = {
 		NOR = {
 			has_trait = trait_machine_unit
 			has_trait = trait_mechanical
+			has_trait = trait_droid
+			has_trait = trait_synthetic
 		}
 		NAND = {
 			is_lonely_hive_mind_pop = no

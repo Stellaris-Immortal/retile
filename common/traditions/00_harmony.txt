@@ -91,6 +91,22 @@ tr_harmony_bulwark_of_harmony = {
 	on_enabled = {
 		hidden_effect = { every_owned_planet = { validate_planet_buildings_and_districts = yes } }
 	}
+	
+	tradition_swap = {
+		name = tr_harmony_bulwark_of_harmony_hive
+		inherit_effects = no
+		inherit_icon = no
+		inherit_name = no
+		trigger = {
+			is_hive_empire = yes
+		}
+		modifier = {
+			# Unlocks Hive Worlds
+		}
+		weight = {
+			factor = 1
+		}
+	}
 
 	ai_weight = {
 		factor = 5000
@@ -103,15 +119,15 @@ tr_harmony_the_greater_good = {
 	}
 	
 	tradition_swap = {
-		name = tr_synchronicity_integrated_preservation
+		name = tr_harmony_the_greater_good_hive
 		inherit_effects = no
 		inherit_icon = yes
 		inherit_name = no
 		trigger = {
-			is_gestalt = yes
+			is_hive_empire = yes
 		}
 		modifier = {
-			# SOmething Else
+			planet_crime_no_happiness_add = -20
 		}
 		weight = {
 			factor = 1

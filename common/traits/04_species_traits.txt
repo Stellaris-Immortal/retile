@@ -190,7 +190,7 @@ trait_arthropoid_wing = {
 	allowed_archetypes = { ARTHROPOID }
 	modifier = {
 		pop_growth_speed = 0.10
-		pop_growth_from_immigration = 0.50
+		#pop_growth_from_immigration = 0.50
 		pop_resettlement_cost_mult = -0.50
 		army_attack_morale_mult = 0.10
 	}
@@ -202,7 +202,7 @@ trait_rapid_breeders = {
 	opposites = { "trait_slow_breeders" "trait_fertile" }
 	allowed_archetypes = { BIOLOGICAL PLANTOID }
 	modifier = {
-		pop_growth_speed = 0.10
+		pop_growth_speed = 0.20
 	}
 	slave_cost = {
 		energy = 100
@@ -215,7 +215,7 @@ trait_slow_breeders = {
 	opposites = { "trait_rapid_breeders" "trait_fertile" "trait_arthropoid_wing" }
 	allowed_archetypes = { BIOLOGICAL PLANTOID ARTHROPOID }
 	modifier = {
-		pop_growth_speed = -0.10
+		pop_growth_speed = -0.20
 	}
 	slave_cost = {
 		energy = -100
@@ -373,8 +373,9 @@ trait_nomadic = {
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_sedentary" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID }
+	custom_tooltip = trait_nomadic_effect
 	modifier = {
-		pop_growth_from_immigration = 0.50
+	#	pop_growth_from_immigration = 0.50
 		pop_resettlement_cost_mult = -0.50
 	}
 }
@@ -384,13 +385,14 @@ trait_sedentary = {
 	potential_crossbreeding_chance = 1.0
 	opposites = { "trait_nomadic" "trait_arthropoid_wing" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID }
+	custom_tooltip = trait_sedentary_effect
 	modifier = {
-		pop_growth_from_immigration = -0.50
+	#	pop_growth_from_immigration = -0.50
 		pop_resettlement_cost_mult = 0.50
 	}
-	ai_weight = {
-		weight = 0
-	}
+	#ai_weight = {
+	#	weight = 0
+	#}
 }
 
 trait_plantoid_flowering = {
@@ -409,27 +411,31 @@ trait_plantoid_flowering = {
 }
 
 trait_communal = {
-	cost = 1
+	cost = 2
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_solitary" "trait_hive_mind" "trait_machine_unit" }
+	opposites = { "trait_solitary" "trait_hive_mind" "trait_machine_unit" "trait_fertile" }
 
 	allowed_archetypes = { BIOLOGICAL LITHOID ARTHROPOID }
 	
-	modifier = {
-		pop_happiness = 0.05
-	}
+	custom_tooltip = TRAIT_COMMUNAL_EFFECT
+	#modifier = {
+		#per-pop growth reduction -0.005 or something...
+		#pop_happiness = 0.05
+	#}
 }
 
 trait_solitary = {
-	cost = -1
+	cost = -2
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_communal" "trait_hive_mind" "trait_machine_unit" }
+	opposites = { "trait_communal" "trait_hive_mind" "trait_machine_unit" "trait_fertile" }
 
 	allowed_archetypes = { BIOLOGICAL LITHOID ARTHROPOID }
 	
-	modifier = {
-		pop_happiness = -0.05
-	}
+	custom_tooltip = TRAIT_SOLITARY_EFFECT
+	#modifier = {
+		#per-pop growth reduction +0.005 or something...
+		#pop_happiness = -0.05
+	#}
 
 	ai_weight = {
 		weight = 0
@@ -717,12 +723,13 @@ trait_fertile = {
 	initial = no
 	randomized = no
 	advanced_trait = yes
-	opposites = { "trait_slow_breeders" }
+	opposites = { "trait_slow_breeders" "trait_solitary" }
 	allowed_archetypes = { BIOLOGICAL PLANTOID ARTHROPOID }
 	modifier = {
-		pop_growth_speed = 0.3
+		pop_growth_speed = 0.5
 		pop_happiness = 0.05
 	}
+	custom_tooltip = TRAIT_FERTILE_EFFECT
 	slave_cost = {
 		energy = 200
 	}

@@ -609,6 +609,8 @@ tech_society_1 = {
 	category = { statecraft }
 	weight = @tier1weight1
 	
+	potential = { is_gestalt = no }
+	
 	modifier = {
 		description = tech_society_1_effect
 		planet_clerks_upkeep_mult = -0.033
@@ -669,6 +671,8 @@ tech_society_2 = {
 	prerequisites = { "tech_society_1" }
 	weight = @tier2weight3
 	
+	potential = { is_gestalt = no }
+	
 	modifier = {
 		description = tech_society_2_effect
 		planet_clerks_upkeep_mult = -0.033
@@ -724,6 +728,8 @@ tech_society_3 = {
 	category = { statecraft }	
 	prerequisites = { "tech_society_2" }
 	weight = @tier4weight2
+	
+	potential = { is_gestalt = no }
 	
 	modifier = {
 		description = tech_society_3_effect
@@ -4288,8 +4294,6 @@ tech_planetary_unification = {
 		campaign_edicts
 	}
 	
-	# also unlocks planet-happiness edict
-	
 	weight_modifier = {
 		factor = 4
 		modifier = {
@@ -4534,7 +4538,7 @@ tech_adaptive_bureaucracy = {
 	
 	modifier = {
 		country_admin_cap_add = 5
-		description = tech_adaptive_bureaucracy_effect
+		planet_buildings_influence_cost_mult = -0.05
 	}
 	
 	weight_modifier = {
@@ -4588,7 +4592,7 @@ tech_colonial_bureaucracy = {
 	
 	modifier = {
 		country_admin_cap_add = 5
-		planet_buildings_influence_cost_mult = -0.10
+		planet_buildings_influence_cost_mult = -0.05
 	}
 	
 	weight_modifier = {
@@ -4642,7 +4646,7 @@ tech_galactic_bureaucracy = {
 	
 	modifier = {
 		country_admin_cap_add = 5
-		planet_buildings_influence_cost_mult = -0.10
+		planet_buildings_influence_cost_mult = -0.05
 	}
 	
 	weight_modifier = {
@@ -4879,7 +4883,7 @@ tech_embodied_dynamism = {
 	weight = @tier3weight3
 	
 	modifier = {
-		country_government_civic_points_add = 1
+		planet_pops_upkeep_mult = -0.10
 	}
 	
 	potential = {
@@ -5324,6 +5328,7 @@ tech_heritage_site = {
 	weight = @tier2weight1
 	
 	potential = {
+		is_hive_empire = no
 		NOR = {
 			has_valid_civic = civic_exalted_priesthood
 			has_valid_civic = civic_gospel_of_the_masses
@@ -5366,6 +5371,7 @@ tech_hypercomms_forum = {
 	weight = @tier3weight2
 		
 	potential = {
+		is_hive_empire = no
 		NOR = {
 			has_valid_civic = civic_exalted_priesthood
 			has_valid_civic = civic_gospel_of_the_masses
@@ -5408,6 +5414,7 @@ tech_autocurating_vault = {
 	weight = @tier4weight2	
 	
 	potential = {
+		is_hive_empire = no
 		NOR = {
 			has_valid_civic = civic_exalted_priesthood
 			has_valid_civic = civic_gospel_of_the_masses
@@ -5616,6 +5623,10 @@ tech_hive_cluster = {
 	tier = 2
 	prerequisites = { "tech_hive_node" }
 	weight = @tier2weight2
+	
+	potential = {
+		is_hive_empire = yes
+	}
 
 	weight_modifier = {		
 		modifier = {
@@ -5649,6 +5660,10 @@ tech_hive_confluence = {
 	tier = 3
 	prerequisites = { "tech_hive_cluster" "tech_colonial_centralization" }
 	weight = @tier3weight2
+	
+	potential = {
+		is_hive_empire = yes
+	}
 	
 	weight_modifier = {	
 		modifier = {

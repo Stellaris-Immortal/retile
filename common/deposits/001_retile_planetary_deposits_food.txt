@@ -32,23 +32,9 @@ d_natural_farmland = {
 		planet_amenities_add = @retile_rural_eco_clean_low
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0.01
@@ -92,23 +78,9 @@ d_lichen_fields = {
 		planet_amenities_add = @retile_rural_eco_clean_low
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -162,23 +134,9 @@ d_bountiful_plains = {
 		planet_amenities_add = @retile_rural_eco_clean_low
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -228,23 +186,9 @@ d_rugged_woods = {
 		planet_amenities_add = @retile_rural_eco_clean_low
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -291,23 +235,9 @@ d_green_hills = {
 		planet_amenities_add = @retile_rural_eco_clean_low
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -357,23 +287,9 @@ d_forgiving_tundra = {
 		planet_amenities_add = @retile_rural_eco_clean_low
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -423,23 +339,9 @@ d_boggy_fens = {
 		planet_amenities_add = @retile_rural_eco_clean_low
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -486,23 +388,9 @@ d_nutritious_mudland = {
 		planet_amenities_add = @retile_rural_eco_clean_low
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -549,23 +437,9 @@ d_fungal_caves = {
 		planet_amenities_add = @retile_rural_eco_clean_med
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -615,23 +489,9 @@ d_lush_jungle = {
 		planet_amenities_add = @retile_rural_eco_clean_med
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -678,23 +538,9 @@ d_fertile_lands = {
 		planet_amenities_add = @retile_rural_eco_clean_med
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -742,23 +588,9 @@ d_great_river = {
 		planet_amenities_add = @retile_rural_eco_clean_med
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -804,23 +636,9 @@ d_black_soil = {
 		planet_amenities_add = @retile_rural_eco_clean_high
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -868,23 +686,9 @@ d_teeming_reef = {
 		planet_amenities_add = @retile_rural_eco_clean_high
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -931,23 +735,9 @@ d_marvelous_oasis = {
 		planet_amenities_add = @retile_rural_eco_clean_high
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -994,23 +784,9 @@ d_tropical_island = {
 		planet_amenities_add = @retile_rural_eco_clean_high
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -1058,23 +834,9 @@ d_fungal_forest = {
 		planet_amenities_add = @retile_rural_eco_clean_high
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -1123,23 +885,9 @@ d_junk_canals = {
 		planet_amenities_add = @retile_rural_eco_clean_bad_high
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
@@ -1168,23 +916,9 @@ d_abandoned_primitive_homesteads = {
 		planet_jobs_society_research_produces_mult = 0.10
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
@@ -1212,23 +946,9 @@ d_hyperfertile_valley = {
 		planet_amenities_add = @retile_rural_eco_clean_ultra2
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
@@ -1256,23 +976,9 @@ d_harvester_fields = {
 		planet_amenities_add = @retile_rural_eco_clean_ultra3
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
@@ -1300,23 +1006,9 @@ d_worm_farm = {
 		planet_amenities_add = @retile_rural_eco_clean_ultra
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
@@ -1345,23 +1037,9 @@ d_underground_farm = {
 		planet_amenities_add = @retile_rural_eco_clean_high
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
@@ -1393,23 +1071,9 @@ d_scandinavian_reclamation_sector = {
 		planet_amenities_add = @retile_rural_eco_clean_low
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
@@ -1437,23 +1101,9 @@ d_pacific_algae_tracts = {
 		planet_amenities_add = @retile_rural_eco_clean_high
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
@@ -1480,6 +1130,10 @@ d_saharan_irrigation_project = {
 	planet_modifier = {
 		planet_amenities_add = @retile_rural_eco_clean_ultra
 	}
+	
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
@@ -1508,25 +1162,12 @@ retile_mastery_of_nature_food = {
 	
 	planet_modifier = {
 		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_max_districts_add = 1
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
@@ -1549,23 +1190,9 @@ retile_module_farm = {
 		}
 	}
 	
-	ai_weight = {
-		weight = -1
-		modifier = {
-			weight = 100
-			retile_ready_food = yes
-		}
-		modifier = {	# REALLY don't let food go negative
-			weight = 1000
-			always = no #owner = { has_monthly_income = { resource = food value < 0 } }
-		}
-		modifier = {	# Plantoid Fix Habitability
-			weight = 10000
-			owner = { is_plantoid_empire = yes }
-			exists = planet
-			planet = { habitability = { who = owner.owner_species value < 0.7 } }
-		}
-	}
+	can_be_cleared = { retile_ready_food = yes }
+	
+	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0

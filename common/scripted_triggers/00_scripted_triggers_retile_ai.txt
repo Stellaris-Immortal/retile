@@ -1,9 +1,35 @@
+# Is this planet having a local crisis that must be solved before we can worry about empire problems?
+retile_ai_has_planet_crisis = {
+	OR = {
+		free_amenities > 1000 # pollution crisis
+		planet_crime > 50 # crime crisis
+	}
+}
+
+retile_ai_planet_healthy_district = {
+	any_pop = { is_unemployed = yes }
+	free_amenities < 300
+	planet_crime < 10
+}
+
+retile_ai_planet_healthy_building = {
+	OR = {
+		num_buildings = { type = any value < 3 }
+		has_building = building_maintenance_depot
+		has_building = building_maintenance_depot_2
+		has_building = building_maintenance_depot_3
+	}
+	free_amenities < 300
+	planet_crime < 10
+}
+
 # Is this planet ready to upgrade it's capital?
 retile_ready_capital = {
 	OR = {
 		owner = { is_ai = no }
 		AND = {
 			owner = { has_resource = { type = influence amount > 150 } }
+			NOT = { owner = { has_country_flag = retile_ai_needs_energy_crisis } }
 			free_jobs < 1
 			free_building_slots < 1
 		}
@@ -11,59 +37,51 @@ retile_ready_capital = {
 }
 
 retile_ready_energy = {	# deposit scope
-	always = no
-	exists = planet
-	planet = {
-		owner = {
-			has_country_flag = retile_ai_needs_energy
-			NOT = { has_country_flag = ai_recently_built_energy }
+	exists = owner
+	OR = {
+		owner = { is_ai = no }
+		AND = {
+			owner = { has_country_flag = retile_ai_needs_energy }
+			planet = { any_pop = { is_unemployed = yes } }
 		}
-		free_jobs < 1
-		has_building_construction = no
 	}
 }
 retile_ready_minerals = {	# deposit scope
-	always = no
-	exists = planet
-	planet = {
-		owner = {
-			has_country_flag = retile_ai_needs_minerals
-			NOT = { has_country_flag = ai_recently_built_minerals }
+	exists = owner
+	OR = {
+		owner = { is_ai = no }
+		AND = {
+			owner = { has_country_flag = retile_ai_needs_minerals }
+			planet = { any_pop = { is_unemployed = yes } }
 		}
-		free_jobs < 1
-		has_building_construction = no
 	}
 }
 retile_ready_food = {	# deposit scope
-	always = no
-	exists = planet
-	planet = {
-		OR = {
-			AND = {
-				free_jobs < 1
-				owner = {
-					OR = {
-						AND = {
-							prev = { NOT = { has_deposit = retile_deposit_bioreactor } }
-							country_uses_food = yes
-							has_country_flag = retile_ai_needs_food
-							NOT = { has_country_flag = ai_recently_built_food }
-						}
-						AND = {
-							prev = { has_deposit = retile_deposit_bioreactor }
-							has_country_flag = retile_ai_needs_energy
-							NOT = { has_country_flag = ai_recently_built_food }
-						}
-					}
+	exists = owner
+	OR = {
+		owner = { is_ai = no }
+		AND = {
+			OR = {
+				owner = { has_country_flag = retile_ai_needs_food }
+				AND = {
+					owner = { is_plantoid_empire = yes }
+					count_pops = { limit = { has_job = farmer } count < 3 }
 				}
-				has_building_construction = no
 			}
-			owner = {
-				is_plantoid_empire = yes
-				prev = { habitability = { who = owner.owner_species value <= 0.7 } }
-				prev = { has_building_construction = no }
-			}
+			planet = { any_pop = { is_unemployed = yes } }
 		}
+	}
+}
+retile_ready_restore = {	# deposit scope
+	exists = owner
+	owner = { is_ai = no }
+	NOT = { planet = { is_planet_class = pc_hive_2 } }
+}
+retile_ready_arcology_exploit = {
+	exists = owner
+	OR = {
+		owner = { is_ai = no }
+		planet = { free_district_slots < 2 }
 	}
 }
 

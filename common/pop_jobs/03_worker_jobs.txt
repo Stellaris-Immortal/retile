@@ -283,11 +283,7 @@ technician = {
 			has_job = technician
 			retile_job_seeking = yes
 		}
-		hidden_trigger = { exists = owner }
 		worker_job_check_trigger = yes
-		owner = { 
-			is_gestalt = no
-		}
 	}
 
 	resources = {
@@ -409,11 +405,7 @@ miner = {
 			has_job = miner
 			retile_job_seeking = yes
 		}
-		hidden_trigger = { exists = owner }
 		worker_job_check_trigger = yes
-		owner = { 
-			is_gestalt = no
-		}
 	}
 
 	resources = {
@@ -571,10 +563,11 @@ farmer = {
 			has_job = farmer
 			retile_job_seeking = yes
 		}
-		hidden_trigger = { exists = owner }
 		worker_job_check_trigger = yes
-		owner = { 
-			is_gestalt = no
+		or = {
+			owner = { is_ai = no }
+			owner = { country_uses_food = yes }
+			owner = { is_plantoid_empire = yes }
 		}
 	}
 

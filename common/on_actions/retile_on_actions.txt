@@ -12,6 +12,12 @@ on_press_begin = {
 	}
 }
 
+on_building_complete = {
+    events = {
+        action.56 # Give robot species, if robot factory
+    }
+}
+
 on_terraforming_complete = {
 	events = {
 		retile_generate.5		# Terraforming Results
@@ -59,7 +65,6 @@ on_decade_pulse = {
 # From = Planet
 on_ship_built = {
 	events = {
-		retile_ai.1000 # Slow down ai colonizer build
 	}
 }
 # Add living metal as a research option
@@ -67,5 +72,13 @@ on_ship_built = {
 on_yearly_pulse_country = {
 	events = {
 		retile_research.1 
+	}
+}
+
+on_tech_increased = {
+	events = {
+		action.560		# Advanced Robots
+		action.5600		# Upgrade to Droids
+		action.56000	# Upgrade to Synths
 	}
 }

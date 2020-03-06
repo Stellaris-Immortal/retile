@@ -1,3 +1,42 @@
+# Can the country have robot pop
+# root: country
+can_have_robot_pops = {
+	always = yes	# can't ban robots...
+	#exists = this
+	#NOT = { has_authority = auth_hive_mind }
+	#NOT = { has_policy_flag = robots_outlawed }
+}
+
+# Checks if a pop can procreate
+# This = Species
+# Root = Planet
+can_species_procreate = {
+	is_sapient = yes
+	NOR = {
+		has_trait = trait_machine_unit
+		has_trait = trait_mechanical
+		has_trait = trait_droid
+		has_trait = trait_synthetic
+	}
+	NAND = {
+		root = { has_modifier = slave_colony }
+		NOT = { has_citizenship_type = { type = citizenship_slavery country = root.owner } }
+	}
+}
+
+# Checks if a pop can be assembled
+# This = Species
+# Root = Planet
+can_species_be_assembled = {
+	is_sapient = yes
+	OR = {
+		has_trait = trait_machine_unit
+		has_trait = trait_mechanical
+		has_trait = trait_droid
+		has_trait = trait_synthetic
+	}
+}
+
 # This = country
 can_support_branch_offices = {
 	is_country_type = default
@@ -7,19 +46,18 @@ can_support_branch_offices = {
 
 # This = pop
 can_resettle_pop = {
-	#always = yes
-	#IF = { #Done as an IF/ELSE so the tooltip isn't hideous and unreadable
-	#	limit = { is_shackled_robot = yes }
-	#	is_shackled_robot = yes
-	#}
-	#ELSE = {
-	#	owner = {
-	#		OR = {
-	#			has_policy_flag = resettlement_allowed
-	#			is_gestalt = yes
-	#		}
-	#	}
-	#}
+	always = yes
+	IF = { #Done as an IF/ELSE so the tooltip isn't hideous and unreadable
+		limit = { is_shackled_robot = yes }
+		is_shackled_robot = yes
+	} ELSE = {
+		owner = {
+			OR = {
+				has_policy_flag = resettlement_allowed
+				is_gestalt = yes
+			}
+		}
+	}
 	planet = {
 		num_pops > 1
 	}
@@ -29,10 +67,10 @@ can_resettle_pop = {
 can_resettle_planet = {
 	#always = yes
 	#num_pops > 1
-	#is_controlled_by = owner
-	#has_ground_combat = no
-	#has_orbital_bombardment = no
-	#owner = {
+	is_controlled_by = owner
+	has_ground_combat = no
+	has_orbital_bombardment = no
+	#owner = { # these triggeres handled on a per-pop basis, see above
 	#	OR = {
 	#		has_policy_flag = resettlement_allowed
 	#		is_gestalt = yes

@@ -22,7 +22,6 @@ decision_retile_module_mine = {
 		OR = {
 			is_planet_class = pc_habitat
 			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_hive
 			is_planet_class = pc_machine
 		}
 	}
@@ -108,7 +107,6 @@ decision_retile_module_farm = {
 		OR = {
 			is_planet_class = pc_habitat
 			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_hive
 			is_planet_class = pc_machine
 		}
 	}
@@ -195,7 +193,6 @@ decision_retile_module_generator = {
 		OR = {
 			is_planet_class = pc_habitat
 			is_planet_class = pc_ringworld_habitable
-			is_planet_class = pc_hive
 			is_planet_class = pc_machine
 		}
 	}
@@ -337,60 +334,6 @@ decision_retile_deposit_bioreactor_remove = {
 				NOT = { any_deposit = { has_deposit_category = deposit_cat_food_active } }
 			}
 		}
-	}	
-}
-
-##################################################### Robot Assembly Plants
-decision_retile_deposit_assembly = {
-	owned_planets_only = yes
-
-	enactment_time = @base_buildtime
-	resources = {
-		category = planets
-		cost = {
-			minerals = @base_cost
-		}
-	}
-	
-	potential = {
-		NOT = { has_deposit = retile_deposit_assembly }
-		owner = {
-			is_regular_empire = yes
-			has_technology = tech_robotic_workers
-		}
-	}
-	
-	allow = {
-		free_district_slots > 0
-	}
-
-	effect = {
-		custom_tooltip = decision_retile_deposit_assembly_effects
-		if = {
-			limit = { NOT = { has_deposit = retile_deposit_assembly } }
-			add_deposit = retile_deposit_assembly
-		}
-	}
-	
-	ai_weight = {
-		weight = 10000
-	}	
-}
-
-decision_retile_deposit_assembly_remove = {
-	owned_planets_only = yes
-
-	potential = {
-		has_deposit = retile_deposit_assembly
-	}
-	
-	effect = {
-		custom_tooltip = decision_retile_deposit_assembly_remove_effects
-		remove_deposit = retile_deposit_assembly
-	}
-	
-	ai_weight = {
-		weight = 0
 	}	
 }
 

@@ -4,6 +4,7 @@ violence_hive = {
 	
 	option = {
 		name = "violence_hive_no"
+		valid = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
 		
 		policy_flags = {
 			no_wars
@@ -110,7 +111,7 @@ hive_ethics = {
 		policy_flags = { hive_ethics_egalitarian }
 		
 		modifier = { 
-			# Reduces Deviancy
+			planet_crime_no_happiness_add = -35
 		}
 		
 		AI_weight = {
@@ -134,6 +135,7 @@ hive_ethics = {
 	
 	option = {
 		name = "hive_ethics_pacifist"
+		valid = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
 
 		policy_flags = { hive_ethics_pacifist }
 		
@@ -179,7 +181,7 @@ hive_ethics = {
 	option = {
 		name = "hive_ethics_xenophobe"
 		
-		policy_flags = { hive_ethics_materialist }
+		policy_flags = { hive_ethics_xenophobe }
 		
 		modifier = { 
 			# Increase Purge / Assimilate Speed
@@ -193,7 +195,7 @@ hive_ethics = {
 	option = {
 		name = "hive_ethics_xenophile"
 		
-		policy_flags = { hive_ethics_materialist }
+		policy_flags = { hive_ethics_xenophile }
 		
 		modifier = { 
 			pop_growth_speed = 0.25
@@ -210,6 +212,7 @@ xenodiplomacy_hive = {
 	
 	option = {
 		name = "xenodiplomacy_isolation_hive"
+		potential = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
 		
 		policy_flags = { 
 			xenodiplomacy_isolation
@@ -220,7 +223,8 @@ xenodiplomacy_hive = {
 	
 	option = {
 		name = "xenodiplomacy_diplomat_hive"
-		potential = { has_technology = tech_xenodiplomacy }
+		potential = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
+		valid = { has_technology = tech_xenodiplomacy }
 		
 		policy_flags = { 
 			xenodiplomacy_embassy
@@ -248,6 +252,7 @@ alien_rights_hive = {
 	
 	option = {
 		name = "alien_rights_welcoming"
+		potential = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
 		
 		policy_flags = {
 			alien_rights_welcoming
@@ -257,6 +262,7 @@ alien_rights_hive = {
 	
 	option = {
 		name = "alien_rights_forbidden"
+		potential = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
 		
 		policy_flags = {
 			alien_rights_forbidden
@@ -275,19 +281,14 @@ alien_rights_hive = {
 }
 
 primitives_hive = {
-	potential = {
-		OR = {
-			has_country_flag = found_presapients
-			any_planet_within_border = {
-				any_pop = { is_sapient = no }
-			}
-			has_met_primitives = yes
-		}
+	potential = { 
+		has_encountered_other_species = yes
 		has_authority = auth_hive_mind
 	}
 	
 	option = {
 		name = "primitives_care"
+		potential = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
 		
 		policy_flags = {
 			interference_passive
@@ -298,6 +299,7 @@ primitives_hive = {
 	
 	option = {
 		name = "primitives_study"
+		potential = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
 		
 		policy_flags = {
 			interference_full
@@ -308,6 +310,7 @@ primitives_hive = {
 	
 	option = {
 		name = "primitives_integrate"
+		potential = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
 		
 		policy_flags = {
 			interference_active
@@ -328,6 +331,7 @@ primitives_hive = {
 	
 	option = {
 		name = "primitives_exterminate"
+		potential = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
 		
 		policy_flags = {
 			interference_full
