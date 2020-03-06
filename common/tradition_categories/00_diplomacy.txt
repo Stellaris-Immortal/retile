@@ -10,7 +10,10 @@ tradition_diplomacy = {
 	}
 	tradition_swap = {
 		name = tradition_diplomacy_hive
-		trigger = { has_authority = auth_hive_mind }
+		trigger = { 
+			has_authority = auth_hive_mind
+			NOT = { has_valid_civic = civic_hive_devouring_swarm }
+		}
 		weight = { factor = 1 }
 	}
 	tradition_swap = {

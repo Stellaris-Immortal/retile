@@ -14,9 +14,7 @@
 
 interest_representation = {
 	length = @EdictDuration
-	potential = {
-		has_valid_civic = civic_capitalist
-	}
+	potential = { has_valid_civic = civic_capitalist }
 	
 	resources = {
 		category = campaigns
@@ -39,9 +37,7 @@ climate_engineering = {
 	length = @EdictDuration
 	resources = {
 		category = campaigns
-		cost = {
-			energy = 2000
-		}
+		cost = { energy = 2000 }
 	}
 
 	modifier = {
@@ -52,10 +48,6 @@ climate_engineering = {
 		"tech_ecological_adaptation"		
 	}
 	
-	show_tech_unlock_if = { 
-		NOT = { has_ethic = ethic_gestalt_consciousness }
-	}
-	
 	ai_weight = {
 		weight = 0
 	}
@@ -63,11 +55,11 @@ climate_engineering = {
 
 production_targets = {
 	length = @EdictDuration
+	potential = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+	
 	resources = {
 		category = campaigns
-		cost = {
-			minerals = 2000
-		}
+		cost = { minerals = 2000 }
 	}
 
 	modifier = {
@@ -92,9 +84,7 @@ healthcare_campaign = {
 	length = @EdictDuration
 	resources = {
 		category = campaigns
-		cost = {
-			food = 1000
-		}
+		cost = { food = 1000 }
 	}
 
 	modifier = {
@@ -130,9 +120,7 @@ healthcare_campaign_lithoid = {
 	length = @EdictDuration
 	resources = {
 		category = campaigns
-		cost = {
-			minerals = 1000
-		}
+		cost = { minerals = 1000 }
 	}
 
 	modifier = {
@@ -162,9 +150,7 @@ healthcare_campaign_plantoid = {
 	length = @EdictDuration
 	resources = {
 		category = campaigns
-		cost = {
-			energy = 1000
-		}
+		cost = { energy = 1000 }
 	}
 
 	modifier = {
@@ -192,11 +178,11 @@ healthcare_campaign_plantoid = {
 
 research_focus = {
 	length = @EdictDuration
+	potential = { NOT = { has_ethic = ethic_gestalt_consciousness } }
+	
 	resources = {
 		category = campaigns
-		cost = {
-			consumer_goods = 500
-		}
+		cost = { consumer_goods = 500 }
 	}
 
 	modifier = {
@@ -222,9 +208,7 @@ declare_saint = {
 	length = @EdictDuration
 	resources = {
 		category = campaigns
-		cost = {
-			consumer_goods = 500
-		}
+		cost = { consumer_goods = 500 }
 	}
 
 	modifier = {
@@ -247,15 +231,11 @@ declare_saint = {
 
 declare_saint_2 = {
 	length = @EdictDuration
-	potential = {
-		NOT = { has_technology = tech_heritage_site }
-	}
+	potential = { NOT = { has_technology = tech_heritage_site } }
 	
 	resources = {
 		category = campaigns
-		cost = {
-			consumer_goods = 500
-		}
+		cost = { consumer_goods = 500 }
 	}
 
 	modifier = {
@@ -280,9 +260,7 @@ war_games = {
 	length = @EdictDuration
 	resources = {
 		category = campaigns
-		cost = {
-			alloys = 500
-		}
+		cost = { alloys = 500 }
 	}
 
 	modifier = {
@@ -292,10 +270,6 @@ war_games = {
 	
 	prerequisites = {
 		"tech_centralized_command"		
-	}
-	
-	show_tech_unlock_if = { 
-		NOT = { has_ethic = ethic_gestalt_consciousness }
 	}
 	
 	ai_weight = {
