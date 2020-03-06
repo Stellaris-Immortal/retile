@@ -15,8 +15,8 @@ spawning_drone = {
 			has_job = spawning_drone
 			retile_job_seeking = yes
 		}
-		worker_job_check_trigger = yes
 		owner = { is_hive_empire = yes }
+		worker_job_check_trigger = yes
 	}
 	
 	resources = {
@@ -166,7 +166,7 @@ spawning_drone = {
 
 patrol_drone = {
 	category = specialist
-	condition_string = SPECIALIST_JOB_TRIGGER
+	condition_string = SYNTH_SPECIALIST_JOB_TRIGGER
 	building_icon = building_stronghold
 	
 	possible_pre_triggers = {
@@ -177,12 +177,12 @@ patrol_drone = {
 	}
 
 	possible = {
-		complex_specialist_job_check_trigger = yes
 		or = {
 			has_job = patrol_drone
 			retile_job_seeking = yes
 		}
 		owner = { is_gestalt = yes }
+		synth_specialist_job_check_trigger = yes
 	}
 	
 	pop_modifier = {
@@ -214,7 +214,7 @@ patrol_drone = {
 # Admin Drone
 admin_drone = {
 	category = specialist
-	condition_string = RULER_SPECIALIST_TRIGGER
+	condition_string = DROID_SPECIALIST_JOB_TRIGGER
 	building_icon = building_bureaucratic_complex
 	clothes_texture_index = 2
 		
@@ -225,11 +225,12 @@ admin_drone = {
 	}
 
 	possible = {
-		specialist_job_check_trigger = yes
 		or = {
 			has_job = admin_drone
 			retile_job_seeking = yes
 		}
+		owner = { is_gestalt = yes }
+		droid_specialist_job_check_trigger = yes
 	}
 	
 	resources = {
