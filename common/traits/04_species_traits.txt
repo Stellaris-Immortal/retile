@@ -413,9 +413,9 @@ trait_plantoid_flowering = {
 trait_communal = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_solitary" "trait_hive_mind" "trait_machine_unit" "trait_fertile" }
+	opposites = { "trait_solitary" "trait_machine_unit" "trait_fertile" }
 
-	allowed_archetypes = { BIOLOGICAL LITHOID ARTHROPOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID }
 	
 	custom_tooltip = TRAIT_COMMUNAL_EFFECT
 	#modifier = {
@@ -427,9 +427,9 @@ trait_communal = {
 trait_solitary = {
 	cost = -2
 	potential_crossbreeding_chance = 1.0
-	opposites = { "trait_communal" "trait_hive_mind" "trait_machine_unit" "trait_fertile" }
+	opposites = { "trait_communal" "trait_machine_unit" "trait_fertile" }
 
-	allowed_archetypes = { BIOLOGICAL LITHOID ARTHROPOID }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID }
 	
 	custom_tooltip = TRAIT_SOLITARY_EFFECT
 	#modifier = {
@@ -701,7 +701,7 @@ trait_delicious = {
 trait_nerve_stapled = {
 	cost = 3
 	potential_crossbreeding_chance = 0.5
-	opposites = { "trait_intelligent" "trait_erudite" "trait_natural_engineers" "trait_natural_physicists" "trait_natural_sociologists" "trait_communal" "trait_solitary" "trait_talented" }
+	opposites = { "trait_intelligent" "trait_erudite" "trait_natural_engineers" "trait_natural_physicists" "trait_natural_sociologists" "trait_talented" }
 	initial = no
 	randomized = no
 	advanced_trait = yes
@@ -723,7 +723,7 @@ trait_fertile = {
 	initial = no
 	randomized = no
 	advanced_trait = yes
-	opposites = { "trait_slow_breeders" "trait_solitary" }
+	opposites = { "trait_slow_breeders" "trait_solitary" "trait_communal" }
 	allowed_archetypes = { BIOLOGICAL PLANTOID ARTHROPOID }
 	modifier = {
 		pop_growth_speed = 0.5
