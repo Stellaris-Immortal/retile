@@ -273,7 +273,39 @@ admin_drone = {
 	}
 	
 	country_modifier = {
-		country_admin_cap_add = 4
+		country_admin_cap_add = 3
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_isolation }
+		}
+		modifier = {
+			country_admin_cap_add = 1
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_gunboat } 
+		}
+		modifier = {
+			country_naval_cap_mult = 0.02
+			country_occupation_armies_add = 1
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_embassy }
+		}
+		modifier = { 
+			country_trust_growth = 0.05
+			country_trust_cap_add = 5
+		}
 	}
 	
 	weight = {
