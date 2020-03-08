@@ -1,22 +1,3 @@
-trait_latent_psionic = {
-	cost = 0
-	potential_crossbreeding_chance = 0.50
-	icon = "gfx/interface/icons/traits/trait_latent_psionic.dds"
-	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID }
-	opposites = { "trait_psionic" }
-	
-	modifier = {
-		planet_jobs_unity_produces_mult = 0.05
-		planet_jobs_society_research_produces_mult = 0.05
-		planet_pops_upkeep_mult = -0.10
-		pop_growth_speed_reduction = 0.20
-	}
-	
-	ai_weight = {
-		weight = 0.5
-	}
-}
-
 trait_plantoid_fruiting = {
 	cost = 1
 	potential_crossbreeding_chance = 1.0
@@ -627,7 +608,6 @@ trait_wasteful = {
 	}
 }
 
-
 trait_cybernetic = {
 	cost = 0
 	improves_leaders = yes
@@ -642,6 +622,24 @@ trait_cybernetic = {
 		planet_jobs_engineering_research_produces_mult = 0.10
 		army_damage_mult = 0.1
 		leader_age = 40
+	}
+}
+
+trait_latent_psionic = {
+	cost = 0
+	potential_crossbreeding_chance = 0.50
+	icon = "gfx/interface/icons/traits/trait_latent_psionic.dds"
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID }
+	opposites = { "trait_psionic" }
+	
+	initial = no
+	randomized = no
+	modification = no
+	
+	modifier = {
+		planet_jobs_unity_produces_mult = 0.05
+		planet_jobs_society_research_produces_mult = 0.05
+		planet_pops_upkeep_mult = -0.10
 	}
 }
 
