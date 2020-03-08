@@ -186,12 +186,39 @@ patrol_drone = {
 	}
 	
 	pop_modifier = {
-		pop_defense_armies_add = 6
+		pop_defense_armies_add = 4
 	}
 	
-	planet_modifier = {
-		planet_crime_add = -35
-		planet_amenities_no_happiness_add = 25
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { NOT = { has_technology = tech_embodied_dynamism } }
+		}
+		modifier = {
+			planet_crime_add = -50
+			planet_amenities_no_happiness_add = 30
+		}		
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_embodied_dynamism }
+		}
+		modifier = {
+			planet_crime_add = -45
+			planet_amenities_no_happiness_add = 30
+		}		
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_technology = tech_embodied_dynamism }
+		}
+		modifier = {
+			planet_crime_no_happiness_add = -5
+		}		
 	}
 	
 	triggered_planet_modifier = {
@@ -246,7 +273,39 @@ admin_drone = {
 	}
 	
 	country_modifier = {
-		country_admin_cap_add = 4
+		country_admin_cap_add = 3
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_isolation }
+		}
+		modifier = {
+			country_admin_cap_add = 1
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_gunboat } 
+		}
+		modifier = {
+			country_naval_cap_mult = 0.02
+			country_occupation_armies_add = 1
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_embassy }
+		}
+		modifier = { 
+			country_trust_growth = 0.05
+			country_trust_cap_add = 5
+		}
 	}
 	
 	weight = {

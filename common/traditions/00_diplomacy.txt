@@ -11,6 +11,24 @@ tr_diplomacy_adopt = {
 	}
 	
 	tradition_swap = {
+		name = tr_diplomacy_adopt_hive
+		inherit_effects = no
+		inherit_icon = yes
+		inherit_name = no
+		trigger = {
+			is_hive_empire = yes
+			NOT = { has_valid_civic = civic_hive_devouring_swarm }
+		}
+		modifier = {		
+			# opinion_new_contact -100%
+			country_border_friction_mult = -1
+		}
+		weight = {
+			factor = 1
+		}
+	}
+	
+	tradition_swap = {
 		name = tr_adaptability_adopt
 		inherit_effects = no
 		inherit_icon = yes
@@ -20,7 +38,6 @@ tr_diplomacy_adopt = {
 				has_valid_civic = civic_fanatic_purifiers
 				has_valid_civic = civic_inwards_perfection
 				has_valid_civic = civic_barbaric_despoilers
-				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_machine_terminator
 				is_criminal_syndicate = yes
 			}
