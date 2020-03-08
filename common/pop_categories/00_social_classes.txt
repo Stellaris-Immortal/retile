@@ -99,52 +99,12 @@ ruler = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_lithoid = yes
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
-	}
-	triggered_planet_modifier = {			# no clinic
-		potential = {
 			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count < 1 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_full
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count = 1 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_high
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count = 2 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_med
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count = 3 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
 			planet = { NOR = {
+				has_building = building_clinic_1
+				has_building = building_clinic_2
+				has_building = building_clinic_3
 				has_building = building_spawning_1
 				has_building = building_spawning_2
 				has_building = building_spawning_3
@@ -155,27 +115,45 @@ ruler = {
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
-			planet = { has_building = building_spawning_1 }
+			planet = {
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
+			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
 	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
-			planet = { has_building = building_spawning_2 }
+			planet = {
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
+			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
 	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
-			planet = { has_building = building_spawning_3 }
+			planet = {
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
@@ -471,52 +449,12 @@ specialist = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_lithoid = yes
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
-	}
-	triggered_planet_modifier = {			# no clinic
-		potential = {
 			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count < 1 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_full
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count = 1 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_high
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count = 2 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_med
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count = 3 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
 			planet = { NOR = {
+				has_building = building_clinic_1
+				has_building = building_clinic_2
+				has_building = building_clinic_3
 				has_building = building_spawning_1
 				has_building = building_spawning_2
 				has_building = building_spawning_3
@@ -527,27 +465,45 @@ specialist = {
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
-			planet = { has_building = building_spawning_1 }
+			planet = {
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
+			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
 	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
-			planet = { has_building = building_spawning_2 }
+			planet = {
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
+			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
 	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
-			planet = { has_building = building_spawning_3 }
+			planet = {
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
@@ -1254,52 +1210,12 @@ worker = {
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_lithoid = yes
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
-	}
-	triggered_planet_modifier = {			# no clinic
-		potential = {
 			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count < 1 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_full
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count = 1 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_high
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count = 2 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_med
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
-			exists = planet
-			planet = { count_pops = { limit = { has_job = medic } count = 3 } }
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
 			planet = { NOR = {
+				has_building = building_clinic_1
+				has_building = building_clinic_2
+				has_building = building_clinic_3
 				has_building = building_spawning_1
 				has_building = building_spawning_2
 				has_building = building_spawning_3
@@ -1310,27 +1226,45 @@ worker = {
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
-			planet = { has_building = building_spawning_1 }
+			planet = {
+				OR = {
+					has_building = building_clinic_1
+					has_building = building_spawning_1
+				}
+			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_high
 	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
-			planet = { has_building = building_spawning_2 }
+			planet = {
+				OR = {
+					has_building = building_clinic_2
+					has_building = building_spawning_2
+				}
+			}
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_med
 	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
-			has_trait = trait_hive_mind
 			exists = planet
-			planet = { has_building = building_spawning_3 }
+			planet = {
+				OR = {
+					has_building = building_clinic_3
+					has_building = building_spawning_3
+				}
+			}
+		}
+		pop_growth_speed_reduction = @retile_growth_slow_low
+	}
+	triggered_planet_modifier = {
+		potential = {
+			is_lithoid = yes
 		}
 		pop_growth_speed_reduction = @retile_growth_slow_low
 	}
