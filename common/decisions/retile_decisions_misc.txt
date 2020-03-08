@@ -1031,3 +1031,224 @@ decision_retile_assimilate_world = {
 		owner = { is_ai = no }
 	}
 }
+
+decision_lithoid_swarm_consume_world = {
+	icon = decision_burning_settlement
+	sound = event_structural_collapse
+
+	enactment_time = 360
+	resources = {
+		category = decisions
+	}
+	owned_planets_only = yes
+
+	potential = {
+		owner = {
+			is_lithoid_empire = yes
+			has_valid_civic = civic_hive_devouring_swarm
+		}
+		can_have_habitable_deposits = yes
+		is_capital = no
+	}
+
+	allow = {
+		num_free_districts = { type = any value > 0 }
+	}
+
+	effect = {
+		custom_tooltip = decision_lithoid_swarm_consume_world_effect_desc
+
+		if = {
+			limit = { num_districts = { type = any value > 0 } }
+			custom_tooltip = decision_lithoid_swarm_consume_world_destroy_district_desc
+
+			hidden_effect = {
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_housing value = 0 }
+						}
+						remove_district = district_housing
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_spawning value = 0 }
+						}
+						remove_district = district_spawning
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_engineers value = 0 }
+						}
+						remove_district = district_engineers
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_scholars value = 0 }
+						}
+						remove_district = district_scholars
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_admin value = 0 }
+						}
+						remove_district = district_admin
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_soldiers value = 0 }
+						}
+						remove_district = district_soldiers
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_sentinel value = 0 }
+						}
+						remove_district = district_sentinel
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_custodians value = 0 }
+						}
+						remove_district = district_custodians
+					}
+				}
+			}
+		}
+
+		hidden_effect = {
+			random_list = {
+				10 = {
+					modifier = {
+						factor = 0
+						num_free_districts = { type = any value < 2 }
+					}
+					add_deposit = d_lithoid_devastation
+					add_deposit = d_lithoid_devastation
+					create_pop = {
+						species = owner_main_species
+					}
+					add_planet_devastation = 20
+
+					if = {
+						limit = { owner = { is_ai = yes } }
+						random_pop = {
+							resettle_pop = {
+								pop = this
+								planet = owner.capital_scope
+							}
+						}
+					}
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						num_free_districts = { type = any value < 2 }
+					}
+					add_deposit = d_lithoid_devastation
+					add_deposit = d_lithoid_devastation
+					owner = {
+						add_monthly_resource_mult = {
+							resource = minerals
+							value = 5
+							min = @tier1materialmin
+							max = @tier1materialmax
+						}
+					}
+					add_planet_devastation = 20
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						num_free_districts = { type = any value < 2 }
+					}
+					add_deposit = d_lithoid_devastation
+					add_deposit = d_lithoid_devastation
+					owner = {
+						add_monthly_resource_mult = {
+							resource = alloys
+							value = 3
+							min = @tier1materialmin
+							max = @tier1materialmax
+						}
+					}
+					add_planet_devastation = 20
+				}
+				10 = {
+					# There's only one district slot left on the planet
+					modifier = {
+						factor = 0
+						num_free_districts = { type = any value >= 2 }
+					}
+					owner = {
+						add_monthly_resource_mult = {
+							resource = minerals
+							value = 3
+							min = @tier1materialmin
+							max = @tier1materialmax
+						}
+					}
+					every_owned_pop = {
+						resettle_pop = {
+							pop = this
+							planet = owner.capital_scope
+						}
+					}
+					remove_all_buildings = yes
+					clear_deposits = yes
+					change_pc = pc_shattered
+					
+					random_list = {
+						1 = {
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+						}
+						1 = {
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+						}
+						1 = {
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+						}
+						1 = {
+							add_deposit = d_minerals_4
+						}
+					}
+				}
+			}
+
+			# If I'm an AI, abandon the planet if we've finished consuming the planet
+			if = {
+				limit = { owner = { is_ai = yes } }
+				every_owned_pop = {
+					resettle_pop = {
+						pop = this
+						planet = owner.capital_scope
+					}
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 5
+
+		# don't wreck worlds you want to keep
+		modifier = {
+			factor = 0
+			is_lithoid_devouring_swarm_consumption_world = no
+		}
+	}
+}
