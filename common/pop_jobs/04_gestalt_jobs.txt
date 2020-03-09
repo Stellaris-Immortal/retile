@@ -125,8 +125,25 @@ spawning_drone = {
 	}
 	
 	planet_modifier = {
-		pop_growth_speed = 0.10
+		pop_growth_speed = 5
 		planet_amenities_no_happiness_add = 25
+	}
+	triggered_planet_modifier = {
+		potential = { pop = { has_trait = trait_lithoid } }
+		modifier = { pop_growth_speed = -1.25 }
+	}
+	triggered_planet_modifier = {
+		potential = { pop = { has_trait = trait_slow_breeders } }
+		modifier = { pop_growth_speed = -1 }
+	}
+	triggered_planet_modifier = {
+		potential = { pop = { OR = {
+				has_trait = trait_fertile
+				has_trait = trait_telluric
+				has_trait = trait_rapid_breeders
+				has_trait = trait_arthropoid_wing
+		} } }
+		pop_growth_speed = +1
 	}
 	
 	triggered_planet_modifier = {
@@ -134,30 +151,109 @@ spawning_drone = {
 			planet = { has_building = building_spawning_1 } 
 		}
 		modifier = {
-			pop_growth_speed = 0.10
-			planet_amenities_no_happiness_add = 25
+			pop_growth_speed = 5
+			planet_amenities_no_happiness_add = 50
 		}
 	}
-	
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_spawning_1 } 
+			pop = { has_trait = trait_lithoid }
+		}
+		modifier = { pop_growth_speed = -1.25 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_spawning_1 } 
+			pop = { has_trait = trait_slow_breeders }
+		}
+		modifier = { pop_growth_speed = -1 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_spawning_1 }
+			pop = { OR = {
+				has_trait = trait_fertile
+				has_trait = trait_telluric
+				has_trait = trait_rapid_breeders
+				has_trait = trait_arthropoid_wing
+			} }
+		}
+		pop_growth_speed = +1
+	}
+
 	triggered_planet_modifier = {
 		potential = { 
 			planet = { has_building = building_spawning_2 } 
 		}
 		modifier = {
-			pop_growth_speed = 0.20
-			planet_amenities_no_happiness_add = 50
+			pop_growth_speed = 10
+			planet_amenities_no_happiness_add = 125
 		}
 	}
-	
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_spawning_2 } 
+			pop = { has_trait = trait_lithoid }
+		}
+		modifier = { pop_growth_speed = -2.5 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_spawning_2 } 
+			pop = { has_trait = trait_slow_breeders }
+		}
+		modifier = { pop_growth_speed = -2 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_spawning_2 }
+			pop = { OR = {
+				has_trait = trait_fertile
+				has_trait = trait_telluric
+				has_trait = trait_rapid_breeders
+				has_trait = trait_arthropoid_wing
+			} }
+		}
+		pop_growth_speed = +2
+	}
+
 	triggered_planet_modifier = {
 		potential = { 
 			planet = { has_building = building_spawning_3 } 
 		}
 		modifier = {
-			pop_growth_speed = 0.30
-			planet_amenities_no_happiness_add = 75
+			pop_growth_speed = 15
+			planet_amenities_no_happiness_add = 225
 		}
 	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_spawning_3 } 
+			pop = { has_trait = trait_lithoid }
+		}
+		modifier = { pop_growth_speed = -3.75 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_spawning_3 } 
+			pop = { has_trait = trait_slow_breeders }
+		}
+		modifier = { pop_growth_speed = -3 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_spawning_3 }
+			pop = { OR = {
+				has_trait = trait_fertile
+				has_trait = trait_telluric
+				has_trait = trait_rapid_breeders
+				has_trait = trait_arthropoid_wing
+			} }
+		}
+		pop_growth_speed = +3
+	}
+
 	
 	weight = {
 		weight = 50000

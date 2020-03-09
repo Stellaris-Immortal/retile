@@ -84,78 +84,92 @@ ruler = {
 	########################################	START Pop Sprawl
 	triggered_planet_modifier = {
 		potential = {
-			NOR = {
-				has_trait = trait_communal
-				has_trait = trait_fertile
-			}
+			is_organic_species = yes
+			NOT = { has_trait = trait_hive_mind }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_base
+		pop_growth_speed = @pop_surge_base
 	}
 	triggered_planet_modifier = {
 		potential = {
-			has_trait = trait_solitary
+			is_lithoid = yes
+			NOT = { has_trait = trait_hive_mind }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_base
+		pop_growth_speed = @pop_surge_trait_lithoid
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_slow_breeders
+			NOT = { has_trait = trait_hive_mind }
+		}
+		pop_growth_speed = @pop_surge_trait_penalty
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_trait = trait_hive_mind }
+			OR = {
+				has_trait = trait_fertile
+				has_trait = trait_telluric
+				has_trait = trait_rapid_breeders
+				has_trait = trait_arthropoid_wing
+			}
+		}
+		pop_growth_speed = @pop_surge_trait_bonus
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_trait = trait_communal }
+		}
+		pop_growth_speed_reduction = @pop_sprawl_trait
+	}
+	triggered_planet_modifier = {
+		potential = { has_trait = trait_solitary }
+		pop_growth_speed_reduction = @pop_sprawl_trait
 	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
+			NOT = { has_trait = trait_hive_mind }
+			exists = planet
+		}
+		pop_growth_speed_reduction = @pop_sprawl_base
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_hive_mind
 			exists = planet
 			planet = { NOR = {
-				has_building = building_clinic_1
-				has_building = building_clinic_2
-				has_building = building_clinic_3
 				has_building = building_spawning_1
 				has_building = building_spawning_2
 				has_building = building_spawning_3
 			} }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_full
+		pop_growth_speed_reduction = @pop_sprawl_hive_0
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_organic_species = yes
+			has_trait = trait_hive_mind
 			exists = planet
-			planet = {
-				OR = {
-					has_building = building_clinic_1
-					has_building = building_spawning_1
-				}
-			}
+			planet = { has_building = building_spawning_1 }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_high
+		pop_growth_speed_reduction = @pop_sprawl_hive_1
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_organic_species = yes
+			has_trait = trait_hive_mind
 			exists = planet
-			planet = {
-				OR = {
-					has_building = building_clinic_2
-					has_building = building_spawning_2
-				}
-			}
+			planet = { has_building = building_spawning_2 }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_med
+		pop_growth_speed_reduction = @pop_sprawl_hive_2
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_organic_species = yes
+			has_trait = trait_hive_mind
 			exists = planet
-			planet = {
-				OR = {
-					has_building = building_clinic_3
-					has_building = building_spawning_3
-				}
-			}
+			planet = { has_building = building_spawning_3 }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_lithoid = yes
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
+		pop_growth_speed_reduction = @pop_sprawl_hive_3
 	}
 	########################################	END Pop Sprawl
 
@@ -434,78 +448,92 @@ specialist = {
 	########################################	START Pop Sprawl
 	triggered_planet_modifier = {
 		potential = {
-			NOR = {
-				has_trait = trait_communal
-				has_trait = trait_fertile
-			}
+			is_organic_species = yes
+			NOT = { has_trait = trait_hive_mind }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_base
+		pop_growth_speed = @pop_surge_base
 	}
 	triggered_planet_modifier = {
 		potential = {
-			has_trait = trait_solitary
+			is_lithoid = yes
+			NOT = { has_trait = trait_hive_mind }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_base
+		pop_growth_speed = @pop_surge_trait_lithoid
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_slow_breeders
+			NOT = { has_trait = trait_hive_mind }
+		}
+		pop_growth_speed = @pop_surge_trait_penalty
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_trait = trait_hive_mind }
+			OR = {
+				has_trait = trait_fertile
+				has_trait = trait_telluric
+				has_trait = trait_rapid_breeders
+				has_trait = trait_arthropoid_wing
+			}
+		}
+		pop_growth_speed = @pop_surge_trait_bonus
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_trait = trait_communal }
+		}
+		pop_growth_speed_reduction = @pop_sprawl_trait
+	}
+	triggered_planet_modifier = {
+		potential = { has_trait = trait_solitary }
+		pop_growth_speed_reduction = @pop_sprawl_trait
 	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
+			NOT = { has_trait = trait_hive_mind }
+			exists = planet
+		}
+		pop_growth_speed_reduction = @pop_sprawl_base
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_hive_mind
 			exists = planet
 			planet = { NOR = {
-				has_building = building_clinic_1
-				has_building = building_clinic_2
-				has_building = building_clinic_3
 				has_building = building_spawning_1
 				has_building = building_spawning_2
 				has_building = building_spawning_3
 			} }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_full
+		pop_growth_speed_reduction = @pop_sprawl_hive_0
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_organic_species = yes
+			has_trait = trait_hive_mind
 			exists = planet
-			planet = {
-				OR = {
-					has_building = building_clinic_1
-					has_building = building_spawning_1
-				}
-			}
+			planet = { has_building = building_spawning_1 }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_high
+		pop_growth_speed_reduction = @pop_sprawl_hive_1
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_organic_species = yes
+			has_trait = trait_hive_mind
 			exists = planet
-			planet = {
-				OR = {
-					has_building = building_clinic_2
-					has_building = building_spawning_2
-				}
-			}
+			planet = { has_building = building_spawning_2 }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_med
+		pop_growth_speed_reduction = @pop_sprawl_hive_2
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_organic_species = yes
+			has_trait = trait_hive_mind
 			exists = planet
-			planet = {
-				OR = {
-					has_building = building_clinic_3
-					has_building = building_spawning_3
-				}
-			}
+			planet = { has_building = building_spawning_3 }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_lithoid = yes
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
+		pop_growth_speed_reduction = @pop_sprawl_hive_3
 	}
 	########################################	END Pop Sprawl
 
@@ -1195,78 +1223,92 @@ worker = {
 	########################################	START Pop Sprawl
 	triggered_planet_modifier = {
 		potential = {
-			NOR = {
-				has_trait = trait_communal
-				has_trait = trait_fertile
-			}
+			is_organic_species = yes
+			NOT = { has_trait = trait_hive_mind }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_base
+		pop_growth_speed = @pop_surge_base
 	}
 	triggered_planet_modifier = {
 		potential = {
-			has_trait = trait_solitary
+			is_lithoid = yes
+			NOT = { has_trait = trait_hive_mind }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_base
+		pop_growth_speed = @pop_surge_trait_lithoid
+	}
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_slow_breeders
+			NOT = { has_trait = trait_hive_mind }
+		}
+		pop_growth_speed = @pop_surge_trait_penalty
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_trait = trait_hive_mind }
+			OR = {
+				has_trait = trait_fertile
+				has_trait = trait_telluric
+				has_trait = trait_rapid_breeders
+				has_trait = trait_arthropoid_wing
+			}
+		}
+		pop_growth_speed = @pop_surge_trait_bonus
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_trait = trait_communal }
+		}
+		pop_growth_speed_reduction = @pop_sprawl_trait
+	}
+	triggered_planet_modifier = {
+		potential = { has_trait = trait_solitary }
+		pop_growth_speed_reduction = @pop_sprawl_trait
 	}
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
+			NOT = { has_trait = trait_hive_mind }
+			exists = planet
+		}
+		pop_growth_speed_reduction = @pop_sprawl_base
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_trait = trait_hive_mind
 			exists = planet
 			planet = { NOR = {
-				has_building = building_clinic_1
-				has_building = building_clinic_2
-				has_building = building_clinic_3
 				has_building = building_spawning_1
 				has_building = building_spawning_2
 				has_building = building_spawning_3
 			} }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_full
+		pop_growth_speed_reduction = @pop_sprawl_hive_0
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_organic_species = yes
+			has_trait = trait_hive_mind
 			exists = planet
-			planet = {
-				OR = {
-					has_building = building_clinic_1
-					has_building = building_spawning_1
-				}
-			}
+			planet = { has_building = building_spawning_1 }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_high
+		pop_growth_speed_reduction = @pop_sprawl_hive_1
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_organic_species = yes
+			has_trait = trait_hive_mind
 			exists = planet
-			planet = {
-				OR = {
-					has_building = building_clinic_2
-					has_building = building_spawning_2
-				}
-			}
+			planet = { has_building = building_spawning_2 }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_med
+		pop_growth_speed_reduction = @pop_sprawl_hive_2
 	}
 	triggered_planet_modifier = {
 		potential = {
-			is_organic_species = yes
+			has_trait = trait_hive_mind
 			exists = planet
-			planet = {
-				OR = {
-					has_building = building_clinic_3
-					has_building = building_spawning_3
-				}
-			}
+			planet = { has_building = building_spawning_3 }
 		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_lithoid = yes
-		}
-		pop_growth_speed_reduction = @retile_growth_slow_low
+		pop_growth_speed_reduction = @pop_sprawl_hive_3
 	}
 	########################################	END Pop Sprawl
 
