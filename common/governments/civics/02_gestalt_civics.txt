@@ -19,10 +19,28 @@
 
 civic_hive_psionic_link = {
 	description = "civic_hive_psionic_link_effects"
-	potential = { authority = { value = auth_hive_mind } }
+	potential = { 
+		authority = { value = auth_hive_mind }
+		civics = {
+			NOT = { value = civic_hive_cybernetic_link }
+		}
+	}
 	modification = no
 	random_weight = { base = 1 }
 	traits = { trait = trait_latent_psionic }
+}
+
+civic_hive_cybernetic_link = {
+	description = "civic_hive_cybernetic_link_effects"
+	potential = { 
+		authority = { value = auth_hive_mind }
+		civics = {
+			NOT = { value = civic_hive_psionic_link }
+		}
+	}
+	modification = no
+	random_weight = { base = 1 }
+	traits = { trait = trait_cybernetic }
 }
 
 civic_hive_subspace_ephapse = {
