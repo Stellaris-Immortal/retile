@@ -602,16 +602,9 @@ civic_mechanists = {
 	modification = no
 	playable = { host_has_dlc = "Utopia" }
 	potential = {
-		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_machine_intelligence } }
 	}
 	possible = {
-		ethics = {
-			OR = {
-				text = civic_tooltip_materialist
-				value = ethic_materialist
-				value = ethic_fanatic_materialist
-			}
-		}
 		civics = {
 			NOT = { value = civic_syncretic_evolution }
 		}
@@ -638,7 +631,7 @@ civic_syncretic_evolution = {
 	modification = no
 	playable = { host_has_dlc = "Utopia" }
 	potential = {
-		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_machine_intelligence } }
 	}
 	possible = {
 		civics = {
@@ -718,14 +711,10 @@ civic_fanatic_purifiers = {
 civic_post_apocalyptic = {
 	playable = { host_has_dlc = "Apocalypse" }
 	starting_colony = pc_nuked # Changes homeworld class regardless of what is picked for empire
-	potential = {
-		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-	}
 	possible = {
 		civics = {
 			NOR = {
 				value = civic_agrarian_idyll
-				value = civic_syncretic_evolution
 				value = civic_life_seeded
 			}
 		}
@@ -754,17 +743,10 @@ civic_life_seeded = {
 	playable = { host_has_dlc = "Apocalypse" }
 	starting_colony = pc_gaia
 	habitability_preference = pc_gaia
-	#preferred_planet_class_neighbor = no
-	potential = {
-		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-	}
+	#preferred_planet_class_neighbor = no}
 	possible = {
 		civics = {
-			NOR = {
-				value = civic_mechanists
-				value = civic_syncretic_evolution
-				value = civic_post_apocalyptic
-			}
+			NOT = { value = civic_post_apocalyptic }
 		}
 	}
 	modification = no

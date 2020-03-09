@@ -126,7 +126,7 @@ decision_retile_consume_energy = {
 				has_deposit = d_numas_breath
 				has_deposit = d_boswash_metropolitan_axis
 				has_deposit = d_pearl_river_agglomerate
-				#has_deposit = retile_mastery_of_nature_energy
+				has_deposit = retile_mastery_of_nature_energy
 				#has_deposit = retile_module_generator
 			} }
 			random_deposit = {
@@ -141,7 +141,7 @@ decision_retile_consume_energy = {
 					is_deposit_type = d_numas_breath
 					is_deposit_type = d_boswash_metropolitan_axis
 					is_deposit_type = d_pearl_river_agglomerate
-					#is_deposit_type = retile_mastery_of_nature_energy
+					is_deposit_type = retile_mastery_of_nature_energy
 					#is_deposit_type = retile_module_generator
 				} }
 				remove_deposit = yes
@@ -214,7 +214,7 @@ decision_retile_consume_energy = {
 				has_deposit = d_numas_breath_active
 				has_deposit = d_boswash_metropolitan_axis_active
 				has_deposit = d_pearl_river_agglomerate_active
-				#has_deposit = retile_mastery_of_nature_energy_active
+				has_deposit = retile_mastery_of_nature_energy_active
 				#has_deposit = retile_module_generator_active
 			} }
 			random_deposit = {
@@ -229,7 +229,7 @@ decision_retile_consume_energy = {
 					is_deposit_type = d_numas_breath_active
 					is_deposit_type = d_boswash_metropolitan_axis_active
 					is_deposit_type = d_pearl_river_agglomerate_active
-					#is_deposit_type = retile_mastery_of_nature_energy_active
+					is_deposit_type = retile_mastery_of_nature_energy_active
 					#is_deposit_type = retile_module_generator_active
 				} }
 				remove_deposit = yes
@@ -334,7 +334,7 @@ decision_retile_consume_minerals = {
 				has_deposit = d_underground_mine
 				has_deposit = d_mesopotamian_urban_corridor
 				has_deposit = d_great_albertan_crater
-				#has_deposit = retile_mastery_of_nature_minerals
+				has_deposit = retile_mastery_of_nature_minerals
 				#has_deposit = retile_module_mine
 			} }
 			random_deposit = {
@@ -346,7 +346,7 @@ decision_retile_consume_minerals = {
 					is_deposit_type = d_underground_mine
 					is_deposit_type = d_mesopotamian_urban_corridor
 					is_deposit_type = d_great_albertan_crater
-					#is_deposit_type = retile_mastery_of_nature_minerals
+					is_deposit_type = retile_mastery_of_nature_minerals
 					#is_deposit_type = retile_module_mine
 				} }
 				remove_deposit = yes
@@ -430,7 +430,7 @@ decision_retile_consume_minerals = {
 				has_deposit = d_underground_mine_active
 				has_deposit = d_mesopotamian_urban_corridor_active
 				has_deposit = d_great_albertan_crater_active
-				#has_deposit = retile_mastery_of_nature_minerals_active
+				has_deposit = retile_mastery_of_nature_minerals_active
 				#has_deposit = retile_module_mine_active
 			} }
 			random_deposit = {
@@ -442,7 +442,7 @@ decision_retile_consume_minerals = {
 					is_deposit_type = d_underground_mine_active
 					is_deposit_type = d_mesopotamian_urban_corridor_active
 					is_deposit_type = d_great_albertan_crater_active
-					#is_deposit_type = retile_mastery_of_nature_minerals_active
+					is_deposit_type = retile_mastery_of_nature_minerals_active
 					#is_deposit_type = retile_module_mine_active
 				} }
 				remove_deposit = yes
@@ -592,7 +592,7 @@ decision_retile_consume_food = {
 				has_deposit = d_abandoned_primitive_homesteads
 				has_deposit = d_underground_farm
 				has_deposit = d_pacific_algae_tracts
-				#has_deposit = retile_mastery_of_nature_food
+				has_deposit = retile_mastery_of_nature_food
 				#has_deposit = retile_module_farm
 			} }
 			random_deposit = {
@@ -606,7 +606,7 @@ decision_retile_consume_food = {
 					is_deposit_type = d_abandoned_primitive_homesteads
 					is_deposit_type = d_underground_farm
 					is_deposit_type = d_pacific_algae_tracts
-					#is_deposit_type = retile_mastery_of_nature_food
+					is_deposit_type = retile_mastery_of_nature_food
 					#is_deposit_type = retile_module_farm
 				} }
 				remove_deposit = yes
@@ -774,7 +774,7 @@ decision_retile_consume_food = {
 				has_deposit = d_abandoned_primitive_homesteads_active
 				has_deposit = d_underground_farm_active
 				has_deposit = d_pacific_algae_tracts_active
-				#has_deposit = retile_mastery_of_nature_food_active
+				has_deposit = retile_mastery_of_nature_food_active
 				#has_deposit = retile_module_farm_active
 			} }
 			random_deposit = {
@@ -788,7 +788,7 @@ decision_retile_consume_food = {
 					is_deposit_type = d_abandoned_primitive_homesteads_active
 					is_deposit_type = d_underground_farm_active
 					is_deposit_type = d_pacific_algae_tracts_active
-					#is_deposit_type = retile_mastery_of_nature_food_active
+					is_deposit_type = retile_mastery_of_nature_food_active
 					#is_deposit_type = retile_module_farm_active
 				} }
 				remove_deposit = yes
@@ -903,7 +903,18 @@ decision_retile_devour_world = {
 			is_hive_empire = yes
 			has_tradition = tr_prosperity_public_works
 		}
-		NOT = { is_planet_class = pc_hive }
+		NOR = { 
+			is_planet_class = pc_hive
+			is_planet_class = pc_hive_2
+			is_planet_class = pc_habitat
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_machine
+			is_planet_class = pc_ai
+			is_planet_class = pc_infested
+			is_planet_class = pc_relic
+			is_planet_class = pc_city
+		}
 	}
 	
 	allow = {
@@ -967,7 +978,18 @@ decision_retile_assimilate_world = {
 			is_hive_empire = yes
 			has_tradition = tr_harmony_bulwark_of_harmony
 		}
-		NOT = { is_planet_class = pc_hive_2 }
+		NOR = { 
+			is_planet_class = pc_hive
+			is_planet_class = pc_hive_2
+			is_planet_class = pc_habitat
+			is_planet_class = pc_ringworld_habitable
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_machine
+			is_planet_class = pc_ai
+			is_planet_class = pc_infested
+			is_planet_class = pc_relic
+			is_planet_class = pc_city
+		}
 	}
 	
 	allow = {
@@ -1007,5 +1029,226 @@ decision_retile_assimilate_world = {
 
 	allow = {
 		owner = { is_ai = no }
+	}
+}
+
+decision_lithoid_swarm_consume_world = {
+	icon = decision_burning_settlement
+	sound = event_structural_collapse
+
+	enactment_time = 360
+	resources = {
+		category = decisions
+	}
+	owned_planets_only = yes
+
+	potential = {
+		owner = {
+			is_lithoid_empire = yes
+			has_valid_civic = civic_hive_devouring_swarm
+		}
+		can_have_habitable_deposits = yes
+		is_capital = no
+	}
+
+	allow = {
+		num_free_districts = { type = any value > 0 }
+	}
+
+	effect = {
+		custom_tooltip = decision_lithoid_swarm_consume_world_effect_desc
+
+		if = {
+			limit = { num_districts = { type = any value > 0 } }
+			custom_tooltip = decision_lithoid_swarm_consume_world_destroy_district_desc
+
+			hidden_effect = {
+				random_list = {
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_housing value = 0 }
+						}
+						remove_district = district_housing
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_spawning value = 0 }
+						}
+						remove_district = district_spawning
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_engineers value = 0 }
+						}
+						remove_district = district_engineers
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_scholars value = 0 }
+						}
+						remove_district = district_scholars
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_admin value = 0 }
+						}
+						remove_district = district_admin
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_soldiers value = 0 }
+						}
+						remove_district = district_soldiers
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_sentinel value = 0 }
+						}
+						remove_district = district_sentinel
+					}
+					1 = {
+						modifier = {
+							factor = 0
+							num_districts = { type = district_custodians value = 0 }
+						}
+						remove_district = district_custodians
+					}
+				}
+			}
+		}
+
+		hidden_effect = {
+			random_list = {
+				10 = {
+					modifier = {
+						factor = 0
+						num_free_districts = { type = any value < 2 }
+					}
+					add_deposit = d_lithoid_devastation
+					add_deposit = d_lithoid_devastation
+					create_pop = {
+						species = owner_main_species
+					}
+					add_planet_devastation = 20
+
+					if = {
+						limit = { owner = { is_ai = yes } }
+						random_pop = {
+							resettle_pop = {
+								pop = this
+								planet = owner.capital_scope
+							}
+						}
+					}
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						num_free_districts = { type = any value < 2 }
+					}
+					add_deposit = d_lithoid_devastation
+					add_deposit = d_lithoid_devastation
+					owner = {
+						add_monthly_resource_mult = {
+							resource = minerals
+							value = 5
+							min = @tier1materialmin
+							max = @tier1materialmax
+						}
+					}
+					add_planet_devastation = 20
+				}
+				10 = {
+					modifier = {
+						factor = 0
+						num_free_districts = { type = any value < 2 }
+					}
+					add_deposit = d_lithoid_devastation
+					add_deposit = d_lithoid_devastation
+					owner = {
+						add_monthly_resource_mult = {
+							resource = alloys
+							value = 3
+							min = @tier1materialmin
+							max = @tier1materialmax
+						}
+					}
+					add_planet_devastation = 20
+				}
+				10 = {
+					# There's only one district slot left on the planet
+					modifier = {
+						factor = 0
+						num_free_districts = { type = any value >= 2 }
+					}
+					owner = {
+						add_monthly_resource_mult = {
+							resource = minerals
+							value = 3
+							min = @tier1materialmin
+							max = @tier1materialmax
+						}
+					}
+					every_owned_pop = {
+						resettle_pop = {
+							pop = this
+							planet = owner.capital_scope
+						}
+					}
+					remove_all_buildings = yes
+					clear_deposits = yes
+					change_pc = pc_shattered
+					
+					random_list = {
+						1 = {
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+						}
+						1 = {
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+						}
+						1 = {
+							add_deposit = d_minerals_4
+							add_deposit = d_minerals_4
+						}
+						1 = {
+							add_deposit = d_minerals_4
+						}
+					}
+				}
+			}
+
+			# If I'm an AI, abandon the planet if we've finished consuming the planet
+			if = {
+				limit = { owner = { is_ai = yes } }
+				every_owned_pop = {
+					resettle_pop = {
+						pop = this
+						planet = owner.capital_scope
+					}
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 5
+
+		# don't wreck worlds you want to keep
+		modifier = {
+			factor = 0
+			is_lithoid_devouring_swarm_consumption_world = no
+		}
 	}
 }

@@ -52,9 +52,7 @@ civic_anarchist = {
 
 civic_pacifist = {
 	description = "civic_tooltip_pacifist_effects"
-	potential = {
-		ethics = { NOT = { value = ethic_gestalt_consciousness } }
-	}
+	potential = { ethics = { NOT = { value = ethic_gestalt_consciousness } } }
 	possible = {
 		ethics = {
 			NOR = {
@@ -78,6 +76,14 @@ civic_pacifist = {
 		country_base_influence_produces_add = 2
 		pop_factions_unity_produces_add = 5
 	}
+}
+
+civic_psychic_society = {
+	description = "civic_psychic_society_effects"
+	potential = { ethics = { NOT = { value = ethic_gestalt_consciousness } } }
+	modification = no
+	random_weight = { base = 1 }
+	traits = { trait = trait_latent_psionic }
 }
 
 civic_scrapper = {

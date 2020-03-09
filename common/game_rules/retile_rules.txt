@@ -12,12 +12,7 @@ can_have_robot_pops = {
 # Root = Planet
 can_species_procreate = {
 	is_sapient = yes
-	NOR = {
-		has_trait = trait_machine_unit
-		has_trait = trait_mechanical
-		has_trait = trait_droid
-		has_trait = trait_synthetic
-	}
+	is_robotic_species = no
 	NAND = {
 		root = { has_modifier = slave_colony }
 		NOT = { has_citizenship_type = { type = citizenship_slavery country = root.owner } }
@@ -29,12 +24,7 @@ can_species_procreate = {
 # Root = Planet
 can_species_be_assembled = {
 	is_sapient = yes
-	OR = {
-		has_trait = trait_machine_unit
-		has_trait = trait_mechanical
-		has_trait = trait_droid
-		has_trait = trait_synthetic
-	}
+	is_robotic_species = yes
 }
 
 # This = country
