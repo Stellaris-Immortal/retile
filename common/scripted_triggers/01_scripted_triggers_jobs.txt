@@ -204,21 +204,19 @@ is_lithoid = {
 
 is_biological = {
 	species = {
-		OR = {
-			is_archetype = BIOLOGICAL
-			is_archetype = ARTHROPOID
-			is_archetype = MAMMAL
+		NOR = {
+			is_archetype = ROBOT
+			is_archetype = MACHINE
 		}
 	}
 }
 
 is_organic_species = {
 	species = {
-		OR = {
-			is_archetype = BIOLOGICAL # original trigger did not include pre-sapient classes
-			is_archetype = LITHOID
-			is_archetype = PLANTOID
-			is_archetype = ARTHROPOID
+		NOR = {
+			is_archetype = PRESAPIENT	# Was excluded from organic in vanilla
+			is_archetype = ROBOT
+			is_archetype = MACHINE
 		}
 	}
 }
