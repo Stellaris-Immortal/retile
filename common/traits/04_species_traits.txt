@@ -337,7 +337,7 @@ trait_colossal = {
 	cost = 1
 	potential_crossbreeding_chance = 0.5
 	opposites = { "trait_tiny" "trait_giant" }
-	allowed_archetypes = { LITHOID REPTILE }
+	allowed_archetypes = { REPTILE }
 	modifier = {
 		planet_jobs_produces_mult = 0.5
 		army_damage_mult = 0.5
@@ -354,13 +354,49 @@ trait_giant = {
 	cost = 1
 	potential_crossbreeding_chance = 0.5
 	opposites = { "trait_tiny" "trait_colossal" }
-	allowed_archetypes = { LITHOID PLANTOID MAMMAL REPTILE }
+	allowed_archetypes = { PLANTOID MAMMAL REPTILE }
 	modifier = {
 		planet_jobs_produces_mult = 0.25
 		army_damage_mult = 0.25
 		army_health = 0.25
 		pop_housing_usage_add = 0.25
 		planet_pops_food_upkeep_mult = 0.50
+	}
+	slave_cost = {
+		energy = 50
+	}
+}
+
+trait_colossal_lithoid = {
+	icon = "gfx/interface/icons/traits/trait_colossal.dds"
+	cost = 1
+	potential_crossbreeding_chance = 0.5
+	opposites = { "trait_giant_lithoid" }
+	allowed_archetypes = { LITHOID }
+	modifier = {
+		planet_jobs_produces_mult = 0.5
+		army_damage_mult = 0.5
+		army_health = 0.5
+		pop_housing_usage_add = 0.5
+		planet_pops_minerals_upkeep_mult = 1
+	}
+	slave_cost = {
+		energy = 50
+	}
+}
+
+trait_giant_lithoid = {
+	icon = "gfx/interface/icons/traits/trait_giant.dds"
+	cost = 1
+	potential_crossbreeding_chance = 0.5
+	opposites = { "trait_colossal_lithoid" }
+	allowed_archetypes = { LITHOID }
+	modifier = {
+		planet_jobs_produces_mult = 0.25
+		army_damage_mult = 0.25
+		army_health = 0.25
+		pop_housing_usage_add = 0.25
+		planet_pops_minerals_upkeep_mult = 0.50
 	}
 	slave_cost = {
 		energy = 50
@@ -433,7 +469,7 @@ trait_tiny = {
 	cost = 1
 	potential_crossbreeding_chance = 0.5
 	opposites = { "trait_giant" "trait_colossal" }
-	allowed_archetypes = { ARTHROPOID PLANTOID MAMMAL REPTILE }
+	allowed_archetypes = { ARTHROPOID MAMMAL REPTILE }
 	modifier = {
 		planet_jobs_produces_mult = -0.25
 		army_damage_mult = -0.25
