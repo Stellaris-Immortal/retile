@@ -240,7 +240,6 @@ district_scholars = {
 
 	potential = {
 		NOR = {
-			has_modifier = resort_colony
 			has_modifier = penal_colony
 			has_modifier = slave_colony
 		}
@@ -301,8 +300,6 @@ district_bureaucrats = {
 		exists = owner
 		owner = { is_gestalt = no }
 		NOR = {
-			has_modifier = resort_colony
-			has_modifier = penal_colony
 			has_modifier = slave_colony
 		}
 	}
@@ -410,8 +407,6 @@ district_soldiers = {
 	potential = {
 		NOR = {
 			has_modifier = resort_colony
-			has_modifier = penal_colony
-			has_modifier = slave_colony
 		}
 	}
 	
@@ -480,11 +475,7 @@ district_enforcers = {
 	potential = {
 		exists = owner
 		owner = { is_gestalt = no }
-		NOR = {
-			has_modifier = resort_colony
-			has_modifier = penal_colony
-			has_modifier = slave_colony
-		}
+		NOT = {	has_modifier = penal_colony }
 	}
 	
 	allow = {
@@ -628,11 +619,7 @@ district_custodians = {
 	is_capped_by_modifier = no
 
 	potential = {
-		NOR = {
-			has_modifier = resort_colony
-			has_modifier = penal_colony
-			has_modifier = slave_colony
-		}
+
 	}
 	
 	allow = {

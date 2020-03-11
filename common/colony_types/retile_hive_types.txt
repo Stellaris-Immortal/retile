@@ -126,6 +126,115 @@ col_hive_breeding = {
 	}
 }
 
+# Production
+col_hive_production = {
+	icon = 7
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
+		is_capital = no
+		OR = {
+			has_building = building_hive_capital
+			has_building = building_hive_major_capital
+			has_building = building_hive_system_capital
+			has_building = building_hive_galactic_capital
+		}
+	}
+	
+	planet_modifier = {
+		planet_jobs_consumer_goods_produces_mult = 0.20
+		planet_jobs_alloys_produces_mult = 0.20
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_engineering_world
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_engineers value >= 1 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_engineers value >= 2 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_engineers value >= 3 }
+		}
+		modifier = {
+			add = 1
+			has_building = building_factory_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_factory_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_factory_3
+		}
+	}
+}
+
+# Galactic Production
+col_hive_galactic_production = {
+	icon = 7
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+		is_capital = no
+	}
+	
+	planet_modifier = {
+		pop_growth_speed = 0.50
+		planet_jobs_consumer_goods_produces_mult = 0.20
+		planet_jobs_alloys_produces_mult = 0.20
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_engineering_world
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_engineers value >= 1 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_engineers value >= 2 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_engineers value >= 3 }
+		}
+		modifier = {
+			add = 1
+			has_building = building_foundry_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_foundry_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_foundry_3
+		}
+	}
+}
+
 # Examination
 col_hive_examination = {
 	icon = 8
@@ -153,20 +262,46 @@ col_hive_examination = {
 	}
 
 	weight_modifier = {
+		base = 0
 		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 0
-			}
+			add = 2
+			has_designation = col_hive_examination
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_scholars value >= 1 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_scholars value >= 2 }
 		}
 		modifier = {
 			add = 3
-			OR = {
-				has_building = building_research_lab_1
-				has_building = building_research_lab_2
-				has_building = building_research_lab_3
-			}
+			num_districts = { type = district_scholars value >= 3 }
+		}
+		modifier = {
+			add = 1
+			has_building = building_research_lab_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_research_lab_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_research_lab_3
+		}
+		modifier = {
+			add = 1
+			has_building = building_hive_node
+		}
+		modifier = {
+			add = 2
+			has_building = building_hive_cluster
+		}
+		modifier = {
+			add = 3
+			has_building = building_hive_confluence
 		}
 	}
 }
@@ -193,101 +328,46 @@ col_hive_galactic_examination = {
 	}
 
 	weight_modifier = {
+		base = 0
 		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 0
-			}
+			add = 2
+			has_designation = col_hive_galactic_examination
 		}
 		modifier = {
-			add = 3
-			OR = {
-				has_building = building_research_lab_1
-				has_building = building_research_lab_2
-				has_building = building_research_lab_3
-			}
+			add = 1
+			num_districts = { type = district_scholars value >= 1 }
 		}
-	}
-}
-
-# Production
-col_hive_production = {
-	icon = 7
-	
-	potential = {
-		exists = owner
-		owner = { 
-			is_hive_empire = yes
-			NOT = { has_tradition = tr_domination_grand_council }
-		}
-		is_capital = no
-		OR = {
-			has_building = building_hive_capital
-			has_building = building_hive_major_capital
-			has_building = building_hive_system_capital
-			has_building = building_hive_galactic_capital
-		}
-	}
-	
-	planet_modifier = {
-		planet_jobs_consumer_goods_produces_mult = 0.20
-		planet_jobs_alloys_produces_mult = 0.20
-	}
-
-	weight_modifier = {
 		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 0
-			}
+			add = 2
+			num_districts = { type = district_scholars value >= 2 }
 		}
 		modifier = {
 			add = 3
-			OR = {
-				has_building = building_factory_1
-				has_building = building_factory_2
-				has_building = building_factory_3
-			}
+			num_districts = { type = district_scholars value >= 3 }
 		}
-	}
-}
-
-# Galactic Production
-col_hive_galactic_production = {
-	icon = 7
-	
-	potential = {
-		exists = owner
-		owner = { 
-			is_hive_empire = yes
-			has_tradition = tr_domination_grand_council
-		}
-		is_capital = no
-	}
-	
-	planet_modifier = {
-		pop_growth_speed = 0.50
-		planet_jobs_consumer_goods_produces_mult = 0.20
-		planet_jobs_alloys_produces_mult = 0.20
-	}
-
-	weight_modifier = {
 		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 0
-			}
+			add = 1
+			has_building = building_research_lab_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_research_lab_2
 		}
 		modifier = {
 			add = 3
-			OR = {
-				has_building = building_factory_1
-				has_building = building_factory_2
-				has_building = building_factory_3
-			}
+			has_building = building_research_lab_3
+		}
+		modifier = {
+			add = 1
+			has_building = building_hive_node
+		}
+		modifier = {
+			add = 2
+			has_building = building_hive_cluster
+		}
+		modifier = {
+			add = 3
+			has_building = building_hive_confluence
 		}
 	}
 }
@@ -318,19 +398,46 @@ col_hive_extraction = {
 	}
 
 	weight_modifier = {
+		base = 0
 		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = farmer }
-				count > 0
-			}
+			add = 2
+			has_designation = col_hive_extraction
+		}
+		modifier = {
+			add = 1
+			has_building = building_food_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_food_2
 		}
 		modifier = {
 			add = 3
-			count_pops = {
-				limit = { has_job = miner }
-				count > 2
-			}
+			has_building = building_food_3
+		}
+		modifier = {
+			add = 1
+			has_building = building_mineral_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_mineral_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_mineral_3
+		}
+		modifier = {
+			add = 1
+			has_building = building_energy_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_energy_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_energy_3
 		}
 	}
 }
@@ -356,19 +463,46 @@ col_hive_galactic_extraction = {
 	}
 
 	weight_modifier = {
+		base = 0
 		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = farmer }
-				count > 0
-			}
+			add = 2
+			has_designation = col_hive_galactic_extraction
+		}
+		modifier = {
+			add = 1
+			has_building = building_food_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_food_2
 		}
 		modifier = {
 			add = 3
-			count_pops = {
-				limit = { has_job = miner }
-				count > 2
-			}
+			has_building = building_food_3
+		}
+		modifier = {
+			add = 1
+			has_building = building_mineral_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_mineral_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_mineral_3
+		}
+		modifier = {
+			add = 1
+			has_building = building_energy_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_energy_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_energy_3
 		}
 	}
 }
