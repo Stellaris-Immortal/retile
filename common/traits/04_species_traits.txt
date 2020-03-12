@@ -828,6 +828,23 @@ trait_self_modified = {
 	}
 }
 
+trait_viral_infection = {
+	cost = 0
+	icon = "gfx/interface/icons/traits/trait_viral_infection.dds"
+
+	initial = no
+	randomized = no
+	modification = no
+
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
+	
+	modifier = {
+		planet_jobs_produces_mult = -0.50
+		planet_pops_upkeep_mult = 0.50
+		pop_growth_speed_reduction = 0.50
+	}
+}
+
 
 # Traits for advanced genemodding
 trait_delicious = {
