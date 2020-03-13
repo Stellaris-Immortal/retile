@@ -45,7 +45,7 @@ planet_event = {
 			limit = { NOT = { has_citizenship_type = { type = citizenship_organic_trophy } } }
 			weights = {
 				base = 1
-				modifier = { mult 20 is_sapient = yes }
+				modifier = { mult = 20 is_sapient = yes }
 				modifier = { add = 20 is_plantoid = no root = { habitability = { who = prev value <= 0 } } }
 				modifier = { add = 19 is_plantoid = no root = { habitability = { who = prev value <= 0.05 } } }
 				modifier = { add = 18 is_plantoid = no root = { habitability = { who = prev value <= 0.10 } } }
@@ -426,11 +426,11 @@ pop_event = {
 					# Migrate less often if we're at a negative ratio, more if we're positive
 					modifier = {
 						factor = 0.5
-						owner = { check_variable = { which = retile_migration_ratio value < 0 } }
+						owner = { check_variable = { which = retile_migration_delta value < 0 } }
 					}
 					modifier = {
 						factor = 2
-						owner = { check_variable = { which = retile_migration_ratio value > 0 } }
+						owner = { check_variable = { which = retile_migration_delta value > 0 } }
 					}
 					
 					# migrate less often if our friends are at positive ratios, or more often if they're negative
@@ -439,7 +439,7 @@ pop_event = {
 						owner = { any_relation = {
 							count >= 1
 							has_migration_access = root.owner
-							check_variable = { which = retile_migration_ratio value < 0 }
+							check_variable = { which = retile_migration_delta value < 0 }
 						} }
 					}
 					modifier = {
@@ -447,7 +447,7 @@ pop_event = {
 						NOT = { owner = { any_relation = {
 							count >= 1
 							has_migration_access = root.owner
-							check_variable = { which = retile_migration_ratio value <= 0 }
+							check_variable = { which = retile_migration_delta value <= 0 }
 						} } }
 					}
 					
@@ -462,25 +462,25 @@ pop_event = {
 							base = 1
 							
 							# favor relations with lower migration ratio
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < 20 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < 15 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < 12 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < 9 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < 7 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < 5 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < 3 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < 2 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < 1 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < 0 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < -1 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < -2 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < -3 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < -5 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < -7 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < -9 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < -12 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < -15 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_ratio value < -20 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 20 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 15 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 12 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 9 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 7 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 5 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 3 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 2 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 1 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 0 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -1 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -2 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -3 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -5 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -7 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -9 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -12 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -15 } }
+							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -20 } }
 							
 							# Favor relations with ethics that match the pop
 							modifier = {
@@ -644,8 +644,8 @@ country_event = {
 			from.planet = { set_timed_planet_flag = { flag = retile_recent_shuffling days = 360 } }
 			
 			# adjust migration ratios
-			from.owner = { change_variable = { which = retile_migration_ratio value = -1 } }
-			root = { change_variable = { which = retile_migration_ratio value = 1 } }
+			from.owner = { change_variable = { which = retile_migration_delta value = -1 } }
+			root = { change_variable = { which = retile_migration_delta value = 1 } }
 			
 			resettle_pop = { pop = from planet = this}
 			

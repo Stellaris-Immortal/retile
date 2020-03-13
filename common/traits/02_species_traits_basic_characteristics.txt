@@ -40,6 +40,9 @@ trait_machine_unit = {
 	immortal_leaders = yes
 	icon = "gfx/interface/icons/traits/trait_machine_unit.dds"
 	allowed_archetypes = { MACHINE }
+	ai_weight = {
+		weight = 0
+	}
 
 	forced_happiness = yes
 	modifier = { pop_environment_tolerance = 2.0 }
@@ -55,6 +58,9 @@ trait_synthetic = {
 	immortal_leaders = yes
 	icon = "gfx/interface/icons/traits/trait_robotic_3.dds"
 	allowed_archetypes = { ROBOT }
+	ai_weight = {
+		weight = 0
+	}
 
 	modifier = { pop_environment_tolerance = 2.0 }
 }
@@ -69,6 +75,9 @@ trait_droid = {
 	immortal_leaders = yes
 	icon = "gfx/interface/icons/traits/trait_robotic_2.dds"
 	allowed_archetypes = { ROBOT }
+	ai_weight = {
+		weight = 0
+	}
 
 	modifier = { 
 		planet_jobs_specialist_produces_mult = -0.25
@@ -86,6 +95,9 @@ trait_mechanical = {
 	immortal_leaders = yes
 	icon = "gfx/interface/icons/traits/trait_robotic_1.dds"
 	allowed_archetypes = { ROBOT }
+	ai_weight = {
+		weight = 0
+	}
 
 	modifier = { 
 		planet_jobs_produces_mult = -0.25
@@ -102,6 +114,9 @@ trait_syncretic_proles = {
 	species_potential_add = { always = no }
 	icon = "gfx/interface/icons/traits/trait_primitive.dds"
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL }
+	ai_weight = {
+		weight = 0
+	}
 
 	custom_tooltip = TRAIT_SYNCRETIC_PROLES_EFFECT
 	modifier = {
@@ -130,6 +145,33 @@ trait_mammal = {
 	icon = "gfx/interface/icons/traits/trait_mammal.dds"
 
 	modifier = { }
+}
+
+trait_reptile = {
+	cost = 0
+	potential_crossbreeding_chance = 0
+
+	sorting_priority = 20
+
+	initial = yes
+	randomized = no
+	modification = no
+
+	modifier = {
+		pc_desert_habitability = 0.20	
+		pc_arid_habitability = 0.20
+		pc_savannah_habitability = 0.20
+		pc_alpine_habitability = -0.20
+		pc_tundra_habitability = -0.20
+		pc_arctic_habitability = -0.20
+	}
+
+	allowed_archetypes = { REPTILE }
+	ai_weight = {
+		weight = 0
+	}
+
+	icon = "gfx/interface/icons/traits/trait_reptile.dds"
 }
 
 trait_lithoid = {
@@ -183,6 +225,9 @@ trait_plantoid = {
 	
 	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_fertility_preacher.dds"
 	custom_tooltip = TRAIT_PLANTOID_EFFECT
+	ai_weight = {
+		weight = 0
+	}
 	
 	modifier = { 
 		pop_environment_tolerance = -0.40
@@ -208,6 +253,9 @@ trait_arthropoid = {
 	
 	icon = "gfx/interface/icons/traits/trait_arthropoid.dds"
 	custom_tooltip = TRAIT_ARTHROPOID_EFFECT
+	ai_weight = {
+		weight = 0
+	}
 	
 	modifier = { 
 		leader_age = -30

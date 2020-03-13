@@ -34,7 +34,6 @@ purge_normal = {
 				fail_text = PURGES_ALLOWED
 				from = {
 					OR = {
-						has_ethic = ethic_gestalt_consciousness
 						has_valid_civic = civic_fanatic_purifiers
 						has_policy_flag = purge_allowed
 						root = { 
@@ -45,7 +44,8 @@ purge_normal = {
 								has_trait = trait_synthetic
 							}
 						}
-					}			
+					}
+					NOT = { has_policy_flag = alien_rights_consume }					
 				}
 			}	
 		}
@@ -94,7 +94,8 @@ purge_neutering = {
 					has_ethic = ethic_gestalt_consciousness
 					has_valid_civic = civic_fanatic_purifiers
 					has_policy_flag = purge_allowed
-				}					
+				}
+				NOT = { has_policy_flag = alien_rights_consume }
 			}
 		}
 	}
@@ -145,6 +146,7 @@ purge_displacement = {
 			NOR = {
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_machine_terminator
+				has_policy_flag = alien_rights_consume
 			}
 		}
 		NAND = {
@@ -235,10 +237,10 @@ purge_labor_camps = {
 			fail_text = PURGES_ALLOWED
 			from = {
 				OR = {
-					has_ethic = ethic_gestalt_consciousness
 					has_valid_civic = civic_fanatic_purifiers
 					has_policy_flag = purge_allowed
-				}					
+				}
+				NOT = { has_policy_flag = alien_rights_consume }
 			}
 		}
 	}
@@ -360,9 +362,9 @@ purge_processing = {
 			fail_text = PURGES_ALLOWED
 			from = {
 				OR = {
-					has_ethic = ethic_gestalt_consciousness
 					has_valid_civic = civic_fanatic_purifiers
 					has_policy_flag = purge_allowed
+					has_policy_flag = alien_rights_consume
 					AND = {
 						has_policy_flag = pre_sapients_eat
 						prev = {
