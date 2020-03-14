@@ -555,13 +555,13 @@ create_built_droid_species = {
 	owner = {
 		capital_scope = {
 			create_pop = { species = root.built_species }
-		}
-	}
-	last_created_pop = {
-		modify_species = {
-			add_traits_at_start_of_list = yes
-			remove_trait = trait_mechanical
-			add_trait = trait_droid
+			last_created_pop = {
+				modify_species = {
+					add_traits_at_start_of_list = yes
+					remove_trait = trait_mechanical
+					add_trait = trait_droid
+				}
+			}
 		}
 	}
 	set_country_flag = has_built_droid
@@ -572,14 +572,14 @@ create_built_synth_species = {
 	owner = {
 		capital_scope = {
 			create_pop = { species = root.built_species }
-		}
-	}
-	last_created_pop = {
-		modify_species = {
-			add_traits_at_start_of_list = yes
-			remove_trait = trait_droid
-			remove_trait = trait_mechanical
-			add_trait = trait_synthetic
+			last_created_pop = {
+				modify_species = {
+					add_traits_at_start_of_list = yes
+					remove_trait = trait_droid
+					remove_trait = trait_mechanical
+					add_trait = trait_synthetic
+				}
+			}
 		}
 	}
 	set_country_flag = has_built_synth

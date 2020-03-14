@@ -31,9 +31,11 @@
 # Does this pop eat food?
 pop_eats_food = {
 	species = {
-		OR = {
-			is_archetype = BIOLOGICAL
-			is_archetype = ARTHROPOID
+		NOR = {
+			is_archetype = ROBOT
+			is_archetype = MACHINE
+			is_archetype = PLANTOID
+			is_archetype = LITHOID
 		}
 	}
 }
@@ -93,12 +95,6 @@ is_plantoid_empire = {
 is_plantoid = {
 	species = {
 		is_archetype = PLANTOID
-	}
-}
-
-is_biological = {
-	species = {
-		is_archetype = BIOLOGICAL
 	}
 }
 

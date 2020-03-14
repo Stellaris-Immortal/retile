@@ -897,7 +897,10 @@ hydroponics_bay = {
 	
 	potential = {
 		exists = owner
-		owner = { has_technology = "tech_hydroponics" }
+		owner = { 
+			is_lithoid = no
+			has_technology = "tech_hydroponics"
+		}
 		solar_system = {
 			any_system_planet = {
 				is_owned_by = from
@@ -918,17 +921,13 @@ hydroponics_bay = {
 			alloys = 150
 		}
 
-		produces = {
-			food = 4
-		}
-
 		upkeep = {
 			energy = 2
 		}
 	}
 	
 	system_modifier = {
-		pop_growth_speed = 0.10
+		job_farmer_add = 3
 	}
 	
 	show_in_tech = "tech_hydroponics"

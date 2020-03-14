@@ -64,6 +64,17 @@ clerk = {
 		}
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_private_police }
+		}
+		modifier = {
+			planet_crime_add = -25
+			planet_amenities_add = 20
+		}
+	}
+	
 	planet_modifier = {
 		trade_value_add = 10
 		planet_amenities_add = 25
@@ -648,12 +659,13 @@ enforcer = {
 	}
 	
 	pop_modifier = {
-		pop_defense_armies_add = 6
+		pop_defense_armies_add = 4
 	}
 	
 	planet_modifier = {
-		planet_crime_add = -35
-		planet_amenities_add = 25
+		planet_crime_add = -25
+		pop_government_ethic_attraction = 0.10
+		planet_amenities_add = 20
 	}
 	
 	country_modifier = {
@@ -673,33 +685,23 @@ enforcer = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_police_state }
+			owner = { has_policy_flag = criminal_state_police }
 		}
-		planet_crime_mult = -0.25
-	}
-	
-	triggered_pop_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_common_law }
+		modifier = {
+			planet_crime_add = -25
+			planet_amenities_add = 20
 		}
-		pop_defense_armies_add = -4
-	}
-	
-	triggered_pop_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_private_police }
-		}
-		pop_defense_armies_add = -4
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_policy_flag = criminal_private_police }
+			owner = { has_valid_civic = civic_police_state }
 		}
-		trade_value_add = 10
+		modifier = {
+			planet_crime_mult = -0.20
+			planet_amenities_add = 20
+		}
 	}
 
 	triggered_planet_modifier = {
@@ -777,12 +779,11 @@ soldier = {
 	
 	triggered_planet_modifier = {
 		potential = {
-			planet = {
-				has_modifier = retile_martial_law
-			}
+			planet = { has_modifier = retile_martial_law }
 		}
 		modifier = {
 			planet_crime_add = -25
+			planet_amenities_add = 20
 		}
 	}
 	
@@ -801,7 +802,10 @@ soldier = {
 			exists = owner
 			owner = { has_policy_flag = criminal_military_police }
 		}
-		planet_crime_add = -35
+		modifier = {
+			planet_crime_add = -25
+			planet_amenities_add = 20
+		}
 	}
 
 	triggered_country_modifier = {
@@ -827,15 +831,8 @@ soldier = {
 			exists = owner
 			owner = { has_technology = tech_ground_defense_planning }
 		}
-		pop_defense_armies_add = 2
-	}
-	triggered_country_modifier = {
-		potential = {
-			exists = owner 
-			owner = { has_policy_flag = criminal_military_police }
-		}
 		modifier = {
-			country_naval_cap_add = -5
+			pop_defense_armies_add = 2
 		}
 	}
 	triggered_country_modifier = {
@@ -861,7 +858,9 @@ soldier = {
 			exists = owner
 			owner = { has_technology = tech_global_defense_grid }
 		}
-		pop_defense_armies_add = 2
+		modifier = {
+			pop_defense_armies_add = 2
+		}
 	}
 	
 	triggered_country_modifier = {
@@ -882,13 +881,6 @@ soldier = {
 			planet_amenities_add = 10
 			planet_stability_add = 2
 		}		
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_technology = tech_planetary_shield_generator }
-		}
-		planet_orbital_bombardment_damage = -0.05
 	}
 	
 	triggered_planet_modifier = {
@@ -1427,6 +1419,17 @@ bureaucrat = {
 	
 	planet_modifier = {
 		planet_stability_add = 1
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_common_law }
+		}
+		modifier = {
+			planet_crime_add = -25
+			planet_amenities_add = 20
+		}
 	}
 	
 	country_modifier = {

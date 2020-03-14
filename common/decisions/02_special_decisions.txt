@@ -310,7 +310,12 @@ decision_consecrated_worlds = {
 	potential = {
 		exists = space_owner
 		space_owner = { is_same_value = from }
-		from = { has_ascension_perk = ap_consecrated_worlds }
+		from = { 
+			OR = {
+				has_valid_civic = civic_exalted_priesthood
+				has_valid_civic = civic_imperial_cult
+			}
+		}
 		is_star = no
 		habitable_structure = no
 		is_ringworld = no
@@ -654,7 +659,12 @@ decision_unconsecrated_worlds = {
 	}
 	
 	potential = {
-		from = { has_ascension_perk = ap_consecrated_worlds }
+		from = { 
+			OR = {
+				has_valid_civic = civic_exalted_priesthood
+				has_valid_civic = civic_imperial_cult
+			}
+		}
 		has_planet_flag = consecrated@from
 	}
 
@@ -1012,7 +1022,7 @@ decision_market_nomination = {
 		category = decisions
 		cost = {
 			energy = 1000
-			influence = 150
+			influence = 100
 		}
 	}
 	
@@ -1140,7 +1150,7 @@ decision_boost_market_nomination = {
 		category = decisions
 		cost = {
 			energy = 2000
-			influence = 300
+			influence = 200
 		}
 	}
 	

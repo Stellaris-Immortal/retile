@@ -417,6 +417,19 @@ country_event = {
 			}
 			give_technology = { message = no tech = tech_space_trading }
 		}
+		if = { 
+			limit = { 
+				OR = {
+					has_civic = civic_psychic_society 
+					has_civic = civic_hive_psionic_link
+				}
+			}
+			give_technology = { message = no tech = tech_psionic_theory }
+		}
+		if = { 
+			limit = { has_civic = civic_hive_cybernetic_link } 
+			give_technology = { message = no tech = tech_positronic_implants }
+		}
 	}
 }
 
