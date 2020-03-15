@@ -115,11 +115,33 @@ ruler = {
 		}
 		pop_growth_speed = @pop_surge_trait_bonus
 	}
-
 	triggered_planet_modifier = {
 		potential = {
-			NOT = { has_trait = trait_communal }
+			NOT = { has_trait = trait_hive_mind }
+			exists = owner
+			owner = { has_ascension_perk = ap_engineered_evolution }
 		}
+		pop_growth_speed = @pop_surge_bonus_cloning
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_trait = trait_hive_mind }
+			exists = owner
+			owner = { has_ethic = ethic_xenophile }
+		}
+		pop_growth_speed = @pop_surge_bonus_xenophile
+	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_trait = trait_hive_mind }
+			exists = owner
+			owner = { has_ethic = ethic_fanatic_xenophile }
+		}
+		pop_growth_speed = @pop_surge_bonus_fanatic_xenophile
+	}
+
+	triggered_planet_modifier = {
+		potential = { NOT = { has_trait = trait_communal } }
 		pop_growth_speed_reduction = @pop_sprawl_trait
 	}
 	triggered_planet_modifier = {
@@ -129,8 +151,16 @@ ruler = {
 	triggered_planet_modifier = {
 		potential = {
 			is_organic_species = yes
-			NOT = { has_trait = trait_hive_mind }
 			exists = planet
+			NOT = { planet = { is_planet_class = pc_gaia } }
+		}
+		pop_growth_speed_reduction = @pop_sprawl_gaia
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			is_organic_species = yes
+			NOT = { has_trait = trait_hive_mind }
 		}
 		pop_growth_speed_reduction = @pop_sprawl_base
 	}
