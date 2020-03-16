@@ -232,7 +232,7 @@ trait_arthropoid_wing = {
 	opposites = { "trait_sedentary" "trait_slow_breeders" }
 	allowed_archetypes = { ARTHROPOID }
 	modifier = {
-		pop_growth_speed = 0.10
+		#pop_growth_speed = 0.10
 		#pop_growth_from_immigration = 0.50
 		pop_resettlement_cost_mult = -0.50
 		army_attack_morale_mult = 0.10
@@ -245,7 +245,7 @@ trait_rapid_breeders = {
 	opposites = { "trait_slow_breeders" "trait_fertile" }
 	allowed_archetypes = { BIOLOGICAL PLANTOID MAMMAL REPTILE }
 	modifier = {
-		pop_growth_speed = 0.20
+		#pop_growth_speed = 0.20
 	}
 	slave_cost = {
 		energy = 100
@@ -258,7 +258,7 @@ trait_slow_breeders = {
 	opposites = { "trait_rapid_breeders" "trait_fertile" "trait_arthropoid_wing" }
 	allowed_archetypes = { BIOLOGICAL PLANTOID ARTHROPOID MAMMAL REPTILE }
 	modifier = {
-		pop_growth_speed = -0.20
+		#pop_growth_speed = -0.20
 	}
 	slave_cost = {
 		energy = -100
@@ -890,7 +890,7 @@ trait_fertile = {
 	opposites = { "trait_slow_breeders" "trait_solitary" "trait_communal" }
 	allowed_archetypes = { BIOLOGICAL PLANTOID ARTHROPOID MAMMAL REPTILE }
 	modifier = {
-		pop_growth_speed = 0.5
+		#pop_growth_speed = 0.5
 		pop_happiness = 0.05
 	}
 	custom_tooltip = TRAIT_FERTILE_EFFECT
@@ -927,7 +927,7 @@ trait_telluric = {
 	allowed_archetypes = { LITHOID PLANTOID }
 	modifier = {
 		pop_environment_tolerance = 0.10
-		pop_growth_speed = 0.10
+		#pop_growth_speed = 0.10
 		planet_jobs_produces_mult = 0.05
 		pop_happiness = 0.05
 		leader_age = 10
@@ -1081,7 +1081,7 @@ trait_social_pheromones = { #red
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
 	
 	modifier = {
-		pop_growth_speed = 0.05
+		pop_growth_speed = 1
 	}
 	slave_cost = {
 		energy = 25

@@ -139,6 +139,14 @@ ruler = {
 		}
 		pop_growth_speed = @pop_surge_bonus_fanatic_xenophile
 	}
+	triggered_planet_modifier = {
+		potential = {
+			NOT = { has_trait = trait_hive_mind }
+			exists = owner
+			owner = { has_country_flag = relic_last_baol_activated }
+		}
+		pop_growth_speed = @pop_surge_bonus_baol_relic
+	}
 
 	triggered_planet_modifier = {
 		potential = { NOT = { has_trait = trait_communal } }
