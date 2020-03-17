@@ -10,6 +10,27 @@ namespace = ancrel
 
 # Arcane Deciphering Events
 country_event = {
+	id = ancrel.10000
+	hide_window = yes 
+	
+	is_triggered_only = yes
+
+	immediate = {
+		random_list = {
+			60 = { country_event = { id = ancrel.10001 } }
+			30 = { country_event = { id = ancrel.10002 } }
+			6 = { country_event = { id = ancrel.10003 } }
+			1 = { country_event = { id = ancrel.10004 } }
+			1 = { country_event = { id = ancrel.10005 } }
+			1 = { country_event = { id = ancrel.10006 } }
+			1 = { country_event = { id = ancrel.10007 } }
+			1 = { country_event = { id = ancrel.10008 } }
+			1 = { country_event = { id = ancrel.10009 } }
+		}
+	}
+}
+
+country_event = {
 	id = ancrel.10001
 	title = "ancrel.10001.name"
 	desc = "ancrel.10001.desc"
@@ -201,7 +222,7 @@ country_event = {
 	}
 }
 
-country_event = {	### Remove
+country_event = {
 	id = ancrel.10008
 	title = "ancrel.10004.name"
 	desc = "ancrel.10004.nourishment_center"
@@ -529,6 +550,21 @@ country_event = {
 			modifier = artifact_irassian_research_completed # biology research and growth speed bonus
 			days = -1
 		}
+	}
+}
+
+country_event = {
+	id = ancrel.10040
+	title = ancrel.10040.name
+	desc = ancrel.10040.desc
+
+	picture = GFX_evt_analyzing_artifacts
+	location = from
+
+	is_triggered_only = yes
+
+	option = {
+		name = progress.2.a.mech # Acknowledged.
 	}
 }
 
@@ -872,10 +908,6 @@ country_event = {
 
 		owner = {
 			add_research_option = tech_mega_engineering
-			add_tech_progress = {
-				tech = tech_mega_engineering
-				progress = 0.25
-			}
 		}
         add_modifier = {
 			modifier = artifact_cybrex_research_completed # megastructure build speed

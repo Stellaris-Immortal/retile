@@ -1504,7 +1504,7 @@ fleet_event = {
 	}
 
 	immediate = {
-		log = "fleet 1 entered system"
+#		log = "fleet 1 entered system"
 		fromfrom.space_owner = {
 			set_timed_country_flag = {
 				flag = recent_cara_1010
@@ -3937,8 +3937,6 @@ country_event = {
 					is_enslaved = no
 					is_being_purged = no
 					happiness < 0.60
-	  
-				   
 				}
 				kill_pop = yes
 			}
@@ -4020,9 +4018,13 @@ country_event = {
 
 	option = {
 		name = cara.4010.a
+		custom_tooltip = cara.4010.a.tooltip
 		hidden_effect = {
 			event_target:caravan_pops_join_planet = {
-				create_pop = { species = event_target:caravan_pops_join_country }
+				while = {
+					count = 5
+					create_pop = { species = event_target:caravan_pops_join_country }
+				}
 			}
 		}
 	}
@@ -4030,11 +4032,8 @@ country_event = {
 	option = {
 		name = cara.4010.b
 		if = {
-		 
 			limit = { is_xenophobe = yes }
-									 
 			add_resource = { influence = 30 }
-	
 		}
 	}
 }
@@ -4306,7 +4305,7 @@ country_event = {
 							NOT = {
 								any_pop = {
 									is_organic_species = yes
-									NOT = { is_same_species = event_target:welcome_fleet.owner.species }										 
+									NOT = { is_same_species = event_target:welcome_fleet.owner.species }
 								}
 							}
 						}
@@ -4321,7 +4320,7 @@ country_event = {
 	}
 }
 
-country_event = {			# RETILE
+country_event = {
 	id = cara.4041
 	title = cara.4041.name
 	desc = cara.4041.desc
@@ -4352,14 +4351,14 @@ country_event = {			# RETILE
 					any_pop = {
 						is_xenophile = yes	
 						is_organic_species = yes
-						NOT = { is_same_species = event_target:party_host }								 
+						NOT = { is_same_species = event_target:party_host }
 					}
 				}
 				random_pop = {
 					limit = {
 						is_xenophile = yes	
 						is_organic_species = yes
-						NOT = { is_same_species = event_target:party_host }								 
+						NOT = { is_same_species = event_target:party_host }
 					}
 					save_event_target_as = party_goer
 				}
@@ -4369,14 +4368,14 @@ country_event = {			# RETILE
 					any_pop = {
 						is_xenophobe = no
 						is_organic_species = yes
-						NOT = { is_same_species = event_target:party_host }								 
+						NOT = { is_same_species = event_target:party_host }
 					}
 				}
 				random_pop = {
 					limit = {
 						is_xenophobe = yes	
 						is_organic_species = yes
-						NOT = { is_same_species = event_target:party_host }								 
+						NOT = { is_same_species = event_target:party_host }
 					}
 					save_event_target_as = party_goer
 				}
@@ -4385,7 +4384,7 @@ country_event = {			# RETILE
 				random_pop = {
 					limit = {
 						is_organic_species = yes
-						NOT = { is_same_species = event_target:party_host }								 
+						NOT = { is_same_species = event_target:party_host }
 					}
 					save_event_target_as = party_goer
 				}
@@ -4394,12 +4393,12 @@ country_event = {			# RETILE
 	
 		event_target:pleased_planet = {
 			create_half_species = { species_one = event_target:party_host species_two = event_target:party_goer.species }
-			while = {
-					count = 1
-					create_pop = {
-						species = last_created
-					}					
-			}
+			#while = {
+			#	count = 1
+				create_pop = {
+					species = last_created
+				}
+			#}
 		}
 	}
 
@@ -4431,17 +4430,18 @@ country_event = {			# RETILE
 			event_target:pleased_planet = {
 				create_half_species = { species_one = event_target:party_host species_two = event_target:party_goer.species }
 				hidden_effect = {
-					while = {
-						count = 1
+					#while = {
+					#	count = 1
 						create_pop = {
 							species = last_created
-						}					
-					}
+						}
+					#}
 				}
 			}
 		}
 	}
-}	
+}
+	
 	
 
 # Caravaneers steal stuff (rude!)
@@ -4893,6 +4893,7 @@ planet_event = { #Caravan pops organize a rowdy festival (timed stability modifi
 								event_target:pleased_planet = {
 									any_pop = {
 										is_organic_species = yes
+										NOT = { is_same_species = event_target:caravaneer_neighbor_species }
 									}
 								}
 							}
@@ -5047,7 +5048,8 @@ planet_event = { #Megacorpse
 			}
 		}
 		add_planet_devastation = 20
-		random_owned_pop = { kill_pop = yes }	
+		random_owned_pop = { kill_pop = yes }
+		#random_owned_pop = { kill_pop = yes }		
 		enable_special_project = {
 			name = MEGACORPSE_ORIGINS
 			location = this

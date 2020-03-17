@@ -95,6 +95,7 @@ fleet_event = {
 		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.3
 	title = "ancrel.3.name"
@@ -120,6 +121,7 @@ fleet_event = {
 		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.4
 	title = "ancrel.3.name"
@@ -140,6 +142,7 @@ fleet_event = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
 					is_same_value = root.owner.capital_scope.solar_system
+					has_star_flag = hostile_system
 				}
 				OR = {
 					has_owner = no
@@ -235,6 +238,7 @@ fleet_event = {
 		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.6
 	title = "ancrel.3.name"
@@ -255,6 +259,7 @@ fleet_event = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
 					is_same_value = root.owner.capital_scope.solar_system
+					has_star_flag = hostile_system
 				}
 				OR = {
 					has_owner = no
@@ -269,14 +274,14 @@ fleet_event = {
 					}
 					is_colony = no
 					has_anomaly = no
-					NOR = {
+					NOR = { 
 						exists = archaeological_site
 						has_planet_flag = hatchling_egg
 					}
 				}
 			}
 			min_steps = 1
-			max_steps = 10
+			max_steps = 25
 			random_system_planet = {
 				limit = {
 					OR = {
@@ -315,9 +320,10 @@ fleet_event = {
 
 	option = {
 		name = INTERESTING
-		small_artifact_reward = yes					 
+		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.8
 	title = zroni_digsite_2
@@ -338,7 +344,7 @@ fleet_event = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
 					is_same_value = root.owner.capital_scope.solar_system
-					has_star_flag = hostile_system			   
+					has_star_flag = hostile_system
 				}
 				OR = {
 					has_owner = no
@@ -360,7 +366,7 @@ fleet_event = {
 				}
 			}
 			min_steps = 1
-			max_steps = 10
+			max_steps = 25
 			random_system_planet = {
 				limit = {
 					OR = {
@@ -399,7 +405,7 @@ fleet_event = {
 
 	option = {
 		name = ancrel.9.a
-		   owner = {
+		owner = {
 			add_monthly_resource_mult = {
 				resource = society_research
      			value = @tier2researchreward
@@ -409,6 +415,7 @@ fleet_event = {
 		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.10
 	title = "ancrel.3.name"
@@ -429,7 +436,7 @@ fleet_event = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
 					is_same_value = root.owner.capital_scope.solar_system
-					has_star_flag = hostile_system			   
+					has_star_flag = hostile_system
 				}
 				OR = {
 					has_owner = no
@@ -451,7 +458,7 @@ fleet_event = {
 				}
 			}
 			min_steps = 1
-			max_steps = 10
+			max_steps = 25
 			random_system_planet = {
 				limit = {
 					OR = {
@@ -506,6 +513,7 @@ fleet_event = {
 		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.12
 	title = "ancrel.3.name"
@@ -528,9 +536,10 @@ fleet_event = {
      			max = @tier2researchmax
 			}
 		}
-		small_artifact_reward = yes 			  
+		small_artifact_reward = yes 
 	}
 }
+
 fleet_event = { 
 	id = ancrel.13
 	title = "ancrel.3.name"
@@ -558,7 +567,7 @@ fleet_event = {
 					limit = { has_star_flag = empire_cluster }
 					spawn_system = {
 						min_distance = 10
-						max_distance = 20
+						max_distance = 30
 						max_jumps = 0
 						initializer = "Zrocursor_system"
 					}
@@ -569,8 +578,8 @@ fleet_event = {
 					limit = { has_star_flag = empire_home_system }
 					spawn_system = {
 						min_distance = 10
-						max_distance = 20
-						max_jumps = 1
+						max_distance = 30
+						max_jumps = 0
 						initializer = "Zrocursor_system"
 					}
 				}
@@ -596,9 +605,10 @@ fleet_event = {
 		owner = { 
 			add_resource = { sr_zro = 2 }
 		}
-		small_artifact_reward = yes				 
+		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.16
 	title = "ancrel.3.name"
@@ -624,6 +634,7 @@ fleet_event = {
 		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.17
 	title = "ancrel.3.name"
@@ -649,6 +660,7 @@ fleet_event = {
 		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.18
 	title = "ancrel.3.name"
@@ -675,6 +687,7 @@ fleet_event = {
 		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.19
 	title = "ancrel.3.name"
@@ -809,9 +822,10 @@ fleet_event = { #Open the Vault
 
 	option = {
 		name = ancrel.102.a
-		small_artifact_reward = yes					 
+		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { #Contents revealed
 	id = ancrel.103
 	title = "ancrel.103.name"
@@ -930,6 +944,7 @@ fleet_event = {
 		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.105
 	title = "ancrel.105.name"
@@ -967,6 +982,7 @@ fleet_event = {
 		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.106
 	title = "ancrel.106.name"
@@ -1069,7 +1085,7 @@ ship_event = { #
 			FROM = { has_planet_flag = aliens_site_junk }
 		}
 		owner = {
-			add_resource = { alloys = 5000 }
+			add_resource = { alloys = 1000 }
 		}
 		name = EXCELLENT
 	}

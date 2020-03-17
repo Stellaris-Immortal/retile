@@ -23,7 +23,7 @@ country_event = {
     	is_ai = no
     	last_increased_tech = tech_mining_3
     	any_owned_planet = {
-			any_deposit = { has_deposit_category = deposit_cat_minerals_active }
+   			any_deposit = { has_deposit_category = deposit_cat_minerals_active }
 			NOT = { exists = archaeological_site }
    		}
 
@@ -39,7 +39,7 @@ country_event = {
     		5 = {
     			random_owned_planet = {
     				limit = {
-   						any_deposit = { has_deposit_category = deposit_cat_minerals_active }
+   						num_districts = { type = district_mining value > 1 }
 						NOT = { exists = archaeological_site }
     				}
     				planet_event = { id = ancrel.4000 days = 30 random = 90 }
@@ -239,23 +239,32 @@ fleet_event = {
 	location = from
 
 	archaeology = yes
-
 	is_triggered_only = yes
+	
 	immediate = {
 		owner = { set_country_flag = triggered_lithoids_special_event }
 		leader = { 
 			save_event_target_as = leader_lithoid
 		}
-		from = { set_site_progress_locked = yes }
+		fromfrom = { set_site_progress_locked = yes }
 	}
+	
 	after = { 
-		from = { set_site_progress_locked = no } 
+		fromfrom = { set_site_progress_locked = no } 
 	}
 
 	option = {
 		name = UNFORTUNATE
 		leader = {
-			add_trait = leader_trait_maimed
+			if = {
+				limit = {
+					NOR = {
+						has_trait = trait_machine_unit
+						has_trait = trait_mechanical
+					}
+				}
+				add_trait = leader_trait_maimed
+			}
 		}
 		owner = {
 			add_resource = {
@@ -313,26 +322,99 @@ ship_event = {
 		}
 
 		hidden_effect = {
-			closest_system = {
-				min_steps = 2
-				max_steps = 4
+			if = {
 				limit = {
-					has_access_fleet = root.owner
-					has_owner = no
-					NOT = {
-						any_ship_in_system = {
-							owner = { 
-								is_hostile = root.owner
+					any_system = {
+						distance = {
+							source = root
+							min_jumps = 2
+							max_jumps = 4
+						}
+						has_access_fleet = root.owner
+						has_owner = no
+						NOT = {
+							any_fleet_in_system = {
+								owner = { 
+									is_hostile = root.owner
+								}
 							}
 						}
 					}
 				}
-				spawn_system = {
-					min_distance >= 29
-					max_distance <= 31
-					min_orientation_angle = 24
-					max_orientation_angle = 66
-					initializer = rubricator_system
+				closest_system = {
+					min_steps = 2
+					max_steps = 4
+					limit = {
+						has_access_fleet = root.owner
+						has_owner = no
+						NOT = {
+							any_fleet_in_system = {
+								owner = { 
+									is_hostile = root.owner
+								}
+							}
+						}
+					}
+					spawn_system = {
+						min_distance >= 29
+						max_distance <= 31
+						min_orientation_angle = 24
+						max_orientation_angle = 66
+						initializer = rubricator_system
+					}
+				}
+			}
+			else_if = {
+				limit = {
+					any_system = {
+						distance = {
+							source = root
+							min_jumps = 2
+							max_jumps = 4
+						}
+						has_access_fleet = root.owner
+						NOT = {
+							any_fleet_in_system = {
+								owner = { 
+									is_hostile = root.owner
+								}
+							}
+						}
+					}
+				}
+				closest_system = {
+					min_steps = 2
+					max_steps = 4
+					limit = {
+						has_access_fleet = root.owner
+						NOT = {
+							any_fleet_in_system = {
+								owner = { 
+									is_hostile = root.owner
+								}
+							}
+						}
+					}
+					spawn_system = {
+						min_distance >= 29
+						max_distance <= 31
+						min_orientation_angle = 24
+						max_orientation_angle = 66
+						initializer = rubricator_system
+					}
+				}
+			}
+			else = {
+				closest_system = {
+					min_steps = 2
+					max_steps = 4
+					spawn_system = {
+						min_distance >= 29
+						max_distance <= 31
+						min_orientation_angle = 24
+						max_orientation_angle = 66
+						initializer = rubricator_system
+					}
 				}
 			}
 			create_point_of_interest = {
@@ -400,9 +482,9 @@ fleet_event = {
 		name = ancrel.4012.a
 	}
 
-	option = {
-		name = ancrel.4012.b
-	}
+	### option = {
+	### 	name = ancrel.4012.b
+	### }
 }
 
 # Archaeological Site
@@ -668,6 +750,42 @@ fleet_event = {
 			}
 		}
 	}
+
+	after = {
+		if = {
+			limit = {
+				fromfromfrom.planet = {
+					is_colony = yes
+				}
+			}
+			if = {
+				limit = {
+					owner = {
+						NOT = { has_policy_flag = ai_full_rights }
+					}
+					fromfromfrom.planet = {
+						NOT = {
+							any_owned_pop = {
+								species = {
+									NOT = { is_archetype = MACHINE }
+									NOT = { is_archetype = ROBOT }
+								}
+							}
+						}
+					}
+				}
+				custom_tooltip = ancrel.4018.after_tooltipB
+			}
+			else = {
+				custom_tooltip = ancrel.4018.after_tooltip
+			}
+			hidden_effect = {
+				fromfromfrom.planet = {
+					destroy_colony = yes
+				}
+			}
+		}
+	}
 }
 
 # Dragon Diplo
@@ -691,6 +809,7 @@ country_event = {
 		save_global_event_target_as = rubricator_country
 		hidden_effect = {
 			country_event = { id = ancrel.4022 days = 50 }
+			set_timed_country_flag = { flag = shard_grace days = 51 }
 		}
 	}
 	option = {
@@ -726,7 +845,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		From = { has_country_flag = rubricator_dragon_country }
+		from = { has_country_flag = rubricator_dragon_country }
 	}
 
 	option = {
@@ -769,8 +888,8 @@ country_event = {
 
 fleet_event = {
 	id = ancrel.4021
-	title = ancrel.4021.name
-	desc = ancrel.4021.desc
+	title = "ancrel.4021.name"
+	desc = "ancrel.4021.desc"
 	picture = GFX_evt_junkheap
 	show_sound = event_collapsing_ruins
 	location = from
@@ -784,7 +903,7 @@ fleet_event = {
 		owner = {
 			set_country_flag = triggered_rubricator_random_event
 			add_resource = {
-				volatile_motes  = 50
+				volatile_motes = 50
 			}
 			large_artifact_reward = yes
 		}
@@ -792,7 +911,6 @@ fleet_event = {
 }
 
 # Shard's grace period ends - dragon becomes hostile to rubricator country
-
 country_event = {
 	id = ancrel.4022
 	hide_window = yes
@@ -818,7 +936,7 @@ country_event = {
 		if = {
 			limit = {
 				event_target:rubricator_system = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_same_value = root }
 					}
@@ -834,8 +952,8 @@ country_event = {
 # Notification that shard's grace period has ended for rubricator country
 country_event = {
 	id = ancrel.4023
-	title = ancrel.4019.name
-	desc = ancrel.4019.b.response
+	title = "ancrel.4019.name"
+	desc = "ancrel.4019.b.response"
 	location = event_target:rubricator_dragon_ship
 	show_sound = event_screams
 	diplomatic = yes
@@ -852,9 +970,12 @@ country_event = {
 		NOT = { has_country_flag = shards_angry }
 	}
 
+	immediate = {
+		set_country_flag = shards_angry
+	}
+
 	option = {
 		name = BATTLESTATIONS
-		set_country_flag = shards_angry
 		hidden_effect = {
 			event_target:rubricator_dragon_country = {
 				set_faction_hostility = { 
@@ -870,10 +991,10 @@ country_event = {
 }
 
 # When rubricator country ship enters system
-ship_event = {
+fleet_event = {
 	id = ancrel.4024
-	title = ancrel.4019.name
-	desc = ancrel.4019.b.response
+	title = "ancrel.4019.name"
+	desc = "ancrel.4019.b.response"
 	location = event_target:rubricator_dragon_ship
 	show_sound = event_screams
 	diplomatic = yes
@@ -883,16 +1004,19 @@ ship_event = {
 	picture_event_data = {
 		room = no_video_feed_room
 	}
-	trigger = {
+	trigger = { #Via on_actions 'on_entering_system_fleet'
 		exists = event_target:rubricator_country
 		exists = event_target:rubricator_dragon_ship
 		exists = event_target:rubricator_system
 		owner = {
-			NOT = { has_country_flag = shards_angry }
+			NOR = {
+				has_country_flag = shards_angry
+				has_country_flag = shard_grace
+			}
 			is_same_value = event_target:rubricator_country
 		}
 		event_target:rubricator_system = {
-			any_ship_in_system = {
+			any_fleet_in_system = {
 				exists = owner
 				owner = { is_same_value = root.owner }
 			}
@@ -902,9 +1026,12 @@ ship_event = {
 		}
 	}
 
+	immediate = {
+		owner = { set_country_flag = shards_angry }
+	}
+
 	option = {
 		name = BATTLESTATIONS
-		owner = { set_country_flag = shards_angry }
 		hidden_effect = {
 			event_target:rubricator_dragon_country = {
 				set_faction_hostility = { 
@@ -1034,7 +1161,7 @@ planet_event = {
 # Site Discovery
 planet_event = {
     id = ancrel.4031
-	title = ancrel.4031.name
+	title = "ancrel.4031.name"
 	desc = {
 		trigger = {
 			has_planet_flag = oracle_d_dense_jungle
@@ -1476,7 +1603,7 @@ fleet_event = {
     id = ancrel.4040
 	title = ancrel.4040.name
 	desc = ancrel.4040.desc
-	picture = GFX_evt_habitable_dig
+	picture = GFX_evt_habitable_dig_site
 	show_sound = event_wind_ruins
 	location = from
 	
