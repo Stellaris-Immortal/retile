@@ -863,6 +863,14 @@ tech_extradimensional_weapon_1 = {
 			factor = 0
 			NOT = { has_tradition = tr_discovery_faith_in_science }	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_extradimensional_weapon_1 }
+			}
+		}
 	}
 	
 	ai_weight = {
