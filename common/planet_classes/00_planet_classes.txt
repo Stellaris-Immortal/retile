@@ -770,6 +770,7 @@ pc_infested = {
 	moon_size = { min = 7 max = 12 }
 	
 	colonizable = no
+	colonizable_by_event = yes	# Ensure colonization mechanics are handled even if the planet cannot be colonized the usual way
 	
 	show_city = no
 }
@@ -1101,6 +1102,7 @@ pc_neutron_star = {
 
 pc_pulsar = {
 	entity = "pulsar_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
 	entity_scale = 20.0
 	icon_frame = 30
 
@@ -1163,6 +1165,7 @@ pc_ringworld_habitable = {
 pc_ringworld_habitable_damaged = {
 	ringworld = yes
 	entity = "ringworld_habitable_damaged_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
 	picture = pc_ringworld_broken
 	icon_frame = 21
 	entity_scale = 1.0
@@ -1184,6 +1187,7 @@ pc_ringworld_habitable_damaged = {
 pc_ringworld_tech = {
 	ringworld = yes
 	entity = "ringworld_tech_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
 	picture = pc_ringworld_section
 	icon_frame = 21
 	entity_scale = 1.0
@@ -1207,6 +1211,7 @@ pc_ringworld_tech = {
 pc_ringworld_tech_damaged = {
 	ringworld = yes
 	entity = "ringworld_tech_damaged_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
 	picture = pc_ringworld_broken
 	icon_frame = 21
 	entity_scale = 1.0
@@ -1231,6 +1236,7 @@ pc_ringworld_tech_damaged = {
 pc_ringworld_seam = {
 	ringworld = yes
 	entity = "ringworld_seam_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
 	picture = pc_ringworld_section
 	icon_frame = 21
 	entity_scale = 1.0
@@ -1255,6 +1261,7 @@ pc_ringworld_seam = {
 pc_ringworld_seam_damaged = {
 	ringworld = yes
 	entity = "ringworld_seam_damaged_entity"
+	preview_entity = "ringworld_01_damaged_full_entity"
 	picture = pc_ringworld_broken
 	icon_frame = 21
 	entity_scale = 1.0
@@ -1302,6 +1309,7 @@ pc_habitat = {
 	has_colonization_influence_cost = no			# applies when within own borders
 	
 	is_artificial_planet = yes
+	default_planet_selection = yes
 	
 	modifier = {
 		planet_colony_development_speed_mult = 2.0 # Habitats should be fast to colonize
