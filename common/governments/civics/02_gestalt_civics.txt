@@ -147,6 +147,26 @@ civic_hive_devouring_swarm = {
 	}
 }
 
+civic_hive_empath = {
+	playable = { host_has_dlc = "Federations" }
+	potential = {
+		authority = { value = auth_hive_mind }
+	}
+	possible = {
+		civics = {
+			NOT = {
+				value = civic_hive_devouring_swarm
+			}
+		}
+	}
+
+	description = "civic_tooltip_empath_effects"
+	modifier = {
+		envoys_add = 2
+		diplo_weight_mult = 0.1
+	}
+}
+
 # Machine Empire
 
 civic_machine_servitor = {
