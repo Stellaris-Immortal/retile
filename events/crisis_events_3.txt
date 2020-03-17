@@ -30,24 +30,68 @@ country_event = {
 			country_event = { id = crisis.2022 }
 		}
 		# First Machine World
-		random_planet = {
-			limit = { has_planet_flag = machine_world_1 }
-			planet_event = { id = crisis.2025 days = 20 random = 10 }
+		if = {
+			limit = {
+				any_planet = { has_planet_flag = machine_world_1 }
+			}
+			random_planet = {
+				limit = { has_planet_flag = machine_world_1 }
+				planet_event = { id = crisis.2025 days = 20 random = 10 }
+			}
+		}
+		else_if = {
+			random_planet = {
+				limit = { is_planet_class = pc_barren }
+				planet_event = { id = crisis.2025 days = 20 random = 10 }
+			}
 		}
 		# Second Machine World
-		random_planet = {
-			limit = { has_planet_flag = machine_world_2 }
-			planet_event = { id = crisis.2026 days = 40 random = 10 }
+		if = {
+			limit = {
+				any_planet = { has_planet_flag = machine_world_2 }
+			}
+			random_planet = {
+				limit = { has_planet_flag = machine_world_2 }
+				planet_event = { id = crisis.2026 days = 40 random = 10 }
+			}
+		}
+		else_if = {
+			random_planet = {
+				limit = { is_planet_class = pc_molten }
+				planet_event = { id = crisis.2026 days = 40 random = 10 }
+			}
 		}
 		# Third Machine World
-		random_planet = {
-			limit = { has_planet_flag = machine_world_3 }
-			planet_event = { id = crisis.2027 days = 60 random = 10 }
+		if = {
+			limit = {
+				any_planet = { has_planet_flag = machine_world_3 }
+			}
+			random_planet = {
+				limit = { has_planet_flag = machine_world_3 }
+				planet_event = { id = crisis.2027 days = 60 random = 10 }
+			}
+		}
+		else_if = {
+			random_planet = {
+				limit = { is_planet_class = pc_gas_giant }
+				planet_event = { id = crisis.2027 days = 60 random = 10 }
+			}
 		}
 		# Fourth Machine World
-		random_planet = {
-			limit = { has_planet_flag = machine_world_4 }
-			planet_event = { id = crisis.2028 days = 80 random = 10 }
+		if = {
+			limit = {
+				any_planet = { has_planet_flag = machine_world_4 }
+			}
+			random_planet = {
+				limit = { has_planet_flag = machine_world_4 }
+				planet_event = { id = crisis.2028 days = 80 random = 10 }
+			}
+		}
+		else_if = {
+			random_planet = {
+				limit = { is_planet_class = pc_toxic }
+				planet_event = { id = crisis.2028 days = 80 random = 10 }
+			}
 		}
 		# Synth Infiltration
 		every_country = {
@@ -1314,6 +1358,15 @@ country_event = {
 			} 
 		}
 	}
+	desc = {
+		text = crisis.2037.alt.godray.desc
+		trigger = {
+			from = {
+				has_planet_flag = destroyed_by_colossus
+				has_planet_flag = planet_godrayed
+			}
+		}
+	}
 
 	picture = GFX_evt_exploding_planet
 	show_sound = event_super_explosion
@@ -1370,6 +1423,15 @@ country_event = {
 			}
 		}
 	}
+	desc = {
+		text = crisis.2037.alt.godray.desc
+		trigger = {
+			from = {
+				has_planet_flag = destroyed_by_colossus
+				has_planet_flag = planet_godrayed
+			}
+		}
+	}
 	picture = GFX_evt_exploding_planet
 	show_sound = event_super_explosion
 	location = from
@@ -1394,6 +1456,7 @@ planet_event = {
 		OR = { # cracked or bombarded to death
 			from = { is_same_value = root }
 			planet_devastation >= 50
+			has_planet_flag = planet_godrayed						
 		}
 	}
 	
@@ -1428,8 +1491,10 @@ planet_event = {
 		}
 		if = {
 			limit = {
-				NOT = { has_planet_flag = destroyed_by_colossus }
-			}
+				OR = {
+					NOT = { has_planet_flag = destroyed_by_colossus }
+					has_planet_flag = planet_godrayed
+				}
 			destroy_colony = yes
 			change_pc = pc_broken
 			reset_planet = yes
@@ -1760,13 +1825,24 @@ planet_event = {
 	is_triggered_only = yes
 	
 	immediate = {
+		set_global_flag = ai_invasion_defeated
 		event_target:final_machine_world_destroyer = { set_country_flag = does_not_compute }
 		if = {
 			limit = {
 				event_target:final_machine_world_destroyer = { is_ai = no }
+				NOT = { has_planet_flag = planet_shielded }
 			}
 			event_target:final_machine_world_destroyer = {
 				country_event = { id = crisis.2480 days = 10 random = 10 }
+			}
+		}
+		if = {
+			limit = {
+				event_target:final_machine_world_destroyer = { is_ai = no }
+				has_planet_flag = planet_shielded
+			}
+			event_target:final_machine_world_destroyer = {
+				country_event = { id = crisis.2481 days = 10 random = 10 }
 			}
 		}
 		remove_global_flag = synth_terror
@@ -1774,7 +1850,10 @@ planet_event = {
 		remove_global_flag = ai_invasion_ongoing
 		if = {
 			limit = {
-				NOT = { has_planet_flag = destroyed_by_colossus }
+				OR = {
+					NOT = { has_planet_flag = destroyed_by_colossus }
+					has_planet_flag = planet_godrayed
+				}
 			}
 			destroy_colony = yes
 			change_pc = pc_broken
@@ -3062,11 +3141,6 @@ planet_event = {
 	
 	option = {
 		name = crisis.2091.a
-		while = {
-			count = 3
-			random_owned_pop = { kill_pop = yes }
-		}
-		add_planet_devastation = 20
 		owner = {
 			if = {
 				limit = {
@@ -3078,6 +3152,8 @@ planet_event = {
 				}
 			}
 		}
+		random_owned_pop = { kill_pop = yes }
+		add_planet_devastation = 20			 
 	}
 }
 
@@ -4103,3 +4179,18 @@ country_event = {
 		add_relic = r_contingency_core
 	}
 }
+# Mainframe Core captured (alternate event for shielding the last planet)
+country_event = {
+	id = crisis.2481
+	title = "crisis.2480.name"
+	desc = "crisis.2481.desc"
+	picture = GFX_evt_satellite_in_orbit
+	show_sound = event_mystic_reveal
+
+	is_triggered_only = yes
+
+	option = {
+		name = GOOD
+		add_relic = r_contingency_core
+	}
+}																		 

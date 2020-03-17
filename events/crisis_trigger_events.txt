@@ -46,16 +46,17 @@ event = {
 				10 = {
 					modifier = {
 						factor = 0
-						NOT = {
+						NOR = {
+							is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
 							any_country = {
 								is_country_type = default
 								OR = {
 									has_technology = "tech_psi_jump_drive_1"
 									has_technology = "tech_jump_drive_1"
-								}							
-							}						
+								}
+							}
 						}
-					}				
+					}
 					modifier = {
 						factor = 4
 						any_country = {
@@ -69,6 +70,10 @@ event = {
 							is_country_type = default
 							has_country_flag = completed_rogue_scientist
 						}
+					}
+					modifier = {
+						factor = 2
+						is_active_resolution = "resolution_galacticstudies_extradimensional_experimentation"
 					}
 					country_event = { id = crisis.1000 days = 200 random = 800 }
 					set_global_flag = galactic_crisis_happened

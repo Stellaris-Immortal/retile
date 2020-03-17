@@ -2577,7 +2577,7 @@ country_event = {
 		}
 		hidden_effect = {
 			event_target:coils_planet = {
-				every_pop = {
+				every_owned_pop = {
 					limit = {
 						owner = {
 							is_same_value = event_target:coils_planet.owner
@@ -3126,7 +3126,7 @@ fleet_event = {
 			is_ai = no
 			has_country_flag = worm_events_available
 			from = {
-				any_ship_in_system = {
+				any_fleet_in_system = {
 					exists = owner
 					owner = {
 						is_country_type = guardian_sphere
@@ -3509,7 +3509,7 @@ planet_event = {						# RETILE
 			has_event_chain = WORM_CHAIN_1
 			NOT = { has_country_flag = alignment_built }
 		}
-		has_deposit = retile_deposit_alignment
+		has_building = building_akx_worm_3
 	}
 
 	immediate = { 
@@ -3651,7 +3651,6 @@ planet_event = {
 						is_planet_class = pc_relic
 						is_star = yes
 					}
-					planet_size < 26
 				}
 				every_owned_pop = {
 					limit = {
@@ -3711,7 +3710,7 @@ planet_event = {
 				change_pc = pc_nuked
 				reroll_planet = yes
 			}
-			random_system_planet = {
+			every_system_planet = {
 				limit = { is_star = yes }
 				change_pc = pc_black_hole
 			}

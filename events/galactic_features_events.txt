@@ -24,14 +24,10 @@ ship_event = {
 	
 	trigger = {
 		FROM = { has_star_flag = guardians_of_zanaam }
-		owner = {
-			NOT = { has_country_flag = guardians_zanaam }
-		}
 		NOT = { has_global_flag = guardians_zanaam_destroyed }
 	}
 	
 	immediate = {
-		owner = { set_country_flag = guardians_zanaam }
 		random_country = {
 			limit = {
 				is_country_type = faction
@@ -638,23 +634,19 @@ ship_event = {
 	trigger = {
 		FROM = { 
 			has_star_flag = sanctuary_system
-			any_ship_in_system = {
-				fleet = { has_fleet_flag = sanctuary_core }
+			any_fleet_in_system = {
+				has_fleet_flag = sanctuary_core
 			}
 			any_system_planet = {
 				exists = owner
 				owner = { is_country_type = primitive }
 			}
 		}
-		NOT = { owner = { has_country_flag = sanctuary_system_visited } }
-		
 	}
 	
 	immediate = {
 		owner = { 
-			set_country_flag = sanctuary_system_visited
 			establish_communications_no_message = event_target:sanctuary
-
 		}
 	}
 	
@@ -891,7 +883,7 @@ event = {
 			limit = {
 				has_star_flag = blue_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = crystal }
 					}
@@ -938,7 +930,7 @@ event = {
 			limit = {
 				has_star_flag = blue2_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = crystal }
 					}
@@ -1051,7 +1043,7 @@ event = {
 			limit = {
 				has_star_flag = green_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = crystal }
 					}
@@ -1154,7 +1146,7 @@ event = {
 			limit = {
 				has_star_flag = green2_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = crystal }
 					}
@@ -1361,7 +1353,7 @@ event = {
 			limit = {
 				has_star_flag = red_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = crystal }
 					}
@@ -1508,7 +1500,7 @@ event = {
 			limit = {
 				has_star_flag = red2_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = crystal }
 					}
@@ -1719,7 +1711,7 @@ event = {
 			limit = {
 				has_star_flag = elite_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = crystal }
 					}
@@ -1847,7 +1839,7 @@ event = {
 			limit = {
 				has_star_flag = void_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = cloud }
 					}
@@ -1887,7 +1879,7 @@ event = {
 			limit = {
 				has_star_flag = void2_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = cloud }
 					}
@@ -1966,7 +1958,7 @@ event = {
 			limit = {
 				has_star_flag = amoeba_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = amoeba }
 					}
@@ -2014,7 +2006,7 @@ event = {
 			limit = {
 				has_star_flag = amoeba2_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = amoeba }
 					}
@@ -2243,7 +2235,7 @@ event = {
 			limit = {
 				has_star_flag = drone_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = drone }
 					}
@@ -2303,7 +2295,7 @@ event = {
 			limit = {
 				has_star_flag = drone2_system
 				NOR = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = drone }
 					}
