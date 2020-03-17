@@ -4,7 +4,10 @@ generate_empire_home_planet = {
 
 generate_home_system_resources = {
 	every_system_planet = {
-		limit = { colonizeable_planet = no }
+		limit = { 
+			colonizeable_planet = no
+			NOT = { has_planet_flag = ignore_startup_effect }
+		}
 		prevent_anomaly = yes
 		clear_deposits = yes
 	}
@@ -17,7 +20,10 @@ generate_home_system_resources = {
 
 	random_system_planet = {
 		limit = {
-			NOT = { has_planet_flag = starting_deposit }
+			NOT = { 
+				has_planet_flag = starting_deposit
+				NOT = { has_planet_flag = ignore_startup_effect }
+			}
 			OR = {
 				is_planet_class = pc_a_star
 				is_planet_class = pc_b_star
@@ -69,6 +75,7 @@ generate_home_system_resources = {
 	random_system_planet = {
 		limit = {
 			NOT = { has_planet_flag = starting_deposit }
+			NOT = { has_planet_flag = ignore_startup_effect }
 			OR = {
 				is_asteroid = yes
 				is_planet_class = pc_barren
@@ -113,6 +120,7 @@ generate_home_system_resources = {
 		random_system_planet = {
 			limit = {
 				NOT = { has_planet_flag = starting_deposit }
+				NOT = { has_planet_flag = ignore_startup_effect }
 				OR = {
 					is_asteroid = yes
 					is_planet_class = pc_barren
@@ -157,6 +165,7 @@ generate_home_system_resources = {
 	random_system_planet = {
 		limit = {
 			NOT = { has_planet_flag = starting_deposit }
+			NOT = { has_planet_flag = ignore_startup_effect }
 			OR = {
 				is_planet_class = pc_toxic
 				is_planet_class = pc_frozen
@@ -190,6 +199,7 @@ generate_home_system_resources = {
 	random_system_planet = {
 		limit = {
 			NOT = { has_planet_flag = starting_deposit }
+			NOT = { has_planet_flag = ignore_startup_effect }
 			OR = {
 				is_planet_class = pc_toxic
 				is_planet_class = pc_frozen
