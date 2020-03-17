@@ -1038,12 +1038,36 @@ country_event = {
 						}
 					}
 					lootbox_contents_j = {
-						add_resource = { 			 engineering_research = 2000 }
-						tooltip = { add_resource = { engineering_research = 2000 } }
+						add_monthly_resource_mult = {
+							resource = engineering_research
+							value = 25
+							min = 2000
+							max = 2000
+						}
+						tooltip = {
+							add_monthly_resource_mult = {
+								resource = engineering_research
+								value = 25
+								min = 2000
+								max = 2000
+							}
+						}
 					}
 					lootbox_contents_k = {
-						add_resource = { 			 society_research = 1000 }
-						tooltip = { add_resource = { society_research = 1000 } }
+						add_monthly_resource_mult = {
+							resource = society_research
+							value = 25
+							min = 1000
+							max = 1000
+						}
+						tooltip = {
+							add_monthly_resource_mult = {
+								resource = society_research
+								value = 25
+								min = 1000
+								max = 1000
+							}
+						}
 					}
 					lootbox_contents_l = {
 						ruler = { add_trait = leader_trait_ruler_psionic }
@@ -1462,7 +1486,10 @@ fleet_event = {
 		is_same_value = event_target:caravaneer_fleet1_fleet
 		fromfrom = {
 			exists = space_owner
-			space_owner = { is_country_type = default }
+			space_owner = {
+				is_country_type = default
+				NOT = { has_country_flag = recent_cara_1010 }
+			}
 		}
 		from = {
 			OR = {
@@ -1478,6 +1505,12 @@ fleet_event = {
 
 	immediate = {
 		log = "fleet 1 entered system"
+		fromfrom.space_owner = {
+			set_timed_country_flag = {
+				flag = recent_cara_1010
+				days = 540
+			}
+		}
 		# Establish Communications
 		if = {
 			limit = { fromfrom.space_owner = { NOT = { has_communications = root.owner } } }
@@ -1695,7 +1728,13 @@ fleet_event = {
 	}
 
 	immediate = {
-		from.space_owner = { country_event = { id = cara.1251 } }
+		from.space_owner = {
+			set_timed_country_flag = {
+				flag = recent_cara_1010
+				days = 360
+			}
+			country_event = { id = cara.1251 }
+		}
 	}
 }
 
@@ -2072,7 +2111,10 @@ fleet_event = {
 		is_same_value = event_target:caravaneer_fleet2_fleet
 		fromfrom = {
 			exists = space_owner
-			space_owner = { is_country_type = default }
+			space_owner = {
+				is_country_type = default
+				NOT = { has_country_flag = recent_cara_2010 }
+			}
 		}
 		from = {
 			OR = {
@@ -2086,6 +2128,12 @@ fleet_event = {
 	}
 
 	immediate = {
+		fromfrom.space_owner = {
+			set_timed_country_flag = {
+				flag = recent_cara_2010
+				days = 540
+			}
+		}
 		# Establish Communications
 		if = {
 			limit = { fromfrom.space_owner = { NOT = { has_communications = root.owner } } }
@@ -2387,7 +2435,13 @@ fleet_event = {
 	}
 
 	immediate = {
-		from.space_owner = { country_event = { id = cara.2251 } }
+		from.space_owner = {
+			set_timed_country_flag = {
+				flag = recent_cara_2010
+				days = 360
+			}
+			country_event = { id = cara.2251 }
+		}
 	}
 }
 
@@ -2804,7 +2858,10 @@ fleet_event = {
 		is_same_value = event_target:caravaneer_fleet3_fleet
 		fromfrom = {
 			exists = space_owner
-			space_owner = { is_country_type = default }
+			space_owner = {
+				is_country_type = default
+				NOT = { has_country_flag = recent_cara_3010 }
+			}
 		}
 		from = {
 			OR = {
@@ -2818,6 +2875,12 @@ fleet_event = {
 	}
 
 	immediate = {
+		fromfrom.space_owner = {
+			set_timed_country_flag = {
+				flag = recent_cara_3010
+				days = 540
+			}
+		}
 		# Establish Communications
 		if = {
 			limit = { fromfrom.space_owner = { NOT = { has_communications = root.owner } } }
@@ -3121,7 +3184,13 @@ fleet_event = {
 	}
 
 	immediate = {
-		from.space_owner = { country_event = { id = cara.3251 } }
+		from.space_owner = {
+			set_timed_country_flag = {
+				flag = recent_cara_3010
+				days = 360
+			}
+			country_event = { id = cara.3251 }
+		}
 	}
 }
 
@@ -3847,7 +3916,7 @@ country_event = {
 			limit = {
 				is_colony = yes
 				solar_system = {
-					any_ship_in_system = {
+					any_fleet_in_system = {
 						exists = owner
 						owner = { is_country_type = caravaneer_fleet }
 					}
@@ -3863,16 +3932,15 @@ country_event = {
 				}
 			}
 			save_event_target_as = pops_join_caravan_planet
-			while = {
-				count = 1
-				random_pop = {
-					limit = {
-						is_enslaved = no
-						is_being_purged = no
-						happiness < 0.60
-					}
-					kill_pop = yes
+			random_pop = {
+				limit = {
+					is_enslaved = no
+					is_being_purged = no
+					happiness < 0.60
+	  
+				   
 				}
+				kill_pop = yes
 			}
 		}
 	}
@@ -3961,12 +4029,12 @@ country_event = {
 
 	option = {
 		name = cara.4010.b
-		hidden_effect = {
-			if = {
-				limit = { is_xenophobe = yes }
-				add_resource = { influence = 30 }
-				tooltip = { add_resource = { influence = 30 } }
-			}
+		if = {
+		 
+			limit = { is_xenophobe = yes }
+									 
+			add_resource = { influence = 30 }
+	
 		}
 	}
 }
@@ -4238,6 +4306,7 @@ country_event = {
 							NOT = {
 								any_pop = {
 									is_organic_species = yes
+									NOT = { is_same_species = event_target:welcome_fleet.owner.species }										 
 								}
 							}
 						}
@@ -4283,12 +4352,14 @@ country_event = {			# RETILE
 					any_pop = {
 						is_xenophile = yes	
 						is_organic_species = yes
+						NOT = { is_same_species = event_target:party_host }								 
 					}
 				}
 				random_pop = {
 					limit = {
 						is_xenophile = yes	
 						is_organic_species = yes
+						NOT = { is_same_species = event_target:party_host }								 
 					}
 					save_event_target_as = party_goer
 				}
@@ -4298,12 +4369,14 @@ country_event = {			# RETILE
 					any_pop = {
 						is_xenophobe = no
 						is_organic_species = yes
+						NOT = { is_same_species = event_target:party_host }								 
 					}
 				}
 				random_pop = {
 					limit = {
 						is_xenophobe = yes	
 						is_organic_species = yes
+						NOT = { is_same_species = event_target:party_host }								 
 					}
 					save_event_target_as = party_goer
 				}
@@ -4312,6 +4385,7 @@ country_event = {			# RETILE
 				random_pop = {
 					limit = {
 						is_organic_species = yes
+						NOT = { is_same_species = event_target:party_host }								 
 					}
 					save_event_target_as = party_goer
 				}
@@ -4973,8 +5047,7 @@ planet_event = { #Megacorpse
 			}
 		}
 		add_planet_devastation = 20
-		random_owned_pop = { kill_pop = yes }
-		#random_owned_pop = { kill_pop = yes }		
+		random_owned_pop = { kill_pop = yes }	
 		enable_special_project = {
 			name = MEGACORPSE_ORIGINS
 			location = this

@@ -612,7 +612,7 @@ country_event = {
 			}
 		}
 		random_country = {
-			limit = { is_country_type = default }
+			limit = { is_country_type = global_event }
 			country_event = { id = crisis.19 days = 400 random = 200 }
 		}
 	}
@@ -848,29 +848,101 @@ country_event = {
 			limit = { is_country_type = default }
 			country_event = { id = crisis.20 }
 		}
+		# Recreate Prethoryn if Vanguard was destroyed
+		if = {
+			limit = {
+				NOT = { exists = event_target:prethoryn }
+			}
+			create_species = {
+				name = "NAME_Prethoryn"
+				class = SWARM
+				portrait = random
+				traits = random
+				immortal = yes
+				effect = { save_event_target_as = prethoryn_species }
+			}
+			create_country = {
+				name = "NAME_Prethoryn_Scourge"
+				type = "swarm"
+				species = event_target:prethoryn_species
+				name_list = "Prethoryn"
+				flag = {
+					icon= {
+						category = "special"
+						file = "the_swarm.dds"
+					}
+					background= {
+						category = "backgrounds"
+						file = "new_dawn.dds"
+					}
+					colors={
+						"orange"
+						"grey"
+						"null"
+						"null"
+					}
+				}
+				effect = {
+					save_event_target_as = prethoryn
+					save_event_target_as = prethoryn_vgrd
+					create_ship_design = { design = "NAME_Swarm_Transport" }
+					add_ship_design = last_created_design
+					create_ship_design = { design = "NAME_Swarm_Colonizer" }
+					add_ship_design = last_created_design
+					create_ship_design = { design = "NAME_Swarm_Constructor" }
+					add_ship_design = last_created_design
+					create_ship_design = { design = "NAME_Swarm_Starbase" }
+					add_ship_design = last_created_design
+				}
+			}
+			every_country = {
+				limit = {
+					OR = {
+						is_country_type = default
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+					}
+				}
+				establish_communications_no_message = event_target:prethoryn
+				add_opinion_modifier = {
+					who = event_target:prethoryn
+					modifier = opinion_swarm
+				}
+				event_target:prethoryn = {
+					add_opinion_modifier = {
+						who = PREV
+						modifier = opinion_prey
+					}
+				}
+			}
+		}
 		random_rim_system = {
 			limit = { has_star_flag = swarm_invasion_target_1 }
-			#if = {
-			#	limit = {
-			#		any_ship_in_system = {
-			#			OR = {
-			#				is_ship_class = shipclass_starbase
-			#			}
-			#		}
-			#	}
-			#	random_fleet_in_system = {
-			#		limit = {
-			#			any_owned_ship = {
-			#				is_ship_class = shipclass_starbase
-			#			}
-			#		}
-			#		destroy_fleet = this
-			#	}
-			#}
-			#create_starbase = {
-			#	size = starbase_outpost
-			#	owner = event_target:prethoryn
-			#}
+			if = {
+				limit = {
+					event_target:prethoryn = {
+						NOT = { 
+							any_owned_ship = { is_ship_class = shipclass_starbase } 
+						}
+					}
+					any_fleet_in_system = { is_ship_class = shipclass_starbase }
+										  
+		
+	   
+				}
+				random_fleet_in_system = {
+					limit = {
+						any_owned_ship = { is_ship_class = shipclass_starbase }
+										  
+		
+					}
+					destroy_fleet = this
+				}
+			}
+			create_starbase = {
+				size = starbase_swarm
+				owner = event_target:prethoryn
+			}
 			random_system_planet = {
 				save_event_target_as = spawn_location
 				event_target:prethoryn = {
@@ -3133,17 +3205,23 @@ country_event = {
 		stop_crisis_sound = yes
 		end_crisis = yes
 		remove_global_flag = ongoing_prethoryn_invasion
+		set_global_flag = prethoryn_invasion_defeated									   
 		observer_event = { id = observer.33 }
-		every_country = {
-			limit = {
-				OR = {
-					is_country_type = default
-					is_country_type = fallen_empire
-					is_country_type = awakened_fallen_empire
+		# Crisis reward is handled through Galactic Focus if the community exists
+		if = {
+			limit = { NOT = { has_global_flag = galactic_community_formed } }
+			every_country = {
+				limit = {
+					OR = {
+						is_country_type = default
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
+					}
 				}
+				country_event = { id = crisis.211 }
 			}
-			country_event = { id = crisis.211 }
 		}
+
 		random_country = {
 			limit = { is_country_type = global_event }
 			country_event = { id = crisis.119 days = 360 }

@@ -32,6 +32,11 @@ country_event = {
 					is_country_type = default
 					OR = {
 						fleet_power > 50000
+							has_federation = yes
+							federation = {
+								fleet_power > 70000
+							}
+						}
 						any_owned_planet = {
 							has_planet_flag = fallen_empire_world
 						}
@@ -207,24 +212,9 @@ country_event = {
 			}
 		}
 
-		# Changing country type resets resources, so give them full stores
-		add_resource = { minerals = 50000 }
-		add_resource = { energy = 50000 }
-		add_resource = { food = 5000 }
-		add_resource = { influence = 1000 }
-
-		# Add some more fleet
-		country_event = { id = fallen_empires.13 }
-		if = {
-			limit = {
-				any_country = {
-					is_country_type = default
-					fleet_power > 50000
-				}
-			}
-			country_event = { id = fallen_empires.13 }
-		}
-
+		add_awakened_fallen_empire_resources = yes
+		add_awakened_fallen_empire_fleet = yes
+		
 		# Establish communications
 		every_country = {
 			limit = {

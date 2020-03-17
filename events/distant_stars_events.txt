@@ -22,6 +22,21 @@ ship_event = {
 	
 	is_triggered_only = yes
 			
+	trigger = {
+		owner = {
+			any_neighbor_country = {
+				is_ai = yes
+				is_country_type = default
+				is_homicidal = no
+				has_communications = prev
+				NOR = {
+					is_at_war_with = prev
+					is_same_value = prev
+				}
+			}
+		}
+	}
+	
 	immediate = { 
 		create_ambient_object = {
 			type = "abandoned_ship_object"
@@ -504,7 +519,7 @@ planet_event = {
 			add_resource = { minerals = 100 }
 		}
 		root = {
-			every_pop = {
+			every_owned_pop = {
 				limit = { species = { has_species_flag = primitive_robots_flag } }
 				kill_pop = yes
 			}
@@ -519,7 +534,7 @@ planet_event = {
 			add_resource = { minerals = 100 }
 		}
 		root = {
-			every_pop = {
+			every_owned_pop = {
 				limit = { species = { has_species_flag = primitive_robots_flag } }
 				kill_pop = yes
 			}
@@ -971,7 +986,7 @@ planet_event = { #Rage Virus cured
 		name = EXCELLENT
 		owner = {
 			hidden_effect = {
-				every_pop = {
+				every_owned_pop = {
 					limit = {
 						has_modifier = erratic_behavior
 						owner = { is_same_value = root.owner }
@@ -7318,7 +7333,7 @@ country_event = { #Create Full Ratling Empire #Root = Global Event Country
 						NOT = { exists = owner }
 					}
 				}
-				every_pop = {
+				every_owned_pop = {
 					limit = {
 						is_same_species = event_target:ratling_species
 						NOT = { exists = owner }
@@ -9178,12 +9193,7 @@ ship_event = {
 				min = @tier2researchmin
 				max = @tier2researchmax
 			}
-			add_monthly_resource_mult = {
-				resource = society_research
-				value = @tier2researchreward
-				min = @tier2researchmin
-				max = @tier2researchmax
-			}
+			add_resource = { nanites = 200 }
 			generate_lcluster_clue = yes
 		}
 	}
@@ -9278,6 +9288,7 @@ ship_event = {
 				min = @tier2researchmin
 				max = @tier2researchmax
 			}
+			add_resource = { nanites = 200 }					   
 			generate_lcluster_clue = yes
 		}
 	}
@@ -9832,7 +9843,19 @@ country_event = { #Atomic Clock follow-up: Selection
 				}
 				country_event = { id = distar.315 } #Useable Gray Goo ship is built
 			}
-			1 = { country_event = { id = distar.320 } } #Unmanned research facilities built (Phys + Eng)
+			0 = { 
+				modifier = {
+					add = 1
+					FROMFROM.solar_system = {
+						any_system_planet = {
+							habitable_planet = no
+							has_anomaly = no
+							is_star = no
+						}
+					}
+				}
+				country_event = { id = distar.320 } #Unmanned research facilities built (Phys + Eng)
+			}
 			0 = {
 				modifier = {
 					add = 1
@@ -10486,7 +10509,7 @@ country_event = {
 				}
 				species = last_created
 				ethos = random
-
+				origin = "origin_enlightened" # Should only be visible if they become spacefaring
 				flag = {
 					icon = {
 						category = "special"
@@ -10521,12 +10544,9 @@ country_event = {
 				limit = { is_deposit_type = d_dangerous_wildlife_blocker }
 				clear_blocker = yes
 			}
-			while = {
-				count = 1
-				create_pop = {
-					species = last_created
-				}					
-			}
+			create_pop = {
+				species = last_created
+			}					
 			add_building = building_crude_huts
 			add_building = building_crude_huts
 		}
@@ -11749,6 +11769,14 @@ ship_event = {
 	
 	is_triggered_only = yes
 
+	desc = {
+		trigger = { owner = { is_lithoid_empire = no } }
+		text = distar.1050.desc
+	}
+	desc = {
+		trigger = { owner = { is_lithoid_empire = yes } }
+		text = distar.1050.desc_lithoid
+	}
 	trigger = {
 		any_country = {
 			is_country_type = default
@@ -11766,12 +11794,21 @@ ship_event = {
 			limit = {
 				NOR = {
 					is_same_value = root.owner
+					has_country_flag = lost_colony_parent					  
 					has_authority = auth_machine_intelligence
 					is_synthetic_empire = yes
 					owner_species = {
 						has_trait = trait_mechanical
 						has_trait = trait_machine_unit
+						has_trait = trait_lithoid	   
 					}
+				}
+			}
+			weights = {
+				base = 1
+				modifier = {
+					mult = 10
+					has_communications = root.owner
 				}
 			}
 			establish_communications_no_message = root.owner
@@ -12185,15 +12222,100 @@ ship_event = {
 				}
 			}
 		}
+			### Fallback Version with lighter requirements
+			if = {
+				limit = {
+					NOT = { exists = event_target:anomalous_star_system }
+				}
+				from.solar_system ={
+					closest_system = {
+						min_steps = 2
+						max_steps = 30
+						limit = {
+							NOT = {
+								has_star_flag = hostile_system
+							}
+							star = {
+								NOT = { is_star_class = sc_black_hole }
+							}
+						}
+						save_event_target_as = anomalous_star_system
+						star = {
+							save_global_event_target_as = anomalous_star
+						}
+					}
+				}
+			}
+			### Fallback Version that creates an entirely new system for the event  
+			ELSE_IF = {
+				limit = {
+					NOT = { exists = event_target:anomalous_star_system }
+				}
+				owner = {
+					random_system_within_border = {
+						spawn_system = {
+							min_distance = 10
+							max_distance = 30
+							max_jumps = 0
+							initializer = "star_crazy_fallback_system"
+						}
+					}
+					save_event_target_as = anomalous_star_system
+					star = {
+						save_global_event_target_as = anomalous_star
+					}
+				}
+			}
+		}
+		if = {
+			limit = {
+				exists = event_target:anomalous_star_system
+			}
 		enable_special_project = {
 			name = "STAR_CRAZY"
 			location = event_target:anomalous_star
 			owner = root.owner
 		}
 	}
+		ELSE = {
+			hidden_effect = {
+				ship_event = { id = distar.1071 days = 3 }
+			}
+		}
+	}
+	
 	option = {
 		name = distar.1070.b
 		owner = { add_resource = { influence = 25 } }
+	}
+}
+
+### Fallback solution to failed system find/create in distar.1070
+ship_event = {
+	id = distar.1071
+	title = "distar.1071.name"
+	desc = "distar.1071.desc"
+	picture = GFX_evt_star_chart
+	show_sound = event_mystic_reveal
+	location = event_target:crazy_scientist_ship
+
+	is_triggered_only = yes
+
+	immediate = {
+	}
+
+	after = {
+		owner = {
+			remove_country_flag = star_crazy
+		}
+		clear_global_event_target = crazy_science_officer
+	}
+
+	option = {
+		name = distar.1071.a
+		from.leader = {
+			add_experience = 350
+		}
 	}
 }
 
@@ -12224,6 +12346,11 @@ country_event = {
 			add_experience = 200
 		}
 		event_target:anomalous_star = {
+			random_deposit = {
+				limit = { #none
+				}
+				remove_deposit = yes
+			}
 			add_deposit = d_energy_8
 			surveyed = {
  				set_surveyed = yes
@@ -12376,7 +12503,7 @@ country_event = {	# RETILE
 				class = MOL
 				portrait = mol8
 				traits = {
-					ideal_planet_class = "pc_frozen"
+					ideal_planet_class = pc_arctic
 					trait = trait_presapient_proles
 				}
 				homeworld = this
@@ -12389,8 +12516,9 @@ country_event = {	# RETILE
 			create_pop = {
 				species = event_target:azizians_species
 			}
-			hidden_effect = { set_planet_flag = azizian_pops_planet }
+			set_planet_flag = azizian_pops_planet
 		}
+		custom_tooltip = distar.1081.a.tooltip								 
 	}
 # Gives pets
 	option = {
@@ -14286,7 +14414,7 @@ country_event = {
 								}
 							}
 							NOT = {
-								any_ship_in_system = {
+								any_fleet_in_system = {
 									exists = owner
 									owner = { 
 										is_hostile = root 
@@ -14416,15 +14544,9 @@ planet_event = {
 		exists = owner
 		has_modifier = enigmatic_cache_in_orbit
 		NOT = {
-			solar_system = {
-				any_ship_in_system = {
-					fleet = {
-						exists = orbit
-						orbit = { is_same_value = root }
-						exists = owner
-						owner = { is_same_value = event_target:enigmatic_cache_country }
-					}
-				}
+			any_fleet_in_orbit = {
+					exists = owner
+					owner = { is_same_value = event_target:enigmatic_cache_country }
 			}
 		}
 	}
@@ -14438,19 +14560,13 @@ planet_event = {
 					}
 				}
 				has_modifier = enigmatic_cache_in_orbit
-				solar_system = {
 					NOT = {
-						any_ship_in_system = {
-							fleet = {
-								exists = orbit
-								orbit = { is_same_value = root }
-								exists = owner
-								owner = { is_same_value = event_target:enigmatic_cache_country }
-							}
+						any_fleet_in_orbit = {
+							exists = owner
+							owner = { is_same_value = event_target:enigmatic_cache_country }
 						}
 					}
 				}
-			}
 			owner = { abort_special_project = { type = ENIGMATIC_CACHE_PROJECT } }
 		}
 		remove_modifier = enigmatic_cache_in_orbit
@@ -15866,21 +15982,13 @@ country_event = {
 
 	trigger = {
 		exists = event_target:enigmatic_cache_country
-		fromfrom = {
-			solar_system = {
-				any_ship_in_system = {
-					fleet = {
-						exists = owner
-						owner = { is_same_value = event_target:enigmatic_cache_country }
-						exists = orbit
-						orbit = { 
-							is_same_value = fromfrom
-							owner = {
-								has_special_project = ENIGMATIC_UPLIFTING
-							}
-						}
-					}
-				}
+		fromfrom = {	   
+			owner = {
+				has_special_project = ENIGMATIC_UPLIFTING
+			}
+			any_fleet_in_orbit = {
+				exists = owner
+				owner = { is_same_value = event_target:enigmatic_cache_country }
 			}
 		}
 	}
@@ -16768,7 +16876,7 @@ country_event = { # Planetfall on planet X after being shoot into deep space. Re
 			civics = random
 			species = event_target:nivlac_species
 			ignore_initial_colony_error = yes
-			type = nivlacs
+			type = default
 			ethos = random
 			flag = random
 			effect = {
@@ -16922,7 +17030,7 @@ country_event = { # Helpful relocation was a success
 			civics = random
 			species = event_target:nivlac_species
 			ignore_initial_colony_error = yes
-			type = nivlacs
+			type = default
 			ethos = random
 			flag = random
 			effect = {
@@ -17102,6 +17210,7 @@ ship_event = {
 		last_created_leader = {
 			set_is_female = yes
 			save_global_event_target_as = stranded_scientist_leader
+			exile_leader_as = stranded_scientist_leader								  
 		}
 	}
 
@@ -17111,8 +17220,6 @@ ship_event = {
 
 		hidden_effect = {
 			owner = {
-				country_event = { id = distar.3021 days = 60 }
-
 				clone_leader = {
 					target = event_target:stranded_scientist_leader
 					class = scientist
@@ -17120,6 +17227,7 @@ ship_event = {
 						save_global_event_target_as = stranded_scientist_leader_clone
 					}
 				}
+				country_event = { id = distar.3021 days = 60 }
 			}
 			event_target:stranded_scientist_leader = {
 				kill_leader = { type = scientist show_notification = no }
@@ -17155,6 +17263,10 @@ country_event = {
 	picture = GFX_evt_physics_research
 	show_sound = event_scanner
 	location = from
+	
+	trigger = {
+		exists = event_target:stranded_scientist_leader_clone
+	}	
 	
 	is_triggered_only = yes
 
@@ -17282,6 +17394,10 @@ country_event = { # More info about the molluscs
 	is_triggered_only = yes
 
 	option = {  # Yes. Proceed with the integration.
+		trigger = {		# Prevents Genocidal Empires from integrating molluscs
+			is_homicidal = no
+		}
+		
 		name = distar.3031.a
 
 		enable_special_project = {
@@ -19005,7 +19121,7 @@ fleet_event = {
 			NOT = { has_country_flag = encountered_hatchling }
 		}
 		FROM = {
-			any_ship_in_system = {
+			any_fleet_in_system = {
 				exists = owner
 				owner = {
 					is_country_type = guardian_hatchling
@@ -20388,7 +20504,7 @@ country_event = {
 }
 
 # Science Ship enters dragon system
-ship_event = {
+fleet_event = {
 	id = distar.13030
 	title = distar.13030.name
 	desc = distar.13030.desc
