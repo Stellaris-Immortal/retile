@@ -179,6 +179,10 @@ country_event = {
 	option = {
 		name = distar.3.a
 		add_resource = { influence = 100 }
+		add_favors = {
+			target = event_target:wreckage_owner
+			value = 1
+		}
 		event_target:wreckage_owner = {
 			add_opinion_modifier = {
 				who = root
@@ -7328,7 +7332,7 @@ country_event = { #Create Full Ratling Empire #Root = Global Event Country
 			every_system_planet = {
 				limit = {
 					has_planet_flag = ratling_planet
-					any_pop = {
+					any_owned_pop = {
 						is_same_species = event_target:ratling_species
 						NOT = { exists = owner }
 					}
@@ -10102,7 +10106,7 @@ country_event = { #A useable Gray Goo Ship is built
 		event_target:nanite_ship_fleet = {
 			delete_fleet = this
 		}
-		add_resource = { minerals = 1500 }
+		add_resource = { alloys = 1500 }
 		generate_lcluster_clue = yes
 		hidden_effect = {
 			event_target:nanite_ship_country = {
@@ -10124,24 +10128,29 @@ country_event = { #An unmanned computer network is built
 	is_triggered_only = yes
 
 	immediate = {
-		FROMFROMFROM = {
-			if = {
-				limit = { has_deposit_for = shipclass_mining_station }
-				clear_deposits = yes
-			}
-			if = {
-				limit = { has_mining_station = yes }
-				random_mining_station = { dismantle = yes }
-				create_research_station = { owner = root }
-			}
-		}
 	}
 
 	option = {
 		name = INCREDIBLE
-		FROMFROMFROM = {
-			add_modifier = { modifier = nanite_network days = -1 }
-			add_deposit = d_engineering_10
+		FROMFROMFROM.solar_system = {
+			random_system_planet = {
+				limit = {
+					habitable_planet = no
+					has_anomaly = no
+					is_star = no
+				}
+				if = {
+					limit = { has_deposit_for = shipclass_mining_station }
+					clear_deposits = yes
+				}
+				if = {
+					limit = { has_mining_station = yes }
+					random_mining_station = { dismantle = yes }
+					create_research_station = { owner = root }
+				}
+				add_modifier = { modifier = nanite_network days = -1 }
+				add_deposit = d_engineering_10
+			}
 		}
 	}
 }
@@ -12198,27 +12207,26 @@ ship_event = {
 	option = {
 		name = distar.1070.a
 		hidden_effect = {
-			random_system = {
-				limit = {
-					NOR = {
-						exists = space_owner
-						has_star_flag = hostile_system
-					}
-					distance = {
-						source = From
-						min_distance >= 10
-						max_distance <= 100
-					}
-					star = {
+			from.solar_system = {
+				closest_system = {
+					min_steps = 2
+					max_steps = 20
+					limit = {
 						NOR = {
-							has_deposit_for = shipclass_research_station
-							has_deposit_for = shipclass_mining_station
+							exists = space_owner
+							has_star_flag = hostile_system
+						}
+						star = {
+							NOR = {
+								is_star_class = sc_black_hole
+								has_deposit_for = shipclass_mining_station
+							}
 						}
 					}
-				}
-				save_event_target_as = anomalous_star_system
-				star = {
-					save_global_event_target_as = anomalous_star 
+					save_event_target_as = anomalous_star_system
+					star = {
+						save_global_event_target_as = anomalous_star
+					}
 				}
 			}
 		}
