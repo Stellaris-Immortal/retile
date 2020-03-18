@@ -8633,20 +8633,6 @@ country_event = {
 						value = 1
 					}
 				}
-				modifier = {
-					mult = 0.5
-					NOT = { 
-						any_owned_planet = {
-							OR = {
-								has_modifier = market_nominee_level_1
-								has_modifier = market_nominee_level_2
-								has_modifier = market_nominee_level_3
-								has_modifier = market_nominee_level_4
-								has_modifier = market_nominee_level_5
-							}
-						}
-					}
-				}
 			}
 			save_global_event_target_as = market_founder
 			random_owned_planet = {
@@ -9405,6 +9391,24 @@ country_event = {
 	is_triggered_only = yes
 	immediate = {
 		from = { set_country_flag = whatever_it_is_im_against_it_left_federation }
+	}
+}
+
+# Federation Cohesion Loss Upon Leaving/Joining
+country_event = {
+	id = action.202
+	hide_window = yes
+
+	trigger = {
+		exists = federation
+	}
+	
+	is_triggered_only = yes
+
+	immediate = {
+		federation = {
+			add_cohesion = -100
+		}
 	}
 }
 
