@@ -26,16 +26,16 @@ country_event = {
 				end_game_years_passed >= 0
 				NOT = { has_ethic = ethic_gestalt_consciousness }
 				is_at_war = no
-				fleet_power > 40000
-				# Wake up if regular empire is growing too strong or has started to conquer other fallen 		empires
+				fleet_power > 60000
+				# Wake up if regular empire is growing too strong or has started to conquer other fallen empires
 				any_country = {
 					is_country_type = default
 					OR = {
-						fleet_power > 50000
+						fleet_power > 70000
 						AND = {
 							has_federation = yes
 							federation = {
-								fleet_power > 70000
+								fleet_power > 90000
 							}
 						}
 						any_owned_planet = {
@@ -53,7 +53,7 @@ country_event = {
 			factor = 0.5
 			any_country = {
 				is_country_type = default
-				fleet_power > 75000
+				fleet_power > 120000
 			}
 		}
 		modifier = {
@@ -215,7 +215,7 @@ country_event = {
 
 		add_awakened_fallen_empire_resources = yes
 		add_awakened_fallen_empire_fleet = yes
-		
+
 		# Establish communications
 		every_country = {
 			limit = {
