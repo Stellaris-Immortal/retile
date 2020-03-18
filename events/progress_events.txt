@@ -317,11 +317,26 @@ planet_event = {
 	title = "progress.3.name"
 	picture = GFX_evt_big_landing_ship
 
+	desc = { # Lithoid origin 
+		text = progress.3.desc_lith
+		trigger = { 
+			FROM = { 
+				exists = FROM
+				is_ship_size = lithoid_colonizer
+			} 
+		}
+	}
 	desc = { # Continental
 		text = progress.3.desc_01
 		trigger = { 
 			is_planet_class = pc_continental 
 			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			NOT = {
+				FROM = { 
+					exists = FROM
+					is_ship_size = lithoid_colonizer
+				} 
+			}
 		}
 	}
 	desc = { # Ocean
@@ -329,6 +344,12 @@ planet_event = {
 		trigger = { 
 			is_planet_class = pc_ocean 
 			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			NOT = {
+				FROM = { 
+					exists = FROM
+					is_ship_size = lithoid_colonizer
+				} 
+			}
 		}
 	}
 	desc = { # Desert
@@ -336,6 +357,12 @@ planet_event = {
 		trigger = { 
 			is_planet_class = pc_desert 
 			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			NOT = {
+				FROM = { 
+					exists = FROM
+					is_ship_size = lithoid_colonizer
+				} 
+			}
 		}
 	}
 	desc = { # Tropical
@@ -343,6 +370,12 @@ planet_event = {
 		trigger = { 
 			is_planet_class = pc_tropical 
 			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			NOT = {
+				FROM = { 
+					exists = FROM
+					is_ship_size = lithoid_colonizer
+				} 
+			}
 		}
 	}
 	desc = { # Arid
@@ -350,6 +383,12 @@ planet_event = {
 		trigger = { 
 			is_planet_class = pc_arid 
 			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			NOT = {
+				FROM = { 
+					exists = FROM
+					is_ship_size = lithoid_colonizer
+				} 
+			}
 		}
 	}
 	desc = { # Tundra
@@ -357,6 +396,12 @@ planet_event = {
 		trigger = { 
 			is_planet_class = pc_tundra 
 			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			NOT = {
+				FROM = { 
+					exists = FROM
+					is_ship_size = lithoid_colonizer
+				} 
+			}
 		}
 	}
 	desc = { # Arctic
@@ -364,6 +409,12 @@ planet_event = {
 		trigger = { 
 			is_planet_class = pc_arctic 
 			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			NOT = {
+				FROM = { 
+					exists = FROM
+					is_ship_size = lithoid_colonizer
+				} 
+			}
 		}
 	}
 	desc = { # Savanna
@@ -371,6 +422,12 @@ planet_event = {
 		trigger = { 
 			is_planet_class = pc_savannah 
 			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			NOT = {
+				FROM = { 
+					exists = FROM
+					is_ship_size = lithoid_colonizer
+				} 
+			}
 		}
 	}
 	desc = { # Alpine
@@ -378,6 +435,12 @@ planet_event = {
 		trigger = { 
 			is_planet_class = pc_alpine 
 			NOT = { owner = { has_authority = auth_machine_intelligence } }
+			NOT = {
+				FROM = { 
+					exists = FROM
+					is_ship_size = lithoid_colonizer
+				} 
+			}
 		}
 	}
 	desc = { # Machine Empires
@@ -392,6 +455,7 @@ planet_event = {
 			is_planet_class = pc_gaia
 			is_planet_class = pc_habitat
 			is_planet_class = pc_ringworld_habitable
+			owner = { has_origin = origin_remnants }
 		}
 		owner = {
 			NOT = { has_country_flag = first_colony }
@@ -506,7 +570,7 @@ country_event = {
 				has_ethic = ethic_xenophile
 				has_ethic = ethic_fanatic_xenophile
 			}
-		}
+		}	
 	}
 	option = {
 		name = "progress.4.c"
