@@ -1,0 +1,712 @@
+################################
+#
+# Galactic Community Events
+#
+###############################
+
+namespace = galcom
+
+# Proposal to form the Galactic Community (HIDDEN)
+event = {
+	id = galcom.1
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOR = {
+			has_global_flag = galactic_community_founded
+			has_global_flag = galcom_founding_begun
+		}
+		count_country = { # minimum 3 countries
+			limit = {
+				is_country_type = default
+				is_homicidal = no
+			}
+			count >= 3
+		}
+		any_playable_country = {
+			perc_communications_with_playable >= 0.7
+			is_homicidal = no
+			is_gestalt = no
+		}
+	}
+
+	immediate = {
+		set_global_flag = galcom_founding_begun
+		random_playable_country = {
+			limit = {
+				perc_communications_with_playable >= 0.7
+				is_homicidal = no
+				is_gestalt = no
+			}
+			country_event = { id = galcom.2 }
+			every_playable_country = {
+				limit = {
+					NOT = { is_same_value = prev }
+					has_communications = prev
+					is_homicidal = no
+				}
+				country_event = { id = galcom.2 }
+			}
+		}
+		random_country = {
+			limit = { is_country_type = global_event }
+			country_event = { id = galcom.3 days = 180 }	# Days Halved
+		}
+	}
+}
+
+# Proposal to form the Galactic Community
+country_event = {
+	id = galcom.2
+	title = "galcom.2.name"
+	desc = {
+		trigger = {
+			NOT = { has_global_flag = galcom_form_failed }
+		}
+		text = galcom.2a.desc
+	}
+	desc = {
+		trigger = {
+			has_global_flag = galcom_form_failed
+		}
+		text = galcom.2b.desc
+	}
+	picture = GFX_evt_galactic_community
+	show_sound = event_vote
+
+	is_triggered_only = yes
+
+	option = {
+		name = galcom.2.a
+		custom_tooltip = galcom_2_aye
+		hidden_effect = {
+			set_country_flag = galcom_form_aye
+		}
+		ai_chance = {
+			factor = 15
+			modifier = {
+				factor = 3
+				has_ethic = ethic_xenophile
+			}
+			modifier = {
+				factor = 10
+				has_ethic = ethic_fanatic_xenophile
+			}
+			modifier = {
+				factor = 10
+				OR = {
+					has_civic = civic_diplomatic_corps
+					has_civic = civic_public_relations_specialists
+					has_civic = civic_hive_empath
+					has_civic = civic_machine_servitor
+				}
+			}
+		}
+	}
+	option = {
+		name = galcom.2.b
+		custom_tooltip = galcom_2_nay
+		hidden_effect = {
+			set_country_flag = galcom_form_nay
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 3
+				has_ethic = ethic_xenophobe
+			}
+			modifier = {
+				factor = 10
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+	}
+}
+
+# Check Votes
+country_event = {
+	id = galcom.3
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		# Form Galactic Community
+		if = {
+			limit = {
+				count_country = {
+					limit = {
+						is_country_type = default
+						has_country_flag = galcom_form_aye
+					}
+					count >= 3
+				}
+			}
+			every_country = {
+				limit = {
+					is_country_type = default
+					has_country_flag = galcom_form_aye
+				}
+				add_to_galactic_community = yes
+				country_event = { id = galcom.5 }
+			}
+			every_country = {
+				limit = {
+					is_country_type = default
+					has_country_flag = galcom_form_nay
+				}
+				country_event = { id = galcom.6 }
+			}
+			# Ask other potential applicants
+			random_country = {
+				limit = { is_country_type = global_event }
+				country_event = { id = galcom.15 days = 20 }
+			}
+			set_global_flag = galactic_community_founded
+		}
+		# Try again in 50 years
+		else = {
+			if = {
+				limit = {
+					NOT = { has_global_flag = galcom_form_failed }
+				}
+				set_global_flag = galcom_form_failed
+			}
+			every_country = {
+				limit = {
+					is_country_type = default
+					OR = {
+						has_country_flag = galcom_form_aye
+						has_country_flag = galcom_form_nay
+					}
+				}
+				country_event = { id = galcom.10 }
+			}
+			random_country = {
+				limit = { is_country_type = global_event }
+				country_event = { id = galcom.20 days = 9000 }	# Days Halved
+			}
+		}
+	}
+}
+
+# Galactic Community Formed - Joins
+country_event = {
+	id = galcom.5
+	title = "galcom.5.name"
+	desc = "galcom.5.desc"
+	picture = GFX_evt_galactic_community
+	show_sound = event_galactic_community
+
+	is_triggered_only = yes
+
+	option = {
+		name = galcom.5.a
+
+		hidden_effect = {
+			set_country_flag = league_of_nations_achievement
+		}
+	}
+}
+
+# Galactic Community Formed - Does Not Join
+country_event = {
+	id = galcom.6
+	title = "galcom.5.name"
+	desc = "galcom.6.desc"
+	picture = GFX_evt_galactic_community
+	show_sound = event_galactic_community
+
+	is_triggered_only = yes
+
+	option = {
+		name = galcom.6.a
+
+		hidden_effect = {
+			set_country_flag = whatever_it_is_im_against_it_rejected_community
+		}
+	}
+}
+
+# Galactic Community Not Formed
+country_event = {
+	id = galcom.10
+	title = "galcom.10.name"
+	desc = "galcom.10.desc"
+	picture = GFX_evt_civil_action
+	show_sound = event_assembly_fight
+
+	is_triggered_only = yes
+
+	option = {
+		name = galcom.10.a
+		trigger = {
+			has_country_flag = galcom_form_aye
+		}
+	}
+	option = {
+		name = galcom.10.b
+		trigger = {
+			has_country_flag = galcom_form_nay
+		}
+	}
+}
+
+#on_decade_pulse to catch any stragglers
+event = {
+	id = galcom.14
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		any_playable_country = {
+			is_galactic_community_member = no
+			NOT = { has_country_flag = galcom_form_nay }
+		}
+	}
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				is_galactic_community_member = no
+				NOT = { has_country_flag = galcom_form_nay }
+				any_playable_country = {
+					has_communications = prev
+					is_galactic_community_member = yes
+				}
+			}
+			country_event = { id = galcom.16 }
+		}
+	}
+}
+
+# Ask other potential applicants (HIDDEN)
+country_event = {
+	id = galcom.15
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_playable_country = {
+			is_galactic_community_member = no
+			NOT = { has_country_flag = galcom_form_nay }
+		}
+	}
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				is_galactic_community_member = no
+				NOT = { has_country_flag = galcom_form_nay }
+				any_playable_country = {
+					has_communications = prev
+					is_galactic_community_member = yes
+				}
+			}
+			country_event = { id = galcom.16 }
+		}
+		# Check again for new possible applicants
+		country_event = { id = galcom.15 days = 90 }
+	}
+}
+
+# Invitation to join Galactic Community
+country_event = {
+	id = galcom.16
+	title = "galcom.5.name"
+	desc = "galcom.16.desc"
+	picture = GFX_evt_galactic_community
+	show_sound = event_galactic_community
+
+	is_triggered_only = yes
+
+	trigger = {
+		is_galactic_community_member = no
+		NOT = { has_country_flag = galcom_form_nay }
+	}
+
+	immediate = {
+		if = {
+			limit = { is_homicidal = yes }
+			set_country_flag = galcom_form_nay
+		}
+	}
+
+	option = {
+		name = galcom.16.a
+		allow = {
+			is_homicidal = no
+		}
+		add_to_galactic_community = yes
+		ai_chance = {
+			factor = 15
+			modifier = {
+				factor = 3
+				has_ethic = ethic_xenophile
+			}
+			modifier = {
+				factor = 10
+				has_ethic = ethic_fanatic_xenophile
+			}
+			modifier = {
+				factor = 10
+				OR = {
+					has_civic = civic_diplomatic_corps
+					has_civic = civic_public_relations_specialists
+					has_civic = civic_hive_empath
+					has_civic = civic_machine_servitor
+				}
+			}
+		}
+	}
+	option = {
+		name = galcom.16.b
+		trigger = {
+			is_homicidal = no
+		}
+		hidden_effect = {
+			set_country_flag = galcom_form_nay
+		}
+		ai_chance = {
+			factor = 5
+			modifier = {
+				factor = 3
+				has_ethic = ethic_xenophobe
+			}
+			modifier = {
+				factor = 10
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+	}
+	option = {
+		name = SCUM
+		trigger = {
+			has_civic = civic_fanatic_purifiers
+		}
+	}
+	option = {
+		name = anomaly.3089.b
+		trigger = {
+			has_civic = civic_machine_terminator
+		}
+	}
+	option = {
+		name = anomaly.180.e
+		trigger = {
+			has_civic = civic_hive_devouring_swarm
+		}
+	}
+}
+
+# Another Proposal to form the Galactic Community (HIDDEN)
+country_event = {
+	id = galcom.20
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = galactic_community_founded }
+	}
+
+	immediate = {
+		if = {
+			limit = {
+				count_country = { # minimum 3 countries
+					limit = {
+						is_country_type = default
+						is_homicidal = no
+					}
+					count >= 3
+				}
+				any_playable_country = {
+					perc_communications_with_playable >= 0.5
+					is_homicidal = no
+					is_gestalt = no
+				}
+			}
+			random_playable_country = {
+				limit = {
+					perc_communications_with_playable >= 0.5
+					is_homicidal = no
+					is_gestalt = no
+				}
+				country_event = { id = galcom.2 }
+				every_playable_country = {
+					limit = {
+						has_communications = prev
+						is_homicidal = no
+					}
+					country_event = { id = galcom.2 }
+				}
+			}
+			random_country = {
+				limit = { is_country_type = global_event }
+				country_event = { id = galcom.3 days = 180 }	# Days Halved
+			}
+		}
+		# Conditions not met - try again in 50 years
+		else = {
+			random_country = {
+				limit = { is_country_type = global_event }
+				country_event = { id = galcom.20 days = 9000 }	# Days Halved
+			}
+		}
+	}
+}
+
+# Galactic Council Formed (HIDDEN)
+country_event = {
+	id = galcom.50
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = first_council_formed }
+	}
+
+	immediate = {
+		set_global_flag = first_council_formed
+		every_playable_country = {
+			limit = { 
+				is_ai = no
+			}
+			country_event = { id = galcom.51 days = 5 }
+		}
+	}
+}
+
+# Galactic Council Formed
+country_event = {
+	id = galcom.51
+	title = "galcom.51.name"
+	desc = "galcom.51.desc"
+	picture = GFX_evt_partition
+	show_sound = event_vote
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_playable_country = {
+			limit = {
+				is_galactic_community_member = yes
+				is_part_of_galactic_council = yes
+			}
+			save_event_target_as = council_member_1
+		}
+		random_playable_country = {
+			limit = {
+				is_galactic_community_member = yes
+				is_part_of_galactic_council = yes
+				NOT = { is_same_value = event_target:council_member_1 }
+			}
+			save_event_target_as = council_member_2
+		}
+		random_playable_country = {
+			limit = {
+				is_galactic_community_member = yes
+				is_part_of_galactic_council = yes
+				NOR = { 
+					is_same_value = event_target:council_member_1
+					is_same_value = event_target:council_member_2
+				}
+			}
+			save_event_target_as = council_member_3
+		}
+	}
+
+	option = {
+		name = galcom.51.a
+		trigger = {
+			is_part_of_galactic_council = no
+		}
+	}
+	option = {
+		name = galcom.51.b
+		trigger = {
+			is_part_of_galactic_council = yes
+		}
+	}
+	option = {
+		name = galcom.51.c
+		trigger = {
+			is_galactic_community_member = no
+		}
+	}
+}
+
+# Galactic Community Opinion Gained
+country_event = {
+	id = galcom.60
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		every_country = {
+			limit = {
+				is_galactic_community_member = yes
+				NOT = { is_same_value = root }
+			}
+			add_opinion_modifier = {
+				who = root
+				modifier = opinion_fellow_galcom_member
+			}
+			root = {
+				add_opinion_modifier = {
+					who = prev
+					modifier = opinion_fellow_galcom_member
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = { has_country_flag = has_market_access }
+				any_country = {
+					is_galactic_community_member = yes
+					has_country_flag = has_market_access
+				}
+			}
+			country_event = { id = action.115 }
+		}
+	}
+}
+
+# Galactic Community Opinion Lost
+country_event = {
+	id = galcom.61
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = galcom_form_nay
+		every_country = {
+			limit = {
+				has_opinion_modifier = {
+					who = root
+					modifier = opinion_fellow_galcom_member
+				}
+			}
+			remove_opinion_modifier = {
+				who = root
+				modifier = opinion_fellow_galcom_member
+			}
+			root = {
+				remove_opinion_modifier = {
+					who = prev
+					modifier = opinion_fellow_galcom_member
+				}
+			}
+		}
+		if = {
+			limit = {
+				NOT = {
+					any_owned_planet = {
+						is_same_value = event_target:market_founder_planet
+					}
+				}
+			}
+			remove_country_flag = has_market_access
+			enable_galactic_market = no
+		}
+	}
+}
+
+# Leave Galactic Community - New Galactic Market Needed
+country_event = {
+	id = galcom.62
+	title = galcom.62.name
+	desc = galcom.62.desc
+	picture = GFX_evt_financial_instruments
+	show_sound = event_galactic_market
+	location = event_target:market_founder_planet
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_planet = {
+			is_same_value = event_target:market_founder_planet
+		}
+	}
+
+	immediate = {
+		remove_country_flag = has_market_access
+		enable_galactic_market = no
+		event_target:galactic_market_station = {
+			destroy_ambient_object = this
+			solar_system = {
+				save_event_target_as = galactic_market_station_system
+			}
+		}
+		remove_global_flag = galactic_market_founded
+		set_global_flag = ongoing_market_nomination
+		event_target:global_event_country = {
+			country_event = { id = action.98 days = 900 }	# Days Halved
+		}
+		every_playable_country = {
+			limit = {
+				has_country_flag = has_market_access
+			}
+			remove_country_flag = has_market_access
+			enable_galactic_market = no
+			if = {
+				limit = { #should be the case by default, but just in case...
+					is_galactic_community_member = yes
+					NOT = { is_same_value = root }
+				}
+				country_event = { id = galcom.63 }
+			}
+		}
+	}
+
+	option = {
+		name = galcom.62.A
+		remove_modifier = galactic_market_founder
+	}
+}
+
+#Notification of last event for other members
+country_event = {
+	id = galcom.63
+	title = galcom.63.name
+	desc = galcom.63.desc
+	picture = GFX_evt_financial_instruments
+	show_sound = event_galactic_market
+
+	is_triggered_only = yes
+	
+	immediate = {
+		set_country_flag = market_nomination_eligible
+		begin_event_chain = {
+			event_chain = market_founding_chain
+			target = this
+		}
+	}
+
+	after = {
+		tooltip = {
+			begin_event_chain = {
+				event_chain = market_founding_chain
+				target = this
+			}
+		}
+	}
+
+	option = {
+		name = galcom.63.A
+		trigger = { has_authority = auth_corporate }
+		custom_tooltip = enable_decision_market_nomination
+	}
+
+	option = {
+		name = galcom.63.B
+		trigger = { NOT = { has_authority = auth_corporate } }
+		custom_tooltip = enable_decision_market_nomination
+	}
+}

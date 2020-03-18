@@ -1308,8 +1308,33 @@ d_decrepit_dwellings = {
 	}
 	
 	on_cleared = {
-		create_pop = {
-			species = owner
+		if = {
+			limit = {
+				any_owned_pop = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+			}
+			random_owned_pop = {
+				limit = {
+					is_gestalt = no
+					is_robot_pop = no
+				}
+				root = {
+					create_pop = {
+						species = prev
+					}
+				}
+			}
+		}
+		else = {
+			random_owned_pop = {
+				root = {
+					create_pop = {
+						species = prev
+					}
+				}
+			}
 		}
 	}
 	
@@ -1852,7 +1877,20 @@ d_ruined_arcology = {
 					}
 				}
 				custom_tooltip = league_artifact_research_unlocked	
-			}	
+			}
+			
+			if = {
+				limit = {
+					owner = { has_origin = origin_remnants }
+					is_capital = yes
+				}
+				custom_tooltip = rediscover_tech
+				hidden_effect = {
+					owner = {
+						country_event = { id = origin.3100 }
+					}
+				}
+			}
 		}
 	}
 }
@@ -1890,7 +1928,9 @@ d_hibernating_lithoids = {
 
 		if = {
 			limit = {
-				is_homeworld = yes
+				from = {
+					is_homeworld = yes
+				}
 			}
 			create_pop = {
 				species = owner
@@ -2113,4 +2153,18 @@ d_failing_infrastructure_earth = {
 			energy = 300
 		}
 	}
+}
+
+d_sentinels = {	#Added via event
+	icon = d_archaeological_dig
+
+	potential = { always = no }
+	can_be_cleared = { always = no }
+
+	planet_modifier = { 
+		planet_max_districts_add = -1
+	}
+
+	is_for_colonizeable = yes
+	category = deposit_cat_rare_blocker	
 }

@@ -4275,7 +4275,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "pop_job_info"
 					position = { x = 8 y = 320 }
-					size = { width = 273 height = 245 }		
+					size = { width = 273 height = 265 }		
 					
 					background = {
 						name = "pop_background"
@@ -4355,10 +4355,22 @@ guiTypes = {
 					}						
 
 					instantTextBoxType = {
+						name = "empire_sprawl"
+						font = "cg_16b"
+						text = "Empire Sprawl: 1"
+						position = { x = 5 y = 120 }
+						maxWidth = 260
+						maxHeight = 20
+						fixedSize = yes
+						orientation = "UPPER_LEFT"
+						format = left
+					}						
+
+					instantTextBoxType = {
 						name = "housing_needs"
 						font = "cg_16b"
 						text = "Housing Needs: 2"
-						position = { x = 5 y = 120 }
+						position = { x = 5 y = 140 }
 						maxWidth = 260
 						maxHeight = 20
 						fixedSize = yes
@@ -4370,7 +4382,7 @@ guiTypes = {
 						name = "amenities_usage"
 						font = "cg_16b"
 						text = "Amenities Usage: 2"
-						position = { x = 5 y = 140 }
+						position = { x = 5 y = 160 }
 						maxWidth = 260
 						maxHeight = 20
 						fixedSize = yes
@@ -4382,7 +4394,7 @@ guiTypes = {
 						name = "production"
 						font = "cg_16b"
 						text = "12 minerals"
-						position = { x = 5 y = 160 }
+						position = { x = 5 y = 180 }
 						maxWidth = 260
 						maxHeight = 40
 						fixedSize = yes
@@ -4394,7 +4406,7 @@ guiTypes = {
 						name = "upkeep"
 						font = "cg_16b"
 						text = "5 energy"
-						position = { x = 5 y = 200 }
+						position = { x = 5 y = 220 }
 						maxWidth = 260
 						maxHeight = 40
 						fixedSize = yes
@@ -5633,7 +5645,7 @@ guiTypes = {
 			font = "cg_16b"
 			text = "DASH"
 			position = { x = 24 y = 7 }
-			maxWidth = 18
+			maxWidth = 24
 			maxHeight = 18
 			fixedSize = yes
 			format = center
@@ -5874,6 +5886,7 @@ guiTypes = {
 		background = {
 			name = "job_background"
 			quadTextureSprite = "GFX_button_dark" # TODO: change background?
+			clicksound = "select_click"
 		}
 
 		iconType = {
@@ -6466,9 +6479,9 @@ guiTypes = {
 		}
 
 		instantTextBoxType = {
-			name = "desc"
+			name = "title"
 			font = "cg_16b"
-			text = "Build queue desc" 
+			text = "" 
 			position = { x = 4 y = 3 }
 			maxWidth = 190
 			maxHeight = 20
@@ -6485,6 +6498,19 @@ guiTypes = {
 			maxHeight = 20
 			fixedSize = yes
 			format = left
+		}
+
+		instantTextBoxType = {
+			name = "name"
+			font = "cg_16b"
+			text = ""
+			position = { x = 36 y = 18 }
+			maxWidth = 164
+			maxHeight = 20
+			fixedSize = yes
+			format = left
+			alwaysTransparent = yes
+			text_color_code = "E"
 		}
 
 		buttonType = {

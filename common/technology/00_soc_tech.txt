@@ -158,6 +158,14 @@ tech_galactic_markets = {
 			factor = 1.5
 			has_policy_flag = research_economic_development		
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_galactic_markets }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -245,6 +253,13 @@ tech_eco_simulation = {
 			factor = 1.5
 			has_policy_flag = research_xenoecology		
 		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -304,6 +319,13 @@ tech_gene_crops = {
 			factor = 1.5
 			has_policy_flag = research_xenoecology		
 		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -362,6 +384,13 @@ tech_nano_vitality_crops = {
 		modifier = {
 			factor = 1.5
 			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+			}
 		}
 	}
 	
@@ -441,6 +470,21 @@ tech_nutrient_replication = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_nutrient_replication }
+			}
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+			}
 		}
 	}
 	
@@ -538,6 +582,13 @@ tech_food_processing_1 = {
 			factor = 1.5
 			has_policy_flag = research_xenoecology		
 		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -583,6 +634,13 @@ tech_food_processing_2 = {
 		modifier = {
 			factor = 1.5
 			has_policy_flag = research_xenoecology		
+		}
+		modifier = {
+			factor = 0.5
+			OR = {
+				is_machine_empire = yes
+				is_lithoid_empire = yes
+			}
 		}
 	}
 	
@@ -1197,6 +1255,14 @@ tech_tomb_world_adaption = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_tomb_world_adaption }
+			}
 		}
 	}
 	
@@ -2346,6 +2412,14 @@ tech_gene_banks = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_gene_banks }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -2434,6 +2508,14 @@ tech_gene_seed_purification = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_gene_seed_purification }
+			}
 		}
 	}
 	
@@ -2539,6 +2621,14 @@ tech_morphogenetic_field_mastery = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_morphogenetic_field_mastery }
+			}
 		}
 	}
 	
@@ -2779,6 +2869,14 @@ tech_gene_expressions = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_gene_expressions }
+			}
+		}
 	}	
 	
 	ai_weight = {
@@ -2849,6 +2947,14 @@ tech_selected_lineages = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_selected_lineages }
+			}
 		}
 	}
 	
@@ -2925,6 +3031,14 @@ tech_capacity_boosters = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_capacity_boosters }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -2968,6 +3082,7 @@ tech_doctrine_fleet_size_1 = {
 	
 	modifier = {
 		country_command_limit_add = 20
+		description = tech_doctrine_fleet_size_1_effect
 	}
 	
 	weight_modifier = {
@@ -3012,6 +3127,7 @@ tech_doctrine_fleet_size_2 = {
 	
 	modifier = {
 		country_command_limit_add = 20
+		description = tech_doctrine_fleet_size_2_effect
 	}
 	
 	weight_modifier = {
@@ -3056,6 +3172,7 @@ tech_doctrine_fleet_size_3 = {
 	
 	modifier = {
 		country_command_limit_add = 20
+		description = tech_doctrine_fleet_size_3_effect
 	}
 	
 	weight_modifier = {
@@ -3100,6 +3217,7 @@ tech_doctrine_fleet_size_4 = {
 	
 	modifier = {
 		country_command_limit_add = 20
+		description = tech_doctrine_fleet_size_4_effect
 	}
 	
 	weight_modifier = {
@@ -3669,7 +3787,7 @@ tech_psionic_theory = {
 	}
 	
 	modifier = {
-		country_unity_produces_mult = 0.05
+		empire_size_pops_mult = -0.10
 	}
 	
 	weight_modifier = {
@@ -3736,6 +3854,14 @@ tech_psionic_theory = {
 			NOR = { 
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
+			}
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_psionic_theory }
 			}
 		}
 	}
@@ -3835,6 +3961,14 @@ tech_telepathy = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_telepathy }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -3920,6 +4054,14 @@ tech_precognition_interface = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_precognition_interface }
+			}
 		}
 	}
 	
@@ -4008,6 +4150,14 @@ tech_psi_jump_drive_1 = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_psi_jump_drive_1 }
+			}
 		}
 	}
 }
@@ -4469,6 +4619,14 @@ tech_subdermal_stimulation = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_subdermal_stimulation }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -4541,7 +4699,7 @@ tech_adaptive_bureaucracy = {
 	weight = @tier1weight2
 	
 	modifier = {
-		country_admin_cap_add = 5
+		country_admin_cap_add = 10
 		planet_buildings_influence_cost_mult = -0.05
 	}
 	
@@ -4590,12 +4748,12 @@ tech_colonial_bureaucracy = {
 	cost = @tier2cost1
 	area = society
 	tier = 2
-	category = { new_worlds }
+	category = { statecraft }
 	prerequisites = { "tech_adaptive_bureaucracy" }
 	weight = @tier2weight1
 	
 	modifier = {
-		country_admin_cap_add = 5
+		country_admin_cap_mult = 0.10
 		planet_buildings_influence_cost_mult = -0.05
 	}
 	
@@ -4649,7 +4807,7 @@ tech_galactic_bureaucracy = {
 	weight = @tier3weight1
 	
 	modifier = {
-		country_admin_cap_add = 5
+		country_admin_cap_mult = 0.10
 		planet_buildings_influence_cost_mult = -0.05
 	}
 	
@@ -5756,6 +5914,14 @@ tech_ascension_theory = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_ascension_theory }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -5858,6 +6024,14 @@ tech_penal_colonies = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_penal_colonies }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -5925,6 +6099,14 @@ tech_resort_colonies = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_resort_colonies }
+			}
 		}
 	}
 	

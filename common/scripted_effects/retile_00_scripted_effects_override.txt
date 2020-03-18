@@ -456,3 +456,36 @@ fire_warning_sign = {
 		}
 	}
 }
+
+fallen_empire_humiliate_effect = {
+	hidden_effect = {
+		add_modifier = { modifier = humiliated days = 3600 }
+		if = {
+			limit = { has_policy_flag = diplo_stance_supremacist }
+			set_policy = {
+				policy = xenodiplomacy
+				option = xenodiplomacy_gunboat
+				cooldown = yes
+			}
+		}
+		end_rivalry = event_target:fallen_empire_humiliator
+		save_event_target_as = fallen_empire_humiliated
+		event_target:fallen_empire_humiliator = {
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_insult }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_demand }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_task }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_failed_fallen_empire_task }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_majorly_failed_fallen_empire_task }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_refused_fallen_empire_request }
+			remove_opinion_modifier = { who = event_target:fallen_empire_humiliated modifier = opinion_spurned_fallen_empire_gift }
+		}
+		event_target:fallen_empire_humiliator = {
+			every_system_within_border = {
+				limit = {
+					event_target:fallen_empire_humiliated = { has_claim = prev }
+				}
+				remove_claims = { who = event_target:fallen_empire_humiliated }
+			}
+		}
+	}
+}

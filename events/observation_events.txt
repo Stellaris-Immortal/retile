@@ -407,8 +407,7 @@ country_event = {
 							civic = civic_atmospheric_pollution
 						}
 					}
-					set_country_flag = industrial_age
-					set_primitive_age = industrial_age
+					set_primitive_age_effect = { primitive_age = industrial_age }
 				}
 			}
 		}
@@ -518,9 +517,7 @@ country_event = {
 		hidden_effect = {
 			FROM = {
 				owner = {
-					remove_country_flag = industrial_age
-					set_country_flag = machine_age
-					set_primitive_age = machine_age
+					set_primitive_age_effect = { primitive_age = machine_age }
 				}
 			}
 		}
@@ -648,15 +645,12 @@ country_event = {
 	immediate = {
 		FROM = {
 			owner = {
-				remove_country_flag = machine_age
 				random_list = {
 					50 = { 
-						set_country_flag = steam_age 
-						set_primitive_age = steam_age
+						set_primitive_age_effect = { primitive_age = steam_age }
 					}
 					50 = { 
-						set_country_flag = renaissance_age 
-						set_primitive_age = renaissance_age
+						set_primitive_age_effect = { primitive_age = renaissance_age }
 					}
 				}
 			}
@@ -5206,47 +5200,31 @@ country_event = {
 						limit = {
 							has_country_flag = bronze_age
 						}
-						remove_country_flag = bronze_age
-						set_country_flag = stone_age
-						set_primitive_age = stone_age
+						set_primitive_age_effect = { primitive_age = stone_age }
 					}				
 					if = {
 						limit = {
 							has_country_flag = iron_age
 						}
-						remove_country_flag = iron_age
-						set_country_flag = bronze_age
-						set_primitive_age = bronze_age
-						change_government = {
-							civics = {
-								civic = civic_secret_of_fire
-								civic = civic_the_wheel
-							}
-						}
+						set_primitive_age_effect = { primitive_age = bronze_age }
 					}
 					if = {
 						limit = {
 							has_country_flag = late_medieval_age
 						}
-						remove_country_flag = late_medieval_age
-						set_country_flag = iron_age
-						set_primitive_age = iron_age
+						set_primitive_age_effect = { primitive_age = iron_age }
 					}
 					if = {
 						limit = {
 							has_country_flag = renaissance_age
 						}
-						remove_country_flag = renaissance_age
-						set_country_flag = late_medieval_age
-						set_primitive_age = late_medieval_age
+						set_primitive_age_effect = { primitive_age = late_medieval_age }
 					}
 					if = {
 						limit = {
 							has_country_flag = steam_age
 						}
-						remove_country_flag = steam_age
-						set_country_flag = renaissance_age
-						set_primitive_age = renaissance_age
+						set_primitive_age_effect = { primitive_age = renaissance_age }
 					}
 				}
 			}
@@ -5274,47 +5252,31 @@ country_event = {
 						limit = {
 							has_country_flag = renaissance_age
 						}
-						remove_country_flag = renaissance_age
-						set_country_flag = steam_age
-						set_primitive_age = steam_age
+						set_primitive_age_effect = { primitive_age = steam_age }
 					}
 					if = {
 						limit = {
 							has_country_flag = late_medieval_age
 						}
-						remove_country_flag = late_medieval_age
-						set_country_flag = renaissance_age
-						set_primitive_age = renaissance_age
+						set_primitive_age_effect = { primitive_age = renaissance_age }
 					}
 					if = {
 						limit = {
 							has_country_flag = iron_age
 						}
-						remove_country_flag = iron_age
-						set_country_flag = late_medieval_age
-						set_primitive_age = late_medieval_age
+						set_primitive_age_effect = { primitive_age = late_medieval_age }
 					}
 					if = {
 						limit = {
 							has_country_flag = bronze_age
 						}
-						remove_country_flag = bronze_age
-						set_country_flag = iron_age
-						set_primitive_age = iron_age
-						change_government = {
-							civics = {
-								civic = civic_landed_nobility
-								civic = civic_flat_world_theory
-							}
-						}
+						set_primitive_age_effect = { primitive_age = iron_age }
 					}
 					if = {
 						limit = {
 							has_country_flag = stone_age
 						}
-						remove_country_flag = stone_age
-						set_country_flag = bronze_age
-						set_primitive_age = bronze_age
+						set_primitive_age_effect = { primitive_age = bronze_age }
 					}					
 				}
 			}

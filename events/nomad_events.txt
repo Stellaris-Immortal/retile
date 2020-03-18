@@ -23,9 +23,6 @@ country_event = {
 		random_rim_system = {
 			limit = {
 				NOR = {
-					#any_ship_in_system = {
-					#	exists = owner
-					#}
 					any_playable_country = {
 						intel_level = {
 							level > low
@@ -1851,8 +1848,7 @@ fleet_event = {
 		}
 	}
 }
-
-#Nomads contact planet owner and asks them to take in pops		# RETILE
+#Nomads contact planet owner and asks them to take in pops
 country_event = {
 	id = nomad.21
 	title = nomad.10.name
@@ -1911,12 +1907,15 @@ country_event = {
 				remove_star_flag = nomad_mission_waypoint
 			}
 			event_target:NomadMissionPlanet = {
-				create_pop = {
-					species = event_target:nomad_fleet_species
-					ethos = {
-						ethic = "ethic_egalitarian"
-					}
-				}
+				#while = {
+				#	count = 3
+					create_pop = {
+						species = event_target:nomad_fleet_species
+						ethos = {
+							ethic = "ethic_egalitarian"
+						}
+					}					
+				#}
 			}
 			event_target:nomad_fleet = {
 				remove_fleet_flag = nomad_on_mission

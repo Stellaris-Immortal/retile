@@ -84,7 +84,7 @@ tech_robomodding = {
 		}
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mechanists
+			has_origin = origin_mechanists
 		}
 		modifier = {
 			factor = 2
@@ -123,7 +123,7 @@ tech_robomodding_points_1 = {
 		#}	
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mechanists
+			has_origin = origin_mechanists
 		}
 		modifier = {
 			factor = 1.25
@@ -148,7 +148,7 @@ tech_robomodding_points_1 = {
 		}
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mechanists
+			has_origin = origin_mechanists
 		}
 		modifier = {
 			factor = 2
@@ -189,7 +189,7 @@ tech_robomodding_points_2 = {
 		#}
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mechanists
+			has_origin = origin_mechanists
 		}
 		modifier = {
 			factor = 4
@@ -231,6 +231,14 @@ tech_robomodding_points_2 = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_robomodding_points_2 }
+			}
+		}
 	}
 
 	ai_weight = {
@@ -242,7 +250,7 @@ tech_robomodding_points_2 = {
 		}
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mechanists
+			has_origin = origin_mechanists
 		}
 		modifier = {
 			factor = 2
@@ -369,6 +377,14 @@ tech_nanite_assemblers = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_nanite_assemblers }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -388,8 +404,7 @@ tech_adaptive_combat_algorithms = {
 	cost = @tier2cost2
 	area = society
 	tier = 2
-	category = { biology }	
-	prerequisites = { "tech_colonial_bureaucracy" }
+	category = { military_theory }	
 	weight = @tier2weight2
 	
 	potential = {
@@ -402,12 +417,12 @@ tech_adaptive_combat_algorithms = {
 			factor = 1.25
 			research_leader = {
 				area = society
-				has_trait = "leader_trait_expertise_biology"
+				has_trait = "leader_trait_expertise_military_theory"
 			}
 		}
 		modifier = {
 			factor = 1.5
-			has_policy_flag = research_xenoecology		
+			has_policy_flag = research_military_technology		
 		}
 	}
 	
@@ -416,7 +431,7 @@ tech_adaptive_combat_algorithms = {
 			factor = 1.25
 			research_leader = {
 				area = society
-				has_trait = "leader_trait_expertise_biology"
+				has_trait = "leader_trait_expertise_military_theory"
 			}
 		}
 	}
@@ -480,6 +495,14 @@ tech_biomechanics = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_biomechanics }
+			}
 		}
 	}
 	
@@ -571,6 +594,76 @@ tech_self_assembling_components = {
 	}
 	
 	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_industry"
+			}
+		}
+	}
+}
+
+# Mega Assembly
+tech_mega_assembly = {
+	cost = @tier4cost1
+	area = engineering
+	tier = 4
+	category = { industry }
+	prerequisites = { "tech_binary_motivators" "tech_galactic_administration" }
+	is_rare = yes
+	weight = @tier4weight1
+
+	potential = {
+		has_authority = auth_machine_intelligence
+	}	
+
+	weight_modifier = {
+		factor = 0.5
+		modifier = {
+			factor = 0.20
+			NOR = {
+				research_leader = {
+					area = engineering
+					has_trait = "leader_trait_maniacal"
+				}
+				research_leader = {
+					area = engineering
+					has_trait = "leader_trait_spark_of_genius"
+				}
+				research_leader = {
+					area = engineering
+					has_trait = "leader_trait_curator"
+				}
+				research_leader = {
+					area = engineering
+					has_trait = "leader_trait_expertise_industry"
+				}
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_mega_assembly }
+			}
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_industry"
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 10 # important
 		modifier = {
 			factor = 1.25
 			research_leader = {

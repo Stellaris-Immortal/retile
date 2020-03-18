@@ -18,22 +18,33 @@ country_event = {
 
 	desc = { # Spiritual
 		text = pirate.1.desc_01
-		trigger = { has_spiritualist_government = yes }
+		trigger = {
+			has_spiritualist_government = yes
+		}
 	}
 
 	desc = { # Militarist
 		text = pirate.1.desc_02
-		trigger = { has_militarist_government = yes }
+		trigger = {
+			OR = {
+				has_militarist_government = yes
+				has_government = gov_bandit_commune
+			}
+		}
 	}
 
 	desc = { # Materialist
 		text = pirate.1.desc_03
-		trigger = { has_materialist_government = yes }
+		trigger = {
+			has_materialist_government = yes
+		}
 	}
 
 	desc = { # Pacifist
 		text = pirate.1.desc_04
-		trigger = { has_pacifist_government = yes }
+		trigger = {
+			has_pacifist_government = yes
+		}
 	}
 
 	desc = { # Generic Autocracy
@@ -45,6 +56,7 @@ country_event = {
 				has_government = gov_constitutional_dictatorship
 				has_government = gov_enlightened_monarchy
 				has_government = gov_elective_monarchy
+				has_government = gov_bandit_kingdom
 			}
 		}
 	}
@@ -62,7 +74,10 @@ country_event = {
 	desc = { # Generic Democracy
 		text = pirate.1.desc_07
 		trigger = {
-			has_government = gov_representative_democracy
+			OR = {
+				has_government = gov_representative_democracy
+				has_government = gov_communal_parity
+			}
 		}
 	}
 
@@ -117,19 +132,30 @@ country_event = {
 
 	option = {
 		name = pirate.2.a
-		trigger = { has_spiritualist_government = yes }
+		trigger = {
+			has_spiritualist_government = yes
+		}
 	}
 	option = {
 		name = pirate.2.b
-		trigger = { has_militarist_government = yes }
+		trigger = {
+			OR = {
+				has_militarist_government = yes
+				has_government = gov_bandit_commune
+			}
+		}
 	}
 	option = {
 		name = pirate.2.c
-		trigger = { has_materialist_government = yes }
+		trigger = {
+			has_materialist_government = yes
+		}
 	}
 	option = {
 		name = pirate.2.d
-		trigger = { has_pacifist_government = yes }
+		trigger = {
+			has_pacifist_government = yes
+		}
 	}
 	option = {
 		name = pirate.2.e
@@ -140,6 +166,7 @@ country_event = {
 				has_government = gov_constitutional_dictatorship
 				has_government = gov_enlightened_monarchy
 				has_government = gov_elective_monarchy
+				has_government = gov_bandit_kingdom
 			}
 		}
 	}
@@ -154,7 +181,12 @@ country_event = {
 	}
 	option = {
 		name = pirate.2.g
-		trigger = { has_government = gov_representative_democracy }
+		trigger = {
+			OR = {
+				has_government = gov_representative_democracy
+				has_government = gov_communal_parity
+			}
+		}
 	}
 }
 
@@ -429,17 +461,21 @@ fleet_event = {
 		exists = owner
 		from = {
 			has_star_flag = pirate_home_system
-			any_ship_in_system = {
-				fleet = { has_fleet_flag = pirate_home_system_fleet }
+			any_fleet_in_system = {
+				has_fleet_flag = pirate_home_system_fleet
 			}
 		}
 		NOT = {
-			owner = { has_country_flag = privateers_found }
+			owner = {
+				has_country_flag = privateers_found
+			}
 		}
 	}
 
 	immediate = {
-		owner = { set_country_flag = privateers_found }
+		owner = {
+			set_country_flag = privateers_found
+		}
 	}
 
 	option = {
@@ -469,74 +505,71 @@ fleet_event = {
 	}
 }
 
-## perp port
-#country_event = {
-#	id = pirate.13
-#	hide_window = yes
-#
-#	is_triggered_only = yes
-#
-#	trigger = {
-#		NOT = { has_global_flag = privateers_destroyed }
-#		from = {
-#			is_country_type = pirate
-#		}
-#		fromfrom.solar_system = {
-#			has_star_flag = pirate_home_system
-#			NOT = {
-#				any_ship_in_system = {
-#					fleet = {
-#						has_fleet_flag = pirate_home_system_fleet
-#					}
-#				}
-#			}
-#		}
-#	}
-#
-#	immediate = {
-#		if = {
-#			limit = {
-#				has_communications = from
-#			}
-#			country_event = { id = pirate.15 }
-#		}
-#	}
-#}
-#
-## destroyed pirate home system
-#country_event = {
-#	id = pirate.15
-#	title = pirate.15.name
-#	picture = GFX_evt_exploding_ship
-#	desc = pirate.15.desc
-#	show_sound = event_space_battle
-#
-#	is_triggered_only = yes
-#
-#	trigger = {
-#		NOT = { has_global_flag = privateers_destroyed }
-#		fromfrom = {
-#			solar_system = {
-#				has_star_flag = pirate_home_system
-#				NOT = {
-#					any_ship_in_system = {
-#						fleet = {
-#							has_fleet_flag = pirate_galleon
-#						}
-#					}
-#				}
-#			}
-#		}
-#	}
-#
-#	immediate = {
-#		set_global_flag = privateers_destroyed
-#	}
-#
-#	option = {
-#		name = OK
-#	}
-#}
+# perp port
+# on_fleet_destroyed_perp
+country_event = {
+	id = pirate.13
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { has_global_flag = privateers_destroyed }
+		from = {
+			is_country_type = pirate
+			has_communications = root
+		}
+		fromfromfrom = {
+			has_fleet_flag = pirate_home_system_fleet
+		}
+		fromfrom.solar_system = {
+			has_star_flag = pirate_home_system
+			NOT = {
+				any_fleet_in_system = {
+					has_fleet_flag = pirate_home_system_fleet
+					NOT = { is_same_value = fromfromfrom }
+				}
+			}
+		}
+		is_country_type = default
+	}
+
+	immediate = {
+		country_event = { id = pirate.15 }
+	}
+}
+
+# destroyed pirate home system
+country_event = {
+	id = pirate.15
+	title = pirate.15.name
+	picture = GFX_evt_exploding_ship
+	desc = {
+		trigger = { NOT = { has_event_chain = "l_cluster_chain" } }
+		text = pirate.15.desc
+	}
+	desc = {
+		trigger = { has_event_chain = "l_cluster_chain" }
+		text = pirate.15.desc2
+	}
+	show_sound = event_space_battle
+
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = privateers_destroyed
+	}
+
+	option = {
+		name = EXCELLENT
+		add_resource = {
+			minerals = 2500
+			energy = 1500
+			alloys = 750
+		}
+		generate_lcluster_clue = yes
+	}
+}
 
 # raid from home system
 fleet_event = {
@@ -609,6 +642,7 @@ fleet_event = {
 }
 
 # Destroyed Pirate Station (HIDDEN)
+# on_fleet_destroyed_perp
 country_event = {
 	id = pirate.24
 	hide_window = yes
@@ -622,7 +656,9 @@ country_event = {
 		}
 		fromfromfrom = {
 			is_ship_size = pirate_station
+			NOT = { has_fleet_flag = pirate_home_system_fleet }
 		}
+		is_country_type = default
 	}
 
 	immediate = {
@@ -630,8 +666,8 @@ country_event = {
 		if = {
 			limit = { has_event_chain = "l_cluster_chain" }
 			random_list = {
-				80 = { country_event = { id = pirate.25 } }
-				20 = { country_event = { id = pirate.26 } }
+				85 = { country_event = { id = pirate.25 } }
+				15 = { country_event = { id = pirate.26 } }
 			}
 		}
 		else = {
@@ -652,36 +688,182 @@ country_event = {
 
 	immediate = {
 		random_list = {
-			15 = { set_country_flag = big_loot }
-			35 = { set_country_flag = medium_loot }
-			50 = { set_country_flag = small_loot }
+			5 = {
+				set_country_flag = massive_loot
+				modifier = {
+					factor = 1.5
+					years_passed > 80
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 100
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 120
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 140
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 160
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 180
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 200
+				}
+			}
+			15 = {
+				set_country_flag = big_loot
+				modifier = {
+					factor = 1.2
+					years_passed > 80
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 100
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 120
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 140
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 160
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 180
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 200
+				}
+			}
+			35 = {
+				set_country_flag = medium_loot
+			}
+			50 = {
+				set_country_flag = small_loot
+				modifier = {
+					factor = 0.8
+					years_passed > 80
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 100
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 120
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 140
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 160
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 180
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 200
+				}
+			}
 		}
 	}
 
 	option = {
 		name = EXCELLENT
+		trigger = { has_country_flag = massive_loot }
+		if = {
+			limit = {
+				years_passed > 100
+			}
+			add_resource = {
+				minerals = 1200
+				energy = 600
+			}
+		}
+		else = {
+			add_resource = {
+				minerals = 600
+				energy = 300
+			}
+		}
+		hidden_effect = { remove_country_flag = massive_loot }
+	}
+	option = {
+		name = EXCELLENT
 		trigger = { has_country_flag = big_loot }
-		add_resource = {
-			minerals = 300
-			energy = 150
+		if = {
+			limit = {
+				years_passed > 100
+			}
+			add_resource = {
+				minerals = 600
+				energy = 300
+			}
+		}
+		else = {
+			add_resource = {
+				minerals = 300
+				energy = 150
+			}
 		}
 		hidden_effect = { remove_country_flag = big_loot }
 	}
 	option = {
 		name = EXCELLENT
 		trigger = { has_country_flag = medium_loot }
-		add_resource = {
-			minerals = 180
-			energy = 100
+		if = {
+			limit = {
+				years_passed > 100
+			}
+			add_resource = {
+				minerals = 360
+				energy = 200
+			}
+		}
+		else = {
+			add_resource = {
+				minerals = 180
+				energy = 100
+			}
 		}
 		hidden_effect = { remove_country_flag = medium_loot }
 	}
 	option = {
 		name = EXCELLENT
 		trigger = { has_country_flag = small_loot }
-		add_resource = {
-			minerals = 80
-			energy = 50
+		if = {
+			limit = {
+				years_passed > 100
+			}
+			add_resource = {
+				minerals = 160
+				energy = 100
+			}
+		}
+		else = {
+			add_resource = {
+				minerals = 80
+				energy = 50
+			}
 		}
 		hidden_effect = { remove_country_flag = small_loot }
 	}
@@ -689,14 +871,26 @@ country_event = {
 		name = EXCELLENT
 		trigger = {
 			NOR = {
+				has_country_flag = massive_loot
 				has_country_flag = big_loot
 				has_country_flag = medium_loot
 				has_country_flag = small_loot
 			}
 		}
-		add_resource = {
-			minerals = 200
-			energy = 200
+		if = {
+			limit = {
+				years_passed > 100
+			}
+			add_resource = {
+				minerals = 400
+				energy = 400
+			}
+		}
+		else = {
+			add_resource = {
+				minerals = 200
+				energy = 200
+			}
 		}
 	}
 }
@@ -713,18 +907,143 @@ country_event = {
 
 	immediate = {
 		random_list = {
-			15 = { set_country_flag = big_loot }
-			35 = { set_country_flag = medium_loot }
-			50 = { set_country_flag = small_loot }
+			5 = {
+				set_country_flag = massive_loot
+				modifier = {
+					factor = 1.5
+					years_passed > 80
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 100
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 120
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 140
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 160
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 180
+				}
+				modifier = {
+					factor = 1.5
+					years_passed > 200
+				}
+			}
+			15 = {
+				set_country_flag = big_loot
+				modifier = {
+					factor = 1.2
+					years_passed > 80
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 100
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 120
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 140
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 160
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 180
+				}
+				modifier = {
+					factor = 1.2
+					years_passed > 200
+				}
+			}
+			35 = {
+				set_country_flag = medium_loot
+			}
+			50 = {
+				set_country_flag = small_loot
+				modifier = {
+					factor = 0.8
+					years_passed > 80
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 100
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 120
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 140
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 160
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 180
+				}
+				modifier = {
+					factor = 0.8
+					years_passed > 200
+				}
+			}
 		}
 	}
 
 	option = {
 		name = EXCELLENT
+		trigger = { has_country_flag = massive_loot }
+		if = {
+			limit = {
+				years_passed > 100
+			}
+			add_resource = {
+				minerals = 1200
+				energy = 600
+			}
+		}
+		else = {
+			add_resource = {
+				minerals = 600
+				energy = 300
+			}
+		}
+		generate_lcluster_clue = yes
+		hidden_effect = { remove_country_flag = massive_loot }
+	}
+	option = {
+		name = EXCELLENT
 		trigger = { has_country_flag = big_loot }
-		add_resource = {
-			minerals = 300
-			energy = 150
+		if = {
+			limit = {
+				years_passed > 100
+			}
+			add_resource = {
+				minerals = 600
+				energy = 300
+			}
+		}
+		else = {
+			add_resource = {
+				minerals = 300
+				energy = 150
+			}
 		}
 		generate_lcluster_clue = yes
 		hidden_effect = { remove_country_flag = big_loot }
@@ -732,9 +1051,20 @@ country_event = {
 	option = {
 		name = EXCELLENT
 		trigger = { has_country_flag = medium_loot }
-		add_resource = {
-			minerals = 180
-			energy = 100
+		if = {
+			limit = {
+				years_passed > 100
+			}
+			add_resource = {
+				minerals = 360
+				energy = 200
+			}
+		}
+		else = {
+			add_resource = {
+				minerals = 180
+				energy = 100
+			}
 		}
 		generate_lcluster_clue = yes
 		hidden_effect = { remove_country_flag = medium_loot }
@@ -742,9 +1072,20 @@ country_event = {
 	option = {
 		name = EXCELLENT
 		trigger = { has_country_flag = small_loot }
-		add_resource = {
-			minerals = 80
-			energy = 50
+		if = {
+			limit = {
+				years_passed > 100
+			}
+			add_resource = {
+				minerals = 160
+				energy = 100
+			}
+		}
+		else = {
+			add_resource = {
+				minerals = 80
+				energy = 50
+			}
 		}
 		generate_lcluster_clue = yes
 		hidden_effect = { remove_country_flag = small_loot }
@@ -753,14 +1094,26 @@ country_event = {
 		name = EXCELLENT
 		trigger = {
 			NOR = {
+				has_country_flag = massive_loot
 				has_country_flag = big_loot
 				has_country_flag = medium_loot
 				has_country_flag = small_loot
 			}
 		}
-		add_resource = {
-			minerals = 200
-			energy = 200
+		if = {
+			limit = {
+				years_passed > 100
+			}
+			add_resource = {
+				minerals = 400
+				energy = 400
+			}
+		}
+		else = {
+			add_resource = {
+				minerals = 200
+				energy = 200
+			}
 		}
 		generate_lcluster_clue = yes
 	}
@@ -890,9 +1243,7 @@ country_event = {
 
 	immediate = {
 		capital_scope = {
-			solar_system = { 
-				save_event_target_as = capital_system
-			}
+			solar_system = { save_event_target_as = capital_system }
 		}
 		owner_species = { save_event_target_as = owner_species }
 		save_event_target_as = pirate_target
