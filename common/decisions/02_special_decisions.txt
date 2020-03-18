@@ -744,6 +744,24 @@ decision_unconsecrated_worlds = {
 					}
 				}
 			}
+			if = {
+				limit = {
+					OR = {
+						has_planet_flag = holy_world_1
+						has_planet_flag = holy_world_2
+						has_planet_flag = holy_world_3
+						has_planet_flag = holy_world_4
+					}
+					any_country = { has_country_flag = fallen_empire_2 }
+				}
+				random_country = {
+					limit = { has_country_flag = fallen_empire_2 }
+					remove_opinion_modifier = { # Currently removes all instances of this modifier, even if several have been added
+						who = from
+						modifier = opinion_worships_our_holy_world
+					}
+				}
+			}
 			from = {
 				recalculate_consecrated_world_modifier = yes
 				custom_tooltip = recalculates_consecrated_modifier
