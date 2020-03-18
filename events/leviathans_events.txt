@@ -3,7 +3,7 @@
 ### by Maximilian Olbers	  ###
 ### & Niclas Karlsson		  ###
 ### & Rufus Tronde			  ###
-### & Henrik Thyrwall		  ###
+### & Henrik Thyrwall			  ###
 #################################
 
 namespace = leviathans
@@ -4303,8 +4303,7 @@ country_event = {
 		}
 	}
 }
-
-#building stuff		# RETILE NOTES: Seems to do nothing... replaced so invalid building doesn't trigger an error...
+#building stuff
 planet_event = {
 	id = leviathans.305
 	hide_window = yes
@@ -4533,8 +4532,7 @@ country_event = {
 		}
 	}
 }
-
-#Artists want to move in		# RETILE
+#Artists want to move in
 country_event = {
 	id = leviathans.311
 	title = leviathans.311.name
@@ -4598,7 +4596,6 @@ country_event = {
 		name = leviathans.311.b
 	}
 }
-
 #The artists flee and steal your stuff
 country_event = {
 	id = leviathans.312
@@ -5666,7 +5663,7 @@ country_event = {
 		set_country_flag = artist_enclave_diplomacy_engaged
 		random_system_within_border = {
 			limit = {
-				any_ship_in_system = {
+				any_fleet_in_system = {
 					exists = owner
 					owner = {
 						is_same_value = event_target:artist_enclave_country
@@ -5891,7 +5888,7 @@ country_event = {
 			country_event = { id = distar.11501 }
 		}
 	}
-	
+
 	option = {
 		name = leviathans.500.e
 		default_hide_option = yes
@@ -10498,8 +10495,7 @@ fleet_event = {
 	desc = {
 		trigger = {
 			solar_system = {
-						 
-				has_star_flag = guardians_stellarite_system									   
+				has_star_flag = guardians_stellarite_system
 			}
 		}
 		text = leviathans.1000.desc
@@ -12836,7 +12832,7 @@ event = {
 							}
 						}
 						save_global_event_target_as = wraith_fleet
-						set_fleet_flag = wraith_fleet		   
+						set_fleet_flag = wraith_fleet
 						set_location = event_target:wraith_star
 						set_fleet_stance = aggressive
 						set_aggro_range_measure_from = self

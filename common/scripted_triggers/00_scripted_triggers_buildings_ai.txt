@@ -175,14 +175,15 @@ districts_build_district ={
 		has_modifier = planet_population_control_gestalt
 		has_modifier = planet_robot_assembly_control
 		has_modifier = planet_growth_discouraged
-		any_owned_pop = {
-			is_unemployed = yes
-			OR = {
-				specialist_job_check_trigger = no
-				has_citizenship_type = { type = citizenship_slavery }
-			}
-			NOR = { has_citizenship_type = { type = citizenship_assimilation } }
-		}
+		#???
+		#any_owned_pop = {
+		#	is_unemployed = yes
+		#	OR = {
+		#		specialist_job_check_trigger = no
+		#		has_citizenship_type = { type = citizenship_slavery }
+		#	}
+		#	NOR = { has_citizenship_type = { type = citizenship_assimilation } }
+		#}
 		owner = { is_ai = yes }
 		AND = {
 			planet_devastation < 10
