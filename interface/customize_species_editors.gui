@@ -1631,8 +1631,10 @@ guiTypes = {
 			instantTextBoxType = {
 				name = "value"
 				font = "malgun_goth_24"
-				position = { x = 48 y = 40 }
-				maxWidth = 210
+				position = { x = 75 y = 40 }
+				maxWidth = 160
+				maxHeight = 20
+				fixedSize = yes
 				text =	 "RANDOM"
 				format = center
 				#alwaysTransparent = yes
@@ -2091,6 +2093,194 @@ guiTypes = {
 			format = centre
 			alwaysTransparent = yes
 		}		
+	}
+
+	#######################
+	# origin
+	#######################
+	containerWindowType = {
+		name = "empire_origin_editor"
+		moveable = @movable_editors
+		position = { x = -400 y = @sub_window_pos_y }
+		size = { width = 1030 height = @sub_window_height }
+		orientation = center
+
+		background = {
+			name = "background"
+			spriteType = "GFX_subwindow_tile_plain_solid"
+		}
+
+		containerWindowType = {
+			name = "header"
+			iconType = {
+				name = "hex_bg"
+				spriteType = "GFX_hex_bg"
+				position = { x = -10 y = -8 }
+				alwaysTransparent = yes
+			}
+
+			iconType = {
+				name = "header_line"
+				spriteType = "GFX_line"
+				position = { x = 6 y = 26 }
+			}
+
+			instantTextBoxType = {
+				name = "label"
+				font = "malgun_goth_24"
+				position = { x = 16 y = 7 }
+				maxWidth = 400
+				text = "ORIGIN"
+				format = left
+				alwaysTransparent = yes
+			}
+		}
+
+		containerWindowType = {
+			name = "origins_window"
+			position = { x = 10 y = 50 }
+			size = { width = 670 height = 300 }
+			orientation = upper_left
+			moveable = no
+			margin = { top = 2 bottom = 2 }
+
+			background = {
+				name = "background"
+				spriteType = "GFX_invisible"
+			}
+
+			gridBoxType = {
+				name = "origins"
+				position = { x = 5 y = 3 }
+				size = { width = 656 height = 290 }
+				slotSize = { width = 220 height = 150 }
+				scrollbartype = "standardlistbox_slider"
+				max_slots_horizontal = 3
+				format = UPPER_LEFT
+			}
+		}
+
+		containerWindowType = {
+			name = "desc_window"
+			position = { x = 690 y = 50 }
+			size = { width = 330 height = 300 }
+			orientation = upper_left
+			moveable = no
+			margin = { top = 2 bottom = 2 }
+
+			background = {
+				name = "background"
+				spriteType = "GFX_tiles_dark_area_cut_8"
+			}
+
+			iconType = {
+				name = "selected_origin_icon"
+				quadTextureSprite = "GFX_government_civic"
+				position = { x = 10 y = 10 }
+				alwaysTransparent = yes
+				scale = 1
+			}
+
+			instantTextBoxType = {
+				name = "selected_origin_name"
+				font = "malgun_goth_24"
+				position = { x = 50 y = 12 }
+				maxWidth = 300
+				format = left
+				alwaysTransparent = yes
+			}
+
+			instantTextBoxType = {
+				name = "selected_origin_desc"
+				font = "cg_16b"
+				position = { x = 15 y = 47 }
+				maxWidth = 300
+				maxHeight = 240
+				format = left
+				scrollbartype = "standardtext_slider"
+				alwaysTransparent = no
+			}
+		}
+
+		buttonType = {
+				name = "cancel"
+				quadTextureSprite = "GFX_close"
+				position = { x = -45 y = 8 }
+				Orientation = "UPPER_RIGHT"
+				shortCut = "ESCAPE"
+				pdx_tooltip = "CLOSE_TITLE"
+				clicksound = "back_click"
+			}
+			buttonType = {
+				name = "back"
+				font = "cg_16b"
+				spriteType = "GFX_galactic_object_button"
+				buttonText = "BACK"
+				position = { x = 0 y = -40 }
+				orientation = LOWER_LEFT
+				shortcut = "BACKSPACE"
+				clicksound = back_click
+			}
+			buttonType = {
+				name = "apply_and_close"
+				font = "cg_16b"
+				spriteType = "GFX_galactic_object_button"
+				buttonText = "NEXT"
+				position = { x = -290 y = -40 }
+				orientation = LOWER_RIGHT
+				clicksound = confirm_click
+			}
+	}
+
+	#######################
+	# origin entry
+	#######################
+	containerWindowType = {
+		name = "empire_origin_entry"
+		position = { x = 0 y = 0 }
+		size = { width = 218 height = 148 }
+		clipping = yes
+
+		background = {
+			name = "bg"
+			spriteType = "GFX_tiles_dark_area_cut_8"
+			clicksound = select_click
+		}
+
+		containerWindowType = {
+			name = "picture_frame"
+			position = { x = 1 y = 1 }
+			size = { width = 216 height = 115 }
+			clipping = yes
+
+			iconType = {
+				name = "picture"
+				spriteType = GFX_subwindow_tile_plain_solid
+				alwaysTransparent = yes
+			}
+		}
+
+		containerWindowType = {
+			name = "selected"
+			position = { x = -4 y = -5 }
+			size = { width = 226 height = 157 }
+
+			background = {
+				name = "background"
+				spriteType = "GFX_glow_tile_orange"
+				alwaysTransparent = yes
+			}
+		}
+
+		instantTextBoxType = {
+			name = "name"
+			font = "cg_16b"
+			position = { x = 0 y = 122 }
+			maxWidth = 220
+			text = "default"
+			format = centre
+			alwaysTransparent = no
+		}
 	}
 
 	#######################

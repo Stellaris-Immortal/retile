@@ -66,6 +66,14 @@ ship_event = {
 			create_archaeological_site = zroni_digsite_1
 			add_deposit = d_zro_deposit_2
 		}
+		owner = {
+			add_monthly_resource_mult = {
+				resource = engineering_research
+     			value = @tier1researchreward
+     			min = @tier1researchmin
+     			max = @tier1researchmax
+     		}
+		}
 	}
 }
 
@@ -87,6 +95,7 @@ fleet_event = {
 		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.3
 	title = "ancrel.3.name"
@@ -101,8 +110,18 @@ fleet_event = {
 
 	option = {
 		name = ancrel.3.a
+		small_artifact_reward = yes
+		owner = {
+			add_monthly_resource_mult = {
+				resource = physics_research
+				value = @tier2researchreward
+				min = @tier2researchmin
+				max = @tier2researchmax
+			}
+		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.4
 	title = "ancrel.3.name"
@@ -123,6 +142,7 @@ fleet_event = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
 					is_same_value = root.owner.capital_scope.solar_system
+					has_star_flag = hostile_system
 				}
 				OR = {
 					has_owner = no
@@ -137,7 +157,10 @@ fleet_event = {
 					}
 					is_colony = no
 					has_anomaly = no
-					NOT = { exists = archaeological_site }
+					NOR = { 
+						exists = archaeological_site
+						has_planet_flag = hatchling_egg
+					}
 				}
 			}
 			min_steps = 1
@@ -204,8 +227,18 @@ fleet_event = {
 
 	option = {
 		name = ancrel.3.a
+		small_artifact_reward = yes
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier2researchreward
+				min = @tier2researchmin
+				max = @tier2researchmax
+			}
+		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.6
 	title = "ancrel.3.name"
@@ -226,6 +259,7 @@ fleet_event = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
 					is_same_value = root.owner.capital_scope.solar_system
+					has_star_flag = hostile_system
 				}
 				OR = {
 					has_owner = no
@@ -240,7 +274,10 @@ fleet_event = {
 					}
 					is_colony = no
 					has_anomaly = no
-					NOT = { exists = archaeological_site }
+					NOR = { 
+						exists = archaeological_site
+						has_planet_flag = hatchling_egg
+					}
 				}
 			}
 			min_steps = 1
@@ -282,9 +319,11 @@ fleet_event = {
 	is_triggered_only = yes
 
 	option = {
-		name = INTERESTING
+		name = INTERESTING			 
+		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.8
 	title = zroni_digsite_2
@@ -304,7 +343,8 @@ fleet_event = {
 				NOR = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
-					is_same_value = root.owner.capital_scope.solar_system
+					is_same_value = root.owner.capital_scope.solar_system	   
+					has_star_flag = hostile_system
 				}
 				OR = {
 					has_owner = no
@@ -319,9 +359,13 @@ fleet_event = {
 					}
 					is_colony = no
 					has_anomaly = no
-					NOT = { exists = archaeological_site }
+					NOR = {
+						exists = archaeological_site
+						has_planet_flag = hatchling_egg
+					}
 				}
 			}
+			
 			min_steps = 1
 			max_steps = 10
 			random_system_planet = {
@@ -362,8 +406,17 @@ fleet_event = {
 
 	option = {
 		name = ancrel.9.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+     			value = @tier2researchreward
+     			min = @tier2researchmin
+     			max = @tier2researchmax
+			}
+		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.10
 	title = "ancrel.3.name"
@@ -383,7 +436,8 @@ fleet_event = {
 				NOR = {
 					is_same_value = root.solar_system
 					has_star_flag = first_zoroni_site@root.owner
-					is_same_value = root.owner.capital_scope.solar_system
+					is_same_value = root.owner.capital_scope.solar_system		   
+					has_star_flag = hostile_system
 				}
 				OR = {
 					has_owner = no
@@ -398,7 +452,10 @@ fleet_event = {
 					}
 					is_colony = no
 					has_anomaly = no
-					NOT = { exists = archaeological_site }
+					NOR = {
+						exists = archaeological_site
+						has_planet_flag = hatchling_egg
+					}
 				}
 			}
 			min_steps = 1
@@ -441,8 +498,23 @@ fleet_event = {
 
 	option = {
 		name = ancrel.3.a
+		owner = {
+			add_monthly_resource_mult = {
+     			resource = engineering_research
+     			value = @tier1researchreward
+     			min = @tier1researchmin
+     			max = @tier1researchmax
+     		}
+     		add_monthly_resource_mult = {
+     			resource = society_research
+     			value = @tier2researchreward
+     			min = @tier2researchmin
+     			max = @tier2researchmax
+     		}
+		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.12
 	title = "ancrel.3.name"
@@ -457,8 +529,18 @@ fleet_event = {
 
 	option = {
 		name = ancrel.12.a
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+     			value = @tier2researchreward
+     			min = @tier2researchmin
+     			max = @tier2researchmax
+			}
+		}		  
+		small_artifact_reward = yes 
 	}
 }
+
 fleet_event = { 
 	id = ancrel.13
 	title = "ancrel.3.name"
@@ -521,8 +603,13 @@ fleet_event = {
 
 	option = {
 		name = ancrel.101.a
+		owner = { 
+			add_resource = { sr_zro = 2 }
+		}			 
+		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.16
 	title = "ancrel.3.name"
@@ -537,8 +624,18 @@ fleet_event = {
 
 	option = {
 		name = ancrel.16.a
+		owner = {
+			add_monthly_resource_mult = {
+     			resource = society_research
+     			value = @tier2researchreward
+     			min = @tier2researchmin
+     			max = @tier2researchmax
+     		}
+		}
+		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.17
 	title = "ancrel.3.name"
@@ -553,8 +650,18 @@ fleet_event = {
 
 	option = {
 		name = ancrel.16.a
+		owner = {
+			add_monthly_resource_mult = {
+     			resource = society_research
+     			value = @tier2researchreward
+     			min = @tier2researchmin
+     			max = @tier2researchmax
+     		}
+		}
+		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.18
 	title = "ancrel.3.name"
@@ -569,8 +676,19 @@ fleet_event = {
 
 	option = {
 		name = ancrel.18.a
+		owner = {
+			add_resource = { sr_zro = 5 }
+			add_monthly_resource_mult = {
+     			resource = society_research
+     			value = @tier3researchreward
+     			min = @tier3researchmin
+     			max = @tier3researchmax
+     		}
+		}
+		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { 
 	id = ancrel.19
 	title = "ancrel.3.name"
@@ -626,6 +744,26 @@ fleet_event = {
 
 	option = {
 		name = ancrel.9.a
+		owner = {
+			locked_random_list = {
+				50 = {
+					add_monthly_resource_mult = {
+     					resource = society_research
+     					value = @tier2researchreward
+     					min = @tier2researchmin
+     					max = @tier2researchmax
+     				}
+				}
+				50 = {
+					add_monthly_resource_mult = {
+     					resource = engineering_research
+     					value = @tier2researchreward
+     					min = @tier2researchmin
+     					max = @tier2researchmax
+     				}
+				}
+			}
+		}
 	}
 }
 
@@ -684,9 +822,11 @@ fleet_event = { #Open the Vault
 	is_triggered_only = yes
 
 	option = {
-		name = ancrel.102.a
+		name = ancrel.102.a					 
+		small_artifact_reward = yes
 	}
 }
+
 fleet_event = { #Contents revealed
 	id = ancrel.103
 	title = "ancrel.103.name"
@@ -783,8 +923,29 @@ fleet_event = {
 
 	option = {
 		name = OK
+		owner = {
+			locked_random_list = {
+				50 = {
+					add_monthly_resource_mult = {
+     					resource = society_research
+     					value = @tier3researchreward
+     					min = @tier3researchmin
+     					max = @tier3researchmax
+     				}
+				}
+				50 = {
+					add_monthly_resource_mult = {
+     					resource = engineering_research
+     					value = @tier3researchreward
+     					min = @tier3researchmin
+     					max = @tier3researchmax
+     				}
+				}
+			}
+		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.105
 	title = "ancrel.105.name"
@@ -799,8 +960,30 @@ fleet_event = {
 
 	option = {
 		name = OK
+		small_artifact_reward = yes
+		owner = {
+			locked_random_list = {
+				50 = {
+					add_monthly_resource_mult = {
+     					resource = society_research
+     					value = @tier3researchreward
+     					min = @tier3researchmin
+     					max = @tier3researchmax
+     				}
+				}
+				50 = {
+					add_monthly_resource_mult = {
+     					resource = engineering_research
+     					value = @tier3researchreward
+     					min = @tier3researchmin
+     					max = @tier3researchmax
+     				}
+				}
+			}
+		}
 	}
 }
+
 fleet_event = { 
 	id = ancrel.106
 	title = "ancrel.106.name"
@@ -873,7 +1056,7 @@ ship_event = { #
 			
 		}
 	}
-	picture = GFX_evt_ship_in_orbit
+	picture = GFX_evt_ship_in_orbit_3
 	show_sound = event_finding_loot
 	location = from
 
@@ -968,6 +1151,15 @@ fleet_event = { #Ancient battle
 
 	option = {
 		name = CURIOUS
+		small_artifact_reward = yes
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier2researchreward
+				min = @tier2researchmin
+				max = @tier2researchmax
+			}
+		}
 	}
 }
 fleet_event = { #Contents revealed

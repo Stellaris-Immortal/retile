@@ -572,6 +572,26 @@ trait_solitary = {
 	}
 }
 
+trait_docile = {
+	cost = 2
+	potential_crossbreeding_chance = 1.0
+	opposites = { "trait_unruly" }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
+	modifier = {
+		species_empire_size_mult = -0.10
+	}
+}
+
+trait_unruly = {
+	cost = -2
+	potential_crossbreeding_chance = 1.0
+	opposites = { "trait_docile" }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
+	modifier = {
+		species_empire_size_mult = 0.10
+	}
+}
+
 trait_charismatic = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
@@ -1152,5 +1172,39 @@ trait_lithoid_volatile_excretions = {
 
 	slave_cost = {
 		energy = 100
+	}
+}
+
+trait_void_dweller_1 = {
+	icon = "gfx/interface/icons/traits/trait_void_dweller_positive.dds"
+	initial = no
+	modification = no
+	randomized = no
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
+	sorting_priority = 30
+	potential_crossbreeding_chance = 0.33
+	modifier = {
+		planet_jobs_specialist_produces_mult = 0.15
+		planet_jobs_worker_produces_mult = 0.15
+		pop_growth_speed = -0.1
+	}
+	ai_weight = {
+		weight = 0
+	}
+}
+
+trait_void_dweller_2 = {
+	icon = "gfx/interface/icons/traits/trait_void_dweller.dds"
+	initial = no
+	modification = no
+	randomized = no
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
+	sorting_priority = 30
+	potential_crossbreeding_chance = 0.33
+	modifier = {
+		pop_growth_speed = -0.6
+	}
+	ai_weight = {
+		weight = 0
 	}
 }

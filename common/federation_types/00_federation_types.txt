@@ -1,0 +1,1445 @@
+#First is set to default
+#
+#	#type_key
+#	test_type = {
+#		#on_create, run everytime the federation type has been set
+#		on_create = {}
+#		#potential
+#		potential = {}
+#		#allowed
+#		allow = {}
+#		#levels
+#		levels = {
+#			#test level key
+#			test_level = {
+#			#perks for level
+#				perks = {
+#					test_perk_1
+#					test_perk_2
+#				}
+#			}
+#		}
+#	}
+
+@xp_to_level_2 = 600
+@xp_to_level_3 = 1200
+@xp_to_level_4 = 2400
+@xp_to_level_5 = 4800
+
+default_federation = {
+	icon = "GFX_default_federation"
+	potential = {
+		always = yes
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = requires_actor_not_barbaric_despoilers
+			NOT = { has_valid_civic = civic_barbaric_despoilers }
+		}
+	}
+	levels = {
+		level_1 = { # Starting rank
+			experience = @xp_to_level_2 # Experience until next rank
+			perks = {
+				default_federation_passive
+			}
+		}
+
+		level_2 = {
+			experience = @xp_to_level_3
+			perks = {
+				federation_fleet_size_1
+				cohesion_join_1
+				extra_envoy_1
+			}
+		}
+
+		level_3 = {
+			experience = @xp_to_level_4
+			perks = {
+				envoy_unity_1
+				federation_fleet_speed_1
+				extra_influence_1
+			}
+		}
+
+		level_4 = {
+			experience = @xp_to_level_5
+			perks = {
+				cohesion_failed_vote_1
+				damage_crisis_1
+				diplo_weight_1
+			}
+		}
+
+		level_5 = {
+			perks = {
+				envoy_unity_2
+				damage_crisis_2
+				president_unity_1
+			}
+		}
+	}
+	on_create = {
+		remove_federation_flag = enable_federation_cooldowns
+		set_federation_law = centralization_minimal
+		set_federation_law = succession_type_rotation
+		set_federation_law = succession_term_years_20
+		set_federation_law = fleet_contribution_none
+		set_federation_law = federation_build_fleets_everyone
+		set_federation_law = vote_weight_equal
+		set_federation_law = declare_war_unanimous_vote
+		set_federation_law = invite_members_unanimous_vote
+		set_federation_law = kick_members_majority_vote
+		set_federation_law = free_migration_no
+		set_federation_law = treaties_separate_yes
+		set_federation_flag = enable_federation_cooldowns
+	}
+	
+	ai_weight = {
+		base = 0
+		modifier = {
+			desc = federation_acceptance_honorbound_warriors
+			add = -10
+			from = {
+				has_ai_personality = honorbound_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_evangelising_zealots
+			add = -20
+			from = {
+				has_ai_personality = evangelising_zealots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_erudite_explorers
+			add = 0
+			from = {
+				has_ai_personality = erudite_explorers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_spiritual_seekers
+			add = 10
+			from = {
+				has_ai_personality = spiritual_seekers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_ruthless_capitalists
+			add = -10
+			from = {
+				has_ai_personality = ruthless_capitalists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_peaceful_traders
+			add = 10
+			from = {
+				has_ai_personality = peaceful_traders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_hegemonic_imperialists
+			add = -20
+			from = {
+				has_ai_personality = hegemonic_imperialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_slaving_despots
+			add = -10
+			from = {
+				has_ai_personality = slaving_despots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_decadent_hierarchy
+			add = -30
+			from = {
+				has_ai_personality = decadent_hierarchy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_democratic_crusaders
+			add = 10
+			from = {
+				has_ai_personality = democratic_crusaders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_harmonious_hierarchy
+			add = 0
+			from = {
+				has_ai_personality = harmonious_hierarchy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_federation_builders
+			add = 20
+			from = {
+				has_ai_personality = federation_builders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_xenophobic_isolationists
+			add = -50
+			from = {
+				has_ai_personality = xenophobic_isolationists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_hive_mind
+			add = -50
+			from = {
+				has_ai_personality = hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_migrating_flock
+			add = 20
+			from = {
+				has_ai_personality = migrating_flock
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_machine_intelligence
+			add = -30
+			from = {
+				has_ai_personality = machine_intelligence
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_assimilators
+			add = -50
+			from = {
+				has_ai_personality = assimilators
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_servitors
+			add = 0
+			from = {
+				has_ai_personality = servitors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_fanatic_befrienders
+			add = 50
+			from = {
+				has_ai_personality = fanatic_befrienders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_peaceful_seclusionists
+			add = 10
+			from = {
+				has_ai_personality = peaceful_seclusionists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_tenacious_industrialists
+			add = 0
+			from = {
+				has_ai_personality = tenacious_industrialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_radical_liberators
+			add = 20
+			from = {
+				has_ai_personality = radical_liberators
+			}
+		}
+		modifier = {
+			add = -100
+			desc = alert_federation_low_cohesion_title
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = { federation_cohesion <= -50 }
+		}
+		modifier = {
+			add = -50
+			desc = alert_federation_low_cohesion_title
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = {
+				federation_cohesion > -50
+				federation_cohesion <= 0
+			}
+		}
+		modifier = {
+			add = 30
+			desc = COHESION_LABEL
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = { federation_cohesion >= 80 }
+		}
+		modifier = {
+			add = 20
+			desc = federation_acceptance_hegemony
+			from = {
+				has_federation = yes
+				NOT = {
+					relative_power = {
+						who = prev
+						value > equivalent
+					}
+				}
+			}
+			exists = federation
+			federation = { has_federation_type = hegemony_federation }
+		}
+		modifier = {
+			add = 50
+			desc = federation_acceptance_hegemony
+			from = {
+				has_federation = yes
+				relative_power = {
+					who = prev
+					value > equivalent
+				}
+			}
+			exists = federation
+			federation = { has_federation_type = hegemony_federation }
+		}
+	}
+}
+
+trade_federation = {
+	icon = "GFX_trade_federation"
+	potential = {
+		host_has_dlc = Federations
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = requires_actor_not_barbaric_despoilers
+			NOT = { has_valid_civic = civic_barbaric_despoilers }
+		}
+	}
+	levels = {
+		level_1 = { # Starting rank
+			experience = @xp_to_level_2 # Experience until next rank
+			perks = {
+				trade_federation_passive
+			}
+		}
+
+		level_2 = {
+			experience = @xp_to_level_3
+			perks = {
+				trade_value_1
+				federation_fleet_speed_1
+				extra_envoy_1
+			}
+		}
+
+		level_3 = {
+			experience = @xp_to_level_4
+			perks = {
+				trade_value_2
+				trade_protection_1
+				extra_influence_1
+			}
+		}
+
+		level_4 = {
+			experience = @xp_to_level_5
+			perks = {
+				trade_value_3
+				federation_fleet_size_1
+				diplo_weight_1
+			}
+		}
+
+		level_5 = {
+			perks = {
+				trade_value_4
+				damage_crisis_1
+				president_trade_value_1
+			}
+		}
+	}
+	on_create = {
+		remove_federation_flag = enable_federation_cooldowns
+		set_federation_law = centralization_minimal
+		set_federation_law = succession_type_rotation
+		set_federation_law = succession_term_years_20
+		set_federation_law = fleet_contribution_none
+		set_federation_law = federation_build_fleets_everyone
+		set_federation_law = vote_weight_equal
+		set_federation_law = declare_war_unanimous_vote
+		set_federation_law = invite_members_unanimous_vote
+		set_federation_law = kick_members_majority_vote
+		set_federation_law = free_migration_no
+		set_federation_law = treaties_separate_yes
+		set_federation_flag = enable_federation_cooldowns
+	}
+	
+	ai_weight = {
+		base = 0
+		modifier = {
+			desc = federation_acceptance_honorbound_warriors
+			add = -20
+			from = {
+				has_ai_personality = honorbound_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_evangelising_zealots
+			add = -20
+			from = {
+				has_ai_personality = evangelising_zealots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_erudite_explorers
+			add = 0
+			from = {
+				has_ai_personality = erudite_explorers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_spiritual_seekers
+			add = 10
+			from = {
+				has_ai_personality = spiritual_seekers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_ruthless_capitalists
+			add = 10
+			from = {
+				has_ai_personality = ruthless_capitalists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_peaceful_traders
+			add = 20
+			from = {
+				has_ai_personality = peaceful_traders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_hegemonic_imperialists
+			add = -20
+			from = {
+				has_ai_personality = hegemonic_imperialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_slaving_despots
+			add = -10
+			from = {
+				has_ai_personality = slaving_despots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_decadent_hierarchy
+			add = -30
+			from = {
+				has_ai_personality = decadent_hierarchy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_democratic_crusaders
+			add = 0
+			from = {
+				has_ai_personality = democratic_crusaders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_harmonious_hierarchy
+			add = 0
+			from = {
+				has_ai_personality = harmonious_hierarchy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_federation_builders
+			add = 10
+			from = {
+				has_ai_personality = federation_builders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_xenophobic_isolationists
+			add = -50
+			from = {
+				has_ai_personality = xenophobic_isolationists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_hive_mind
+			add = -100
+			from = {
+				has_ai_personality = hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_migrating_flock
+			add = 20
+			from = {
+				has_ai_personality = migrating_flock
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_machine_intelligence
+			add = -100
+			from = {
+				has_ai_personality = machine_intelligence
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_assimilators
+			add = -50
+			from = {
+				has_ai_personality = assimilators
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_servitors
+			add = 0
+			from = {
+				has_ai_personality = servitors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_fanatic_befrienders
+			add = 30
+			from = {
+				has_ai_personality = fanatic_befrienders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_peaceful_seclusionists
+			add = 20
+			from = {
+				has_ai_personality = peaceful_seclusionists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_tenacious_industrialists
+			add = 20
+			from = {
+				has_ai_personality = tenacious_industrialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_radical_liberators
+			add = 20
+			from = {
+				has_ai_personality = radical_liberators
+			}
+		}
+		modifier = {
+			add = -100
+			desc = alert_federation_low_cohesion_title
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = { federation_cohesion <= -50 }
+		}
+		modifier = {
+			add = -50
+			desc = alert_federation_low_cohesion_title
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = {
+				federation_cohesion > -50
+				federation_cohesion <= 0
+			}
+		}
+		modifier = {
+			add = 30
+			desc = COHESION_LABEL
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = { federation_cohesion >= 80 }
+		}
+		modifier = {
+			add = 20
+			desc = federation_acceptance_hegemony
+			from = {
+				has_federation = yes
+				NOT = {
+					relative_power = {
+						who = prev
+						value > equivalent
+					}
+				}
+			}
+			exists = federation
+			federation = { has_federation_type = hegemony_federation }
+		}
+		modifier = {
+			add = 50
+			desc = federation_acceptance_hegemony
+			from = {
+				has_federation = yes
+				relative_power = {
+					who = prev
+					value > equivalent
+				}
+			}
+			exists = federation
+			federation = { has_federation_type = hegemony_federation }
+		}
+	}
+}
+
+research_federation = {
+	icon = "GFX_research_federation"
+	potential = {
+		host_has_dlc = Federations
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = requires_actor_not_barbaric_despoilers
+			NOT = { has_valid_civic = civic_barbaric_despoilers }
+		}
+	}
+	levels = {
+		level_1 = { # Starting rank
+			experience = @xp_to_level_2 # Experience until next rank
+			perks = {
+				research_federation_passive
+			}
+		}
+
+		level_2 = {
+			experience = @xp_to_level_3
+			perks = {
+				research_share_1
+				research_boost_1
+				president_option_1
+			}
+		}
+
+		level_3 = {
+			experience = @xp_to_level_4
+			perks = {
+				research_share_2
+				rare_tech_boost
+				tech_diplo_weight_1
+			}
+		}
+
+		level_4 = {
+			experience = @xp_to_level_5
+			perks = {
+				research_share_3
+				crisis_research_1
+				extra_envoy_1
+			}
+		}
+
+		level_5 = {
+			perks = {
+				research_share_4
+				crisis_research_2
+				president_megastructure_1
+			}
+		}
+	}
+	on_create = {
+		remove_federation_flag = enable_federation_cooldowns
+		set_federation_law = centralization_minimal
+		set_federation_law = succession_type_rotation
+		set_federation_law = succession_term_years_20
+		set_federation_law = fleet_contribution_none
+		set_federation_law = federation_build_fleets_everyone
+		set_federation_law = vote_weight_equal
+		set_federation_law = declare_war_unanimous_vote
+		set_federation_law = invite_members_unanimous_vote
+		set_federation_law = kick_members_majority_vote
+		set_federation_law = free_migration_no
+		set_federation_law = treaties_separate_yes
+		set_federation_flag = enable_federation_cooldowns
+	}
+	ai_weight = {
+		base = 0
+		modifier = {
+			desc = federation_acceptance_honorbound_warriors
+			add = -20
+			from = {
+				has_ai_personality = honorbound_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_evangelising_zealots
+			add = -20
+			from = {
+				has_ai_personality = evangelising_zealots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_erudite_explorers
+			add = 10
+			from = {
+				has_ai_personality = erudite_explorers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_spiritual_seekers
+			add = 10
+			from = {
+				has_ai_personality = spiritual_seekers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_ruthless_capitalists
+			add = -10
+			from = {
+				has_ai_personality = ruthless_capitalists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_peaceful_traders
+			add = 10
+			from = {
+				has_ai_personality = peaceful_traders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_hegemonic_imperialists
+			add = -20
+			from = {
+				has_ai_personality = hegemonic_imperialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_slaving_despots
+			add = -10
+			from = {
+				has_ai_personality = slaving_despots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_decadent_hierarchy
+			add = -30
+			from = {
+				has_ai_personality = decadent_hierarchy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_democratic_crusaders
+			add = 0
+			from = {
+				has_ai_personality = democratic_crusaders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_harmonious_hierarchy
+			add = 0
+			from = {
+				has_ai_personality = harmonious_hierarchy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_federation_builders
+			add = 10
+			from = {
+				has_ai_personality = federation_builders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_xenophobic_isolationists
+			add = -50
+			from = {
+				has_ai_personality = xenophobic_isolationists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_hive_mind
+			add = -50
+			from = {
+				has_ai_personality = hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_migrating_flock
+			add = 20
+			from = {
+				has_ai_personality = migrating_flock
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_machine_intelligence
+			add = -20
+			from = {
+				has_ai_personality = machine_intelligence
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_assimilators
+			add = -50
+			from = {
+				has_ai_personality = assimilators
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_servitors
+			add = 0
+			from = {
+				has_ai_personality = servitors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_fanatic_befrienders
+			add = 30
+			from = {
+				has_ai_personality = fanatic_befrienders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_peaceful_seclusionists
+			add = -10
+			from = {
+				has_ai_personality = peaceful_seclusionists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_tenacious_industrialists
+			add = 10
+			from = {
+				has_ai_personality = tenacious_industrialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_radical_liberators
+			add = 0
+			from = {
+				has_ai_personality = radical_liberators
+			}
+		}
+		modifier = {
+			add = -100
+			desc = alert_federation_low_cohesion_title
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = { federation_cohesion <= -50 }
+		}
+		modifier = {
+			add = -50
+			desc = alert_federation_low_cohesion_title
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = {
+				federation_cohesion > -50
+				federation_cohesion <= 0
+			}
+		}
+		modifier = {
+			add = 30
+			desc = COHESION_LABEL
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = { federation_cohesion >= 80 }
+		}
+		modifier = {
+			add = 20
+			desc = federation_acceptance_hegemony
+			from = {
+				has_federation = yes
+				NOT = {
+					relative_power = {
+						who = prev
+						value > equivalent
+					}
+				}
+			}
+			exists = federation
+			federation = { has_federation_type = hegemony_federation }
+		}
+		modifier = {
+			add = 50
+			desc = federation_acceptance_hegemony
+			from = {
+				has_federation = yes
+				relative_power = {
+					who = prev
+					value > equivalent
+				}
+			}
+			exists = federation
+			federation = { has_federation_type = hegemony_federation }
+		}
+	}
+}
+
+military_federation = {
+	icon = "GFX_military_federation"
+	potential = {
+		host_has_dlc = Federations
+	}
+	allow = {
+		is_militarist = yes
+	}
+	levels = {
+		level_1 = { # Starting rank
+			experience = @xp_to_level_2 # Experience until next rank
+			perks = {
+				military_federation_passive
+			}
+		}
+
+		level_2 = {
+			experience = @xp_to_level_3
+			perks = {
+				federation_fleet_size_1
+				federation_fleet_speed_1
+				claim_cost_1
+			}
+		}
+
+		level_3 = {
+			experience = @xp_to_level_4
+			perks = {
+				admiral_level_cap_1
+				federation_fire_rate_1
+				extra_envoy_1
+			}
+		}
+
+		level_4 = {
+			experience = @xp_to_level_5
+			perks = {
+				federation_fleet_size_2
+				damage_crisis_1
+				federation_fleet_unity_1
+			}
+		}
+
+		level_5 = {
+			perks = {
+				federation_fleet_size_3
+				damage_crisis_2
+				diplo_weight_1
+			}
+		}
+	}
+	on_create = {
+		remove_federation_flag = enable_federation_cooldowns
+		set_federation_law = centralization_minimal
+		set_federation_law = succession_type_rotation
+		set_federation_law = succession_term_years_20
+		set_federation_law = fleet_contribution_low_martial
+		set_federation_law = federation_build_fleets_everyone
+		set_federation_law = vote_weight_equal
+		set_federation_law = declare_war_unanimous_vote
+		set_federation_law = invite_members_unanimous_vote
+		set_federation_law = kick_members_majority_vote
+		set_federation_law = free_migration_no
+		set_federation_law = treaties_separate_yes
+		set_federation_flag = enable_federation_cooldowns
+	}
+	ai_weight = {
+		base = 0
+		modifier = {
+			desc = federation_acceptance_honorbound_warriors
+			add = 0
+			from = {
+				has_ai_personality = honorbound_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_evangelising_zealots
+			add = -10
+			from = {
+				has_ai_personality = evangelising_zealots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_erudite_explorers
+			add = 0
+			from = {
+				has_ai_personality = erudite_explorers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_spiritual_seekers
+			add = 10
+			from = {
+				has_ai_personality = spiritual_seekers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_ruthless_capitalists
+			add = -10
+			from = {
+				has_ai_personality = ruthless_capitalists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_peaceful_traders
+			add = -10
+			from = {
+				has_ai_personality = peaceful_traders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_hegemonic_imperialists
+			add = -10
+			from = {
+				has_ai_personality = hegemonic_imperialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_slaving_despots
+			add = -10
+			from = {
+				has_ai_personality = slaving_despots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_decadent_hierarchy
+			add = -30
+			from = {
+				has_ai_personality = decadent_hierarchy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_democratic_crusaders
+			add = 10
+			from = {
+				has_ai_personality = democratic_crusaders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_harmonious_hierarchy
+			add = 0
+			from = {
+				has_ai_personality = harmonious_hierarchy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_federation_builders
+			add = 10
+			from = {
+				has_ai_personality = federation_builders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_xenophobic_isolationists
+			add = -50
+			from = {
+				has_ai_personality = xenophobic_isolationists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_hive_mind
+			add = -30
+			from = {
+				has_ai_personality = hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_migrating_flock
+			add = 10
+			from = {
+				has_ai_personality = migrating_flock
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_machine_intelligence
+			add = -20
+			from = {
+				has_ai_personality = machine_intelligence
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_assimilators
+			add = -50
+			from = {
+				has_ai_personality = assimilators
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_servitors
+			add = 0
+			from = {
+				has_ai_personality = servitors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_fanatic_befrienders
+			add = 30
+			from = {
+				has_ai_personality = fanatic_befrienders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_peaceful_seclusionists
+			add = -20
+			from = {
+				has_ai_personality = peaceful_seclusionists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_tenacious_industrialists
+			add = 0
+			from = {
+				has_ai_personality = tenacious_industrialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_radical_liberators
+			add = 20
+			from = {
+				has_ai_personality = radical_liberators
+			}
+		}
+		modifier = {
+			add = -100
+			desc = alert_federation_low_cohesion_title
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = { federation_cohesion <= -50 }
+		}
+		modifier = {
+			add = -50
+			desc = alert_federation_low_cohesion_title
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = {
+				federation_cohesion > -50
+				federation_cohesion <= 0
+			}
+		}
+		modifier = {
+			add = 30
+			desc = COHESION_LABEL
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = { federation_cohesion >= 80 }
+		}
+		modifier = {
+			add = 20
+			desc = federation_acceptance_hegemony
+			from = {
+				has_federation = yes
+				NOT = {
+					relative_power = {
+						who = prev
+						value > equivalent
+					}
+				}
+			}
+			exists = federation
+			federation = { has_federation_type = hegemony_federation }
+		}
+		modifier = {
+			add = 50
+			desc = federation_acceptance_hegemony
+			from = {
+				has_federation = yes
+				relative_power = {
+					who = prev
+					value > equivalent
+				}
+			}
+			exists = federation
+			federation = { has_federation_type = hegemony_federation }
+		}
+	}
+}
+
+hegemony_federation = {
+	icon = "GFX_hegemony_federation"
+	potential = {
+		host_has_dlc = Federations
+	}
+	levels = {
+		level_1 = { # Starting rank
+			experience = @xp_to_level_2 # Experience until next rank
+			perks = {
+				hegemony_federation_passive
+			}
+		}
+
+		level_2 = {
+			experience = @xp_to_level_3
+			perks = {
+				job_output_1
+				president_keep_navy_1
+				extra_envoy_1
+			}
+		}
+
+		level_3 = {
+			experience = @xp_to_level_4
+			perks = {
+				job_output_2
+				cohesion_join_1
+				president_hegemony_cb_1
+			}
+		}
+
+		level_4 = {
+			experience = @xp_to_level_5
+			perks = {
+				job_output_3
+				diplomacy_upkeep_1
+				extra_influence_1
+			}
+		}
+
+		level_5 = {
+			perks = {
+				damage_crisis_1
+				federation_fleet_unity_1
+				president_diplo_weight_steal_1
+			}
+		}
+	}
+	on_create = {
+		remove_federation_flag = enable_federation_cooldowns
+		set_federation_law = centralization_minimal
+		set_federation_law = succession_type_strongest_hegemony
+		set_federation_law = succession_power_diplomatic_weight
+		set_federation_law = succession_term_status_change
+		set_federation_law = fleet_contribution_low_hegemony
+		set_federation_law = federation_build_fleets_everyone
+		set_federation_law = vote_weight_equal
+		set_federation_law = declare_war_majority_vote_hegemony
+		set_federation_law = invite_members_president_vote_hegemony
+		set_federation_law = kick_members_president_vote_hegemony
+		set_federation_law = free_migration_no
+		set_federation_law = treaties_separate_yes
+		set_federation_flag = enable_federation_cooldowns
+	}
+	ai_weight = {
+		base = 0
+		modifier = {
+			desc = federation_acceptance_hegemony
+			add = -20
+			from = {
+				relative_power = {
+					who = prev
+					category = all
+					value >= equivalent
+				}
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_honorbound_warriors
+			add = -10
+			from = {
+				has_ai_personality = honorbound_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_evangelising_zealots
+			add = -20
+			from = {
+				has_ai_personality = evangelising_zealots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_erudite_explorers
+			add = 0
+			from = {
+				has_ai_personality = erudite_explorers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_spiritual_seekers
+			add = 10
+			from = {
+				has_ai_personality = spiritual_seekers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_ruthless_capitalists
+			add = -10
+			from = {
+				has_ai_personality = ruthless_capitalists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_peaceful_traders
+			add = 10
+			from = {
+				has_ai_personality = peaceful_traders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_hegemonic_imperialists
+			add = 0
+			from = {
+				has_ai_personality = hegemonic_imperialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_slaving_despots
+			add = 0
+			from = {
+				has_ai_personality = slaving_despots
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_decadent_hierarchy
+			add = -10
+			from = {
+				has_ai_personality = decadent_hierarchy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_democratic_crusaders
+			add = -50
+			from = {
+				has_ai_personality = democratic_crusaders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_harmonious_hierarchy
+			add = 0
+			from = {
+				has_ai_personality = harmonious_hierarchy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_federation_builders
+			add = 10
+			from = {
+				has_ai_personality = federation_builders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_xenophobic_isolationists
+			add = -50
+			from = {
+				has_ai_personality = xenophobic_isolationists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_hive_mind
+			add = -50
+			from = {
+				has_ai_personality = hive_mind
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_migrating_flock
+			add = 10
+			from = {
+				has_ai_personality = migrating_flock
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_machine_intelligence
+			add = -30
+			from = {
+				has_ai_personality = machine_intelligence
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_assimilators
+			add = -50
+			from = {
+				has_ai_personality = assimilators
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_servitors
+			add = 10
+			from = {
+				has_ai_personality = servitors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_fanatic_befrienders
+			add = 30
+			from = {
+				has_ai_personality = fanatic_befrienders
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_peaceful_seclusionists
+			add = -20
+			from = {
+				has_ai_personality = peaceful_seclusionists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_tenacious_industrialists
+			add = -10
+			from = {
+				has_ai_personality = tenacious_industrialists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_radical_liberators
+			add = -50
+			from = {
+				has_ai_personality = radical_liberators
+			}
+		}
+		modifier = {
+			add = -100
+			desc = alert_federation_low_cohesion_title
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = { federation_cohesion <= -50 }
+		}
+		modifier = {
+			add = -50
+			desc = alert_federation_low_cohesion_title
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = {
+				federation_cohesion > -50
+				federation_cohesion <= 0
+			}
+		}
+		modifier = {
+			add = 30
+			desc = COHESION_LABEL
+			from = {
+				has_federation = yes
+			}
+			exists = federation
+			federation = { federation_cohesion >= 80 }
+		}
+		modifier = {
+			add = 50
+			desc = RELATIVE_POWER_1_DESC
+			from = {
+				has_federation = yes
+				relative_power = {
+					who = prev
+					value = pathetic
+				}
+			}
+		}
+	}
+}
