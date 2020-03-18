@@ -377,6 +377,24 @@ decision_consecrated_worlds = {
 			if = {
 				limit = {
 					OR = {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 						is_planet_class = pc_asteroid
 						is_planet_class = pc_nuked
 						is_planet_class = pc_gas_giant
@@ -1077,6 +1095,18 @@ decision_market_nomination = {
 						factor = 0.33
 						from = { has_authority = auth_corporate }
 					}
+					modifier = {
+						factor = 0.33
+						from = { trade_income >= 100 }
+					}
+					modifier = {
+						factor = 2
+						from = { trade_income <= 50 }
+					}
+					modifier = {
+						factor = 1.5
+						from = { has_ethic = ethic_gestalt_consciousness }
+					}
 				}
 				6 = {
 					add_modifier = {
@@ -1098,6 +1128,18 @@ decision_market_nomination = {
 					modifier = {
 						factor = 9
 						from = { has_authority = auth_corporate }
+					}
+					modifier = {
+						factor = 2
+						from = { trade_income >= 120 }
+					}
+					modifier = {
+						factor = 0.5
+						from = { trade_income <= 50 }
+					}
+					modifier = {
+						factor = 0.75
+						from = { has_ethic = ethic_gestalt_consciousness }
 					}
 					add_modifier = {
 						modifier = market_nominee_level_3
@@ -1385,5 +1427,61 @@ decision_divine_algorithm  = {
 	}
 	ai_weight = {
 		weight = 0
+	}
+}
+
+decision_project_cornucopia = {
+	owned_planets_only = yes
+
+	enactment_time = 180
+	resources = {
+		category = decisions
+		cost = {
+			influence = 25
+			energy = 500
+		}
+	}
+
+	potential = {
+		habitable_structure = no
+		NOT = { is_planet_class = pc_machine }
+		NOT = { is_planet_class = pc_hive }
+		NOT = { is_planet_class = pc_city }
+		owner = {
+			is_galactic_community_member = yes
+			is_active_resolution = "resolution_industry_project_cornucopia"
+		}
+		NOT = { has_deposit = d_project_cornucopia }
+	}
+
+	effect = {
+		custom_tooltip = decision_project_cornucopia_effects_short
+		add_deposit = d_project_cornucopia
+		hidden_effect = {
+			create_message = {
+				type = MESSAGE_TYPE_PLANET_PROSPECTED
+				localization = MESSAGE_PLANET_PROSPECTED
+				days = 30
+				target = this
+				variable = {
+					type = name
+					localization = PLANET
+					scope = this
+				}
+				variable = {
+					type = name
+					localization = DEPOSIT
+					scope = last_added_deposit
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 0
+			num_pops < 20
+		}
 	}
 }
