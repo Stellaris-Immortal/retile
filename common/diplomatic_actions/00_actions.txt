@@ -32,6 +32,11 @@ action_improve_relation = {
 	requires_recipient_independence = no
 	action_type = positive
 
+	potential = {
+		is_country_type = default
+		from = { is_country_type = default }
+	}
+
 	possible = {
 		custom_tooltip = {
 			fail_text = "DIPLOMACY_STATUS_WAR"
@@ -101,6 +106,11 @@ action_harm_relation = {
 	requires_actor_independence = no
 	requires_recipient_independence = no
 	action_type = negative
+
+	potential = {
+		is_country_type = default
+		from = { is_country_type = default }
+	}
 
 	possible = {
 		custom_tooltip = {
@@ -1304,7 +1314,9 @@ action_invite_to_federation = {
 	should_notify_all_communications = yes
 	AI_acceptance_base_value = -50
 	action_type = positive
-
+	should_show_auto_accept_message_recipient = yes
+	should_open_auto_accept_message_recipient = yes
+	should_notify_auto_recipient_on_vote_fail = yes
 	potential = {
 		hidden_trigger = {
 			is_fallen_machine_empire = no
@@ -1399,6 +1411,7 @@ action_invite_to_federation = {
 			fail_text = "requires_excellent_or_better_opinion"
 
 			OR = {
+				from = { is_same_value = prevprev } # Bypass opinion check if we are proposing on behalf of recipient
 				opinion_level = { who = from level >= excellent }
 				is_improving_relations_with = from
 			}
@@ -1602,7 +1615,7 @@ action_ask_to_leave_federation = {
 
 # Open borders towards another empire, allowing their ships to traverse your territory. Usable by and against regular empires only.
 action_open_borders = {
-	icon = "GFX_diplomacy_status_closed_borders"
+	icon = "GFX_diplomacy_status_open_borders"
 	auto_accepted = yes
 	requires_actor_independence = no
 	requires_recipient_independence = no

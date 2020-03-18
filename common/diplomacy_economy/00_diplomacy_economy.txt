@@ -103,4 +103,54 @@ per_relation = {
 			}
 		}
 	}
+	
+	improving_relations = {
+		trigger = {
+			is_improving_relations_with = FROM
+			OR = {
+				has_policy_flag = diplo_stance_isolationist
+				has_policy_flag = diplo_stance_belligerent
+				has_policy_flag = diplo_stance_supremacist
+			}
+		}
+		resources = {
+			category = envoy_costs
+			upkeep = {
+				influence = 0.25
+			}
+		}
+	}
+
+	harming_relations = {
+		trigger = {
+			is_harming_relations_with = FROM
+			OR = {
+				has_policy_flag = diplo_stance_isolationist
+				has_policy_flag = diplo_stance_cooperative
+			}
+		}
+		resources = {
+			category = envoy_costs
+			upkeep = {
+				influence = 0.25
+			}
+		}
+	}
+
+	diplo_stance_closed_borders = {
+		trigger = {
+			has_policy_flag = diplo_stance_mercantile
+
+			has_closed_borders = FROM
+			NOT = {
+				has_rival = FROM
+			}
+		}
+		resources = {
+			category = diplo_closed_borders
+			upkeep = {
+				influence = 0.25
+			}
+		}
+	}
 }
