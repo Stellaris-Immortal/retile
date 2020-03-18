@@ -243,7 +243,7 @@ war_philosophy = {
 war_doctrine = {
 	potential = {
 		is_country_type = default
-		has_tradition = tr_supremacy_overwhelming_force
+		has_technology = tech_doctrine_fleet_size_1
 	}
 
 	option = {
@@ -261,6 +261,7 @@ war_doctrine = {
 	
 	option = {
 		name = "hit_and_run_doctrine"
+		valid = { has_technology = tech_doctrine_fleet_size_2 }
 		
 		policy_flags = { hit_and_run_doctrine }
 		modifier = {
@@ -275,6 +276,7 @@ war_doctrine = {
 	
 	option = {
 		name = "rapid_deployment_doctrine"
+		valid = { has_technology = tech_doctrine_fleet_size_3 }
 		
 		policy_flags = { rapid_deployment_doctrine }	
 		modifier = {
@@ -295,6 +297,7 @@ war_doctrine = {
 		name = "no_retreat_doctrine"	
 		
 		policy_flags = { no_retreat_doctrine }
+		valid = { has_technology = tech_doctrine_fleet_size_4 }
 		
 		potential = { NOT = { has_valid_civic = civic_pacifist } }
 		

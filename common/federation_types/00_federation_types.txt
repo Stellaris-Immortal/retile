@@ -320,13 +320,6 @@ trade_federation = {
 	}
 	allow = {
 		custom_tooltip = {
-			fail_text = requires_megacorp_or_merchant
-			OR = {
-				is_megacorp = yes
-				has_valid_civic = civic_merchant_guilds
-			}
-		}
-		custom_tooltip = {
 			fail_text = requires_actor_not_barbaric_despoilers
 			NOT = { has_valid_civic = civic_barbaric_despoilers }
 		}
@@ -613,10 +606,6 @@ research_federation = {
 		host_has_dlc = Federations
 	}
 	allow = {
-		OR = {
-			is_materialist = yes
-			is_machine_empire = yes
-		}
 		custom_tooltip = {
 			fail_text = requires_actor_not_barbaric_despoilers
 			NOT = { has_valid_civic = civic_barbaric_despoilers }
@@ -1184,12 +1173,6 @@ hegemony_federation = {
 	icon = "GFX_hegemony_federation"
 	potential = {
 		host_has_dlc = Federations
-	}
-	allow = {
-		OR = {
-			has_civic = civic_machine_servitor
-			is_authoritarian = yes
-		}
 	}
 	levels = {
 		level_1 = { # Starting rank
