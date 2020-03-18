@@ -135,8 +135,11 @@ d_spore_vents = {
 	icon = d_gaseous_eruption
 
 	# For ordinary Empires
-	planet_modifier = {
-		job_gas_plant_engineer_add = 2
+	resources = {
+		category = planet_deposits
+		upkeep = {
+			exotic_gases = 1
+		}
 	}
 
 	drop_weight = {
@@ -153,7 +156,7 @@ d_cave_shroom_veins = {
 
 	# For ordinary Empires
 	planet_modifier = {
-		job_cave_cleaner_add = 3
+		job_custodian_add = 3
 	}
 
 	drop_weight = {
@@ -379,12 +382,14 @@ d_disco_planet = {
 	
 	icon = d_central_spire
 	
-	planet_modifier = {
-		planet_amenities_mult = 0.2
+	resources = {
+		category = planet_deposits
+		upkeep = {
+			exotic_gases = 1
+		}
 	}
 	
 	planet_modifier = { 
-		exotic_gases = 1
 		pop_growth_speed = 0.15
 	}
 
@@ -398,10 +403,6 @@ d_disco_planet2 = {
 	category = deposit_cat_rare
 	
 	icon = d_central_spire
-	
-	planet_modifier = {
-		planet_amenities_mult = 0.2
-	}
 	
 	planet_modifier = {
 		pop_growth_speed = 0.15
@@ -434,7 +435,7 @@ d_bluelotus = {
     icon = d_bunker_door
 
 	planet_modifier = {
-		job_bluelotus_technician_add = 1
+		job_technician_add = 1
 	}
 	
 	drop_weight = {
@@ -448,7 +449,7 @@ d_bluelotus2 = {
     icon = d_bunker_door
 
 	planet_modifier = {
-		job_bluelotus_technician_add = 2
+		job_technician_add = 2
 	}
 	
 	drop_weight = {
