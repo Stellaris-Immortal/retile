@@ -512,7 +512,7 @@ d_portal_research_zone = {
 	is_for_colonizeable = yes
 	category = deposit_cat_rare
 	
-	icon = d_crystalline_caverns
+	icon = d_quarantine_zone
 	
 	planet_modifier = {
 		planet_housing_add = 1
@@ -543,7 +543,7 @@ d_portal_research_zone_gestalt = { #this is a bit redundant now that triggered j
 	is_for_colonizeable = yes
 	category = deposit_cat_rare
 	
-	icon = d_crystalline_caverns
+	icon = d_quarantine_zone
 	
 	planet_modifier = {
 		planet_housing_add = 1
@@ -588,5 +588,40 @@ d_ancient_one = {
 	
 	drop_weight = {
 		weight = 0
+	}
+}
+
+d_sentinels_metal = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	icon = d_mineral_fields
+
+	resources = {
+		category = planet_deposits
+		produces = {
+			sr_living_metal = 2
+		}
+	}
+	drop_weight = {
+		weight = 0
+		#Event deposit
+	}
+}
+
+d_sentinels_monument = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	icon = d_monument
+	resources = {
+		category = planet_deposits
+		produces = {
+			unity = 15
+		}
+	}
+	drop_weight = {
+		weight = 0
+		#Event deposit
 	}
 }

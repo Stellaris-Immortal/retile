@@ -418,7 +418,7 @@ orbital_bombardment = {
 					has_valid_civic = civic_machine_terminator
 					has_valid_civic = civic_warrior_culture
 					AND = {
-						has_valid_civic = civic_post_apocalyptic
+						has_origin = origin_post_apocalyptic
 						has_ethic = "ethic_fanatic_militarist"
 					}
 				}
@@ -1454,9 +1454,17 @@ xenodiplomacy = {
 				has_authority = auth_corporate
 				has_valid_civic = civic_byzantine_bureaucracy
 			}
+			NOR = { 
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_fanatic_purifiers
+			}
 		}
 		
-		policy_flags = { xenodiplomacy_assembly }
+		policy_flags = { 
+			xenodiplomacy_assembly
+			diplo_stance_mercantile
+		}
 		
 		AI_weight = {
 			factor = 1
@@ -1488,9 +1496,17 @@ xenodiplomacy = {
 				has_authority = auth_corporate
 				has_valid_civic = civic_byzantine_bureaucracy
 			}
+			NOR = { 
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_fanatic_purifiers
+			}
 		}
 		
-		policy_flags = { xenodiplomacy_magistrate }
+		policy_flags = { 
+			xenodiplomacy_magistrate
+			diplo_stance_mercantile
+		}
 		
 		AI_weight = {
 			factor = 1
@@ -1515,7 +1531,10 @@ xenodiplomacy = {
 		name = "xenodiplomacy_lr"
 		potential = { has_authority = auth_corporate }
 		
-		policy_flags = { xenodiplomacy_lr }
+		policy_flags = { 
+			xenodiplomacy_lr
+			diplo_stance_mercantile
+		}
 		
 		AI_weight = {
 			factor = 1
@@ -1538,8 +1557,18 @@ xenodiplomacy = {
 	
 	option = {
 		name = "xenodiplomacy_none"
+		potential = {
+			NOR = { 
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_fanatic_purifiers
+			}
+		}
 		
-		policy_flags = { xenodiplomacy_isolation }
+		policy_flags = { 
+			xenodiplomacy_isolation
+			diplo_stance_isolationist
+		}
 		
 		AI_weight = {
 			modifier = {
@@ -1576,7 +1605,10 @@ xenodiplomacy = {
 			}
 		}
 		
-		policy_flags = { xenodiplomacy_embassy }
+		policy_flags = { 
+			xenodiplomacy_embassy
+			diplo_stance_cooperative
+		}
 		
 		AI_weight = {
 			factor = 1
@@ -1604,7 +1636,10 @@ xenodiplomacy = {
 			has_authority = auth_corporate
 		}
 		
-		policy_flags = { xenodiplomacy_pr }
+		policy_flags = { 
+			xenodiplomacy_pr
+			diplo_stance_cooperative
+		}
 		
 		AI_weight = {
 			factor = 1
@@ -1634,11 +1669,17 @@ xenodiplomacy = {
 				has_valid_civic = civic_pacifist
 				has_valid_civic = civic_inwards_perfection
 				has_valid_civic = civic_byzantine_bureaucracy
+				has_valid_civic = civic_hive_devouring_swarm
+				has_valid_civic = civic_machine_terminator
+				has_valid_civic = civic_fanatic_purifiers
 			}
 			NOT = { has_authority = auth_corporate }
 		}
 		
-		policy_flags = { xenodiplomacy_gunboat }
+		policy_flags = {
+			xenodiplomacy_gunboat
+			diplo_stance_belligerent
+		}
 		
 		valid = { 
 			NOT = { has_policy_flag = no_wars }
@@ -1652,6 +1693,92 @@ xenodiplomacy = {
 					has_ethic = ethic_fanatic_militarist
 				}				
 			}
+		}
+	}
+	
+	option = {
+		name = "diplo_stance_hunger"
+		icon = "GFX_diplomatic_stance_rest"
+
+		potential = { has_valid_civic = civic_hive_devouring_swarm }
+
+		policy_flags = { diplo_stance_hunger }
+
+		modifier = {
+		}
+
+		ai_weight = {
+			weight = 100
+		}
+	}
+
+	option = {
+		name = "diplo_stance_extermination"
+		icon = "GFX_diplomatic_stance_recompiling"
+
+		potential = { has_valid_civic = civic_machine_terminator }
+
+		policy_flags = { diplo_stance_extermination }
+
+		modifier = {
+		}
+
+		ai_weight = {
+			weight = 100
+		}
+	}
+
+	option = {
+		name = "diplo_stance_purification"
+		icon = "GFX_diplomatic_stance_withdrawn"
+
+		potential = { has_valid_civic = civic_fanatic_purifiers }
+
+		policy_flags = {
+			diplo_stance_purification
+		}
+
+		modifier = {
+		}
+
+		ai_weight = {
+			weight = 100
+		}
+	}
+	
+	option = {
+		name = "diplo_stance_isolationist_fallen_empire"
+		icon = "GFX_diplomatic_stance_isolationist"
+
+		potential = { is_country_type = fallen_empire }
+
+		policy_flags = {
+			diplo_stance_isolationist_fallen_empire
+		}
+
+		modifier = {
+		}
+
+		ai_weight = {
+			weight = 100
+		}
+	}
+
+	option = {
+		name = "diplo_stance_primitive"
+		icon = "GFX_diplomatic_stance_isolationist"
+
+		potential = { is_country_type = primitive }
+
+		policy_flags = {
+			diplo_stance_primitive
+		}
+
+		modifier = {
+		}
+
+		ai_weight = {
+			weight = 1
 		}
 	}
 }
@@ -2792,4 +2919,26 @@ foreign_migration = {
 			factor = 0
 		}
 	}
+}
+
+unused_flags = {
+	potential = { always = no }
+	
+	option = {
+		name = "unused_flags_bin"
+		
+		policy_flags = {
+			diplo_stance_expansionist
+			diplo_stance_supremacist
+			economic_policy_military
+			trade_conversion_consumer_goods
+			trade_conversion_unity
+			trade_conversion_trade_league
+		}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+	
 }

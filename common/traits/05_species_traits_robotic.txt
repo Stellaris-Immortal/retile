@@ -353,3 +353,21 @@ trait_robot_propaganda_machines = {
 		planet_jobs_unity_produces_mult = 0.20
 	}
 }
+
+trait_robot_streamlined_protocols = {
+	cost = 2
+	opposites = { "trait_robot_high_bandwidth" }
+	allowed_archetypes = { ROBOT MACHINE }
+	modifier = {
+		species_empire_size_mult = -0.10
+	}
+}
+
+trait_robot_high_bandwidth = {
+	cost = -2
+	opposites = { "trait_robot_streamlined_protocols" }
+	allowed_archetypes = { ROBOT MACHINE }
+	modifier = {
+		species_empire_size_mult = 0.10
+	}
+}

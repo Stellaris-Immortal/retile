@@ -1002,7 +1002,7 @@ roboticist = {
 		upkeep = {
 			trigger = {
 				exists = owner
-				owner = { has_civic = civic_mechanists }
+				owner = { has_origin = origin_mechanists }
 			}
 			minerals = 5
 			alloys = 1
@@ -1040,7 +1040,7 @@ roboticist = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_mechanists }
+			owner = { has_origin = origin_mechanists }
 		}
 		modifier = {
 			planet_amenities_add = 30
@@ -1565,4 +1565,51 @@ bureaucrat = {
 			}
 		}	
 	}
+}
+
+bluelotus_technician = {
+    category = specialist
+	is_capped_by_modifier = yes
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_illicit_research_labs
+	icon = foundry
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		worker_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_metallurgists
+		produces = {
+			alloys = 4
+		}
+
+		upkeep = {
+			trigger = { 
+				is_organic_species = yes
+				is_lithoid = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				is_robotic_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = @specialist_job_weight
 }

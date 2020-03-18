@@ -134,9 +134,14 @@ dyson_sphere_0 = {
 		}
 		set_star_flag = dyson_sphere_built
 		from = { set_country_flag = built_dyson_sphere }
+		every_system_planet = {
+			limit = {
+				has_modifier = terraforming_candidate
+			}
+			remove_modifier = terraforming_candidate
+		}
 	}
 }
-
 #Dyson Sphere Frame
 dyson_sphere_1 = {
 	entity = "dyson_sphere_phase_01_entity"
@@ -155,6 +160,15 @@ dyson_sphere_1 = {
 	}
 
 	prerequisites = { "tech_dyson_sphere" }
+
+	on_build_complete = {
+		every_system_planet = {
+			limit = {
+				has_modifier = terraforming_candidate
+			}
+			remove_modifier = terraforming_candidate
+		}
+	}
 }
 
 #Partial Dyson Sphere
@@ -170,20 +184,16 @@ dyson_sphere_2 = {
 		}
 
 		produces = {
-			trigger = { 
-				OR = { 
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
-				}
-			}
-			energy = 1000
+			energy = 500
 		}
 		
 		produces = {
-			trigger = { 
-				NOR = { 
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
+			trigger = {
+				owner = {
+					OR = {
+						has_ascension_perk = ap_galactic_wonders_utopia
+						has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+					}
 				}
 			}
 			energy = 500
@@ -195,8 +205,16 @@ dyson_sphere_2 = {
 	}
 	
 	prerequisites = { "tech_dyson_sphere" }
-}
 
+	on_build_complete = {
+		every_system_planet = {
+			limit = {
+				has_modifier = terraforming_candidate
+			}
+			remove_modifier = terraforming_candidate
+		}
+	}
+}
 #Partial Dyson Sphere
 dyson_sphere_3 = {
 	entity = "dyson_sphere_phase_03_entity"
@@ -210,20 +228,16 @@ dyson_sphere_3 = {
 		}
 
 		produces = {
-			trigger = { 
-				OR = { 
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
-				}
-			}
-			energy = 2000
+			energy = 1000
 		}
 		
 		produces = {
-			trigger = { 
-				NOR = { 
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
+			trigger = {
+				owner = {
+					OR = {
+						has_ascension_perk = ap_galactic_wonders_utopia
+						has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+					}
 				}
 			}
 			energy = 1000
@@ -235,6 +249,15 @@ dyson_sphere_3 = {
 	}
 
 	prerequisites = { "tech_dyson_sphere" }
+
+	on_build_complete = {
+		every_system_planet = {
+			limit = {
+				has_modifier = terraforming_candidate
+			}
+			remove_modifier = terraforming_candidate
+		}
+	}
 }
 
 #Partial Dyson Sphere
@@ -250,23 +273,19 @@ dyson_sphere_4 = {
 		}
 
 		produces = {
-			trigger = { 
-				OR = { 
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
-				}
-			}
-			energy = 3000
+			energy = 1500
 		}
 		
 		produces = {
-			trigger = { 
-				NOR = { 
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
+			trigger = {
+				owner = {
+					OR = {
+						has_ascension_perk = ap_galactic_wonders_utopia
+						has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+					}
 				}
 			}
-			energy = 2000
+			energy = 1500
 		}
 	}
 
@@ -275,6 +294,15 @@ dyson_sphere_4 = {
 	}
 
 	prerequisites = { "tech_dyson_sphere" }
+
+	on_build_complete = {
+		every_system_planet = {
+			limit = {
+				has_modifier = terraforming_candidate
+			}
+			remove_modifier = terraforming_candidate
+		}
+	}
 }
 
 #Dyson Sphere
@@ -290,20 +318,16 @@ dyson_sphere_5 = {
 		}
 
 		produces = {
-			trigger = { 
-				OR = { 
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
-				}
-			}
-			energy = 4000
+			energy = 2000
 		}
 		
 		produces = {
-			trigger = { 
-				NOR = { 
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
+			trigger = {
+				owner = {
+					OR = {
+						has_ascension_perk = ap_galactic_wonders_utopia
+						has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+					}
 				}
 			}
 			energy = 2000
@@ -337,9 +361,14 @@ dyson_sphere_5 = {
 			}
 			change_pc = pc_barren_cold
 		}	
+		every_system_planet = {
+			limit = {
+				has_modifier = terraforming_candidate
+			}
+			remove_modifier = terraforming_candidate
+		}
 	}
 }
-
 # Ruined Dyson Sphere
 dyson_sphere_ruined = {
 	entity = "dyson_sphere_destroyed_entity"
@@ -363,20 +392,16 @@ dyson_sphere_restored = {
 		}
 
 		produces = {
-			trigger = { 
-				OR = { 
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
-				}
-			}
-			energy = 4000
+			energy = 2000
 		}
 		
 		produces = {
-			trigger = { 
-				NOR = { 
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia }
-					owner = { has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp }
+			trigger = {
+				owner = {
+					OR = {
+						has_ascension_perk = ap_galactic_wonders_utopia
+						has_ascension_perk = ap_galactic_wonders_utopia_and_megacorp
+					}
 				}
 			}
 			energy = 2000
@@ -411,6 +436,12 @@ dyson_sphere_restored = {
 				is_planet_class = pc_barren
 			}
 			change_pc = pc_barren_cold
+		}
+		every_system_planet = {
+			limit = {
+				has_modifier = terraforming_candidate
+			}
+			remove_modifier = terraforming_candidate
 		}
 		every_system_ambient_object = { destroy_ambient_object = this }
 		from = {

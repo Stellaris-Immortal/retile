@@ -81,6 +81,49 @@ tech_basic_science_lab_3 = {
 	}
 }
 
+tech_global_research_initiative = {
+	area = physics
+	tier = 3
+	cost = @tier3cost1
+	category = { computing }
+	prerequisites = { "tech_basic_science_lab_2" "tech_colonial_centralization" }
+	weight = @tier3weight1
+
+	weight_modifier = {
+		factor = 1.5
+		modifier = {
+			factor = 0.25
+			NOR = {
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_expertise_computing"
+				}
+				research_leader = {
+					area = physics
+					has_trait = "leader_trait_curator"
+				}
+			}
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_computing"
+			}
+		}
+	}
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = physics
+				has_trait = "leader_trait_expertise_computing"
+			}
+		}
+	}
+}
+
 tech_curator_lab = {
 	area = physics
 	category = { computing }
@@ -130,6 +173,14 @@ tech_curator_lab = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_curator_lab }
+			}
 		}
 	}
 		
@@ -191,6 +242,14 @@ tech_archeology_lab_ancrel = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_archeology_lab_ancrel }
+			}
 		}
 	}
 		
@@ -627,57 +686,6 @@ tech_physics_3 = {
 	
 	ai_weight = {
 		weight = 10
-		modifier = {
-			factor = 1.25
-			research_leader = {
-				area = physics
-				has_trait = "leader_trait_expertise_computing"
-			}
-		}
-	}
-}
-
-tech_global_research_initiative = {
-	area = physics
-	tier = 3
-	cost = @tier3cost1
-	category = { computing }
-	prerequisites = { "tech_physics_1" "tech_colonial_centralization" }
-	weight = @tier3weight1
-	
-	potential = {
-		always = no
-	}
-	
-	weight_modifier = {
-		factor = 1.5
-		modifier = {
-			factor = 0.25
-			NOR = {
-				research_leader = {
-					area = physics
-					has_trait = "leader_trait_expertise_computing"
-				}
-				research_leader = {
-					area = physics
-					has_trait = "leader_trait_curator"
-				}
-			}
-		}
-		modifier = {
-			factor = 1.25
-			research_leader = {
-				area = physics
-				has_trait = "leader_trait_expertise_computing"
-			}
-		}
-		modifier = {
-			factor = 1.5
-			has_policy_flag = research_space_exploration		
-		}
-	}
-	
-	ai_weight = {
 		modifier = {
 			factor = 1.25
 			research_leader = {
@@ -1173,6 +1181,14 @@ tech_combat_computers_3 = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_combat_computers_3 }
+			}
+		}
 		#BREAKTHROUGH - check for scientist
 	}
 	
@@ -1252,6 +1268,14 @@ tech_combat_computers_autonomous = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_combat_computers_autonomous }
+			}
 		}
 	}
 	
@@ -1375,6 +1399,14 @@ tech_synchronized_defences = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_synchronized_defences }
+			}
 		}
 	}
 	
@@ -1939,6 +1971,14 @@ tech_planetary_shield_generator = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_planetary_shield_generator }
+			}
+		}
 	}
 	
 	# unlocks building: planetary shield generator
@@ -2465,6 +2505,14 @@ tech_wormhole_stabilization = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_wormhole_stabilization }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -2532,6 +2580,14 @@ tech_jump_drive_1 = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_jump_drive_1 }
+			}
 		}
 	}
 	
