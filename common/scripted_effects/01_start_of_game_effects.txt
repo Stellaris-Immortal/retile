@@ -1437,8 +1437,9 @@ void_dweller_home_planet_setup = {
 			}
 		}
 	}
+	
 	while = {
-		count = 10
+		count = 9
 		create_pop = {
 			species = owner_main_species
 		}
@@ -1447,33 +1448,22 @@ void_dweller_home_planet_setup = {
 		entity = "orbital_habitat_entity"
 		graphical_culture = event_target:void_dweller_owner
 	}
-	#add_district = district_hab_housing
-	#add_district = district_hab_science
-	#add_building = building_hab_major_capital
-
-
-	if = {
-		limit = {
-			owner = {
-				is_lithoid_empire = no
-			}
-		}
-
-		#add_building = building_bureaucratic_1
-		#add_building = building_hydroponics_farm
-	}
-	else = {
-		#add_building = building_factory_1
-		#add_building = building_factory_1
-	}
+	
+	add_building = building_system_capital
+	add_district = district_housing
+	add_district = district_housing
+	add_district = district_engineers
+	add_district = district_scholars
+	add_deposit = retile_module_generator_active
 
 	add_deposit = d_arcane_replicator
+	
 	solar_system = {
 		random_system_planet = {
 			limit = { has_planet_flag = void_dweller_habitat_2 }
 			set_owner = event_target:void_dweller_owner
 			while = {
-				count = 10
+				count = 4
 				create_pop = {
 					species = owner_main_species
 				}
@@ -1482,30 +1472,15 @@ void_dweller_home_planet_setup = {
 				entity = "orbital_habitat_entity"
 				graphical_culture = event_target:void_dweller_owner
 			}
-			set_planet_flag = mining_habitat
-			#add_district = district_hab_housing
-			#add_district = district_hab_mining
-			if = {
-				limit = {
-					owner = {
-						is_lithoid_empire = no
-					}
-				}
-				#add_building = building_factory_1
-				#add_district = district_hab_commercial
-			}
-			else = {
-				#add_building = building_holo_theatres
-				#add_district = district_hab_mining
-			}
-
-			#add_building = building_foundry_1
+			add_building = building_colony_shelter
+			add_district = district_housing
+			add_deposit = retile_module_mine_active
 		}
 		random_system_planet = {
 			limit = { has_planet_flag = void_dweller_habitat_3 }
 			set_owner = event_target:void_dweller_owner
 			while = {
-				count = 10
+				count = 4
 				create_pop = {
 					species = owner_main_species
 				}
@@ -1514,22 +1489,25 @@ void_dweller_home_planet_setup = {
 				entity = "orbital_habitat_entity"
 				graphical_culture = event_target:void_dweller_owner
 			}
-			set_planet_flag = energy_habitat
-			#add_district = district_hab_housing
-			#add_district = district_hab_energy
-			#add_district = district_hab_commercial
+			add_building = building_colony_shelter
+			add_district = district_housing
 
 			if = {
 				limit = {
 					owner = {
-						is_lithoid_empire = no
+						is_lithoid_empire = yes
 					}
 				}
-
-				#add_building = building_hydroponics_farm
-			}
-			else = {
-				#add_building = building_bureaucratic_1
+				add_deposit = retile_module_mine_active
+			} else_if = {
+				limit = {
+					owner = {
+						is_machine_empire = yes
+					}
+				}
+				add_deposit = retile_module_generator_active
+			} else = {
+				add_deposit = retile_module_farm_active
 			}
 		}
 		every_system_planet = {
