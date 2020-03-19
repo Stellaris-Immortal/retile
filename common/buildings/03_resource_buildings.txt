@@ -51,7 +51,6 @@ building_hydroponics_farm = {
 		trigger = { 
 			exists = owner
 			owner = { is_plantoid_empire = no }
-			owner = { is_gestalt = no }
 		}
 		text = retile_food_buff_city_effect
 	}
@@ -60,17 +59,8 @@ building_hydroponics_farm = {
 		trigger = { 
 			exists = owner
 			owner = { is_plantoid_empire = yes }
-			owner = { is_gestalt = no }
 		}
 		text = retile_food_buff_city_plantoid_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_food_buff_city_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -98,10 +88,6 @@ building_recycling_center = {
 			owner = { is_ai = yes }
 		}
 	}
-	
-	upgrades = {
-		building_recycling_center_2
-	}
 
 	prerequisites = {
 		"tech_material_recycling"
@@ -122,83 +108,8 @@ building_recycling_center = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_minerals_buff_city_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_minerals_buff_city_gestalt_effect
-	}
-	
-	ai_weight = {
-		weight = 1
-	}
-}
-
-building_recycling_center_2 = {
-	base_buildtime = 480
-	can_build = no
-	category = resource
-	can_be_disabled = no
-	
-	potential = {
-		NOT = { has_modifier = slave_colony }
-	}
-
-	allow = {
-		owner = { is_ai = no }
-	}
-
-	destroy_trigger = {
-		OR = {
-			has_modifier = slave_colony
-			owner = { is_ai = yes }
-		}
-	}
-	
-	show_tech_unlock_if ={
-		has_technology = tech_industrial_ecology
-	}
-
-	prerequisites = {
-		"tech_industrial_ecology"
-	}
-	
-	resources = {
-		category = planet_buildings
-		cost = {
-			minerals = @cost_high
-		}
-		upkeep = {
-			energy = 3
-		}
-	}	
-	
-	country_modifier = {
-		country_resource_max_add = 4000
-	}
-	
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		text = retile_supplies_buff_city_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_supplies_buff_city_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -246,19 +157,8 @@ building_solar_panels = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_energy_buff_city_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_energy_buff_city_gestalt_effect
 	}
 
 	ai_weight = {
@@ -323,19 +223,8 @@ building_food_1 = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_food_buff_1_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_food_buff_1_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -395,19 +284,8 @@ building_food_2 = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_food_buff_1_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_food_buff_1_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -463,19 +341,8 @@ building_food_3 = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_food_buff_3_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_food_buff_3_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -536,19 +403,8 @@ building_mineral_1 = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_minerals_buff_1_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_minerals_buff_1_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -606,19 +462,8 @@ building_mineral_2 = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_minerals_buff_1_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_minerals_buff_1_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -672,19 +517,8 @@ building_mineral_3 = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_minerals_buff_3_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_minerals_buff_3_gestalt_effect
 	}
 
 	ai_weight = {
@@ -745,19 +579,8 @@ building_energy_1 = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_energy_buff_1_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_energy_buff_1_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -815,19 +638,8 @@ building_energy_2 = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_energy_buff_1_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_energy_buff_1_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -881,19 +693,8 @@ building_energy_3 = {
 	}
 		
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_energy_buff_3_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_energy_buff_3_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -942,19 +743,8 @@ building_maintenance_depot = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_custodian_buff_1_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_custodian_buff_1_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -1007,19 +797,8 @@ building_maintenance_depot_2 = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
+		trigger = { exists = owner }
 		text = retile_custodian_buff_2_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_custodian_buff_2_gestalt_effect
 	}
 	
 	ai_weight = {
@@ -1068,19 +847,8 @@ building_maintenance_depot_3 = {
 	}
 	
 	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		text = retile_custodian_buff_2_effect
-	}
-
-	triggered_desc = {
-		trigger = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		text = retile_custodian_buff_2_gestalt_effect
+		trigger = { exists = owner }
+		text = retile_custodian_buff_3_effect
 	}
 	
 	ai_weight = {
