@@ -358,6 +358,7 @@ trait_ruler_champion_of_the_people = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_champion_of_the_people.dds"
 	leader_potential_add = {
+		NOT = { from = { has_origin = origin_immortal } }
 		NOT = { from = { has_policy_flag = education_for_profit } }
 		NOT = { from = { has_policy_flag = healthcare_for_profit } }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
@@ -479,6 +480,7 @@ leader_trait_reformer = {
 	modification = no
 	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_reformer.dds"
 	leader_potential_add = {
+		NOT = { from = { has_origin = origin_immortal } }
 		NOT = { from = { has_valid_civic = civic_philosopher_king } }
 		NOT = { from = { has_ethic = "ethic_gestalt_consciousness" } }
 		NOT = { has_trait = trait_conformists }
@@ -581,6 +583,18 @@ leader_trait_ruler_great_khan = {
 		army_morale = 0.25
 		ship_weapon_damage = 0.05
 	}
+	leader_trait = { ruler }
+	leader_class = { ruler }
+	initial = no
+	randomized = no
+}
+
+leader_trait_ruler_immortal_emperor = {
+	cost = 0
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_immortal.dds"
+	immortal_leaders = yes
+	modifier = { }
 	leader_trait = { ruler }
 	leader_class = { ruler }
 	initial = no
