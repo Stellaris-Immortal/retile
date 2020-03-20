@@ -73,3 +73,74 @@ has_comms_with_alien_civilization = {
 	}
 }
 
+is_shackled_robot_species_rights = {
+	OR = {
+		has_trait = "trait_mechanical"
+		has_trait = "trait_droid"
+		has_trait = "trait_synthetic"
+	}
+	species_rights_robot_full_rights_check = no
+}
+
+is_free_robot_species_rights = {
+	OR = {
+		has_trait = "trait_mechanical"
+		has_trait = "trait_droid"
+		has_trait = "trait_synthetic"
+	}
+	species_rights_robot_full_rights_check = yes
+}
+
+species_rights_robot_full_rights_check = {
+	exists = from
+	from = {
+		OR = {
+			has_policy_flag = ai_full_rights
+			is_mechanical_empire = yes
+		}
+	}
+}
+
+is_free_robot = { # The pop is a free robot with citizen rights
+	has_trait = "trait_synthetic"
+	exists = owner
+	owner = {
+		OR = {
+			has_policy_flag = ai_full_rights
+			is_mechanical_empire = yes
+		}
+	}
+}
+
+is_shackled_robot = { # The pop is a non-free robot
+	OR = {
+		has_trait = "trait_mechanical"
+		has_trait = "trait_droid"
+		AND = {
+			has_trait = "trait_synthetic"
+			exists = owner
+			owner = {
+				OR = {
+					is_mechanical_empire = yes
+					NOT = { has_policy_flag = ai_full_rights }
+				}
+			}
+		}
+	}
+}
+
+is_non_sapient_robot = { # The pop is a non-sapient robot
+	OR = {
+		has_trait = "trait_mechanical"
+		has_trait = "trait_droid"
+	}
+}
+
+is_non_menial_laborer = {	# ??? Might need a retile update...
+	OR = {
+		is_enslaved = no
+		NOT = { has_slavery_type = { country = from type = slavery_normal } }
+	}
+	is_non_sapient_robot = no
+	is_sapient = yes
+}

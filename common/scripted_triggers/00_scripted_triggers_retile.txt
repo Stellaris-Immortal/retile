@@ -40,6 +40,21 @@ pop_eats_food = {
 	}
 }
 
+pop_eats_minerals = {
+	species = {
+		is_archetype = LITHOID
+	}
+}
+
+pop_eats_energy = {
+	species = {
+		OR = {
+			is_archetype = ROBOT
+			is_archetype = MACHINE
+		}
+	}
+}
+
 # is this pop currently seeking a job?
 retile_job_seeking = {
 	NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }

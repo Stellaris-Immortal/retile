@@ -71,13 +71,21 @@ building_trade_1 = {
 		NOT = { has_tradition = tr_prosperity_public_works }
 	}
 	
+	planet_modifier = {
+		planet_clerks_energy_upkeep_add = @job_energy_normal
+		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal
+		clerks_bio_food_upkeep_add = @living_standard_food_normal
+		clerks_lith_minerals_upkeep_add = @living_standard_food_normal
+		clerks_mech_energy_upkeep_add = @living_standard_food_normal
+	}
+
 	country_modifier = {
 		country_resource_max_add = 1000
 	}
 	
 	triggered_desc = {
 		trigger = { exists = owner }
-		text = retile_commercial_zone_effect
+		text = retile_trade_1_effect
 	}
 	
 	upgrades = {
