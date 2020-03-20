@@ -32,36 +32,6 @@ clerk = {
 			energy = @job_energy_normal
 			consumer_goods = @job_supplies_normal
 		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_trade_1 }
-					planet = { has_building = building_bourse_1 }
-				}
-			}
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_trade_2 }
-					planet = { has_building = building_bourse_2 }
-				}
-			}
-			energy = @job_energy_normal2
-			consumer_goods = @job_supplies_normal2
-		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_trade_3 }
-					planet = { has_building = building_bourse_3 }
-				}
-			}
-			energy = @job_energy_normal3
-			consumer_goods = @job_supplies_normal3
-		}
 	}
 	
 	triggered_planet_modifier = {
@@ -176,136 +146,11 @@ researcher = {	### Scholar
 			society_research = 2.5
 			unity = 2.5
 		}
-		produces = {
-			trigger = { planet = { has_building = building_metascience_lab_1 } }
-			unity = 2
-		}
-		produces = {
-			trigger = { planet = { has_building = building_metascience_lab_2 } }
-			unity = 3
-		}
-		produces = {
-			trigger = { planet = { has_building = building_metascience_lab_3 } }
-			unity = 4
-		}		
-		produces = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_1 }
-					planet = { has_building = building_metascience_lab_1 }
-				}
-			}
-			physics_research = 2.5
-			engineering_research = 2.5
-			society_research = 2.5
-		}
-		produces = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_2 }
-					planet = { has_building = building_metascience_lab_2 }
-				}
-			}
-			physics_research = 5
-			engineering_research = 5
-			society_research = 5
-		}
-		produces = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_3 }
-					planet = { has_building = building_metascience_lab_3 }
-				}
-			}
-			physics_research = 7.5
-			engineering_research = 7.5
-			society_research = 7.5
-		}
-		produces = {
-			trigger = { planet = { OR = {
-				has_building = building_temple
-				has_building = building_autochthon_monument
-				has_building = building_corporate_monument
-			} } }
-			unity = 2.5
-		}
-		produces = {
-			trigger = { planet = { OR = {
-				has_building = building_holotemple
-				has_building = building_heritage_site
-				has_building = building_corporate_site
-			} } }
-			unity = 5
-		}
-		produces = {
-			trigger = { planet = { OR = {
-				has_building = building_sacred_nexus
-				has_building = building_hypercomms_forum
-				has_building = building_corporate_forum
-			} } }
-			unity = 7.5
-		}
 		upkeep = {
+			energy = @job_energy_normal
 			energy = @job_energy_normal
 			consumer_goods = @job_supplies_high
 			consumer_goods = @job_supplies_high
-		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_1 }
-					planet = { has_building = building_metascience_lab_1 }
-				}
-			}
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_high
-		}		
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_2 }
-					planet = { has_building = building_metascience_lab_2 }
-				}
-			}
-			energy = @job_energy_normal2
-			consumer_goods = @job_supplies_high2
-		}		
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_3 }
-					planet = { has_building = building_metascience_lab_3 }
-				}
-			}
-			energy = @job_energy_normal3
-			consumer_goods = @job_supplies_high3
-		}		
-		upkeep = {
-			trigger = { planet = { OR = {
-				has_building = building_temple
-				has_building = building_autochthon_monument
-				has_building = building_corporate_monument
-			} } }
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_high
-		}		
-		upkeep = {
-			trigger = { planet = { OR = {
-				has_building = building_holotemple
-				has_building = building_heritage_site
-				has_building = building_corporate_site
-			} } }
-			energy = @job_energy_normal2
-			consumer_goods = @job_supplies_high2
-		}		
-		upkeep = {
-			trigger = { planet = { OR = {
-				has_building = building_sacred_nexus
-				has_building = building_hypercomms_forum
-				has_building = building_corporate_forum
-			} } }
-			energy = @job_energy_normal3
-			consumer_goods = @job_supplies_high3
 		}
 		produces = { ### Fallen Empire
 			trigger = { planet = { has_building = building_class_4_singularity } }
