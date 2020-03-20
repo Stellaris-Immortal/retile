@@ -294,6 +294,26 @@ event = {
 							limit = { has_modifier = irradiated_planet }
 							remove_modifier = irradiated_planet
 						}
+						if = {
+							limit = { has_modifier = bioscarce }
+							remove_modifier = bioscarce
+						}
+						if = {
+							limit = { has_modifier = biodiverse }
+							remove_modifier = biodiverse
+						}
+						if = {
+							limit = { has_modifier = slow_rotation }
+							remove_modifier = slow_rotation
+						}
+						if = {
+							limit = { has_modifier = fast_rotation }
+							remove_modifier = fast_rotation
+						}
+						if = {
+							limit = { has_modifier = calm_weather }
+							remove_modifier = calm_weather
+						}
 					}
 				}
 			}
@@ -417,11 +437,49 @@ country_event = {
 			give_technology = { message = no tech = tech_powered_exoskeletons }
 			give_technology = { message = no tech = tech_robotic_workers }
 		}
-		if = {
-			limit = {
-				has_civic = civic_corporate_dominion
+		if = { 
+			limit = { has_civic = civic_aristocratic_elite } 
+			add_resource = { influence = 100 }
+		}
+		if = { 
+			limit = { has_civic = civic_warrior_culture } 
+			give_technology = { message = no tech = tech_ground_defense_planning }
+		}
+		if = { 
+			limit = { has_civic = civic_citizen_service } 
+			give_technology = { message = no tech = tech_space_force_command }
+		}
+		if = { 
+			limit = { has_civic = civic_byzantine_bureaucracy } 
+			give_technology = { message = no tech = tech_planetary_unification }
+			give_technology = { message = no tech = tech_adaptive_bureaucracy }
+		}
+		if = { 
+			limit = { has_origin = origin_mechanists } 
+			give_technology = { message = no tech = tech_powered_exoskeletons }
+			give_technology = { message = no tech = tech_robotic_workers }
+		}
+		if = { 
+			limit = { 
+				OR = {
+					has_civic = civic_corporate_dominion 
+					has_civic = civic_merchant_guilds
+				}
 			}
 			give_technology = { message = no tech = tech_space_trading }
+		}
+		if = { 
+			limit = { 
+				OR = {
+					has_civic = civic_psychic_society 
+					has_civic = civic_hive_psionic_link
+				}
+			}
+			give_technology = { message = no tech = tech_psionic_theory }
+		}
+		if = { 
+			limit = { has_civic = civic_hive_cybernetic_link } 
+			give_technology = { message = no tech = tech_positronic_implants }
 		}
 	}
 
@@ -636,7 +694,8 @@ planet_event = {
 	}
 
 	immediate = {
-		clear_blockers = yes
+		retile_clear_blockers = yes
+		retile_clear_blockers = yes	
 	}
 }
 
@@ -654,9 +713,9 @@ planet_event = {
 			break = yes
 		}
 		if = {
-			limit = { has_building = building_deployment_post }
-			remove_building = building_deployment_post
-			add_building = building_machine_capital
+			limit = { has_building = building_hive_colony }
+			remove_building = building_hive_colony
+			add_building = building_hive_capital
 		}
 	}
 }
@@ -674,136 +733,39 @@ planet_event = {
 
 	immediate = {
 		if = {
-			limit = {
-				is_capital = yes
-				NOT = { owner = { has_origin = origin_shattered_ring } }
-			}
-			add_district = district_mining
-			add_district = district_generator
-			add_district = district_generator
-
-			if = {
-				limit = { owner = { has_authority = auth_machine_intelligence } }
-				add_district = district_nexus
-				add_district = district_nexus
-			}
-			else_if = {
-				limit = { owner = { has_authority = auth_hive_mind } }
-				add_district = district_hive
-				add_district = district_hive
-			}
-			else = {
-				add_district = district_city
-				add_district = district_city
-			}
-
-			if = {
-				limit = {
-					owner = { NOT = { has_authority = auth_machine_intelligence } }
+			limit = { is_capital = yes }	# +6 jobs total
+			retile_exploit_energy = yes
+			retile_exploit_minerals = yes
+			add_district = district_engineers
+			add_district = district_scholars			  
+			add_district = district_clerks
+			add_district = district_housing
+			add_district = district_housing
+			
+			if = {	# +1 = 4
+				limit = { 
+					owner = { country_uses_food = yes }
 				}
-				add_district = district_farming
-				add_district = district_farming
-			}
-			if = {
-				limit = {
-					owner = { has_authority = auth_machine_intelligence }
-				}
-				add_district = district_generator
-				add_district = district_generator
-			}
-
-
-			if = {
-				limit = { owner = { is_gestalt = no } }
-				add_building = building_factory_1
-				add_building = building_commercial_zone
+				retile_exploit_food = yes
+			} else = {
+				retile_exploit_energy = yes
 			}
 		}
-		else_if = {
-			limit = {
-				is_capital = yes
-				owner = { has_origin = origin_shattered_ring }
-			}
-			add_building = building_foundry_1
-			add_building = building_factory_1
-			if = {
-				limit = {
-					owner = {
-						is_megacorp = no
-						is_spiritualist = no
-						is_gestalt = no
-					}
+		else = {	# +5 jobs total
+			retile_exploit_energy = yes
+			retile_exploit_minerals = yes
+			
+			add_district = district_housing
+			
+			if = {	# +1 = 4
+				limit = { 
+					owner = { country_uses_food = yes }
 				}
-				add_building = building_autochthon_monument
-			}
-			else_if = {
-				limit = {
-					owner = { is_spiritualist = yes }
-				}
-				add_building = building_temple
-			}
-			else_if = {
-				limit = {
-					owner = { is_megacorp = yes }
-				}
-				add_building = building_corporate_monument
-			}
-			else_if = {
-				limit = {
-					owner = { is_hive_empire = yes }
-				}
-				add_building = building_hive_node
-			}
-			else_if = {
-				limit = {
-					owner = {
-						is_machine_empire = yes
-						NOT = { has_valid_civic = civic_machine_servitor }
-					}
-				}
-				add_building = building_simulation_1
-			}
-			if = {
-				limit = {
-					owner = { is_gestalt = no }
-				}
-				add_district = district_rw_commercial
-			}
-			else_if = {
-				limit = {
-					owner = { is_hive_empire = yes }
-				}
-				add_district = district_rw_hive
-			}
-			else = {
-				add_district = district_rw_nexus
-			}
-		}
-		else = {
-			add_district = district_generator
-			add_district = district_mining
-
-			if = {
-				limit = { owner = { has_authority = auth_machine_intelligence } }
-				add_district = district_nexus
-				add_district = district_generator
-				add_district = district_generator
-			}
-			else_if = {
-				limit = { owner = { has_authority = auth_hive_mind } }
-				add_district = district_hive
-				add_district = district_farming
-			}
-			else = {
-				add_district = district_city
-				add_district = district_farming
-			}
-
-			if = {
-				limit = { owner = { has_origin = origin_mechanists } }
-				add_building = building_robot_assembly_plant
-			}
-		}
+				retile_exploit_food = yes									  	
+			} else = {
+				retile_exploit_energy = yes			 
+			}				   
+		}							
 	}
 }
 
@@ -820,14 +782,14 @@ planet_event = {
 			if = {
 				limit = { owner = { has_authority = auth_machine_intelligence } }
 				while = {
-					count = 13
+					count = 6
 					create_pop = { species = owner_main_species }
 				}
 			}
 			else_if = {
 				limit = { owner = { has_authority = auth_hive_mind } }
 				while = {
-					count = 16
+					count = 6
 					create_pop = { species = owner_main_species }
 				}
 			}
@@ -840,13 +802,13 @@ planet_event = {
 					save_event_target_as = mechanical_species
 				}
 				while = {
-					count = 6
+					count = 3
 					create_pop = {
 						species = event_target:mechanical_species
 					}
 				}
 				while = {
-					count = 12
+					count = 5
 					create_pop = { species = owner_main_species }
 				}
 			}
@@ -859,17 +821,17 @@ planet_event = {
 					save_event_target_as = syncretic_species
 				}
 				while = {
-					count = 8
+					count = 3
 					create_pop = { species = event_target:syncretic_species }
 				}
 				while = {
-					count = 10
+					count = 5
 					create_pop = { species = owner_main_species }
 				}
 			}
 			else = {
 				while = {
-					count = 18
+					count = 6
 					create_pop = { species = owner_main_species }
 				}
 			}
@@ -878,14 +840,14 @@ planet_event = {
 			if = {
 				limit = { owner = { has_authority = auth_machine_intelligence } }
 				while = {
-					count = 15
+					count = 6
 					create_pop = { species = owner_main_species }
 				}
 			}
 			else_if = {
 				limit = { owner = { has_authority = auth_hive_mind } }
 				while = {
-					count = 18
+					count = 6
 					create_pop = { species = owner_main_species }
 				}
 			}
@@ -898,13 +860,13 @@ planet_event = {
 					save_event_target_as = mechanical_species
 				}
 				while = {
-					count = 4
+					count = 3
 					create_pop = {
 						species = event_target:mechanical_species
 					}
 				}
 				while = {
-					count = 7
+					count = 5
 					create_pop = { species = owner_main_species }
 				}
 			}
@@ -917,17 +879,17 @@ planet_event = {
 					save_event_target_as = syncretic_species
 				}
 				while = {
-					count = 4
+					count = 3
 					create_pop = { species = event_target:syncretic_species }
 				}
 				while = {
-					count = 6
+					count = 5
 					create_pop = { species = owner_main_species }
 				}
 			}
 			else = {
 				while = {
-					count = 10
+					count = 6
 					create_pop = { species = owner_main_species }
 				}
 			}

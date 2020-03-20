@@ -1,0 +1,177 @@
+namespace = retile_origin
+
+# Opening
+country_event = {
+	id = retile_origin.1
+	title = "retile_origin.1.name"
+	desc = "retile_origin.1.desc"
+	picture = GFX_evt_immortal_emperor
+	show_sound = event_ancient_drone
+	
+	trigger = {
+		has_origin = origin_immortal
+		NOT = { has_country_flag = immortal_emperor_opening }
+		NOT = { exists = heir }
+		years_passed > 0
+	}
+	
+	mean_time_to_happen = { days = 1800 }
+	
+	immediate = {
+		set_country_flag = immortal_emperor_opening
+		kill_leader = {
+			type = ruler
+			show_notification = no
+			heir = yes
+		}
+		create_leader = {
+			class = ruler
+			species = owner_main_species
+			name = random
+			traits = { 
+				trait = leader_trait_ruler_immortal_emperor
+				trait = trait_ruler_industrialist
+			}
+		}
+		last_created_leader = {
+			save_global_event_target_as = immortal_challenger
+		}
+	}
+	
+	option = {
+		name = retile_origin.1.a
+		set_heir = last_created_leader
+	}
+}
+
+# Assassination Attempt
+country_event = {
+	id = retile_origin.2
+	title = "retile_origin.2.name"
+	desc = "retile_origin.2.desc"
+	picture = GFX_evt_night_raid
+	show_sound = event_ship_explosion
+	
+	trigger = {
+		has_origin = origin_immortal
+		has_country_flag = immortal_emperor_opening
+		NOT = { not_country_flag = immortal_emperor_attempt }
+		exists = heir
+	}
+	
+	mean_time_to_happen = { days = 3600 }
+	
+	immediate = {
+		set_country_flag = immortal_emperor_attempt
+	}
+	
+	option = {
+		name = retile_origin.2.a
+		custom_tooltip = retile_origin.2.a.tooltip
+		set_country_flag = immortal_emperor_kill
+	}
+	
+	option = {
+		name = retile_origin.2.b
+		custom_tooltip = retile_origin.2.b.tooltip
+		set_country_flag = immortal_emperor_convert
+	}
+	
+	option = {
+		name = retile_origin.2.c
+		custom_tooltip = retile_origin.2.c.tooltip
+		set_country_flag = immortal_emperor_ignore
+	}
+}
+
+# Heir Killed
+country_event = {
+	id = retile_origin.3
+	title = "retile_origin.3.name"
+	desc = "retile_origin.3.desc"
+	picture = GFX_evt_space_funeral
+	show_sound = event_solar_fusion
+	
+	trigger = {
+		has_origin = origin_immortal
+		has_country_flag = immortal_emperor_kill
+		NOT = { set_country_flag = immortal_emperor_murdered }
+		exists = heir
+	}
+	
+	mean_time_to_happen = { days = 1800 }
+	
+	immediate = {
+		set_country_flag = immortal_emperor_murdered
+		kill_leader = {
+			type = ruler
+			show_notification = no
+			heir = yes
+		}
+	}
+	
+	option = {
+		name = retile_origin.3.a
+		ruler = {
+			remove_trait = trait_ruler_charismatic
+			add_trait = trait_ruler_warlike
+		}
+	}
+}
+
+# Heir Converted
+country_event = {
+	id = retile_origin.4
+	title = "retile_origin.4.name"
+	desc = "retile_origin.4.desc"
+	picture = GFX_evt_immortal_emperor_success
+	show_sound = event_conversation
+	
+	trigger = {
+		has_origin = origin_immortal
+		has_country_flag = immortal_emperor_convert
+		NOT = { has_country_flag = immortal_emperor_success }
+		exists = heir
+	}
+	
+	mean_time_to_happen = { days = 1800 }
+	
+	immediate = {
+		set_country_flag = immortal_emperor_success
+	}
+	
+	option = {
+		name = retile_origin.4.a
+	}
+}
+
+# Heir Ignored
+country_event = {
+	id = retile_origin.5
+	title = "retile_origin.5.name"
+	desc = "retile_origin.5.desc"
+	picture = GFX_evt_announcement
+	show_sound = event_conversation
+	
+	trigger = {
+		has_origin = origin_immortal
+		has_country_flag = immortal_emperor_ignore
+		NOT = { has_country_flag = immortal_emperor_replaced }
+		exists = heir
+	}
+	
+	mean_time_to_happen = { days = 1800 }
+	
+	after = {
+		set_country_flag = immortal_emperor_replaced
+		kill_leader = {
+			type = ruler
+			show_notification = no
+			heir = no
+		}
+	}
+	
+	option = {
+		name = retile_origin.5.a
+	}
+}

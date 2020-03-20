@@ -596,9 +596,7 @@ district_custodians = {
 	icon = district_custodian
 	is_capped_by_modifier = no
 
-	potential = {
-
-	}
+	potential = { }
 	
 	allow = {
 		exists = owner
@@ -631,11 +629,26 @@ district_custodians = {
 	planet_modifier = {
 		job_custodian_add = 1
 	}
+	
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_city
 			exists = owner
 			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_custodian_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_land_ethic }
+			NOT = {
+				is_planet_class = pc_city
+				owner = { has_ascension_perk = ap_arcology_project }
+			}
 		}
 		modifier = {
 			job_custodian_add = 1
