@@ -462,13 +462,29 @@ building_food_1 = {
 		}
 	}
 	
-	country_modifier = {
-		country_resource_max_add = 1000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = laborer_pollution_1_effect
+	}
+	triggered_desc = {
+		trigger = {
+			has_building = building_maintenance_depot
+		}
+		text = laborer_plantoid_growth_effect_1
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_food_buff_1_effect
+	planet_modifier = {
+		planet_laborers_non_plantoid_food_produces_add = 10
+		planet_laborers_fruiting_food_produces_add = 4
+		planet_laborers_energy_upkeep_add = @job_energy_normal
+		planet_laborers_consumer_goods_upkeep_add = @job_supplies_normal
+		laborers_bio_food_upkeep_add = @living_standard_food_normal
+		laborers_lith_minerals_upkeep_add = @living_standard_food_normal
+		laborers_mech_energy_upkeep_add = @living_standard_food_normal
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
 	}
 	
 	ai_weight = {
@@ -523,13 +539,29 @@ building_food_2 = {
 		}
 	}
 	
-	country_modifier = {
-		country_resource_max_add = 2000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = laborer_pollution_2_effect
+	}
+	triggered_desc = {
+		trigger = {
+			has_building = building_maintenance_depot
+		}
+		text = laborer_plantoid_growth_effect_2
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_food_buff_1_effect
+	planet_modifier = {
+		planet_laborers_non_plantoid_food_produces_add = 20
+		planet_laborers_fruiting_food_produces_add = 8
+		planet_laborers_energy_upkeep_add = @job_energy_normal2
+		planet_laborers_consumer_goods_upkeep_add = @job_supplies_normal2
+		laborers_bio_food_upkeep_add = @living_standard_food_normal2
+		laborers_lith_minerals_upkeep_add = @living_standard_food_normal2
+		laborers_mech_energy_upkeep_add = @living_standard_food_normal2
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
 	}
 	
 	ai_weight = {
@@ -580,13 +612,29 @@ building_food_3 = {
 		}
 	}	
 	
-	country_modifier = {
-		country_resource_max_add = 3000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = laborer_pollution_3_effect
+	}
+	triggered_desc = {
+		trigger = {
+			has_building = building_maintenance_depot
+		}
+		text = laborer_plantoid_growth_effect_3
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_food_buff_3_effect
+	planet_modifier = {
+		planet_laborers_non_plantoid_food_produces_add = 30
+		planet_laborers_fruiting_food_produces_add = 12
+		planet_laborers_energy_upkeep_add = @job_energy_normal3
+		planet_laborers_consumer_goods_upkeep_add = @job_supplies_normal3
+		laborers_bio_food_upkeep_add = @living_standard_food_normal3
+		laborers_lith_minerals_upkeep_add = @living_standard_food_normal3
+		laborers_mech_energy_upkeep_add = @living_standard_food_normal3
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
 	}
 	
 	ai_weight = {
@@ -642,13 +690,22 @@ building_mineral_1 = {
 		}
 	}
 	
-	country_modifier = {
-		country_resource_max_add = 1000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = laborer_pollution_1_effect
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_minerals_buff_1_effect
+	planet_modifier = {
+		planet_laborers_minerals_produces_add = 10
+		planet_laborers_energy_upkeep_add = @job_energy_normal
+		planet_laborers_consumer_goods_upkeep_add = @job_supplies_normal
+		laborers_bio_food_upkeep_add = @living_standard_food_normal
+		laborers_lith_minerals_upkeep_add = @living_standard_food_normal
+		laborers_mech_energy_upkeep_add = @living_standard_food_normal
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
 	}
 	
 	ai_weight = {
@@ -701,13 +758,27 @@ building_mineral_2 = {
 		}
 	}
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = laborer_pollution_2_effect
+	}
+	
+	planet_modifier = {
+		planet_laborers_minerals_produces_add = 20
+		planet_laborers_energy_upkeep_add = @job_energy_normal2
+		planet_laborers_consumer_goods_upkeep_add = @job_supplies_normal2
+		laborers_bio_food_upkeep_add = @living_standard_food_normal2
+		laborers_lith_minerals_upkeep_add = @living_standard_food_normal2
+		laborers_mech_energy_upkeep_add = @living_standard_food_normal2
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
 	
 	triggered_desc = {
 		trigger = { exists = owner }
-		text = retile_minerals_buff_1_effect
+		text = retile_minerals_buff_2_effect
 	}
 	
 	ai_weight = {
@@ -756,15 +827,24 @@ building_mineral_3 = {
 		tech_mineral_purification_2
 	}
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = laborer_pollution_3_effect
+	}
+	
+	planet_modifier = {
+		planet_laborers_minerals_produces_add = 30
+		planet_laborers_energy_upkeep_add = @job_energy_normal3
+		planet_laborers_consumer_goods_upkeep_add = @job_supplies_normal3
+		laborers_bio_food_upkeep_add = @living_standard_food_normal3
+		laborers_lith_minerals_upkeep_add = @living_standard_food_normal3
+		laborers_mech_energy_upkeep_add = @living_standard_food_normal3
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_minerals_buff_3_effect
-	}
-
 	ai_weight = {
 		weight = 1
 	}
@@ -818,13 +898,21 @@ building_energy_1 = {
 		building_energy_2
 	}
 	
-	country_modifier = {
-		country_resource_max_add = 1000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = laborer_pollution_1_effect
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_energy_buff_1_effect
+	planet_modifier = {
+		planet_laborers_energy_produces_add = 10
+		planet_laborers_consumer_goods_upkeep_add = @job_supplies_high
+		laborers_bio_food_upkeep_add = @living_standard_food_normal
+		laborers_lith_minerals_upkeep_add = @living_standard_food_normal
+		laborers_mech_energy_upkeep_add = @living_standard_food_normal
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
 	}
 	
 	ai_weight = {
@@ -877,13 +965,21 @@ building_energy_2 = {
 		building_energy_3
 	}
 	
-	country_modifier = {
-		country_resource_max_add = 2000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = laborer_pollution_2_effect
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_energy_buff_1_effect
+	planet_modifier = {
+		planet_laborers_energy_produces_add = 20
+		planet_laborers_consumer_goods_upkeep_add = @job_supplies_high2
+		laborers_bio_food_upkeep_add = @living_standard_food_normal2
+		laborers_lith_minerals_upkeep_add = @living_standard_food_normal2
+		laborers_mech_energy_upkeep_add = @living_standard_food_normal2
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
 	}
 	
 	ai_weight = {
@@ -932,15 +1028,23 @@ building_energy_3 = {
 		tech_power_hub_2
 	}
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = laborer_pollution_3_effect
+	}
+	
+	planet_modifier = {
+		planet_laborers_energy_produces_add = 30
+		planet_laborers_consumer_goods_upkeep_add = @job_supplies_high3
+		laborers_bio_food_upkeep_add = @living_standard_food_normal3
+		laborers_lith_minerals_upkeep_add = @living_standard_food_normal3
+		laborers_mech_energy_upkeep_add = @living_standard_food_normal3
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
 		
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_energy_buff_3_effect
-	}
-	
 	ai_weight = {
 		weight = 1
 	}

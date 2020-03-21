@@ -699,46 +699,6 @@ planet_priests = {
 	}
 }
 
-planet_farmers = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-	generate_mult_modifiers = {
-		produces
-		upkeep
-	}
-	
-	generate_add_modifiers = {
-		produces
-		upkeep
-	}
-}
-
-planet_miners = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-	generate_mult_modifiers = {
-		produces
-		upkeep
-	}
-
-	generate_add_modifiers = {
-		produces
-		upkeep
-	}
-}
-
 planet_livestock = {
 	parent = planet_jobs
 	ai_use_parent_for_resources_upkeep = {
@@ -750,26 +710,6 @@ planet_livestock = {
 	}
 	generate_add_modifiers = {
 		produces
-	}
-}
-
-planet_technician = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-	generate_mult_modifiers = {
-		produces
-		upkeep
-	}
-	
-	generate_add_modifiers = {
-		produces
-		upkeep
 	}
 }
 
@@ -1229,7 +1169,7 @@ pop_category_slave = {
 		}
 	}
 	######################################## Worker Building Upkeeps
-		triggered_upkeep_modifier = {
+	triggered_upkeep_modifier = {
 		key = custodians_bio
 		modifier_types = {
 			add
@@ -1252,68 +1192,24 @@ pop_category_slave = {
 		}
 	}
 	triggered_upkeep_modifier = {
-		key = technicians_bio
+		key = laborers_bio
 		modifier_types = {
 			add
 			#mult
 		}
 		trigger = {
-			has_job = technician
+			has_job = laborer
 			pop_eats_food = yes
 		}
 	}
 	triggered_upkeep_modifier = {
-		key = technicians_lith
+		key = laborers_lith
 		modifier_types = {
 			add
 			#mult
 		}
 		trigger = {
-			has_job = technician
-			pop_eats_minerals = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = miners_bio
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = miner
-			pop_eats_food = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = miners_lith
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = miner
-			pop_eats_minerals = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = farmers_bio
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = farmer
-			pop_eats_food = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = farmers_lith
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = farmer
+			has_job = laborer
 			pop_eats_minerals = yes
 		}
 	}
@@ -1409,35 +1305,13 @@ pop_category_robot = {
 		}
 	}
 	triggered_upkeep_modifier = {
-		key = technicians_mech
+		key = laborers_mech
 		modifier_types = {
 			add
 			#mult
 		}
 		trigger = {
-			has_job = technician
-			pop_eats_energy = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = miners_mech
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = miner
-			pop_eats_energy = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = farmers_mech
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = farmer
+			has_job = laborer
 			pop_eats_energy = yes
 		}
 	}
@@ -1466,7 +1340,7 @@ pop_category_workers = {
 
 
 	######################################## Worker Building Upkeeps
-		triggered_upkeep_modifier = {
+	triggered_upkeep_modifier = {
 		key = custodians_bio
 		modifier_types = {
 			add
@@ -1500,101 +1374,35 @@ pop_category_workers = {
 		}
 	}
 	triggered_upkeep_modifier = {
-		key = technicians_bio
+		key = laborers_bio
 		modifier_types = {
 			add
 			#mult
 		}
 		trigger = {
-			has_job = technician
+			has_job = laborer
 			pop_eats_food = yes
 		}
 	}
 	triggered_upkeep_modifier = {
-		key = technicians_lith
+		key = laborers_lith
 		modifier_types = {
 			add
 			#mult
 		}
 		trigger = {
-			has_job = technician
+			has_job = laborer
 			pop_eats_minerals = yes
 		}
 	}
 	triggered_upkeep_modifier = {
-		key = technicians_mech
+		key = laborers_mech
 		modifier_types = {
 			add
 			#mult
 		}
 		trigger = {
-			has_job = technician
-			pop_eats_energy = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = miners_bio
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = miner
-			pop_eats_food = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = miners_lith
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = miner
-			pop_eats_minerals = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = miners_mech
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = miner
-			pop_eats_energy = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = farmers_bio
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = farmer
-			pop_eats_food = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = farmers_lith
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = farmer
-			pop_eats_minerals = yes
-		}
-	}
-	triggered_upkeep_modifier = {
-		key = farmers_mech
-		modifier_types = {
-			add
-			#mult
-		}
-		trigger = {
-			has_job = farmer
+			has_job = laborer
 			pop_eats_energy = yes
 		}
 	}

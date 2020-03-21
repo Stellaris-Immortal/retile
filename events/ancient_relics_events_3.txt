@@ -23,10 +23,8 @@ country_event = {
     	is_ai = no
     	last_increased_tech = tech_mining_3
     	any_owned_planet = {
-   			any_deposit = { has_deposit_category = deposit_cat_minerals_active }
 			NOT = { exists = archaeological_site }
    		}
-
    		NOT = {
    			any_country = {
    				has_country_flag = discovered_lihtoids_arc_site
@@ -39,7 +37,6 @@ country_event = {
     		5 = {
     			random_owned_planet = {
     				limit = {
-   						num_districts = { type = district_mining value > 1 }
 						NOT = { exists = archaeological_site }
     				}
     				planet_event = { id = ancrel.4000 days = 30 random = 90 }

@@ -63,10 +63,9 @@ decision_retile_consume_energy = {
 			is_hive_empire = yes
 			has_tradition = tr_prosperity_sct
 		}
-		any_deposit = { OR = {
+		any_deposit = {
 			has_deposit_category = deposit_cat_energy
-			has_deposit_category = deposit_cat_energy_active
-		} }
+		}
 	}
 
 	allow = {
@@ -162,94 +161,6 @@ decision_retile_consume_energy = {
 			}
 			add_deposit = d_retile_consumed
 			add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_4 }
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_buzzing_plains_active
-				has_deposit = d_arid_highlands_active
-				has_deposit = d_hot_springs_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_buzzing_plains_active
-					is_deposit_type = d_arid_highlands_active
-					is_deposit_type = d_hot_springs_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_1 }
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_immense_solar_array_active
-				has_deposit = d_rushing_waterfalls_active
-				has_deposit = d_searing_desert_active
-				has_deposit = d_frozen_gas_lake_active
-				has_deposit = d_odd_factory_wreckage_1_active
-				has_deposit = d_underground_contact_zone_active
-				has_deposit = d_delhi_sprawl_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_immense_solar_array_active
-					is_deposit_type = d_rushing_waterfalls_active
-					is_deposit_type = d_searing_desert_active
-					is_deposit_type = d_frozen_gas_lake_active
-					is_deposit_type = d_odd_factory_wreckage_1_active
-					is_deposit_type = d_underground_contact_zone_active
-					is_deposit_type = d_delhi_sprawl_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_2 }
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_geothermal_vent_active
-				has_deposit = d_underwater_vent_active
-				has_deposit = d_tempestous_mountain_active
-				has_deposit = d_junk_hollows_active
-				has_deposit = d_irradiated_valley_active
-				has_deposit = d_organic_landfill_active
-				has_deposit = d_underground_generator_active
-				has_deposit = d_numas_breath_active
-				has_deposit = d_boswash_metropolitan_axis_active
-				has_deposit = d_pearl_river_agglomerate_active
-				has_deposit = retile_mastery_of_nature_energy_active
-				#has_deposit = retile_module_generator_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_geothermal_vent_active
-					is_deposit_type = d_underwater_vent_active
-					is_deposit_type = d_tempestous_mountain_active
-					is_deposit_type = d_junk_hollows_active
-					is_deposit_type = d_irradiated_valley_active
-					is_deposit_type = d_organic_landfill_active
-					is_deposit_type = d_underground_generator_active
-					is_deposit_type = d_numas_breath_active
-					is_deposit_type = d_boswash_metropolitan_axis_active
-					is_deposit_type = d_pearl_river_agglomerate_active
-					is_deposit_type = retile_mastery_of_nature_energy_active
-					#is_deposit_type = retile_module_generator_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_3 }
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_ancient_reactor_pits_active
-				has_deposit = d_saharan_irrigation_project_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_ancient_reactor_pits_active
-					is_deposit_type = d_saharan_irrigation_project_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_4 }
 		}
 	}
 	
@@ -274,10 +185,9 @@ decision_retile_consume_minerals = {
 			is_hive_empire = yes
 			has_tradition = tr_prosperity_sct
 		}
-		any_deposit = { OR = {
+		any_deposit = {
 			has_deposit_category = deposit_cat_minerals
-			has_deposit_category = deposit_cat_minerals_active
-		} }
+		}
 	}
 
 	allow = {
@@ -381,104 +291,7 @@ decision_retile_consume_minerals = {
 			}
 			add_deposit = d_retile_consumed
 			add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_5 }
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_mineral_striations_active
-				has_deposit = d_veiny_cliffs_active
-				has_deposit = d_mineral_fields_active
-				has_deposit = d_mauritanian_security_zone_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_mineral_striations_active
-					is_deposit_type = d_veiny_cliffs_active
-					is_deposit_type = d_mineral_fields_active
-					is_deposit_type = d_mauritanian_security_zone_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_1 }
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_prosperous_mesa_active
-				has_deposit = d_ore_rich_caverns_active
-				has_deposit = d_odd_factory_wreckage_2_active
-				has_deposit = d_underground_vault_2_active
-				has_deposit = d_nanosands_active
-				has_deposit = d_relic_metal_boneyard_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_prosperous_mesa_active
-					is_deposit_type = d_ore_rich_caverns_active
-					is_deposit_type = d_odd_factory_wreckage_2_active
-					is_deposit_type = d_underground_vault_2_active
-					is_deposit_type = d_nanosands_active
-					is_deposit_type = d_relic_metal_boneyard_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_2 }
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_rich_mountain_active
-				has_deposit = d_submerged_ore_veins_active
-				has_deposit = d_junk_wastes_active
-				has_deposit = d_impact_crater_active
-				has_deposit = d_underground_mine_active
-				has_deposit = d_mesopotamian_urban_corridor_active
-				has_deposit = d_great_albertan_crater_active
-				has_deposit = retile_mastery_of_nature_minerals_active
-				#has_deposit = retile_module_mine_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_rich_mountain_active
-					is_deposit_type = d_submerged_ore_veins_active
-					is_deposit_type = d_junk_wastes_active
-					is_deposit_type = d_impact_crater_active
-					is_deposit_type = d_underground_mine_active
-					is_deposit_type = d_mesopotamian_urban_corridor_active
-					is_deposit_type = d_great_albertan_crater_active
-					is_deposit_type = retile_mastery_of_nature_minerals_active
-					#is_deposit_type = retile_module_mine_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_3 }
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_abandoned_mining_tunnels_active
-				has_deposit = d_metal_boneyard_active
-				has_deposit = d_worm_mine_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_abandoned_mining_tunnels_active
-					is_deposit_type = d_metal_boneyard_active
-					is_deposit_type = d_worm_mine_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_4 }
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_ancient_mining_site_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_ancient_mining_site_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_5 }
 		}
-
 	}
 	
 	ai_weight = {
@@ -502,10 +315,9 @@ decision_retile_consume_food = {
 			is_hive_empire = yes
 			has_tradition = tr_prosperity_sct
 		}
-		any_deposit = { OR = {
+		any_deposit = {
 			has_deposit_category = deposit_cat_food
-			has_deposit_category = deposit_cat_food_active
-		} }
+		}
 	}
 
 	allow = {
@@ -685,197 +497,15 @@ decision_retile_consume_food = {
 			add_deposit = d_retile_consumed
 			if = {
 				limit = { owner = { country_uses_food = yes } }
-				add_modifier = { modifier = retile_consumed_food days = @retile_consume_length_5 }
+				add_modifier = { modifier = retile_consumed_food days = @retile_consume_length_6 }
 			} else_if = {
 				limit = { owner = { is_lithoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_5 }
+				add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_6 }
 			} else_if = {
 				limit = { owner = { is_plantoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_plantoid days = @retile_consume_length_5 }
+				add_modifier = { modifier = retile_consumed_plantoid days = @retile_consume_length_6 }
 			} else = {
-				add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_5 }
-			}
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_natural_farmland_active
-				has_deposit = d_lichen_fields_active
-				has_deposit = d_bountiful_plains_active
-				has_deposit = d_rugged_woods_active
-				has_deposit = d_green_hills_active
-				has_deposit = d_forgiving_tundra_active
-				has_deposit = d_boggy_fens_active
-				has_deposit = d_nutritious_mudland_active
-				has_deposit = d_scandinavian_reclamation_sector_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_natural_farmland_active
-					is_deposit_type = d_lichen_fields_active
-					is_deposit_type = d_bountiful_plains_active
-					is_deposit_type = d_rugged_woods_active
-					is_deposit_type = d_green_hills_active
-					is_deposit_type = d_forgiving_tundra_active
-					is_deposit_type = d_boggy_fens_active
-					is_deposit_type = d_nutritious_mudland_active
-					is_deposit_type = d_scandinavian_reclamation_sector_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			if = {
-				limit = { owner = { country_uses_food = yes } }
-				add_modifier = { modifier = retile_consumed_food days = @retile_consume_length_1 }
-			} else_if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_1 }
-			} else_if = {
-				limit = { owner = { is_plantoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_plantoid days = @retile_consume_length_1 }
-			} else = {
-				add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_1 }
-			}
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_fungal_caves_active
-				has_deposit = d_lush_jungle_active
-				has_deposit = d_fertile_lands_active
-				has_deposit = d_great_river_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_fungal_caves_active
-					is_deposit_type = d_lush_jungle_active
-					is_deposit_type = d_fertile_lands_active
-					is_deposit_type = d_great_river_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			if = {
-				limit = { owner = { country_uses_food = yes } }
-				add_modifier = { modifier = retile_consumed_food days = @retile_consume_length_2 }
-			} else_if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_2 }
-			} else_if = {
-				limit = { owner = { is_plantoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_plantoid days = @retile_consume_length_2 }
-			} else = {
-				add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_2 }
-			}
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_black_soil_active
-				has_deposit = d_teeming_reef_active
-				has_deposit = d_marvelous_oasis_active
-				has_deposit = d_tropical_island_active
-				has_deposit = d_fungal_forest_active
-				has_deposit = d_junk_canals_active
-				has_deposit = d_abandoned_primitive_homesteads_active
-				has_deposit = d_underground_farm_active
-				has_deposit = d_pacific_algae_tracts_active
-				has_deposit = retile_mastery_of_nature_food_active
-				#has_deposit = retile_module_farm_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_black_soil_active
-					is_deposit_type = d_teeming_reef_active
-					is_deposit_type = d_marvelous_oasis_active
-					is_deposit_type = d_tropical_island_active
-					is_deposit_type = d_fungal_forest_active
-					is_deposit_type = d_junk_canals_active
-					is_deposit_type = d_abandoned_primitive_homesteads_active
-					is_deposit_type = d_underground_farm_active
-					is_deposit_type = d_pacific_algae_tracts_active
-					is_deposit_type = retile_mastery_of_nature_food_active
-					#is_deposit_type = retile_module_farm_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			if = {
-				limit = { owner = { country_uses_food = yes } }
-				add_modifier = { modifier = retile_consumed_food days = @retile_consume_length_3 }
-			} else_if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_3 }
-			} else_if = {
-				limit = { owner = { is_plantoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_plantoid days = @retile_consume_length_3 }
-			} else = {
-				add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_3 }
-			}
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_worm_farm_active
-				has_deposit = d_saharan_irrigation_project_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_worm_farm_active
-					is_deposit_type = d_saharan_irrigation_project_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			if = {
-				limit = { owner = { country_uses_food = yes } }
-				add_modifier = { modifier = retile_consumed_food days = @retile_consume_length_4 }
-			} else_if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_4 }
-			} else_if = {
-				limit = { owner = { is_plantoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_plantoid days = @retile_consume_length_4 }
-			} else = {
-				add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_4 }
-			}
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_hyperfertile_valley_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_hyperfertile_valley_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			if = {
-				limit = { owner = { country_uses_food = yes } }
-				add_modifier = { modifier = retile_consumed_food days = @retile_consume_length_5 }
-			} else_if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_5 }
-			} else_if = {
-				limit = { owner = { is_plantoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_plantoid days = @retile_consume_length_5 }
-			} else = {
-				add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_5 }
-			}
-		} else_if = {
-			limit = { OR {
-				has_deposit = d_harvester_fields_active
-			} }
-			random_deposit = {
-				limit = { OR {
-					is_deposit_type = d_harvester_fields_active
-				} }
-				remove_deposit = yes
-			}
-			add_deposit = d_retile_consumed
-			if = {
-				limit = { owner = { country_uses_food = yes } }
-				add_modifier = { modifier = retile_consumed_food days = @retile_consume_length_5 }
-			} else_if = {
-				limit = { owner = { is_lithoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_minerals days = @retile_consume_length_5 }
-			} else_if = {
-				limit = { owner = { is_plantoid_empire = yes } }
-				add_modifier = { modifier = retile_consumed_plantoid days = @retile_consume_length_5 }
-			} else = {
-				add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_5 }
+				add_modifier = { modifier = retile_consumed_energy days = @retile_consume_length_6 }
 			}
 		}
 	}
@@ -921,14 +551,11 @@ decision_retile_devour_world = {
 		custom_tooltip = {
 			fail_text = decision_retile_devour_world_deposits
 			NOT = { 
-				any_deposit = { 
+				any_deposit = {
 					OR = {
-						is_inactive_energy_deposit = yes
-						is_inactive_minerals_deposit = yes
-						is_inactive_food_deposit = yes
-						is_active_energy_deposit = yes
-						is_active_minerals_deposit = yes
-						is_active_food_deposit = yes
+						has_deposit_category = deposit_cat_food
+						has_deposit_category = deposit_cat_energy
+						has_deposit_category = deposit_cat_minerals
 					}
 				}
 			}
@@ -993,18 +620,6 @@ decision_retile_assimilate_world = {
 	}
 	
 	allow = {
-		custom_tooltip = {
-			fail_text = decision_retile_assimilate_world_deposits
-			NOT = { 
-				any_deposit = { 
-					OR = {
-						is_inactive_energy_deposit = yes
-						is_inactive_minerals_deposit = yes
-						is_inactive_food_deposit = yes
-					}
-				}
-			}
-		}
 		custom_tooltip = {
 			fail_text = decision_retile_assimilate_world_blockers
 			NOT = { 

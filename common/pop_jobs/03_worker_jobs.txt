@@ -324,10 +324,12 @@ custodian = {
 }
 
 laborer = {
+	icon = job_technician
 	category = worker
 	condition_string = WORKER_JOB_TRIGGER
 	building_icon = old_production/building_basic_farm
 	clothes_texture_index = 2
+	is_capped_by_modifier = no
 	
 	possible_pre_triggers = {
 		has_owner = yes
@@ -340,13 +342,18 @@ laborer = {
 	}
 
 	resources = {
-		category = planet_technician
+		category = planet_laborers
 		produces = {
 			society_research = 2
 		}
 		upkeep = {
-			energy = @job_energy_high
+			energy = @job_energy_normal
+			energy = @job_supplies_normal
 		}
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 50
 	}
 	
 	triggered_planet_modifier = {
@@ -362,54 +369,62 @@ laborer = {
 		modifier = { planet_amenities_add = 250 }
 	}
 
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_minerals_1 } }
+		modifier = { planet_amenities_add = 50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_minerals_2 } }
+		modifier = { planet_amenities_add = 150 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_minerals_3 } }
+		modifier = { planet_amenities_add = 250 }
+	}
+
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		modifier = { planet_amenities_add = 50 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		modifier = { planet_amenities_add = 150 }
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		modifier = { planet_amenities_add = 250 }
+	}
+
+	triggered_planet_modifier = {
+		potential = { has_trait = trait_plantoid }
+		modifier = {
+			pop_environment_tolerance = 0.10
+			pop_growth_speed = 0.05
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_food_1 }
+			has_trait = trait_plantoid
+		}
+		modifier = { pop_growth_speed = 0.05 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_food_1 }
+			has_trait = trait_plantoid
+		}
+		modifier = { pop_growth_speed = 0.1 }
+	}
+	triggered_planet_modifier = {
+		potential = {
+			planet = { has_building = building_food_1 }
+			has_trait = trait_plantoid
+		}
+		modifier = { pop_growth_speed = 0.15 }
+	}
+
 	weight = {
-		weight = @worker_job_weight_important
-		modifier = {
-			factor = 5
-			has_job = technician
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				has_trait = trait_robot_superconductive
-				has_trait = trait_ingenious
-				has_trait = trait_nuumismatic_administration
-			}
-		}
-		modifier = {
-			factor = 1.5
-			has_trait = trait_syncretic_proles
-		}
-		modifier = {
-			factor = 1.2
-			has_trait = trait_very_strong
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_strong
-		}	
-		modifier = {
-			factor = 0.9
-			has_trait = trait_weak
-		}
-		modifier = {
-			factor = 1.5
-			has_trait = trait_presapient_earthbound
-		}
-		modifier = {
-			factor = 1.1
-			OR = {
-				has_trait = trait_robust
-				has_trait = trait_robot_efficient_processors
-			}
-		}
-		modifier = {
-			factor = 2
-			planet = {
-				has_building = building_energy_1
-				has_building = building_energy_2
-				has_building = building_energy_3
-			}
-		}
+		weight = @special_job_weight
 	}
 }

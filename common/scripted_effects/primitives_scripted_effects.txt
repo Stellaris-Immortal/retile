@@ -525,11 +525,9 @@ set_primitive_age_effect = {
 					add_district = district_housing
 					IF = {
 						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_food }
+							NOT = { any_deposit = { has_deposit_category = deposit_cat_food } }
 						}
-						retile_exploit_food = yes
-					} ELSE = {
-						add_deposit = retile_module_farm_active
+						add_deposit = retile_module_farm
 					}
 				}
 			}
@@ -560,19 +558,15 @@ set_primitive_age_effect = {
 					add_district = district_housing
 					IF = {
 						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_food }
+							NOT = { any_deposit = { has_deposit_category = deposit_cat_food } }
 						}
-						retile_exploit_food = yes
-					} ELSE = {
-						add_deposit = retile_module_farm_active
+						add_deposit = retile_module_farm
 					}
 					IF = {
 						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_minerals }
+							NOT = { any_deposit = { has_deposit_category = deposit_cat_minerals } }
 						}
-						retile_exploit_minerals = yes
-					} ELSE = {
-						add_deposit = retile_module_mine_active
+						add_deposit = retile_module_mine
 					}
 					create_primitive_blockers = yes
 				}
@@ -604,27 +598,21 @@ set_primitive_age_effect = {
 					add_district = district_housing
 					IF = {
 						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_food }
+							NOT = { any_deposit = { has_deposit_category = deposit_cat_food } }
 						}
-						retile_exploit_food = yes
-					} ELSE = {
-						add_deposit = retile_module_farm_active
+						add_deposit = retile_module_farm
 					}
 					IF = {
 						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_minerals }
+							NOT = { any_deposit = { has_deposit_category = deposit_cat_minerals } }
 						}
-						retile_exploit_minerals = yes
-					} ELSE = {
-						add_deposit = retile_module_mine_active
+						add_deposit = retile_module_mine
 					}
 					IF = {
 						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_energy }
+							NOT = { any_deposit = { has_deposit_category = deposit_cat_energy } }
 						}
-						retile_exploit_energy = yes
-					} ELSE = {
-						add_deposit = retile_module_generator_active
+						add_deposit = retile_module_generator
 					}
 					create_primitive_blockers = yes
 				}
@@ -659,27 +647,21 @@ set_primitive_age_effect = {
 					add_district = district_housing
 					IF = {
 						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_food }
+							NOT = { any_deposit = { has_deposit_category = deposit_cat_food } }
 						}
-						retile_exploit_food = yes
-					} ELSE = {
-						add_deposit = retile_module_farm_active
+						add_deposit = retile_module_farm
 					}
 					IF = {
 						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_minerals }
+							NOT = { any_deposit = { has_deposit_category = deposit_cat_minerals } }
 						}
-						retile_exploit_minerals = yes
-					} ELSE = {
-						add_deposit = retile_module_mine_active
+						add_deposit = retile_module_mine
 					}
 					IF = {
 						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_energy }
+							NOT = { any_deposit = { has_deposit_category = deposit_cat_energy } }
 						}
-						retile_exploit_energy = yes
-					} ELSE = {
-						add_deposit = retile_module_generator_active
+						add_deposit = retile_module_generator
 					}
 					create_primitive_blockers = yes
 				}
