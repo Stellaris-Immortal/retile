@@ -21,6 +21,26 @@ planet_custodians = {
 		produces
 		upkeep
 	}
+
+	triggered_produces_modifier = {
+		key = planet_custodians_non_plantoid
+		modifier_types = {
+			add
+		}
+		trigger = {
+			is_plantoid = no
+		}
+	}
+	
+	triggered_produces_modifier = {
+		key = planet_custodians_fruiting
+		modifier_types = {
+			add
+		}
+		trigger = {
+			has_trait = trait_plantoid_fruiting
+		}
+	}
 }
 planet_medics = {
 	icon = "job_medic"
