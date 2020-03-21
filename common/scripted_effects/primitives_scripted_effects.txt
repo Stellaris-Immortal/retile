@@ -1,25 +1,16 @@
-unemploy_primitives = {	# planet scope
-	owner = { every_owned_pop = {
-		unemploy_pop = yes
-	} }
-}
-
 generate_primitives_on_planet = {
 	create_primitive_species = yes
 	create_primitive_empire = yes
-	setup_primitive_planet = yes
 }
 
 generate_early_primitives_on_planet = {
 	create_primitive_species = yes
 	create_early_primitive_empire = yes
-	setup_primitive_planet = yes
 }
 
 generate_late_primitives_on_planet = {
 	create_primitive_species = yes
 	create_late_primitive_empire = yes
-	setup_primitive_planet = yes
 }
 
 create_primitive_species = {
@@ -34,7 +25,22 @@ create_primitive_species = {
 	}
 }
 
+create_primitive_empire = {
+	random_list = {
+		# Industrial Civilization
+		35 = {
+			create_late_primitive_empire = yes
+		}
+		# Medieval Civilization
+		65 = {
+			create_early_primitive_empire = yes
+		}
+	}
+}
+
 create_early_primitive_empire = {
+	
+	# Make a new country first. The starting flag choice is for stone_age empires
 	create_country = {
 		name = random
 		authority = random
@@ -63,30 +69,22 @@ create_early_primitive_empire = {
 		origin = "origin_enlightened" # Should only be visible if they become spacefaring
 		type = primitive
 	}
+	
+	# Set the current planet to be owned by, and the capital of, our new primitive empire
+	set_owner = last_created_country
+	set_capital = yes
+	
+	# do this...
+	last_created_country = { set_graphical_culture = preindustrial_01 }
+	
+	# Now run the primitive age effect, to build the planet. And change the flag if we're not stone-age
 	last_created_country = {
-		set_graphical_culture = preindustrial_01
 		random_list = {
 			20 = {
-				set_country_flag = stone_age 
-				set_primitive_age = stone_age
-				change_government = {
-					authority = random
-					civics = {
-						civic = civic_secret_of_fire
-						civic = civic_the_wheel
-					}
-				}
+				set_primitive_age_effect = { primitive_age = stone_age }
 			}
 			20 = {
-				set_country_flag = bronze_age 
-				set_primitive_age = bronze_age
-				change_government = {
-					authority = random
-					civics = {
-						civic = civic_secret_of_fire
-						civic = civic_the_wheel
-					}
-				}
+				set_primitive_age_effect = { primitive_age = bronze_age }
 				change_country_flag = {
 					icon = {
 						category = "special"
@@ -105,8 +103,7 @@ create_early_primitive_empire = {
 				}
 			}
 			20 = {
-				set_country_flag = iron_age 
-				set_primitive_age = iron_age
+				set_primitive_age_effect = { primitive_age = iron_age }
 				change_country_flag = {
 					icon = {
 						category = "special"
@@ -125,8 +122,7 @@ create_early_primitive_empire = {
 				}
 			}
 			20 = {
-				set_country_flag = late_medieval_age 
-				set_primitive_age = late_medieval_age
+				set_primitive_age_effect = { primitive_age = late_medieval_age }
 				change_country_flag = {
 					icon = {
 						category = "special"
@@ -145,8 +141,7 @@ create_early_primitive_empire = {
 				}
 			}
 			20 = {
-				set_country_flag = renaissance_age 
-				set_primitive_age = renaissance_age
+				set_primitive_age_effect = { primitive_age = renaissance_age }
 				change_country_flag = {
 					icon = {
 						category = "special"
@@ -165,8 +160,7 @@ create_early_primitive_empire = {
 				}
 			}
 			20 = {
-				set_country_flag = steam_age 
-				set_primitive_age = steam_age
+				set_primitive_age_effect = { primitive_age = steam_age }
 				change_country_flag = {
 					icon = {
 						category = "special"
@@ -189,6 +183,8 @@ create_early_primitive_empire = {
 }
 
 create_late_primitive_empire = {
+	
+	# Make a new country first. The starting flag choice is for stone_age empires
 	create_country = {
 		name = random
 		authority = random
@@ -217,12 +213,19 @@ create_late_primitive_empire = {
 		origin = "origin_enlightened" # Should only be visible if they become spacefaring
 		type = primitive
 	}
+
+	# Set the current planet to be owned by, and the capital of, our new primitive empire
+	set_owner = last_created_country
+	set_capital = yes
+	
+	# do this...
+	last_created_country = { set_graphical_culture = industrial_01 }
+	
+	# Now run the primitive age effect, to build the planet. And change the flag if we're not stone-age
 	last_created_country = {
-		set_graphical_culture = industrial_01
 		random_list = {
 			25 = {
-				set_country_flag = industrial_age 
-				set_primitive_age = industrial_age
+				set_primitive_age_effect = { primitive_age = industrial_age }
 				change_country_flag = {
 					icon = {
 						category = "special"
@@ -241,8 +244,7 @@ create_late_primitive_empire = {
 				}
 			}
 			25 = { 
-				set_country_flag = machine_age
-				set_primitive_age = machine_age
+				set_primitive_age_effect = { primitive_age = machine_age }
 				change_country_flag = {
 					icon = {
 						category = "special"
@@ -261,8 +263,7 @@ create_late_primitive_empire = {
 				}
 			}
 			25 = { 
-				set_country_flag = atomic_age 
-				set_primitive_age = atomic_age
+				set_primitive_age_effect = { primitive_age = atomic_age }
 				change_country_flag = {
 					icon = {
 						category = "special"
@@ -281,8 +282,7 @@ create_late_primitive_empire = {
 				}
 			}
 			25 = { 
-				set_country_flag = early_space_age 
-				set_primitive_age = early_space_age
+				set_primitive_age_effect = { primitive_age = early_space_age }
 				change_country_flag = {
 					icon = {
 						category = "special"
@@ -301,375 +301,16 @@ create_late_primitive_empire = {
 				}
 			}
 		}
-	}	
-}
-
-create_primitive_empire = {
-	random_list = {
-		# Industrial Civilization
-		35 = {	# 35 default
-			create_late_primitive_empire = yes
-		}
-		# Medieval Civilization
-		65 = {	# 65 default
-			create_early_primitive_empire = yes
-		}
 	}
 }
 
-setup_primitive_planet = {
-	set_owner = last_created_country
-	set_capital = yes
-	
-	last_created_country = {
-		if = {
-			limit = { has_country_flag = stone_age }
-			prev = {
-				while = {
-					count = 1
-					create_pop = { species = owner_main_species }
-				}
-				add_building = building_crude_huts
-				remove_building = building_colony_shelter
-			}
-		}					
-		if = {
-			limit = { has_country_flag = bronze_age }
-			prev = {
-				while = {
-					count = 2
-					create_pop = { species = owner_main_species }
-				}
-				add_building = building_primitive_dwellings
-				add_building = building_stone_palace
-				remove_building = building_colony_shelter
-			}
-		}
-		if = {
-			limit = { has_country_flag = iron_age }
-			prev = {
-				while = {
-					count = 3
-					create_pop = { species = owner_main_species }
-				}
-				add_building = building_primitive_farm
-				add_building = building_primitive_dwellings
-				add_building = building_stone_palace
-				remove_building = building_colony_shelter
-			}
-		}
-		if = {
-			limit = { has_country_flag = late_medieval_age }
-			prev = {
-				while = {
-					count = 3
-					create_pop = { species = owner_main_species }
-				}
-				add_building = building_primitive_farm
-				add_building = building_primitive_dwellings
-				add_building = building_stone_palace
-				remove_building = building_colony_shelter
-			}
-		}
-		if = {
-			limit = { has_country_flag = renaissance_age }
-			prev = {
-				while = {
-					count = 4
-					create_pop = { species = owner_main_species }
-				}
-				add_building = building_primitive_farm
-				add_building = building_urban_dwellings # primitive_city
-				add_building = building_stone_palace
-				remove_building = building_colony_shelter
-			}
-		}
-		if = {
-			limit = { has_country_flag = steam_age }
-			prev = {
-				while = {
-					count = 4
-					create_pop = { species = owner_main_species }
-				}
-				add_building = building_primitive_farm
-				add_building = building_urban_dwellings # primitive_city
-				add_building = building_stone_palace
-				remove_building = building_colony_shelter
-			}
-		}
-		if = {
-			limit = { has_country_flag = industrial_age }
-			prev = {
-				while = {
-					count = 5
-					create_pop = { species = owner_main_species }
-				}
-				add_building = building_urban_dwellings # primitive_city
-				add_building = building_primitive_capital
-				add_district = district_housing
-				IF = {
-					limit = {
-						any_deposit = { has_deposit_category = deposit_cat_food }
-					}
-					retile_exploit_food = yes
-				} ELSE = {
-					add_deposit = retile_module_farm_active
-				}
-				remove_building = building_colony_shelter
-			}
-		}
-		if = {
-			limit = { has_country_flag = machine_age }
-			prev = {
-				while = {
-					count = 6
-					create_pop = { species = owner_main_species }
-				}
-				add_building = building_primitive_capital
-				add_building = building_urban_dwellings # primitive_city
-				add_district = district_housing
-				IF = {
-					limit = {
-						any_deposit = { has_deposit_category = deposit_cat_food }
-					}
-					retile_exploit_food = yes
-				} ELSE = {
-					add_deposit = retile_module_farm_active
-				}
-				IF = {
-					limit = {
-						any_deposit = { has_deposit_category = deposit_cat_minerals }
-					}
-					retile_exploit_minerals = yes
-				} ELSE = {
-					add_deposit = retile_module_mine_active
-				}
-				remove_building = building_colony_shelter
-			}
-		}
-		if = {
-			limit = { has_country_flag = atomic_age }
-			prev = {
-				while = {
-					count = 7
-					create_pop = { species = owner_main_species }
-				}
-				add_building = building_primitive_capital
-				add_building = building_urban_dwellings # primitive_city
-				add_district = district_housing
-				IF = {
-					limit = {
-						any_deposit = { has_deposit_category = deposit_cat_food }
-					}
-					retile_exploit_food = yes
-				} ELSE = {
-					add_deposit = retile_module_farm_active
-				}
-				IF = {
-					limit = {
-						any_deposit = { has_deposit_category = deposit_cat_minerals }
-					}
-					retile_exploit_minerals = yes
-				} ELSE = {
-					add_deposit = retile_module_mine_active
-				}
-				IF = {
-					limit = {
-						any_deposit = { has_deposit_category = deposit_cat_energy }
-					}
-					retile_exploit_energy = yes
-				} ELSE = {
-					add_deposit = retile_module_generator_active
-				}
-				remove_building = building_colony_shelter
-			}
-		}
-		if = {
-			limit = { has_country_flag = early_space_age }
-			prev = {
-				while = {
-					count = 8
-					create_pop = { species = owner_main_species }
-				}
-				add_building = building_primitive_capital
-				add_building = building_primitive_factory
-				add_district = district_engineers
-				add_district = district_scholars
-				add_district = district_housing
-				add_district = district_housing
-				IF = {
-					limit = {
-						any_deposit = { has_deposit_category = deposit_cat_food }
-					}
-					retile_exploit_food = yes
-				} ELSE = {
-					add_deposit = retile_module_farm_active
-				}
-				IF = {
-					limit = {
-						any_deposit = { has_deposit_category = deposit_cat_minerals }
-					}
-					retile_exploit_minerals = yes
-				} ELSE = {
-					add_deposit = retile_module_mine_active
-				}
-				IF = {
-					limit = {
-						any_deposit = { has_deposit_category = deposit_cat_energy }
-					}
-					retile_exploit_energy = yes
-				} ELSE = {
-					add_deposit = retile_module_generator_active
-				}
-				remove_building = building_colony_shelter
-			}
-		}		
-	}
-	
-	if = {
-		limit = {
-			last_created_country = {
-				OR = {
-					has_country_flag = machine_age
-					has_country_flag = atomic_age
-					has_country_flag = early_space_age				
-				}
-			}
-		}
-		create_primitive_blockers = yes
-	}
-}
-
+# For Machine, Atomic, and Early-Space age primitives...
 create_primitive_blockers = {
 	add_deposit = d_decrepit_dwellings
 	add_deposit = d_failing_infrastructure
 }
 
-bronze_age_planet_upgrade = {	# planet scope, primitive.30
-	unemploy_primitives = yes
-	remove_building = building_crude_huts
-	add_building = building_primitive_dwellings
-	add_building = building_stone_palace
-	while = {
-		limit = { num_pops < 2 }
-		create_pop = { species = owner_main_species }
-	}
-}
-
-iron_age_planet_upgrade = {	# planet scope, primitive.20
-	unemploy_primitives = yes
-	add_building = building_primitive_farm
-	while = {
-		limit = { num_pops < 3 }
-		create_pop = { species = owner_main_species }
-	}
-}
-
-medieval_age_planet_upgrade = {	# planet scope, primitive.22
-	unemploy_primitives = yes
-	while = {
-		limit = { num_pops < 3 }
-		create_pop = { species = owner_main_species }
-	}
-}
-
-renaissance_age_planet_upgrade = {	# planet scope, primitive.24
-	unemploy_primitives = yes
-	remove_building = building_primitive_dwellings
-	add_building = building_urban_dwellings
-	while = {
-		limit = { num_pops < 4 }
-		create_pop = { species = owner_main_species }
-	}
-}
-
-steam_age_planet_upgrade = {	# planet scope, primitive.26
-	unemploy_primitives = yes
-	while = {
-		limit = { num_pops < 4 }
-		create_pop = { species = owner_main_species }
-	}
-}
-
-industrial_age_planet_upgrade = {	# planet scope, primitive.28
-	unemploy_primitives = yes
-	remove_building = building_stone_palace
-	remove_building = building_primitive_farm
-	add_building = building_primitive_capital
-	add_district = district_housing
-	IF = {
-		limit = {
-			any_deposit = { has_deposit_category = deposit_cat_food }
-		}
-		retile_exploit_food = yes
-	} ELSE = {
-		add_deposit = retile_module_farm_active
-	}
-	while = {
-		limit = { num_pops < 5 }
-		create_pop = { species = owner_main_species }
-	}
-	retile_clear_blockers = yes
-	add_deposit = d_decrepit_dwellings
-	add_deposit = d_failing_infrastructure
-}
-
-machine_age_planet_upgrade = {	# planet scope, primitive.10
-	unemploy_primitives = yes
-	IF = {
-		limit = {
-			any_deposit = { has_deposit_category = deposit_cat_minerals }
-		}
-		retile_exploit_minerals = yes
-	} ELSE = {
-		add_deposit = retile_module_mine_active
-	}
-	while = {
-		limit = { num_pops < 5 } # should be 6, bug random bug?
-		create_pop = { species = owner_main_species }
-	}
-	retile_clear_blockers = yes
-	add_deposit = d_decrepit_dwellings
-	add_deposit = d_failing_infrastructure
-}
-
-atomic_age_planet_upgrade = {	# planet scope, primitive.12
-	unemploy_primitives = yes
-	IF = {
-		limit = {
-			any_deposit = { has_deposit_category = deposit_cat_energy }
-		}
-		retile_exploit_energy = yes
-	} ELSE = {
-		add_deposit = retile_module_generator_active
-	}
-	while = {
-		limit = { num_pops < 6 } # Should be 7, but random bug?
-		create_pop = { species = owner_main_species }
-	}
-	retile_clear_blockers = yes
-	add_deposit = d_decrepit_dwellings
-	add_deposit = d_failing_infrastructure
-}
-
-space_age_planet_upgrade = {	# planet scope, primitive.14
-	unemploy_primitives = yes
-	remove_building = building_urban_dwellings
-	add_building = building_primitive_factory
-	add_district = district_housing
-	add_district = district_engineers
-	add_district = district_scholars
-	while = {
-		limit = { num_pops < 7 } # should be 8 but random bug?
-		create_pop = { species = owner_main_species }
-	}
-	retile_clear_blockers = yes
-	add_deposit = d_decrepit_dwellings
-	add_deposit = d_failing_infrastructure
-}
-
 space_empire_planet_upgrade = {	# planet scope, primitive.16
-	unemploy_primitives = yes
 	remove_building = building_primitive_capital
 	remove_building = building_primitive_factory
 	add_building = building_system_capital
@@ -681,6 +322,472 @@ space_empire_planet_upgrade = {	# planet scope, primitive.16
 	retile_clear_blockers = yes
 }
 
+#Use in primitive country scope. set_primitive_age_effect = { primitive_age = stone_age }
 set_primitive_age_effect = {
-	# remove errors for now...
+	hidden_effect = {
+		remove_country_flag = stone_age
+		remove_country_flag = bronze_age
+		remove_country_flag = iron_age
+		remove_country_flag = late_medieval_age
+		remove_country_flag = renaissance_age
+		remove_country_flag = steam_age
+		remove_country_flag = industrial_age
+		remove_country_flag = machine_age
+		remove_country_flag = atomic_age
+		remove_country_flag = early_space_age
+		set_primitive_age = $primitive_age$
+		set_country_flag = $primitive_age$
+		switch = {
+			trigger = has_country_flag
+			stone_age = {
+				change_government = {
+					civics = {
+						civic = civic_secret_of_fire
+						civic = civic_the_wheel
+					}
+				}
+				capital_scope = {
+					if = {
+						limit = { num_pops > 1 }
+						while = {
+							limit = { num_pops > 1 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 1 }
+						while = {
+							limit = { num_pops < 1 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_crude_huts
+				}
+			}
+			bronze_age = {
+				change_government = {
+					civics = {
+						civic = civic_secret_of_fire
+						civic = civic_the_wheel
+					}
+				}
+				capital_scope = {
+					if = {
+						limit = { num_pops > 2 }
+						while = {
+							limit = { num_pops > 2 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 2 }
+						while = {
+							limit = { num_pops < 2 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_primitive_dwellings
+					add_building = building_stone_palace
+				}
+			}
+			iron_age = {
+				change_government = {
+					civics = {
+						civic = civic_landed_nobility
+						civic = civic_flat_world_theory
+					}
+				}
+				capital_scope = {
+					if = {
+						limit = { num_pops > 3 }
+						while = {
+							limit = { num_pops > 3 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 3 }
+						while = {
+							limit = { num_pops < 3 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_primitive_farm
+					add_building = building_primitive_dwellings
+					add_building = building_stone_palace
+				}
+			}
+			late_medieval_age = {
+				change_government = {
+					civics = {
+						civic = civic_landed_nobility
+						civic = civic_flat_world_theory
+					}
+				}
+				capital_scope = {
+					if = {
+						limit = { num_pops > 3 }
+						while = {
+							limit = { num_pops > 3 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 3 }
+						while = {
+							limit = { num_pops < 3 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_primitive_farm
+					add_building = building_primitive_dwellings
+					add_building = building_stone_palace
+				}
+			}
+			renaissance_age = {
+				change_government = {
+					civics = {
+						civic = civic_landed_nobility
+						civic = civic_flat_world_theory
+					}
+				}
+				capital_scope = {
+					if = {
+						limit = { num_pops > 4 }
+						while = {
+							limit = { num_pops > 4 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 4 }
+						while = {
+							limit = { num_pops < 4 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_primitive_farm
+					add_building = building_urban_dwellings # primitive_city
+					add_building = building_stone_palace
+				}
+			}
+			steam_age = {
+				change_government = {
+					civics = {
+						civic = civic_landed_nobility
+						civic = civic_flat_world_theory
+					}
+				}
+				capital_scope = {
+					if = {
+						limit = { num_pops > 4 }
+						while = {
+							limit = { num_pops > 4 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 4 }
+						while = {
+							limit = { num_pops < 4 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_primitive_farm
+					add_building = building_urban_dwellings # primitive_city
+					add_building = building_stone_palace
+				}
+			}
+			industrial_age = {
+				change_government = {
+					civics = {
+						civic = civic_increasing_urbanization
+						civic = civic_atmospheric_pollution
+					}
+				}
+				capital_scope = {
+					if = {
+						limit = { num_pops > 5 }
+						while = {
+							limit = { num_pops > 5 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 5 }
+						while = {
+							limit = { num_pops < 5 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_urban_dwellings # primitive_city
+					add_building = building_primitive_capital
+					add_district = district_housing
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_food }
+						}
+						retile_exploit_food = yes
+					} ELSE = {
+						add_deposit = retile_module_farm_active
+					}
+				}
+			}
+			machine_age = {
+				change_government = {
+					civics = {
+						civic = civic_increasing_urbanization
+						civic = civic_atmospheric_pollution
+					}
+				}
+				capital_scope = {
+					if = {
+						limit = { num_pops > 6 }
+						while = {
+							limit = { num_pops > 6 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 6 }
+						while = {
+							limit = { num_pops < 6 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_primitive_capital
+					add_building = building_urban_dwellings # primitive_city
+					add_district = district_housing
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_food }
+						}
+						retile_exploit_food = yes
+					} ELSE = {
+						add_deposit = retile_module_farm_active
+					}
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_minerals }
+						}
+						retile_exploit_minerals = yes
+					} ELSE = {
+						add_deposit = retile_module_mine_active
+					}
+					create_primitive_blockers = yes
+				}
+			}
+			atomic_age = {
+				change_government = {
+					civics = {
+						civic = civic_increasing_urbanization
+						civic = civic_atmospheric_pollution
+					}
+				}
+				capital_scope = {
+					if = {
+						limit = { num_pops > 7 }
+						while = {
+							limit = { num_pops > 7 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 7 }
+						while = {
+							limit = { num_pops < 7 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_primitive_capital
+					add_building = building_urban_dwellings # primitive_city
+					add_district = district_housing
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_food }
+						}
+						retile_exploit_food = yes
+					} ELSE = {
+						add_deposit = retile_module_farm_active
+					}
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_minerals }
+						}
+						retile_exploit_minerals = yes
+					} ELSE = {
+						add_deposit = retile_module_mine_active
+					}
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_energy }
+						}
+						retile_exploit_energy = yes
+					} ELSE = {
+						add_deposit = retile_module_generator_active
+					}
+					create_primitive_blockers = yes
+				}
+			}
+			early_space_age = {
+				change_government = {
+					civics = {
+						civic = civic_increasing_urbanization
+						civic = civic_atmospheric_pollution
+					}
+				}
+				capital_scope = {
+					if = {
+						limit = { num_pops > 8 }
+						while = {
+							limit = { num_pops > 8 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 8 }
+						while = {
+							limit = { num_pops < 8 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_primitive_capital
+					add_building = building_primitive_factory
+					add_district = district_engineers
+					add_district = district_scholars
+					add_district = district_housing
+					add_district = district_housing
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_food }
+						}
+						retile_exploit_food = yes
+					} ELSE = {
+						add_deposit = retile_module_farm_active
+					}
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_minerals }
+						}
+						retile_exploit_minerals = yes
+					} ELSE = {
+						add_deposit = retile_module_mine_active
+					}
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_energy }
+						}
+						retile_exploit_energy = yes
+					} ELSE = {
+						add_deposit = retile_module_generator_active
+					}
+					create_primitive_blockers = yes
+				}
+			}
+		}
+	}
+}
+
+remove_all_primitive_buildings = {
+	if = {
+		limit = { has_building = building_colony_shelter }
+		while = {
+			limit = { has_building = building_colony_shelter }
+			remove_building = building_colony_shelter
+		}
+	}
+	if = {
+		limit = { has_building = building_crude_huts }
+		while = {
+			limit = { has_building = building_crude_huts }
+			remove_building = building_crude_huts
+		}
+	}
+	if = {
+		limit = { has_building = building_primitive_dwellings }
+		while = {
+			limit = { has_building = building_primitive_dwellings }
+			remove_building = building_primitive_dwellings
+		}
+	}
+	if = {
+		limit = { has_building = building_stone_palace }
+		while = {
+			limit = { has_building = building_stone_palace }
+			remove_building = building_stone_palace
+		}
+	}
+	if = {
+		limit = { has_building = building_primitive_factory }
+		while = {
+			limit = { has_building = building_primitive_factory }
+			remove_building = building_primitive_factory
+		}
+	}
+	if = {
+		limit = { has_building = building_primitive_farm }
+		while = {
+			limit = { has_building = building_primitive_farm }
+			remove_building = building_primitive_farm
+		}
+	}
+	if = {
+		limit = { has_building = building_primitive_capital }
+		while = {
+			limit = { has_building = building_primitive_capital }
+			remove_building = building_primitive_capital
+		}
+	}
+	if = {
+		limit = { has_building = building_urban_dwellings }
+		while = {
+			limit = { has_building = building_urban_dwellings }
+			remove_building = building_urban_dwellings
+		}
+	}
+	if = {
+		limit = { has_district = district_housing }
+		while = {
+			limit = { has_district = district_housing }
+			remove_district = district_housing
+		}
+	}
+	if = {
+		limit = { has_district = district_engineers }
+		while = {
+			limit = { has_district = district_engineers }
+			remove_district = district_engineers
+		}
+	}
+	if = {
+		limit = { has_district = district_scholars }
+		while = {
+			limit = { has_district = district_scholars }
+			remove_district = district_scholars
+		}
+	}
+	if = {
+		limit = {
+			has_deposit = d_decrepit_dwellings
+		}
+		while = {
+			limit = { has_deposit = d_decrepit_dwellings }
+			random_deposit = {
+				limit = { is_deposit_type = d_decrepit_dwellings }
+				remove_deposit = yes
+			}
+		}
+	}
+	if = {
+		limit = {
+			has_deposit = d_failing_infrastructure
+		}
+		while = {
+			limit = { has_deposit = d_failing_infrastructure }
+			random_deposit = {
+				limit = { is_deposit_type = d_failing_infrastructure }
+				remove_deposit = yes
+			}
+		}
+	}
 }
