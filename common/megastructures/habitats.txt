@@ -104,7 +104,20 @@ habitat_0 = {
 			factor = 0
 			starbase = { NOT = { has_starbase_size >= starbase_starport } }
 		}
-
+		modifier = {
+			factor = 3
+			solar_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
+		modifier = {
+			factor = 2
+			any_neighbor_system = {
+				exists = owner
+				is_same_value = owner.capital_scope.solar_system
+			}
+		}
 		modifier = {
 			factor = 0.1
 			any_neighbor_system = {

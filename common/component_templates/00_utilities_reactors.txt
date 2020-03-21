@@ -40,7 +40,12 @@
 
 @colossus_power = 10000
 
-@starbase_power = 10000
+@starbase_power_1 = 10000	#1100	# <- Vanilla values
+@starbase_power_2 = 10000	#1450
+@starbase_power_3 = 10000	#1900
+@starbase_power_4 = 10000	#2500
+@starbase_power_5 = 10000	#3200
+@starbase_power_6 = 10000	#4200
 
 @platform_power_1 = 400
 @platform_power_2 = 540
@@ -124,7 +129,7 @@ utility_component_template = {
 	
 	prerequisites = { "tech_fission_power" }
 	component_set = "power_core"
-	size_restriction = { corvette colonizer sponsored_colonizer constructor science transport }
+	size_restriction = { corvette colonizer lithoid_colonizer sponsored_colonizer constructor science transport }
 	upgrades_to = "CORVETTE_FUSION_REACTOR"
 	
 	ai_weight = {
@@ -277,7 +282,7 @@ utility_component_template = {
 	size = large
 	icon = "GFX_ship_part_reactor_1"
 	icon_frame = 1
-	power = @starbase_power
+	power = @starbase_power_1
 
 	prerequisites = { "tech_fission_power" }
 	class_restriction = { shipclass_starbase }
@@ -288,6 +293,7 @@ utility_component_template = {
 		starbase_starhold
 		starbase_starfortress
 		starbase_citadel
+		juggernaut
 	}
 	upgrades_to = "STARBASE_FUSION_REACTOR"
 
@@ -319,7 +325,7 @@ utility_component_template = {
 	
 	prerequisites = { "tech_fusion_power" }
 	component_set = "power_core"
-	size_restriction = { corvette colonizer sponsored_colonizer constructor science transport }
+	size_restriction = { corvette colonizer lithoid_colonizer sponsored_colonizer constructor science transport }
 	upgrades_to = "CORVETTE_COLD_FUSION_REACTOR"
 	
 	ai_weight = {
@@ -472,7 +478,7 @@ utility_component_template = {
 	size = large
 	icon = "GFX_ship_part_reactor_2"
 	icon_frame = 1
-	power = @starbase_power
+	power = @starbase_power_2
 
 	prerequisites = { "tech_fusion_power" }
 	component_set = "power_core"
@@ -483,6 +489,7 @@ utility_component_template = {
 		starbase_starhold
 		starbase_starfortress
 		starbase_citadel
+		juggernaut
 	}
 	upgrades_to = "STARBASE_COLD_FUSION_REACTOR"
 
@@ -514,7 +521,7 @@ utility_component_template = {
 	
 	prerequisites = { "tech_cold_fusion_power" }
 	component_set = "power_core"
-	size_restriction = { corvette colonizer sponsored_colonizer constructor science transport }
+	size_restriction = { corvette colonizer lithoid_colonizer sponsored_colonizer constructor science transport }
 	upgrades_to = "CORVETTE_ANTIMATTER_REACTOR"
 	
 	ai_weight = {
@@ -667,7 +674,7 @@ utility_component_template = {
 	size = large
 	icon = "GFX_ship_part_reactor_3"
 	icon_frame = 1
-	power = @starbase_power
+	power = @starbase_power_3
 
 	prerequisites = { "tech_cold_fusion_power" }
 	component_set = "power_core"
@@ -678,6 +685,7 @@ utility_component_template = {
 		starbase_starhold
 		starbase_starfortress
 		starbase_citadel
+		juggernaut
 	}
 	upgrades_to = "STARBASE_ANTIMATTER_REACTOR"
 
@@ -709,7 +717,7 @@ utility_component_template = {
 	
 	prerequisites = { "tech_antimatter_power" }
 	component_set = "power_core"
-	size_restriction = { corvette colonizer sponsored_colonizer constructor science transport }
+	size_restriction = { corvette colonizer lithoid_colonizer sponsored_colonizer constructor science transport }
 	upgrades_to = "CORVETTE_ZERO_POINT_REACTOR"
 	
 	ai_weight = {
@@ -862,7 +870,7 @@ utility_component_template = {
 	size = large
 	icon = "GFX_ship_part_reactor_4"
 	icon_frame = 1
-	power = @starbase_power
+	power = @starbase_power_4
 
 	prerequisites = { "tech_antimatter_power" }
 	component_set = "power_core"
@@ -873,6 +881,7 @@ utility_component_template = {
 		starbase_starhold
 		starbase_starfortress
 		starbase_citadel
+		juggernaut
 	}
 	upgrades_to = "STARBASE_ZERO_POINT_REACTOR"
 
@@ -904,7 +913,7 @@ utility_component_template = {
 	
 	prerequisites = { "tech_zero_point_power" }
 	component_set = "power_core"
-	size_restriction = { corvette colonizer sponsored_colonizer constructor science transport }
+	size_restriction = { corvette colonizer lithoid_colonizer sponsored_colonizer constructor science transport }
 	upgrades_to = "CORVETTE_DARK_MATTER_REACTOR"
 	
 	ai_weight = {
@@ -1095,7 +1104,7 @@ utility_component_template = {
 	size = large
 	icon = "GFX_ship_part_reactor_5"
 	icon_frame = 1
-	power = @starbase_power
+	power = @starbase_power_5
 
 	prerequisites = { "tech_zero_point_power" }
 	component_set = "power_core"
@@ -1106,6 +1115,7 @@ utility_component_template = {
 		starbase_starhold
 		starbase_starfortress
 		starbase_citadel
+		juggernaut
 	}
 	upgrades_to = "STARBASE_DARK_MATTER_REACTOR"
 
@@ -1138,12 +1148,13 @@ utility_component_template = {
 	
 	prerequisites = { "tech_dark_matter_power_core" }
 	component_set = "power_core"
-	size_restriction = { corvette colonizer sponsored_colonizer constructor science transport }
+	size_restriction = { corvette colonizer lithoid_colonizer sponsored_colonizer constructor science transport }
 	
 	ai_weight = {
 		weight = 6
 		modifier = {
 			factor = 0.0
+			is_country_type = default
 			has_monthly_income = { resource = sr_dark_matter value <= 0 }
 		}
 	}
@@ -1175,6 +1186,7 @@ utility_component_template = {
 		weight = 6
 		modifier = {
 			factor = 0.0
+			is_country_type = default
 			has_monthly_income = { resource = sr_dark_matter value <= 0 }
 		}
 	}
@@ -1206,6 +1218,7 @@ utility_component_template = {
 		weight = 6
 		modifier = {
 			factor = 0.0
+			is_country_type = default
 			has_monthly_income = { resource = sr_dark_matter value <= 0 }
 		}
 	}
@@ -1237,6 +1250,7 @@ utility_component_template = {
 		weight = 6
 		modifier = {
 			factor = 0.0
+			is_country_type = default
 			has_monthly_income = { resource = sr_dark_matter value <= 0 }
 		}
 	}
@@ -1268,6 +1282,7 @@ utility_component_template = {
 		weight = 6
 		modifier = {
 			factor = 0.0
+			is_country_type = default
 			has_monthly_income = { resource = sr_dark_matter value <= 0 }
 		}
 	}
@@ -1323,6 +1338,7 @@ utility_component_template = {
 		weight = 6
 		modifier = {
 			factor = 0.0
+			is_country_type = default
 			has_monthly_income = { resource = sr_dark_matter value <= 0 }
 		}
 	}
@@ -1350,6 +1366,7 @@ utility_component_template = {
 		weight = 6
 		modifier = {
 			factor = 0.0
+			is_country_type = default
 			has_monthly_income = { resource = sr_dark_matter value <= 0 }
 		}
 	}
@@ -1360,7 +1377,7 @@ utility_component_template = {
 	size = large
 	icon = "GFX_ship_part_dark_matter_power_core"
 	icon_frame = 1
-	power = @starbase_power
+	power = @starbase_power_6
 
 	prerequisites = { "tech_dark_matter_power_core" }
 	component_set = "power_core"
@@ -1371,6 +1388,7 @@ utility_component_template = {
 		starbase_starhold
 		starbase_starfortress
 		starbase_citadel
+		juggernaut
 	}
 
 	ai_weight = {

@@ -310,7 +310,12 @@ decision_consecrated_worlds = {
 	potential = {
 		exists = space_owner
 		space_owner = { is_same_value = from }
-		from = { has_ascension_perk = ap_consecrated_worlds }
+		from = { 
+			OR = {
+				has_valid_civic = civic_exalted_priesthood
+				has_valid_civic = civic_imperial_cult
+			}
+		}
 		is_star = no
 		habitable_structure = no
 		is_ringworld = no
@@ -372,6 +377,24 @@ decision_consecrated_worlds = {
 			if = {
 				limit = {
 					OR = {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 						is_planet_class = pc_asteroid
 						is_planet_class = pc_nuked
 						is_planet_class = pc_gas_giant
@@ -654,7 +677,12 @@ decision_unconsecrated_worlds = {
 	}
 	
 	potential = {
-		from = { has_ascension_perk = ap_consecrated_worlds }
+		from = {
+			OR = {
+				has_valid_civic = civic_exalted_priesthood
+				has_valid_civic = civic_imperial_cult
+			}
+		}
 		has_planet_flag = consecrated@from
 	}
 
@@ -713,6 +741,24 @@ decision_unconsecrated_worlds = {
 							which = consecrated_variable
 							value = -1
 						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					OR = {
+						has_planet_flag = holy_world_1
+						has_planet_flag = holy_world_2
+						has_planet_flag = holy_world_3
+						has_planet_flag = holy_world_4
+					}
+					any_country = { has_country_flag = fallen_empire_2 }
+				}
+				random_country = {
+					limit = { has_country_flag = fallen_empire_2 }
+					remove_opinion_modifier = { # Currently removes all instances of this modifier, even if several have been added
+						who = from
+						modifier = opinion_worships_our_holy_world
 					}
 				}
 			}
@@ -1012,7 +1058,7 @@ decision_market_nomination = {
 		category = decisions
 		cost = {
 			energy = 1000
-			influence = 150
+			influence = 100
 		}
 	}
 	
@@ -1067,6 +1113,18 @@ decision_market_nomination = {
 						factor = 0.33
 						from = { has_authority = auth_corporate }
 					}
+					modifier = {
+						factor = 0.33
+						from = { trade_income >= 100 }
+					}
+					modifier = {
+						factor = 2
+						from = { trade_income <= 50 }
+					}
+					modifier = {
+						factor = 1.5
+						from = { has_ethic = ethic_gestalt_consciousness }
+					}
 				}
 				6 = {
 					add_modifier = {
@@ -1088,6 +1146,18 @@ decision_market_nomination = {
 					modifier = {
 						factor = 9
 						from = { has_authority = auth_corporate }
+					}
+					modifier = {
+						factor = 2
+						from = { trade_income >= 120 }
+					}
+					modifier = {
+						factor = 0.5
+						from = { trade_income <= 50 }
+					}
+					modifier = {
+						factor = 0.75
+						from = { has_ethic = ethic_gestalt_consciousness }
 					}
 					add_modifier = {
 						modifier = market_nominee_level_3
@@ -1140,7 +1210,7 @@ decision_boost_market_nomination = {
 		category = decisions
 		cost = {
 			energy = 2000
-			influence = 300
+			influence = 200
 		}
 	}
 	
@@ -1375,5 +1445,61 @@ decision_divine_algorithm  = {
 	}
 	ai_weight = {
 		weight = 0
+	}
+}
+
+decision_project_cornucopia = {
+	owned_planets_only = yes
+
+	enactment_time = 180
+	resources = {
+		category = decisions
+		cost = {
+			influence = 25
+			energy = 500
+		}
+	}
+
+	potential = {
+		habitable_structure = no
+		NOT = { is_planet_class = pc_machine }
+		NOT = { is_planet_class = pc_hive }
+		NOT = { is_planet_class = pc_city }
+		owner = {
+			is_galactic_community_member = yes
+			is_active_resolution = "resolution_industry_project_cornucopia"
+		}
+		NOT = { has_deposit = d_project_cornucopia }
+	}
+
+	effect = {
+		custom_tooltip = decision_project_cornucopia_effects_short
+		add_deposit = d_project_cornucopia
+		hidden_effect = {
+			create_message = {
+				type = MESSAGE_TYPE_PLANET_PROSPECTED
+				localization = MESSAGE_PLANET_PROSPECTED
+				days = 30
+				target = this
+				variable = {
+					type = name
+					localization = PLANET
+					scope = this
+				}
+				variable = {
+					type = name
+					localization = DEPOSIT
+					scope = last_added_deposit
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+		modifier = {
+			factor = 0
+			num_pops < 20
+		}
 	}
 }

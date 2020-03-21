@@ -243,11 +243,54 @@ titan = {
 	required_component_set = "combat_computers"
 	required_component_set = "ship_aura_components"
 	
-	possible_starbase = {
-		has_starbase_size >= starbase_citadel
-		has_starbase_building = titan_yards
+	potential_construction = {
+		OR = {
+			is_scope_type = starbase
+			AND = {
+				is_scope_type = megastructure
+				OR = {
+					is_megastructure_type = mega_shipyard_3
+					is_megastructure_type = mega_shipyard_restored
+				}
+			}
+		}
 	}
-	
+
+	possible_construction = {
+		custom_tooltip = {
+			fail_text = starbase_citadel_trigger
+			OR = {
+				AND = {
+					is_scope_type = megastructure
+					OR = {
+						is_megastructure_type = mega_shipyard_3
+						is_megastructure_type = mega_shipyard_restored
+					}
+				}
+				AND = {
+					is_scope_type = starbase
+					has_starbase_size >= starbase_citadel
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = starbase_titan_yards_trigger
+			OR = {
+				AND = {
+					is_scope_type = megastructure
+					OR = {
+						is_megastructure_type = mega_shipyard_3
+						is_megastructure_type = mega_shipyard_restored
+					}
+				}
+				AND = {
+					is_scope_type = starbase
+					has_starbase_building = titan_yards
+				}
+			}
+		}
+	}
+
 	empire_limit = {
 		base = 1
 		max = 20
@@ -424,6 +467,56 @@ sponsored_colonizer = {
 	}
 }
 
+lithoid_colonizer = {
+	graphical_culture = no
+	entity = "lithoid_01_meteor_colonyship_entity"
+	max_speed = @speed_very_fast
+	acceleration = 0.9
+	rotation_speed = 5
+	max_hitpoints = @colony_hp
+	modifier = {
+		ship_evasion_add = @colony_evasion
+	}
+	size_multiplier = 1
+	fleet_slot_size = 1
+	section_slots = { "mid" = { locator = "part1" } }
+	num_target_locators = 0
+	is_space_station = no
+	icon_frame = 10
+	base_buildtime = 150
+
+	combat_disengage_chance = 0.2
+
+	enable_default_design = yes	#if yes, countries will have an auto-generated design at start
+	prerequisites = { "tech_colonization_1" }
+	is_civilian = yes
+	is_designable = no
+	components_add_to_cost = no
+	class = shipclass_colonizer
+	construction_type = starbase_shipyard
+	required_component_set = "power_core"
+	required_component_set = "ftl_components"
+	required_component_set = "thruster_components"
+	required_component_set = "sensor_components"
+	valid_target_aggressive_stance = no
+	auto_upgrade = yes
+
+	resources = {
+		category = ships
+		cost = {
+			minerals = 500
+		}
+
+		upkeep = {
+			
+		}
+	}
+
+	potential_country = {
+		has_origin = origin_lithoid
+	}
+}
+
 science = {
 	max_speed = @speed_very_fast
 	acceleration = 0.3
@@ -545,6 +638,11 @@ military_station_small = {
 	
 	build_block_radius = @build_block_radius_military
 
+	potential_construction = {
+		is_scope_type = starbase
+		has_starbase_size >= starbase_outpost
+	}
+	
 	resources = {
 		category = ships
 	}

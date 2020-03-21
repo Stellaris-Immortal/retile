@@ -102,76 +102,16 @@ col_capital_plantoid_galactic = {
 	}
 }
 
-# Frontier Urban World
-col_urban_world = {
-	icon = 1
+# Frontier  World
+col_frontier_world = {
+	icon = 11
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes}
-		is_capital = no
-		has_building = building_colony_shelter
-		NOT = { 
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-			has_modifier = penal_colony
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
 		}
-	}
-	
-	planet_modifier = {
-		planet_immigration_pull_mult = 0.10
-		planet_jobs_specialist_produces_mult = 0.10
-	}
-
-	weight_modifier = {
-		base = 0
-		modifier = {
-			add = 2
-			has_designation = col_urban_world
-		}
-		modifier = {
-			add = 1
-			count_pops = {
-				limit = { OR = {
-					has_job = clerk
-					has_job = researcher
-					has_job = foundry
-				} }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 2
-			count_pops = {
-				limit = { OR = {
-					has_job = clerk
-					has_job = researcher
-					has_job = foundry
-				} }
-				count > 2
-			}
-		}
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { OR = {
-					has_job = clerk
-					has_job = researcher
-					has_job = foundry
-				} }
-				count > 4
-			}
-		}
-	}
-}
-
-# Frontier Rural World
-col_rural_world = {
-	icon = 13
-	
-	potential = {
-		exists = owner
-		owner = { is_regular_empire = yes}
 		is_capital = no
 		has_building = building_colony_shelter
 		NOT = { is_planet_class = pc_city }
@@ -183,16 +123,47 @@ col_rural_world = {
 	}
 	
 	planet_modifier = {
-		planet_immigration_pull_mult = 0.10
-		planet_jobs_worker_produces_mult = 0.10
-		# planet_deposits_active_produces_mult = 0.10
+		
 	}
 
 	weight_modifier = {
 		base = 0
 		modifier = {
 			add = 2
-			has_designation = col_rural_world
+			has_designation = col_frontier_world
+		}
+	}
+}
+
+# Galactic Frontier World
+col_frontier_world_colonial = {
+	icon = 11
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			has_tradition = tr_expansion_colonization_fever
+		}
+		is_capital = no
+		NOT = { is_planet_class = pc_city }
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+	
+	planet_modifier = {
+		pop_growth_speed = 0.25
+		planet_jobs_produces_mult = 0.05
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_frontier_world_colonial
 		}
 	}
 }
@@ -203,7 +174,10 @@ col_commerce_world = {
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
 		is_capital = no
 		OR = {
 			has_building = building_capital
@@ -219,7 +193,7 @@ col_commerce_world = {
 	}
 	
 	planet_modifier = {
-		trade_value_mult = 0.10
+		trade_value_mult = 0.20
 	}
 
 	weight_modifier = {
@@ -230,31 +204,106 @@ col_commerce_world = {
 		}
 		modifier = {
 			add = 1
-			count_pops = {
-				limit = { has_job = clerk }
-				count > 0
+			num_districts = { type = district_clerks value >= 1 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_clerks value >= 1 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_clerks value >= 1 }
+		}
+		modifier = {
+			add = 1
+			OR = { 
+				has_building = building_trade_1
+				has_building = building_bourse_1
+			}
+		}
+		modifier = {
+			add = 1
+			OR = { 
+				has_building = building_trade_2
+				has_building = building_bourse_2
+			}
+		}
+		modifier = {
+			add = 1
+			OR = { 
+				has_building = building_trade_2
+				has_building = building_bourse_2
+			}
+		}
+	}
+}
+
+# Trade World
+col_trade_world = {
+	icon = 14
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+		is_capital = no
+		OR = {
+			has_building = building_capital
+			has_building = building_major_capital
+			has_building = building_system_capital
+			has_building = building_galactic_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.20
+		planet_jobs_produces_mult = 0.10
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_trade_world
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_clerks value >= 1 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_clerks value >= 2 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_clerks value >= 3 }
+		}
+		modifier = {
+			add = 1
+			OR = { 
+				has_building = building_trade_1
+				has_building = building_bourse_1
 			}
 		}
 		modifier = {
 			add = 2
-			count_pops = {
-				limit = { has_job = clerk }
-				count > 2
-			}
-		}
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = clerk }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_trade_1
+			OR = { 
 				has_building = building_trade_2
-				has_building = building_trade_3
+				has_building = building_bourse_2
+			}
+		}
+		modifier = {
+			add = 3
+			OR = { 
+				has_building = building_trade_2
+				has_building = building_bourse_2
 			}
 		}
 	}
@@ -268,7 +317,7 @@ col_engineering_world = {
 		exists = owner
 		owner = { 
 			is_regular_empire = yes
-			has_tradition = tr_domination_grand_council
+			NOT = { has_tradition = tr_domination_grand_council }
 		}
 		is_capital = no
 		OR = {
@@ -285,6 +334,80 @@ col_engineering_world = {
 	}
 	
 	planet_modifier = {
+		planet_metallurgists_produces_mult = 0.20
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_engineering_world
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_engineers value >= 1 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_engineers value >= 2 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_engineers value >= 3 }
+		}
+		modifier = {
+			add = 1
+			has_building = building_foundry_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_foundry_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_foundry_3
+		}
+		modifier = {
+			add = 1
+			has_building = building_factory_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_factory_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_factory_3
+		}
+	}
+}
+
+# Manufacturing World
+col_manufacturing_world = {
+	icon = 7
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			has_tradition = tr_domination_grand_council
+		}
+		is_capital = no
+		OR = {
+			has_building = building_capital
+			has_building = building_major_capital
+			has_building = building_system_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+	
+	planet_modifier = {
+		trade_value_mult = 0.10
+		planet_jobs_produces_mult = 0.10
 		planet_metallurgists_produces_mult = 0.10
 	}
 
@@ -295,47 +418,140 @@ col_engineering_world = {
 			has_designation = col_engineering_world
 		}
 		modifier = {
+			add = 1
+			num_districts = { type = district_engineers value >= 1 }
+		}
+		modifier = {
 			add = 2
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 0
-			}
+			num_districts = { type = district_engineers value >= 2 }
 		}
 		modifier = {
-			add = 4
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 2
-			}
+			add = 3
+			num_districts = { type = district_engineers value >= 3 }
 		}
 		modifier = {
-			add = 6
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 4
-			}
+			add = 1
+			has_building = building_foundry_1
 		}
 		modifier = {
-			add = 4
-			OR = {
-				has_building = building_factory_1
-				has_building = building_factory_2
-				has_building = building_factory_3
-			}
+			add = 2
+			has_building = building_foundry_2
 		}
 		modifier = {
-			add = 4
-			OR = {
-				has_building = building_foundry_1
-				has_building = building_foundry_2
-				has_building = building_foundry_3
-			}
+			add = 3
+			has_building = building_foundry_3
+		}
+		modifier = {
+			add = 1
+			has_building = building_factory_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_factory_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_factory_3
 		}
 	}
 }
 
 # Galactic Scholar World
 col_scholar_world = {
+	icon = 8
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
+		is_capital = no
+		OR = {
+			has_building = building_capital
+			has_building = building_major_capital
+			has_building = building_system_capital
+			has_building = building_galactic_capital
+		}
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+	
+	planet_modifier = {
+		planet_researchers_produces_mult = 0.20
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_scholar_world
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_scholars value >= 1 }
+		}
+		modifier = {
+			add = 2
+			num_districts = { type = district_scholars value >= 2 }
+		}
+		modifier = {
+			add = 3
+			num_districts = { type = district_scholars value >= 3 }
+		}
+		modifier = {
+			add = 1
+			OR = {
+				has_building = building_research_lab_1
+				has_building = building_metascience_lab_1
+			}
+		}
+		modifier = {
+			add = 2
+			OR = {
+				has_building = building_research_lab_2
+				has_building = building_metascience_lab_2
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_research_lab_3
+				has_building = building_metascience_lab_3
+			}
+		}
+		modifier = {
+			add = 1
+			OR = {
+				has_building = building_autochthon_monument
+				has_building = building_temple
+				has_building = building_corporate_monument
+			}
+		}
+		modifier = {
+			add = 2
+			OR = {
+				has_building = building_heritage_site
+				has_building = building_holotemple
+				has_building = building_corporate_site
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_hypercomms_forum
+				has_building = building_sacred_nexus
+				has_building = building_corporate_forum
+			}
+		}
+	}
+}
+
+# Academic World
+col_academic_world = {
 	icon = 8
 	
 	potential = {
@@ -349,7 +565,6 @@ col_scholar_world = {
 			has_building = building_capital
 			has_building = building_major_capital
 			has_building = building_system_capital
-			has_building = building_galactic_capital
 		}
 		NOT = { 
 			has_modifier = resort_colony
@@ -359,6 +574,8 @@ col_scholar_world = {
 	}
 	
 	planet_modifier = {
+		trade_value_mult = 0.10
+		planet_jobs_produces_mult = 0.10
 		planet_researchers_produces_mult = 0.10
 	}
 
@@ -366,49 +583,60 @@ col_scholar_world = {
 		base = 0
 		modifier = {
 			add = 2
-			has_designation = col_scholar_world
+			has_designation = col_academic_world
+		}
+		modifier = {
+			add = 1
+			num_districts = { type = district_scholars value >= 1 }
 		}
 		modifier = {
 			add = 2
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 0
-			}
+			num_districts = { type = district_scholars value >= 2 }
 		}
 		modifier = {
-			add = 4
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 2
-			}
+			add = 3
+			num_districts = { type = district_scholars value >= 3 }
 		}
 		modifier = {
-			add = 6
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 4
+			add = 1
 			OR = {
 				has_building = building_research_lab_1
-				has_building = building_research_lab_2
-				has_building = building_research_lab_3
 				has_building = building_metascience_lab_1
+			}
+		}
+		modifier = {
+			add = 2
+			OR = {
+				has_building = building_research_lab_2
 				has_building = building_metascience_lab_2
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
+				has_building = building_research_lab_3
 				has_building = building_metascience_lab_3
 			}
 		}
 		modifier = {
-			add = 4
+			add = 1
 			OR = {
 				has_building = building_autochthon_monument
 				has_building = building_temple
 				has_building = building_corporate_monument
+			}
+		}
+		modifier = {
+			add = 2
+			OR = {
 				has_building = building_heritage_site
 				has_building = building_holotemple
 				has_building = building_corporate_site
+			}
+		}
+		modifier = {
+			add = 3
+			OR = {
 				has_building = building_hypercomms_forum
 				has_building = building_sacred_nexus
 				has_building = building_corporate_forum
@@ -417,9 +645,83 @@ col_scholar_world = {
 	}
 }
 
-# Galactic Rural World
-col_rural_world_galactic = {
-	icon = 3
+# Rural World
+col_rural_world = {
+	icon = 2
+	
+	potential = {
+		exists = owner
+		owner = { 
+			is_regular_empire = yes
+			NOT = { has_tradition = tr_domination_grand_council }
+		}
+		is_capital = no
+		OR = {
+			has_building = building_capital
+			has_building = building_major_capital
+			has_building = building_system_capital
+			has_building = building_galactic_capital
+		}
+		NOT = { is_planet_class = pc_city }
+		NOT = { 
+			has_modifier = resort_colony
+			has_modifier = slave_colony
+			has_modifier = penal_colony
+		}
+	}
+	
+	planet_modifier = {
+		planet_jobs_worker_produces_mult = 0.20
+	}
+
+	weight_modifier = {
+		base = 0
+		modifier = {
+			add = 2
+			has_designation = col_rural_world
+		}
+		modifier = {
+			add = 1
+			has_building = building_food_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_food_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_food_3
+		}
+		modifier = {
+			add = 1
+			has_building = building_mineral_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_mineral_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_mineral_3
+		}
+		modifier = {
+			add = 1
+			has_building = building_energy_1
+		}
+		modifier = {
+			add = 2
+			has_building = building_energy_2
+		}
+		modifier = {
+			add = 3
+			has_building = building_energy_3
+		}
+	}
+}
+
+# Industrial World
+col_industrial_world = {
+	icon = 2
 	
 	potential = {
 		exists = owner
@@ -443,650 +745,104 @@ col_rural_world_galactic = {
 	}
 	
 	planet_modifier = {
+		trade_value_mult = 0.10
+		planet_jobs_produces_mult = 0.10
 		planet_jobs_worker_produces_mult = 0.10
-		# planet_deposits_active_produces_mult = 0.10
 	}
 
 	weight_modifier = {
 		base = 0
 		modifier = {
 			add = 2
-			has_designation = col_rural_world_galactic
-		}
-		modifier = {
-			add = 2
-			count_pops = {
-				limit = { OR = {
-					has_job = technician
-					has_job = miner
-					has_job = farmer
-				} }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 4
-			count_pops = {
-				limit = { OR = {
-					has_job = technician
-					has_job = miner
-					has_job = farmer
-				} }
-				count > 2
-			}
-		}
-		modifier = {
-			add = 6
-			count_pops = {
-				limit = { OR = {
-					has_job = technician
-					has_job = miner
-					has_job = farmer
-				} }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 4
-			OR = {
-				has_building = building_food_1
-				has_building = building_food_2
-				has_building = building_food_3
-			}
-		}
-		modifier = {
-			add = 4
-			OR = {
-				has_building = building_mineral_1
-				has_building = building_mineral_2
-				has_building = building_mineral_3
-			}
-		}
-		modifier = {
-			add = 4
-			OR = {
-				has_building = building_energy_1
-				has_building = building_energy_2
-				has_building = building_energy_3
-			}
-		}
-	}
-}
-
-# Manufacturing World
-col_manufacturing_world = {
-	icon = 6
-	
-	potential = {
-		exists = owner
-		owner = { 
-			is_regular_empire = yes
-			NOT = { has_tradition = tr_domination_grand_council }
-		}
-		is_capital = no
-		OR = {
-			has_building = building_capital
-			has_building = building_major_capital
-			has_building = building_system_capital
-		}
-		NOT = { 
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-			has_modifier = penal_colony
-		}
-	}
-	
-	planet_modifier = {
-		planet_jobs_consumer_goods_produces_mult = 0.10
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 2
-			has_designation = col_manufacturing_world
+			has_designation = col_industrial_world
 		}
 		modifier = {
 			add = 1
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 0
-			}
+			has_building = building_food_1
 		}
 		modifier = {
 			add = 2
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 2
-			}
+			has_building = building_food_2
 		}
 		modifier = {
 			add = 3
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_factory_1
-				has_building = building_factory_2
-				has_building = building_factory_3
-			}
-		}
-	}
-}
-
-# Refining World
-col_refining_world = {
-	icon = 5
-	
-	potential = {
-		exists = owner
-		owner = { 
-			is_regular_empire = yes
-			NOT = { has_tradition = tr_domination_grand_council }
-		}
-		is_capital = no
-		OR = {
-			has_building = building_capital
-			has_building = building_major_capital
-			has_building = building_system_capital
-		}
-		NOT = { 
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-			has_modifier = penal_colony
-		}
-	}
-	
-	planet_modifier = {
-		planet_jobs_alloys_produces_mult = 0.10
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 2
-			has_designation = col_refining_world
+			has_building = building_food_3
 		}
 		modifier = {
 			add = 1
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 0
-			}
+			has_building = building_mineral_1
 		}
 		modifier = {
 			add = 2
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 2
-			}
+			has_building = building_mineral_2
 		}
 		modifier = {
 			add = 3
-			count_pops = {
-				limit = { has_job = foundry }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_foundry_1
-				has_building = building_foundry_2
-				has_building = building_foundry_3
-			}
-		}
-	}
-}
-
-# Research World
-col_research_world = {
-	icon = 16
-	
-	potential = {
-		exists = owner
-		owner = { 
-			is_regular_empire = yes
-			NOT = { has_tradition = tr_domination_grand_council }
-		}
-		is_capital = no
-		OR = {
-			has_building = building_capital
-			has_building = building_major_capital
-			has_building = building_system_capital
-		}
-		NOT = { 
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-			has_modifier = penal_colony
-		}
-	}
-	
-	planet_modifier = {
-		planet_jobs_physics_research_produces_mult = 0.10
-		planet_jobs_society_research_produces_mult = 0.10
-		planet_jobs_engineering_research_produces_mult = 0.10
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 2
-			has_designation = col_research_world
+			has_building = building_mineral_3
 		}
 		modifier = {
 			add = 1
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 0
-			}
+			has_building = building_energy_1
 		}
 		modifier = {
 			add = 2
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 2
-			}
+			has_building = building_energy_2
 		}
 		modifier = {
 			add = 3
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_research_lab_1
-				has_building = building_research_lab_2
-				has_building = building_research_lab_3
-				has_building = building_metascience_lab_1
-				has_building = building_metascience_lab_2
-				has_building = building_metascience_lab_3
-			}
+			has_building = building_energy_3
 		}
 	}
 }
 
-# Cultural World
-col_cultural_world = {
-	icon = 17
-	
-	potential = {
-		exists = owner
-		owner = { 
-			is_regular_empire = yes
-			NOT = { has_tradition = tr_domination_grand_council }
-		}
-		is_capital = no
-		OR = {
-			has_building = building_capital
-			has_building = building_major_capital
-			has_building = building_system_capital
-		}
-		NOT = { 
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-			has_modifier = penal_colony
-		}
-	}
-	
-	planet_modifier = {
-		planet_jobs_unity_produces_mult = 0.10
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 2
-			has_designation = col_cultural_world
-		}
-		modifier = {
-			add = 1
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 2
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 2
-			}
-		}
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = researcher }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_autochthon_monument
-				has_building = building_temple
-				has_building = building_corporate_monument
-				has_building = building_heritage_site
-				has_building = building_holotemple
-				has_building = building_corporate_site
-				has_building = building_hypercomms_forum
-				has_building = building_sacred_nexus
-				has_building = building_corporate_forum
-			}
-		}
-	}
-}
-
-# Generator World
-col_generator_world = {
-	icon = 4
-	
-	potential = {
-		exists = owner
-		owner = { 
-			is_regular_empire = yes
-			NOT = { has_tradition = tr_domination_grand_council }
-		}
-		is_capital = no
-		OR = {
-			has_building = building_capital
-			has_building = building_major_capital
-			has_building = building_system_capital
-		}
-		NOT = {	is_planet_class = pc_city }
-		NOT = { 
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-			has_modifier = penal_colony
-		}
-	}
-	
-	planet_modifier = {
-		planet_jobs_energy_produces_mult = 0.10
-		# planet_deposits_active_energy_produces_mult = 0.10
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 1
-			count_pops = {
-				limit = { has_job = technician }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 2
-			count_pops = {
-				limit = { has_job = technician }
-				count > 2
-			}
-		}
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = technician }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_energy_1
-				has_building = building_energy_2
-				has_building = building_energy_3
-			}
-		}
-	}
-}
-
-# Mining World
-col_mining_world = {
-	icon = 2
-	
-	potential = {
-		exists = owner
-		owner = { 
-			is_regular_empire = yes
-			NOT = { has_tradition = tr_domination_grand_council }
-		}
-		is_capital = no
-		OR = {
-			has_building = building_capital
-			has_building = building_major_capital
-			has_building = building_system_capital
-		}
-		NOT = { is_planet_class = pc_city }
-		NOT = { 
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-			has_modifier = penal_colony
-		}
-	}
-	
-	planet_modifier = {
-		planet_jobs_minerals_produces_mult = 0.10
-		# planet_deposits_active_mining_produces_mult = 0.10
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 1
-			count_pops = {
-				limit = { has_job = miner }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 2
-			count_pops = {
-				limit = { has_job = miner }
-				count > 2
-			}
-		}
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = miner }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_mineral_1
-				has_building = building_mineral_2
-				has_building = building_mineral_3
-			}
-		}
-	}
-}
-
-# Farming World
-col_farming_world = {
-	icon = 3
-	
-	potential = {
-		exists = owner
-		owner = { 
-			is_regular_empire = yes
-			NOT = { has_tradition = tr_domination_grand_council }
-		}
-		is_capital = no
-		OR = {
-			has_building = building_capital
-			has_building = building_major_capital
-			has_building = building_system_capital
-		}
-		NOR = {
-			is_planet_class = pc_city
-			is_planet_class = pc_relic
-		}
-		NOT = { 
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-			has_modifier = penal_colony
-		}
-	}
-	
-	planet_modifier = {
-		planet_farmers_produces_mult = 0.10
-		# planet_deposits_active_food_produces_mult = 0.10
-	}
-
-	weight_modifier = {
-		modifier = {
-			add = 1
-			count_pops = {
-				limit = { has_job = farmer }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 2
-			count_pops = {
-				limit = { has_job = farmer }
-				count > 2
-			}
-		}
-		modifier = {
-			add = 3
-			count_pops = {
-				limit = { has_job = farmer }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 3
-			OR = {
-				has_building = building_food_1
-				has_building = building_food_2
-				has_building = building_food_3
-			}
-		}
-	}
-}
-
-# Fortress World
-col_fortress_world = {
+# Shielded World
+col_shielded_world = {
 	icon = 9
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
-		is_capital = no
-		OR = {
-			has_building = building_capital
-			has_building = building_major_capital
-			has_building = building_system_capital
-			has_building = building_galactic_capital
-		}
-		NOT = { 
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-			has_modifier = penal_colony
+		owner = { 
+			NOT = { has_tradition = tr_domination_grand_council }
+			has_technology = tech_planetary_shield_generator
 		}
 	}
 	
 	planet_modifier = {
-		army_defense_health_mult = 0.10
+		planet_orbital_bombardment_damage = -0.5
 	}
 
 	weight_modifier = {
 		base = 0
 		modifier = {
-			add = 2
-			count_pops = {
-				limit = { has_job = soldier }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 2
-			count_pops = {
-				limit = { has_job = soldier }
-				count > 2
-			}
-		}
-		modifier = {
-			add = 2
-			count_pops = {
-				limit = { has_job = soldier }
-				count > 4
-			}
+			add = 10000
+			has_orbital_bombardment = yes
 		}
 	}
 }
 
-# Recycling World
-col_recycling_world = {
-	icon = 18
+# Shielded World
+col_shielded_world_galactic = {
+	icon = 9
 	
 	potential = {
 		exists = owner
-		owner = { is_regular_empire = yes }
-		is_capital = no
-		OR = {
-			has_building = building_capital
-			has_building = building_major_capital
-			has_building = building_system_capital
-			has_building = building_galactic_capital
-		}
-		NOT = { 
-			has_modifier = resort_colony
-			has_modifier = slave_colony
-			has_modifier = penal_colony
+		owner = {
+			has_tradition = tr_domination_grand_council
+			has_technology = tech_planetary_shield_generator
 		}
 	}
 	
 	planet_modifier = {
-		planet_custodians_produces_mult = 0.10
+		trade_value_mult = 0.10
+		planet_jobs_produces_mult = 0.10
+		planet_orbital_bombardment_damage = -0.5
 	}
 
-	weight_modifier = {	# lower than other job modifiers, since custodians will be a lot of places.
+	weight_modifier = {
 		base = 0
 		modifier = {
-			add = 1
-			count_pops = {
-				limit = { has_job = custodian }
-				count > 0
-			}
-		}
-		modifier = {
-			add = 1
-			count_pops = {
-				limit = { has_job = custodian }
-				count > 4
-			}
-		}
-		modifier = {
-			add = 1
-			count_pops = {
-				limit = { has_job = custodian }
-				count > 6
-			}
-		}
-		modifier = {
-			add = 1
-			OR = {
-				has_building = building_maintenance_depot
-				has_building = building_maintenance_depot_2
-				has_building = building_maintenance_depot_3
-			}
-		}
-		modifier = {
-			add = 3
-			has_building = building_hydroponics_farm
-		}
-		modifier = {
-			add = 3
-			has_building = building_recycling_center
-		}
-		modifier = {
-			add = 3
-			has_building = building_solar_panels
+			add = 10000
+			has_orbital_bombardment = yes
 		}
 	}
 }
@@ -1104,10 +860,11 @@ col_resort_world = {
 	
 	planet_modifier = {
 		pop_happiness = 0.05
+		trade_value_mult = 0.20
 	}
 
 	weight_modifier = {
-		base = 1
+		base = 1000
 	}
 }
 
@@ -1124,10 +881,11 @@ col_penal_world = {
 	
 	planet_modifier = {
 		planet_crime_add = -25
+		planet_jobs_produces_mult = 0.10
 	}
 
 	weight_modifier = {
-		base = 1
+		base = 1000
 	}
 }
 
@@ -1143,10 +901,11 @@ col_slave_world = {
 	}
 	
 	planet_modifier = {
+		planet_jobs_produces_mult = 0.10
 		pop_government_ethic_attraction = 0.25
 	}
 
 	weight_modifier = {
-		base = 1
+		base = 1000
 	}
 }

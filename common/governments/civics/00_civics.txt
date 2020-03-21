@@ -11,6 +11,7 @@
 #	can_build_ruler_ship = yes / no				# default: no
 #	traits = { trait = ... }					# default: empty; trait set to enforce on the primary species. They cannot be removed, but more can be added if points/picks permit
 #	has_secondary_species = {					# default: none; if present, will enable secondary species customization in empire designer and will create secondary species & pops at galaxy generation time (see empire_init_create_capital_secondary_pops)
+#	is_origin = yes / no 						# default: no, set to yes if civic should be treated as an Origin
 #		traits = { trait = ... }					# default: empty; trait set to enforce on the secondary species. They cannot be removed, but more can be added if points/picks permit
 #	}
 #}
@@ -43,9 +44,6 @@ civic_feudal_realm = {
 	}
 	possible = {
 		authority = { value = auth_imperial }
-		civics = {
-			NOT = { value = civic_mechanists }
-		}
 	}
 	modifier = { 
 		subject_tribute_mult = 0.10
@@ -317,6 +315,7 @@ civic_slaver_guilds = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
+		empire_size_pops_mult = -0.1
 		slave_market_cost_mult = -0.25
 		planet_jobs_slave_produces_mult = 0.20
 	}
@@ -352,11 +351,18 @@ civic_inwards_perfection = {
                 value = civic_fanatic_purifiers
             }
         }
+		origin = {
+			NOR = {
+				value = origin_common_ground
+				value = origin_hegemon
+			}
+		}
 	}
 	random_weight = { base = 5 }
 	modifier = {
 		country_unity_produces_mult = 1
 		pop_government_ethic_attraction = 1
+		envoys_add = -1
 	}
 }
 
@@ -536,7 +542,10 @@ civic_efficient_bureaucracy = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	random_weight = { base = 5 }
-	modifier = { country_admin_cap_add = 15 }
+	modifier = { 
+		country_admin_cap_add = 10
+		empire_size_colonies_mult = -0.10
+	}
 	description = "civic_efficient_bureaucracy_effects"
 }
 
@@ -598,71 +607,69 @@ civic_aristocratic_elite = {
 	random_weight = { base = 5 }
 }
 
-civic_mechanists = {
-	modification = no
-	playable = { host_has_dlc = "Utopia" }
-	potential = {
-		authority = { NOT = { value = auth_machine_intelligence } }
-	}
-	possible = {
-		civics = {
-			NOT = { value = civic_syncretic_evolution }
-		}
-	}
-	random_weight = {
-		base = 5
-		modifier = {
-			factor = 0
-			NOT = { host_has_dlc = "Utopia" }
-		}
-		modifier = {
-			# civic has no effect after galaxy generation, disable for random generation
-			factor = 0
-			has_global_flag = game_started
-		}
-	}
-	modifier = { planet_pops_robotics_upkeep_mult = -0.05 }
+#civic_mechanists = {
+#	modification = no
+#	playable = { host_has_dlc = "Utopia" }
+#	potential = {
+#		authority = { NOT = { value = auth_machine_intelligence } }
+#	possible = {
+#		civics = {
+#			NOT = { value = civic_syncretic_evolution }
+#		}
+#	}
+#	random_weight = {
+#		base = 5
+#		modifier = {
+#			factor = 0
+#			NOT = { host_has_dlc = "Utopia" }
+#		}
+#		modifier = {
+#			# civic has no effect after galaxy generation, disable for random generation
+#			factor = 0
+#			has_global_flag = game_started
+#		}
+#	}
+#	modifier = { planet_pops_robotics_upkeep_mult = -0.05 }
+#	description = "civic_tooltip_mechanists_effects"
+#	#used when starting a new game to give robots (see game_start.11) and techs (see game_start.8)
+#}
 
-	description = "civic_tooltip_mechanists_effects"
-	#used when starting a new game to give robots (see game_start.11) and techs (see game_start.8)
-}
-
-civic_syncretic_evolution = {
-	modification = no
-	playable = { host_has_dlc = "Utopia" }
-	potential = {
-		authority = { NOT = { value = auth_machine_intelligence } }
-	}
-	possible = {
-		civics = {
-			NOR = {
-				value = civic_mechanists
-				value = civic_fanatic_purifiers
-				value = civic_shared_burden
-			}
-		}
-	}
-	random_weight = {
-		base = 1 # Should be fairly rare
-		modifier = {
-			factor = 0
-			NOT = { host_has_dlc = "Utopia" }
-		}
-		modifier = {
-			# civic has no effect after galaxy generation, disable for random generation
-			factor = 0
-			has_global_flag = game_started
-		}
-	}
-
-	description = civic_tooltip_syncretic_evolution_effects
-	has_secondary_species = {	# see game_start.11
-		title = civic_syncretic_evolution_secondary_species
-		traits = {
-			trait = trait_syncretic_proles
-		}
-	}
-}
+#civic_syncretic_evolution = {
+#	modification = no
+#	playable = { host_has_dlc = "Utopia" }
+#	potential = {
+#		authority = { NOT = { value = auth_machine_intelligence } }
+#	}
+#	possible = {
+#		civics = {
+#			NOR = {
+#				value = civic_mechanists
+#				value = civic_fanatic_purifiers
+#				value = civic_shared_burden
+#			}
+#		}
+#	}
+#	random_weight = {
+#		base = 1 # Should be fairly rare
+#		modifier = {
+#			factor = 0
+#			NOT = { host_has_dlc = "Utopia" }
+#		}
+#		modifier = {
+#			# civic has no effect after galaxy generation, disable for random generation
+#			factor = 0
+#			has_global_flag = game_started
+#		}
+#	}
+#
+#	description = civic_tooltip_syncretic_evolution_effects
+#	has_secondary_species = {	# see game_start.11
+#		title = civic_syncretic_evolution_secondary_species
+#		traits = {
+#			trait = trait_syncretic_proles
+#		}
+#	}
+#}
 
 civic_fanatic_purifiers = {
 	modification = no
@@ -686,8 +693,14 @@ civic_fanatic_purifiers = {
 		}
 		civics = {
 			NOR = {
-				value = civic_syncretic_evolution
 				value = civic_barbaric_despoilers
+			}
+		}
+		origin = {
+			NOR = {
+				value = origin_syncretic_evolution
+				value = origin_common_ground
+				value = origin_hegemon
 			}
 		}
 	}
@@ -708,62 +721,62 @@ civic_fanatic_purifiers = {
 	}
 }
 
-civic_post_apocalyptic = {
-	playable = { host_has_dlc = "Apocalypse" }
-	starting_colony = pc_nuked # Changes homeworld class regardless of what is picked for empire
-	possible = {
-		civics = {
-			NOR = {
-				value = civic_agrarian_idyll
-				value = civic_life_seeded
-			}
-		}
-	}
-	modification = no
-	random_weight = {
-		base = 1 # Should be fairly rare
-		modifier = {
-			factor = 0
-			NOT = { host_has_dlc = "Apocalypse" }
-		}
-		modifier = {
-			# civic has no effect after galaxy generation, disable for random generation
-			factor = 0
-			has_global_flag = game_started
-		}
-	}
-	description = "civic_tooltip_post_apocalyptic_effects"
+#civic_post_apocalyptic = {
+#	playable = { host_has_dlc = "Apocalypse" }
+#	starting_colony = pc_nuked # Changes homeworld class regardless of what is picked for empire
+#	possible = {
+#		civics = {
+#			NOR = {
+#				value = civic_agrarian_idyll
+#				value = civic_life_seeded
+#			}
+#		}
+#	}
+#	modification = no
+#	random_weight = {
+#		base = 1 # Should be fairly rare
+#		modifier = {
+#			factor = 0
+#			NOT = { host_has_dlc = "Apocalypse" }
+#		}
+#		modifier = {
+#			# civic has no effect after galaxy generation, disable for random generation
+#			factor = 0
+#			has_global_flag = game_started
+#		}
+#	}
+#	description = "civic_tooltip_post_apocalyptic_effects"
+#
+#	traits = {
+#		trait = trait_survivor
+#	}
+#}
 
-	traits = {
-		trait = trait_survivor
-	}
-}
-
-civic_life_seeded = {
-	playable = { host_has_dlc = "Apocalypse" }
-	starting_colony = pc_gaia
-	habitability_preference = pc_gaia
-	#preferred_planet_class_neighbor = no}
-	possible = {
-		civics = {
-			NOT = { value = civic_post_apocalyptic }
-		}
-	}
-	modification = no
-	random_weight = {
-		base = 1 # Should be fairly rare
-		modifier = {
-			factor = 0
-			NOT = { host_has_dlc = "Apocalypse" }
-		}
-		modifier = {
-			# civic has no effect after galaxy generation, disable for random generation
-			factor = 0
-			has_global_flag = game_started
-		}
-	}	
-	description = "civic_tooltip_life_seeded_effects"
-}
+#civic_life_seeded = {
+#	playable = { host_has_dlc = "Apocalypse" }
+#	starting_colony = pc_gaia
+#	habitability_preference = pc_gaia
+#	#preferred_planet_class_neighbor = no}
+#	possible = {
+#		civics = {
+#			NOT = { value = civic_post_apocalyptic }
+#		}
+#	}
+#	modification = no
+#	random_weight = {
+#		base = 1 # Should be fairly rare
+#		modifier = {
+#			factor = 0
+#			NOT = { host_has_dlc = "Apocalypse" }
+#		}
+#		modifier = {
+#			# civic has no effect after galaxy generation, disable for random generation
+#			factor = 0
+#			has_global_flag = game_started
+#		}
+#	}	
+#	description = "civic_tooltip_life_seeded_effects"
+#}
 
 civic_barbaric_despoilers = {
 	playable = { host_has_dlc = "Apocalypse" }
@@ -784,6 +797,11 @@ civic_barbaric_despoilers = {
 		civics = {
 			NOR = {
 				value = civic_fanatic_purifiers
+			}
+		}	
+		origin = {
+			NOT = {
+				value = origin_common_ground
 			}
 		}		
 	}
@@ -887,4 +905,25 @@ civic_shared_burden = {
 		starbase_trade_protection_add = 20
 	}		
 	random_weight = { base = 5 }
+}
+
+civic_diplomatic_corps = {
+	playable = { host_has_dlc = "Federations" }
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		civics = {
+			NOR = {
+				value = civic_fanatic_purifiers
+				value = civic_inwards_perfection
+			}
+		}
+	}
+
+	modifier = {
+		envoys_add = 2
+		diplo_weight_mult = 0.1
+	}
 }

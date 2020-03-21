@@ -30,9 +30,7 @@ country_event = {
 			flag = recently_advanced
 			days = 2160 #60yrs
 		}
-		remove_country_flag = industrial_age
-		set_country_flag = machine_age
-		set_primitive_age = machine_age
+		set_primitive_age_effect = { primitive_age = machine_age }
 		change_country_flag = {
 			icon = {
 				category = "special"
@@ -50,7 +48,6 @@ country_event = {
 			}
 		}
 		home_planet = {
-			machine_age_planet_upgrade = yes
 			observation_outpost_owner = {
 				country_event = { id = primitive.11 }
 			}
@@ -98,9 +95,7 @@ country_event = {
 			flag = recently_advanced
 			days = 2160 #60yrs
 		}
-		remove_country_flag = machine_age
-		set_country_flag = atomic_age
-		set_primitive_age = atomic_age
+		set_primitive_age_effect = { primitive_age = atomic_age }
 		change_country_flag = {
 			icon = {
 				category = "special"
@@ -119,7 +114,6 @@ country_event = {
 		}
 			
 		home_planet = {
-			atomic_age_planet_upgrade = yes
 			observation_outpost_owner = {
 				country_event = { id = primitive.13 }
 			}
@@ -167,9 +161,7 @@ country_event = {
 			flag = recently_advanced
 			days = 2160 #60yrs
 		}
-		remove_country_flag = atomic_age
-		set_country_flag = early_space_age
-		set_primitive_age = early_space_age
+		set_primitive_age_effect = { primitive_age = early_space_age }
 		change_country_flag = {
 			icon = {
 				category = "special"
@@ -198,7 +190,6 @@ country_event = {
 					set_location = PREV
 				}
 			}
-			space_age_planet_upgrade = yes
 			observation_outpost_owner = {
 				country_event = { id = primitive.15 }
 			}
@@ -375,19 +366,17 @@ country_event = {
 				}
 			}
 		}
-		
-		add_resource = {
-			energy = 500
-			minerals = 500
-			food = 500
-			consumer_goods = 500
-			alloys = 500
-			influence = 300
+		add_resource = {	# They're already late to the game, let's be generous
+			energy = 1000
+			minerals = 1000
+			food = 1000
+			consumer_goods = 1000
+			alloys = 1000
+			influence = 500
 		}
-
 		capital_scope = {
 			space_empire_planet_upgrade = yes
-			
+
 			remove_all_armies = yes
 			solar_system = {
 				if = {
@@ -395,11 +384,10 @@ country_event = {
 						NOT = { exists = starbase }
 					}
 					create_starbase = {
-						size = starbase_starport
+						size = starbase_outpost
 						owner = root
-						
 						module = "shipyard"
-						building = "fleet_hangar"
+						building = "default_network"
 					}
 				}
 				else_if = {
@@ -599,15 +587,7 @@ country_event = {
 			flag = recently_advanced
 			days = 2160 #60yrs
 		}
-		remove_country_flag = bronze_age
-		change_government = {
-			civics = {
-				civic = civic_landed_nobility
-				civic = civic_flat_world_theory
-			}
-		}
-		set_country_flag = iron_age
-		set_primitive_age = iron_age
+		set_primitive_age_effect = { primitive_age = iron_age }
 		change_country_flag = {
 			icon = {
 				category = "special"
@@ -625,7 +605,6 @@ country_event = {
 			}
 		}
 		home_planet = {
-			iron_age_planet_upgrade = yes
 			observation_outpost_owner = {
 				country_event = { id = primitive.21 }
 			}
@@ -668,9 +647,7 @@ country_event = {
 			flag = recently_advanced
 			days = 2160 #60yrs
 		}
-		remove_country_flag = iron_age
-		set_country_flag = late_medieval_age
-		set_primitive_age = late_medieval_age
+		set_primitive_age_effect = { primitive_age = late_medieval_age }
 		change_country_flag = {
 			icon = {
 				category = "special"
@@ -688,7 +665,6 @@ country_event = {
 			}
 		}
 		home_planet = {
-			medieval_age_planet_upgrade = yes
 			observation_outpost_owner = {
 				country_event = { id = primitive.23 }
 			}
@@ -731,9 +707,7 @@ country_event = {
 			flag = recently_advanced
 			days = 2160 #60yrs
 		}
-		remove_country_flag = late_medieval_age
-		set_country_flag = renaissance_age
-		set_primitive_age = renaissance_age
+		set_primitive_age_effect = { primitive_age = renaissance_age }
 		change_country_flag = {
 			icon = {
 				category = "special"
@@ -751,7 +725,6 @@ country_event = {
 			}
 		}
 		home_planet = {
-			renaissance_age_planet_upgrade = yes
 			observation_outpost_owner = {
 				country_event = { id = primitive.25 }
 			}
@@ -794,9 +767,7 @@ country_event = {
 			flag = recently_advanced
 			days = 2160 #60yrs
 		}
-		remove_country_flag = renaissance_age
-		set_country_flag = steam_age
-		set_primitive_age = steam_age
+		set_primitive_age_effect = { primitive_age = steam_age }
 		change_country_flag = {
 			icon = {
 				category = "special"
@@ -814,7 +785,6 @@ country_event = {
 			}
 		}
 		home_planet = {
-			steam_age_planet_upgrade = yes
 			observation_outpost_owner = {
 				country_event = { id = primitive.27 }
 			}
@@ -857,15 +827,7 @@ country_event = {
 			flag = recently_advanced
 			days = 2160 #60yrs
 		}
-		remove_country_flag = steam_age
-		change_government = {
-			civics = {
-				civic = civic_increasing_urbanization
-				civic = civic_atmospheric_pollution
-			}
-		}
-		set_country_flag = industrial_age
-		set_primitive_age = industrial_age
+		set_primitive_age_effect = { primitive_age = industrial_age }
 		set_graphical_culture = industrial_01
 		change_country_flag = {
 			icon = {
@@ -884,7 +846,9 @@ country_event = {
 			}
 		}
 		home_planet = {
-			industrial_age_planet_upgrade = yes
+			clear_blockers = yes
+			add_deposit = d_decrepit_dwellings
+			add_deposit = d_failing_infrastructure
 			observation_outpost_owner = {
 				country_event = { id = primitive.29 }
 			}
@@ -951,9 +915,7 @@ country_event = {
 			flag = recently_advanced
 			days = 2160 #60yrs
 		}
-		remove_country_flag = stone_age
-		set_country_flag = bronze_age
-		set_primitive_age = bronze_age
+		set_primitive_age_effect = { primitive_age = bronze_age }
 		change_country_flag = {
 			icon = {
 				category = "special"
@@ -971,7 +933,6 @@ country_event = {
 			}
 		}
 		home_planet = {
-			bronze_age_planet_upgrade = yes
 			observation_outpost_owner = {
 				country_event = { id = primitive.31 }
 			}

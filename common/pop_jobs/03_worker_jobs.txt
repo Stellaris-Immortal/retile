@@ -77,19 +77,19 @@ custodian = {
 	resources = {
 		category = planet_custodians
 		produces = {
-			society_research = 2.5
+			consumer_goods = 0.5
 		}
 		produces = {
 			trigger = { planet = { has_building = building_maintenance_depot } }
-			society_research = 2.5
+			consumer_goods = 0.5
 		}
 		produces = {
 			trigger = { planet = { has_building = building_maintenance_depot_2 } }
-			society_research = 5
+			consumer_goods = 1
 		}
 		produces = {
 			trigger = { planet = { has_building = building_maintenance_depot_3 } }
-			society_research = 7.5
+			consumer_goods = 1.5
 		}
 		produces = {
 			trigger = { planet = { has_building = building_solar_panels } }
@@ -140,10 +140,6 @@ custodian = {
 				has_building = building_maintenance_depot_3
 			} } }
 			minerals = 15
-		}
-		produces = {
-			trigger = { planet = { has_building = building_recycling_center_2 } }
-			consumer_goods = 1
 		}
 		produces = {
 			trigger = { 
@@ -221,106 +217,69 @@ custodian = {
 		}
 		#################################### Upkeep
 		upkeep = {
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
+			energy = @job_energy_high
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_maintenance_depot } }
-			energy = @job_energy_low
-			consumer_goods = @job_supplies_low
+			energy = @job_energy_normal
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_maintenance_depot_2 } }
-			energy = @job_energy_low2
-			consumer_goods = @job_supplies_low2
+			energy = @job_energy_normal2
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_maintenance_depot_3 } }
-			energy = @job_energy_low3
-			consumer_goods = @job_supplies_low3
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_solar_panels } }
-			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { planet = { AND = {
-				has_building = building_solar_panels
-				has_building = building_maintenance_depot
-			} } }
-			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { planet = { AND = {
-				has_building = building_solar_panels
-				has_building = building_maintenance_depot_2
-			} } }
-			consumer_goods = @job_supplies_normal2
-		}
-		upkeep = {
-			trigger = { planet = { AND = {
-				has_building = building_solar_panels
-				has_building = building_maintenance_depot_3
-			} } }
-			consumer_goods = @job_supplies_normal3
+			energy = @job_energy_normal3
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_recycling_center } }
-			energy = @job_energy_low
-			consumer_goods = @job_supplies_low
+			energy = @job_energy_normal
 		}
 		upkeep = {
 			trigger = { planet = { AND = {
 				has_building = building_recycling_center
 				has_building = building_maintenance_depot
 			} } }
-			energy = @job_energy_low
-			consumer_goods = @job_supplies_low
+			energy = @job_energy_normal
 		}
 		upkeep = {
 			trigger = { planet = { AND = {
 				has_building = building_recycling_center
 				has_building = building_maintenance_depot_2
 			} } }
-			energy = @job_energy_low2
-			consumer_goods = @job_supplies_low2
+			energy = @job_energy_normal2
 		}
 		upkeep = {
 			trigger = { planet = { AND = {
 				has_building = building_recycling_center
 				has_building = building_maintenance_depot_3
 			} } }
-			energy = @job_energy_low3
-			consumer_goods = @job_supplies_low3
+			energy = @job_energy_normal3
 		}
 		upkeep = {
 			trigger = { planet = { has_building = building_hydroponics_farm } }
-			energy = @job_energy_low
-			consumer_goods = @job_supplies_low
+			energy = @job_energy_normal
 		}
 		upkeep = {
 			trigger = { planet = { AND = {
 				has_building = building_hydroponics_farm
 				has_building = building_maintenance_depot
 			} } }
-			energy = @job_energy_low
-			consumer_goods = @job_supplies_low
+			energy = @job_energy_normal
 		}
 		upkeep = {
 			trigger = { planet = { AND = {
 				has_building = building_hydroponics_farm
 				has_building = building_maintenance_depot_2
 			} } }
-			energy = @job_energy_low2
-			consumer_goods = @job_supplies_low2
+			energy = @job_energy_normal2
 		}
 		upkeep = {
 			trigger = { planet = { AND = {
 				has_building = building_hydroponics_farm
 				has_building = building_maintenance_depot_3
 			} } }
-			energy = @job_energy_low3
-			consumer_goods = @job_supplies_low3
+			energy = @job_energy_normal3
 		}
 		produces = {	### Fallen Empire buildings
 			trigger = { planet = { has_building = building_dimensional_fabricator } }

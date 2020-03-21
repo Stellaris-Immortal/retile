@@ -18,6 +18,10 @@ starbase_outpost = {
 		#trade system
 		ship_piracy_suppression_add = 8
 	}
+	ship_modifier = {
+		ship_fire_rate_mult = 0.50
+		ship_weapon_range_mult = 0.20
+	}
 	max_hitpoints = 5000
 	base_buildtime = 360
 	resources = {
@@ -75,6 +79,10 @@ starbase_starport = {
 		starbase_trade_collection_range_add = 1
 		starbase_trade_protection_range_add = 1
 		starbase_trade_protection_add = 16
+	}
+	ship_modifier = {
+		ship_fire_rate_mult = 0.50
+		ship_weapon_range_mult = 0.20
 	}
 	max_hitpoints = 10000
 	base_buildtime = 360
@@ -137,6 +145,10 @@ starbase_starhold = {
 		starbase_trade_collection_range_add = 1
 		starbase_trade_protection_range_add = 1
 		starbase_trade_protection_add = 24
+	}
+	ship_modifier = {
+		ship_fire_rate_mult = 0.50
+		ship_weapon_range_mult = 0.20
 	}
 	max_hitpoints = 20000
 	base_buildtime = 720
@@ -201,6 +213,10 @@ starbase_starfortress = {
 		starbase_trade_collection_range_add = 1
 		starbase_trade_protection_range_add = 1
 		starbase_trade_protection_add = 32
+	}
+	ship_modifier = {
+		ship_fire_rate_mult = 0.50
+		ship_weapon_range_mult = 0.20
 	}
 	max_hitpoints = 40000
 	base_buildtime = 1080
@@ -267,6 +283,10 @@ starbase_citadel = {
 		starbase_trade_collection_range_add = 1
 		starbase_trade_protection_range_add = 1
 		starbase_trade_protection_add = 40
+	}
+	ship_modifier = {
+		ship_fire_rate_mult = 0.50
+		ship_weapon_range_mult = 0.20
 	}	
 	max_hitpoints = 80000
 	base_buildtime = 1440
@@ -397,7 +417,7 @@ starbase_ai = {
 	icon_frame = -1
 }
 
-starbase_exd = {
+starbase_exd_0 = {
 	graphical_culture = { "extra_dimensional_01" "extra_dimensional_02" "extra_dimensional_03" }
 	max_speed = 0.0
 	acceleration = 0.0
@@ -410,6 +430,46 @@ starbase_exd = {
 		ship_weapon_range_mult = 0.20
 	}
 	max_hitpoints = 20000
+	base_buildtime = 730
+	combat_size_multiplier = 50
+	size_multiplier = 4
+	fleet_slot_size = 2
+	section_slots = { "core" = { locator = "root" } }
+	is_designable = no
+	num_target_locators = 0
+	is_space_station = no
+	can_have_federation_design = no
+	is_civilian = no
+	components_add_to_cost = no
+	is_listed = no
+	can_disable = no
+
+	enable_default_design = no	#if yes, countries will have an auto-generated design at start
+	class = shipclass_starbase
+
+	required_component_set = "sensor_components"
+	required_component_set = "combat_computers"
+
+	build_block_radius = @build_block_radius_starbase
+	formation_priority = @starbase_formation_priority
+	icon_frame = -1
+}
+
+starbase_exd = {
+	graphical_culture = { "extra_dimensional_01" "extra_dimensional_02" "extra_dimensional_03" }
+	max_speed = 0.0
+	acceleration = 0.0
+	rotation_speed = 0.0
+	modifier = {
+		ship_evasion_mult = -1
+		ship_shield_add = 80000
+		ship_armor_add = 10000
+	}
+	ship_modifier = {
+		ship_weapon_range_mult = 0.20
+		ship_fire_rate_mult = 0.50
+	}
+	max_hitpoints = 120000
 	base_buildtime = 730
 	combat_size_multiplier = 50
 	size_multiplier = 4
@@ -530,7 +590,7 @@ starbase_fe_outpost = {
 	modifier = {
 		ship_evasion_mult = -1
 		ship_armor_add = 1000
-		starbase_defense_platform_capacity_add = 2
+		starbase_defense_platform_capacity_add = 3
 	}
 	ship_modifier = {
 		ship_fire_rate_mult = 0.50
@@ -629,7 +689,11 @@ ion_cannon = {
 	required_component_set = "sensor_components"
 	required_component_set = "combat_computers"
 	
-	possible_starbase = {
+	potential_construction = {
+		is_scope_type = starbase
+	}
+
+	possible_construction = {
 		has_starbase_size >= starbase_citadel
 	}
 

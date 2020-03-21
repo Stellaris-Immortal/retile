@@ -358,6 +358,29 @@ progressive = {
 		}
 	}
 	
+	# OUTRAGE
+	demand = {
+		title = "FACTION_OUTRAGED_GC"
+		unfulfilled_title = "FACTION_OUTRAGED_GC"
+		desc = "FACTION_OUTRAGED_GC_DESC"
+
+		fulfilled_effect = -20
+		unfulfilled_effect = -0.001
+
+		potential = {
+			exists = owner
+			owner = {
+				has_country_flag = faction_egalitarian_outraged_gc
+			}
+		}
+
+		trigger = {
+			owner = {
+				has_country_flag = faction_egalitarian_outraged_gc
+			}
+		}
+	}
+	
 	on_create = {
 		pop_faction_event = { id = factions.1 }
 	}

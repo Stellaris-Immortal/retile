@@ -1,0 +1,496 @@
+## Possible Deposit Variables ##
+# resources, resource and amount
+# potential trigger (planet scope)
+# blocked_modifier - applied to planet only when deposit blocker has been cleared
+# constant_modifier - applied to planet always
+# blocker = <key/any/none> - default any
+# station = station class in orbit to gather
+
+############################
+#   Federations Deposits   #
+############################
+
+# Void Dweller Origin
+
+d_arcane_replicator = {
+	is_for_colonizeable = yes
+	icon = "d_station_reactor"
+	category = deposit_cat_rare
+
+	potential = { always = no }
+
+	resources = {
+		category = planet_deposits
+		produces = {
+			consumer_goods = 8
+		}
+	}
+}
+
+# Shattered Ring
+
+d_arcane_generator = {
+	is_for_colonizeable = yes
+	icon = "d_station_reactor"
+	category = deposit_cat_rare
+
+	potential = { always = no }
+
+	planet_modifier = {
+		planet_amenities_add = 5
+	}
+
+	resources = {
+		category = planet_deposits
+		produces = {
+			volatile_motes = 2
+			rare_crystals = 2
+			exotic_gases = 2
+			energy = 40
+		}
+	}
+}
+
+d_decrepit_tunnels_1 = {
+	is_for_colonizeable = yes
+	icon = "d_mining_tunnels"
+	category = deposit_cat_blockers
+	time = 360
+
+	potential = { always = no }
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+		}
+	}
+
+	on_cleared = {
+		owner = {
+			add_resource = {
+				minerals = 400
+				volatile_motes = 100
+			}
+		}
+	}
+}
+
+d_decrepit_tunnels_2 = {
+	is_for_colonizeable = yes
+	icon = "d_mining_tunnels"
+	category = deposit_cat_blockers
+	time = 360
+
+	potential = { always = no }
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+		}
+	}
+
+	on_cleared = {
+		owner = {
+			add_resource = {
+				minerals = 400
+				rare_crystals = 100
+			}
+		}
+	}
+}
+
+d_decrepit_tunnels_3 = {
+	is_for_colonizeable = yes
+	icon = "d_mining_tunnels"
+	category = deposit_cat_blockers
+	time = 360
+
+	potential = { always = no }
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 500
+		}
+	}
+
+	on_cleared = {
+		owner = {
+			add_resource = {
+				minerals = 400
+				exotic_gases = 100
+			}
+		}
+	}
+}
+
+# Feral Overload - Utilize Option - Spore Vents
+d_spore_vents = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	icon = d_gaseous_eruption
+
+	# For ordinary Empires
+	resources = {
+		category = planet_deposits
+		upkeep = {
+			exotic_gases = 1
+		}
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+# Feral Overload - Exterminate Option - Burned-Out Caves
+d_cave_shroom_veins = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	icon = d_fungal_caves
+
+	# For ordinary Empires
+	planet_modifier = {
+		job_custodian_add = 3
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+# tree of life origin
+# home world
+
+d_tree_of_life_home = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	icon = d_huge_tree
+
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_tree_of_life
+		}
+	}
+
+	planet_modifier = {
+		pop_growth_speed = 0.15
+		planet_jobs_society_research_produces_mult = 0.10
+		planet_housing_add = 10
+		#district_farming_max = 4
+		job_farmer_add = 4
+	}
+
+	resources = {
+		category = planet_deposits
+		upkeep = {
+			food = 4
+		}
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#colony
+d_tree_of_life_colony = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	icon = d_huge_tree
+
+	potential = {
+		exists = owner
+		planet = {
+			owner = {
+				has_origin = origin_tree_of_life
+			}
+		}
+	}
+
+	planet_modifier = {
+		pop_growth_speed = 0.1
+		planet_jobs_society_research_produces_mult = 0.10
+		planet_housing_add = 5
+		#district_farming_max = 2
+		job_farmer_add = 2
+	}
+
+	resources = {
+		category = planet_deposits
+		upkeep = {
+			food = 2
+		}
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+#Lithoid origin
+# Buried Lithoids are generated on lithoid-origin colonisation
+d_buried_lithoids = {
+	icon = d_hibernating_lithoids #TODO replace with custom
+	time = 360
+
+	is_for_colonizeable = yes
+	category = deposit_cat_rare_blocker
+
+	potential = { always = no }
+
+	on_cleared = {
+		if = {
+			limit = {
+				NOT = { owner = { has_origin = origin_lithoid } }
+			}
+			owner = { add_resource = { minerals = 300 } }
+		}
+
+		if = {
+			limit = {
+				owner = { has_origin = origin_lithoid }
+			}
+			create_pop = {
+				species = owner
+			}
+		}
+	}
+
+	resources = {
+		category = deposit_blockers
+		cost = {
+			trigger = {
+				NOT = { owner = { has_origin = origin_lithoid } }
+			}
+			energy = 300
+		}
+		cost = {
+			trigger = {
+				owner = { has_origin = origin_lithoid }
+			}
+			minerals = 1000
+		}
+	}
+
+	ai_weight = {
+		weight = 1
+
+		modifier = {
+			factor = 2
+			owner = { has_origin = origin_lithoid }
+		}
+	}
+}
+
+d_lithoid_crater = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	icon = d_crater
+
+	potential = {
+		exists = owner
+		owner = {
+			has_origin = origin_lithoid
+		}
+	}
+
+	planet_modifier = {
+		planet_max_districts_add = 6
+		#district_mining_max = 6
+		#district_farming_max = -6
+		job_miner_add = 6
+		job_farmer_add = -6
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_origin = origin_lithoid }
+		}
+		pop_growth_speed = 0.25
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+###machine origin
+d_machine_minerals = {
+	is_for_colonizeable = yes
+	icon = "d_veiny_cliffs"
+	category = deposit_cat_rare
+
+	potential = { always = no }
+
+	resources = {
+		category = planet_deposits
+		produces = {
+			minerals = 25
+		}
+	}
+}
+
+d_organic_slurry = {
+	is_for_colonizeable = yes
+	icon = "d_bubbling_swamp"
+	category = deposit_cat_rare
+
+	potential = { always = no }
+
+	resources = {
+		category = planet_deposits
+		produces = {
+			food = 15
+		}
+	}
+}
+
+d_project_cornucopia = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+
+	icon = d_mining_tunnels
+
+	potential = { always = no }
+
+	planet_modifier = {
+		#district_mining_max = 4
+		job_miner_add = 4
+		planet_jobs_minerals_produces_mult = 0.05
+		pop_environment_tolerance = -0.2
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_disco_planet = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	icon = d_central_spire
+	
+	resources = {
+		category = planet_deposits
+		upkeep = {
+			exotic_gases = 1
+		}
+	}
+	
+	planet_modifier = { 
+		pop_growth_speed = 0.15
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+d_disco_planet2 = {
+	is_for_colonizeable = yes
+	category = deposit_cat_rare
+	
+	icon = d_central_spire
+	
+	planet_modifier = {
+		pop_growth_speed = 0.15
+	}
+
+	drop_weight = {
+		weight = 0
+	}
+}
+
+### Impossible Corrie ###
+#Initial deposit
+d_impossiblecorrie = {
+    is_for_colonizeable = yes
+    category = deposit_cat_rare
+	icon = d_veiny_cliffs
+
+	triggered_planet_modifier = {
+		planet_jobs_physics_research_produces_mult = 0.2
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+#Initial lab
+d_bluelotus = {
+    is_for_colonizeable = yes
+    category = deposit_cat_rare
+    icon = d_bunker_door
+
+	planet_modifier = {
+		job_technician_add = 1
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+#Instituted after the science is supported, and the special project is enacted
+d_bluelotus2 = {
+    is_for_colonizeable = yes
+    category = deposit_cat_rare
+    icon = d_bunker_door
+
+	planet_modifier = {
+		job_technician_add = 2
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+#Failed special project
+d_ruin_bluelotus = {
+    is_for_colonizeable = yes
+    category = deposit_cat_rare
+    icon = d_ruins_medium
+
+    resources = {
+		category = planet_deposits
+		produces = {
+			alloys = 1
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}
+#Left over only if the lab was supported in some way
+d_crater_bluelotus = {
+    is_for_colonizeable = yes
+    category = deposit_cat_rare
+    icon = d_crater
+
+	planet_modifier = {
+		#district_mining_max = 1
+		job_miner_add = 1
+	}
+
+    resources = {
+		category = planet_deposits
+		produces = {
+			alloys = 2
+		}
+	}
+	
+	drop_weight = {
+		weight = 0
+	}
+}

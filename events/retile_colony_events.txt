@@ -1,0 +1,430 @@
+namespace = retile_colony
+
+### Viral Outbreak
+planet_event = {
+	id = retile_colony.1
+	title = "retile_colony.1.name"
+	desc = "retile_colony.1.desc"
+	picture = GFX_evt_emergency_workers
+	show_sound = event_yellow_alert
+	location = ROOT
+	trackable = yes
+	
+	pre_triggers = {
+		has_owner = yes
+		is_homeworld = no
+		original_owner = yes
+		is_ai = no
+		has_ground_combat = no
+		is_capital = no
+		is_occupied_flag = no
+	}
+
+	trigger = {
+		owner = { NOT = { has_authority = auth_machine_intelligence } }
+		num_pops > 0
+		NOR = {
+			is_planet_class = pc_habitat
+			is_planet_class = pc_machine
+			is_planet_class = pc_cybrex
+			is_planet_class = pc_ringworld_habitable
+		}
+		NOR = { 
+			has_global_flag = viral_outbreak_global
+			has_planet_flag = colony_event
+		}
+	}
+
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = viral_outbreak_global
+		set_planet_flag = colony_event
+		owner = {
+			begin_event_chain = {
+				event_chain = "viral_outbreak_chain"
+				target = ROOT
+			}
+		}
+	}
+	
+	option = {
+		name = retile_colony.1.a
+		add_modifier = { modifier = "viral_outbreak" days = -1 }
+		random_owned_pop = {
+			limit = { NOT = { has_trait = trait_viral_infection } }
+			modify_species = {
+				species = this
+				add_trait = trait_viral_infection
+				add_traits_at_start_of_list = yes
+			}
+		}
+		enable_special_project = {
+			name = "VIRAL_OUTBREAK_STUDY_PROJECT"
+			location = this
+			owner = root
+		}
+	}
+}
+
+# Randomly Spread Disease Stage 1
+planet_event = {
+	id = retile_colony.2
+	title = "retile_colony.2.name"
+	desc = "retile_colony.2.desc"
+	picture = GFX_evt_emergency_workers
+	show_sound = event_yellow_alert
+	location = ROOT
+	trackable = yes
+	
+	pre_triggers = {
+		has_owner = yes
+	}
+	
+	mean_time_to_happen = { days = 720 }
+	
+	trigger = {
+		owner = { NOT = { has_authority = auth_machine_intelligence } }
+		num_pops > 0
+		has_modifier = viral_outbreak
+		any_pop = { NOT = { has_trait = trait_viral_infection } }
+		NOT = { has_global_flag = viral_cure_global }
+	}
+	
+	option = {
+		name = retile_colony.2.a
+		random_owned_pop = { 
+			limit = { NOT = { has_trait = trait_viral_infection } }
+			modify_species = {
+				species = this
+				add_trait = trait_viral_infection
+				add_traits_at_start_of_list = yes
+			}
+		}
+	}
+}
+
+# Signal Discovered
+planet_event = {
+	id = retile_colony.3
+	title = "retile_colony.3.name"
+	desc = "retile_colony.3.desc"
+	picture = GFX_evt_star_yellow
+	show_sound = event_solar_fusion
+	location = ROOT
+	trackable = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = retile_colony.3.a
+		enable_special_project = {
+			name = "VIRAL_OUTBREAK_SIGNAL_PROJECT"
+			location = this
+			owner = root
+		}
+	}
+}
+
+# Alien Ships Discovered
+planet_event = {
+	id = retile_colony.4
+	title = "retile_colony.4.name"
+	desc = "retile_colony.4.desc"
+	picture = GFX_evt_unknown_ships
+	show_sound = event_red_alert
+	location = ROOT
+	trackable = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = retile_colony.4.a
+		owner = { end_event_chain = "viral_outbreak_chain" }
+		remove_modifier = viral_outbreak
+		owner = { 
+			if = {
+				limit = {
+					has_tech_option = tech_sensors_3
+				}
+				add_tech_progress = {
+					tech = tech_sensors_3
+					progress = 0.5
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { has_technology = tech_sensors_3 }
+				}
+				add_research_option = tech_sensors_3
+				add_tech_progress = {
+					tech = tech_sensors_3
+					progress = 0.25
+				}
+			}
+			else = {
+				add_monthly_resource_mult = {
+     				resource = physics_research
+     				value = @tier2researchreward
+     				min = @tier2researchmin
+     				max = @tier2researchmax
+     			}
+			}
+ 		}
+	}
+	
+	option = {
+		name = retile_colony.4.b
+		remove_modifier = viral_outbreak
+		enable_special_project = {
+			name = "VIRAL_OUTBREAK_ALIEN_PROJECT"
+			location = this
+			owner = root
+		}
+		owner = { 
+			if = {
+				limit = {
+					has_tech_option = tech_sensors_3
+				}
+				add_tech_progress = {
+					tech = tech_sensors_3
+					progress = 0.5
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { has_technology = tech_sensors_3 }
+				}
+				add_research_option = tech_sensors_3
+				add_tech_progress = {
+					tech = tech_sensors_3
+					progress = 0.25
+				}
+			}
+			else = {
+				add_monthly_resource_mult = {
+     				resource = physics_research
+     				value = @tier2researchreward
+     				min = @tier2researchmin
+     				max = @tier2researchmax
+     			}
+			}
+ 		}
+	}
+}
+
+# Randomly Spread Disease Stage 2
+planet_event = {
+	id = retile_colony.5
+	title = "retile_colony.5.name"
+	desc = "retile_colony.5.desc"
+	picture = GFX_evt_emergency_workers
+	show_sound = event_red_alert
+	location = ROOT
+	trackable = yes
+	
+	pre_triggers = {
+		has_owner = yes
+	}
+	
+	mean_time_to_happen = { days = 720 }
+	
+	trigger = {
+		owner = { NOT = { has_authority = auth_machine_intelligence } }
+		num_pops > 0
+		NOT = { has_modifier = viral_outbreak }
+		any_pop = { has_trait = trait_viral_infection }
+		NOT = { has_global_flag = viral_cure_global }
+	}
+	
+	option = {
+		name = retile_colony.5.a
+		random_owned_pop = { 
+			limit = { has_trait = trait_viral_infection }
+			kill_pop = yes
+		}
+	}
+}
+
+# Alien Ships Investigated
+planet_event = {
+	id = retile_colony.6
+	title = "retile_colony.6.name"
+	desc = "retile_colony.6.desc"
+	picture = GFX_evt_ancient_databank
+	show_sound = event_laboratory_sound
+	location = ROOT
+	trackable = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = retile_colony.6.a
+		enable_special_project = {
+			name = "VIRAL_OUTBREAK_CURE_PROJECT"
+			location = this
+			owner = root
+		}
+		owner = { 
+			if = {
+				limit = {
+					has_tech_option = tech_thrusters_3
+				}
+				add_tech_progress = {
+					tech = tech_thrusters_3
+					progress = 0.5
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { has_technology = tech_thrusters_3 }
+				}
+				add_research_option = tech_thrusters_3
+				add_tech_progress = {
+					tech = tech_thrusters_3
+					progress = 0.25
+				}
+			}
+			else = {
+				add_monthly_resource_mult = {
+     				resource = engineering_research
+     				value = @tier2researchreward
+     				min = @tier2researchmin
+     				max = @tier2researchmax
+     			}
+			}
+ 		}
+	}
+	
+	option = {
+		name = retile_colony.6.b
+		owner = { end_event_chain = "viral_outbreak_chain" }
+		owner = { 
+			if = {
+				limit = {
+					has_tech_option = tech_thrusters_3
+				}
+				add_tech_progress = {
+					tech = tech_thrusters_3
+					progress = 0.5
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { has_technology = tech_thrusters_3 }
+				}
+				add_research_option = tech_thrusters_3
+				add_tech_progress = {
+					tech = tech_thrusters_3
+					progress = 0.25
+				}
+			}
+			else = {
+				add_monthly_resource_mult = {
+     				resource = engineering_research
+     				value = @tier2researchreward
+     				min = @tier2researchmin
+     				max = @tier2researchmax
+     			}
+			}
+ 		}
+	}
+}
+
+# Alien Ships Recalibrated
+planet_event = {
+	id = retile_colony.7
+	title = "retile_colony.7.name"
+	desc = "retile_colony.7.desc"
+	picture = GFX_evt_celebration_event
+	show_sound = event_celebration
+	location = ROOT
+	trackable = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = viral_cure_global
+	}
+	
+	option = {
+		name = retile_colony.7.a
+		owner = { end_event_chain = "viral_outbreak_chain" }
+		every_owned_pop = { 
+			limit = { has_trait = trait_viral_infection }
+			modify_species = {
+				species = this
+				remove_trait = trait_viral_infection
+			}
+		}
+		random_list = {
+			1 = { add_modifier = { modifier = coronal_stability days = -1 } }
+			1 = { add_modifier = { modifier = coronal_instability days = -1 } }
+		}
+		owner = { 
+			if = {
+				limit = {
+					has_tech_option = tech_gene_tailoring
+				}
+				add_tech_progress = {
+					tech = tech_gene_tailoring
+					progress = 0.5
+				}
+			}
+			else_if = {
+				limit = {
+					NOT = { has_technology = tech_gene_tailoring }
+				}
+				add_research_option = tech_gene_tailoring
+				add_tech_progress = {
+					tech = tech_gene_tailoring
+					progress = 0.25
+				}
+			}
+			else = {
+				add_monthly_resource_mult = {
+     				resource = society_research
+     				value = @tier2researchreward
+     				min = @tier2researchmin
+     				max = @tier2researchmax
+     			}
+			}
+ 		}
+	}
+}
+
+# Randomly Cure Disease
+planet_event = {
+	id = retile_colony.8
+	title = "retile_colony.8.name"
+	desc = "retile_colony.8.desc"
+	picture = GFX_evt_news_room
+	show_sound = event_celebration
+	location = ROOT
+	trackable = yes
+
+	pre_triggers = {
+		has_owner = yes
+	}
+	
+	mean_time_to_happen = { days = 720 }
+	
+	trigger = {
+		owner = { NOT = { has_authority = auth_machine_intelligence } }
+		num_pops > 0
+		NOT = { has_modifier = viral_outbreak }
+		any_pop = { has_trait = trait_viral_infection }
+		has_global_flag = viral_cure_global
+	}
+	
+	option = {
+		name = retile_colony.8.a
+		random_owned_pop = { 
+			limit = { has_trait = trait_viral_infection }
+			modify_species = {
+				species = this
+				remove_trait = trait_viral_infection
+			}
+		}
+	}
+}

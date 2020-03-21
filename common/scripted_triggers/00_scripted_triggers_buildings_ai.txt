@@ -4,6 +4,63 @@ buildings_simple_allow = {
 	always = yes
 }
 
+building_basic_income_check = {
+	planet = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				free_jobs < 3
+				owner = {
+					OR = {
+						has_monthly_income = {
+							resource = energy
+							value > -5
+						}
+						has_resource = { type = energy amount > 1500 }
+					}
+
+					OR = {
+						has_monthly_income = {
+							resource = minerals
+							value > 0
+						}
+						has_resource = { type = minerals amount > 1500 }
+					}
+				}
+			}
+		}
+	}
+}
+
+building_relaxed_basic_income_check = {
+	planet = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				owner = {
+					OR = {
+						has_monthly_income = {
+							resource = energy
+							value > -5
+						}
+						has_resource = { type = energy amount > 1000 }
+					}
+
+					OR = {
+						has_monthly_income = {
+							resource = minerals
+							value > 0
+						}
+						has_resource = { type = minerals amount > 1000 }
+					}
+				}
+			}
+		}
+	}
+}
+
 ### Don't build things if the planet is in turmoil...???
 buildings_build_building = {
 	planet_devastation < 10
@@ -21,7 +78,7 @@ buildings_build_building = {
 		has_modifier = planet_growth_discouraged
 		free_district_slots = 0
 	}
-	NOT = {
+	NAND = {
 		exists = owner
 		owner = { is_lithoid_devouring_swarm = yes }
 		is_lithoid_devouring_swarm_consumption_world = yes
@@ -175,14 +232,15 @@ districts_build_district ={
 		has_modifier = planet_population_control_gestalt
 		has_modifier = planet_robot_assembly_control
 		has_modifier = planet_growth_discouraged
-		any_owned_pop = {
-			is_unemployed = yes
-			OR = {
-				specialist_job_check_trigger = no
-				has_citizenship_type = { type = citizenship_slavery }
-			}
-			NOR = { has_citizenship_type = { type = citizenship_assimilation } }
-		}
+		#???
+		#any_owned_pop = {
+		#	is_unemployed = yes
+		#	OR = {
+		#		specialist_job_check_trigger = no
+		#		has_citizenship_type = { type = citizenship_slavery }
+		#	}
+		#	NOR = { has_citizenship_type = { type = citizenship_assimilation } }
+		#}
 		owner = { is_ai = yes }
 		AND = {
 			planet_devastation < 10
@@ -401,5 +459,20 @@ buildings_upgrade_allow = {
 	OR = {
 		owner = { is_ai = no }
 		free_jobs < 3
+	}
+}
+
+jobs_any_research = {
+	planet = {
+		any_owned_pop = {
+			OR = {
+				has_job = head_researcher
+				has_job = researcher
+				has_job = brain_drone
+				has_job = calculator
+				has_job = dimensional_portal_researcher
+				has_job = dimensional_portal_researcher_gestalt
+			}
+		}
 	}
 }

@@ -296,7 +296,8 @@ sensor_array = {
 			physics_research = 30
 		}
 		upkeep = {
-			energy = 5
+			energy = 2
+			consumer_goods = 2
 		}
 	}
 	
@@ -393,7 +394,8 @@ astrogeology_station = {
 			society_research = 30
 		}
 		upkeep = {
-			energy = 5
+			energy = 2
+			consumer_goods = 2
 		}
 	}
 	
@@ -491,6 +493,7 @@ aerospace_station = {
 		}
 		upkeep = {
 			energy = 2
+			consumer_goods = 2
 		}
 	}
 	
@@ -535,6 +538,7 @@ black_hole_observatory = {
 
 		upkeep = {
 			energy = 2
+			consumer_goods = 2
 		}
 	}
 	
@@ -897,7 +901,10 @@ hydroponics_bay = {
 	
 	potential = {
 		exists = owner
-		owner = { has_technology = "tech_hydroponics" }
+		owner = { 
+			is_lithoid = no
+			has_technology = "tech_hydroponics"
+		}
 		solar_system = {
 			any_system_planet = {
 				is_owned_by = from
@@ -918,17 +925,13 @@ hydroponics_bay = {
 			alloys = 150
 		}
 
-		produces = {
-			food = 4
-		}
-
 		upkeep = {
 			energy = 2
 		}
 	}
 	
 	system_modifier = {
-		pop_growth_speed = 0.10
+		job_farmer_add = 3
 	}
 	
 	show_in_tech = "tech_hydroponics"
@@ -1015,6 +1018,7 @@ deep_space_black_site = {
 
 		upkeep = {
 			energy = 2
+			consumer_goods = 2
 		}
 	}
 
@@ -1594,6 +1598,7 @@ curator_think_tank = {
 
 		upkeep = {
 			energy = 2
+			consumer_goods = 2
 		}
 		
 		produces = {
@@ -1695,6 +1700,7 @@ art_college = {
 
 		upkeep = {
 			energy = 2
+			consumer_goods = 2
 		}
 		
 		produces = {

@@ -408,10 +408,10 @@ citizenship_limited = {
 
 	allow = {
 		custom_tooltip = {
-			fail_text = "HIVE_MIND_SPECIES_CITIZENS_ONLY"
-			OR = {
-				NOT = { from = { has_authority = auth_hive_mind } }
-				has_trait = trait_hive_mind
+			fail_text = hive_mind_not_welcoming
+			from = { 
+				has_authority = auth_hive_mind
+				has_policy_flag = alien_rights_welcoming
 			}
 		}
 		custom_tooltip = {
@@ -505,13 +505,6 @@ citizenship_slavery = {
 
 	allow = {
 		hidden_trigger = { exists = from }
-		custom_tooltip = {
-			fail_text = "HIVE_MIND_MAIN_SPECIES_ALWAYS_CITIZEN"
-			NAND = {
-				from = { has_authority = auth_hive_mind }
-				is_same_species = from
-			}
-		}
 		if = {
 			limit = { NOT = { is_same_species = from } }
 			OR = {
@@ -659,8 +652,8 @@ citizenship_purge = {
 				from = { has_authority = auth_hive_mind }
 			}
 			custom_tooltip = {
-				text = yes_hive_mind
-				always = yes
+				fail_text = hive_mind_welcoming
+				from = { NOT = { has_policy_flag = alien_rights_welcoming } }
 			}
 		} else_if = {
 			limit = {
@@ -745,7 +738,7 @@ citizenship_purge = {
 		modifier = {
 			factor = 0
 			from = {
-				has_civic = civic_syncretic_evolution
+				has_origin = origin_syncretic_evolution
 			}
 		}
 		modifier = {

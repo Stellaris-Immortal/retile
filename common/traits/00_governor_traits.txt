@@ -256,3 +256,17 @@ leader_trait_ecologist = {
 	leader_trait = { governor }
 	leader_class = { governor }
 }
+
+leader_trait_bureaucrat = {
+	cost = 1
+	modification = no
+	icon = "gfx/interface/icons/traits/leader_traits/leader_trait_bureaucrat.dds"
+	modifier = {
+		planet_bureaucrats_upkeep_mult = 0.10
+	}
+	leader_potential_add = {
+		NOT = { from = { has_authority = "auth_machine_intelligence" } }
+	}
+	leader_trait = { governor }
+	leader_class = { governor }
+}

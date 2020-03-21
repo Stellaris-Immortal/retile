@@ -75,7 +75,8 @@ civic_private_prospectors = {
 	potential = { authority = { value = auth_corporate } }
 	random_weight = { base = 5 }
 	modifier = {
-		country_admin_cap_add = 5
+		empire_size_colonies_mult = -0.10
+		empire_size_penalty_mult = -0.20
 	}
 
 	# unlocks sponsored_colonizer ship size
@@ -133,7 +134,9 @@ civic_private_military_companies = {
 			}
 		}
 	}
-	
+	modifier = {
+		army_starting_experience_add = 100
+	}
 	description = "civic_private_military_companies_effects"
 }
 
@@ -150,6 +153,7 @@ civic_indentured_assets = {
 		}
 	}
 	modifier = {
+		empire_size_pops_mult = -0.1
 		slave_market_cost_mult = -0.25
 		planet_jobs_slave_produces_mult = 0.20
 	}
@@ -161,5 +165,14 @@ civic_brand_loyalty = {
 	modifier = {
 		#faction_approval = 0.10
 		pop_citizen_happiness = 0.1
+	}
+}
+
+civic_public_relations_specialists = {
+	potential = { authority = { value = auth_corporate } }
+	random_weight = { base = 5 }
+	modifier = {
+		envoys_add = 2
+		diplo_weight_mult = 0.1
 	}
 }

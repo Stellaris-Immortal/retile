@@ -64,6 +64,17 @@ clerk = {
 		}
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_private_police }
+		}
+		modifier = {
+			planet_crime_add = -25
+			planet_amenities_add = 20
+		}
+	}
+	
 	planet_modifier = {
 		trade_value_add = 10
 		planet_amenities_add = 25
@@ -648,12 +659,13 @@ enforcer = {
 	}
 	
 	pop_modifier = {
-		pop_defense_armies_add = 6
+		pop_defense_armies_add = 4
 	}
 	
 	planet_modifier = {
-		planet_crime_add = -35
-		planet_amenities_add = 25
+		planet_crime_add = -25
+		pop_government_ethic_attraction = 0.10
+		planet_amenities_add = 20
 	}
 	
 	country_modifier = {
@@ -673,33 +685,23 @@ enforcer = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_police_state }
+			owner = { has_policy_flag = criminal_state_police }
 		}
-		planet_crime_mult = -0.25
-	}
-	
-	triggered_pop_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_common_law }
+		modifier = {
+			planet_crime_add = -25
+			planet_amenities_add = 20
 		}
-		pop_defense_armies_add = -4
-	}
-	
-	triggered_pop_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_private_police }
-		}
-		pop_defense_armies_add = -4
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_policy_flag = criminal_private_police }
+			owner = { has_valid_civic = civic_police_state }
 		}
-		trade_value_add = 10
+		modifier = {
+			planet_crime_mult = -0.20
+			planet_amenities_add = 20
+		}
 	}
 
 	triggered_planet_modifier = {
@@ -777,12 +779,11 @@ soldier = {
 	
 	triggered_planet_modifier = {
 		potential = {
-			planet = {
-				has_modifier = retile_martial_law
-			}
+			planet = { has_modifier = retile_martial_law }
 		}
 		modifier = {
 			planet_crime_add = -25
+			planet_amenities_add = 20
 		}
 	}
 	
@@ -801,7 +802,10 @@ soldier = {
 			exists = owner
 			owner = { has_policy_flag = criminal_military_police }
 		}
-		planet_crime_add = -35
+		modifier = {
+			planet_crime_add = -25
+			planet_amenities_add = 20
+		}
 	}
 
 	triggered_country_modifier = {
@@ -827,15 +831,8 @@ soldier = {
 			exists = owner
 			owner = { has_technology = tech_ground_defense_planning }
 		}
-		pop_defense_armies_add = 2
-	}
-	triggered_country_modifier = {
-		potential = {
-			exists = owner 
-			owner = { has_policy_flag = criminal_military_police }
-		}
 		modifier = {
-			country_naval_cap_add = -5
+			pop_defense_armies_add = 2
 		}
 	}
 	triggered_country_modifier = {
@@ -861,7 +858,9 @@ soldier = {
 			exists = owner
 			owner = { has_technology = tech_global_defense_grid }
 		}
-		pop_defense_armies_add = 2
+		modifier = {
+			pop_defense_armies_add = 2
+		}
 	}
 	
 	triggered_country_modifier = {
@@ -882,13 +881,6 @@ soldier = {
 			planet_amenities_add = 10
 			planet_stability_add = 2
 		}		
-	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_technology = tech_planetary_shield_generator }
-		}
-		planet_orbital_bombardment_damage = -0.05
 	}
 	
 	triggered_planet_modifier = {
@@ -1010,7 +1002,7 @@ roboticist = {
 		upkeep = {
 			trigger = {
 				exists = owner
-				owner = { has_civic = civic_mechanists }
+				owner = { has_origin = origin_mechanists }
 			}
 			minerals = 5
 			alloys = 1
@@ -1048,7 +1040,7 @@ roboticist = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_civic = civic_mechanists }
+			owner = { has_origin = origin_mechanists }
 		}
 		modifier = {
 			planet_amenities_add = 30
@@ -1134,60 +1126,7 @@ colonist = {
 	resources = {
 		category = planet_colonists
 		produces = {
-			energy = 4
-			minerals = 4
-			food = 4
-		}
-		produces = {
-			trigger = { has_trait = trait_lithoid }
-			food = -4
-			minerals = 4
-		}
-		produces = {
-			trigger = { has_trait = trait_plantoid }
-			food = -4
-		}
-		produces = {
-			trigger = { owner = { has_technology = tech_frontier_health } }
-			energy = 3
-			minerals = 3
-			food = 3
-		}
-		produces = {
-			trigger = {
-				owner = { has_technology = tech_frontier_health }
-				has_trait = trait_lithoid
-			}
-			food = -3
-			minerals = 3
-		}
-		produces = {
-			trigger = { 
-				owner = { has_technology = tech_frontier_health }
-				has_trait = trait_plantoid
-			}
-			food = -3
-		}
-		produces = {
-			trigger = { owner = { has_technology = tech_frontier_hospital } }
-			energy = 3
-			minerals = 3
-			food = 3
-		}
-		produces = {
-			trigger = { 
-				owner = { has_technology = tech_frontier_hospital }
-				has_trait = trait_lithoid
-			}
-			food = -3
-			minerals = 3
-		}
-		produces = {
-			trigger = { 
-				owner = { has_technology = tech_frontier_hospital }
-				has_trait = trait_plantoid
-			}
-			food = -3
+			unity = 5
 		}
 		upkeep = {
 			energy = @job_energy_normal
@@ -1195,34 +1134,20 @@ colonist = {
 		}
 	}
 	
-	triggered_planet_modifier = {
-		potential = {
-			is_robotic_species = no
-		}
-		modifier = {
-			pop_environment_tolerance = 0.10
-			planet_amenities_add = 15
-		}
+	planet_modifier = {
+		pop_environment_tolerance = 0.04
+		planet_amenities_add = 30
 	}
 	
 	triggered_planet_modifier = {
-		potential = {
-			has_trait = trait_plantoid
-		}
-		modifier = {
-			pop_environment_tolerance = 0.05
-		}
+		potential = { is_robotic_species = no }
+		modifier = { pop_growth_speed = 0.1	}
 	}
 	
 	triggered_planet_modifier = {
-		potential = {
-			is_robotic_species = yes
-		}
-		modifier = {
-			planet_pop_assembly_add = 0.2
-			planet_amenities_add = 15
-		}
-	}	
+		potential = { is_robotic_species = yes }
+		modifier = { planet_pop_assembly_add = 0.1 }
+	}
 	
 	triggered_planet_modifier = {
 		potential = {
@@ -1230,18 +1155,9 @@ colonist = {
 			is_robotic_species = no
 		}
 		modifier = {
-			pop_environment_tolerance = 0.05
+			pop_environment_tolerance = 0.03
+			pop_growth_speed = 0.1
 			planet_amenities_add = 15
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			owner = { has_technology = tech_frontier_health }
-			has_trait = trait_plantoid
-		}
-		modifier = {
-			pop_environment_tolerance = 0.05
 		}
 	}
 
@@ -1251,6 +1167,7 @@ colonist = {
 			is_robotic_species = yes
 		}
 		modifier = {
+			pop_environment_tolerance = 0.03
 			planet_pop_assembly_add = 0.1
 			planet_amenities_add = 15
 		}
@@ -1262,18 +1179,9 @@ colonist = {
 			is_robotic_species = no
 		}
 		modifier = {
-			pop_environment_tolerance = 0.05
+			pop_environment_tolerance = 0.03
+			pop_growth_speed = 0.1
 			planet_amenities_add = 15
-		}
-	}
-
-	triggered_planet_modifier = {
-		potential = {
-			owner = { has_technology = tech_frontier_hospital }
-			has_trait = trait_plantoid
-		}
-		modifier = {
-			pop_environment_tolerance = 0.05
 		}
 	}
 
@@ -1283,6 +1191,7 @@ colonist = {
 			is_robotic_species = yes
 		}
 		modifier = {
+			pop_environment_tolerance = 0.03
 			planet_pop_assembly_add = 0.1
 			planet_amenities_add = 15
 		}
@@ -1423,14 +1332,62 @@ bureaucrat = {
 			energy = @job_energy_normal
 			consumer_goods = @job_supplies_normal
 		}
+		upkeep = {
+			trigger = { planet = { has_building = building_bureaucratic_1 } }
+			energy = @job_energy_normal
+			consumer_goods = @job_supplies_normal
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_bureaucratic_2 } }
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_normal2
+		}
+		upkeep = {
+			trigger = { planet = { has_building = building_bureaucratic_3 } }
+			energy = @job_energy_normal3
+			consumer_goods = @job_supplies_normal3
+		}
 	}
 	
 	planet_modifier = {
 		planet_stability_add = 1
 	}
 	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_common_law }
+		}
+		modifier = {
+			planet_crime_add = -25
+			planet_amenities_add = 20
+		}
+	}
+	
 	country_modifier = {
-		country_admin_cap_add = 3
+		country_admin_cap_add = 2
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			planet = { has_building = building_bureaucratic_1 }
+		}
+		modifier = { country_admin_cap_add = 2 }
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			planet = { has_building = building_bureaucratic_2 }
+		}
+		modifier = { country_admin_cap_add = 4 }
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			planet = { has_building = building_bureaucratic_3 }
+		}
+		modifier = { country_admin_cap_add = 6 }
 	}
 	
 	triggered_country_modifier = {
@@ -1454,6 +1411,16 @@ bureaucrat = {
 			country_naval_cap_mult = 0.01
 			country_trust_growth = 0.01
 			country_trust_cap_add = 1
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = xenodiplomacy_isolation }
+		}
+		modifier = {
+			country_admin_cap_add = 1
 		}
 	}
 	
@@ -1562,4 +1529,51 @@ bureaucrat = {
 			}
 		}	
 	}
+}
+
+bluelotus_technician = {
+    category = specialist
+	is_capped_by_modifier = yes
+	condition_string = WORKER_JOB_TRIGGER
+	building_icon = building_illicit_research_labs
+	icon = foundry
+
+	possible_pre_triggers = {
+		has_owner = yes
+		is_being_purged = no
+		is_being_assimilated = no
+	}
+
+	possible = {
+		worker_job_check_trigger = yes
+	}
+	
+	resources = {
+		category = planet_metallurgists
+		produces = {
+			alloys = 4
+		}
+
+		upkeep = {
+			trigger = { 
+				is_organic_species = yes
+				is_lithoid = no
+			}
+			food = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				is_lithoid = yes
+			}
+			minerals = @living_standard_food_normal
+		}
+		upkeep = {
+			trigger = { 
+				is_robotic_species = yes
+			}
+			energy = @living_standard_energy_normal
+		}
+	}
+
+	weight = @specialist_job_weight
 }

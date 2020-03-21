@@ -20,6 +20,13 @@ country_base = {
 	generate_add_modifiers = {
 		produces
 	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 }
 
 trade = {
@@ -27,10 +34,36 @@ trade = {
 
 trade_routes = {
 	parent = trade
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+resolutions = {
+	parent = country
+	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 }
 
 edicts = {
 	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 	parent = country
 	generate_mult_modifiers = {
 		cost
@@ -39,6 +72,13 @@ edicts = {
 
 rare_edicts = {
 	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 	parent = edicts
 	generate_mult_modifiers = {
 		cost
@@ -48,10 +88,24 @@ rare_edicts = {
 ship_edicts = {
 	parent = rare_edicts
 	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 }
 
 campaigns = {
 	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 	parent = edicts
 	generate_mult_modifiers = {
 		cost
@@ -60,6 +114,13 @@ campaigns = {
 
 decisions = {
 	use_for_ai_budget = yes
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 	parent = country
 }
 
@@ -549,7 +610,15 @@ planet_jobs = {
 			is_pop_category = specialist
 		}
 	}
-
+	triggered_produces_modifier = {
+		key = planet_jobs_ruler
+		modifier_types = {
+			mult
+		}
+		trigger = {
+			is_pop_category = ruler
+		}
+	}
 	triggered_produces_modifier = {
 		key = planet_jobs_simple_drone
 		modifier_types = {
@@ -1277,6 +1346,9 @@ federation = {
 		minerals
 		food
 	}
+	generate_add_modifiers = {
+		produces
+	}
 }
 
 rivalries = {
@@ -1291,6 +1363,17 @@ rivalries = {
 }
 
 non_aggression_pacts = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+migration_pacts = {
 	parent = diplomacy
 	ai_use_parent_for_resources_upkeep = {
 		energy
@@ -1346,12 +1429,8 @@ guarantees = {
 }
 
 monthly_trades = {
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
+	generate_add_modifiers = {
+		produces
 	}
 }
 
@@ -1376,44 +1455,41 @@ subject_tax = {
 		minerals
 		food
 	}
+
+
+
+}
+
+envoy_costs = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+}
+
+diplo_closed_borders = {
+	parent = diplomacy
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 }
 
 subject_integration = {
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
 }
 
 relics = {
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
 }
 
 artifact_actions = {
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
 }
 
 sector = {
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
 }

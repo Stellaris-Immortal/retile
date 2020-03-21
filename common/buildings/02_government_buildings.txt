@@ -1,60 +1,451 @@
-# Colonial Offices
-building_colonial_offices = {
-	base_buildtime = 480	
+@cost_low = 500
+@cost_med = 1000
+@cost_high = 1500
+@cost_ultra = 2000
+
+# Bureaucratic Office
+building_bureaucratic_1 = {
+	base_buildtime = 360	
 	base_cap_amount = 1
-	icon = building_bureaucratic_complex
 	can_be_disabled = no
 
 	category = government
 	
 	potential = {
 		exists = owner
-		owner = { has_tradition = tr_expansion_a_new_life }
-		is_capital = no
+	}
+	
+	prerequisites = {
+		"tech_adaptive_bureaucracy"
 	}
 
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 500
+			minerals = @cost_low
 		}
 		upkeep = {
 			energy = 2
 		}
 	}
 	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_colonist_add = 1
-		}
+	planet_modifier = {
+		planet_stability_add = 1
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_colonist_add = 1
-		}
+	
+	upgrades = {
+		building_bureaucratic_2
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_bureaucratic_1_effect
 	}
 	
 	ai_weight = {
 		weight = 0
-		
-		modifier = {
-			weight = 10
-			num_pops < 10
+	}
+}
+
+building_bureaucratic_2 = {
+	base_buildtime = 480
+	can_be_disabled = no
+	can_build = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+	}
+	
+	prerequisites = {
+		"tech_colonial_bureaucracy"
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
 		}
-		
-		modifier = {
-			weight = 10
-			num_pops < 20
+		upkeep = {
+			energy = 2
 		}
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 2
+	}
+	
+	upgrades = {
+		building_bureaucratic_3
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_bureaucratic_3_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_bureaucratic_3 = {
+	base_buildtime = 600
+	can_be_disabled = no
+	can_build = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+	}
+	
+	prerequisites = {
+		"tech_galactic_bureaucracy"
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 3
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_bureaucratic_3_effect
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_embassy_1 = {
+	base_buildtime = 360	
+	base_cap_amount = 1
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { has_tradition = tr_diplomacy_the_federation }
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = penal_colony }
+		planet = { is_capital = yes }
+	}
+	
+	destroy_trigger = {
+		OR = {
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_low
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 3
+	}
+	
+	country_modifier = {
+		envoys_add = 1
+	}
+	
+	upgrades = {
+		building_embassy_2
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_embassy_2 = {
+	base_buildtime = 480
+	can_be_disabled = no
+	can_build = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { has_tradition = tr_diplomacy_the_federation }
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = penal_colony }
+		planet = { is_capital = yes }
+	}
+	
+	prerequisites = {
+		"tech_colonial_bureaucracy"
+	}
+	
+	show_tech_unlock_if = {
+		owner = { has_tradition = tr_diplomacy_the_federation }
+	}
+	
+	destroy_trigger = {
+		OR = {
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 7
+	}
+	
+	country_modifier = {
+		envoys_add = 2
+	}
+	
+	upgrades = {
+		building_embassy_3
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_embassy_3 = {
+	base_buildtime = 600
+	can_be_disabled = no
+	can_build = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { has_tradition = tr_diplomacy_the_federation }
+		NOT = { has_modifier = slave_colony }
+		NOT = { has_modifier = penal_colony }
+		planet = { is_capital = yes }
+	}
+	
+	prerequisites = {
+		"tech_galactic_bureaucracy"
+	}
+	
+	show_tech_unlock_if = {
+		owner = { has_tradition = tr_diplomacy_the_federation }
+	}
+	
+	destroy_trigger = {
+		OR = {
+			has_modifier = penal_colony
+			has_modifier = slave_colony
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 10
+	}
+	
+	country_modifier = {
+		envoys_add = 3
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_military_1 = {
+	base_buildtime = 360	
+	base_cap_amount = 1
+	can_be_disabled = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { has_tradition = tr_supremacy_overwhelming_force }
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = penal_colony }
+	}
+	
+	destroy_trigger = {
+		OR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_low
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+	
+	planet_modifier = {
+		planet_orbital_bombardment_damage = -0.10
+		planet_sensor_range_add = 1
+	}
+	
+	country_modifier = {
+		army_starting_experience_add = 100
+		ship_starting_experience_add = 100
+	}
+	
+	upgrades = {
+		building_military_2
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_military_2 = {
+	base_buildtime = 480
+	can_be_disabled = no
+	can_build = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { has_tradition = tr_supremacy_overwhelming_force }
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = penal_colony }
+	}
+	
+	prerequisites = {
+		"tech_centralized_command"
+	}
+	
+	show_tech_unlock_if = {
+		owner = { has_tradition = tr_supremacy_overwhelming_force }
+	}
+	
+	destroy_trigger = {
+		OR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+	
+	planet_modifier = {
+		planet_orbital_bombardment_damage = -0.20
+		planet_sensor_range_add = 2
+	}
+	
+	country_modifier = {
+		army_starting_experience_add = 200
+		ship_starting_experience_add = 200
+	}
+	
+	upgrades = {
+		building_military_3
+	}
+	
+	ai_weight = {
+		weight = 1
+	}
+}
+
+building_military_3 = {
+	base_buildtime = 600
+	can_be_disabled = no
+	can_build = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+		owner = { has_tradition = tr_supremacy_overwhelming_force }
+		NOT = { has_modifier = resort_colony }
+		NOT = { has_modifier = penal_colony }
+	}
+	
+	prerequisites = {
+		"tech_combat_training"
+	}
+	
+	show_tech_unlock_if = {
+		owner = { has_tradition = tr_supremacy_overwhelming_force }
+	}
+	
+	destroy_trigger = {
+		OR = {
+			has_modifier = resort_colony
+			has_modifier = penal_colony
+		}
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	planet_modifier = {
+		planet_orbital_bombardment_damage = -0.30
+		planet_sensor_range_add = 3
+	}
+	
+	country_modifier = {
+		army_starting_experience_add = 300
+		ship_starting_experience_add = 300
+	}
+	
+	ai_weight = {
+		weight = 1
 	}
 }

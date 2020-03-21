@@ -240,7 +240,6 @@ district_scholars = {
 
 	potential = {
 		NOR = {
-			has_modifier = resort_colony
 			has_modifier = penal_colony
 			has_modifier = slave_colony
 		}
@@ -301,8 +300,6 @@ district_bureaucrats = {
 		exists = owner
 		owner = { is_gestalt = no }
 		NOR = {
-			has_modifier = resort_colony
-			has_modifier = penal_colony
 			has_modifier = slave_colony
 		}
 	}
@@ -410,8 +407,6 @@ district_soldiers = {
 	potential = {
 		NOR = {
 			has_modifier = resort_colony
-			has_modifier = penal_colony
-			has_modifier = slave_colony
 		}
 	}
 	
@@ -480,11 +475,7 @@ district_enforcers = {
 	potential = {
 		exists = owner
 		owner = { is_gestalt = no }
-		NOR = {
-			has_modifier = resort_colony
-			has_modifier = penal_colony
-			has_modifier = slave_colony
-		}
+		NOT = {	has_modifier = penal_colony }
 	}
 	
 	allow = {
@@ -523,33 +514,11 @@ district_enforcers = {
 			is_planet_class = pc_city
 			exists = owner
 			owner = { has_ascension_perk = ap_arcology_project }
-			NOT = { owner = { has_policy_flag = criminal_military_police } }
 		}
 		modifier = {
 			job_enforcer_add = 1
 		}
 	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_military_police }
-		}
-		job_enforcer_add = -1
-		job_soldier_add = 1
-	}
-	triggered_planet_modifier = {
-		potential = {
-			is_planet_class = pc_city
-			exists = owner
-			owner = { has_ascension_perk = ap_arcology_project }
-			owner = { has_policy_flag = criminal_military_police }
-		}
-		modifier = {
-			job_soldier_add = 1
-		}
-	}	
-	
 	ai_weight = {
 		weight = 2
 		modifier = {
@@ -627,13 +596,7 @@ district_custodians = {
 	icon = district_custodian
 	is_capped_by_modifier = no
 
-	potential = {
-		NOR = {
-			has_modifier = resort_colony
-			has_modifier = penal_colony
-			has_modifier = slave_colony
-		}
-	}
+	potential = { }
 	
 	allow = {
 		exists = owner
@@ -666,11 +629,26 @@ district_custodians = {
 	planet_modifier = {
 		job_custodian_add = 1
 	}
+	
 	triggered_planet_modifier = {
 		potential = {
 			is_planet_class = pc_city
 			exists = owner
 			owner = { has_ascension_perk = ap_arcology_project }
+		}
+		modifier = {
+			job_custodian_add = 1
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_ascension_perk = ap_land_ethic }
+			NOT = {
+				is_planet_class = pc_city
+				owner = { has_ascension_perk = ap_arcology_project }
+			}
 		}
 		modifier = {
 			job_custodian_add = 1

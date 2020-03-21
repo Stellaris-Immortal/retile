@@ -1,0 +1,713 @@
+namespace = federations3
+
+##########################################
+#
+# Federations DLC Events
+# by Gemma Thomson
+#
+##########################################
+
+##############################
+# ANOMALIES
+##############################
+
+### Floating Value ###
+
+ship_event = { #Conclusion
+    id = federations3.100
+    title = "federations3.100.name"
+    desc = "federations3.100.desc"
+    picture = GFX_evt_ship_in_orbit
+    show_sound = event_scanner
+    location = fromfrom
+
+    is_triggered_only = yes
+
+    option = {
+        name = federations3.100.a
+        owner = {
+            add_monthly_resource_mult = { #a multiple of the player's existing income
+                resource = minerals
+                value = @tier3materialreward
+            }
+        }
+    }
+    option = {
+        name = federations3.100.b
+        owner = {
+            add_monthly_resource_mult = { #a multiple of the player's existing income
+                resource = influence
+                value = @tier3materialreward
+            }
+        }
+    }
+}
+
+### Kept Grounds ###
+
+ship_event = { #Conclusion to the anomaly (WENKWORT_CAT) of Wenkwort Artem's gardens
+    id = federations3.115
+    title = "federations3.115.name"
+    desc = "federations3.115.desc"
+    picture = GFX_evt_glitchy_matrix
+    show_sound = event_scanner
+    location = from
+
+    is_triggered_only = yes
+
+    option = {
+        name = MARVELOUS
+		owner = {
+			add_monthly_resource_mult = {
+				resource = society_research
+				value = @tier2researchreward
+				min = @tier2researchmin
+				max = @tier2researchmax
+			}
+		}
+        begin_event_chain = {
+			event_chain = "wenkwort_chain"
+			target = owner
+		}
+        enable_special_project = {
+            name = "WENKWORT_PROJECT"
+            location = event_target:wenkwort_rellrait
+            owner = root.owner
+        }
+        hidden_effect = {
+            create_species = {
+                name = "NAME_Wenkwort_Keeper"
+                plural = "NAME_Wenkwort_Keepers"
+                class = ROBOT
+                portrait = "sd_art_robot"
+                namelist = "PLANT3"
+                traits = { trait = "trait_mechanical" }
+            }
+            last_created_species = {
+                save_global_event_target_as = wenkwort_audon
+            }
+            create_country = {
+                name = "NAME_Gardeners"
+                type = drone #Can make them the target of other events or effects, à la Mining Drones
+                species = event_target:wenkwort_audon
+                flag = {
+                    icon = { category = "ornate" file = "flag_ornate_18.dds" }
+                    background = { category = "backgrounds" file = "v.dds" }
+                    colors = { "red_orange" "green" "null" "null" }
+                }
+            }
+            last_created_country = {
+                save_global_event_target_as = gardener_country
+                set_faction_hostility = {
+                    target = root.owner
+                    set_hostile = no
+                    set_neutral = yes
+                    set_friendly = no
+                }
+                create_fleet = {
+                    name = "NAME_Gardener_Drones"
+                    effect = {
+                        set_owner = event_target:gardener_country
+                        create_ship_design = { design = "NAME_Gardener_Drone" }
+                        create_ship = {
+                            name = "NAME_Gardener1"
+                            design = last_created_design
+                        }
+                        create_ship = {
+                            name = "NAME_Gardener2"
+                            design = last_created_design
+                        }
+                        create_ship = {
+                            name = "NAME_Gardener3"
+                            design = last_created_design
+                        }
+                        save_global_event_target_as = gardener_drones
+                        set_location = event_target:wenkwort_rellrait
+                        set_fleet_stance = passive
+                        auto_move_to_planet = {
+                            target = event_target:wenkwort_artem
+                            clear_auto_move_on_arrival = no
+                            arrival_effect = wenkwort_continue_patrol
+                        }
+                    }
+                }
+            add_ship_design = last_created_design
+            }
+        }
+    }
+}
+
+##############################
+# SPECIAL PROJECTS
+##############################
+
+### Kept Grounds ###
+
+ship_event = { #Conclusion to the Zen World special project (WENKWORT_PROJECT) on Rellrait
+    id = federations3.135
+    title = "federations3.135.name"
+    desc = {
+        trigger = {
+            owner = {
+                OR = {
+                    has_country_flag = human_1
+                    has_country_flag = human_2
+                }
+            }
+        }
+        text = "federations3.135.human.desc"
+    }
+    desc = {
+        trigger = {
+            owner = {
+                NOR = {
+                    has_country_flag = human_1
+                    has_country_flag = human_2
+                }
+            }
+        }
+        text = "federations3.135.nonhuman.desc"
+    }
+    picture = GFX_evt_ship_in_orbit
+    show_sound = event_scanner
+    location = event_target:wenkwort_rellrait
+
+    is_triggered_only = yes
+
+    option = {
+        name = FASCINATING
+        event_target:wenkwort_rellrait = {
+            add_deposit = d_society_3
+            add_modifier = {
+				modifier = "pm_wenkwort_zen" days = -1
+            }
+        }
+    }
+}
+
+##############################
+# EVENT CHAINS
+##############################
+
+### Kept Grounds ###
+planet_event = { #Summon the Keeper
+    id = federations3.120
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        root = {
+            is_same_value = event_target:wenkwort_artem
+        }
+        owner = {
+            NOT = { has_country_flag = wenkwort_visited }
+        }
+    }
+
+    immediate = {
+        owner = {
+            set_country_flag = wenkwort_visited
+        }
+        root = {
+            planet_event = {
+                id = federations3.121
+                days = 8
+            }
+        }
+        create_ambient_object = {
+            type = "wenkwort_keeper"
+            location = root
+        }
+        last_created_ambient_object = {
+            set_location = {
+                target = root
+                distance = 4
+                angle = random
+            }
+            save_global_event_target_as = wenkwort_keeper
+        }
+    }
+}
+
+planet_event = { #Initial dialogue with the Keeper
+    id = federations3.121
+    title = "federations3.121.name"
+    desc = "federations3.121.desc"
+    location = event_target:wenkwort_artem
+    show_sound = event_ancient_drone
+    diplomatic = yes
+
+    is_triggered_only = yes
+
+    picture_event_data = {
+        portrait = event_target:wenkwort_audon
+        room = "ethic_spaceship_room"
+    }
+
+    option = { #What?! Who..?
+        name = "federations3.121.a"
+		is_dialog_only = yes #Prevents the event window from closing, but fires the response text below
+        response_text = federations3.121.a.response
+    }
+    option = { #Refusal
+        name = "federations3.121.b"
+        hidden_effect = {
+            planet_event = { id = federations3.130 }
+        }
+    }
+    option = { #Co-operate
+        name = "federations3.121.c"
+        trigger = {
+            owner = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
+        }
+        hidden_effect = {
+            planet_event = { id = federations3.125 }
+        }
+    }
+}
+
+planet_event = { #Agree to becoming a custodian of Wenkwort; take penalty to industry
+    id = federations3.125
+    title = "federations3.121.name"
+    desc = "federations3.125.desc"
+    location = event_target:wenkwort_keeper
+    diplomatic = yes
+
+    is_triggered_only = yes
+
+    picture_event_data = {
+        portrait = event_target:wenkwort_audon
+        room = "ethic_spaceship_room"
+    }
+
+    option = {
+        name = OK
+        add_modifier = {
+            modifier = "pm_wenkwort_custodian"
+            days = -1
+        }
+        root.owner = {
+            set_country_flag = wenkwort_custodian
+            end_event_chain = "wenkwort_chain"
+        }
+    }
+}
+
+planet_event = { #Disregard the Keeper
+    id = federations3.130
+    title = "federations3.121.name"
+    desc = "federations3.130.desc"
+    location = event_target:wenkwort_keeper
+    diplomatic = yes
+
+    is_triggered_only = yes
+
+    picture_event_data = {
+        portrait = event_target:wenkwort_audon
+        room = "ethic_spaceship_room"
+    }
+
+    option = {
+        name = GOODBYE
+        hidden_effect = {
+            from.owner = {
+                set_country_flag = wenkwort_defiler
+            }
+            planet_event = {
+                id = federations3.131
+                days = 20 #340
+            }
+        }
+    }
+}
+
+planet_event = { #Wenkwort's enforcer fleet is about to arrive
+    id = federations3.131
+    title = "federations3.131.name"
+    desc = "federations3.131.desc"
+    location = event_target:wenkwort_artem
+    diplomatic = yes
+
+    is_triggered_only = yes
+
+    trigger = {
+        exists = owner
+        owner = {
+            has_country_flag = wenkwort_defiler
+        }
+    }
+
+    picture_event_data = {
+        portrait = event_target:gardener_country
+        room = "ethic_spaceship_room"
+    }
+
+    option = { #Bring it on!
+        name = BATTLESTATIONS
+        hidden_effect = {
+            event_target:gardener_country = {
+                set_faction_hostility = {
+                    target = root.owner
+                    set_hostile = yes
+                }
+                create_fleet = {
+                    name = "NAME_Wenkwort_Enforcers"
+                    effect = {
+                        set_owner = event_target:gardener_country
+                        while = {
+                            count = 9
+                            create_ship = { design = "NAME_Wenkwort_Enforcer" }
+                        }
+                        save_event_target_as = wenkwort_enforcers
+                        set_location = event_target:wenkwort_artem
+                        set_fleet_stance = aggressive
+                    }
+                }
+                add_ship_design = last_created_design
+            }
+            event_target:wenkwort_keeper = {
+                destroy_ambient_object = this
+            }
+        }
+    }
+
+    option = { #Surrender
+        name = "federations3.131.a"
+        custom_tooltip = "federations3.131.tooltip"
+        trigger = {
+            owner = { NOT = { has_valid_civic = civic_hive_devouring_swarm } }
+        }
+        from.owner = {
+            remove_country_flag = wenkwort_defiler
+        }
+        hidden_effect = {
+            planet_event = { id = federations3.125 }
+        }
+    }
+}
+
+
+##############################
+# ARCHAEOLOGY
+##############################
+
+### Relic Rails ###
+
+# Trigger Event
+planet_event = {
+    id = federations3.1000
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        has_ancrel = yes
+   		owner = {
+   			is_ai = no
+   		}
+        any_country = {
+            NOT = { has_country_flag = triggered_relicrails_digsite }
+        }
+   		root = {
+            NOR = {
+                exists = archaeological_site
+                is_planet_class = pc_ringworld_habitable
+                is_planet_class = pc_cybrex
+                is_planet_class = pc_habitat
+                is_capital = yes
+            }
+            is_colony = yes
+            num_pops < 30
+			num_buildings = { type = any value >= 1 }
+        }
+    }
+
+    immediate = {
+        random_list = {
+            1 = {
+                planet_event = {
+                    id = federations3.1005
+                    days = 3
+                }
+                owner = {
+                    set_country_flag = triggered_relicrails_digsite
+                }
+            }
+            25 = { }
+        }
+    }
+}
+
+# Arc site exposed
+planet_event = {
+    id = federations3.1005
+    title = "federations3.1005.name"
+    desc = "federations3.1005.desc"
+    picture = GFX_evt_archaeological_dig
+    show_sound = event_dig_site
+    location = from
+
+    is_triggered_only = yes
+
+    option = {
+        name = OK
+        create_archaeological_site = relicrails_digsite
+    }
+}
+
+# Stage 1: equipment found
+fleet_event = {
+    id = federations3.1010 
+    title = "federations3.1010.name"
+    desc = "federations3.1010.desc"
+    picture = GFX_evt_excavation_team
+    show_sound = event_dig_site
+    location = from
+
+    archaeology = yes
+
+    is_triggered_only = yes
+
+    immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+
+	after = { 
+		from = { set_site_progress_locked = no } 
+	}
+
+    option = {
+        name = DIG
+        small_artifact_reward = yes
+    }
+}
+
+# Stage 2: well-armed corpse
+fleet_event = {
+    id = federations3.1015
+    title = "federations3.1015.name"
+    desc = "federations3.1015.desc"
+    picture = GFX_evt_scanning_remains
+    show_sound = event_dig_site
+    location = from
+
+    archaeology = yes
+
+    is_triggered_only = yes
+
+    immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+
+	after = { 
+		from = { set_site_progress_locked = no } 
+	}
+
+    option = {
+        name = federations3.1015.a
+        small_artifact_reward = yes
+    }
+}
+
+# Stage 3: Targe-bearer
+fleet_event = {
+    id = federations3.1020
+    title = "federations3.1020.name"
+    desc = "federations3.1020.desc"
+    picture = GFX_evt_ancient_databank
+    show_sound = event_dig_site
+    location = from
+
+    archaeology = yes
+
+    is_triggered_only = yes
+
+    immediate = {
+		from = { set_site_progress_locked = yes }
+	}
+
+	after = { 
+		from = { set_site_progress_locked = no } 
+        hidden_effect = {
+            random_list = {
+                1 = {
+                    fleet_event = {
+                        id = federations3.1021
+                        days = 32
+                }
+            }
+                5 = {
+                    fleet_event = {
+                        id = federations3.1022
+                        days = 26
+                    }
+                }
+            }
+        } 
+	}
+
+    option = {
+        name = DIG
+        small_artifact_reward = yes
+    }
+}
+
+# Intermission A: injuries
+fleet_event = {
+    id = federations3.1021
+    title = "federations3.1021.name"
+    desc = "federations3.1021.desc"
+    picture = GFX_evt_collapsing_roof
+    show_sound = event_dig_site
+	
+	archaeology = yes
+
+    is_triggered_only = yes
+
+	immediate = {
+		fromfrom = { set_site_progress_locked = yes }
+	}
+
+	after = { 
+		fromfrom = { set_site_progress_locked = no } 
+	}
+
+    option = {
+		name = site_setback
+		fromfrom = { add_stage_clues = -1 }
+		leader = {
+			add_trait = leader_trait_maimed
+		}
+	}
+}
+
+# Intermission B: new area revealed
+fleet_event = {
+    id = federations3.1022
+    title = "federations3.1022.name"
+    desc = "federations3.1022.desc"
+    picture = GFX_evt_collapsing_roof
+    show_sound = event_dig_site
+	
+	archaeology = yes
+
+    is_triggered_only = yes
+
+	immediate = {
+		fromfrom = { set_site_progress_locked = yes }
+	}
+
+	after = { 
+		fromfrom = { set_site_progress_locked = no } 
+	}
+
+    option = {
+		name = site_success
+		fromfrom = { add_stage_clues = 1 }
+	}
+}
+
+# Stage 4: alternate endings
+fleet_event = {
+    id = federations3.1025
+    hide_window = yes
+
+    archaeology = yes
+    is_triggered_only = yes
+
+    immediate = {
+		random_list = {
+            5 = { fleet_event = { id = federations3.1026 } } #train
+            1 = {
+                modifier = {
+                    factor = 2
+                    owner = { is_egalitarian = yes }
+                }
+                fleet_event = { id = federations3.1027 } #prior expedition's fate
+            }
+        }
+	}
+
+	after = { 
+		from = { expire_site_event = federations3.1025 } 
+	}
+}
+
+# Stage 4a: tunnel-builders
+fleet_event = {
+    id = federations3.1026
+    title = "federations3.1026.name"
+    desc = "federations3.1026.desc"
+    picture = GFX_evt_derelict_interior #There are no pictures of trains. :(
+    show_sound = event_dig_site
+
+    archaeology = yes
+
+    is_triggered_only = yes
+
+    immediate = {
+		fromfrom = { set_site_progress_locked = yes }
+	}
+
+	after = { 
+		fromfrom = { set_site_progress_locked = no }
+	}
+
+    option = {
+        name = federations3.1026.a
+        large_artifact_reward = yes
+        # hidden_effect = {
+            from.planet = {
+                planet_event = { id = federations3.1030 days = 1 }
+            }
+        # }
+    }
+}
+
+# Stage 4b: prior expedition
+fleet_event = {
+    id = federations3.1027
+    title = "federations3.1027.name"
+    desc = "federations3.1027.desc"
+    picture = GFX_evt_resource_cache
+    show_sound = event_dig_site
+
+    archaeology = yes
+
+    is_triggered_only = yes
+
+    immediate = {
+		fromfrom = { set_site_progress_locked = yes }
+	}
+
+	after = { 
+		fromfrom = { set_site_progress_locked = no }
+	}
+
+    option = {
+        name = UNFORTUNATE
+        owner = { large_artifact_reward = yes }
+    }
+}
+
+# Tunnel-builder epilogue
+planet_event = {
+    id = federations3.1030
+    title = "federations3.1030.name"
+    desc = "federations3.1030.desc"
+    picture = GFX_evt_underground_civilization
+    show_sound = event_dig_site
+    location = root
+
+    is_triggered_only = yes
+
+    option = {
+        name = REMARKABLE
+        owner = {
+            medium_artifact_reward = yes
+            add_modifier = {
+                modifier = peeyeps_legacy
+                days = 4320
+            }
+        }
+    }
+}

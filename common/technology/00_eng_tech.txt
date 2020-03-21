@@ -350,6 +350,87 @@ tech_titans = {
 	}
 }
 
+tech_juggernaut = {
+	cost = @tier5cost3
+	area = engineering
+	category = { voidcraft }
+	tier = 5
+	prerequisites = { "tech_starbase_5" "tech_titans" }
+	weight = @tier5weight3
+	is_rare = yes
+
+	potential = {
+		host_has_dlc = "Federations"
+	}
+
+	# unlocks Juggernaut
+	weight_modifier = {
+		factor = 0.25
+		modifier = {
+			factor = 1.5
+			OR = {
+				research_leader = {
+					area = engineering
+					has_trait = "leader_trait_expertise_voidcraft"
+				}
+				research_leader = {
+					area = engineering
+					has_trait = "leader_trait_curator"
+				}
+				research_leader = {
+					area = engineering
+					has_trait = "leader_trait_maniacal"
+				}
+			}
+		}
+		modifier = {
+			factor = @ap_technological_ascendancy_rare_tech
+			has_ascension_perk = ap_technological_ascendancy
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_juggernaut }
+			}
+		}
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_voidcraft"
+			}
+		}
+		modifier = {
+			factor = 0
+			NOR = { 
+				has_tradition = tr_discovery_faith_in_science
+				has_ascension_perk = ap_technological_ascendancy
+			}	
+		}
+	}
+
+	prereqfor_desc = {
+		hide_prereq_for_desc = component
+		ship = {
+			title = "TECH_UNLOCK_JUGGERNAUT_CONSTRUCTION_TITLE"
+			desc = "TECH_UNLOCK_JUGGERNAUT_CONSTRUCTION_DESC"
+		}
+	}
+
+	ai_weight = {
+		factor = 100 #higher factor due to really cool thing
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_voidcraft"
+			}
+		}
+	}
+}
+
 # ##################
 # Corvette upgrades
 # ##################
@@ -496,6 +577,14 @@ tech_corvette_hull_2 = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_corvette_hull_2 }
+			}
 		}
 	}
 	
@@ -662,6 +751,14 @@ tech_destroyer_hull_2 = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_destroyer_hull_2 }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -822,6 +919,14 @@ tech_cruiser_hull_2 = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_cruiser_hull_2 }
+			}
 		}
 	}
 	
@@ -984,6 +1089,14 @@ tech_battleship_hull_2 = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_battleship_hull_2 }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -1062,6 +1175,14 @@ tech_titan_hull_1 = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_titan_hull_1 }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -1135,6 +1256,14 @@ tech_titan_hull_2 = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_titan_hull_2 }
+			}
 		}
 	}
 	
@@ -1555,6 +1684,14 @@ tech_modular_engineering = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_modular_engineering }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -1613,6 +1750,14 @@ tech_space_defense_station_improvement = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_space_defense_station_improvement }
+			}
 		}
 	}
 	
@@ -2181,6 +2326,14 @@ tech_defense_platform_hull_1 = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_defense_platform_hull_1 }
+			}
 		}
 	}
 		
@@ -3032,7 +3185,7 @@ tech_robotic_workers = {
 		}
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mechanists
+			has_origin = origin_mechanists
 		}
 		modifier = {
 			factor = 1.25
@@ -3072,7 +3225,7 @@ tech_droid_workers = {
 		#}	
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mechanists
+			has_origin = origin_mechanists
 		}
 		modifier = {
 			factor = 1.25
@@ -3106,7 +3259,7 @@ tech_droid_workers = {
 		}
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mechanists
+			has_origin = origin_mechanists
 		}
 		modifier = {
 			factor = 1.25
@@ -3153,7 +3306,7 @@ tech_synthetic_workers = {
 		}
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mechanists
+			has_origin = origin_mechanists
 		}
 		modifier = {
 			factor = 4
@@ -3191,6 +3344,14 @@ tech_synthetic_workers = {
 				has_ascension_perk = ap_technological_ascendancy
 			}	
 		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_synthetic_workers }
+			}
+		}
 	}
 	
 	ai_weight = {
@@ -3211,7 +3372,7 @@ tech_synthetic_workers = {
 		}
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mechanists
+			has_origin = origin_mechanists
 		}
 		modifier = {
 			factor = 1.25
@@ -3501,6 +3662,14 @@ tech_construction_templates = {
 				has_tradition = tr_discovery_faith_in_science
 				has_ascension_perk = ap_technological_ascendancy
 			}	
+		}
+		modifier = {
+			factor = @federation_perk_factor
+			has_federation = yes
+			federation = {
+				has_federation_perk = rare_tech_boost
+				any_member = { has_technology = tech_construction_templates }
+			}
 		}
 	}
 	

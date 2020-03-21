@@ -22,7 +22,7 @@ trait_hive_mind = {
 	leader_age_min = 10
 	leader_age_max = 20
 
-	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
 	ai_weight = {
 		weight = 0
 	}
@@ -40,6 +40,9 @@ trait_machine_unit = {
 	immortal_leaders = yes
 	icon = "gfx/interface/icons/traits/trait_machine_unit.dds"
 	allowed_archetypes = { MACHINE }
+	ai_weight = {
+		weight = 0
+	}
 
 	forced_happiness = yes
 	modifier = { pop_environment_tolerance = 2.0 }
@@ -55,6 +58,9 @@ trait_synthetic = {
 	immortal_leaders = yes
 	icon = "gfx/interface/icons/traits/trait_robotic_3.dds"
 	allowed_archetypes = { ROBOT }
+	ai_weight = {
+		weight = 0
+	}
 
 	modifier = { pop_environment_tolerance = 2.0 }
 }
@@ -69,6 +75,9 @@ trait_droid = {
 	immortal_leaders = yes
 	icon = "gfx/interface/icons/traits/trait_robotic_2.dds"
 	allowed_archetypes = { ROBOT }
+	ai_weight = {
+		weight = 0
+	}
 
 	modifier = { 
 		planet_jobs_specialist_produces_mult = -0.25
@@ -86,6 +95,9 @@ trait_mechanical = {
 	immortal_leaders = yes
 	icon = "gfx/interface/icons/traits/trait_robotic_1.dds"
 	allowed_archetypes = { ROBOT }
+	ai_weight = {
+		weight = 0
+	}
 
 	modifier = { 
 		planet_jobs_produces_mult = -0.25
@@ -101,7 +113,10 @@ trait_syncretic_proles = {
 	modification = yes
 	species_potential_add = { always = no }
 	icon = "gfx/interface/icons/traits/trait_primitive.dds"
-	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL }
+	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
+	ai_weight = {
+		weight = 0
+	}
 
 	custom_tooltip = TRAIT_SYNCRETIC_PROLES_EFFECT
 	modifier = {
@@ -210,6 +225,9 @@ trait_plantoid = {
 	
 	icon = "gfx/interface/icons/traits/leader_traits/trait_ruler_fertility_preacher.dds"
 	custom_tooltip = TRAIT_PLANTOID_EFFECT
+	ai_weight = {
+		weight = 0
+	}
 	
 	modifier = { 
 		pop_environment_tolerance = -0.40
@@ -235,6 +253,9 @@ trait_arthropoid = {
 	
 	icon = "gfx/interface/icons/traits/trait_arthropoid.dds"
 	custom_tooltip = TRAIT_ARTHROPOID_EFFECT
+	ai_weight = {
+		weight = 0
+	}
 	
 	modifier = { 
 		leader_age = -30
