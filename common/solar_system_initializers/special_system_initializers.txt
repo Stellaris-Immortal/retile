@@ -206,7 +206,52 @@ special_init_03 = {
 						set_primitive_age = early_space_age
 					}
 					set_owner = last_created_country
-
+					set_capital = yes
+					
+					if = {
+						limit = { num_pops > 8 }
+						while = {
+							limit = { num_pops > 8 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 8 }
+						while = {
+							limit = { num_pops < 8 }
+							create_pop = { species = owner_main_species }
+						}
+					}
+					remove_all_primitive_buildings = yes
+					add_building = building_primitive_capital
+					add_building = building_primitive_factory
+					add_district = district_engineers
+					add_district = district_scholars
+					add_district = district_housing
+					add_district = district_housing
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_food }
+						}
+						retile_exploit_food = yes
+					} ELSE = {
+						add_deposit = retile_module_farm_active
+					}
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_minerals }
+						}
+						retile_exploit_minerals = yes
+					} ELSE = {
+						add_deposit = retile_module_mine_active
+					}
+					IF = {
+						limit = {
+							any_deposit = { has_deposit_category = deposit_cat_energy }
+						}
+						retile_exploit_energy = yes
+					} ELSE = {
+						add_deposit = retile_module_generator_active
+					}
 					create_primitive_blockers = yes
 					
 					create_army = {
@@ -250,46 +295,7 @@ special_init_03 = {
 							set_location = PREV
 						}
 					}
-					while = {
-						count = 8
-						create_pop = { species = owner_main_species }
-					}
-					add_building = building_primitive_capital
-					add_building = building_primitive_factory
-					add_district = district_engineers
-					add_district = district_scholars
-					add_district = district_housing
-					add_district = district_housing
-					IF = {
-						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_food }
-						}
-						retile_exploit_food = yes
-					} ELSE = {
-						add_deposit = retile_module_farm_active
-					}
-					IF = {
-						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_minerals }
-						}
-						retile_exploit_minerals = yes
-					} ELSE = {
-						add_deposit = retile_module_mine_active
-					}
-					IF = {
-						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_energy }
-						}
-						retile_exploit_energy = yes
-					} ELSE = {
-						add_deposit = retile_module_generator_active
-					}
-					remove_building = building_colony_shelter
-		
-						last_created_country = {
-							capital_scope = { set_name = "Sol III" }
-						}			
-					}
+				}
 				# Industrial Age
 				25 = {
 					create_species = {
@@ -343,13 +349,22 @@ special_init_03 = {
 						set_primitive_age = machine_age
 					}
 					set_owner = last_created_country
+					set_capital = yes
 					
-					create_primitive_blockers = yes
-	
-					while = {
-						count = 5
-						create_pop = { species = owner_main_species }
+					if = {
+						limit = { num_pops > 5 }
+						while = {
+							limit = { num_pops > 5 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 5 }
+						while = {
+							limit = { num_pops < 5 }
+							create_pop = { species = owner_main_species }
+						}
 					}
+					remove_all_primitive_buildings = yes
 					add_building = building_urban_dwellings # primitive_city
 					add_building = building_primitive_capital
 					add_district = district_housing
@@ -361,8 +376,7 @@ special_init_03 = {
 					} ELSE = {
 						add_deposit = retile_module_farm_active
 					}
-					remove_building = building_colony_shelter
-					
+	
 					create_army = {
 						name = "NAME_German_Wehrmacht"
 						owner = last_created
@@ -452,26 +466,26 @@ special_init_03 = {
 						set_primitive_age = late_medieval_age
 					}
 					
-					set_owner = last_created_country		
+					set_owner = last_created_country
+					set_capital = yes
 										
-					while = {
-						count = 3
-						create_pop = { species = owner_main_species }
+					if = {
+						limit = { num_pops > 3 }
+						while = {
+							limit = { num_pops > 3 }
+							random_owned_pop = { kill_pop = yes }
+						}
+					} else_if = {
+						limit = { num_pops < 3 }
+						while = {
+							limit = { num_pops < 3 }
+							create_pop = { species = owner_main_species }
+						}
 					}
+					remove_all_primitive_buildings = yes
 					add_building = building_primitive_farm
 					add_building = building_primitive_dwellings
 					add_building = building_stone_palace
-					remove_building = building_colony_shelter
-						
-					while = {
-						count = 3
-						create_army = {
-							name = "NAME_Feudal_Levies"
-							owner = last_created
-							species = last_created
-							type = "primitive_army"
-						}
-					}
 					
 					last_created_country = {
 						capital_scope = { set_name = "NAME_Sol_III" }
