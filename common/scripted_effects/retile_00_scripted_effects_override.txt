@@ -489,3 +489,44 @@ fallen_empire_humiliate_effect = {
 		}
 	}
 }
+
+generate_lost_colony_parent_bonus = {
+	remove_building = building_capital
+	add_building = building_system_capital
+	add_district = district_housing
+	add_district = district_housing
+	retile_exploit_minerals = yes
+	retile_exploit_energy = yes
+	retile_exploit_food = yes
+
+	while = {
+		limit = { num_pops < 12 }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+	}
+
+	owner = {
+		create_fleet = {
+			effect = {
+				set_owner = prev
+				create_ship = {
+					name = random
+					random_existing_design = science
+				}
+				set_fleet_stance = evasive
+				set_location = prev.capital_scope.star
+				owner = {
+					create_leader = {
+						class = scientist
+						sub_type = survey
+						name = random
+						species = owner_main_species
+					}
+				}
+				set_leader = last_created_leader
+			}
+		}
+	}
+}
