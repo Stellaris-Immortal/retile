@@ -201,13 +201,86 @@ building_recycling_center = {
 		}
 	}	
 	
-	country_modifier = {
-		country_resource_max_add = 2000
+	triggered_desc = {
+		trigger = {
+			NOR = {
+				has_building = building_maintenance_depot
+				has_building = building_maintenance_depot_2
+				has_building = building_maintenance_depot_3
+			}
+		}
+		text = custodian_resource_pollution_effect_0
+	}
+	triggered_desc = {
+		trigger = {
+			has_building = building_maintenance_depot
+		}
+		text = custodian_resource_pollution_effect_1
+	}
+	triggered_desc = {
+		trigger = {
+			has_building = building_maintenance_depot_2
+		}
+		text = custodian_resource_pollution_effect_2
+	}
+	triggered_desc = {
+		trigger = {
+			has_building = building_maintenance_depot_3
+		}
+		text = custodian_resource_pollution_effect_3
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = custodian_resource_amplify_effect
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_minerals_buff_city_effect
+	planet_modifier = {
+		planet_custodians_minerals_produces_add = 5
+		planet_custodians_energy_upkeep_add = @job_energy_low
+		planet_custodians_consumer_goods_upkeep_add = @job_supplies_low
+		custodians_bio_food_upkeep_add = @living_standard_food_low
+		custodians_lith_minerals_upkeep_add = @living_standard_food_low
+		custodians_mech_energy_upkeep_add = @living_standard_food_low
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_building = building_maintenance_depot
+		}
+		planet_custodians_minerals_produces_add = 5
+		planet_custodians_energy_upkeep_add = @job_energy_low
+		planet_custodians_consumer_goods_upkeep_add = @job_supplies_low
+		custodians_bio_food_upkeep_add = @living_standard_food_low
+		custodians_lith_minerals_upkeep_add = @living_standard_food_low
+		custodians_mech_energy_upkeep_add = @living_standard_food_low
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_building = building_maintenance_depot_2
+		}
+		planet_custodians_minerals_produces_add = 10
+		planet_custodians_energy_upkeep_add = @job_energy_low2
+		planet_custodians_consumer_goods_upkeep_add = @job_supplies_low2
+		custodians_bio_food_upkeep_add = @living_standard_food_low2
+		custodians_lith_minerals_upkeep_add = @living_standard_food_low2
+		custodians_mech_energy_upkeep_add = @living_standard_food_low2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_building = building_maintenance_depot_3
+		}
+		planet_custodians_minerals_produces_add = 15
+		planet_custodians_energy_upkeep_add = @job_energy_low3
+		planet_custodians_consumer_goods_upkeep_add = @job_supplies_low3
+		custodians_bio_food_upkeep_add = @living_standard_food_low3
+		custodians_lith_minerals_upkeep_add = @living_standard_food_low3
+		custodians_mech_energy_upkeep_add = @living_standard_food_low3
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
 	}
 	
 	ai_weight = {
@@ -250,15 +323,88 @@ building_solar_panels = {
 		}
 	}	
 	
+	triggered_desc = {
+		trigger = {
+			NOR = {
+				has_building = building_maintenance_depot
+				has_building = building_maintenance_depot_2
+				has_building = building_maintenance_depot_3
+			}
+		}
+		text = custodian_resource_pollution_effect_0
+	}
+	triggered_desc = {
+		trigger = {
+			has_building = building_maintenance_depot
+		}
+		text = custodian_resource_pollution_effect_1
+	}
+	triggered_desc = {
+		trigger = {
+			has_building = building_maintenance_depot_2
+		}
+		text = custodian_resource_pollution_effect_2
+	}
+	triggered_desc = {
+		trigger = {
+			has_building = building_maintenance_depot_3
+		}
+		text = custodian_resource_pollution_effect_3
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = custodian_resource_amplify_effect
+	}
+	
+	planet_modifier = {
+		planet_custodians_energy_produces_add = 5
+		planet_custodians_energy_upkeep_add = @job_energy_low
+		planet_custodians_consumer_goods_upkeep_add = @job_supplies_low
+		custodians_bio_food_upkeep_add = @living_standard_food_low
+		custodians_lith_minerals_upkeep_add = @living_standard_food_low
+		custodians_mech_energy_upkeep_add = @living_standard_food_low
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_building = building_maintenance_depot
+		}
+		planet_custodians_energy_produces_add = 5
+		planet_custodians_energy_upkeep_add = @job_energy_low
+		planet_custodians_consumer_goods_upkeep_add = @job_supplies_low
+		custodians_bio_food_upkeep_add = @living_standard_food_low
+		custodians_lith_minerals_upkeep_add = @living_standard_food_low
+		custodians_mech_energy_upkeep_add = @living_standard_food_low
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_building = building_maintenance_depot_2
+		}
+		planet_custodians_energy_produces_add = 10
+		planet_custodians_energy_upkeep_add = @job_energy_low2
+		planet_custodians_consumer_goods_upkeep_add = @job_supplies_low2
+		custodians_bio_food_upkeep_add = @living_standard_food_low2
+		custodians_lith_minerals_upkeep_add = @living_standard_food_low2
+		custodians_mech_energy_upkeep_add = @living_standard_food_low2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			has_building = building_maintenance_depot_3
+		}
+		planet_custodians_energy_produces_add = 15
+		planet_custodians_energy_upkeep_add = @job_energy_low3
+		planet_custodians_consumer_goods_upkeep_add = @job_supplies_low3
+		custodians_bio_food_upkeep_add = @living_standard_food_low3
+		custodians_lith_minerals_upkeep_add = @living_standard_food_low3
+		custodians_mech_energy_upkeep_add = @living_standard_food_low3
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_energy_buff_city_effect
-	}
-
 	ai_weight = {
 		weight = 1
 	}
@@ -842,10 +988,6 @@ building_maintenance_depot = {
 	}
 	triggered_desc = {
 		trigger = { always = yes }
-		text = custodian_pollution_1_empire_effect
-	}
-	triggered_desc = {
-		trigger = { always = yes }
 		text = custodian_depot_amplify_effect
 	}
 	
@@ -912,10 +1054,6 @@ building_maintenance_depot_2 = {
 	}
 	triggered_desc = {
 		trigger = { always = yes }
-		text = custodian_pollution_2_empire_effect
-	}
-	triggered_desc = {
-		trigger = { always = yes }
 		text = custodian_depot_amplify_effect
 	}
 	
@@ -975,10 +1113,6 @@ building_maintenance_depot_3 = {
 	triggered_desc = {
 		trigger = { always = yes }
 		text = custodian_pollution_3_effect
-	}
-	triggered_desc = {
-		trigger = { always = yes }
-		text = custodian_pollution_3_empire_effect
 	}
 	triggered_desc = {
 		trigger = { always = yes }
