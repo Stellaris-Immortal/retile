@@ -689,88 +689,86 @@ set_primitive_age_effect = {
 }
 
 remove_all_primitive_buildings = {
-	if = {
+	while = {
 		limit = { has_building = building_colony_shelter }
-		while = {
+		if = {
 			limit = { has_building = building_colony_shelter }
 			remove_building = building_colony_shelter
 		}
 	}
-	if = {
+	while = {
 		limit = { has_building = building_crude_huts }
-		while = {
+		if = {
 			limit = { has_building = building_crude_huts }
 			remove_building = building_crude_huts
 		}
 	}
-	if = {
+	while = {
 		limit = { has_building = building_primitive_dwellings }
-		while = {
+		if = {
 			limit = { has_building = building_primitive_dwellings }
 			remove_building = building_primitive_dwellings
 		}
 	}
-	if = {
+	while = {
 		limit = { has_building = building_stone_palace }
-		while = {
+		if = {
 			limit = { has_building = building_stone_palace }
 			remove_building = building_stone_palace
 		}
 	}
-	if = {
+	while = {
 		limit = { has_building = building_primitive_factory }
-		while = {
+		if = {
 			limit = { has_building = building_primitive_factory }
 			remove_building = building_primitive_factory
 		}
 	}
-	if = {
+	while = {
 		limit = { has_building = building_primitive_farm }
-		while = {
+		if = {
 			limit = { has_building = building_primitive_farm }
 			remove_building = building_primitive_farm
 		}
 	}
-	if = {
+	while = {
 		limit = { has_building = building_primitive_capital }
-		while = {
+		if = {
 			limit = { has_building = building_primitive_capital }
 			remove_building = building_primitive_capital
 		}
 	}
-	if = {
+	while = {
 		limit = { has_building = building_urban_dwellings }
-		while = {
+		if = {
 			limit = { has_building = building_urban_dwellings }
 			remove_building = building_urban_dwellings
 		}
 	}
-	if = {
+	while = {
 		limit = { has_district = district_housing }
-		while = {
+		if = {
 			limit = { has_district = district_housing }
 			remove_district = district_housing
 		}
 	}
-	if = {
+	while = {
 		limit = { has_district = district_engineers }
-		while = {
+		if = {
 			limit = { has_district = district_engineers }
 			remove_district = district_engineers
 		}
 	}
-	if = {
+	while = {
 		limit = { has_district = district_scholars }
-		while = {
+		if = {
 			limit = { has_district = district_scholars }
 			remove_district = district_scholars
 		}
 	}
-	if = {
-		limit = {
-			has_deposit = d_decrepit_dwellings
-		}
-		while = {
+	while = {
+		limit = { has_deposit = d_decrepit_dwellings }
+		if = {
 			limit = { has_deposit = d_decrepit_dwellings }
 			random_deposit = {
 				limit = { is_deposit_type = d_decrepit_dwellings }
@@ -778,11 +776,9 @@ remove_all_primitive_buildings = {
 			}
 		}
 	}
-	if = {
-		limit = {
-			has_deposit = d_failing_infrastructure
-		}
-		while = {
+	while = {
+		limit = { has_deposit = d_failing_infrastructure }
+		if = {
 			limit = { has_deposit = d_failing_infrastructure }
 			random_deposit = {
 				limit = { is_deposit_type = d_failing_infrastructure }
