@@ -426,28 +426,31 @@ building_food_1 = {
 	}
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-			AND = {
-				owner = { has_country_flag = retile_ai_needs_food }
-				retile_ai_planet_healthy_building = yes
-				count_pops = {
-					limit = { has_job = farmer }
-					count > 2
+		any_deposit = { has_deposit_category = deposit_cat_food }
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					owner = { has_country_flag = retile_ai_needs_food }
+					retile_ai_planet_healthy_building_labor = yes
 				}
 			}
 		}
 	}
-
+	
 	destroy_trigger = {
 		OR = {
+			AND = {
+				owner = { is_ai = yes }
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_food } }
+			}
 			owner = { country_uses_food = no }
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
 			has_modifier = resort_colony
 		}
 	}
-		
+	
 	upgrades = {
 		building_food_2
 	}
@@ -501,21 +504,23 @@ building_food_2 = {
 	can_be_disabled = no
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-			AND = {
-				owner = { has_country_flag = retile_ai_needs_food }
-				retile_ai_planet_healthy_building = yes
-				count_pops = {
-					limit = { has_job = farmer }
-					count > 2
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					owner = { has_country_flag = retile_ai_needs_food }
+					retile_ai_planet_healthy_building_labor = yes
 				}
 			}
 		}
 	}
-
+	
 	destroy_trigger = {
 		OR = {
+			AND = {
+				owner = { is_ai = yes }
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_food } }
+			}
 			owner = { country_uses_food = no }
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
@@ -580,21 +585,23 @@ building_food_3 = {
 	can_be_disabled = no
 		
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-			AND = {
-				owner = { has_country_flag = retile_ai_needs_food }
-				retile_ai_planet_healthy_building = yes
-				count_pops = {
-					limit = { has_job = farmer }
-					count > 2
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					owner = { has_country_flag = retile_ai_needs_food }
+					retile_ai_planet_healthy_building_labor = yes
 				}
 			}
 		}
 	}
-
+	
 	destroy_trigger = {
 		OR = {
+			AND = {
+				owner = { is_ai = yes }
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_food } }
+			}
 			owner = { country_uses_food = no }
 			is_planet_class = pc_machine
 			is_planet_class = pc_city
@@ -662,14 +669,13 @@ building_mineral_1 = {
 	}
 
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-			AND = {
-				owner = { has_country_flag = retile_ai_needs_minerals }
-				retile_ai_planet_healthy_building = yes
-				count_pops = {
-					limit = { has_job = miner }
-					count > 2
+		any_deposit = { has_deposit_category = deposit_cat_minerals }
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					owner = { has_country_flag = retile_ai_needs_minerals }
+					retile_ai_planet_healthy_building_labor = yes
 				}
 			}
 		}
@@ -677,6 +683,10 @@ building_mineral_1 = {
 
 	destroy_trigger = {
 		OR = {
+			AND = {
+				owner = { is_ai = yes }
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_minerals } }
+			}
 			is_planet_class = pc_city
 			has_modifier = resort_colony
 		}
@@ -729,14 +739,12 @@ building_mineral_2 = {
 	can_be_disabled = no
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-			AND = {
-				owner = { has_country_flag = retile_ai_needs_minerals }
-				retile_ai_planet_healthy_building = yes
-				count_pops = {
-					limit = { has_job = miner }
-					count > 2
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					owner = { has_country_flag = retile_ai_needs_minerals }
+					retile_ai_planet_healthy_building_labor = yes
 				}
 			}
 		}
@@ -744,6 +752,10 @@ building_mineral_2 = {
 
 	destroy_trigger = {
 		OR = {
+			AND = {
+				owner = { is_ai = yes }
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_minerals } }
+			}
 			is_planet_class = pc_city
 			has_modifier = resort_colony
 		}
@@ -805,14 +817,12 @@ building_mineral_3 = {
 	can_be_disabled = no
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-			AND = {
-				owner = { has_country_flag = retile_ai_needs_minerals }
-				retile_ai_planet_healthy_building = yes
-				count_pops = {
-					limit = { has_job = miner }
-					count > 2
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					owner = { has_country_flag = retile_ai_needs_minerals }
+					retile_ai_planet_healthy_building_labor = yes
 				}
 			}
 		}
@@ -820,6 +830,10 @@ building_mineral_3 = {
 
 	destroy_trigger = {
 		OR = {
+			AND = {
+				owner = { is_ai = yes }
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_minerals } }
+			}
 			is_planet_class = pc_city
 			has_modifier = resort_colony
 		}
@@ -879,14 +893,13 @@ building_energy_1 = {
 	}
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-			AND = {
-				owner = { has_country_flag = retile_ai_needs_minerals }
-				retile_ai_planet_healthy_building = yes
-				count_pops = {
-					limit = { has_job = technician }
-					count > 2
+		any_deposit = { has_deposit_category = deposit_cat_energy }
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					retile_ai_planet_healthy_building_labor = yes
 				}
 			}
 		}
@@ -894,6 +907,10 @@ building_energy_1 = {
 
 	destroy_trigger = {
 		OR = {
+			AND = {
+				owner = { is_ai = yes }
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_energy } }
+			}
 			is_planet_class = pc_city
 			has_modifier = resort_colony
 		}
@@ -945,14 +962,12 @@ building_energy_2 = {
 	can_be_disabled = no
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-			AND = {
-				owner = { has_country_flag = retile_ai_needs_minerals }
-				retile_ai_planet_healthy_building = yes
-				count_pops = {
-					limit = { has_job = technician }
-					count > 2
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					retile_ai_planet_healthy_building_labor = yes
 				}
 			}
 		}
@@ -960,6 +975,10 @@ building_energy_2 = {
 
 	destroy_trigger = {
 		OR = {
+			AND = {
+				owner = { is_ai = yes }
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_energy } }
+			}
 			is_planet_class = pc_city
 			has_modifier = resort_colony
 		}
@@ -1015,14 +1034,12 @@ building_energy_3 = {
 	can_be_disabled = no
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-			AND = {
-				owner = { has_country_flag = retile_ai_needs_minerals }
-				retile_ai_planet_healthy_building = yes
-				count_pops = {
-					limit = { has_job = technician }
-					count > 2
+		hidden_trigger = {
+			OR = {
+				owner = { is_ai = no }
+				AND = {
+					owner = { has_country_flag = retile_ai_needs_energy }
+					retile_ai_planet_healthy_building_labor = yes
 				}
 			}
 		}
@@ -1030,6 +1047,10 @@ building_energy_3 = {
 
 	destroy_trigger = {
 		OR = {
+			AND = {
+				owner = { is_ai = yes }
+				NOT = { any_deposit = { has_deposit_category = deposit_cat_energy } }
+			}
 			is_planet_class = pc_city
 			has_modifier = resort_colony
 		}

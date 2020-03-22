@@ -12,9 +12,26 @@ retile_ai_planet_healthy_district = {
 	planet_crime < 10
 }
 
-########## DEPRECATED #############
 retile_ai_planet_healthy_building = {
-	always = yes
+	OR = {
+		owner = {
+			has_monthly_income = { resource = energy value > 25 }
+			has_monthly_income = { resource = minerals value > 25 }
+			has_monthly_income = { resource = energy value > 25 }
+		}
+		count_pops = {
+			limit = { has_job = laborer }
+			count > 3
+		}
+	}
+}
+
+retile_ai_planet_healthy_building_labor = {
+	NOT = { owner = { has_country_flag = retile_ai_needs_consumer_goods_crisis } }
+	count_pops = {
+		limit = { has_job = laborer }
+		count > 3
+	}
 }
 
 # Is this planet ready to upgrade it's capital?
@@ -24,48 +41,12 @@ retile_ready_capital = {
 		AND = {
 			owner = { has_resource = { type = influence amount > 150 } }
 			NOT = { owner = { has_country_flag = retile_ai_needs_energy_crisis } }
-			free_jobs < 1
+			#free_jobs < 1
 			free_building_slots < 1
 		}
 	}
 }
 
-retile_ready_energy = {	# deposit scope
-	exists = owner
-	OR = {
-		owner = { is_ai = no }
-		AND = {
-			owner = { has_country_flag = retile_ai_needs_energy }
-			planet = { any_pop = { is_unemployed = yes } }
-		}
-	}
-}
-retile_ready_minerals = {	# deposit scope
-	exists = owner
-	OR = {
-		owner = { is_ai = no }
-		AND = {
-			owner = { has_country_flag = retile_ai_needs_minerals }
-			planet = { any_pop = { is_unemployed = yes } }
-		}
-	}
-}
-retile_ready_food = {	# deposit scope
-	exists = owner
-	OR = {
-		owner = { is_ai = no }
-		AND = {
-			OR = {
-				owner = { has_country_flag = retile_ai_needs_food }
-				AND = {
-					owner = { is_plantoid_empire = yes }
-					count_pops = { limit = { has_job = farmer } count < 3 }
-				}
-			}
-			planet = { any_pop = { is_unemployed = yes } }
-		}
-	}
-}
 retile_ready_restore = {	# deposit scope
 	exists = owner
 	owner = { is_ai = no }
