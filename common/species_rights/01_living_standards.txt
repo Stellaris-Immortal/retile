@@ -197,12 +197,14 @@ living_standard_chemical_bliss = {
 				owner = { has_deficit = consumer_goods }			
 			}
 		}
-		pop_happiness = 0.4
+		pop_cat_ruler_happiness = 0.30
+		pop_cat_specialist_happiness = 0.30
+		pop_cat_worker_happiness = 0.30
+		pop_cat_slave_happiness = 0.30
 	}
 	
 	pop_modifier = {
-		planet_jobs_produces_mult = -0.6
-		custom_tooltip = living_standard_chemical_bliss_happiness_tooltip
+		planet_jobs_produces_mult = -0.25
 	}
 	
 	potential = {
@@ -423,25 +425,22 @@ living_standard_academic_privilege = {
 				owner = { has_deficit = consumer_goods }			
 			}
 		}
-		planet_jobs_engineering_research_produces_mult = 0.1
-		planet_jobs_physics_research_produces_mult = 0.1
-		planet_jobs_society_research_produces_mult = 0.1		
-		pop_cat_ruler_happiness = 0.15
-		pop_cat_specialist_happiness = 0.15
+		planet_jobs_ruler_produces_mult = 0.10
+		planet_jobs_specialist_produces_mult = 0.1
+		pop_cat_ruler_happiness = 0.10
+		pop_cat_specialist_happiness = 0.05
 	}
 		
 	pop_modifier = {
-		pop_cat_ruler_political_power = 9
-		pop_cat_specialist_political_power = 4
+		pop_cat_ruler_political_power = 6
+		pop_cat_specialist_political_power = 2
+		pop_cat_worker_political_power = 0.5
 	}
 	
 	potential = {
 		exists = from
 		from = { is_gestalt = no }
-		NOR = { 
-			from = { has_valid_civic = civic_shared_burden }
-			from = { has_valid_civic = civic_anarchist }
-		}
+		NOT = { from = { has_valid_civic = civic_shared_burden } }
 		NOR = {
 			has_trait = trait_hive_mind
 			has_trait = trait_machine_unit
