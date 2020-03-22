@@ -184,9 +184,25 @@ d_tree_of_life_home = {
 		planet_jobs_society_research_produces_mult = 0.10
 		planet_housing_add = 10
 		#district_farming_max = 4
-		planet_laborers_food_produces_add = 2
+		planet_laborers_non_plantoid_food_produces_add = 2
+		planet_laborers_fruiting_food_produces_add = 0.8
 	}
-
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_non_plantoid_food_produces_add = 2
+		planet_laborers_fruiting_food_produces_add = 0.8
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_non_plantoid_food_produces_add = 4
+		planet_laborers_fruiting_food_produces_add = 1.6
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_non_plantoid_food_produces_add = 6
+		planet_laborers_fruiting_food_produces_add = 2.4
+	}
+	
 	resources = {
 		category = planet_deposits
 		upkeep = {
@@ -220,7 +236,23 @@ d_tree_of_life_colony = {
 		planet_jobs_society_research_produces_mult = 0.10
 		planet_housing_add = 5
 		#district_farming_max = 2
-		planet_laborers_food_produces_add = 1
+		planet_laborers_non_plantoid_food_produces_add = 1
+		planet_laborers_fruiting_food_produces_add = 0.4
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_non_plantoid_food_produces_add = 1
+		planet_laborers_fruiting_food_produces_add = 0.4
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_non_plantoid_food_produces_add = 2
+		planet_laborers_fruiting_food_produces_add = 0.8
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_non_plantoid_food_produces_add = 3
+		planet_laborers_fruiting_food_produces_add = 1.6
 	}
 
 	resources = {
@@ -310,6 +342,18 @@ d_lithoid_crater = {
 		planet_laborers_minerals_produces_add = 3
 		planet_laborers_food_produces_mult = -0.5
 	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_minerals_1 } }
+		planet_laborers_minerals_produces_add = 3
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_minerals_2 } }
+		planet_laborers_minerals_produces_add = 6
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_minerals_3 } }
+		planet_laborers_minerals_produces_add = 9
+	}
 
 	triggered_planet_modifier = {
 		potential = {
@@ -368,6 +412,18 @@ d_project_cornucopia = {
 		planet_laborers_minerals_produces_add = 2
 		planet_jobs_minerals_produces_mult = 0.05
 		pop_environment_tolerance = -0.2
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = 4
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = 6
 	}
 
 	drop_weight = {
@@ -436,6 +492,18 @@ d_bluelotus = {
 	planet_modifier = {
 		planet_laborers_energy_produces_add = 0.5
 	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = 0.5
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = 1.5
+	}
 	
 	drop_weight = {
 		weight = 0
@@ -449,6 +517,18 @@ d_bluelotus2 = {
 
 	planet_modifier = {
 		planet_laborers_energy_produces_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = 2
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = 3
 	}
 	
 	drop_weight = {
@@ -481,6 +561,18 @@ d_crater_bluelotus = {
 	planet_modifier = {
 		#district_mining_max = 1
 		planet_laborers_minerals_produces_add = 0.5
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_minerals_1 } }
+		planet_laborers_minerals_produces_add = 0.5
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_minerals_2 } }
+		planet_laborers_minerals_produces_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_minerals_3 } }
+		planet_laborers_minerals_produces_add = 1.5
 	}
 
     resources = {
