@@ -542,7 +542,10 @@ civic_efficient_bureaucracy = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	random_weight = { base = 5 }
-	modifier = { country_admin_cap_add = 20 }
+	modifier = { 
+		country_admin_cap_add = 10
+		empire_size_colonies_mult = -0.10
+	}
 	description = "civic_efficient_bureaucracy_effects"
 }
 
@@ -829,6 +832,9 @@ civic_byzantine_bureaucracy = {
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
+	}
+	modifier = { 
+		planet_bureaucrats_unity_produces_add = 2
 	}
 	possible = {
 		always = yes

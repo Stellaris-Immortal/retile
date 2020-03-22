@@ -372,13 +372,13 @@ building_commercial_forum = {
 			minerals = 800
 		}	
 		upkeep = {
-			energy = 3
+			energy = @job_energy_normal2
+			consumer_goods = @job_supplies_normal2
 		}		
 	}
 	
 	ai_weight = {
-			energy = @job_energy_normal2
-			consumer_goods = @job_supplies_normal2
+		weight = 10
 	}
 }
 
@@ -855,7 +855,8 @@ building_temple_of_prosperity = {
 	
 	triggered_planet_modifier = {
 		potential = {
-			branch_office_owner = { is_criminal_syndicate = yes }	
+			exists = branch_office_owner
+			branch_office_owner = { is_criminal_syndicate = yes }
 		}
 		job_clerk_add = -1
 		job_criminal_add = 1

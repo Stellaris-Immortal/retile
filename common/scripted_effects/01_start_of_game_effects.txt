@@ -1055,6 +1055,15 @@ generate_start_buildings_and_districts = {
 		add_district = district_housing
 		add_district = district_housing
 	}
+	if = {
+		limit = {
+			owner = { has_origin = origin_default }
+		}
+		add_district = district_housing
+		add_district = district_clerks
+		add_district = district_engineers
+		add_district = district_scholars
+	}
 	
 	if = {
 		limit = { owner = { is_hive_empire = yes } }
@@ -1283,6 +1292,23 @@ generate_start_pops = {
 		}
 	}
 
+	if = {
+		limit = {
+			owner = { has_origin = origin_default }
+		}
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+	   create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}		
+	}	   
 }
 
 generate_home_planet_final_pass = {
