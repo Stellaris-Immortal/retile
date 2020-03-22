@@ -28,6 +28,80 @@
 #	retile_energy_world
 #	retile_minerals_world
 
+has_worker_job = {
+	has_job = custodian
+}
+
+planet_needs_workers = {
+	has_available_job = custodian
+}
+
+has_combat_specialist_job = {
+	has_job = soldier
+}
+
+planet_needs_combat_specialists = {
+	has_available_job = soldier
+}
+
+has_robot_specialist_job = {
+	OR = {
+		has_job = clerk
+		has_job = foundry
+		has_job = bureaucrat
+	}
+}
+
+planet_needs_robot_specialists = {
+	OR = {
+		has_available_job = clerk
+		has_available_job = foundry
+		has_available_job = bureaucrat
+	}
+}
+
+has_synth_specialist_job = {
+	OR = {
+		has_job = researcher
+		has_job = patrol_drone
+		has_job = dimensional_portal_researcher
+		has_job = dimensional_portal_researcher_gestalt
+		has_job = titan_hunter
+	}
+}
+
+planet_needs_synth_specialists = {
+	OR = {
+		has_available_job = researcher
+		has_available_job = patrol_drone
+		has_available_job = dimensional_portal_researcher
+		has_available_job = dimensional_portal_researcher_gestalt
+		has_available_job = titan_hunter
+	}
+}
+
+has_ruler_job = {
+	OR = {
+		has_job = head_researcher
+		has_job = high_priest
+		has_job = administrator
+		has_job = noble
+		has_job = merchant
+		has_job = executive
+	}
+}
+
+planet_needs_rulers = {
+	OR = {
+		has_available_job = head_researcher
+		has_available_job = high_priest
+		has_available_job = administrator
+		has_available_job = noble
+		has_available_job = merchant
+		has_available_job = executive
+	}
+}
+
 # Does this pop eat food?
 pop_eats_food = {
 	species = {
@@ -52,17 +126,6 @@ pop_eats_energy = {
 			is_archetype = ROBOT
 			is_archetype = MACHINE
 		}
-	}
-}
-
-# is this pop currently seeking a job?
-retile_job_seeking = {
-	NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
-	OR = {
-		has_job = no
-		has_job = servant
-		has_job = slave_toiler
-		has_pop_flag = retile_pop_lfw
 	}
 }
 
