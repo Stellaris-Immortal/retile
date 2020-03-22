@@ -40,27 +40,27 @@ planet_event = {
 		if = {
 			limit = { planet_needs_workers = yes }
 			set_timed_planet_flag = { flag = planet_needs_workers days = 30 }
-			set_timed_country_flag = { flag = country_needs_workers days = 30 }
+			owner = { set_timed_country_flag = { flag = country_needs_workers days = 30 } }
 		}
 		if = {
 			limit = { planet_needs_combat_specialists = yes }
 			set_timed_planet_flag = { flag = planet_needs_combat_specialists days = 30 }
-			set_timed_country_flag = { flag = country_needs_combat_specialists days = 30 }
+			owner = { set_timed_country_flag = { flag = country_needs_combat_specialists days = 30 } }
 		}
 		if = {
 			limit = { planet_needs_robot_specialists = yes }
 			set_timed_planet_flag = { flag = planet_needs_robot_specialists days = 30 }
-			set_timed_country_flag = { flag = country_needs_robot_specialists days = 30 }
+			owner = { set_timed_country_flag = { flag = country_needs_robot_specialists days = 30 } }
 		}
 		if = {
 			limit = { planet_needs_synth_specialists = yes }
 			set_timed_planet_flag = { flag = planet_needs_synth_specialists days = 30 }
-			set_timed_country_flag = { flag = country_needs_synth_specialists days = 30 }
+			owner = { set_timed_country_flag = { flag = country_needs_synth_specialists days = 30 } }
 		}
 		if = {
 			limit = { planet_needs_rulers = yes }
 			set_timed_planet_flag = { flag = planet_needs_rulers days = 30 }
-			set_timed_country_flag = { flag = country_needs_rulers days = 30 }
+			owner = { set_timed_country_flag = { flag = country_needs_rulers days = 30 } }
 		}
 	}
 }
@@ -214,7 +214,7 @@ pop_event = {
 					root = { robot_specialist_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_robot_specialists
-				remove_country_flag = planet_needs_robot_specialists
+				owner = { remove_country_flag = planet_needs_robot_specialists }
 			}
 			if = {
 				limit = {
@@ -222,7 +222,7 @@ pop_event = {
 					root = { combat_specialist_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_combat_specialists
-				remove_country_flag = planet_needs_combat_specialists
+				owner = { remove_country_flag = planet_needs_combat_specialists }
 			}
 			if = {
 				limit = {
@@ -230,7 +230,7 @@ pop_event = {
 					root = { droid_specialist_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_droid_specialists
-				remove_country_flag = planet_needs_droid_specialists
+				owner = { remove_country_flag = planet_needs_droid_specialists }
 			}
 			if = {
 				limit = {
@@ -238,7 +238,7 @@ pop_event = {
 					root = { ruler_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_rulers
-				remove_country_flag = planet_needs_rulers
+				owner = { remove_country_flag = planet_needs_rulers }
 			}
 			
 			resettle_pop = { pop = root planet = this}
@@ -697,7 +697,7 @@ country_event = {
 					from = { robot_specialist_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_robot_specialists
-				remove_country_flag = planet_needs_robot_specialists
+				owner = { remove_country_flag = planet_needs_robot_specialists }
 			}
 			if = {
 				limit = {
@@ -705,7 +705,7 @@ country_event = {
 					from = { combat_specialist_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_combat_specialists
-				remove_country_flag = planet_needs_combat_specialists
+				owner = { remove_country_flag = planet_needs_combat_specialists }
 			}
 			if = {
 				limit = {
@@ -713,7 +713,7 @@ country_event = {
 					from = { droid_specialist_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_droid_specialists
-				remove_country_flag = planet_needs_droid_specialists
+				owner = { remove_country_flag = planet_needs_droid_specialists }
 			}
 			if = {
 				limit = {
@@ -721,7 +721,7 @@ country_event = {
 					from = { ruler_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_rulers
-				remove_country_flag = planet_needs_rulers
+				owner = { remove_country_flag = planet_needs_rulers }
 			}
 			
 			resettle_pop = { pop = from planet = this}
@@ -821,7 +821,7 @@ country_event = {
 					from = { robot_specialist_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_robot_specialists
-				remove_country_flag = planet_needs_robot_specialists
+				owner = { remove_country_flag = planet_needs_robot_specialists }
 			}
 			if = {
 				limit = {
@@ -829,7 +829,7 @@ country_event = {
 					from = { combat_specialist_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_combat_specialists
-				remove_country_flag = planet_needs_combat_specialists
+				owner = { remove_country_flag = planet_needs_combat_specialists }
 			}
 			if = {
 				limit = {
@@ -837,7 +837,7 @@ country_event = {
 					from = { droid_specialist_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_droid_specialists
-				remove_country_flag = planet_needs_droid_specialists
+				owner = { remove_country_flag = planet_needs_droid_specialists }
 			}
 			if = {
 				limit = {
@@ -845,7 +845,7 @@ country_event = {
 					from = { ruler_job_check_trigger = yes }
 				}
 				remove_planet_flag = planet_needs_rulers
-				remove_country_flag = planet_needs_rulers
+				owner = { remove_country_flag = planet_needs_rulers }
 			}
 
 			resettle_pop = { pop = from planet = this}
