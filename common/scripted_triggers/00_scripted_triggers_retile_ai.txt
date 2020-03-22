@@ -7,33 +7,27 @@ retile_ai_has_planet_crisis = {
 }
 
 retile_ai_planet_healthy_district = {
-	OR = {
-		owner = {
-			has_monthly_income = { resource = energy value > 25 }
-			has_monthly_income = { resource = minerals value > 25 }
-			has_monthly_income = { resource = energy value > 25 }
+	AND = {
+		OR {
+			owner = { country_uses_food = no }
+			owner = { has_monthly_income = { resource = food value > 25 } }
+			NOT = { any_deposit = { has_deposit_categry = deposit_cat_food } }
 		}
-		NOT = { any_deposit = { OR = {
-			has_deposit_categry = deposit_cat_food
-			has_deposit_categry = deposit_cat_energy
-			has_deposit_categry = deposit_cat_minerals
-		} } }
+		OR {
+			owner = { has_monthly_income = { resource = minerals value > 25 } }
+			NOT = { any_deposit = { has_deposit_categry = deposit_cat_minerals } }
+		}
+		OR {
+			owner = { has_monthly_income = { resource = energy value > 25 } }
+			NOT = { any_deposit = { has_deposit_categry = deposit_cat_energy } }
+		}
+	}
 	free_amenities < 300
 	planet_crime < 10
 }
 
 retile_ai_planet_healthy_building = {
-	OR = {
-		owner = {
-			has_monthly_income = { resource = energy value > 25 }
-			has_monthly_income = { resource = minerals value > 25 }
-			has_monthly_income = { resource = energy value > 25 }
-		}
-		count_pops = {
-			limit = { has_job = laborer }
-			count > 3
-		}
-	}
+	always = yes
 }
 
 retile_ai_planet_healthy_building_labor = {
