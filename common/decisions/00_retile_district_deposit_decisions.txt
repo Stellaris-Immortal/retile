@@ -249,7 +249,7 @@ decision_retile_deposit_bioreactor = {
 			is_machine_empire = yes
 			is_lithoid_empire = yes
 		} }
-		NOT = { has_deposit = retile_deposit_bioreactor }
+		free_district_slots > 0
 	}
 
 	allow = {
@@ -264,9 +264,11 @@ decision_retile_deposit_bioreactor = {
 	}
 	
 	effect = {
-		custom_tooltip = decision_retile_deposit_bioreactor_effects
+		#custom_tooltip = decision_retile_deposit_bioreactor_effects
 		if = {
-			limit = { NOT = { has_deposit = retile_deposit_bioreactor } }
+			limit = {
+				free_district_slots > 0
+			}
 			add_deposit = retile_deposit_bioreactor
 		}
 	}
@@ -284,7 +286,7 @@ decision_retile_deposit_bioreactor_remove = {
 	}
 	
 	effect = {
-		custom_tooltip = decision_retile_deposit_bioreactor_remove_effects
+		#custom_tooltip = decision_retile_deposit_bioreactor_remove_effects
 		remove_deposit = retile_deposit_bioreactor
 	}
 	

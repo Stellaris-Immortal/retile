@@ -42,8 +42,12 @@ retile_deposit_bioreactor = {
 	resources = {
 		category = planet_buildings
 		upkeep = {
-			energy = 10
-			#alloys = 1
+			trigger = { owner = { has_resource = { type = food amount > 25 } }
+			food = 50
+		}
+		produces = {
+			trigger = { owner = { has_resource = { type = food amount > 25 } }
+			energy = 40
 		}
 	}
 
