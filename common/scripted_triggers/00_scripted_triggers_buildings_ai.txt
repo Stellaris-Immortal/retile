@@ -86,11 +86,13 @@ buildings_build_building = {
 }
 
 country_uses_food = {
-	any_owned_pop = {
-		species = { OR = {
-			is_archetype = BIOLOGICAL
-			is_archetype = ARTHROPOID
-		} }
+	any_owned_species = {
+		NOR = {
+			is_archetype = ROBOT
+			is_archetype = MACHINE
+			is_archetype = PLANTOID
+			is_archetype = LITHOID
+		}
 	}
 }
 

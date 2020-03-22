@@ -663,9 +663,9 @@ specialist = {
 		potential = {
 			can_generate_trade_value = yes
 			OR = {
-				has_academic_living_standard_type = yes
 				has_very_high_living_standard_type = yes
-			}	
+				has_academic_living_standard_type = yes
+		}
 		}
 		trade_value_add = @trade_value_very_high
 	}
@@ -722,8 +722,8 @@ specialist = {
 		upkeep = {
 			trigger = {
 				OR = {
-					has_academic_living_standard_type = yes
 					has_very_high_living_standard_type = yes
+					has_academic_living_standard_type = yes
 				}
 			}
 			consumer_goods = @living_standard_luxuries_very_high
@@ -1006,18 +1006,18 @@ worker = {
 	triggered_planet_modifier = {
 		potential = {
 			can_generate_trade_value = yes
+			OR = {
 			has_high_living_standard_type = yes
+				has_academic_living_standard_type = yes
+		}
 		}
 		trade_value_add = @trade_value_high
 	}	
 	triggered_planet_modifier = {
 		potential = {
 			can_generate_trade_value = yes
-			OR = {
 				has_normal_living_standard_type = yes
-				has_academic_living_standard_type = yes
 			}
-		}
 		trade_value_add = @trade_value_normal
 	}
 	triggered_planet_modifier = {
@@ -1144,17 +1144,17 @@ worker = {
 		}
 		upkeep = {
 			trigger = {
+				OR = {
 				has_high_living_standard_type = yes
+					has_academic_living_standard_type = yes
+			}
 			}
 			consumer_goods = @living_standard_luxuries_high
 		}
 		upkeep = {
 			trigger = {
-				OR = {
 					has_normal_living_standard_type = yes
-					has_academic_living_standard_type = yes
 				}
-			}
 			consumer_goods = @living_standard_luxuries_normal
 		}
 		upkeep = {
