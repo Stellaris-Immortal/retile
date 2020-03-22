@@ -441,153 +441,31 @@ pop_event = {
 					}	
 				}
 				10 = { # performance optimization, and numbers tweak: put internal/foreign
-					   # checks in here so they only happen if the pop decides to migrate
-					1 = {} # In case other things end up at weight 0, do nothing
-					
-					########################################################### Internal Migration
-					0 = {
-						modifier = { # minimum requirements
-							add = 100 # base chance to migrate internally
-							owner = { has_policy_flag = migration_allowed }
-							owner = { num_owned_planets < 2 }
-						}
-						# migrate inside country
-						owner = { country_event = { id = retile_pop.111 } }
-					}
-					
-					########################################################### Foreign Migration
-					0 = {
-						modifier = { # minimum requirements
-							add = 30 # base chance of foreign migration
-							
-							# species must not be prohibited from leaving the country
-							NOT = { has_migration_control = yes }
-							
-							# can't migrate out if ethics-matching is required, and pop matches our ethics
-							NOT = { owner = {
-								has_policy_flag = foreign_migration_ethics
-								OR = {
-									AND = { is_pacifist = yes		root = { is_pacifist = yes } }
-									AND = { is_militarist = yes		root = { is_militarist = yes } }
-									AND = { is_spiritualist = yes	root = { is_spiritualist = yes } }
-									AND = { is_materialist = yes	root = { is_materialist = yes } }
-									AND = { is_xenophobe = yes		root = { is_xenophobe = yes } }
-									AND = { is_xenophile = yes		root = { is_xenophile = yes } }
-									AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
-									AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
-								}
-							} }
-							
-							# must have another country that pops can migrate to
-							# respect ethics-matching requirements of other countries
-							owner = { any_relation = {
-								count >= 1
-								has_migration_access = root.owner
-								any_owned_planet = { free_housing > 0 }
-								OR = {
-									NOT = { has_policy_flag = foreign_migration_ethics }
-									
-									AND = { is_pacifist = yes		root = { is_pacifist = yes } }
-									AND = { is_militarist = yes		root = { is_militarist = yes } }
-									AND = { is_spiritualist = yes	root = { is_spiritualist = yes } }
-									AND = { is_materialist = yes	root = { is_materialist = yes } }
-									AND = { is_xenophobe = yes		root = { is_xenophobe = yes } }
-									AND = { is_xenophile = yes		root = { is_xenophile = yes } }
-									AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
-									AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
-								}
-							} }
-						}
+					random_list = { # checks in here so they only happen if the pop decides to migrate
+						1 = {} # In case other things end up at weight 0, do nothing
 						
-						# If none of our possible destinations give us rights, let's reconsider...
-						modifier = {
-							factor = 0.2
-							owner = { any_relation = {
-								count < 1
-								has_migration_access = root.owner
-								if = {
-									limit = {
-										root = { is_same_species = prev }
-									}
-									always = yes
-								} else_if = {
-									limit = {
-										root = {
-											OR = {
-												has_trait = trait_machine_unit
-												has_trait = trait_synthetic
-											}
-										}
-									}
-									has_policy_flag = ai_full_rights
-								} else = {
-									has_policy_flag = alien_full_rights
-								}
-							} }
-						}
-						
-						# Migrate less often if we're at a negative ratio, more if we're positive
-						modifier = {
-							factor = 0.5
-							owner = { check_variable = { which = retile_migration_delta value < 0 } }
-						}
-						modifier = {
-							factor = 2
-							owner = { check_variable = { which = retile_migration_delta value > 0 } }
-						}
-						
-						# migrate less often if our friends are at positive ratios, or more often if they're negative
-						modifier = {
-							factor = 2
-							owner = { any_relation = {
-								count >= 1
-								has_migration_access = root.owner
-								check_variable = { which = retile_migration_delta value < 0 }
-							} }
-						}
-						modifier = {
-							factor = 0.5
-							owner = { any_relation = {
-								count < 1
-								has_migration_access = root.owner
-								check_variable = { which = retile_migration_delta value <= 0 }
-							} }
-						}
-						
-						# pick a relation to migrate to, based on some factors...
-						random_country = {
-							limit = {
-								is_country_type = default
-								has_migration_access = root.owner
-								any_owned_planet = { free_housing > 0 }
+						########################################################### Internal Migration
+						0 = {
+							modifier = { # minimum requirements
+								add = 100 # base chance to migrate internally
+								owner = { has_policy_flag = migration_allowed }
+								owner = { num_owned_planets > 1 }
 							}
-							weights = {
-								base = 1
+							# migrate inside country
+							owner = { country_event = { id = retile_pop.111 } }
+						}
+						
+						########################################################### Foreign Migration
+						0 = {
+							modifier = { # minimum requirements
+								add = 30 # base chance of foreign migration
 								
-								# favor relations with lower migration ratio
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < 20 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < 15 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < 12 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < 9 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < 7 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < 5 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < 3 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < 2 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < 1 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < 0 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < -1 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < -2 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < -3 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < -5 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < -7 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < -9 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < -12 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < -15 } }
-								modifier = { add = 1 check_variable = { which = retile_migration_delta value < -20 } }
+								# species must not be prohibited from leaving the country
+								NOT = { has_migration_control = yes }
 								
-								# Favor relations with ethics that match the pop
-								modifier = {
-									mult = 2
+								# can't migrate out if ethics-matching is required, and pop matches our ethics
+								NOT = { owner = {
+									has_policy_flag = foreign_migration_ethics
 									OR = {
 										AND = { is_pacifist = yes		root = { is_pacifist = yes } }
 										AND = { is_militarist = yes		root = { is_militarist = yes } }
@@ -598,11 +476,36 @@ pop_event = {
 										AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
 										AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
 									}
-								}
+								} }
 								
-								# Try very hard to go places where you will have rights...
-								modifier = {
-									mult = 20
+								# must have another country that pops can migrate to
+								# respect ethics-matching requirements of other countries
+								owner = { any_relation = {
+									count >= 1
+									has_migration_access = root.owner
+									any_owned_planet = { free_housing > 0 }
+									OR = {
+										NOT = { has_policy_flag = foreign_migration_ethics }
+										
+										AND = { is_pacifist = yes		root = { is_pacifist = yes } }
+										AND = { is_militarist = yes		root = { is_militarist = yes } }
+										AND = { is_spiritualist = yes	root = { is_spiritualist = yes } }
+										AND = { is_materialist = yes	root = { is_materialist = yes } }
+										AND = { is_xenophobe = yes		root = { is_xenophobe = yes } }
+										AND = { is_xenophile = yes		root = { is_xenophile = yes } }
+										AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
+										AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
+									}
+								} }
+							}
+							
+							# If none of our possible destinations give us rights, let's reconsider...
+							modifier = {
+								factor = 0.2
+								owner = { any_relation = {
+									count < 1
+									has_migration_access = root.owner
+									any_owned_planet = { free_housing > 0 }
 									if = {
 										limit = {
 											root = { is_same_species = prev }
@@ -621,11 +524,112 @@ pop_event = {
 									} else = {
 										has_policy_flag = alien_full_rights
 									}
-								}
+								} }
 							}
 							
-							# migrate pop into chosen country...
-							country_event = { id = retile_pop.112 }
+							# Migrate less often if we're at a negative ratio, more if we're positive
+							modifier = {
+								factor = 0.5
+								owner = { check_variable = { which = retile_migration_delta value < 0 } }
+							}
+							modifier = {
+								factor = 2
+								owner = { check_variable = { which = retile_migration_delta value > 0 } }
+							}
+							
+							# migrate less often if our friends are at positive ratios, or more often if they're negative
+							modifier = {
+								factor = 2
+								owner = { any_relation = {
+									count >= 1
+									has_migration_access = root.owner
+									any_owned_planet = { free_housing > 0 }
+									check_variable = { which = retile_migration_delta value < 0 }
+								} }
+							}
+							modifier = {
+								factor = 0.5
+								owner = { any_relation = {
+									count < 1
+									has_migration_access = root.owner
+									any_owned_planet = { free_housing > 0 }
+									check_variable = { which = retile_migration_delta value <= 0 }
+								} }
+							}
+							
+							# pick a relation to migrate to, based on some factors...
+							random_country = {
+								limit = {
+									is_country_type = default
+									has_migration_access = root.owner
+									any_owned_planet = { free_housing > 0 }
+								}
+								weights = {
+									base = 1
+									
+									# favor relations with lower migration ratio
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 20 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 15 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 12 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 9 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 7 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 5 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 3 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 2 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 1 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 0 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -1 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -2 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -3 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -5 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -7 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -9 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -12 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -15 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -20 } }
+									
+									# Favor relations with ethics that match the pop
+									modifier = {
+										mult = 2
+										OR = {
+											AND = { is_pacifist = yes		root = { is_pacifist = yes } }
+											AND = { is_militarist = yes		root = { is_militarist = yes } }
+											AND = { is_spiritualist = yes	root = { is_spiritualist = yes } }
+											AND = { is_materialist = yes	root = { is_materialist = yes } }
+											AND = { is_xenophobe = yes		root = { is_xenophobe = yes } }
+											AND = { is_xenophile = yes		root = { is_xenophile = yes } }
+											AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
+											AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
+										}
+									}
+									
+									# Try very hard to go places where you will have rights...
+									modifier = {
+										mult = 20
+										if = {
+											limit = {
+												root = { is_same_species = prev }
+											}
+											always = yes
+										} else_if = {
+											limit = {
+												root = {
+													OR = {
+														has_trait = trait_machine_unit
+														has_trait = trait_synthetic
+													}
+												}
+											}
+											has_policy_flag = ai_full_rights
+										} else = {
+											has_policy_flag = alien_full_rights
+										}
+									}
+								}
+								
+								# migrate pop into chosen country...
+								country_event = { id = retile_pop.112 }
+							}
 						}
 					}
 				}
