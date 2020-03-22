@@ -94,7 +94,15 @@ planet_event = {
 	option = {
 		name = retile_colony.2.a
 		random_owned_pop = { 
-			limit = { NOT = { has_trait = trait_viral_infection } }
+			limit = { 
+				NOT = { 
+					has_trait = trait_viral_infection
+					has_trait = trait_machine_unit
+					has_trait = trait_synthetic
+					has_trait = trait_droid
+					has_trait = trait_mechanical
+				}
+			}
 			modify_species = {
 				species = this
 				add_trait = trait_viral_infection
