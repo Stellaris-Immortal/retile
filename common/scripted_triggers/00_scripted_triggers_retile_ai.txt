@@ -27,7 +27,21 @@ retile_ai_planet_healthy_district = {
 }
 
 retile_ai_planet_healthy_building = {
-	always = yes
+	AND = {
+		OR {
+			owner = { country_uses_food = no }
+			owner = { has_monthly_income = { resource = food value > 25 } }
+			NOT = { any_deposit = { has_deposit_categry = deposit_cat_food } }
+		}
+		OR {
+			owner = { has_monthly_income = { resource = minerals value > 25 } }
+			NOT = { any_deposit = { has_deposit_categry = deposit_cat_minerals } }
+		}
+		OR {
+			owner = { has_monthly_income = { resource = energy value > 25 } }
+			NOT = { any_deposit = { has_deposit_categry = deposit_cat_energy } }
+		}
+	}
 }
 
 retile_ai_planet_healthy_building_labor = {
