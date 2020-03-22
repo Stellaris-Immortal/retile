@@ -1089,19 +1089,19 @@ d_ancient_reactor_pits = {
 	is_for_colonizeable = yes
 	
 	planet_modifier = {
-		planet_laborers_energy_produces_add = 2
+		planet_laborers_energy_produces_add = @laborer_production_4
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_1 } }
-		planet_laborers_energy_produces_add = 2
+		planet_laborers_energy_produces_add = @laborer_production_4
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_2 } }
-		planet_laborers_energy_produces_add = 4
+		planet_laborers_energy_produces_add = @laborer_production_8
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_3 } }
-		planet_laborers_energy_produces_add = 6
+		planet_laborers_energy_produces_add = @laborer_production_12
 	}
 
 	drop_weight = {
@@ -1115,19 +1115,19 @@ d_immense_solar_array = {
 	is_for_colonizeable = yes
 	
 	planet_modifier = {
-		planet_laborers_energy_produces_add = 1
+		planet_laborers_energy_produces_add = @laborer_production_2
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_1 } }
-		planet_laborers_energy_produces_add = 1
+		planet_laborers_energy_produces_add = @laborer_production_2
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_2 } }
-		planet_laborers_energy_produces_add = 2
+		planet_laborers_energy_produces_add = @laborer_production_4
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_3 } }
-		planet_laborers_energy_produces_add = 3
+		planet_laborers_energy_produces_add = @laborer_production_6
 	}
 	
 	drop_weight = {
@@ -1141,47 +1141,23 @@ d_abandoned_mining_tunnels = {
 	is_for_colonizeable = yes
 	
 	planet_modifier = {
-		planet_laborers_minerals_produces_add = 2
+		planet_laborers_minerals_produces_add = @laborer_production_04
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_1 } }
-		planet_laborers_minerals_produces_add = 2
+		planet_laborers_minerals_produces_add = @laborer_production_04
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_2 } }
-		planet_laborers_minerals_produces_add = 4
+		planet_laborers_minerals_produces_add = @laborer_production_08
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_3 } }
-		planet_laborers_minerals_produces_add = 6
+		planet_laborers_minerals_produces_add = @laborer_production_12
 	}
 
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_abandoned_mining_tunnels_active
-	}
-}
-
-d_abandoned_mining_tunnels_active = {
-	icon = producers/d_mining_district_4
-	category = deposit_cat_minerals_active
-	is_for_colonizeable = yes
-	
-	planet_modifier = {
-		planet_laborers_minerals_produces_add = 2
-	}
-	
-	can_be_cleared = { retile_ready_restore = yes }
-	
-	drop_weight = {
-		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_abandoned_mining_tunnels
 	}
 }
 
@@ -1191,19 +1167,19 @@ d_relic_metal_boneyard = {
 	is_for_colonizeable = yes
 	
 	planet_modifier = {
-		planet_laborers_minerals_produces_add = 1
+		planet_laborers_minerals_produces_add = @laborer_production_02
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_1 } }
-		planet_laborers_minerals_produces_add = 1
+		planet_laborers_minerals_produces_add = @laborer_production_02
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_2 } }
-		planet_laborers_minerals_produces_add = 2
+		planet_laborers_minerals_produces_add = @laborer_production_04
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_3 } }
-		planet_laborers_minerals_produces_add = 3
+		planet_laborers_minerals_produces_add = @laborer_production_06
 	}
 	
 	drop_weight = {
