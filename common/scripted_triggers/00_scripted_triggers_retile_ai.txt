@@ -7,7 +7,17 @@ retile_ai_has_planet_crisis = {
 }
 
 retile_ai_planet_healthy_district = {
-	any_pop = { is_unemployed = yes }
+	OR = {
+		owner = {
+			has_monthly_income = { resource = energy value > 25 }
+			has_monthly_income = { resource = minerals value > 25 }
+			has_monthly_income = { resource = energy value > 25 }
+		}
+		NOT = { any_deposit = { OR = {
+			has_deposit_categry = deposit_cat_food
+			has_deposit_categry = deposit_cat_energy
+			has_deposit_categry = deposit_cat_minerals
+		} } }
 	free_amenities < 300
 	planet_crime < 10
 }
