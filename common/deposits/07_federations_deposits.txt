@@ -183,8 +183,22 @@ d_tree_of_life_home = {
 		pop_growth_speed = 0.15
 		planet_jobs_society_research_produces_mult = 0.10
 		planet_housing_add = 10
-		#district_farming_max = 4
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = no }
+		}
 		job_farmer_add = 4
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = yes }
+		}
+		job_miner_add = 4
 	}
 
 	resources = {
@@ -219,8 +233,22 @@ d_tree_of_life_colony = {
 		pop_growth_speed = 0.1
 		planet_jobs_society_research_produces_mult = 0.10
 		planet_housing_add = 5
-		#district_farming_max = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = no }
+		}
 		job_farmer_add = 2
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = yes }
+		}
+		job_miner_add = 2
 	}
 
 	resources = {
@@ -364,7 +392,6 @@ d_project_cornucopia = {
 	potential = { always = no }
 
 	planet_modifier = {
-		#district_mining_max = 4
 		job_miner_add = 4
 		planet_jobs_minerals_produces_mult = 0.05
 		pop_environment_tolerance = -0.2
@@ -479,7 +506,6 @@ d_crater_bluelotus = {
     icon = d_crater
 
 	planet_modifier = {
-		#district_mining_max = 1
 		job_miner_add = 1
 	}
 

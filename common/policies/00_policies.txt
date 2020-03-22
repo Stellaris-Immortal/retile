@@ -697,6 +697,44 @@ environmental = {
 					has_ethic = ethic_materialist
 					has_ethic = ethic_fanatic_materialist
 				}
+			}		
+		}
+	}
+	
+	option = {
+		name = "environmental_preservation"
+		potential = {
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		
+		modifier = {
+			planet_amenities_add = -100
+			planet_amenities_mult = -0.10
+			planet_max_districts_add = -1
+		}
+		
+		policy_flags = {
+			environmental_protection
+		}
+		
+		on_enabled = {
+			hidden_effect = {
+				set_timed_country_flag = { flag = activate_environmental_protection days = 30 }
+				country_event = { id = retile_mandate.4 }
+			}
+		}
+		
+		AI_weight = {
+			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_materialist
+					has_ethic = ethic_fanatic_materialist
+				}
 			}
 			modifier = {
 				factor = 2
@@ -1455,7 +1493,6 @@ xenodiplomacy = {
 			}
 			NOT = { 
 				has_authority = auth_corporate
-				has_valid_civic = civic_byzantine_bureaucracy
 			}
 			NOR = { 
 				has_valid_civic = civic_hive_devouring_swarm
@@ -1497,7 +1534,6 @@ xenodiplomacy = {
 			}
 			NOT = { 
 				has_authority = auth_corporate
-				has_valid_civic = civic_byzantine_bureaucracy
 			}
 			NOR = { 
 				has_valid_civic = civic_hive_devouring_swarm
@@ -1603,7 +1639,6 @@ xenodiplomacy = {
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_machine_terminator
 				has_valid_civic = civic_inwards_perfection
-				has_valid_civic = civic_byzantine_bureaucracy
 				is_criminal_syndicate = yes
 			}
 		}
@@ -1671,7 +1706,6 @@ xenodiplomacy = {
 				has_valid_civic = civic_anarchist
 				has_valid_civic = civic_pacifist
 				has_valid_civic = civic_inwards_perfection
-				has_valid_civic = civic_byzantine_bureaucracy
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_machine_terminator
 				has_valid_civic = civic_fanatic_purifiers
