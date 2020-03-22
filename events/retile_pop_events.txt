@@ -206,6 +206,39 @@ pop_event = {
 					}
 				}
 			}
+			
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_robot_specialists
+					root = { robot_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_robot_specialists
+				remove_country_flag = planet_needs_robot_specialists
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_combat_specialists
+					root = { combat_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_combat_specialists
+				remove_country_flag = planet_needs_combat_specialists
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_droid_specialists
+					root = { droid_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_droid_specialists
+				remove_country_flag = planet_needs_droid_specialists
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_rulers
+					root = { ruler_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_rulers
+				remove_country_flag = planet_needs_rulers
+			}
 			resettle_pop = { pop = root planet = this}
 		} }
 	}
@@ -650,6 +683,39 @@ country_event = {
 			# We successfully found a destination planet. Set this flag before resettling the pop...
 			from.planet = { set_timed_planet_flag = { flag = retile_recent_shuffling days = 360 } }
 			
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_robot_specialists
+					from = { robot_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_robot_specialists
+				remove_country_flag = planet_needs_robot_specialists
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_combat_specialists
+					from = { combat_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_combat_specialists
+				remove_country_flag = planet_needs_combat_specialists
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_droid_specialists
+					from = { droid_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_droid_specialists
+				remove_country_flag = planet_needs_droid_specialists
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_rulers
+					from = { ruler_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_rulers
+				remove_country_flag = planet_needs_rulers
+			}
+			
 			resettle_pop = { pop = from planet = this}
 			
 			# immediately fire the periodic migration script, in case the new planet is now over housing or something...
@@ -740,6 +806,39 @@ country_event = {
 			from.owner = { change_variable = { which = retile_migration_delta value = -1 } }
 			root = { change_variable = { which = retile_migration_delta value = 1 } }
 			
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_robot_specialists
+					from = { robot_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_robot_specialists
+				remove_country_flag = planet_needs_robot_specialists
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_combat_specialists
+					from = { combat_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_combat_specialists
+				remove_country_flag = planet_needs_combat_specialists
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_droid_specialists
+					from = { droid_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_droid_specialists
+				remove_country_flag = planet_needs_droid_specialists
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_rulers
+					from = { ruler_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_rulers
+				remove_country_flag = planet_needs_rulers
+			}
+
 			resettle_pop = { pop = from planet = this}
 			
 			# immediately fire the periodic migration script, in case the new planet is now over housing or something...
