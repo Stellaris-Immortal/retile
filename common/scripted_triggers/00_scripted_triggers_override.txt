@@ -119,10 +119,10 @@ is_shackled_robot = { # The pop is a non-free robot
 		AND = {
 			has_trait = "trait_synthetic"
 			exists = owner
-			owner = {
+			NOT = owner = {
 				OR = {
 					is_mechanical_empire = yes
-					NOT = { has_policy_flag = ai_full_rights }
+					has_policy_flag = ai_full_rights
 				}
 			}
 		}
