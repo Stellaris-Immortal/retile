@@ -1448,6 +1448,108 @@ decision_divine_algorithm  = {
 	}
 }
 
+# Artisan Troupe Art Monument
+decision_art_monument  = {
+	icon = decision_art_monument
+	enactment_time = 15
+
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		owner = {
+			has_country_flag = artist_monument_collector
+			OR = {
+				AND = {
+					check_variable = { which = artist_monument_erected value < 1 }
+					check_variable = { which = artist_monument_purchased value = 1 }
+				}
+				AND = {
+					check_variable = { which = artist_monument_erected value < 2 }
+					check_variable = { which = artist_monument_purchased value = 2 }
+				}
+				AND = {
+					check_variable = { which = artist_monument_erected value < 3 }
+					check_variable = { which = artist_monument_purchased value = 3 }
+				}
+				AND = {
+					check_variable = { which = artist_monument_erected value < 4 }
+					check_variable = { which = artist_monument_purchased value = 4 }
+				}
+				AND = {
+					check_variable = { which = artist_monument_erected value < 5 }
+					check_variable = { which = artist_monument_purchased value = 5 }
+				}
+			}
+		}
+		NOT = { has_modifier = artist_monument_erected }
+	}
+
+	effect = {
+		add_modifier = {
+			modifier = artist_monument_erected
+		}
+		hidden_effect = {
+			owner = {
+				if = {
+					limit = {
+						check_variable = { which = artist_monument_erected value < 1 }
+					}
+					set_variable = {
+						which = artist_monument_erected
+						value = 1
+					}
+				}
+				else = {
+					change_variable = {
+						which = artist_monument_erected
+						value = 1
+					}
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+# Artisan Troupe Art Monument
+decision_demolish_art_monument  = {
+	icon = decision_art_monument
+	enactment_time = 15
+
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+	}
+
+	potential = {
+		has_modifier = artist_monument_erected
+	}
+
+	effect = {
+		remove_modifier = artist_monument_erected
+		hidden_effect = {
+			owner = {
+				subtract_variable = {
+					which = artist_monument_erected
+					value = 1
+				}
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
 decision_project_cornucopia = {
 	owned_planets_only = yes
 
