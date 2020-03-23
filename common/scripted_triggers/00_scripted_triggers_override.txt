@@ -144,3 +144,40 @@ is_non_menial_laborer = {	# ??? Might need a retile update...
 	is_non_sapient_robot = no
 	is_sapient = yes
 }
+
+can_set_ai_policy = {
+	is_mechanical_empire = no
+	OR = {
+		has_technology = tech_synthetic_workers
+		has_technology = tech_sapient_ai
+		any_relation = {
+			has_communications = prev
+			OR = {
+				has_technology = tech_synthetic_workers
+				has_technology = tech_sapient_ai
+				has_authority = auth_machine_intelligence
+			}
+			OR = {
+				is_country_type = default
+				has_ai_personality_behaviour = robot_exploiter
+				has_ai_personality_behaviour = robot_liberator
+			}
+		}
+	}
+}
+
+is_mechanical_empire = {
+	OR = {
+		owner_species = { has_trait = trait_synthetic }
+		has_country_flag = synthetic_empire
+	}
+}
+
+is_robot_empire = {
+	OR = {
+		owner_species = { has_trait = trait_synthetic }
+		has_country_flag = synthetic_empire
+		has_authority = auth_machine_intelligence
+	}
+}
+
