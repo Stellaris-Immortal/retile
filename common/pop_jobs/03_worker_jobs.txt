@@ -343,12 +343,37 @@ laborer = {
 
 	resources = {
 		category = planet_laborers
-		produces = {
-			society_research = 2
-		}
 		upkeep = {
 			energy = @job_energy_normal
 			energy = @job_supplies_normal
+		}
+		produces = {
+			trigger = {
+				OR = {
+					has_utopian_living_standard_type = yes
+					has_high_living_standard_type = yes
+					has_shared_burden_living_standard_type = yes
+				}
+			}
+			society_research = 1
+		}
+		produces = {
+			trigger = {
+				has_utopian_living_standard_type = yes
+			}
+			society_research = 1
+			physics_research = 1
+			engineering_research = 1
+		}
+		produces = {
+			trigger = {
+				OR = {
+					has_very_high_living_standard_type = yes
+					has_high_living_standard_type = yes
+					has_shared_burden_living_standard_type = yes
+				}
+			}
+			unity = 1
 		}
 	}
 
