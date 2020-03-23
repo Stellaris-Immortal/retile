@@ -1963,17 +1963,17 @@ criminal = {
 	triggered_planet_modifier = {
 		potential = {
 			can_generate_trade_value = yes
-			has_high_living_standard_type = yes
+			OR = {
+				has_high_living_standard_type = yes
+				has_academic_living_standard_type = yes
+			}
 		}
 		trade_value_add = @trade_value_high
 	}	
 	triggered_planet_modifier = {
 		potential = {
 			can_generate_trade_value = yes
-			OR = {
-				has_normal_living_standard_type = yes
-				has_academic_living_standard_type = yes
-			}
+			has_normal_living_standard_type = yes
 		}
 		trade_value_add = @trade_value_normal
 	}
@@ -2205,16 +2205,16 @@ criminal = {
 		}
 		upkeep = {
 			trigger = {
-				has_high_living_standard_type = yes
+				OR = {
+					has_high_living_standard_type = yes
+					has_academic_living_standard_type = yes
+				}
 			}
 			consumer_goods = @living_standard_luxuries_high
 		}
 		upkeep = {
 			trigger = {
-				OR = {
-					has_normal_living_standard_type = yes
-					has_academic_living_standard_type = yes
-				}
+				has_normal_living_standard_type = yes
 			}
 			consumer_goods = @living_standard_luxuries_normal
 		}
