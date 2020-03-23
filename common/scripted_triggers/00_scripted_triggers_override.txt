@@ -73,6 +73,7 @@ has_comms_with_alien_civilization = {
 	}
 }
 
+
 is_shackled_robot_species_rights = {
 	OR = {
 		has_trait = "trait_mechanical"
@@ -119,7 +120,7 @@ is_shackled_robot = { # The pop is a non-free robot
 		AND = {
 			has_trait = "trait_synthetic"
 			exists = owner
-			NOT = owner = {
+			NOT = { owner = {
 				OR = {
 					is_mechanical_empire = yes
 					has_policy_flag = ai_full_rights

@@ -7,13 +7,14 @@ citizenship_full = {
 	potential = {
 		exists = from
 		NOT = { from = { has_authority = auth_machine_intelligence } }
-		NOR = {
-			has_trait = trait_machine_unit
-			is_shackled_robot_species_rights = yes
-		}
+		NOT = { has_trait = trait_machine_unit }
+		NOT = { is_shackled_robot_species_rights = yes }
 		NAND = { # Purifiers can't allow full citizenship to anyone but themselves
 			from = { has_valid_civic = civic_fanatic_purifiers }
-			NOT = { is_same_species = from }
+			NOR = {
+				is_same_species = from
+				has_species_flag = synthetic_species_@from
+			}
 		}
 	}
 	
@@ -27,6 +28,14 @@ citizenship_full = {
 
 	allow = {
 		hidden_trigger = { exists = from }
+		
+		custom_tooltip = {
+			success_text = retile_purifiers_allow_created_ai
+			AND = {
+				from = { has_valid_civic = civic_fanatic_purifiers }
+				has_species_flag = synthetic_species_@from
+			}
+		}
 
 		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
@@ -623,10 +632,6 @@ citizenship_purge = {
 		if = {
 			limit = {
 				from = { has_valid_civic = civic_fanatic_purifiers }
-				NOR = {
-					is_archetype = MACHINE
-					is_archetype = ROBOT
-				}
 			}
 			custom_tooltip = {
 				text = yes_fanatic_purifiers
