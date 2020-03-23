@@ -389,14 +389,8 @@ planet_event = {
 			is_country_type = default
 		}
 		free_district_slots < 1
-		free_jobs < 1
-		OR = {
-			free_housing > 6
-			count_pops = {
-				limit = { is_unemployed = yes }
-				count > 6
-			}
-		}
+		#free_jobs < 1				# TODO: Make this care about basic resources or something...
+		free_housing > 6
 	}
 	
 	mean_time_to_happen = {
