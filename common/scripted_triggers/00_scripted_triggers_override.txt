@@ -73,12 +73,24 @@ has_comms_with_alien_civilization = {
 	}
 }
 
+# does this empire 
+empire_gives_synth_rights = {
+	OR = {
+		is_mechanical_empire = yes
+		has_policy_flag = ai_full_rights
+	}
+}
 
 is_shackled_robot_species_rights = {
 	OR = {
 		has_trait = "trait_mechanical"
 		has_trait = "trait_droid"
-		has_trait = "trait_synthetic"
+		AND = {
+			has_trait = "trait_synthetic"
+			exists = from
+			from = { empire_gives_synth_rights = no }
+			NOT = { has_species_flag = synthetic_species_@from }
+		}
 	}
 	species_rights_robot_full_rights_check = no
 }

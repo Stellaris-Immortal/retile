@@ -29,14 +29,18 @@ citizenship_full = {
 	allow = {
 		hidden_trigger = { exists = from }
 		
-		custom_tooltip = {
-			success_text = retile_purifiers_allow_created_ai
-			AND = {
-				from = { has_valid_civic = civic_fanatic_purifiers }
+		if = {
+			limit = {
+				has_trait = trait_synthetic
 				has_species_flag = synthetic_species_@from
+				from = { has_valid_civic = civic_fanatic_purifiers }
+			}
+			custom_tooltip = {
+				success_text = retile_allow_created_ai
+				always = yes
 			}
 		}
-
+		
 		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
 			is_lonely_hive_mind_pop = no
