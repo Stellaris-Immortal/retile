@@ -594,10 +594,14 @@ citizenship_robot_servitude = {
 	potential = {
 		exists = from
 		from = { is_gestalt = no }
+		NOT = { is_same_species = from }
 		OR = {
 			has_trait = trait_mechanical
 			has_trait = trait_droid
-			has_trait = trait_synthetic
+			AND = {
+				has_trait = trait_synthetic
+				from = { is_mechanical_empire = no }
+			}
 		}
 		NAND = {	# fanatic purifiers exclusion
 			from = { has_valid_civic = civic_fanatic_purifiers }
