@@ -347,38 +347,25 @@ laborer = {
 			energy = @job_energy_normal
 			energy = @job_supplies_normal
 		}
-		produces = {
-			trigger = {
-				OR = {
-					has_utopian_living_standard_type = yes
-					has_high_living_standard_type = yes
-					has_shared_burden_living_standard_type = yes
-				}
-			}
-			society_research = 1
-		}
-		produces = {
-			trigger = {
-				has_utopian_living_standard_type = yes
-			}
-			society_research = 1
-			physics_research = 1
-			engineering_research = 1
-		}
-		produces = {
-			trigger = {
-				OR = {
-					has_very_high_living_standard_type = yes
-					has_high_living_standard_type = yes
-					has_shared_burden_living_standard_type = yes
-				}
-			}
-			unity = 1
-		}
 	}
 
 	planet_modifier = {
 		planet_amenities_add = 25
+	}
+	
+	triggered_pop_modifier = {
+		potential = { pop = { OR = {
+			has_living_standard = { type = living_standard_normal }
+			has_living_standard = { type = living_standard_stratified }
+		} } }
+		pop_happiness = -0.05
+	}
+	
+	triggered_pop_modifier = {
+		potential = { pop = {
+			has_living_standard = { type = living_standard_subsistence }
+		} }
+		pop_happiness = -0.1
 	}
 	
 	triggered_planet_modifier = {
