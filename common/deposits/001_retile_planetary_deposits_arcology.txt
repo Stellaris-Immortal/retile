@@ -1085,189 +1085,104 @@ d_food_arcology_3b_active = {
 
 d_ancient_reactor_pits = {
 	icon = d_reactor
-	time = @retile_rural_exploit_time_ultra3
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_ultra3
-		}
-	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
-	
-	drop_weight = {
-		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_ancient_reactor_pits_active
-	}
-}
-
-d_ancient_reactor_pits_active = {
-	icon = producers/d_generator_district_4
-	time = @retile_rural_restore_time_ultra3
-	category = deposit_cat_energy_active
-	is_for_colonizeable = yes
-	
 	planet_modifier = {
-		job_technician_add = 4
+		planet_laborers_energy_produces_add = @laborer_production_04
 	}
-	
-	can_be_cleared = { retile_ready_restore = yes }
-	
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_08
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_12
+	}
+
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_ancient_reactor_pits
 	}
 }
 
 d_immense_solar_array = {
 	icon = d_solar_array
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
-	
-	drop_weight = {
-		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_immense_solar_array_active
-	}
-}
-
-d_immense_solar_array_active = {
-	icon = producers/d_generator_district_2
-	time = @retile_rural_restore_time_high
-	category = deposit_cat_energy_active
-	is_for_colonizeable = yes
-	
 	planet_modifier = {
-		job_technician_add = 2
+		planet_laborers_energy_produces_add = @laborer_production_02
 	}
-	
-	can_be_cleared = { retile_ready_restore = yes }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_immense_solar_array
 	}
 }
 
 d_abandoned_mining_tunnels = {
 	icon = d_mining_tunnels
-	time = @retile_rural_exploit_time_ultra3
 	category = deposit_cat_minerals
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_ultra3
-		}
-	}
-	
-	can_be_cleared = { retile_ready_minerals = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = minerals value < @retile_ai_minerals_income_low } } } }
-	
-	drop_weight = {
-		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_abandoned_mining_tunnels_active
-	}
-}
-
-d_abandoned_mining_tunnels_active = {
-	icon = producers/d_mining_district_4
-	time = @retile_rural_restore_time_ultra3
-	category = deposit_cat_minerals_active
-	is_for_colonizeable = yes
-	
 	planet_modifier = {
-		job_miner_add = 4
+		planet_laborers_minerals_produces_add = @laborer_production_04
 	}
-	
-	can_be_cleared = { retile_ready_restore = yes }
-	
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_mineral_1 } }
+		planet_laborers_minerals_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_mineral_2 } }
+		planet_laborers_minerals_produces_add = @laborer_production_08
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_mineral_3 } }
+		planet_laborers_minerals_produces_add = @laborer_production_12
+	}
+
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_abandoned_mining_tunnels
 	}
 }
 
 d_relic_metal_boneyard = {
 	icon = d_reactor
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_minerals
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
-	can_be_cleared = { retile_ready_minerals = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = minerals value < @retile_ai_minerals_income_low } } } }
-	
-	drop_weight = {
-		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_relic_metal_boneyard_active
-	}
-}
-
-d_relic_metal_boneyard_active = {
-	icon = producers/d_mining_district_2
-	time = @retile_rural_restore_time_high
-	category = deposit_cat_minerals_active
-	is_for_colonizeable = yes
-	
 	planet_modifier = {
-		job_miner_add = 2
+		planet_laborers_minerals_produces_add = @laborer_production_02
 	}
-	
-	can_be_cleared = { retile_ready_restore = yes }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_mineral_1 } }
+		planet_laborers_minerals_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_mineral_2 } }
+		planet_laborers_minerals_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_mineral_3 } }
+		planet_laborers_minerals_produces_add = @laborer_production_06
+	}
 	
 	drop_weight = {
 		weight = 0
 	}
-	
-	blocker_swap_types = {
-		d_relic_metal_boneyard
-	}
 }
-

@@ -39,6 +39,18 @@ retile_deposit_bioreactor = {
 	is_for_colonizeable = yes
 	category = deposit_cat_rare
 	
+	resources = {
+		category = planet_buildings
+		upkeep = {
+			trigger = { owner = { has_resource = { type = food amount > 25 } } }
+			food = 50
+		}
+		produces = {
+			trigger = { owner = { has_resource = { type = food amount > 25 } } }
+			energy = 40
+		}
+	}
+
 	planet_modifier = {
 		planet_max_districts_add = -1
 	}
