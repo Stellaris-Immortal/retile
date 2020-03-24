@@ -7,15 +7,13 @@ citizenship_full = {
 	potential = {
 		exists = from
 		NOT = { from = { has_authority = auth_machine_intelligence } }
-		NOR = {
-			has_trait = trait_machine_unit
-			is_shackled_robot_species_rights = yes
-		}
-		NAND = {	# fanatic purifiers exclusion
+		NOT = { has_trait = trait_machine_unit }
+		NOT = { is_shackled_robot_species_rights = yes }
+		NAND = { # Purifiers can't allow full citizenship to anyone but themselves
 			from = { has_valid_civic = civic_fanatic_purifiers }
 			NOR = {
 				is_same_species = from
-				is_archetype = ROBOT
+				has_species_flag = synthetic_species_@from
 			}
 		}
 	}
@@ -30,7 +28,19 @@ citizenship_full = {
 
 	allow = {
 		hidden_trigger = { exists = from }
-
+		
+		if = {
+			limit = {
+				has_trait = trait_synthetic
+				has_species_flag = synthetic_species_@from
+				from = { has_valid_civic = civic_fanatic_purifiers }
+			}
+			custom_tooltip = {
+				success_text = retile_allow_created_ai
+				always = yes
+			}
+		} else = { hidden_trigger = { always = yes } }
+		
 		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
 			is_lonely_hive_mind_pop = no
@@ -119,6 +129,7 @@ citizenship_assimilation = {
 		}
 		exists = from
 		NOT = { from = { has_civic = civic_fanatic_purifiers } }
+		# TODO: Purifiers maybe can assimilate bio pops of other species, instead of purging them???
 		OR = {
 			from = { # machine assimilator
 				has_authority = auth_machine_intelligence
@@ -340,14 +351,6 @@ citizenship_organic_trophy = {
 			has_authority = auth_machine_intelligence
 			has_civic = civic_machine_servitor
 		}
-		NAND = {	# fanatic purifiers exclusion
-			from = { has_valid_civic = civic_fanatic_purifiers }
-			NOR = {
-				is_same_species = from
-				is_archetype = MACHINE
-				is_archetype = ROBOT
-			}
-		}
 	}
 
 	allow = {
@@ -380,7 +383,7 @@ citizenship_limited = {
 
 	pop_modifier = {
 		pop_happiness = -0.1
-		pop_amenities_usage_mult = -0.25
+		#pop_amenities_usage_mult = -0.25
 		pop_political_power = -0.5
 	}
 
@@ -396,14 +399,9 @@ citizenship_limited = {
 			has_trait = trait_machine_unit
 			is_shackled_robot_species_rights = yes
 		}
-		NAND = {	# fanatic purifiers exclusion
-			from = { has_valid_civic = civic_fanatic_purifiers }
-			NOR = {
-				is_same_species = from
-				is_archetype = MACHINE
-				is_archetype = ROBOT
-			}
-		}
+		
+		# Purifiers have no allowance for limited citizenship
+		NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
 	}
 
 	allow = {
@@ -493,14 +491,9 @@ citizenship_slavery = {
 				has_trait = trait_synthetic
 			}
 		}
-		NAND = {	# fanatic purifiers exclusion
-			from = { has_valid_civic = civic_fanatic_purifiers }
-			NOR = {
-				is_same_species = from
-				is_archetype = MACHINE
-				is_archetype = ROBOT
-			}
-		}
+		
+		# Purifiers don't need/want slaves
+		NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
 	}
 
 	allow = {
@@ -594,28 +587,33 @@ citizenship_robot_servitude = {
 	potential = {
 		exists = from
 		from = { is_gestalt = no }
+		NOT = { is_same_species = from }
 		OR = {
 			has_trait = trait_mechanical
 			has_trait = trait_droid
-			has_trait = trait_synthetic
-		}
-		NAND = {	# fanatic purifiers exclusion
-			from = { has_valid_civic = civic_fanatic_purifiers }
-			NOR = {
-				is_same_species = from
-				is_archetype = MACHINE
-				is_archetype = ROBOT
+			AND = {
+				has_trait = trait_synthetic
+				from = {
+					# synths can't be servants in synthetic empires
+					is_mechanical_empire = no
+					# purifiers must purify... (main species covered by full-citizenship allowance)
+					NOT = { has_valid_civic = civic_fanatic_purifiers }
+				}
 			}
 		}
 	}
 
 	allow = {
 		hidden_trigger = { exists = from }
-		OR = {
+		if = {
+			limit = { has_trait = trait_mechanical }
+			always = yes
+		} else_if = {
+			limit = { has_trait = trait_droid }
+			always = yes
+		} else_if = {
+			limit = { has_trait = trait_synthetic }
 			from = { NOT = { has_policy_flag = ai_full_rights } }
-			has_trait = trait_mechanical
-			has_trait = trait_droid
-			has_trait = trait_synthetic
 		}
 	}
 	ai_will_do = {
@@ -638,10 +636,6 @@ citizenship_purge = {
 		if = {
 			limit = {
 				from = { has_valid_civic = civic_fanatic_purifiers }
-				NOR = {
-					is_archetype = MACHINE
-					is_archetype = ROBOT
-				}
 			}
 			custom_tooltip = {
 				text = yes_fanatic_purifiers

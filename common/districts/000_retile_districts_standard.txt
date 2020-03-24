@@ -485,7 +485,7 @@ district_enforcers = {
 			AND = {
 				planet_crime > 33
 				OR = {
-					any_pop = { is_unemployed = yes }
+					any_pop = { has_job = laborer }
 					AND = {
 						num_pops > 2
 						num_districts = { type = district_enforcers value < 1 }
@@ -568,7 +568,7 @@ district_sentinel = {
 			AND = {
 				planet_crime > 33
 				OR = {
-					any_pop = { is_unemployed = yes }
+					any_pop = { has_job = laborer }
 					AND = {
 						num_pops > 2
 						num_districts = { type = district_sentinel value < 1 }
@@ -605,7 +605,7 @@ district_custodians = {
 			AND = {
 				free_amenities > 300
 				OR = {
-					any_pop = { is_unemployed = yes }
+					any_pop = { has_job = laborer }
 					AND = {
 						num_pops > 2
 						num_districts = { type = district_custodians value < 1 }

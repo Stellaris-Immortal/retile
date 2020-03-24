@@ -96,36 +96,6 @@ country_uses_food = {
 	}
 }
 
-country_uses_food_old = {
-	OR = {
-		NOR = {
-			has_authority = auth_machine_intelligence
-			is_lithoid_empire = yes
-		}
-		AND = {
-			is_lithoid_empire = yes
-			NOR = {
-				has_country_flag = non_lithoid_subspecies
-				any_owned_pop = {
-					is_organic_species = yes
-					is_lithoid = no
-				}
-				any_owned_planet = {
-					any_deposit = {
-						has_deposit_category = deposit_cat_food_active
-					}
-				}
-			}
-		}
-		has_valid_civic = civic_machine_servitor
-		has_valid_civic = civic_machine_assimilator
-		AND = {
-			has_authority = auth_machine_intelligence
-			NOT = { has_valid_civic = civic_machine_terminator }
-		}
-	}
-}
-
 country_uses_consumer_goods = {
 	OR = {
 		is_regular_empire = yes
