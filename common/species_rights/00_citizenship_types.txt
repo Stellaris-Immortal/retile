@@ -7,13 +7,24 @@ citizenship_full = {
 	potential = {
 		exists = from
 		NOT = { from = { has_authority = auth_machine_intelligence } }
-		NOT = { has_trait = trait_machine_unit }
-		NOT = { is_shackled_robot_species_rights = yes }
-		NAND = { # Purifiers can't allow full citizenship to anyone but themselves
+		NOR = {
+			has_trait = trait_machine_unit
+			has_trait = trait_mechanical
+			has_trait = trait_droid
+		}
+		OR = {
+			NOT = { has_trait = trait_synthetic }
+			from = { empire_gives_synth_rights = yes }
+		}
+		NAND = { # Purifiers can't allow full citizenship to anyone but themselves, or their created synths
 			from = { has_valid_civic = civic_fanatic_purifiers }
 			NOR = {
 				is_same_species = from
-				has_species_flag = synthetic_species_@from
+				AND = {
+					has_trait = trait_synthetic
+					has_species_flag = mechanical_species@from
+					from = { empire_gives_synth_rights = yes }
+				}
 			}
 		}
 	}
@@ -29,16 +40,26 @@ citizenship_full = {
 	allow = {
 		hidden_trigger = { exists = from }
 		
-		if = {
-			limit = {
-				has_trait = trait_synthetic
-				has_species_flag = synthetic_species_@from
-				from = { has_valid_civic = civic_fanatic_purifiers }
-			}
-			custom_tooltip = {
-				success_text = retile_allow_created_ai
-				always = yes
-			}
+		if = {	# Display special tooltips for purifiers allowing their own species
+			limit = { from = { has_valid_civic = civic_fanatic_purifiers } }
+			if = {
+				limit = { is_same_species = from }
+				custom_tooltip = {
+					success_text = retile_purifiers_allow_self
+					always = yes
+				}
+			} else = { hidden_trigger = { always = yes } }
+			if = {
+				limit = {
+					has_trait = trait_synthetic
+					has_species_flag = mechanical_species@from
+					from = { empire_gives_synth_rights = yes }
+				}
+				custom_tooltip = {
+					success_text = retile_purifiers_allow_created
+					always = yes
+				}
+			} else = { hidden_trigger = { always = yes } }
 		} else = { hidden_trigger = { always = yes } }
 		
 		custom_tooltip = {
@@ -54,13 +75,6 @@ citizenship_full = {
 			OR = {
 				NOT = { from = { has_authority = auth_hive_mind } }
 				has_trait = trait_hive_mind
-			}
-		}
-		custom_tooltip = {
-			fail_text = "FANATIC_PURIFIERS_MUST_PURIFY"
-			OR = {
-				NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
-				is_same_species = from
 			}
 		}
 		custom_tooltip = {
@@ -400,7 +414,7 @@ citizenship_limited = {
 			is_shackled_robot_species_rights = yes
 		}
 		
-		# Purifiers have no allowance for limited citizenship
+		# Purifiers don't need/want limited citizenship
 		NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
 	}
 
@@ -440,13 +454,6 @@ citizenship_limited = {
 		custom_tooltip = {
 			fail_text = "disconnected_machine_pops_kill_themselves_citizenship"
 			is_disconnected_machine_pop = no
-		}
-		custom_tooltip = {
-			fail_text = "FANATIC_PURIFIERS_MUST_PURIFY"
-			OR = {
-				NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
-				is_same_species = from
-			}
 		}
 		custom_tooltip = {
 			fail_text = yes_service_yes_citizenship
@@ -492,12 +499,24 @@ citizenship_slavery = {
 			}
 		}
 		
-		# Purifiers don't need/want slaves
-		NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
+		# Purifiers don't need/want slaves # edit: they might use caste system...
+		NAND = { # Purifiers can't allow full citizenship to anyone but themselves, or their created synths
+			from = { has_valid_civic = civic_fanatic_purifiers }
+			NOT = { is_same_species = from }
+		}
 	}
 
 	allow = {
 		hidden_trigger = { exists = from }
+
+		if = {	# Display special tooltips for purifiers allowing their own species
+			limit = { from = { has_valid_civic = civic_fanatic_purifiers } }
+			custom_tooltip = {
+				success_text = retile_purifiers_allow_self
+				always = yes
+			}
+		} else = { hidden_trigger = { always = yes } }
+
 		if = {
 			limit = { NOT = { is_same_species = from } }
 			OR = {
@@ -520,13 +539,6 @@ citizenship_slavery = {
 				has_valid_civic = civic_hive_devouring_swarm
 				has_valid_civic = civic_shared_burden
 				has_valid_civic = civic_anarchist
-			}
-		}
-		custom_tooltip = {
-			fail_text = "FANATIC_PURIFIERS_MUST_PURIFY"
-			OR = {
-				NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
-				is_same_species = from
 			}
 		}
 		custom_tooltip = {
