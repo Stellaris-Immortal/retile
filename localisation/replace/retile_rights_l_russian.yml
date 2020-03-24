@@ -10,11 +10,11 @@
  STRATIFIED_LIVING_STANDARDS_POP_EFFECTS:0 "$RULERS$: $VERY_HIGH_LUXURIES$, $15_HAPPINESS$\n$SPECIALISTS$: $HIGH_LUXURIES$, $5_HAPPINESS$\n$WORKERS$: $LOW_LUXURIES$, $NEG_10_HAPPINESS$\n$SLAVES$: $NO_LUXURIES$, $NEG_10_HAPPINESS$"
  SUBSISTENCE_POP_EFFECTS:0 "$RULERS$: $HIGH_LUXURIES$, $NEG_5_HAPPINESS$\n$SPECIALISTS$: $AVERAGE_LUXURIES$, $NEG_10_HAPPINESS$\n$WORKERS$: $VERY_LOW_LUXURIES$, $NEG_20_HAPPINESS$\n$SLAVES$: $NO_LUXURIES$, $NEG_10_HAPPINESS$"
 
- LABOR_REDUCED_HAPPINESS_5:0 "£job_laborer£ $job_laborer$ £happiness£ Счастье: §R-5%§!"
- LABOR_REDUCED_HAPPINESS_10:0 "£job_laborer£ $job_laborer$ £happiness£ Счастье: §R-10%§!"
- 
+ UNEMPLOYED_PRODUCE_UNITY_RESEARCH:0 "§YБезработное население§! имеет обычный уровень £happiness£ §YСчастья§! и производит £unity£ §Y$unity$§! и £physics£ £society£ £engineering£ §YНауки§!."
+ UNEMPLOYED_PRODUCE_UNITY:1 "§YБезработное население§! имеет обычный уровень £happiness£ §YСчастья§! и производят £unity£ §Y$unity$§!."
+ UNEMPLOYED_REDUCED_HAPPINESS:0 "§YБезработное население§! имеет уменьшенный уровень £happiness£ §RСчастья§!."
+
  30_HAPPINESS:0 "§G+30%§!£happiness£ "
- NEG_30_HAPPINESS:0 "§R-30%§!£happiness£ "
  #Vanilla: 20_HAPPINESS, 15_HAPPINESS, 10_HAPPINESS, 5_HAPPINESS, NEG_5_HAPPINESS, NEG_10_HAPPINESS, NEG_15_HAPPINESS, NEG_20_HAPPINESS
 
  VERY_HIGH_LUXURIES:0 "§Y1.0x§!£consumer_goods£ содержание"
@@ -25,16 +25,16 @@
  VERY_LOW_LUXURIES:0 "§Y0.05x§!£consumer_goods£ содержание"
  NO_LUXURIES:0 "§Y0x§!£consumer_goods£ содержание"
 
- living_standard_utopian_tooltip:1 "$living_standard_utopian$ гарантирует, что каждый представитель этого вида имеет доступ практически к любому мыслимому виду роскоши.\n\n$UTOPIAN_ABUNDANCE_POP_EFFECTS$"
- living_standard_shared_burden_tooltip:1 "$living_standard_shared_burden$ обеспечивает справедливое распределение ресурсов между всеми членами общества.\n\n$SHARED_BURDEN_POP_EFFECTS$"
+ living_standard_utopian_tooltip:1 "$living_standard_utopian$ гарантирует, что каждый представитель этого вида имеет доступ практически к любому мыслимому виду роскоши.\n\n$UTOPIAN_ABUNDANCE_POP_EFFECTS$\n\n$UNEMPLOYED_PRODUCE_UNITY_RESEARCH$"
+ living_standard_shared_burden_tooltip:1 "$living_standard_shared_burden$ обеспечивает справедливое распределение ресурсов между всеми членами общества.\n\n$SHARED_BURDEN_POP_EFFECTS$\n\n$UNEMPLOYED_PRODUCE_UNITY$\nНаселение переходит быстрее на более низкий рабочий уровень."
  living_standard_academic_privilege:0 "Образованная рабочая сила"
  living_standard_academic_privilege_tooltip:1 "$living_standard_academic_privilege$ отдает приоритетное внимание образованному населению, что в целом приносит пользу подготовленной рабочей силе.\n\n$ACADEMIC_PRIVILEGE_POP_EFFECTS$"
  #Vanilla: living_standard_academic_privilege_tooltip:1 "$living_standard_academic_privilege$ prioritizes the educated Population, to the general benefit of the sciences\n\n$ACADEMIC_PRIVILEGE_POP_EFFECTS$\n\n$UNEMPLOYED_REDUCED_HAPPINESS$"
- living_standard_good_tooltip:1 "$living_standard_good$ стремится улучшить жизнь более бедных слоев населения с помощью щедрой социальной политики.\n\n$SOCIAL_WELFARE_POP_EFFECTS$"
- living_standard_normal_tooltip:1 "$living_standard_normal$ гарантирует, что большинство представителей вида имеют то, что им нужно для приемлемого качества жизни.\n\n$DECENT_LIVING_STANDARDS_POP_EFFECTS$\n\n$LABOR_REDUCED_HAPPINESS_5$"
- living_standard_stratified_tooltip:0 "$living_standard_stratified$ отдает приоритет правящим классам за счет обнищавших масс.\n\n$STRATIFIED_LIVING_STANDARDS_POP_EFFECTS$\n\n$LABOR_REDUCED_HAPPINESS_5$"
+ living_standard_good_tooltip:1 "$living_standard_good$ стремится улучшить жизнь более бедных слоев населения с помощью щедрой социальной политики.\n\n$SOCIAL_WELFARE_POP_EFFECTS$\n\n$UNEMPLOYED_PRODUCE_UNITY$"
+ living_standard_normal_tooltip:1 "$living_standard_normal$ гарантирует, что большинство представителей вида имеют то, что им нужно для приемлемого качества жизни.\n\n$DECENT_LIVING_STANDARDS_POP_EFFECTS$\n\n$UNEMPLOYED_REDUCED_HAPPINESS$"
+ living_standard_stratified_tooltip:0 "$living_standard_stratified$ отдает приоритет правящим классам за счет обнищавших масс.\n\n$STRATIFIED_LIVING_STANDARDS_POP_EFFECTS$\n\n$UNEMPLOYED_REDUCED_HAPPINESS$"
  living_standard_hive_mind_tooltip:2 "В то время как он может иметь мало пользы для роскоши, население дронов все еще требует большого количества ресурсов, чтобы поддерживать себя."
- living_standard_subsistence_tooltip:1 "$living_standard_subsistence$ предлагает только самые необходимые товары для населения этого вида.\n\n$SUBSISTENCE_POP_EFFECTS$\n\n$LABOR_REDUCED_HAPPINESS_10$"
+ living_standard_subsistence_tooltip:1 "$living_standard_subsistence$ предлагает только самые необходимые товары для населения этого вида.\n\n$SUBSISTENCE_POP_EFFECTS$\n\n$UNEMPLOYED_REDUCED_HAPPINESS$"
  living_standard_none_tooltip:1 "Этот вид находится в процессе очистки и население из него не будет иметь никаких затрат на содержание."
  living_standard_deassimilation_tooltip:1 "Этот вид переживает трудное физиологическое отделение от коллективного разума."
  living_standard_ego_assimilation_tooltip:1 "Этот вид становится единым с коллективным разумом."
@@ -57,3 +57,5 @@
  no_ai_full_rights:0 "$TRIGGER_PASS$У ИИ нет прав."
  hive_mind_welcoming:0 "$TRIGGER_FAIL$Вы приветствуете пришельцев."
  hive_mind_not_welcoming:0 "$TRIGGER_FAIL$Вы должно быть приветливы к пришельцам."
+ retile_purifiers_allow_created:0 "§YНет необходимости геноцидеть наши собственные творения.§!"
+ retile_purifiers_allow_self:0 "§YНет необходимости геноцидеть наш собственный народ.§!"
