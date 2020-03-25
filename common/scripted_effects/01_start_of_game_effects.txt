@@ -1008,10 +1008,20 @@ generate_start_buildings_and_districts = {
 		limit = {
 			owner = { has_origin = origin_default }
 		}
-		add_district = district_housing
-		add_district = district_clerks
-		add_district = district_engineers
-		add_district = district_scholars
+		if = {
+			limit = { owner = { is_regular_empire = yes } }
+			add_district = district_housing
+			add_district = district_clerks
+			add_district = district_engineers
+			add_district = district_scholars
+		}
+		if = {
+			limit = { owner = { is_hive_empire = yes } }
+			add_district = district_housing
+			add_district = district_engineers
+			add_district = district_engineers
+			add_district = district_scholars
+		}
 	}
 	
 	if = {
@@ -1169,10 +1179,10 @@ generate_start_pops = {
 	
 	if = {
 		limit = { owner = { is_hive_empire = yes } }
+		add_district = district_spawning
+		add_district = district_spawning
 		while = {
-			limit = { num_pops < 14 }
-			add_district = district_spawning
-			add_district = district_spawning
+			limit = { num_pops < 15 }
 			create_pop = {
 				species = owner_main_species
 				ethos = random

@@ -187,9 +187,6 @@ building_akx_worm_3 = {
 		always = yes
 	}
 
-	planet_modifier  = {
-	}
-	
 	prerequisites = {
 		"tech_akx_worm_3"
 	}
@@ -199,25 +196,9 @@ building_akx_worm_3 = {
 	}
 	
 	planet_modifier = {
-		planet_researchers_physics_research_produces_add = 1
+		planet_researchers_physics_research_produces_add = 2
 	}
 	
-	on_queued = {
-		owner = { set_country_flag = alignment_built }
-	}
-
-	on_unqueued = {
-		owner = { remove_country_flag = alignment_built }
-	}
-
-	on_built = {
-		owner = { set_country_flag = alignment_built }
-	}
-
-	on_destroy = {
-		owner = { remove_country_flag = alignment_built }
-	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
