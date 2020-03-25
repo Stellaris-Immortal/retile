@@ -3741,7 +3741,7 @@ guiTypes = {
 				
 				buttonType = {
 					name = "replace_building"
-					position = { x = 4 y = 85 }
+					position = { x = 9 y = 85 }
 					spriteType = "GFX_standard_button_116_34"
 					buttonFont = "cg_16b"
 					text = "REPLACE"
@@ -3754,7 +3754,7 @@ guiTypes = {
 				
 				buttonType = {
 					name = "destroy_building"
-					position = { x = 136 y = 40 }
+					position = { x = 141 y = 40 }
 					spriteType = "GFX_standard_button_116_34"
 					buttonFont = "cg_16b"
 					text = "DESTROY"
@@ -3767,7 +3767,7 @@ guiTypes = {
 
 				buttonType = {
 					name = "enable_disable_building"		
-					position = { x = 4 y = 40 }
+					position = { x = 9 y = 40 }
 					spriteType = "GFX_standard_button_116_34"
 					buttonFont = "cg_16b"
 					text = "DISABLE"
@@ -3779,7 +3779,7 @@ guiTypes = {
 
 				buttonType = {
 					name = "repair_building"				
-					position = { x = 136 y = 85 }
+					position = { x = 141 y = 85 }
 					spriteType = "GFX_standard_button_116_34"
 					buttonFont = "cg_16b"
 					text = "REPAIR"
@@ -3791,42 +3791,42 @@ guiTypes = {
 
 				containerWindowType = {
 					name = "building_info"		
-					size = { width = 250 height = 100 }
-					position = { x = 15 y = 142 }
+					size = { width = 280 height = 92 }
+					position = { x = 8 y = 142 }
 					
 					background = {
 						name = "background"
-						spriteType = "GFX_tiles_frame"
+						spriteType = "GFX_retile_planet_building_details"
 					}			
 					
 					containerWindowType = {
 						name = "building_icon"
-						size = { width = 79 height = 79	}
-						position = { x = 0 y = 21 }
+						size = { width = 92 height = 100 }
+						position = { x = 0 y = 29 }
 
 						iconType = {
 							name = "building_bg"
-							position = { x=1 y=1 }
+							position = { x= 2 y= -27 }
 							spriteType = "GFX_building_bg"
 							alwaysTransparent = yes
-							scale = 0.87
+							scale = 1
 						} 						
 				
-						background = {
-							name = "icon_background"
-							spriteType = "GFX_tiles_frame"
-						}
+						#background = {
+						#	name = "icon_background"
+						#	spriteType = "GFX_tiles_frame"
+						#}
 						
 						iconType = {
 							name = "building_icon"
-							position = { x = -25 y = 0 }
+							position = { x = -20 y = -19 }
 							spriteType = "GFX_building_unknown"
 							alwaysTransparent = yes
 						}	
 
 						iconType = {
 							name = "ruined_building_icon"
-							position = { x = -25 y = -5 }
+							position = { x = -20 y = -19 }
 							spriteType = "GFX_building_ruined"
 							alwaysTransparent = yes
 						}						
@@ -3834,23 +3834,23 @@ guiTypes = {
 					
 					containerWindowType = {
 						name = "building_name"
-						size = { width = 250 height = 22 }
+						size = { width = 280 height = 22 }
 						position = { x = 0 y = 0 }	
 
-						background = {
-							name = "background"
-							spriteType = "GFX_tiles_frame"
-						}			
+						#background = {
+						#	name = "background"
+						#	spriteType = "GFX_tiles_frame"
+						#}			
 					
 						instantTextBoxType = {
 							name = "building_name"
 							font = "cg_16b"
 							text = "Building Name" 
-							position = { x = 0 y = 3 }
+							position = { x = 98 y = 3 }
 							maxWidth = 250
 							maxHeight = 20
 							fixedSize = yes
-							format = center
+							format = left
 							alwaysTransparent = yes
 						}
 					}
@@ -3859,9 +3859,9 @@ guiTypes = {
 						name = "building_effects"
 						font = "cg_16b"
 						text = "Building effects go here" 
-						position = { x = 85 y = 25 }
+						position = { x = 98 y = 23 }
 						maxWidth = 180
-						maxHeight = 80
+						maxHeight = 180
 						fixedSize = yes
 						format = left
 						alwaysTransparent = yes
@@ -3871,7 +3871,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "upgrades"	
 					size = { width = 291 height = 350 }
-					position = { x = 0 y = 242 }
+					position = { x = 5 y = 242 }
 				
 					instantTextBoxType = {
 						name = "upgrades_to_header"
@@ -3918,7 +3918,7 @@ guiTypes = {
 
 				buttonType = {
 					name = "build_district"				
-					position = { x = 4 y = 40 }
+					position = { x = 9 y = 40 }
 					spriteType = "GFX_standard_button_116_34"
 					buttonFont = "cg_16b"
 					text = "BUILD"
@@ -3932,7 +3932,7 @@ guiTypes = {
 
 				buttonType = {
 					name = "destroy_district"
-					position = { x = 136 y = 40 }
+					position = { x = 141 y = 40 }
 					spriteType = "GFX_standard_button_116_34"
 					buttonFont = "cg_16b"
 					text = "DESTROY"
@@ -3945,7 +3945,7 @@ guiTypes = {
 
 				buttonType = {
 					name = "replace_district"				
-					position = { x = 4 y = 85 }
+					position = { x = 9 y = 85 }
 					spriteType = "GFX_standard_button_116_34"
 					buttonFont = "cg_16b"
 					text = "REPLACE"
@@ -3958,7 +3958,7 @@ guiTypes = {
 
 				buttonType = {
 					name = "quick_clear_blocker"
-					position = { x = 136 y = 85 }
+					position = { x = 141 y = 85 }
 					spriteType = "GFX_standard_button_116_34"
 					buttonFont = "cg_16b"
 					text = "CLEAR_BLOCKER"
@@ -3972,52 +3972,53 @@ guiTypes = {
 
 				containerWindowType = {
 					name = "district_info"		
-					size = { width = 250 height = 98 }
-					position = { x = 15 y = 142 }
+					size = { width = 269 height = 91 }
+					position = { x = 8 y = 142 }
 					
 					background = {
 						name = "background"
-						quadTextureSprite = "GFX_button_light"
+						spriteType = "GFX_retile_planet_district_details"
 						clicksound = "ui_queuing_district"
-					}
+					}	
+					
 					containerWindowType = {
 						name = "district_icon"
-						size = { width = 77 height = 77	}
-						position = { x = 1 y = 21 }
+						size = { width = 92 height = 100 }
+						position = { x = 1 y = 27 }
 
 						iconType = {
 							name = "district_icon"
-							position = { x = 1  y = -1 }
+							position = { x = 7 y = -20 }
 							spriteType = "GFX_district_unknown"
 							alwaysTransparent = yes
 						}
 			
-						background = {
-							name = "icon_background"
-							spriteType = "GFX_tiles_frame"
-							alwaysTransparent = yes
-						}
+						#background = {
+						#	name = "icon_background"
+						#	spriteType = "GFX_tiles_frame"
+						#	alwaysTransparent = yes
+						#}
 					}
 					containerWindowType = {
 						name = "district_name"
-						size = { width = 250 height = 22 }
+						size = { width = 280 height = 22 }
 						position = { x = 0 y = 0 }	
 
-						background = {
-							name = "background"
-							spriteType = "GFX_tiles_frame"
-							alwaysTransparent = yes
-						}			
+						#background = {
+						#	name = "background"
+						#	spriteType = "GFX_tiles_frame"
+						#	alwaysTransparent = yes
+						#}			
 					
 						instantTextBoxType = {
 							name = "district_name"
 							font = "cg_16b"
 							text = "District Name" 
-							position = { x = 0 y = 3 }
+							position = { x = 98 y = 3 }
 							maxWidth = 250
 							maxHeight = 20
 							fixedSize = yes
-							format = center
+							format = left
 							alwaysTransparent = yes
 						}
 					}
@@ -4026,9 +4027,9 @@ guiTypes = {
 						name = "district_effects"
 						font = "cg_16b"
 						text = "District effects go here" 
-						position = { x = 85 y = 25 }
+						position = { x = 98 y = 23 }
 						maxWidth = 180
-						maxHeight = 80
+						maxHeight = 180
 						fixedSize = yes
 						format = left
 						alwaysTransparent = yes
@@ -4038,7 +4039,7 @@ guiTypes = {
 						name = "district_cost"
 						font = "cg_16b"
 						text = "50" 
-						position = { x = 85 y = 78 }
+						position = { x = 98 y = 68 }
 						maxWidth = 180
 						maxHeight = 80
 						fixedSize = yes
@@ -4050,7 +4051,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "num_districts"
 					size = { width = 76 height = 34 }
-					position = { x = 13 y = 250 }
+					position = { x = 18 y = 250 }
 
 					background = {
 						name = "background"
@@ -4079,7 +4080,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "num_districts_building"
 					size = { width = 76 height = 34 }
-					position = { x = 101 y = 250 }
+					position = { x = 106 y = 250 }
 
 					background = {
 						name = "background"
@@ -4109,7 +4110,7 @@ guiTypes = {
 				containerWindowType = {
 					name = "num_blockers"
 					size = { width = 76 height = 34 }
-					position = { x = 189 y = 250 }
+					position = { x = 194 y = 250 }
 
 					background = {
 						name = "background"
@@ -4989,7 +4990,7 @@ guiTypes = {
 		name = "planet_decision_entry"
 		position = { x=0 y=82 }
 		moveable = no
-		size = { width = 280 height = 150 }
+		size = { width = 280 height = 49 }
 
 		background = {
 			name = "background"
@@ -5007,11 +5008,11 @@ guiTypes = {
 				name = "decision_name"
 				font = "cg_16b"
 				text = "Decision Name" 
-				position = { x = 0 y = 3 }
+				position = { x = 53 y = 3 }
 				maxWidth = 280
 				maxHeight = 20
 				fixedSize = yes
-				format = center
+				format = left
 				alwaysTransparent = yes
 			}
 		}	
@@ -5025,7 +5026,7 @@ guiTypes = {
 				name = "decision_effects"
 				font = "cg_16b"
 				text = "Decision effects go here"
-				position = { x = 5 y = 5 }
+				position = { x = 50000 y = 50000 }
 				maxWidth = 216
 				maxHeight = 128
 				fixedSize = yes
@@ -5038,18 +5039,18 @@ guiTypes = {
 			name = "decision_cost"
 			font = "cg_16b"
 			text = "5 minerals 1 apple"
-			position = { x = -3 y = 80 }
-			maxWidth = 60
-			maxHeight = 60
+			position = { x = 93 y = 28 }
+			maxWidth = 180
+			maxHeight = 20
 			fixedSize = yes
-			format = center
+			format = right
 			alwaysTransparent = yes
 		}	
 
 		iconType = {
 			name = "decision_icon"
 			spriteType = "GFX_decision_unknown"
-			position = { x=6 y= 31 }
+			position = { x=2 y= 2 }
 			alwaysTransparent = yes
 		}		
 
@@ -5062,16 +5063,16 @@ guiTypes = {
 		}
 	}
 
-
+	# Retile Colony
 	containerWindowType = {
 		name = "planet_designation_entry"
 		position = { x=0 y=82 }
 		moveable = no
-		size = { width = 280 height = 114 }
+		size = { width = 280 height = 50 }
 
 		background = {
 			name = "designation_list_button_background"
-			spriteType = "GFX_planet_designation_button"
+			spriteType = "GFX_planet_entry_button"
 			clicksound = "confirm_click"
 			oversound = "mouse_over"
 		}		
@@ -5085,11 +5086,11 @@ guiTypes = {
 				name = "designation_name"
 				font = "cg_16b"
 				text = "Designation Name" 
-				position = { x = 0 y = 3 }
+				position = { x = 55 y = 3 }
 				maxWidth = 280
 				maxHeight = 20
 				fixedSize = yes
-				format = center
+				format = left
 				alwaysTransparent = yes
 			}
 		}	
@@ -5102,7 +5103,7 @@ guiTypes = {
 			instantTextBoxType={
 				name = "designation_effects"
 				font = "cg_16b"
-				text = "Decision effects go here"
+				text = "Colony effects go here"
 				position = { x = 5 y = 5 }
 				maxWidth = 216
 				maxHeight = 128
@@ -5115,20 +5116,20 @@ guiTypes = {
 		containerWindowType = {
 			name = "designation_icon_bg_container"
 			size = {width = 55 height = 55}
-			position = {x = 1 y = 23}
+			position = {x = 3 y = 3 }
 
-			background = {
-					name = "designation_icon_bg"
-					spriteType = "GFX_tiles_frame_light"
-			}
+			#background = {
+			#		name = "designation_icon_bg"
+			#		spriteType = "GFX_tiles_frame_light"
+			#}
 		}
 
 		iconType = {
 			name = "designation_icon"
 			spriteType = "GFX_colony_type"
-			position = { x=11 y= 33 }
+			position = { x = 9 y = 9 }
 			alwaysTransparent = yes
-			scale = 1.1
+			scale = 1
 		}		
 
 		buttonType = {
@@ -6190,53 +6191,54 @@ guiTypes = {
 	containerWindowType = {
 		name = "planet_district_construction_entry"
 		position = { x= 0 y= 0 }
-		size = { width = 250 height = 100 }
+		size = { width = 249 height = 67 }
 
 		background = {
 			name = "background"
-			quadTextureSprite = "GFX_button_light"
+			spriteType = "GFX_retile_planet_district_build"
 			clicksound = "queuing_building"
 		}
 		
 		containerWindowType = {
 			name = "district_icon"
-			size = { width = 77 height = 77	}
+			size = { width = 51 height = 51	}
 			position = { x = 1 y = 22 }
 
 			iconType = {
 				name = "district_icon"
-				position = { x = 1  y = 2 }
+				position = { x = 1  y = -19 }
 				spriteType = "GFX_district_unknown"
 				alwaysTransparent = yes
+				scale = 0.85
 			}
 	
-			background = {
-				name = "icon_background"
-				spriteType = "GFX_tiles_frame"
-				alwaysTransparent = yes
-			}
+			#background = {
+			#	name = "icon_background"
+			#	spriteType = "GFX_tiles_frame"
+			#	alwaysTransparent = yes
+			#}
 		}
 		
 		containerWindowType = {
 			name = "district_name"
-			size = { width = 250 height = 22 }
+			size = { width = 150 height = 22 }
 			position = { x = 0 y = 0 }	
 
-			background = {
-				name = "background"
-				spriteType = "GFX_tiles_frame"
-				alwaysTransparent = yes
-			}
+			#background = {
+			#	name = "background"
+			#	spriteType = "GFX_tiles_frame"
+			#	alwaysTransparent = yes
+			#}
 
 			instantTextBoxType = {
 				name = "district_name"
 				font = "cg_16b"
 				text = "District Name" 
-				position = { x = 0 y = 3 }
-				maxWidth = 250
+				position = { x = 73 y = 0 }
+				maxWidth = 150
 				maxHeight = 20
 				fixedSize = yes
-				format = center
+				format = left
 				alwaysTransparent = yes
 			}
 		}
@@ -6245,8 +6247,8 @@ guiTypes = {
 			name = "district_effects"
 			font = "cg_16b"
 			text = "District effects go here" 
-			position = { x = 85 y = 25 }
-			maxWidth = 150
+			position = { x = 74 y = 24 }
+			maxWidth = 250
 			maxHeight = 80
 			fixedSize = yes
 			format = left
@@ -6257,11 +6259,11 @@ guiTypes = {
 			name = "district_cost"
 			font = "cg_16b"
 			text = "50" 
-			position = { x = 85 y = 78 }
+			position = { x = 63 y = 47 }
 			maxWidth = 180
-			maxHeight = 80
+			maxHeight = 20
 			fixedSize = yes
-			format = left
+			format = right
 			alwaysTransparent = yes
 			text_color_code = "Y"
 		}
