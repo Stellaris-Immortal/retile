@@ -4878,7 +4878,7 @@ guiTypes = {
 	
 	containerWindowType = { ### RETILE NOTES: Planet deposit list
 		name = "planet_deposit_entry"
-		#position = { x=0 y=82 }
+		position = { x = 0 y = 0 }
 		moveable = no
 		size = { width = 250 height = 100 }
 
@@ -4889,18 +4889,18 @@ guiTypes = {
 
 		containerWindowType = {
 			name = "deposit_name"
-			size = { width = 250 height = 22 }
-			position = { x = 0 y = -3 }	
+			size = { width = 100 height = 22 }
+			position = { x = 2 y = -1 }	
 
 			instantTextBoxType = {
 				name = "deposit_name"
 				font = "cg_16b"
 				text = "Deposit Name" 
-				position = { x = 0 y = 3 }
-				maxWidth = 250
+				position = { x = 0 y = 2 }
+				maxWidth = 200
 				maxHeight = 20
 				fixedSize = yes
-				format = center
+				format = left
 				alwaysTransparent = yes
 			}
 		}	
@@ -4920,7 +4920,7 @@ guiTypes = {
 		iconType = {
 			name = "deposit_icon"
 			spriteType = "GFX_deposit_unknown"
-			position = { x=4 y=21 }
+			position = { x=1 y=20 }
 			alwaysTransparent = yes
 			scale = 1
 		}			
@@ -4928,7 +4928,7 @@ guiTypes = {
 		iconType = {
 			name = "blocker_frame"
 			spriteType = "GFX_planet_background_frame_blocker"
-			position = { x=4 y=21 }
+			position = { x=1 y=20 }
 			alwaysTransparent = yes
 			scale = 1
 		}
@@ -4936,7 +4936,7 @@ guiTypes = {
 		iconType = {
 			name = "rare_deposit_frame"
 			spriteType = "GFX_planet_background_frame_rare"
-			position = { x=4 y=21 }
+			position = { x=1 y=20 }
 			alwaysTransparent = yes
 			scale = 1
 		}			
@@ -4945,25 +4945,25 @@ guiTypes = {
 			name = "clear_blocker_cost"
 			font = "cg_16b"
 			text = "cost cost"
-			position = { x = 110 y = 80 }
-			maxWidth = 135
-			maxHeight = 20
+			position = { x = -7 y = 72 }
+			maxWidth = 360
+			maxHeight = 40
 			fixedSize = yes
-			format = left
+			format = center
 			alwaysTransparent = yes
 		}
 		
 		iconType = {
 			name = "clear_blocker_deposit_icon"
 			spriteType = "GFX_deposit_unknown"
-			position = { x=172 y=22 }
-			scale = 0.75
+			position = { x= 153 y= 22 }
+			scale = 0.54
 		}			
 
 		buttonType = {
 			name = "clear_blocker_button"
 			spriteType = "GFX_retile_clear_blocker_button"
-			position = { x=112 y=25 }
+			position = { x= 207 y= 21 }
 			scale = 1
 			clicksound = ui_demolish_building_district
 			oversound = mouse_over
@@ -4972,17 +4972,17 @@ guiTypes = {
 		buttonType = {
 			name = "background"
 			quadTextureSprite = "GFX_list_hover"
-			position = { x = -4 y = -4 }
-			#size = { width = 258 height = 128 }
+			position = { x = 10000 y = 10000 }
+			size = { width = 250 height = 62 }
 			clicksound = "click_outliner"
 			oversound = no_sound
 		}	
 
 		iconType = {
 			name = "progressbar"
-			spriteType = "GFX_blocker_progressbar"
-			position = { x = 80 y = 100 }
-		}		
+			spriteType = "GFX_blocker_progressbar_retile"
+			position = { x = 104 y = 73 }
+		}
 	} ### RETILE NOTES: End planet deposit list
 
 	containerWindowType = {
@@ -6102,6 +6102,7 @@ guiTypes = {
 		}				
 	}
 	
+	# Retile Building Menu
 	containerWindowType = {
 		name = "planet_construction_entry"
 		position = { x= 0 y= 0 }
@@ -6127,7 +6128,7 @@ guiTypes = {
 		
 			iconType = {
 				name = "building_icon"
-				position = { x = -12 y = -17 }	# x = -25
+				position = { x = -8 y = -17 }	# x = -25
 				scale = 0.5		# 1
 				spriteType = "GFX_building_unknown"
 				alwaysTransparent = yes
