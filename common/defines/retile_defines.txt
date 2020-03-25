@@ -92,6 +92,25 @@ NGameplay = {
 	POLICY_YEARS								= 5			# 10 	# Years a set policy can not be changed for
 	TRUCE_YEARS									= 5			# 10	# Truce last for X years
 	MIN_RIVAL_YEARS								= 5			# 10	# Years before you can remove an empire as a rival
+	
+	MIN_BLOCKED_DEPOSITS						= 3			# 1		# Always try to have this many blocker deposits on planets when generating the galaxy
+	MIN_UNBLOCKED_DEPOSITS						= 4			# 3		# Always try to have this many non-blocker deposits on planets when generating the galaxy
+	DEPOSIT_USED_CATEGORY_WEIGHT				= 0.5 		# 0.25	# The higher this is, the more randomization will tend to diversify planet deposit types
+	
+	COLONY_DEPOSITS_USE_NULL					= no		# no	# Should the null deposit be a potential outcome in randomization?
+	COLONY_DEPOSITS_FIXED_BASE					= 7			# 5		# min number of deposits on colonizable planets
+	COLONY_DEPOSITS_RANDOM_BASE					= 3			# 2		# this number of random deposit chances are always given to colonizable planets
+	COLONY_DEPOSITS_FIXED_FROM_SIZE				= 0.1		# 0.2	# ( planet size * this ) is added to min number of deposits on colonizable planets
+	COLONY_DEPOSITS_RANDOM_FROM_SIZE			= 0.4		# 0.2	# ( planet size * this ) is added to random deposit chances on colonizable planets
+	
+	NON_COLONY_DEPOSITS_USE_NULL				= yes		# yes	# Should the null deposit be a potential outcome in randomization?
+	NON_COLONY_DEPOSITS_FIXED_BASE				= 1			# 1		# min number of deposits on uninhabitable planets
+	NON_COLONY_DEPOSITS_RANDOM_BASE				= 0			# 0		# this number of random deposit chances are always given to uninhabitable planets
+	NON_COLONY_DEPOSITS_FIXED_FROM_SIZE			= 0			# 0		# ( planet size * this ) is added to min number of deposits on uninhabitable planets
+	NON_COLONY_DEPOSITS_RANDOM_FROM_SIZE		= 0			# 0		# ( planet size * this ) is added to random deposit chances on uninhabitable planets
+	
+	QUICK_CLEAR_BLOCKER_GENERAL_MODIFIER_WEIGHT = 1	 		# 1		# How heavily should general max districts modifier be considered for quick-clear blocker
+	QUICK_CLEAR_BLOCKER_SPECIFIC_MODIFIER_WEIGHT = 1		# 1		# How heavily should specific-type max districts modifier be considered for quick-clear blocker
 }
 
 NPop = {
