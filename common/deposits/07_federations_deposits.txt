@@ -194,19 +194,63 @@ d_tree_of_life_home = {
 		planet_laborers_fruiting_food_produces_add = @fruiting_production_04
 	}
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_food_1 } }
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = no }
+			planet = { has_building = building_food_1 }
+		}
 		planet_laborers_non_plantoid_food_produces_add = @laborer_production_04
 		planet_laborers_fruiting_food_produces_add = @fruiting_production_04
 	}
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_food_2 } }
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = no }
+			planet = { has_building = building_food_2 }
+		}
 		planet_laborers_non_plantoid_food_produces_add = @laborer_production_08
 		planet_laborers_fruiting_food_produces_add = @fruiting_production_08
 	}
 	triggered_planet_modifier = {
-		potential = { planet = { has_building = building_food_3 } }
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = no }
+			planet = { has_building = building_food_3 }
+		}
 		planet_laborers_non_plantoid_food_produces_add = @laborer_production_12
 		planet_laborers_fruiting_food_produces_add = @fruiting_production_12
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = yes }
+		}
+		planet_laborers_minerals_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = yes }
+			planet = { has_building = building_food_1 }
+		}
+		planet_laborers_minerals_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = yes }
+			planet = { has_building = building_food_2 }
+		}
+		planet_laborers_minerals_produces_add = @laborer_production_08
+	}
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { is_lithoid_empire = yes }
+			planet = { has_building = building_food_3 }
+		}
+		planet_laborers_minerals_produces_add = @laborer_production_12
 	}
 	
 	resources = {

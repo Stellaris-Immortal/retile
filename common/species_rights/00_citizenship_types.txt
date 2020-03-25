@@ -416,36 +416,16 @@ citizenship_limited = {
 		
 		# Purifiers don't need/want limited citizenship
 		NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
+		NOT = { is_same_species = from }
 	}
 
 	allow = {
 		custom_tooltip = {
 			fail_text = hive_mind_not_welcoming
-			from = { 
-				has_authority = auth_hive_mind
+			from = { OR = {
+				NOT = { has_authority = auth_hive_mind }
 				has_policy_flag = alien_rights_welcoming
-			}
-		}
-		custom_tooltip = {
-			fail_text = "HIVE_MIND_MAIN_SPECIES_ALWAYS_CITIZEN"
-			NAND = {
-				from = { has_authority = auth_hive_mind }
-				is_same_species = from
-			}
-		}
-		if = {
-			NOT = { is_same_species = from }
-			NOT = { from = { has_policy_flag = alien_full_rights } }
-		} else = {
-			custom_tooltip = {
-				fail_text = species_is_majority
-				from = {
-					any_owned_pop = { 
-						is_exact_same_species = from
-						is_majority_species = yes
-					}
-				}
-			}
+			} }
 		}
 		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
