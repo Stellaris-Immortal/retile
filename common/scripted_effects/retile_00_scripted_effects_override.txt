@@ -527,3 +527,87 @@ generate_lost_colony_parent_bonus = {
 		}
 	}
 }
+
+create_built_robot_species = {
+	create_species = {
+		name = NAME_Robot
+		plural = NAME_Robots
+		class = ROBOT
+		homeworld = capital_scope
+		namelist = this
+		portrait = default_robot
+		traits = {
+			trait = trait_mechanical
+		}
+
+		effect = {
+			set_species_flag = mechanical_species@prev
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_hum_robot = yes }
+				}
+				change_species_portrait = sd_hum_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_mam_robot = yes }
+				}
+				change_species_portrait = sd_mam_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_rep_robot = yes }
+				}
+				change_species_portrait = sd_rep_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_avi_robot = yes }
+				}
+				change_species_portrait = sd_avi_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_art_robot = yes }
+				}
+				change_species_portrait = sd_art_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_mol_robot = yes }
+				}
+				change_species_portrait = sd_mol_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_fun_robot = yes }
+				}
+				change_species_portrait = sd_fun_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_pla_robot = yes }
+				}
+				change_species_portrait = sd_pla_robot
+			}
+		}
+	}
+
+	set_built_species = last_created_species
+}

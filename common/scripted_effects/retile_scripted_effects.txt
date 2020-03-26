@@ -435,9 +435,7 @@ create_built_droid_species = {
 					remove_trait = trait_mechanical
 					add_trait = trait_droid
 				}
-				species = {
-					set_species_flag = mechanical_species@prevprevprev
-				}
+				owner = { set_built_species = prev.species }
 			}
 		}
 	}
@@ -448,19 +446,89 @@ create_built_droid_species = {
 create_built_synth_species = {
 	owner = {
 		capital_scope = {
-			create_pop = { species = root.built_species }
-			last_created_pop = {
-				modify_species = {
-					add_traits_at_start_of_list = yes
-					remove_trait = trait_droid
-					remove_trait = trait_mechanical
-					add_trait = trait_synthetic
+			create_species = {
+				name = NAME_Synthetic
+				plural = NAME_Synthetics
+				class = ROBOT
+				homeworld = THIS
+				namelist = this
+				portrait = default_robot
+				traits = {
+					trait = trait_synthetic
 				}
-				species = {
-					set_species_flag = mechanical_species@prevprevprev
+
+				effect = {
+					set_species_flag = mechanical_species@prevprev
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_hum_robot = yes }
+						}
+						change_species_portrait = sd_hum_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_mam_robot = yes }
+						}
+						change_species_portrait = sd_mam_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_rep_robot = yes }
+						}
+						change_species_portrait = sd_rep_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_avi_robot = yes }
+						}
+						change_species_portrait = sd_avi_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_art_robot = yes }
+						}
+						change_species_portrait = sd_art_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_mol_robot = yes }
+						}
+						change_species_portrait = sd_mol_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_fun_robot = yes }
+						}
+						change_species_portrait = sd_fun_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_pla_robot = yes }
+						}
+						change_species_portrait = sd_pla_robot
+					}
 				}
 			}
+
+			create_pop = { species = last_created_species }
 		}
 	}
+	set_built_species = last_created_species
 	set_country_flag = has_built_synth
 }
