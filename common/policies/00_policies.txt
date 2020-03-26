@@ -438,10 +438,6 @@ criminal = {
 	option = {
 		name = "criminal_common_law"
 		
-		valid = {
-			NOT = { has_civic = civic_police_state }
-		}
-		
 		policy_flags = { criminal_common_law }
 		
 		on_enabled = {
@@ -545,10 +541,6 @@ criminal = {
 			NOT = { has_valid_civic = civic_anarchist }
 		}
 		
-		valid = {
-			NOT = { has_civic = civic_police_state }
-		}
-		
 		policy_flags = { criminal_private_police }
 		
 		AI_weight = {
@@ -579,10 +571,6 @@ criminal = {
 				has_valid_civic = civic_anarchist
 				has_valid_civic = civic_pacifist
 			}
-		}
-		
-		valid = {
-			NOT = { has_civic = civic_police_state }
 		}
 		
 		policy_flags = { criminal_military_police }
@@ -1487,6 +1475,7 @@ diplomatic_stance = {
 			is_country_type = primitive
 			is_country_type = awakened_marauders
 		}
+		is_gestalt = no
 	}
 
 	option = {
@@ -1969,26 +1958,6 @@ diplomatic_stance = {
 					}
 				}
 			}
-		}
-	}
-
-	option = {
-		name = "diplo_stance_hunger"
-		icon = "GFX_diplomatic_stance_rest"
-
-		potential = {
-			has_valid_civic = civic_hive_devouring_swarm
-		}
-
-		policy_flags = {
-			diplo_stance_hunger
-		}
-
-		modifier = {
-		}
-
-		ai_weight = {
-			weight = 100
 		}
 	}
 

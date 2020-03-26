@@ -30,17 +30,6 @@ clerk = {
 		}
 	}
 	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_private_police }
-		}
-		modifier = {
-			planet_crime_add = -25
-			planet_amenities_add = 20
-		}
-	}
-	
 	planet_modifier = {
 		trade_value_add = 10
 		planet_amenities_add = 25
@@ -436,7 +425,6 @@ enforcer = {
 	
 	planet_modifier = {
 		planet_crime_add = -25
-		pop_government_ethic_attraction = 0.10
 		planet_amenities_add = 20
 	}
 	
@@ -457,22 +445,50 @@ enforcer = {
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_policy_flag = criminal_state_police }
+			owner = { has_policy_flag = criminal_common_law }
 		}
 		modifier = {
-			planet_crime_add = -25
-			planet_amenities_add = 20
+			country_admin_cap_add = 1
 		}
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_police_state }
+			owner = { has_policy_flag = criminal_private_police }
 		}
 		modifier = {
-			planet_crime_mult = -0.20
-			planet_amenities_add = 20
+			trade_value_add = 5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_state_police }
+		}
+		modifier = {
+			planet_stability_add = 1
+		}
+	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		modifier = {
+			pop_defense_armies_add = 2
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner 
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		modifier = {
+			country_naval_cap_add = 2
 		}
 	}
 
@@ -562,17 +578,6 @@ soldier = {
 		}
 		modifier = {
 			planet_jobs_produces_mult = 0.05
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_military_police }
-		}
-		modifier = {
-			planet_crime_add = -25
-			planet_amenities_add = 20
 		}
 	}
 
@@ -1095,17 +1100,6 @@ bureaucrat = {
 	
 	planet_modifier = {
 		planet_stability_add = 1
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_common_law }
-		}
-		modifier = {
-			planet_crime_add = -25
-			planet_amenities_add = 20
-		}
 	}
 	
 	country_modifier = {

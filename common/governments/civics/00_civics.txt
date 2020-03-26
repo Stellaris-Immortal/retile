@@ -37,7 +37,6 @@ civic_corvee_system = {
 }
 
 civic_feudal_realm = {
-	description = "civic_tooltip_feudal_realm_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
@@ -47,7 +46,7 @@ civic_feudal_realm = {
 	}
 	modifier = { 
 		subject_tribute_mult = 0.10
-		country_subject_power_penalty_mult = -0.5
+		planet_jobs_worker_produces_mult = 0.10
 	}
 	random_weight = { base = 5 }
 }
@@ -69,6 +68,10 @@ civic_imperial_cult = {
 				value = ethic_fanatic_authoritarian
 			}
 		}
+	}
+	modifier = {
+		planet_jobs_ruler_unity_produces_add = 5
+		pop_government_ethic_attraction = 1
 	}
 	random_weight = { base = 5 }
 }
@@ -165,12 +168,9 @@ civic_meritocracy = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		pop_cat_specialist_happiness = 0.05
+		planet_jobs_ruler_produces_mult = 0.10
 		planet_jobs_specialist_produces_mult = 0.10
-		pop_cat_worker_happiness = -0.05
 		planet_jobs_worker_produces_mult = -0.10
-		pop_cat_slave_happiness = -0.10
-		planet_jobs_slave_produces_mult = -0.20
 	}
 }
 
@@ -231,14 +231,13 @@ civic_technocracy = {
 }
 
 civic_police_state = {
-	description = "civic_tooltip_police_state_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
 	}
 	modifier = {
 		starbase_trade_protection_add = 10
-		pop_ethic_authoritarian_attraction_mult = 0.10
+		planet_enforcers_unity_produces_add = 2
 	}
 	possible = {
 		ethics = {
@@ -259,8 +258,7 @@ civic_idealistic_foundation = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		#faction_approval = 0.10
-		pop_citizen_happiness = 0.1
+		pop_cat_worker_happiness = 0.10
 	}
 }
 
@@ -287,7 +285,10 @@ civic_functional_architecture = {
 	}
 	possible = {
 		civics = {
-			NOT = { value = civic_environmentalist }
+			NOT = { 
+				value = civic_environmentalist
+				value = civic_agrarian_idyll
+			}
 		}
 	}
 	random_weight = { base = 5 }
@@ -421,9 +422,7 @@ civic_free_haven = {
 			}
 		}
 		civics = {
-			NOT = {
-				value = civic_corvee_system
-			}
+			NOT = { value = civic_corvee_system }
 		}		
 	}
 	random_weight = { base = 5 }
@@ -482,6 +481,11 @@ civic_agrarian_idyll = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
 	}
+	possible = {
+		civics = {
+			NOT = { value = civic_functional_architecture }
+		}
+	}
 	modifier = { 
 		planet_laborers_unity_produces_add = 1
 	}
@@ -516,7 +520,7 @@ civic_shadow_council = {
 	}
 	random_weight = { base = 5 }
 	modifier = {
-		country_influence_produces_mult = 0.10
+		country_influence_produces_mult = 0.20
 		country_election_influence_cost_mult = -0.25
 	}
 }
@@ -542,12 +546,12 @@ civic_efficient_bureaucracy = {
 	random_weight = { base = 5 }
 	modifier = { 
 		country_admin_cap_add = 10
-		empire_size_colonies_mult = -0.10
+		country_admin_cap_mult = 0.10
 	}
-	description = "civic_efficient_bureaucracy_effects"
 }
 
 civic_nationalistic_zeal = {
+	description = "civic_nationalistic_zeal_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
@@ -562,11 +566,7 @@ civic_nationalistic_zeal = {
 		}
 	}
 	random_weight = { base = 5 }
-	modifier = {
-		max_rivalries = 1
-		country_insult_efficiency = 0.50
-		pop_government_ethic_attraction = 0.25
-	}
+	modifier = { }
 }
 
 
@@ -901,6 +901,7 @@ civic_shared_burden = {
 	modifier = {
 		planet_stability_add = 10
 		starbase_trade_protection_add = 20
+		planet_laborers_society_research_produces_add = 1
 	}		
 	random_weight = { base = 5 }
 }
