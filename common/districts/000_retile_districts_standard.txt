@@ -129,6 +129,11 @@ district_clerks = {
 		}
 	}
 	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = district_clerks_unlock
+	}
+	
 	ai_weight = {
 		weight = 1
 	}
@@ -228,6 +233,11 @@ district_engineers = {
 		}
 	}
 	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = district_engineers_unlock
+	}
+	
 	ai_weight = {
 		weight = 1
 	}
@@ -279,6 +289,11 @@ district_scholars = {
 		modifier = {
 			job_researcher_add = 1
 		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = district_scholars_unlock
 	}
 	
 	ai_weight = {
@@ -339,6 +354,14 @@ district_bureaucrats = {
 		modifier = {
 			job_bureaucrat_add = 1
 		}
+	}
+	
+	triggered_desc = {
+		trigger = { 
+			exists = owner
+			owner = { has_technology = tech_adaptive_bureaucracy }
+		}
+		text = district_bureaucrats_unlock
 	}
 	
 	ai_weight = {
@@ -653,6 +676,11 @@ district_custodians = {
 		modifier = {
 			job_custodian_add = 1
 		}
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = district_custodians_unlock
 	}
 	
 	ai_weight = {

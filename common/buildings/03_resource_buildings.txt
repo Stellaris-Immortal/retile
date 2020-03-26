@@ -16,6 +16,7 @@ building_hydroponics_farm = {
 	potential = {
 		exists = owner
 		NOT = { has_modifier = slave_colony }
+		has_district = district_custodians
 	}
 	
 	allow = {
@@ -174,6 +175,7 @@ building_recycling_center = {
 	
 	potential = {
 		NOT = { has_modifier = slave_colony }
+		has_district = district_custodians
 	}
 
 	allow = {
@@ -296,6 +298,7 @@ building_solar_panels = {
 	
 	potential = {
 		NOT = { has_modifier = slave_colony }
+		has_district = district_custodians
 	}
 
 	allow = {
@@ -1102,6 +1105,7 @@ building_maintenance_depot = {
 	base_cap_amount = 1
 	
 	allow = {
+		has_district = district_custodians
 		OR = {
 			owner = { is_ai = no }
 			AND = {
