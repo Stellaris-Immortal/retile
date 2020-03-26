@@ -29,12 +29,12 @@ building_colony_shelter = {
 	resources = {
 		category = planet_buildings
 		upkeep = {
-			energy = 5
+			energy = 1
 		}		
 	}
 
 	planet_modifier = {
-		planet_housing_add = 1
+		planet_housing_add = 6
 		job_colonist_add = 1
 	}
 	
@@ -132,14 +132,13 @@ building_capital = {
 			minerals = 500
 		}	
 		upkeep = {
-			energy = 10
+			energy = 2
 		}		
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 2
+		planet_housing_add = 6
 		job_administrator_add = 1
-		job_soldier_add = 1
 		planet_max_buildings_add = 1
 		planet_max_branch_office_buildings_add = 1
 	}
@@ -299,15 +298,13 @@ building_major_capital = {
 			minerals = 1000
 		}	
 		upkeep = {
-			energy = 15
+			energy = 3
 		}		
 	}
 
 	planet_modifier = {
-		planet_housing_add = 3
-		job_administrator_add = 1
-		job_soldier_add = 1
-		job_enforcer_add = 1
+		planet_housing_add = 7
+		job_administrator_add = 2
 		planet_max_buildings_add = 2
 		planet_max_branch_office_buildings_add = 2
 	}
@@ -322,17 +319,6 @@ building_major_capital = {
 			job_roboticist_add = 1
 		}
 	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_military_police }
-		}
-		modifier = {
-			job_enforcer_add = -1
-			job_soldier_add = 1
-		}
-	}
 	
 	triggered_planet_modifier = {
 		potential = {
@@ -340,8 +326,8 @@ building_major_capital = {
 			owner = { has_authority = auth_corporate }
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_executive_add = 1
+			job_administrator_add = -2
+			job_executive_add = 2
 		}
 	}	
 	
@@ -351,8 +337,8 @@ building_major_capital = {
 			owner = { has_civic = civic_exalted_priesthood }					
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_high_priest_add = 1
+			job_administrator_add = -2
+			job_high_priest_add = 2
 		}
 	}
 	
@@ -362,8 +348,8 @@ building_major_capital = {
 			owner = { has_civic = civic_aristocratic_elite }					
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_noble_add = 1
+			job_administrator_add = -2
+			job_noble_add = 2
 		} 
 	}
 	
@@ -373,8 +359,8 @@ building_major_capital = {
 			owner = { has_civic = civic_technocracy }					
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_head_researcher_add = 1
+			job_administrator_add = -2
+			job_head_researcher_add = 2
 		} 
 	}		
 	
@@ -384,8 +370,8 @@ building_major_capital = {
 			owner = { has_civic = civic_merchant_guilds }					
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_merchant_add = 1
+			job_administrator_add = -2
+			job_merchant_add = 2
 		}
 	}
 
@@ -395,8 +381,8 @@ building_major_capital = {
 			owner = { has_civic = civic_shared_burden }
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_clerk_add = 1
+			job_administrator_add = -2
+			job_clerk_add = 2
 		}
 	}
 
@@ -478,16 +464,13 @@ building_system_capital = {
 			minerals = 2000
 		}		
 		upkeep = {
-			energy = 20
+			energy = 4
 		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 4
-		job_administrator_add = 1
-		job_soldier_add = 1
-		job_enforcer_add = 1
-		job_bureaucrat_add = 1
+		planet_housing_add = 8
+		job_administrator_add = 3
 		planet_max_buildings_add = 3
 		planet_max_branch_office_buildings_add = 3
 	}
@@ -502,15 +485,6 @@ building_system_capital = {
 			job_roboticist_add = 1
 		}
 	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_military_police }
-		}
-		job_enforcer_add = -1
-		job_soldier_add = 1
-	}
 	
 	triggered_planet_modifier = {
 		potential = {
@@ -518,8 +492,8 @@ building_system_capital = {
 			owner = { has_authority = auth_corporate }
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_executive_add = 1
+			job_administrator_add = -3
+			job_executive_add = 3
 		}
 	}	
 	
@@ -529,8 +503,8 @@ building_system_capital = {
 			owner = { has_civic = civic_exalted_priesthood }					
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_high_priest_add = 1
+			job_administrator_add = -3
+			job_high_priest_add = 3
 		}
 	}
 	
@@ -540,8 +514,8 @@ building_system_capital = {
 			owner = { has_civic = civic_aristocratic_elite }					
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_noble_add = 1
+			job_administrator_add = -3
+			job_noble_add = 3
 		} 
 	}
 	
@@ -551,8 +525,8 @@ building_system_capital = {
 			owner = { has_civic = civic_technocracy }					
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_head_researcher_add = 1
+			job_administrator_add = -3
+			job_head_researcher_add = 3
 		} 
 	}		
 	
@@ -562,8 +536,8 @@ building_system_capital = {
 			owner = { has_civic = civic_merchant_guilds }					
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_merchant_add = 1
+			job_administrator_add = -3
+			job_merchant_add = 3
 		}
 	}
 
@@ -573,8 +547,8 @@ building_system_capital = {
 			owner = { has_civic = civic_shared_burden }
 		}
 		modifier = {
-			job_administrator_add = -1
-			job_clerk_add = 1
+			job_administrator_add = -3
+			job_clerk_add = 3
 		}
 	}
 
@@ -653,16 +627,13 @@ building_galactic_capital = {
 			minerals = 5000
 		}		
 		upkeep = {
-			energy = 25
+			energy = 5
 		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 6
-		job_administrator_add = 2
-		job_bureaucrat_add = 2
-		job_soldier_add = 1
-		job_enforcer_add = 1
+		planet_housing_add = 9
+		job_administrator_add = 4
 		planet_max_buildings_add = 3
 		planet_max_branch_office_buildings_add = 3
 	}
@@ -677,15 +648,6 @@ building_galactic_capital = {
 			job_roboticist_add = 1
 		}
 	}
-
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_military_police }
-		}
-		job_enforcer_add = -1
-		job_soldier_add = 1
-	}
 	
 	triggered_planet_modifier = {
 		potential = {
@@ -693,8 +655,8 @@ building_galactic_capital = {
 			owner = { has_authority = auth_corporate }
 		}
 		modifier = {
-			job_administrator_add = -2
-			job_executive_add = 2
+			job_administrator_add = -4
+			job_executive_add = 4
 		}
 	}	
 	
@@ -704,8 +666,8 @@ building_galactic_capital = {
 			owner = { has_civic = civic_exalted_priesthood }					
 		}
 		modifier = {
-			job_administrator_add = -2
-			job_high_priest_add = 2
+			job_administrator_add = -4
+			job_high_priest_add = 4
 		}
 	}
 	
@@ -715,8 +677,8 @@ building_galactic_capital = {
 			owner = { has_civic = civic_aristocratic_elite }					
 		}
 		modifier = {
-			job_administrator_add = -2
-			job_noble_add = 2
+			job_administrator_add = -4
+			job_noble_add = 4
 		} 
 	}
 	
@@ -726,8 +688,8 @@ building_galactic_capital = {
 			owner = { has_civic = civic_technocracy }					
 		}
 		modifier = {
-			job_administrator_add = -2
-			job_head_researcher_add = 2
+			job_administrator_add = -4
+			job_head_researcher_add = 4
 		} 
 	}		
 	
@@ -737,8 +699,8 @@ building_galactic_capital = {
 			owner = { has_civic = civic_merchant_guilds }					
 		}
 		modifier = {
-			job_administrator_add = -2
-			job_merchant_add = 2
+			job_administrator_add = -4
+			job_merchant_add = 4
 		}
 	}
 
@@ -748,8 +710,8 @@ building_galactic_capital = {
 			owner = { has_civic = civic_shared_burden }
 		}
 		modifier = {
-			job_administrator_add = -2
-			job_clerk_add = 2
+			job_administrator_add = -4
+			job_clerk_add = 4
 		}
 	}
 
