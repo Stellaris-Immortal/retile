@@ -7,24 +7,20 @@ citizenship_full = {
 	potential = {
 		exists = from
 		NOT = { from = { has_authority = auth_machine_intelligence } }
-		NOR = {
-			has_trait = trait_machine_unit
-			has_trait = trait_mechanical
-			has_trait = trait_droid
-		}
-		OR = {
-			NOT = { has_trait = trait_synthetic }
-			from = { empire_gives_synth_rights = yes }
-		}
-		NAND = { # Purifiers can't allow full citizenship to anyone but themselves, or their created synths
-			from = { has_valid_civic = civic_fanatic_purifiers }
-			NOR = {
+		if = {
+			limit = { from = { has_valid_civic = civic_fanatic_purifiers } }
+			OR = {
 				is_same_species = from
 				AND = {
 					has_trait = trait_synthetic
 					has_species_flag = mechanical_species@from
-					from = { empire_gives_synth_rights = yes }
 				}
+			}
+		} else = {
+			NOR = {
+				has_trait = trait_machine_unit
+				has_trait = trait_mechanical
+				has_trait = trait_droid
 			}
 		}
 	}
@@ -62,6 +58,11 @@ citizenship_full = {
 			} else = { hidden_trigger = { always = yes } }
 		} else = { hidden_trigger = { always = yes } }
 		
+		# synthetics can only be full citizens if we have full AI rights.
+		if = { limit = { hidden_trigger = { has_trait = trait_synthetic } }
+			from = { empire_gives_synth_rights = yes }
+		} else = { hidden_trigger = { always = yes } }
+		
 		custom_tooltip = {
 			fail_text = "lonely_hive_mind_pops_kill_themselves_citizenship"
 			is_lonely_hive_mind_pop = no
@@ -77,13 +78,13 @@ citizenship_full = {
 				has_trait = trait_hive_mind
 			}
 		}
-		custom_tooltip = {
-			fail_text = no_service_no_citizenship
-			OR = {
-				NOT = { from = { has_valid_civic = civic_citizen_service } }
-				has_military_service_type = { type = military_service_full country = from }
-			}
-		}
+		#custom_tooltip = {
+		#	fail_text = no_service_no_citizenship
+		#	OR = {
+		#		NOT = { from = { has_valid_civic = civic_citizen_service } }
+		#		has_military_service_type = { type = military_service_full country = from }
+		#	}
+		#}
 	}
 	ai_will_do = {
 		factor = 1
@@ -411,15 +412,29 @@ citizenship_limited = {
 		}
 		NOR = {
 			has_trait = trait_machine_unit
-			is_shackled_robot_species_rights = yes
+			has_trait = trait_mechanical
+			has_trait = trait_droid
 		}
 		
 		# Purifiers don't need/want limited citizenship
 		NOT = { from = { has_valid_civic = civic_fanatic_purifiers } }
+		# Main species can't have limitied citizenship
 		NOT = { is_same_species = from }
 	}
 
 	allow = {
+		# Synths can only be limited citizenship if...
+		# - we give full AI rights
+		# - we don't give full alien rights
+		# - they're not our creations
+		if = { limit = { has_trait = trait_synthetic }
+			from = {
+				empire_gives_synth_rights = yes
+				NOT = { has_policy_flag = alien_full_rights }
+			}
+			NOT = { has_species_flag = mechanical_species@from }
+		} else = { hidden_trigger = { always = yes } }
+
 		custom_tooltip = {
 			fail_text = hive_mind_not_welcoming
 			from = { OR = {
