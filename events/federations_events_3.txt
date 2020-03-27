@@ -404,9 +404,7 @@ planet_event = {
    		owner = {
    			is_ai = no
    		}
-        any_country = {
-            NOT = { has_country_flag = triggered_relicrails_digsite }
-        }
+		NOT = { has_global_flag = triggered_relicrails_digsite }
    		root = {
             NOR = {
                 exists = archaeological_site
@@ -422,18 +420,19 @@ planet_event = {
     }
 
     immediate = {
-        random_list = {
-            1 = {
-                planet_event = {
-                    id = federations3.1005
-                    days = 3
-                }
-                owner = {
-                    set_country_flag = triggered_relicrails_digsite
-                }
-            }
-            25 = { }
-        }
+		if = {
+			limit = { NOT = { has_global_flag = triggered_relicrails_digsite } }
+			random_list = {
+				1 = {
+					set_global_flag = triggered_relicrails_digsite
+					planet_event = {
+						id = federations3.1005
+						days = 3
+					}
+				}
+				25 = { }
+			}
+		}
     }
 }
 
@@ -447,7 +446,7 @@ planet_event = {
     location = from
 
     is_triggered_only = yes
-
+	
     option = {
         name = OK
         create_archaeological_site = relicrails_digsite

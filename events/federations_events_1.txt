@@ -71,22 +71,24 @@ country_event = {
 		always = no
 
 		any_owned_pop = {
-			is_unemployed = yes
-			OR = {
-				is_pop_category = worker
-				is_pop_category = simple_drone
-			}
+			#is_unemployed = yes
+			#OR = {
+			#	is_pop_category = worker
+			#	is_pop_category = simple_drone
+			#}
+			has_job = laborer
 		}
 	}
 
 	immediate = {
 		random_owned_pop = {
 			limit = {
-				is_unemployed = yes
-				OR = {
-					is_pop_category = worker
-					is_pop_category = simple_drone
-				}
+				#is_unemployed = yes
+				#OR = {
+				#	is_pop_category = worker
+				#	is_pop_category = simple_drone
+				#}
+				has_job = laborer
 
 				owner = {
 					any_owned_planet = {

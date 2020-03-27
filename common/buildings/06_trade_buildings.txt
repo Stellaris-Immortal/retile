@@ -19,6 +19,10 @@ building_trade_1 = {
 			NOT = { has_tradition = tr_prosperity_public_works }
 		}
 		NOT = { has_modifier = slave_colony }
+		OR = {
+			has_district = district_clerks
+			has_district = district_resort
+		}
 	}
 	
 	allow = {
@@ -71,13 +75,25 @@ building_trade_1 = {
 		NOT = { has_tradition = tr_prosperity_public_works }
 	}
 	
-	country_modifier = {
-		country_resource_max_add = 1000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_trade_1_effect
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_pollution_1_effect
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_commercial_zone_effect
+	planet_modifier = {
+		planet_clerks_energy_upkeep_add = @job_energy_normal
+		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal
+		clerks_bio_food_upkeep_add = @living_standard_food_normal
+		clerks_lith_minerals_upkeep_add = @living_standard_food_normal
+		clerks_mech_energy_upkeep_add = @living_standard_food_normal
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
 	}
 	
 	upgrades = {
@@ -149,13 +165,25 @@ building_trade_2 = {
 		"building_trade_3"
 	}
 	
-	country_modifier = {
-		country_resource_max_add = 2000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_trade_2_effect
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_pollution_2_effect
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_commercial_megaplex_effect
+	planet_modifier = {
+		planet_clerks_energy_upkeep_add = @job_energy_normal2
+		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal2
+		clerks_bio_food_upkeep_add = @living_standard_food_normal2
+		clerks_lith_minerals_upkeep_add = @living_standard_food_normal2
+		clerks_mech_energy_upkeep_add = @living_standard_food_normal2
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
 	}
 	
 	ai_weight = {
@@ -219,13 +247,25 @@ building_trade_3 = {
 		NOT = { has_tradition = tr_prosperity_public_works }
 	}
 	
-	country_modifier = {
-		country_resource_max_add = 3000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_trade_3_effect
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_pollution_3_effect
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_stock_exchange_effect
+	planet_modifier = {
+		planet_clerks_energy_upkeep_add = @job_energy_normal3
+		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal3
+		clerks_bio_food_upkeep_add = @living_standard_food_normal3
+		clerks_lith_minerals_upkeep_add = @living_standard_food_normal3
+		clerks_mech_energy_upkeep_add = @living_standard_food_normal3
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
 	}
 	
 	ai_weight = {
@@ -249,6 +289,10 @@ building_bourse_1 = {
 			has_tradition = tr_prosperity_public_works
 		}
 		NOT = { has_modifier = slave_colony }
+		OR = {
+			has_district = district_clerks
+			has_district = district_resort
+		}
 	}
 	
 	allow = {
@@ -307,13 +351,25 @@ building_bourse_1 = {
 		trade_value_mult = 0.10
 	}
 	
-	country_modifier = {
-		country_resource_max_add = 1000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_trade_1_effect
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_pollution_1_effect
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_bourse_1_effect
+	planet_modifier = {
+		planet_clerks_energy_upkeep_add = @job_energy_normal
+		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal
+		clerks_bio_food_upkeep_add = @living_standard_food_normal
+		clerks_lith_minerals_upkeep_add = @living_standard_food_normal
+		clerks_mech_energy_upkeep_add = @living_standard_food_normal
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
 	}
 	
 	upgrades = {
@@ -391,14 +447,29 @@ building_bourse_2 = {
 		trade_value_mult = 0.05
 	}
 	
-	country_modifier = {
-		trade_value_mult = 0.05
-		country_resource_max_add = 2000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_trade_2_effect
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_pollution_2_effect
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_bourse_2_effect
+	planet_modifier = {
+		planet_clerks_energy_upkeep_add = @job_energy_normal2
+		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal2
+		clerks_bio_food_upkeep_add = @living_standard_food_normal2
+		clerks_lith_minerals_upkeep_add = @living_standard_food_normal2
+		clerks_mech_energy_upkeep_add = @living_standard_food_normal2
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+
+	country_modifier = {
+		trade_value_mult = 0.05
 	}
 	
 	ai_weight = {
@@ -464,14 +535,29 @@ building_bourse_3 = {
 		"tech_galactic_markets"
 	}
 	
-	country_modifier = {
-		trade_value_mult = 0.10
-		country_resource_max_add = 3000
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_trade_3_effect
+	}
+	triggered_desc = {
+		trigger = { always = yes }
+		text = clerks_pollution_3_effect
 	}
 	
-	triggered_desc = {
-		trigger = { exists = owner }
-		text = retile_bourse_3_effect
+	planet_modifier = {
+		planet_clerks_energy_upkeep_add = @job_energy_normal3
+		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal3
+		clerks_bio_food_upkeep_add = @living_standard_food_normal3
+		clerks_lith_minerals_upkeep_add = @living_standard_food_normal3
+		clerks_mech_energy_upkeep_add = @living_standard_food_normal3
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+
+	country_modifier = {
+		trade_value_mult = 0.10
 	}
 	
 	ai_weight = {

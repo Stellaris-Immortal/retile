@@ -614,6 +614,7 @@ planet_jobs = {
 		key = planet_jobs_ruler
 		modifier_types = {
 			mult
+			add
 		}
 		trigger = {
 			is_pop_category = ruler
@@ -699,46 +700,6 @@ planet_priests = {
 	}
 }
 
-planet_farmers = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-	generate_mult_modifiers = {
-		produces
-		upkeep
-	}
-	
-	generate_add_modifiers = {
-		produces
-		upkeep
-	}
-}
-
-planet_miners = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-	generate_mult_modifiers = {
-		produces
-		upkeep
-	}
-
-	generate_add_modifiers = {
-		produces
-		upkeep
-	}
-}
-
 planet_livestock = {
 	parent = planet_jobs
 	ai_use_parent_for_resources_upkeep = {
@@ -750,26 +711,6 @@ planet_livestock = {
 	}
 	generate_add_modifiers = {
 		produces
-	}
-}
-
-planet_technician = {
-	parent = planet_jobs
-	ai_use_parent_for_resources_upkeep = {
-		energy
-		consumer_goods
-		alloys
-		minerals
-		food
-	}
-	generate_mult_modifiers = {
-		produces
-		upkeep
-	}
-	
-	generate_add_modifiers = {
-		produces
-		upkeep
 	}
 }
 
@@ -1094,6 +1035,185 @@ pop_category_slave = {
 	generate_mult_modifiers = {
 		upkeep
 	}
+	
+	######################################## Specialist Building Upkeeps
+	triggered_upkeep_modifier = {
+		key = clerks_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = clerk
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = clerks_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = clerk
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = scholars_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = researcher
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = scholars_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = researcher
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = engineers_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = foundry
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = engineers_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = foundry
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = enforcers_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = enforcer
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = enforcers_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = enforcer
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = soldiers_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = soldier
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = soldiers_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = soldier
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = medics_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = medic
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = medics_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = medic
+			pop_eats_minerals = yes
+		}
+	}
+	######################################## Worker Building Upkeeps
+	triggered_upkeep_modifier = {
+		key = custodians_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = custodian
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = custodians_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = custodian
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = laborers_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = laborer
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = laborers_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = laborer
+			pop_eats_minerals = yes
+		}
+	}
 }
 
 pop_category_robot = {
@@ -1104,6 +1224,97 @@ pop_category_robot = {
 		alloys
 		minerals
 		food
+	}
+
+	######################################## Specialist Building Upkeeps
+	triggered_upkeep_modifier = {
+		key = clerks_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = clerk
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = scholars_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = researcher
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = engineers_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = foundry
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = enforcers_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = enforcer
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = soldiers_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = soldier
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = medics_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = medic
+			pop_eats_energy = yes
+		}
+	}
+	######################################## Worker Building Upkeeps
+	triggered_upkeep_modifier = {
+		key = custodians_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = custodian
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = laborers_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = laborer
+			pop_eats_energy = yes
+		}
 	}
 }
 
@@ -1127,6 +1338,75 @@ pop_category_workers = {
 		minerals
 		food
 	}
+
+
+	######################################## Worker Building Upkeeps
+	triggered_upkeep_modifier = {
+		key = custodians_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = custodian
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = custodians_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = custodian
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = custodians_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = custodian
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = laborers_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = laborer
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = laborers_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = laborer
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = laborers_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = laborer
+			pop_eats_energy = yes
+		}
+	}
 }
 
 pop_category_specialists = {
@@ -1137,6 +1417,207 @@ pop_category_specialists = {
 		alloys
 		minerals
 		food
+	}
+
+
+	######################################## Specialist Building Upkeeps
+	triggered_upkeep_modifier = {
+		key = clerks_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = clerk
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = clerks_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = clerk
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = clerks_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = clerk
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = scholars_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = researcher
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = scholars_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = researcher
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = scholars_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = researcher
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = engineers_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = foundry
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = engineers_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = foundry
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = engineers_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = foundry
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = enforcers_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = enforcer
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = enforcers_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = enforcer
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = enforcers_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = enforcer
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = soldiers_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = soldier
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = soldiers_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = soldier
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = soldiers_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = soldier
+			pop_eats_energy = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = medics_bio
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = medic
+			pop_eats_food = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = medics_lith
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = medic
+			pop_eats_minerals = yes
+		}
+	}
+	triggered_upkeep_modifier = {
+		key = medics_mech
+		modifier_types = {
+			add
+			#mult
+		}
+		trigger = {
+			has_job = medic
+			pop_eats_energy = yes
+		}
 	}
 }
 

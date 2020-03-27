@@ -281,6 +281,10 @@ living_standard_shared_burden = {
 		pop_cat_worker_happiness = 0.05
 	}
 	
+	pop_modifier = {
+		planet_laborers_unity_produces_add = 1
+	}
+		
 	allow = {
 		hidden_trigger = { exists = from }
 		NOR = {
@@ -341,6 +345,13 @@ living_standard_utopian = {
 			is_shackled_robot_species_rights = yes	
 		}
 		NOT = { from = { has_valid_civic = civic_capitalist } }
+	}
+	
+	pop_modifier = {
+		planet_laborers_unity_produces_add = 1
+		planet_laborers_physics_research_produces_add = 1
+		planet_laborers_society_research_produces_add = 1
+		planet_laborers_engineering_research_produces_add = 1
 	}
 	
 	allow = {
@@ -532,7 +543,7 @@ living_standard_good = {
 		}
 		pop_cat_ruler_happiness = 0.10
 		pop_cat_specialist_happiness = 0.10
-		pop_cat_worker_happiness = 0.10
+		pop_cat_worker_happiness = 0.05
 		pop_cat_slave_happiness = 0.10
 	}
 		
@@ -540,6 +551,8 @@ living_standard_good = {
 		pop_cat_ruler_political_power = 4
 		pop_cat_specialist_political_power = 1
 		pop_cat_worker_political_power = 0.5
+		planet_laborers_society_research_produces_add = 1
+		planet_laborers_unity_produces_add = 0.5
 	}
 	
 	potential = {
@@ -726,6 +739,9 @@ living_standard_stratified = {
 		pop_cat_ruler_political_power = 9
 		pop_cat_specialist_political_power = 1
 		pop_cat_worker_political_power = -0.25
+		planet_laborers_food_produces_add = 1
+		planet_laborers_minerals_produces_add = 1
+		planet_laborers_energy_produces_add = 1
 	}
 	
 	potential = {

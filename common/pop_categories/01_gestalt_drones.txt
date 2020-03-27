@@ -115,10 +115,6 @@ breeding_drone = {
 		influence = 10
 	}
 
-	unemployment_resources = {
-		category = unemployment_resources
-	}
-
 	resources = {
 		category = pop_category_drones
 
@@ -313,10 +309,6 @@ complex_drone = {
 
 	resettlement_cost = {
 		influence = 10
-	}
-
-	unemployment_resources = {
-		category = unemployment_resources
 	}
 
 	resources = {
@@ -520,20 +512,6 @@ simple_drone = {
 		influence = 10
 	}
 
-	unemployment_resources = {
-		category = unemployment_resources
-		produces = {
-			trigger = {
-				owner = {
-					is_hive_empire = yes
-				}
-			}
-			minerals = 1
-		}
-		upkeep = {
-		}
-	}
-
 	resources = {
 		category = pop_category_drones
 
@@ -551,21 +529,6 @@ simple_drone = {
 				is_lithoid = yes
 			}
 			minerals = @living_standard_food_normal
-		}
-
-		upkeep = {
-			trigger = {
-				is_robotic_species = yes
-				is_unemployed = no
-			}
-			energy = @living_standard_energy_normal
-		}
-		upkeep = {
-			trigger = {
-				is_robotic_species = yes
-				is_unemployed = yes
-			}
-			energy = @living_standard_energy_unemployed
 		}
 
 		produces = {

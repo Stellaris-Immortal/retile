@@ -73,3 +73,112 @@ has_comms_with_alien_civilization = {
 	}
 }
 
+# does this empire
+empire_gives_synth_rights = {
+	OR = {
+		is_mechanical_empire = yes
+		has_policy_flag = ai_full_rights
+	}
+}
+
+# this = species, from = country
+is_shackled_robot_species_rights = {
+	exists = from
+	OR = {
+		has_trait = "trait_mechanical"
+		has_trait = "trait_droid"
+		AND = {
+			has_trait = "trait_synthetic"
+			from = { empire_gives_synth_rights = no }
+		}
+	}
+}
+
+# this = species, from = country
+is_free_robot_species_rights = {
+	exists = from
+	has_trait = "trait_synthetic"
+	from = { empire_gives_synth_rights = yes }
+}
+
+species_rights_robot_full_rights_check = {
+	exists = from
+	from = { empire_gives_synth_rights = yes }
+}
+
+is_free_robot = { # The pop is a free robot with citizen rights
+	exists = owner
+	has_trait = "trait_synthetic"
+	owner = { empire_gives_synth_rights = yes }
+}
+
+is_shackled_robot = { # The pop is a non-free robot
+	OR = {
+		has_trait = "trait_mechanical"
+		has_trait = "trait_droid"
+		AND = {
+			has_trait = "trait_synthetic"
+			exists = owner
+			NOT = { owner = {
+				OR = {
+					is_mechanical_empire = yes
+					has_policy_flag = ai_full_rights
+				}
+			} }
+		}
+	}
+}
+
+# The pop is a non-sapient robot
+is_non_sapient_robot = {
+	OR = {
+		has_trait = trait_mechanical
+		has_trait = trait_droid
+	}
+}
+
+is_non_menial_laborer = {	# ??? Might need a retile update...
+	OR = {
+		is_enslaved = no
+		NOT = { has_slavery_type = { country = from type = slavery_normal } }
+	}
+	is_non_sapient_robot = no
+	is_sapient = yes
+}
+
+can_set_ai_policy = {
+	is_mechanical_empire = no
+	OR = {
+		has_technology = tech_synthetic_workers
+		has_technology = tech_sapient_ai
+		any_relation = {
+			has_communications = prev
+			OR = {
+				has_technology = tech_synthetic_workers
+				has_technology = tech_sapient_ai
+				has_authority = auth_machine_intelligence
+			}
+			OR = {
+				is_country_type = default
+				has_ai_personality_behaviour = robot_exploiter
+				has_ai_personality_behaviour = robot_liberator
+			}
+		}
+	}
+}
+
+is_mechanical_empire = {
+	OR = {
+		owner_species = { has_trait = trait_synthetic }
+		has_country_flag = synthetic_empire
+	}
+}
+
+is_robot_empire = {
+	OR = {
+		owner_species = { has_trait = trait_synthetic }
+		has_country_flag = synthetic_empire
+		has_authority = auth_machine_intelligence
+	}
+}
+
