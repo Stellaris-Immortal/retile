@@ -13,6 +13,8 @@ building_bureaucratic_1 = {
 	
 	potential = {
 		exists = owner
+		is_gestalt = no
+		has_district = district_bureaucrats
 	}
 	
 	prerequisites = {
@@ -40,6 +42,10 @@ building_bureaucratic_1 = {
 	triggered_desc = {
 		trigger = { exists = owner }
 		text = retile_bureaucratic_1_effect
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
 	}
 	
 	ai_weight = {
@@ -85,6 +91,10 @@ building_bureaucratic_2 = {
 		text = retile_bureaucratic_3_effect
 	}
 	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	
 	ai_weight = {
 		weight = 1
 	}
@@ -122,6 +132,10 @@ building_bureaucratic_3 = {
 	triggered_desc = {
 		trigger = { exists = owner }
 		text = retile_bureaucratic_3_effect
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
 	}
 	
 	ai_weight = {
@@ -167,6 +181,7 @@ building_embassy_1 = {
 	
 	country_modifier = {
 		envoys_add = 1
+		country_resource_max_add = 1000
 	}
 	
 	upgrades = {
@@ -224,6 +239,7 @@ building_embassy_2 = {
 	
 	country_modifier = {
 		envoys_add = 2
+		country_resource_max_add = 2000
 	}
 	
 	upgrades = {
@@ -281,6 +297,7 @@ building_embassy_3 = {
 	
 	country_modifier = {
 		envoys_add = 3
+		country_resource_max_add = 3000
 	}
 	
 	ai_weight = {
@@ -325,12 +342,19 @@ building_military_1 = {
 	}
 	
 	country_modifier = {
+		
 		army_starting_experience_add = 100
 		ship_starting_experience_add = 100
+		country_resource_max_add = 1000
 	}
 	
 	upgrades = {
 		building_military_2
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_military_1_effect
 	}
 	
 	ai_weight = {
@@ -385,10 +409,16 @@ building_military_2 = {
 	country_modifier = {
 		army_starting_experience_add = 200
 		ship_starting_experience_add = 200
+		country_resource_max_add = 2000
 	}
 	
 	upgrades = {
 		building_military_3
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_military_2_effect
 	}
 	
 	ai_weight = {
@@ -443,6 +473,12 @@ building_military_3 = {
 	country_modifier = {
 		army_starting_experience_add = 300
 		ship_starting_experience_add = 300
+		country_resource_max_add = 3000
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_military_3_effect
 	}
 	
 	ai_weight = {

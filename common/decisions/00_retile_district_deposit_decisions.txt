@@ -55,7 +55,6 @@ decision_retile_module_mine = {
 	}
 	
 	effect = {
-		#custom_tooltip = decision_retile_module_mine_effects
 		add_deposit = retile_module_mine
 		hidden_effect = { change_variable = { which = module_count value = 1 } }
 	}
@@ -69,20 +68,11 @@ decision_retile_module_mine_remove = {
 	owned_planets_only = yes
 
 	potential = {
-		OR = {
-			has_deposit = retile_module_mine
-			has_deposit = retile_module_mine_active
-		}
+		has_deposit = retile_module_mine
 	}
 	
 	effect = {
-		#custom_tooltip = decision_retile_module_mine_remove_effects
-		if = {
-			limit = { has_deposit = retile_module_mine }
-			remove_deposit = retile_module_mine
-		} else = {
-			remove_deposit = retile_module_mine_active
-		}
+		remove_deposit = retile_module_mine
 		hidden_effect = { change_variable = { which = module_count value = -1 } }
 	}
 	
@@ -141,7 +131,6 @@ decision_retile_module_farm = {
 	
 	
 	effect = {
-		#custom_tooltip = decision_retile_module_farm_effects
 		add_deposit = retile_module_farm
 		hidden_effect = { change_variable = { which = module_count value = 1 } }
 	}
@@ -155,20 +144,11 @@ decision_retile_module_farm_remove = {
 	owned_planets_only = yes
 
 	potential = {
-		OR = {
-			has_deposit = retile_module_farm
-			has_deposit = retile_module_farm_active
-		}
+		has_deposit = retile_module_farm
 	}
 	
 	effect = {
-		#custom_tooltip = decision_retile_module_farm_remove_effects
-		if = {
-			limit = { has_deposit = retile_module_farm }
-			remove_deposit = retile_module_farm
-		} else = {
-			remove_deposit = retile_module_farm_active
-		}
+		remove_deposit = retile_module_farm
 		hidden_effect = { change_variable = { which = module_count value = -1 } }
 	}
 	
@@ -226,7 +206,6 @@ decision_retile_module_generator = {
 	}
 		
 	effect = {
-		#custom_tooltip = decision_retile_module_generator_effects
 		add_deposit = retile_module_generator
 		hidden_effect = { change_variable = { which = module_count value = 1 } }
 	}
@@ -240,20 +219,11 @@ decision_retile_module_generator_remove = {
 	owned_planets_only = yes
 
 	potential = {
-		OR = {
-			has_deposit = retile_module_generator
-			has_deposit = retile_module_generator_active
-		}
+		has_deposit = retile_module_generator
 	}
 	
 	effect = {
-		#custom_tooltip = decision_retile_module_generator_remove_effects
-		if = {
-			limit = { has_deposit = retile_module_generator }
-			remove_deposit = retile_module_generator
-		} else = {
-			remove_deposit = retile_module_generator_active
-		}
+		remove_deposit = retile_module_generator
 		hidden_effect = { change_variable = { which = module_count value = -1 } }
 	}
 	
@@ -279,7 +249,7 @@ decision_retile_deposit_bioreactor = {
 			is_machine_empire = yes
 			is_lithoid_empire = yes
 		} }
-		NOT = { has_deposit = retile_deposit_bioreactor }
+		free_district_slots > 0
 	}
 
 	allow = {
@@ -294,22 +264,17 @@ decision_retile_deposit_bioreactor = {
 	}
 	
 	effect = {
-		custom_tooltip = decision_retile_deposit_bioreactor_effects
+		#custom_tooltip = decision_retile_deposit_bioreactor_effects
 		if = {
-			limit = { NOT = { has_deposit = retile_deposit_bioreactor } }
+			limit = {
+				free_district_slots > 0
+			}
 			add_deposit = retile_deposit_bioreactor
 		}
 	}
 	
 	ai_weight = {
 		weight = 0
-		modifier = {
-			weight = 10000
-			AND = {
-				owner = { country_uses_food = no }
-				any_deposit = { has_deposit_category = deposit_cat_food_active }
-			}
-		}
 	}
 }
 
@@ -321,19 +286,12 @@ decision_retile_deposit_bioreactor_remove = {
 	}
 	
 	effect = {
-		custom_tooltip = decision_retile_deposit_bioreactor_remove_effects
+		#custom_tooltip = decision_retile_deposit_bioreactor_remove_effects
 		remove_deposit = retile_deposit_bioreactor
 	}
 	
 	ai_weight = {
 		weight = 0
-		modifier = {
-			weight = 10000
-			OR = {
-				owner = { country_uses_food = yes }
-				NOT = { any_deposit = { has_deposit_category = deposit_cat_food_active } }
-			}
-		}
 	}	
 }
 

@@ -14,10 +14,6 @@ clerk = {
 	}
 
 	possible = {
-		or = {
-			has_job = clerk
-			retile_job_seeking = yes
-		}
 		robot_specialist_job_check_trigger = yes
 		owner = { is_gestalt = no }
 	}
@@ -31,47 +27,6 @@ clerk = {
 		upkeep = {
 			energy = @job_energy_normal
 			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_trade_1 }
-					planet = { has_building = building_bourse_1 }
-				}
-			}
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_trade_2 }
-					planet = { has_building = building_bourse_2 }
-				}
-			}
-			energy = @job_energy_normal2
-			consumer_goods = @job_supplies_normal2
-		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_trade_3 }
-					planet = { has_building = building_bourse_3 }
-				}
-			}
-			energy = @job_energy_normal3
-			consumer_goods = @job_supplies_normal3
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_private_police }
-		}
-		modifier = {
-			planet_crime_add = -25
-			planet_amenities_add = 20
 		}
 	}
 	
@@ -159,10 +114,6 @@ researcher = {	### Scholar
 	}
 
 	possible = {
-		or = {
-			has_job = researcher
-			retile_job_seeking = yes
-		}
 		synth_specialist_job_check_trigger = yes
 	}
 	
@@ -176,136 +127,11 @@ researcher = {	### Scholar
 			society_research = 2.5
 			unity = 2.5
 		}
-		produces = {
-			trigger = { planet = { has_building = building_metascience_lab_1 } }
-			unity = 2
-		}
-		produces = {
-			trigger = { planet = { has_building = building_metascience_lab_2 } }
-			unity = 3
-		}
-		produces = {
-			trigger = { planet = { has_building = building_metascience_lab_3 } }
-			unity = 4
-		}		
-		produces = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_1 }
-					planet = { has_building = building_metascience_lab_1 }
-				}
-			}
-			physics_research = 2.5
-			engineering_research = 2.5
-			society_research = 2.5
-		}
-		produces = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_2 }
-					planet = { has_building = building_metascience_lab_2 }
-				}
-			}
-			physics_research = 5
-			engineering_research = 5
-			society_research = 5
-		}
-		produces = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_3 }
-					planet = { has_building = building_metascience_lab_3 }
-				}
-			}
-			physics_research = 7.5
-			engineering_research = 7.5
-			society_research = 7.5
-		}
-		produces = {
-			trigger = { planet = { OR = {
-				has_building = building_temple
-				has_building = building_autochthon_monument
-				has_building = building_corporate_monument
-			} } }
-			unity = 2.5
-		}
-		produces = {
-			trigger = { planet = { OR = {
-				has_building = building_holotemple
-				has_building = building_heritage_site
-				has_building = building_corporate_site
-			} } }
-			unity = 5
-		}
-		produces = {
-			trigger = { planet = { OR = {
-				has_building = building_sacred_nexus
-				has_building = building_hypercomms_forum
-				has_building = building_corporate_forum
-			} } }
-			unity = 7.5
-		}
 		upkeep = {
+			energy = @job_energy_normal
 			energy = @job_energy_normal
 			consumer_goods = @job_supplies_high
 			consumer_goods = @job_supplies_high
-		}
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_1 }
-					planet = { has_building = building_metascience_lab_1 }
-				}
-			}
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_high
-		}		
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_2 }
-					planet = { has_building = building_metascience_lab_2 }
-				}
-			}
-			energy = @job_energy_normal2
-			consumer_goods = @job_supplies_high2
-		}		
-		upkeep = {
-			trigger = { 
-				OR = {
-					planet = { has_building = building_research_lab_3 }
-					planet = { has_building = building_metascience_lab_3 }
-				}
-			}
-			energy = @job_energy_normal3
-			consumer_goods = @job_supplies_high3
-		}		
-		upkeep = {
-			trigger = { planet = { OR = {
-				has_building = building_temple
-				has_building = building_autochthon_monument
-				has_building = building_corporate_monument
-			} } }
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_high
-		}		
-		upkeep = {
-			trigger = { planet = { OR = {
-				has_building = building_holotemple
-				has_building = building_heritage_site
-				has_building = building_corporate_site
-			} } }
-			energy = @job_energy_normal2
-			consumer_goods = @job_supplies_high2
-		}		
-		upkeep = {
-			trigger = { planet = { OR = {
-				has_building = building_sacred_nexus
-				has_building = building_hypercomms_forum
-				has_building = building_corporate_forum
-			} } }
-			energy = @job_energy_normal3
-			consumer_goods = @job_supplies_high3
 		}
 		produces = { ### Fallen Empire
 			trigger = { planet = { has_building = building_class_4_singularity } }
@@ -481,10 +307,6 @@ foundry = {	### Engineer
 	}
 
 	possible = {
-		or = {
-			has_job = foundry
-			retile_job_seeking = yes
-		}
 		robot_specialist_job_check_trigger = yes
 	}
 	
@@ -496,68 +318,11 @@ foundry = {	### Engineer
 			consumer_goods = 2.5
 			alloys = 2.5
 		}
-		produces = {
-			trigger = { planet = { has_building = building_factory_1 } }
-			consumer_goods = 2.5
-		}
-		produces = {
-			trigger = { planet = { has_building = building_factory_2 } }
-			consumer_goods = 5
-		}
-		produces = {
-			trigger = { planet = { has_building = building_factory_3 } }
-			consumer_goods = 7.5
-		}
-		produces = {
-			trigger = { planet = { has_building = building_foundry_1 } }
-			alloys = 2.5
-		}
-		produces = {
-			trigger = { planet = { has_building = building_foundry_2 } }
-			alloys = 5
-		}
-		produces = {
-			trigger = { planet = { has_building = building_foundry_3 } }
-			alloys = 7.5
-		}
 		upkeep = {
 			minerals = 10
 			energy = @job_energy_high
 			energy = @job_energy_normal
 			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_factory_1 } }
-			minerals = 5
-			energy = @job_energy_high
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_factory_2 } }
-			minerals = 10
-			energy = @job_energy_high2
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_factory_3 } }
-			minerals = 15
-			energy = @job_energy_high3
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_foundry_1 } }
-			minerals = 5
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_foundry_2 } }
-			minerals = 10
-			energy = @job_energy_normal2
-			consumer_goods = @job_supplies_normal2
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_foundry_3 } }
-			minerals = 15
-			energy = @job_energy_normal3
-			consumer_goods = @job_supplies_normal3
 		}
 		produces = { ### Fallen Empire
 			trigger = { planet = { has_building = building_dimensional_fabricator } }
@@ -643,10 +408,6 @@ enforcer = {
 	}
 
 	possible = {
-		or = {
-			has_job = enforcer
-			retile_job_seeking = yes
-		}
 		droid_specialist_job_check_trigger = yes
 	}
 	
@@ -664,7 +425,6 @@ enforcer = {
 	
 	planet_modifier = {
 		planet_crime_add = -25
-		pop_government_ethic_attraction = 0.10
 		planet_amenities_add = 20
 	}
 	
@@ -682,25 +442,53 @@ enforcer = {
 		}		
 	}
 	
-	triggered_planet_modifier = {
+	triggered_country_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_policy_flag = criminal_state_police }
+			owner = { has_policy_flag = criminal_common_law }
 		}
 		modifier = {
-			planet_crime_add = -25
-			planet_amenities_add = 20
+			country_admin_cap_add = 1
 		}
 	}
 	
 	triggered_planet_modifier = {
 		potential = {
 			exists = owner
-			owner = { has_valid_civic = civic_police_state }
+			owner = { has_policy_flag = criminal_private_police }
 		}
 		modifier = {
-			planet_crime_mult = -0.20
-			planet_amenities_add = 20
+			trade_value_add = 5
+		}
+	}
+	
+	triggered_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_state_police }
+		}
+		modifier = {
+			planet_stability_add = 1
+		}
+	}
+	
+	triggered_pop_modifier = {
+		potential = {
+			exists = owner
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		modifier = {
+			pop_defense_armies_add = 2
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = {
+			exists = owner 
+			owner = { has_policy_flag = criminal_military_police }
+		}
+		modifier = {
+			country_naval_cap_add = 2
 		}
 	}
 
@@ -750,10 +538,6 @@ soldier = {
 	}
 
 	possible = {
-		or = {
-			has_job = soldier
-			retile_job_seeking = yes
-		}
 		combat_specialist_job_check_trigger = yes
 	}
 
@@ -773,18 +557,39 @@ soldier = {
 		country_naval_cap_add = 10
 	}
 	
-	planet_modifier = {
-		planet_amenities_add = 20
-	}
-	
-	triggered_planet_modifier = {
+	triggered_country_modifier = {
 		potential = {
-			planet = { has_modifier = retile_martial_law }
+			exists = owner
+			planet = { has_building = building_military_1 }
+		}
+		modifier = { 
+			country_naval_cap_add = 5
+			planet_amenities_add = 10
+		}
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			planet = { has_building = building_military_2 }
 		}
 		modifier = {
-			planet_crime_add = -25
+			country_naval_cap_add = 10
 			planet_amenities_add = 20
 		}
+	}
+	triggered_country_modifier = {
+		potential = {
+			exists = owner
+			planet = { has_building = building_military_3 }
+		}
+		modifier = {
+			country_naval_cap_add = 15
+			planet_amenities_add = 30
+		}
+	}
+	
+	planet_modifier = {
+		planet_amenities_add = 20
 	}
 	
 	triggered_planet_modifier = {
@@ -794,17 +599,6 @@ soldier = {
 		}
 		modifier = {
 			planet_jobs_produces_mult = 0.05
-		}
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_military_police }
-		}
-		modifier = {
-			planet_crime_add = -25
-			planet_amenities_add = 20
 		}
 	}
 
@@ -973,10 +767,6 @@ roboticist = {
 	}
 
 	possible = {
-		or = {
-			has_job = roboticist
-			retile_job_seeking = yes
-		}
 		droid_specialist_job_check_trigger = yes
 		NOT = { planet = { free_housing < 0 } }
 	}
@@ -1078,10 +868,6 @@ overseer = {
 	}
 
 	possible = {
-		or = {
-			has_job = overseer
-			retile_job_seeking = yes
-		}
 		droid_specialist_job_check_trigger = yes
 	}
 	
@@ -1116,10 +902,6 @@ colonist = {
 	}
 
 	possible = {
-		or = {
-			has_job = colonist
-			retile_job_seeking = yes
-		}
 		droid_specialist_job_check_trigger = yes
 	}
 
@@ -1219,10 +1001,6 @@ medic = {
 	}
 
 	possible = {
-		or = {
-			has_job = medic
-			retile_job_seeking = yes
-		}
 		droid_specialist_job_check_trigger = yes
 	}
 	
@@ -1270,10 +1048,6 @@ warden = {
 	}
 
 	possible = {
-		or = {
-			has_job = warden
-			retile_job_seeking = yes
-		}
 		droid_specialist_job_check_trigger = yes
 	}
 	
@@ -1318,10 +1092,6 @@ bureaucrat = {
 	}
 
 	possible = {
-		or = {
-			has_job = bureaucrat
-			retile_job_seeking = yes
-		}
 		owner = { is_gestalt = no }
 		robot_specialist_job_check_trigger = yes
 	}
@@ -1351,17 +1121,6 @@ bureaucrat = {
 	
 	planet_modifier = {
 		planet_stability_add = 1
-	}
-	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = criminal_common_law }
-		}
-		modifier = {
-			planet_crime_add = -25
-			planet_amenities_add = 20
-		}
 	}
 	
 	country_modifier = {
@@ -1396,84 +1155,11 @@ bureaucrat = {
 			planet = { has_building = building_ministry }
 		}
 		modifier = {
-			pop_factions_produces_mult = 0.02
-			pop_government_ethic_attraction = 0.02
+			pop_factions_produces_mult = 0.01
+			pop_government_ethic_attraction = 0.01
 			country_naval_cap_mult = 0.01
 			country_trust_growth = 0.01
 			country_trust_cap_add = 1
-		}
-	}
-	
-	triggered_country_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_isolation }
-		}
-		modifier = {
-			country_admin_cap_add = 1
-		}
-	}
-	
-	triggered_country_modifier = {
-		potential = { 
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_assembly }
-		}
-		modifier = { 
-			pop_factions_produces_mult = 0.10
-		}
-	}
-	
-	triggered_country_modifier = {
-		potential = { 
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_magistrate }
-		}
-		modifier = { 
-			pop_government_ethic_attraction = 0.10
-		}
-	}
-	
-	triggered_country_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_gunboat } 
-		}
-		modifier = {
-			country_naval_cap_mult = 0.02
-			country_occupation_armies_add = 1
-		}
-	}
-	
-	triggered_country_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_embassy }
-		}
-		modifier = { 
-			country_trust_growth = 0.05
-			country_trust_cap_add = 5
-		}
-	}
-	
-	triggered_country_modifier = {
-		potential = { 
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_pr }
-		}
-		modifier = { 
-			country_trust_growth = 0.05
-			country_trust_cap_add = 5
-		}
-	}
-	
-	triggered_country_modifier = {
-		potential = { 
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_lr }
-		}
-		modifier = { 
-			pop_factions_produces_mult = 0.10
 		}
 	}
 	

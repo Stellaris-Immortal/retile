@@ -1,9 +1,10 @@
 trait_plantoid_fruiting = {
-	cost = 1
+	cost = 2
 	potential_crossbreeding_chance = 1.0
 	
 	allowed_archetypes = { PLANTOID }
-	custom_tooltip = TRAIT_PLANTOID_FRUITING_EFFECT
+	modifier = { planet_laborers_fruiting_food_produces_mult = 0.4 }
+	#custom_tooltip = TRAIT_PLANTOID_FRUITING_EFFECT
 	
 	slave_cost = {
 		energy = 50
@@ -14,7 +15,7 @@ trait_agrarian = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0	# 1.0 = 100% chance of being considered for new traits when forming half-species. does not guarantee the trait will be added if it costs points.
 	allowed_archetypes = { BIOLOGICAL ARTHROPOID MAMMAL REPTILE }
-	modifier = { planet_farmers_food_produces_add = 2 }
+	modifier = { planet_laborers_food_produces_add = 2 }
 	slave_cost = { energy = 50 }
 }
 
@@ -22,7 +23,7 @@ trait_ingenious = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
 	allowed_archetypes = { BIOLOGICAL LITHOID ARTHROPOID MAMMAL REPTILE }
-	modifier = { planet_technician_energy_produces_add = 2 }
+	modifier = { planet_laborers_energy_produces_add = 2 }
 	slave_cost = { energy = 50 }
 }
 
@@ -30,7 +31,7 @@ trait_industrious = {
 	cost = 2
 	potential_crossbreeding_chance = 1.0
 	allowed_archetypes = { BIOLOGICAL LITHOID ARTHROPOID MAMMAL REPTILE }
-	modifier = { planet_miners_minerals_produces_add = 2 }
+	modifier = { planet_laborers_minerals_produces_add = 2 }
 	slave_cost = { energy = 50 }
 }
 
@@ -39,8 +40,8 @@ trait_innovative = {
 	potential_crossbreeding_chance = 1.0
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
 	modifier = { 
-		planet_metallurgists_alloys_produces_add = 0.5
-		planet_metallurgists_consumer_goods_produces_add = 0.5
+		planet_metallurgists_alloys_produces_add = 1
+		planet_metallurgists_consumer_goods_produces_add = 1
 	}
 }
 
@@ -50,10 +51,10 @@ trait_intelligent = {
 	opposites = { "trait_mindless" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
 	modifier = {
-		planet_researchers_unity_produces_add = 0.25
-		planet_researchers_physics_research_produces_add = 0.25
-		planet_researchers_society_research_produces_add = 0.25
-		planet_researchers_engineering_research_produces_add = 0.25
+		planet_researchers_unity_produces_add = 1
+		planet_researchers_physics_research_produces_add = 1
+		planet_researchers_society_research_produces_add = 1
+		planet_researchers_engineering_research_produces_add = 1
 	}
 }
 
@@ -63,10 +64,10 @@ trait_mindless = {
 	opposites = { "trait_intelligent" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
 	modifier = {
-		planet_researchers_unity_produces_add = -0.25
-		planet_researchers_physics_research_produces_add = -0.25
-		planet_researchers_society_research_produces_add = -0.25
-		planet_researchers_engineering_research_produces_add = -0.25
+		planet_researchers_unity_produces_add = -1
+		planet_researchers_physics_research_produces_add = -1
+		planet_researchers_society_research_produces_add = -1
+		planet_researchers_engineering_research_produces_add = -1
 	}
 }
 
@@ -958,7 +959,7 @@ trait_telluric = {
 }
 
 trait_inventive = {
-	cost = 3
+	cost = 4
 	potential_crossbreeding_chance = 0.5
 	initial = no
 	randomized = no
@@ -966,8 +967,8 @@ trait_inventive = {
 	opposites = { "trait_nerve_stapled" "trait_innovative" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
 	modifier = { 
-		planet_metallurgists_alloys_produces_add = 1
-		planet_metallurgists_consumer_goods_produces_add = 1
+		planet_metallurgists_alloys_produces_add = 2
+		planet_metallurgists_consumer_goods_produces_add = 2
 		species_leader_exp_gain = 0.25
 	}
 }
@@ -982,10 +983,10 @@ trait_erudite = {
 	opposites = { "trait_nerve_stapled" "trait_intelligent" }
 	allowed_archetypes = { BIOLOGICAL LITHOID PLANTOID ARTHROPOID MAMMAL REPTILE }
 	modifier = { 
-		planet_researchers_unity_produces_add = 1
-		planet_researchers_physics_research_produces_add = 1
-		planet_researchers_society_research_produces_add = 1
-		planet_researchers_engineering_research_produces_add = 1
+		planet_researchers_unity_produces_add = 2
+		planet_researchers_physics_research_produces_add = 2
+		planet_researchers_society_research_produces_add = 2
+		planet_researchers_engineering_research_produces_add = 2
 		leader_skill_levels = 1 
 	}
 }

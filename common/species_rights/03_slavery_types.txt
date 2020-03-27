@@ -16,10 +16,6 @@ slavery_domestic = {
 		#is_same_species = from
 	}
 	
-	allow = {
-		hidden_trigger = { always = yes }
-	}
-	
 	ai_will_do = {
 		factor = 1
 	}
@@ -37,10 +33,6 @@ slavery_normal = {
 		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
 		NOT = { is_same_species = from }
 	}
-	
-	#allow = {
-	#	always = yes
-	#}
 	
 	ai_will_do = {
 		factor = 1
@@ -81,6 +73,7 @@ slavery_military = {
 			}
 		}
 	}
+	
 	ai_will_do = {
 		factor = 5
 		modifier = {
@@ -99,39 +92,39 @@ slavery_indentured = {
 	}
 
 	potential = {
+		from = { has_valid_civic = civic_indentured_assets }
+		NOT = { is_same_species = from }
 		host_has_dlc = "Utopia"
 		from = { NOT = { has_ethic = ethic_gestalt_consciousness } }
 	}
 
-	allow = {
-		hidden_trigger = { always = yes }
-	}
 	ai_will_do = {
 		factor = 3
-		modifier = {
-			factor = 10
-			from = { has_valid_civic = civic_indentured_assets }
-		}
-		modifier = { # Syncretic Slaver Guild starts need their primary species to be in Indentured Service to avoid unemployment at game start.
-			factor = 10
-			from = {
-				has_valid_civic = civic_slaver_guilds
-				has_origin = origin_syncretic_evolution
-			}
-			is_same_species = owner_main_species
-		}
-		modifier = {
-			factor = 0.15
-			NOR = {
-				has_trait = trait_psionic
-				has_trait = trait_erudite
-				has_trait = trait_charismatic
-				has_trait = trait_natural_engineers
-				has_trait = trait_natural_physicists
-				has_trait = trait_natural_sociologists
-				has_trait = trait_intelligent
-			}
-		}
+		#modifier = {
+		#	factor = 10
+		#	from = { has_valid_civic = civic_indentured_assets }
+		#}
+		#modifier = { # Syncretic Slaver Guild starts need their primary species to be in Indentured Service to avoid unemployment at game start.
+		#		# Commented out because it should no longer be true in Immortal...
+		#	factor = 10
+		#	from = {
+		#		has_valid_civic = civic_slaver_guilds
+		#		has_origin = origin_syncretic_evolution
+		#	}
+		#	is_same_species = owner_main_species
+		#}
+		#modifier = {
+		#	factor = 0.15
+		#	NOR = {
+		#		has_trait = trait_psionic
+		#		has_trait = trait_erudite
+		#		has_trait = trait_charismatic
+		#		has_trait = trait_natural_engineers
+		#		has_trait = trait_natural_physicists
+		#		has_trait = trait_natural_sociologists
+		#		has_trait = trait_intelligent
+		#	}
+		#}
 	}
 }
 
@@ -198,6 +191,7 @@ slavery_livestock = {
 			}
 		}		
 	}
+	
 	ai_will_do = {
 		factor = 3
 		modifier = {

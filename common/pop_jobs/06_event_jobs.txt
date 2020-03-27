@@ -46,10 +46,6 @@ ratling_scavenger = {
 	}
 
 	possible = {
-		or = {
-			has_job = ratling_scavenger
-			retile_job_seeking = yes
-		}
 		hidden_trigger = { exists = owner }
 		owner = { is_country_type = ratlings }
 	}
@@ -81,10 +77,6 @@ odd_factory_worker = {
 	}
 
 	possible = {
-		or = {
-			has_job = odd_factory_worker
-			retile_job_seeking = yes
-		}
 		NOT = { owner = { has_country_flag = odd_factory_pause } }
 		worker_job_check_trigger = yes
 	}
@@ -131,10 +123,6 @@ odd_factory_drone = {
 	}
 
 	possible = {
-		or = {
-			has_job = odd_factory_drone
-			retile_job_seeking = yes
-		}
 		worker_job_check_trigger = yes
 	}
 	
@@ -167,10 +155,6 @@ underground_trade_worker = {
 	}
 
 	possible = {
-		or = {
-			has_job = underground_trade_worker
-			retile_job_seeking = yes
-		}
 		droid_specialist_job_check_trigger = yes
 	}
 	
@@ -228,10 +212,6 @@ underground_contact_drone = {
 	}
 
 	possible = {
-		or = {
-			has_job = underground_contact_drone
-			retile_job_seeking = yes
-		}
 		worker_job_check_trigger = yes
 	}
 	
@@ -296,10 +276,6 @@ dimensional_portal_researcher = {
 	}
 
 	possible = {
-		or = {
-			has_job = dimensional_portal_researcher
-			retile_job_seeking = yes
-		}
 		synth_specialist_job_check_trigger = yes
 	}
 	
@@ -479,10 +455,6 @@ dimensional_portal_researcher_gestalt = {
 	}
 
 	possible = {
-		or = {
-			has_job = dimensional_portal_researcher_gestalt
-			retile_job_seeking = yes
-		}
 		synth_specialist_job_check_trigger = yes
 	}
 	
@@ -774,7 +746,7 @@ cave_cleaner = {
 	}
 
 	resources = {
-		category = planet_miners
+		category = planet_laborers
 		produces = {
 			minerals = 5
 		}
@@ -785,10 +757,6 @@ cave_cleaner = {
 	
 	weight = {
 		weight = @specialist_job_weight
-		modifier = {
-			factor = 10
-			has_job = miner
-		}		
 	}
 }
 

@@ -208,50 +208,27 @@ special_init_03 = {
 					set_owner = last_created_country
 					set_capital = yes
 					
-					if = {
-						limit = { num_pops > 8 }
-						while = {
-							limit = { num_pops > 8 }
-							random_owned_pop = { kill_pop = yes }
-						}
-					} else_if = {
-						limit = { num_pops < 8 }
-						while = {
-							limit = { num_pops < 8 }
-							create_pop = { species = owner_main_species }
-						}
+					set_planet_population = { p_pops = 10 }
+					
+					planet = { remove_all_primitive_buildings = yes }
+
+					if = { limit = { NOT = { any_deposit = { has_deposit_category = deposit_cat_food } } }
+						add_deposit = retile_module_farm
 					}
-					remove_all_primitive_buildings = yes
+					if = { limit = { NOT = { any_deposit = { has_deposit_category = deposit_cat_minerals } } }
+						add_deposit = retile_module_mine
+					}
+					if = { limit = { NOT = { any_deposit = { has_deposit_category = deposit_cat_energy } } }
+						add_deposit = retile_module_generator
+					}
+
 					add_building = building_primitive_capital
 					add_building = building_primitive_factory
 					add_district = district_engineers
 					add_district = district_scholars
 					add_district = district_housing
 					add_district = district_housing
-					IF = {
-						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_food }
-						}
-						retile_exploit_food = yes
-					} ELSE = {
-						add_deposit = retile_module_farm_active
-					}
-					IF = {
-						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_minerals }
-						}
-						retile_exploit_minerals = yes
-					} ELSE = {
-						add_deposit = retile_module_mine_active
-					}
-					IF = {
-						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_energy }
-						}
-						retile_exploit_energy = yes
-					} ELSE = {
-						add_deposit = retile_module_generator_active
-					}
+					
 					create_primitive_blockers = yes
 					
 					create_army = {
@@ -351,31 +328,17 @@ special_init_03 = {
 					set_owner = last_created_country
 					set_capital = yes
 					
-					if = {
-						limit = { num_pops > 5 }
-						while = {
-							limit = { num_pops > 5 }
-							random_owned_pop = { kill_pop = yes }
-						}
-					} else_if = {
-						limit = { num_pops < 5 }
-						while = {
-							limit = { num_pops < 5 }
-							create_pop = { species = owner_main_species }
-						}
-					}
+					set_planet_population = { p_pops = 10 }
+					
 					remove_all_primitive_buildings = yes
+
+					if = { limit = { NOT = { any_deposit = { has_deposit_category = deposit_cat_food } } }
+						add_deposit = retile_module_farm
+					}
+
 					add_building = building_urban_dwellings # primitive_city
 					add_building = building_primitive_capital
 					add_district = district_housing
-					IF = {
-						limit = {
-							any_deposit = { has_deposit_category = deposit_cat_food }
-						}
-						retile_exploit_food = yes
-					} ELSE = {
-						add_deposit = retile_module_farm_active
-					}
 	
 					create_army = {
 						name = "NAME_German_Wehrmacht"
@@ -469,20 +432,10 @@ special_init_03 = {
 					set_owner = last_created_country
 					set_capital = yes
 										
-					if = {
-						limit = { num_pops > 3 }
-						while = {
-							limit = { num_pops > 3 }
-							random_owned_pop = { kill_pop = yes }
-						}
-					} else_if = {
-						limit = { num_pops < 3 }
-						while = {
-							limit = { num_pops < 3 }
-							create_pop = { species = owner_main_species }
-						}
-					}
+					set_planet_population = { p_pops = 4 }
+					
 					remove_all_primitive_buildings = yes
+
 					add_building = building_primitive_farm
 					add_building = building_primitive_dwellings
 					add_building = building_stone_palace
@@ -1366,7 +1319,7 @@ sanctuary_system = {
     }
 	max_instances = 1
 	flags = { sanctuary_system }
-	scaled_spawn_chance = 2	# scales by galaxy size (1000 stars = 10x base)
+	scaled_spawn_chance = 200	# scales by galaxy size (1000 stars = 10x base)
 	
 	name = "NAME_Sanctuary"
 
@@ -1487,6 +1440,8 @@ sanctuary_system = {
 		init_effect = {
 			prevent_anomaly = yes
 			
+			generate_early_primitives_on_planet = yes
+
 			last_created_country = {
 				create_fleet = {
 					settings = { spawn_debris = no }
@@ -1505,8 +1460,6 @@ sanctuary_system = {
 					}
 				}
 			}			
-			
-			generate_early_primitives_on_planet = yes
 		}
 	}
 	planet = {
@@ -1566,6 +1519,8 @@ sanctuary_system = {
 		init_effect = {
 			prevent_anomaly = yes
 			
+			generate_early_primitives_on_planet = yes		
+			
 			last_created_country = {
 				create_fleet = {
 					settings = { spawn_debris = no }
@@ -1584,8 +1539,6 @@ sanctuary_system = {
 					}
 				}
 			}
-			
-			generate_early_primitives_on_planet = yes		
 		}
 	}
 	planet = {
@@ -1645,6 +1598,8 @@ sanctuary_system = {
 		init_effect = {
 			prevent_anomaly = yes
 			
+			generate_early_primitives_on_planet = yes				
+			
 			last_created_country = {
 				create_fleet = {
 					settings = { spawn_debris = no }
@@ -1663,8 +1618,6 @@ sanctuary_system = {
 					}
 				}
 			}
-			
-			generate_early_primitives_on_planet = yes				
 		}
 	}
 	planet = {
@@ -1714,6 +1667,8 @@ sanctuary_system = {
 		init_effect = {
 			prevent_anomaly = yes
 			
+			generate_early_primitives_on_planet = yes
+			
 			last_created_country = {
 				create_fleet = {
 					settings = { spawn_debris = no }
@@ -1732,8 +1687,6 @@ sanctuary_system = {
 					}
 				}
 			}
-			
-			generate_early_primitives_on_planet = yes
 		}
 	}
 	planet = {

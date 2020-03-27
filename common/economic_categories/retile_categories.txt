@@ -35,6 +35,101 @@ planet_custodians = {
 		minerals
 		food
 	}
+
+
+	triggered_produces_modifier = {
+		key = planet_custodians_non_plantoid
+		modifier_types = {
+			add
+		}
+		trigger = {
+			is_plantoid = no
+		}
+	}
+	
+	triggered_produces_modifier = {
+		key = planet_custodians_fruiting
+		modifier_types = {
+			add
+			mult
+		}
+		trigger = {
+			has_trait = trait_plantoid_fruiting
+		}
+	}
+}
+planet_laborers = {
+	icon = "job_technician"
+	parent = planet_jobs
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+
+	triggered_produces_modifier = {
+		key = planet_laborers_non_plantoid
+		modifier_types = {
+			add
+		}
+		trigger = {
+			is_plantoid = no
+		}
+	}
+	
+	triggered_produces_modifier = {
+		key = planet_laborers_fruiting
+		modifier_types = {
+			add
+			mult
+		}
+		trigger = {
+			has_trait = trait_plantoid_fruiting
+		}
+	}
+	
+	# compatibility fallback categories
+	triggered_produces_modifier = {
+		key = planet_miners
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			always = yes
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_farmers
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			always = yes
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_technician
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			always = yes
+		}
+	}
 }
 planet_medics = {
 	icon = "job_medic"

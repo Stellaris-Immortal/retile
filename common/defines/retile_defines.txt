@@ -67,6 +67,19 @@ NGameplay = {
 	EMPIRE_COHESION_LOSS_EXTERNAL_HYPERLANE		= 0			# 1		# Cohesion loss per hyperlane entrance into empire
 	EMPIRE_COHESION_LOSS_ENCLAVE				= 0			# 3		# Cohesion loss per enclave (cut off system) in empire
 	EMPIRE_COHESION_EMPIRE_SIZE_MULT			= 0			# 2		# Empire size is multiplied by 1 + this at 0% cohesion
+	
+	RESOLUTION_VOTE_TIMER 						= 900		# 1800	# number of days a resolution will be on the senate floor before being passed/failed
+	SENATE_RECESS_TIMER							= 360		# 720	# number of days until the next proposed resolution will be put on the floor after the current vote
+	CHANGE_VOTE_COOLDOWN						= 60		# 120	# number of days after voting in a resolution before you can change your vote
+	LEFT_COMMUNITY_MODIFIER_TIMER 				= 3600		# 7200	# how many days the left_community_modifier will affect the leaving country
+	COUNCIL_ELECTION_TIMER 						= 3600		# 7200	# time between galactic council elections
+	
+	CATEGORY_VOTE_COOLDOWN 						= 1260		# 2520	# time before another resolution in a given category can proposed again
+	TYPE_VOTE_COOLDOWN 							= 2570		# 5040	# time before a referendum of a given type can be proposed again
+	VETO_COOLDOWN								= 900		# 1800	# time before a country can enact another veto
+	EMERGENCY_MEASURES_COOLDOWN 				= 1800		# 3600	# time before a country can propose another emergency measure
+	
+	FEDERATION_VOTE_RESUBMIT_DELAY				= 90		# 180	# Number of days that must pass before you can propose to vote for a given law again
 
 	ADVANCED_EMPIRE_ALWAYS_COLONIZE_HABITABILITY = 0.50 	# 0.70	# If habitability is at least this, always colonize planet in advanced empire's borders
 
@@ -79,6 +92,25 @@ NGameplay = {
 	POLICY_YEARS								= 5			# 10 	# Years a set policy can not be changed for
 	TRUCE_YEARS									= 5			# 10	# Truce last for X years
 	MIN_RIVAL_YEARS								= 5			# 10	# Years before you can remove an empire as a rival
+	
+	MIN_BLOCKED_DEPOSITS						= 3			# 1		# Always try to have this many blocker deposits on planets when generating the galaxy
+	MIN_UNBLOCKED_DEPOSITS						= 4			# 3		# Always try to have this many non-blocker deposits on planets when generating the galaxy
+	DEPOSIT_USED_CATEGORY_WEIGHT				= 0.5 		# 0.25	# The higher this is, the more randomization will tend to diversify planet deposit types
+	
+	COLONY_DEPOSITS_USE_NULL					= no		# no	# Should the null deposit be a potential outcome in randomization?
+	COLONY_DEPOSITS_FIXED_BASE					= 7			# 5		# min number of deposits on colonizable planets
+	COLONY_DEPOSITS_RANDOM_BASE					= 3			# 2		# this number of random deposit chances are always given to colonizable planets
+	COLONY_DEPOSITS_FIXED_FROM_SIZE				= 0.1		# 0.2	# ( planet size * this ) is added to min number of deposits on colonizable planets
+	COLONY_DEPOSITS_RANDOM_FROM_SIZE			= 0.4		# 0.2	# ( planet size * this ) is added to random deposit chances on colonizable planets
+	
+	NON_COLONY_DEPOSITS_USE_NULL				= yes		# yes	# Should the null deposit be a potential outcome in randomization?
+	NON_COLONY_DEPOSITS_FIXED_BASE				= 1			# 1		# min number of deposits on uninhabitable planets
+	NON_COLONY_DEPOSITS_RANDOM_BASE				= 0			# 0		# this number of random deposit chances are always given to uninhabitable planets
+	NON_COLONY_DEPOSITS_FIXED_FROM_SIZE			= 0			# 0		# ( planet size * this ) is added to min number of deposits on uninhabitable planets
+	NON_COLONY_DEPOSITS_RANDOM_FROM_SIZE		= 0			# 0		# ( planet size * this ) is added to random deposit chances on uninhabitable planets
+	
+	QUICK_CLEAR_BLOCKER_GENERAL_MODIFIER_WEIGHT = 1	 		# 1		# How heavily should general max districts modifier be considered for quick-clear blocker
+	QUICK_CLEAR_BLOCKER_SPECIFIC_MODIFIER_WEIGHT = 1		# 1		# How heavily should specific-type max districts modifier be considered for quick-clear blocker
 }
 
 NPop = {
