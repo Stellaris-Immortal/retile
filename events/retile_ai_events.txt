@@ -140,6 +140,28 @@ country_event = {
 			limit = { retile_ai_has_resource_crisis = no }
 			set_country_flag = retile_ai_needs_science
 		}
+		### Population things...
+		set_variable = { which = ai_assemblers_count value = 0 }
+		every_owned_planet = {
+			if = {
+				limit = { has_building = building_assembly }
+				change_variable = { which = ai_assemblers_count value = 1 }
+			}
+		}
+		set_variable = { which = ai_hospitals_count value = 0 }
+		every_owned_planet = {
+			if = {
+				limit = { OR = {
+					has_building = building_clinic_1
+					has_building = building_clinic_2
+					has_building = building_clinic_3
+					has_building = building_spawning_1
+					has_building = building_spawning_2
+					has_building = building_spawning_3
+				} }
+				change_variable = { which = ai_hospitals_count value = 1 }
+			}
+		}
 	}
 }
 
@@ -865,5 +887,23 @@ country_event = {
 			add_resource = { alloys = -50 }
 			add_resource = { energy = 100 }
 		}
+	}
+}
+
+###################################################################################
+### AI species limit
+
+# This = Country
+# From = Species ( Post Modification )
+country_event = {
+	id = retile_ai.3000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { always = yes }
+	
+	immediate = {
+		set_country_flag = ai_has_primary_species@from.species
+		save_global_event_target_as = { ai_primary_species@from.species@this
 	}
 }

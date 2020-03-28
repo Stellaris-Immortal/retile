@@ -6848,6 +6848,8 @@ event = {
 	id = action.64
 	hide_window = yes
 	is_triggered_only = yes
+	
+	trigger = { always = no }	# Disabled in favor of Retile alternative, see retile_pop.2000
 
 	immediate = {
 		log = "action.64"
@@ -6876,6 +6878,7 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		always = no	# Disabled in favor of Retile alternative, see retile_pop.2000
 		any_owned_pop = {
 			has_citizenship_type = {
 				type = citizenship_assimilation
@@ -7643,6 +7646,7 @@ country_event = {
 
 
 # Removes existing Android Armies when AI is Outlawed, and Robotic Armies when Robot Workers are Outlawed
+# search flags: robot_pop_policy robots_outlawed
 country_event = {
 	id = action.80
 	hide_window = yes
@@ -7650,26 +7654,12 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		OR = {
-			AND = {
-				last_changed_policy = artificial_intelligence_policy
-				has_policy_flag = ai_outlawed
-				any_owned_army = {
-					OR = {
-						army_type = robotic_army
-						army_type = robotic_defense_army
-					}
-				}
-			}
-			AND = {
-				last_changed_policy = robot_pop_policy
-				has_policy_flag = robots_outlawed
-				any_owned_army = {
-					OR = {
-						army_type = robotic_army
-						army_type = robotic_defense_army
-					}
-				}
+		last_changed_policy = artificial_intelligence_policy
+		has_policy_flag = ai_outlawed
+		any_owned_army = {
+			OR = {
+				army_type = robotic_army
+				army_type = robotic_defense_army
 			}
 		}
 	}
@@ -7677,17 +7667,6 @@ country_event = {
 	immediate = {
 		if = {
 			limit = { last_changed_policy = artificial_intelligence_policy has_policy_flag = ai_outlawed }
-			every_owned_army = {
-				limit = {
-					OR = {
-						army_type = robotic_army
-						army_type = robotic_defense_army
-					}
-				}
-				remove_army = yes
-			}
-		}
-		else = {
 			every_owned_army = {
 				limit = {
 					OR = {
@@ -9080,66 +9059,15 @@ event = {
 
 	trigger = {
 		has_global_flag = galactic_market_founded
-
-		OR = {
-			NOT = { is_on_market = volatile_motes }
-			NOT = { is_on_market = exotic_gases }
-			NOT = { is_on_market = rare_crystals }
-			NOT = { is_on_market = sr_living_metal }
-			NOT = { is_on_market = sr_zro }
-			NOT = { is_on_market = sr_dark_matter }
-		}
 	}
 
 	immediate = {
-		if = {
-			limit = {
-									NOT = { is_on_market = volatile_motes }
-				any_playable_country = {
-				resource_stockpile_compare = {  resource = volatile_motes value >= 1 } }
-			}
-										enable_on_market = volatile_motes
-		}
-		else_if = {
-			limit = {
-									NOT = { is_on_market = exotic_gases }
-				any_playable_country = {
-				resource_stockpile_compare = {  resource = exotic_gases value >= 1 } }
-			}
-										enable_on_market = exotic_gases
-		}
-		else_if = {
-			limit = {
-									NOT = { is_on_market = rare_crystals }
-				any_playable_country = {
-				resource_stockpile_compare = {  resource = rare_crystals value >= 1 } }
-			}
-										enable_on_market = rare_crystals
-		}
-		else_if = {
-			limit = {
-									NOT = { is_on_market = sr_living_metal }
-				any_playable_country = {
-				resource_stockpile_compare = {  resource = sr_living_metal value >= 1 } }
-			}
-										enable_on_market = sr_living_metal
-		}
-		else_if = {
-			limit = {
-									NOT = { is_on_market = sr_zro }
-				any_playable_country = {
-				resource_stockpile_compare = {  resource = sr_zro value >= 1 } }
-			}
-										enable_on_market = sr_zro
-		}
-		else_if = {
-			limit = {
-									NOT = { is_on_market = sr_dark_matter }
-				any_playable_country = {
-				resource_stockpile_compare = {  resource = sr_dark_matter value >= 1 } }
-			}
-										enable_on_market = sr_dark_matter
-		}
+		#enable_on_market = rare_crystals
+		#enable_on_market = exotic_gases
+		#enable_on_market = volatile_motes
+		enable_on_market = sr_living_metal
+		enable_on_market = sr_zro
+		enable_on_market = sr_dark_matter
 	}
 }
 
