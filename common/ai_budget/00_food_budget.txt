@@ -18,28 +18,6 @@ food_expenditure_buffer = { # Buffer, will not be spent
 	}	
 }
 
-food_expenditure_trade = {
-	resource = food 
-	type = expenditure
-	category = trade
-	
-	potential = {
-		is_country_type = default
-		is_hive_empire = no
-		ai_colonize_plans <= 0
-		has_resource = { type = food amount > 10000 }
-		has_resource = { type = energy amount < 1000 }
-	}
-	
-	fraction = {
-		weight = 1
-		#modifier = {
-		#	factor = 0.5
-		#	is_hive_empire = yes
-		#}
-	}
-}
-
 food_expenditure_colonies_expand = {
 	resource = food 
 	type = expenditure
@@ -72,67 +50,6 @@ food_expenditure_campaigns = {
 	fraction = {
 		weight = 0.7
 	}	
-}
-
-food_expenditure_trade_excess = {
-	resource = food 
-	type = expenditure
-	category = trade
-	
-	potential = {
-		is_country_type = default
-		has_resource = { 
-			type = food
-			amount > 2000
-		}
-		has_resource = {
-			type = energy
-			amount < 1000
-		}
-	}
-	
-	fraction = {
-		weight = 1
-	}
-	static_max = {
-		base = 1000
-	}
-}
-
-food_expenditure_trade_emergency = {
-	resource = food 
-	type = expenditure
-	category = trade
-	
-	potential = {
-		always = no
-		is_country_type = default
-		has_resource = { type = food amount > 500 }
-		has_monthly_income = { resource = food value > 1 }
-		has_resource = { type = energy amount < 1000 }
-		OR = {
-			AND = {
-				has_monthly_income = { resource = minerals value < 0 }
-				has_resource = { type = minerals amount < 200 }
-			}
-			AND = {
-				has_monthly_income = { resource = consumer_goods value < 0 }
-				has_resource = { type = consumer_goods amount < 200 }
-			}
-			AND = {
-				has_monthly_income = { resource = alloys value < 0 }
-				has_resource = { type = alloys amount < 200 }
-			}
-			AND = {
-				has_monthly_income = { resource = energy value < 0 }
-				has_resource = { type = energy amount < 200 }
-			}
-		}
-	}
-	
-	fraction = {
-		weight = 1
-	}
 }
 
 ############
