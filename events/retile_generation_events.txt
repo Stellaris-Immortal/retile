@@ -90,6 +90,147 @@ event = {
 						}
 					}
 					5 = { add_modifier = { modifier = "terraforming_candidate" days = -1 } }
+					2 = {
+						if = {
+							limit = { solar_system = { NOT = { has_star_flag = has_debris_world } } }
+							add_modifier = { modifier = "kessler_syndrome" days = -1 }
+							change_pc = pc_debris
+							if = {
+								limit = { is_moon = yes}
+								random_list = {
+									1 = { }
+									1 = {
+										solar_system = { set_star_flag = has_debris_world }
+										add_deposit = d_space_supplies
+										create_ambient_object = {
+											type = "medium_debris_02_object"
+											entity_offset_height = -15
+											location = this
+										}
+										last_created_ambient_object = {
+											set_location = {
+												target = prev
+												distance = 0
+												angle = random
+											}
+										}
+										random_list = {
+											1 = { }
+											1 = {
+												create_ambient_object = {
+													type = caravaneer_billboard_1
+													scale = 1
+													location = this
+													entity_offset_height = { min = -10 max = -18 }
+												}
+												last_created_ambient_object = {
+													set_location = {
+														target = prev
+														distance = 5
+														angle = random
+													}
+												}
+											}
+											1 = {
+												create_ambient_object = {
+													type = caravaneer_billboard_2
+													scale = 1
+													location = this
+													entity_offset_height = { min = -10 max = -18 }
+												}
+												last_created_ambient_object = {
+													set_location = {
+														target = prev
+														distance = 5
+														angle = random
+													}
+												}
+											}
+											1 = {
+												create_ambient_object = {
+													type = caravaneer_billboard_3
+													scale = 1
+													location = this
+													entity_offset_height = { min = -10 max = -18 }
+												}
+												last_created_ambient_object = {
+													set_location = {
+														target = prev
+														distance = 5
+														angle = random
+													}
+												}
+											}
+										}
+									}
+								}
+							} else = {
+								solar_system = { set_star_flag = has_debris_world }
+								add_deposit = d_space_supplies_large
+								create_ambient_object = {
+									type = "large_debris_object"
+									entity_offset_height = -15
+									location = this
+								}
+								last_created_ambient_object = { 
+									set_location = {
+										target = prev
+										distance = 0
+										angle = random
+									}
+								}
+								
+								random_list = {
+									1 = { }
+									1 = {
+										create_ambient_object = {
+											type = caravaneer_billboard_1
+											scale = 1
+											location = this
+											entity_offset_height = { min = -10 max = -18 }
+										}
+										last_created_ambient_object = {
+											set_location = {
+												target = prev
+												distance = 5
+												angle = random
+											}
+										}
+									}
+									1 = {
+										create_ambient_object = {
+											type = caravaneer_billboard_2
+											scale = 1
+											location = this
+											entity_offset_height = { min = -10 max = -18 }
+										}
+										last_created_ambient_object = {
+											set_location = {
+												target = prev
+												distance = 5
+												angle = random
+											}
+										}
+									}
+									1 = {
+										create_ambient_object = {
+											type = caravaneer_billboard_3
+											scale = 1
+											location = this
+											entity_offset_height = { min = -10 max = -18 }
+										}
+										last_created_ambient_object = {
+											set_location = {
+												target = prev
+												distance = 5
+												angle = random
+											}
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 			if = {
