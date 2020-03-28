@@ -1285,26 +1285,25 @@ pop_event = {
 				}
 			}
 		}
-		else_if = {		# if old ai species, integrate into new one...
-			limit = {
-				always = no
-				root.species = { NOT = { has_species_flag = ai_primary_species } }
-				root.owner = {
-					any_owned_species = {
-						has_species_flag = ai_primary_species
-						is_same_species_class = prev
-					}
-				}
-			}
-			root.owner = {
-				random_owned_species = {
-					limit = {
-						has_species_flag = ai_primary_species
-						is_same_species_class = prev
-					}
-					root = { change_species = prev }
-				}
-			}
-		}
+	#	else_if = {		# if old ai species, integrate into new one...
+	#		limit = {
+	#			root.species = { NOT = { is_same_value = event_target: } }
+	#			root.owner = {
+	#				any_owned_species = {
+	#					has_species_flag = ai_primary_species
+	#					is_same_species_class = prev
+	#				}
+	#			}
+	#		}
+	#		root.owner = {
+	#			random_owned_species = {
+	#				limit = {
+	#					has_species_flag = ai_primary_species
+	#					is_same_species_class = prev
+	#				}
+	#				root = { change_species = prev }
+	#			}
+	#		}
+	#	}
 	}
 }
