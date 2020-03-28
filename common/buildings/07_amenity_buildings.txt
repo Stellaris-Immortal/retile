@@ -89,19 +89,14 @@ building_ministry = {
 	}
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-		}
+		exists = owner
+		owner = { is_ai = no }
 	}
 
 	destroy_trigger = {
 		owner = { is_ai = yes }
 	}
 	
-	convert_to = {
-		
-	}
-		
 	planet_modifier = {
 		planet_housing_add = 2
 		job_bureaucrat_add = 2
@@ -127,6 +122,6 @@ building_ministry = {
 	}
 
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }

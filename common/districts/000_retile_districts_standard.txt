@@ -172,10 +172,12 @@ district_spawning = {
 		exists = owner
 		OR = {
 			owner = { is_ai = no }
-			# TODO
+			AND = {
+				num_districts = { type = district_spawning count < 2 }
+			}
 		}
 	}
-	
+
 	ai_weight = {
 		weight = 1
 	}

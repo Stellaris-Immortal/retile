@@ -18,7 +18,11 @@ building_assembly = {
 	}
 	
 	allow = {
-		owner = { is_ai = no }
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			owner = { check_variable = { which = ai_assemblers_count < 3 }
+		}
 	}
 
 	destroy_trigger = {
@@ -55,8 +59,12 @@ building_assembly = {
 		country_resource_max_add = 2000
 	}
 
+	on_queued = {
+		change_variable = { which = ai_assemblers_count value = 1 }
+	}
+	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -72,7 +80,13 @@ building_clinic_1 = {
 	}
 	
 	allow = {
-		owner = { is_ai = no }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				num_pops > 15
+				owner = { check_variable = { which = ai_hospitals_count < 5 }
+			}
+		}
 	}
 
 	destroy_trigger = {
@@ -118,7 +132,7 @@ building_clinic_1 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -127,10 +141,6 @@ building_clinic_2 = {
 	can_build = no
 	category = amenity
 	can_be_disabled = no
-
-	allow = {
-		owner = { is_ai = no }
-	}
 
 	destroy_trigger = {
 		OR = {
@@ -177,7 +187,7 @@ building_clinic_2 = {
 	}
 
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -186,10 +196,6 @@ building_clinic_3 = {
 	can_build = no
 	category = manufacturing
 	can_be_disabled = no
-
-	allow = {
-		owner = { is_ai = no }
-	}
 
 	destroy_trigger = {
 		OR = {
@@ -232,7 +238,7 @@ building_clinic_3 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -248,7 +254,13 @@ building_spawning_1 = {
 	}
 	
 	allow = {
-		owner = { is_ai = no }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				num_pops > 15
+				owner = { check_variable = { which = ai_hospitals_count < 5 }
+			}
+		}
 	}
 
 	destroy_trigger = {
@@ -290,7 +302,7 @@ building_spawning_1 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -345,7 +357,7 @@ building_spawning_2 = {
 	}
 
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -396,6 +408,6 @@ building_spawning_3 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
