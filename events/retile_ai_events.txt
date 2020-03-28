@@ -889,3 +889,27 @@ country_event = {
 		}
 	}
 }
+
+###################################################################################
+### AI species limit
+
+country_event = {
+	id = retile_ai.3000
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { always = yes }
+	
+	immediate = {
+		every_owned_species = {
+			limit = {
+				OR = {
+					is_same_species = from
+					is_subspecies = from
+				}
+			}
+			remove_species_flag = ai_primary_species
+		}
+		from = { set_species_flag = ai_primary_species }
+	}
+}

@@ -6848,6 +6848,8 @@ event = {
 	id = action.64
 	hide_window = yes
 	is_triggered_only = yes
+	
+	trigger = { always = no }	# Disabled in favor of Retile alternative, see retile_pop.2000
 
 	immediate = {
 		log = "action.64"
@@ -6876,6 +6878,7 @@ planet_event = {
 	is_triggered_only = yes
 
 	trigger = {
+		always = no	# Disabled in favor of Retile alternative, see retile_pop.2000
 		any_owned_pop = {
 			has_citizenship_type = {
 				type = citizenship_assimilation

@@ -21,7 +21,7 @@ building_assembly = {
 		exists = owner
 		OR = {
 			owner = { is_ai = no }
-			owner = { check_variable = { which = ai_assemblers_count < 3 }
+			owner = { check_variable = { which = ai_assemblers_count value < 3 }
 		}
 	}
 
@@ -84,7 +84,7 @@ building_clinic_1 = {
 			owner = { is_ai = no }
 			AND = {
 				num_pops > 15
-				owner = { check_variable = { which = ai_hospitals_count < 5 }
+				owner = { check_variable = { which = ai_hospitals_count value < 5 }
 			}
 		}
 	}
@@ -258,7 +258,7 @@ building_spawning_1 = {
 			owner = { is_ai = no }
 			AND = {
 				num_pops > 15
-				owner = { check_variable = { which = ai_hospitals_count < 5 }
+				owner = { check_variable = { which = ai_hospitals_count value < 5 }
 			}
 		}
 	}
