@@ -1287,17 +1287,19 @@ pop_event = {
 		}
 		else_if = {		# if old ai species, integrate into new one...
 			root.owner = {
-				random_owned_species = {
-					limit = {
-						any_pop = {
-							species = {
-								is_same_species = root
-								NOT = { is_exact_same_species = root }
-								has_species_flag = ai_primary_species@root.owner
+				if = { limit = { is_ai = yes }
+					random_owned_species = {
+						limit = {
+							any_pop = {
+								species = {
+									is_same_species = root
+									NOT = { is_exact_same_species = root }
+									has_species_flag = ai_primary_species@root.owner
+								}
 							}
 						}
+						root = { change_species = prev }
 					}
-					root = { change_species = prev }
 				}
 			}
 		}
