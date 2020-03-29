@@ -917,14 +917,15 @@ country_event = {
 	trigger = { always = yes }
 	
 	immediate = {
+		set_timed_country_flag = { flag = ai_recently_modified_species days = 3600 }
 		every_country = {
 			limit = { num_species > 0 }
 			every_owned_pop_species = {
 				limit = {
-					has_species_flag = ai_primary_species@root		## but not @prev
+					has_species_flag = ai_primary_species@root
 					is_same_species = fromfrom
 				}
-				remove_species_flag = ai_primary_species@root		## but not @prev
+				remove_species_flag = ai_primary_species@root
 			}
 		}
 		fromfrom = { set_species_flag = ai_primary_species@root }
