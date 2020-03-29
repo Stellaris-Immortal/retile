@@ -1286,9 +1286,13 @@ pop_event = {
 			}
 		}
 		else = {		# if old ai species, integrate into new one...
-			if = { limit = { root.owner = { is_ai = yes } }
+			if = {
+				limit = {
+					root.owner = { is_ai = yes }
+					root = { species = { NOT = { has_species_flag = ai_primary_species@root.owner } } }
+				}
 				random_list = {
-					0 = { } # Null. Should average about 10 years to assimilate a species
+					40 = { } # Null. Should average about 5 years to assimilate a species
 					10 = { # Assimilate Pop
 						root.owner = {
 							random_owned_species = {
