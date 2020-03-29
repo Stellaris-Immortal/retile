@@ -1285,25 +1285,32 @@ pop_event = {
 				}
 			}
 		}
-	#	else_if = {		# if old ai species, integrate into new one...
-	#		limit = {
-	#			root.species = { NOT = { is_same_value = event_target: } }
-	#			root.owner = {
-	#				any_owned_species = {
-	#					has_species_flag = ai_primary_species
-	#					is_same_species_class = prev
-	#				}
-	#			}
-	#		}
-	#		root.owner = {
-	#			random_owned_species = {
-	#				limit = {
-	#					has_species_flag = ai_primary_species
-	#					is_same_species_class = prev
-	#				}
-	#				root = { change_species = prev }
-	#			}
-	#		}
-	#	}
+		else = {		# if old ai species, integrate into new one...
+			if = {
+				limit = {
+					root.owner = { is_ai = yes }
+					root = { species = { NOT = { has_species_flag = ai_primary_species@root.owner } } }
+				}
+				random_list = {
+					40 = { } # Null. Should average about 5 years to assimilate a species
+					10 = { # Assimilate Pop
+						root.owner = {
+							random_owned_species = {
+								limit = {
+									any_pop = {
+										species = {
+											is_same_species = root
+											NOT = { is_exact_same_species = root }
+											has_species_flag = ai_primary_species@root.owner
+										}
+									}
+								}
+								root = { change_species = prev }
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
