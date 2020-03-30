@@ -300,10 +300,12 @@ event = {
 				if = {
 					limit = { has_deposit = d_society_medium }
 					remove_deposit = d_society_medium
+					add_deposit = d_society_small
 				}
 				if = {
 					limit = { has_deposit = d_society_large }
 					remove_deposit = d_society_large
+					add_deposit = d_society_medium
 				}
 				if = {
 					limit = { has_deposit = d_physics_medium }
@@ -312,6 +314,7 @@ event = {
 				if = {
 					limit = { has_deposit = d_physics_large }
 					remove_deposit = d_physics_large
+					add_deposit = d_physics_small
 				}
 				if = {
 					limit = { has_deposit = d_engineering_medium }
@@ -320,10 +323,12 @@ event = {
 				if = {
 					limit = { has_deposit = d_engineering_large }
 					remove_deposit = d_engineering_large
+					add_deposit = d_engineering_small
 				}
 				if = {
 					limit = { has_deposit = d_trade_value_large }
 					remove_deposit = d_trade_value_large
+					add_deposit = d_trade_value_small
 				}
 				if = {
 					limit = { has_deposit = d_exotic_gases_1 }
@@ -346,6 +351,93 @@ event = {
 						50 = { remove_deposit = d_volatile_motes_1 }
 					}
 				}
+			}
+			if = {
+				limit = { has_deposit = d_volatile_motes_1 }
+				set_planet_size = 18
+				add_modifier = { modifier = "volatile_world" days = -1 }
+				if = {
+					limit = { is_planet_class = pc_barren }
+					change_pc = pc_molten
+				}
+				create_ambient_object = {
+					type = "volatile_world"
+					entity_offset = { min = 0 max = 0 }
+					entity_offset_height = { min = -15 max = -15 }
+					entity_scale_to_size = yes
+					scale = 2
+					location = this
+				}
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
+			if = {
+				limit = { has_deposit = d_exotic_gases_1 }
+				add_modifier = { modifier = "hydrocarbon_world" days = -1 }
+				if = {
+					limit = { is_planet_class = pc_toxic }
+					set_planet_size = 16
+					create_ambient_object = {
+						type = "hydrocarbon_planet"
+						entity_offset = { min = 0 max = 0 }
+						entity_offset_height = { min = -15 max = -15 }
+						entity_scale_to_size = yes
+						scale = 1.25
+						location = this
+					}
+				} else = {
+					set_planet_size = 24
+					create_ambient_object = {
+						type = "hydrocarbon_planet"
+						entity_offset = { min = 0 max = 0 }
+						entity_offset_height = { min = -15 max = -15 }
+						entity_scale_to_size = yes
+						scale = 2.25
+						location = this
+					}
+				}
+				
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 0
+						angle = random
+					}
+				}
+			}
+			if = {
+				limit = { 
+					has_deposit = d_rare_crystals_1
+					is_moon = no
+				}
+				set_planet_size = 18
+				add_modifier = { modifier = "crystalline_world" days = -1 }
+				create_ambient_object = {
+					type = "crystalline_planet"
+					entity_offset = { min = 0 max = 0 }
+					entity_offset_height = { min = -15 max = -15 }
+					entity_scale_to_size = yes
+					scale = 0.05
+					location = this
+				}
+				last_created_ambient_object = {
+					set_location = {
+						target = prev
+						distance = 0
+						angle = 180
+					}
+				}
+			} else_if = {
+				limit = { 
+					has_deposit = d_rare_crystals_1
+					is_moon = yes
+				}
+				remove_deposit = d_rare_crystals_1
 			}
 		}
 	}
