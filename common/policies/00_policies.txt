@@ -22,7 +22,7 @@ piracy = {
 		policy_flags = { piracy_hostile }
 		
 		modifier = { }
-		on_enabled = { 
+		on_enabled = {
 			hidden_effect = {
 				if = {
 					limit = { has_country_flag = piracy_broken_event }
@@ -1009,21 +1009,73 @@ trade_policy = {
 	}
 
 	option = {
-		name = "trade_policy_default"
+		name = "trade_policy_energy"
 		
 		policy_flags = {
-			trade_conversion_default
+			trade_conversion_energy
 		}
 		
-		on_enabled = {
-			hidden_effect = {
-				set_timed_country_flag = { flag = activate_trade_conversion_default days = 30 }
-				country_event = { id = retile_mandate.4 }
-			}
+		modifier = {
+			planet_clerks_energy_produces_add = 5
 		}
 		
 		AI_weight = {
 			factor = 2
+		}
+	}
+
+	option = {
+		name = "trade_policy_minerals"
+		
+		policy_flags = {
+			trade_conversion_minerals
+		}
+		
+		modifier = {
+			planet_clerks_minerals_produces_add = 5
+		}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "trade_policy_food"
+		
+		policy_flags = {
+			trade_conversion_food
+		}
+		
+		modifier = {
+			planet_clerks_food_produces_add = 5
+		}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "trade_policy_alloys"
+		
+		policy_flags = {
+			trade_conversion_alloys
+		}
+		
+		on_enabled = {
+			hidden_effect = {
+				set_timed_country_flag = { flag = activate_trade_conversion_alloys days = 30 }
+				country_event = { id = retile_mandate.4 }
+			}
+		}
+		
+		modifier = {
+			planet_clerks_alloys_produces_add = 1.25
+		}
+		
+		AI_weight = {
+			factor = 0
 		}
 	}
 
@@ -1041,11 +1093,16 @@ trade_policy = {
 			}
 		}
 		
-		modifier = {}
+		modifier = {
+			planet_clerks_consumer_goods_produces_add = 1.25
+		}
 		
 		AI_weight = {
-			factor = 0
-			
+			factor = 1
+			modifier = {
+				factor = 10
+				is_ai = yes
+			}
         }
 	}
 	
@@ -1060,14 +1117,14 @@ trade_policy = {
 			has_technology = tech_space_trading
 		}
 		
-		modifier = {}
-		
+		modifier = {
+			planet_clerks_unity_produces_add = 0.75
+		}
+				
 		AI_weight = {
 			factor = 0
 		}
-	}	
-
-	
+	}
 	
 	option = {
 		name = "trade_policy_research"
@@ -1080,35 +1137,18 @@ trade_policy = {
 			trade_conversion_research
 		}		
 		
-		modifier = {}
-		
+		modifier = {
+			planet_clerks_physics_research_produces_add = 0.75
+			planet_clerks_society_research_produces_add = 0.75
+			planet_clerks_engineering_research_produces_add = 0.75
+		}
+				
 		AI_weight = {
-			factor = 1
-			modifier = {
-				factor = 10
-				any_neighbor_country = {
-					is_country_type = default
-					prev = {
-						relative_power = {
-							who = prev
-							category = technology 
-							value > inferior
-						}
-						OR = {
-							NOT = { relative_power = {
-								who = prev 
-								category = all
-								value = overwhelming
-							} }
-							NOT = { relative_power = {
-								who = prev 
-								category = all
-								value < equivalent
-							} }
-						}
-					}
-				}
-			}
+			factor = 0
+		#	modifier = {
+		#		factor = 10
+		#		retile_tech_weak = yes
+		#	}
 		}
 	}
 
@@ -1146,46 +1186,11 @@ trade_policy = {
 		}		
 		
 		modifier = {
-			country_base_influence_produces_add = 1.25
+			country_base_influence_produces_add = 1.2
 		}
 		
 		AI_weight = {
 			factor = 0
-		}
-	}
-
-	option = {
-		name = "trade_policy_ai"
-		
-		potential = {
-			is_ai = yes
-		}
-		
-		policy_flags = {
-			trade_conversion_ai
-		}
-		
-		AI_weight = {
-			factor = 100
-		}
-	}
-	
-	option = {
-		name = "trade_policy_ai_advanced"
-		
-		potential = {
-			AND = {
-				is_ai = yes
-				has_technology = tech_space_trading
-			}
-		}
-		
-		policy_flags = {
-			trade_conversion_ai_advanced
-		}
-		
-		AI_weight = {
-			factor = 200
 		}
 	}
 }

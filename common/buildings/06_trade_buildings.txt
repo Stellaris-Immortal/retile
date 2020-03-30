@@ -3,6 +3,16 @@
 @cost_high = 1500
 @cost_ultra = 2000
 
+@clerk_basic_1 = 5
+@clerk_basic_2 = 10
+@clerk_basic_3 = 15
+@clerk_intermediate_1 = 1.25
+@clerk_intermediate_2 = 2.5
+@clerk_intermediate_3 = 3.75
+@clerk_advanced_1 = 0.75
+@clerk_advanced_2 = 1.5
+@clerk_advanced_3 = 2.25
+
 #############
 # Trade buildings
 #############
@@ -82,6 +92,37 @@ building_trade_1 = {
 	triggered_desc = {
 		trigger = { always = yes }
 		text = clerks_pollution_1_effect
+	}
+	
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_energy } }
+		planet_clerks_energy_produces_add = @clerk_basic_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_minerals } }
+		planet_clerks_minerals_produces_add = @clerk_basic_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_food } }
+		planet_clerks_food_produces_add = @clerk_basic_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_alloys } }
+		planet_clerks_alloys_produces_add = @clerk_intermediate_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_consumer_goods } }
+		planet_clerks_consumer_goods_produces_add = @clerk_intermediate_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_unity } }
+		planet_clerks_unity_produces_add = @clerk_advanced_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_research } }
+		planet_clerks_physics_research_produces_add = @clerk_advanced_1
+		planet_clerks_society_research_produces_add = @clerk_advanced_1
+		planet_clerks_engineering_research_produces_add = @clerk_advanced_1
 	}
 	
 	planet_modifier = {
@@ -174,6 +215,37 @@ building_trade_2 = {
 		text = clerks_pollution_2_effect
 	}
 	
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_energy } }
+		planet_clerks_energy_produces_add = @clerk_basic_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_minerals } }
+		planet_clerks_minerals_produces_add = @clerk_basic_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_food } }
+		planet_clerks_food_produces_add = @clerk_basic_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_alloys } }
+		planet_clerks_alloys_produces_add = @clerk_intermediate_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_consumer_goods } }
+		planet_clerks_consumer_goods_produces_add = @clerk_intermediate_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_unity } }
+		planet_clerks_unity_produces_add = @clerk_advanced_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_research } }
+		planet_clerks_physics_research_produces_add = @clerk_advanced_2
+		planet_clerks_society_research_produces_add = @clerk_advanced_2
+		planet_clerks_engineering_research_produces_add = @clerk_advanced_2
+	}
+	
 	planet_modifier = {
 		planet_clerks_energy_upkeep_add = @job_energy_normal2
 		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal2
@@ -256,6 +328,37 @@ building_trade_3 = {
 		text = clerks_pollution_3_effect
 	}
 	
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_energy } }
+		planet_clerks_energy_produces_add = @clerk_basic_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_minerals } }
+		planet_clerks_minerals_produces_add = @clerk_basic_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_food } }
+		planet_clerks_food_produces_add = @clerk_basic_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_alloys } }
+		planet_clerks_alloys_produces_add = @clerk_intermediate_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_consumer_goods } }
+		planet_clerks_consumer_goods_produces_add = @clerk_intermediate_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_unity } }
+		planet_clerks_unity_produces_add = @clerk_advanced_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_research } }
+		planet_clerks_physics_research_produces_add = @clerk_advanced_3
+		planet_clerks_society_research_produces_add = @clerk_advanced_3
+		planet_clerks_engineering_research_produces_add = @clerk_advanced_3
+	}
+	
 	planet_modifier = {
 		planet_clerks_energy_upkeep_add = @job_energy_normal3
 		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal3
@@ -316,14 +419,12 @@ building_bourse_1 = {
 
 	destroy_trigger = {
 		OR = {
-			owner = { 
-				is_regular_empire = no
-				NOT = { has_tradition = tr_prosperity_public_works }
-			}
+			owner = { is_regular_empire = no }
+			owner = { NOT = { has_tradition = tr_prosperity_public_works } }
 			has_modifier = slave_colony
 		}
 	}
-	
+		
 	convert_to = {
 		building_trade_1
 	}
@@ -360,7 +461,39 @@ building_bourse_1 = {
 		text = clerks_pollution_1_effect
 	}
 	
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_energy } }
+		planet_clerks_energy_produces_add = @clerk_basic_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_minerals } }
+		planet_clerks_minerals_produces_add = @clerk_basic_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_food } }
+		planet_clerks_food_produces_add = @clerk_basic_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_alloys } }
+		planet_clerks_alloys_produces_add = @clerk_intermediate_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_consumer_goods } }
+		planet_clerks_consumer_goods_produces_add = @clerk_intermediate_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_unity } }
+		planet_clerks_unity_produces_add = @clerk_advanced_1
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_research } }
+		planet_clerks_physics_research_produces_add = @clerk_advanced_1
+		planet_clerks_society_research_produces_add = @clerk_advanced_1
+		planet_clerks_engineering_research_produces_add = @clerk_advanced_1
+	}
+	
 	planet_modifier = {
+		planet_clerks_unity_produces_add = 1
 		planet_clerks_energy_upkeep_add = @job_energy_normal
 		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal
 		clerks_bio_food_upkeep_add = @living_standard_food_normal
@@ -408,10 +541,8 @@ building_bourse_2 = {
 
 	destroy_trigger = {
 		OR = {
-			owner = { 
-				is_regular_empire = no
-				NOT = { has_tradition = tr_prosperity_public_works }
-			}
+			owner = { is_regular_empire = no }
+			owner = { NOT = { has_tradition = tr_prosperity_public_works } }
 			has_modifier = slave_colony
 		}
 	}
@@ -456,7 +587,39 @@ building_bourse_2 = {
 		text = clerks_pollution_2_effect
 	}
 	
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_energy } }
+		planet_clerks_energy_produces_add = @clerk_basic_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_minerals } }
+		planet_clerks_minerals_produces_add = @clerk_basic_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_food } }
+		planet_clerks_food_produces_add = @clerk_basic_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_alloys } }
+		planet_clerks_alloys_produces_add = @clerk_intermediate_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_consumer_goods } }
+		planet_clerks_consumer_goods_produces_add = @clerk_intermediate_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_unity } }
+		planet_clerks_unity_produces_add = @clerk_advanced_2
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_research } }
+		planet_clerks_physics_research_produces_add = @clerk_advanced_2
+		planet_clerks_society_research_produces_add = @clerk_advanced_2
+		planet_clerks_engineering_research_produces_add = @clerk_advanced_2
+	}
+	
 	planet_modifier = {
+		planet_clerks_unity_produces_add = 2
 		planet_clerks_energy_upkeep_add = @job_energy_normal2
 		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal2
 		clerks_bio_food_upkeep_add = @living_standard_food_normal2
@@ -468,10 +631,6 @@ building_bourse_2 = {
 		country_resource_max_add = 2000
 	}
 
-	country_modifier = {
-		trade_value_mult = 0.05
-	}
-	
 	ai_weight = {
 		weight = 100
 	}
@@ -504,10 +663,8 @@ building_bourse_3 = {
 
 	destroy_trigger = {
 		OR = {
-			owner = { 
-				is_regular_empire = no
-				NOT = { has_tradition = tr_prosperity_public_works }
-			}
+			owner = { is_regular_empire = no }
+			owner = { NOT = { has_tradition = tr_prosperity_public_works } }
 			has_modifier = slave_colony
 		}
 	}
@@ -544,7 +701,39 @@ building_bourse_3 = {
 		text = clerks_pollution_3_effect
 	}
 	
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_energy } }
+		planet_clerks_energy_produces_add = @clerk_basic_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_minerals } }
+		planet_clerks_minerals_produces_add = @clerk_basic_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_food } }
+		planet_clerks_food_produces_add = @clerk_basic_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_alloys } }
+		planet_clerks_alloys_produces_add = @clerk_intermediate_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_consumer_goods } }
+		planet_clerks_consumer_goods_produces_add = @clerk_intermediate_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_unity } }
+		planet_clerks_unity_produces_add = @clerk_advanced_3
+	}
+	triggered_planet_modifier = {
+		potential = { owner = { has_policy_flag = trade_conversion_research } }
+		planet_clerks_physics_research_produces_add = @clerk_advanced_3
+		planet_clerks_society_research_produces_add = @clerk_advanced_3
+		planet_clerks_engineering_research_produces_add = @clerk_advanced_3
+	}
+	
 	planet_modifier = {
+		planet_clerks_unity_produces_add = 3
 		planet_clerks_energy_upkeep_add = @job_energy_normal3
 		planet_clerks_consumer_goods_upkeep_add = @job_supplies_normal3
 		clerks_bio_food_upkeep_add = @living_standard_food_normal3
@@ -556,10 +745,6 @@ building_bourse_3 = {
 		country_resource_max_add = 3000
 	}
 
-	country_modifier = {
-		trade_value_mult = 0.10
-	}
-	
 	ai_weight = {
 		weight = 100
 	}

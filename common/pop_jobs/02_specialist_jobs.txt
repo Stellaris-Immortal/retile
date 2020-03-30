@@ -22,7 +22,11 @@ clerk = {
 		category = planet_clerks
 		produces = {
 			trigger = { owner = { has_authority = auth_corporate } }
-			unity = 3
+			unity = 1
+		}
+		produces = {
+			trigger = { owner = { has_tradition = tr_prosperity_public_works } }
+			unity = 1
 		}
 		upkeep = {
 			energy = @job_energy_normal
@@ -40,7 +44,7 @@ clerk = {
 			has_building = building_bourse_1
 		} } }
 		modifier = {
-			trade_value_add = 10
+			trade_value_add = 5
 			planet_amenities_add = 50
 		}
 	}
@@ -50,7 +54,7 @@ clerk = {
 			has_building = building_bourse_2
 		} } }
 		modifier = {
-			trade_value_add = 20
+			trade_value_add = 10
 			planet_amenities_add = 125
 		}
 	}
@@ -60,7 +64,7 @@ clerk = {
 			has_building = building_bourse_3
 		} } }
 		modifier = {
-			trade_value_add = 30
+			trade_value_add = 15
 			planet_amenities_add = 225
 		}
 	}
