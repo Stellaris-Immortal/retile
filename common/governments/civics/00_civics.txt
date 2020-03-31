@@ -858,7 +858,20 @@ civic_merchant_guilds = {
 				value = civic_technocracy
 				value = civic_shared_burden
 			}
-		}		
+		}
+		authority = {
+			OR = {
+				value = auth_oligarchic
+				value = auth_dictatorial
+			}
+		}
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
 	}
 	random_weight = {
 		base = 2
