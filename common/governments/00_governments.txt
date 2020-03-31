@@ -1432,6 +1432,41 @@ gov_bandit_kingdom = {
 	}
 }
 
+# Merchant Republic
+gov_merchant_republic = {
+	ruler_title = RT_DOGE
+	ruler_title_female = RT_DOGE
+	
+	should_force_rename = yes
+
+	election_candidates = {
+		modifier = {
+			add = 100
+			leader_class = ruler
+		}
+		modifier = {
+			add = 10
+			leader_class = governor
+		}
+	}
+
+	possible = {
+		has_valid_civic = civic_merchant_guilds
+	}
+
+	weight = {
+		base = 400
+		modifier = {
+			factor = 2
+			has_ethic = ethic_authoritarian
+		}
+		modifier = {
+			factor = 4
+			has_ethic = ethic_fanatic_authoritarian
+		}
+	}
+}
+
 # Bandit Commune
 gov_bandit_commune = {
 	ruler_title = RT_WARLORD
