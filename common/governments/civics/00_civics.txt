@@ -324,6 +324,25 @@ civic_slaver_guilds = {
 	}
 }
 
+civic_systemic_slavery = {
+	description = "civic_tooltip_systemic_slavery_effects"
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
+	random_weight = { base = 1 }
+	modifier = {
+	}
+}
+
 civic_inwards_perfection = {
 	modification = no
 	description = "civic_tooltip_inward_perfection_effects"

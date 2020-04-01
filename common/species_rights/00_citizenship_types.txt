@@ -7,6 +7,7 @@ citizenship_full = {
 	potential = {
 		exists = from
 		NOT = { from = { has_authority = auth_machine_intelligence } }
+		NOT = { from = { has_civic = civic_systemic_slavery } }
 		if = {
 			limit = { from = { has_valid_civic = civic_fanatic_purifiers } }
 			OR = {
@@ -513,7 +514,10 @@ citizenship_slavery = {
 		# Purifiers don't need/want slaves # edit: they might use caste system...
 		from = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
 		# Can't enslave main species
-		NOT = { is_same_species = from }
+		OR = {
+			NOT = { is_same_species = from }
+			from = { has_civic = civic_systemic_slavery }
+		}
 	}
 	
 	triggered_pop_modifier = {
