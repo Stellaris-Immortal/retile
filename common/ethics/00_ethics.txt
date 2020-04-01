@@ -20,8 +20,8 @@ ethic_fanatic_authoritarian = {
 	regular_variant = ethic_authoritarian
 	
 	country_modifier = {
-		planet_stability_add = 10
-		country_base_influence_produces_add = 1
+		trade_value_mult = 0.20
+		planet_crime_add = -50
 	}
 	
 	tags = {
@@ -41,8 +41,8 @@ ethic_authoritarian = {
 	fanatic_variant = ethic_fanatic_authoritarian
 	
 	country_modifier = {
-		planet_stability_add = 5
-		country_base_influence_produces_add = 0.5
+		trade_value_mult = 0.10
+		planet_crime_add = -25
 	}	
 	
 	tags = {
@@ -192,7 +192,7 @@ ethic_authoritarian = {
 		}
 		modifier = {
 			factor = 1.25
-			has_election_type = none
+			has_election_type = oligarchic
 		}
 		modifier = {
 			factor = 0.75
@@ -243,22 +243,47 @@ ethic_authoritarian = {
 				has_living_standard = { type = living_standard_good }
 				has_living_standard = { type = living_standard_shared_burden }
 			}
-		}
+		}	
 		modifier = {
-			factor = 1.2
-			has_trait = "trait_decadent"
+			factor = 1.25
+			OR = { 
+				has_job = merchant
+				has_job = executive
+				has_job = clerk
+				has_job = enforcer
+				has_job = magistrate
+				has_job = noble
+			}
 		}
+		
 		modifier = {
-			factor = 1.2
-			has_trait = "trait_nerve_stapled"
+			factor = 1.25
+			has_trait = trait_thrifty
+		} 
+		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_decadent
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_conformists"
+			factor = 1.50
+			is_pop_category = ruler
 		}
+		
 		modifier = {
-			factor = 0.9
-			has_trait = "trait_deviants"
+			factor = 1.25
+			is_pop_category = specialist
+		}
+		
+		modifier = {
+			factor = 0.50
+			is_pop_category = worker
+		}
+		
+		modifier = {
+			factor = 0.50
+			has_citizenship_rights = no
 		}	
 	}
 }
@@ -504,12 +529,20 @@ ethic_egalitarian = {
 					has_ethic = ethic_fanatic_egalitarian
 				}
 			}
-		}		
+		}
+		
 	}
 	
 	# from = planet
 	pop_attraction = {
 		value = 1
+		
+		modifier = {
+			factor = 1.25
+			OR = { 
+				has_job = representative
+			}
+		}
 		
 		modifier = {
 			factor = 0
@@ -532,28 +565,29 @@ ethic_egalitarian = {
 			}
 		}
 		modifier = {
-			factor = 1.2
-			has_trait = "trait_erudite"
-		}
+			factor = 1.25
+			OR = { 
+				has_job = representative
+			}
+		}		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_intelligent"
+			factor = 0.50
+			is_pop_category = ruler
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_talented"
+			factor = 0.75
+			is_pop_category = specialist
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_quick_learners"
+			factor = 1.50
+			is_pop_category = worker
 		}
+		
 		modifier = {
-			factor = 0.9
-			has_trait = "trait_mindless"
-		}
-		modifier = {
-			factor = 0.9
-			has_trait = "trait_slow_learners"
+			factor = 1.50
+			has_citizenship_rights = no
 		}
 	}	
 }
@@ -892,32 +926,49 @@ ethic_xenophobe = {
 			}
 		}
 		modifier = {
-			factor = 1.2
-			has_trait = "trait_delicious"
+			factor = 0.5
+			has_trait = trait_extremely_adaptive
+		}
+		
+		modifier = {
+			factor = 0.75
+			has_trait = trait_adaptive
+		} 
+		modifier = {
+			factor = 0.75
+			has_trait = "trait_natural_sociologists"
 		}
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_plantoid_thorned"
+			factor = 0.75
+			OR = {
+				has_trait = trait_nomadic 
+				has_trait = trait_arthropoid_wing
+			}
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_arthropoid_exoskeleton"
+			factor = 0.75
+			has_trait = trait_communal
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_reptile_camouflage"
+			factor = 1.25
+			has_trait = trait_solitary
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_resilient"
+			factor = 1.25
+			has_trait = trait_resilient
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_rapid_breeders"
+			factor = 1.25
+			has_trait = trait_sedentary
 		}
+		
 		modifier = {
-			factor = 0.9
-			has_trait = "trait_slow_breeders"
+			factor = 1.25
+			has_trait = trait_nonadaptive
 		}
 	}
 }
@@ -1148,7 +1199,7 @@ ethic_xenophile = {
 			}
 		}
 		modifier = {
-			factor = 1.33
+			factor = 1.25
 			any_relation = {
 				NOT = { is_same_species = root }
 				OR = {
@@ -1234,44 +1285,55 @@ ethic_xenophile = {
 			}
 		}
 		modifier = {
-			factor = 1.2
-			has_trait = "trait_robust"
+			factor = 1.25
+			has_job = colonist
 		}
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_agrarian"
-		}	
+			factor = 1.5
+			has_trait = trait_extremely_adaptive
+		}
+		
 		modifier = {
-			factor = 1.1
+			factor = 1.25
+			has_trait = trait_adaptive
+		} 
+		
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_trait = trait_nomadic 
+				has_trait = trait_arthropoid_wing
+			}
+		}
+		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_communal
+		}
+		
+		modifier = {
+			factor = 1.25
 			has_trait = "trait_natural_sociologists"
 		}
+		
 		modifier = {
-			factor = 1.2
-			has_trait = "trait_extremely_adaptive"
+			factor = 0.75
+			has_trait = trait_solitary
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_adaptive"
+			factor = 0.75
+			has_trait = trait_resilient
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_thick_hide"
+			factor = 0.75
+			has_trait = trait_sedentary
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_furry"
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = "trait_nomadic"
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = "trait_sedentary"
-		}
-		modifier = {
-			factor = 0.9
-			has_trait = "trait_nonadaptive"
+			factor = 0.75
+			has_trait = trait_nonadaptive
 		}
 	}	
 }
@@ -1594,54 +1656,42 @@ ethic_militarist = {
 					}
 				}
 			}
-		}
+		}	
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_natural_engineers"
-		}
+			factor = 1.5
+			OR = {
+				has_trait = trait_very_strong 
+				has_trait = trait_colossal 
+				has_trait = trait_colossal_lithoid
+			}
+		} 
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_arthropoid_mandibles"
+			factor = 1.25
+			OR = {
+				has_trait = trait_strong
+				has_trait = trait_giant
+				has_trait = trait_arthropoid_mandibles
+				has_trait = trait_arthropoid_exoskeleton
+				has_trait = trait_giant_lithoid
+			}
 		}
+		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_plantoid_thorned"
+			factor = 0.75
+			has_trait = trait_weak 
 		}
+		
 		modifier = {
-			factor = 1.2
-			has_trait = "trait_colossal"
-		}
+			factor = 0.5
+			OR = {
+				has_trait = trait_very_weak
+				has_trait = trait_tiny
+			}
+		}		
 		modifier = {
-			factor = 1.1
-			has_trait = "trait_giant"
-		}
-		modifier = {
-			factor = 1.2
-			has_trait = "trait_colossal_lithoid"
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = "trait_giant_lithoid"
-		}
-		modifier = {
-			factor = 1.2
-			has_trait = "trait_very_strong"
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = "trait_strong"
-		}
-		modifier = {
-			factor = 0.9
-			has_trait = "trait_weak"
-		}
-		modifier = {
-			factor = 0.9
-			has_trait = "trait_tiny"
-		}
-		modifier = {
-			factor = 0.8
-			has_trait = "trait_very_weak"
+			factor = 0.75
+			has_trait = trait_natural_philosopher
 		}
 		modifier = {
 			factor = 3.0
@@ -1922,23 +1972,54 @@ ethic_pacifist = {
 		}
 		modifier = {
 			factor = 1.10
-			has_trait = "trait_talented"
-		}
-		modifier = {
-			factor = 1.10
-			has_trait = "trait_quick_learners"
-		}
-		modifier = {
-			factor = 1.10
 			has_trait = "trait_plantoid_flowering"
 		}	
 		modifier = {
-			factor = 1.10
-			has_trait = "trait_communal"
-		}
+			factor = 0.5
+			OR = {
+				has_trait = trait_very_strong 
+				has_trait = trait_colossal 
+				has_trait = trait_colossal_lithoid
+			}
+		} 
+		
 		modifier = {
-			factor = 0.90
-			has_trait = "trait_solitary"
+			factor = 0.75
+			OR = {
+				has_trait = trait_strong
+				has_trait = trait_giant
+				has_trait = trait_arthropoid_mandibles
+				has_trait = trait_arthropoid_exoskeleton
+				has_trait = trait_giant_lithoid
+			}
+		}
+		
+		modifier = {
+			factor = 0.75
+			has_trait = trait_solitary
+		}
+		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_weak 
+		} 
+		
+		modifier = {
+			factor = 1.5
+			OR = {
+				has_trait = trait_very_weak
+				has_trait = trait_tiny
+			}
+		} 
+		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_communal
+		}
+		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_natural_philosopher
 		}
 	}
 }
@@ -2140,28 +2221,67 @@ ethic_materialist = {
 			has_trait = trait_hive_mind
 		}
 		modifier = {
-			factor = 1.20
-			has_trait = "trait_inventive"
+			factor = 0.5
+			has_job = custodian
+		} 
+		
+		modifier = {
+			factor = 2.0
+			has_job = foundry
+		} 
+		modifier = {
+			factor = 1.5
+			has_trait = trait_innovative
 		}
 		modifier = {
-			factor = 1.10
-			has_trait = "trait_industrious"
+			factor = 1.25
+			has_trait = trait_inventive
 		}
 		modifier = {
-			factor = 1.10
-			has_trait = "trait_innovative"
+			factor = 1.25
+			has_trait = trait_industrious
 		}
-		modifier = {
-			factor = 1.10
-			has_trait = "trait_ingenious"
+		modifier = { 
+			factor = 0.75
+			has_trait = trait_survivor
 		}
+		
+		modifier = { 
+			factor = 0.75
+			has_trait = trait_charismatic
+		}  
+		
 		modifier = {
-			factor = 1.10
-			has_trait = "trait_thrifty"
+			factor = 0.5
+			has_trait = trait_venerable
+		} 
+		
+		modifier = {
+			factor = 0.75
+			has_trait = trait_enduring
+		} 
+		
+		modifier = {
+			factor = 0.75
+			has_trait = trait_conservational
 		}
+		
 		modifier = {
-			factor = 1.10
-			has_trait = "trait_natural_physicists"
+			factor = 1.25
+			has_trait = trait_wasteful
+		}  
+		
+		modifier = {
+			factor = 1.25
+			OR = { 
+				has_trait = trait_fleeting
+				has_trait = trait_fleeting_lithoid
+			}
+		}
+		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_repugnant
 		}
 	}	
 }
@@ -2403,48 +2523,75 @@ ethic_spiritualist = {
 			has_trait = trait_hive_mind
 		}
 		modifier = {
-			factor = 1.20
-			has_trait = "trait_prodigy"
-		}
+			factor = 2.0
+			OR = { 
+				has_job = custodian
+			}
+		} 
+		
 		modifier = {
-			factor = 1.10
-			has_trait = "trait_docile"
+			factor = 0.5
+			OR = { 
+				has_job = foundry
+			}
+		} 
+		
+		modifier = { 
+			factor = 1.5
+			has_trait = trait_survivor
 		}
+		
+		modifier = { 
+			factor = 1.25
+			has_trait = trait_charismatic
+		}  
+		
 		modifier = {
-			factor = 1.10
-			has_trait = "trait_venerable"
+			factor = 1.5
+			has_trait = trait_venerable
+		} 
+		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_enduring
+		} 
+		
+		modifier = {
+			factor = 1.25
+			has_trait = trait_conservational
 		}
+		
 		modifier = {
-			factor = 1.10
-			has_trait = "trait_enduring"
+			factor = 0.75
+			has_trait = trait_wasteful
+		}  
+		
+		modifier = {
+			factor = 0.75
+			OR = { 
+				has_trait = trait_fleeting
+				has_trait = trait_fleeting_lithoid
+			}
 		}
+		
 		modifier = {
-			factor = 1.10
-			has_trait = "trait_conservational"
+			factor = 0.75
+			has_trait = trait_repugnant
 		}
+		
 		modifier = {
-			factor = 1.10
-			has_trait = "trait_charismatic"
+			factor = 0.75
+			has_trait = trait_innovative
+		} 
+		
+		modifier = {
+			factor = 0.75
+			has_trait = trait_industrious
 		}
+		
 		modifier = {
-			factor = 0.90
-			has_trait = "trait_unruly"
-		}
-		modifier = {
-			factor = 0.90
-			has_trait = "trait_repugnant"
-		}
-		modifier = {
-			factor = 0.90
-			has_trait = "trait_fleeting"
-		}
-		modifier = {
-			factor = 0.90
-			has_trait = "trait_fleeting_lithoid"
-		}
-		modifier = {
-			factor = 0.90
-			has_trait = "trait_wasteful"
+			factor = 0.75
+			has_trait = trait_inventive
 		}
 	}		
 }

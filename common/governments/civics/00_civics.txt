@@ -22,11 +22,10 @@ civic_corvee_system = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 	}
 	possible = {
-		ethics = {
+		authority = {
 			OR = {
-				text = civic_tooltip_authoritarian
-				value = ethic_authoritarian
-				value = ethic_fanatic_authoritarian
+				value = auth_dictatorial
+				value = auth_imperial
 			}
 		}		
 	}
@@ -60,13 +59,6 @@ civic_imperial_cult = {
 	possible = {
 		authority = {
 			value = auth_imperial
-		}
-		ethics = {
-			OR = {
-				text = civic_tooltip_authoritarian
-				value = ethic_authoritarian
-				value = ethic_fanatic_authoritarian
-			}
 		}
 	}
 	modifier = {
@@ -241,8 +233,7 @@ civic_police_state = {
 	}
 	possible = {
 		ethics = {
-			OR = {
-				text = civic_tooltip_authoritarian
+			NOR = {
 				value = ethic_authoritarian
 				value = ethic_fanatic_authoritarian
 			}
@@ -255,6 +246,14 @@ civic_idealistic_foundation = {
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
 	}
 	random_weight = { base = 5 }
 	modifier = {
@@ -270,6 +269,12 @@ civic_environmentalist = {
 	possible = {
 		civics = {
 			NOT = { value = civic_functional_architecture }
+		}
+		ethics = {
+			NOR = {
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
 		}
 	}
 	random_weight = { base = 5 }
@@ -290,6 +295,12 @@ civic_functional_architecture = {
 				value = civic_agrarian_idyll
 			}
 		}
+		ethics = {
+			NOR = {
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
 	}
 	random_weight = { base = 5 }
 	modifier = {
@@ -305,10 +316,9 @@ civic_slaver_guilds = {
 	}
 	possible = {
 		ethics = {
-			OR = {
-				text = civic_tooltip_authoritarian
-				value = ethic_authoritarian
-				value = ethic_fanatic_authoritarian
+			NOR = {
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
 			}
 		}
 	}
@@ -485,6 +495,12 @@ civic_agrarian_idyll = {
 		civics = {
 			NOT = { value = civic_functional_architecture }
 		}
+		ethics = {
+			NOR = {
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
 	}
 	modifier = { 
 		planet_laborers_unity_produces_add = 1
@@ -496,6 +512,14 @@ civic_mining_guilds = {
 	#description = "civic_tooltip_mining_guilds_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
 	}
 	modifier = {
 		planet_laborers_alloys_produces_add = 1
@@ -835,7 +859,12 @@ civic_byzantine_bureaucracy = {
 		planet_bureaucrats_unity_produces_add = 2
 	}
 	possible = {
-		always = yes
+		ethics = {
+			NOR = {
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
+		}
 	}
 	random_weight = {
 		base = 2
@@ -860,10 +889,7 @@ civic_merchant_guilds = {
 			}
 		}
 		authority = {
-			OR = {
-				value = auth_oligarchic
-				value = auth_dictatorial
-			}
+			value = auth_oligarchic
 		}
 		ethics = {
 			NOR = {
@@ -933,8 +959,14 @@ civic_diplomatic_corps = {
 				value = civic_inwards_perfection
 			}
 		}
+		ethics = {
+			NOR = {
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+				value = ethic_fanatic_xenophobe
+			}
+		}
 	}
-
 	modifier = {
 		envoys_add = 2
 		diplo_weight_mult = 0.1

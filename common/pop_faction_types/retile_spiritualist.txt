@@ -73,44 +73,7 @@ traditionalist = {
 	}
 	
 	attraction = {
-		base = 100
-		
-		modifier = {
-			factor = 1.25
-			OR = { 
-				has_job = custodian
-				has_job = ranger
-				has_job = priest
-				has_job = high_priest
-			}
-		}
-		
-		modifier = {
-			factor = 0.50
-			has_very_high_living_standard_type = yes
-		}
-		
-		modifier = {
-			factor = 0.75
-			OR = {
-				has_academic_living_standard_type = yes
-				has_high_living_standard_type = yes
-				has_shared_burden_living_standard_type = yes
-			}
-		}
-		
-		modifier = {
-			factor = 1.25
-			OR = {
-				has_stratified_living_standard_type = yes
-				has_low_living_standard_type = yes
-			}
-		}
-		
-		modifier = {
-			factor = 1.50
-			has_citizenship_rights = no
-		}
+		base = 100 
 	}
 	
 	leader = {
@@ -122,24 +85,6 @@ traditionalist = {
 		}		
 	}
 	
-	# Wants a Relic
-	demand = { 
-		title = "SPIRITUALIST_RELIC"
-		unfulfilled_title = "SPIRITUALIST_NO_RELIC"
-		desc = "SPIRITUALIST_RELIC_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = { 
-			exists = owner
-		}
-
-		trigger = {
-			owner = { num_owned_relics > 0 }
-		}
-	}
-	
 	# Wants Holy Worlds
 	demand = {
 		title = "SPIRITUALITY_HOLY_WORLD"
@@ -147,7 +92,7 @@ traditionalist = {
 		desc = "SPIRITUALITY_HOLY_WORLD_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
+		unfulfilled_effect = -10
 
 		potential = {
 			exists = owner
@@ -155,14 +100,12 @@ traditionalist = {
 
 		trigger = {
 			owner = {
-				any_planet_within_border = {
-					is_colony = no
-					OR = {
-						has_modifier = consecrated_quality_1
-						has_modifier = consecrated_quality_2
-						has_modifier = consecrated_quality_3
-						has_modifier = consecrated_quality_4
-					}
+				NOR = {
+					has_ascension_perk = ap_arcology_project
+				}
+				OR = {
+					has_ascension_perk = ap_land_ethic
+					has_ascension_perk = ap_consecrated_worlds
 				}
 			}
 		}
@@ -175,7 +118,7 @@ traditionalist = {
 		desc = "SPIRITUALIST_HARMONY_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
@@ -192,8 +135,8 @@ traditionalist = {
 		unfulfilled_title = "SPIRITUALIST_NO_ENVIRONMENTAL_PROTECTION"
 		desc = "SPIRITUALIST_ENVIRONMENTAL_PROTECTION_DESC"
 
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
@@ -201,105 +144,14 @@ traditionalist = {
 			owner = { has_policy_flag = environmental_protection }
 		}
 	}
-	
-	# Wants Universal Healthcare
-	demand = { 
-		title = "SPIRITUALIST_UNIVERSAL_HEALTHCARE"
-		unfulfilled_title = "SPIRITUALIST_NO_UNIVERSAL_HEALTHCARE"
-		desc = "SPIRITUALIST_UNIVERSAL_HEALTHCARE_DESC"
 
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = healthcare_universal }
-		}
-	}
-	
-	# Wants Selective Bombardment
-	demand = { 
-		title = "SPIRITUALIST_SELECTIVE_BOMBARDMENT"
-		unfulfilled_title = "SPIRITUALIST_NO_SELECTIVE_BOMBARDMENT"
-		desc = "SPIRITUALIST_SELECTIVE_BOMBARDMENT_DESC"
-
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = orbital_bombardment_selective }
-		}
-	}
-	
-	# Wants Active Interference
-	demand = { 
-		title = "SPIRITUALIST_ENLIGHTENMENT_ALLOWED"
-		unfulfilled_title = "SPIRITUALIST_NO_ENLIGHTENMENT_ALLOWED"
-		desc = "SPIRITUALIST_ENLIGHTENMENT_ALLOWED_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = { 
-			exists = owner
-			owner = { has_encountered_other_species = yes }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = enlightenment_allowed }
-		}
-	}
-	
-	# Hates Slaying
-	demand = {
-		title = "SPIRITUALIST_SLAYER"
-		unfulfilled_title = "SPIRITUALIST_NO_SLAYER"
-		desc = "SPIRITUALIST_SLAYER_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = {
-			exists = owner
-			owner = {
-				host_has_dlc = "Leviathans Story Pack"
-				any_country = {
-					OR = {
-						is_country_type = guardian
-						is_country_type = guardian_dragon
-						is_country_type = guardian_stellarite
-						is_country_type = guardian_wraith #
-						is_country_type = guardian_hiver
-						is_country_type = guardian_horror
-						is_country_type = guardian_fortress
-						is_country_type = guardian_dreadnought
-						is_country_type = guardian_sphere
-						is_country_type = guardian_scavenger_bot
-						is_country_type = guardian_elderly_tiyanki
-						is_country_type = guardian_hatchling
-					}
-					has_communications = prev
-				}
-			}
-		}
-
-		trigger = {
-			owner = {
-				NOT = { has_country_flag = killed_guardian }
-			}
-		}
-	}
-	
 	# Hates Destroying Worlds
 	demand = { 
 		title = "SPIRITUALIST_DESTROY_WORLD"
 		unfulfilled_title = "SPIRITUALIST_NO_DESTROY_WORLD"
 		desc = "SPIRITUALIST_DESTROY_WORLD_DESC"
 
-		fulfilled_effect = 0
+		fulfilled_effect = 10
 		unfulfilled_effect = -10
 
 		potential = { exists = owner }
@@ -309,111 +161,98 @@ traditionalist = {
 				NOR = { 
 					has_country_flag = fired_cracker
 					has_country_flag = fired_neutron
+					has_policy_flag = orbital_bombardment_armageddon
 				}
 			}
 		}
 	}
-	
-	# Hates Artificial Habitats
-	demand = { 
-		title = "SPIRITUALIST_HABITAT"
-		unfulfilled_title = "SPIRITUALIST_NO_HABITAT"
-		desc = "SPIRITUALIST_HABITAT_DESC"
 
-		fulfilled_effect = 0
+	# Hates Prime Directive
+	demand = {
+		title = "SPIRITUALIST_PASSIVE"
+		unfulfilled_title = "SPIRITUALIST_NO_PASSIVE"
+		desc = "SPIRITUALIST_PASSIVE_DESC"
+
+		fulfilled_effect = 10
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { has_met_primitives = yes }
+		}
 
 		trigger = {
-			NOT = {
-				owner = {
-					any_owned_planet = {
-						num_pops > 0
-						habitable_structure = yes
+			owner = { 
+				has_policy_flag = interference_passive
+			}
+		}
+	}
+
+	# Hates Presap Prime Directive
+	demand = {
+		title = "SPIRITUALIST_PRESAP_PASSIVE"
+		unfulfilled_title = "SPIRITUALIST_NO_PRESAP_PASSIVE"
+		desc = "SPIRITUALIST_PRESAP_PASSIVE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { 
+				OR = {
+					has_country_flag = found_presapients
+					any_planet_within_border = {
+						any_pop = {
+							is_sapient = no
+						}
 					}
 				}
+			}			
+		}
+
+		trigger = {
+			owner = { 
+				has_policy_flag = pre_sapients_protect
 			}
 		}
 	}
 	
-	# Hates Prosperity
+	# Creature Exploitation
 	demand = { 
-		title = "SPIRITUALIST_PROSPERITY"
-		unfulfilled_title = "SPIRITUALIST_NO_PROSPERITY"
-		desc = "SPIRITUALIST_PROSPERITY_DESC"
+		title = "SPIRITUALIST_PACIFICATION"
+		unfulfilled_title = "SPIRITUALIST_NO_PACIFICATION"
+		desc = "SPIRITUALIST_PACIFICATION_DESC"
 
-		fulfilled_effect = 0
+		fulfilled_effect = 10
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { 
+				AND = {
+					has_country_flag = amoeba_encountered
+					has_country_flag = crystal_encountered
+				}
+			}
+		}
 
 		trigger = {
-			owner = {
-				NOT = { has_tradition = tr_prosperity_adopt }
+			owner = { 
+				AND = { 
+					has_modifier = pacified_amoebas
+					has_modifier = pacified_crystals
+				}
 			}
 		}
 	}
-	
-	# Hates Priority Healthcare
-	demand = {
-		title = "SPIRITUALIST_PRIORITY_HEALTHCARE"
-		unfulfilled_title = "SPIRITUALIST_NO_PRIORITY_HEALTHCARE"
-		desc = "SPIRITUALIST_PRIORITY_HEALTHCARE_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				NOT = { has_policy_flag = healthcare_for_profit }
-			}
-		}
-	}
-	
-	# Hates Environmental Deregulation
-	demand = { 
-		title = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION"
-		unfulfilled_title = "SPIRITUALIST_NO_ENVIRONMENTAL_DEREGULATION"
-		desc = "SPIRITUALIST_ENVIRONMENTAL_DEREGULATION_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = {
-				NOT = { has_policy_flag = environmental_deregulation }
-			}
-		}
-	}
-	
-	# Hates Heavy Bombardment
-	demand = { 
-		title = "SPIRITUALIST_HEAVY_BOMBARDMENT"
-		unfulfilled_title = "SPIRITUALIST_NO_HEAVY_BOMBARDMENT"
-		desc = "SPIRITUALIST_HEAVY_BOMBARDMENT_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = orbital_bombardment_selective }
-		}
-	}
-	
 	# OUTRAGE
 	demand = {
 		title = "FACTION_OUTRAGED_GC"
 		unfulfilled_title = "FACTION_OUTRAGED_GC"
 		desc = "FACTION_OUTRAGED_GC_DESC"
 
-		fulfilled_effect = -20
+		fulfilled_effect = -10
 		unfulfilled_effect = -0.001
 
 		potential = {
@@ -430,6 +269,50 @@ traditionalist = {
 		}
 	}
 
+	demand = {
+		title = "COMMON_DICTATOR"
+		unfulfilled_title = "COMMON_DICTATOR"
+		desc = "COMMON_DICTATOR_DESC"
+
+		fulfilled_effect = -10
+		unfulfilled_effect = 0
+
+		potential = { 
+			exists = owner
+			owner = {
+				has_auth = auth_dictatorship
+			}
+		}
+
+		trigger = {
+			owner = {
+				has_auth = auth_dictatorship
+			}
+		}
+	}
+	
+	demand = {
+		title = "COMMON_EMPEROR"
+		unfulfilled_title = "COMMON_EMPEROR"
+		desc = "COMMON_EMPEROR_DESC"
+
+		fulfilled_effect = -20
+		unfulfilled_effect = 0
+
+		potential = { 
+			exists = owner 
+			owner = {
+				has_auth = auth_imperial
+			}
+		}
+
+		trigger = {
+			owner = {
+				has_auth = auth_imperial
+			}
+		}
+	}
+	
 	on_create = {
 		pop_faction_event = { id = factions.1 }
 	}

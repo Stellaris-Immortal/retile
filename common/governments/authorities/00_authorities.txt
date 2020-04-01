@@ -33,14 +33,13 @@ auth_democratic = {
 		ethics = {
 			NOR = {
 				value = ethic_gestalt_consciousness
-				value = ethic_authoritarian
-				value = ethic_fanatic_authoritarian
 			}
 		}
 	}
 	
 	country_modifier = {
 		pop_factions_produces_mult = 1
+		country_influence_produces_mult = -10
 	}
 
 	tags = {
@@ -51,6 +50,7 @@ auth_democratic = {
 auth_oligarchic = {
 	election_term_years = 20
 	election_type = oligarchic
+	re_election_allowed = yes
 	can_have_emergency_elections = yes
 	emergency_election_cost = 250
 	max_election_candidates = 4
@@ -61,15 +61,12 @@ auth_oligarchic = {
 		ethics = {
 			NOR = {
 				value = ethic_gestalt_consciousness
-				value = ethic_fanatic_egalitarian
-				value = ethic_fanatic_authoritarian
 			}
 		}
 	}
 	
 	country_modifier = {
-		pop_factions_produces_mult = 0.50
-		country_election_influence_cost_mult = -0.25
+		country_election_influence_cost_mult = -0.50
 	}
 
 	tags = {
@@ -87,15 +84,17 @@ auth_dictatorial = {
 		ethics = {
 			NOR = {
 				value = ethic_gestalt_consciousness
-				value = ethic_egalitarian
-				value = ethic_fanatic_egalitarian
 			}
 		}
 	}
 	
 	country_modifier = {
-		country_influence_produces_mult = 0.10
-		country_election_influence_cost_mult = -0.50
+		pop_factions_produces_mult = -0.33
+		country_base_influence_produces_add = 3
+		planet_stability_add = -5
+		country_admin_cap_mult = 0.15
+		country_naval_cap_mult = 0.15
+		country_war_exhaustion_mult = -0.15	
 	}
 
 	tags = {
@@ -112,14 +111,17 @@ auth_imperial = {
 		ethics = {
 			NOR = {
 				value = ethic_gestalt_consciousness
-				value = ethic_egalitarian
-				value = ethic_fanatic_egalitarian
 			}
 		}
 	}
 	
 	country_modifier = {
-		country_influence_produces_mult = 0.20
+		pop_factions_produces_mult = -0.66
+		country_base_influence_produces_add = 6
+		planet_stability_add = -10
+		country_admin_cap_mult = 0.30
+		country_naval_cap_mult = 0.30
+		country_war_exhaustion_mult = -0.30
 	}
 
 	tags = {
@@ -256,8 +258,8 @@ auth_corporate = {
 		ethics = {
 			NOR = {
 				value = ethic_gestalt_consciousness
+				value = ethic_egalitarian
 				value = ethic_fanatic_egalitarian
-				value = ethic_fanatic_authoritarian
 			}
 		}
 	}
