@@ -7,6 +7,7 @@ citizenship_full = {
 	potential = {
 		exists = from
 		NOT = { from = { has_authority = auth_machine_intelligence } }
+		NOT = { from = { has_civic = civic_systemic_slavery } }
 		if = {
 			limit = { from = { has_valid_civic = civic_fanatic_purifiers } }
 			OR = {
@@ -511,9 +512,11 @@ citizenship_slavery = {
 		}
 		
 		# Purifiers don't need/want slaves # edit: they might use caste system...
-		NAND = { # Purifiers can't allow full citizenship to anyone but themselves, or their created synths
-			from = { has_valid_civic = civic_fanatic_purifiers }
+		from = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
+		# Can't enslave main species w/o systemic_slavery civic
+		OR = {
 			NOT = { is_same_species = from }
+			from = { has_civic = civic_systemic_slavery }
 		}
 	}
 	
