@@ -135,8 +135,8 @@ traditionalist = {
 		unfulfilled_title = "SPIRITUALIST_NO_ENVIRONMENTAL_PROTECTION"
 		desc = "SPIRITUALIST_ENVIRONMENTAL_PROTECTION_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
+		fulfilled_effect = 20
+		unfulfilled_effect = -20
 
 		potential = { exists = owner }
 
@@ -230,7 +230,7 @@ traditionalist = {
 		potential = { 
 			exists = owner
 			owner = { 
-				AND = {
+				OR = {
 					has_country_flag = amoeba_encountered
 					has_country_flag = crystal_encountered
 				}
@@ -239,7 +239,7 @@ traditionalist = {
 
 		trigger = {
 			owner = { 
-				AND = { 
+				OR = { 
 					has_modifier = pacified_amoebas
 					has_modifier = pacified_crystals
 				}
@@ -280,13 +280,13 @@ traditionalist = {
 		potential = { 
 			exists = owner
 			owner = {
-				has_auth = auth_dictatorship
+				has_authority = auth_dictatorship
 			}
 		}
 
 		trigger = {
 			owner = {
-				has_auth = auth_dictatorship
+				has_authority = auth_dictatorship
 			}
 		}
 	}
@@ -302,13 +302,13 @@ traditionalist = {
 		potential = { 
 			exists = owner 
 			owner = {
-				has_auth = auth_imperial
+				has_authority = auth_imperial
 			}
 		}
 
 		trigger = {
 			owner = {
-				has_auth = auth_imperial
+				has_authority = auth_imperial
 			}
 		}
 	}

@@ -511,10 +511,9 @@ citizenship_slavery = {
 		}
 		
 		# Purifiers don't need/want slaves # edit: they might use caste system...
-		NAND = { # Purifiers can't allow full citizenship to anyone but themselves, or their created synths
-			from = { has_valid_civic = civic_fanatic_purifiers }
-			NOT = { is_same_species = from }
-		}
+		from = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
+		# Can't enslave main species
+		NOT = { is_same_species = from }
 	}
 	
 	triggered_pop_modifier = {

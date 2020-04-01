@@ -1,0 +1,641 @@
+origin_default = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_default.dds"
+	picture = GFX_evt_metropolis
+
+	potential = {
+		always = yes
+	}
+
+	possible = {
+	}
+
+	random_weight = {
+		base = 100
+	}
+	description = "origin_tooltip_default_effects"
+
+	advanced_start = yes
+}
+
+origin_fallen_empire = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_elder_race.dds"
+
+	playable = {
+		always = no # Non-player origin
+	}
+
+	possible = {
+	}
+
+	description = origin_no_effect
+
+	random_weight = {
+		base = 0
+	}
+}
+
+origin_enlightened = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_enlightened.dds"
+
+	playable = {
+		always = no # Non-player origin
+	}
+
+	possible = {
+	}
+
+	description = origin_no_effect
+
+	random_weight = {
+		base = 0
+	}
+}
+
+origin_separatists = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_separatists.dds"
+
+	playable = {
+		always = no # Non-player origin
+	}
+
+	possible = {
+	}
+
+	description = origin_no_effect
+
+	random_weight = {
+		base = 0
+	}
+}
+
+origin_khan_successor = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_khan_successor.dds"
+
+	playable = {
+		always = no # Non-player origin
+	}
+
+	possible = {
+	}
+
+	description = origin_no_effect
+
+	random_weight = {
+		base = 0
+	}
+}
+
+origin_mechanists = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_mechanist.dds"
+	picture = GFX_origin_mechanist
+
+	playable = {
+		host_has_dlc = "Utopia"
+	}
+
+	possible = {
+		ethics = {
+			NOT = { value = ethic_gestalt_consciousness }
+		}
+	}
+
+	modifier = { planet_pops_robotics_upkeep_mult = -0.05 }
+
+	description = "origin_tooltip_mechanists_effects"
+
+	advanced_start = yes
+
+	random_weight = {
+		base = 10
+	}
+}
+
+origin_syncretic_evolution = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_syncretic_evolution.dds"
+	picture = GFX_origin_syncretic_evolution
+
+	playable = {
+		host_has_dlc = "Utopia"
+	}
+
+	possible = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		civics = { NOT = { value = civic_fanatic_purifiers } }
+	}
+
+	description = civic_tooltip_syncretic_evolution_effects
+
+	has_secondary_species = {	# see game_start.11
+		title = civic_syncretic_evolution_secondary_species
+		traits = {
+			trait = trait_syncretic_proles
+		}
+	}
+
+	advanced_start = yes
+
+	random_weight = {
+		base = 10
+	}
+}
+
+origin_life_seeded = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_life_seeded.dds"
+	picture = GFX_origin_life_seeded
+
+	starting_colony = pc_gaia
+	habitability_preference = pc_gaia
+	preferred_planet_class_neighbor = no
+
+	playable = {
+		host_has_dlc = "Apocalypse"
+	}
+
+	possible = {
+		authority = { NOT = { value = auth_machine_intelligence } }
+	}
+
+	description = "civic_tooltip_life_seeded_effects"
+
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_post_apocalyptic = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_post_apocalyptic.dds"
+	picture = GFX_origin_post_apocalyptic
+
+	starting_colony = pc_nuked
+
+	playable = {
+		host_has_dlc = "Apocalypse"
+	}
+
+	possible = {
+		authority = { NOT = { value = auth_machine_intelligence } }
+		civics = { NOT = { value = civic_agrarian_idyll } }
+	}
+
+	description = "civic_tooltip_post_apocalyptic_effects"
+
+	traits = {
+		trait = trait_survivor
+	}
+
+	advanced_start = yes
+
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_remnants = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_remnant.dds"
+	picture = GFX_origin_remnants
+
+	starting_colony = pc_relic  #Changes homeworld class regardless of what is picked for empire
+	max_once_global = yes
+
+	playable = {
+		has_ancrel = yes
+	}
+
+	possible = {
+		civics = {
+			NOT = { value = civic_agrarian_idyll }
+		}
+	}
+
+	description = "origin_tooltip_remnants_effects"
+
+	flags = { custom_start_screen first_contact_event Story7}
+
+	traits = {
+
+	}
+
+	advanced_start = yes
+
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_shattered_ring = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_shattered_ring.dds"
+	picture = GFX_origin_shattered_ring
+
+	starting_colony = pc_ringworld_habitable
+	initializer = "shattered_ring_start"
+	max_once_global = yes
+
+	playable = {
+		host_has_dlc = Federations
+	}
+
+	possible = {
+		civics = { NOT = { value = civic_agrarian_idyll } }
+	}
+
+	description = "origin_tooltip_shattered_ring_effects"
+
+	flags = { custom_start_screen }
+
+	traits = {
+
+	}
+
+	advanced_start = yes
+
+	random_weight = {
+		base = 2
+	}
+}
+
+origin_void_dwellers = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_void_dwellers.dds"
+	picture = GFX_origin_void_dwellers
+
+	starting_colony = pc_habitat
+	initializer = "void_dweller_system"
+	habitability_preference = pc_habitat
+	max_once_global = yes
+	preferred_planet_class_neighbor = no
+
+	playable = {
+		host_has_dlc = Federations
+	}
+
+	possible = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		civics = { NOT = { value = civic_agrarian_idyll } }
+	}
+
+	description = "origin_tooltip_void_dwellers_effects"
+	flags = { custom_start_screen }
+
+	traits = {
+		trait = trait_void_dweller_1
+	}
+
+	random_weight = {
+		base = 3
+	}
+}
+
+origin_scion = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_scion_1.dds"
+	picture = GFX_origin_scion
+	max_once_global = yes
+
+	playable = {
+		host_has_dlc = Federations
+	}
+
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_gestalt_consciousness
+				#value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+	}
+
+	description = "origin_tooltip_scion_effects"
+	flags = { custom_start_screen }
+
+	random_weight = {
+		base = 0
+		modifier = {
+			factor = 2
+			num_fallen_empires_setting >= 1
+		}
+	}
+}
+
+
+origin_galactic_doorstep = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_gateway.dds"
+	picture = GFX_origin_galactic_doorstep
+	max_once_global = yes
+
+	playable = {
+		always = yes
+	}
+
+	possible = {
+	}
+
+	description = "origin_tooltip_galactic_doorstep_effects"
+	flags = { custom_start_screen }
+
+	traits = {
+	}
+
+	random_weight = {
+		base = 1
+	}
+
+}
+
+origin_tree_of_life = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_tree_of_life.dds"
+	picture = GFX_origin_tree
+	max_once_global = yes
+
+	playable = {
+		host_has_dlc = "Utopia"
+	}
+
+	possible = {
+		authority = { value = auth_hive_mind }
+		civics = {
+			NOT = { value = civic_hive_devouring_swarm }
+		}
+	}
+
+	description = "origin_tooltip_tree_effects"
+	flags = { custom_start_screen }
+
+	advanced_start = yes
+
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_shoulders_of_giants = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_one_the_shoulders_of_giant.dds"
+	picture = GFX_origin_shoulders
+	max_once_global = yes
+
+	playable = {
+		host_has_dlc = "Federations"
+	}
+
+	possible = {
+        ethics = {
+            NOT = {
+                value = ethic_gestalt_consciousness
+            }
+        }
+    }
+
+	description = "origin_tooltips_shoulders_of_giants_effects"
+	flags = { custom_start_screen }
+
+	traits = {
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_lithoid = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_lithoid.dds"
+	picture = GFX_origin_calamitous
+	max_once_global = yes
+
+	playable = {
+		host_has_dlc = "Lithoids Species Pack"
+	}
+
+	possible = {
+		species = {
+			value = LITHOID
+		}
+	}
+
+	description = "origin_tooltip_lithoid_effects"
+	flags = { custom_start_screen }
+
+	traits = {
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_machine = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_resource_consolidation.dds"
+	picture = GFX_origin_resource_consolidation
+	starting_colony = pc_machine
+	max_once_global = yes
+
+	playable = {
+		host_has_dlc = "Synthetic Dawn Story Pack"
+	}
+
+	possible = {
+		authority = { value = auth_machine_intelligence }
+		civics = {
+			NOT = { value = civic_machine_servitor }
+		}
+	}
+
+	description = "origin_tooltip_machine_effects"
+	#flags = { custom_start_screen }
+
+	traits = {
+	}
+
+	advanced_start = yes
+
+	random_weight = {
+		base = 2
+	}
+}
+
+origin_common_ground = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_common_ground.dds"
+	picture = GFX_origin_common_ground
+	max_once_global = yes
+
+	playable = {
+		host_has_dlc = "Federations"
+	}
+
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_gestalt_consciousness
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+			OR = {
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_barbaric_despoilers
+				value = civic_fanatic_purifiers
+				value = civic_inwards_perfection
+			}
+		}
+	}
+
+	description = "origin_tooltip_common_ground_effects"
+	flags = { custom_start_screen }
+
+	traits = {
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_common_ground_npc = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_common_ground.dds"
+	picture = GFX_origin_common_ground
+
+	playable = {
+		always = no # Non-player origin
+	}
+
+	possible = {
+	}
+
+	description = origin_tooltip_common_ground_npc_effects
+
+	random_weight = {
+		base = 0
+	}
+}
+
+origin_hegemon = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_hegemon.dds"
+	picture = GFX_origin_hegemon
+	max_once_global = yes
+
+	playable = {
+		host_has_dlc = "Federations"
+	}
+
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_gestalt_consciousness
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+		civics = {
+			NOR = {
+				value = civic_fanatic_purifiers
+				value = civic_inwards_perfection
+			}
+		}
+	}
+
+	description = "origin_tooltip_hegemon_effects"
+	flags = { custom_start_screen }
+
+	traits = {
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_hegemon_npc = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_hegemon.dds"
+	picture = GFX_origin_hegemon
+
+	playable = {
+		always = no # Non-player origin
+	}
+
+	possible = {
+	}
+
+	description = origin_tooltip_hegemon_npc_effects
+
+	random_weight = {
+		base = 0
+	}
+}
+
+origin_doomsday = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_doomsday.dds"
+	picture = GFX_origin_doomsday
+	max_once_global = yes
+
+	non_colonizable_planet_class_neighbor = yes
+
+	playable = {
+		host_has_dlc = "Federations"
+	}
+
+	possible = {
+	}
+
+	description = "origin_tooltip_doomsday_effects"
+	flags = { custom_start_screen }
+
+	traits = {
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
+
+origin_lost_colony = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origins_lost_colony.dds"
+	picture = GFX_origin_lost_colony
+	max_once_global = yes
+
+	playable = {
+		always = yes
+	}
+
+	possible = {
+		ethics = {
+			NOT = {
+				value = ethic_gestalt_consciousness
+			}
+		}
+	}
+
+	description = "origin_tooltip_lost_colony_effects"
+	flags = { custom_start_screen }
+
+	traits = {
+	}
+
+	random_weight = {
+		base = 5
+	}
+}
