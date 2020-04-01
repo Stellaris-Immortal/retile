@@ -232,12 +232,6 @@ civic_police_state = {
 		planet_enforcers_unity_produces_add = 2
 	}
 	possible = {
-		ethics = {
-			NOR = {
-				value = ethic_authoritarian
-				value = ethic_fanatic_authoritarian
-			}
-		}
 	}
 	random_weight = { base = 5 }
 }
@@ -248,10 +242,10 @@ civic_idealistic_foundation = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	possible = {
-		ethics = {
-			OR = {
-				value = ethic_egalitarian
-				value = ethic_fanatic_egalitarian
+		authority = {
+			NOR = {
+				value = auth_dictatorial
+				value = auth_imperial
 			}
 		}
 	}
