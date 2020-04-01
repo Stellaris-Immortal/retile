@@ -2215,3 +2215,25 @@ country_event = {
 		}
 	}
 }
+
+# Shroud Touched
+country_event = {
+	id = origin.201
+    hide_window = yes
+    is_triggered_only = yes
+	
+	trigger = {
+		owner = {
+			has_origin = origin_shroud_touched
+		}
+	}
+
+    immediate = {
+        set_country_flag = has_shroud_patron
+		add_research_option = tech_psionic_theory
+		add_tech_progress = {
+			tech = tech_psionic_theory
+			progress = 0.50
+		}
+    }
+}
