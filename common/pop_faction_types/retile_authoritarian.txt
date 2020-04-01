@@ -24,11 +24,11 @@ totalitarian = {
 	is_potential = {
 		OR = {
 			years_passed > 20
+			has_authority = auth_oligarchic
 			has_authority = auth_dictatorial
 			has_authority = auth_imperial
 			has_ethic = ethic_authoritarian
 			has_ethic = ethic_fanatic_authoritarian
-			has_valid_civic = civic_pacifist
 		}
 		NOR = { 
 			has_ethic = ethic_gestalt_consciousness
@@ -72,36 +72,6 @@ totalitarian = {
 	
 	attraction = {
 		base = 100
-		
-		modifier = {
-			factor = 1.25
-			OR = { 
-				has_job = enforcer
-				has_job = magistrate
-				has_job = executive
-				has_job = noble
-			}
-		}
-		
-		modifier = {
-			factor = 1.50
-			is_pop_category = ruler
-		}
-		
-		modifier = {
-			factor = 1.25
-			is_pop_category = specialist
-		}
-		
-		modifier = {
-			factor = 0.75
-			is_pop_category = worker
-		}
-		
-		modifier = {
-			factor = 0.50
-			has_citizenship_rights = no
-		}
 	}
 	
 	leader = {
@@ -112,71 +82,36 @@ totalitarian = {
 			is_event_leader = yes
 		}
 	}
-	
-	# Wants an Empire
-	demand = {
-		title = "AUTHORITARIAN_EMPIRE"
-		unfulfilled_title = "AUTHORITARIAN_NO_EMPIRE"
-		desc = "AUTHORITARIAN_EMPIRE_DESC"
 
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_authority = auth_imperial }
-		}
-	}
-	
-	# Wants a Subject
-	demand = {
-		title = "AUTHORITARIAN_OVERLORD"
-		unfulfilled_title = "AUTHORITARIAN_NO_OVERLORD"
-		desc = "AUTHORITARIAN_OVERLORD_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = {
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			owner = { is_overlord = yes }
-		}
-	}
-	
-	# Wants Workers can be Owned
-	demand = { 
-		title = "AUTHORITARIAN_SLAVERY"
-		unfulfilled_title = "AUTHORITARIAN_NO_SLAVERY"
-		desc = "AUTHORITARIAN_SLAVERY_DESC"
-
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = slavery_allowed }
-		}
-	}
-	
 	# Wants State Police Policy
 	demand = { 
 		title = "AUTHORITARIAN_STATE_POLICE"
 		unfulfilled_title = "AUTHORITARIAN_NO_STATE_POLICE"
 		desc = "AUTHORITARIAN_STATE_POLICE_DESC"
 
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
 
 		potential = {exists = owner }
 
 		trigger = {
 			owner = { has_policy_flag = criminal_state_police }
+		}
+	}
+	
+	# Wants an Oligarchy
+	demand = {
+		title = "AUTHORITARIAN_OLIGARCHY"
+		unfulfilled_title = "AUTHORITARIAN_NO_OLIGARCHY"
+		desc = "AUTHORITARIAN_OLIGARCHY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_authority = auth_oligarchic }
 		}
 	}
 	
@@ -187,7 +122,7 @@ totalitarian = {
 		desc = "AUTHORITARIAN_PRIORITY_HEALTHCARE_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
@@ -195,157 +130,158 @@ totalitarian = {
 			owner = { has_policy_flag = healthcare_for_profit }
 		}
 	}
+
+	# Wants Priority Education Policy
+	demand = {
+		title = "AUTHORITARIAN_PRIORITY_EDUCATION"
+		unfulfilled_title = "AUTHORITARIAN_NO_PRIORITY_EDUCATION"
+		desc = "AUTHORITARIAN_PRIORITY_EDUCATION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = education_for_profit }
+		}
+	}
 	
-	# Wants Appropriation
+	# Wants Workers have limited rights
 	demand = { 
-		title = "AUTHORITARIAN_APPROPRIATION_ALLOWED"
-		unfulfilled_title = "AUTHORITARIAN_NO_APPROPRIATION_ALLOWED"
-		desc = "AUTHORITARIAN_APPROPRIATION_ALLOWED_DESC"
+		title = "AUTHORITARIAN_LIMITED_WORKER_RIGHTS"
+		unfulfilled_title = "AUTHORITARIAN_NO_LIMITED_WORKER_RIGHTS"
+		desc = "AUTHORITARIAN_LIMITED_WORKER_RIGHTS_DESC"
 
 		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { 
+				OR = {
+					has_policy_flag = slavery_secretly_allowed 
+					has_policy_flag = slavery_allowed 
+				}
+			}
+		}
+	}
+	
+	demand = { 
+		title = "AUTHORITARIAN_PROSPERITY"
+		unfulfilled_title = "AUTHORITARIAN_NO_PROSPERITY"
+		desc = "AUTHORITARIAN_PROSPERITY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = {
+				has_tradition = tr_prosperity_adopt
+			}
+		}
+	}
+	
+	demand = {
+		title = "AUTHORITARIAN_STRATIFICATION"
+		unfulfilled_title = "AUTHORITARIAN_NO_STRATIFICATION"
+		desc = "AUTHORITARIAN_STRATIFICATION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+		}
+
+		trigger = {
+			owner = {
+				NOT = {
+					any_owned_pop = {
+						OR = {
+							has_living_standard = { type = living_standard_shared_burden }
+							has_living_standard = { type = living_standard_utopian }
+							has_living_standard = { type = living_standard_academic_privilege } 
+							has_living_standard = { type = living_standard_good }
+						}
+					}				
+				}
+			}
+		}
+	}
+	
+	demand = {
+		title = "AUTHORITARIAN_CAPACITY_BOOSTERS"
+		unfulfilled_title = "AUTHORITARIAN_NO_CAPACITY_BOOSTERS"
+		desc = "AUTHORITARIAN_CAPACITY_BOOSTERS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_technology = tech_selected_lineages
+					has_technology = tech_capacity_boosters
+				}
+			}
+		}
+
+		trigger = {
+			owner = {
+				OR = {
+					has_policy_flag = leader_enhancement_selected_lineages
+					has_policy_flag = leader_enhancement_capacity_boosters
+				}
+			}
+		}
+	}
+	
+	demand = {
+		title = "COMMON_DICTATOR"
+		unfulfilled_title = "COMMON_DICTATOR"
+		desc = "COMMON_DICTATOR_DESC"
+
+		fulfilled_effect = -10
 		unfulfilled_effect = 0
 
 		potential = { 
 			exists = owner
-			owner = { has_encountered_other_species = yes }
+			owner = {
+				has_auth = auth_dictatorship
+			}
 		}
 
 		trigger = {
-			owner = { has_policy_flag = appropriation_allowed }
+			owner = {
+				has_auth = auth_dictatorship
+			}
 		}
 	}
 	
-	# Wants Purge Hunted
 	demand = {
-		title = "AUTHORITARIAN_HUNTING"
-		unfulfilled_title = "AUTHORITARIAN_NO_HUNTING"
-		desc = "AUTHORITARIAN_HUNTING_DESC"
-		
-		fulfilled_effect = 10
+		title = "COMMON_EMPEROR"
+		unfulfilled_title = "COMMON_EMPEROR"
+		desc = "COMMON_EMPEROR_DESC"
+
+		fulfilled_effect = -20
 		unfulfilled_effect = 0
 
 		potential = { 
-			exists = owner
-			owner = { has_encountered_other_species = yes }
+			exists = owner 
+			owner = {
+				has_auth = auth_imperial
+			}
 		}
 
 		trigger = {
-			owner = { has_policy_flag = pre_sapients_eat }
-		}
-	}
-	
-	# Hates Democracy
-	demand = {
-		title = "AUTHORITARIAN_DEMOCRACY"
-		unfulfilled_title = "AUTHORITARIAN_NO_DEMOCRACY"
-		desc = "AUTHORITARIAN_DEMOCRACY_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_authority = auth_democratic } }
-		}
-	}
-	
-	# Hates Subservience
-	demand = {
-		title = "AUTHORITARIAN_UNDERLING"
-		unfulfilled_title = "AUTHORITARIAN_NO_UNDERLING"
-		desc = "AUTHORITARIAN_UNDERLING_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { is_subject = yes } }
-		}
-	}
-	
-	# Hates Common Law
-	demand = {
-		title = "AUTHORITARIAN_COMMON_LAW"
-		unfulfilled_title = "AUTHORITARIAN_NO_COMMON_LAW"
-		desc = "AUTHORITARIAN_COMMON_LAW_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = criminal_common_law } }
-		}
-	}
-	
-	# Hates Universal Healthcare
-	demand = {
-		title = "AUTHORITARIAN_UNIVERSAL_HEALTHCARE"
-		unfulfilled_title = "AUTHORITARIAN_NO_UNIVERSAL_HEALTHCARE"
-		desc = "AUTHORITARIAN_UNIVERSAL_HEALTHCARE_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = healthcare_universal } }
-		}
-	}
-	
-	# Hates Education For All
-	demand = {
-		title = "AUTHORITARIAN_EDUCATION_FOR_ALL"
-		unfulfilled_title = "AUTHORITARIAN_NO_EDUCATION_FOR_ALL"
-		desc = "AUTHORITARIAN_EDUCATION_FOR_ALL_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = education_for_all } }
-		}
-	}
-	
-	# Hates No Appropriation
-	demand = {
-		title = "AUTHORITARIAN_APPROPRIATION_NOT_ALLOWED"
-		unfulfilled_title = "AUTHORITARIAN_NO_APPROPRIATION_NOT_ALLOWED"
-		desc = "AUTHORITARIAN_APPROPRIATION_NOT_ALLOWED_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_encountered_other_species = yes }
-		}
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = appropriation_not_allowed } }
-		}
-	}
-	
-	# Hates Worker Control
-	demand = {
-		title = "AUTHORITARIAN_SLAVERY_BAN"
-		unfulfilled_title = "AUTHORITARIAN_NO_SLAVERY_BAN"
-		desc = "AUTHORITARIAN_SLAVERY_BAN_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = slavery_not_allowed } }
+			owner = {
+				has_auth = auth_imperial
+			}
 		}
 	}
 	
@@ -355,7 +291,7 @@ totalitarian = {
 		unfulfilled_title = "FACTION_OUTRAGED_GC"
 		desc = "FACTION_OUTRAGED_GC_DESC"
 
-		fulfilled_effect = -20
+		fulfilled_effect = -10
 		unfulfilled_effect = -0.001
 
 		potential = {

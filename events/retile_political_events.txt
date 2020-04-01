@@ -325,3 +325,81 @@ country_event = {
 		name = political.2.d
 	}
 }
+
+# On action event that fires on ruler change 
+# Function: if empire has dict/imp authority, fire additional events to simulate potential succession crisis
+country_event = {
+	id = political.101
+	hide_window = yes
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { has_authority = auth_dictatorial }
+			country_event = { id = political.102 days = 5 }
+		} else_if = {
+			limit = { has_authority = auth_imperial }
+			country_event = { id = political.103 days = 5 }
+		}
+	}
+}
+
+# Called by political.101
+# Function: Create succession crisis for dictatorship
+country_event = {
+	id = political.102
+	title = political.102.name
+	desc = political.102.desc
+	is_triggered_only = yes
+	picture = GFX_evt_alien_segregation
+	show_sound = event_public_unrest
+	
+	immediate = {
+		every_planet_within_border = {
+			limit = {
+				is_colony = yes
+			}
+			add_modifier = { days = 1800 modifier = "retile_modifier_dict_succession_crisis" }
+		}
+	}
+	
+	option = {
+		name = political.102.a
+		tooltip = {
+			add_modifier = {
+				modifier = retile_modifier_dict_succession_crisis
+				days = 1800
+			}
+		}
+	}
+}
+
+# Called by political.101
+# Function: Create succession crisis for empires (Note: currently super WIP but has skeleton functionality)
+country_event = {
+	id = political.103
+	title = political.103.name
+	desc = political.103.desc
+	is_triggered_only = yes
+	picture = GFX_evt_alien_segregation
+	show_sound = event_public_unrest
+	
+	immediate = {
+		every_planet_within_border = {
+			limit = {
+				is_colony = yes
+			}
+			add_modifier = { days = 1800 modifier = "retile_modifier_imp_succession_crisis" }
+		}
+	}
+	
+	option = {
+		name = political.103.a
+		tooltip = {
+			add_modifier = {
+				modifier = retile_modifier_imp_succession_crisis
+				days = 1800
+			}
+		}
+	}
+}
