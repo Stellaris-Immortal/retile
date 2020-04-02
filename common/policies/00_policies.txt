@@ -1015,10 +1015,6 @@ trade_policy = {
 			trade_conversion_energy
 		}
 		
-		modifier = {
-			planet_clerks_energy_produces_add = 5
-		}
-		
 		AI_weight = {
 			factor = 2
 		}
@@ -1031,10 +1027,6 @@ trade_policy = {
 			trade_conversion_minerals
 		}
 		
-		modifier = {
-			planet_clerks_minerals_produces_add = 5
-		}
-		
 		AI_weight = {
 			factor = 0
 		}
@@ -1045,10 +1037,6 @@ trade_policy = {
 		
 		policy_flags = {
 			trade_conversion_food
-		}
-		
-		modifier = {
-			planet_clerks_food_produces_add = 5
 		}
 		
 		AI_weight = {
@@ -1070,10 +1058,6 @@ trade_policy = {
 			}
 		}
 		
-		modifier = {
-			planet_clerks_alloys_produces_add = 1.25
-		}
-		
 		AI_weight = {
 			factor = 0
 		}
@@ -1093,16 +1077,12 @@ trade_policy = {
 			}
 		}
 		
-		modifier = {
-			planet_clerks_consumer_goods_produces_add = 1.25
-		}
-		
 		AI_weight = {
 			factor = 1
-			modifier = {
-				factor = 10
-				is_ai = yes
-			}
+		#	modifier = {
+		#		factor = 10
+		#		is_ai = yes		# AI just get their own conversion now... They can choose whatever policy, it doesn't matter.
+		#	}
         }
 	}
 	
@@ -1117,10 +1097,6 @@ trade_policy = {
 			has_technology = tech_space_trading
 		}
 		
-		modifier = {
-			planet_clerks_unity_produces_add = 0.75
-		}
-				
 		AI_weight = {
 			factor = 0
 		}
@@ -1137,12 +1113,6 @@ trade_policy = {
 			trade_conversion_research
 		}		
 		
-		modifier = {
-			planet_clerks_physics_research_produces_add = 0.75
-			planet_clerks_society_research_produces_add = 0.75
-			planet_clerks_engineering_research_produces_add = 0.75
-		}
-				
 		AI_weight = {
 			factor = 0
 		#	modifier = {
@@ -1157,7 +1127,6 @@ trade_policy = {
 		
 		potential = {
 			has_technology = tech_interstellar_economics
-			NOT = { has_tradition = tr_prosperity_finish }
 		}
 		
 		policy_flags = {
@@ -1166,27 +1135,6 @@ trade_policy = {
 		
 		modifier = {
 			country_base_influence_produces_add = 1
-		}
-		
-		AI_weight = {
-			factor = 0
-		}
-	}
-	
-	option = {
-		name = "trade_policy_influence_advanced"
-		
-		potential = {
-			has_technology = tech_interstellar_economics
-			has_tradition = tr_prosperity_finish
-		}
-		
-		policy_flags = {
-			trade_conversion_influence
-		}		
-		
-		modifier = {
-			country_base_influence_produces_add = 1.2
 		}
 		
 		AI_weight = {
