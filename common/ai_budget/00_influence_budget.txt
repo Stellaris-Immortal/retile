@@ -18,6 +18,29 @@ influence_expenditure_buffer = { # Buffer, will not be spent
 	}	
 }
 
+influence_expenditure_resolutions = {
+	resource = influence 
+	type = expenditure
+	category = resolutions
+	
+	potential = {
+		is_galactic_community_member = yes
+		NOT = { is_proposing_resolution = "any" }
+	}
+	
+	fraction = {
+		weight = 0.2
+	}
+
+	# min/max resolution proposal costs defined in resolutions.txt
+	static_min = {
+		base = 100
+	}	
+	static_max = {
+		base = 300
+	}
+}
+
 influence_expenditure_colonies_expand = {
     resource = influence
     type = expenditure

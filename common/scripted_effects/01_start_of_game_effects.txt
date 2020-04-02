@@ -940,13 +940,13 @@ generate_start_buildings_and_districts = {
 					has_country_flag = biological_subspecies
 					has_country_flag = plantoid_subspecies
 				} } }
-				add_deposit = retile_module_generator_active
-				add_deposit = retile_module_farm_active
-				add_deposit = retile_module_mine_active
+				add_deposit = retile_module_generator
+				add_deposit = retile_module_farm
+				add_deposit = retile_module_mine
 			} else = {
-				add_deposit = retile_module_generator_active
-				add_deposit = retile_module_generator_active
-				add_deposit = retile_module_mine_active
+				add_deposit = retile_module_generator
+				add_deposit = retile_module_generator
+				add_deposit = retile_module_mine
 			}
 		}
 		
@@ -961,13 +961,13 @@ generate_start_buildings_and_districts = {
 					has_country_flag = biological_subspecies
 					has_country_flag = plantoid_subspecies
 				} } }
-				add_deposit = retile_module_generator_active
-				add_deposit = retile_module_farm_active
-				add_deposit = retile_module_mine_active
+				add_deposit = retile_module_generator
+				add_deposit = retile_module_farm
+				add_deposit = retile_module_mine
 			} else = {
-				add_deposit = retile_module_generator_active
-				add_deposit = retile_module_mine_active
-				add_deposit = retile_module_mine_active
+				add_deposit = retile_module_generator
+				add_deposit = retile_module_mine
+				add_deposit = retile_module_mine
 			}
 		}
 		
@@ -978,65 +978,14 @@ generate_start_buildings_and_districts = {
 					is_machine_empire = no
 				}
 			}
-			add_deposit = retile_module_generator_active
-			add_deposit = retile_module_farm_active
-			add_deposit = retile_module_mine_active
+			add_deposit = retile_module_generator
+			add_deposit = retile_module_farm
+			add_deposit = retile_module_mine
 		}
-	} else = {	# NOT shattered ring...
-		if = {	# robots
-			limit = {
-				owner = {
-					is_machine_empire = yes
-				}
-			}
-			if = {
-				limit = { owner = { OR = {
-					has_country_flag = biological_subspecies
-					has_country_flag = plantoid_subspecies
-				} } }
-				retile_exploit_energy = yes
-				retile_exploit_minerals = yes
-				retile_exploit_food = yes
-			} else = {
-				retile_exploit_energy = yes
-				retile_exploit_energy = yes
-				retile_exploit_minerals = yes
-			}
-		}
-		
-		if = { # Lithoids
-			limit = {
-				owner = {
-					is_lithoid_empire = yes
-				}
-			}
-			if = {
-				limit = { owner = { OR = {
-					has_country_flag = biological_subspecies
-					has_country_flag = plantoid_subspecies
-				} } }
-				retile_exploit_energy = yes
-				retile_exploit_minerals = yes
-				retile_exploit_food = yes
-			} else = {
-				retile_exploit_energy = yes
-				retile_exploit_minerals = yes
-				retile_exploit_minerals = yes
-			}
-		}
-		
-		if = { # Biologicals/Plants
-			limit = {
-				owner = {
-					is_lithoid_empire = no
-					is_machine_empire = no
-				}
-			}
-				retile_exploit_energy = yes
-				retile_exploit_minerals = yes
-				retile_exploit_food = yes
-		}
-	}
+	} # else = {	# NOT shattered ring...
+		# don't have to exploit deposits or build rural districts any more...
+		# TODO: Add bioreactor (food->energy) and nutrient condenser (food->minerals for lithoids) deposits here instead...
+	#}
 	
 	######################################## Set up starting districts - same for everyone basically...
 	if = {
@@ -1051,7 +1000,9 @@ generate_start_buildings_and_districts = {
 		add_district = district_clerks
 		add_district = district_engineers
 		add_district = district_scholars
+		add_district = district_enforcers
 		add_district = district_custodians
+		add_district = district_housing
 		add_district = district_housing
 		add_district = district_housing
 	}
@@ -1059,10 +1010,20 @@ generate_start_buildings_and_districts = {
 		limit = {
 			owner = { has_origin = origin_default }
 		}
-		add_district = district_housing
-		add_district = district_clerks
-		add_district = district_engineers
-		add_district = district_scholars
+		if = {
+			limit = { owner = { is_regular_empire = yes } }
+			add_district = district_housing
+			add_district = district_clerks
+			add_district = district_engineers
+			add_district = district_scholars
+		}
+		if = {
+			limit = { owner = { is_hive_empire = yes } }
+			add_district = district_housing
+			add_district = district_engineers
+			add_district = district_engineers
+			add_district = district_scholars
+		}
 	}
 	
 	if = {
@@ -1077,7 +1038,9 @@ generate_start_buildings_and_districts = {
 		add_district = district_engineers
 		add_district = district_engineers
 		add_district = district_scholars
+		add_district = district_sentinel
 		add_district = district_custodians
+		add_district = district_housing
 		add_district = district_housing
 		add_district = district_housing
 	}
@@ -1094,7 +1057,9 @@ generate_start_buildings_and_districts = {
 		add_district = district_engineers
 		add_district = district_scholars
 		add_district = district_scholars
+		add_district = district_sentinel
 		add_district = district_custodians
+		add_district = district_housing
 		add_district = district_housing
 		add_district = district_housing
 	}
@@ -1220,10 +1185,10 @@ generate_start_pops = {
 	
 	if = {
 		limit = { owner = { is_hive_empire = yes } }
+		add_district = district_spawning
+		add_district = district_spawning
 		while = {
-			limit = { num_pops < 14 }
-			add_district = district_spawning
-			add_district = district_spawning
+			limit = { num_pops < 15 }
 			create_pop = {
 				species = owner_main_species
 				ethos = random
@@ -1478,9 +1443,10 @@ void_dweller_home_planet_setup = {
 	add_building = building_system_capital
 	add_district = district_housing
 	add_district = district_housing
+	add_district = district_housing
 	add_district = district_engineers
 	add_district = district_scholars
-	add_deposit = retile_module_generator_active
+	add_deposit = retile_module_generator
 
 	add_deposit = d_arcane_replicator
 	
@@ -1500,7 +1466,7 @@ void_dweller_home_planet_setup = {
 			}
 			add_building = building_colony_shelter
 			add_district = district_housing
-			add_deposit = retile_module_mine_active
+			add_deposit = retile_module_mine
 		}
 		random_system_planet = {
 			limit = { has_planet_flag = void_dweller_habitat_3 }
@@ -1524,16 +1490,16 @@ void_dweller_home_planet_setup = {
 						is_lithoid_empire = yes
 					}
 				}
-				add_deposit = retile_module_mine_active
+				add_deposit = retile_module_mine
 			} else_if = {
 				limit = {
 					owner = {
 						is_machine_empire = yes
 					}
 				}
-				add_deposit = retile_module_generator_active
+				add_deposit = retile_module_generator
 			} else = {
-				add_deposit = retile_module_farm_active
+				add_deposit = retile_module_farm
 			}
 		}
 		every_system_planet = {

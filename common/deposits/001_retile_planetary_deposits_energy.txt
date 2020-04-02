@@ -17,24 +17,24 @@
 ########################
 
 d_buzzing_plains = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_energy_produces_add = @laborer_production_01
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
 	
 	drop_weight = {
 		weight = 0.01
@@ -43,10 +43,6 @@ d_buzzing_plains = {
 	
 	potential = {
 		is_planet_class = pc_gaia
-	}
-	
-	blocker_swap_types = {
-		d_buzzing_plains_active
 	}
 	
 	use_weights_for_terraforming_swap_types = yes
@@ -58,24 +54,24 @@ d_buzzing_plains = {
 }
 
 d_arid_highlands = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_energy_produces_add = @laborer_production_01
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -89,10 +85,6 @@ d_arid_highlands = {
 		is_dry = yes
 	}
 	
-	blocker_swap_types = {
-		d_arid_highlands_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -102,24 +94,24 @@ d_arid_highlands = {
 }
 
 d_hot_springs = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_energy_produces_add = @laborer_production_01
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_high	
@@ -136,10 +128,6 @@ d_hot_springs = {
 		}	
 	}
 	
-	blocker_swap_types = {
-		d_hot_springs_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -149,24 +137,24 @@ d_hot_springs = {
 }
 
 d_rushing_waterfalls = {
-	time = @retile_rural_exploit_time_med
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_med
+		planet_laborers_energy_produces_add = @laborer_production_02
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -180,10 +168,6 @@ d_rushing_waterfalls = {
 		is_wet = yes
 	}
 	
-	blocker_swap_types = {
-		d_rushing_waterfalls_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -193,24 +177,24 @@ d_rushing_waterfalls = {
 }
 
 d_searing_desert = {
-	time = @retile_rural_exploit_time_med
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_med
+		planet_laborers_energy_produces_add = @laborer_production_02
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -229,10 +213,6 @@ d_searing_desert = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_searing_desert_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -242,24 +222,24 @@ d_searing_desert = {
 }
 
 d_frozen_gas_lake = {
-	time = @retile_rural_exploit_time_med
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_med
+		planet_laborers_energy_produces_add = @laborer_production_02
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -277,10 +257,6 @@ d_frozen_gas_lake = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_frozen_gas_lake_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -291,24 +267,24 @@ d_frozen_gas_lake = {
 }
 
 d_geothermal_vent = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -328,10 +304,6 @@ d_geothermal_vent = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_geothermal_vent_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -341,24 +313,24 @@ d_geothermal_vent = {
 }
 
 d_underwater_vent = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -377,10 +349,6 @@ d_underwater_vent = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_underwater_vent_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -390,24 +358,24 @@ d_underwater_vent = {
 }
 
 d_tempestous_mountain = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -427,10 +395,6 @@ d_tempestous_mountain = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_tempestous_mountain_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -444,175 +408,158 @@ d_tempestous_mountain = {
 ##########################
 
 d_junk_hollows = {
-	time = @retile_rural_exploit_time_high
 	icon = d_organic_landfill
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_bad_high
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_junk_hollows_active
 	}
 }
 
 d_irradiated_valley = {
-	time = @retile_rural_exploit_time_high
 	icon = d_scandinavia
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_bad_high
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_irradiated_valley_active
 	}
 }
 
 d_odd_factory_wreckage_1 = {
-	time = @retile_rural_exploit_time_med
 	icon = d_building_complex
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_bad_med
+		planet_laborers_energy_produces_add = @laborer_production_02
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_odd_factory_wreckage_1_active
 	}
 }
 
 d_organic_landfill = {
-	time = @retile_rural_exploit_time_ultra
 	icon = d_organic_landfill
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_ultra
-		}
-	}
-	
 	planet_modifier = {
 		planet_jobs_society_research_produces_mult = 0.10
-		planet_amenities_add = @retile_rural_eco_clean_bad_ultra
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_organic_landfill_active
 	}
 }
 
 d_underground_generator = {
-	time = @retile_rural_exploit_time_high
 	icon = d_underwater_vent
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
 		planet_max_districts_add = 1
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
 	}
-	
-	blocker_swap_types = {
-		d_underground_generator_active
-	}
 }
 
 d_underground_contact_zone = {
-	time = @retile_rural_exploit_time_med
 	icon = d_urban_corridor
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
+		planet_laborers_energy_produces_add = @laborer_production_02
 		planet_max_districts_add = 1
-		planet_housing_add = 1
-		planet_amenities_add = @retile_rural_eco_clean_med
 		job_underground_trade_worker_add = 1
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
 	}
 	
 	triggered_planet_modifier = {
@@ -626,47 +573,34 @@ d_underground_contact_zone = {
 		}
 	}
 	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
-	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_underground_contact_zone_active
 	}
 }
 
 d_numas_breath = {
-	time = @retile_rural_exploit_time_high
 	icon = d_geothermal_vent
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_max_districts_add = 1
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_numas_breath_active
 	}
 }
 
@@ -676,91 +610,79 @@ d_numas_breath = {
 
 d_delhi_sprawl = {
 	icon = d_city
-	time = @retile_rural_exploit_time_med
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_med
+		planet_laborers_energy_produces_add = @laborer_production_02
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_delhi_sprawl_active
 	}
 }
 
 d_boswash_metropolitan_axis = {
 	icon = d_city
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_boswash_metropolitan_axis_active
 	}
 }
 
 d_pearl_river_agglomerate = {
 	icon = d_pearl_river
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_pearl_river_agglomerate_active
 	}
 }
 
@@ -769,56 +691,51 @@ d_pearl_river_agglomerate = {
 #######################
 
 retile_mastery_of_nature_energy = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
-		planet_max_districts_add = 1
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		retile_mastery_of_nature_energy_active
 	}
 }
 
 retile_module_generator = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_energy
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
+	planet_modifier = {
+		planet_laborers_energy_produces_add = @laborer_production_03
 	}
-	
-	can_be_cleared = { retile_ready_energy = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = energy value < @retile_ai_energy_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_1 } }
+		planet_laborers_energy_produces_add = @laborer_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_2 } }
+		planet_laborers_energy_produces_add = @laborer_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_energy_3 } }
+		planet_laborers_energy_produces_add = @laborer_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		retile_module_generator_active
 	}
 }

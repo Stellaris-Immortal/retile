@@ -4523,18 +4523,15 @@ country_event = {
 			add_district = district_housing
 			add_district = district_housing
 			add_district = district_housing
+			add_district = district_housing
 			add_district = district_engineers
 			add_district = district_scholars
 			add_district = district_clerks
 			if = {
-				limit = { NOT = { is_planet_class = pc_ringworld_habitable } }
-				retile_exploit_food = yes
-				retile_exploit_minerals = yes
-				retile_exploit_energy = yes
-			} else = {
-				add_deposit = retile_module_farm_active
-				add_deposit = retile_module_generator_active
-				add_deposit = retile_module_mine_active
+				limit = { is_planet_class = pc_ringworld_habitable }
+				add_deposit = retile_module_farm
+				add_deposit = retile_module_generator
+				add_deposit = retile_module_mine
 			}
 						
 			event_target:primitive_civ = { destroy_country = yes }

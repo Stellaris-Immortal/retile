@@ -61,6 +61,10 @@ building_communal_housing = {
 		trigger = { exists = owner }
 		text = retile_housing_effect
 	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
 
 	ai_weight = {
 		weight = 1
@@ -85,19 +89,14 @@ building_ministry = {
 	}
 	
 	allow = {
-		OR = {
-			owner = { is_ai = no }
-		}
+		exists = owner
+		owner = { is_ai = no }
 	}
 
 	destroy_trigger = {
 		owner = { is_ai = yes }
 	}
 	
-	convert_to = {
-		
-	}
-		
 	planet_modifier = {
 		planet_housing_add = 2
 		job_bureaucrat_add = 2
@@ -117,8 +116,12 @@ building_ministry = {
 		trigger = { exists = owner }
 		text = retile_ministry_effect
 	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
 
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }

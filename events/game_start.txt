@@ -733,38 +733,16 @@ planet_event = {
 
 	immediate = {
 		if = {
-			limit = { is_capital = yes }	# +6 jobs total
-			retile_exploit_energy = yes
-			retile_exploit_minerals = yes
+			limit = { is_capital = yes }
 			add_district = district_engineers
 			add_district = district_scholars			  
 			add_district = district_clerks
 			add_district = district_housing
 			add_district = district_housing
-			
-			if = {	# +1 = 4
-				limit = { 
-					owner = { country_uses_food = yes }
-				}
-				retile_exploit_food = yes
-			} else = {
-				retile_exploit_energy = yes
-			}
-		}
-		else = {	# +5 jobs total
-			retile_exploit_energy = yes
-			retile_exploit_minerals = yes
-			
 			add_district = district_housing
-			
-			if = {	# +1 = 4
-				limit = { 
-					owner = { country_uses_food = yes }
-				}
-				retile_exploit_food = yes									  	
-			} else = {
-				retile_exploit_energy = yes			 
-			}				   
+		}
+		else = {
+			add_district = district_housing
 		}							
 	}
 }

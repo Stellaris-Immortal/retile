@@ -15,40 +15,48 @@ custodian = {
 	}
 
 	possible = {
-		or = {
-			has_job = custodian
-			retile_job_seeking = yes
-		}
 		worker_job_check_trigger = yes
 	}
 	
 	country_modifier = {
-		planet_amenities_add = -5
+		planet_amenities_add = -10
 	}
 	
 	planet_modifier = {
-		planet_amenities_add = -45
+		planet_amenities_add = -90
+	}
+	triggered_country_modifier = {
+		potential = { owner = { has_technology = tech_industrial_metabolism } }
+		modifier = { planet_amenities_add = -4 }
 	}
 	triggered_planet_modifier = {
 		potential = { owner = { has_technology = tech_industrial_metabolism } }
-		modifier = { planet_amenities_add = -20 }
+		modifier = { planet_amenities_add = -36 }
+	}
+	triggered_country_modifier = {
+		potential = { owner = { has_technology = tech_industrial_symbiosis } }
+		modifier = { planet_amenities_add = -4 }
 	}
 	triggered_planet_modifier = {
 		potential = { owner = { has_technology = tech_industrial_symbiosis } }
-		modifier = { planet_amenities_add = -20 }
+		modifier = { planet_amenities_add = -36 }
+	}
+	triggered_country_modifier = {
+		potential = { owner = { has_technology = tech_industrial_ecology } }
+		modifier = { planet_amenities_add = -2 }
 	}
 	triggered_planet_modifier = {
 		potential = { owner = { has_technology = tech_industrial_ecology } }
-		modifier = { planet_amenities_add = -10 }
+		modifier = { planet_amenities_add = -18 }
 	}
-	triggered_country_modifier = {
-		potential = { planet = { has_deposit = retile_deposit_waste_reprocessing } }
-		modifier = { planet_amenities_add = -10 }
-	}
-	triggered_planet_modifier = {
-		potential = { planet = { has_deposit = retile_deposit_waste_reprocessing } }
-		modifier = { planet_amenities_add = -90 }
-	}
+#	triggered_country_modifier = {
+#		potential = { planet = { has_deposit = retile_deposit_waste_reprocessing } }
+#		modifier = { planet_amenities_add = -10 }
+#	}
+#	triggered_planet_modifier = {
+#		potential = { planet = { has_deposit = retile_deposit_waste_reprocessing } }
+#		modifier = { planet_amenities_add = -90 }
+#	}
 	triggered_country_modifier = {
 		potential = { planet = { has_building = building_maintenance_depot } }
 		modifier = { planet_amenities_add = -10 }
@@ -59,19 +67,19 @@ custodian = {
 	}
 	triggered_country_modifier = {
 		potential = { planet = { has_building = building_maintenance_depot_2 } }
-		modifier = { planet_amenities_add = -25 }
+		modifier = { planet_amenities_add = -20 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_maintenance_depot_2 } }
-		modifier = { planet_amenities_add = -225 }
+		modifier = { planet_amenities_add = -180 }
 	}
 	triggered_country_modifier = {
 		potential = { planet = { has_building = building_maintenance_depot_3 } }
-		modifier = { planet_amenities_add = -45 }
+		modifier = { planet_amenities_add = -30 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_maintenance_depot_3 } }
-		modifier = { planet_amenities_add = -405 }
+		modifier = { planet_amenities_add = -270 }
 	}
 
 	resources = {
@@ -79,207 +87,8 @@ custodian = {
 		produces = {
 			consumer_goods = 0.5
 		}
-		produces = {
-			trigger = { planet = { has_building = building_maintenance_depot } }
-			consumer_goods = 0.5
-		}
-		produces = {
-			trigger = { planet = { has_building = building_maintenance_depot_2 } }
-			consumer_goods = 1
-		}
-		produces = {
-			trigger = { planet = { has_building = building_maintenance_depot_3 } }
-			consumer_goods = 1.5
-		}
-		produces = {
-			trigger = { planet = { has_building = building_solar_panels } }
-			energy = 5
-		}
-		produces = {
-			trigger = { planet = { AND = {
-				has_building = building_solar_panels
-				has_building = building_maintenance_depot
-			} } }
-			energy = 5
-		}
-		produces = {
-			trigger = { planet = { AND = {
-				has_building = building_solar_panels
-				has_building = building_maintenance_depot_2
-			} } }
-			energy = 10
-		}
-		produces = {
-			trigger = { planet = { AND = {
-				has_building = building_solar_panels
-				has_building = building_maintenance_depot_3
-			} } }
-			energy = 15
-		}
-		produces = {
-			trigger = { planet = { has_building = building_recycling_center } }
-			minerals = 5
-		}
-		produces = {
-			trigger = { planet = { AND = {
-				has_building = building_recycling_center
-				has_building = building_maintenance_depot
-			} } }
-			minerals = 5
-		}
-		produces = {
-			trigger = { planet = { AND = {
-				has_building = building_recycling_center
-				has_building = building_maintenance_depot_2
-			} } }
-			minerals = 10
-		}
-		produces = {
-			trigger = { planet = { AND = {
-				has_building = building_recycling_center
-				has_building = building_maintenance_depot_3
-			} } }
-			minerals = 15
-		}
-		produces = {
-			trigger = { 
-				planet = { has_building = building_hydroponics_farm }
-				NOT = { has_trait = trait_plantoid }
-			}
-			food = 5
-		}
-		produces = {
-			trigger = {
-				planet = { AND = {
-					has_building = building_hydroponics_farm
-					has_building = building_maintenance_depot
-				} }
-				NOT = { has_trait = trait_plantoid }
-			}
-			food = 5
-		}
-		produces = {
-			trigger = {
-				planet = { AND = {
-					has_building = building_hydroponics_farm
-					has_building = building_maintenance_depot
-				} }
-				NOT = { has_trait = trait_plantoid }
-			}
-			food = 10
-		}
-		produces = {
-			trigger = {
-				planet = { AND = {
-					has_building = building_hydroponics_farm
-					has_building = building_maintenance_depot
-				} }
-				NOT = { has_trait = trait_plantoid }
-			}
-			food = 15
-		}
-		produces = {
-			trigger = { 
-				planet = { has_building = building_hydroponics_farm }
-				has_trait = trait_plantoid_fruiting
-			}
-			food = 2
-		}
-		produces = {
-			trigger = {
-				planet = { AND = {
-					has_building = building_hydroponics_farm
-					has_building = building_maintenance_depot
-				} }
-				has_trait = trait_plantoid_fruiting
-			}
-			food = 2
-		}
-		produces = {
-			trigger = {
-				planet = { AND = {
-					has_building = building_hydroponics_farm
-					has_building = building_maintenance_depot
-				} }
-				has_trait = trait_plantoid_fruiting
-			}
-			food = 4
-		}
-		produces = {
-			trigger = {
-				planet = { AND = {
-					has_building = building_hydroponics_farm
-					has_building = building_maintenance_depot
-				} }
-				has_trait = trait_plantoid_fruiting
-			}
-			food = 6
-		}
-		#################################### Upkeep
 		upkeep = {
 			energy = @job_energy_high
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_maintenance_depot } }
-			energy = @job_energy_normal
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_maintenance_depot_2 } }
-			energy = @job_energy_normal2
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_maintenance_depot_3 } }
-			energy = @job_energy_normal3
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_recycling_center } }
-			energy = @job_energy_normal
-		}
-		upkeep = {
-			trigger = { planet = { AND = {
-				has_building = building_recycling_center
-				has_building = building_maintenance_depot
-			} } }
-			energy = @job_energy_normal
-		}
-		upkeep = {
-			trigger = { planet = { AND = {
-				has_building = building_recycling_center
-				has_building = building_maintenance_depot_2
-			} } }
-			energy = @job_energy_normal2
-		}
-		upkeep = {
-			trigger = { planet = { AND = {
-				has_building = building_recycling_center
-				has_building = building_maintenance_depot_3
-			} } }
-			energy = @job_energy_normal3
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_hydroponics_farm } }
-			energy = @job_energy_normal
-		}
-		upkeep = {
-			trigger = { planet = { AND = {
-				has_building = building_hydroponics_farm
-				has_building = building_maintenance_depot
-			} } }
-			energy = @job_energy_normal
-		}
-		upkeep = {
-			trigger = { planet = { AND = {
-				has_building = building_hydroponics_farm
-				has_building = building_maintenance_depot_2
-			} } }
-			energy = @job_energy_normal2
-		}
-		upkeep = {
-			trigger = { planet = { AND = {
-				has_building = building_hydroponics_farm
-				has_building = building_maintenance_depot_3
-			} } }
-			energy = @job_energy_normal3
 		}
 		produces = {	### Fallen Empire buildings
 			trigger = { planet = { has_building = building_dimensional_fabricator } }
@@ -326,7 +135,7 @@ custodian = {
 	}
 	triggered_planet_modifier = {
 		potential = { owner = { has_valid_civic = civic_environmentalist } }
-		modifier = { planet_amenities_add = -6 }
+		modifier = { planet_amenities_add = -50 }
 	}
 	triggered_planet_modifier = {
 		potential = { owner = { has_valid_civic = civic_functional_architecture } }
@@ -335,78 +144,78 @@ custodian = {
 	
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_solar_panels } }
-		modifier = { planet_amenities_add = 25 }
+		modifier = { planet_amenities_add = 20 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { AND = {
 			has_building = building_solar_panels
 			has_building = building_maintenance_depot
 		} } }
-		modifier = { planet_amenities_add = 50 }
+		modifier = { planet_amenities_add = 40 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { AND = {
 			has_building = building_solar_panels
 			has_building = building_maintenance_depot_2
 		} } }
-		modifier = { planet_amenities_add = 125 }
+		modifier = { planet_amenities_add = 100 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { AND = {
 			has_building = building_solar_panels
 			has_building = building_maintenance_depot_3
 		} } }
-		modifier = { planet_amenities_add = 225 }
+		modifier = { planet_amenities_add = 180 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_recycling_center } }
-		modifier = { planet_amenities_add = 25 }
+		modifier = { planet_amenities_add = 20 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { AND = {
 			has_building = building_recycling_center
 			has_building = building_maintenance_depot
 		} } }
-		modifier = { planet_amenities_add = 50 }
+		modifier = { planet_amenities_add = 40 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { AND = {
 			has_building = building_recycling_center
 			has_building = building_maintenance_depot_2
 		} } }
-		modifier = { planet_amenities_add = 125 }
+		modifier = { planet_amenities_add = 100 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { AND = {
 			has_building = building_recycling_center
 			has_building = building_maintenance_depot_3
 		} } }
-		modifier = { planet_amenities_add = 225 }
+		modifier = { planet_amenities_add = 180 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_hydroponics_farm } }
-		modifier = { planet_amenities_add = 25 }
+		modifier = { planet_amenities_add = 20 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { AND = {
 			has_building = building_hydroponics_farm
 			has_building = building_maintenance_depot
 		} } }
-		modifier = { planet_amenities_add = 50 }
+		modifier = { planet_amenities_add = 40 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { AND = {
 			has_building = building_hydroponics_farm
 			has_building = building_maintenance_depot_2
 		} } }
-		modifier = { planet_amenities_add = 125 }
+		modifier = { planet_amenities_add = 100 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { AND = {
 			has_building = building_hydroponics_farm
 			has_building = building_maintenance_depot_3
 		} } }
-		modifier = { planet_amenities_add = 225 }
+		modifier = { planet_amenities_add = 180 }
 	}
 
 	triggered_planet_modifier = {
@@ -514,11 +323,13 @@ custodian = {
 	}
 }
 
-technician = {
+laborer = {
+	icon = miner
 	category = worker
 	condition_string = WORKER_JOB_TRIGGER
-	building_icon = building_primitive_power_plant
+	building_icon = old_production/building_mining_network_1
 	clothes_texture_index = 2
+	is_capped_by_modifier = no
 	
 	possible_pre_triggers = {
 		has_owner = yes
@@ -527,396 +338,79 @@ technician = {
 	}
 
 	possible = {
-		or = {
-			has_job = technician
-			retile_job_seeking = yes
-		}
 		worker_job_check_trigger = yes
 	}
 
 	resources = {
-		category = planet_technician
-		produces = {
-			energy = 10
-		}
-		produces = {
-			trigger = { planet = { has_building = building_energy_1 } }
-			energy = 10
-		}
-		produces = {
-			trigger = { planet = { has_building = building_energy_2 } }
-			energy = 20
-		}
-		produces = {
-			trigger = { planet = { has_building = building_energy_3 } }
-			energy = 30
-		}
+		category = planet_laborers
 		upkeep = {
-			consumer_goods = @job_supplies_high
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_energy_1 } }
-			consumer_goods = @job_supplies_high
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_energy_2 } }
-			consumer_goods = @job_supplies_high2
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_energy_3 } }
-			consumer_goods = @job_supplies_high3
+			energy = @job_energy_normal
+			energy = @job_supplies_normal
 		}
 	}
-	
+
 	planet_modifier = {
 		planet_amenities_add = 25
 	}
+	
+	triggered_pop_modifier = {
+		potential = { pop = { OR = {
+			has_living_standard = { type = living_standard_normal }
+			has_living_standard = { type = living_standard_stratified }
+		} } }
+		pop_happiness = -0.05
+	}
+	
+	triggered_pop_modifier = {
+		potential = { pop = {
+			has_living_standard = { type = living_standard_subsistence }
+		} }
+		pop_happiness = -0.1
+	}
+	
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_1 } }
-		modifier = { planet_amenities_add = 50 }
+		modifier = { planet_amenities_add = 25 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_2 } }
-		modifier = { planet_amenities_add = 125 }
+		modifier = { planet_amenities_add = 75 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_energy_3 } }
-		modifier = { planet_amenities_add = 225 }
+		modifier = { planet_amenities_add = 175 }
 	}
 
-	weight = {
-		weight = @worker_job_weight_important
-		modifier = {
-			factor = 5
-			has_job = technician
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				has_trait = trait_robot_superconductive
-				has_trait = trait_ingenious
-				has_trait = trait_nuumismatic_administration
-			}
-		}
-		modifier = {
-			factor = 1.5
-			has_trait = trait_syncretic_proles
-		}
-		modifier = {
-			factor = 1.2
-			has_trait = trait_very_strong
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_strong
-		}	
-		modifier = {
-			factor = 0.9
-			has_trait = trait_weak
-		}
-		modifier = {
-			factor = 1.5
-			has_trait = trait_presapient_earthbound
-		}
-		modifier = {
-			factor = 1.1
-			OR = {
-				has_trait = trait_robust
-				has_trait = trait_robot_efficient_processors
-			}
-		}
-		modifier = {
-			factor = 2
-			planet = {
-				has_building = building_energy_1
-				has_building = building_energy_2
-				has_building = building_energy_3
-			}
-		}
-	}
-}
-
-miner = {	
-	category = worker
-	condition_string = WORKER_JOB_TRIGGER
-	building_icon = building_primitive_mine
-	clothes_texture_index = 2
-
-	possible_pre_triggers = {
-		has_owner = yes
-		#is_being_purged = no
-		is_being_assimilated = no
-	}
-
-	possible = {
-		or = {
-			has_job = miner
-			retile_job_seeking = yes
-		}
-		worker_job_check_trigger = yes
-	}
-
-	resources = {
-		category = planet_miners
-		produces = {
-			minerals = 10
-		}
-		produces = {
-			trigger = { planet = { has_building = building_mineral_1 } }
-			minerals = 10
-		}
-		produces = {
-			trigger = { planet = { has_building = building_mineral_2 } }
-			minerals = 20
-		}
-		produces = {
-			trigger = { planet = { has_building = building_mineral_3 } }
-			minerals = 30
-		}
-		upkeep = {
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_mineral_1 } }
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_mineral_2 } }
-			energy = @job_energy_normal2
-			consumer_goods = @job_supplies_normal2
-		}
-		upkeep = {
-			trigger = { planet = { has_building = building_mineral_3 } }
-			energy = @job_energy_normal3
-			consumer_goods = @job_supplies_normal3
-		}
-		produces = {
-			trigger = { owner = { has_valid_civic = civic_mining_guilds } }
-			minerals = -4
-			alloys = 1
-		}
-		produces = {
-			trigger = { 
-				owner = { has_valid_civic = civic_mining_guilds }
-				planet = { has_building = building_mineral_1 }
-			}
-			minerals = -4
-			alloys = 1
-		}
-		produces = {
-			trigger = { 
-				owner = { has_valid_civic = civic_mining_guilds }
-				planet = { has_building = building_mineral_2 }
-			}
-			minerals = -8
-			alloys = 2
-		}
-		produces = {
-			trigger = { 
-				owner = { has_valid_civic = civic_mining_guilds }
-				planet = { has_building = building_mineral_3 }
-			}
-			minerals = -12
-			alloys = 3
-		}
-	}	
-	
-	planet_modifier = {
-		planet_amenities_add = 25
-	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_1 } }
-		modifier = { planet_amenities_add = 50 }
+		modifier = { planet_amenities_add = 25 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_2 } }
-		modifier = { planet_amenities_add = 125 }
+		modifier = { planet_amenities_add = 75 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_mineral_3 } }
-		modifier = { planet_amenities_add = 225 }
-	}
-	
-	weight = {
-		weight = @worker_job_weight
-		modifier = {
-			factor = 5
-			has_job = miner
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				has_trait = trait_industrious
-				has_trait = trait_robot_power_drills
-			}		
-		}
-		modifier = {
-			factor = 1.2
-			has_trait = trait_very_strong
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_strong
-		}	
-		modifier = {
-			factor = 0.9
-			has_trait = trait_weak
-		}	
-		modifier = {
-			factor = 1.5
-			has_trait = trait_syncretic_proles
-		}
-		modifier = {
-			factor = 1.4
-			has_trait = trait_presapient_proles
-		}
-		modifier = {
-			factor = 1.1
-			OR = {
-				has_trait = trait_robust
-				has_trait = trait_robot_efficient_processors
-			}
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_nerve_stapled
-		}
-		modifier = {
-			factor = 2
-			planet = {
-				has_building = building_mineral_1
-				has_building = building_mineral_2
-				has_building = building_mineral_3
-			}
-		}
-	}
-}
-
-farmer = {
-	category = worker
-	condition_string = WORKER_JOB_TRIGGER
-	building_icon = old_production/building_basic_farm
-	clothes_texture_index = 2
-	
-	possible_pre_triggers = {
-		has_owner = yes
-		#is_being_purged = no
-		is_being_assimilated = no
+		modifier = { planet_amenities_add = 175 }
 	}
 
-	possible = {
-		or = {
-			has_job = farmer
-			retile_job_seeking = yes
-		}
-		worker_job_check_trigger = yes
-		or = {
-			owner = { is_ai = no }
-			owner = { country_uses_food = yes }
-			owner = { is_plantoid_empire = yes }
-		}
-	}
-
-	resources = {
-		category = planet_farmers
-		produces = {
-			trigger = { not = { has_trait = trait_plantoid } }
-			food = 10
-		}
-		produces = {
-			trigger = { 
-				planet = { has_building = building_food_1 } 
-				NOT = { has_trait = trait_plantoid }
-			}
-			food = 10
-		}
-		produces = {
-			trigger = { 
-				planet = { has_building = building_food_2 } 
-				NOT = { has_trait = trait_plantoid }
-			}
-			food = 20
-		}
-		produces = {
-			trigger = { 
-				planet = { has_building = building_food_3 }
-				NOT = { has_trait = trait_plantoid }
-			}
-			food = 30
-		}
-		upkeep = {
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { 
-				planet = { has_building = building_food_1 } 
-			}
-			energy = @job_energy_normal
-			consumer_goods = @job_supplies_normal
-		}
-		upkeep = {
-			trigger = { 
-				planet = { has_building = building_food_2 } 
-			}
-			energy = @job_energy_normal2
-			consumer_goods = @job_supplies_normal2
-		}
-		upkeep = {
-			trigger = { 
-				planet = { has_building = building_food_3 }
-			}
-			energy = @job_energy_normal3
-			consumer_goods = @job_supplies_normal3
-		}
-		produces = {
-			trigger = { has_trait = trait_plantoid_fruiting }
-			food = 4
-		}
-		produces = {
-			trigger = { 
-				planet = { has_building = building_food_1 } 
-				has_trait = trait_plantoid_fruiting
-			}
-			food = 4
-		}
-		produces = {
-			trigger = { 
-				planet = { has_building = building_food_2 } 
-				has_trait = trait_plantoid_fruiting
-			}
-			food = 8
-		}
-		produces = {
-			trigger = { 
-				planet = { has_building = building_food_3 }
-				has_trait = trait_plantoid_fruiting
-			}
-			food = 12
-		}
-	}	
-
-	planet_modifier = {
-		planet_amenities_add = 25
-	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_food_1 } }
-		modifier = { planet_amenities_add = 50 }
+		modifier = { planet_amenities_add = 25 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_food_2 } }
-		modifier = { planet_amenities_add = 125 }
+		modifier = { planet_amenities_add = 75 }
 	}
 	triggered_planet_modifier = {
 		potential = { planet = { has_building = building_food_3 } }
-		modifier = { planet_amenities_add = 225 }
+		modifier = { planet_amenities_add = 175 }
 	}
+
 	triggered_planet_modifier = {
 		potential = { has_trait = trait_plantoid }
-		modifier = { 
-			pop_environment_tolerance = 0.20
+		modifier = {
+			pop_environment_tolerance = 0.10
 			pop_growth_speed = 0.05
 		}
 	}
@@ -925,94 +419,24 @@ farmer = {
 			planet = { has_building = building_food_1 }
 			has_trait = trait_plantoid
 		}
-		modifier = { 
-			pop_growth_speed = 0.05
-		}
+		modifier = { pop_growth_speed = 0.05 }
 	}
 	triggered_planet_modifier = {
 		potential = {
-			planet = { has_building = building_food_2 }
+			planet = { has_building = building_food_1 }
 			has_trait = trait_plantoid
 		}
-		modifier = { 
-			pop_growth_speed = 0.10
-		}
+		modifier = { pop_growth_speed = 0.1 }
 	}
 	triggered_planet_modifier = {
 		potential = {
-			planet = { has_building = building_food_3 }
+			planet = { has_building = building_food_1 }
 			has_trait = trait_plantoid
 		}
-		modifier = { 
-			pop_growth_speed = 0.15
-		}
+		modifier = { pop_growth_speed = 0.15 }
 	}
 
 	weight = {
-		weight = @worker_job_weight_important
-		modifier = {
-			factor = 5
-			has_job = farmer
-		}
-		modifier = {
-			factor = 2
-			OR = {
-				has_trait = trait_robot_harvesters
-				has_trait = trait_agrarian
-				has_trait = trait_plantoid
-			}
-		}
-		modifier = {
-			factor = 20
-			has_trait = trait_plantoid
-			planet = { habitability = { who = prev value < 0.8 } }
-		}
-		modifier = {
-			factor = 2
-			has_trait = trait_plantoid_fruiting
-		}
-		modifier = {
-			factor = 2
-			has_trait = trait_syncretic_proles
-		}	
-		modifier = {
-			factor = 1.2
-			has_trait = trait_very_strong
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_strong
-		}	
-		modifier = {
-			factor = 0.9
-			has_trait = trait_weak
-		}			
-		modifier = {
-			factor = 1.5
-			has_trait = trait_syncretic_proles
-		}
-		modifier = {
-			factor = 1.4
-			has_trait = trait_presapient_proles
-		}
-		modifier = {
-			factor = 1.1
-			OR = {
-				has_trait = trait_robust
-				has_trait = trait_robot_efficient_processors
-			}
-		}
-		modifier = {
-			factor = 1.1
-			has_trait = trait_nerve_stapled
-		}
-		modifier = {
-			factor = 2
-			planet = {
-				has_building = building_food_1
-				has_building = building_food_1
-				has_building = building_food_1
-			}
-		}
+		weight = @special_job_weight
 	}
 }

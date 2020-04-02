@@ -10,13 +10,26 @@
 
 namespace = retile_pop
 
-# Pops look for work about once per month...
-pop_event = {
+############################################
+### Regular Pop Migration
+
+# Planets ask for migration if they have un-filled jobs
+planet_event = {
 	id = retile_pop.1
 	hide_window = yes
 
+	pre_triggers = { has_owner = yes }
+	
 	trigger = {
-		always = yes
+		owner = { NOT = { has_policy_flag = migration_forbidden } }
+		num_pops > 0
+		is_under_colonization = no
+		has_orbital_bombardment = no
+		is_occupied_flag = no
+		is_controlled_by = owner
+		free_jobs > 0
+		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
+		NOT = { has_modifier = penal_colony }
 	}
 
 	mean_time_to_happen = {
@@ -24,12 +37,33 @@ pop_event = {
 	}
 
 	immediate = {
-		set_timed_pop_flag = { flag = retile_pop_lfw days = 3 }
+		if = {
+			limit = { planet_needs_workers = yes }
+			set_timed_planet_flag = { flag = planet_needs_workers days = 30 }
+			owner = { set_timed_country_flag = { flag = country_needs_workers days = 30 } }
+		}
+		if = {
+			limit = { planet_needs_combat_specialists = yes }
+			set_timed_planet_flag = { flag = planet_needs_combat_specialists days = 30 }
+			owner = { set_timed_country_flag = { flag = country_needs_combat_specialists days = 30 } }
+		}
+		if = {
+			limit = { planet_needs_robot_specialists = yes }
+			set_timed_planet_flag = { flag = planet_needs_robot_specialists days = 30 }
+			owner = { set_timed_country_flag = { flag = country_needs_robot_specialists days = 30 } }
+		}
+		if = {
+			limit = { planet_needs_synth_specialists = yes }
+			set_timed_planet_flag = { flag = planet_needs_synth_specialists days = 30 }
+			owner = { set_timed_country_flag = { flag = country_needs_synth_specialists days = 30 } }
+		}
+		if = {
+			limit = { planet_needs_rulers = yes }
+			set_timed_planet_flag = { flag = planet_needs_rulers days = 30 }
+			owner = { set_timed_country_flag = { flag = country_needs_rulers days = 30 } }
+		}
 	}
 }
-
-############################################
-### Regular Pop Migration
 
 # Planet needs to migrate a pop for some reason. Choose a preferable pop at random.
 # THIS = planet
@@ -42,10 +76,12 @@ planet_event = {
 	
 	immediate = {
 		random_owned_pop = {
-			limit = { NOT = { has_citizenship_type = { type = citizenship_organic_trophy } } }
+			limit = {
+				is_sapient = yes
+				NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
+			}
 			weights = {
 				base = 1
-				modifier = { mult = 20 is_sapient = yes }
 				modifier = { add = 20 is_plantoid = no root = { habitability = { who = prev value <= 0 } } }
 				modifier = { add = 19 is_plantoid = no root = { habitability = { who = prev value <= 0.05 } } }
 				modifier = { add = 18 is_plantoid = no root = { habitability = { who = prev value <= 0.10 } } }
@@ -66,6 +102,33 @@ planet_event = {
 				modifier = { add = 3 is_plantoid = no root = { habitability = { who = prev value <= 0.85 } } }
 				modifier = { add = 2 is_plantoid = no root = { habitability = { who = prev value <= 0.90 } } }
 				modifier = { add = 1 is_plantoid = no root = { habitability = { who = prev value <= 0.95 } } }
+				modifier = {
+					# Prioritize moving laborers that are needed elsewhere
+					mult = 2
+					has_job = laborer
+					OR = {
+						AND = {
+							owner = { has_country_flag = country_needs_robot_specialists }
+							robot_specialist_job_check_trigger = yes
+						}
+						AND = {
+							owner = { has_country_flag = country_needs_combat_specialists }
+							combat_specialist_job_check_trigger = yes
+						}
+						AND = {
+							owner = { has_country_flag = country_needs_droid_specialists }
+							droid_specialist_job_check_trigger = yes
+						}
+						AND = {
+							owner = { has_country_flag = country_needs_synth_specialists }
+							synth_specialist_job_check_trigger = yes
+						}
+						AND = {
+							owner = { has_country_flag = country_needs_rulers }
+							ruler_job_check_trigger = yes
+						}
+					}
+				}
 			}
 			pop_event = { id = retile_pop.91 }
 		}
@@ -115,8 +178,69 @@ pop_event = {
 				modifier = { add = 18 habitability = { who = root value >= 0.90 } }
 				modifier = { add = 19 habitability = { who = root value >= 0.95 } }
 				modifier = { add = 20 habitability = { who = root value >= 1.00 } }
-				modifier = { mult = 2 free_jobs > 0 }
+				modifier = {
+					# Prioritize moving to a planet where we're needed
+					mult = 2
+					root = { has_job = laborer }
+					OR = {
+						AND = {
+							has_planet_flag = planet_needs_robot_specialists
+							root = { robot_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_combat_specialists
+							root = { combat_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_droid_specialists
+							root = { droid_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_synth_specialists
+							root = { synth_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_rulers
+							root = { ruler_job_check_trigger = yes }
+						}
+					}
+				}
 			}
+			
+			# Clear flags if we fulfilled a request
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_robot_specialists
+					root = { robot_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_robot_specialists
+				owner = { remove_country_flag = planet_needs_robot_specialists }
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_combat_specialists
+					root = { combat_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_combat_specialists
+				owner = { remove_country_flag = planet_needs_combat_specialists }
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_droid_specialists
+					root = { droid_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_droid_specialists
+				owner = { remove_country_flag = planet_needs_droid_specialists }
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_rulers
+					root = { ruler_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_rulers
+				owner = { remove_country_flag = planet_needs_rulers }
+			}
+			
 			resettle_pop = { pop = root planet = this}
 		} }
 	}
@@ -137,14 +261,7 @@ planet_event = {
 		has_orbital_bombardment = no
 		is_occupied_flag = no
 		is_controlled_by = owner
-		OR = {
-			free_housing < 0
-			#free_jobs < 0	# doesn't work... :(	# based on housing now anyway
-			AND = {
-				owner = { is_ai = no }
-				any_owned_pop = { is_unemployed = yes }
-			}
-		}
+		free_housing < 0
 		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
 		NOT = { has_modifier = penal_colony }
 	}
@@ -177,10 +294,7 @@ planet_event = {
 				num_pops > 1
 				exists = owner
 				owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
-				OR = {
-					free_housing < 1
-					free_jobs < 1
-				}
+				free_housing < 1
 				NOT = { has_modifier = penal_colony }
 				is_occupied_flag = no
 				has_orbital_bombardment = no
@@ -233,18 +347,14 @@ pop_event = {
 					has_trait = trait_mechanical
 					has_trait = trait_droid
 				}
-				NAND = { # farming plantoids NEVER migrate this way...
-					is_plantoid = yes
-					has_job = farmer
-				}
 			}
 			
 			# choose between internal and external migration
 			random_list = {
-				1 = {} # In case everything ends up at weight 0 somehow...? Don't randomly do something stupid...
-				
 				########################################################### Migration Delay
 				50 = {
+					# think about migrating about once every 5 years,
+					# the rest of the time this "nothing" list item happens
 					modifier = {	# plantoids think about it more like every 20 years...
 						add = 150
 						is_plantoid = yes
@@ -318,211 +428,209 @@ pop_event = {
 						factor = 0.5
 						planet = { free_amenities > 1500 }
 					}
-				}
-				
-				########################################################### Internal Migration
-				10 = {
-					# exclusionary factors
-					modifier = {
-						factor = 0
-						OR = {
-							NOT = { owner = { has_policy_flag = migration_allowed } }
-							owner = { num_owned_planets < 2 }
-						}
-					}
-					modifier = {	# traits modify internal migration frequency
-						factor = 2
+					modifier = {	# traits modify migration frequency
+						factor = 0.5
 						OR = {
 							has_trait = trait_nomadic
 							has_trait = trait_arthropoid_wing
 						}
 					}
 					modifier = {
-						factor = 0.5
+						factor = 2
 						has_trait = trait_sedentary
-					}
-					
-					# migrate inside country
-					owner = { country_event = { id = retile_pop.111 } }
+					}	
 				}
-				
-				########################################################### Foreign Migration
-				3 = {
-					# exclusionary factors
-					modifier = {
-						factor = 0
-						OR = {
-							# Must have Migration Access, and room for a pop
-							NOT = { any_country = {
-								has_migration_access = root.owner
-								any_owned_planet = { free_housing > 0 }
-							} }
-							
-							# species not allowed to migrate outside borders
-							has_migration_control = yes
-							
-							# can't migrate out if ethics-matching is required, and pop matches our ethics
-							owner = {
-								has_policy_flag = foreign_migration_ethics
-								OR = {
-									AND = { is_pacifist = yes		root = { is_pacifist = yes } }
-									AND = { is_militarist = yes		root = { is_militarist = yes } }
-									AND = { is_spiritualist = yes	root = { is_spiritualist = yes } }
-									AND = { is_materialist = yes	root = { is_materialist = yes } }
-									AND = { is_xenophobe = yes		root = { is_xenophobe = yes } }
-									AND = { is_xenophile = yes		root = { is_xenophile = yes } }
-									AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
-									AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
-								}
+				10 = { # performance optimization, and numbers tweak: put internal/foreign
+					random_list = { # checks in here so they only happen if the pop decides to migrate
+						1 = {} # In case other things end up at weight 0, do nothing
+						
+						########################################################### Internal Migration
+						0 = {
+							modifier = { # minimum requirements
+								add = 100 # base chance to migrate internally
+								owner = { has_policy_flag = migration_allowed }
+								owner = { num_owned_planets > 1 }
 							}
-							
-							# can't migrate out if ethics-matching is required by others, and pop doesn't match any ethics
-							NOT = { owner = { any_relation = {
-								count >= 1
-								has_migration_access = prev
-								OR = {
-									NOT = { has_policy_flag = foreign_migration_ethics }
-									
-									AND = { is_pacifist = yes		root = { is_pacifist = yes } }
-									AND = { is_militarist = yes		root = { is_militarist = yes } }
-									AND = { is_spiritualist = yes	root = { is_spiritualist = yes } }
-									AND = { is_materialist = yes	root = { is_materialist = yes } }
-									AND = { is_xenophobe = yes		root = { is_xenophobe = yes } }
-									AND = { is_xenophile = yes		root = { is_xenophile = yes } }
-									AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
-									AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
-								}
-							} } }
-						}
-					}
-					
-					# If none of our possible destinations give us rights, let's reconsider...
-					modifier = {
-						factor = 0.2
-						NOT = { owner = { any_relation = {
-							count >= 1
-							has_migration_access = root.owner
-							if = {
-								limit = {
-									root = { is_same_species = prev }
-								}
-								always = yes
-							} else_if = {
-								limit = {
-									root = {
-										OR = {
-											has_trait = trait_machine_unit
-											has_trait = trait_synthetic
-										}
-									}
-								}
-								has_policy_flag = ai_full_rights
-							} else = {
-								has_policy_flag = alien_full_rights
-							}
-						} } }
-					}
-					
-					# Migrate less often if we're at a negative ratio, more if we're positive
-					modifier = {
-						factor = 0.5
-						owner = { check_variable = { which = retile_migration_delta value < 0 } }
-					}
-					modifier = {
-						factor = 2
-						owner = { check_variable = { which = retile_migration_delta value > 0 } }
-					}
-					
-					# migrate less often if our friends are at positive ratios, or more often if they're negative
-					modifier = {
-						factor = 2
-						owner = { any_relation = {
-							count >= 1
-							has_migration_access = root.owner
-							check_variable = { which = retile_migration_delta value < 0 }
-						} }
-					}
-					modifier = {
-						factor = 0.5
-						NOT = { owner = { any_relation = {
-							count >= 1
-							has_migration_access = root.owner
-							check_variable = { which = retile_migration_delta value <= 0 }
-						} } }
-					}
-					
-					# pick a relation to migrate to, based on some factors...
-					random_country = {
-						limit = {
-							is_country_type = default
-							has_migration_access = root.owner
-							num_owned_planets > 1
-						}
-						weights = {
-							base = 1
-							
-							# favor relations with lower migration ratio
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 20 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 15 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 12 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 9 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 7 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 5 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 3 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 2 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 1 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < 0 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -1 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -2 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -3 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -5 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -7 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -9 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -12 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -15 } }
-							modifier = { add = 1 check_variable = { which = retile_migration_delta value < -20 } }
-							
-							# Favor relations with ethics that match the pop
-							modifier = {
-								mult = 2
-								OR = {
-									AND = { is_pacifist = yes		root = { is_pacifist = yes } }
-									AND = { is_militarist = yes		root = { is_militarist = yes } }
-									AND = { is_spiritualist = yes	root = { is_spiritualist = yes } }
-									AND = { is_materialist = yes	root = { is_materialist = yes } }
-									AND = { is_xenophobe = yes		root = { is_xenophobe = yes } }
-									AND = { is_xenophile = yes		root = { is_xenophile = yes } }
-									AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
-									AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
-								}
-							}
-							
-							# Try very hard to go places where you will have rights...
-							modifier = {
-								mult = 20
-								if = {
-									limit = {
-										root = { is_same_species = prev }
-									}
-									always = yes
-								} else_if = {
-									limit = {
-										root = {
-											OR = {
-												has_trait = trait_machine_unit
-												has_trait = trait_synthetic
-											}
-										}
-									}
-									has_policy_flag = ai_full_rights
-								} else = {
-									has_policy_flag = alien_full_rights
-								}
-							}
+							# migrate inside country
+							owner = { country_event = { id = retile_pop.111 } }
 						}
 						
-						# migrate pop into chosen country...
-						country_event = { id = retile_pop.112 }
+						########################################################### Foreign Migration
+						0 = {
+							modifier = { # minimum requirements
+								add = 30 # base chance of foreign migration
+								
+								# species must not be prohibited from leaving the country
+								NOT = { has_migration_control = yes }
+								
+								# can't migrate out if ethics-matching is required, and pop matches our ethics
+								NOT = { owner = {
+									has_policy_flag = foreign_migration_ethics
+									OR = {
+										AND = { is_pacifist = yes		root = { is_pacifist = yes } }
+										AND = { is_militarist = yes		root = { is_militarist = yes } }
+										AND = { is_spiritualist = yes	root = { is_spiritualist = yes } }
+										AND = { is_materialist = yes	root = { is_materialist = yes } }
+										AND = { is_xenophobe = yes		root = { is_xenophobe = yes } }
+										AND = { is_xenophile = yes		root = { is_xenophile = yes } }
+										AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
+										AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
+									}
+								} }
+								
+								# must have another country that pops can migrate to
+								# respect ethics-matching requirements of other countries
+								owner = { any_relation = {
+									count >= 1
+									has_migration_access = root.owner
+									any_owned_planet = { free_housing > 0 }
+									OR = {
+										NOT = { has_policy_flag = foreign_migration_ethics }
+										
+										AND = { is_pacifist = yes		root = { is_pacifist = yes } }
+										AND = { is_militarist = yes		root = { is_militarist = yes } }
+										AND = { is_spiritualist = yes	root = { is_spiritualist = yes } }
+										AND = { is_materialist = yes	root = { is_materialist = yes } }
+										AND = { is_xenophobe = yes		root = { is_xenophobe = yes } }
+										AND = { is_xenophile = yes		root = { is_xenophile = yes } }
+										AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
+										AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
+									}
+								} }
+							}
+							
+							# If none of our possible destinations give us rights, let's reconsider...
+							modifier = {
+								factor = 0.2
+								owner = { any_relation = {
+									count < 1
+									has_migration_access = root.owner
+									any_owned_planet = { free_housing > 0 }
+									if = {
+										limit = {
+											root = { is_same_species = prev }
+										}
+										always = yes
+									} else_if = {
+										limit = {
+											root = {
+												OR = {
+													has_trait = trait_machine_unit
+													has_trait = trait_synthetic
+												}
+											}
+										}
+										has_policy_flag = ai_full_rights
+									} else = {
+										has_policy_flag = alien_full_rights
+									}
+								} }
+							}
+							
+							# Migrate less often if we're at a negative ratio, more if we're positive
+							modifier = {
+								factor = 0.5
+								owner = { check_variable = { which = retile_migration_delta value < 0 } }
+							}
+							modifier = {
+								factor = 2
+								owner = { check_variable = { which = retile_migration_delta value > 0 } }
+							}
+							
+							# migrate less often if our friends are at positive ratios, or more often if they're negative
+							modifier = {
+								factor = 2
+								owner = { any_relation = {
+									count >= 1
+									has_migration_access = root.owner
+									any_owned_planet = { free_housing > 0 }
+									check_variable = { which = retile_migration_delta value < 0 }
+								} }
+							}
+							modifier = {
+								factor = 0.5
+								owner = { any_relation = {
+									count < 1
+									has_migration_access = root.owner
+									any_owned_planet = { free_housing > 0 }
+									check_variable = { which = retile_migration_delta value <= 0 }
+								} }
+							}
+							
+							# pick a relation to migrate to, based on some factors...
+							random_country = {
+								limit = {
+									is_country_type = default
+									has_migration_access = root.owner
+									any_owned_planet = { free_housing > 0 }
+								}
+								weights = {
+									base = 1
+									
+									# favor relations with lower migration ratio
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 20 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 15 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 12 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 9 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 7 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 5 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 3 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 2 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 1 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < 0 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -1 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -2 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -3 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -5 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -7 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -9 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -12 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -15 } }
+									modifier = { add = 1 check_variable = { which = retile_migration_delta value < -20 } }
+									
+									# Favor relations with ethics that match the pop
+									modifier = {
+										mult = 2
+										OR = {
+											AND = { is_pacifist = yes		root = { is_pacifist = yes } }
+											AND = { is_militarist = yes		root = { is_militarist = yes } }
+											AND = { is_spiritualist = yes	root = { is_spiritualist = yes } }
+											AND = { is_materialist = yes	root = { is_materialist = yes } }
+											AND = { is_xenophobe = yes		root = { is_xenophobe = yes } }
+											AND = { is_xenophile = yes		root = { is_xenophile = yes } }
+											AND = { is_authoritarian = yes	root = { is_authoritarian = yes } }
+											AND = { is_egalitarian = yes	root = { is_egalitarian = yes } }
+										}
+									}
+									
+									# Try very hard to go places where you will have rights...
+									modifier = {
+										mult = 20
+										if = {
+											limit = {
+												root = { is_same_species = prev }
+											}
+											always = yes
+										} else_if = {
+											limit = {
+												root = {
+													OR = {
+														has_trait = trait_machine_unit
+														has_trait = trait_synthetic
+													}
+												}
+											}
+											has_policy_flag = ai_full_rights
+										} else = {
+											has_policy_flag = alien_full_rights
+										}
+									}
+								}
+								
+								# migrate pop into chosen country...
+								country_event = { id = retile_pop.112 }
+							}
+						}
 					}
 				}
 			}
@@ -582,6 +690,40 @@ country_event = {
 			# We successfully found a destination planet. Set this flag before resettling the pop...
 			from.planet = { set_timed_planet_flag = { flag = retile_recent_shuffling days = 360 } }
 			
+			# Clear flags if we fulfilled a request
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_robot_specialists
+					from = { robot_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_robot_specialists
+				owner = { remove_country_flag = planet_needs_robot_specialists }
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_combat_specialists
+					from = { combat_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_combat_specialists
+				owner = { remove_country_flag = planet_needs_combat_specialists }
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_droid_specialists
+					from = { droid_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_droid_specialists
+				owner = { remove_country_flag = planet_needs_droid_specialists }
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_rulers
+					from = { ruler_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_rulers
+				owner = { remove_country_flag = planet_needs_rulers }
+			}
+			
 			resettle_pop = { pop = from planet = this}
 			
 			# immediately fire the periodic migration script, in case the new planet is now over housing or something...
@@ -633,11 +775,36 @@ country_event = {
 				modifier = { add = 18 		habitability = { who = from value >= 0.90 } }
 				modifier = { add = 19 		habitability = { who = from value >= 0.95 } }
 				modifier = { add = 20 		habitability = { who = from value >= 1.00 } }
-				modifier = { mult = 2 		free_jobs > 0 }
-				modifier = { mult = 2 		free_housing > 0 }
 				modifier = { mult = 1.5		planet_stability > 50 }
 				modifier = { mult = 1.5		planet_crime < 1 }
 				modifier = { mult = 1.5		is_planet_class = pc_city }
+				modifier = {
+					# Prioritize moving to a planet where we're needed
+					mult = 2
+					from = { has_job = laborer }
+					OR = {
+						AND = {
+							has_planet_flag = planet_needs_robot_specialists
+							from = { robot_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_combat_specialists
+							from = { combat_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_droid_specialists
+							from = { droid_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_synth_specialists
+							from = { synth_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_rulers
+							from = { ruler_job_check_trigger = yes }
+						}
+					}
+				}
 			}
 			
 			# We successfully found a destination planet. Set this flag before resettling the pop...
@@ -647,6 +814,40 @@ country_event = {
 			from.owner = { change_variable = { which = retile_migration_delta value = -1 } }
 			root = { change_variable = { which = retile_migration_delta value = 1 } }
 			
+			# Clear flags if we fulfilled a request
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_robot_specialists
+					from = { robot_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_robot_specialists
+				owner = { remove_country_flag = planet_needs_robot_specialists }
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_combat_specialists
+					from = { combat_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_combat_specialists
+				owner = { remove_country_flag = planet_needs_combat_specialists }
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_droid_specialists
+					from = { droid_specialist_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_droid_specialists
+				owner = { remove_country_flag = planet_needs_droid_specialists }
+			}
+			if = {
+				limit = {
+					has_planet_flag = planet_needs_rulers
+					from = { ruler_job_check_trigger = yes }
+				}
+				remove_planet_flag = planet_needs_rulers
+				owner = { remove_country_flag = planet_needs_rulers }
+			}
+
 			resettle_pop = { pop = from planet = this}
 			
 			# immediately fire the periodic migration script, in case the new planet is now over housing or something...
@@ -849,6 +1050,267 @@ pop_event = { # retile_abandon_migrate_outside_border
 			refugee_pop_effect = yes
 		} else = {
 			kill_pop = yes
+		}
+	}
+}
+
+############################################
+### Pop Assimilation
+
+# Assimilate pops
+pop_event = {
+	id = retile_pop.2000
+	hide_window = yes
+
+	pre_triggers = { has_owner = yes }
+	
+	trigger = {
+		owner = { is_country_type = default }
+	}
+
+	mean_time_to_happen = {
+		days = 360
+	}
+
+	immediate = {
+		IF = {			# If assimilation status, do assimilation...
+			limit = {
+				has_citizenship_type = {
+					type = citizenship_assimilation
+					country = root.owner
+				}
+			}
+			random_list = {
+				90 = { } # Null. Should average about 10 years to assimilate a species
+				10 = { # Assimilate Pop
+					################################ assimilator empire, cyborg ascension
+					if = {
+						limit = {
+							root.owner = { OR = {
+								AND = {
+									has_authority = auth_machine_intelligence
+									has_civic = civic_machine_assimilator
+								}
+								has_country_flag = flesh_weakened
+							} }
+						}
+						if = {	##### biologicals
+							limit = { NOR = {
+								has_trait = trait_cybernetic
+								has_trait = trait_mechanical
+								has_trait = trait_droid
+								has_trait = trait_synthetic
+							} }
+							modify_species = {
+								species = this
+								add_trait = trait_cybernetic
+								add_traits_at_start_of_list = yes
+								change_scoped_species = yes # change only this pop's species
+							}
+							remove_hive_minded = yes # scripted effect
+							remove_culture_shock = yes
+							remove_self_modified = yes # scripted effect
+							if = {
+								limit = { root.owner = { has_civic = civic_machine_assimilator } }
+								root.owner = { generate_cyborg_treats = yes } # scripted effect
+							}
+						}
+						if = {  ##### mechanicals
+							limit = {
+								NOT = { has_trait = trait_cybernetic } # probably pointless
+								OR = {
+									has_trait = trait_mechanical
+									has_trait = trait_droid
+									has_trait = trait_synthetic
+								}
+							}
+							kill_pop = yes
+							root = {
+								create_pop = {
+									species = root.owner
+									ethos = root.owner
+								}
+							}
+							if = {
+								limit = { root.owner = { has_civic = civic_machine_assimilator } }
+								root.owner = { generate_cyborg_treats = yes } # scripted effect
+							}
+						}
+					}
+					################################ hive mind
+					else_if = {
+						limit = {
+							root.owner = {
+								has_authority = auth_hive_mind
+								NOT = { has_civic = civic_hive_devouring_swarm }
+							}
+						}
+						modify_species = {
+							species = this
+							add_trait = trait_hive_mind
+							add_traits_at_start_of_list = yes
+							#change_scoped_species = no
+						}
+						remove_culture_shock = yes
+						remove_self_modified = yes # scripted effect
+					}
+					################################ ascended synths
+					else_if = {
+						limit = {
+							root.owner = {
+								has_country_flag = synthetic_empire
+							}
+						}
+						kill_pop = yes
+						root = {
+							create_pop = {
+								species = root.owner
+								ethos = root.owner
+							}
+						}
+					}
+					################################ Uplift robots to synths or machines
+					else_if = {
+						limit = {
+							OR = {
+								has_trait = trait_mechanical
+								has_trait = trait_droid
+							}
+							OR = {
+								root.owner = { has_authority = auth_machine_intelligence }
+								root.owner = { any_owned_species = {
+									has_species_flag = synthetic_species@root.owner
+								} }
+							}
+						}
+						if = {	# uplift to machines
+							limit = { from = { has_authority = auth_machine_intelligence } }
+							kill_pop = yes
+							root = {
+								create_pop = {
+									species = root.owner
+									ethos = root.owner
+								}
+							}
+						}
+						else = { # uplift to synths
+							root.owner = { random_owned_species = {
+								limit = { has_species_flag = synthetic_species@root.owner }
+								save_event_target_as = synthetic_species
+							} }
+							kill_pop = yes
+							root = {
+								create_pop = {
+									species = event_target:synthetic_species
+									ethos = root.owner
+								}
+							}
+						}
+					}
+					################################ hive-pop disconnection
+					else_if = {
+						limit = {
+							root.owner = {
+								NOR = {
+									has_ethic = ethic_gestalt_consciousness
+									has_country_flag = synthetic_empire
+									has_country_flag = flesh_weakened
+								}
+							}
+							has_trait = trait_hive_mind
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_hive_mind
+							change_scoped_species = yes # change only this pop's species
+						}
+					}
+					################################ Psionic Assimilation ADD OTHER RANDOM OPTIONS TOO
+					else_if = {
+						limit = {
+							root.owner = {
+								has_ascension_perk = ap_transcendence
+							}
+							NOR = {
+								has_trait = trait_psionic
+								has_trait = trait_latent_psionic
+							}
+							#has_living_standard = {
+							#	country = root
+							#	type = psionic_assimilation
+							#}
+						}
+						modify_species = {
+							species = this
+							add_trait = trait_psionic
+							add_traits_at_start_of_list = yes
+							change_scoped_species = yes
+						}
+					}
+					################################ ???
+					else_if = {
+						limit = {
+							NOT = { has_trait = trait_psionic}
+							has_trait = trait_latent_psionic
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_latent_psionic
+							add_traits_at_start_of_list = yes
+							change_scoped_species = yes
+						}
+					}
+					################################ set citizenship
+					## GEBNAR: I'm not convinced these do anything helpful - I'm gonna just disable them for now...
+				#	if = {
+				#		limit = { root.owner = { has_authority = auth_machine_intelligence } }
+				#		set_citizenship_type = {
+				#			type = citizenship_full_machine
+				#			country = root.owner
+				#		}
+				#	}
+				#	else = {
+				#		set_citizenship_type = {
+				#			type = citizenship_full
+				#			country = root.owner
+				#		}
+				#	}
+				#	if = {
+				#		limit = { root.owner = { has_ethic = ethic_gestalt_consciousness } }
+				#		set_living_standard = {
+				#			type = living_standard_hive_mind
+				#			country = root.owner
+				#		}
+				#	}
+				}
+			}
+		}
+		else = {		# if old ai species, integrate into new one...
+			if = {
+				limit = {
+					root.owner = { is_ai = yes }
+					root = { species = { NOT = { has_species_flag = ai_primary_species@root.owner } } }
+				}
+				random_list = {
+					40 = { } # Null. Should average about 5 years to assimilate a species
+					10 = { # Assimilate Pop
+						root.owner = {
+							random_owned_species = {
+								limit = {
+									any_pop = {
+										species = {
+											is_same_species = root
+											NOT = { is_exact_same_species = root }
+											has_species_flag = ai_primary_species@root.owner
+										}
+									}
+								}
+								root = { change_species = prev }
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }

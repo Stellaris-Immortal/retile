@@ -11,10 +11,6 @@ spawning_drone = {
 	}
 
 	possible = {
-		or = {
-			has_job = spawning_drone
-			retile_job_seeking = yes
-		}
 		owner = { is_hive_empire = yes }
 		worker_job_check_trigger = yes
 	}
@@ -177,10 +173,6 @@ patrol_drone = {
 	}
 
 	possible = {
-		or = {
-			has_job = patrol_drone
-			retile_job_seeking = yes
-		}
 		owner = { is_gestalt = yes }
 		synth_specialist_job_check_trigger = yes
 	}
@@ -256,10 +248,6 @@ admin_drone = {
 	}
 
 	possible = {
-		or = {
-			has_job = admin_drone
-			retile_job_seeking = yes
-		}
 		owner = { is_gestalt = yes }
 		droid_specialist_job_check_trigger = yes
 	}
@@ -281,9 +269,8 @@ admin_drone = {
 	}
 	
 	triggered_country_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_isolation }
+		potential = { 
+			planet = { has_building = building_hive_capital } 
 		}
 		modifier = {
 			country_admin_cap_add = 1
@@ -291,24 +278,29 @@ admin_drone = {
 	}
 	
 	triggered_country_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_gunboat } 
+		potential = { 
+			planet = { has_building = building_hive_major_capital } 
 		}
 		modifier = {
-			country_naval_cap_mult = 0.02
-			country_occupation_armies_add = 1
+			country_admin_cap_add = 2
 		}
 	}
 	
 	triggered_country_modifier = {
-		potential = {
-			exists = owner
-			owner = { has_policy_flag = xenodiplomacy_embassy }
+		potential = { 
+			planet = { has_building = building_hive_system_capital } 
 		}
-		modifier = { 
-			country_trust_growth = 0.05
-			country_trust_cap_add = 5
+		modifier = {
+			country_admin_cap_add = 3
+		}
+	}
+	
+	triggered_country_modifier = {
+		potential = { 
+			planet = { has_building = building_hive_galactic_capital } 
+		}
+		modifier = {
+			country_admin_cap_add = 4
 		}
 	}
 	

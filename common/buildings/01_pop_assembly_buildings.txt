@@ -18,7 +18,11 @@ building_assembly = {
 	}
 	
 	allow = {
-		owner = { is_ai = no }
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			owner = { check_variable = { which = ai_assemblers_count value < 3 } }
+		}
 	}
 
 	destroy_trigger = {
@@ -26,9 +30,6 @@ building_assembly = {
 			has_modifier = resort_colony
 			has_modifier = slave_colony
 			has_modifier = penal_colony
-			owner = {
-				is_ai = yes
-			}
 		}
 	}
 		
@@ -50,9 +51,17 @@ building_assembly = {
 		trigger = { exists = owner }
 		text = retile_assembly_effect
 	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
 
+	on_queued = {
+		owner = { change_variable = { which = ai_assemblers_count value = 1 } }
+	}
+	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -68,13 +77,18 @@ building_clinic_1 = {
 	}
 	
 	allow = {
-		owner = { is_ai = no }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				num_pops > 15
+				owner = { check_variable = { which = ai_hospitals_count value < 5 } }
+			}
+		}
 	}
 
 	destroy_trigger = {
 		OR = {
 			owner = { is_regular_empire = no }
-			owner = { is_ai = yes }
 		}
 	}
 
@@ -109,8 +123,12 @@ building_clinic_1 = {
 		text = retile_clinic_1_effect
 	}
 	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -120,14 +138,9 @@ building_clinic_2 = {
 	category = amenity
 	can_be_disabled = no
 
-	allow = {
-		owner = { is_ai = no }
-	}
-
 	destroy_trigger = {
 		OR = {
 			owner = { is_regular_empire = no }
-			owner = { is_ai = yes }
 		}
 	}
 
@@ -163,9 +176,13 @@ building_clinic_2 = {
 		}
 		text = retile_clinic_2_effect
 	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
 
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -175,14 +192,9 @@ building_clinic_3 = {
 	category = manufacturing
 	can_be_disabled = no
 
-	allow = {
-		owner = { is_ai = no }
-	}
-
 	destroy_trigger = {
 		OR = {
 			owner = { is_regular_empire = no }
-			owner = { is_ai = yes }
 		}
 	}
 
@@ -215,8 +227,12 @@ building_clinic_3 = {
 		text = retile_clinic_3_effect
 	}
 	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -232,13 +248,18 @@ building_spawning_1 = {
 	}
 	
 	allow = {
-		owner = { is_ai = no }
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				num_pops > 15
+				owner = { check_variable = { which = ai_hospitals_count value < 5 } }
+			}
+		}
 	}
 
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			owner = { is_ai = yes }
 		}
 	}
 
@@ -269,8 +290,12 @@ building_spawning_1 = {
 		text = retile_spawning_1_effect
 	}
 	
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -287,7 +312,6 @@ building_spawning_2 = {
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			owner = { is_ai = yes }
 		}
 	}
 
@@ -319,9 +343,13 @@ building_spawning_2 = {
 		}
 		text = retile_spawning_2_effect
 	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
 
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -338,7 +366,6 @@ building_spawning_3 = {
 	destroy_trigger = {
 		OR = {
 			owner = { is_hive_empire = no }
-			owner = { is_ai = yes }
 		}
 	}
 
@@ -367,7 +394,11 @@ building_spawning_3 = {
 		text = retile_spawning_3_effect
 	}
 	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }

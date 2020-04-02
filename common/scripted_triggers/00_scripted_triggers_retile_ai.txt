@@ -7,20 +7,48 @@ retile_ai_has_planet_crisis = {
 }
 
 retile_ai_planet_healthy_district = {
-	any_pop = { is_unemployed = yes }
-	free_amenities < 300
-	planet_crime < 10
+	AND = {
+		OR = {
+			owner = { country_uses_food = no }
+			owner = { NOT = { has_country_flag = retile_ai_needs_food_crisis } }
+			NOT = { any_deposit = { has_deposit_category = deposit_cat_food } }
+		}
+		OR = {
+			owner = { NOT = { has_country_flag = retile_ai_needs_minerals_crisis } }
+			NOT = { any_deposit = { has_deposit_category = deposit_cat_minerals } }
+		}
+		OR = {
+			owner = { NOT = { has_country_flag = retile_ai_needs_energy_crisis } }
+			NOT = { any_deposit = { has_deposit_category = deposit_cat_energy } }
+		}
+	}
+	retile_ai_has_planet_crisis = no
 }
 
 retile_ai_planet_healthy_building = {
-	OR = {
-		num_buildings = { type = any value < 3 }
-		has_building = building_maintenance_depot
-		has_building = building_maintenance_depot_2
-		has_building = building_maintenance_depot_3
+	AND = {
+		OR = {
+			owner = { country_uses_food = no }
+			owner = { NOT = { has_country_flag = retile_ai_needs_food_crisis } }
+			NOT = { any_deposit = { has_deposit_category = deposit_cat_food } }
+		}
+		OR = {
+			owner = { NOT = { has_country_flag = retile_ai_needs_minerals_crisis } }
+			NOT = { any_deposit = { has_deposit_category = deposit_cat_minerals } }
+		}
+		OR = {
+			owner = { NOT = { has_country_flag = retile_ai_needs_energy_crisis } }
+			NOT = { any_deposit = { has_deposit_category = deposit_cat_energy } }
+		}
 	}
-	free_amenities < 300
-	planet_crime < 10
+}
+
+retile_ai_planet_healthy_building_labor = {
+	NOT = { owner = { has_country_flag = retile_ai_needs_consumer_goods_crisis } }
+	count_pops = {
+		limit = { has_job = laborer }
+		count > 3
+	}
 }
 
 # Is this planet ready to upgrade it's capital?
@@ -28,50 +56,14 @@ retile_ready_capital = {
 	OR = {
 		owner = { is_ai = no }
 		AND = {
-			owner = { has_resource = { type = influence amount > 150 } }
+			owner = { has_resource = { type = influence amount > 50 } }
 			NOT = { owner = { has_country_flag = retile_ai_needs_energy_crisis } }
-			free_jobs < 1
+			#free_jobs < 1
 			free_building_slots < 1
 		}
 	}
 }
 
-retile_ready_energy = {	# deposit scope
-	exists = owner
-	OR = {
-		owner = { is_ai = no }
-		AND = {
-			owner = { has_country_flag = retile_ai_needs_energy }
-			planet = { any_pop = { is_unemployed = yes } }
-		}
-	}
-}
-retile_ready_minerals = {	# deposit scope
-	exists = owner
-	OR = {
-		owner = { is_ai = no }
-		AND = {
-			owner = { has_country_flag = retile_ai_needs_minerals }
-			planet = { any_pop = { is_unemployed = yes } }
-		}
-	}
-}
-retile_ready_food = {	# deposit scope
-	exists = owner
-	OR = {
-		owner = { is_ai = no }
-		AND = {
-			OR = {
-				owner = { has_country_flag = retile_ai_needs_food }
-				AND = {
-					owner = { is_plantoid_empire = yes }
-					count_pops = { limit = { has_job = farmer } count < 3 }
-				}
-			}
-			planet = { any_pop = { is_unemployed = yes } }
-		}
-	}
-}
 retile_ready_restore = {	# deposit scope
 	exists = owner
 	owner = { is_ai = no }

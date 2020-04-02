@@ -391,12 +391,9 @@ planet_event = {
 	
 	immediate = {
 		every_deposit = {
-			limit = { OR = {
-				has_deposit_category = deposit_cat_food_active
-				has_deposit_category = deposit_cat_energy_active
-				has_deposit_category = deposit_cat_minerals_active
+			limit = {
 				has_deposit_category = deposit_cat_rare_active
-			} }
+			}
 			clear_blocker = yes
 		}
 		retile_clear_blockers = yes

@@ -395,132 +395,9 @@ clear_blockers = {
 }
 
 # planet scope
-retile_exploit_energy = {
-	if = {
-		limit = {
-			any_deposit = {
-				is_energy_deposit_low = yes
-				has_deposit_category = deposit_cat_energy
-			}
-		}
-		random_deposit = {
-			limit = {
-				is_energy_deposit_low = yes
-				has_deposit_category = deposit_cat_energy
-			}
-			clear_blocker = yes
-		}
-	} else_if = {
-		limit = {
-			any_deposit = {
-				is_energy_deposit_med = yes
-				has_deposit_category = deposit_cat_energy
-			}
-		}
-		random_deposit = {
-			limit = {
-				is_energy_deposit_med = yes
-				has_deposit_category = deposit_cat_energy
-			}
-			clear_blocker = yes
-		}
-	} else = {
-		random_deposit = {
-			limit = {
-				has_deposit_category = deposit_cat_energy
-			}
-			clear_blocker = yes
-		}
-	}
-}
-
-# planet scope
-retile_exploit_minerals = {
-	if = {
-		limit = {
-			any_deposit = {
-				is_minerals_deposit_low = yes
-				has_deposit_category = deposit_cat_minerals
-			}
-		}
-		random_deposit = {
-			limit = {
-				is_minerals_deposit_low = yes
-				has_deposit_category = deposit_cat_minerals
-			}
-			clear_blocker = yes
-		}
-	} else_if = {
-		limit = {
-			any_deposit = {
-				is_minerals_deposit_med = yes
-				has_deposit_category = deposit_cat_minerals
-			}
-		}
-		random_deposit = {
-			limit = {
-				is_minerals_deposit_med = yes
-				has_deposit_category = deposit_cat_minerals
-			}
-			clear_blocker = yes
-		}
-	} else = {
-		random_deposit = {
-			limit = {
-				has_deposit_category = deposit_cat_minerals
-			}
-			clear_blocker = yes
-		}
-	}
-}
-
-# planet scope
-retile_exploit_food = {
-	if = {
-		limit = {
-			any_deposit = {
-				is_food_deposit_low = yes
-				has_deposit_category = deposit_cat_food
-			}
-		}
-		random_deposit = {
-			limit = {
-				is_food_deposit_low = yes
-				has_deposit_category = deposit_cat_food
-			}
-			clear_blocker = yes
-		}
-	} else_if = {
-		limit = {
-			any_deposit = {
-				is_food_deposit_med = yes
-				has_deposit_category = deposit_cat_food
-			}
-		}
-		random_deposit = {
-			limit = {
-				is_food_deposit_med = yes
-				has_deposit_category = deposit_cat_food
-			}
-			clear_blocker = yes
-		}
-	} else = {
-		random_deposit = {
-			limit = {
-				has_deposit_category = deposit_cat_food
-			}
-			clear_blocker = yes
-		}
-	}
-}
-
-# planet scope
 retile_exploit_all = {
 	every_deposit = {
 		limit = {
-			has_deposit_category = deposit_cat_energy
-			has_deposit_category = deposit_cat_food
-			has_deposit_category = deposit_cat_minerals
 			has_deposit_category = deposit_cat_rare
 		}
 		clear_blocker = yes
@@ -531,9 +408,6 @@ retile_exploit_all = {
 retile_restore_all = {
 	every_deposit = {
 		limit = {
-			has_deposit_category = deposit_cat_energy_active
-			has_deposit_category = deposit_cat_food_active
-			has_deposit_category = deposit_cat_minerals_active
 			has_deposit_category = deposit_cat_rare_active
 		}
 		clear_blocker = yes
@@ -561,6 +435,7 @@ create_built_droid_species = {
 					remove_trait = trait_mechanical
 					add_trait = trait_droid
 				}
+				owner = { set_built_species = prev.species }
 			}
 		}
 	}
@@ -571,16 +446,89 @@ create_built_droid_species = {
 create_built_synth_species = {
 	owner = {
 		capital_scope = {
-			create_pop = { species = root.built_species }
-			last_created_pop = {
-				modify_species = {
-					add_traits_at_start_of_list = yes
-					remove_trait = trait_droid
-					remove_trait = trait_mechanical
-					add_trait = trait_synthetic
+			create_species = {
+				name = NAME_Synthetic
+				plural = NAME_Synthetics
+				class = ROBOT
+				homeworld = THIS
+				namelist = THIS.owner
+				portrait = default_robot
+				traits = {
+					trait = trait_synthetic
+				}
+
+				effect = {
+					set_species_flag = mechanical_species@prevprev
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_hum_robot = yes }
+						}
+						change_species_portrait = sd_hum_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_mam_robot = yes }
+						}
+						change_species_portrait = sd_mam_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_rep_robot = yes }
+						}
+						change_species_portrait = sd_rep_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_avi_robot = yes }
+						}
+						change_species_portrait = sd_avi_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_art_robot = yes }
+						}
+						change_species_portrait = sd_art_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_mol_robot = yes }
+						}
+						change_species_portrait = sd_mol_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_fun_robot = yes }
+						}
+						change_species_portrait = sd_fun_robot
+					}
+				}
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_pla_robot = yes }
+						}
+						change_species_portrait = sd_pla_robot
+					}
 				}
 			}
+
+			create_pop = { species = last_created_species }
 		}
 	}
+	set_built_species = last_created_species
 	set_country_flag = has_built_synth
 }

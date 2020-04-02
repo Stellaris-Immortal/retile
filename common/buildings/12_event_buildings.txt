@@ -59,6 +59,10 @@ building_artist_patron = {
 		owner = { remove_country_flag = built_one_ministry }
 	}
 	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	
 	ai_weight = {
 		weight = 2
 		modifier = {
@@ -100,6 +104,10 @@ building_nuumismatic_shrine = {
 		upkeep = {
 			energy = 2
 		}
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
 	}
 	
 	ai_weight = {
@@ -149,6 +157,10 @@ building_waste_reprocessing_center = {
 		}
 	}
 	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	
 	ai_weight = {
 		weight = 200000
 		modifier = {
@@ -175,9 +187,6 @@ building_akx_worm_3 = {
 		always = yes
 	}
 
-	planet_modifier  = {
-	}
-	
 	prerequisites = {
 		"tech_akx_worm_3"
 	}
@@ -187,25 +196,9 @@ building_akx_worm_3 = {
 	}
 	
 	planet_modifier = {
-		planet_researchers_physics_research_produces_add = 1
+		planet_researchers_physics_research_produces_add = 2
 	}
 	
-	on_queued = {
-		owner = { set_country_flag = alignment_built }
-	}
-
-	on_unqueued = {
-		owner = { remove_country_flag = alignment_built }
-	}
-
-	on_built = {
-		owner = { set_country_flag = alignment_built }
-	}
-
-	on_destroy = {
-		owner = { remove_country_flag = alignment_built }
-	}
-
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -214,6 +207,10 @@ building_akx_worm_3 = {
 		upkeep = {
 			energy = 2
 		}	
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
 	}
 	
 	ai_weight = {
@@ -246,6 +243,10 @@ building_junkheap = {
 		planet_amenities_add = 20
 		job_ratling_scavenger_add = 10
 	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
 		
 	upgrades = {
 	}
@@ -271,5 +272,9 @@ building_great_pyramid = {
 			food = 2
 			society_research = 2
 		}	
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
 	}
 }

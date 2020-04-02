@@ -13,6 +13,7 @@ building_foundry_1 = {
 	can_be_disabled = no
 	
 	potential = {
+		has_district = district_engineers
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = slave_colony }
 	}
@@ -51,21 +52,29 @@ building_foundry_1 = {
 
 	prerequisites = {
 		tech_basic_industry
-	}	
+	}
+	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = engineer_pollution_1_effect
+	}
+	
+	planet_modifier = {
+		planet_metallurgists_alloys_produces_add = 2.5
+		planet_metallurgists_minerals_upkeep_add = 10
+		planet_metallurgists_energy_upkeep_add = @job_energy_normal
+		planet_metallurgists_consumer_goods_upkeep_add = @job_supplies_normal
+		engineers_bio_food_upkeep_add = @living_standard_food_normal
+		engineers_lith_minerals_upkeep_add = @living_standard_food_normal
+		engineers_mech_energy_upkeep_add = @living_standard_food_normal
+	}
 	
 	country_modifier = {
 		country_resource_max_add = 1000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_foundry_1_effect
-	}
-	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -111,19 +120,27 @@ building_foundry_2 = {
 		tech_alloys_1
 	}	
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = engineer_pollution_2_effect
+	}
+
+	planet_modifier = {
+		planet_metallurgists_alloys_produces_add = 5
+		planet_metallurgists_minerals_upkeep_add = 20
+		planet_metallurgists_energy_upkeep_add = @job_energy_normal2
+		planet_metallurgists_consumer_goods_upkeep_add = @job_supplies_normal2
+		engineers_bio_food_upkeep_add = @living_standard_food_normal2
+		engineers_lith_minerals_upkeep_add = @living_standard_food_normal2
+		engineers_mech_energy_upkeep_add = @living_standard_food_normal2
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_foundry_2_effect
-	}
-
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -165,19 +182,27 @@ building_foundry_3 = {
 		tech_alloys_2
 	}	
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = engineer_pollution_3_effect
+	}
+	
+	planet_modifier = {
+		planet_metallurgists_alloys_produces_add = 7.5
+		planet_metallurgists_minerals_upkeep_add = 30
+		planet_metallurgists_energy_upkeep_add = @job_energy_normal3
+		planet_metallurgists_consumer_goods_upkeep_add = @job_supplies_normal3
+		engineers_bio_food_upkeep_add = @living_standard_food_normal3
+		engineers_lith_minerals_upkeep_add = @living_standard_food_normal3
+		engineers_mech_energy_upkeep_add = @living_standard_food_normal3
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_foundry_3_effect
-	}
-	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -190,6 +215,7 @@ building_factory_1 = {
 	potential = {
 		exists = owner
 		owner = { country_uses_goods = yes }
+		has_district = district_engineers
 	}
 
 	allow = {
@@ -225,19 +251,26 @@ building_factory_1 = {
 		building_factory_2
 	}
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = engineer_pollution_1_effect
+	}
+	
+	planet_modifier = {
+		planet_metallurgists_consumer_goods_produces_add = 2.5
+		planet_metallurgists_minerals_upkeep_add = 10
+		planet_metallurgists_energy_upkeep_add = @job_energy_high
+		engineers_bio_food_upkeep_add = @living_standard_food_normal
+		engineers_lith_minerals_upkeep_add = @living_standard_food_normal
+		engineers_mech_energy_upkeep_add = @living_standard_food_normal
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 1000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_factory_1_effect
-	}
-	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -280,19 +313,26 @@ building_factory_2 = {
 		building_factory_3
 	}
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = engineer_pollution_2_effect
+	}
+	
+	planet_modifier = {
+		planet_metallurgists_consumer_goods_produces_add = 5
+		planet_metallurgists_minerals_upkeep_add = 20
+		planet_metallurgists_energy_upkeep_add = @job_energy_high2
+		engineers_bio_food_upkeep_add = @living_standard_food_normal2
+		engineers_lith_minerals_upkeep_add = @living_standard_food_normal2
+		engineers_mech_energy_upkeep_add = @living_standard_food_normal2
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_factory_2_effect
-	}
-	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -331,18 +371,25 @@ building_factory_3 = {
 		tech_luxuries_2
 	}
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = engineer_pollution_3_effect
+	}
+	
+	planet_modifier = {
+		planet_metallurgists_consumer_goods_produces_add = 7.5
+		planet_metallurgists_minerals_upkeep_add = 30
+		planet_metallurgists_energy_upkeep_add = @job_energy_high3
+		engineers_bio_food_upkeep_add = @living_standard_food_normal3
+		engineers_lith_minerals_upkeep_add = @living_standard_food_normal3
+		engineers_mech_energy_upkeep_add = @living_standard_food_normal3
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_factory_3_effect
-	}
-	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }

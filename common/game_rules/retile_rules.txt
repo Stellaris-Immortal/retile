@@ -168,3 +168,28 @@ can_terraform_planet = {
 	}
 }
 
+# I think maybe these are backward...?
+# Root = species
+# This = country
+can_modify_species = {
+	root = { OR = {	# prevent AI from spamming more than 3 subspecies...
+		is_ai = no
+		AND = {
+			NOT = { has_country_flag = ai_recently_modified_species }
+			count_exact_species = {
+				count < 3
+				limit = {
+					OR = {
+						is_same_species = root
+						is_subspecies = root
+					}
+				}
+			}
+		}
+	} }
+	OR = {
+		NOT = { has_trait = trait_self_modified }
+		is_same_species = root
+	}
+}
+

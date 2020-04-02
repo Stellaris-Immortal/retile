@@ -9,6 +9,13 @@ planet_clerks = {
 		produces
 		upkeep
 	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 }
 planet_custodians = {
 	icon = "job_custodian"
@@ -21,6 +28,108 @@ planet_custodians = {
 		produces
 		upkeep
 	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+
+	triggered_produces_modifier = {
+		key = planet_custodians_non_plantoid
+		modifier_types = {
+			add
+		}
+		trigger = {
+			is_plantoid = no
+		}
+	}
+	
+	triggered_produces_modifier = {
+		key = planet_custodians_fruiting
+		modifier_types = {
+			add
+			mult
+		}
+		trigger = {
+			has_trait = trait_plantoid_fruiting
+		}
+	}
+}
+planet_laborers = {
+	icon = "job_technician"
+	parent = planet_jobs
+	generate_mult_modifiers = {
+		produces
+		upkeep
+	}
+	generate_add_modifiers = {
+		produces
+		upkeep
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
+
+
+	triggered_produces_modifier = {
+		key = planet_laborers_non_plantoid
+		modifier_types = {
+			add
+		}
+		trigger = {
+			is_plantoid = no
+		}
+	}
+	
+	triggered_produces_modifier = {
+		key = planet_laborers_fruiting
+		modifier_types = {
+			add
+			mult
+		}
+		trigger = {
+			has_trait = trait_plantoid_fruiting
+		}
+	}
+	
+	# compatibility fallback categories
+	triggered_produces_modifier = {
+		key = planet_miners
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			always = yes
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_farmers
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			always = yes
+		}
+	}
+	triggered_produces_modifier = {
+		key = planet_technician
+		modifier_types = {
+			mult
+			add
+		}
+		trigger = {
+			always = yes
+		}
+	}
 }
 planet_medics = {
 	icon = "job_medic"
@@ -32,6 +141,13 @@ planet_medics = {
 	generate_add_modifiers = {
 		produces
 		upkeep
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
 	}
 }
 planet_criminals = {
@@ -49,6 +165,13 @@ planet_criminals = {
 		produces
 		upkeep
 	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 }
 planet_colonists = {
 	icon = "job_colonist"
@@ -64,6 +187,13 @@ planet_colonists = {
 	generate_add_modifiers = {
 		produces
 		upkeep
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
 	}
 }
 planet_bureaucrats = {
@@ -81,6 +211,13 @@ planet_bureaucrats = {
 		produces
 		upkeep
 	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 }
 planet_overseers = {
 	icon = "job_overseer"
@@ -96,6 +233,13 @@ planet_overseers = {
 	generate_add_modifiers = {
 		produces
 		upkeep
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
 	}
 }
 planet_spawning_drones = {
@@ -113,6 +257,13 @@ planet_spawning_drones = {
 		produces
 		upkeep
 	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 }
 planet_admin_drones = {
 	icon = "job_administrator"
@@ -128,6 +279,13 @@ planet_admin_drones = {
 	generate_add_modifiers = {
 		produces
 		upkeep
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
 	}
 }
 planet_wardens = {
@@ -145,6 +303,13 @@ planet_wardens = {
 		produces
 		upkeep
 	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 }
 station_gatherers = {
 	parent = stations
@@ -154,6 +319,13 @@ station_gatherers = {
 		upkeep
 		cost
 	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
+	}
 }
 station_researchers = {
 	parent = stations
@@ -162,6 +334,13 @@ station_researchers = {
 		produces
 		upkeep
 		cost
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
 	}
 }
 planet_deposits_active = {
@@ -175,5 +354,12 @@ planet_deposits_active = {
 		produces
 		upkeep
 		cost
+	}
+	ai_use_parent_for_resources_upkeep = {
+		energy
+		consumer_goods
+		alloys
+		minerals
+		food
 	}
 }

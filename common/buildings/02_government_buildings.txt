@@ -3,64 +3,154 @@
 @cost_high = 1500
 @cost_ultra = 2000
 
-# Colonial Offices
-building_colonial_offices = {
-	base_buildtime = 480	
+# Bureaucratic Office
+building_bureaucratic_1 = {
+	base_buildtime = 360	
 	base_cap_amount = 1
-	icon = building_bureaucratic_complex
 	can_be_disabled = no
 
 	category = government
 	
 	potential = {
 		exists = owner
-		owner = { has_tradition = tr_expansion_a_new_life }
-		is_capital = no
+		owner = { is_gestalt = no }
+		has_district = district_bureaucrats
+	}
+	
+	prerequisites = {
+		"tech_adaptive_bureaucracy"
 	}
 
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				retile_ai_planet_healthy_building = yes
+				owner = { has_country_flag = retile_ai_needs_admin }
+			}
+		}
+	}
+	
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 500
+			minerals = @cost_low
 		}
 		upkeep = {
 			energy = 2
 		}
 	}
 	
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = no }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_colonist_add = 1
-		}
+	planet_modifier = {
+		planet_stability_add = 1
 	}
-	triggered_planet_modifier = {
-		potential = {
-			exists = owner
-			owner = { is_gestalt = yes }
-		}
-		modifier = {
-			planet_housing_add = 1
-			job_colonist_add = 1
-		}
+	
+	upgrades = {
+		building_bureaucratic_2
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_bureaucratic_1_effect
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 1000
 	}
 	
 	ai_weight = {
-		weight = 0
-		
-		modifier = {
-			weight = 10
-			num_pops < 10
+		weight = 100
+	}
+}
+
+building_bureaucratic_2 = {
+	base_buildtime = 480
+	can_be_disabled = no
+	can_build = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+	}
+	
+	prerequisites = {
+		"tech_colonial_bureaucracy"
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_med
 		}
-		
-		modifier = {
-			weight = 10
-			num_pops < 20
+		upkeep = {
+			energy = 2
 		}
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 2
+	}
+	
+	upgrades = {
+		building_bureaucratic_3
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_bureaucratic_3_effect
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 2000
+	}
+	
+	ai_weight = {
+		weight = 100
+	}
+}
+
+building_bureaucratic_3 = {
+	base_buildtime = 600
+	can_be_disabled = no
+	can_build = no
+
+	category = government
+	
+	potential = {
+		exists = owner
+	}
+	
+	prerequisites = {
+		"tech_galactic_bureaucracy"
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = @cost_high
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	
+	planet_modifier = {
+		planet_stability_add = 3
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_bureaucratic_3_effect
+	}
+	
+	country_modifier = {
+		country_resource_max_add = 3000
+	}
+	
+	ai_weight = {
+		weight = 100
 	}
 }
 
@@ -77,6 +167,11 @@ building_embassy_1 = {
 		NOT = { has_modifier = slave_colony }
 		NOT = { has_modifier = penal_colony }
 		planet = { is_capital = yes }
+	}
+	
+	allow = {
+		exists = owner
+		owner = { is_ai = no }
 	}
 	
 	destroy_trigger = {
@@ -102,6 +197,7 @@ building_embassy_1 = {
 	
 	country_modifier = {
 		envoys_add = 1
+		country_resource_max_add = 1000
 	}
 	
 	upgrades = {
@@ -109,7 +205,7 @@ building_embassy_1 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -159,6 +255,7 @@ building_embassy_2 = {
 	
 	country_modifier = {
 		envoys_add = 2
+		country_resource_max_add = 2000
 	}
 	
 	upgrades = {
@@ -166,7 +263,7 @@ building_embassy_2 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -216,10 +313,11 @@ building_embassy_3 = {
 	
 	country_modifier = {
 		envoys_add = 3
+		country_resource_max_add = 3000
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -235,6 +333,11 @@ building_military_1 = {
 		owner = { has_tradition = tr_supremacy_overwhelming_force }
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = penal_colony }
+	}
+	
+	allow = {
+		exists = owner
+		owner = { is_ai = no }
 	}
 	
 	destroy_trigger = {
@@ -260,16 +363,23 @@ building_military_1 = {
 	}
 	
 	country_modifier = {
+		
 		army_starting_experience_add = 100
 		ship_starting_experience_add = 100
+		country_resource_max_add = 1000
 	}
 	
 	upgrades = {
 		building_military_2
 	}
 	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_military_1_effect
+	}
+	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -320,14 +430,20 @@ building_military_2 = {
 	country_modifier = {
 		army_starting_experience_add = 200
 		ship_starting_experience_add = 200
+		country_resource_max_add = 2000
 	}
 	
 	upgrades = {
 		building_military_3
 	}
 	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_military_2_effect
+	}
+	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -378,9 +494,15 @@ building_military_3 = {
 	country_modifier = {
 		army_starting_experience_add = 300
 		ship_starting_experience_add = 300
+		country_resource_max_add = 3000
+	}
+	
+	triggered_desc = {
+		trigger = { exists = owner }
+		text = retile_military_3_effect
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }

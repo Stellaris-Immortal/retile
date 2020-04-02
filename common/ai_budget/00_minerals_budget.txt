@@ -31,7 +31,7 @@ minerals_expenditure_planets = {
 		weight = 1
 	}
 	static_min = {
-		base = 500
+		base = 5000 # cost of galactic capital
 	}
 	#static_max = {
 	#	base = 2500 # cost of arcology project
@@ -45,7 +45,7 @@ minerals_expenditure_decisions = {
 	
 	potential = {
 		has_technology = tech_housing_3
-		has_resource = { type = minerals amount > 7000 }
+		has_resource = { type = minerals amount > 10000 }
 	}
 	
 	static_min = {
@@ -53,67 +53,6 @@ minerals_expenditure_decisions = {
 	}
 	static_max = {
 		base = 5000 # cost of arcology project
-	}
-}
-
-minerals_expenditure_trade_excess = {
-	resource = minerals 
-	type = expenditure
-	category = trade
-	
-	potential = {
-		is_country_type = default
-		has_resource = { 
-			type = minerals
-			amount > 10000
-		}
-		has_resource = {
-			type = energy
-			amount < 1000
-		}
-	}
-	
-	fraction = {
-		weight = 1
-	}
-	static_max = {
-		base = 1000
-	}
-}
-
-minerals_expenditure_trade_emergency = {
-	resource = minerals 
-	type = expenditure
-	category = trade
-	
-	potential = {
-		always = no
-		is_country_type = default
-		has_resource = { type = minerals amount > 1000 }
-		has_monthly_income = { resource = minerals value > 1 }
-		has_resource = { type = energy amount < 1000 }
-		OR = {
-			AND = {
-				has_monthly_income = { resource = food value < 0 }
-				has_resource = { type = food amount < 200 }
-			}
-			AND = {
-				has_monthly_income = { resource = consumer_goods value < 0 }
-				has_resource = { type = consumer_goods amount < 200 }
-			}
-			AND = {
-				has_monthly_income = { resource = alloys value < 0 }
-				has_resource = { type = alloys amount < 200 }
-			}
-			AND = {
-				has_monthly_income = { resource = energy value < 0 }
-				has_resource = { type = energy amount < 200 }
-			}
-		}
-	}
-	
-	fraction = {
-		weight = 1
 	}
 }
 

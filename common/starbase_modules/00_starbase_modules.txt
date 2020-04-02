@@ -478,3 +478,29 @@ hangar_bay = {
 
 	show_in_tech = "tech_strike_craft_1"
 }
+
+trading_hub = { # GEBNAR put this here to prevent weird unexplained error about trading hub not existing, even though nothing references it in loaded files...
+	icon = "GFX_starbase_trading_hub"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	initial = yes
+
+	potential = {
+		always = no
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = 50
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	ai_build_at_chokepoint = no
+	ai_weight = {
+		weight = 0
+	}
+}

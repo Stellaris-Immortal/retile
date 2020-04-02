@@ -17,24 +17,28 @@
 ########################
 
 d_natural_farmland = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
 	
 	drop_weight = {
 		weight = 0.01
@@ -43,10 +47,6 @@ d_natural_farmland = {
 	
 	potential = {
 		is_planet_class = pc_gaia	
-	}
-	
-	blocker_swap_types = {
-		d_natural_farmland_active
 	}
 	
 	use_weights_for_terraforming_swap_types = yes
@@ -63,24 +63,28 @@ d_natural_farmland = {
 }
 
 d_lichen_fields = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -101,10 +105,6 @@ d_lichen_fields = {
 		}	
 	}
 	
-	blocker_swap_types = {
-		d_lichen_fields_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -119,24 +119,28 @@ d_lichen_fields = {
 }
 
 d_bountiful_plains = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -153,10 +157,6 @@ d_bountiful_plains = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_bountiful_plains_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -171,24 +171,28 @@ d_bountiful_plains = {
 }
 
 d_rugged_woods = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -200,10 +204,6 @@ d_rugged_woods = {
 	
 	potential = {
 		is_planet_class = pc_continental
-	}
-	
-	blocker_swap_types = {
-		d_rugged_woods_active
 	}
 	
 	use_weights_for_terraforming_swap_types = yes
@@ -220,24 +220,28 @@ d_rugged_woods = {
 }
 
 d_green_hills = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -254,10 +258,6 @@ d_green_hills = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_green_hills_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -272,24 +272,28 @@ d_green_hills = {
 }
 
 d_forgiving_tundra = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -306,10 +310,6 @@ d_forgiving_tundra = {
 		}		
 	}
 	
-	blocker_swap_types = {
-		d_forgiving_tundra_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -324,24 +324,28 @@ d_forgiving_tundra = {
 }
 
 d_boggy_fens = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -353,10 +357,6 @@ d_boggy_fens = {
 	
 	potential = {
 		is_planet_class = pc_ocean
-	}
-	
-	blocker_swap_types = {
-		d_boggy_fens_active
 	}
 	
 	use_weights_for_terraforming_swap_types = yes
@@ -373,24 +373,28 @@ d_boggy_fens = {
 }
 
 d_nutritious_mudland = {
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_high
@@ -402,10 +406,6 @@ d_nutritious_mudland = {
 	
 	potential = {
 		is_planet_class = pc_desert
-	}
-	
-	blocker_swap_types = {
-		d_nutritious_mudland_active
 	}
 	
 	use_weights_for_terraforming_swap_types = yes
@@ -422,24 +422,28 @@ d_nutritious_mudland = {
 }
 
 d_fungal_caves = {
-	time = @retile_rural_exploit_time_med
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_med
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_04
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -460,10 +464,6 @@ d_fungal_caves = {
 		}	
 	}
 	
-	blocker_swap_types = {
-		d_fungal_caves_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -474,24 +474,28 @@ d_fungal_caves = {
 }
 
 d_lush_jungle = {
-	time = @retile_rural_exploit_time_med
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_med
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_04
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -509,10 +513,6 @@ d_lush_jungle = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_lush_jungle_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -523,24 +523,28 @@ d_lush_jungle = {
 }
 
 d_fertile_lands = {
-	time = @retile_rural_exploit_time_med
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_med
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_04
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -559,10 +563,6 @@ d_fertile_lands = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_fertile_lands_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -573,24 +573,28 @@ d_fertile_lands = {
 }
 
 d_great_river = {
-	time = @retile_rural_exploit_time_med
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_med
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_04
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_med
@@ -607,10 +611,6 @@ d_great_river = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_great_river_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -621,24 +621,28 @@ d_great_river = {
 }
 
 d_black_soil = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -654,10 +658,6 @@ d_black_soil = {
 			is_planet_class = pc_savannah
 			is_planet_class = pc_gaia
 		}
-	}
-	
-	blocker_swap_types = {
-		d_black_soil_active
 	}
 	
 	use_weights_for_terraforming_swap_types = yes
@@ -671,24 +671,28 @@ d_black_soil = {
 }
 
 d_teeming_reef = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -705,10 +709,6 @@ d_teeming_reef = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_teeming_reef_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -720,24 +720,28 @@ d_teeming_reef = {
 }
 
 d_marvelous_oasis = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -754,10 +758,6 @@ d_marvelous_oasis = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_marvelous_oasis_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -769,24 +769,28 @@ d_marvelous_oasis = {
 }
 
 d_tropical_island = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -804,10 +808,6 @@ d_tropical_island = {
 		}
 	}
 	
-	blocker_swap_types = {
-		d_tropical_island_active
-	}
-	
 	use_weights_for_terraforming_swap_types = yes
 	should_swap_deposit_on_terraforming = yes
 	terraforming_swap_types = {
@@ -819,24 +819,28 @@ d_tropical_island = {
 }
 
 d_fungal_forest = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
+	}
 	
 	drop_weight = {
 		weight = @retile_drop_low
@@ -848,10 +852,6 @@ d_fungal_forest = {
 	
 	potential = {
 		is_cold = yes
-	}
-	
-	blocker_swap_types = {
-		d_fungal_forest_active
 	}
 	
 	use_weights_for_terraforming_swap_types = yes
@@ -869,123 +869,126 @@ d_fungal_forest = {
 ##########################
 
 d_junk_canals = {
-	time = @retile_rural_exploit_time_high
 	icon = d_organic_landfill
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_bad_high
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_junk_canals_active
 	}
 }
 
 d_abandoned_primitive_homesteads = {
-	time = @retile_rural_exploit_time_med
 	icon = d_tribal_settlement
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_med
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_med
 		planet_jobs_society_research_produces_mult = 0.10
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
 	}
 	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_abandoned_primitive_homesteads_active
 	}
 }
 
 d_hyperfertile_valley = {
-	time = @retile_rural_exploit_time_ultra2
 	icon = d_valley
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_ultra2
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_ultra2
+		planet_laborers_food_produces_add = @laborer_production_05
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_05
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_05
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_05
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_10
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_10
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_15
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_15
 	}
 	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_hyperfertile_valley_active
 	}
 }
 
 d_harvester_fields = {
-	time = @retile_rural_exploit_time_ultra3
 	icon = d_harvester
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_ultra3
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_ultra3
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_12
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_12
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_18
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_18
 	}
 	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_harvester_fields_active
 	}
 }
 
@@ -995,27 +998,28 @@ d_worm_farm = {
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_ultra
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_ultra
+		planet_laborers_food_produces_add = @laborer_production_04
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_04
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_04
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_08
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_08
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_12
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_12
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_worm_farm_active
 	}
 }
 
@@ -1025,28 +1029,29 @@ d_underground_farm = {
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
 		planet_max_districts_add = 1
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_underground_farm_active
 	}
 }
 
@@ -1056,91 +1061,91 @@ d_underground_farm = {
 
 d_scandinavian_reclamation_sector = {
 	icon = d_scandinavia
-	time = @retile_rural_exploit_time_low
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_low
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_low
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_01
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_01
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_02
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_02
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_scandinavian_reclamation_sector_active
 	}
 }
 
 d_pacific_algae_tracts = {
 	icon = d_pacific
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_pacific_algae_tracts_active
 	}
 }
 
 d_saharan_irrigation_project = {
 	icon = d_green_hills
-	time = @retile_rural_exploit_time_ultra
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_ultra
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_ultra
+		planet_laborers_food_produces_add = @laborer_production_04
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_04
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_04
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_04
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_08
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_08
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_12
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_12
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		d_saharan_irrigation_project_active
 	}
 }
 
@@ -1149,32 +1154,31 @@ d_saharan_irrigation_project = {
 #######################
 
 retile_mastery_of_nature_food = {
-	time = @retile_rural_exploit_time_high
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = deposit_blockers
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
-	}
-	
 	planet_modifier = {
-		planet_amenities_add = @retile_rural_eco_clean_high
-		planet_max_districts_add = 1
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		retile_mastery_of_nature_food_active
 	}
 }
 
@@ -1183,22 +1187,27 @@ retile_module_farm = {
 	category = deposit_cat_food
 	is_for_colonizeable = yes
 	
-	resources = {
-		category = planet_deposits_active
-		cost = {
-			minerals = @retile_rural_exploit_cost_high
-		}
+	planet_modifier = {
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
 	}
-	
-	can_be_cleared = { retile_ready_food = yes }
-	
-	ai_weight = { weight = 1 modifier = { weight = 10 owner = { has_monthly_income = { resource = food value < @retile_ai_food_income_low } } } }
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
+	}
 	
 	drop_weight = {
 		weight = 0
-	}
-	
-	blocker_swap_types = {
-		retile_module_farm_active
 	}
 }

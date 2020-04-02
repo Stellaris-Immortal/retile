@@ -26,9 +26,7 @@ d_migrating_forests = {
 	icon = d_huge_tree
 	
 	planet_modifier = {
-		planet_deposits_active_food_produces_mult = -0.1
-		planet_deposits_active_minerals_produces_mult = -0.1
-		planet_deposits_active_energy_produces_mult = -0.1
+		planet_laborers_produces_mult = -0.1
 	}
 	
 	planet_modifier = {
@@ -48,12 +46,7 @@ d_migrating_forest_reserve = {
 	
 	planet_modifier = {
 		planet_jobs_society_research_produces_mult = 0.2
-		planet_housing_add = 1
-	}
-	
-	planet_modifier = {
-		job_researcher_add = 1
-		planet_amenities_add = -20
+		planet_amenities_add = -100
 	}
 	
 	drop_weight = {
@@ -71,9 +64,7 @@ d_valley_of_zanaam = {
 		planet_jobs_society_research_produces_mult = 0.30
 		planet_jobs_engineering_research_produces_mult = 0.30
 		planet_jobs_physics_research_produces_mult = 0.30
-		planet_housing_add = 2
-		job_researcher_add = 2
-		planet_amenities_add = -20
+		planet_amenities_add = -100
 	}
 	
 	drop_weight = {
@@ -95,10 +86,8 @@ d_the_zone = {
 	}
 	
 	planet_modifier = {
-		planet_jobs_physics_research_produces_mult = 0.15
-		planet_housing_add = 1
-		job_researcher_add = 1
-		planet_amenities_add = -20
+		planet_jobs_physics_research_produces_mult = 0.20
+		planet_amenities_add = -200
 	}
 	
 	drop_weight = {
@@ -113,10 +102,9 @@ d_toy_factory_complex = {
 	icon = d_building_complex
 	
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.10
+		planet_jobs_society_research_produces_mult = 0.20
 		planet_jobs_engineering_research_produces_mult = 0.20
-		planet_housing_add = 1
-		job_researcher_add = 1
+		planet_jobs_consumer_goods_produces_mult = 0.10
 	}
 	
 	drop_weight = {
@@ -131,10 +119,8 @@ d_mutant_landfill = {
 	icon = d_organic_landfill
 	
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.2
-		planet_housing_add = 1
-		job_researcher_add = 1
-		planet_amenities_add = 10
+		planet_jobs_society_research_produces_mult = 0.20
+		planet_laborers_produces_mult = 0.10
 	}
 	
 	drop_weight = {
@@ -149,10 +135,9 @@ d_ancient_bombardment_craters = {
 	icon = d_crater
 	
 	planet_modifier = {
-		planet_jobs_physics_research_produces_mult = 0.2
-		planet_housing_add = 1
-		job_researcher_add = 1
-		planet_amenities_add = 5
+		planet_jobs_physics_research_produces_mult = 0.20
+		planet_jobs_engineering_research_produces_mult = 0.20
+		planet_jobs_alloys_produces_mult = 0.10
 	}
 	
 	drop_weight = {
@@ -167,10 +152,8 @@ d_ancient_battlefield = {
 	icon = d_organic_landfill
 	
 	planet_modifier = {
-		planet_jobs_engineering_research_produces_mult = 0.2
-		planet_housing_add = 1
-		job_researcher_add = 1
-		planet_amenities_add = 5
+		planet_jobs_engineering_research_produces_mult = 0.20
+		planet_jobs_alloys_produces_mult = 0.20
 	}
 	
 	drop_weight = {
@@ -185,10 +168,8 @@ d_irradiated_ruins = {
 	icon = d_metal_boneyard
 	
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.2
-		planet_housing_add = 1
-		job_researcher_add = 1
-		planet_amenities_add = 5
+		planet_jobs_society_research_produces_mult = 0.20
+		planet_jobs_consumer_goods_produces_mult = 0.20
 	}
 	
 	drop_weight = {
@@ -219,7 +200,7 @@ d_ancient_particle_accelerator = {
 	icon = d_building
 	
 	planet_modifier = {
-		planet_jobs_physics_research_produces_mult = 0.2
+		planet_jobs_physics_research_produces_mult = 0.20
 		planet_housing_add = 1
 		job_researcher_add = 1
 	}
@@ -236,7 +217,7 @@ d_underground_vault = {
 	icon = d_bunker_door
 	
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.2
+		planet_jobs_society_research_produces_mult = 0.20
 		planet_housing_add = 1
 		job_researcher_add = 1
 	}
@@ -271,10 +252,7 @@ d_flooded_mounds = {
 	icon = d_teeming_reef
 	
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.2
-		planet_housing_add = 1
-		job_researcher_add = 1
-		planet_amenities_add = -10
+		planet_jobs_society_research_produces_mult = 0.30
 	}
 	
 	drop_weight = {
@@ -289,7 +267,23 @@ d_processing_pens = {
 	icon = d_quarantine_zone
 	
 	planet_modifier = {
-		job_farmer_add = 3
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_1 } }
+		planet_laborers_food_produces_add = @laborer_production_03
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_03
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_2 } }
+		planet_laborers_food_produces_add = @laborer_production_06
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_06
+	}
+	triggered_planet_modifier = {
+		potential = { planet = { has_building = building_food_3 } }
+		planet_laborers_food_produces_add = @laborer_production_09
+		#planet_laborers_fruiting_food_produces_add = @fruiting_production_09
 	}
 	
 	drop_weight = {
@@ -304,9 +298,8 @@ d_wetware_computer = {
 	icon = d_toxic_kelp
 	
 	planet_modifier = {
-		planet_jobs_engineering_research_produces_mult = 0.2
-		planet_housing_add = 1
-		job_researcher_add = 1
+		planet_jobs_physics_research_produces_mult = 0.30
+		planet_jobs_engineering_research_produces_mult = 0.30
 	}
 	
 	drop_weight = {
@@ -321,10 +314,7 @@ d_savage_wildlands = {
 	icon = d_dangerous_wildlife_blocker
 	
 	planet_modifier = {
-		planet_jobs_society_research_produces_mult = 0.1
-		planet_housing_add = 1
-		job_researcher_add = 1
-		planet_amenities_add = -10
+		planet_jobs_society_research_produces_mult = 0.30
 	}
 	
 	drop_weight = {
@@ -576,7 +566,7 @@ d_ancient_one = {
 	icon = d_fungal_forest
 	
 	planet_modifier = {
-		planet_amenities_add = -5
+		planet_amenities_add = -100
 	}
 	
 	resources = {

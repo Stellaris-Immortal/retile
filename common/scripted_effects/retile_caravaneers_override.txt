@@ -170,13 +170,11 @@ cara_generate_deal2 = {
 				modifier = {
 					mult = 100
 					OR = {
-						NOR = {
+						NOT = {
 							has_deposit = d_geothermal_vent
-							has_deposit = d_geothermal_vent_active
 						}
-						NOR = {
+						NOT = {
 							has_deposit = d_underwater_vent
-							has_deposit = d_underwater_vent_active
 						}
 						OR = {
 							is_planet_class = pc_arctic
@@ -184,10 +182,6 @@ cara_generate_deal2 = {
 							is_planet_class = pc_savannah
 							is_planet_class = pc_desert
 							is_planet_class = pc_arid
-						}
-						count_pops = {
-							limit = { has_job = technician }
-							count < 3
 						}
 					}
 				}
@@ -788,7 +782,7 @@ cara_generate_deal3 = {
 		random_owned_planet = {
 			limit = {
 				any_deposit = {
-					has_deposit_category = deposit_cat_energy_active
+					has_deposit_category = deposit_cat_energy
 				}
 			}
 			weights = {
@@ -798,7 +792,7 @@ cara_generate_deal3 = {
 					count_pops = {
 						count > 3
 						limit = {
-							has_job = technician_drone
+							has_job = laborer
 						}
 					}
 				}
@@ -879,7 +873,6 @@ cara_execute_deal3 = {
 				random_owned_pop = {
 					limit = {
 						OR = {
-							has_job = unemployed
 							is_pop_category = worker
 							is_pop_category = simple_drone
 							is_pop_category = slave
@@ -887,11 +880,11 @@ cara_execute_deal3 = {
 							is_pop_category = purge
 						}
 					}
-					weights = { #Prioritize Unemployed pops
+					weights = { #Prioritize laborers
 						base = 1
 						modifier = {
 							mult = 100
-							has_job = unemployed
+							has_job = laborer
 						}
 					}
 					kill_pop = yes

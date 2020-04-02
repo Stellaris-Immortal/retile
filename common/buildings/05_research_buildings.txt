@@ -20,6 +20,7 @@ building_research_lab_1 = {
 			owner = { is_gestalt = yes }
 			NOT = { owner = { has_tradition = tr_harmony_bulwark_of_harmony } }
 		}
+		has_district = district_scholars
 	}
 	
 	convert_to = {
@@ -69,19 +70,28 @@ building_research_lab_1 = {
 		"tech_basic_science_lab_1"
 	}
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = scholar_pollution_1_effect
+	}
+	
+	planet_modifier = {
+		planet_researchers_physics_research_produces_add = 2.5
+		planet_researchers_engineering_research_produces_add = 2.5
+		planet_researchers_society_research_produces_add = 2.5
+		planet_researchers_energy_upkeep_add = @job_energy_normal
+		planet_researchers_consumer_goods_upkeep_add = @job_supplies_high
+		scholars_bio_food_upkeep_add = @living_standard_food_normal
+		scholars_lith_minerals_upkeep_add = @living_standard_food_normal
+		scholars_mech_energy_upkeep_add = @living_standard_food_normal
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 1000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_lab_1_effect
-	}
-
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -138,19 +148,28 @@ building_research_lab_2 = {
 		"tech_basic_science_lab_2"
 	}
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = scholar_pollution_2_effect
+	}
+	
+	planet_modifier = {
+		planet_researchers_physics_research_produces_add = 5
+		planet_researchers_engineering_research_produces_add = 5
+		planet_researchers_society_research_produces_add = 5
+		planet_researchers_energy_upkeep_add = @job_energy_normal2
+		planet_researchers_consumer_goods_upkeep_add = @job_supplies_high2
+		scholars_bio_food_upkeep_add = @living_standard_food_normal2
+		scholars_lith_minerals_upkeep_add = @living_standard_food_normal2
+		scholars_mech_energy_upkeep_add = @living_standard_food_normal2
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_lab_2_effect
-	}
-	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -203,19 +222,28 @@ building_research_lab_3 = {
 		"tech_basic_science_lab_3"
 	}
 	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = scholar_pollution_3_effect
+	}
+	
+	planet_modifier = {
+		planet_researchers_physics_research_produces_add = 7.5
+		planet_researchers_engineering_research_produces_add = 7.5
+		planet_researchers_society_research_produces_add = 7.5
+		planet_researchers_energy_upkeep_add = @job_energy_normal3
+		planet_researchers_consumer_goods_upkeep_add = @job_supplies_high3
+		scholars_bio_food_upkeep_add = @living_standard_food_normal3
+		scholars_lith_minerals_upkeep_add = @living_standard_food_normal3
+		scholars_mech_energy_upkeep_add = @living_standard_food_normal3
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_lab_3_effect
-	}
-	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -234,6 +262,7 @@ building_metascience_lab_1 = {
 			is_gestalt = no
 			has_tradition = tr_harmony_bulwark_of_harmony
 		}
+		has_district = district_scholars
 	}
 	
 	convert_to = {
@@ -287,19 +316,30 @@ building_metascience_lab_1 = {
 	planet_modifier = {
 		pop_government_ethic_attraction = 0.15
 	}
+	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = scholar_pollution_1_effect
+	}
+	
+	planet_modifier = {
+		planet_researchers_physics_research_produces_add = 2.5
+		planet_researchers_engineering_research_produces_add = 2.5
+		planet_researchers_society_research_produces_add = 2.5
+		planet_researchers_unity_produces_add = 1
+		planet_researchers_energy_upkeep_add = @job_energy_normal
+		planet_researchers_consumer_goods_upkeep_add = @job_supplies_high
+		scholars_bio_food_upkeep_add = @living_standard_food_normal
+		scholars_lith_minerals_upkeep_add = @living_standard_food_normal
+		scholars_mech_energy_upkeep_add = @living_standard_food_normal
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 1000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_metascience_lab_1_effect
-	}
-
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -360,19 +400,30 @@ building_metascience_lab_2 = {
 	planet_modifier = {
 		pop_government_ethic_attraction = 0.15
 	}
+	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = scholar_pollution_2_effect
+	}
+	
+	planet_modifier = {
+		planet_researchers_physics_research_produces_add = 5
+		planet_researchers_engineering_research_produces_add = 5
+		planet_researchers_society_research_produces_add = 5
+		planet_researchers_unity_produces_add = 2
+		planet_researchers_energy_upkeep_add = @job_energy_normal2
+		planet_researchers_consumer_goods_upkeep_add = @job_supplies_high2
+		scholars_bio_food_upkeep_add = @living_standard_food_normal2
+		scholars_lith_minerals_upkeep_add = @living_standard_food_normal2
+		scholars_mech_energy_upkeep_add = @living_standard_food_normal2
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 2000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_metascience_lab_2_effect
-	}
-	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -429,18 +480,29 @@ building_metascience_lab_3 = {
 	planet_modifier = {
 		pop_government_ethic_attraction = 0.15
 	}
+	
+	triggered_desc = {
+		trigger = { always = yes }
+		text = scholar_pollution_3_effect
+	}
+	
+	planet_modifier = {
+		planet_researchers_physics_research_produces_add = 7.5
+		planet_researchers_engineering_research_produces_add = 7.5
+		planet_researchers_society_research_produces_add = 7.5
+		planet_researchers_unity_produces_add = 3
+		planet_researchers_energy_upkeep_add = @job_energy_normal3
+		planet_researchers_consumer_goods_upkeep_add = @job_supplies_high3
+		scholars_bio_food_upkeep_add = @living_standard_food_normal3
+		scholars_lith_minerals_upkeep_add = @living_standard_food_normal3
+		scholars_mech_energy_upkeep_add = @living_standard_food_normal3
+	}
+	
 	country_modifier = {
 		country_resource_max_add = 3000
 	}
 	
-	triggered_desc = {
-		trigger = { 
-			exists = owner
-		}
-		text = retile_metascience_lab_3_effect
-	}
-	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }

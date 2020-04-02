@@ -28,6 +28,80 @@
 #	retile_energy_world
 #	retile_minerals_world
 
+has_worker_job = {
+	has_job = custodian
+}
+
+planet_needs_workers = {
+	has_available_jobs = custodian
+}
+
+has_combat_specialist_job = {
+	has_job = soldier
+}
+
+planet_needs_combat_specialists = {
+	has_available_jobs = soldier
+}
+
+has_robot_specialist_job = {
+	OR = {
+		has_job = clerk
+		has_job = foundry
+		has_job = bureaucrat
+	}
+}
+
+planet_needs_robot_specialists = {
+	OR = {
+		has_available_jobs = clerk
+		has_available_jobs = foundry
+		has_available_jobs = bureaucrat
+	}
+}
+
+has_synth_specialist_job = {
+	OR = {
+		has_job = researcher
+		has_job = patrol_drone
+		has_job = dimensional_portal_researcher
+		has_job = dimensional_portal_researcher_gestalt
+		has_job = titan_hunter
+	}
+}
+
+planet_needs_synth_specialists = {
+	OR = {
+		has_available_jobs = researcher
+		has_available_jobs = patrol_drone
+		has_available_jobs = dimensional_portal_researcher
+		has_available_jobs = dimensional_portal_researcher_gestalt
+		has_available_jobs = titan_hunter
+	}
+}
+
+has_ruler_job = {
+	OR = {
+		has_job = head_researcher
+		has_job = high_priest
+		has_job = administrator
+		has_job = noble
+		has_job = merchant
+		has_job = executive
+	}
+}
+
+planet_needs_rulers = {
+	OR = {
+		has_available_jobs = head_researcher
+		has_available_jobs = high_priest
+		has_available_jobs = administrator
+		has_available_jobs = noble
+		has_available_jobs = merchant
+		has_available_jobs = executive
+	}
+}
+
 # Does this pop eat food?
 pop_eats_food = {
 	species = {
@@ -40,14 +114,18 @@ pop_eats_food = {
 	}
 }
 
-# is this pop currently seeking a job?
-retile_job_seeking = {
-	NOT = { has_citizenship_type = { type = citizenship_organic_trophy } }
-	OR = {
-		has_job = no
-		has_job = servant
-		has_job = slave_toiler
-		has_pop_flag = retile_pop_lfw
+pop_eats_minerals = {
+	species = {
+		is_archetype = LITHOID
+	}
+}
+
+pop_eats_energy = {
+	species = {
+		OR = {
+			is_archetype = ROBOT
+			is_archetype = MACHINE
+		}
 	}
 }
 
@@ -199,78 +277,7 @@ is_unfinished_interstellar_assembly = {
 	}
 }
 
-############################################
-### Production Deposit Checks
-############################################
-
-# Does the planet have any energy deposits?
-retile_energy = {	# planet scope
-	custom_tooltip = {
-		fail_text = "retile_requires_energy_deposit"
-		any_deposit = { has_deposit_category = deposit_cat_energy_active }
-	}
-}
-
-# Does the planet have any minerals deposits?
-retile_minerals = {	# planet scope
-	custom_tooltip = {
-		fail_text = "retile_requires_minerals_deposit"
-		any_deposit = { has_deposit_category = deposit_cat_minerals_active }
-	}
-}
-
-# Does the planet have any food deposits?
-retile_food = {	# planet scope
-	custom_tooltip = {
-		fail_text = "retile_requires_food_deposit"
-		any_deposit = { has_deposit_category = deposit_cat_food_active }
-	}
-}
-
-is_energy_deposit = {
-	OR = {
-		has_deposit_category = deposit_cat_energy
-		has_deposit_category = deposit_cat_energy_active
-	}
-}
-
-is_active_energy_deposit = {
-	has_deposit_category = deposit_cat_energy_active
-}
-
-is_inactive_energy_deposit = {
-	has_deposit_category = deposit_cat_energy
-}
-
-is_minerals_deposit = {
-	OR = {
-		has_deposit_category = deposit_cat_minerals
-		has_deposit_category = deposit_cat_minerals_active
-	}
-}
-
-is_active_minerals_deposit = {
-	has_deposit_category = deposit_cat_minerals_active
-}
-
-is_inactive_minerals_deposit = {
-	has_deposit_category = deposit_cat_minerals
-}
-
-is_food_deposit = {
-	OR = {
-		has_deposit_category = deposit_cat_food
-		has_deposit_category = deposit_cat_food_active
-	}
-}
-
-is_active_food_deposit = {
-	has_deposit_category = deposit_cat_food_active
-}
-
-is_inactive_food_deposit = {
-	has_deposit_category = deposit_cat_food
-}
+########################################## Deposit Checks
 
 is_energy_deposit_low = {
 	OR = {
@@ -278,10 +285,6 @@ is_energy_deposit_low = {
 		is_deposit_type = d_arid_highlands
 		is_deposit_type = d_hot_springs
 		is_deposit_type = d_rushing_waterfalls
-		is_deposit_type = d_buzzing_plains_active
-		is_deposit_type = d_arid_highlands_active
-		is_deposit_type = d_hot_springs_active
-		is_deposit_type = d_rushing_waterfalls_active
 	}
 }
 
@@ -292,13 +295,7 @@ is_energy_deposit_med = {
 		is_deposit_type = d_odd_factory_wreckage_1
 		is_deposit_type = d_underground_contact_zone
 		is_deposit_type = d_delhi_sprawl
-		is_deposit_type = d_searing_desert_active
-		is_deposit_type = d_frozen_gas_lake_active
-		is_deposit_type = d_odd_factory_wreckage_1_active
-		is_deposit_type = d_underground_contact_zone_active
-		is_deposit_type = d_delhi_sprawl_active
 		is_deposit_type = d_immense_solar_array
-		is_deposit_type = d_immense_solar_array_active
 	}
 }
 
@@ -314,18 +311,7 @@ is_energy_deposit_high = {
 		is_deposit_type = d_numas_breath
 		is_deposit_type = d_boswash_metropolitan_axis
 		is_deposit_type = d_pearl_river_agglomerate
-		is_deposit_type = d_geothermal_vent_active
-		is_deposit_type = d_underwater_vent_active
-		is_deposit_type = d_tempestous_mountain_active
-		is_deposit_type = d_junk_hollows_active
-		is_deposit_type = d_irradiated_valley_active
-		is_deposit_type = d_organic_landfill_active
-		is_deposit_type = d_underground_generator_active
-		is_deposit_type = d_numas_breath_active
-		is_deposit_type = d_boswash_metropolitan_axis_active
-		is_deposit_type = d_pearl_river_agglomerate_active
 		is_deposit_type = d_ancient_reactor_pits
-		is_deposit_type = d_ancient_reactor_pits_active
 	}
 }
 
@@ -335,10 +321,6 @@ is_minerals_deposit_low = {
 		is_deposit_type = d_veiny_cliffs
 		is_deposit_type = d_mineral_fields
 		is_deposit_type = d_mauritanian_security_zone
-		is_deposit_type = d_mineral_striations_active
-		is_deposit_type = d_veiny_cliffs_active
-		is_deposit_type = d_mineral_fields_active
-		is_deposit_type = d_mauritanian_security_zone_active
 	}
 }
 
@@ -349,13 +331,7 @@ is_minerals_deposit_med = {
 		is_deposit_type = d_odd_factory_wreckage_2
 		is_deposit_type = d_underground_vault_2
 		is_deposit_type = d_nanosands
-		is_deposit_type = d_prosperous_mesa_active
-		is_deposit_type = d_ore_rich_caverns_active
-		is_deposit_type = d_odd_factory_wreckage_2_active
-		is_deposit_type = d_underground_vault_2_active
-		is_deposit_type = d_nanosands_active
 		is_deposit_type = d_relic_metal_boneyard
-		is_deposit_type = d_relic_metal_boneyard_active
 	}
 }
 
@@ -371,18 +347,7 @@ is_minerals_deposit_high = {
 		is_deposit_type = d_underground_mine
 		is_deposit_type = d_mesopotamian_urban_corridor
 		is_deposit_type = d_great_albertan_crater
-		is_deposit_type = d_rich_mountain_active
-		is_deposit_type = d_submerged_ore_veins_active
-		is_deposit_type = d_metal_boneyard_active
-		is_deposit_type = d_junk_wastes_active
-		is_deposit_type = d_ancient_mining_site_active
-		is_deposit_type = d_impact_crater_active
-		is_deposit_type = d_worm_mine_active
-		is_deposit_type = d_underground_mine_active
-		is_deposit_type = d_mesopotamian_urban_corridor_active
-		is_deposit_type = d_great_albertan_crater_active
 		is_deposit_type = d_abandoned_mining_tunnels
-		is_deposit_type = d_abandoned_mining_tunnels_active
 	}
 }
 
@@ -397,15 +362,6 @@ is_food_deposit_low = {
 		is_deposit_type = d_boggy_fens
 		is_deposit_type = d_nutritious_mudland
 		is_deposit_type = d_scandinavian_reclamation_sector
-		is_deposit_type = d_natural_farmland_active
-		is_deposit_type = d_lichen_fields_active
-		is_deposit_type = d_bountiful_plains_active
-		is_deposit_type = d_rugged_woods_active
-		is_deposit_type = d_green_hills_active
-		is_deposit_type = d_forgiving_tundra_active
-		is_deposit_type = d_boggy_fens_active
-		is_deposit_type = d_nutritious_mudland_active
-		is_deposit_type = d_scandinavian_reclamation_sector_active
 	}
 }
 
@@ -416,11 +372,6 @@ is_food_deposit_med = {
 		is_deposit_type = d_fertile_lands
 		is_deposit_type = d_great_river
 		is_deposit_type = d_abandoned_primitive_homesteads
-		is_deposit_type = d_fungal_caves_active
-		is_deposit_type = d_lush_jungle_active
-		is_deposit_type = d_fertile_lands_active
-		is_deposit_type = d_great_river_active
-		is_deposit_type = d_abandoned_primitive_homesteads_active
 	}
 }
 
@@ -438,18 +389,5 @@ is_food_deposit_high = {
 		is_deposit_type = d_underground_farm
 		is_deposit_type = d_pacific_algae_tracts
 		is_deposit_type = d_saharan_irrigation_project
-		is_deposit_type = d_black_soil_active
-		is_deposit_type = d_teeming_reef_active
-		is_deposit_type = d_marvelous_oasis_active
-		is_deposit_type = d_tropical_island_active
-		is_deposit_type = d_fungal_forest_active
-		is_deposit_type = d_junk_canals_active
-		is_deposit_type = d_hyperfertile_valley_active
-		is_deposit_type = d_harvester_fields_active
-		is_deposit_type = d_worm_farm_active
-		is_deposit_type = d_underground_farm_active
-		is_deposit_type = d_pacific_algae_tracts_active
-		is_deposit_type = d_saharan_irrigation_project_active
 	}
 }
-

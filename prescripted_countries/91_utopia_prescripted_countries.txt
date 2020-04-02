@@ -27,8 +27,9 @@ xanid = {
 		plural = "PRESCRIPTED_secondary_species_plural_xanid"
 		adjective = "PRESCRIPTED_secondary_species_adjective_xanid"
 		name_list = "REP2"
+		trait = "trait_reptile"
 		trait = "trait_syncretic_proles"
-		trait = "trait_strong"
+		trait = "trait_giant"
 		trait = "trait_industrious"
 		trait = "trait_slow_learners"
 		trait = "trait_fleeting"
@@ -47,7 +48,8 @@ xanid = {
 	government = "gov_constitutional_dictatorship"
 	ethic = "ethic_fanatic_authoritarian"
 	ethic = "ethic_xenophobe"
-	civics = { "civic_corvee_system" }
+	civics = { "civic_corvee_system" "civic_cutthroat_politics"	}
+	origin = "origin_syncretic_evolution"
 	
 	graphical_culture = "arthropoid_01"
 	city_graphical_culture = "arthropoid_01"
@@ -96,6 +98,7 @@ lokken = {
 		plural = "PRESCRIPTED_species_plural_lokken"
 		adjective = "PRESCRIPTED_species_adjective_lokken"
 		name_list = "REP2"
+		trait = "trait_reptile"
 		trait = "trait_natural_engineers"
 		trait = "trait_talented"
 		trait = "trait_quick_learners"
@@ -104,7 +107,8 @@ lokken = {
 
 	ethic = "ethic_egalitarian"
 	ethic = "ethic_fanatic_materialist"
-	civics = { "civic_technocracy" }
+	civics = { "civic_technocracy" "civic_meritocracy" }
+	origin = "origin_mechanists"
 	authority = "auth_democratic"
 	government = "gov_rational_consensus"
 	planet_name = "PRESCRIPTED_planet_name_lokken"
@@ -142,6 +146,74 @@ lokken = {
 		clothes = 3
 		ruler_title = "PRESCRIPTED_ruler_title_lokken"
 		ruler_title_female = "PRESCRIPTED_ruler_title_lokken"
+		leader_class = ruler
+	}
+}
+
+
+# Ix'Idar # is now a hive mind
+ixidar = {
+	name = "ixidar"
+	adjective = "PRESCRIPTED_adjective_ixidar"
+	spawn_enabled = yes # yes / no / always
+	
+	playable = has_utopia # scripted_triggers
+	
+	species = {
+		class = "ART"
+		portrait = "art12"
+		name = "PRESCRIPTED_species_name_ixidar"
+		plural = "PRESCRIPTED_species_plural_ixidar"
+		adjective = "PRESCRIPTED_species_adjective_ixidar"
+		name_list = "HIVE"
+		trait = "trait_arthropoid"
+		trait = "trait_hive_mind"
+		trait = "trait_rapid_breeders"
+		trait = "trait_strong"
+		trait = "trait_fleeting"
+	}
+	
+	ship_prefix = "PRESCRIPTED_ship_prefix_ixidar"
+	
+	planet_name = "PRESCRIPTED_planet_name_ixidar"
+	planet_class = "pc_arctic"
+	system_name = "PRESCRIPTED_system_name_ixidar"
+	
+	room = "personality_hive_mind_room"
+
+	ethic = ethic_gestalt_consciousness
+	authority = "auth_hive_mind"
+	government = gov_hive_mind
+	civics = { "civic_hive_natural_neural_network" "civic_hive_pooled_knowledge" }
+	origin = origin_default
+	
+	graphical_culture = "arthropoid_01"
+	city_graphical_culture = "arthropoid_01"
+	
+	empire_flag = {
+		icon= {
+			category = "ornate"
+			file = "flag_ornate_18.dds"
+		}
+		background= {
+			category = "backgrounds"
+			file = "00_solid.dds"
+		}
+		colors={
+			"dark_grey"
+			"black"
+			"null"
+			"null"
+		}
+	}
+	
+	ruler = {
+		name = "PRESCRIPTED_ruler_name_ixidar"
+		gender = male
+		portrait = "art12"
+		texture = -1
+		clothes = 2
+		ruler_title = "PRESCRIPTED_ruler_title_ixidar"
 		leader_class = ruler
 	}
 }

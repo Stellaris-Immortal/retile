@@ -59,7 +59,7 @@ create_fe_fringe_colony = {
 	add_building = building_fe_dome
 	
 	while = {
-		count = 4	# 48 precursors
+		count = 7	# 48 precursors
 		add_district = district_housing
 	}
 	while = {
@@ -86,7 +86,7 @@ create_fe_spiritualist_fringe_colony = {
 	add_building = building_fe_dome
 	
 	while = {
-		count = 4	# 48 precursors
+		count = 7	# 48 precursors
 		add_district = district_housing
 	}
 	while = {
@@ -463,8 +463,8 @@ fallen_empire_humiliate_effect = {
 		if = {
 			limit = { has_policy_flag = diplo_stance_supremacist }
 			set_policy = {
-				policy = xenodiplomacy
-				option = xenodiplomacy_gunboat
+				policy = diplomatic_stance
+				option = diplo_stance_belligerent
 				cooldown = yes
 			}
 		}
@@ -488,4 +488,127 @@ fallen_empire_humiliate_effect = {
 			}
 		}
 	}
+}
+
+generate_lost_colony_parent_bonus = {
+	remove_building = building_capital
+	add_building = building_system_capital
+	add_district = district_housing
+	add_district = district_housing
+	add_district = district_housing
+
+	while = {
+		limit = { num_pops < 12 }
+		create_pop = {
+			species = owner_main_species
+			ethos = random
+		}
+	}
+
+	owner = {
+		create_fleet = {
+			effect = {
+				set_owner = prev
+				create_ship = {
+					name = random
+					random_existing_design = science
+				}
+				set_fleet_stance = evasive
+				set_location = prev.capital_scope.star
+				owner = {
+					create_leader = {
+						class = scientist
+						sub_type = survey
+						name = random
+						species = owner_main_species
+					}
+				}
+				set_leader = last_created_leader
+			}
+		}
+	}
+}
+
+create_built_robot_species = {
+	create_species = {
+		name = NAME_Robot
+		plural = NAME_Robots
+		class = ROBOT
+		homeworld = capital_scope
+		namelist = this
+		portrait = default_robot
+		traits = {
+			trait = trait_mechanical
+		}
+
+		effect = {
+			set_species_flag = mechanical_species@prev
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_hum_robot = yes }
+				}
+				change_species_portrait = sd_hum_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_mam_robot = yes }
+				}
+				change_species_portrait = sd_mam_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_rep_robot = yes }
+				}
+				change_species_portrait = sd_rep_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_avi_robot = yes }
+				}
+				change_species_portrait = sd_avi_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_art_robot = yes }
+				}
+				change_species_portrait = sd_art_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_mol_robot = yes }
+				}
+				change_species_portrait = sd_mol_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_fun_robot = yes }
+				}
+				change_species_portrait = sd_fun_robot
+			}
+		}
+		effect = {
+			if = {
+				limit = {
+					prev = { use_robot_portrait_sd_pla_robot = yes }
+				}
+				change_species_portrait = sd_pla_robot
+			}
+		}
+	}
+
+	set_built_species = last_created_species
 }

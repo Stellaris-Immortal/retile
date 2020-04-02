@@ -51,59 +51,6 @@ consumer_goods_expenditure_colonies_expand = {
 	}
 }
 
-consumer_goods_expenditure_trade_excess = {
-	resource = consumer_goods 
-	type = expenditure
-	category = trade
-	
-	potential = {
-		is_country_type = default
-		ai_colonize_plans <= 0
-		has_resource = { type = consumer_goods amount > 2000 }
-		has_resource = { type = energy amount < 1000 }
-	}
-	
-	fraction = {
-		weight = 1
-	}
-}
-
-consumer_goods_expenditure_trade_emergency = {
-	resource = consumer_goods 
-	type = expenditure
-	category = trade
-	
-	potential = {
-		always = no
-		is_country_type = default
-		has_resource = { type = consumer_goods amount > 500 }
-		has_monthly_income = { resource = consumer_goods value > 1 }
-		has_resource = { type = energy amount < 1000 }
-		OR = {
-			AND = {
-				has_monthly_income = { resource = food value < 0 }
-				has_resource = { type = food amount < 200 }
-			}
-			AND = {
-				has_monthly_income = { resource = minerals value < 0 }
-				has_resource = { type = minerals amount < 200 }
-			}
-			AND = {
-				has_monthly_income = { resource = alloys value < 0 }
-				has_resource = { type = alloys amount < 200 }
-			}
-			AND = {
-				has_monthly_income = { resource = energy value < 0 }
-				has_resource = { type = energy amount < 200 }
-			}
-		}
-	}
-	
-	fraction = {
-		weight = 1
-	}
-}
-
 ############
 ## Upkeep ##
 ############
