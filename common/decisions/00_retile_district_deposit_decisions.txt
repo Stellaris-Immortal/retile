@@ -5,12 +5,13 @@
 @base_cost_expensive = 500
 @base_upkeep = 5
 @base_buildtime = 240
+@module_buildtime = 540
 
 ##################################################### Mining Module
 decision_retile_module_mine = {
 	owned_planets_only = yes
 
-	#enactment_time = 1080
+	enactment_time = @module_buildtime
 	resources = {
 		category = planets
 		cost = {
@@ -27,36 +28,110 @@ decision_retile_module_mine = {
 	}
 
 	allow = {
-		custom_tooltip = {
-			fail_text = retile_module_limit
-			OR = {
-				AND = { is_planet_class = pc_habitat
-					OR = {
-						check_variable = { which = module_count value < 3 }
-						AND = {
-							exists = owner
-							owner = { has_ascension_perk = ap_voidborn }
-							check_variable = { which = module_count value < 5 }
-						}
-					} 
+		hidden_trigger = { exists = owner }
+		if = {
+			limit = { hidden_trigger = { is_planet_class = pc_habitat } }
+			if = {
+				limit = { hidden_trigger = { AND = {
+					owner = { has_ascension_perk = ap_voidborn }
+					owner = { has_origin = origin_void_dwellers }
+				} } }
+				custom_tooltip = {
+					fail_text = retile_module_limit_5
+					check_variable = { which = module_count value < 5 }
 				}
-				AND = { is_planet_class = pc_ringworld_habitable
+			} else_if = {
+				limit = { hidden_trigger = { OR = {
+					owner = { has_ascension_perk = ap_voidborn }
+					owner = { has_origin = origin_void_dwellers }
+				} } }
+				custom_tooltip = {
+					fail_text = retile_module_limit_4
+					check_variable = { which = module_count value < 4 }
+				}
+			} else = {
+				custom_tooltip = {
+					fail_text = retile_module_limit_3
+					check_variable = { which = module_count value < 3 }
+				}
+			}
+		} else_if = {
+			limit = { hidden_trigger = { is_planet_class = pc_ringworld_habitable } }
+			if = {
+				limit = { hidden_trigger = {
+					has_modifier = galactic_wonder_ringworld
+				} }
+				custom_tooltip = {
+					fail_text = retile_module_limit_8
 					check_variable = { which = module_count value < 8 }
 				}
-				AND = {
-					OR = {
-						is_planet_class = pc_hive
-						is_planet_class = pc_machine
-					}
+			} else = {
+				custom_tooltip = {
+					fail_text = retile_module_limit_6
 					check_variable = { which = module_count value < 6 }
 				}
+			}
+		} else = {
+			custom_tooltip = {
+				fail_text = retile_module_limit_5
+				check_variable = { which = module_count value < 5 }
 			}
 		}
 	}
 	
 	effect = {
-		add_deposit = retile_module_mine
-		hidden_effect = { change_variable = { which = module_count value = 1 } }
+		if = {
+			limit = { hidden_trigger = { is_planet_class = pc_habitat } }
+			if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 5 }
+					AND = {
+						owner = { has_ascension_perk = ap_voidborn }
+						owner = { has_origin = origin_void_dwellers }
+					}
+				} }
+				add_deposit = retile_module_mine
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			} else_if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 4 }
+					OR = {
+						owner = { has_ascension_perk = ap_voidborn }
+						owner = { has_origin = origin_void_dwellers }
+					}
+				} }
+				add_deposit = retile_module_mine
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			} else_if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 3 }
+				} }
+				add_deposit = retile_module_mine
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			}
+		} else_if = {
+			limit = { hidden_trigger = { is_planet_class = pc_ringworld_habitable } }
+			if = {
+				limit = { hidden_trigger = {
+					has_modifier = galactic_wonder_ringworld
+					check_variable = { which = module_count value < 8 }
+				} }
+				add_deposit = retile_module_mine
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			} else_if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 6 }
+				} }
+				add_deposit = retile_module_mine
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			}
+		} else_if = {
+			limit = { hidden_trigger = {
+				check_variable = { which = module_count value < 6 }
+			} }
+			add_deposit = retile_module_mine
+			hidden_effect = { change_variable = { which = module_count value = 1 } }
+		}
 	}
 	
 	ai_weight = {
@@ -85,7 +160,7 @@ decision_retile_module_mine_remove = {
 decision_retile_module_farm = {
 	owned_planets_only = yes
 
-	#enactment_time = 1080
+	enactment_time = @module_buildtime
 	resources = {
 		category = planets
 		cost = {
@@ -102,37 +177,110 @@ decision_retile_module_farm = {
 	}
 
 	allow = {
-		custom_tooltip = {
-			fail_text = retile_module_limit
-			OR = {
-				AND = { is_planet_class = pc_habitat
-					OR = {
-						check_variable = { which = module_count value < 3 }
-						AND = {
-							exists = owner
-							owner = { has_ascension_perk = ap_voidborn }
-							check_variable = { which = module_count value < 5 }
-						}
-					} 
+		hidden_trigger = { exists = owner }
+		if = {
+			limit = { hidden_trigger = { is_planet_class = pc_habitat } }
+			if = {
+				limit = { hidden_trigger = { AND = {
+					owner = { has_ascension_perk = ap_voidborn }
+					owner = { has_origin = origin_void_dwellers }
+				} } }
+				custom_tooltip = {
+					fail_text = retile_module_limit_5
+					check_variable = { which = module_count value < 5 }
 				}
-				AND = { is_planet_class = pc_ringworld_habitable
+			} else_if = {
+				limit = { hidden_trigger = { OR = {
+					owner = { has_ascension_perk = ap_voidborn }
+					owner = { has_origin = origin_void_dwellers }
+				} } }
+				custom_tooltip = {
+					fail_text = retile_module_limit_4
+					check_variable = { which = module_count value < 4 }
+				}
+			} else = {
+				custom_tooltip = {
+					fail_text = retile_module_limit_3
+					check_variable = { which = module_count value < 3 }
+				}
+			}
+		} else_if = {
+			limit = { hidden_trigger = { is_planet_class = pc_ringworld_habitable } }
+			if = {
+				limit = { hidden_trigger = {
+					has_modifier = galactic_wonder_ringworld
+				} }
+				custom_tooltip = {
+					fail_text = retile_module_limit_8
 					check_variable = { which = module_count value < 8 }
 				}
-				AND = {
-					OR = {
-						is_planet_class = pc_hive
-						is_planet_class = pc_machine
-					}
+			} else = {
+				custom_tooltip = {
+					fail_text = retile_module_limit_6
 					check_variable = { which = module_count value < 6 }
 				}
+			}
+		} else = {
+			custom_tooltip = {
+				fail_text = retile_module_limit_5
+				check_variable = { which = module_count value < 5 }
 			}
 		}
 	}
 	
-	
 	effect = {
-		add_deposit = retile_module_farm
-		hidden_effect = { change_variable = { which = module_count value = 1 } }
+		if = {
+			limit = { hidden_trigger = { is_planet_class = pc_habitat } }
+			if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 5 }
+					AND = {
+						owner = { has_ascension_perk = ap_voidborn }
+						owner = { has_origin = origin_void_dwellers }
+					}
+				} }
+				add_deposit = retile_module_farm
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			} else_if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 4 }
+					OR = {
+						owner = { has_ascension_perk = ap_voidborn }
+						owner = { has_origin = origin_void_dwellers }
+					}
+				} }
+				add_deposit = retile_module_farm
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			} else_if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 3 }
+				} }
+				add_deposit = retile_module_farm
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			}
+		} else_if = {
+			limit = { hidden_trigger = { is_planet_class = pc_ringworld_habitable } }
+			if = {
+				limit = { hidden_trigger = {
+					has_modifier = galactic_wonder_ringworld
+					check_variable = { which = module_count value < 8 }
+				} }
+				add_deposit = retile_module_farm
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			} else_if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 6 }
+				} }
+				add_deposit = retile_module_farm
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			}
+		} else_if = {
+			limit = { hidden_trigger = {
+				check_variable = { which = module_count value < 6 }
+			} }
+			add_deposit = retile_module_farm
+			hidden_effect = { change_variable = { which = module_count value = 1 } }
+		}
 	}
 	
 	ai_weight = {
@@ -161,7 +309,7 @@ decision_retile_module_farm_remove = {
 decision_retile_module_generator = {
 	owned_planets_only = yes
 
-	#enactment_time = 1080
+	enactment_time = @module_buildtime
 	resources = {
 		category = planets
 		cost = {
@@ -178,36 +326,110 @@ decision_retile_module_generator = {
 	}
 
 	allow = {
-		custom_tooltip = {
-			fail_text = retile_module_limit
-			OR = {
-				AND = { is_planet_class = pc_habitat
-					OR = {
-						check_variable = { which = module_count value < 3 }
-						AND = {
-							exists = owner
-							owner = { has_ascension_perk = ap_voidborn }
-							check_variable = { which = module_count value < 5 }
-						}
-					} 
+		hidden_trigger = { exists = owner }
+		if = {
+			limit = { hidden_trigger = { is_planet_class = pc_habitat } }
+			if = {
+				limit = { hidden_trigger = { AND = {
+					owner = { has_ascension_perk = ap_voidborn }
+					owner = { has_origin = origin_void_dwellers }
+				} } }
+				custom_tooltip = {
+					fail_text = retile_module_limit_5
+					check_variable = { which = module_count value < 5 }
 				}
-				AND = { is_planet_class = pc_ringworld_habitable
+			} else_if = {
+				limit = { hidden_trigger = { OR = {
+					owner = { has_ascension_perk = ap_voidborn }
+					owner = { has_origin = origin_void_dwellers }
+				} } }
+				custom_tooltip = {
+					fail_text = retile_module_limit_4
+					check_variable = { which = module_count value < 4 }
+				}
+			} else = {
+				custom_tooltip = {
+					fail_text = retile_module_limit_3
+					check_variable = { which = module_count value < 3 }
+				}
+			}
+		} else_if = {
+			limit = { hidden_trigger = { is_planet_class = pc_ringworld_habitable } }
+			if = {
+				limit = { hidden_trigger = {
+					has_modifier = galactic_wonder_ringworld
+				} }
+				custom_tooltip = {
+					fail_text = retile_module_limit_8
 					check_variable = { which = module_count value < 8 }
 				}
-				AND = {
-					OR = {
-						is_planet_class = pc_hive
-						is_planet_class = pc_machine
-					}
+			} else = {
+				custom_tooltip = {
+					fail_text = retile_module_limit_6
 					check_variable = { which = module_count value < 6 }
 				}
 			}
+		} else = {
+			custom_tooltip = {
+				fail_text = retile_module_limit_5
+				check_variable = { which = module_count value < 5 }
+			}
 		}
 	}
-		
+	
 	effect = {
-		add_deposit = retile_module_generator
-		hidden_effect = { change_variable = { which = module_count value = 1 } }
+		if = {
+			limit = { hidden_trigger = { is_planet_class = pc_habitat } }
+			if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 5 }
+					AND = {
+						owner = { has_ascension_perk = ap_voidborn }
+						owner = { has_origin = origin_void_dwellers }
+					}
+				} }
+				add_deposit = retile_module_generator
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			} else_if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 4 }
+					OR = {
+						owner = { has_ascension_perk = ap_voidborn }
+						owner = { has_origin = origin_void_dwellers }
+					}
+				} }
+				add_deposit = retile_module_generator
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			} else_if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 3 }
+				} }
+				add_deposit = retile_module_generator
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			}
+		} else_if = {
+			limit = { hidden_trigger = { is_planet_class = pc_ringworld_habitable } }
+			if = {
+				limit = { hidden_trigger = {
+					has_modifier = galactic_wonder_ringworld
+					check_variable = { which = module_count value < 8 }
+				} }
+				add_deposit = retile_module_generator
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			} else_if = {
+				limit = { hidden_trigger = {
+					check_variable = { which = module_count value < 6 }
+				} }
+				add_deposit = retile_module_generator
+				hidden_effect = { change_variable = { which = module_count value = 1 } }
+			}
+		} else_if = {
+			limit = { hidden_trigger = {
+				check_variable = { which = module_count value < 6 }
+			} }
+			add_deposit = retile_module_generator
+			hidden_effect = { change_variable = { which = module_count value = 1 } }
+		}
 	}
 	
 	ai_weight = {
