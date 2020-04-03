@@ -22,7 +22,7 @@ piracy = {
 		policy_flags = { piracy_hostile }
 		
 		modifier = { }
-		on_enabled = { 
+		on_enabled = {
 			hidden_effect = {
 				if = {
 					limit = { has_country_flag = piracy_broken_event }
@@ -1009,21 +1009,57 @@ trade_policy = {
 	}
 
 	option = {
-		name = "trade_policy_default"
+		name = "trade_policy_energy"
 		
 		policy_flags = {
-			trade_conversion_default
+			trade_conversion_energy
+		}
+		
+		AI_weight = {
+			factor = 1
+		}
+	}
+
+	option = {
+		name = "trade_policy_minerals"
+		
+		policy_flags = {
+			trade_conversion_minerals
+		}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "trade_policy_food"
+		
+		policy_flags = {
+			trade_conversion_food
+		}
+		
+		AI_weight = {
+			factor = 0
+		}
+	}
+
+	option = {
+		name = "trade_policy_alloys"
+		
+		policy_flags = {
+			trade_conversion_alloys
 		}
 		
 		on_enabled = {
 			hidden_effect = {
-				set_timed_country_flag = { flag = activate_trade_conversion_default days = 30 }
+				set_timed_country_flag = { flag = activate_trade_conversion_alloys days = 30 }
 				country_event = { id = retile_mandate.4 }
 			}
 		}
 		
 		AI_weight = {
-			factor = 2
+			factor = 0
 		}
 	}
 
@@ -1041,11 +1077,12 @@ trade_policy = {
 			}
 		}
 		
-		modifier = {}
-		
 		AI_weight = {
-			factor = 0
-			
+			factor = 10 # best to start the game with this...
+		#	modifier = {
+		#		factor = 10
+		#		is_ai = yes		# AI just get their own conversion now... They can choose whatever policy, it doesn't matter.
+		#	}
         }
 	}
 	
@@ -1060,14 +1097,10 @@ trade_policy = {
 			has_technology = tech_space_trading
 		}
 		
-		modifier = {}
-		
 		AI_weight = {
 			factor = 0
 		}
-	}	
-
-	
+	}
 	
 	option = {
 		name = "trade_policy_research"
@@ -1080,35 +1113,12 @@ trade_policy = {
 			trade_conversion_research
 		}		
 		
-		modifier = {}
-		
 		AI_weight = {
-			factor = 1
-			modifier = {
-				factor = 10
-				any_neighbor_country = {
-					is_country_type = default
-					prev = {
-						relative_power = {
-							who = prev
-							category = technology 
-							value > inferior
-						}
-						OR = {
-							NOT = { relative_power = {
-								who = prev 
-								category = all
-								value = overwhelming
-							} }
-							NOT = { relative_power = {
-								who = prev 
-								category = all
-								value < equivalent
-							} }
-						}
-					}
-				}
-			}
+			factor = 0
+		#	modifier = {
+		#		factor = 10
+		#		retile_tech_weak = yes
+		#	}
 		}
 	}
 
@@ -1117,7 +1127,6 @@ trade_policy = {
 		
 		potential = {
 			has_technology = tech_interstellar_economics
-			NOT = { has_tradition = tr_prosperity_finish }
 		}
 		
 		policy_flags = {
@@ -1134,58 +1143,18 @@ trade_policy = {
 	}
 	
 	option = {
-		name = "trade_policy_influence_advanced"
-		
+		name = "trade_policy_trade_league"
 		potential = {
-			has_technology = tech_interstellar_economics
-			has_tradition = tr_prosperity_finish
+			has_federation = yes
+			federation = { has_federation_perk = trade_federation_passive }
 		}
-		
-		policy_flags = {
-			trade_conversion_influence
-		}		
-		
-		modifier = {
-			country_base_influence_produces_add = 1.25
-		}
-		
-		AI_weight = {
-			factor = 0
-		}
-	}
 
-	option = {
-		name = "trade_policy_ai"
-		
-		potential = {
-			is_ai = yes
-		}
-		
 		policy_flags = {
-			trade_conversion_ai
+			trade_conversion_trade_league
 		}
-		
+
 		AI_weight = {
-			factor = 100
-		}
-	}
-	
-	option = {
-		name = "trade_policy_ai_advanced"
-		
-		potential = {
-			AND = {
-				is_ai = yes
-				has_technology = tech_space_trading
-			}
-		}
-		
-		policy_flags = {
-			trade_conversion_ai_advanced
-		}
-		
-		AI_weight = {
-			factor = 200
+			factor = 1000
 		}
 	}
 }

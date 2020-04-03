@@ -30,11 +30,22 @@ building_colony_shelter = {
 		category = planet_buildings
 		upkeep = {
 			energy = 1
-		}		
+		}
+		upkeep = {
+			trigger = { is_planet_class = pc_habitat }
+			alloys = 2.5
+		}
+		upkeep = {
+			trigger = {
+				is_planet_class = pc_habitat
+				owner = { NOT = { has_origin = origin_void_dwellers } }
+			}
+			consumer_goods = 2.5
+		}
 	}
 
 	planet_modifier = {
-		planet_housing_add = 6
+		planet_housing_add = 3
 		job_colonist_add = 1
 	}
 	
@@ -134,10 +145,21 @@ building_capital = {
 		upkeep = {
 			energy = 2
 		}		
+		upkeep = {
+			trigger = { is_planet_class = pc_habitat }
+			alloys = 5
+		}
+		upkeep = {
+			trigger = {
+				is_planet_class = pc_habitat
+				owner = { NOT = { has_origin = origin_void_dwellers } }
+			}
+			consumer_goods = 5
+		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 6
+		planet_housing_add = 3
 		job_administrator_add = 1
 		planet_max_buildings_add = 1
 		planet_max_branch_office_buildings_add = 1
@@ -300,10 +322,21 @@ building_major_capital = {
 		upkeep = {
 			energy = 3
 		}		
+		upkeep = {
+			trigger = { is_planet_class = pc_habitat }
+			alloys = 7.5
+		}
+		upkeep = {
+			trigger = {
+				is_planet_class = pc_habitat
+				owner = { NOT = { has_origin = origin_void_dwellers } }
+			}
+			consumer_goods = 7.5
+		}
 	}
 
 	planet_modifier = {
-		planet_housing_add = 7
+		planet_housing_add = 4
 		job_administrator_add = 2
 		planet_max_buildings_add = 2
 		planet_max_branch_office_buildings_add = 2
@@ -466,10 +499,21 @@ building_system_capital = {
 		upkeep = {
 			energy = 4
 		}
+		upkeep = {
+			trigger = { is_planet_class = pc_habitat }
+			alloys = 10
+		}
+		upkeep = {
+			trigger = {
+				is_planet_class = pc_habitat
+				owner = { NOT = { has_origin = origin_void_dwellers } }
+			}
+			consumer_goods = 10
+		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 8
+		planet_housing_add = 5
 		job_administrator_add = 3
 		planet_max_buildings_add = 3
 		planet_max_branch_office_buildings_add = 3
@@ -629,10 +673,21 @@ building_galactic_capital = {
 		upkeep = {
 			energy = 5
 		}
+		upkeep = {
+			trigger = { is_planet_class = pc_habitat }
+			alloys = 12.5
+		}
+		upkeep = {
+			trigger = {
+				is_planet_class = pc_habitat
+				owner = { NOT = { has_origin = origin_void_dwellers } }
+			}
+			consumer_goods = 12.5
+		}
 	}
 	
 	planet_modifier = {
-		planet_housing_add = 9
+		planet_housing_add = 6
 		job_administrator_add = 4
 		planet_max_buildings_add = 3
 		planet_max_branch_office_buildings_add = 3

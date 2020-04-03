@@ -22,7 +22,11 @@ clerk = {
 		category = planet_clerks
 		produces = {
 			trigger = { owner = { has_authority = auth_corporate } }
-			unity = 3
+			unity = 1
+		}
+		produces = {
+			trigger = { owner = { has_tradition = tr_prosperity_public_works } }
+			unity = 1
 		}
 		upkeep = {
 			energy = @job_energy_normal
@@ -62,6 +66,50 @@ clerk = {
 		modifier = {
 			trade_value_add = 30
 			planet_amenities_add = 225
+		}
+	}
+	
+	#########################################	Prosperity finisher bonus
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_tradition = tr_prosperity_finish }
+		}
+		trade_value_add = 2.5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_tradition = tr_prosperity_finish }
+			planet = { OR = {
+				has_building = building_trade_1
+				has_building = building_bourse_1
+			} }
+		}
+		modifier = {
+			trade_value_add = 2.5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_tradition = tr_prosperity_finish }
+			planet = { OR = {
+				has_building = building_trade_2
+				has_building = building_bourse_2
+			} }
+		}
+		modifier = {
+			trade_value_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_tradition = tr_prosperity_finish }
+			planet = { OR = {
+				has_building = building_trade_3
+				has_building = building_bourse_3
+			} }
+		}
+		modifier = {
+			trade_value_add = 7.5
 		}
 	}
 

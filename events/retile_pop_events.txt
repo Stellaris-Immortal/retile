@@ -180,7 +180,7 @@ pop_event = {
 				modifier = { add = 20 habitability = { who = root value >= 1.00 } }
 				modifier = {
 					# Prioritize moving to a planet where we're needed
-					mult = 2
+					mult = 3
 					root = { has_job = laborer }
 					OR = {
 						AND = {
@@ -359,6 +359,10 @@ pop_event = {
 						add = 150
 						is_plantoid = yes
 					}
+					modifier = {	# pops with non-laborer employment should move less frequently...
+						factor = 2
+						NOT = { has_job = laborer }
+					}
 					modifier = {	# high habitability - move less often
 						factor = 2
 						is_plantoid = no
@@ -438,7 +442,7 @@ pop_event = {
 					modifier = {
 						factor = 2
 						has_trait = trait_sedentary
-					}	
+					}
 				}
 				10 = { # performance optimization, and numbers tweak: put internal/foreign
 					random_list = { # checks in here so they only happen if the pop decides to migrate
@@ -680,7 +684,33 @@ country_event = {
 				modifier = { add = 18 		habitability = { who = from value >= 0.90 } }
 				modifier = { add = 19 		habitability = { who = from value >= 0.95 } }
 				modifier = { add = 20 		habitability = { who = from value >= 1.00 } }
-				modifier = { mult = 2 		free_jobs > 0 }
+				modifier = {
+					# Prioritize moving to a planet where we're needed
+					mult = 3
+					from = { has_job = laborer }
+					OR = {
+						AND = {
+							has_planet_flag = planet_needs_robot_specialists
+							from = { robot_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_combat_specialists
+							from = { combat_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_droid_specialists
+							from = { droid_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_synth_specialists
+							from = { synth_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_rulers
+							from = { ruler_job_check_trigger = yes }
+						}
+					}
+				}
 				modifier = { mult = 2 		free_housing > 0 }
 				modifier = { mult = 1.5		planet_stability > 50 }
 				modifier = { mult = 1.5		planet_crime < 1 }
