@@ -512,13 +512,7 @@ citizenship_slavery = {
 		}
 		
 		# Purifiers don't need/want slaves # edit: they might use caste system...
-		OR = {
-			from = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
-			AND = {
-				is_same_species = from
-				from = { has_civic = civic_systemic_slavery }
-			}
-		}
+		from = { NOT = { has_valid_civic = civic_fanatic_purifiers } }
 		# Can't enslave main species w/o systemic_slavery civic
 		OR = {
 			NOT = { is_same_species = from }
