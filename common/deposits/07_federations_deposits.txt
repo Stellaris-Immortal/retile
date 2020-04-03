@@ -256,7 +256,32 @@ d_tree_of_life_home = {
 	resources = {
 		category = planet_deposits
 		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+					is_plantoid_empire = no
+				}
+			}
 			food = 4
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = 4
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_plantoid_empire = yes
+				}
+			}
+			energy = 4
 		}
 	}
 
@@ -314,7 +339,32 @@ d_tree_of_life_colony = {
 	resources = {
 		category = planet_deposits
 		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+					is_plantoid_empire = no
+				}
+			}
 			food = 2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = 2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_plantoid_empire = yes
+				}
+			}
+			energy = 2
 		}
 	}
 

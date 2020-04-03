@@ -1240,6 +1240,21 @@ empire_name_parts_list = {
 	}
 }
 
+# Merchant Republic
+empire_name_parts_list = {
+	key = "merchant_republic"
+	parts = {
+		"Mercantile Republic" = 1
+		"Mercantile League" = 1
+		"Trade Federation" = 1
+		"Republic" = 1
+		"League" = 1
+		"Union" = 1
+		"Federation" = 1
+		"Confederation" = 1
+	}
+}
+
 # Megachurch
 empire_name_parts_list = {
 	key = "oligarchic_megachurch"
@@ -4834,6 +4849,70 @@ empire_name_format = {
 	noun = "[This.Capital.GetName]"
 	prefix_format = "[This.Capital.GetName] <imperial_celestial>"
 	# Human People's Republic
+}
+
+# Merchant Republic 1
+empire_name_format = {
+	random_weight = {
+		factor = 0
+		modifier = {
+			add = 5
+			OR = {
+				has_government = "gov_merchant_republic"
+			}
+			is_pirate = no
+			is_primitive = no
+			NOT = { is_country_type = fallen_empire }
+			NOT = { is_country_type = awakened_fallen_empire }
+		}
+	}
+	format = "format.merchant_republic.1"
+	noun = "[This.GetSpeciesName]"
+	prefix_format = "[This.GetSpeciesName] <merchant_republic>"
+	# Human Republic
+	
+}
+
+# Merchant Republic 2
+empire_name_format = {
+	random_weight = {
+		factor = 0
+		modifier = {
+			add = 5
+			OR = {
+				has_government = "gov_merchant_republic"
+			}
+			is_pirate = no
+			is_primitive = no
+			NOT = { is_country_type = fallen_empire }
+			NOT = { is_country_type = awakened_fallen_empire }
+		}
+	}
+	format = "format.merchant_republic.2"
+	noun = "[This.Capital.GetName]"
+	prefix_format = "[This.Capital.GetName] <merchant_republic>"
+	# Republic of Earth
+}
+
+# Merchant Republic 3
+empire_name_format = {
+	random_weight = {
+		factor = 0
+		modifier = {
+			add = 5
+			OR = {
+				has_government = "gov_merchant_republic"
+			}
+			is_pirate = no
+			is_primitive = no
+			NOT = { is_country_type = fallen_empire }
+			NOT = { is_country_type = awakened_fallen_empire }
+		}
+	}
+	format = "format.merchant_republic.3"
+	noun = "[This.Capital.System.GetName]"
+	prefix_format = "[This.Capital.System.GetName] <merchant_republic>"
+	# Republic of Sol
 }
 
 # Bandit Kingdom
