@@ -963,6 +963,20 @@ ap_consecrated_worlds = {
 	
 	ai_weight = {
 		factor = 10
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_ethic = ethic_fanatic_materialist
+				has_ethic = ethic_materialist
+			}
+		}
 	}
 }
 
