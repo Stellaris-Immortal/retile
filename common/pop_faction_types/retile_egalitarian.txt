@@ -72,29 +72,6 @@ progressive = {
 	
 	attraction = {
 		base = 100
-		
-		modifier = {
-			factor = 1.25
-			OR = { 
-				has_job = farmer
-				has_job = representative
-			}
-		}
-		
-		modifier = {
-			factor = 0.75
-			is_pop_category = ruler
-		}
-		
-		modifier = {
-			factor = 1.25
-			is_pop_category = worker
-		}
-		
-		modifier = {
-			factor = 1.50
-			has_citizenship_rights = no
-		}
 	}
 	
 	leader = {
@@ -111,6 +88,38 @@ progressive = {
 			is_event_leader = yes
 		}
 	}
+
+	# Wants Confederation
+	demand = { 
+		title = "EGALITARIAN_CONFEDERATION"
+		unfulfilled_title = "EGALITARIAN_NO_CONFEDERATION"
+		desc = "EGALITARIAN_CONFEDERATION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = {exists = owner }
+
+		trigger = {
+			owner = { has_tradition = tr_expansion_adopt }
+		}
+	}
+	
+	# Wants Community Policing
+	demand = {
+		title = "EGALITARIAN_COMMUNITY_POLICING"
+		unfulfilled_title = "EGALITARIAN_NO_COMMUNITY_POLICING"
+		desc = "EGALITARIAN_COMMUNITY_POLICING_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = criminal_common_law }
+		}
+	}
 	
 	# Wants Democracy
 	demand = {
@@ -118,8 +127,8 @@ progressive = {
 		unfulfilled_title = "EGALITARIAN_NO_DEMOCRACY"
 		desc = "EGALITARIAN_DEMOCRACY_DESC"
 
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
@@ -127,15 +136,31 @@ progressive = {
 			owner = { has_authority = auth_democratic }
 		}
 	}
-	
+
+	# Wants Worker Control
+	demand = {
+		title = "EGALITARIAN_FULL_WORKER_RIGHTS"
+		unfulfilled_title = "EGALITARIAN_NO_FULL_WORKER_RIGHTS"
+		desc = "EGALITARIAN_FULL_WORKER_RIGHTS_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = slavery_not_allowed }
+		}
+	}
+
 	# Wants Welfare
 	demand = {
 		title = "EGALITARIAN_WELFARE"
 		unfulfilled_title = "EGALITARIAN_NO_WELFARE"
 		desc = "EGALITARIAN_WELFARE_DESC"
 
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
 
 		potential = {
 			exists = owner
@@ -153,36 +178,33 @@ progressive = {
 			}
 		}
 	}
-	
-	# Wants Worker Control
+
+	# Wants natural selection
 	demand = {
-		title = "EGALITARIAN_SLAVERY_BAN"
-		unfulfilled_title = "EGALITARIAN_NO_SLAVERY_BAN"
-		desc = "EGALITARIAN_SLAVERY_BAN_DESC"
-
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = slavery_not_allowed }
-		}
-	}
-	
-	# Wants Common Law
-	demand = {
-		title = "EGALITARIAN_COMMON_LAW"
-		unfulfilled_title = "EGALITARIAN_NO_COMMON_LAW"
-		desc = "EGALITARIAN_COMMON_LAW_DESC"
+		title = "EGALITARIAN_NATURAL_SELECTION"
+		unfulfilled_title = "EGALITARIAN_NO_NATURAL_SELECTION"
+		desc = "EGALITARIAN_NATURAL_SELECTION_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
+		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = {
+			exists = owner
+			owner = {
+				OR = {
+					has_technology = tech_selected_lineages
+					has_technology = tech_capacity_boosters
+				}
+			}
+		}
 
 		trigger = {
-			owner = { has_policy_flag = criminal_common_law }
+			owner = {
+				NOR = {
+					has_policy_flag = leader_enhancement_selected_lineages
+					has_policy_flag = leader_enhancement_capacity_boosters
+				}
+			}
 		}
 	}
 	
@@ -193,7 +215,7 @@ progressive = {
 		desc = "EGALITARIAN_UNIVERSAL_HEALTHCARE_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
@@ -209,7 +231,7 @@ progressive = {
 		desc = "EGALITARIAN_EDUCATION_FOR_ALL_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
@@ -217,144 +239,97 @@ progressive = {
 			owner = { has_policy_flag = education_for_all }
 		}
 	}
-	
-	# Wants No Appropriation
-	demand = {
-		title = "EGALITARIAN_APPROPRIATION_NOT_ALLOWED"
-		unfulfilled_title = "EGALITARIAN_NO_APPROPRIATION_NOT_ALLOWED"
-		desc = "EGALITARIAN_APPROPRIATION_NOT_ALLOWED_DESC"
+
+	# Dislikes Hegemony
+	demand = { 
+		title = "EGALITARIAN_NO_HEGEMONY"
+		unfulfilled_title = "EGALITARIAN_HEGEMONY"
+		desc = "EGALITARIAN_NO_HEGEMONY_DESC"
+
+		fulfilled_effect = 0
+		unfulfilled_effect = -10
+
+		potential = { 
+			owner = { exists = owner }
+		}
+
+		trigger = {
+			federation = { NOT = { has_federation_type = hegemony_federation } }
+			owner = { 
+				NOR = { 
+					is_overlord = yes
+					is_subject = yes					
+				}
+			}
+		}
+	}
+
+	# Wants GC Worker Laws
+	demand = { 
+		title = "SPIRITUALIST_GC_GG"
+		unfulfilled_title = "SPIRITUALIST_GC_NO_GG"
+		desc = "SPIRITUALIST_GC_GG_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = { 
-			exists = owner
-			owner = { has_encountered_other_species = yes }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = appropriation_not_allowed }
-		}
-	}
-
-	# Hates Empires
-	demand = {
-		title = "EGALITARIAN_IMPERIAL"
-		unfulfilled_title = "EGALITARIAN_NO_IMPERIAL"
-		desc = "EGALITARIAN_IMPERIAL_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_authority = auth_imperial } }
-		}
-	}
-	
-	# Hates Oppression
-	demand = {
-		title = "EGALITARIAN_OVERLORD"
-		unfulfilled_title = "EGALITARIAN_NO_OVERLORD"
-		desc = "EGALITARIAN_OVERLORD_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = {
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			owner = { NOT = { is_overlord = yes } }
-		}
-	}
-	
-	# Hates Appropriation
-	demand = { 
-		title = "EGALITARIAN_APPROPRIATION_ALLOWED"
-		unfulfilled_title = "EGALITARIAN_NO_APPROPRIATION_ALLOWED"
-		desc = "EGALITARIAN_APPROPRIATION_ALLOWED_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = {
-			exists = owner
-			owner = { has_encountered_other_species = yes }
-		}
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = appropriation_allowed } }
-		}
-	}
-
-	# Hates Private Police Policy
-	demand = { 
-		title = "EGALITARIAN_PRIVATE_POLICE"
-		unfulfilled_title = "EGALITARIAN_NO_PRIVATE_POLICE"
-		desc = "EGALITARIAN_PRIVATE_POLICE_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = criminal_private_police } }
-		}
-	}
-	
-	# Wants No AI Servants
-	demand = {
-		title = "EGALITARIAN_SERVITUDE"
-		unfulfilled_title = "EGALITARIAN_NO_SERVITUDE"
-		desc = "EGALITARIAN_SERVITUDE_DESC"
-
-		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { 
-			exists = owner 
-			owner = { can_set_ai_policy = yes }
+			exists = owner
+			owner = { is_galactic_community_member = yes }
 		}
 
 		trigger = {
-			owner = { NOT = { has_policy_flag = ai_servitude } }
-		}
-	}
-	
-	# Hates Private Education Policy
-	demand = { 
-		title = "EGALITARIAN_PRIVATE_EDUCATION"
-		unfulfilled_title = "EGALITARIAN_NO_PRIVATE_EDUCATION"
-		desc = "EGALITARIAN_PRIVATE_EDUCATION_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = education_for_profit } }
+			OR = {
+				is_active_resolution = resolution_greatergood_greater_than_ourselves
+				is_active_resolution = resolution_greatergood_balance_in_the_middle
+				is_active_resolution = resolution_greatergood_universal_prosperity_mandate
+			}
 		}
 	}
 	
-	# Hates Slavery
+	# Doesn't Want GC Commerce Laws
 	demand = { 
-		title = "EGALITARIAN_SLAVERY"
-		unfulfilled_title = "EGALITARIAN_NO_SLAVERY"
-		desc = "EGALITARIAN_SLAVERY_DESC"
+		title = "EGALITARIAN_GC_NO_COMMERCE"
+		unfulfilled_title = "EGALITARIAN_GC_COMMERCE"
+		desc = "EGALITARIAN_GC_NO_COMMERCE_DESC"
 
-		fulfilled_effect = 0
+		fulfilled_effect = 10
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = { is_galactic_community_member = yes }
+		}
 
 		trigger = {
-			owner = { NOT = { has_policy_flag = slavery_allowed } }
+			NOR = {
+				is_active_resolution = resolution_commerce_underdeveloped_system_utilization
+				is_active_resolution = resolution_commerce_holistic_asset_coordination
+				is_active_resolution = resolution_commerce_profit_maximization_engines
+			}
+		}
+	}
+	
+	# Doesn't Want GC Industry Laws
+	demand = { 
+		title = "EGALITARIAN_GC_NO_INDUSTRY"
+		unfulfilled_title = "EGALITARIAN_GC_INDUSTRY"
+		desc = "EGALITARIAN_GC_INDUSTRY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { is_galactic_community_member = yes }
+		}
+
+		trigger = {
+			NOR = {
+				is_active_resolution = resolution_industry_building_a_better_tomorrow 
+				is_active_resolution = resolution_industry_environmental_ordinance_waivers
+				is_active_resolution = resolution_industry_project_cornucopia
+			}
 		}
 	}
 	
@@ -364,7 +339,7 @@ progressive = {
 		unfulfilled_title = "FACTION_OUTRAGED_GC"
 		desc = "FACTION_OUTRAGED_GC_DESC"
 
-		fulfilled_effect = -20
+		fulfilled_effect = -10
 		unfulfilled_effect = -0.001
 
 		potential = {

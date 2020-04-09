@@ -1,0 +1,331 @@
+@cooldown = 3600
+
+succession_power_economy = {
+	potential = {
+		OR = {
+			has_federation_law = succession_type_strongest
+			has_federation_law = succession_type_strongest_hegemony
+		}
+	}
+	allow = { 
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = succession_power_economy }
+					has_modifier = federation_law_category_succession_power_cooldown
+					has_any_federation_law_in_category = law_category_succession_power
+				}
+			}
+		}
+	}
+	on_enact = {
+		set_federation_succession_type = strongest
+		if = {
+			limit = { has_federation_flag = enable_federation_cooldowns }
+			add_modifier = {
+				modifier = federation_law_category_succession_power_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -5
+	}
+
+	ai_weight = {
+		base = 26
+		
+		#Behaviour-specific
+		modifier = {
+			add = 25
+			federation = {
+				NOT = {
+					any_member = {
+						relative_power = {
+							who = from
+							category = economy
+							value > equivalent
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			add = 50
+			has_ai_personality = ruthless_capitalists
+		}
+		modifier = {
+			add = 25
+			has_valid_civic = civic_merchant_guilds
+		}
+		modifier = {
+			add = 25
+			is_materialist = yes
+		}
+		modifier = {
+			add = 100
+			is_federation_leader = yes
+			federation = { has_federation_law = succession_power_economy }
+		}
+		modifier = {
+			add = -100
+			is_federation_leader = yes
+			federation = {
+				any_member = {
+					relative_power = {
+						who = from
+						category = economy
+						value > equivalent
+					}
+				}
+			}
+		}
+	}
+}
+
+succession_power_diplomatic_weight = {
+	potential = {
+		OR = {
+			has_federation_law = succession_type_strongest
+			has_federation_law = succession_type_strongest_hegemony
+		}
+	}
+	allow = { 
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = succession_power_diplomatic_weight }
+					has_modifier = federation_law_category_succession_power_cooldown
+					has_any_federation_law_in_category = law_category_succession_power
+				}
+			}
+		}
+	}
+	on_enact = {
+		set_federation_succession_type = diplomatic_weight
+		if = {
+			limit = { has_federation_flag = enable_federation_cooldowns }
+			add_modifier = {
+				modifier = federation_law_category_succession_power_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -5
+	}
+
+	ai_weight = {
+		base = 26
+		
+		#Behaviour-specific
+		modifier = {
+			add = 25
+			federation = { 
+				has_federation_type = trade_federation
+				NOT = { federation = { has_federation_law = succession_power_economy } }
+			}
+		}
+		modifier = {
+			add = 25
+			federation = {
+				NOT = {
+					any_member = {
+						relative_power = {
+							who = from
+							category = all
+							value > equivalent
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			add = 50
+			has_ai_personality = federation_builders
+		}
+		modifier = {
+			add = 50
+			federation = { 
+				OR = {
+					has_federation_type = default_federation
+					has_federation_type = hegemony_federation				
+				}
+			}
+		}
+		modifier = {
+			add = 100
+			is_federation_leader = yes
+			federation = { has_federation_law = succession_power_diplomatic_weight }
+		}
+		modifier = {
+			add = -100
+			is_federation_leader = yes
+			federation = {
+				any_member = {
+					relative_power = {
+						who = from
+						category = all
+						value > equivalent
+					}
+				}
+			}
+		}
+	}
+}
+
+succession_power_tech = {
+	potential = {
+		OR = {
+			has_federation_law = succession_type_strongest
+			has_federation_law = succession_type_strongest_hegemony
+		}
+		host_has_dlc = Federations
+	}
+	allow = { 
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = succession_power_tech }
+					has_modifier = federation_law_category_succession_power_cooldown
+					has_any_federation_law_in_category = law_category_succession_power
+				}
+			}
+		}
+	}
+	on_enact = {
+		set_federation_succession_type = tech
+		if = {
+			limit = { has_federation_flag = enable_federation_cooldowns }
+			add_modifier = {
+				modifier = federation_law_category_succession_power_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -5
+	}
+
+	ai_weight = {
+		base = 26
+		
+		#Behaviour-specific
+		modifier = {
+			add = 25
+			has_ai_personality = erudite_explorers
+		}
+		modifier = {
+			add = 25
+			federation = {
+				NOT = {
+					any_member = {
+						relative_power = {
+							who = from
+							category = technology
+							value > equivalent
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			add = 50
+			federation = { has_federation_type = research_federation }
+		}
+		modifier = {
+			add = 100
+			is_federation_leader = yes
+			federation = { has_federation_law = succession_power_tech }
+		}
+		modifier = {
+			add = -100
+			is_federation_leader = yes
+			federation = {
+				any_member = {
+					relative_power = {
+						who = from
+						category = technology
+						value > equivalent
+					}
+				}
+			}
+		}
+	}
+}
+
+succession_power_fleet = {
+	potential = {
+		OR = {
+			has_federation_law = succession_type_strongest
+			has_federation_law = succession_type_strongest_hegemony
+		}
+		host_has_dlc = Federations
+	}
+	allow = { 
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = succession_power_fleet }
+					has_modifier = federation_law_category_succession_power_cooldown
+					has_any_federation_law_in_category = law_category_succession_power
+				}
+			}
+		}
+	}
+	on_enact = {
+		set_federation_succession_type = fleet
+		if = {
+			limit = { has_federation_flag = enable_federation_cooldowns }
+			add_modifier = {
+				modifier = federation_law_category_succession_power_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -5
+	}
+
+	ai_weight = {
+		base = 26
+		
+		#Behaviour-specific
+		modifier = {
+			add = 25
+			federation = {
+				NOT = {
+					any_member = {
+						relative_power = {
+							who = from
+							category = fleet
+							value > equivalent
+						}
+					}
+				}
+			}
+		}
+		modifier = {
+			add = 50
+			has_ai_personality = ruthless_capitalists
+		}
+		modifier = {
+			add = 100
+			is_militarist = yes
+		}
+		modifier = {
+			add = 50
+			federation = { has_federation_type = military_federation }
+		}
+		modifier = {
+			add = 100
+			is_federation_leader = yes
+			federation = { has_federation_law = succession_power_fleet }
+		}
+		modifier = {
+			add = -100
+			is_federation_leader = yes
+			federation = {
+				any_member = {
+					relative_power = {
+						who = from
+						category = fleet
+						value > equivalent
+					}
+				}
+			}
+		}
+	}
+}
