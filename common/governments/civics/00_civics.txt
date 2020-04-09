@@ -91,8 +91,6 @@ civic_beacon_of_liberty = {
 				value = ethic_egalitarian
 				value = ethic_fanatic_egalitarian
 			}
-		}
-		ethics = {
 			NOR = {
 				text = civic_tooltip_no_xenophobe
 				value = ethic_xenophobe
@@ -271,6 +269,13 @@ civic_environmentalist = {
 		civics = {
 			NOT = { value = civic_functional_architecture }
 		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
 	}
 	random_weight = { base = 5 }
 	modifier = {
@@ -288,6 +293,13 @@ civic_functional_architecture = {
 			NOT = { 
 				value = civic_environmentalist
 				value = civic_agrarian_idyll
+			}
+		}
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
 			}
 		}
 	}
@@ -329,6 +341,7 @@ civic_systemic_slavery = {
 	possible = {
 		ethics = {
 			OR = {
+				text = civic_tooltip_authoritarian
 				value = ethic_authoritarian
 				value = ethic_fanatic_authoritarian
 			}
@@ -504,6 +517,13 @@ civic_agrarian_idyll = {
 		civics = {
 			NOT = { value = civic_functional_architecture }
 		}
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
 	}
 	modifier = { 
 		planet_laborers_unity_produces_add = 1
@@ -515,6 +535,15 @@ civic_mining_guilds = {
 	#description = "civic_tooltip_mining_guilds_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		ethics = {
+			NOR = {
+				text = civic_tooltip_not_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
 	}
 	modifier = {
 		planet_laborers_alloys_produces_add = 1
@@ -886,10 +915,12 @@ civic_merchant_guilds = {
 		}
 		ethics = {
 			OR = {
+				text = civic_tooltip_materialist
 				value = ethic_materialist
 				value = ethic_fanatic_materialist
 			}
 			OR = {
+				text = civic_tooltip_authoritarian
 				value = ethic_authoritarian
 				value = ethic_fanatic_authoritarian
 			}
@@ -924,6 +955,11 @@ civic_shared_burden = {
 				value = ethic_egalitarian
 				value = ethic_fanatic_egalitarian
 			}
+			NOR = {
+				text = civic_tooltip_not_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
 		}
 		civics = {
 			NOR = {
@@ -954,6 +990,13 @@ civic_diplomatic_corps = {
 			NOR = {
 				value = civic_fanatic_purifiers
 				value = civic_inwards_perfection
+			}
+		}
+		ethics = {
+			NOR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
 			}
 		}
 	}

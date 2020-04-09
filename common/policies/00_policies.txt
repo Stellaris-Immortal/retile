@@ -437,6 +437,10 @@ criminal = {
 		
 		policy_flags = { criminal_common_law }
 		
+		potential = {
+			NOT = { has_authority = auth_corporate }
+		}
+		
 		on_enabled = {
 			hidden_effect = {
 				set_timed_country_flag = { flag = activate_common_law days = 30 }
