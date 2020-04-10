@@ -277,7 +277,7 @@ resolution_ecology_repeal_3 = {
 			set_timed_country_flag = { flag = galactic_community_resolution_failed_ecology_repeal days = @resolution_flag_timer }
 		}
 	}
-
+	
 	potential = {
 		is_active_resolution = "resolution_ecology_integrated_gardens"
 	}
@@ -658,6 +658,10 @@ resolution_ecology_integrated_gardens = {
 		is_active_resolution = "resolution_ecology_natural_sanctuaries"
 	}
 
+	breach = {
+		has_policy_flag = environmental_deregulation
+	}
+	
 	effect = {
 		hidden_effect = {
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_ecology days = @resolution_flag_timer }
@@ -728,6 +732,10 @@ resolution_ecology_environmental_control_board = {
 	}
 	target = no
 
+	breach = {
+		has_policy_flag = environmental_deregulation
+	}
+	
 	effect = {
 		custom_tooltip = resolution_ecology_environmental_control_board_tooltip
 		hidden_effect = {
@@ -823,6 +831,13 @@ resolution_ecology_paradise_initiative = {
 		resolution_ecology_paradise_initiative = 1
 	}
 
+	breach = {
+		OR = {
+			has_policy_flag = environmental_deregulation
+			has_policy_flag = environmental_regulation
+		}
+	}
+	
 	effect = {
 		hidden_effect = {
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_ecology days = @resolution_flag_timer }
@@ -1955,6 +1970,20 @@ resolution_commerce_underdeveloped_system_utilization = {
 	}
 	target = no
 
+	breach = {
+		NOT = { is_gestalt = yes }
+		OR = {
+			any_owned_pop = {
+				is_sapient = yes
+				OR = {
+					has_living_standard = { type = living_standard_shared_burden }
+					has_living_standard = { type = living_standard_utopian }			
+				}
+			}
+			has_policy_flag = slavery_not_allowed
+		}
+	}
+	
 	modifier = {
 		resolution_commerce_buzzword_standardization = 1
 		resolution_commerce_leveraged_privateering = 1
@@ -2035,6 +2064,20 @@ resolution_commerce_holistic_asset_coordination = {
 		resolution_commerce_holistic_asset_coordination = 1
 	}
 
+	breach = {
+		NOT = { is_gestalt = yes }
+		OR = {
+			any_owned_pop = {
+				is_sapient = yes
+				OR = {
+					has_living_standard = { type = living_standard_shared_burden }
+					has_living_standard = { type = living_standard_utopian }			
+				}
+			}
+			has_policy_flag = slavery_not_allowed
+		}
+	}
+	
 	effect = {
 		hidden_effect = {
 			set_global_flag = galactic_community_resolution_passed
@@ -2096,6 +2139,21 @@ resolution_commerce_profit_maximization_engines = {
 	}
 	target = no
 
+	breach = {
+		NOT = { is_gestalt = yes }
+		OR = {
+			any_owned_pop = {
+				is_sapient = yes
+				OR = {
+					has_living_standard = { type = living_standard_shared_burden }
+					has_living_standard = { type = living_standard_utopian }
+					has_living_standard = { type = living_standard_good }
+				}
+			}
+			has_policy_flag = slavery_not_allowed
+		}
+	}
+	
 	modifier = {
 		resolution_commerce_buzzword_standardization = 1
 		resolution_commerce_leveraged_privateering = 1
@@ -2711,6 +2769,10 @@ resolution_industry_building_a_better_tomorrow = {
 		resolution_industry_building_a_better_tomorrow = 1
 	}
 
+	breach = {
+		has_policy_flag = environmental_preservation
+	}
+	
 	effect = {
 		hidden_effect = {
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_industry days = @resolution_flag_timer }
@@ -2781,6 +2843,13 @@ resolution_industry_environmental_ordinance_waivers = {
 	}
 	target = no
 
+	breach = {
+		OR = {
+			has_policy_flag = environmental_preservation
+			has_policy_flag = environmental_protection
+		}
+	}
+	
 	modifier = {
 		resolution_industry_regulatory_facilitation = 1
 		resolution_industry_collective_waste_management = 1
@@ -2859,6 +2928,14 @@ resolution_industry_project_cornucopia = {
 	}
 	target = no
 
+	breach = {
+		OR = {
+			has_policy_flag = environmental_preservation
+			has_policy_flag = environmental_protection
+			has_policy_flag = environmental_regulation
+		}
+	}
+	
 	modifier = {
 		resolution_industry_regulatory_facilitation = 1
 		resolution_industry_collective_waste_management = 1
@@ -3587,6 +3664,21 @@ resolution_greatergood_greater_than_ourselves = {
 		resolution_greatergood_greater_than_ourselves = 1
 	}
 
+	breach = {
+		NOT = { is_gestalt = yes }
+		OR = {
+			any_owned_pop = {
+				is_sapient = yes
+				OR = {
+					has_living_standard = { type = living_standard_stratified }
+					has_living_standard = { type = living_standard_subsistence }
+					has_living_standard = { type = living_standard_servitude }
+				}
+			}
+			has_policy_flag = slavery_allowed
+		}
+	}
+	
 	effect = {
 		custom_tooltip = resolution_greatergood_greater_than_ourselves_tooltip
 
@@ -3740,6 +3832,21 @@ resolution_greatergood_balance_in_the_middle = {
 	}
 	target = no
 
+	breach = {
+		NOT = { is_gestalt = yes }
+		OR = {
+			any_owned_pop = {
+				is_sapient = yes
+				OR = {
+					has_living_standard = { type = living_standard_stratified }
+					has_living_standard = { type = living_standard_subsistence }
+					has_living_standard = { type = living_standard_servitude }
+				}
+			}
+			has_policy_flag = slavery_allowed
+		}
+	}
+	
 	modifier = {
 		resolution_greatergood_workers_rights = 1
 		resolution_greatergood_five_year_plans = 1
@@ -3877,6 +3984,23 @@ resolution_greatergood_universal_prosperity_mandate = {
 	}
 	target = no
 
+	breach = {
+		NOT = { is_gestalt = yes }
+		OR = {
+			any_owned_pop = {
+				is_sapient = yes
+				OR = {
+					has_living_standard = { type = living_standard_stratified }
+					has_living_standard = { type = living_standard_subsistence }
+					has_living_standard = { type = living_standard_servitude }
+					has_living_standard = { type = living_standard_normal }
+				}
+			}
+			has_policy_flag = slavery_allowed
+			has_policy_flag = slavery_secretly_allowed
+		}
+	}
+	
 	modifier = {
 		resolution_greatergood_workers_rights = 1
 		resolution_greatergood_five_year_plans = 1
