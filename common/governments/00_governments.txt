@@ -88,103 +88,103 @@ gov_representative_democracy = {
 ################################
 
 # Theocratic Monarchy
-gov_theocratic_monarchy = {
-	ruler_title = RT_ARCHPROPHET
-	ruler_title_female = RT_ARCHPROPHETESS
-	heir_title = HT_PRIEST
-	heir_title_female = HT_PRIESTESS
-
-	use_regnal_names = yes
-	dynastic_last_names = yes
-
-	possible = {
-		has_authority = auth_imperial
-		OR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist			
-		}
-	}
-
-	weight = {
-		base = 5
-	}
-}
+#gov_theocratic_monarchy = {
+#	ruler_title = RT_ARCHPROPHET
+#	ruler_title_female = RT_ARCHPROPHETESS
+#	heir_title = HT_PRIEST
+#	heir_title_female = HT_PRIESTESS
+#
+#	use_regnal_names = yes
+#	dynastic_last_names = yes
+#
+#	possible = {
+#		has_authority = auth_imperial
+#		OR = {
+#			has_ethic = ethic_spiritualist
+#			has_ethic = ethic_fanatic_spiritualist			
+#		}
+#	}
+#
+#	weight = {
+#		base = 5
+#	}
+#}
 
 # Theocratic Dictatorship
-gov_theocratic_dictatorship = {
-	ruler_title = RT_PATRIARCH
-	ruler_title_female = RT_MATRIARCH
-
-	election_candidates = {
-		modifier = {
-			add = 100
-			leader_class = ruler
-		}
-		modifier = {
-			add = 10
-			leader_class = governor
-		}
-	}
-
-	possible = {
-		has_authority = auth_dictatorial
-		OR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist			
-		}
-	}
-
-	weight = {
-		base = 5
-	}
-}
+#gov_theocratic_dictatorship = {
+#	ruler_title = RT_PATRIARCH
+#	ruler_title_female = RT_MATRIARCH
+#
+#	election_candidates = {
+#		modifier = {
+#			add = 100
+#			leader_class = ruler
+#		}
+#		modifier = {
+#			add = 10
+#			leader_class = governor
+#		}
+#	}
+#
+#	possible = {
+#		has_authority = auth_dictatorial
+#		OR = {
+#			has_ethic = ethic_spiritualist
+#			has_ethic = ethic_fanatic_spiritualist			
+#		}
+#	}
+#
+#	weight = {
+#		base = 5
+#	}
+#}
 
 # Theocratic Oligarchy
-gov_theocratic_oligarchy = {
-	ruler_title = RT_CHIEF_PRECENTOR
-	ruler_title_female = RT_CHIEF_PRECENTOR_FEMALE
-
-	election_candidates = {
-		modifier = {
-			add = 100
-			leader_class = ruler
-		}
-		modifier = {
-			add = 10
-			leader_class = governor
-		}
-	}
-
-	possible = {
-		has_authority = auth_oligarchic
-		OR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist			
-		}
-	}
-
-	weight = {
-		base = 5
-	}
-}
+#gov_theocratic_oligarchy = {
+#	ruler_title = RT_CHIEF_PRECENTOR
+#	ruler_title_female = RT_CHIEF_PRECENTOR_FEMALE
+#
+#	election_candidates = {
+#		modifier = {
+#			add = 100
+#			leader_class = ruler
+#		}
+#		modifier = {
+#			add = 10
+#			leader_class = governor
+#		}
+#	}
+#
+#	possible = {
+#		has_authority = auth_oligarchic
+#		OR = {
+#			has_ethic = ethic_spiritualist
+#			has_ethic = ethic_fanatic_spiritualist			
+#		}
+#	}
+#
+#	weight = {
+#		base = 5
+#	}
+#}
 
 # Theocratic Republic
-gov_theocratic_republic = {
-	ruler_title = RT_REVERED_ELDER
-	ruler_title_female = RT_REVERED_ELDER_FEMALE
-
-	possible = {
-		has_authority = auth_democratic
-		OR = {
-			has_ethic = ethic_spiritualist
-			has_ethic = ethic_fanatic_spiritualist			
-		}
-	}
-
-	weight = {
-		base = 5
-	}
-}
+#gov_theocratic_republic = {
+#	ruler_title = RT_REVERED_ELDER
+#	ruler_title_female = RT_REVERED_ELDER_FEMALE
+#
+#	possible = {
+#		has_authority = auth_democratic
+#		OR = {
+#			has_ethic = ethic_spiritualist
+#			has_ethic = ethic_fanatic_spiritualist			
+#		}
+#	}
+#
+#	weight = {
+#		base = 5
+#	}
+#}
 
 # Divine Empire
 gov_divine_empire = {
@@ -1357,11 +1357,34 @@ gov_fascist = {
 
 	possible = {
 		has_authority = auth_dictatorial
-		has_valid_civic = civic_capitalist
+		OR = {
+			has_ethic = ethic_xenophobe
+			has_ethic = ethic_fanatic_xenophobe
+		}
+		OR = {
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
+		}
+		AND = {
+			has_valid_civic = civic_police_state
+			has_valid_civic = civic_nationalistic_zeal
+		}
 	}
 
 	weight = {
-		base = 800
+		base = 400
+		modifier = {
+			factor = 2
+			has_ethic = ethic_fanatic_authoritarian
+		}
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_police_state
+		}
+		modifier = {
+			factor = 2
+			has_valid_civic = civic_nationalistic_zeal
+		}
 	}
 }
 
