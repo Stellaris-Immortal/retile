@@ -1357,34 +1357,11 @@ gov_fascist = {
 
 	possible = {
 		has_authority = auth_dictatorial
-		OR = {
-			has_ethic = ethic_xenophobe
-			has_ethic = ethic_fanatic_xenophobe
-		}
-		OR = {
-			has_ethic = ethic_authoritarian
-			has_ethic = ethic_fanatic_authoritarian
-		}
-		AND = {
-			has_valid_civic = civic_police_state
-			has_valid_civic = civic_nationalistic_zeal
-		}
+		has_valid_civic = civic_capitalist
 	}
 
 	weight = {
-		base = 400
-		modifier = {
-			factor = 2
-			has_ethic = ethic_fanatic_authoritarian
-		}
-		modifier = {
-			factor = 2
-			has_valid_civic = civic_police_state
-		}
-		modifier = {
-			factor = 2
-			has_valid_civic = civic_nationalistic_zeal
-		}
+		base = 800
 	}
 }
 
