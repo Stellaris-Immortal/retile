@@ -289,6 +289,29 @@ totalitarian = {
 			}
 		}
 	}	
+
+	# Wants GC SCIENCE Laws
+	demand = { 
+		title = "AUTHORITARIAN_GC_SCIENCE"
+		unfulfilled_title = "AUTHORITARIAN_GC_NO_SCIENCE"
+		desc = "AUTHORITARIAN_GC_SCIENCE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { is_galactic_community_member = yes }
+		}
+
+		trigger = {
+			OR = {
+				is_active_resolution = resolution_galacticstudies_advanced_xenostudies 
+				is_active_resolution = resolution_galacticstudies_ethical_guideline_refactoring
+				is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+			}
+		}
+	}
 	
 	# OUTRAGE
 	demand = {
