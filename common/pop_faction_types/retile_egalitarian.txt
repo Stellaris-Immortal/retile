@@ -310,29 +310,6 @@ progressive = {
 		}
 	}
 	
-	# Doesn't Want GC Industry Laws
-	demand = { 
-		title = "EGALITARIAN_GC_NO_INDUSTRY"
-		unfulfilled_title = "EGALITARIAN_GC_INDUSTRY"
-		desc = "EGALITARIAN_GC_INDUSTRY_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { is_galactic_community_member = yes }
-		}
-
-		trigger = {
-			NOR = {
-				is_active_resolution = resolution_industry_building_a_better_tomorrow 
-				is_active_resolution = resolution_industry_environmental_ordinance_waivers
-				is_active_resolution = resolution_industry_project_cornucopia
-			}
-		}
-	}
-	
 	# OUTRAGE
 	demand = {
 		title = "FACTION_OUTRAGED_GC"

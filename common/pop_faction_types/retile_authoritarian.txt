@@ -266,29 +266,6 @@ totalitarian = {
 			}
 		}
 	}
-	
-	# Wants GC Industry Laws
-	demand = { 
-		title = "AUTHORITARIAN_GC_INDUSTRY"
-		unfulfilled_title = "AUTHORITARIAN_GC_NO_INDUSTRY"
-		desc = "AUTHORITARIAN_GC_INDUSTRY_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { is_galactic_community_member = yes }
-		}
-
-		trigger = {
-			OR = {
-				is_active_resolution = resolution_industry_building_a_better_tomorrow 
-				is_active_resolution = resolution_industry_environmental_ordinance_waivers
-				is_active_resolution = resolution_industry_project_cornucopia
-			}
-		}
-	}
 
 	#Doesn't Want GC Worker Laws
 	demand = { 
