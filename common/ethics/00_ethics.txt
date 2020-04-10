@@ -1026,6 +1026,15 @@ ethic_xenophobe = {
 			factor = 1.25
 			has_trait = trait_nonadaptive
 		}
+		modifier = {
+			factor = 1.25
+			OR = {
+				has_trait = "trait_plantoid_thorned"
+				has_trait = "trait_arthropoid_exoskeleton"
+				has_trait = "trait_reptile_camouflage"
+			}
+		}
+		
 	}
 }
 
@@ -1406,6 +1415,14 @@ ethic_xenophile = {
 		modifier = {
 			factor = 0.75
 			has_trait = trait_nonadaptive
+		}
+		modifier = {
+			factor = 0.75
+			OR = {
+				has_trait = "trait_plantoid_thorned"
+				has_trait = "trait_arthropoid_exoskeleton"
+				has_trait = "trait_reptile_camouflage"
+			}
 		}
 	}	
 }
