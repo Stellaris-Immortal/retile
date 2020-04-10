@@ -61,7 +61,7 @@ honorbound_warriors = {
 
 	advanced_start_chance = 50
 
-	weapon_preferences = weapon_type_strike_craft
+	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.4
 	shields_ratio = 0.4
 	hull_ratio = 0.2
@@ -96,7 +96,6 @@ honorbound_warriors = {
 				has_ethic = "ethic_fanatic_militarist"
 				OR = {
 					has_ethic = "ethic_spiritualist"
-					has_ethic = "ethic_egalitarian"
 					has_ethic = "ethic_xenophile"
 				}			
 			}
@@ -104,7 +103,6 @@ honorbound_warriors = {
 				has_ethic = "ethic_militarist"
 				OR = {
 					has_ethic = "ethic_fanatic_spiritualist"
-					has_ethic = "ethic_fanatic_egalitarian"
 					has_ethic = "ethic_fanatic_xenophile"
 				}
 			}
@@ -114,6 +112,10 @@ honorbound_warriors = {
 
 	weight_modifier = {
 		weight = 50
+		modifier = {
+			factor = 100
+			has_civic = civic_warrior_culture
+		}
 	}
 }
 
@@ -165,30 +167,18 @@ evangelising_zealots = {
 
 	allow = {
 		is_country_type = default
-		NOT = {
-			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"
-		}
 		OR = {
-			has_ethic = "ethic_authoritarian"
-			has_ethic = "ethic_fanatic_authoritarian"
-			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic = "ethic_fanatic_militarist"
 			has_ethic = "ethic_militarist"
 		}
 		OR = {
-			has_ethic = "ethic_spiritualist"
-			has_ethic = "ethic_fanatic_spiritualist"
+			has_valid_civic = civic_imperial_cult
+			has_ethic = civic_exalted_priesthood
 		}
 	}
 
 	weight_modifier = {
 		weight = 10
-		modifier = {
-			factor = 2
-			has_ethic = "ethic_fanatic_spiritualist"
-		}
 		modifier = {
 			factor = 2
 			has_ethic = "ethic_fanatic_authoritarian"
@@ -257,23 +247,21 @@ erudite_explorers = {
 	allow = {
 		is_country_type = default
 		NOR = {
-			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"
 			has_ethic =  "ethic_militarist"
 			has_ethic =  "ethic_fanatic_militarist"
 		}
 		OR = {
-			has_ethic = "ethic_materialist"
-			has_ethic = "ethic_fanatic_materialist"
+			has_ethic = "ethic_spiritualist"
+			has_ethic = "ethic_fanatic_spiritualist"
+		}
+		OR = {
+			has_ethic = "ethic_xenophile"
+			has_ethic = "ethic_fanatic_xenophile"
 		}
 	}
 
 	weight_modifier = {
 		weight = 10
-		modifier = {
-			factor = 2
-			has_ethic = "ethic_fanatic_materialist"
-		}
 		modifier = {
 			factor = 2
 			has_trait = "trait_intelligent"
@@ -285,10 +273,6 @@ erudite_explorers = {
 		modifier = {
 			factor = 1
 			has_trait = "trait_natural_physicists"
-		}
-		modifier = {
-			factor = 1
-			has_trait = "trait_industrious"
 		}
 		modifier = {
 			factor = 2
@@ -352,23 +336,13 @@ spiritual_seekers = {
 
 	allow = {
 		is_country_type = default
-		NOT = {
-			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"
-			has_ethic = "ethic_militarist"
+		NOR = {
 			has_ethic = "ethic_fanatic_militarist"
+			has_ethic = "ethic_militarist"
 		}
 		OR = {
-			has_ethic = "ethic_egalitarian"
-			has_ethic = "ethic_fanatic_egalitarian"
-			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"
-			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"
-		}
-		OR = {
-			has_ethic = "ethic_spiritualist"
-			has_ethic = "ethic_fanatic_spiritualist"
+			has_valid_civic = civic_imperial_cult
+			has_ethic = civic_exalted_priesthood
 		}
 	}
 
@@ -450,26 +424,22 @@ ruthless_capitalists = {
 
 	allow = {
 		is_country_type = default
-		NOR = {
-			has_ethic = "ethic_egalitarian"
-			has_ethic = "ethic_fanatic_egalitarian"
-		}
 		OR = {
 			has_ethic = "ethic_authoritarian"
 			has_ethic = "ethic_fanatic_authoritarian"
-			NOR = {
-				has_ethic = "ethic_xenophile"
-				has_ethic = "ethic_fanatic_xenophile"					
-			}
 		}
 		OR = {
-			has_authority = auth_corporate
-			has_valid_civic = civic_corporate_dominion
+			has_ethic = "ethic_materialist"
+			has_ethic = "ethic_fanatic_materialist"
+		}
+		NOR = {
+			has_ethic = "ethic_pacifist"
+			has_ethic = "ethic_fanatic_pacifist"
 		}
 	}
 
 	weight_modifier = {
-		weight = 100
+		weight = 10
 	}
 }
 
@@ -491,7 +461,7 @@ peaceful_traders = {
 
 	advanced_start_chance = 10
 
-	weapon_preferences = weapon_type_strike_craft
+	weapon_preferences = weapon_type_kinetic
 	armor_ratio = 0.4
 	shields_ratio = 0.5
 	hull_ratio = 0.1
@@ -523,31 +493,21 @@ peaceful_traders = {
 	allow = {
 		is_country_type = default
 		OR = {
+			has_ethic = "ethic_authoritarian"
+			has_ethic = "ethic_fanatic_authoritarian"
+		}
+		OR = {
+			has_ethic = "ethic_materialist"
+			has_ethic = "ethic_fanatic_materialist"
+		}
+		OR = {
 			has_ethic = "ethic_pacifist"
 			has_ethic = "ethic_fanatic_pacifist"
-			AND = {
-				NOR = {
-					has_ethic = "ethic_militarist"
-					has_ethic = "ethic_fanatic_militarist"
-				}
-				OR = {
-					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"
-					has_ethic = "ethic_materialist"
-					has_ethic = "ethic_fanatic_materialist"					
-					has_ethic = "ethic_spiritualist"
-					has_ethic = "ethic_fanatic_spiritualist"	
-				}				
-			}
-		}		
-		OR = {
-			has_authority = auth_corporate
-			has_valid_civic = civic_corporate_dominion
 		}
 	}
 
 	weight_modifier = {
-		weight = 100
+		weight = 10
 	}
 }
 
@@ -600,15 +560,13 @@ hegemonic_imperialists = {
 
 	allow = {
 		is_country_type = default
-		NOT = {
-			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"
-		}
 		OR = {
 			has_ethic = "ethic_militarist"
 			has_ethic = "ethic_fanatic_militarist"
-			has_ethic = "ethic_authoritarian"
-			has_ethic = "ethic_fanatic_authoritarian"
+		}
+		NOR = {
+			has_ethic = "ethic_egalitarian"
+			has_ethic = "ethic_fanatic_egalitarian"
 		}
 	}
 
@@ -639,7 +597,7 @@ slaving_despots = {
 
 	advanced_start_chance = 50
 
-	weapon_preferences = weapon_type_explosive
+	weapon_preferences = weapon_type_energy
 	armor_ratio = 0.3
 	shields_ratio = 0.4
 	hull_ratio = 0.3
@@ -1043,25 +1001,18 @@ xenophobic_isolationists = {
 
 	allow = {
 		is_country_type = default
-		NOR = {
-			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"
-		}
 		OR = {
 			has_ethic = "ethic_xenophobe"
 			has_ethic = "ethic_fanatic_xenophobe"
 		}
+		NOR = {
+			has_ethic = "ethic_pacifist"
+			has_ethic = "ethic_fanatic_pacifist"
+		}
 	}
 
 	weight_modifier = {
-		weight = 10
-		modifier = {
-			factor = -2
-			NOT = {
-				has_ethic = "ethic_pacifist"
-				has_ethic = "ethic_fanatic_pacifist"
-			}
-		}
+		weight = 1
 		modifier = {
 			factor = 2
 			OR = {
@@ -1288,7 +1239,7 @@ migrating_flock = {
 	defensive_pact_acceptance = 0
 	migration_pact_acceptance = 100
 
-	weapon_preferences = weapon_type_strike_craft
+	weapon_preferences = weapon_type_explosive
 	armor_ratio = 0.4
 	shields_ratio = 0.4
 	hull_ratio = 0.2
@@ -1390,6 +1341,10 @@ metalhead = {
 		has_ethic = "ethic_militarist"
 		has_ethic = "ethic_materialist"
 		has_ethic = "ethic_xenophobe"
+		OR = {
+			has_trait = "trait_industrious"
+			has_trait = "trait_strong"
+		}
 	}
 
 	weight_modifier = {
