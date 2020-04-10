@@ -216,46 +216,6 @@ xenoist = {
 		}
 	}
 	
-	# Hates Alien No Rights
-	demand = {
-		title = "XENOPHILE_ALIEN_RIGHTS"
-		unfulfilled_title = "XENOPHILE_NO_ALIEN_RIGHTS"
-		desc = "XENOPHILE_ALIEN_NO_RIGHTS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_encountered_other_species = yes }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = alien_full_rights }
-		}
-	}
-	
-	# Hates Refugee Ban
-	demand = {
-		title = "XENOPHILE_REFUGEES"
-		unfulfilled_title = "XENOPHILE_NO_REFUGEES"
-		desc = "XENOPHILE_REFUGEES_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-		
-		potential = { 
-			exists = owner
-			owner = { has_encountered_other_species = yes }
-		}
-		
-		trigger = {
-			NOR = {
-				owner = { has_policy_flag = refugees_not_allowed }
-				owner = { has_policy_flag = refugees_only_citizens }
-			}
-		}
-	}
 	# Wants Migration Treaties
 	demand = {
 		title = "XENOPHILE_MIGRATION_TREATIES"
