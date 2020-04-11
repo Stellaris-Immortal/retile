@@ -557,6 +557,15 @@ fleet_event = {
 		name = ancrel.13.a
 		medium_artifact_reward = yes
 		owner = { add_modifier = { modifier = precursor_ascension days = -1 } }
+		hidden_effect = {
+			every_country = {
+				limit = {
+					NOT = { is_same_value = prev }
+					has_country_flag = zroni_intro
+				}
+				add_modifier = { modifier = precursor_ascension days = -1 }
+			}
+		}
 		owner = {
 			set_global_flag = Zrocursor_system_discovered
 			set_country_flag = last_zroni_system
