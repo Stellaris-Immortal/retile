@@ -1,0 +1,30 @@
+# Critially important things goes here, such as amenities, housing and countering crime
+# Should be blocked unless they are not needed
+basic = {
+	hidden = yes
+	clear_blockers = no
+	district = {
+		key = district_housing
+		weight = {
+			weight = 1
+			modifier = {
+				factor = 5
+				free_housing < 1
+			}
+			# Let's not go full spam on this.
+			modifier = {
+				factor = 0
+				free_housing >= 1
+			}
+		}
+	}
+}
+
+#############
+# BALANCED FOCUS
+#############
+balanced = {
+	ai_weight = {
+		weight = 100
+	}
+}
