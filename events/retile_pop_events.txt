@@ -1371,6 +1371,13 @@ planet_event = {
 		if = {
 			limit = {
 				OR = {
+					has_planet_flag = pop_density_none
+				}
+			}
+			#add_deposit = d_pop_density_habitat
+		} else_if = {
+			limit = {
+				OR = {
 					is_planet_class = pc_habitat
 					has_planet_flag = pop_density_habitat
 				}
