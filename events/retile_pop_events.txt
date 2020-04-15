@@ -1319,3 +1319,91 @@ pop_event = {
 		}
 	}
 }
+
+############################################
+### Pop Density Deposits
+
+# (Re-)Apply pop density deposit(s)
+# THIS = planet
+planet_event = {
+	id = retile_pop.3000
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { always = yes }
+	
+	immediate = {
+		# Remove existing pop density deposits
+		if = {
+			limit = {
+				any_deposit = {
+					OR = {
+						is_deposit_type = d_pop_density_normal
+						is_deposit_type = d_pop_density_habitat
+						is_deposit_type = d_pop_density_city
+					}
+				}
+			}
+			while = {
+				limit = {
+					any_deposit = {
+						OR = {
+							is_deposit_type = d_pop_density_normal
+							is_deposit_type = d_pop_density_habitat
+							is_deposit_type = d_pop_density_city
+						}
+					}
+				}
+				random_deposit = {
+					limit = {
+						OR = {
+							is_deposit_type = d_pop_density_normal
+							is_deposit_type = d_pop_density_habitat
+							is_deposit_type = d_pop_density_city
+						}
+					}
+					remove_deposit = yes
+				}
+			}
+		}
+		
+		# Apply new pop density deposit
+		if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_habitat
+					has_planet_flag = pop_density_habitat
+				}
+			}
+			add_deposit = d_pop_density_habitat
+		} else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_ringworld_habitable
+					is_planet_class = pc_city
+					is_planet_class = pc_hive
+					has_planet_flag = pop_density_city
+				}
+			}
+			add_deposit = d_pop_density_city
+		} else = {
+			add_deposit = d_pop_density_normal
+		}
+	}
+}
+
+# apply pop density deposits to all planets
+event = {
+	id = retile_pop.3001
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { always = yes }
+	
+	immediate = {
+		every_planet = {
+			limit = { num_pops > 0 }
+			planet_event = { id = retile_pop.3000 days = 4 random = 20 }
+		}
+	}
+}
