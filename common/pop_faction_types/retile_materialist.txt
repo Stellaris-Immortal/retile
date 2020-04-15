@@ -103,27 +103,6 @@ technologist = {
 		}
 	}
 
-	# Wants Workers have limited rights
-	demand = { 
-		title = "MATERIALIST_LIMITED_WORKER_RIGHTS"
-		unfulfilled_title = "MATERIALIST_NO_LIMITED_WORKER_RIGHTS"
-		desc = "MATERIALIST_LIMITED_WORKER_RIGHTS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { 
-				OR = {
-					has_policy_flag = slavery_secretly_allowed 
-					has_policy_flag = slavery_allowed 
-				}
-			}
-		}
-	}
-
 	# Wants Environmental Deregulation
 	demand = { 
 		title = "MATERIALIST_ENVIRONMENTAL_DEREGULATION"
@@ -167,67 +146,6 @@ technologist = {
 					has_ascension_perk = ap_consecrated_worlds
 				}
 			}
-		}
-	}
-	
-	# Wants stratification
-	demand = {
-		title = "MATERIALIST_STRATIFICATION"
-		unfulfilled_title = "MATERIALIST_NO_STRATIFICATION"
-		desc = "MATERIALIST_STRATIFICATION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = {
-			exists = owner
-		}
-
-		trigger = {
-			owner = {
-				NOT = {
-					any_owned_pop = {
-						OR = {
-							has_living_standard = { type = living_standard_shared_burden }
-							has_living_standard = { type = living_standard_utopian }
-							has_living_standard = { type = living_standard_academic_privilege } 
-							has_living_standard = { type = living_standard_good }
-						}
-					}				
-				}
-			}
-		}
-	}
-	
-	# Wants Priority Healthcare Policy
-	demand = { 
-		title = "MATERIALIST_PRIORITY_HEALTHCARE"
-		unfulfilled_title = "MATERIALIST_NO_PRIORITY_HEALTHCARE"
-		desc = "MATERIALIST_PRIORITY_HEALTHCARE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = healthcare_for_profit }
-		}
-	}
-
-	# Wants Priority Education Policy
-	demand = {
-		title = "MATERIALIST_PRIORITY_EDUCATION"
-		unfulfilled_title = "MATERIALIST_NO_PRIORITY_EDUCATION"
-		desc = "MATERIALIST_PRIORITY_EDUCATION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = education_for_profit }
 		}
 	}
 	
@@ -315,50 +233,6 @@ technologist = {
 			}
 		}
 	}
-
-	# Wants Trade League Federation
-	demand = { 
-		title = "MATERIALIST_MERCANTILE"
-		unfulfilled_title = "MATERIALIST_NO_MERCANTILE"
-		desc = "MATERIALIST_MERCANTILE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			federation = { 
-				has_federation_type = trade_federation
-			}
-		}
-	}
-	
-	# Wants GC Commerce Laws
-	demand = { 
-		title = "MATERIALIST_GC_COMMERCE"
-		unfulfilled_title = "MATERIALIST_GC_NO_COMMERCE"
-		desc = "MATERIALIST_GC_COMMERCE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { is_galactic_community_member = yes }
-		}
-
-		trigger = {
-			OR = {
-				is_active_resolution = resolution_commerce_underdeveloped_system_utilization
-				is_active_resolution = resolution_commerce_holistic_asset_coordination
-				is_active_resolution = resolution_commerce_profit_maximization_engines
-			}
-		}
-	}
 	
 	# Wants GC Industry Laws
 	demand = { 
@@ -425,29 +299,6 @@ technologist = {
 				is_active_resolution = resolution_ecology_integrated_gardens
 				is_active_resolution = resolution_ecology_environmental_control_board
 				is_active_resolution = resolution_ecology_paradise_initiative
-			}
-		}
-	}
-
-	#Doesn't Want GC Worker Laws
-	demand = { 
-		title = "MATERIALIST_GC_NO_GG"
-		unfulfilled_title = "MATERIALIST_GC_GG"
-		desc = "MATERIALIST_GC_NO_GG_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { is_galactic_community_member = yes }
-		}
-
-		trigger = {
-			NOR = {
-				is_active_resolution = resolution_greatergood_greater_than_ourselves
-				is_active_resolution = resolution_greatergood_balance_in_the_middle
-				is_active_resolution = resolution_greatergood_universal_prosperity_mandate
 			}
 		}
 	}

@@ -1168,15 +1168,9 @@ gov_megacorporation = {
 		OR = {
 			AND = {
 				has_authority = auth_oligarchic
-				OR = {
-					has_ethic = ethic_authoritarian
-					has_ethic = ethic_fanatic_authoritarian
-					NOR = {
-						has_ethic = ethic_egalitarian
-						has_ethic = ethic_fanatic_egalitarian
-						has_ethic = ethic_pacifist
-						has_ethic = ethic_fanatic_pacifist
-					}			
+				NOR = {
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian		
 				}
 				has_valid_civic = civic_corporate_dominion
 			}
@@ -1213,13 +1207,7 @@ gov_trade_league = {
 				has_authority = auth_oligarchic
 				NOR = {
 					has_ethic = ethic_authoritarian
-					has_ethic = ethic_fanatic_authoritarian		
-				}
-				OR = {
-					has_ethic = ethic_egalitarian
-					has_ethic = ethic_fanatic_egalitarian
-					has_ethic = ethic_pacifist
-					has_ethic = ethic_fanatic_pacifist
+					has_ethic = ethic_fanatic_authoritarian	
 				}		
 				has_valid_civic = civic_corporate_dominion
 			}
@@ -1358,6 +1346,10 @@ gov_fascist = {
 	possible = {
 		has_authority = auth_dictatorial
 		has_valid_civic = civic_capitalist
+		NOR = {
+			has_ethic = ethic_xenophile
+			has_ethic = ethic_fanatic_xenophile
+		}
 	}
 
 	weight = {
@@ -1455,11 +1447,7 @@ gov_merchant_republic = {
 	}
 
 	weight = {
-		base = 400
-		modifier = {
-			factor = 2
-			has_ethic = ethic_fanatic_materialist
-		}
+		base = 800
 	}
 }
 

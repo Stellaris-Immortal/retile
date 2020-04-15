@@ -103,22 +103,6 @@ traditionalist = {
 		}
 	}
 
-	# Wants Worker Control
-	demand = {
-		title = "EGALITARIAN_FULL_WORKER_RIGHTS"
-		unfulfilled_title = "EGALITARIAN_NO_FULL_WORKER_RIGHTS"
-		desc = "EGALITARIAN_FULL_WORKER_RIGHTS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = slavery_not_allowed }
-		}
-	}
-
 	# Wants Environmental Protections
 	demand = { 
 		title = "SPIRITUALIST_ENVIRONMENTAL_PROTECTION"
@@ -156,64 +140,6 @@ traditionalist = {
 				OR = {
 					has_ascension_perk = ap_land_ethic
 					has_ascension_perk = ap_consecrated_worlds
-				}
-			}
-		}
-	}
-	
-	# Wants Universal Healthcare
-	demand = {
-		title = "EGALITARIAN_UNIVERSAL_HEALTHCARE"
-		unfulfilled_title = "EGALITARIAN_NO_UNIVERSAL_HEALTHCARE"
-		desc = "EGALITARIAN_UNIVERSAL_HEALTHCARE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = healthcare_universal }
-		}
-	}
-	
-	# Wants Education For All
-	demand = {
-		title = "EGALITARIAN_EDUCATION_FOR_ALL"
-		unfulfilled_title = "EGALITARIAN_NO_EDUCATION_FOR_ALL"
-		desc = "EGALITARIAN_EDUCATION_FOR_ALL_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = education_for_all }
-		}
-	}
-	
-	# Wants Welfare
-	demand = {
-		title = "EGALITARIAN_WELFARE"
-		unfulfilled_title = "EGALITARIAN_NO_WELFARE"
-		desc = "EGALITARIAN_WELFARE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = {
-			exists = owner
-		}
-
-		trigger = {
-			NOT = {
-				owner = {
-					NOR = {
-						any_owned_pop = { has_living_standard = { type = living_standard_good } }
-						any_owned_pop = { has_living_standard = { type = living_standard_shared_burden } }
-						any_owned_pop = { has_living_standard = { type = living_standard_utopian } }
-					}
 				}
 			}
 		}
@@ -320,29 +246,6 @@ traditionalist = {
 			}
 		}
 	}
-
-	# Wants GC Worker Laws
-	demand = { 
-		title = "SPIRITUALIST_GC_GG"
-		unfulfilled_title = "SPIRITUALIST_GC_NO_GG"
-		desc = "SPIRITUALIST_GC_GG_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { is_galactic_community_member = yes }
-		}
-
-		trigger = {
-			OR = {
-				is_active_resolution = resolution_greatergood_greater_than_ourselves
-				is_active_resolution = resolution_greatergood_balance_in_the_middle
-				is_active_resolution = resolution_greatergood_universal_prosperity_mandate
-			}
-		}
-	}
 	
 	# Wants GC Ecology Laws
 	demand = { 
@@ -363,28 +266,6 @@ traditionalist = {
 				is_active_resolution = resolution_ecology_integrated_gardens
 				is_active_resolution = resolution_ecology_environmental_control_board
 				is_active_resolution = resolution_ecology_paradise_initiative
-			}
-		}
-	}
-	# Doesn't Want GC Commerce Laws
-	demand = { 
-		title = "SPIRITUALIST_GC_NO_COMMERCE"
-		unfulfilled_title = "SPIRITUALIST_GC_COMMERCE"
-		desc = "SPIRITUALIST_GC_NO_COMMERCE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { is_galactic_community_member = yes }
-		}
-
-		trigger = {
-			NOR = {
-				is_active_resolution = resolution_commerce_underdeveloped_system_utilization
-				is_active_resolution = resolution_commerce_holistic_asset_coordination
-				is_active_resolution = resolution_commerce_profit_maximization_engines
 			}
 		}
 	}

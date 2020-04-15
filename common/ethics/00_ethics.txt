@@ -278,13 +278,25 @@ ethic_authoritarian = {
 			}
 		}
 		modifier = {
-			factor = 1.25
+			factor = 1.50
 			OR = { 
 				has_job = enforcer
 				has_job = magistrate
 				has_job = noble
+				has_job = clerk
+				has_job = merchant
+				has_job = executive
+				has_job = warden
 			}
-		}		
+		}
+		modifier = {
+			factor = 0.50
+			has_job = laborer
+		}
+		modifier = {
+			factor = 1.25
+			has_trait = trait_thrifty
+		}
 		modifier = {
 			factor = 1.25
 			has_trait = trait_decadent 
@@ -571,7 +583,7 @@ ethic_egalitarian = {
 			has_trait = trait_hive_mind
 		}	
 		modifier = {
-			factor = 1.5
+			factor = 3.0
 			is_enslaved = yes
 		}
 		modifier = {
@@ -590,12 +602,27 @@ ethic_egalitarian = {
 			}
 		}
 		modifier = {
-			factor = 0.75
+			factor = 0.50
 			OR = { 
 				has_job = enforcer
 				has_job = magistrate
 				has_job = noble
+				has_job = clerk
+				has_job = merchant
+				has_job = executive
+				has_job = warden
 			}
+		}
+		modifier = {
+			factor = 1.50
+			OR = { 
+				has_job = laborer
+				has_job = custodian
+			}
+		}
+		modifier = {
+			factor = 0.75
+			has_trait = trait_thrifty
 		}		
 		modifier = {
 			factor = 0.75
@@ -2128,7 +2155,7 @@ ethic_fanatic_materialist = {
 	
 	country_modifier = {
 		planet_jobs_upkeep_mult = -0.10
-		trade_value_mult = 0.15
+		country_physics_tech_research_speed = 0.20
 	}
 	
 	random_weight = {
@@ -2149,7 +2176,7 @@ ethic_materialist = {
 	
 	country_modifier = {
 		planet_jobs_upkeep_mult = -0.05
-		trade_value_mult = 0.075
+		country_physics_tech_research_speed = 0.10
 	}	
 	
 	random_weight = {
@@ -2333,24 +2360,12 @@ ethic_materialist = {
 			has_trait = trait_hive_mind
 		}
 		modifier = {
-			factor = 1.25
-			is_pop_category = ruler
-		}		
-		modifier = {
-			factor = 0.75
-			is_pop_category = worker
-		}
-		modifier = {
-			factor = 0.75
+			factor = 0.50
 			has_job = custodian
 		} 		
 		modifier = {
 			factor = 1.50
-			OR = {
-				has_job = clerk
-				has_job = merchant
-				has_job = executive
-			}
+			has_job = foundry
 		} 
 		modifier = {
 			factor = 1.5
@@ -2359,10 +2374,6 @@ ethic_materialist = {
 		modifier = {
 			factor = 1.25
 			has_trait = trait_inventive
-		}
-		modifier = {
-			factor = 1.25
-			has_trait = trait_thrifty
 		}
 		modifier = {
 			factor = 1.25
@@ -2638,24 +2649,12 @@ ethic_spiritualist = {
 			has_trait = trait_hive_mind
 		}
 		modifier = {
-			factor = 0.75
-			is_pop_category = ruler
-		}		
-		modifier = {
-			factor = 1.25
-			is_pop_category = worker
-		}
-		modifier = {
-			factor = 1.25
+			factor = 1.50
 			has_job = custodian
 		} 		
 		modifier = {
-			factor = 0.5
-			OR = {
-				has_job = clerk
-				has_job = merchant
-				has_job = executive
-			}
+			factor = 0.50
+			has_job = foundry
 		} 
 		modifier = {
 			factor = 0.5
@@ -2664,10 +2663,6 @@ ethic_spiritualist = {
 		modifier = {
 			factor = 0.75
 			has_trait = trait_inventive
-		}
-		modifier = {
-			factor = 0.75
-			has_trait = trait_thrifty
 		}
 		modifier = {
 			factor = 0.75

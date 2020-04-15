@@ -83,11 +83,11 @@ totalitarian = {
 		}
 	}
 
-	# Wants Centralization
+	# Wants PROSPERITY
 	demand = { 
-		title = "AUTHORITARIAN_CENTRALIZATION"
-		unfulfilled_title = "AUTHORITARIAN_NO_CENTRALIZATION"
-		desc = "AUTHORITARIAN_CENTRALIZATION_DESC"
+		title = "AUTHORITARIAN_PROSPERITY"
+		unfulfilled_title = "AUTHORITARIAN_NO_PROSPERITY"
+		desc = "AUTHORITARIAN_PROSPERITY_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -10
@@ -95,7 +95,7 @@ totalitarian = {
 		potential = {exists = owner }
 
 		trigger = {
-			owner = { has_tradition = tr_domination_adopt }
+			owner = { has_tradition = tr_prosperity_adopt }
 		}
 	}
 	
@@ -289,29 +289,6 @@ totalitarian = {
 			}
 		}
 	}	
-
-	# Wants GC SCIENCE Laws
-	demand = { 
-		title = "AUTHORITARIAN_GC_SCIENCE"
-		unfulfilled_title = "AUTHORITARIAN_GC_NO_SCIENCE"
-		desc = "AUTHORITARIAN_GC_SCIENCE_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { is_galactic_community_member = yes }
-		}
-
-		trigger = {
-			OR = {
-				is_active_resolution = resolution_galacticstudies_advanced_xenostudies 
-				is_active_resolution = resolution_galacticstudies_ethical_guideline_refactoring
-				is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
-			}
-		}
-	}
 	
 	# OUTRAGE
 	demand = {
