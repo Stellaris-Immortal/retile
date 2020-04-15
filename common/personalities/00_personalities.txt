@@ -428,9 +428,9 @@ ruthless_capitalists = {
 	}
 
 	weight_modifier = {
-		weight = 5
+		weight = 1
 		modifier = {
-			factor = 10
+			factor = 20
 			OR = {
 				has_authority = auth_corporate
 				has_valid_civic = civic_merchant_guilds
@@ -500,9 +500,9 @@ peaceful_traders = {
 	}
 
 	weight_modifier = {
-		weight = 5
+		weight = 1
 		modifier = {
-			factor = 10
+			factor = 20
 			OR = {
 				has_authority = auth_corporate
 				has_valid_civic = civic_merchant_guilds
@@ -632,9 +632,7 @@ slaving_despots = {
 		has_valid_civic = civic_slaver_guilds
 		NOR = {
 			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"
-			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"			
+			has_ethic = "ethic_fanatic_pacifist"		
 		}	
 	}
 
@@ -694,10 +692,8 @@ decadent_hierarchy = {
 		is_country_type = default
 		has_valid_civic = civic_slaver_guilds
 		OR = {
-			has_ethic = "ethic_authoritarian"
-			has_ethic = "ethic_fanatic_authoritarian"
-			has_ethic = "ethic_xenophile"
-			has_ethic = "ethic_fanatic_xenophile"				
+			has_ethic = "ethic_pacifist"
+			has_ethic = "ethic_fanatic_pacifist"				
 		}		
 	}
 
@@ -902,6 +898,9 @@ federation_builders = {
 			has_ethic = "ethic_fanatic_militarist"
 		}
 		OR = {
+			has_ethic = "ethic_fanatic_pacifist"
+			has_ethic = "ethic_fanatic_xenophile"
+			has_ethic = "ethic_fanatic_egalitarian"
 			AND = {
 				OR = {
 					has_ethic = "ethic_pacifist"
