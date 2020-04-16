@@ -196,6 +196,31 @@ prosperity = {
 
 	# Wants Federation
 	demand = { 
+		title = "DIPLOMAT_CIVILIZED_FED"
+		unfulfilled_title = "DIPLOMAT_NO_CIVILIZED_FED"
+		desc = "DIPLOMAT_CIVILIZED_FED_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			owner = { has_country_flag = first_federation_event }
+		}
+
+		trigger = {
+			owner = {
+				federation = { 
+					NOR = {
+						has_federation_law = challenge_type_arena_combat
+						has_federation_law = challenge_type_psionic_battle
+						has_federation_law = succession_power_fleet 
+					}
+				}
+			}
+		}
+	}	
+
+	demand = { 
 		title = "DIPLOMAT_FEDERATION"
 		unfulfilled_title = "DIPLOMAT_NO_FEDERATION"
 		desc = "DIPLOMAT_FEDERATION_DESC"
@@ -209,11 +234,17 @@ prosperity = {
 		}
 
 		trigger = {
-			has_federation = yes
+			owner = {
+				federation = { 
+					OR = {
+						has_federation_type = default_federation
+						has_federation_type = trade_federation
+						has_federation_type = research_federation
+					}
+				}
+			}
 		}
-	}	
-
-	
+	}
 	# Doesn't Want GC Readiness Laws
 	demand = { 
 		title = "DIPLOMAT_GC_READINESS"
@@ -241,7 +272,7 @@ prosperity = {
 	demand = { 
 		title = "DIPLOMAT_GC_NO_ROW"
 		unfulfilled_title = "DIPLOMAT_GC_ROW"
-		desc = "DIPLOMAT_GC_NO_ROW_DESC"
+		desc = "DIPLOMAT_GC_ROW_DESC"
 
 		fulfilled_effect = 10
 		unfulfilled_effect = -10

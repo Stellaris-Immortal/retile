@@ -4,19 +4,22 @@ personality_peaceful_seclusionists:0 "Cordial Seclusionists"
 personality_peaceful_seclusionists_desc:0 "Cordial Seclusionists find the idea of a multispecies empire distasteful, but see no reason to care what goes on outside their borders provided they are left out of it."
 federation_acceptance_peaceful_seclusionists:0 "$personality_peaceful_seclusionists$"
 
-# Anti-Hegemons
+# Nemesis of Hegemonic Imperialists (and all aggressive empires)
 personality_radical_liberators:0 "Radical Liberators"
-personality_radical_liberators_desc:0 "Radical Liberators are committed to keeping the galaxy free from hegemonic aggressors who would aim to conquer it."
+personality_radical_liberators_desc:0 "Radical Liberators are committed to keeping the galaxy free from hegemonic aggressors who would aim to conquer it.\n§RNemesis:§! $personality_hegemonic_imperialists$"
 federation_acceptance_radical_liberators:0 "$personality_radical_liberators$"
 
-# for fanatic materialists - enemies w/ Watchful Custodians
+personality_hegemonic_imperialists:0 "Hegemonic Imperialists"
+personality_hegemonic_imperialists_desc:0 "Hegemonic Imperialists consider themselves the rightful rulers of the Galaxy, and will attempt to expand their Empire by any means possible.\n§RNemesis:§! $personality_radical_liberators$"
+
+# Nemesis of Watchful Custodians for fanatic materialists 
 personality_tenacious_industrialists:0 "Tenacious Industrialists"
-personality_tenacious_industrialists_desc:0 "Tenacious Industrialists plan to reshape the galaxy in their own image. They care little for the natural world and less for those who would stand in the way of their plans."
+personality_tenacious_industrialists_desc:0 "Tenacious Industrialists plan to reshape the galaxy in their own image. They care little for the natural world and less for those who would stand in the way of their plans. \n§RNemesis:§! $personality_caring_custodians$"
 federation_acceptance_tenacious_industrialists:0 "$personality_tenacious_industrialists$"
 
-# For fanatic spiritualists - enemies w/ Tenacious Industrialists
+# Nemesis of Tenacious Industrialists for fanatic spiritualists 
 personality_caring_custodians:0 "Watchful Custodians"
-personality_caring_custodians_desc:0 "Watchful Custodians believe in the preservation of the health and beauty of the galaxy and its many wonders. Though largely harmonious, they can be roused to great anger by desecrations of the natural world."
+personality_caring_custodians_desc:0 "Watchful Custodians believe in the preservation of the health and beauty of the galaxy and its many wonders. Though largely harmonious, they can be roused to great anger by desecrations of the natural world. \n§RNemesis:§! $personality_tenacious_industrialists$"
 federation_acceptance_caring_custodians:0 "$personality_caring_custodians$"
 
 # For bad technocrats (in contrast to Erudite Explorers)
@@ -26,15 +29,32 @@ federation_acceptance_technocracy:0 "$personality_technocracy$"
 
 # For anarchist civic
 personality_anarchists:0 "Amicable Anarchists"
-personality_anarchists_desc:0 "Amicable Anarchists reject all involuntarily and coercive forms of hierarchy. They tend to be amenable to diplomatic overtures but their lack of central authority largely keeps them out of the more contentious areas of galactic politics."
+personality_anarchists_desc:0 "Amicable Anarchists reject all involuntary and coercive forms of hierarchy. They tend to be amenable to diplomatic overtures but their lack of central authority largely keeps them above the fray of galactic politics."
 federation_acceptance_anarchists:0 "$personality_anarchists$"
 
-# For shared burdens civic w/o anarchist civic
+# Nemesis of Ruthless Capitalists. For non-anarchist F. Egals mostly
 personality_communists:0 "Galactic Revolutionaries"
-personality_communists_desc:0 "Galactic Revolutionaries are true believers in galactic revolution. No bourgeois empire is beyond their crusade to unite the workers of the galaxy in socialist brotherhood."
+personality_communists_desc:0 "Galactic Revolutionaries believe that capitalism is a galaxy-spanning system of oppression, and so the proletariat cannot truly be free until all empires share their ideals. No bourgeois empire is beyond their crusade to unite the workers of the galaxy in socialist brotherhood. \n§RNemesis:§! $personality_ruthless_capitalists$"
 federation_acceptance_communists:0 "$personality_communists$"
 
-# Nemesis of slavers
+# For megacorps, merchant guilds, and capitalist empires
+personality_ruthless_capitalists:0 "Ruthless Capitalists"
+personality_ruthless_capitalists_desc:0 "Ruthless Capitalists are chiefly concerned with the acquisition of wealth. They tend to avoid protracted and economically damaging wars with great powers, but will eagerly appropriate undefended resources to abet their growth. \n§RNemesis:§! $personality_communists$"
+
+# For megacorps with no "violent ethics"
+personality_peaceful_traders:0 "Peaceful Traders"
+personality_peaceful_traders_desc:0 "Peaceful Traders believe mutual economic interdependence is the best formula for galactic peace. In their eyes, all war is bad for business - after all, dead customers can't be repeat customers."
+ 
+# Nemesis of Slaving Despots
 personality_abolitionists:0 "Zealous Abolitionists"
-personality_abolitionists_desc:0 "Zealous Abolitionists are tirelessly dedicated to freeing all sentient being from enslavement."
+personality_abolitionists_desc:0 "Zealous Abolitionists are tirelessly dedicated to freeing all sentient being from enslavement. \n§RNemesis:§! $personality_slaving_despots$"
 federation_acceptance_abolitionists:0 "$personality_abolitionists$"
+
+# Slaving Despots
+personality_slaving_despots:0 "Slaving Despots"
+personality_slaving_despots_desc:0 "Slaving Despots are slave societies that rely on military expansion to secure a steady supply of slaves for their mines and farms. They prefer to attack the weak and defenseless. \n§RNemesis:§! $personality_abolitionists$"
+
+# Barbaric Despoiler previously used Hegemonic Imperialists personality, which felt wrong
+personality_despoilers:0 "Barbaric Despoilers"
+personality_despoilers_desc:0 "Barbaric Despoilers holds few things sacred - to fight is to live, and the strongest may seize whatever they covet. Highly aggressive, they prefer to raid or subjugate their neighbors rather than conquering them outright."
+federation_acceptance_despoilers:0 "$personality_despoilers$"
