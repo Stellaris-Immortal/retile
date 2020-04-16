@@ -1,10 +1,24 @@
-#on_monthly_pulse = {
-#	events = {
-#		#retile_pop.100	# Pop migration
-#		#retile_pop.200	# Pop growth malus
-#	}
-#}
+# no scope
+on_game_start = {
+	events = {
+		retile_pop.3001 # add pop density deposit to habitable planets
+	}
+}
 
+# no scope
+on_yearly_pulse = {
+	events = {
+		retile_pop.3001 # add pop density deposit to habitable planets
+	}
+}
+
+# A planet has begun the colonization process.
+# Scope = Planet
+on_colonization_started = {
+	events = {
+		retile_pop.3000 # add pop density deposit
+	}
+}
 
 # A pop has finished growing
 # This = Planet scope

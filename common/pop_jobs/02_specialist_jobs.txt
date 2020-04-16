@@ -816,7 +816,7 @@ roboticist = {
 
 	possible = {
 		droid_specialist_job_check_trigger = yes
-		NOT = { planet = { free_housing < 0 } }
+		#NOT = { planet = { free_housing < 0 } }
 	}
 	
 	resources = {
@@ -832,10 +832,10 @@ roboticist = {
 				exists = owner
 				owner = { has_authority = auth_machine_intelligence }
 			}
-			minerals = 10
-			alloys = 2
-			energy = @job_energy_low2
-			consumer_goods = @job_supplies_low2
+			minerals = 5
+			alloys = 1
+			energy = @job_energy_low
+			consumer_goods = @job_supplies_low
 		}
 		upkeep = {
 			trigger = {
@@ -861,7 +861,7 @@ roboticist = {
 
 	planet_modifier = {
 		planet_amenities_add = 30
-		planet_pop_assembly_add = 2
+		planet_pop_assembly_add = 3
 	}
 	
 	triggered_planet_modifier = {
@@ -870,8 +870,8 @@ roboticist = {
 			owner = { has_authority = auth_machine_intelligence }
 		}
 		modifier = {
-			planet_amenities_add = 60
-			planet_pop_assembly_add = 2
+			planet_amenities_add = 30
+			planet_pop_assembly_add = 1
 		}
 	}
 	
