@@ -34,7 +34,7 @@ default_federation = {
 	allow = {
 		custom_tooltip = {
 			fail_text = requires_actor_not_barbaric_despoilers
-			NOT = { has_valid_civic = civic_barbaric_despoilers }
+			NOT = { has_civic = civic_barbaric_despoilers }
 		}
 	}
 	levels = {
@@ -323,7 +323,12 @@ trade_federation = {
 			fail_text = requires_actor_not_barbaric_despoilers
 			NOT = { has_valid_civic = civic_barbaric_despoilers }
 		}
-		has_tradition = tr_prosperity_adopt
+		OR = {
+			has_tradition = tr_prosperity_adopt
+			has_valid_civic = civic_merchant_guilds
+			has_authority = auth_corporate
+			has_valid_civic = civic_capitalist
+		}
 	}
 	levels = {
 		level_1 = { # Starting rank
@@ -611,7 +616,10 @@ research_federation = {
 			fail_text = requires_actor_not_barbaric_despoilers
 			NOT = { has_valid_civic = civic_barbaric_despoilers }
 		}
-		has_tradition = tr_discovery_adopt
+		OR = {
+			has_tradition = tr_discovery_adopt
+			has_valid_civic = civic_technocracy
+		}
 	}
 	levels = {
 		level_1 = { # Starting rank
@@ -1177,8 +1185,8 @@ hegemony_federation = {
 	potential = {
 		host_has_dlc = Federations
 		OR = {
-			has_ethic = ethic_pacifist
-			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
 		}
 	}
 	levels = {

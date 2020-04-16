@@ -68,46 +68,6 @@ imperialist = {
 			is_event_leader = yes
 		}
 	}
-	
-	# Loves Slaying
-	demand = {
-		title = "MILITARIST_SLAYER"
-		unfulfilled_title = "MILITARIST_NO_SLAYER"
-		desc = "MILITARIST_SLAYER_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = {
-			exists = owner
-			owner = {
-				host_has_dlc = "Leviathans Story Pack"
-				any_country = {
-					OR = {
-						is_country_type = guardian
-						is_country_type = guardian_dragon
-						is_country_type = guardian_stellarite
-						is_country_type = guardian_wraith #
-						is_country_type = guardian_hiver
-						is_country_type = guardian_horror
-						is_country_type = guardian_fortress
-						is_country_type = guardian_dreadnought
-						is_country_type = guardian_sphere
-						is_country_type = guardian_scavenger_bot
-						is_country_type = guardian_elderly_tiyanki
-						is_country_type = guardian_hatchling
-					}
-					has_communications = prev
-				}
-			}
-		}
-
-		trigger = {
-			owner = {
-				has_country_flag = killed_guardian
-			}
-		}
-	}
 
 	# Wants Supremacy
 	demand = {
@@ -222,54 +182,6 @@ imperialist = {
 			owner = { has_policy_flag = unrestricted_wars }
 		}
 	}
-
-	# Wants Federation
-	demand = { 
-		title = "MILITARIST_FEDERATION"
-		unfulfilled_title = "MILITARIST_NO_FEDERATION"
-		desc = "MILITARIST_FEDERATION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			federation = { 
-				OR = {
-					has_federation_type = military_federation
-					has_federation_type = hegemony_federation
-				}
-			}
-		}
-	}
-
-	# Wants Federation
-	demand = { 
-		title = "MILITARIST_BARBARIC_FED"
-		unfulfilled_title = "MILITARIST_NO_BARBARIC_FED"
-		desc = "MILITARIST_BARBARIC_FED_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			owner = { has_country_flag = first_federation_event }
-		}
-
-		trigger = {
-			federation = { 
-				OR = {
-					has_federation_law = challenge_type_arena_combat
-					has_federation_law = challenge_type_psionic_battle
-					has_federation_law = succession_power_fleet 
-				}
-			}
-		}
-	}
 	
 	# Hates Naval Parity
 	demand = { 
@@ -298,6 +210,46 @@ imperialist = {
 		}
 	}
 
+	# Loves Slaying
+	demand = {
+		title = "MILITARIST_SLAYER"
+		unfulfilled_title = "MILITARIST_NO_SLAYER"
+		desc = "MILITARIST_SLAYER_DESC"
+
+		fulfilled_effect = 5
+		unfulfilled_effect = 0
+
+		potential = {
+			exists = owner
+			owner = {
+				host_has_dlc = "Leviathans Story Pack"
+				any_country = {
+					OR = {
+						is_country_type = guardian
+						is_country_type = guardian_dragon
+						is_country_type = guardian_stellarite
+						is_country_type = guardian_wraith 
+						is_country_type = guardian_hiver
+						is_country_type = guardian_horror
+						is_country_type = guardian_fortress
+						is_country_type = guardian_dreadnought
+						is_country_type = guardian_sphere
+						is_country_type = guardian_scavenger_bot
+						is_country_type = guardian_elderly_tiyanki
+						is_country_type = guardian_hatchling
+					}
+					has_communications = prev
+				}
+			}
+		}
+
+		trigger = {
+			owner = {
+				has_country_flag = killed_guardian
+			}
+		}
+	}
+	
 	# Wants GC Readiness Laws
 	demand = { 
 		title = "MILITARIST_GC_READINESS"

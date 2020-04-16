@@ -283,37 +283,9 @@ isolationist = {
 					NOR = {
 						has_diplo_migration_treaty = root.owner
 						root = {
-							OR = {
-								owner = { has_diplo_migration_treaty = prevprev }
-								federation = { has_federation_law = free_migration_yes }
-							}
+							owner = { has_diplo_migration_treaty = prevprev }
 						}
 					}
-				}
-			}
-		}
-	}
-
-	# Wants Decentralized Federation
-	demand = { 
-		title = "XENOPHOBE_NO_FEDERATION"
-		unfulfilled_title = "XENOPHOBE_FEDERATION"
-		desc = "XENOPHOBE_NO_FEDERATION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_country_flag = first_federation_event }
-		}
-
-		trigger = {
-			federation = { 
-				NOR = {
-					has_federation_law = centralization_medium
-					has_federation_law = centralization_high
-					has_federation_law = centralization_very_high					
 				}
 			}
 		}

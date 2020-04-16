@@ -1,10 +1,11 @@
 
 # Env Policy Opinion
+
 opinion_policy_environmental = {
 	opinion = {
 		base = 0
 		modifier = {
-			add = -10
+			add = -20
 			has_ethic = "ethic_spiritualist"
 
 			from = {
@@ -15,7 +16,7 @@ opinion_policy_environmental = {
 		}
 
 		modifier = {
-			add = -20
+			add = -40
 
 			has_ethic = "ethic_fanatic_spiritualist"
 
@@ -24,6 +25,86 @@ opinion_policy_environmental = {
 					has_policy_flag = environmental_deregulation
 				}
 			}
+		}
+	}
+}
+
+# Opposing Slaving Despots / Abolitionists personalities
+opinion_abolitionists_on_slavers = {
+	opinion = {
+		modifier = {
+			add = -200
+			has_ai_personality = abolitionists
+			FROM = { has_ai_personality = slaving_despots }			
+		}
+	}
+}
+opinion_slavers_on_abolitionists = {
+	opinion = {
+		modifier = {
+			add = -200
+			has_ai_personality = slaving_despots
+			FROM = { has_ai_personality = abolitionists }			
+		}
+	}
+}
+
+# Opposing Industrialist / Conservationist personalities
+opinion_industrialists_on_custodians = {
+	opinion = {
+		modifier = {
+			add = -200
+			has_ai_personality = tenacious_industrialists
+			FROM = { has_ai_personality = caring_custodians }				
+		}
+	}
+}
+opinion_custodians_on_industrialists = {
+	opinion = {
+		modifier = {
+			add = -200
+			has_ai_personality = caring_custodians
+			FROM = { has_ai_personality = tenacious_industrialists }				
+		}
+	}
+}
+
+# Opposing Capitalist / Revolutionary personalities 
+opinion_revolutionaries_on_capitalists = {
+	opinion = {
+		modifier = {
+			add = -200
+			has_ai_personality = communists
+			FROM = { has_ai_personality = ruthless_capitalists }	
+		}
+	}
+}
+opinion_capitalists_on_revolutionaries = {
+	opinion = {
+		modifier = {
+			add = -200
+			has_ai_personality = ruthless_capitalists
+			FROM = { has_ai_personality = communists }			
+		}
+	}
+}
+
+# Opposing Hegemon / Liberator personalities
+opinion_hegemons_on_liberators = {
+	opinion = {
+		modifier = {
+			add = -200
+			has_ai_personality = hegemonic_imperialists
+			FROM = { has_ai_personality = radical_liberators }	
+		}
+	}
+}
+opinion_liberators_on_hegemons = {
+	opinion = {
+		modifier = {
+			add = -200
+			has_ai_personality = radical_liberators
+			FROM = { has_ai_personality = hegemonic_imperialists }			
 		}
 	}
 }
