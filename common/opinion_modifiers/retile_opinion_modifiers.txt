@@ -1,0 +1,29 @@
+
+# Env Policy Opinion
+opinion_policy_environmental = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = -10
+			has_ethic = "ethic_spiritualist"
+
+			from = {
+				OR = {
+					has_policy_flag = environmental_deregulation
+				}
+			}
+		}
+
+		modifier = {
+			add = -20
+
+			has_ethic = "ethic_fanatic_spiritualist"
+
+			from = {
+				OR = {
+					has_policy_flag = environmental_deregulation
+				}
+			}
+		}
+	}
+}

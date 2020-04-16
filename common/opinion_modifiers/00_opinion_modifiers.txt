@@ -700,7 +700,118 @@ opinion_of_pacifist_pos = {
 	}
 }
 
-# Opinion of Ethic: authoritarian
+# Bad Opinion of Ethic: Pacifist
+opinion_of_pacifist = {
+	opinion = {
+		base = 0
+
+		modifier = {
+			add = -40
+			has_ethic = "ethic_fanatic_militarist"
+			FROM = { has_ethic = "ethic_fanatic_pacifist" }
+		}
+		modifier = {
+			add = -20
+			has_ethic = "ethic_fanatic_militarist"
+			FROM = { has_ethic = "ethic_pacifist" }
+		}
+		modifier = {
+			add = -20
+			has_ethic = "ethic_militarist"
+			FROM = { has_ethic = "ethic_fanatic_pacifist" }
+		}
+		modifier = {
+			add = -10
+			has_ethic = "ethic_militarist"
+			FROM = { has_ethic = "ethic_pacifist" }
+		}
+	}
+}
+
+# Bad Opinion of Ethic: militarist
+opinion_of_militarist = {
+	opinion = {
+		base = 0
+
+		modifier = {
+			add = -10
+			has_ethic = "ethic_pacifist"
+			FROM = { has_ethic = "ethic_militarist" }
+		}
+		modifier = {
+			add = -20
+			has_ethic = "ethic_pacifist"
+			FROM = { has_ethic = "ethic_fanatic_militarist" }
+		}
+		modifier = {
+			add = -20
+			has_ethic = "ethic_fanatic_pacifist"
+			FROM = { has_ethic = "ethic_militarist" }
+		}
+		modifier = {
+			add = -40
+			has_ethic = "ethic_fanatic_pacifist"
+			FROM = { has_ethic = "ethic_fanatic_militarist" }
+		}
+	}
+}
+
+# Good Opinion of Ethic: militarist
+opinion_of_militarist_pos = {
+	opinion = {
+		base = 0
+
+		modifier = {
+			add = 25
+			has_ethic = "ethic_fanatic_militarist"
+			FROM = { has_ethic = "ethic_fanatic_militarist" }
+		}
+		modifier = {
+			add = 10
+			has_ethic = "ethic_fanatic_militarist"
+			FROM = { has_ethic = "ethic_militarist" }
+		}
+		modifier = {
+			add = 10
+			has_ethic = "ethic_militarist"
+			FROM = { has_ethic = "ethic_fanatic_militarist" }
+		}
+		modifier = {
+			add = 10
+			has_ethic = "ethic_militarist"
+			FROM = { has_ethic = "ethic_militarist" }
+		}
+	}
+}
+
+# Good opinion of Ethic: authoritarian
+opinion_of_authoritarian_pos = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = 10
+			has_ethic = "ethic_authoritarian"
+			FROM = { has_ethic = "ethic_authoritarian" }
+		}
+		modifier = {
+			add = 10
+			has_ethic = "ethic_authoritarian"
+			FROM = { has_ethic = "ethic_fanatic_authoritarian" }
+		}
+		modifier = {
+			add = 10
+			has_ethic = "ethic_fanatic_authoritarian"
+			FROM = { has_ethic = "ethic_authoritarian" }
+		}
+		modifier = {
+			add = 25
+			has_ethic = "ethic_fanatic_authoritarian"
+			FROM = { has_ethic = "ethic_fanatic_authoritarian" }
+		}
+	}
+}
+
+# Bad opinion of Ethic: authoritarian
 opinion_of_authoritarian = {
 	opinion = {
 		base = 0
