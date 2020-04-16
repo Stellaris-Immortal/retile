@@ -391,6 +391,8 @@ generate_start_deposits_and_blockers = {
 				has_origin = origin_life_seeded
 			}
 		}
+		
+		set_planet_size = 25
 
 		# 5 + 3 energy
 		add_deposit = d_searing_desert
@@ -882,7 +884,7 @@ generate_earth_deposits_and_blockers = {
 			}
 		}
 
-		#set_planet_size = 25
+		set_planet_size = 25
 
 		add_deposit = d_dust_caverns
 		add_deposit = d_bubbling_swamp
@@ -1004,27 +1006,8 @@ generate_start_buildings_and_districts = {
 		add_district = district_custodians
 		add_district = district_housing
 		add_district = district_housing
+		add_district = district_housing
 	}
-	if = {
-		limit = {
-			owner = { has_origin = origin_default }
-		}
-		if = {
-			limit = { owner = { is_regular_empire = yes } }
-			add_district = district_housing
-			add_district = district_clerks
-			add_district = district_engineers
-			add_district = district_scholars
-		}
-		if = {
-			limit = { owner = { is_hive_empire = yes } }
-			add_district = district_housing
-			add_district = district_engineers
-			add_district = district_engineers
-			add_district = district_scholars
-		}
-	}
-	
 	if = {
 		limit = { owner = { is_hive_empire = yes } }
 		
@@ -1039,6 +1022,7 @@ generate_start_buildings_and_districts = {
 		add_district = district_scholars
 		add_district = district_sentinel
 		add_district = district_custodians
+		add_district = district_housing
 		add_district = district_housing
 		add_district = district_housing
 	}
@@ -1059,6 +1043,35 @@ generate_start_buildings_and_districts = {
 		add_district = district_custodians
 		add_district = district_housing
 		add_district = district_housing
+		add_district = district_housing
+	}
+	
+	# Extras for Prosperous Unification
+	if = {
+		limit = {
+			owner = { has_origin = origin_default }
+		}
+		if = {
+			limit = { owner = { is_regular_empire = yes } }
+			add_district = district_housing
+			add_district = district_clerks
+			add_district = district_engineers
+			add_district = district_scholars
+		}
+		if = {
+			limit = { owner = { is_hive_empire = yes } }
+			add_district = district_housing
+			add_district = district_engineers
+			add_district = district_engineers
+			add_district = district_scholars
+		}
+		if = {
+			limit = { owner = { is_machine_empire = yes } }
+			add_district = district_housing
+			add_district = district_engineers
+			add_district = district_scholars
+			add_district = district_scholars
+		}
 	}
 	
 	# Additional resources based on empire type and possible subspecies
@@ -1427,7 +1440,7 @@ void_dweller_home_planet_setup = {
 	}
 	
 	while = {
-		count = 9
+		count = 6
 		create_pop = {
 			species = owner_main_species
 		}
@@ -1437,12 +1450,12 @@ void_dweller_home_planet_setup = {
 		graphical_culture = event_target:void_dweller_owner
 	}
 	
-	add_building = building_system_capital
+	add_building = building_major_capital
 	add_district = district_housing
-	add_district = district_housing
+	add_district = district_clerks
 	add_district = district_engineers
 	add_district = district_scholars
-	add_deposit = retile_module_generator
+	add_district = district_enforcers
 
 	add_deposit = d_arcane_replicator
 	
@@ -1451,7 +1464,7 @@ void_dweller_home_planet_setup = {
 			limit = { has_planet_flag = void_dweller_habitat_2 }
 			set_owner = event_target:void_dweller_owner
 			while = {
-				count = 4
+				count = 7
 				create_pop = {
 					species = owner_main_species
 				}
@@ -1460,26 +1473,14 @@ void_dweller_home_planet_setup = {
 				entity = "orbital_habitat_entity"
 				graphical_culture = event_target:void_dweller_owner
 			}
-			add_building = building_colony_shelter
+			add_building = building_major_capital
 			add_district = district_housing
+			add_district = district_housing
+			add_district = district_enforcers
+			add_deposit = retile_module_generator
+			change_variable = { which = module_count value = 1 }
 			add_deposit = retile_module_mine
-		}
-		random_system_planet = {
-			limit = { has_planet_flag = void_dweller_habitat_3 }
-			set_owner = event_target:void_dweller_owner
-			while = {
-				count = 4
-				create_pop = {
-					species = owner_main_species
-				}
-			}
-			set_planet_entity = {
-				entity = "orbital_habitat_entity"
-				graphical_culture = event_target:void_dweller_owner
-			}
-			add_building = building_colony_shelter
-			add_district = district_housing
-
+			change_variable = { which = module_count value = 1 }
 			if = {
 				limit = {
 					owner = {
@@ -1487,6 +1488,7 @@ void_dweller_home_planet_setup = {
 					}
 				}
 				add_deposit = retile_module_mine
+				change_variable = { which = module_count value = 1 }
 			} else_if = {
 				limit = {
 					owner = {
@@ -1494,8 +1496,10 @@ void_dweller_home_planet_setup = {
 					}
 				}
 				add_deposit = retile_module_generator
+				change_variable = { which = module_count value = 1 }
 			} else = {
 				add_deposit = retile_module_farm
+				change_variable = { which = module_count value = 1 }
 			}
 		}
 		every_system_planet = {

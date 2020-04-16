@@ -182,7 +182,7 @@ d_tree_of_life_home = {
 	planet_modifier = {
 		pop_growth_speed = 0.15
 		planet_jobs_society_research_produces_mult = 0.10
-		planet_housing_add = 10
+		planet_housing_add = 6
 	}
 	
 	triggered_planet_modifier = {
@@ -256,7 +256,32 @@ d_tree_of_life_home = {
 	resources = {
 		category = planet_deposits
 		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+					is_plantoid_empire = no
+				}
+			}
 			food = 4
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = 4
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_plantoid_empire = yes
+				}
+			}
+			energy = 4
 		}
 	}
 
@@ -284,7 +309,7 @@ d_tree_of_life_colony = {
 	planet_modifier = {
 		pop_growth_speed = 0.1
 		planet_jobs_society_research_produces_mult = 0.10
-		planet_housing_add = 5
+		planet_housing_add = 3
 	}
 	
 	triggered_planet_modifier = {
@@ -314,7 +339,32 @@ d_tree_of_life_colony = {
 	resources = {
 		category = planet_deposits
 		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = no
+					is_plantoid_empire = no
+				}
+			}
 			food = 2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_lithoid_empire = yes
+				}
+			}
+			minerals = 2
+		}
+		upkeep = {
+			trigger = {
+				exists = owner
+				owner = {
+					is_plantoid_empire = yes
+				}
+			}
+			energy = 2
 		}
 	}
 

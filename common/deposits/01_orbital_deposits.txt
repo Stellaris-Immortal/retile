@@ -962,7 +962,7 @@ d_society_small = {
 	}
 	
 	drop_weight = {
-		weight = 40
+		weight = 10
 		modifier = {
 			factor = 1.5
 			is_inside_nebula = yes
@@ -1107,7 +1107,7 @@ d_society_medium = {
 	}
 	
 	drop_weight = {
-		weight = 30
+		weight = 20
 		modifier = {
 			factor = 2
 			is_inside_nebula = yes
@@ -1251,7 +1251,7 @@ d_society_large = {
 	}
 	
 	drop_weight = {
-		weight = 25
+		weight = 40
 		modifier = {
 			factor = 2
 			is_inside_nebula = yes
@@ -1672,7 +1672,7 @@ d_physics_large = {
 	}
 	
 	drop_weight = {
-		weight = 25
+		weight = 10
 		modifier = {
 			factor = 0
 			solar_system = {
@@ -2092,7 +2092,7 @@ d_engineering_large = {
 	}
 	
 	drop_weight = {
-		weight = 25
+		weight = 10
 		modifier = {
 			factor = 0
 			solar_system = {
@@ -2914,4 +2914,178 @@ d_special_4 = {
 	drop_weight = {
 		weight = 1000
 	}
+}
+
+##################################
+############ SUPPLIES ############
+##################################
+
+d_space_supplies = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = { consumer_goods = 2 }
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 1
+					}
+				}
+			}
+			consumer_goods = 1
+		}
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 2
+					}
+				}
+			}
+			consumer_goods = 2
+		}
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 3
+					}
+				}
+			}
+			consumer_goods = 3
+		}
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 4
+					}
+				}
+			}
+			consumer_goods = 4
+		}
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 5
+					}
+				}
+			}
+			consumer_goods = 5
+		}
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 6
+					}
+				}
+			}
+			consumer_goods = 6
+		}
+	}
+	
+	potential = { always = no }
+	drop_weight = { weight = 0 }
+}
+
+d_space_supplies_large = {
+	station = shipclass_mining_station
+	is_for_colonizeable = no
+	
+	resources = {
+		category = orbital_mining_deposits
+		produces = { consumer_goods = 4 }
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 1
+					}
+				}
+			}
+			consumer_goods = 2
+		}
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 2
+					}
+				}
+			}
+			consumer_goods = 4
+		}
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 3
+					}
+				}
+			}
+			consumer_goods = 6
+		}
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 4
+					}
+				}
+			}
+			consumer_goods = 8
+		}
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 5
+					}
+				}
+			}
+			consumer_goods = 10
+		}
+		produces = {
+			trigger = {
+				exists = solar_system.starbase
+				solar_system.starbase = {
+					count_starbase_modules = {
+						type = mining_terminal
+						count = 6
+					}
+				}
+			}
+			consumer_goods = 12
+		}
+	}
+	
+	potential = { always = no }
+	drop_weight = { weight = 0 }
 }

@@ -180,7 +180,7 @@ pop_event = {
 				modifier = { add = 20 habitability = { who = root value >= 1.00 } }
 				modifier = {
 					# Prioritize moving to a planet where we're needed
-					mult = 2
+					mult = 3
 					root = { has_job = laborer }
 					OR = {
 						AND = {
@@ -255,15 +255,7 @@ planet_event = {
 	pre_triggers = { has_owner = yes }
 	
 	trigger = {
-		owner = { NOT = { has_policy_flag = migration_forbidden } }
-		num_pops > 1
-		is_under_colonization = no
-		has_orbital_bombardment = no
-		is_occupied_flag = no
-		is_controlled_by = owner
-		free_housing < 0
-		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
-		NOT = { has_modifier = penal_colony }
+		always = yes
 	}
 
 	mean_time_to_happen = {
@@ -271,7 +263,20 @@ planet_event = {
 	}
 
 	immediate = {
-		planet_event = { id = retile_pop.90 }
+		if = {
+			limit = {
+				owner = { NOT = { has_policy_flag = migration_forbidden } }
+				num_pops > 1
+				is_under_colonization = no
+				has_orbital_bombardment = no
+				is_occupied_flag = no
+				is_controlled_by = owner
+				free_housing < 0
+				owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
+				NOT = { has_modifier = penal_colony }
+			}
+			planet_event = { id = retile_pop.90 }
+		}
 	}
 }
 
@@ -319,7 +324,7 @@ pop_event = {
 		is_sapient = yes
 	}
 	
-	mean_time_to_happen = { days = 360 } # check about once/year
+	mean_time_to_happen = { days = 720 } # check about once/year
 	
 	immediate = {
 		if = {
@@ -358,6 +363,10 @@ pop_event = {
 					modifier = {	# plantoids think about it more like every 20 years...
 						add = 150
 						is_plantoid = yes
+					}
+					modifier = {	# pops with non-laborer employment should move less frequently...
+						factor = 2
+						NOT = { has_job = laborer }
 					}
 					modifier = {	# high habitability - move less often
 						factor = 2
@@ -438,7 +447,7 @@ pop_event = {
 					modifier = {
 						factor = 2
 						has_trait = trait_sedentary
-					}	
+					}
 				}
 				10 = { # performance optimization, and numbers tweak: put internal/foreign
 					random_list = { # checks in here so they only happen if the pop decides to migrate
@@ -680,7 +689,33 @@ country_event = {
 				modifier = { add = 18 		habitability = { who = from value >= 0.90 } }
 				modifier = { add = 19 		habitability = { who = from value >= 0.95 } }
 				modifier = { add = 20 		habitability = { who = from value >= 1.00 } }
-				modifier = { mult = 2 		free_jobs > 0 }
+				modifier = {
+					# Prioritize moving to a planet where we're needed
+					mult = 3
+					from = { has_job = laborer }
+					OR = {
+						AND = {
+							has_planet_flag = planet_needs_robot_specialists
+							from = { robot_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_combat_specialists
+							from = { combat_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_droid_specialists
+							from = { droid_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_synth_specialists
+							from = { synth_specialist_job_check_trigger = yes }
+						}
+						AND = {
+							has_planet_flag = planet_needs_rulers
+							from = { ruler_job_check_trigger = yes }
+						}
+					}
+				}
 				modifier = { mult = 2 		free_housing > 0 }
 				modifier = { mult = 1.5		planet_stability > 50 }
 				modifier = { mult = 1.5		planet_crime < 1 }
@@ -856,36 +891,6 @@ country_event = {
 	}
 }
 
-
-
-############################################
-### Pop Sprawl
-
-# apply an appropriate pop growth malus to each empire based on the number of planets it has.
-country_event = {
-	id = retile_pop.200
-	hide_window = yes
-
-	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = awakened_marauders
-			is_country_type = awakened_fallen_empire
-		}
-		not = { has_country_flag = growth_malus_cleared }
-	}
-
-	mean_time_to_happen = {
-		days = 90
-	}
-
-	after = {
-		retile_clear_growth_malus = yes
-		set_country_flag = growth_malus_cleared
-		#retile_apply_growth_malus = yes
-	}
-}
-
 ############################################
 ### Planet Abandonment
 
@@ -1050,6 +1055,362 @@ pop_event = { # retile_abandon_migrate_outside_border
 			refugee_pop_effect = yes
 		} else = {
 			kill_pop = yes
+		}
+	}
+}
+
+############################################
+### Pop Assimilation
+
+# Assimilate pops
+pop_event = {
+	id = retile_pop.2000
+	hide_window = yes
+
+	pre_triggers = { has_owner = yes }
+	
+	trigger = {
+		owner = { is_country_type = default }
+	}
+
+	mean_time_to_happen = {
+		days = 1800
+	}
+
+	immediate = {
+		IF = {			# If assimilation status, do assimilation...
+			limit = {
+				has_citizenship_type = {
+					type = citizenship_assimilation
+					country = root.owner
+				}
+			}
+			random_list = {
+				10 = { } # Null. Should average about 10 years to assimilate a species
+				10 = { # Assimilate Pop
+					################################ assimilator empire, cyborg ascension
+					if = {
+						limit = {
+							root.owner = { OR = {
+								AND = {
+									has_authority = auth_machine_intelligence
+									has_civic = civic_machine_assimilator
+								}
+								has_country_flag = flesh_weakened
+							} }
+						}
+						if = {	##### biologicals
+							limit = { NOR = {
+								has_trait = trait_cybernetic
+								has_trait = trait_mechanical
+								has_trait = trait_droid
+								has_trait = trait_synthetic
+							} }
+							modify_species = {
+								species = this
+								add_trait = trait_cybernetic
+								add_traits_at_start_of_list = yes
+								change_scoped_species = yes # change only this pop's species
+							}
+							remove_hive_minded = yes # scripted effect
+							remove_culture_shock = yes
+							remove_self_modified = yes # scripted effect
+							if = {
+								limit = { root.owner = { has_civic = civic_machine_assimilator } }
+								root.owner = { generate_cyborg_treats = yes } # scripted effect
+							}
+						}
+						if = {  ##### mechanicals
+							limit = {
+								NOT = { has_trait = trait_cybernetic } # probably pointless
+								OR = {
+									has_trait = trait_mechanical
+									has_trait = trait_droid
+									has_trait = trait_synthetic
+								}
+							}
+							kill_pop = yes
+							root = {
+								create_pop = {
+									species = root.owner
+									ethos = root.owner
+								}
+							}
+							if = {
+								limit = { root.owner = { has_civic = civic_machine_assimilator } }
+								root.owner = { generate_cyborg_treats = yes } # scripted effect
+							}
+						}
+					}
+					################################ hive mind
+					else_if = {
+						limit = {
+							root.owner = {
+								has_authority = auth_hive_mind
+								NOT = { has_civic = civic_hive_devouring_swarm }
+							}
+						}
+						modify_species = {
+							species = this
+							add_trait = trait_hive_mind
+							add_traits_at_start_of_list = yes
+							#change_scoped_species = no
+						}
+						remove_culture_shock = yes
+						remove_self_modified = yes # scripted effect
+					}
+					################################ ascended synths
+					else_if = {
+						limit = {
+							root.owner = {
+								has_country_flag = synthetic_empire
+							}
+						}
+						kill_pop = yes
+						root = {
+							create_pop = {
+								species = root.owner
+								ethos = root.owner
+							}
+						}
+					}
+					################################ Uplift robots to synths or machines
+					else_if = {
+						limit = {
+							OR = {
+								has_trait = trait_mechanical
+								has_trait = trait_droid
+							}
+							OR = {
+								root.owner = { has_authority = auth_machine_intelligence }
+								root.owner = { any_owned_species = {
+									has_species_flag = synthetic_species@root.owner
+								} }
+							}
+						}
+						if = {	# uplift to machines
+							limit = { from = { has_authority = auth_machine_intelligence } }
+							kill_pop = yes
+							root = {
+								create_pop = {
+									species = root.owner
+									ethos = root.owner
+								}
+							}
+						}
+						else = { # uplift to synths
+							root.owner = { random_owned_species = {
+								limit = { has_species_flag = synthetic_species@root.owner }
+								save_event_target_as = synthetic_species
+							} }
+							kill_pop = yes
+							root = {
+								create_pop = {
+									species = event_target:synthetic_species
+									ethos = root.owner
+								}
+							}
+						}
+					}
+					################################ hive-pop disconnection
+					else_if = {
+						limit = {
+							root.owner = {
+								NOR = {
+									has_ethic = ethic_gestalt_consciousness
+									has_country_flag = synthetic_empire
+									has_country_flag = flesh_weakened
+								}
+							}
+							has_trait = trait_hive_mind
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_hive_mind
+							change_scoped_species = yes # change only this pop's species
+						}
+					}
+					################################ Psionic Assimilation ADD OTHER RANDOM OPTIONS TOO
+					else_if = {
+						limit = {
+							root.owner = {
+								has_ascension_perk = ap_transcendence
+							}
+							NOR = {
+								has_trait = trait_psionic
+								has_trait = trait_latent_psionic
+							}
+							#has_living_standard = {
+							#	country = root
+							#	type = psionic_assimilation
+							#}
+						}
+						modify_species = {
+							species = this
+							add_trait = trait_psionic
+							add_traits_at_start_of_list = yes
+							change_scoped_species = yes
+						}
+					}
+					################################ ???
+					else_if = {
+						limit = {
+							NOT = { has_trait = trait_psionic}
+							has_trait = trait_latent_psionic
+						}
+						modify_species = {
+							species = this
+							remove_trait = trait_latent_psionic
+							add_traits_at_start_of_list = yes
+							change_scoped_species = yes
+						}
+					}
+					################################ set citizenship
+					## GEBNAR: I'm not convinced these do anything helpful - I'm gonna just disable them for now...
+				#	if = {
+				#		limit = { root.owner = { has_authority = auth_machine_intelligence } }
+				#		set_citizenship_type = {
+				#			type = citizenship_full_machine
+				#			country = root.owner
+				#		}
+				#	}
+				#	else = {
+				#		set_citizenship_type = {
+				#			type = citizenship_full
+				#			country = root.owner
+				#		}
+				#	}
+				#	if = {
+				#		limit = { root.owner = { has_ethic = ethic_gestalt_consciousness } }
+				#		set_living_standard = {
+				#			type = living_standard_hive_mind
+				#			country = root.owner
+				#		}
+				#	}
+				}
+			}
+		}
+		else = {		# if old ai species, integrate into new one...
+			if = {
+				limit = {
+					root.owner = { is_ai = yes }
+					root = { species = { NOT = { has_species_flag = ai_primary_species@root.owner } } }
+				}
+				random_list = {
+					#40 = { } # Null. Should average about 5 years to assimilate a species
+					10 = { # Assimilate Pop
+						root.owner = {
+							random_owned_species = {
+								limit = {
+									any_pop = {
+										species = {
+											is_same_species = root
+											NOT = { is_exact_same_species = root }
+											has_species_flag = ai_primary_species@root.owner
+										}
+									}
+								}
+								root = { change_species = prev }
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+############################################
+### Pop Density Deposits
+
+# (Re-)Apply pop density deposit(s)
+# THIS = planet
+planet_event = {
+	id = retile_pop.3000
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { always = yes }
+	
+	immediate = {
+		# Remove existing pop density deposits
+		if = {
+			limit = {
+				any_deposit = {
+					OR = {
+						is_deposit_type = d_pop_density_normal
+						is_deposit_type = d_pop_density_habitat
+						is_deposit_type = d_pop_density_city
+					}
+				}
+			}
+			while = {
+				limit = {
+					any_deposit = {
+						OR = {
+							is_deposit_type = d_pop_density_normal
+							is_deposit_type = d_pop_density_habitat
+							is_deposit_type = d_pop_density_city
+						}
+					}
+				}
+				random_deposit = {
+					limit = {
+						OR = {
+							is_deposit_type = d_pop_density_normal
+							is_deposit_type = d_pop_density_habitat
+							is_deposit_type = d_pop_density_city
+						}
+					}
+					remove_deposit = yes
+				}
+			}
+		}
+		
+		# Apply new pop density deposit
+		if = {
+			limit = {
+				OR = {
+					has_planet_flag = pop_density_none
+				}
+			}
+			#add_deposit = d_pop_density_habitat
+		} else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_habitat
+					has_planet_flag = pop_density_habitat
+				}
+			}
+			add_deposit = d_pop_density_habitat
+		} else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_ringworld_habitable
+					is_planet_class = pc_city
+					is_planet_class = pc_hive
+					has_planet_flag = pop_density_city
+				}
+			}
+			add_deposit = d_pop_density_city
+		} else = {
+			add_deposit = d_pop_density_normal
+		}
+	}
+}
+
+# apply pop density deposits to all planets
+event = {
+	id = retile_pop.3001
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { always = yes }
+	
+	immediate = {
+		every_planet = {
+			limit = { num_pops > 0 }
+			planet_event = { id = retile_pop.3000 days = 4 random = 20 }
 		}
 	}
 }

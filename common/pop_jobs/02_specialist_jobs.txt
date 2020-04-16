@@ -22,7 +22,11 @@ clerk = {
 		category = planet_clerks
 		produces = {
 			trigger = { owner = { has_authority = auth_corporate } }
-			unity = 3
+			unity = 1
+		}
+		produces = {
+			trigger = { owner = { has_tradition = tr_prosperity_public_works } }
+			unity = 1
 		}
 		upkeep = {
 			energy = @job_energy_normal
@@ -62,6 +66,50 @@ clerk = {
 		modifier = {
 			trade_value_add = 30
 			planet_amenities_add = 225
+		}
+	}
+	
+	#########################################	Prosperity finisher bonus
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_tradition = tr_prosperity_finish }
+		}
+		trade_value_add = 2.5
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_tradition = tr_prosperity_finish }
+			planet = { OR = {
+				has_building = building_trade_1
+				has_building = building_bourse_1
+			} }
+		}
+		modifier = {
+			trade_value_add = 2.5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_tradition = tr_prosperity_finish }
+			planet = { OR = {
+				has_building = building_trade_2
+				has_building = building_bourse_2
+			} }
+		}
+		modifier = {
+			trade_value_add = 5
+		}
+	}
+	triggered_planet_modifier = {
+		potential = {
+			owner = { has_tradition = tr_prosperity_finish }
+			planet = { OR = {
+				has_building = building_trade_3
+				has_building = building_bourse_3
+			} }
+		}
+		modifier = {
+			trade_value_add = 7.5
 		}
 	}
 
@@ -768,7 +816,7 @@ roboticist = {
 
 	possible = {
 		droid_specialist_job_check_trigger = yes
-		NOT = { planet = { free_housing < 0 } }
+		#NOT = { planet = { free_housing < 0 } }
 	}
 	
 	resources = {
@@ -784,10 +832,10 @@ roboticist = {
 				exists = owner
 				owner = { has_authority = auth_machine_intelligence }
 			}
-			minerals = 10
-			alloys = 2
-			energy = @job_energy_low2
-			consumer_goods = @job_supplies_low2
+			minerals = 5
+			alloys = 1
+			energy = @job_energy_low
+			consumer_goods = @job_supplies_low
 		}
 		upkeep = {
 			trigger = {
@@ -813,7 +861,7 @@ roboticist = {
 
 	planet_modifier = {
 		planet_amenities_add = 30
-		planet_pop_assembly_add = 2
+		planet_pop_assembly_add = 3
 	}
 	
 	triggered_planet_modifier = {
@@ -822,8 +870,8 @@ roboticist = {
 			owner = { has_authority = auth_machine_intelligence }
 		}
 		modifier = {
-			planet_amenities_add = 60
-			planet_pop_assembly_add = 2
+			planet_amenities_add = 30
+			planet_pop_assembly_add = 1
 		}
 	}
 	

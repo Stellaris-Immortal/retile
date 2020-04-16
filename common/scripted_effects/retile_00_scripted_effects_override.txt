@@ -59,7 +59,7 @@ create_fe_fringe_colony = {
 	add_building = building_fe_dome
 	
 	while = {
-		count = 4	# 48 precursors
+		count = 7	# 48 precursors
 		add_district = district_housing
 	}
 	while = {
@@ -86,7 +86,7 @@ create_fe_spiritualist_fringe_colony = {
 	add_building = building_fe_dome
 	
 	while = {
-		count = 4	# 48 precursors
+		count = 7	# 48 precursors
 		add_district = district_housing
 	}
 	while = {
@@ -495,6 +495,7 @@ generate_lost_colony_parent_bonus = {
 	add_building = building_system_capital
 	add_district = district_housing
 	add_district = district_housing
+	add_district = district_housing
 
 	while = {
 		limit = { num_pops < 12 }
@@ -529,85 +530,90 @@ generate_lost_colony_parent_bonus = {
 }
 
 create_built_robot_species = {
-	create_species = {
-		name = NAME_Robot
-		plural = NAME_Robots
-		class = ROBOT
-		homeworld = capital_scope
-		namelist = this
-		portrait = default_robot
-		traits = {
-			trait = trait_mechanical
-		}
+	random_owned_planet = {
+		limit = { is_capital = yes }
+		owner = {
+			create_species = {
+				name = NAME_Robot
+				plural = NAME_Robots
+				class = ROBOT
+				homeworld = prevprev
+				namelist = this
+				portrait = default_robot
+				traits = {
+					trait = trait_mechanical
+				}
 
-		effect = {
-			set_species_flag = mechanical_species@prev
-		}
-		effect = {
-			if = {
-				limit = {
-					prev = { use_robot_portrait_sd_hum_robot = yes }
+				effect = {
+					set_species_flag = mechanical_species@prev
 				}
-				change_species_portrait = sd_hum_robot
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					prev = { use_robot_portrait_sd_mam_robot = yes }
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_hum_robot = yes }
+						}
+						change_species_portrait = sd_hum_robot
+					}
 				}
-				change_species_portrait = sd_mam_robot
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					prev = { use_robot_portrait_sd_rep_robot = yes }
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_mam_robot = yes }
+						}
+						change_species_portrait = sd_mam_robot
+					}
 				}
-				change_species_portrait = sd_rep_robot
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					prev = { use_robot_portrait_sd_avi_robot = yes }
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_rep_robot = yes }
+						}
+						change_species_portrait = sd_rep_robot
+					}
 				}
-				change_species_portrait = sd_avi_robot
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					prev = { use_robot_portrait_sd_art_robot = yes }
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_avi_robot = yes }
+						}
+						change_species_portrait = sd_avi_robot
+					}
 				}
-				change_species_portrait = sd_art_robot
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					prev = { use_robot_portrait_sd_mol_robot = yes }
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_art_robot = yes }
+						}
+						change_species_portrait = sd_art_robot
+					}
 				}
-				change_species_portrait = sd_mol_robot
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					prev = { use_robot_portrait_sd_fun_robot = yes }
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_mol_robot = yes }
+						}
+						change_species_portrait = sd_mol_robot
+					}
 				}
-				change_species_portrait = sd_fun_robot
-			}
-		}
-		effect = {
-			if = {
-				limit = {
-					prev = { use_robot_portrait_sd_pla_robot = yes }
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_fun_robot = yes }
+						}
+						change_species_portrait = sd_fun_robot
+					}
 				}
-				change_species_portrait = sd_pla_robot
+				effect = {
+					if = {
+						limit = {
+							prev = { use_robot_portrait_sd_pla_robot = yes }
+						}
+						change_species_portrait = sd_pla_robot
+					}
+				}
 			}
+
+			set_built_species = last_created_species
 		}
 	}
-
-	set_built_species = last_created_species
 }

@@ -22,8 +22,7 @@ retile_ai_planet_healthy_district = {
 			NOT = { any_deposit = { has_deposit_category = deposit_cat_energy } }
 		}
 	}
-	free_amenities < 300
-	planet_crime < 10
+	retile_ai_has_planet_crisis = no
 }
 
 retile_ai_planet_healthy_building = {
@@ -57,7 +56,7 @@ retile_ready_capital = {
 	OR = {
 		owner = { is_ai = no }
 		AND = {
-			owner = { has_resource = { type = influence amount > 150 } }
+			owner = { has_resource = { type = influence amount > 50 } }
 			NOT = { owner = { has_country_flag = retile_ai_needs_energy_crisis } }
 			#free_jobs < 1
 			free_building_slots < 1

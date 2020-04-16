@@ -13,7 +13,7 @@ building_bureaucratic_1 = {
 	
 	potential = {
 		exists = owner
-		is_gestalt = no
+		owner = { is_gestalt = no }
 		has_district = district_bureaucrats
 	}
 	
@@ -21,6 +21,17 @@ building_bureaucratic_1 = {
 		"tech_adaptive_bureaucracy"
 	}
 
+	allow = {
+		exists = owner
+		OR = {
+			owner = { is_ai = no }
+			AND = {
+				retile_ai_planet_healthy_building = yes
+				owner = { has_country_flag = retile_ai_needs_admin }
+			}
+		}
+	}
+	
 	resources = {
 		category = planet_buildings
 		cost = {
@@ -49,7 +60,7 @@ building_bureaucratic_1 = {
 	}
 	
 	ai_weight = {
-		weight = 0
+		weight = 100
 	}
 }
 
@@ -88,7 +99,7 @@ building_bureaucratic_2 = {
 	
 	triggered_desc = {
 		trigger = { exists = owner }
-		text = retile_bureaucratic_3_effect
+		text = retile_bureaucratic_2_effect
 	}
 	
 	country_modifier = {
@@ -96,7 +107,7 @@ building_bureaucratic_2 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -139,7 +150,7 @@ building_bureaucratic_3 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -156,6 +167,11 @@ building_embassy_1 = {
 		NOT = { has_modifier = slave_colony }
 		NOT = { has_modifier = penal_colony }
 		planet = { is_capital = yes }
+	}
+	
+	allow = {
+		exists = owner
+		owner = { is_ai = no }
 	}
 	
 	destroy_trigger = {
@@ -189,7 +205,7 @@ building_embassy_1 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -247,7 +263,7 @@ building_embassy_2 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -301,7 +317,7 @@ building_embassy_3 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -317,6 +333,11 @@ building_military_1 = {
 		owner = { has_tradition = tr_supremacy_overwhelming_force }
 		NOT = { has_modifier = resort_colony }
 		NOT = { has_modifier = penal_colony }
+	}
+	
+	allow = {
+		exists = owner
+		owner = { is_ai = no }
 	}
 	
 	destroy_trigger = {
@@ -358,7 +379,7 @@ building_military_1 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -422,7 +443,7 @@ building_military_2 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }
 
@@ -482,6 +503,6 @@ building_military_3 = {
 	}
 	
 	ai_weight = {
-		weight = 1
+		weight = 100
 	}
 }

@@ -1,10 +1,10 @@
 #First is set to default
 #
 
-basic_conversion = {
+basic_conversion_energy = {
 	potential = {
-		has_policy_flag = trade_conversion_default
-		NOT = { has_tradition = tr_prosperity_finish }
+		is_ai = no
+		has_policy_flag = trade_conversion_energy
 	}
 	
 	weight = {
@@ -13,16 +13,23 @@ basic_conversion = {
 	
 	conversion_rate = {
 		energy = 0.5
-		alloys = 0.2
+		minerals = 0.1
+		food = 0.1
+		alloys = 0.02
+		consumer_goods = 0.02
+		unity = 0.01
+		physics_research = 0.01
+		society_research = 0.01
+		engineering_research = 0.01
 	}
 
 	economic_category = trade_routes
 }
 
-alloy_conversion_advanced = {
+basic_conversion_minerals = {
 	potential = {
-		has_policy_flag = trade_conversion_default
-		has_tradition = tr_prosperity_finish
+		is_ai = no
+		has_policy_flag = trade_conversion_minerals
 	}
 	
 	weight = {
@@ -30,154 +37,190 @@ alloy_conversion_advanced = {
 	}
 	
 	conversion_rate = {
-		energy = 0.625
-		alloys = 0.25
+		energy = 0.1
+		minerals = 0.5
+		food = 0.1
+		alloys = 0.02
+		consumer_goods = 0.02
+		unity = 0.01
+		physics_research = 0.01
+		society_research = 0.01
+		engineering_research = 0.01
 	}
 
 	economic_category = trade_routes
 }
 
-consumer_goods_conversion = {
+basic_conversion_food = {
 	potential = {
+		is_ai = no
+		has_policy_flag = trade_conversion_food
+	}
+	
+	weight = {
+		weight = 1
+	}
+	
+	conversion_rate = {
+		energy = 0.1
+		minerals = 0.1
+		food = 0.5
+		alloys = 0.02
+		consumer_goods = 0.02
+		unity = 0.01
+		physics_research = 0.01
+		society_research = 0.01
+		engineering_research = 0.01
+	}
+
+	economic_category = trade_routes
+}
+
+basic_conversion_alloys = {
+	potential = {
+		is_ai = no
+		has_policy_flag = trade_conversion_alloys
+	}
+	
+	weight = {
+		weight = 1
+	}
+	
+	conversion_rate = {
+		energy = 0.1
+		minerals = 0.1
+		food = 0.1
+		alloys = 0.1
+		consumer_goods = 0.02
+		unity = 0.01
+		physics_research = 0.01
+		society_research = 0.01
+		engineering_research = 0.01
+	}
+
+	economic_category = trade_routes
+}
+
+basic_conversion_consumer_goods = {
+	potential = {
+		is_ai = no
 		has_policy_flag = trade_conversion_consumer_goods
-		NOT = { has_tradition = tr_prosperity_finish }
 	}
 	
 	weight = {
-		weight = 0
+		weight = 1
 	}
 	
 	conversion_rate = {
-		energy = 0.5
-		consumer_goods = 0.2
+		energy = 0.1
+		minerals = 0.1
+		food = 0.1
+		alloys = 0.02
+		consumer_goods = 0.1
+		unity = 0.01
+		physics_research = 0.01
+		society_research = 0.01
+		engineering_research = 0.01
 	}
 
 	economic_category = trade_routes
 }
 
-consumer_goods_conversion_advanced = {
+basic_conversion_unity = {
 	potential = {
-		has_policy_flag = trade_conversion_consumer_goods
-		has_tradition = tr_prosperity_finish
-	}
-	
-	weight = {
-		weight = 10
-	}
-	
-	conversion_rate = {
-		energy = 0.625
-		consumer_goods = 0.25
-	}
-
-	economic_category = trade_routes
-}
-
-unity_conversion = {
-	potential = {
+		is_ai = no
 		has_policy_flag = trade_conversion_unity
-		NOT = { has_tradition = tr_prosperity_finish }
 	}
 	
 	weight = {
-		weight = 0
+		weight = 1
 	}
 	
 	conversion_rate = {
-		energy = 0.5
-		unity = 0.2
+		energy = 0.1
+		minerals = 0.1
+		food = 0.1
+		alloys = 0.02
+		consumer_goods = 0.02
+		unity = 0.05
+		physics_research = 0.01
+		society_research = 0.01
+		engineering_research = 0.01
 	}
 
 	economic_category = trade_routes
 }
 
-unity_conversion_advanced = {
+basic_conversion_research = {
 	potential = {
-		has_policy_flag = trade_conversion_unity
-		has_tradition = tr_prosperity_finish
-	}
-	
-	weight = {
-		weight = 0
-	}
-	
-	conversion_rate = {
-		energy = 0.625
-		unity = 0.25
-	}
-
-	economic_category = trade_routes
-}
-
-research_conversion = {
-	potential = {
+		is_ai = no
 		has_policy_flag = trade_conversion_research
-		NOT = { has_tradition = tr_prosperity_finish }
 	}
 	
 	weight = {
-		weight = 0
+		weight = 1
 	}
 	
 	conversion_rate = {
-		energy = 0.5
-		physics_research = 0.2
-		society_research = 0.2
-		engineering_research = 0.2
+		energy = 0.1
+		minerals = 0.1
+		food = 0.1
+		alloys = 0.02
+		consumer_goods = 0.02
+		unity = 0.01
+		physics_research = 0.05
+		society_research = 0.05
+		engineering_research = 0.05
 	}
 
 	economic_category = trade_routes
 }
 
-research_conversion_advanced = {
+basic_conversion_influence = {
 	potential = {
-		has_policy_flag = trade_conversion_research
-		has_tradition = tr_prosperity_finish
-	}
-	
-	weight = {
-		weight = 0
-	}
-	
-	conversion_rate = {
-		energy = 0.625
-		physics_research = 0.25
-		society_research = 0.25
-		engineering_research = 0.25
-	}
-
-	economic_category = trade_routes
-}
-
-influence_conversion = {
-	potential = {
+		is_ai = no
 		has_policy_flag = trade_conversion_influence
-		NOT = { has_tradition = tr_prosperity_finish }
 	}
 	
 	weight = {
-		weight = 0
+		weight = 1
 	}
 	
 	conversion_rate = {
-		energy = 0.5
+		energy = 0.1
+		minerals = 0.1
+		food = 0.1
+		alloys = 0.02
+		consumer_goods = 0.02
+		unity = 0.01
+		physics_research = 0.01
+		society_research = 0.01
+		engineering_research = 0.01
 	}
 
 	economic_category = trade_routes
 }
 
-influence_conversion_advanced = {
+basic_conversion_trade_league = {
 	potential = {
-		has_policy_flag = trade_conversion_influence
-		has_tradition = tr_prosperity_finish
+		is_ai = no
+		has_policy_flag = trade_conversion_trade_league
 	}
 	
 	weight = {
-		weight = 0
+		weight = 1
 	}
 	
 	conversion_rate = {
-		energy = 0.625
+		energy = 0.3
+		minerals = 0.3
+		food = 0.3
+		alloys = 0.06
+		consumer_goods = 0.06
+		unity = 0.03
+		physics_research = 0.03
+		society_research = 0.03
+		engineering_research = 0.03
 	}
 
 	economic_category = trade_routes
@@ -186,93 +229,24 @@ influence_conversion_advanced = {
 # AI Trade Convsersions
 ai_conversion_ensign = {
 	potential = {
-		has_policy_flag = trade_conversion_ai
-		is_lithoid_empire = no
+		is_ai = yes
 		is_difficulty < 2
 	}
 	
 	weight = {
-		weight = 1000
+		weight = 1
 	}
 	
 	conversion_rate = {
-		energy = 0.5
-		food = 0.1
-		consumer_goods = 0.1
-		minerals = 0.1
-		alloys = 0.1
-	}
-
-	economic_category = trade_routes
-}
-
-ai_advanced_conversion_ensign = {
-	potential = {
-		has_policy_flag = trade_conversion_ai_advanced
-		is_lithoid_empire = no
-		is_difficulty < 2
-	}
-	
-	weight = {
-		weight = 2000
-	}
-	
-	conversion_rate = {
-		energy = 0.5
-		food = 0.1
-		consumer_goods = 0.1
-		minerals = 0.1
-		alloys = 0.1
-		physics_research = 0.05
-		society_research = 0.05
-		engineering_research = 0.05
-		unity = 0.05
-	}
-
-	economic_category = trade_routes
-}
-
-ai_conversion_lithoid_ensign = {
-	potential = {
-		has_policy_flag = trade_conversion_ai
-		is_lithoid_empire = yes
-		is_difficulty < 2
-	}
-	
-	weight = {
-		weight = 1000
-	}
-	
-	conversion_rate = {
-		energy = 0.5
-		consumer_goods = 0.1
+		energy = 0.2
 		minerals = 0.2
-		alloys = 0.1
-	}
-
-	economic_category = trade_routes
-}
-
-ai_advanced_conversion_lithoid_ensign = {
-	potential = {
-		has_policy_flag = trade_conversion_ai_advanced
-		is_lithoid_empire = yes
-		is_difficulty < 2
-	}
-	
-	weight = {
-		weight = 2000
-	}
-	
-	conversion_rate = {
-		energy = 0.5
-		consumer_goods = 0.1
-		minerals = 0.2
-		alloys = 0.1
-		physics_research = 0.05
-		society_research = 0.05
-		engineering_research = 0.05
-		unity = 0.05
+		food = 0.2
+		alloys = 0.04
+		consumer_goods = 0.04
+		unity = 0.02
+		physics_research = 0.02
+		society_research = 0.02
+		engineering_research = 0.02
 	}
 
 	economic_category = trade_routes
@@ -280,93 +254,24 @@ ai_advanced_conversion_lithoid_ensign = {
 
 ai_conversion_captain = {
 	potential = {
-		has_policy_flag = trade_conversion_ai
-		is_lithoid_empire = no
+		is_ai = yes
 		is_difficulty = 2
 	}
 	
 	weight = {
-		weight = 1000
+		weight = 1
 	}
 	
 	conversion_rate = {
-		energy = 0.625
-		food = 0.125
-		consumer_goods = 0.125
-		minerals = 0.125
-		alloys = 0.125
-	}
-
-	economic_category = trade_routes
-}
-
-ai_advanced_conversion_captain = {
-	potential = {
-		has_policy_flag = trade_conversion_ai_advanced
-		is_lithoid_empire = no
-		is_difficulty = 2
-	}
-	
-	weight = {
-		weight = 2000
-	}
-	
-	conversion_rate = {
-		energy = 0.625
-		food = 0.125
-		consumer_goods = 0.125
-		minerals = 0.125
-		alloys = 0.125
-		physics_research = 0.0625
-		society_research = 0.0625
-		engineering_research = 0.0625
-		unity = 0.0625
-	}
-
-	economic_category = trade_routes
-}
-
-ai_conversion_lithoid_captain = {
-	potential = {
-		has_policy_flag = trade_conversion_ai
-		is_lithoid_empire = yes
-		is_difficulty = 2
-	}
-	
-	weight = {
-		weight = 1000
-	}
-	
-	conversion_rate = {
-		energy = 0.625
-		consumer_goods = 0.125
+		energy = 0.25
 		minerals = 0.25
-		alloys = 0.125
-	}
-
-	economic_category = trade_routes
-}
-
-ai_advanced_conversion_lithoid_captain = {
-	potential = {
-		has_policy_flag = trade_conversion_ai_advanced
-		is_lithoid_empire = yes
-		is_difficulty = 2
-	}
-	
-	weight = {
-		weight = 2000
-	}
-	
-	conversion_rate = {
-		energy = 0.625
-		consumer_goods = 0.125
-		minerals = 0.25
-		alloys = 0.125
-		physics_research = 0.0625
-		society_research = 0.0625
-		engineering_research = 0.0625
-		unity = 0.0625
+		food = 0.25
+		alloys = 0.05
+		consumer_goods = 0.05
+		unity = 0.025
+		physics_research = 0.025
+		society_research = 0.025
+		engineering_research = 0.025
 	}
 
 	economic_category = trade_routes
@@ -374,93 +279,24 @@ ai_advanced_conversion_lithoid_captain = {
 
 ai_conversion_commodore = {
 	potential = {
-		has_policy_flag = trade_conversion_ai
-		is_lithoid_empire = no
+		is_ai = yes
 		is_difficulty = 3
 	}
 	
 	weight = {
-		weight = 1000
+		weight = 1
 	}
 	
 	conversion_rate = {
-		energy = 0.75
-		food = 0.15
-		consumer_goods = 0.15
-		minerals = 0.15
-		alloys = 0.15
-	}
-
-	economic_category = trade_routes
-}
-
-ai_advanced_conversion_commodore = {
-	potential = {
-		has_policy_flag = trade_conversion_ai_advanced
-		is_lithoid_empire = no
-		is_difficulty = 3
-	}
-	
-	weight = {
-		weight = 2000
-	}
-	
-	conversion_rate = {
-		energy = 0.75
-		food = 0.15
-		consumer_goods = 0.15
-		minerals = 0.15
-		alloys = 0.15
-		physics_research = 0.075
-		society_research = 0.075
-		engineering_research = 0.075
-		unity = 0.075
-	}
-
-	economic_category = trade_routes
-}
-
-ai_conversion_lithoid_commodore = {
-	potential = {
-		has_policy_flag = trade_conversion_ai
-		is_lithoid_empire = yes
-		is_difficulty = 3
-	}
-	
-	weight = {
-		weight = 1000
-	}
-	
-	conversion_rate = {
-		energy = 0.75
-		consumer_goods = 0.15
+		energy = 0.3
 		minerals = 0.3
-		alloys = 0.15
-	}
-
-	economic_category = trade_routes
-}
-
-ai_advanced_conversion_lithoid_commodore = {
-	potential = {
-		has_policy_flag = trade_conversion_ai_advanced
-		is_lithoid_empire = yes
-		is_difficulty = 3
-	}
-	
-	weight = {
-		weight = 2000
-	}
-	
-	conversion_rate = {
-		energy = 0.75
-		consumer_goods = 0.15
-		minerals = 0.3
-		alloys = 0.15
-		physics_research = 0.075
-		society_research = 0.075
-		engineering_research = 0.075
-		unity = 0.075
+		food = 0.3
+		alloys = 0.06
+		consumer_goods = 0.06
+		unity = 0.03
+		physics_research = 0.03
+		society_research = 0.03
+		engineering_research = 0.03
 	}
 
 	economic_category = trade_routes
@@ -468,93 +304,24 @@ ai_advanced_conversion_lithoid_commodore = {
 
 ai_conversion_admiral = {
 	potential = {
-		has_policy_flag = trade_conversion_ai
-		is_lithoid_empire = no
+		is_ai = yes
 		is_difficulty = 4
 	}
 	
 	weight = {
-		weight = 1000
+		weight = 1
 	}
 	
 	conversion_rate = {
-		energy = 0.875
-		food = 0.175
-		consumer_goods = 0.175
-		minerals = 0.175
-		alloys = 0.175
-	}
-
-	economic_category = trade_routes
-}
-
-ai_advanced_conversion_admiral = {
-	potential = {
-		has_policy_flag = trade_conversion_ai_advanced
-		is_lithoid_empire = no
-		is_difficulty = 4
-	}
-	
-	weight = {
-		weight = 2000
-	}
-	
-	conversion_rate = {
-		energy = 0.875
-		food = 0.175
-		consumer_goods = 0.175
-		minerals = 0.175
-		alloys = 0.175
-		physics_research = 0.0875
-		society_research = 0.0875
-		engineering_research = 0.0875
-		unity = 0.0875
-	}
-
-	economic_category = trade_routes
-}
-
-ai_conversion_lithoid_admiral = {
-	potential = {
-		has_policy_flag = trade_conversion_ai
-		is_lithoid_empire = yes
-		is_difficulty = 4
-	}
-	
-	weight = {
-		weight = 1000
-	}
-	
-	conversion_rate = {
-		energy = 0.875
-		consumer_goods = 0.175
+		energy = 0.35
 		minerals = 0.35
-		alloys = 0.175
-	}
-
-	economic_category = trade_routes
-}
-
-ai_advanced_conversion_lithoid_admiral = {
-	potential = {
-		has_policy_flag = trade_conversion_ai_advanced
-		is_lithoid_empire = yes
-		is_difficulty = 4
-	}
-	
-	weight = {
-		weight = 2000
-	}
-	
-	conversion_rate = {
-		energy = 0.875
-		consumer_goods = 0.175
-		minerals = 0.35
-		alloys = 0.175
-		physics_research = 0.0875
-		society_research = 0.0875
-		engineering_research = 0.0875
-		unity = 0.0875
+		food = 0.35
+		alloys = 0.07
+		consumer_goods = 0.07
+		unity = 0.035
+		physics_research = 0.035
+		society_research = 0.035
+		engineering_research = 0.035
 	}
 
 	economic_category = trade_routes
@@ -562,93 +329,155 @@ ai_advanced_conversion_lithoid_admiral = {
 
 ai_conversion_grand_admiral = {
 	potential = {
-		has_policy_flag = trade_conversion_ai
-		is_lithoid_empire = no
+		is_ai = yes
 		is_difficulty = 5
 	}
 	
 	weight = {
-		weight = 1000
+		weight = 1
 	}
 	
 	conversion_rate = {
-		energy = 1
-		food = 0.2
-		consumer_goods = 0.2
-		minerals = 0.2
-		alloys = 0.2
-	}
-
-	economic_category = trade_routes
-}
-
-ai_advanced_conversion_grand_admiral = {
-	potential = {
-		has_policy_flag = trade_conversion_ai_advanced
-		is_lithoid_empire = no
-		is_difficulty = 5
-	}
-	
-	weight = {
-		weight = 2000
-	}
-	
-	conversion_rate = {
-		energy = 1
-		food = 0.2
-		consumer_goods = 0.2
-		minerals = 0.2
-		alloys = 0.2
-		physics_research = 0.1
-		society_research = 0.1
-		engineering_research = 0.1
-		unity = 0.1
-	}
-
-	economic_category = trade_routes
-}
-
-ai_conversion_lithoid_grand_admiral = {
-	potential = {
-		has_policy_flag = trade_conversion_ai
-		is_lithoid_empire = yes
-		is_difficulty = 5
-	}
-	
-	weight = {
-		weight = 1000
-	}
-	
-	conversion_rate = {
-		energy = 1
-		consumer_goods = 0.2
+		energy = 0.4
 		minerals = 0.4
-		alloys = 0.2
+		food = 0.4
+		alloys = 0.08
+		consumer_goods = 0.08
+		unity = 0.04
+		physics_research = 0.04
+		society_research = 0.04
+		engineering_research = 0.04
 	}
 
 	economic_category = trade_routes
 }
 
-ai_advanced_conversion_lithoid_grand_admiral = {
+# AI Trade Convsersions, Trade League
+ai_conversion_ensign_trade_league = {
 	potential = {
-		has_policy_flag = trade_conversion_ai_advanced
-		is_lithoid_empire = yes
-		is_difficulty = 5
+		is_ai = yes
+		is_difficulty < 2
+		has_policy_flag = trade_conversion_trade_league
 	}
 	
 	weight = {
-		weight = 2000
+		weight = 100
 	}
 	
 	conversion_rate = {
-		energy = 1
-		consumer_goods = 0.2
-		minerals = 0.4
-		alloys = 0.2
-		physics_research = 0.1
-		society_research = 0.1
-		engineering_research = 0.1
-		unity = 0.1
+		energy = 0.6
+		minerals = 0.6
+		food = 0.6
+		alloys = 0.12
+		consumer_goods = 0.12
+		unity = 0.06
+		physics_research = 0.06
+		society_research = 0.06
+		engineering_research = 0.06
+	}
+
+	economic_category = trade_routes
+}
+
+ai_conversion_captain_trade_league = {
+	potential = {
+		is_ai = yes
+		is_difficulty = 2
+		has_policy_flag = trade_conversion_trade_league
+	}
+	
+	weight = {
+		weight = 100
+	}
+	
+	conversion_rate = {
+		energy = 0.75
+		minerals = 0.75
+		food = 0.75
+		alloys = 0.15
+		consumer_goods = 0.15
+		unity = 0.075
+		physics_research = 0.075
+		society_research = 0.075
+		engineering_research = 0.075
+	}
+
+	economic_category = trade_routes
+}
+
+ai_conversion_commodore_trade_league = {
+	potential = {
+		is_ai = yes
+		is_difficulty = 3
+		has_policy_flag = trade_conversion_trade_league
+	}
+	
+	weight = {
+		weight = 100
+	}
+	
+	conversion_rate = {
+		energy = 0.9
+		minerals = 0.9
+		food = 0.9
+		alloys = 0.18
+		consumer_goods = 0.18
+		unity = 0.09
+		physics_research = 0.09
+		society_research = 0.09
+		engineering_research = 0.09
+	}
+
+	economic_category = trade_routes
+}
+
+ai_conversion_admiral_trade_league = {
+	potential = {
+		is_ai = yes
+		is_difficulty = 4
+		has_policy_flag = trade_conversion_trade_league
+	}
+	
+	weight = {
+		weight = 100
+	}
+	
+	conversion_rate = {
+		energy = 1.05
+		minerals = 1.05
+		food = 1.05
+		alloys = 0.21
+		consumer_goods = 0.21
+		unity = 0.105
+		physics_research = 0.105
+		society_research = 0.105
+		engineering_research = 0.105
+	}
+
+	economic_category = trade_routes
+}
+
+ai_conversion_grand_admiral_trade_league = {
+	potential = {
+		is_ai = yes
+		is_difficulty = 5
+		has_policy_flag = trade_conversion_trade_league
+	}
+	
+	weight = {
+		weight = 100
+	}
+	
+	conversion_rate = {
+		energy = 1.2
+		minerals = 1.2
+		food = 1.2
+		alloys = 0.24
+		consumer_goods = 0.24
+		unity = 0.12
+		physics_research = 0.12
+		society_research = 0.12
+		engineering_research = 0.12
 	}
 
 	economic_category = trade_routes

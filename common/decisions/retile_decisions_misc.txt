@@ -580,6 +580,7 @@ decision_retile_devour_world = {
 			entity = "infested_planet"
 			graphical_culture = owner
 		}
+		planet_event = { id = retile_pop.3000 } # set population density deposit
 	}
 
 	allow = {
@@ -826,22 +827,24 @@ decision_lithoid_swarm_consume_world = {
 					
 					random_list = {
 						1 = {
-							add_deposit = d_minerals_4
-							add_deposit = d_minerals_4
-							add_deposit = d_minerals_4
+							add_deposit = d_alloys_4
+							add_deposit = d_minerals_10
+						}
+						1 = {
+							add_deposit = d_alloys_4
 							add_deposit = d_minerals_4
 						}
 						1 = {
-							add_deposit = d_minerals_4
-							add_deposit = d_minerals_4
+							add_deposit = d_alloys_2
+							add_deposit = d_minerals_10
+						}
+						1 = {
+							add_deposit = d_alloys_2
 							add_deposit = d_minerals_4
 						}
 						1 = {
-							add_deposit = d_minerals_4
-							add_deposit = d_minerals_4
-						}
-						1 = {
-							add_deposit = d_minerals_4
+							add_deposit = d_minerals_2
+							add_deposit = d_minerals_10
 						}
 					}
 				}

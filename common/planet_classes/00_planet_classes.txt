@@ -322,7 +322,7 @@ pc_gas_giant = {
 	atmosphere_intensity 	= 1.1
 	atmosphere_width 		= 0.5
 	
-	min_distance_from_sun = 40
+	min_distance_from_sun = 60
 	max_distance_from_sun = 1000
 	
 	spawn_odds = 6
@@ -437,7 +437,7 @@ pc_barren = {
 	atmosphere_width 		= 0.5
 
 	min_distance_from_sun = 40
-	max_distance_from_sun = 200
+	max_distance_from_sun = 100
 	spawn_odds = 10
 	
 	extra_orbit_size = 0
@@ -460,7 +460,7 @@ pc_barren_cold = {
 	atmosphere_intensity 	= 1.0
 	atmosphere_width 		= 0.5
 
-	min_distance_from_sun = 40
+	min_distance_from_sun = 60
 	max_distance_from_sun = 200
 	spawn_odds = 10
 	
@@ -484,7 +484,7 @@ pc_toxic = {
 	atmosphere_intensity 	= 0.1
 	atmosphere_width 		= 1.2
 	
-	min_distance_from_sun = 60
+	min_distance_from_sun = 40
 	max_distance_from_sun = 110
 	
 	spawn_odds = 10
@@ -554,6 +554,34 @@ pc_nuked = {
 	
 	starting_planet = no
 	colonizable = yes
+	uses_alternative_skies_for_moons = no
+}
+
+pc_debris = {
+	entity = "nuked_planet"
+	entity_scale = @planet_standard_scale
+	icon_frame = 17
+
+	atmosphere_color 		= hsv { 0.6 0.4 0.5 }
+	atmosphere_intensity 	= 0.8
+	atmosphere_width 		= 1.4
+
+	city_color_lut = "gfx/portraits/misc/colorcorrection_neutral.dds"
+
+	min_distance_from_sun = 40
+	max_distance_from_sun = 1000
+	spawn_odds = 0
+	
+	extra_orbit_size = 1
+	extra_planet_count = 2
+	
+	chance_of_ring = 0.0
+	
+	planet_size = { min = @habitable_planet_min_size max = @habitable_planet_max_size }
+	moon_size = { min = @habitable_moon_min_size max = @habitable_moon_max_size }
+	
+	starting_planet = no
+	colonizable = no
 	uses_alternative_skies_for_moons = no
 }
 

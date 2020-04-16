@@ -126,6 +126,33 @@ col_hive_breeding = {
 	}
 }
 
+# Colony World
+col_hive_colony = {
+	icon = 11
+
+	potential = {
+		exists = owner
+		owner = { 
+			is_hive_empire = yes
+			has_tradition = tr_expansion_colonization_fever
+		}
+		is_capital = no
+	}
+
+	planet_modifier = {
+		pop_environment_tolerance = 0.20
+		planet_jobs_produces_mult = 0.10
+	}
+
+	weight_modifier = {
+		base = 5
+		modifier = {
+			add = -4
+			free_district_slots = 0
+		}
+	}
+}
+
 # Production
 col_hive_production = {
 	icon = 7
