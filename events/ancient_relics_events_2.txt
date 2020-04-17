@@ -587,6 +587,15 @@ country_event = {
 		name = INCREDIBLE
 		end_event_chain = "baol_chain"
 		owner = { add_modifier = { modifier = precursor_ascension days = -1 } }
+		hidden_effect = {
+			every_country = {
+				limit = {
+					NOT = { is_same_value = prev }
+					has_country_flag = baol_intro
+				}
+				add_modifier = { modifier = precursor_ascension days = -1 }
+			}
+		}
 		event_target:the_last_baol_obj = {
 			enable_special_project = {
 				name = "THE_LAST_BAOL"
