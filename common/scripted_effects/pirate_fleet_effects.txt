@@ -42,7 +42,12 @@ create_normal_pirate_country = {
 						limit = { is_country_type = default }
 					
 						if = { 
-							limit = { NOT = { has_policy_flag = piracy_peaceful } }
+							limit = { 
+								NOR = { 
+									has_policy_flag = piracy_peaceful
+									has_swapped_tradition = tr_adaptability_dietary_enrichment
+								}
+							}
 							set_faction_hostility = {
 								set_hostile = yes
 								set_neutral = no
@@ -345,6 +350,36 @@ create_pirate_fleet = {
 				set_fleet_stance = aggressive
 				set_aggro_range_measure_from = self
 				set_aggro_range = 800
+				
+				# Stochastic Terrorism
+				if = {
+					limit = { owner = { has_swapped_tradition = tr_adaptability_dietary_enrichment } }
+					owner = { save_event_target_as = pirate_owner }
+					closest_system = {
+						limit = {
+							any_system_planet = {
+								exists = owner
+								owner = { NOT = { is_same_value = event_target:pirate_owner } }
+								num_pops > 0
+							}
+						}
+						save_event_target_as = terror_attack
+						owner = { save_event_target_as = terror_target }
+					}
+					from = {
+						set_faction_hostility = {
+							target = event_target:terror_target
+							set_hostile = yes
+							set_neutral = no
+							set_friendly = no
+							target = prev
+						}
+					}
+					auto_move_to_planet = {
+						target = event_target:terror_attack
+						clear_auto_move_on_arrival = no
+					}
+				}
 			}
 		}
 	}
