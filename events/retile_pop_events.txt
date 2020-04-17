@@ -255,15 +255,7 @@ planet_event = {
 	pre_triggers = { has_owner = yes }
 	
 	trigger = {
-		owner = { NOT = { has_policy_flag = migration_forbidden } }
-		num_pops > 1
-		is_under_colonization = no
-		has_orbital_bombardment = no
-		is_occupied_flag = no
-		is_controlled_by = owner
-		free_housing < 0
-		owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
-		NOT = { has_modifier = penal_colony }
+		always = yes
 	}
 
 	mean_time_to_happen = {
@@ -271,7 +263,20 @@ planet_event = {
 	}
 
 	immediate = {
-		planet_event = { id = retile_pop.90 }
+		if = {
+			limit = {
+				owner = { NOT = { has_policy_flag = migration_forbidden } }
+				num_pops > 1
+				is_under_colonization = no
+				has_orbital_bombardment = no
+				is_occupied_flag = no
+				is_controlled_by = owner
+				free_housing < 0
+				owner = { is_country_type = default }	# don't bother with non-playable countries. Also it's safer.
+				NOT = { has_modifier = penal_colony }
+			}
+			planet_event = { id = retile_pop.90 }
+		}
 	}
 }
 
@@ -319,7 +324,7 @@ pop_event = {
 		is_sapient = yes
 	}
 	
-	mean_time_to_happen = { days = 360 } # check about once/year
+	mean_time_to_happen = { days = 720 } # check about once/year
 	
 	immediate = {
 		if = {
@@ -886,36 +891,6 @@ country_event = {
 	}
 }
 
-
-
-############################################
-### Pop Sprawl
-
-# apply an appropriate pop growth malus to each empire based on the number of planets it has.
-country_event = {
-	id = retile_pop.200
-	hide_window = yes
-
-	trigger = {
-		OR = {
-			is_country_type = default
-			is_country_type = awakened_marauders
-			is_country_type = awakened_fallen_empire
-		}
-		not = { has_country_flag = growth_malus_cleared }
-	}
-
-	mean_time_to_happen = {
-		days = 90
-	}
-
-	after = {
-		retile_clear_growth_malus = yes
-		set_country_flag = growth_malus_cleared
-		#retile_apply_growth_malus = yes
-	}
-}
-
 ############################################
 ### Planet Abandonment
 
@@ -1099,7 +1074,7 @@ pop_event = {
 	}
 
 	mean_time_to_happen = {
-		days = 360
+		days = 1800
 	}
 
 	immediate = {
@@ -1111,7 +1086,7 @@ pop_event = {
 				}
 			}
 			random_list = {
-				90 = { } # Null. Should average about 10 years to assimilate a species
+				10 = { } # Null. Should average about 10 years to assimilate a species
 				10 = { # Assimilate Pop
 					################################ assimilator empire, cyborg ascension
 					if = {
@@ -1322,7 +1297,7 @@ pop_event = {
 					root = { species = { NOT = { has_species_flag = ai_primary_species@root.owner } } }
 				}
 				random_list = {
-					40 = { } # Null. Should average about 5 years to assimilate a species
+					#40 = { } # Null. Should average about 5 years to assimilate a species
 					10 = { # Assimilate Pop
 						root.owner = {
 							random_owned_species = {
@@ -1341,6 +1316,101 @@ pop_event = {
 					}
 				}
 			}
+		}
+	}
+}
+
+############################################
+### Pop Density Deposits
+
+# (Re-)Apply pop density deposit(s)
+# THIS = planet
+planet_event = {
+	id = retile_pop.3000
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { always = yes }
+	
+	immediate = {
+		# Remove existing pop density deposits
+		if = {
+			limit = {
+				any_deposit = {
+					OR = {
+						is_deposit_type = d_pop_density_normal
+						is_deposit_type = d_pop_density_habitat
+						is_deposit_type = d_pop_density_city
+					}
+				}
+			}
+			while = {
+				limit = {
+					any_deposit = {
+						OR = {
+							is_deposit_type = d_pop_density_normal
+							is_deposit_type = d_pop_density_habitat
+							is_deposit_type = d_pop_density_city
+						}
+					}
+				}
+				random_deposit = {
+					limit = {
+						OR = {
+							is_deposit_type = d_pop_density_normal
+							is_deposit_type = d_pop_density_habitat
+							is_deposit_type = d_pop_density_city
+						}
+					}
+					remove_deposit = yes
+				}
+			}
+		}
+		
+		# Apply new pop density deposit
+		if = {
+			limit = {
+				OR = {
+					has_planet_flag = pop_density_none
+				}
+			}
+			#add_deposit = d_pop_density_habitat
+		} else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_habitat
+					has_planet_flag = pop_density_habitat
+				}
+			}
+			add_deposit = d_pop_density_habitat
+		} else_if = {
+			limit = {
+				OR = {
+					is_planet_class = pc_ringworld_habitable
+					is_planet_class = pc_city
+					is_planet_class = pc_hive
+					has_planet_flag = pop_density_city
+				}
+			}
+			add_deposit = d_pop_density_city
+		} else = {
+			add_deposit = d_pop_density_normal
+		}
+	}
+}
+
+# apply pop density deposits to all planets
+event = {
+	id = retile_pop.3001
+	hide_window = yes
+	is_triggered_only = yes
+	
+	trigger = { always = yes }
+	
+	immediate = {
+		every_planet = {
+			limit = { num_pops > 0 }
+			planet_event = { id = retile_pop.3000 days = 4 random = 20 }
 		}
 	}
 }
