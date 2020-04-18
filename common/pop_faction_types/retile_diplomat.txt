@@ -235,35 +235,7 @@ prosperity = {
 
 		trigger = {
 			owner = {
-				federation = { 
-					OR = {
-						has_federation_type = default_federation
-						has_federation_type = trade_federation
-						has_federation_type = research_federation
-					}
-				}
-			}
-		}
-	}
-	# Doesn't Want GC Readiness Laws
-	demand = { 
-		title = "DIPLOMAT_GC_READINESS"
-		unfulfilled_title = "DIPLOMAT_GC_NO_READINESS"
-		desc = "DIPLOMAT_GC_READINESS_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { is_galactic_community_member = yes }
-		}
-
-		trigger = {
-			NOR = {
-				is_active_resolution = resolution_mutualdefense_enemy_of_my_enemy
-				is_active_resolution = resolution_mutualdefense_castigation_proclamation
-				is_active_resolution = resolution_mutualdefense_renegade_containment
+				has_federation = yes
 			}
 		}
 	}

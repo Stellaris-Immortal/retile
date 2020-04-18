@@ -247,32 +247,7 @@ xenoist = {
 			}
 		}
 	}	
-	# Wants centralized Federation
-	demand = { 
-		title = "XENOPHILE_FEDERATION"
-		unfulfilled_title = "XENOPILE_NO_FEDERATION"
-		desc = "XENOPHILE_FEDERATION_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_country_flag = first_federation_event }
-		}
-
-		trigger = {
-			owner = {
-				federation = { 
-					OR = {
-						has_federation_law = centralization_medium
-						has_federation_law = centralization_high
-						has_federation_law = centralization_very_high					
-					}
-				}
-			}
-		}
-	}	
 	# XENOPHILE
 	demand = {
 		title = "FACTION_OUTRAGED_GC"

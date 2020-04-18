@@ -48,7 +48,7 @@ civic_anarchist = {
 		country_election_influence_cost_mult = 10
 	}
 	modification = no
-	random_weight = { base = 5 }
+	random_weight = { base = 2 }
 }
 
 civic_pacifist = {
@@ -72,10 +72,43 @@ civic_pacifist = {
 			NOT = { value = civic_capitalist }
 		}
 	}
-	random_weight = { base = 5 }
+	random_weight = { base = 2 }
 	modifier = {
 		country_base_influence_produces_add = 2
 		pop_factions_unity_produces_add = 5
+	}
+}
+
+civic_isolationist = {
+	description = "civic_tooltip_pacifist_effects"
+	potential = { ethics = { NOT = { value = ethic_gestalt_consciousness } } }
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_militarist
+				value = ethic_militarist
+				value = ethic_fanatic_militarist
+			}
+			OR = {
+				text = civic_tooltip_xenophobe
+				value = ethic_xenophobe
+				value = ethic_fanatic_xenophobe
+			}
+		}
+		civics = {
+			NOR = { 
+				value = civic_barbaric_despoilers 
+				value = civic_slaver_guilds
+				value = civic_fanatic_purifiers
+			}
+		}
+	}
+	random_weight = { base = 1 }
+	modifier = {
+		shipclass_starbase_damage_mult = 0.25
+		shipclass_starbase_hull_mult = 0.25
+		shipclass_military_station_damage_mult = 0.25
+		starbase_defense_platform_capacity_add = 4
 	}
 }
 

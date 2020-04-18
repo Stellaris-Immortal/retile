@@ -250,58 +250,6 @@ imperialist = {
 		}
 	}
 	
-	# Wants Federation
-	demand = { 
-		title = "MILITARIST_FEDERATION"
-		unfulfilled_title = "MILITARIST_NO_FEDERATION"
-		desc = "MILITARIST_FEDERATION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { num_communications > 2 }
-		}
-
-		trigger = {
-			owner = {
-				federation = { 
-					OR = {
-						has_federation_type = military_federation
-						has_federation_type = hegemony_federation
-					}
-				}
-			}
-		}
-	}
-
-	# Wants Federation
-	demand = { 
-		title = "MILITARIST_BARBARIC_FED"
-		unfulfilled_title = "MILITARIST_NO_BARBARIC_FED"
-		desc = "MILITARIST_BARBARIC_FED_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			owner = { has_country_flag = first_federation_event }
-		}
-
-		trigger = {
-			owner = {
-				federation = { 
-					OR = {
-						has_federation_law = challenge_type_arena_combat
-						has_federation_law = challenge_type_psionic_battle
-						has_federation_law = succession_power_fleet 
-					}
-				}
-			}
-		}
-	}
-	
 	# Wants GC Readiness Laws
 	demand = { 
 		title = "MILITARIST_GC_READINESS"

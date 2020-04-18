@@ -117,3 +117,26 @@ opinion_zealots_on_zealots = {
 		}
 	}
 }
+opinion_everyone_on_big_brother = {
+	opinion = {
+		modifier = {
+			add = -100
+			NOT = { has_ai_personality = big_brother }
+			FROM = { has_ai_personality = big_brother }			
+		}
+	}
+}
+
+opinion_liblefts_on_stalinists = {
+	opinion = {
+		modifier = {
+			add = -50
+			OR = { 
+				has_ai_personality = anarchists
+				has_ai_personality = communists
+				
+			}
+			FROM = { has_ai_personality = soviets }			
+		}
+	}
+}

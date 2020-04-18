@@ -200,7 +200,7 @@ isolationist = {
 
 	demand = {
 		title = "XENOPHOBE_ISOLATIONISM"
-		unfulfilled_title = "XENOPHOBE_NO_ISOLATIONISM_STANCE"
+		unfulfilled_title = "XENOPHOBE_NO_ISOLATIONISM"
 		desc = "XENOPHOBE_ISOLATIONISM_DESC"
 
 		fulfilled_effect = 10
@@ -290,32 +290,7 @@ isolationist = {
 			}
 		}
 	}
-	# Wants Decentralized Federation
-	demand = { 
-		title = "XENOPHOBE_NO_FEDERATION"
-		unfulfilled_title = "XENOPHOBE_FEDERATION"
-		desc = "XENOPHOBE_NO_FEDERATION_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_country_flag = first_federation_event }
-		}
-
-		trigger = {
-			owner = {
-				federation = { 
-					NOR = {
-						has_federation_law = centralization_medium
-						has_federation_law = centralization_high
-						has_federation_law = centralization_very_high					
-					}
-				}
-			}
-		}
-	}	
+	
 	# OUTRAGE
 	demand = {
 		title = "FACTION_OUTRAGED_GC"

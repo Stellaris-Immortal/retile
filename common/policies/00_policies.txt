@@ -3114,7 +3114,7 @@ internal_migration = {
 	option = {
 		name = "migration_allowed"
 		
-		valid = { NOT = { has_valid_civic = civic_corvee_system } }
+		valid = { always = yes }
 		
 		policy_flags = { migration_allowed }
 		
@@ -3125,7 +3125,7 @@ internal_migration = {
 	option = {
 		name = "migration_limited"
 		
-		valid = { NOT = { has_valid_civic = civic_corvee_system } }
+		valid = { always = yes }
 		
 		policy_flags = { migration_limited }
 		
@@ -3136,7 +3136,7 @@ internal_migration = {
 	option = {
 		name = "migration_forbidden"
 		
-		valid = { has_valid_civic = civic_corvee_system }
+		valid = { always = no }
 		
 		policy_flags = { migration_forbidden }
 		
