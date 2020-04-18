@@ -1247,7 +1247,12 @@ colossus_yards = {
 	
 	potential = {
 		exists = owner
-		owner = { has_technology = tech_colossus }	
+		owner = {
+			OR = {
+				has_technology = tech_colossus
+				has_technology = tech_juggernaut		
+			}
+		}
 		NOT = { has_starbase_building = colossus_yards }	
 		OR = { 
 			has_starbase_building = default_network
@@ -1278,6 +1283,7 @@ colossus_yards = {
 
 	custom_tooltip = sm_colossus_yards_desc_modifier
 	show_in_tech = "tech_colossus"
+	show_in_tech = "tech_juggernaut"
 	
 	ai_build_at_chokepoint = no
 	ai_build_outside_chokepoint = yes
