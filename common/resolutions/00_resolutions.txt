@@ -157,19 +157,29 @@ resolution_ecology_repeal_1 = {
 
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 0.25
-			has_valid_civic = civic_agrarian_idyll
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
 
 		modifier = {
 			factor = 2
 			OR = {
-				has_valid_civic = civic_mining_guilds
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
 				has_valid_civic = civic_machine_rockbreakers
+			}
+		}		
+		modifier = {
+			factor = 2
+			has_ai_personality = tenacious_industrialists
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_valid_civic = civic_mining_guilds
+				has_valid_civic = civic_functional_architecture
 			}
 		}
 
@@ -225,19 +235,29 @@ resolution_ecology_repeal_2 = {
 
 		modifier = {
 			factor = 0
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 0.25
-			has_valid_civic = civic_agrarian_idyll
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
 
 		modifier = {
 			factor = 2
 			OR = {
-				has_valid_civic = civic_mining_guilds
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
 				has_valid_civic = civic_machine_rockbreakers
+			}
+		}		
+		modifier = {
+			factor = 2
+			has_ai_personality = tenacious_industrialists
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_valid_civic = civic_mining_guilds
+				has_valid_civic = civic_functional_architecture
 			}
 		}
 
@@ -293,30 +313,30 @@ resolution_ecology_repeal_3 = {
 		weight = @resolution_weight_unpopular
 
 		modifier = {
-			factor = 2
-			is_materialist = yes
-		}
-
-		modifier = {
 			factor = 0
-			is_spiritualist = yes
-		}
-		
-		modifier = {
-			factor = 0
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 0.25
-			has_valid_civic = civic_agrarian_idyll
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
 
 		modifier = {
 			factor = 2
 			OR = {
-				has_valid_civic = civic_mining_guilds
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
 				has_valid_civic = civic_machine_rockbreakers
+			}
+		}		
+		modifier = {
+			factor = 2
+			has_ai_personality = tenacious_industrialists
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_valid_civic = civic_mining_guilds
+				has_valid_civic = civic_functional_architecture
 			}
 		}
 
@@ -377,30 +397,30 @@ resolution_ecology_repeal_4 = {
 		weight = @resolution_weight_unpopular
 
 		modifier = {
-			factor = 2
-			is_materialist = yes
-		}
-
-		modifier = {
 			factor = 0
-			is_spiritualist = yes
-		}
-		
-		modifier = {
-			factor = 0
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 0.25
-			has_valid_civic = civic_agrarian_idyll
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
 
 		modifier = {
 			factor = 2
 			OR = {
-				has_valid_civic = civic_mining_guilds
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
 				has_valid_civic = civic_machine_rockbreakers
+			}
+		}		
+		modifier = {
+			factor = 2
+			has_ai_personality = tenacious_industrialists
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_valid_civic = civic_mining_guilds
+				has_valid_civic = civic_functional_architecture
 			}
 		}
 
@@ -464,30 +484,30 @@ resolution_ecology_repeal_5 = {
 		weight = @resolution_weight_unpopular
 		
 		modifier = {
-			factor = 2
-			is_materialist = yes
-		}
-
-		modifier = {
 			factor = 0
-			is_spiritualist = yes
-		}
-
-		modifier = {
-			factor = 0
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 0.25
-			has_valid_civic = civic_agrarian_idyll
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
 
 		modifier = {
 			factor = 2
 			OR = {
-				has_valid_civic = civic_mining_guilds
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
 				has_valid_civic = civic_machine_rockbreakers
+			}
+		}		
+		modifier = {
+			factor = 2
+			has_ai_personality = tenacious_industrialists
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_valid_civic = civic_mining_guilds
+				has_valid_civic = civic_functional_architecture
 			}
 		}
 
@@ -546,22 +566,38 @@ resolution_ecology_recycling_initiatives = {
 
 	ai_weight = {
 		weight = @resolution_weight_loved
-
+		
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_environmentalist
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
-
 		modifier = {
-			factor = 1.2
-			has_valid_civic = civic_agrarian_idyll
+			factor = 2
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
 		}
-
 		modifier = {
-			factor = 0.6
+			factor = 0
+			OR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+				has_valid_civic = civic_machine_rockbreakers
+			}
+		}		
+		modifier = {
+			factor = 0
+			has_ai_personality = tenacious_industrialists
+		}
+		modifier = {
+			factor = 0
 			OR = {
 				has_valid_civic = civic_mining_guilds
-				has_valid_civic = civic_machine_rockbreakers
+				has_valid_civic = civic_functional_architecture
 			}
 		}
 
@@ -609,19 +645,35 @@ resolution_ecology_natural_sanctuaries = {
 
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_environmentalist
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
-
 		modifier = {
-			factor = 1.2
-			has_valid_civic = civic_agrarian_idyll
+			factor = 2
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
 		}
-
 		modifier = {
-			factor = 0.5
+			factor = 0
+			OR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+				has_valid_civic = civic_machine_rockbreakers
+			}
+		}		
+		modifier = {
+			factor = 0
+			has_ai_personality = tenacious_industrialists
+		}
+		modifier = {
+			factor = 0
 			OR = {
 				has_valid_civic = civic_mining_guilds
-				has_valid_civic = civic_machine_rockbreakers
+				has_valid_civic = civic_functional_architecture
 			}
 		}
 
@@ -663,6 +715,7 @@ resolution_ecology_integrated_gardens = {
 	}
 	
 	effect = {
+		custom_tooltip = resolution_ecology_integrated_gardens_tooltip
 		hidden_effect = {
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_ecology days = @resolution_flag_timer }
 		}
@@ -679,29 +732,35 @@ resolution_ecology_integrated_gardens = {
 
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_environmentalist
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
 		}
-		
-		modifier = {
-			factor = 0
-			is_materialist = yes
-		}
-
 		modifier = {
 			factor = 2
-			is_spiritualist = yes
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
 		}
-		
 		modifier = {
-			factor = 1.2
-			has_valid_civic = civic_agrarian_idyll
+			factor = 0
+			OR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+				has_valid_civic = civic_machine_rockbreakers
+			}
+		}		
+		modifier = {
+			factor = 0
+			has_ai_personality = tenacious_industrialists
 		}
-
 		modifier = {
-			factor = 0.4
+			factor = 0
 			OR = {
 				has_valid_civic = civic_mining_guilds
-				has_valid_civic = civic_machine_rockbreakers
+				has_valid_civic = civic_functional_architecture
 			}
 		}
 
@@ -733,7 +792,10 @@ resolution_ecology_environmental_control_board = {
 	target = no
 
 	breach = {
-		has_policy_flag = environmental_deregulation
+		OR = {
+			has_policy_flag = environmental_deregulation
+			has_policy_flag = environmental_regulation
+		}
 	}
 	
 	effect = {
@@ -762,37 +824,43 @@ resolution_ecology_environmental_control_board = {
 	}
 
 	breach = {
-		has_country_flag = resolution_breached_terraformed
+		has_policy_flag = environmental_regulation
 	}
 
 	ai_weight = {
 		weight = @resolution_weight_unpopular
 
 		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
+		}
+		modifier = {
 			factor = 0
-			is_materialist = yes
-		}
-
+			OR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+				has_valid_civic = civic_machine_rockbreakers
+			}
+		}		
 		modifier = {
-			factor = 2
-			is_spiritualist = yes
+			factor = 0
+			has_ai_personality = tenacious_industrialists
 		}
-		
-		modifier = {
-			factor = 2
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 1.2
-			has_valid_civic = civic_agrarian_idyll
-		}
-
 		modifier = {
 			factor = 0
 			OR = {
 				has_valid_civic = civic_mining_guilds
-				has_valid_civic = civic_machine_rockbreakers
+				has_valid_civic = civic_functional_architecture
 			}
 		}
 
@@ -833,12 +901,14 @@ resolution_ecology_paradise_initiative = {
 
 	breach = {
 		OR = {
+			has_country_flag = resolution_breached_terraformed
 			has_policy_flag = environmental_deregulation
 			has_policy_flag = environmental_regulation
 		}
 	}
 	
 	effect = {
+		custom_tooltip = resolution_ecology_paradise_initiative_tooltip
 		hidden_effect = {
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_ecology days = @resolution_flag_timer }
 		}
@@ -858,23 +928,37 @@ resolution_ecology_paradise_initiative = {
 		weight = @resolution_weight_disliked
 
 		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
+		}
+		modifier = {
 			factor = 0
-			is_materialist = yes
-		}
-
+			OR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+				has_valid_civic = civic_machine_rockbreakers
+			}
+		}		
 		modifier = {
-			factor = 2
-			is_spiritualist = yes
+			factor = 0
+			has_ai_personality = tenacious_industrialists
 		}
-		
 		modifier = {
-			factor = 2
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 1.2
-			has_valid_civic = civic_agrarian_idyll
+			factor = 0
+			OR = {
+				has_valid_civic = civic_mining_guilds
+				has_valid_civic = civic_functional_architecture
+			}
 		}
 
 		modifier = {
@@ -1205,9 +1289,19 @@ resolution_galacticstudies_cooperative_research_channels = {
 		weight = @resolution_weight_loved
 
 		modifier = {
-			factor = 1.5
+			factor = 2
 			is_materialist = yes
 		}
+		modifier = {
+			factor = 2
+			has_ai_personality = technocracy
+		}
+
+		modifier = {
+			factor = 0
+			is_spiritualist = yes
+		}
+		
 	}
 }
 
@@ -1248,8 +1342,17 @@ resolution_galacticstudies_astral_studies_network = {
 		weight = @resolution_weight_popular
 
 		modifier = {
-			factor = 1.5
+			factor = 2
 			is_materialist = yes
+		}
+		modifier = {
+			factor = 2
+			has_ai_personality = technocracy
+		}
+
+		modifier = {
+			factor = 0
+			is_spiritualist = yes
 		}
 	}
 }
@@ -1312,14 +1415,6 @@ resolution_galacticstudies_advanced_xenostudies = {
 				can_set_ai_policy = yes
 				has_policy_flag = ai_outlawed
 			}
-			AND = {
-				has_met_primitives = yes
-				has_policy_flag = interference_passive
-			}
-			AND = {
-				has_country_flag = found_presapients
-				has_policy_flag = pre_sapients_protect
-			}
 		}
 	}
 
@@ -1329,6 +1424,10 @@ resolution_galacticstudies_advanced_xenostudies = {
 		modifier = {
 			factor = 2
 			is_materialist = yes
+		}
+		modifier = {
+			factor = 2
+			has_ai_personality = technocracy
 		}
 
 		modifier = {
@@ -1359,29 +1458,30 @@ resolution_galacticstudies_ethical_guideline_refactoring = {
 		resolution_galacticstudies_advanced_xenostudies = 1
 		resolution_galacticstudies_ethical_guideline_refactoring = 1
 	}
+	
+	breach = {
+		OR = {
+			AND = {
+				has_met_primitives = yes
+				has_policy_flag = interference_passive
+			}
+			AND = {
+				has_country_flag = found_presapients
+				has_policy_flag = pre_sapients_protect
+			}
+			AND = {
+				can_set_ai_policy = yes
+				has_policy_flag = ai_outlawed
+			}
+		}
+	}
 
 	effect = {
 		custom_tooltip = resolution_galacticstudies_ethical_guideline_refactoring_tooltip
 		hidden_effect = {
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_galacticstudies days = @resolution_flag_timer }
 
-			every_playable_country = {
-				limit = {
-					is_galactic_community_member = yes
-					OR = {
-						AND = {
-							has_technology = tech_selected_lineages
-							has_policy_flag = leader_enhancement_natural_selection
-						}
 
-						AND = {
-							has_technology = tech_capacity_boosters
-							NOT = { has_policy_flag = leader_enhancement_capacity_boosters }
-						}
-					}
-				}
-				country_event = { id = federations.10110 }
-			}
 		}
 	}
 
@@ -1432,7 +1532,28 @@ resolution_galacticstudies_extradimensional_experimentation = {
 		resolution_galacticstudies_ethical_guideline_refactoring = 1
 		resolution_galacticstudies_extradimensional_experimentation = 1
 	}
-
+	breach = {
+		OR = {
+			AND = {
+				has_met_primitives = yes
+				OR = {
+					has_policy_flag = interference_active
+					has_policy_flag = interference_passive
+				}
+			}
+			AND = {
+				has_country_flag = found_presapients
+				OR = {
+					has_policy_flag = pre_sapients_allow
+					has_policy_flag = pre_sapients_protect
+				}
+			}
+			AND = {
+				can_set_ai_policy = yes
+				has_policy_flag = ai_outlawed
+			}
+		}
+	}
 	effect = {
 		custom_tooltip = resolution_galacticstudies_extradimensional_experimentation_tooltip
 
@@ -1514,6 +1635,14 @@ resolution_commerce_repeal_1 = {
 		}
 		
 		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = communists
+				has_ai_personality = anarchists
+			}
+		}
+		
+		modifier = {
 			factor = 0
 			OR = {
 				is_authoritarian = yes
@@ -1566,11 +1695,18 @@ resolution_commerce_repeal_2 = {
 
 	ai_weight = {
 		weight = @resolution_weight_unpopular
-
 		modifier = {
 			factor = 2
 			OR = {
 				is_egalitarian = yes
+			}
+		}
+		
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = communists
+				has_ai_personality = anarchists
 			}
 		}
 		
@@ -1633,6 +1769,14 @@ resolution_commerce_repeal_3 = {
 			factor = 2
 			OR = {
 				is_egalitarian = yes
+			}
+		}
+		
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = communists
+				has_ai_personality = anarchists
 			}
 		}
 		
@@ -1706,6 +1850,14 @@ resolution_commerce_repeal_4 = {
 		}
 		
 		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = communists
+				has_ai_personality = anarchists
+			}
+		}
+		
+		modifier = {
 			factor = 0
 			OR = {
 				is_authoritarian = yes
@@ -1774,6 +1926,14 @@ resolution_commerce_repeal_5 = {
 		}
 		
 		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = communists
+				has_ai_personality = anarchists
+			}
+		}
+		
+		modifier = {
 			factor = 0
 			OR = {
 				is_authoritarian = yes
@@ -1834,10 +1994,19 @@ resolution_commerce_buzzword_standardization = {
 
 		modifier = {
 			factor = 2
-			OR = {
-				is_megacorp = yes
-				is_authoritarian = yes
-				has_valid_civic = civic_corporate_dominion
+			is_authoritarian = yes
+		}
+		
+		modifier = {
+			factor = 2
+			is_megacorp = yes
+		}
+		
+		modifier = {
+			factor = 2
+			OR = {				
+				has_ai_personality = ruthless_capitalists
+				has_ai_personality = peaceful_traders
 			}
 		}
 
@@ -1892,10 +2061,19 @@ resolution_commerce_leveraged_privateering = {
 
 		modifier = {
 			factor = 2
-			OR = {
-				is_megacorp = yes
-				is_authoritarian = yes
-				has_valid_civic = civic_corporate_dominion
+			is_authoritarian = yes
+		}
+		
+		modifier = {
+			factor = 2
+			is_megacorp = yes
+		}
+		
+		modifier = {
+			factor = 2
+			OR = {				
+				has_ai_personality = ruthless_capitalists
+				has_ai_personality = peaceful_traders
 			}
 		}
 
@@ -1934,7 +2112,6 @@ resolution_commerce_underdeveloped_system_utilization = {
 					has_living_standard = { type = living_standard_utopian }			
 				}
 			}
-			has_policy_flag = slavery_not_allowed
 		}
 	}
 	
@@ -1967,10 +2144,19 @@ resolution_commerce_underdeveloped_system_utilization = {
 
 		modifier = {
 			factor = 2
-			OR = {
-				is_megacorp = yes
-				is_authoritarian = yes
-				has_valid_civic = civic_corporate_dominion
+			is_authoritarian = yes
+		}
+		
+		modifier = {
+			factor = 2
+			is_megacorp = yes
+		}
+		
+		modifier = {
+			factor = 2
+			OR = {				
+				has_ai_personality = ruthless_capitalists
+				has_ai_personality = peaceful_traders
 			}
 		}
 
@@ -2013,6 +2199,7 @@ resolution_commerce_holistic_asset_coordination = {
 	breach = {
 		NOT = { is_gestalt = yes }
 		OR = {
+			has_policy_flag = slavery_not_allowed
 			any_owned_pop = {
 				is_sapient = yes
 				OR = {
@@ -2020,11 +2207,11 @@ resolution_commerce_holistic_asset_coordination = {
 					has_living_standard = { type = living_standard_utopian }			
 				}
 			}
-			has_policy_flag = slavery_not_allowed
-		}
+		}		
 	}
 	
 	effect = {
+		custom_tooltip = resolution_commerce_holistic_asset_coordination_tooltip
 		hidden_effect = {
 			set_global_flag = galactic_community_resolution_passed
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_commerce days = @resolution_flag_timer }
@@ -2046,10 +2233,19 @@ resolution_commerce_holistic_asset_coordination = {
 
 		modifier = {
 			factor = 2
-			OR = {
-				is_megacorp = yes
-				is_authoritarian = yes
-				has_valid_civic = civic_corporate_dominion
+			is_authoritarian = yes
+		}
+		
+		modifier = {
+			factor = 2
+			is_megacorp = yes
+		}
+		
+		modifier = {
+			factor = 2
+			OR = {				
+				has_ai_personality = ruthless_capitalists
+				has_ai_personality = peaceful_traders
 			}
 		}
 
@@ -2085,21 +2281,20 @@ resolution_commerce_profit_maximization_engines = {
 	breach = {
 		NOT = { is_gestalt = yes }
 		OR = {
+			has_policy_flag = slavery_not_allowed
 			any_owned_pop = {
 				is_sapient = yes
 				OR = {
 					has_living_standard = { type = living_standard_shared_burden }
-					has_living_standard = { type = living_standard_utopian }
+					has_living_standard = { type = living_standard_utopian }	
 					has_living_standard = { type = living_standard_good }
-				}
+				}			
 			}
-			has_policy_flag = slavery_not_allowed
 			OR = {
 				AND = {
 					has_technology = tech_selected_lineages
 					has_policy_flag = leader_enhancement_natural_selection
 				}
-
 				AND = {
 					has_technology = tech_capacity_boosters
 					NOT = { has_policy_flag = leader_enhancement_capacity_boosters }
@@ -2117,9 +2312,28 @@ resolution_commerce_profit_maximization_engines = {
 	}
 
 	effect = {
+		custom_tooltip = resolution_commerce_profit_maximization_engines_tooltip
 		hidden_effect = {
 			set_global_flag = galactic_community_resolution_passed
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_commerce days = @resolution_flag_timer }
+			
+			every_playable_country = {
+				limit = {
+					is_galactic_community_member = yes
+					OR = {
+						AND = {
+							has_technology = tech_selected_lineages
+							has_policy_flag = leader_enhancement_natural_selection
+						}
+
+						AND = {
+							has_technology = tech_capacity_boosters
+							NOT = { has_policy_flag = leader_enhancement_capacity_boosters }
+						}
+					}
+				}
+				country_event = { id = federations.10110 }
+			}
 		}
 	}
 
@@ -2138,10 +2352,19 @@ resolution_commerce_profit_maximization_engines = {
 
 		modifier = {
 			factor = 2
-			OR = {
-				is_megacorp = yes
-				is_authoritarian = yes
-				has_valid_civic = civic_corporate_dominion
+			is_authoritarian = yes
+		}
+		
+		modifier = {
+			factor = 2
+			is_megacorp = yes
+		}
+		
+		modifier = {
+			factor = 2
+			OR = {				
+				has_ai_personality = ruthless_capitalists
+				has_ai_personality = peaceful_traders
 			}
 		}
 
@@ -2150,11 +2373,6 @@ resolution_commerce_profit_maximization_engines = {
 			OR = {
 				is_egalitarian = yes
 			}
-		}
-
-		modifier = {
-			factor = 0.1
-			is_gestalt = yes
 		}
 	}
 }
@@ -2206,18 +2424,15 @@ resolution_industry_repeal_1 = {
 			factor = 0
 			OR = {
 				is_materialist = yes
-				has_valid_civic = civic_mining_guilds
 			}
 		}
 
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 2
-			has_valid_civic = civic_agrarian_idyll
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
 		}
 	}
 }
@@ -2271,18 +2486,15 @@ resolution_industry_repeal_2 = {
 			factor = 0
 			OR = {
 				is_materialist = yes
-				has_valid_civic = civic_mining_guilds
 			}
 		}
 
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 2
-			has_valid_civic = civic_agrarian_idyll
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
 		}
 	}
 }
@@ -2337,18 +2549,15 @@ resolution_industry_repeal_3 = {
 			factor = 0
 			OR = {
 				is_materialist = yes
-				has_valid_civic = civic_mining_guilds
 			}
 		}
 
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 2
-			has_valid_civic = civic_agrarian_idyll
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
 		}
 	}
 }
@@ -2408,18 +2617,15 @@ resolution_industry_repeal_4 = {
 			factor = 0
 			OR = {
 				is_materialist = yes
-				has_valid_civic = civic_mining_guilds
 			}
 		}
 
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 2
-			has_valid_civic = civic_agrarian_idyll
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
 		}
 	}
 }
@@ -2481,18 +2687,15 @@ resolution_industry_repeal_5 = {
 			factor = 0
 			OR = {
 				is_materialist = yes
-				has_valid_civic = civic_mining_guilds
 			}
 		}
 
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_environmentalist
-		}
-
-		modifier = {
-			factor = 2
-			has_valid_civic = civic_agrarian_idyll
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
 		}
 	}
 }
@@ -2543,24 +2746,23 @@ resolution_industry_regulatory_facilitation = {
 
 		modifier = {
 			factor = 0
-			is_spiritualist = yes
-		}	
+			OR = {
+				is_spiritualist = yes
+			}
+		}
+		
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mining_guilds
-		}
-		modifier = {
-			factor = 2
-			is_materialist = yes
-		}
-		modifier = {
-			factor = 0
-			has_valid_civic = civic_environmentalist
+			OR = {
+				is_materialist = yes
+			}
 		}
 
 		modifier = {
-			factor = 0
-			has_valid_civic = civic_agrarian_idyll
+			factor = 2
+			OR = {
+				has_ai_personality = tenacious_industrialists
+			}
 		}
 	}
 }
@@ -2602,24 +2804,23 @@ resolution_industry_collective_waste_management = {
 
 		modifier = {
 			factor = 0
-			is_spiritualist = yes
-		}	
+			OR = {
+				is_spiritualist = yes
+			}
+		}
+		
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mining_guilds
-		}
-		modifier = {
-			factor = 2
-			is_materialist = yes
-		}
-		modifier = {
-			factor = 0
-			has_valid_civic = civic_environmentalist
+			OR = {
+				is_materialist = yes
+			}
 		}
 
 		modifier = {
-			factor = 0
-			has_valid_civic = civic_agrarian_idyll
+			factor = 2
+			OR = {
+				has_ai_personality = tenacious_industrialists
+			}
 		}
 	}
 }
@@ -2646,6 +2847,7 @@ resolution_industry_building_a_better_tomorrow = {
 	}
 	
 	effect = {
+		custom_tooltip = resolution_industry_building_a_better_tomorrow_tooltip
 		hidden_effect = {
 			set_timed_country_flag = { flag = galactic_community_resolution_passed_industry days = @resolution_flag_timer }
 		}
@@ -2666,24 +2868,23 @@ resolution_industry_building_a_better_tomorrow = {
 
 		modifier = {
 			factor = 0
-			is_spiritualist = yes
-		}	
+			OR = {
+				is_spiritualist = yes
+			}
+		}
+		
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mining_guilds
-		}
-		modifier = {
-			factor = 2
-			is_materialist = yes
-		}
-		modifier = {
-			factor = 0
-			has_valid_civic = civic_environmentalist
+			OR = {
+				is_materialist = yes
+			}
 		}
 
 		modifier = {
-			factor = 0
-			has_valid_civic = civic_agrarian_idyll
+			factor = 2
+			OR = {
+				has_ai_personality = tenacious_industrialists
+			}
 		}
 	}
 }
@@ -2705,8 +2906,8 @@ resolution_industry_environmental_ordinance_waivers = {
 
 	breach = {
 		OR = {
-			has_policy_flag = environmental_preservation
 			has_policy_flag = environmental_protection
+			has_policy_flag = environmental_preservation
 		}
 	}
 	
@@ -2738,24 +2939,23 @@ resolution_industry_environmental_ordinance_waivers = {
 		weight = @resolution_weight_unpopular
 		modifier = {
 			factor = 0
-			is_spiritualist = yes
-		}	
+			OR = {
+				is_spiritualist = yes
+			}
+		}
+		
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mining_guilds
-		}
-		modifier = {
-			factor = 2
-			is_materialist = yes
-		}
-		modifier = {
-			factor = 0
-			has_valid_civic = civic_environmentalist
+			OR = {
+				is_materialist = yes
+			}
 		}
 
 		modifier = {
-			factor = 0
-			has_valid_civic = civic_agrarian_idyll
+			factor = 2
+			OR = {
+				has_ai_personality = tenacious_industrialists
+			}
 		}
 	}
 }
@@ -2777,10 +2977,10 @@ resolution_industry_project_cornucopia = {
 
 	breach = {
 		OR = {
-			has_policy_flag = environmental_preservation
 			has_policy_flag = environmental_protection
+			has_policy_flag = environmental_preservation
 			has_policy_flag = environmental_regulation
-		}
+		}		
 	}
 	
 	modifier = {
@@ -2817,24 +3017,23 @@ resolution_industry_project_cornucopia = {
 		weight = @resolution_weight_disliked
 		modifier = {
 			factor = 0
-			is_spiritualist = yes
-		}	
+			OR = {
+				is_spiritualist = yes
+			}
+		}
+		
 		modifier = {
 			factor = 2
-			has_valid_civic = civic_mining_guilds
-		}
-		modifier = {
-			factor = 2
-			is_materialist = yes
-		}
-		modifier = {
-			factor = 0
-			has_valid_civic = civic_environmentalist
+			OR = {
+				is_materialist = yes
+			}
 		}
 
 		modifier = {
-			factor = 0
-			has_valid_civic = civic_agrarian_idyll
+			factor = 2
+			OR = {
+				has_ai_personality = tenacious_industrialists
+			}
 		}
 	}
 }
@@ -2890,11 +3089,7 @@ resolution_greatergood_repeal_1 = {
 		}
 		modifier = {
 			factor = 2
-			OR = {
-				has_valid_civic = civic_slaver_guilds
-				has_valid_civic = civic_indentured_assets
-				is_slaver = yes
-			}
+			is_slaver = yes
 		}
 	}
 }
@@ -2953,11 +3148,7 @@ resolution_greatergood_repeal_2 = {
 		}
 		modifier = {
 			factor = 2
-			OR = {
-				has_valid_civic = civic_slaver_guilds
-				has_valid_civic = civic_indentured_assets
-				is_slaver = yes
-			}
+			is_slaver = yes
 		}
 	}
 }
@@ -3018,11 +3209,7 @@ resolution_greatergood_repeal_3 = {
 		}
 		modifier = {
 			factor = 2
-			OR = {
-				has_valid_civic = civic_slaver_guilds
-				has_valid_civic = civic_indentured_assets
-				is_slaver = yes
-			}
+			is_slaver = yes
 		}
 	}
 }
@@ -3088,11 +3275,7 @@ resolution_greatergood_repeal_4 = {
 		}
 		modifier = {
 			factor = 2
-			OR = {
-				has_valid_civic = civic_slaver_guilds
-				has_valid_civic = civic_indentured_assets
-				is_slaver = yes
-			}
+			is_slaver = yes
 		}
 	}
 }
@@ -3159,11 +3342,7 @@ resolution_greatergood_repeal_5 = {
 		}
 		modifier = {
 			factor = 2
-			OR = {
-				has_valid_civic = civic_slaver_guilds
-				has_valid_civic = civic_indentured_assets
-				is_slaver = yes
-			}
+			is_slaver = yes
 		}
 	}
 }
@@ -3218,7 +3397,14 @@ resolution_greatergood_workers_rights = {
 				is_egalitarian = yes
 			}
 		}
-		
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = abolitionists
+				has_ai_personality = anarchists
+				has_ai_personality = communists
+			}
+		}		
 		modifier = {
 			factor = 0
 			OR = {
@@ -3229,8 +3415,6 @@ resolution_greatergood_workers_rights = {
 		modifier = {
 			factor = 0
 			OR = {
-				has_valid_civic = civic_slaver_guilds
-				has_valid_civic = civic_indentured_assets
 				is_slaver = yes
 			}
 		}
@@ -3288,7 +3472,14 @@ resolution_greatergood_five_year_plans = {
 				is_egalitarian = yes
 			}
 		}
-		
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = abolitionists
+				has_ai_personality = anarchists
+				has_ai_personality = communists
+			}
+		}		
 		modifier = {
 			factor = 0
 			OR = {
@@ -3299,8 +3490,6 @@ resolution_greatergood_five_year_plans = {
 		modifier = {
 			factor = 0
 			OR = {
-				has_valid_civic = civic_slaver_guilds
-				has_valid_civic = civic_indentured_assets
 				is_slaver = yes
 			}
 		}
@@ -3330,9 +3519,7 @@ resolution_greatergood_greater_than_ourselves = {
 			any_owned_pop = {
 				is_sapient = yes
 				OR = {
-					has_living_standard = { type = living_standard_stratified }
-					has_living_standard = { type = living_standard_subsistence }
-					has_living_standard = { type = living_standard_servitude }
+					has_living_standard = { type = living_standard_ego_assimilation }
 				}
 			}
 			has_policy_flag = slavery_allowed
@@ -3362,48 +3549,6 @@ resolution_greatergood_greater_than_ourselves = {
 		is_active_resolution = "resolution_greatergood_five_year_plans"
 	}
 
-	breach = {
-		OR = {
-			AND = {
-				is_gestalt = no
-				any_owned_pop = {
-					is_sapient = yes
-					OR = {
-						has_living_standard = { type = living_standard_stratified }
-						AND = {
-							is_enslaved = yes
-							OR = {
-								has_slavery_type = { type = slavery_normal }
-								has_slavery_type = { type = slavery_livestock }
-								has_slavery_type = { type = slavery_matrix }
-							}
-						}
-					}
-				}
-			}
-			AND = {
-				is_gestalt = yes
-				any_owned_pop = {
-					is_sapient = yes
-					NOR = {
-						has_trait = trait_machine_unit
-						has_trait = trait_mechanical
-					}
-					AND = {
-						is_enslaved = yes
-						OR = {
-							has_slavery_type = { type = slavery_normal }
-							has_slavery_type = { type = slavery_livestock }
-							has_slavery_type = { type = slavery_matrix }
-						}
-					}
-				}
-			}
-		}
-
-
-	}
-
 	ai_weight = {
 		weight = @resolution_weight_normal
 
@@ -3413,7 +3558,14 @@ resolution_greatergood_greater_than_ourselves = {
 				is_egalitarian = yes
 			}
 		}
-		
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = abolitionists
+				has_ai_personality = anarchists
+				has_ai_personality = communists
+			}
+		}		
 		modifier = {
 			factor = 0
 			OR = {
@@ -3424,8 +3576,6 @@ resolution_greatergood_greater_than_ourselves = {
 		modifier = {
 			factor = 0
 			OR = {
-				has_valid_civic = civic_slaver_guilds
-				has_valid_civic = civic_indentured_assets
 				is_slaver = yes
 			}
 		}
@@ -3446,16 +3596,17 @@ resolution_greatergood_balance_in_the_middle = {
 		}
 	}
 	target = no
-
 	breach = {
 		NOT = { is_gestalt = yes }
 		OR = {
 			any_owned_pop = {
 				is_sapient = yes
 				OR = {
+					has_living_standard = { type = living_standard_ego_assimilation }
 					has_living_standard = { type = living_standard_stratified }
 					has_living_standard = { type = living_standard_subsistence }
 					has_living_standard = { type = living_standard_servitude }
+					has_living_standard = { type = living_standard_academic_privilege }
 				}
 			}
 			has_policy_flag = slavery_allowed
@@ -3486,29 +3637,6 @@ resolution_greatergood_balance_in_the_middle = {
 		is_active_resolution = "resolution_greatergood_greater_than_ourselves"
 	}
 
-	breach = {
-		OR = {
-			AND = {
-				is_gestalt = no
-				any_owned_pop = {
-					is_sapient = yes
-					OR = {
-						has_living_standard = { type = living_standard_normal }
-						has_living_standard = { type = living_standard_academic_privilege }
-						is_enslaved = yes
-					}
-				}
-			}
-			AND = {
-				is_gestalt = yes
-				any_owned_pop = {
-					is_sapient = yes
-					is_enslaved = yes
-				}
-			}
-		}
-	}
-
 	ai_weight = {
 		weight = @resolution_weight_unpopular
 
@@ -3518,7 +3646,14 @@ resolution_greatergood_balance_in_the_middle = {
 				is_egalitarian = yes
 			}
 		}
-		
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = abolitionists
+				has_ai_personality = anarchists
+				has_ai_personality = communists
+			}
+		}		
 		modifier = {
 			factor = 0
 			OR = {
@@ -3529,8 +3664,6 @@ resolution_greatergood_balance_in_the_middle = {
 		modifier = {
 			factor = 0
 			OR = {
-				has_valid_civic = civic_slaver_guilds
-				has_valid_civic = civic_indentured_assets
 				is_slaver = yes
 			}
 		}
@@ -3551,17 +3684,15 @@ resolution_greatergood_universal_prosperity_mandate = {
 		}
 	}
 	target = no
-
 	breach = {
 		NOT = { is_gestalt = yes }
 		OR = {
 			any_owned_pop = {
 				is_sapient = yes
-				OR = {
-					has_living_standard = { type = living_standard_stratified }
-					has_living_standard = { type = living_standard_subsistence }
-					has_living_standard = { type = living_standard_servitude }
-					has_living_standard = { type = living_standard_normal }
+				NOR = {
+					has_living_standard = { type = living_standard_good }
+					has_living_standard = { type = living_standard_shared_burden }
+					has_living_standard = { type = living_standard_utopian }
 				}
 			}
 			has_policy_flag = slavery_allowed
@@ -3629,7 +3760,14 @@ resolution_greatergood_universal_prosperity_mandate = {
 				is_egalitarian = yes
 			}
 		}
-		
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = abolitionists
+				has_ai_personality = anarchists
+				has_ai_personality = communists
+			}
+		}		
 		modifier = {
 			factor = 0
 			OR = {
@@ -3640,8 +3778,6 @@ resolution_greatergood_universal_prosperity_mandate = {
 		modifier = {
 			factor = 0
 			OR = {
-				has_valid_civic = civic_slaver_guilds
-				has_valid_civic = civic_indentured_assets
 				is_slaver = yes
 			}
 		}
@@ -3960,6 +4096,11 @@ resolution_mutualdefense_the_readied_shield = {
 			factor = 2
 			is_militarist = yes
 		}
+		
+		modifier = {
+			factor = 2
+			has_ai_personality = radical_liberators
+		}
 
 		modifier = {
 			factor = 1.5
@@ -4027,7 +4168,10 @@ resolution_mutualdefense_military_readiness_act = {
 			factor = 2
 			is_militarist = yes
 		}
-
+		modifier = {
+			factor = 2
+			has_ai_personality = radical_liberators
+		}
 		modifier = {
 			factor = 1.5
 			OR = {
@@ -4094,7 +4238,10 @@ resolution_mutualdefense_enemy_of_my_enemy = {
 			factor = 2
 			is_militarist = yes
 		}
-
+		modifier = {
+			factor = 2
+			has_ai_personality = radical_liberators
+		}
 		modifier = {
 			factor = 1.5
 			OR = {
@@ -4160,7 +4307,10 @@ resolution_mutualdefense_castigation_proclamation = {
 			factor = 2
 			is_militarist = yes
 		}
-
+		modifier = {
+			factor = 2
+			has_ai_personality = radical_liberators
+		}
 		modifier = {
 			factor = 1.5
 			OR = {
@@ -4234,7 +4384,10 @@ resolution_mutualdefense_renegade_containment = {
 			factor = 2
 			is_militarist = yes
 		}
-
+		modifier = {
+			factor = 2
+			has_ai_personality = radical_liberators
+		}
 		modifier = {
 			factor = 1.5
 			OR = {
@@ -4945,7 +5098,10 @@ resolution_rulesofwar_demobilization_initiative = {
 	}
 
 	breach = {
-		has_policy_flag = economic_policy_military
+		OR = {
+			has_policy_flag = diplo_stance_belligerent
+			has_policy_flag = diplo_stance_supremacist
+		}
 	}
 
 	ai_weight = {

@@ -2331,6 +2331,15 @@ pre_sapients = {
 		
 		AI_weight = {
 			factor = 1
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = "ethic_xenophobe"
+					has_ethic = "ethic_fanatic_xenophobe"
+					has_ethic = "ethic_materialist"
+					has_ethic = "ethic_fanatic_materialist"
+				}
+			}
 		}
 	}
 	
@@ -2361,6 +2370,13 @@ pre_sapients = {
 					has_ethic = "ethic_fanatic_xenophile"
 					has_ethic = "ethic_spiritualist"
 					has_ethic = "ethic_fanatic_spiritualist"
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					has_ethic = "ethic_materialist"
+					has_ethic = "ethic_fanatic_materialist"
 				}
 			}
 		}
@@ -2429,8 +2445,6 @@ interference = {
 			modifier = {
 				factor = 2
 				OR = {
-					has_ethic = "ethic_xenophile"
-					has_ethic = "ethic_fanatic_xenophile"
 					has_ethic = "ethic_spiritualist"
 					has_ethic = "ethic_fanatic_spiritualist"
 				}
@@ -2483,10 +2497,17 @@ interference = {
 				NOT = { has_ai_personality_behaviour = uplifter }
 			}
 			modifier = {
-				factor = 2
+				factor = 0
 				OR = {
 					has_ethic = "ethic_spiritualist"
 					has_ethic = "ethic_fanatic_spiritualist"
+				}
+			}
+			modifier = {
+				factor = 0.10
+				OR = {
+					has_ethic = "ethic_materialist"
+					has_ethic = "ethic_fanatic_materialist"
 				}
 			}
 		}

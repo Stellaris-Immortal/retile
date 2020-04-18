@@ -53,7 +53,10 @@ civic_anarchist = {
 
 civic_pacifist = {
 	description = "civic_tooltip_pacifist_effects"
-	potential = { ethics = { NOT = { value = ethic_gestalt_consciousness } } }
+	potential = { 
+		ethics = { NOT = { value = ethic_gestalt_consciousness } } 
+		authority = { NOT = { value = auth_corporate } }
+	}
 	possible = {
 		ethics = {
 			NOR = {
@@ -80,7 +83,6 @@ civic_pacifist = {
 }
 
 civic_isolationist = {
-	description = "civic_tooltip_pacifist_effects"
 	potential = { ethics = { NOT = { value = ethic_gestalt_consciousness } } }
 	possible = {
 		ethics = {

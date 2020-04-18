@@ -166,7 +166,10 @@ evangelising_zealots = {
 
 	allow = {
 		is_country_type = default
-		has_valid_civic = civic_imperial_cult
+		OR = {
+			has_valid_civic = civic_imperial_cult
+			has_valid_civic = civic_gospel_of_the_masses
+		}
 	}
 
 	weight_modifier = {
@@ -250,9 +253,9 @@ erudite_explorers = {
 	}
 
 	weight_modifier = {
-		weight = 10
+		weight = 5
 		modifier = {
-			factor = 1
+			factor = 0.25
 			OR = {
 				has_trait = trait_erudite
 				has_trait = trait_intelligent
@@ -260,11 +263,11 @@ erudite_explorers = {
 			}			
 		}
 		modifier = {
-			factor = 1
+			factor = 0.25
 			has_trait = trait_quick_learners				
 		}
 		modifier = {
-			factor = 1
+			factor = 0.25
 			OR = {
 				has_trait = trait_natural_engineers
 				has_trait = trait_natural_physicists
@@ -633,7 +636,10 @@ slaving_despots = {
 
 	allow = {
 		is_country_type = default
-		has_valid_civic = civic_slaver_guilds
+		OR = {
+			has_valid_civic = civic_slaver_guilds
+			has_valid_civic = civic_indentured_assets
+		}
 	}
 
 	weight_modifier = {
