@@ -134,6 +134,17 @@ opinion_policy_slavery = {
 				allows_slavery = yes
 			}
 		}
+		
+		modifier = {
+			add = -100
+			has_ai_personality = abolitionists
+			allows_slavery = no
+
+			FROM = {
+				NOT = { has_ethic = ethic_gestalt_consciousness }
+				allows_slavery = yes
+			}
+		}
 
 		modifier = {
 			add = -10
@@ -310,7 +321,6 @@ opinion_xenophiles = {
 			FROM = { has_ethic = "ethic_xenophile" }
 			NOT = { is_same_species_class = FROM }
 		}
-
 		modifier = {
 			add = 20
 			NOT = {
@@ -348,7 +358,7 @@ opinion_xenophiles = {
 		}
 
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_xenophile"
 			FROM = {
 				OR = {
@@ -358,12 +368,12 @@ opinion_xenophiles = {
 			}
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_fanatic_xenophile"
 			FROM = { has_ethic = "ethic_xenophile" }
 		}
 		modifier = {
-			add = 20
+			add = 40
 			has_ethic = "ethic_fanatic_xenophile"
 			FROM = { has_ethic = "ethic_fanatic_xenophile" }
 		}
@@ -376,13 +386,13 @@ opinion_xenophobia = {
 		base = 0
 
 		modifier = {
-			add = -20
+			add = -50
 			NOT = { has_valid_civic = civic_fanatic_purifiers } #handled elsewhere
 			has_ethic = "ethic_xenophobe"
 			NOT = { is_same_species_class = FROM }
 		}
 		modifier = {
-			add = -10
+			add = -25
 			NOT = { has_valid_civic = civic_fanatic_purifiers } #handled elsewhere
 			has_ethic = "ethic_xenophobe"
 			is_same_species_class = FROM
@@ -390,7 +400,7 @@ opinion_xenophobia = {
 			NOT = { is_subspecies = FROM }
 		}
 		modifier = {
-			add = -5
+			add = -10
 			NOT = { has_valid_civic = civic_fanatic_purifiers } #handled elsewhere
 			has_ethic = "ethic_xenophobe"
 			is_same_species_class = FROM
@@ -399,13 +409,13 @@ opinion_xenophobia = {
 		}
 
 		modifier = {
-			add = -40
+			add = -100
 			NOT = { has_valid_civic = civic_fanatic_purifiers } #handled elsewhere
 			has_ethic = "ethic_fanatic_xenophobe"
 			NOT = { is_same_species_class = FROM }
 		}
 		modifier = {
-			add = -20
+			add = -50
 			NOT = { has_valid_civic = civic_fanatic_purifiers } #handled elsewhere
 			has_ethic = "ethic_fanatic_xenophobe"
 			is_same_species_class = FROM
@@ -413,7 +423,7 @@ opinion_xenophobia = {
 			NOT = { is_subspecies = FROM }
 		}
 		modifier = {
-			add = -10
+			add = -20
 			NOT = { has_valid_civic = civic_fanatic_purifiers } #handled elsewhere
 			has_ethic = "ethic_fanatic_xenophobe"
 			is_same_species_class = FROM
@@ -511,22 +521,22 @@ opinion_of_materialist = {
 		base = 0
 
 		modifier = {
-			add = -10
+			add = -15
 			has_ethic = "ethic_spiritualist"
 			FROM = { has_ethic = "ethic_materialist" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_spiritualist"
 			FROM = { has_ethic = "ethic_fanatic_materialist" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_fanatic_spiritualist"
 			FROM = { has_ethic = "ethic_materialist" }
 		}
 		modifier = {
-			add = -40
+			add = -60
 			has_ethic = "ethic_fanatic_spiritualist"
 			FROM = { has_ethic = "ethic_fanatic_materialist" }
 		}
@@ -539,17 +549,17 @@ opinion_of_materialist_pos = {
 		base = 0
 
 		modifier = {
-			add = 25
+			add = 40
 			has_ethic = "ethic_fanatic_materialist"
 			FROM = { has_ethic = "ethic_fanatic_materialist" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_fanatic_materialist"
 			FROM = { has_ethic = "ethic_materialist" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_materialist"
 			FROM = { has_ethic = "ethic_fanatic_materialist" }
 		}
@@ -567,22 +577,22 @@ opinion_of_spiritualist = {
 		base = 0
 
 		modifier = {
-			add = -10
+			add = -15
 			has_ethic = "ethic_materialist"
 			FROM = { has_ethic = "ethic_spiritualist" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_materialist"
 			FROM = { has_ethic = "ethic_fanatic_spiritualist" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_fanatic_materialist"
 			FROM = { has_ethic = "ethic_spiritualist" }
 		}
 		modifier = {
-			add = -40
+			add = -60
 			has_ethic = "ethic_fanatic_materialist"
 			FROM = { has_ethic = "ethic_fanatic_spiritualist" }
 		}
@@ -595,17 +605,17 @@ opinion_of_spiritualist_pos = {
 		base = 0
 
 		modifier = {
-			add = 25
+			add = 40
 			has_ethic = "ethic_fanatic_spiritualist"
 			FROM = { has_ethic = "ethic_fanatic_spiritualist" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_fanatic_spiritualist"
 			FROM = { has_ethic = "ethic_spiritualist" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_spiritualist"
 			FROM = { has_ethic = "ethic_fanatic_spiritualist" }
 		}
@@ -622,22 +632,22 @@ opinion_of_egalitarian = {
 	opinion = {
 		base = 0
 		modifier = {
-			add = -10
+			add = -15
 			has_ethic = "ethic_authoritarian"
 			FROM = { has_ethic = "ethic_egalitarian" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_authoritarian"
 			FROM = { has_ethic = "ethic_fanatic_egalitarian" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_fanatic_authoritarian"
 			FROM = { has_ethic = "ethic_egalitarian" }
 		}
 		modifier = {
-			add = -40
+			add = -60
 			has_ethic = "ethic_fanatic_authoritarian"
 			FROM = { has_ethic = "ethic_fanatic_egalitarian" }
 		}
@@ -650,17 +660,17 @@ opinion_of_egalitarian_pos = {
 		base = 0
 
 		modifier = {
-			add = 25
+			add = 40
 			has_ethic = "ethic_fanatic_egalitarian"
 			FROM = { has_ethic = "ethic_fanatic_egalitarian" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_fanatic_egalitarian"
 			FROM = { has_ethic = "ethic_egalitarian" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_egalitarian"
 			FROM = { has_ethic = "ethic_fanatic_egalitarian" }
 		}
@@ -678,17 +688,17 @@ opinion_of_pacifist_pos = {
 		base = 0
 
 		modifier = {
-			add = 25
+			add = 40
 			has_ethic = "ethic_fanatic_pacifist"
 			FROM = { has_ethic = "ethic_fanatic_pacifist" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_fanatic_pacifist"
 			FROM = { has_ethic = "ethic_pacifist" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_pacifist"
 			FROM = { has_ethic = "ethic_fanatic_pacifist" }
 		}
@@ -706,22 +716,22 @@ opinion_of_pacifist = {
 		base = 0
 
 		modifier = {
-			add = -40
+			add = -60
 			has_ethic = "ethic_fanatic_militarist"
 			FROM = { has_ethic = "ethic_fanatic_pacifist" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_fanatic_militarist"
 			FROM = { has_ethic = "ethic_pacifist" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_militarist"
 			FROM = { has_ethic = "ethic_fanatic_pacifist" }
 		}
 		modifier = {
-			add = -10
+			add = -15
 			has_ethic = "ethic_militarist"
 			FROM = { has_ethic = "ethic_pacifist" }
 		}
@@ -734,22 +744,22 @@ opinion_of_militarist = {
 		base = 0
 
 		modifier = {
-			add = -10
+			add = -15
 			has_ethic = "ethic_pacifist"
 			FROM = { has_ethic = "ethic_militarist" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_pacifist"
 			FROM = { has_ethic = "ethic_fanatic_militarist" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_fanatic_pacifist"
 			FROM = { has_ethic = "ethic_militarist" }
 		}
 		modifier = {
-			add = -40
+			add = -60
 			has_ethic = "ethic_fanatic_pacifist"
 			FROM = { has_ethic = "ethic_fanatic_militarist" }
 		}
@@ -762,17 +772,17 @@ opinion_of_militarist_pos = {
 		base = 0
 
 		modifier = {
-			add = 25
+			add = 40
 			has_ethic = "ethic_fanatic_militarist"
 			FROM = { has_ethic = "ethic_fanatic_militarist" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_fanatic_militarist"
 			FROM = { has_ethic = "ethic_militarist" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_militarist"
 			FROM = { has_ethic = "ethic_fanatic_militarist" }
 		}
@@ -794,17 +804,17 @@ opinion_of_authoritarian_pos = {
 			FROM = { has_ethic = "ethic_authoritarian" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_authoritarian"
 			FROM = { has_ethic = "ethic_fanatic_authoritarian" }
 		}
 		modifier = {
-			add = 10
+			add = 20
 			has_ethic = "ethic_fanatic_authoritarian"
 			FROM = { has_ethic = "ethic_authoritarian" }
 		}
 		modifier = {
-			add = 25
+			add = 40
 			has_ethic = "ethic_fanatic_authoritarian"
 			FROM = { has_ethic = "ethic_fanatic_authoritarian" }
 		}
@@ -816,22 +826,22 @@ opinion_of_authoritarian = {
 	opinion = {
 		base = 0
 		modifier = {
-			add = -10
+			add = -15
 			has_ethic = "ethic_egalitarian"
 			FROM = { has_ethic = "ethic_authoritarian" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_egalitarian"
 			FROM = { has_ethic = "ethic_fanatic_authoritarian" }
 		}
 		modifier = {
-			add = -20
+			add = -30
 			has_ethic = "ethic_fanatic_egalitarian"
 			FROM = { has_ethic = "ethic_authoritarian" }
 		}
 		modifier = {
-			add = -40
+			add = -60
 			has_ethic = "ethic_fanatic_egalitarian"
 			FROM = { has_ethic = "ethic_fanatic_authoritarian" }
 		}

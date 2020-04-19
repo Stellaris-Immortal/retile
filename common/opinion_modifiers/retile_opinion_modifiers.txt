@@ -14,12 +14,20 @@ opinion_policy_environmental = {
 				}
 			}
 		}
-
 		modifier = {
 			add = -40
 
 			has_ethic = "ethic_fanatic_spiritualist"
 
+			from = {
+				OR = {
+					has_policy_flag = environmental_deregulation
+				}
+			}
+		}
+		modifier = {
+			add = -40
+			has_ai_personality = caring_custodians
 			from = {
 				OR = {
 					has_policy_flag = environmental_deregulation
@@ -126,7 +134,6 @@ opinion_everyone_on_big_brother = {
 		}
 	}
 }
-
 opinion_liblefts_on_stalinists = {
 	opinion = {
 		modifier = {
