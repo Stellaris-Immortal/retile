@@ -36,6 +36,11 @@ default_federation = {
 			fail_text = requires_actor_not_barbaric_despoilers
 			NOT = { has_civic = civic_barbaric_despoilers }
 		}
+		OR = {
+			has_tradition = tr_diplomacy_adopt
+			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_pacifist
+		}
 	}
 	levels = {
 		level_1 = { # Starting rank
@@ -138,6 +143,14 @@ default_federation = {
 			add = -10
 			from = {
 				has_ai_personality = technocracy
+			}
+		}
+		
+		modifier = {
+			desc = federation_acceptance_citizen_service
+			add = 20
+			from = {
+				has_ai_personality = citizen_service
 			}
 		}
 		modifier = {
@@ -1423,6 +1436,13 @@ hegemony_federation = {
 			add = -20
 			from = {
 				has_ai_personality = despoilers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_feudal
+			add = -20
+			from = {
+				has_ai_personality = feudal
 			}
 		}
 		modifier = {
