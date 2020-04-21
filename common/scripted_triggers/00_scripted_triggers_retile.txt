@@ -391,3 +391,19 @@ is_food_deposit_high = {
 		is_deposit_type = d_saharan_irrigation_project
 	}
 }
+
+# Taken from Starborn 3.3.0
+has_starborn = {
+	OR = {
+		has_origin = origin_starborn
+		has_country_flag = EGS_START_STARBORN
+		has_country_flag = starborn_origin
+	}
+}
+
+has_void_dweller_or_starborn = {
+	OR = {
+		has_origin = origin_void_dwellers
+		has_starborn = yes
+	}
+}
