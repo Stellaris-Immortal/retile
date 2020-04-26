@@ -1,0 +1,615 @@
+@cooldown = 3600
+
+centralization_minimal = {
+	unlocks_centralization = 1
+	allow = {
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = centralization_minimal }
+					has_modifier = federation_law_category_centralization_cooldown
+					has_any_federation_law_in_category = law_category_centralization
+				}
+			}
+		}
+	}
+	on_enact = {
+		if = {
+			limit = {
+				has_federation_flag = enable_federation_cooldowns
+			}
+			add_modifier = {
+				modifier = federation_law_category_centralization_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -10
+	}
+	
+	ai_weight = {
+		base = 26
+		modifier = {
+			factor = 0
+			has_ai_personality = federation_builders
+		}		
+		modifier = {
+			add = -25
+			federation = {			
+				federation_cohesion > 50
+			}
+		}
+		
+		#Attempt to lower centralization by a step when there is bad cohesion
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -50
+				has_federation_law = centralization_low
+			}
+		}
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -75
+				has_federation_law = centralization_low
+			}
+		}
+	}
+}
+
+centralization_low = {
+	display_level = 2
+	unlocks_centralization = 2
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_federation_lvl_2"
+			federation_level > 1
+		}
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = centralization_low }
+					has_modifier = federation_law_category_centralization_cooldown
+					has_any_federation_law_in_category = law_category_centralization
+				}
+			}
+		}
+	}
+	modifier = {
+		cohesion_add = -1
+	}
+	on_enact = {
+		if = {
+			limit = {
+				has_federation_flag = enable_federation_cooldowns
+			}
+			add_modifier = {
+				modifier = federation_law_category_centralization_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -10
+	}
+	ai_weight = {
+		base = 26
+		
+		#Default support
+		modifier = {
+			add = -50
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < 90
+			}
+		}
+		modifier = {
+			add = -50
+			is_federation_leader = yes
+			federation = {
+				OR = {
+					has_federation_law = centralization_medium
+					has_federation_law = centralization_high
+					has_federation_law = centralization_very_high
+				}
+			}
+		}
+		modifier = {
+			# AI will try to increase the centralization one step at a time
+			add = 100
+			is_federation_leader = yes
+			federation = {
+				has_federation_law = centralization_minimal
+			}
+		}
+		
+		#Behaviour-specific
+		modifier = {
+			add = 25
+			is_authoritarian = yes
+		}
+		modifier = {
+			add = 25
+			has_ai_personality = federation_builders
+		}
+		modifier = {
+			add = 25
+			relative_power = { who = from value >= superior }
+		}
+		modifier = {
+			add = 10
+			AND = {
+				has_ai_personality = erudite_explorers
+				federation = {
+					has_federation_type = research_federation
+				}
+			}
+		}
+		modifier = {
+			add = 20
+			AND = {
+				has_ai_personality = honorbound_warriors
+				federation = {
+					has_federation_type = military_federation
+				}
+			}
+		}
+		modifier = {
+			add = 20
+			AND = {
+				OR = {
+					has_ai_personality = peaceful_traders
+					has_ai_personality = ruthless_capitalists					
+				}
+				federation = {
+					has_federation_type = trade_federation
+				}
+			}
+		}		
+		
+		#Attempt to lower centralization by a step when there is bad cohesion
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -25
+				has_federation_law = centralization_medium
+			}
+		}
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -50
+				has_federation_law = centralization_medium
+			}
+		}
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -75
+				has_federation_law = centralization_medium
+			}
+		}
+	}
+}
+
+centralization_medium = {
+	display_level = 3
+	unlocks_centralization = 3
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_federation_lvl_3"
+			federation_level > 2
+		}
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = centralization_medium }
+					has_modifier = federation_law_category_centralization_cooldown
+					has_any_federation_law_in_category = law_category_centralization
+				}
+			}
+		}
+	}
+	modifier = {
+		cohesion_add = -2
+	}
+	on_enact = {
+		if = {
+			limit = {
+				has_federation_flag = enable_federation_cooldowns
+			}
+			add_modifier = {
+				modifier = federation_law_category_centralization_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -10
+	}
+	ai_weight = {
+		base = 36
+		
+		#Default support
+		modifier = {
+			add = -50
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < 90
+			}
+		}
+		modifier = {
+			add = -500
+			OR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		modifier = {
+			add = -50
+			is_federation_leader = yes
+			federation = {
+				OR = {
+					has_federation_law = centralization_medium
+					has_federation_law = centralization_high
+					has_federation_law = centralization_very_high
+				}
+			}
+		}
+		modifier = {
+			# AI will try to increase the centralization one step at a time
+			add = 100
+			is_federation_leader = yes
+			federation = {
+				has_federation_law = centralization_minimal
+			}
+		}
+		
+		#Behaviour-specific
+		modifier = {
+			add = 25
+			is_authoritarian = yes
+		}
+		modifier = {
+			add = 25
+			has_ai_personality = federation_builders
+		}
+		modifier = {
+			add = 25
+			relative_power = { who = from value >= superior }
+		}
+		modifier = {
+			add = 10
+			AND = {
+				has_ai_personality = erudite_explorers
+				federation = {
+					has_federation_type = research_federation
+				}
+			}
+		}
+		modifier = {
+			add = 20
+			AND = {
+				has_ai_personality = honorbound_warriors
+				federation = {
+					has_federation_type = military_federation
+				}
+			}
+		}
+		modifier = {
+			add = 20
+			AND = {
+				OR = {
+					has_ai_personality = peaceful_traders
+					has_ai_personality = ruthless_capitalists					
+				}
+				federation = {
+					has_federation_type = trade_federation
+				}
+			}
+		}
+		
+		#Attempt to lower centralization by a step when there is bad cohesion
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < 0
+				has_federation_law = centralization_high
+			}
+		}
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -25
+				has_federation_law = centralization_high
+			}
+		}
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -50
+				has_federation_law = centralization_high
+			}
+		}
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -75
+				has_federation_law = centralization_high
+			}
+		}
+	}
+}
+
+centralization_high = {
+	display_level = 4
+	unlocks_centralization = 4
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_federation_lvl_4"
+			federation_level > 3
+		}
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = centralization_high }
+					has_modifier = federation_law_category_centralization_cooldown
+					has_any_federation_law_in_category = law_category_centralization
+				}
+			}
+		}
+	}
+	modifier = {
+		cohesion_add = -3
+	}
+	on_enact = {
+		if = {
+			limit = {
+				has_federation_flag = enable_federation_cooldowns
+			}
+			add_modifier = {
+				modifier = federation_law_category_centralization_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -10
+	}
+	ai_weight = {
+		base = 41
+		
+		#Default support
+		modifier = {
+			add = -50
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < 90
+			}
+		}
+		modifier = {
+			add = -500
+			OR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		modifier = {
+			add = -50
+			is_federation_leader = yes
+			federation = {
+				OR = {
+					has_federation_law = centralization_medium
+					has_federation_law = centralization_high
+					has_federation_law = centralization_very_high
+				}
+			}
+		}
+		modifier = {
+			# AI will try to increase the centralization one step at a time
+			add = 100
+			is_federation_leader = yes
+			federation = {
+				has_federation_law = centralization_minimal
+			}
+		}
+		
+		#Behaviour-specific
+		modifier = {
+			add = 25
+			is_authoritarian = yes
+		}
+		modifier = {
+			add = 25
+			has_ai_personality = federation_builders
+		}
+		modifier = {
+			add = 25
+			relative_power = { who = from value >= superior }
+		}
+		modifier = {
+			add = 10
+			AND = {
+				has_ai_personality = erudite_explorers
+				federation = {
+					has_federation_type = research_federation
+				}
+			}
+		}
+		modifier = {
+			add = 20
+			AND = {
+				has_ai_personality = honorbound_warriors
+				federation = {
+					has_federation_type = military_federation
+				}
+			}
+		}
+		modifier = {
+			add = 20
+			AND = {
+				OR = {
+					has_ai_personality = peaceful_traders
+					has_ai_personality = ruthless_capitalists					
+				}
+				federation = {
+					has_federation_type = trade_federation
+				}
+			}
+		}
+		
+		#Attempt to lower centralization by a step when there is bad cohesion
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < 0
+				has_federation_law = centralization_very_high
+			}
+		}
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -25
+				has_federation_law = centralization_very_high
+			}
+		}
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -50
+				has_federation_law = centralization_very_high
+			}
+		}
+		modifier = {
+			add = 25
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < -75
+				has_federation_law = centralization_very_high
+			}
+		}
+	}
+}
+
+centralization_very_high = {
+	display_level = 5
+	unlocks_centralization = 5
+	allow = {
+		custom_tooltip = {
+			fail_text = "requires_federation_lvl_5"
+			federation_level > 4
+		}
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = centralization_very_high }
+					has_modifier = federation_law_category_centralization_cooldown
+					has_any_federation_law_in_category = law_category_centralization
+				}
+			}
+		}
+	}
+	modifier = {
+		cohesion_add = -4
+	}
+	on_enact = {
+		if = {
+			limit = {
+				has_federation_flag = enable_federation_cooldowns
+			}
+			add_modifier = {
+				modifier = federation_law_category_centralization_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -10
+	}
+	ai_weight = {
+		base = 51
+		
+		#Default support
+		modifier = {
+			add = -50
+			is_federation_leader = no
+			federation = {			
+				federation_cohesion < 90
+			}
+		}
+		modifier = {
+			add = -50
+			is_federation_leader = yes
+			federation = {
+				OR = {
+					has_federation_law = centralization_medium
+					has_federation_law = centralization_high
+					has_federation_law = centralization_very_high
+				}
+			}
+		}
+		modifier = {
+			add = -500
+			OR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
+		}
+		modifier = {
+			# AI will try to increase the centralization one step at a time
+			add = 100
+			is_federation_leader = yes
+			federation = {
+				has_federation_law = centralization_minimal
+			}
+		}
+		
+		#Behaviour-specific
+		modifier = {
+			add = 25
+			is_authoritarian = yes
+		}
+		modifier = {
+			add = 25
+			has_ai_personality = federation_builders
+		}
+		modifier = {
+			add = 25
+			relative_power = { who = from value >= superior }
+		}
+		modifier = {
+			add = 10
+			AND = {
+				has_ai_personality = erudite_explorers
+				federation = {
+					has_federation_type = research_federation
+				}
+			}
+		}
+		modifier = {
+			add = 20
+			AND = {
+				has_ai_personality = honorbound_warriors
+				federation = {
+					has_federation_type = military_federation
+				}
+			}
+		}
+		modifier = {
+			add = 20
+			AND = {
+				OR = {
+					has_ai_personality = peaceful_traders
+					has_ai_personality = ruthless_capitalists					
+				}
+				federation = {
+					has_federation_type = trade_federation
+				}
+			}
+		}	
+	}
+}

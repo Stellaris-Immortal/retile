@@ -14,9 +14,14 @@
  POP_ATTRACTION_PACIFIST_NEG:0 "§R- Diplomat Governing Ethics§!"
  POP_ATTRACTION_MECHANIST_POS:0 "§G+ Mechanist Origin§!"
  ETHIC_MILITARY_FEDERATION:0 "§ECan form §HMilitary§! Federation§!"
+ ETHIC_UNION_FEDERATION:0 "§ECan form §HGalactic Union§! Federation§!"
+ ETHIC_SCIENCE_FEDERATION:0 "§ECan form §HResearch Cooperative§! Federation§!"
+ ETHIC_TRADE_FEDERATION:0 "§ECan form §HGalactic Union§! Federation§!"
  ETHIC_HEGEMONY_FEDERATION:0 "§ECan form §HHegemony§! Federation§!"
  ETHIC_EDUCATED_WORKFORCE:0 "§ECan use §HEducated Workforce§! living standard§!"
  ETHIC_PRESERVATION:0 "§ECan use §HEnvironmental Preservation§! policy§!"
+ # Authorities
+ 
 # Universal Civics
  civic_life_seeded_desc:0 "§GUniversal Civic§!\nThis society has evolved in a paradise, possibly designed just for them."
  civic_post_apocalyptic_desc:0 "§GUniversal Civic§!\nBaptized by nuclear fire, this society has faced total annihilation - and survived. Devastated yet unbroken, they have rebuilt civilization from the ashes of the old world."
@@ -30,7 +35,7 @@
  civic_tooltip_corvee_system_effects:0 "$TRIGGER_FAIL$§RCannot allow internal migration§!"
  civic_capitalist:0 "All for One"
  civic_capitalist_desc:0 "All property in this society is owned by a few elites, who only allow it to be used for payment. Otherwise the property is left abandoned or simply destroyed, even if it is still useful."
- civic_tooltip_capitalist_effects:0 "§HUnlocks:§! Interest Representation Edict\nInterest Representation increases §YFaction Production§! by §G100%§!\nThe Centrist Faction produces £influence£ §YInfluence§! instead of £unity£ §YUnity§!\n§YUtopian Abundance Living Standard§! cannot be used."
+ civic_tooltip_capitalist_effects:0 "§HUnlocks:§! Interest Representation Edict\nInterest Representation increases §YFaction Production§! by §G100%§!\nThe Centrist Faction produces £influence£ §YInfluence§! instead of £unity£ §YUnity§!\n§YUtopian Abundance Living Standard§! cannot be used.\n§ECan form §HTrade League§! Federations§!"
  civic_anarchist:0 "Anarchist"
  civic_anarchist_desc:0 "This society is organized by individuals that function as a state without granting special powers or privileges to any individual role."
  civic_tooltip_anarchist_effects:0 "$TRIGGER_FAIL$§RRestricts many political actions§!\nOnly §YUtopian Living Standard§! can be used"
@@ -44,7 +49,7 @@
  civic_tooltip_mining_guilds_effects:0 "§G+1§! £job_miner£ Miner Job on £building£ Capital Buildings\n£job_miner£ Miners convert §R4§! £minerals£ §Y$minerals$§! into §G1§! £alloys£ §Y$alloys$§!"
  civic_agrarian_idyll_effects:0 "§G+1§! £job_farmer£ Farmer Job on £building£ Capital Buildings"
  civic_merchant_guilds_desc:1 "£political_power£ §YGovernment Civic§!\nA number of powerful and very influential merchant guilds have risen to prominent positions in this society. They hold significant sway with the government."
- civic_tooltip_merchant_guilds_effects:0 "Replaces £job_administrator£ §YAdministrator Jobs§! with £job_merchant£ §YMerchant Jobs§! on Capital Buildings\nStart with §SSpace Trading§! Researched"
+ civic_tooltip_merchant_guilds_effects:0 "Replaces £job_administrator£ §YAdministrator Jobs§! with £job_merchant£ §YMerchant Jobs§! on Capital Buildings\nStart with §SSpace Trading§! Researched\n§ECan form §HTrade League§! Federations§!"
  civic_byzantine_bureaucracy_desc:2 "This society is largely governed by a complex and, to the outsider, almost labyrinthine system of bureaucracy. An army of officials and functionaries work tirelessly to keep the government running smoothly and ensure no citizens are allocated resources they cannot demonstrate a properly filed and triple-stamped need for."
  civic_tooltip_byzantine_bureaucracy_effects:0 "Start with §SAdaptive Bureaucracy§! Researched\n$TRIGGER_PASS$Can build £building£ §YMinistry§! buildings"
  civic_exalted_priesthood_desc:0 "£political_power£ §YGovernment Civic§!\nTo guard against heresy, this society is ruled by a religious council consisting of the wisest and most pious members of the clergy."
@@ -52,10 +57,11 @@
  civic_tooltip_exalted_priesthood_effects:0 "Replaces £job_administrator£ §YAdministrator Jobs§! with £job_high_priest£ §YHigh Priests§! Jobs on Capital Buildings\n$TRIGGER_PASS$Can build £building£ §YTemple§! buildings\n$TRIGGER_PASS$Can £planet£ Consecrate Worlds"
  civic_tooltip_imperial_cult_effects:0 "$TRIGGER_PASS$Can build £building£ §YTemple§! buildings\n$TRIGGER_PASS$Can £planet£ Consecrate Worlds"
  civic_technocracy_desc:0 "£political_power£ §YGovernment Civic§!\nTo maximize efficiency, this society is governed according to the principles of science and rationality. The personal whims of an ignorant and dangerously unqualified political elite must not be allowed to interfere."
- civic_tooltip_technocracy_effects:0 "Replaces £job_administrator£ §YAdministrator Jobs§! with £job_head_researcher£ §YResearch Director§! Jobs on Capital Buildings"
+ civic_tooltip_technocracy_effects:0 "Replaces £job_administrator£ §YAdministrator Jobs§! with £job_head_researcher£ §YResearch Director§! Jobs on Capital Buildings.\n§ECan form §HResearch Cooperative§! Federation§!"
  civic_aristocratic_elite_desc:0 "£political_power£ §YGovernment Civic§!\nThis society has an entrenched nobility that occupies the upper echelons of society."
  civic_tooltip_aristocratic_elite_effects:0 "Replaces £job_administrator£ §YAdministrator Jobs§! with £job_noble£ §YNoble Jobs§! on Capital Buildings\nStarting Influence: §G+100§!"
- civic_functional_architecture:0 "Sprawling Cities"
+ civic_functional_architecture:0 "Five Year Plans"
+ civic_functional_architecture_desc:0 "This society is animated by a fervent desire to maximize their material prosperity through efficient resource exploitation. The ecosystems of their planets have been completely subordinated to this goal - forests are burned, mountains leveled, and seas evaporated to make room for developments."
  civic_nationalistic_zeal_effects:0 "Full Citizenship Happiness: §G+10%§!\nHappines without Full Citizenship: §R-10%§!"
  civic_shared_burden:0 "One for All"
  civic_shared_burden_desc:0 "£political_power£ §YGovernment Civic§!\nAll property in this society is owned by the individuals who use it and nobody is allowed to own more than they can use."
@@ -71,6 +77,8 @@
  civic_psychic_society_effects:0 "Your founding species starts with the §YLatent Psionic§! trait.\nStart with §SPsionic Theory§! Researched"
 civic_systemic_slavery:0 "Caste System"
 civic_systemic_slavery_desc:0 "(Placeholder) Freedom is Slavery."
+civic_isolationist:0 "Isolationist"
+civic_isolationist_desc:0 "This reclusive society views the galaxy as a dangerous place where the only guarantees of safety are self-reliance and heavy fortification."
 civic_tooltip_systemic_slavery_effects:0 "Your main species will be §YSlaves§! with the §YCaste System§! living standards." 
 # Hive Civics
  civic_hive_psionic_link:0 "Psionic Link"
@@ -104,8 +112,11 @@ civic_tooltip_systemic_slavery_effects:0 "Your main species will be §YSlaves§!
  RT_COMRADE:0 "Comrade"
  gov_plutocracy:0 "Plutocracy"
  gov_plutocracy_desc:0 "A government ruled by the most successful business owners and inheritors of great wealth."
+ # Plutocratic Oligarchy is default oligarchy type, but the name/desc doesn't work well with egalitarian oligarchies and is rendered redundant by the new plutocracy gov't type
+ gov_plutocratic_oligarchy:0 "Bureaucratic Oligarchy"
+ gov_plutocratic_oligarchy_desc:0 "A bureaucratic form of oligarchy where a complicated system of functionaries and civil servants governs society."
  RT_PHILANTHROPIST:0 "Philanthropist"
- gov_fascist:0 "Fascist"
+ gov_fascist:0 "Fascist Dictatorship"
  gov_fascist_desc:0 "A government with a single powerful leader at the top held together by highly centralized corporate power."
  RT_GOVERNMENT_HEAD:0 "Head of the Government"
  gov_merchant_republic:0 "Merchant Republic"
@@ -213,10 +224,7 @@ civic_tooltip_systemic_slavery_effects:0 "Your main species will be §YSlaves§!
  trade_conversion_influence_name:0 "Influence Trade Conversion" 
  trade_conversion_ai_name:0 "AI Trade Conversion"
  trade_conversion_ai_advanced_name:0 "Advanced AI Trade Conversion"
-# Personalities
- personality_peaceful_seclusionists:0 "Cordial Seclusionists"
- personality_tenacious_industrialists:0 "Tenacious Industrialists"
- personality_radical_liberators:0 "Radical Liberators"
- federation_acceptance_peaceful_seclusionists:0 "$personality_fanatic_befrienders$"
- federation_acceptance_tenacious_industrialists:0 "$personality_tenacious_industrialists$"
- federation_acceptance_radical_liberators:0 "$personality_radical_liberators$"
+
+# Personalities moved to own loc file
+ 
+ 

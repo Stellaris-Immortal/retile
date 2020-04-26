@@ -46,18 +46,11 @@ peaceful_seclusionists = {
 
 	allow = {
 		is_country_type = default
-		OR = {
-			has_ethic = "ethic_xenophobe"
-			has_ethic = "ethic_fanatic_xenophobe"
-		}
-		OR = {
-			has_ethic = "ethic_pacifist"
-			has_ethic = "ethic_fanatic_pacifist"
-		}
+		has_valid_civic = civic_inwards_perfection
 	}
 
 	weight_modifier = {
-		weight = 5
+		weight = 100
 	}
 }
 
@@ -109,12 +102,110 @@ tenacious_industrialists = {
 
 	allow = {
 		is_country_type = default
-		has_ethic = "ethic_fanatic_xenophobe"
-		has_ethic = "ethic_authoritarian"
+		OR = {
+		has_valid_civic = civic_functional_architecture
+		has_valid_civic = civic_mining_guilds
+		}
 	}
 
 	weight_modifier = {
 		weight = 10
+		modifier = {
+			factor = 1
+			has_trait = trait_industrious				
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_innovative	
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_wasteful	
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_agrarian			
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_conservational
+		}
+	}
+}
+
+caring_custodians = {
+	aggressiveness = 0.75
+	trade_willingness = 1
+	bravery = 0.75
+	combat_bravery = 0.75
+
+	military_spending = 0.8
+	colony_spending = 1.2
+
+	federation_acceptance = 0
+	nap_acceptance = 10
+	commercial_pact_acceptance = 10
+	research_agreement_acceptance = 10
+	defensive_pact_acceptance = 10
+	migration_pact_acceptance = 10
+
+	advanced_start_chance = 25
+
+	weapon_preferences = weapon_type_energy
+	armor_ratio = 0.4
+	shields_ratio = 0.5
+	hull_ratio = 0.1
+
+	threat_modifier = 1.0
+	threat_others_modifier = 1.0
+	friction_modifier = 1
+	claims_modifier = 1.5
+
+	behaviour = {
+		conqueror = no
+		subjugator = no
+		liberator = yes
+		opportunist = no
+		slaver = no
+		uplifter = no
+		purger = no
+		displacer = no
+		dominator = no
+		infiltrator = no
+		robot_exploiter = no
+		robot_liberator = yes
+		propagator = no
+		multispecies = yes
+		crisis_fighter = yes
+	}
+
+	allow = {
+		is_country_type = default
+		has_valid_civic = civic_environmentalist
+	}
+
+	weight_modifier = {
+		weight = 10
+		modifier = {
+			factor = -0.5
+			has_trait = trait_industrious				
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_innovative	
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_wasteful	
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_agrarian			
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_conservational	
+		}
 	}
 }
 
@@ -166,11 +257,868 @@ radical_liberators = {
 
 	allow = {
 		is_country_type = default
-		has_ethic = "ethic_fanatic_egalitarian"
-		has_ethic = "ethic_militarist"
+		has_valid_civic = civic_beacon_of_liberty
+	}
+	weight_modifier = {
+		weight = 10
+		modifier = {
+			factor = 1
+			OR = {
+				has_trait = trait_strong
+				has_trait = trait_arthropoid_mandibles
+				has_trait = trait_very_strong
+				has_trait = trait_colossal
+				has_trait = trait_giant
+			}
+		}
+		modifier = {
+			factor = -0.5
+			OR = {
+				has_trait = trait_weak
+				has_trait = trait_very_weak
+				has_trait = trait_tiny
+			}			
+		}
+	}
+}
+
+technocracy = {
+	aggressiveness = 1.3
+	trade_willingness = 0.9
+	bravery = 1.0
+	combat_bravery = 1.0
+
+	military_spending = 1.2
+	colony_spending = 1.0
+
+	federation_acceptance = 0
+	nap_acceptance = 10
+	commercial_pact_acceptance = 10
+	research_agreement_acceptance = 25
+	defensive_pact_acceptance = 10
+	migration_pact_acceptance = -25
+
+	advanced_start_chance = 75
+
+	weapon_preferences = weapon_type_energy
+	armor_ratio = 0.4
+	shields_ratio = 0.4
+	hull_ratio = 0.2
+
+	threat_modifier = 0.9
+	threat_others_modifier = 0.9
+	friction_modifier = 1.0
+	claims_modifier = 1.5
+
+	behaviour = {
+		conqueror = yes
+		subjugator = yes
+		liberator = no
+		opportunist = yes
+		slaver = yes
+		uplifter = yes
+		purger = no
+		displacer = yes
+		infiltrator = yes
+		dominator = no
+		robot_exploiter = yes
+		robot_liberator = no
+		propagator = no
+		multispecies = yes
+		crisis_fighter = yes
+	}
+
+	allow = {
+		is_country_type = default
+		has_valid_civic = civic_technocracy
+	}
+	weight_modifier = {
+		weight = 10
+		modifier = {
+			factor = 1
+			OR = {
+				has_trait = trait_erudite
+				has_trait = trait_intelligent
+				has_trait = trait_prodigy
+			}			
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_quick_learners				
+		}
+		modifier = {
+			factor = 1
+			OR = {
+				has_trait = trait_natural_engineers
+				has_trait = trait_natural_physicists
+				has_trait = trait_natural_sociologists
+				has_trait = trait_natural_philosopher
+				
+			}
+		} 
+		modifier = {
+			factor = -0.5
+			has_trait = trait_mindless				
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_slow_learners				
+		}
+	}
+}
+
+anarchists = {
+
+	aggressiveness = 0.25 
+	trade_willingness = 1.1	
+	bravery = 0.75
+	combat_bravery = 0.75
+	
+	military_spending = 0.7
+	colony_spending = 1.1	
+	
+	federation_acceptance = 0
+	nap_acceptance = 10
+	commercial_pact_acceptance = -10
+	research_agreement_acceptance = 0
+	defensive_pact_acceptance = -10
+	migration_pact_acceptance = 25
+	
+	advanced_start_chance = 25
+	
+	weapon_preferences = weapon_type_energy
+	armor_ratio = 0.4
+	shields_ratio = 0.5
+	hull_ratio = 0.1
+	
+	threat_modifier = 1.3
+	threat_others_modifier = 1.2
+	friction_modifier = 0.05
+	claims_modifier = 0.25
+	
+	behaviour = {
+		conqueror = no
+		subjugator = no
+		liberator = yes
+		opportunist = no
+		slaver = no
+		uplifter = no
+		purger = no
+		displacer = no
+		dominator = no
+		infiltrator = no
+		robot_exploiter = no
+		robot_liberator = yes
+		propagator = no
+		multispecies = yes
+		crisis_fighter = no
+	}
+	
+	allow = {
+		is_country_type = default	
+		OR = {
+			has_valid_civic = civic_anarchist
+			has_valid_civic = civic_pacifist
+		}
+	}
+	
+	weight_modifier = {
+		weight = 50
+		modifier = {
+			factor = -0.5
+			has_trait = trait_thrifty				
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_nomadic				
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_sedentary			
+		}
+	}
+}
+
+communists = { 
+	aggressiveness = 1.0
+	trade_willingness = 1.0
+	bravery = 1.0
+	combat_bravery = 1.0
+	
+	military_spending = 1.0
+	colony_spending = 1.0
+	
+	federation_acceptance = 0
+	nap_acceptance = 10
+	commercial_pact_acceptance = -10
+	research_agreement_acceptance = 10
+	defensive_pact_acceptance = 10
+	migration_pact_acceptance = 10
+	
+	advanced_start_chance = 25
+	
+	weapon_preferences = weapon_type_kinetic
+	armor_ratio = 0.4
+	shields_ratio = 0.5
+	hull_ratio = 0.1
+	
+	threat_modifier = 1.2
+	threat_others_modifier = 1.2
+	friction_modifier = 1.0
+	claims_modifier = 1.0
+	
+	behaviour = {
+		conqueror = yes
+		subjugator = no
+		liberator = yes
+		opportunist = yes
+		slaver = no
+		uplifter = yes
+		purger = no
+		displacer = no
+		infiltrator = yes
+		dominator = no
+		robot_exploiter = no
+		robot_liberator = yes
+		propagator = yes
+		multispecies = yes
+		isolationist = no
+		crisis_fighter = yes
+	}
+	
+	allow = {
+		is_country_type = default
+		has_valid_civic = civic_shared_burden
+	}
+	
+	weight_modifier = {
+		weight = 25
+	}
+}
+
+abolitionists = { 
+	aggressiveness = 1.25
+	trade_willingness = 1.0
+	bravery = 1.25
+	combat_bravery = 1.2
+	
+	military_spending = 1.2
+	colony_spending = 0.8
+	
+	federation_acceptance = 0
+	nap_acceptance = 10
+	commercial_pact_acceptance = -10
+	research_agreement_acceptance = 10
+	defensive_pact_acceptance = 10
+	migration_pact_acceptance = 10
+	
+	advanced_start_chance = 25
+	
+	weapon_preferences = weapon_type_energy
+	armor_ratio = 0.4
+	shields_ratio = 0.5
+	hull_ratio = 0.1
+	
+	threat_modifier = 1.5
+	threat_others_modifier = 1.0
+	friction_modifier = 1.0
+	claims_modifier = 1.0
+	
+	behaviour = {
+		conqueror = yes
+		subjugator = no
+		liberator = yes
+		opportunist = yes
+		slaver = no
+		uplifter = yes
+		purger = no
+		displacer = no
+		infiltrator = no
+		dominator = no
+		robot_exploiter = no
+		robot_liberator = yes
+		propagator = no
+		multispecies = yes
+		isolationist = no
+		crisis_fighter = yes
+	}
+	
+	allow = {
+		is_country_type = default			
+		has_valid_civic = civic_idealistic_foundation
+	}
+	
+	weight_modifier = {
+		weight = 10	
+		modifier = {
+			factor = -0.5
+			OR = {
+				has_trait = trait_decadent
+			}
+		}
+	}
+}
+
+despoilers = { 
+	
+	aggressiveness = 2.0
+	trade_willingness = 1.1
+	bravery = 1.0
+	combat_bravery = 1.0
+	
+	military_spending = 1.5
+	colony_spending = 0.8	
+	
+	federation_acceptance = -50
+	nap_acceptance = -100
+	commercial_pact_acceptance = -20
+	research_agreement_acceptance = -20
+	defensive_pact_acceptance = -20
+	migration_pact_acceptance = 0
+	
+	advanced_start_chance = 20
+	
+	weapon_preferences = weapon_type_strike_craft
+	armor_ratio = 0.4
+	shields_ratio = 0.5
+	hull_ratio = 0.1
+	
+	threat_modifier = 0.3
+	threat_others_modifier = 0.2
+	friction_modifier = 1.5
+	claims_modifier = 2.0
+
+	behaviour = {
+		conqueror = no
+		subjugator = yes
+		liberator = no
+		opportunist = yes
+		slaver = yes
+		#caste_system = no
+		uplifter = no
+		purger = no
+		displacer = yes
+		dominator = yes
+		infiltrator = no
+		robot_exploiter = yes
+		robot_liberator = no
+		propagator = no
+		multispecies = no
+		crisis_fighter = yes
+		wants_tribute = yes
+	}
+	
+	allow = {
+		is_country_type = default
+		has_civic = "civic_barbaric_despoilers"
+	}
+	
+	weight_modifier = {
+		weight = 100															
+	}
+}
+
+soviets = {
+	aggressiveness = 1.5
+	trade_willingness = 0.2
+	bravery = 1.1
+	combat_bravery = 1.5 
+	
+	military_spending = 1.3
+	colony_spending = 0.8	
+	
+	federation_acceptance = -1000
+	nap_acceptance = -10
+	commercial_pact_acceptance = -25
+	research_agreement_acceptance = -25
+	defensive_pact_acceptance = -10
+	migration_pact_acceptance = -25
+	
+	advanced_start_chance = 20
+	
+	weapon_preferences = weapon_type_kinetic
+	armor_ratio = 0.5
+	shields_ratio = 0.3
+	hull_ratio = 0.2
+	
+	threat_modifier = 1.1
+	threat_others_modifier = 0.9
+	friction_modifier = 3.0
+	claims_modifier = 3.0
+
+	behaviour = {
+		conqueror = yes
+		subjugator = yes
+		liberator = no
+		opportunist = yes
+		slaver = no
+		uplifter = no
+		purger = yes
+		displacer = no
+		dominator = yes
+		infiltrator = yes
+		robot_exploiter = yes
+		robot_liberator = no
+		#migrator = no
+		propagator = yes
+		# ideologue = yes
+		multispecies = no
+		isolationist = no
+		crisis_fighter = yes
+		attack_neutrals = yes
+	}
+
+	
+	allow = {
+		is_country_type = default				
+		has_civic = civic_byzantine_bureaucracy		
+	}
+	
+	weight_modifier = {
+		weight = 10
+		modifier = {
+			factor = -0.5
+			has_trait = trait_thrifty				
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_unruly				
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_docile				
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_communal	
+		}
+	}	
+}
+
+
+opportunists = {
+	aggressiveness = 1.1
+	trade_willingness = 1.05	
+	bravery = 0.7
+	combat_bravery = 1.0
+	
+	military_spending = 1.2
+	colony_spending = 1.2	
+	
+	federation_acceptance = 30
+	nap_acceptance = 10
+	commercial_pact_acceptance = -15
+	research_agreement_acceptance = -15
+	defensive_pact_acceptance = 20
+	migration_pact_acceptance = 0
+	
+	advanced_start_chance = 30
+	
+	weapon_preferences = weapon_type_explosive
+	armor_ratio = 0.4
+	shields_ratio = 0.5
+	hull_ratio = 0.1
+	
+	threat_modifier = 1.3
+	threat_others_modifier = 1.1
+	friction_modifier = 1.3
+	claims_modifier = 2.5
+	
+	behaviour = {
+		conqueror = yes
+		subjugator = yes
+		liberator = no
+		opportunist = yes
+		slaver = no
+		#caste_system = no
+		uplifter = yes
+		purger = no
+		displacer = no
+		dominator = yes
+		infiltrator = yes
+		robot_exploiter = yes
+		robot_liberator = no
+		#migrator = no
+		propagator = no
+		# ideologue = no	
+		multispecies = yes
+		crisis_fighter = yes
+	}
+	
+	allow = {
+		is_country_type = default
+		OR = {
+			has_valid_civic = "civic_cutthroat_politics"
+			has_valid_civic = "civic_shadow_council"
+			has_valid_civic = civic_ruthless_competition
+		}
+	}
+	
+	weight_modifier = {
+		weight = 3
+		modifier = {
+			factor = 1
+			OR = {
+				has_trait = trait_erudite
+				has_trait = trait_intelligent
+				has_trait = trait_prodigy
+			}			
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_quick_learners				
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_mindless				
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_slow_learners				
+		}
+	}	
+}
+
+bureaucrats = {
+
+	aggressiveness = 0.5
+	trade_willingness = 1.05
+	bravery = 0.65
+	combat_bravery = 1.0
+	
+	military_spending = 0.9
+	colony_spending = 1.3
+	
+	federation_acceptance = 10
+	nap_acceptance = 20
+	commercial_pact_acceptance = 15
+	research_agreement_acceptance = 15
+	defensive_pact_acceptance = 20
+	migration_pact_acceptance = -10
+	
+	advanced_start_chance = 25
+	
+	weapon_preferences = weapon_type_kinetic
+	armor_ratio = 0.4
+	shields_ratio = 0.5
+	hull_ratio = 0.1
+	
+	threat_modifier = 1.5
+	threat_others_modifier = 1.3
+	friction_modifier = 1.3
+	claims_modifier = 1.0
+	
+	behaviour = {
+		conqueror = no
+		subjugator = no
+		liberator = no
+		opportunist = no
+		slaver = no
+		#caste_system = no
+		uplifter = yes
+		purger = no
+		displacer = no
+		dominator = no
+		infiltrator = no
+		robot_exploiter = yes
+		robot_liberator = no
+		#migrator = no
+		propagator = no
+		# ideologue = no
+		multispecies = yes
+		crisis_fighter = yes
+	}
+	
+	allow = {
+		is_country_type = default
+		has_civic = "civic_efficient_bureaucracy"
+	}
+	
+	weight_modifier = {
+		weight = 5
+		modifier = {
+			factor = -0.5
+			has_trait = trait_thrifty				
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_unruly				
+		}
+		modifier = {
+			factor = 0.5
+			has_trait = trait_docile				
+		}
+	}	
+}
+
+big_brother = {
+	
+	aggressiveness = 1.5
+	trade_willingness = 0.2
+	bravery = 1.0
+	combat_bravery = 1.5 
+	
+	military_spending = 1.3
+	colony_spending = 0.8	
+	
+	federation_acceptance = -1000
+	nap_acceptance = -100
+	commercial_pact_acceptance = -1000
+	research_agreement_acceptance = -1000
+	defensive_pact_acceptance = -100
+	migration_pact_acceptance = -100
+	
+	advanced_start_chance = 20
+	
+	weapon_preferences = weapon_type_kinetic
+	armor_ratio = 0.5
+	shields_ratio = 0.3
+	hull_ratio = 0.2
+	
+	threat_modifier = 1.1
+	threat_others_modifier = 0.9
+	friction_modifier = 3.0
+	claims_modifier = 3.0
+
+	behaviour = {
+		conqueror = yes
+		subjugator = no
+		liberator = no
+		opportunist = yes
+		slaver = yes
+		#caste_system = yes
+		uplifter = no
+		purger = yes
+		displacer = no
+		dominator = yes
+		infiltrator = yes
+		robot_exploiter = yes
+		robot_liberator = no
+		#migrator = no
+		propagator = yes
+		# ideologue = yes
+		multispecies = no
+		isolationist = yes
+		crisis_fighter = yes
+		attack_neutrals = yes
+	}
+
+	
+	allow = {
+		is_country_type = default				
+		has_valid_civic = civic_police_state
+	}
+	
+	weight_modifier = {
+		weight = 10
+		modifier = {
+			factor = -0.5
+			has_trait = trait_thrifty				
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_unruly				
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_docile				
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_communal	
+		}
+	}	
+}
+
+farmers = { 
+	aggressiveness = 0.5
+	trade_willingness = 0.9
+	bravery = 2.0
+	combat_bravery = 1.2
+	
+	military_spending = 1.5
+	colony_spending = 0.7
+	
+	federation_acceptance = 10
+	nap_acceptance = -10
+	commercial_pact_acceptance = -50
+	research_agreement_acceptance = 10
+	defensive_pact_acceptance = 10
+	migration_pact_acceptance = -20
+	
+	advanced_start_chance = 20
+	
+	weapon_preferences = weapon_type_strike_craft
+	armor_ratio = 0.3
+	shields_ratio = 0.6
+	hull_ratio = 0.1
+	
+	threat_modifier = 1.2
+	threat_others_modifier = 1.1
+	friction_modifier = 1.5
+	claims_modifier = 3.0
+	
+	behaviour = {
+		conqueror = no
+		subjugator = no
+		liberator = yes
+		opportunist = no
+		slaver = no
+		#caste_system = no
+		uplifter = no
+		purger = no
+		displacer = no
+		infiltrator = no
+		dominator = yes
+		robot_exploiter = no
+		robot_liberator = no
+		#migrator = no
+		propagator = yes
+		# ideologue = yes
+		multispecies = no
+		crisis_fighter = yes
+	}
+	
+	allow = {
+		is_country_type = default
+		has_valid_civic = civic_agrarian_idyll
+	}
+	
+	weight_modifier = {
+		weight = 10
+		modifier = {
+			factor = -0.5
+			has_trait = trait_industrious				
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_innovative			
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_agrarian				
+		}
+		modifier = {
+			factor = 1
+			has_trait = trait_conservational	
+		}
+		modifier = {
+			factor = -0.5
+			has_trait = trait_wasteful	
+		}
+	}
+}
+
+feudal = {
+	aggressiveness = 2.0
+	trade_willingness = 0.8
+	bravery = 1.25
+	combat_bravery = 2.0
+
+	military_spending = 1.2
+	colony_spending = 0.9
+
+	federation_acceptance = 0
+	nap_acceptance = 0
+	commercial_pact_acceptance = -10
+	research_agreement_acceptance = -10
+	defensive_pact_acceptance = 10
+	migration_pact_acceptance = 10
+
+	advanced_start_chance = 10
+
+	weapon_preferences = weapon_type_kinetic
+	armor_ratio = 0.6
+	shields_ratio = 0.1
+	hull_ratio = 0.3
+
+	threat_modifier = 0.75
+	threat_others_modifier = 0.75
+	friction_modifier = 2.0
+	claims_modifier = 3.0
+
+	behaviour = {
+		conqueror = yes
+		subjugator = yes
+		liberator = no
+		opportunist = yes
+		slaver = no
+		#caste_system = yes
+		uplifter = no
+		purger = no
+		displacer = yes
+		dominator = yes
+		infiltrator = no
+		robot_exploiter = no
+		robot_liberator = no
+		propagator = no
+		multispecies = no
+		crisis_fighter = yes
+	}
+
+	allow = {
+		is_country_type = default
+		has_valid_civic = civic_feudal_realm
 	}
 
 	weight_modifier = {
-		weight = 50
+		weight = 20
+	}
+}
+
+citizen_service = {
+	aggressiveness = 0.5
+	trade_willingness = 0.9
+	bravery = 1.0
+	combat_bravery = 1.5	# rarely ever retreat in battle
+
+	military_spending = 1.3
+	colony_spending = 0.9
+
+	federation_acceptance = 20
+	nap_acceptance = 70
+	commercial_pact_acceptance = 0
+	research_agreement_acceptance = 10
+	defensive_pact_acceptance = -20
+	migration_pact_acceptance = 0
+
+	advanced_start_chance = 25
+
+	weapon_preferences = weapon_type_kinetic
+	armor_ratio = 0.5
+	shields_ratio = 0.3
+	hull_ratio = 0.2
+
+	threat_modifier = 1.5
+	threat_others_modifier = 1
+	friction_modifier = 1.5
+	claims_modifier = 2.0
+
+	behaviour = {
+		conqueror = no
+		subjugator = no
+		liberator = yes
+		opportunist = no
+		slaver = no
+		#caste_system = no
+		uplifter = yes
+		purger = no
+		displacer = no
+		infiltrator = no
+		dominator = no
+		robot_exploiter = no
+		robot_liberator = no
+		propagator = no
+		multispecies = yes
+		crisis_fighter = yes
+	}
+
+	allow = {
+		is_country_type = default
+		has_civic = "civic_citizen_service"
+	}
+
+	weight_modifier = {
+		weight = 10			
 	}
 }

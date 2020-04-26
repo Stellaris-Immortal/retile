@@ -1,0 +1,89 @@
+@cooldown = 3600
+
+free_migration_no = {
+	potential = { always = yes }
+	allow = {
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = free_migration_no }
+					has_modifier = federation_law_category_free_migration_cooldown
+					has_any_federation_law_in_category = law_category_free_migration
+				}
+			}
+		}
+	}
+	on_enact = {
+		set_free_migration = no
+		if = {
+			limit = { has_federation_flag = enable_federation_cooldowns }
+			add_modifier = {
+				modifier = federation_law_category_free_migration_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -5
+	}
+	
+	ai_weight = {
+		base = 51
+		
+		#Behaviour-specific	
+		modifier = {
+			add = 50
+			is_xenophobe = yes
+		}
+	}
+}
+
+free_migration_yes = {
+	potential = { host_has_dlc = Federations }
+	allow = {
+		custom_tooltip = {
+			NOT = {
+				AND = {
+					NOT = { has_federation_law = free_migration_yes }
+					has_modifier = federation_law_category_free_migration_cooldown
+					has_any_federation_law_in_category = law_category_free_migration
+				}
+			}
+		}
+	}
+	required_centralization = {
+		base = 3
+	}
+	on_enact = {
+		set_free_migration = yes
+		if = {
+			limit = { has_federation_flag = enable_federation_cooldowns }
+			add_modifier = {
+				modifier = federation_law_category_free_migration_cooldown
+				days = @cooldown
+			}
+		}
+		add_cohesion = -5
+	}
+	
+	ai_weight = {
+		base = 51
+				
+		modifier = {
+			add = 25
+			relative_power = { who = from value >= superior }
+		}
+		
+		#Behaviour-specific	
+		modifier = {
+			add = 50
+			is_xenophile = yes
+		}
+		modifier = {
+			add = 25
+			has_ai_personality = federation_builders
+		}
+		modifier = {
+			add = -200
+			is_xenophobe = yes
+		}
+	}
+}

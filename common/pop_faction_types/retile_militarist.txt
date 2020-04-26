@@ -58,29 +58,6 @@ imperialist = {
 	
 	attraction = {
 		base = 100
-		
-		modifier = {
-			factor = 1.25
-			OR = { 
-				has_job = soldier
-				has_job = strategos
-			}
-		}
-		
-		modifier = {
-			factor = 0.75
-			has_citizenship_rights = no
-		}
-		
-		modifier = {
-			factor = 1.25
-			can_be_soldier = yes
-		}
-		
-		modifier = {
-			factor = 1.25
-			can_be_military_leader = yes
-		}
 	}
 	
 	leader = {
@@ -91,13 +68,155 @@ imperialist = {
 			is_event_leader = yes
 		}
 	}
+
+	# Wants Supremacy
+	demand = {
+		title = "MILITARIST_SUPREMACY"
+		unfulfilled_title = "MILITARIST_NO_SUPREMACY"
+		desc = "MILITARIST_SUPREMACY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+		}
+
+		trigger = {
+			owner = { has_tradition = tr_supremacy_adopt }
+		}
+	}
+	
+	demand = {
+		title = "MILITARIST_AGG_STANCE"
+		unfulfilled_title = "MILITARIST_NO_AGG_STANCE"
+		desc = "MILITARIST_AGG_STANCE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = {
+			exists = owner
+		}
+
+		trigger = {
+			owner = {
+				OR = {
+					has_policy_flag = diplo_stance_belligerent
+					has_policy_flag = diplo_stance_supremacist
+				}
+			}
+		}
+	}
+	
+	# Wants War
+	demand = { 
+		title = "MILITARIST_WAR"
+		unfulfilled_title = "MILITARIST_NO_WAR"
+		desc = "MILITARIST_WAR_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
+
+		trigger = {
+			owner = { is_at_war = yes }
+		}
+	}
+	
+
+	
+	# Wants Military Police
+	demand = {
+		title = "MILITARIST_MILITARY_POLICE"
+		unfulfilled_title = "MILITARIST_NO_MILITARY_POLICE"
+		desc = "MILITARIST_MILITARY_POLICE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = criminal_military_police }
+		}
+	}
+	
+	# Wants Indescriminate Bombardment
+	demand = {
+		title = "MILITARIST_BOMBARDMENT"
+		unfulfilled_title = "MILITARIST_NO_BOMBARDMENT"
+		desc = "MILITARIST_BOMBARDMENT_DESC"
+		
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { 
+				OR = {
+					has_policy_flag = orbital_bombardment_indiscriminate
+					has_policy_flag = orbital_bombardment_armageddon
+				}
+			}
+		}
+	}
+	
+	# Wants Unrestricted Wars
+	demand = {
+		title = "MILITARIST_UNRESTRICTED_WAR"
+		unfulfilled_title = "MILITARIST_NO_UNRESTRICTED_WAR"
+		desc = "MILITARIST_UNRESTRICTED_WAR_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { exists = owner }
+
+		trigger = {
+			owner = { has_policy_flag = unrestricted_wars }
+		}
+	}
+	
+	# Hates Naval Parity
+	demand = { 
+		title = "MILITARIST_NAVY"
+		unfulfilled_title = "MILITARIST_NO_NAVY"
+		desc = "MILITARIST_NAVY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { has_encountered_other_species = yes }
+		}
+
+		trigger = {
+			NOT = {
+				owner = {
+					any_country = {
+						is_country_type = default
+						has_communications = root.owner
+						relative_power = { who = root.owner value >= superior }
+					}
+				}
+			}
+		}
+	}
+
 	# Loves Slaying
 	demand = {
 		title = "MILITARIST_SLAYER"
 		unfulfilled_title = "MILITARIST_NO_SLAYER"
 		desc = "MILITARIST_SLAYER_DESC"
 
-		fulfilled_effect = 10
+		fulfilled_effect = 5
 		unfulfilled_effect = 0
 
 		potential = {
@@ -109,7 +228,7 @@ imperialist = {
 						is_country_type = guardian
 						is_country_type = guardian_dragon
 						is_country_type = guardian_stellarite
-						is_country_type = guardian_wraith #
+						is_country_type = guardian_wraith 
 						is_country_type = guardian_hiver
 						is_country_type = guardian_horror
 						is_country_type = guardian_fortress
@@ -131,251 +250,49 @@ imperialist = {
 		}
 	}
 	
-	# Wants War
+	# Wants GC Readiness Laws
 	demand = { 
-		title = "MILITARIST_WAR"
-		unfulfilled_title = "MILITARIST_NO_WAR"
-		desc = "MILITARIST_WAR_DESC"
-
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { 
-			exists = owner
-			owner = { has_encountered_other_species = yes }
-		}
-
-		trigger = {
-			owner = { is_at_war = yes }
-		}
-	}
-	
-	# Wants Supremacy
-	demand = {
-		title = "MILITARIST_SUPREMACY"
-		unfulfilled_title = "MILITARIST_NO_SUPREMACY"
-		desc = "MILITARIST_SUPREMACY_DESC"
+		title = "MILITARIST_GC_READINESS"
+		unfulfilled_title = "MILITARIST_GC_NO_READINESS"
+		desc = "MILITARIST_GC_READINESS_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
+		unfulfilled_effect = -10
 
 		potential = { 
 			exists = owner
+			owner = { is_galactic_community_member = yes }
 		}
 
 		trigger = {
-			owner = { has_tradition = tr_supremacy_adopt }
-		}
-	}
-	
-	# Wants Gunboat Diplomacy
-	demand = {
-		title = "MILITARIST_GUNBOAT_DIPLOMACY"
-		unfulfilled_title = "MILITARIST_NO_GUNBOAT_DIPLOMACY"
-		desc = "MILITARIST_GUNBOAT_DIPLOMACY_DESC"
-
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { 
-			exists = owner
-			owner = { has_technology = tech_adaptive_bureaucracy }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = diplo_stance_belligerent }
-		}
-	}
-	
-	# Wants Military Police
-	demand = {
-		title = "MILITARIST_MILITARY_POLICE"
-		unfulfilled_title = "MILITARIST_NO_MILITARY_POLICE"
-		desc = "MILITARIST_MILITARY_POLICE_DESC"
-
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = criminal_military_police }
-		}
-	}
-	
-	# Wants Indescriminate Bombardment
-	demand = {
-		title = "MILITARIST_BOMBARDMENT"
-		unfulfilled_title = "MILITARIST_NO_BOMBARDMENT"
-		desc = "MILITARIST_BOMBARDMENT_DESC"
-		
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { 
-				OR = {
-					has_policy_flag = orbital_bombardment_indiscriminate
-					has_policy_flag = orbital_bombardment_armageddon
-				}
+			OR = {
+				is_active_resolution = resolution_mutualdefense_enemy_of_my_enemy
+				is_active_resolution = resolution_mutualdefense_castigation_proclamation
+				is_active_resolution = resolution_mutualdefense_renegade_containment
 			}
 		}
 	}
-	
-	# Wants Unrestricted Wars
-	demand = {
-		title = "MILITARIST_UNRESTRICTED_WAR"
-		unfulfilled_title = "MILITARIST_NO_UNRESTRICTED_WAR"
-		desc = "MILITARIST_UNRESTRICTED_WAR_DESC"
+
+	#Doesn't Want GC ROW Laws
+	demand = { 
+		title = "MILITARIST_GC_NO_ROW"
+		unfulfilled_title = "MILITARIST_GC_ROW"
+		desc = "MILITARIST_GC_NO_ROW_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = unrestricted_wars }
-		}
-	}
-	
-	# Hates Pacification
-	demand = { 
-		title = "MILITARIST_PACIFICATION"
-		unfulfilled_title = "MILITARIST_NO_PACIFICATION"
-		desc = "MILITARIST_PACIFICATION_DESC"
-
-		fulfilled_effect = 0
 		unfulfilled_effect = -10
 
 		potential = { 
 			exists = owner
-			owner = { 
-				OR = {
-					has_country_flag = amoeba_encountered
-					has_country_flag = crystal_encountered
-				}
+			owner = { is_galactic_community_member = yes }
+		}
+
+		trigger = {
+			NOR = {
+				is_active_resolution = resolution_rulesofwar_independent_tribunals
+				is_active_resolution = resolution_rulesofwar_last_resort_doctrine
+				is_active_resolution = resolution_rulesofwar_demobilization_initiative
 			}
-		}
-
-		trigger = {
-			owner = { 
-				NOR = { 
-					has_modifier = pacified_amoebas
-					has_modifier = pacified_crystals
-				}
-			}
-		}
-	}
-	
-	# Hates Being Weak
-	demand = { 
-		title = "MILITARIST_WEAK"
-		unfulfilled_title = "MILITARIST_NO_WEAK"
-		desc = "MILITARIST_WEAK_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { 
-			exists = owner
-			owner = { has_encountered_other_species = yes }
-		}
-
-		trigger = {
-			NOT = {
-				owner = {
-					any_country = {
-						is_country_type = default
-						has_communications = root.owner
-						relative_power = { who = root.owner value >= superior }
-					}
-				}
-			}
-		}
-	}
-	
-	# Hates Diplomacy
-	demand = { 
-		title = "MILITARIST_DIPLOMACY"
-		unfulfilled_title = "MILITARIST_NO_DIPLOMACY"
-		desc = "MILITARIST_DIPLOMACY_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_tradition = tr_diplomacy_adopt } }
-		}
-	}
-	
-	# Hates Genocide Ban
-	demand = {
-		title = "MILITARIST_PURGE"
-		unfulfilled_title = "MILITARIST_NO_PURGE"
-		desc = "MILITARIST_PURGE_DESC"
-		
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = purge_not_allowed } }
-		}
-	}
-	
-	# Hates Pacifism
-	demand = { 
-		title = "MILITARIST_PACIFISM"
-		unfulfilled_title = "MILITARIST_NO_PACIFISM"
-		desc = "MILITARIST_PACIFISM_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = no_wars } }
-		}
-	}
-	
-	# Hates Parley System
-	demand = { 
-		title = "MILITARIST_PARLEY"
-		unfulfilled_title = "MILITARIST_NO_PARLEY"
-		desc = "MILITARIST_PARLEY_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = {
-			exists = owner
-			owner = { has_technology = tech_adaptive_bureaucracy }
-		}
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = piracy_peaceful } }
-		}
-	}
-	
-	# Hates State Police Policy
-	demand = { 
-		title = "MILITARIST_STATE_POLICE"
-		unfulfilled_title = "MILITARIST_NO_STATE_POLICE"
-		desc = "MILITARIST_STATE_POLICE_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { NOT = { has_policy_flag = criminal_state_police } }
 		}
 	}
 	
@@ -385,7 +302,7 @@ imperialist = {
 		unfulfilled_title = "FACTION_OUTRAGED_GC"
 		desc = "FACTION_OUTRAGED_GC_DESC"
 
-		fulfilled_effect = -20
+		fulfilled_effect = -10
 		unfulfilled_effect = -0.001
 
 		potential = {

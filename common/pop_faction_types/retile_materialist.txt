@@ -74,46 +74,6 @@ technologist = {
 	
 	attraction = {
 		base = 100
-		
-		modifier = {
-			factor = 1.25
-			OR = { 
-				has_job = head_researcher
-				has_job = researcher
-				has_job = roboticist
-			}
-		}
-		
-		modifier = {
-			factor = 1.50
-			has_living_standard = { type = living_standard_utopian }
-			has_living_standard = { type = living_standard_chemical_bliss }
-			has_living_standard = { type = living_standard_organic_trophy }
-			
-		}
-		
-		modifier = {
-			factor = 1.25
-			OR = {
-				has_academic_living_standard_type = yes
-				has_living_standard = { type = living_standard_good }
-			}
-		}
-		
-		modifier = {
-			factor = 0.75
-			OR = {
-				has_shared_burden_living_standard_type = yes
-				has_stratified_living_standard_type = yes
-				has_living_standard = { type = living_standard_normal }
-			}
-		}
-		
-		modifier = {
-			factor = 0.5
-			has_living_standard = { type = living_standard_subsistence }
-		}
-		
 	}
 	
 	leader = {
@@ -124,34 +84,7 @@ technologist = {
 			is_event_leader = yes
 		}
 	}
-	
-	# Wants Presurcer Secrets
-	demand = {
-		title = "MATERIALIST_PRECURSOR_SECRETS"
-		unfulfilled_title = "MATERIALIST_NO_PRECURSOR_SECRETS"
-		desc = "MATERIALIST_PRECURSOR_SECRETS_DESC"
 
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = {
-			exists = owner
-		}
-		
-		trigger = {
-			owner = {
-				OR = {
-					has_modifier = artifact_cybrex_research_completed
-					has_modifier = artifact_irassian_research_completed
-					has_modifier = artifact_league_research_completed
-					has_modifier = artifact_vultaum_research_completed_suppressed
-					has_modifier = artifact_vultaum_research_completed_public
-					has_country_flag = artifact_yuht_research_completed
-				}
-			}
-		}
-	}
-	
 	# Wants Prosperity
 	demand = { 
 		title = "MATERIALIST_PROSPERITY"
@@ -159,7 +92,7 @@ technologist = {
 		desc = "MATERIALIST_PROSPERITY_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
@@ -169,83 +102,7 @@ technologist = {
 			}
 		}
 	}
-	
-	# Wants AI Rights
-	demand = { 
-		title = "MATERIALIST_AI_RIGHTS"
-		unfulfilled_title = "MATERIALIST_NO_AI_RIGHTS"
-		desc = "MATERIALIST_AI_RIGHTS_DESC"
 
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { 
-			exists = owner
-			owner = { can_set_ai_policy = yes }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = ai_full_rights }
-		}
-	}
-	
-	# Wants Internal Affairs
-	demand = { 
-		title = "MATERIALIST_ECONOMIC_DIPLOMACY"
-		unfulfilled_title = "MATERIALIST_NO_ECONOMIC_DIPLOMACY"
-		desc = "MATERIALIST_ECONOMIC_DIPLOMACY_DESC"
-
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { 
-			exists = owner
-			owner = { has_technology = tech_xenodiplomacy }
-		}
-
-		trigger = {
-			owner = { 
-				OR = {
-					has_policy_flag = diplo_stance_isolationist
-					has_policy_flag = diplo_stance_expansionist
-					has_policy_flag = diplo_stance_mercantile
-				}
-			}
-		}
-	}
-	
-	# Wants Private Police
-	demand = { 
-		title = "MATERIALIST_PRIVATE_POLICE"
-		unfulfilled_title = "MATERIALIST_NO_PRIVATE_POLICE"
-		desc = "MATERIALIST_PRIVATE_POLICE_DESC"
-
-		fulfilled_effect = 20
-		unfulfilled_effect = 0
-
-		potential = { exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = criminal_private_police }
-		}
-	}
-	
-	# Wants Labor Employment
-	demand = { 
-		title = "MATERIALIST_EMPLOYMENT"
-		unfulfilled_title = "MATERIALIST_NO_EMPLOYMENT"
-		desc = "MATERIALIST_EMPLOYMENT_DESC"
-
-		fulfilled_effect = 10
-		unfulfilled_effect = 0
-
-		potential = {  exists = owner }
-
-		trigger = {
-			owner = { has_policy_flag = slavery_secretly_allowed }
-		}
-	}
-	
 	# Wants Environmental Deregulation
 	demand = { 
 		title = "MATERIALIST_ENVIRONMENTAL_DEREGULATION"
@@ -253,7 +110,7 @@ technologist = {
 		desc = "MATERIALIST_ENVIRONMENTAL_DEREGULATION_DESC"
 
 		fulfilled_effect = 10
-		unfulfilled_effect = 0
+		unfulfilled_effect = -10
 
 		potential = { exists = owner }
 
@@ -262,43 +119,31 @@ technologist = {
 		}
 	}
 	
-	# Hates Harmony
+	# Wants Arcology
 	demand = { 
-		title = "MATERIALIST_HARMONY"
-		unfulfilled_title = "MATERIALIST_NO_HARMONY"
-		desc = "MATERIALIST_HARMONY_DESC"
+		title = "MATERIALIST_DEVELOPMENT"
+		unfulfilled_title = "MATERIALIST_NO_DEVELOPMENT"
+		desc = "MATERIALIST_DEVELOPMENT_DESC"
 
-		fulfilled_effect = 0
+		fulfilled_effect = 10
 		unfulfilled_effect = -10
 
-		potential = { exists = owner }
+		potential = { 
+			exists = owner
+			owner = {
+				has_technology = tech_housing_2
+				NOT = { has_origin = origin_void_dwellers }
+			}			
+		}
 
 		trigger = {
 			owner = {
-				NOT = { has_tradition = tr_harmony_adopt }
-			}
-		}
-	}
-	
-	# Hates Ignored Anomolies
-	demand = {
-		title = "MATERIALIST_ANOMOLY"
-		unfulfilled_title = "MATERIALIST_NO_ANOMOLY"
-		desc = "MATERIALIST_ANOMOLY_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			NOT = {
-				owner = {
-					any_system_within_border = { 
-						any_system_planet = {
-							has_anomaly = yes
-						}
-					}
+				OR = {
+					has_ascension_perk = ap_arcology_project
+				}
+				NOR = {
+					has_ascension_perk = ap_land_ethic
+					has_ascension_perk = ap_consecrated_worlds
 				}
 			}
 		}
@@ -306,98 +151,144 @@ technologist = {
 	
 	# Hates Prime Directive
 	demand = {
-		title = "MATERIALIST_PASSIVE"
-		unfulfilled_title = "MATERIALIST_NO_PASSIVE"
-		desc = "MATERIALIST_PASSIVE_DESC"
+		title = "MATERIALIST_ACTIVE"
+		unfulfilled_title = "MATERIALIST_NO_ACTIVE"
+		desc = "MATERIALIST_ACTIVE_DESC"
 
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { 
-			exists = owner
-			owner = { has_met_primitives = yes }
-		}
-
-		trigger = {
-			owner = { has_policy_flag = interference_passive }
-		}
-	}
-	
-	# Hates Deficit
-	demand = { 
-		title = "MATERIALIST_DEFICIT"
-		unfulfilled_title = "MATERIALIST_NO_DEFICIT"
-		desc = "MATERIALIST_DEFICIT_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
 
 		potential = { 
 			exists = owner
-			owner = { num_communications > 2 }
 		}
 
 		trigger = {
 			owner = { 
-				NOR = {
-					has_monthly_income = { resource = energy value < 0 }
-					has_monthly_income = { resource = minerals value < 0 }
-					has_monthly_income = { resource = food value < 0 }
-					has_monthly_income = { resource = alloys value < 0 }
-					has_monthly_income = { resource = consumer_goods value < 0 }
+				OR = {
+					has_policy_flag = interference_active
+					has_policy_flag = interference_full
+				}
+			}
+		}
+	}
+
+	# Hates Presap Prime Directive
+	demand = {
+		title = "MATERIALIST_PRESAP_ACTIVE"
+		unfulfilled_title = "MATERIALIST_NO_PRESAP_ACTIVE"
+		desc = "MATERIALIST_PRESAP_ACTIVE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner			
+		}
+
+		trigger = {
+			owner = { 
+				NOT = { has_policy_flag = pre_sapients_protect }
+			}
+		}
+	}
+	
+	# Creature Exploitation
+	demand = { 
+		title = "MATERIALIST_ELIMINATION"
+		unfulfilled_title = "MATERIALIST_NO_ELIMINATION"
+		desc = "MATERIALIST_ELIMINATION_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { 
+				OR = {
+					has_country_flag = amoeba_encountered
+					has_country_flag = crystal_encountered
+				}
+			}
+		}
+
+		trigger = {
+			owner = { 
+				OR = { 
+					has_modifier = crystal_hunting_buff 
+					has_modifier = crystal_breaker
+					has_modifier = amoeba_hunting_buff
+					has_modifier = amoeba_extirpator
 				}
 			}
 		}
 	}
 	
-	# Hates Environmental Protections
+	# Wants GC Industry Laws
 	demand = { 
-		title = "MATERIALIST_ENVIRONMENTAL_PROTECTION"
-		unfulfilled_title = "MATERIALIST_NO_ENVIRONMENTAL_PROTECTION"
-		desc = "MATERIALIST_ENVIRONMENTAL_PROTECTION_DESC"
+		title = "MATERIALIST_GC_INDUSTRY"
+		unfulfilled_title = "MATERIALIST_GC_NO_INDUSTRY"
+		desc = "MATERIALIST_GC_INDUSTRY_DESC"
 
-		fulfilled_effect = 0
-		unfulfilled_effect = -20
-
-		potential = { exists = owner }
-
-		trigger = {
-			NOT = { owner = { has_policy_flag = environmental_protection } }
-		}
-	}
-
-	# Hates Public Education
-	demand = { 
-		title = "MATERIALIST_PUBLIC_EDUCATION"
-		unfulfilled_title = "MATERIALIST_NO_PUBLIC_EDUCATION"
-		desc = "MATERIALIST_PUBLIC_EDUCATION_DESC"
-
-		fulfilled_effect = 0
-		unfulfilled_effect = -10
-
-		potential = { exists = owner }
-
-		trigger = {
-			NOT = { owner = { has_policy_flag = education_public_private } }
-		}
-	}
-	
-	# Hates AI Outlawed
-	demand = { 
-		title = "MATERIALIST_AI_OUTLAWED"
-		unfulfilled_title = "MATERIALIST_NO_AI_OUTLAWED"
-		desc = "MATERIALIST_AI_OUTLAWED_DESC"
-
-		fulfilled_effect = 0
+		fulfilled_effect = 10
 		unfulfilled_effect = -10
 
 		potential = { 
 			exists = owner
-			owner = { can_set_ai_policy = yes }
+			owner = { is_galactic_community_member = yes }
 		}
 
 		trigger = {
-			NOT = { owner = { has_policy_flag = ai_outlawed } }
+			OR = {
+				is_active_resolution = resolution_industry_building_a_better_tomorrow 
+				is_active_resolution = resolution_industry_environmental_ordinance_waivers
+				is_active_resolution = resolution_industry_project_cornucopia
+			}
+		}
+	}
+
+	# Wants GC SCIENCE Laws
+	demand = { 
+		title = "MATERIALIST_GC_SCIENCE"
+		unfulfilled_title = "MATERIALIST_GC_NO_SCIENCE"
+		desc = "MATERIALIST_GC_SCIENCE_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { is_galactic_community_member = yes }
+		}
+
+		trigger = {
+			OR = {
+				is_active_resolution = resolution_galacticstudies_advanced_xenostudies 
+				is_active_resolution = resolution_galacticstudies_ethical_guideline_refactoring
+				is_active_resolution = resolution_galacticstudies_extradimensional_experimentation
+			}
+		}
+	}
+	
+	#Doesn't Want GC Ecology Laws
+	demand = { 
+		title = "MATERIALIST_GC_NO_ECOLOGY"
+		unfulfilled_title = "MATERIALIST_GC_ECOLOGY"
+		desc = "MATERIALIST_GC_ECOLOGY_DESC"
+
+		fulfilled_effect = 10
+		unfulfilled_effect = -10
+
+		potential = { 
+			exists = owner
+			owner = { is_galactic_community_member = yes }
+		}
+
+		trigger = {
+			NOR = {
+				is_active_resolution = resolution_ecology_integrated_gardens
+				is_active_resolution = resolution_ecology_environmental_control_board
+				is_active_resolution = resolution_ecology_paradise_initiative
+			}
 		}
 	}
 	
@@ -407,7 +298,7 @@ technologist = {
 		unfulfilled_title = "FACTION_OUTRAGED_GC"
 		desc = "FACTION_OUTRAGED_GC_DESC"
 
-		fulfilled_effect = -20
+		fulfilled_effect = -10
 		unfulfilled_effect = -0.001
 
 		potential = {

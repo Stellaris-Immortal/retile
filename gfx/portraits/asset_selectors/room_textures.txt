@@ -39,28 +39,28 @@ room_selector = {
 	ruler = {
 		"default_room"								= { always = no }
 		"lithoid_room"								= { exists = owner owner = { lithoids_portrait = yes } }
-		"personality_hegemonic_imperialists_room" 	= { exists = owner owner = { has_ai_personality = hegemonic_imperialists } }
-		"personality_federation_builders_room" 		= { exists = owner owner = { has_ai_personality = federation_builders } }
-		"personality_democratic_crusaders_room" 	= { exists = owner owner = { has_ai_personality = democratic_crusaders } }
-		"personality_evangelizing_zealots_room" 	= { exists = owner owner = { has_ai_personality = evangelising_zealots } }
-		"personality_migrating_flock_room" 			= { exists = owner owner = { has_ai_personality = migrating_flock } }
-		"personality_spiritual_seekers_room" 		= { exists = owner owner = { has_ai_personality = spiritual_seekers } }
-		"personality_decadent_hierarchy_room" 		= { exists = owner owner = { has_ai_personality = decadent_hierarchy } }
-		"personality_slaving_despots_room" 			= { exists = owner owner = { has_ai_personality = slaving_despots } }
-		"personality_erudite_explorers_room" 		= { exists = owner owner = { has_ai_personality = erudite_explorers } }
-		"personality_fanatic_purifier_room" 		= { exists = owner owner = { has_ai_personality = fanatic_purifiers } }
-		"gilded_room" 								= { exists = owner owner = { has_ai_personality = radical_liberators } }
-		"personality_metalhead_room" 				= { exists = owner owner = { has_ai_personality = metalhead } }
-		"personality_harmonious_hierarchy_room" 	= { exists = owner owner = { has_ai_personality = harmonious_hierarchy } }
-		"runic_room" 								= { exists = owner owner = { has_ai_personality = peaceful_seclusionists } }
-		"personality_peaceful_traders_room" 		= { exists = owner owner = { has_ai_personality = peaceful_traders } }
-		"personality_xenophobic_isolationists_room" = { exists = owner owner = { has_ai_personality = xenophobic_isolationists } }
-		"personality_ruthless_capitalists_room" 	= { exists = owner owner = { has_ai_personality = ruthless_capitalists } }
-		"personality_honorbound_warriors_room" 		= { exists = owner owner = { has_ai_personality = honorbound_warriors } }
-		"personality_fanatic_befrienders_room" 		= { exists = owner owner = { has_ai_personality = fanatic_befrienders } }
-		"scrappy_room" 								= { exists = owner owner = { has_ai_personality = tenacious_industrialists } }
-		"personality_hive_mind_room" 				= { exists = owner owner = { has_authority = auth_hive_mind } }	
-		"machine_room"								= { exists = owner owner = { has_authority = auth_machine_intelligence is_fallen_machine_empire = no } }
+		"personality_hegemonic_imperialists_room" 	= { exists = owner owner = { OR = { has_ai_personality = hegemonic_imperialists } } }
+		"personality_federation_builders_room" 		= { exists = owner owner = { OR = { has_ai_personality = federation_builders has_ai_personality = communists } } } 
+		"personality_democratic_crusaders_room" 	= { exists = owner owner = { OR = { has_ai_personality = democratic_crusaders has_ai_personality = soviets has_ai_personality = big_brother } } }
+		"personality_evangelizing_zealots_room" 	= { exists = owner owner = { OR = { has_ai_personality = evangelising_zealots has_ai_personality = feudal } } }
+		"personality_migrating_flock_room" 			= { exists = owner owner = { OR = { has_ai_personality = migrating_flock has_ai_personality = anarchists has_ai_personality = abolitionists } } }
+		"personality_spiritual_seekers_room" 		= { exists = owner owner = { OR = { has_ai_personality = spiritual_seekers has_ai_personality = farmers has_ai_personality = caring_custodians } } }
+		"personality_decadent_hierarchy_room" 		= { exists = owner owner = { OR = { has_ai_personality = decadent_hierarchy  } } }
+		"personality_slaving_despots_room" 			= { exists = owner owner = { OR = { has_ai_personality = slaving_despots } } }
+		"personality_erudite_explorers_room" 		= { exists = owner owner = { OR = { has_ai_personality = erudite_explorers has_ai_personality = technocracy } } }
+		"personality_fanatic_purifier_room" 		= { exists = owner owner = { OR = { has_ai_personality = fanatic_purifiers } } }
+		"gilded_room" 								= { exists = owner owner = { OR = { has_ai_personality = radical_liberators } } }
+		"personality_metalhead_room" 				= { exists = owner owner = { OR = { has_ai_personality = metalhead } } }
+		"personality_harmonious_hierarchy_room" 	= { exists = owner owner = { OR = { has_ai_personality = harmonious_hierarchy } } }
+		"runic_room" 								= { exists = owner owner = { OR = { has_ai_personality = peaceful_seclusionists } } }
+		"personality_peaceful_traders_room" 		= { exists = owner owner = { OR = { has_ai_personality = peaceful_traders } } }
+		"personality_xenophobic_isolationists_room" = { exists = owner owner = { OR = { has_ai_personality = xenophobic_isolationists } } }
+		"personality_ruthless_capitalists_room" 	= { exists = owner owner = { OR = { has_ai_personality = ruthless_capitalists has_ai_personality = opportunists has_ai_personality = bureaucrats } } }
+		"personality_honorbound_warriors_room" 		= { exists = owner owner = { OR = { has_ai_personality = honorbound_warriors has_ai_personality = citizen_service } } }
+		"personality_fanatic_befrienders_room" 		= { exists = owner owner = { OR = { has_ai_personality = fanatic_befrienders } } }
+		"scrappy_room" 								= { exists = owner owner = { OR = { has_ai_personality = tenacious_industrialists } } }
+		"personality_hive_mind_room" 				= { exists = owner owner = { OR = { has_authority = auth_hive_mind } } }	
+		"machine_room"								= { exists = owner owner = { OR = { has_authority = auth_machine_intelligence is_fallen_machine_empire = no } } }
 		"personality_fallen_empire_machine_room" = { exists = owner owner = { is_fallen_machine_empire = yes } }		
 		"personality_fallen_empire_blue_room" = { exists = owner owner = { OR = { has_ai_personality = fallen_empire_xenophile has_ai_personality = awakened_fallen_empire_xenophile } } }
 		"personality_fallen_empire_cyan_room" = { exists = owner owner = { OR = { has_ai_personality = fallen_empire_materialist has_ai_personality = awakened_fallen_empire_materialist } } }

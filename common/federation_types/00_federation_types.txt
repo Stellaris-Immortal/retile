@@ -34,7 +34,12 @@ default_federation = {
 	allow = {
 		custom_tooltip = {
 			fail_text = requires_actor_not_barbaric_despoilers
-			NOT = { has_valid_civic = civic_barbaric_despoilers }
+			NOT = { has_civic = civic_barbaric_despoilers }
+		}
+		OR = {
+			has_tradition = tr_diplomacy_adopt
+			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_pacifist
 		}
 	}
 	levels = {
@@ -103,6 +108,56 @@ default_federation = {
 			add = -10
 			from = {
 				has_ai_personality = honorbound_warriors
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_despoilers
+			add = -20
+			from = {
+				has_ai_personality = despoilers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_caring_custodians
+			add = 10
+			from = {
+				has_ai_personality = caring_custodians
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_anarchists
+			add = 10
+			from = {
+				has_ai_personality = anarchists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_abolitionists
+			add = 10
+			from = {
+				has_ai_personality = abolitionists
+			}
+		}		
+		modifier = {
+			desc = federation_acceptance_technocracy
+			add = -10
+			from = {
+				has_ai_personality = technocracy
+			}
+		}
+		
+		modifier = {
+			desc = federation_acceptance_citizen_service
+			add = 20
+			from = {
+				has_ai_personality = citizen_service
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_communists
+			add = 10
+			from = {
+				has_ai_personality = communists
 			}
 		}
 		modifier = {
@@ -323,7 +378,12 @@ trade_federation = {
 			fail_text = requires_actor_not_barbaric_despoilers
 			NOT = { has_valid_civic = civic_barbaric_despoilers }
 		}
-		has_tradition = tr_prosperity_adopt
+		OR = {
+			has_tradition = tr_prosperity_adopt
+			has_valid_civic = civic_merchant_guilds
+			has_authority = auth_corporate
+			has_valid_civic = civic_capitalist
+		}
 	}
 	levels = {
 		level_1 = { # Starting rank
@@ -386,6 +446,48 @@ trade_federation = {
 	
 	ai_weight = {
 		base = 0
+		modifier = {
+			desc = federation_acceptance_despoilers
+			add = -20
+			from = {
+				has_ai_personality = despoilers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_caring_custodians
+			add = -10
+			from = {
+				has_ai_personality = caring_custodians
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_anarchists
+			add = -20
+			from = {
+				has_ai_personality = anarchists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_abolitionists
+			add = -10
+			from = {
+				has_ai_personality = abolitionists
+			}
+		}		
+		modifier = {
+			desc = federation_acceptance_technocracy
+			add = 0
+			from = {
+				has_ai_personality = technocracy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_communists
+			add = -20
+			from = {
+				has_ai_personality = communists
+			}
+		}
 		modifier = {
 			desc = federation_acceptance_honorbound_warriors
 			add = -20
@@ -611,7 +713,10 @@ research_federation = {
 			fail_text = requires_actor_not_barbaric_despoilers
 			NOT = { has_valid_civic = civic_barbaric_despoilers }
 		}
-		has_tradition = tr_discovery_adopt
+		OR = {
+			has_tradition = tr_discovery_adopt
+			has_valid_civic = civic_technocracy
+		}
 	}
 	levels = {
 		level_1 = { # Starting rank
@@ -673,6 +778,48 @@ research_federation = {
 	}
 	ai_weight = {
 		base = 0
+		modifier = {
+			desc = federation_acceptance_despoilers
+			add = -20
+			from = {
+				has_ai_personality = despoilers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_caring_custodians
+			add = -10
+			from = {
+				has_ai_personality = caring_custodians
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_anarchists
+			add = 10
+			from = {
+				has_ai_personality = anarchists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_abolitionists
+			add = 10
+			from = {
+				has_ai_personality = abolitionists
+			}
+		}		
+		modifier = {
+			desc = federation_acceptance_technocracy
+			add = 20
+			from = {
+				has_ai_personality = technocracy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_communists
+			add = 10
+			from = {
+				has_ai_personality = communists
+			}
+		}
 		modifier = {
 			desc = federation_acceptance_honorbound_warriors
 			add = -20
@@ -958,6 +1105,48 @@ military_federation = {
 	ai_weight = {
 		base = 0
 		modifier = {
+			desc = federation_acceptance_despoilers
+			add = -20
+			from = {
+				has_ai_personality = despoilers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_caring_custodians
+			add = -10
+			from = {
+				has_ai_personality = caring_custodians
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_anarchists
+			add = -20
+			from = {
+				has_ai_personality = anarchists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_abolitionists
+			add = 10
+			from = {
+				has_ai_personality = abolitionists
+			}
+		}		
+		modifier = {
+			desc = federation_acceptance_technocracy
+			add = -10
+			from = {
+				has_ai_personality = technocracy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_communists
+			add = 10
+			from = {
+				has_ai_personality = communists
+			}
+		}
+		modifier = {
 			desc = federation_acceptance_honorbound_warriors
 			add = 0
 			from = {
@@ -1177,8 +1366,8 @@ hegemony_federation = {
 	potential = {
 		host_has_dlc = Federations
 		OR = {
-			has_ethic = ethic_pacifist
-			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_authoritarian
+			has_ethic = ethic_fanatic_authoritarian
 		}
 	}
 	levels = {
@@ -1242,6 +1431,55 @@ hegemony_federation = {
 	}
 	ai_weight = {
 		base = 0
+		modifier = {
+			desc = federation_acceptance_despoilers
+			add = -20
+			from = {
+				has_ai_personality = despoilers
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_feudal
+			add = -20
+			from = {
+				has_ai_personality = feudal
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_caring_custodians
+			add = -10
+			from = {
+				has_ai_personality = caring_custodians
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_anarchists
+			add = -20
+			from = {
+				has_ai_personality = anarchists
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_abolitionists
+			add = -20
+			from = {
+				has_ai_personality = abolitionists
+			}
+		}		
+		modifier = {
+			desc = federation_acceptance_technocracy
+			add = -10
+			from = {
+				has_ai_personality = technocracy
+			}
+		}
+		modifier = {
+			desc = federation_acceptance_communists
+			add = -20
+			from = {
+				has_ai_personality = communists
+			}
+		}
 		modifier = {
 			desc = federation_acceptance_hegemony
 			add = -20

@@ -34,6 +34,10 @@ ap_enigmatic_engineering = {
 			factor = 3
 			has_ethic = ethic_fanatic_materialist
 		}
+		modifier = {
+			factor = 3
+			has_ai_personality = technocracy
+		}
 	}
 }
 
@@ -197,12 +201,31 @@ ap_engineered_evolution = {
 			num_owned_planets < 10
 		}
 		modifier = {
-			factor = 0.5
+			factor = 1.50
+			OR = {
+				has_ethic = ethic_materialist
+				has_ethic = ethic_fanatic_materialist
+			}
+		}
+		modifier = {
+			factor = 1.50
+			OR = {
+				has_ai_personality_behaviour = slaver
+				has_ai_personality_behaviour = multispecies
+			}
+		}
+		modifier = {
+			factor = 0.50
 			OR = {
 				has_ethic = ethic_spiritualist
 				has_ethic = ethic_fanatic_spiritualist
-				has_ethic = ethic_materialist
-				has_ethic = ethic_fanatic_materialist
+			}
+		}
+		modifier = {
+			factor = 0.50
+			NOR = {
+				has_ai_personality_behaviour = slaver
+				has_ai_personality_behaviour = multispecies
 			}
 		}
 	}
@@ -323,12 +346,33 @@ ap_the_flesh_is_weak = {
 	}
 	
 	ai_weight = {
-		factor = 2
+		factor = 5
 		modifier = {
-			factor = 10
-			NOR = {
+			factor = 4
+			OR = {
 				has_ethic = ethic_materialist
 				has_ethic = ethic_fanatic_materialist
+			}
+		}
+		modifier = {
+			factor = 4
+			OR = {
+				has_ai_personality = tenacious_industrialists
+				has_ai_personality = technocracy
+			}
+		}
+		modifier = {
+			factor = 0.25
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 0.25
+			OR = {
+				has_ai_personality = caring_custodians
+				has_ai_personality = farmers
 			}
 		}
 		modifier = {
@@ -441,12 +485,15 @@ ap_mind_over_matter = {
 	}
 	
 	ai_weight = {
-		factor = 2
+		factor = 4
 		modifier = {
-			factor = 10
+			factor = 5
 			OR = {
-				has_ethic = ethic_spiritualist
-				has_ethic = ethic_fanatic_spiritualist
+				has_ai_personality = spiritual_seekers
+				has_ai_personality = evangelising_zealots
+				has_ai_personality = erudite_explorers
+				has_ai_personality = big_brother
+				has_ai_personality = harmonious_hierarchy
 			}
 		}	
 		modifier = {
@@ -530,20 +577,39 @@ ap_mastery_of_nature = {
 	ai_weight = {
 		factor = 10
 		modifier = {
-			factor = 0.5
+			factor = 0.70
 			num_ascension_perks > 0
 		}
 		modifier = {
-			factor = 0.1
+			factor = 0.70
 			num_ascension_perks > 1
 		}
 		modifier = {
+			factor = 0.70
+			num_ascension_perks > 2
+		}
+		modifier = {
+			factor = 0.70
+			num_ascension_perks > 3
+		}
+		modifier = {
 			factor = 2
-			has_ethic = ethic_xenophile
+			has_ethic = ethic_spiritualist
 		}
 		modifier = {
 			factor = 3
-			has_ethic = ethic_fanatic_xenophile
+			has_ethic = ethic_fanatic_spiritualist
+		}
+		modifier = {
+			factor = 4
+			OR = {
+				has_ai_personality = caring_custodians
+				has_ai_personality = farmers
+			}
+		}
+		modifier = {
+			factor = 0.5
+			has_ai_personality = tenacious_industrialists
 		}
 	}
 }
@@ -582,19 +648,29 @@ ap_world_shaper = {
 		factor = 5
 		modifier = {
 			factor = 2
-			has_ethic = ethic_xenophile
+			has_ethic = ethic_spiritualist
 		}
 		modifier = {
 			factor = 3
-			has_ethic = ethic_fanatic_xenophile
+			has_ethic = ethic_fanatic_spiritualist
 		}
 		modifier = {
 			factor = 2
-			has_ethic = ethic_egalitarian
+			has_ai_personality_behaviour = multispecies
 		}
 		modifier = {
-			factor = 3
-			has_ethic = ethic_fanatic_egalitarian
+			factor = 4
+			OR = {
+				has_ai_personality = caring_custodians
+				has_ai_personality = farmers
+			}
+		}
+		modifier = {
+			factor = 0.25
+			OR = {
+				has_ai_personality = tenacious_industrialists
+				has_ai_personality = technocracy
+			}
 		}
 	}
 }
@@ -607,7 +683,8 @@ ap_galactic_force_projection = {
 		}
 	}
 	modifier = {
-		country_naval_cap_add = 80
+		country_naval_cap_add = 100
+		country_naval_cap_mult = 0.2
 		country_command_limit_add = 20
 	}
 	
@@ -618,13 +695,13 @@ ap_galactic_force_projection = {
 	}
 	
 	ai_weight = {
-		factor = 10
+		factor = 5
 		modifier = {
-			factor = 1.5
+			factor = 2
 			num_owned_planets < 10
 		}
 		modifier = {
-			factor = 1.5
+			factor = 2
 			num_owned_planets < 20
 		}	
 		modifier = {
@@ -634,7 +711,36 @@ ap_galactic_force_projection = {
 		modifier = {
 			factor = 3
 			has_ethic = ethic_fanatic_militarist
-		}		
+		}
+		modifier = {
+			factor = 4
+			OR = {
+				has_ai_personality = democratic_crusaders
+				has_ai_personality = radical_liberators
+				has_ai_personality = communists
+				has_ai_personality = technocracy
+				has_ai_personality = feudal
+				has_ai_personality = hegemonic_imperialists
+				has_ai_personality = federation_builders
+				has_ai_personality = fanatic_purifiers
+				has_ai_personality = abolitionists
+				has_ai_personality = evangelising_zealots
+				has_ai_personality = tenacious_industrialists
+				has_ai_personality = ruthless_capitalists
+			}
+		}
+		modifier = {
+			factor = 0.25
+			OR = {
+				has_ai_personality = caring_custodians
+				has_ai_personality = anarchists
+				has_ai_personality = spiritual_seekers
+				has_ai_personality = peaceful_seclusionists
+				has_ai_personality = peaceful_traders
+				has_ai_personality = erudite_explorers
+				has_ai_personality = harmonious_hierarchy
+			}
+		}
 	}
 }
 
@@ -676,20 +782,16 @@ ap_defender_of_the_galaxy = {
 			}
 		}
 		modifier = {
-			factor = 2
-			has_ethic = ethic_pacifist
-		}
-		modifier = {
-			factor = 3
-			has_ethic = ethic_fanatic_pacifist
+			factor = 4
+			has_ai_personality_behaviour = crisis_fighter
 		}
 		modifier = {
 			factor = 2
-			has_ethic = ethic_egalitarian
+			has_ethic = ethic_xenophile
 		}
 		modifier = {
 			factor = 3
-			has_ethic = ethic_fanatic_egalitarian
+			has_ethic = ethic_fanatic_xenophile
 		}
 	}
 }
@@ -715,6 +817,14 @@ ap_interstellar_dominion = {
 		modifier = {
 			factor = 3
 			has_ethic = ethic_fanatic_xenophobe
+		}
+		modifier = {
+			factor = 2
+			has_ai_personality_behaviour = propagator
+		}
+		modifier = {
+			factor = 2
+			has_ai_personality_behaviour = conqueror
 		}
 	}
 }
@@ -772,10 +882,17 @@ ap_eternal_vigilance = {
 	}
 	
 	ai_weight = {
-		factor = 10
+		factor = 5
 		modifier = {
-			factor = 2
-			has_civic = civic_inwards_perfection
+			factor = 3
+			OR = {
+				has_civic = civic_inwards_perfection
+				has_civic = civic_isolationist
+			}
+		}
+		modifier = {
+			factor = 3
+			has_ai_personality_behaviour = isolationist
 		}
 		modifier = {
 			factor = 1.5
@@ -830,20 +947,12 @@ ap_galactic_contender = {
 			}
 		}
 		modifier = {
-			factor = 2
-			has_ethic = ethic_pacifist
+			factor = 4
+			has_ai_personality_behaviour = crisis_fighter
 		}
 		modifier = {
-			factor = 3
-			has_ethic = ethic_fanatic_pacifist
-		}
-		modifier = {
-			factor = 2
-			has_ethic = ethic_egalitarian
-		}
-		modifier = {
-			factor = 3
-			has_ethic = ethic_fanatic_egalitarian
+			factor = 0.25
+			NOT = { has_ai_personality_behaviour = crisis_fighter }
 		}
 	}
 }
@@ -874,6 +983,20 @@ ap_technological_ascendancy = {
 			factor = 3
 			has_ethic = ethic_fanatic_materialist
 		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_ai_personality = technocracy
+				has_ai_personality = erudite_explorers
+			}
+		}
+		modifier = {
+			factor = 0.25
+			OR = {
+				has_ai_personality = feudal
+				has_ai_personality = despoilers
+			}
+		}
 	}
 }
 
@@ -891,7 +1014,7 @@ ap_one_vision = {
 	}
 	
 	ai_weight = {
-		factor = 10
+		factor = 5
 		modifier = {
 			factor = 2
 			has_ethic = ethic_authoritarian
@@ -925,7 +1048,7 @@ ap_one_mind = {
 	}
 	
 	ai_weight = {
-		factor = 10
+		factor = 5
 		modifier = {
 			factor = 2
 			has_ethic = ethic_authoritarian
@@ -963,6 +1086,29 @@ ap_consecrated_worlds = {
 	
 	ai_weight = {
 		factor = 10
+		modifier = {
+			factor = 2
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		modifier = {
+			factor = 2
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_ethic = ethic_fanatic_materialist
+				has_ethic = ethic_materialist
+				has_ai_personality = tenacious_industrialists
+				has_ai_personality = ruthless_capitalists
+			}
+		}
 	}
 }
 
@@ -993,6 +1139,10 @@ ap_executive_vigor = {
 				has_ethic = ethic_authoritarian
 				has_ethic = ethic_fanatic_authoritarian
 			}
+		}
+		modifier = {
+			factor = 0
+			has_ai_personality = anarchists
 		}
 	}
 }
@@ -1042,6 +1192,19 @@ ap_transcendent_learning = {
 			factor = 3
 			has_ethic = ethic_fanatic_egalitarian
 		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_ai_personality = erudite_explorers
+			}
+		}
+		modifier = {
+			factor = 0.25
+			OR = {
+				has_ai_personality = despoilers
+				has_ai_personality = feudal
+			}
+		}
 	}
 }
 
@@ -1066,7 +1229,7 @@ ap_shared_destiny = {
 	}
 	
 	ai_weight = {
-		factor = 5
+		factor = 15
 		modifier = {
 			factor = 0
 			NOT = {
@@ -1074,6 +1237,10 @@ ap_shared_destiny = {
 					is_subject_type = vassal
 				}
 			}
+		}
+		modifier = {
+			factor = 0
+			NOT = { has_ai_personality_behaviour = subjugator }
 		}
 	}
 }
@@ -1130,6 +1297,17 @@ ap_voidborn = {
 			factor = 3
 			has_ethic = ethic_fanatic_materialist
 		}
+		modifier = {
+			factor = 3
+			has_ai_personality = tenacious_industrialists
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
+		}
 	}
 }
 
@@ -1173,6 +1351,17 @@ ap_master_builders = {
 		modifier = {
 			factor = 3
 			has_ethic = ethic_fanatic_materialist
+		}
+		modifier = {
+			factor = 3
+			has_ai_personality = tenacious_industrialists
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+			}
 		}
 	}
 }
@@ -1506,11 +1695,31 @@ ap_arcology_project = {
 		factor = 10
 		modifier = {
 			factor = 2
-			has_ethic = ethic_pacifist
+			has_ethic = ethic_materialist
 		}
 		modifier = {
 			factor = 3
-			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_fanatic_materialist
+		}
+		modifier = {
+			factor = 3
+			OR = {
+				has_ai_personality = tenacious_industrialists
+				has_ai_personality = ruthless_capitalists
+				has_ai_personality = technocracy
+				has_ai_personality = peaceful_traders
+				
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_spiritualist
+				has_ai_personality = farmers
+				has_ai_personality = caring_custodians
+				has_ai_personality = anarchists
+			}
 		}
 	}
 }
@@ -1584,5 +1793,39 @@ ap_universal_transactions = {
 	
 	ai_weight = {
 		factor = 10
+		modifier = {
+			factor = 3
+			OR = {
+				has_ai_personality = ruthless_capitalists
+				has_ai_personality = peaceful_traders
+								
+			}
+		}
+		modifier = {
+			factor = 3
+			has_authority = auth_corporate			
+		}
+		modifier = {
+			factor = 0.2
+			OR = {
+				has_ethic = ethic_fanatic_egalitarian
+				has_ethic = ethic_egalitarian
+			}
+		}
+		modifier = {
+			factor = 0
+			OR = {
+				has_ethic = ethic_fanatic_xenophobe
+				has_ai_personality = communists
+				has_ai_personality = anarchists
+				has_ai_personality = soviets
+				has_ai_personality = feudal
+				has_ai_personality = big_brother
+				has_ai_personality = peaceful_seclusionists
+				has_ai_personality = xenophobic_isolationists
+				has_ai_personality = fanatic_purifiers
+				has_ai_personality = despoilers
+			}
+		}
 	}
 }

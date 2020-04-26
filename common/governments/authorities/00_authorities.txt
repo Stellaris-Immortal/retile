@@ -62,7 +62,6 @@ auth_oligarchic = {
 			NOR = {
 				value = ethic_gestalt_consciousness
 				value = ethic_fanatic_egalitarian
-				value = ethic_fanatic_authoritarian
 			}
 		}
 	}
@@ -235,7 +234,15 @@ auth_corporate = {
 	localization_postfix = corporate
 
 	has_agendas = yes
-
+	possible = {
+		ethics = {
+			NOR = {
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian	
+				value = ethic_fanatic_xenophobe
+			}							
+		}
+	}
 	playable = {
 		host_has_dlc = "Megacorp"
 	}
@@ -252,17 +259,8 @@ auth_corporate = {
 		country_election_influence_cost_mult = -0.5
 	}
 
-	possible = {
-		ethics = {
-			NOR = {
-				value = ethic_gestalt_consciousness
-				value = ethic_fanatic_egalitarian
-				value = ethic_fanatic_authoritarian
-			}
-		}
-	}
-
 	tags = {
 		AUTHORITY_ELECTION_OLIGARCHIC
+		ETHIC_TRADE_FEDERATION
 	}
 }

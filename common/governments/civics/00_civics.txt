@@ -16,19 +16,14 @@
 #	}
 #}
 
+# Inaccessible. Is conceptually boring and especially with auto-migration pretty useless
 civic_corvee_system = {
 	description = "civic_tooltip_corvee_system_effects"
 	potential = {
-		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		always = no	
 	}
 	possible = {
-		ethics = {
-			OR = {
-				text = civic_tooltip_authoritarian
-				value = ethic_authoritarian
-				value = ethic_fanatic_authoritarian
-			}
-		}		
+		always = no		
 	}
 	random_weight = { base = 5 }
 	modifier = {
@@ -91,8 +86,6 @@ civic_beacon_of_liberty = {
 				value = ethic_egalitarian
 				value = ethic_fanatic_egalitarian
 			}
-		}
-		ethics = {
 			NOR = {
 				text = civic_tooltip_no_xenophobe
 				value = ethic_xenophobe
@@ -187,6 +180,7 @@ civic_citizen_service = {
 				value = ethic_militarist
 				value = ethic_fanatic_militarist
 			}
+			NOT = { value = ethic_fanatic_egalitarian }
 		}
 		authority = {
 			OR = {
@@ -210,7 +204,12 @@ civic_technocracy = {
 	}
 	possible = {
 		ethics = {
-			value = ethic_fanatic_materialist
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+			NOT = { value = ethic_fanatic_egalitarian }
 		}
 		civics = {
 			NOR = {
@@ -256,6 +255,15 @@ civic_idealistic_foundation = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 		authority = { NOT = { value = auth_corporate } }
 	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_egalitarian
+				value = ethic_egalitarian
+				value = ethic_fanatic_egalitarian
+			}
+		}
+	}
 	random_weight = { base = 5 }
 	modifier = {
 		pop_cat_worker_happiness = 0.10
@@ -270,6 +278,13 @@ civic_environmentalist = {
 	possible = {
 		civics = {
 			NOT = { value = civic_functional_architecture }
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
 		}
 	}
 	random_weight = { base = 5 }
@@ -288,6 +303,13 @@ civic_functional_architecture = {
 			NOT = { 
 				value = civic_environmentalist
 				value = civic_agrarian_idyll
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
 			}
 		}
 	}
@@ -329,6 +351,7 @@ civic_systemic_slavery = {
 	possible = {
 		ethics = {
 			OR = {
+				text = civic_tooltip_authoritarian
 				value = ethic_authoritarian
 				value = ethic_fanatic_authoritarian
 			}
@@ -444,7 +467,7 @@ civic_free_haven = {
 			NOT = { value = civic_corvee_system }
 		}		
 	}
-	random_weight = { base = 5 }
+	random_weight = { base = 3 }
 	modifier = {
 		planet_immigration_pull_mult = 0.25
 		pop_growth_from_immigration = 0.50
@@ -479,6 +502,11 @@ civic_corporate_dominion = {
 				value = ethic_xenophobe
 				value = ethic_fanatic_xenophobe
 			}
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
+			}
 		}
 	}
 	random_weight = {
@@ -504,6 +532,13 @@ civic_agrarian_idyll = {
 		civics = {
 			NOT = { value = civic_functional_architecture }
 		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_spiritualist
+				value = ethic_spiritualist
+				value = ethic_fanatic_spiritualist
+			}
+		}
 	}
 	modifier = { 
 		planet_laborers_unity_produces_add = 1
@@ -515,6 +550,15 @@ civic_mining_guilds = {
 	#description = "civic_tooltip_mining_guilds_effects"
 	potential = {
 		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		ethics = {
+			OR = {
+				text = civic_tooltip_materialist
+				value = ethic_materialist
+				value = ethic_fanatic_materialist
+			}
+		}
 	}
 	modifier = {
 		planet_laborers_alloys_produces_add = 1
@@ -550,7 +594,7 @@ civic_parliamentary_system = {
 		authority = { NOT = { value = auth_corporate } }
 	}
 	possible = { authority = { value = auth_democratic } }
-	random_weight = { base = 5 }
+	random_weight = { base = 0 }
 	modifier = { 
 		pop_factions_produces_mult = 0.50
 		country_election_influence_cost_mult = 0.50
@@ -584,7 +628,7 @@ civic_nationalistic_zeal = {
 			}
 		}
 	}
-	random_weight = { base = 5 }
+	random_weight = { base = 8 }
 	modifier = { }
 }
 
@@ -597,10 +641,10 @@ civic_aristocratic_elite = {
 	}
 	possible = {
 		ethics = {
-			NOR = {
-				text = civic_tooltip_not_egalitarian
-				value = ethic_egalitarian
-				value = ethic_fanatic_egalitarian
+			OR = {
+				text = civic_tooltip_authoritarian
+				value = ethic_authoritarian
+				value = ethic_fanatic_authoritarian
 			}			
 		}
 		authority = {
@@ -886,10 +930,7 @@ civic_merchant_guilds = {
 		}
 		ethics = {
 			OR = {
-				value = ethic_materialist
-				value = ethic_fanatic_materialist
-			}
-			OR = {
+				text = civic_tooltip_authoritarian
 				value = ethic_authoritarian
 				value = ethic_fanatic_authoritarian
 			}
@@ -940,7 +981,7 @@ civic_shared_burden = {
 		starbase_trade_protection_add = 20
 		planet_laborers_society_research_produces_add = 1
 	}		
-	random_weight = { base = 5 }
+	random_weight = { base = 10 }
 }
 
 civic_diplomatic_corps = {
@@ -954,6 +995,13 @@ civic_diplomatic_corps = {
 			NOR = {
 				value = civic_fanatic_purifiers
 				value = civic_inwards_perfection
+			}
+		}
+		ethics = {
+			OR = {
+				text = civic_tooltip_pacifist
+				value = ethic_pacifist
+				value = ethic_fanatic_pacifist
 			}
 		}
 	}
