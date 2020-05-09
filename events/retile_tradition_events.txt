@@ -25,88 +25,73 @@ event = {
 	}
 }
 
-# Gatekeeper Event
+# On Starbase Built: Gatekeeper
 ship_event = {
 	id = tradition.2
 	hide_window = yes
 	is_triggered_only = yes
 	
 	immediate = {
-		ship_event = { id = tradition.3  days = 1 }
+		FROM = {
+			planet_event = {
+				id = tradition.3
+				days = 1
+			}
+		}
 	}
 }
 
-# Add Network to Outpost
-ship_event = {
+# On Starbase Built: Add Network
+planet_event = {
 	id = tradition.3
 	hide_window = yes
 	is_triggered_only = yes
 	
 	immediate = {
-		if = {
-			limit = { owner = { has_tradition = tr_expansion_courier_network } }
-			FROM = {
-				solar_system = {
-					starbase = { 
-						set_starbase_building = {
-							slot = 0
-							building = courier_network
-						}
-					}
+		solar_system.starbase = {
+			if = {
+				limit = { owner = { has_tradition = tr_expansion_courier_network } }
+				set_starbase_building = {
+					slot = 0
+					building = courier_network
 				}
-			}
-		} else_if = {
-			limit = { owner = { has_tradition = tr_domination_workplace_motivators } }
-			FROM = {
-				solar_system = {
-					starbase = { 
-						set_starbase_building = {
-							slot = 0
-							building = patrol_network
-						}
-					}
+			} else_if = {
+				limit = { owner = { has_tradition = tr_domination_workplace_motivators } }
+				set_starbase_building = {
+					slot = 0
+					building = patrol_network
 				}
-			}
-		} else = {
-			FROM = {
-				solar_system = {
-					starbase = {
-						set_starbase_building = {
-							slot = 0
-							building = default_network
-						}
-					}
+			} else = {
+				set_starbase_building = {
+					slot = 0
+					building = default_network
 				}
 			}
 		}
 	}
 }
 
-# Replace Network on Conquer
+# On Starbase Trasnfer: Replace Network
 ship_event = {
 	id = tradition.4
 	hide_window = yes
 	is_triggered_only = yes
 	
 	immediate = {
-		if = {
-			limit = { owner = { has_tradition = tr_expansion_courier_network } }
-			starbase = {
+		solar_system.starbase = {
+			if = {
+				limit = { owner = { has_tradition = tr_expansion_courier_network } }
 				set_starbase_building = {
 					slot = 0
 					building = courier_network
 				}
-			}
-		} else_if = {
-			limit = { owner = { has_tradition = tr_domination_workplace_motivators } }
-			starbase = {
+			} else_if = {
+				limit = { owner = { has_tradition = tr_domination_workplace_motivators } }
 				set_starbase_building = {
 					slot = 0
 					building = patrol_network
 				}
-			}
-		} else = {
-			starbase = {
+			} else = {
 				set_starbase_building = {
 					slot = 0
 					building = default_network
